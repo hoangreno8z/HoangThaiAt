@@ -93,6 +93,8 @@ function render(year, month, day, hour) {
     document.getElementById("tc-tiet-khi").textContent = data.solarTerm;
     document.getElementById("tc-bat-mon").textContent = data.batMon;
     document.getElementById("tc-cuu-tinh").textContent = data.cuuTinh;
+    document.getElementById("tc-toan-chu").textContent = data.toanChu;
+    document.getElementById("tc-toan-khach").textContent = data.toanKhach;
     
     // Render Trung Cung stars
     const tcStars = data.placement["trung_cung"] || [];
