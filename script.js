@@ -77,8 +77,8 @@ function render(year, month, day, hour) {
     const data = calculateThaiAtChart(currentMode, year, month, day, hour);
 
     // Update header line
-    document.getElementById("chart-datetime-header").textContent =
-        `NĂM THÁNG NGÀY GIỜ LẬP QUẺ: ${data.tuTru.fullString.toUpperCase()}`;
+    document.getElementById("chart-datetime-header").innerHTML =
+        `Năm Tháng Ngày Giờ (Dương Lịch): <span style="font-weight:normal">${data.tuTru.solarDate}</span>`;
 
     // Update sidebar info
     document.getElementById("info-mode-name").textContent = data.modeName;
