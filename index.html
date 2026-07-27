@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thái Ất Thần Số - Lập Quẻ Trực Tuyến</title>
+    <meta name="description" content="Ứng dụng lập quẻ Thái Ất Thần Số trực tuyến, tự động tính toán Can Chi, Cục số, vị trí các sao và luận giải thế trận cát hung.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="stars-bg"></div>
+    <div class="app-container">
+        <header>
+            <div class="logo">太乙</div>
+            <h1>THÁI ẤT THẦN SỐ</h1>
+            <p class="subtitle">Hệ Thống Lập Quẻ & Luận Giải Thời Cục Trực Tuyến</p>
+        </header>
+
+        <main class="main-content">
+            <!-- Left Panel: Controls and Input -->
+            <section class="control-panel glass">
+                <h2 class="section-title"><span class="icon">🔮</span> Thiết Lập Quẻ</h2>
+                <form id="thai-at-form">
+                    <div class="form-group">
+                        <label for="solar-date">Chọn Ngày Dương Lịch</label>
+                        <input type="date" id="solar-date" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="solar-time">Chọn Giờ (Giờ sinh/Lập quẻ)</label>
+                        <input type="time" id="solar-time" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="chi-hour">Hoặc Chọn Giờ Theo Chi</label>
+                        <select id="chi-hour">
+                            <option value="-1">-- Tự động tính theo giờ dương lịch --</option>
+                            <option value="0">Tý (23h - 01h)</option>
+                            <option value="1">Sửu (01h - 03h)</option>
+                            <option value="2">Dần (03h - 05h)</option>
+                            <option value="3">Mão (05h - 07h)</option>
+                            <option value="4">Thìn (07h - 09h)</option>
+                            <option value="5">Tị (09h - 11h)</option>
+                            <option value="6">Ngọ (11h - 13h)</option>
+                            <option value="7">Mùi (13h - 15h)</option>
+                            <option value="8">Thân (15h - 17h)</option>
+                            <option value="9">Dậu (17h - 19h)</option>
+                            <option value="10">Tuất (19h - 21h)</option>
+                            <option value="11">Hợi (21h - 23h)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="dun-type">Chọn Vòng Độn</label>
+                        <select id="dun-type">
+                            <option value="auto">Tự động (Dựa vào Tiết khí)</option>
+                            <option value="yang">Dương Độn (Đông Chí -> Hạ Chí)</option>
+                            <option value="yin">Âm Độn (Hạ Chí -> Đông Chí)</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn-primary" id="btn-cast">
+                        <span class="btn-glow"></span>
+                        <span class="btn-text">KHỞI QUẺ THÁI ẤT</span>
+                    </button>
+                </form>
+
+                <div class="quick-info-box">
+                    <h3>Thông Tin Bàn Quẻ</h3>
+                    <ul class="info-list">
+                        <li><strong>Tứ Trụ:</strong> <span id="info-tu-tru">-</span></li>
+                        <li><strong>Tiết Khí:</strong> <span id="info-tiet-khi">-</span></li>
+                        <li><strong>Vòng Độn:</strong> <span id="info-vong-don">-</span></li>
+                        <li><strong>Cục Số:</strong> <span id="info-cuc-so">-</span></li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Right Panel: Display Board and Analysis -->
+            <section class="display-panel">
+                <!-- Navigation Tabs -->
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="cuu-cung-tab">Bản Đồ Cửu Cung</button>
+                    <button class="tab-btn" data-tab="luan-giai-tab">Luận Giải Chi Tiết</button>
+                    <button class="tab-btn" data-tab="huong-dan-tab">Kết Nối GitHub & Vercel</button>
+                </div>
+
+                <!-- Tab 1: Nine Palaces Grid -->
+                <div class="tab-content active" id="cuu-cung-tab">
+                    <div class="cuu-cung-wrapper">
+                        <div class="cuu-cung-grid">
+                            <!-- Palace 4: Tốn (Southeast) -->
+                            <div class="palace-cell glass" id="palace-4" data-palace="4">
+                                <div class="palace-header">
+                                    <span class="palace-num">4</span>
+                                    <span class="palace-name">TỐN</span>
+                                </div>
+                                <div class="palace-element mộc">Mộc (Đông Nam)</div>
+                                <div class="palace-stars"></div>
+                            </div>
+
+                            <!-- Palace 9: Ly (South) -->
+                            <div class="palace-cell glass" id="palace-9" data-palace="9">
+                                <div class="palace-header">
+                                    <span class="palace-num">9</span>
+                                    <span class="palace-name">LY</span>
+                                </div>
+                                <div class="palace-element hỏa">Hỏa (Chính Nam)</div>
+                                <div class="palace-stars"></div>
+                            </div>
+
+                            <!-- Palace 2: Khôn (Southwest) -->
+                            <div class="palace-cell glass" id="palace-2" data-palace="2">
+                                <div class="palace-header">
+                                    <span class="palace-num">2</span>
+                                    <span class="palace-name">KHÔN</span>
+                                </div>
+                                <div class="palace-element thổ">Thổ (Tây Nam)</div>
+                                <div class="palace-stars"></div>
+                            </div>
+
+                            <!-- Palace 3: Chấn (East) -->
+                            <div class="palace-cell glass" id="palace-3" data-palace="3">
+                                <div class="palace-header">
+                                    <span class="palace-num">3</span>
+                                    <span class="palace-name">CHẤN</span>
+                                </div>
+                                <div class="palace-element mộc">Mộc (Chính Đông)</div>
+                                <div class="palace-stars"></div>
+                            </div>
+
+                            <!-- Palace 5: Trung Cung (Center) -->
+                            <div class="palace-cell glass center-palace" id="palace-5" data-palace="5">
+                                <div class="palace-header">
+                                    <span class="palace-num">5</span>
+                                    <span class="palace-name">TRUNG CUNG</span>
+                                </div>
+                                <div class="palace-element thổ">Thổ (Trung tâm)</div>
+                                <div class="palace-stars"></div>
+                            </div>
+
+                            <!-- Palace 7: Đoài (West) -->
+                            <div class="palace-cell glass" id="palace-7" data-palace="7">
+                                <div class="palace-header">
+                                    <span class="palace-num">7</span>
+                                    <span class="palace-name">ĐOÀI</span>
+                                </div>
+                                <div class="palace-element kim">Kim (Chính Tây)</div>
+                                <div class="palace-stars"></div>
+                            </div>
+
+                            <!-- Palace 8: Cấn (Northeast) -->
+                            <div class="palace-cell glass" id="palace-8" data-palace="8">
+                                <div class="palace-header">
+                                    <span class="palace-num">8</span>
+                                    <span class="palace-name">CẤN</span>
+                                </div>
+                                <div class="palace-element thổ">Thổ (Đông Bắc)</div>
+                                <div class="palace-stars"></div>
+                            </div>
+
+                            <!-- Palace 1: Khảm (North) -->
+                            <div class="palace-cell glass" id="palace-1" data-palace="1">
+                                <div class="palace-header">
+                                    <span class="palace-num">1</span>
+                                    <span class="palace-name">KHẠM</span>
+                                </div>
+                                <div class="palace-element thủy">Thủy (Chính Bắc)</div>
+                                <div class="palace-stars"></div>
+                            </div>
+
+                            <!-- Palace 6: Càn (Northwest) -->
+                            <div class="palace-cell glass" id="palace-6" data-palace="6">
+                                <div class="palace-header">
+                                    <span class="palace-num">6</span>
+                                    <span class="palace-name">CÀN</span>
+                                </div>
+                                <div class="palace-element kim">Kim (Tây Bắc)</div>
+                                <div class="palace-stars"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="grid-hint">* Nhấp vào từng ô Cung để xem mô tả chi tiết của Cung và các cát hung thần ngự trị.</p>
+                </div>
+
+                <!-- Tab 2: Interpretation -->
+                <div class="tab-content" id="luan-giai-tab">
+                    <div class="interpretation-box glass">
+                        <div class="battle-verdict" id="battle-verdict">
+                            <span class="verdict-label">Thế Trận Quẻ:</span>
+                            <span class="verdict-value" id="verdict-text">Vui lòng lập quẻ để xem phân tích...</span>
+                        </div>
+                        
+                        <div class="star-details">
+                            <h3>Vị trí & Ý nghĩa các Thần:</h3>
+                            <div id="star-analysis-container" class="analysis-list">
+                                <p class="placeholder-text">Chưa có dữ liệu quẻ. Vui lòng bấm nút "KHỞI QUẺ THÁI ẤT" ở cột trái.</p>
+                            </div>
+                        </div>
+
+                        <div class="general-advice">
+                            <h3>Lời khuyên quân cơ / hành sự:</h3>
+                            <p id="advice-text">Khi chưa khởi quẻ, hãy giữ tâm thanh tịnh, hướng về những điều tốt đẹp.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 3: Git & Vercel Guide -->
+                <div class="tab-content" id="huong-dan-tab">
+                    <div class="guide-box glass">
+                        <h2>🚀 Hướng Dẫn Kết Nối GitHub & Vercel Từng Bước</h2>
+                        <p>Chào mừng bạn! Dưới đây là quy trình hoàn chỉnh để kết nối mã nguồn Thái Ất này với tài khoản GitHub của bạn và tự động xuất bản (deploy) lên Vercel chỉ trong vài phút.</p>
+
+                        <div class="step-card">
+                            <div class="step-num">1</div>
+                            <div class="step-info">
+                                <h3>Khởi tạo thư mục & Đẩy mã nguồn lên GitHub</h3>
+                                <p>Bạn đã tạo thành công repo <strong>HoangThaiAt</strong> trên GitHub tại địa chỉ: <code>https://github.com/hoangreno8z/HoangThaiAt.git</code></p>
+                                <p>Bây giờ, hãy mở Terminal hoặc Git Bash tại thư mục chứa code và chạy các dòng lệnh sau để đẩy toàn bộ code ứng dụng này lên GitHub:</p>
+                                <pre><code>git init
+git add .
+git commit -m "Initial commit: Thai At App"
+git branch -M main
+git remote add origin https://github.com/hoangreno8z/HoangThaiAt.git
+git push -u origin main</code></pre>
+                                <p class="note"><strong>Lưu ý:</strong> Thay vì chỉ <code>git add README.md</code>, lệnh <code>git add .</code> sẽ thêm toàn bộ file code (index.html, style.css, script.js) vào repo!</p>
+                            </div>
+                        </div>
+
+                        <div class="step-card">
+                            <div class="step-num">2</div>
+                            <div class="step-info">
+                                <h3>Đăng nhập vào Vercel</h3>
+                                <p>Truy cập vào trang chủ <a href="https://vercel.com" target="_blank">Vercel.com</a>.</p>
+                                <p>Chọn <strong>Log In</strong> -> Chọn <strong>Continue with GitHub</strong> để liên kết tài khoản Vercel trực tiếp với GitHub của bạn.</p>
+                            </div>
+                        </div>
+
+                        <div class="step-card">
+                            <div class="step-num">3</div>
+                            <div class="step-info">
+                                <h3>Import Project</h3>
+                                <p>Tại trang quản trị của Vercel (Dashboard), nhấn nút <strong>Add New...</strong> rồi chọn <strong>Project</strong>.</p>
+                                <p>Vercel sẽ hiển thị danh sách các kho chứa (repositories) trên GitHub của bạn. Tìm kiếm repo có tên <strong>HoangThaiAt</strong> và nhấn nút <strong>Import</strong> bên cạnh nó.</p>
+                            </div>
+                        </div>
+
+                        <div class="step-card">
+                            <div class="step-num">4</div>
+                            <div class="step-info">
+                                <h3>Deploy (Triển khai)</h3>
+                                <p>Ở màn hình tiếp theo, Vercel sẽ tự động phát hiện đây là một dự án HTML/CSS/JS tĩnh (Static Project). Bạn không cần thay đổi bất cứ cài đặt nào.</p>
+                                <p>Chỉ cần nhấp vào nút <strong>Deploy</strong> màu xanh đen ở phía dưới.</p>
+                                <p>Chờ khoảng 10-15 giây để Vercel xây dựng. Sau khi hoàn thành, bạn sẽ thấy màn hình chúc mừng kèm theo ảnh chụp màn hình trang web của bạn cùng đường dẫn truy cập trực tuyến dạng <code>https://hoang-thai-at.vercel.app</code>.</p>
+                            </div>
+                        </div>
+
+                        <div class="step-card highlight">
+                            <div class="step-num">💡</div>
+                            <div class="step-info">
+                                <h3>Cơ chế Tự Động Hóa (CI/CD) của Vercel</h3>
+                                <p>Sau khi kết nối thành công, mỗi khi bạn thực hiện thay đổi mã nguồn trên máy tính, bạn chỉ cần gõ:</p>
+                                <pre><code>git add .
+git commit -m "Cập nhật giao diện"
+git push origin main</code></pre>
+                                <p>Ngay lập tức, Vercel sẽ tự động phát hiện có commit mới trên GitHub, tự động build lại và cập nhật trang web trực tuyến của bạn trong vài giây. Bạn không cần làm gì thêm trên Vercel!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modal for Palace Details -->
+    <div id="palace-modal" class="modal">
+        <div class="modal-content glass">
+            <span class="close-btn">&times;</span>
+            <h2 id="modal-title">Tên Cung</h2>
+            <div class="modal-body">
+                <p><strong>Ngũ Hành:</strong> <span id="modal-element"></span></p>
+                <p><strong>Hướng:</strong> <span id="modal-direction"></span></p>
+                <div class="modal-stars-section">
+                    <h3>Các Thần ngự trị tại đây:</h3>
+                    <div id="modal-stars-list"></div>
+                </div>
+                <div class="modal-desc-section">
+                    <h3>Mô tả & Ý nghĩa Cung:</h3>
+                    <p id="modal-desc"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
