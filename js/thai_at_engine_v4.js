@@ -165,11 +165,13 @@ class ThaiAtBaseEngine {
         const trucPhuIdx = TU_THAN_PATH[(4 + step36) % 12];
         const diaAtIdx = TU_THAN_PATH[(8 + step36) % 12];
         
-        const tlIdx = CHI_TO_THAN_IDX[(2 + step36) % 12];
-        const taIdx = CHI_TO_THAN_IDX[(10 + step36) % 12];
+        const tlR = ((this.tueTich % 60) % 12) || 12;
+        const tlIdx = CHI_TO_THAN_IDX[(11 + tlR - 1) % 12];
+        const taIdx = CHI_TO_THAN_IDX[(10 + step36) % 12]; // Giữ nguyên Thái Âm gốc
         
-        const xkStep = ((this.tueTich + 1) % 40) % 4;
-        const xkIdx = [4, 0, 12, 8][xkStep % 4];
+        const xkR = ((this.tueTich + 1) % 40) % 4 || 4;
+        const xkIdx = [4, 0, 12, 8][xkR - 1]; // Hợi, Thân, Tị, Dần
+        
         const hkStep = Math.floor((((this.tueTich + 25) % 360) % 36) / 3);
         const hkIdx = CHI_TO_THAN_IDX[(11 - hkStep + 12) % 12];
         
@@ -178,10 +180,10 @@ class ThaiAtBaseEngine {
             { thanIdx: thienAtIdx, name: "Thiên Ất", class: "tu-than" },
             { thanIdx: diaAtIdx, name: "Địa Ất", class: "tu-than" },
             { thanIdx: trucPhuIdx, name: "Trực Phù", class: "tu-than" },
-            { thanIdx: tlIdx, name: "Thanh Long", class: "tu-than" },
+            { thanIdx: tlIdx, name: "Thanh Long (Cờ Xanh)", class: "tu-than" },
             { thanIdx: taIdx, name: "Thái Âm", class: "tu-than" },
-            { thanIdx: xkIdx, name: "Xích Kỳ", class: "co-khac" },
-            { thanIdx: hkIdx, name: "Hắc Kỳ", class: "co-khac" }
+            { thanIdx: xkIdx, name: "Xích Kỳ (Cờ Đỏ)", class: "co-khac" },
+            { thanIdx: hkIdx, name: "Hắc Kỳ (Cờ Đen)", class: "co-khac" }
         ];
     }
 
