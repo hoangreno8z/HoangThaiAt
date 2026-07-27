@@ -156,7 +156,15 @@ class ThaiAtBaseEngine {
     // ------ NHÓM TỨ THẦN KỲ (MOD 36/12) ------
     calcTuThanKy() {
         const step36 = Math.floor((this.tueTich % 360 % 36) / 3);
-        const getC = (start) => ((start + step36 - 1) % 9) + 1;
+        
+        // Quỹ đạo 12 cung đặc biệt của nhóm Tứ Thần: Cung 1->9, Tị, Thân, Dần
+        // 1(Tý:5), 2(Khôn:15), 3(Mão:9), 4(Tốn:11), 5(Trung:-1), 6(Kiền:3), 7(Dậu:1), 8(Cấn:7), 9(Ngọ:13), Tị(12), Thân(0), Dần(8)
+        const TU_THAN_PATH = [5, 15, 9, 11, -1, 3, 1, 7, 13, 12, 0, 8];
+        const tuThanIdx = TU_THAN_PATH[(0 + step36) % 12];
+        const thienAtIdx = TU_THAN_PATH[(5 + step36) % 12];
+        const trucPhuIdx = TU_THAN_PATH[(4 + step36) % 12];
+        const diaAtIdx = TU_THAN_PATH[(8 + step36) % 12];
+        
         const tlIdx = CHI_TO_THAN_IDX[(2 + step36) % 12];
         const taIdx = CHI_TO_THAN_IDX[(10 + step36) % 12];
         
@@ -166,10 +174,10 @@ class ThaiAtBaseEngine {
         const hkIdx = CHI_TO_THAN_IDX[(11 - hkStep + 12) % 12];
         
         return [
-            { thanIdx: CUNG_TO_THAN_IDX[getC(1)], name: "Tứ Thần", class: "tu-than" },
-            { thanIdx: CUNG_TO_THAN_IDX[getC(6)], name: "Thiên Ất", class: "tu-than" },
-            { thanIdx: CUNG_TO_THAN_IDX[getC(9)], name: "Địa Ất", class: "tu-than" },
-            { thanIdx: CUNG_TO_THAN_IDX[getC(5)], name: "Trực Phù", class: "tu-than" },
+            { thanIdx: tuThanIdx, name: "Tứ Thần", class: "tu-than" },
+            { thanIdx: thienAtIdx, name: "Thiên Ất", class: "tu-than" },
+            { thanIdx: diaAtIdx, name: "Địa Ất", class: "tu-than" },
+            { thanIdx: trucPhuIdx, name: "Trực Phù", class: "tu-than" },
             { thanIdx: tlIdx, name: "Thanh Long", class: "tu-than" },
             { thanIdx: taIdx, name: "Thái Âm", class: "tu-than" },
             { thanIdx: xkIdx, name: "Xích Kỳ", class: "co-khac" },
