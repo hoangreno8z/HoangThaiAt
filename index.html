@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style_v4.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 <body>
@@ -124,6 +124,7 @@
                                 <p><strong>Tiết Khí:</strong> <span id="tc-tiet-khi">-</span></p>
                                 <p><strong>Bát Môn:</strong> <span id="tc-bat-mon">-</span></p>
                                 <p><strong>Cửu Tinh:</strong> <span id="tc-cuu-tinh">-</span></p>
+                                <p><strong>Trung Cung:</strong> <span id="tc-stars">-</span></p>
                                 <div class="tc-verdict-box">
                                     <p><strong>Bát Hung:</strong> <span id="tc-bat-hung">-</span></p>
                                     <p><strong>Luận Đoán:</strong> <span id="tc-verdict">-</span></p>
@@ -154,13 +155,21 @@
                         <div class="cell-box" id="cell-kien" data-than="kien"></div>
                     </div>
                 </div>
+
+                <!-- Dự Báo Tương Lai -->
+                <div id="future-predictions" class="glass" style="margin-top: 20px; padding: 20px; border-radius: 8px;">
+                    <h3 style="color: var(--gold); border-bottom: 1px solid var(--panel-border); padding-bottom: 10px; margin-bottom: 15px; font-family: 'Cinzel', serif;">Dự Báo Quỹ Đạo Sao Thay Đổi</h3>
+                    <div id="future-predictions-content" style="line-height: 1.6; font-size: 0.95rem;">
+                        <!-- JS will populate this -->
+                    </div>
+                </div>
             </section>
         </main>
     </div>
 
-    <script src="js/lunar_solar.js"></script>
-    <script src="js/thai_at_engine.js"></script>
-    <script src="js/png_exporter.js"></script>
-    <script src="script.js"></script>
+    <script src="js/lunar_solar.js?v=4.0"></script>
+    <script src="js/thai_at_engine_v4.js"></script>
+    <script src="js/png_exporter.js?v=4.0"></script>
+    <script src="script_v4.js"></script>
 </body>
 </html>

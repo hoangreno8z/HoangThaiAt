@@ -130,10 +130,28 @@ function render(year, month, day, hour) {
                 <span>(${than.palaceNum})</span>
             </div>
             <div class="cell-line-2">${than.direction} • ${than.element}</div>
-            <div class="cell-line-3">${mainHtml || '<span class="text-muted">Thần chính: —</span>'}</div>
-            <div class="cell-line-4">${generalHtml || '<span class="text-muted">Tướng binh: —</span>'}</div>
-            <div class="cell-line-5">${baseHtml || '<span class="text-muted">Cơ/Phúc/Du: —</span>'}</div>
-            <div class="cell-line-6 aux-stars">${auxHtml || `<span class="text-muted">Cửa: ${data.batMon}</span>`}</div>
+            <div class="cell-line-3">${mainHtml || ''}</div>
+            <div class="cell-line-4">${generalHtml || ''}</div>
+            <div class="cell-line-5">${baseHtml || ''}</div>
+            <div class="cell-line-6 aux-stars">${auxHtml || ''}</div>
         `;
     });
+
+    // Populate Future Predictions
+    const predContent = document.getElementById("future-predictions-content");
+    if (data.movingStars && data.movingStars.length > 0) {
+        const nextTimeStr = currentMode === "tue" ? "1 năm" : currentMode === "nguyet" ? "1 tháng" : currentMode === "nhat" ? "1 ngày" : currentMode === "thoi" ? "1 canh giờ" : "";
+        if (nextTimeStr) {
+            let predHtml = `<p>Trong <strong>${nextTimeStr} tiếp theo</strong>, các sao sau đây sẽ thay đổi quỹ đạo:</p><ul style="margin-top: 5px; margin-left: 20px;">`;
+            data.movingStars.forEach(m => {
+                predHtml += `<li><strong>${m.name}</strong> sẽ di chuyển sang <strong>${m.nextCungName}</strong> (hiện tại đang ở ${m.currCungName}).</li>`;
+            });
+            predHtml += `</ul>`;
+            predContent.innerHTML = predHtml;
+        } else {
+            predContent.innerHTML = "<p><em>Không dự báo quỹ đạo sao cho chế độ này.</em></p>";
+        }
+    } else {
+        predContent.innerHTML = "<p><em>Không có sao nào di chuyển trong chu kỳ tiếp theo, hoặc không có dữ liệu dự báo.</em></p>";
+    }
 }

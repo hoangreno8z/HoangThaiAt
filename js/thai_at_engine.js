@@ -235,6 +235,21 @@ function calcKhachToan(thuyKichIdx, thaiAtIdx) {
     return calcToanSum(thuyKichIdx, thaiAtIdx);
 }
 
+const CUNG_TO_THAN_IDX = {
+    1: 5,  // Khảm (Tý)
+    2: 15, // Khôn
+    3: 9,  // Chấn (Mão)
+    4: 11, // Tốn
+    5: -1, // Trung Cung
+    6: 3,  // Kiền
+    7: 1,  // Đoài (Dậu)
+    8: 7,  // Cấn
+    9: 13  // Ly (Ngọ)
+};
+
+// 12 Địa Chi (Tý đến Hợi) mapped to THAP_LUC_THAN index
+const CHI_TO_THAN_IDX = [5, 6, 8, 9, 10, 12, 13, 14, 0, 1, 2, 4]; // Tý=0, Sửu=1, Dần=2... Hợi=11
+
 /**
  * Tính Đại Tướng
  * Đếm số bước bằng (Toán) từ vị trí khởi điểm (Văn Xương/Thủy Kích).
@@ -252,19 +267,19 @@ function calcKhachDaiTuong(thuyKichIdx, khachToan) {
 /**
  * Tính Tam Cơ (Quân Cơ, Thần Cơ, Dân Cơ)
  */
-function calcTamCo(kyDu) {
-    // Quân Cơ: (KỷDư + 250) % 360 ÷ 30, khởi Ngọ đếm thuận
-    const quanCoRaw = (kyDu + 250) % 360;
+function calcTamCo(kyDu, tueTich) {
+    // Quân Cơ: (Tuế Tích + 250) % 360 ÷ 30, khởi Ngọ đếm thuận
+    const quanCoRaw = (tueTich + 250) % 360;
     const quanCoStep = Math.floor(quanCoRaw / 30);
     const quanCoIdx = (13 + quanCoStep) % 16; // Ngọ = idx 13
     
-    // Thần Cơ: KỷDư % 36, chia 3, khởi Ngọ
-    const thanCoStep = Math.floor((kyDu % 36) / 3);
+    // Thần Cơ: dư Quân Cơ % 36 ÷ 3, khởi Ngọ
+    const thanCoStep = Math.floor((quanCoRaw % 36) / 3);
     const thanCoIdx = (13 + thanCoStep) % 16;
     
-    // Dân Cơ: KỷDư % 12, khởi Tuất
-    const danCoStep = kyDu % 12;
-    const danCoIdx = (2 + danCoStep) % 16; // Tuất = idx 2
+    // Dân Cơ: dư Quân Cơ % 12, khởi Tuất (idx 2)
+    const danCoStep = quanCoRaw % 12;
+    const danCoIdx = (2 + danCoStep) % 16;
     
     return {
         quanCo: { thanIdx: quanCoIdx, than: THAP_LUC_THAN[quanCoIdx] },
@@ -286,6 +301,195 @@ function calcNguPhuc(tueTich) {
         thanIdx: stationIdxs[stIdx],
         stationName: stationNames[stIdx],
         isTrungCung: stIdx === 4
+    };
+}
+
+/**
+ * Tính Đại Du, Tiểu Du
+ */
+function calcDu(tueTich, kyDu) {
+    // Đại Du: (Tuế Tích + 34) % 288 ÷ 36, khởi 7 đi 8 cung (7,8,9,1,2,3,4,6)
+    const DD_PATH = [7, 8, 9, 1, 2, 3, 4, 6];
+    const ddStep = Math.floor(((tueTich + 34) % 288) / 36);
+    const daiDuCung = DD_PATH[ddStep % 8];
+    
+    // Tiểu Du: Kỷ Dư % 24 ÷ 3, khởi 1 đi 8 cung (1,2,3,4,6,7,8,9)
+    const TD_PATH = [1, 2, 3, 4, 6, 7, 8, 9];
+    const tdStep = Math.floor((kyDu % 24) / 3);
+    const tieuDuCung = TD_PATH[tdStep % 8];
+    
+    return {
+        daiDu: { cung: daiDuCung, thanIdx: CUNG_TO_THAN_IDX[daiDuCung] },
+        tieuDu: { cung: tieuDuCung, thanIdx: CUNG_TO_THAN_IDX[tieuDuCung] }
+    };
+}
+
+/**
+ * Tham Chủ, Tham Khách
+ */
+function calcThamTuong(chuToan, khachToan) {
+    const tcCung = ((chuToan % 10) * 3) % 10;
+    const tkCung = ((khachToan % 10) * 3) % 10;
+    return {
+        thamChu: { cung: tcCung, thanIdx: CUNG_TO_THAN_IDX[tcCung] },
+        thamKhach: { cung: tkCung, thanIdx: CUNG_TO_THAN_IDX[tkCung] }
+    };
+}
+
+/**
+ * Tính Tứ Thần, Thiên Ất, Địa Ất, Trực Phù
+ */
+function calcNhomTuThan(tueTich) {
+    const step = Math.floor((tueTich % 360 % 36) / 3);
+    const getCung = (start, step) => ((start + step - 1) % 9) + 1;
+    return {
+        tuThan: getCung(1, step),
+        thienAt: getCung(6, step),
+        diaAt: getCung(9, step),
+        trucPhu: getCung(5, step)
+    };
+}
+
+/**
+ * Thanh Long, Thái Âm
+ */
+function calcThanhLongThaiAm(tueTich) {
+    const step = Math.floor((tueTich % 360 % 36) / 3);
+    // Dần=2, Tuất=10 in CHI_TO_THAN_IDX
+    const tlIdx = CHI_TO_THAN_IDX[(2 + step) % 12];
+    const taIdx = CHI_TO_THAN_IDX[(10 + step) % 12];
+    return { thanhLong: tlIdx, thaiAm: taIdx };
+}
+
+/**
+ * 9 Sao Trực Phù
+ */
+function calc9SaoTrucPhu(tueTich, namCanIdx) {
+    const du90 = (tueTich % 900) % 90;
+    let nhom = Math.ceil(du90 / 10);
+    if (du90 === 0) nhom = 9;
+    const trucPhuStarNum = nhom;
+    const CAN_CUNG_MAP = [0, 9, 8, 7, 1, 2, 3, 4, 5, 6]; // Mậu=1, Kỷ=2...
+    const startCung = CAN_CUNG_MAP[namCanIdx] || 1; // Default to 1 if Giáp(0)
+    
+    const results = [];
+    let currentCung = startCung;
+    for (let i = 0; i < 9; i++) {
+        let starNum = trucPhuStarNum + i;
+        if (starNum > 9) starNum -= 9;
+        results.push({
+            starNum: starNum,
+            name: CUU_TINH[starNum - 1],
+            cung: currentCung,
+            thanIdx: CUNG_TO_THAN_IDX[currentCung]
+        });
+        currentCung = (currentCung % 9) + 1;
+    }
+    return results;
+}
+
+/**
+ * Xích Kỳ, Hắc Kỳ
+ */
+function calcCoKhac(tueTich) {
+    const XK_PATH = [4, 0, 12, 8]; // Hợi, Thân, Tị, Dần
+    const xkStep = ((tueTich + 1) % 40) % 4;
+    const xichKy = XK_PATH[xkStep % 4];
+    
+    const hkStep = Math.floor((((tueTich + 25) % 360) % 36) / 3);
+    const hkIdx = (11 - hkStep + 12) % 12; // Lùi từ Hợi (11)
+    const hacKy = CHI_TO_THAN_IDX[hkIdx];
+    
+    return { xichKy, hacKy };
+}
+
+/**
+ * Văn Xương Cửu Tinh
+ */
+function calcVanXuong9Sao(tueTich, namCanIdx) {
+    const vxStep = Math.floor((tueTich % 270) / 30);
+    const trucSuSao = (vxStep % 9) + 1;
+    const CAN_CUNG_MAP = [0, 9, 8, 7, 1, 2, 3, 4, 5, 6];
+    const cung = CAN_CUNG_MAP[namCanIdx] || 1;
+    const NAMES = ["Bài Văn", "Huyền Phượng", "Minh Duy", "Âm Đức", "Chiêu Dao", "Thừa Minh", "Huyền Vũ", "Huyền Minh", "Hùng Minh"];
+    return { name: NAMES[trucSuSao - 1], cung, thanIdx: CUNG_TO_THAN_IDX[cung] };
+}
+
+/**
+ * Bát Môn
+ */
+function calcBatMon(tueTich) {
+    const step = Math.floor((tueTich % 240) / 30);
+    return BAT_MON[step % 8];
+}
+
+/**
+ * Cửu Tinh Quý Thần
+ */
+function calcCuuTinhQuyThan(kyDu) {
+    const du9 = (kyDu + 3) % 9;
+    let trucSu = (1 - (du9 - 1) + 9) % 9;
+    if (trucSu === 0) trucSu = 9;
+    if (du9 === 0) trucSu = 2; // (1 - 8 + 9)%9
+    
+    const QT_NAMES = ["Thái Nhất", "Nhiếp Đề", "Hiên Viên", "Chiêu Dao", "Thiên Phù", "Thanh Long", "Hàm Trì", "Thái Âm", "Thiên Hoàng"];
+    const QUY_DAO = [-1, 6, 7, 8, 9, 1, 2, 3, 4]; // -1 is trung cung
+    const results = [];
+    let curStar = trucSu;
+    for (let i = 0; i < 9; i++) {
+        const cung = QUY_DAO[i];
+        results.push({
+            name: QT_NAMES[curStar - 1],
+            cung: cung,
+            thanIdx: cung === -1 ? -1 : CUNG_TO_THAN_IDX[cung]
+        });
+        curStar = (curStar % 9) + 1;
+    }
+    return results;
+}
+
+/**
+ * Các Sao Lẻ Khác
+ */
+function calcOtherStars(kyDu, tueTich) {
+    const TT_PATH = [4, 8, 6, 2];
+    const thienTonCung = TT_PATH[kyDu % 4];
+    
+    const HOANG_PATH = [0, 1, 2, 3, 3, 4, 5, 6, 7, 7, 8, 9, 10, 11, 11, 12, 13, 14, 15, 15];
+    let hoangStep = kyDu % 20 || 20;
+    const thienHoangIdx = HOANG_PATH[hoangStep - 1];
+    
+    let thoiStep = kyDu % 12 || 12;
+    const thienThoiIdx = CHI_TO_THAN_IDX[(2 + thoiStep - 1) % 12]; // Dần=2
+    
+    const DEPHU_PATH = [2, 3, 4, 5, 5, 6, 7, 8, 9, 9, 10, 11, 12, 13, 13, 14, 15, 0, 1, 1];
+    let dePhuStep = kyDu % 20 || 20;
+    const dePhuIdx = DEPHU_PATH[dePhuStep - 1];
+    
+    const phiDieuCung = kyDu % 9 || 9;
+    
+    const NGU_HANH_PATH = [0, 1, 8, 3, 9, 7, 2, 4, 6, 5];
+    const nguHanhCung = NGU_HANH_PATH[kyDu % 9 || 9];
+    
+    const BPHONG_PATH = [0, 2, 3, 4, 5, 6, 7, 8, 9, 1];
+    const batPhongCung = BPHONG_PATH[kyDu % 9 || 9];
+    
+    const TP_PATH = [0, 3, 7, 2, 6, 1, 5, 9, 4, 8];
+    const tamPhongCung = TP_PATH[((tueTich % 360) % 90) % 9 || 9];
+    
+    const NP_PATH = [0, 1, 3, 5, 7, 9, 2, 4, 6, 8];
+    const nguPhongCung = NP_PATH[((tueTich % 360) % 90) % 9 || 9];
+    
+    return {
+        thienTon: { cung: thienTonCung, thanIdx: CUNG_TO_THAN_IDX[thienTonCung] },
+        thienHoang: { thanIdx: thienHoangIdx },
+        thienThoi: { thanIdx: thienThoiIdx },
+        dePhu: { thanIdx: dePhuIdx },
+        phiDieu: { cung: phiDieuCung, thanIdx: CUNG_TO_THAN_IDX[phiDieuCung] },
+        nguHanh: { cung: nguHanhCung, thanIdx: CUNG_TO_THAN_IDX[nguHanhCung] },
+        batPhong: { cung: batPhongCung, thanIdx: CUNG_TO_THAN_IDX[batPhongCung] },
+        tamPhong: { cung: tamPhongCung, thanIdx: CUNG_TO_THAN_IDX[tamPhongCung] },
+        nguPhong: { cung: nguPhongCung, thanIdx: CUNG_TO_THAN_IDX[nguPhongCung] }
     };
 }
 
@@ -357,29 +561,75 @@ function calculateTueKe(year, month, day, hour) {
     // 6. Đại Tướng
     const chuDaiTuong = calcChuDaiTuong(vanXuong.thanIdx, chuToan);
     const khachDaiTuong = calcKhachDaiTuong(thuyKich.thanIdx, khachToan);
-    // 7. Tam Cơ
-    const tamCo = calcTamCo(kyDu);
-    // 8. Ngũ Phúc
+    // 7. Các sao mới thêm
+    const tamCo = calcTamCo(kyDu, tueTich);
     const nguPhuc = calcNguPhuc(tueTich);
+    const duStars = calcDu(tueTich, kyDu);
+    const thamTuong = calcThamTuong(chuToan, khachToan);
+    const tuThanGroup = calcNhomTuThan(tueTich);
+    const tltaGroup = calcThanhLongThaiAm(tueTich);
+    const saoTrucPhu9 = calc9SaoTrucPhu(tueTich, tuTru.year.canIdx);
+    const coKhac = calcCoKhac(tueTich);
+    const vanXuong9 = calcVanXuong9Sao(tueTich, tuTru.year.canIdx);
+    const batMonThe = calcBatMon(tueTich);
+    const quyThan = calcCuuTinhQuyThan(kyDu);
+    const otherStars = calcOtherStars(kyDu, tueTich);
+    
     // 9. Bát Hung
     const batHung = checkBatHung(thaiAt.thanIdx, vanXuong.thanIdx, thuyKich.thanIdx, chuDaiTuong.thanIdx, khachDaiTuong.thanIdx);
 
     // Build placement map
     const placement = {};
     THAP_LUC_THAN.forEach(t => placement[t.id] = []);
+    placement["trung_cung"] = []; // Added for Trung Cung
     
-    placement[thaiAt.than.id].push({ name: `Thái Ất (Cung ${thaiAt.palaceIndex}, Năm ${thaiAt.yearInPalace})`, class: "thai-at" });
-    placement[vanXuong.than.id].push({ name: "Văn Xương (Thiên Mục)", class: "van-xuong" });
-    placement[keThan.than.id].push({ name: "Kế Thần", class: "ke-than" });
-    placement[thuyKich.than.id].push({ name: "Thủy Kích (Địa Mục)", class: "thuy-kich" });
-    placement[chuDaiTuong.than.id].push({ name: `Chủ Đại Tướng (Toán ${chuToan})`, class: "chu-tuong" });
-    placement[khachDaiTuong.than.id].push({ name: `Khách Đại Tướng (Toán ${khachToan})`, class: "khach-tuong" });
-    placement[tamCo.quanCo.than.id].push({ name: "Quân Cơ", class: "quan-co" });
-    placement[tamCo.thanCo.than.id].push({ name: "Thần Cơ", class: "than-co" });
-    placement[tamCo.danCo.than.id].push({ name: "Dân Cơ", class: "dan-co" });
-    if (!nguPhuc.isTrungCung) {
-        placement[THAP_LUC_THAN[nguPhuc.thanIdx].id].push({ name: "Ngũ Phúc", class: "ngu-phuc" });
-    }
+    const addToMap = (thanIdx, obj) => {
+        if (thanIdx === -1) placement["trung_cung"].push(obj);
+        else placement[THAP_LUC_THAN[thanIdx].id].push(obj);
+    };
+
+    addToMap(thaiAt.thanIdx, { name: `Thái Ất (Cung ${thaiAt.palaceIndex}, Năm ${thaiAt.yearInPalace})`, class: "thai-at" });
+    addToMap(vanXuong.thanIdx, { name: "Văn Xương (Thiên Mục)", class: "van-xuong" });
+    addToMap(keThan.thanIdx, { name: "Kế Thần", class: "ke-than" });
+    addToMap(thuyKich.thanIdx, { name: "Thủy Kích (Địa Mục)", class: "thuy-kich" });
+    addToMap(chuDaiTuong.thanIdx, { name: `Đại Tướng Chủ (Toán ${chuToan})`, class: "chu-tuong" });
+    addToMap(khachDaiTuong.thanIdx, { name: `Đại Tướng Khách (Toán ${khachToan})`, class: "khach-tuong" });
+    addToMap(tamCo.quanCo.thanIdx, { name: "Quân Cơ", class: "quan-co" });
+    addToMap(tamCo.thanCo.thanIdx, { name: "Thần Cơ", class: "than-co" });
+    addToMap(tamCo.danCo.thanIdx, { name: "Dân Cơ", class: "dan-co" });
+    addToMap(nguPhuc.thanIdx, { name: "Ngũ Phúc", class: "ngu-phuc" });
+    
+    addToMap(duStars.daiDu.thanIdx, { name: "Đại Du (Du Lớn)", class: "dai-du" });
+    addToMap(duStars.tieuDu.thanIdx, { name: "Tiểu Du (Thái Nhất)", class: "tieu-du" });
+    addToMap(thamTuong.thamChu.thanIdx, { name: "Tham Tướng Chủ", class: "chu-tuong" });
+    addToMap(thamTuong.thamKhach.thanIdx, { name: "Tham Tướng Khách", class: "khach-tuong" });
+    
+    addToMap(CUNG_TO_THAN_IDX[tuThanGroup.tuThan], { name: "Tứ Thần", class: "tu-than" });
+    addToMap(CUNG_TO_THAN_IDX[tuThanGroup.thienAt], { name: "Thiên Ất", class: "tu-than" });
+    addToMap(CUNG_TO_THAN_IDX[tuThanGroup.diaAt], { name: "Địa Ất", class: "tu-than" });
+    addToMap(CUNG_TO_THAN_IDX[tuThanGroup.trucPhu], { name: "Trực Phù", class: "tu-than" });
+    
+    addToMap(tltaGroup.thanhLong, { name: "Thanh Long", class: "tu-than" });
+    addToMap(tltaGroup.thaiAm, { name: "Thái Âm", class: "tu-than" });
+    
+    saoTrucPhu9.forEach(s => addToMap(s.thanIdx, { name: s.name + " (TP)", class: "truc-phu" }));
+    
+    addToMap(coKhac.xichKy, { name: "Xích Kỳ (Cờ Đỏ)", class: "co-khac" });
+    addToMap(coKhac.hacKy, { name: "Hắc Kỳ (Cờ Đen)", class: "co-khac" });
+    
+    addToMap(vanXuong9.thanIdx, { name: vanXuong9.name + " (B.Văn)", class: "van-xuong-9" });
+    
+    quyThan.forEach(s => addToMap(s.thanIdx, { name: s.name + " (QT)", class: "quy-than" }));
+    
+    addToMap(otherStars.thienTon.thanIdx, { name: "Thiên Tôn", class: "other-stars" });
+    addToMap(otherStars.thienHoang.thanIdx, { name: "Thiên Hoàng", class: "other-stars" });
+    addToMap(otherStars.thienThoi.thanIdx, { name: "Thiên Thời", class: "other-stars" });
+    addToMap(otherStars.dePhu.thanIdx, { name: "Đế Phù", class: "other-stars" });
+    addToMap(otherStars.phiDieu.thanIdx, { name: "Phi Điểu", class: "other-stars" });
+    addToMap(otherStars.nguHanh.thanIdx, { name: "Ngũ Hành", class: "other-stars" });
+    addToMap(otherStars.batPhong.thanIdx, { name: "Bát Phong", class: "other-stars" });
+    addToMap(otherStars.tamPhong.thanIdx, { name: "Tam Phong", class: "other-stars" });
+    addToMap(otherStars.nguPhong.thanIdx, { name: "Ngũ Phong", class: "other-stars" });
 
     // Verdict
     const chuElement = vanXuong.than.elementKey;
@@ -392,7 +642,7 @@ function calculateTueKe(year, month, day, hour) {
         solarTerm: solarTerm.name,
         tueTich, kyDu,
         donCucName: `${donType} — ${cucName} (Cục ${cucNum}/72)`,
-        batMon: BAT_MON[cucNum % 8],
+        batMon: batMonThe,
         cuuTinh: CUU_TINH[cucNum % 9],
         placement,
         batHung,
@@ -434,7 +684,7 @@ function calculateNguyetKe(year, month, day, hour) {
     const khachToan = calcKhachToan(thuyKich.thanIdx, thaiAt.thanIdx);
     const chuDaiTuong = calcChuDaiTuong(vanXuong.thanIdx, chuToan);
     const khachDaiTuong = calcKhachDaiTuong(thuyKich.thanIdx, khachToan);
-    const tamCo = calcTamCo(kyDuMonth);
+    const tamCo = calcTamCo(kyDuMonth, totalMonths);
     const batHung = checkBatHung(thaiAt.thanIdx, vanXuong.thanIdx, thuyKich.thanIdx, chuDaiTuong.thanIdx, khachDaiTuong.thanIdx);
 
     const placement = {};
@@ -469,8 +719,8 @@ function calculateNhatKe(year, month, day, hour) {
     const solarTerm = getExactSolarTerm(year, month, day, hour);
     const dCC = getCanChiDay(year, month, day);
     
-    // Tích Nhật (tổng ngày từ Thượng Cổ Giáp Tý)
-    const tichNhat = Math.abs(dCC.diffDays);
+    // Tích Nhật (dùng Julian Day - jdInt)
+    const tichNhat = dCC.jdInt || 0;
     const kyDuDay = tichNhat % 360;
     let cucNum = tichNhat % 72;
     if (cucNum === 0) cucNum = 72;
@@ -484,7 +734,7 @@ function calculateNhatKe(year, month, day, hour) {
     const khachToan = calcKhachToan(thuyKich.thanIdx, thaiAt.thanIdx);
     const chuDaiTuong = calcChuDaiTuong(vanXuong.thanIdx, chuToan);
     const khachDaiTuong = calcKhachDaiTuong(thuyKich.thanIdx, khachToan);
-    const tamCo = calcTamCo(kyDuDay);
+    const tamCo = calcTamCo(kyDuDay, tichNhat);
     const batHung = checkBatHung(thaiAt.thanIdx, vanXuong.thanIdx, thuyKich.thanIdx, chuDaiTuong.thanIdx, khachDaiTuong.thanIdx);
 
     const placement = {};
@@ -521,8 +771,8 @@ function calculateThoiKe(year, month, day, hour) {
     const dCC = getCanChiDay(year, month, day);
     const hCC = tuTru.hour;
     
-    // Tổng toán giờ: kết hợp Can ngày và Chi giờ
-    const tichGio = Math.abs(dCC.diffDays) * 12 + hCC.chiIdx;
+    // Tổng toán giờ: kết hợp Can ngày và Chi giờ (dùng JD)
+    const tichGio = (dCC.jdInt || 0) * 12 + hCC.chiIdx;
     const kyDuGio = tichGio % 360;
     let cucNum = tichGio % 72;
     if (cucNum === 0) cucNum = 72;
@@ -589,13 +839,15 @@ function calculateNhanMenh(year, month, day, hour) {
     const tuTru = getTuTru(year, month, day, hour);
     const solarTerm = getExactSolarTerm(year, month, day, hour);
     
+    const CHI_LIST_LOCAL = ["Tý", "Sửu", "Dần", "Mão", "Thìn", "Tị", "Ngọ", "Mùi", "Thân", "Dậu", "Tuất", "Hợi"];
+    
     // Cung Mệnh = (Chi tháng + Chi giờ) % 12
     const menhChiIdx = (tuTru.month.chiIdx + tuTru.hour.chiIdx) % 12;
     // Cung Thân = (Chi tháng + 12 - Chi giờ) % 12
     const thanChiIdx = (tuTru.month.chiIdx + 12 - tuTru.hour.chiIdx) % 12;
     
-    const menhName = CHI_LIST[menhChiIdx];
-    const thanName = CHI_LIST[thanChiIdx];
+    const menhName = CHI_LIST_LOCAL[menhChiIdx];
+    const thanName = CHI_LIST_LOCAL[thanChiIdx];
     
     const placement = {};
     THAP_LUC_THAN.forEach(t => placement[t.id] = []);
