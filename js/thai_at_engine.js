@@ -189,38 +189,63 @@ function calcThuyKich(vanXuongIdx, keThanIdx) {
 }
 
 /**
- * Tính Chủ Toán (Host Count)
- * Đếm thuận từ Văn Xương đến Thái Ất trên vòng 16 Thần
+ * Tính Chủ/Khách Toán
+ * Đếm tổng số Cửu Cung Lạc Thư từ Start đến End (thuận).
+ * Nếu Start trùng End, Toán = 1.
  */
+const LAC_THU_NUMS = [
+    2, // 0: Thân (Tây Nam)
+    7, // 1: Dậu (Tây)
+    6, // 2: Tuất (Tây Bắc)
+    6, // 3: Kiền
+    6, // 4: Hợi
+    1, // 5: Tý (Bắc)
+    8, // 6: Sửu (Đông Bắc)
+    8, // 7: Cấn
+    8, // 8: Dần
+    3, // 9: Mão (Đông)
+    4, // 10: Thìn (Đông Nam)
+    4, // 11: Tốn
+    9, // 12: Tị (Tạm tính Nam/Đông Nam, Tị cung 4 hoặc 9 tùy lưu phái. Chuẩn Thái Ất: Tị=9)
+    9, // 13: Ngọ (Nam)
+    2, // 14: Mùi (Tây Nam)
+    2  // 15: Khôn
+];
+
+function calcToanSum(startIdx, endIdx) {
+    if (startIdx === endIdx) return 1;
+    let sum = 0;
+    let i = startIdx;
+    let count = 0;
+    while(true) {
+        sum += LAC_THU_NUMS[i];
+        if (i === endIdx) break;
+        i = (i + 1) % 16;
+        count++;
+        if (count > 20) break; // Infinite loop guard
+    }
+    return sum;
+}
+
 function calcChuToan(vanXuongIdx, thaiAtIdx) {
-    return (thaiAtIdx - vanXuongIdx + 16) % 16;
+    return calcToanSum(vanXuongIdx, thaiAtIdx);
 }
 
-/**
- * Tính Khách Toán (Guest Count)
- * Đếm thuận từ Thủy Kích đến Thái Ất trên vòng 16 Thần
- */
 function calcKhachToan(thuyKichIdx, thaiAtIdx) {
-    return (thaiAtIdx - thuyKichIdx + 16) % 16;
+    return calcToanSum(thuyKichIdx, thaiAtIdx);
 }
 
 /**
- * Tính Chủ Đại Tướng
- * Chủ Toán chia 2 lấy dư, đếm thuận từ Văn Xương
+ * Tính Đại Tướng
+ * Đếm số bước bằng (Toán) từ vị trí khởi điểm (Văn Xương/Thủy Kích).
  */
 function calcChuDaiTuong(vanXuongIdx, chuToan) {
-    const steps = (chuToan % 2 === 0) ? chuToan / 2 : Math.ceil(chuToan / 2);
-    const idx = (vanXuongIdx + steps) % 16;
+    const idx = (vanXuongIdx + chuToan - 1) % 16;
     return { thanIdx: idx, than: THAP_LUC_THAN[idx] };
 }
 
-/**
- * Tính Khách Đại Tướng
- * Khách Toán chia 2 lấy dư, đếm thuận từ Thủy Kích
- */
 function calcKhachDaiTuong(thuyKichIdx, khachToan) {
-    const steps = (khachToan % 2 === 0) ? khachToan / 2 : Math.ceil(khachToan / 2);
-    const idx = (thuyKichIdx + steps) % 16;
+    const idx = (thuyKichIdx + khachToan - 1) % 16;
     return { thanIdx: idx, than: THAP_LUC_THAN[idx] };
 }
 
@@ -307,14 +332,16 @@ function checkBatHung(thaiAtIdx, vanXuongIdx, thuyKichIdx, chuTuongIdx, khachTuo
 // ========== MAIN CALCULATION FUNCTIONS FOR 6 MODES ==========
 
 /**
- * TUẾ KỂ (Lập Quẻ Năm)
+ * TUẾ KỂ (Lập Quẻ Năm) — LUÔN DÙNG DƯƠNG ĐỘN (Theo Thái Ất Thần Kinh)
  */
 function calculateTueKe(year, month, day, hour) {
     const tuTru = getTuTru(year, month, day, hour);
     const solarTerm = getExactSolarTerm(year, month, day, hour);
     const { tueTich, kyDu } = getTueTichKyDu(year);
-    const { cucNum, isDuongCuc, cucName } = getCucSo(tueTich);
-    const donType = isDuongCuc ? "Dương Độn" : "Âm Độn";
+    const { cucNum, cucName } = getCucSo(tueTich);
+    // Tuế Kể luôn Dương Độn
+    const donType = "Dương Độn (Tuế Kể)";
+    const isDuongCuc = true;
 
     // 1. Thái Ất
     const thaiAt = calcThaiAt(kyDu, isDuongCuc);
