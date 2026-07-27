@@ -57,6 +57,9 @@ class ThaiAtBaseEngine {
         
         // Cục Số (72)
         this.cucNum = (this.tueTich % 72) || 72;
+        
+        // Tích Trung Cổ Giáp Dần (Dành riêng cho Tuế Kể - Tam Cơ & Đại Du)
+        this.tichTrungCo = this.tueTich - 10141310;
     }
     
     // ------ NHÓM KỶ DƯ (MOD 360/24/18/12) ------
@@ -113,17 +116,31 @@ class ThaiAtBaseEngine {
 
     // ------ NHÓM CƠ, PHÚC, DU (MOD TÍCH 360) ------
     calcCoPhucDu() {
-        const quanCoRaw = (this.tueTich + 250) % 360;
-        const quanCoIdx = (13 + Math.floor(quanCoRaw / 30)) % 16;
-        const thanCoIdx = (13 + Math.floor((quanCoRaw % 36) / 3)) % 16;
-        const danCoIdx = (2 + (quanCoRaw % 12)) % 16;
+        const tichDu = this.tichTrungCo % 360;
         
+        // Quân Cơ: Khởi Ngọ (6), đi thuận 12 chi, 30 năm/cung
+        const quanCoStep = Math.floor(tichDu / 30);
+        const quanCoIdx = CHI_TO_THAN_IDX[(6 + quanCoStep) % 12];
+        
+        // Thần Cơ: Khởi Ngọ (6), đi thuận 12 chi, 3 năm/cung
+        const thanCoStep = Math.floor((tichDu % 36) / 3);
+        const thanCoIdx = CHI_TO_THAN_IDX[(6 + thanCoStep) % 12];
+        
+        // Dân Cơ: Khởi Tuất (10), đi thuận 12 chi, 1 năm/cung
+        const danCoStep = (this.tichTrungCo % 12 || 12) - 1;
+        const danCoIdx = CHI_TO_THAN_IDX[(10 + danCoStep) % 12];
+        
+        // Ngũ Phúc (Dùng Tuế Tích Thượng Cổ)
         const npStep = Math.floor(((this.tueTich + 115) % 225) / 45);
         const npIdx = [3, 7, 11, 15, -1][npStep % 5];
         
-        const ddStep = Math.floor(((this.tueTich + 34) % 288) / 36);
+        // Đại Du (Dùng Tích Trung Cổ)
+        const ddStep = Math.floor((this.tichTrungCo % 288) / 36);
         const ddCung = [7, 8, 9, 1, 2, 3, 4, 6][ddStep % 8];
-        const tdStep = Math.floor((this.kyDu % 24) / 3);
+        
+        // Tiểu Du (Dùng Kỷ Dư Thượng Cổ)
+        let R = this.kyDu % 24 || 24;
+        const tdStep = Math.floor((R - 1) / 3);
         const tdCung = [1, 2, 3, 4, 6, 7, 8, 9][tdStep % 8];
         
         return [
@@ -368,13 +385,21 @@ function calculateThaiAtChart(mode, year, month, day, hour) {
     const vxEl = engCurrent.calcVanXuong().thanIdx !== -1 ? THAP_LUC_THAN[engCurrent.calcVanXuong().thanIdx].elementKey : "tho";
     const tkEl = currRes.core.tkIdx !== -1 ? THAP_LUC_THAN[currRes.core.tkIdx].elementKey : "tho";
     
+    // Cửa Trực Sự (Bát Môn) - Chu kỳ 240 năm, 30 năm 1 cung
+    const batMonStep = Math.floor((factory.tueTich % 240) / 30);
+    const batMonStr = BAT_MON[batMonStep % 8];
+    
+    // Sao Trực Sự (Cửu Tinh) - Chu kỳ 90 năm, 10 năm 1 sao
+    const cuuTinhStep = Math.floor((factory.tueTich % 90) / 10);
+    const cuuTinhStr = CUU_TINH[cuuTinhStep % 9];
+    
     return {
         modeName: meta.name,
         tuTru,
         solarTerm: solarTerm.name,
         donCucName: `${meta.don} — Cục ${meta.cucNum}`,
-        batMon: BAT_MON[meta.cucNum % 8],
-        cuuTinh: CUU_TINH[meta.cucNum % 9],
+        batMon: batMonStr,
+        cuuTinh: cuuTinhStr,
         placement: currRes.placement,
         batHung: "Thế trận được xác lập.", // Simplified for now
         verdict: luanDoanNguHanh(vxEl, tkEl),
