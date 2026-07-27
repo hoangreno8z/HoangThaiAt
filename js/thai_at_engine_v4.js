@@ -229,7 +229,7 @@ class ThaiAtBaseEngine {
         const vxSao = (vxStep % 9) + 1;
         const vxCung = CAN_CUNG_MAP[this.namCanIdx] || 1;
         const vxNames = ["Bài Văn", "Huyền Phượng", "Minh Duy", "Âm Đức", "Chiêu Dao", "Thừa Minh", "Huyền Vũ", "Huyền Minh", "Hùng Minh"];
-        res.push({ thanIdx: CUNG_TO_THAN_IDX[vxCung], name: vxNames[vxSao - 1] + " (BV)", class: "van-xuong-9" });
+        res.push({ thanIdx: CUNG_TO_THAN_IDX[vxCung], name: vxNames[vxSao - 1] + " (VX)", class: "van-xuong-9" });
         
         return res;
     }

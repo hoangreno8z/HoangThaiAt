@@ -301,3 +301,35 @@ h1 {
     max-height: 80px;
     overflow-y: auto;
 }
+
+/* Chế độ xoay ngang màn hình (Landscape Mode) cho điện thoại */
+@media (orientation: landscape) and (max-height: 600px) {
+    .main-layout {
+        grid-template-columns: 280px 1fr;
+        gap: 10px;
+        align-items: start;
+    }
+    .app-container {
+        padding: 5px;
+        max-width: 100%;
+    }
+    .sidebar {
+        max-height: 98vh;
+        overflow-y: auto;
+    }
+    .matrix-wrapper {
+        padding: 5px;
+        border-width: 1px;
+    }
+    .cell-box {
+        min-height: 80px;
+        padding: 0.2rem;
+    }
+    .tc-header h2 {
+        font-size: 0.9rem;
+    }
+    .tc-body p {
+        font-size: 0.65rem;
+        margin-bottom: 2px;
+    }
+}
