@@ -333,3 +333,5 @@ h1 {
         margin-bottom: 2px;
     }
 }
+
+.luan-doan-box { background: rgba(0, 0, 0, 0.4); padding: 15px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1); margin-top: 10px; }

@@ -96,6 +96,10 @@ function render(year, month, day, hour) {
     document.getElementById("tc-toan-chu").textContent = data.toanChu;
     document.getElementById("tc-toan-khach").textContent = data.toanKhach;
     
+    // Toán Định
+    const tcToanDinh = document.getElementById("tc-toan-dinh");
+    if (tcToanDinh) tcToanDinh.textContent = data.toanDinh || '-';
+    
     // Render Trung Cung stars
     const tcStars = data.placement["trung_cung"] || [];
     document.getElementById("tc-stars").innerHTML = tcStars.length > 0 
@@ -156,4 +160,126 @@ function render(year, month, day, hour) {
     } else {
         predContent.innerHTML = "<p><em>Không có sao nào di chuyển trong chu kỳ tiếp theo, hoặc không có dữ liệu dự báo.</em></p>";
     }
+
+    // Populate Luận Đoán Chuyên Sâu
+    const ldContent = document.getElementById("luan-doan-content");
+    if (ldContent) {
+        if (data.luanDoanData) {
+            const ld = data.luanDoanData;
+            ldContent.innerHTML = `
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <div>
+                        <h4 style="color:var(--text-color); margin-bottom:5px;">Vận Chuyển Quẻ</h4>
+                        <ul style="font-size: 0.9em; line-height: 1.5; color:var(--text-color);">
+                            <li><strong>Đại Du (Trong / Ngoài):</strong> ${ld.que.ddqt} / ${ld.que.ddqn} ${ld.que.ddSach ? '(Sách: '+ld.que.ddSach+')' : ''}</li>
+                            <li><strong>Tiểu Du (Trong / Ngoài):</strong> ${ld.que.tdqt} / ${ld.que.tdqn} ${ld.que.tdSach ? '(Sách: '+ld.que.tdSach+')' : ''}</li>
+                            <li><strong>Quẻ Lưu Niên (Năm):</strong> ${ld.que.lnq} (Hào: ${ld.haoDong})</li>
+                            ${ld.que.queNguyet ? '<li><strong>Quẻ Lưu Nguyệt:</strong> ' + ld.que.queNguyet + ' (Sách: ' + ld.que.nguyetSach + ')</li>' : ''}
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 style="color:var(--text-color); margin-bottom:5px;">Luận Chiến Cục</h4>
+                        <ul style="font-size: 0.9em; line-height: 1.5; color:var(--text-color);">
+                            <li><strong>Toán Định:</strong> ${ld.chienCuc.toanDinh}</li>
+                            <li><strong>Trận Đồ:</strong> ${ld.chienCuc.co} (Hướng: ${ld.chienCuc.huong})</li>
+                            <li><strong>Số Lượng:</strong> ${ld.chienCuc.soLuongDich}</li>
+                            <li><strong>Hướng Giặc:</strong> ${ld.chienCuc.tkHuong}</li>
+                        </ul>
+                    </div>
+                    <div style="grid-column: span 2;">
+                        <h4 style="color:var(--text-color); margin-bottom:5px;">Đại Hạn & Vi Chỉnh</h4>
+                        <ul style="font-size: 0.9em; line-height: 1.5; color:var(--text-color);">
+                            <li><strong>Dương Cửu Hạn:</strong> ${ld.han.duongCuu}</li>
+                            <li><strong>Âm Bách Lục:</strong> ${ld.han.amBachLuc}</li>
+                            <li><strong>Âm Dương Ách:</strong> ${ld.han.ach}</li>
+                            <li><strong>Cờ Đen (Khảo):</strong> ${ld.viChinh.hK}</li>
+                            <li><strong>Cờ Xanh (Chung):</strong> ${ld.viChinh.tL}</li>
+                            <li><strong>Ngũ Âm:</strong> ${ld.nguAm}</li>
+                        </ul>
+                    </div>
+                </div>
+            `;
+        } else {
+            ldContent.innerHTML = "<p><em>Tính năng Luận Đoán chuyên sâu chỉ khả dụng cho chế độ Tuế Kể và Nguyệt Kể.</em></p>";
+        }
+    }
 }
+
+// ========================================
+// BẢNG TRA CỨU Ý NGHĨA (Render on DOMContentLoaded)
+// ========================================
+function renderReferenceTables() {
+    if (typeof THAI_AT_REFERENCE === 'undefined') return;
+    const ref = THAI_AT_REFERENCE;
+    
+    // 16 Cung
+    const cungEl = document.getElementById("ref-cung-table");
+    if (cungEl && ref.CUNG_MEANINGS) {
+        const isObj = !Array.isArray(ref.CUNG_MEANINGS);
+        const entries = isObj ? Object.entries(ref.CUNG_MEANINGS) : ref.CUNG_MEANINGS.map(c => [c.name, c]);
+        cungEl.innerHTML = entries.map(([key, val]) => {
+            const text = typeof val === 'string' ? val : `${val.alias || ''}: ${val.element || ''}, ${val.palace || ''}. ${val.month || ''}. ${val.meaning || ''}`;
+            return `<div style="margin-bottom:8px; padding:6px 10px; border-left:3px solid var(--gold); background:rgba(255,215,0,0.05);">
+                <strong style="color:var(--gold);">${key}</strong> — ${text}
+            </div>`;
+        }).join("");
+    }
+    
+    // Sao, Tướng, Thần
+    const starEl = document.getElementById("ref-star-table");
+    if (starEl && ref.STAR_MEANINGS) {
+        const isObj = !Array.isArray(ref.STAR_MEANINGS);
+        const entries = isObj ? Object.entries(ref.STAR_MEANINGS) : ref.STAR_MEANINGS.map(s => [s.name, s]);
+        starEl.innerHTML = entries.map(([key, val]) => {
+            const text = typeof val === 'string' ? val : `(${val.element || ''}) ${val.meaning || ''}`;
+            return `<div style="margin-bottom:6px; padding:4px 10px; border-left:3px solid var(--color-hoa); background:rgba(255,100,50,0.03);">
+                <strong style="color:var(--color-hoa);">${key}</strong> — ${text}
+            </div>`;
+        }).join("");
+    }
+    
+    // Bát Môn
+    const bmEl = document.getElementById("ref-batmon-table");
+    if (bmEl && ref.BAT_MON_DETAIL) {
+        const isObj = !Array.isArray(ref.BAT_MON_DETAIL);
+        const entries = isObj ? Object.entries(ref.BAT_MON_DETAIL) : ref.BAT_MON_DETAIL.map(m => [m.name, m]);
+        bmEl.innerHTML = entries.map(([key, val]) => {
+            const text = typeof val === 'string' ? val : `${val.alias || ''}: ${val.meaning || ''}`;
+            return `<div style="margin-bottom:6px; padding:4px 10px; border-left:3px solid var(--color-thuy); background:rgba(0,150,255,0.03);">
+                <strong style="color:var(--color-thuy);">Cửa ${key}</strong> — ${text}
+            </div>`;
+        }).join("");
+    }
+    
+    // 11 Cách Cục
+    const ccEl = document.getElementById("ref-cachcuc-table");
+    if (ccEl && ref.CACH_CUC) {
+        const isObj = !Array.isArray(ref.CACH_CUC);
+        const entries = isObj ? Object.entries(ref.CACH_CUC) : ref.CACH_CUC.map(c => [c.name, c]);
+        ccEl.innerHTML = entries.map(([key, val]) => {
+            const text = typeof val === 'string' ? val : `${val.condition || ''} — ${val.meaning || ''}`;
+            return `<div style="margin-bottom:6px; padding:4px 10px; border-left:3px solid #ff4444; background:rgba(255,0,0,0.03);">
+                <strong style="color:#ff4444;">${key}</strong> — ${text}
+            </div>`;
+        }).join("");
+    }
+    
+    // 64 Quẻ
+    const hexEl = document.getElementById("ref-hexagram-table");
+    if (hexEl && ref.HEXAGRAM_BRIEF) {
+        const isObj = !Array.isArray(ref.HEXAGRAM_BRIEF);
+        const entries = isObj ? Object.entries(ref.HEXAGRAM_BRIEF) : ref.HEXAGRAM_BRIEF.map((h, i) => [`${i+1}. ${h.name}`, h]);
+        hexEl.innerHTML = '<div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap:6px;">' +
+            entries.map(([key, val]) => {
+                const text = typeof val === 'string' ? val : val.meaning || '';
+                return `<div style="padding:4px 8px; border-left:2px solid var(--gold); background:rgba(255,215,0,0.03);">
+                    <strong style="color:var(--gold);">${key}</strong> — ${text}
+                </div>`;
+            }).join("") + '</div>';
+    }
+}
+
+// Gọi khi DOM sẵn sàng
+document.addEventListener("DOMContentLoaded", () => {
+    setTimeout(renderReferenceTables, 100);
+});

@@ -126,6 +126,7 @@
                                 <p><strong>Cửu Tinh:</strong> <span id="tc-cuu-tinh">-</span></p>
                                 <p><strong>Toán Chủ:</strong> <span id="tc-toan-chu" style="color:var(--color-hoa); font-weight:bold;">-</span></p>
                                 <p><strong>Toán Khách:</strong> <span id="tc-toan-khach" style="color:var(--color-thuy); font-weight:bold;">-</span></p>
+                                <p><strong>Toán Định:</strong> <span id="tc-toan-dinh" style="color:var(--color-tho); font-weight:bold;">-</span></p>
                                 <p><strong>Trung Cung:</strong> <span id="tc-stars">-</span></p>
                                 <div class="tc-verdict-box">
                                     <p><strong>Bát Hung:</strong> <span id="tc-bat-hung">-</span></p>
@@ -165,12 +166,53 @@
                         <!-- JS will populate this -->
                     </div>
                 </div>
+                <div class="result-section">
+                    <h3>Luận Đoán Chuyên Sâu (Thái Ất Tuế Kể)</h3>
+                    <div id="luan-doan-content" class="luan-doan-box">
+                        <!-- Data will be injected here -->
+                    </div>
+                </div>
+
+                <!-- BẢNG TRA CỨU Ý NGHĨA -->
+                <div id="reference-section" class="glass" style="margin-top: 20px; padding: 20px; border-radius: 8px;">
+                    <h3 style="color: var(--gold); border-bottom: 1px solid var(--panel-border); padding-bottom: 10px; margin-bottom: 15px; font-family: 'Cinzel', serif;">📖 Bảng Tra Cứu Ý Nghĩa</h3>
+                    
+                    <details style="margin-bottom: 10px;">
+                        <summary style="cursor: pointer; color: var(--gold); font-weight: bold; padding: 8px 0;">🏛️ 16 Cung Thần Vị</summary>
+                        <div id="ref-cung-table" style="padding: 10px; line-height: 1.8; font-size: 0.9rem; color: var(--text-color);"></div>
+                    </details>
+                    
+                    <details style="margin-bottom: 10px;">
+                        <summary style="cursor: pointer; color: var(--gold); font-weight: bold; padding: 8px 0;">⭐ Ý Nghĩa Các Sao, Tướng, Thần</summary>
+                        <div id="ref-star-table" style="padding: 10px; line-height: 1.8; font-size: 0.9rem; color: var(--text-color);"></div>
+                    </details>
+                    
+                    <details style="margin-bottom: 10px;">
+                        <summary style="cursor: pointer; color: var(--gold); font-weight: bold; padding: 8px 0;">🚪 Bát Môn Thái Ất (8 Cửa)</summary>
+                        <div id="ref-batmon-table" style="padding: 10px; line-height: 1.8; font-size: 0.9rem; color: var(--text-color);"></div>
+                    </details>
+                    
+                    <details style="margin-bottom: 10px;">
+                        <summary style="cursor: pointer; color: var(--gold); font-weight: bold; padding: 8px 0;">⚔️ 11 Cách Cục Bất Thường</summary>
+                        <div id="ref-cachcuc-table" style="padding: 10px; line-height: 1.8; font-size: 0.9rem; color: var(--text-color);"></div>
+                    </details>
+                    
+                    <details style="margin-bottom: 10px;">
+                        <summary style="cursor: pointer; color: var(--gold); font-weight: bold; padding: 8px 0;">☰ 64 Quẻ Kinh Dịch — Giải Nghĩa Sơ Lược</summary>
+                        <div id="ref-hexagram-table" style="padding: 10px; line-height: 1.8; font-size: 0.9rem; color: var(--text-color);"></div>
+                    </details>
+                </div>
             </section>
         </main>
     </div>
 
     <script src="js/lunar_solar.js?v=4.0"></script>
+    <script src="js/thai_at_luan_doan.js"></script>
+    <script src="js/thai_at_reference.js"></script>
     <script src="js/thai_at_engine_v4.js"></script>
+    <script src="js/thai_at_nguyet_engine.js"></script>
+    <script src="js/thai_at_nhat_engine.js"></script>
+    <script src="js/thai_at_thoi_engine.js"></script>
     <script src="js/png_exporter.js?v=4.0"></script>
     <script src="script_v4.js"></script>
 </body>
