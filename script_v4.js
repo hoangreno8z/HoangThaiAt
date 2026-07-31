@@ -91,14 +91,24 @@ function render(year, month, day, hour) {
     document.getElementById("tc-tu-tru").textContent = data.tuTru.fullString;
     document.getElementById("tc-don-cuc").textContent = data.donCucName;
     document.getElementById("tc-tiet-khi").textContent = data.solarTerm;
+    
+    // Kế Đại, Kế Tiểu, Kế Định
+    const tcKeDai = document.getElementById("tc-ke-dai");
+    if (tcKeDai) tcKeDai.textContent = data.keDai !== undefined ? data.keDai.toLocaleString('vi-VN') : '-';
+    const tcKeTieu = document.getElementById("tc-ke-tieu");
+    if (tcKeTieu) tcKeTieu.textContent = data.keTieu !== undefined ? data.keTieu : '-';
+    const tcKeDinh = document.getElementById("tc-ke-dinh");
+    if (tcKeDinh) tcKeDinh.textContent = data.keDinh !== undefined ? data.keDinh : '-';
+
     document.getElementById("tc-bat-mon").textContent = data.batMon;
     document.getElementById("tc-cuu-tinh").textContent = data.cuuTinh;
-    document.getElementById("tc-toan-chu").textContent = data.toanChu;
-    document.getElementById("tc-toan-khach").textContent = data.toanKhach;
     
-    // Toán Định
+    // Toán Chủ, Toán Khách, Toán Định (Số đã bỏ chục + Nguyên số chưa bỏ chục)
+    document.getElementById("tc-toan-chu").textContent = data.toanChuGoc !== undefined ? `${data.toanChu} (Nguyên số: ${data.toanChuGoc})` : data.toanChu;
+    document.getElementById("tc-toan-khach").textContent = data.toanKhachGoc !== undefined ? `${data.toanKhach} (Nguyên số: ${data.toanKhachGoc})` : data.toanKhach;
+    
     const tcToanDinh = document.getElementById("tc-toan-dinh");
-    if (tcToanDinh) tcToanDinh.textContent = data.toanDinh || '-';
+    if (tcToanDinh) tcToanDinh.textContent = data.toanDinhGoc !== undefined ? `${data.toanDinh} (Nguyên số: ${data.toanDinhGoc})` : (data.toanDinh || '-');
     
     // Render Trung Cung stars
     const tcStars = data.placement["trung_cung"] || [];
@@ -135,7 +145,7 @@ function render(year, month, day, hour) {
                 <span>${than.name.toUpperCase()}</span>
                 <span>(${than.palaceNum})</span>
             </div>
-            <div class="cell-line-2">${than.direction} • ${than.element}</div>
+            <div class="cell-line-2">${than.alias} • ${than.element}</div>
             <div class="cell-line-3">${mainHtml || ''}</div>
             <div class="cell-line-4">${generalHtml || ''}</div>
             <div class="cell-line-5">${baseHtml || ''}</div>

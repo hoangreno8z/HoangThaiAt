@@ -14,22 +14,22 @@
 const THUONG_CO_EPOCH = 10153917;
 
 const THAP_LUC_THAN = [
-    { idx: 0,  id: "than",   name: "Thân",  element: "Kim",  elementKey: "kim",  direction: "Tây Nam",   palaceNum: 7, isDwell: false },
-    { idx: 1,  id: "dau",    name: "Dậu",   element: "Kim",  elementKey: "kim",  direction: "Chính Tây", palaceNum: 7, isDwell: false },
-    { idx: 2,  id: "tuat",   name: "Tuất",  element: "Thổ",  elementKey: "tho",  direction: "Tây Bắc",   palaceNum: 6, isDwell: false },
-    { idx: 3,  id: "kien",   name: "Kiền",  element: "Kim",  elementKey: "kim",  direction: "Tây Bắc góc", palaceNum: 6, isDwell: true },
-    { idx: 4,  id: "hoi",    name: "Hợi",   element: "Thủy", elementKey: "thuy", direction: "Tây Bắc",   palaceNum: 6, isDwell: false },
-    { idx: 5,  id: "ty",     name: "Tý",    element: "Thủy", elementKey: "thuy", direction: "Chính Bắc", palaceNum: 1, isDwell: false },
-    { idx: 6,  id: "suu",    name: "Sửu",   element: "Thổ",  elementKey: "tho",  direction: "Đông Bắc",  palaceNum: 8, isDwell: false },
-    { idx: 7,  id: "can",    name: "Cấn",   element: "Thổ",  elementKey: "tho",  direction: "Đông Bắc góc", palaceNum: 8, isDwell: true },
-    { idx: 8,  id: "dan",    name: "Dần",   element: "Mộc",  elementKey: "moc",  direction: "Đông Bắc",  palaceNum: 8, isDwell: false },
-    { idx: 9,  id: "mao",    name: "Mão",   element: "Mộc",  elementKey: "moc",  direction: "Chính Đông", palaceNum: 3, isDwell: false },
-    { idx: 10, id: "thin",   name: "Thìn",  element: "Thổ",  elementKey: "tho",  direction: "Đông Nam",  palaceNum: 4, isDwell: false },
-    { idx: 11, id: "ton",    name: "Tốn",   element: "Mộc",  elementKey: "moc",  direction: "Đông Nam góc", palaceNum: 4, isDwell: true },
-    { idx: 12, id: "ty_chi", name: "Tị",    element: "Hỏa",  elementKey: "hoa",  direction: "Đông Nam",  palaceNum: 9, isDwell: false },
-    { idx: 13, id: "ngo",    name: "Ngọ",   element: "Hỏa",  elementKey: "hoa",  direction: "Chính Nam", palaceNum: 9, isDwell: false },
-    { idx: 14, id: "mui",    name: "Mùi",   element: "Thổ",  elementKey: "tho",  direction: "Tây Nam",   palaceNum: 2, isDwell: false },
-    { idx: 15, id: "khon",   name: "Khôn",  element: "Thổ",  elementKey: "tho",  direction: "Tây Nam góc", palaceNum: 2, isDwell: true }
+    { idx: 0,  id: "than",   name: "Thân",  alias: "Vũ Đức",     element: "Kim",  elementKey: "kim",  direction: "Tây Nam",   palaceNum: 7, isDwell: false },
+    { idx: 1,  id: "dau",    name: "Dậu",   alias: "Thái Tộc",   element: "Kim",  elementKey: "kim",  direction: "Chính Tây", palaceNum: 7, isDwell: false },
+    { idx: 2,  id: "tuat",   name: "Tuất",  alias: "Âm Chủ",     element: "Thổ",  elementKey: "tho",  direction: "Tây Bắc",   palaceNum: 6, isDwell: false },
+    { idx: 3,  id: "kien",   name: "Kiền",  alias: "Âm Đức",     element: "Kim",  elementKey: "kim",  direction: "Tây Bắc góc", palaceNum: 6, isDwell: true },
+    { idx: 4,  id: "hoi",    name: "Hợi",   alias: "Đại Nghĩa",  element: "Thủy", elementKey: "thuy", direction: "Tây Bắc",   palaceNum: 6, isDwell: false },
+    { idx: 5,  id: "ty",     name: "Tý",    alias: "Địa Chủ",    element: "Thủy", elementKey: "thuy", direction: "Chính Bắc", palaceNum: 1, isDwell: false },
+    { idx: 6,  id: "suu",    name: "Sửu",   alias: "Dương Đức",  element: "Thổ",  elementKey: "tho",  direction: "Đông Bắc",  palaceNum: 8, isDwell: false },
+    { idx: 7,  id: "can",    name: "Cấn",   alias: "Hòa Đức",    element: "Thổ",  elementKey: "tho",  direction: "Đông Bắc góc", palaceNum: 8, isDwell: true },
+    { idx: 8,  id: "dan",    name: "Dần",   alias: "Lã Thân",    element: "Mộc",  elementKey: "moc",  direction: "Đông Bắc",  palaceNum: 8, isDwell: false },
+    { idx: 9,  id: "mao",    name: "Mão",   alias: "Cao Tùng",   element: "Mộc",  elementKey: "moc",  direction: "Chính Đông", palaceNum: 3, isDwell: false },
+    { idx: 10, id: "thin",   name: "Thìn",  alias: "Thái Dương", element: "Thổ",  elementKey: "tho",  direction: "Đông Nam",  palaceNum: 4, isDwell: false },
+    { idx: 11, id: "ton",    name: "Tốn",   alias: "Đại Cảnh",   element: "Mộc",  elementKey: "moc",  direction: "Đông Nam góc", palaceNum: 4, isDwell: true },
+    { idx: 12, id: "ty_chi", name: "Tị",    alias: "Đại Thần",   element: "Hỏa",  elementKey: "hoa",  direction: "Đông Nam",  palaceNum: 9, isDwell: false },
+    { idx: 13, id: "ngo",    name: "Ngọ",   alias: "Đại Uy",     element: "Hỏa",  elementKey: "hoa",  direction: "Chính Nam", palaceNum: 9, isDwell: false },
+    { idx: 14, id: "mui",    name: "Mùi",   alias: "Thiên Đạo",  element: "Thổ",  elementKey: "tho",  direction: "Tây Nam",   palaceNum: 2, isDwell: false },
+    { idx: 15, id: "khon",   name: "Khôn",  alias: "Đại Vũ",     element: "Thổ",  elementKey: "tho",  direction: "Tây Nam góc", palaceNum: 2, isDwell: true }
 ];
 
 const CUNG_TO_THAN_IDX = { 1: 5, 2: 15, 3: 9, 4: 11, 5: -1, 6: 3, 7: 1, 8: 7, 9: 13 };
@@ -122,7 +122,11 @@ class ThaiAtBaseEngine {
         const GIAN_THAN = [0, 2, 4, 6, 8, 10, 12, 14];
         
         const getToan = (startIdx) => {
-            if (startIdx === taIdx) return CUNG_TO_THAN_IDX.indexOf(startIdx) > 0 ? CUNG_TO_THAN_IDX.indexOf(startIdx) : 1;
+            if (startIdx === taIdx) {
+                const pIdx = CUNG_TO_THAN_IDX.indexOf(startIdx);
+                const rawVal = pIdx > 0 ? pIdx : 1;
+                return { raw: rawVal, val: rawVal % 10 || 10 };
+            }
             
             let toan = 0;
             if (GIAN_THAN.includes(startIdx)) {
@@ -143,12 +147,13 @@ class ThaiAtBaseEngine {
             if (!GIAN_THAN.includes(taIdx) && CUNG_TO_THAN_IDX.includes(taIdx)) {
                 toan += CUNG_TO_THAN_IDX.indexOf(taIdx);
             }
-            // Lấy số linh (bỏ chục)
-            return toan % 10 || 10;
+            return { raw: toan, val: toan % 10 || 10 };
         };
 
-        const chuToan = getToan(vxIdx);
-        const khachToan = getToan(tkIdx);
+        const chuToanObj = getToan(vxIdx);
+        const khachToanObj = getToan(tkIdx);
+        const chuToan = chuToanObj.val;
+        const khachToan = khachToanObj.val;
         
         const chuTuongIdx = CUNG_TO_THAN_IDX[chuToan] || -1;
         const khachTuongIdx = CUNG_TO_THAN_IDX[khachToan] || -1;
@@ -157,8 +162,8 @@ class ThaiAtBaseEngine {
         const thamKhachToan = (khachToan * 3) % 10 || 10;
         
         return [
-            { thanIdx: chuTuongIdx, name: `Đại Tướng Chủ (Toán ${chuToan})`, class: "chu-tuong" },
-            { thanIdx: khachTuongIdx, name: `Đại Tướng Khách (Toán ${khachToan})`, class: "khach-tuong" },
+            { thanIdx: chuTuongIdx, name: `Đại Tướng Chủ (Toán ${chuToan})`, class: "chu-tuong", rawToan: chuToanObj.raw },
+            { thanIdx: khachTuongIdx, name: `Đại Tướng Khách (Toán ${khachToan})`, class: "khach-tuong", rawToan: khachToanObj.raw },
             { thanIdx: CUNG_TO_THAN_IDX[thamChuToan], name: `Tham Tướng Chủ`, class: "chu-tuong" },
             { thanIdx: CUNG_TO_THAN_IDX[thamKhachToan], name: `Tham Tướng Khách`, class: "khach-tuong" }
         ];
@@ -596,20 +601,26 @@ function calculateThaiAtChart(mode, year, month, day, hour) {
     const cuuTinhStep = Math.floor((factory.tueTich % 90) / 10);
     const cuuTinhStr = CUU_TINH[cuuTinhStep % 9];
     
-    // Export Toán numbers for UI
+    // Export Toán numbers & Kế values for UI
     let toanChuVal = 1;
+    let toanChuRawVal = 1;
     let toanKhachVal = 1;
+    let toanKhachRawVal = 1;
     for (const key in currRes.placement) {
         if (!currRes.placement[key]) continue;
         const sC = currRes.placement[key].find(s => s.name.includes('Đại Tướng Chủ'));
         if (sC) {
             const m = sC.name.match(/Toán (\d+)/);
             if (m) toanChuVal = parseInt(m[1]);
+            if (sC.rawToan !== undefined) toanChuRawVal = sC.rawToan;
+            else toanChuRawVal = toanChuVal;
         }
         const sK = currRes.placement[key].find(s => s.name.includes('Đại Tướng Khách'));
         if (sK) {
             const m = sK.name.match(/Toán (\d+)/);
             if (m) toanKhachVal = parseInt(m[1]);
+            if (sK.rawToan !== undefined) toanKhachRawVal = sK.rawToan;
+            else toanKhachRawVal = toanKhachVal;
         }
     }
     
@@ -624,8 +635,14 @@ function calculateThaiAtChart(mode, year, month, day, hour) {
         luanDoanData = ld.generateReport(toanChuVal, toanKhachVal, currRes.core.tkIdx, currRes.core.taIdx);
     }
     
-    // Toán Định
-    const toanDinh = (toanChuVal + toanKhachVal) % 10 || 10;
+    // Toán Định (Số đã bỏ chục và Nguyên số chưa bỏ chục)
+    const toanDinhRawVal = toanChuRawVal + toanKhachRawVal;
+    const toanDinhVal = (toanChuVal + toanKhachVal) % 10 || 10;
+    
+    // Kế Đại, Kế Tiểu, Kế Định
+    const keDaiVal = factory.tichNhat || factory.tueTichThuongCo || factory.tueTich || 0;
+    const keTieuVal = factory.kyDu !== undefined ? factory.kyDu : (factory.tueTich % 360);
+    const keDinhVal = (toanDinhRawVal % 16) || 16;
     
     return {
         modeName: meta.name,
@@ -635,8 +652,14 @@ function calculateThaiAtChart(mode, year, month, day, hour) {
         batMon: batMonStr,
         cuuTinh: cuuTinhStr,
         toanChu: toanChuVal,
+        toanChuGoc: toanChuRawVal,
         toanKhach: toanKhachVal,
-        toanDinh: toanDinh,
+        toanKhachGoc: toanKhachRawVal,
+        toanDinh: toanDinhVal,
+        toanDinhGoc: toanDinhRawVal,
+        keDai: keDaiVal,
+        keTieu: keTieuVal,
+        keDinh: keDinhVal,
         placement: currRes.placement,
         batHung: "Thế trận được xác lập.", // Simplified for now
         verdict: luanDoanNguHanh(vxEl, tkEl),
