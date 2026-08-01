@@ -741,6 +741,51 @@ function calculateThaiAtChart(mode, year, month, day, hour) {
     const keTieuVal = factory.kyDu !== undefined ? factory.kyDu : (factory.tueTich % 360);
     const keDinhValStr = (keDinhIdx !== -1 ? getThanName(keDinhIdx) : "Trung Cung");
     
+    // Dynamic Bát Hùng Evaluation
+    const evalBatHung = () => {
+        const activeHung = [];
+        const taIdx = currRes.core ? currRes.core.taIdx : -1;
+        const tkIdx = currRes.core ? currRes.core.tkIdx : -1;
+        const ctIdx = currRes.core ? currRes.core.ctIdx : -1;
+        const ktIdx = currRes.core ? currRes.core.ktIdx : -1;
+
+        // 1. Kích: Thái Ất gặp Thủy Kích đồng cung
+        if (taIdx !== -1 && taIdx === tkIdx) {
+            activeHung.push("Kích (Thái Ất gặp Thủy Kích đồng cung)");
+        }
+
+        // 2. Yểm: Thái Ất lâm cung gặp Hắc Kỳ hoặc Xích Kỳ
+        if (taIdx !== -1) {
+            const taPalaceName = THAP_LUC_THAN[taIdx] ? THAP_LUC_THAN[taIdx].id : "";
+            const taStars = currRes.placement[taPalaceName] || [];
+            if (taStars.some(s => s.name.includes("Hắc Kỳ") || s.name.includes("Xích Kỳ"))) {
+                activeHung.push("Yểm (Thái Ất bị hung tinh chế ngự)");
+            }
+        }
+
+        // 3. Đối: Thái Ất và Thủy Kích ở 2 cung đối nhau
+        if (taIdx !== -1 && tkIdx !== -1 && Math.abs(taIdx - tkIdx) === 8) {
+            activeHung.push("Đối (Thái Ất đối xung Thủy Kích)");
+        }
+
+        // 4. Chấp Đề: Đại Tướng Chủ và Đại Tướng Khách ở 2 cung đối nhau
+        if (ctIdx !== -1 && ktIdx !== -1 && Math.abs(ctIdx - ktIdx) === 8) {
+            activeHung.push("Chấp Đề (Chủ Khách đối thế)");
+        }
+
+        // 5. Tù: Thái Ất ở Tý (5), Dần (8), Mão (9), Dậu (1) gặp hung tinh
+        if ([5, 8, 9, 1].includes(taIdx)) {
+            const taPalaceName = THAP_LUC_THAN[taIdx] ? THAP_LUC_THAN[taIdx].id : "";
+            const taStars = currRes.placement[taPalaceName] || [];
+            if (taStars.length > 2) {
+                activeHung.push("Tù (Thái Ất rơi vào hãm địa)");
+            }
+        }
+
+        if (activeHung.length > 0) return activeHung.join("; ");
+        return "Không thuộc Bát Hung.";
+    };
+
     return {
         modeName: meta.name,
         tuTru,
@@ -758,7 +803,7 @@ function calculateThaiAtChart(mode, year, month, day, hour) {
         keTieu: keTieuVal,
         keDinh: keDinhValStr,
         placement: currRes.placement,
-        batHung: "Thế trận được xác lập.", // Simplified for now
+        batHung: evalBatHung(),
         verdict: luanDoanNguHanh(vxEl, tkEl),
         movingStars: movingStars,
         luanDoanData: luanDoanData
