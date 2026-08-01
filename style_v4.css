@@ -16,7 +16,15 @@
     --color-thuy: #3498db;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Quicksand', sans-serif; }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Quicksand', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
 
 body {
     background-color: var(--bg-main);
@@ -226,20 +234,21 @@ h1 {
 .star-tag {
     padding: 2px 5px; border-radius: 3px; font-size: 0.65rem; font-weight: 700;
     white-space: nowrap; display: inline-block; line-height: 1.25; margin: 1px 0;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
 }
-.star-tag.thai-at { background: #c0392b; color: #fff; }
-.star-tag.van-xuong { background: #2980b9; color: #fff; }
-.star-tag.thuy-kich { background: #d35400; color: #fff; }
-.star-tag.chu-tuong { background: #27ae60; color: #fff; }
-.star-tag.khach-tuong { background: #e67e22; color: #000; }
-.star-tag.ke-than { background: #8e44ad; color: #fff; }
-.star-tag.tham-chu { background: #1abc9c; color: #000; }
-.star-tag.tham-khach { background: #e74c3c; color: #fff; }
-.star-tag.dinh-xuong { background: #7f8c8d; color: #fff; }
-.star-tag.quan-co { background: #f1c40f; color: #000; }
-.star-tag.than-co { background: #16a085; color: #fff; }
-.star-tag.dan-co { background: #95a5a6; color: #000; }
-.star-tag.ngu-phuc { background: #9b59b6; color: #fff; }
+.star-tag.thai-at { background: #c0392b; color: #ffffff; }
+.star-tag.van-xuong { background: #1f618d; color: #ffffff; }
+.star-tag.thuy-kich { background: #d35400; color: #ffffff; }
+.star-tag.chu-tuong { background: #229954; color: #ffffff; }
+.star-tag.khach-tuong { background: #d68910; color: #ffffff; }
+.star-tag.ke-than { background: #7d3c98; color: #ffffff; }
+.star-tag.tham-chu { background: #117864; color: #ffffff; }
+.star-tag.tham-khach { background: #c0392b; color: #ffffff; }
+.star-tag.dinh-xuong { background: #5d6d7e; color: #ffffff; }
+.star-tag.quan-co { background: #b7950b; color: #ffffff; }
+.star-tag.than-co { background: #138d75; color: #ffffff; }
+.star-tag.dan-co { background: #6c7a89; color: #ffffff; }
+.star-tag.ngu-phuc { background: #8e44ad; color: #ffffff; }
 
 /* ========== TRUNG CUNG STYLES ========== */
 .tc-header { text-align: center; border-bottom: 1px solid var(--panel-border); padding-bottom: 0.4rem; }
