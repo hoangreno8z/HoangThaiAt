@@ -356,23 +356,29 @@ class ThaiAtBaseEngine {
         const PHI_DIEU_AM = [11, 5, 15, 1, -1, 9, 7, 13, 3];
         const pdIdx = (isDuong ? PHI_DIEU_DUONG : PHI_DIEU_AM)[r9 - 1];
         
-        // Ngũ Hành (chia 9, khởi 1 nhảy 5)
-        const nhR = this.kyDu % 9 || 9;
-        let nhCung = 1;
-        for(let i = 1; i < nhR; i++) { nhCung = (nhCung + 4) % 9 + 1; }
-        const nhanhIdx = CUNG_TO_THAN_IDX[nhCung];
+        // 5. Ngũ Hành (dư mod 5, Dương: Càn->Khảm->Cấn->Tốn->Khôn, Âm: Tốn->Ly->Khôn->Càn->Cấn)
+        const r5_nh = (kVal % 5) || 5;
+        const NGU_HANH_DUONG = [3, 5, 7, 11, 15];
+        const NGU_HANH_AM = [11, 13, 15, 3, 7];
+        const nhanhIdx = (isDuong ? NGU_HANH_DUONG : NGU_HANH_AM)[r5_nh - 1];
         
-        // Tam Phong (chia 90/9, khởi 3)
-        const tpR = Math.floor((this.kyDu % 90) / 9);
-        const tphongIdx = CUNG_TO_THAN_IDX[(3 - 1 + tpR) % 9 + 1];
+        // Dùng chung dư mod 9 cho 3 sao Phong: Tam Phong, Ngũ Phong, Bát Phong
+        const r9_phong = (kVal % 9) || 9;
         
-        // Ngũ Phong (chia 90/9, khởi 1)
-        const ngR = Math.floor((this.kyDu % 90) / 9);
-        const ngphongIdx = CUNG_TO_THAN_IDX[(1 - 1 + ngR) % 9 + 1];
+        // 6. Tam Phong (dư mod 9, Dương: Cấn->Khôn->Ly->Đoài->Càn->Trung->Tốn->Chấn->Khảm)
+        const TAM_PHONG_DUONG = [7, 15, 13, 1, 3, -1, 11, 9, 5];
+        const TAM_PHONG_AM = [15, 7, 5, 9, 11, -1, 3, 1, 13];
+        const tphongIdx = (isDuong ? TAM_PHONG_DUONG : TAM_PHONG_AM)[r9_phong - 1];
         
-        // Bát Phong (chia 9)
-        const bpR = this.kyDu % 9 || 9;
-        const bphongIdx = CUNG_TO_THAN_IDX[bpR];
+        // 7. Ngũ Phong (dư mod 9, Dương: Càn->Cấn->Trung->Khôn->Tốn->Ly->Chấn->Đoài->Khảm)
+        const NGU_PHONG_DUONG = [3, 7, -1, 15, 11, 13, 9, 1, 5];
+        const NGU_PHONG_AM = [15, 7, 5, 9, 11, -1, 3, 1, 13];
+        const ngphongIdx = (isDuong ? NGU_PHONG_DUONG : NGU_PHONG_AM)[r9_phong - 1];
+        
+        // 8. Bát Phong (dư mod 9, Dương: Ly->Cấn->Chấn->Trung->Đoài->Khôn->Khảm->Tốn->Càn)
+        const BAT_PHONG_DUONG = [13, 7, 9, -1, 1, 15, 5, 11, 3];
+        const BAT_PHONG_AM = [5, 15, 1, -1, 9, 7, 13, 3, 11];
+        const bphongIdx = (isDuong ? BAT_PHONG_DUONG : BAT_PHONG_AM)[r9_phong - 1];
 
         res.push(
             { thanIdx: ttonIdx, name: "Thiên Tôn", class: "other-stars" },
