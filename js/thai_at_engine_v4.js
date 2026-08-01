@@ -707,9 +707,9 @@ function calculateThaiAtChart(mode, year, month, day, hour) {
     
     for (let i = 0; i < currFlat.length; i++) {
         const s1 = currFlat[i];
-        const s2 = nextFlat[i];
-        // Dùng name làm identifier, nếu trùng tên nhiều sao (như 9 sao TP) thì dùng thêm unique key
-        if (s1.thanIdx !== s2.thanIdx) {
+        if (!s1) continue;
+        const s2 = nextFlat.find(s => s && s.name === s1.name);
+        if (s2 && s1.thanIdx !== s2.thanIdx) {
             let trueName = s1.name;
             if (s1.name.includes("Thái Ất (Cung")) trueName = "Thái Ất";
             movingStars.push({
