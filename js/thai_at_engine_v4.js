@@ -550,29 +550,19 @@ class NhatKeEngine {
         this.tuTru = getTuTru(year, month, day, hour);
         
         const currentJD = getCanChiDay(year, month, day).jdInt || 0;
+        this.tichNhat = currentJD - 11 + 60000000;
         
-        // MỐC 2: Tích Nhật (Số ngày từ Thượng Cổ Giáp Tý)
-        // Dùng giả định Tích Nhật = JD + (10153917 * 365) + Giáp Tý Offset
-        // Vì chỉ quan tâm đến modulo 60, 240, 360, 72, ta dùng currentJD + 49 + Epoch
-        // Giáp Tý là khi JD % 60 === 11. Vậy JD - 11 là số ngày từ Giáp Tý gần nhất.
-        this.tichNhat = currentJD - 11 + 60000000; // Đảm bảo số lớn để không bị âm
-        
-        // MỐC 1: Số ngày từ Giáp Tý sau tiết Đông Chí
-        // Tiết Đông Chí thường rơi vào ngày 21-22 tháng 12.
-        // Xác định năm chứa Đông Chí gần nhất
+        // MỐC KHỞI: Số ngày đếm từ ngày Giáp Tý đầu tiên sau tiết Đông Chí của năm trước
         let dongChiYear = year;
         if (month < 12 || (month === 12 && day < 21)) dongChiYear = year - 1;
         
-        // Tìm JD của Đông Chí (Ước lượng khoảng 22/12)
         const dongChiJD = Math.round(getJulianDay(dongChiYear, 12, 22, 12, 0));
         
-        // Tìm ngày Giáp Tý đầu tiên sau Đông Chí
         let giapTyJD = dongChiJD;
         while (giapTyJD % 60 !== 11) giapTyJD++;
         
         this.soNgayTuGiapTy = currentJD - giapTyJD;
         if (this.soNgayTuGiapTy < 0) {
-            // Nếu ngày hiện tại nằm giữa Đông Chí và Giáp Tý, lùi về Đông Chí năm trước nữa
             dongChiYear--;
             const prevDongChiJD = Math.round(getJulianDay(dongChiYear, 12, 22, 12, 0));
             giapTyJD = prevDongChiJD;
@@ -580,15 +570,25 @@ class NhatKeEngine {
             this.soNgayTuGiapTy = currentJD - giapTyJD;
         }
 
+        // Âm Độn / Dương Độn cho Nhật Kể:
+        // Từ Đông Chí (21/12) đến trước Hạ Chí (21/6) là Dương Độn, sau Hạ Chí là Âm Độn
+        this.isDuongDon = true;
+        if ((month > 6 && month < 12) || (month === 6 && day >= 21) || (month === 12 && day < 21)) {
+            this.isDuongDon = false;
+        }
+
         this.namCanIdx = this.tuTru.year.canIdx;
+        this.tueTich = this.soNgayTuGiapTy;
+        this.kyDu = (this.soNgayTuGiapTy % 360) || 360;
     }
     getEngine(offset = 0) {
-        const tich = this.tichNhat + offset;
         const soNgay = this.soNgayTuGiapTy + offset;
-        return new RealNhatKeEngine(tich, tich % 360, true, this.namCanIdx, this.tichNhat, soNgay, this.tuTru);
+        let kyDuNgay = (soNgay % 360) || 360;
+        return new RealNhatKeEngine(soNgay, kyDuNgay, this.isDuongDon, this.namCanIdx, this.tichNhat, soNgay, this.tuTru);
     }
     getMetadata() {
-        return { name: "Nhật Kể (Lập Quẻ Ngày)", don: "Dương Độn", cucNum: (this.soNgayTuGiapTy % 72) || 72 };
+        const donStr = this.isDuongDon ? "Dương Độn" : "Âm Độn";
+        return { name: "Nhật Kể (Lập Quẻ Ngày)", don: donStr, cucNum: (this.soNgayTuGiapTy % 72) || 72 };
     }
 }
 
