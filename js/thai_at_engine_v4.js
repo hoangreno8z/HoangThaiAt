@@ -741,7 +741,7 @@ function calculateThaiAtChart(mode, year, month, day, hour) {
     const keTieuVal = factory.kyDu !== undefined ? factory.kyDu : (factory.tueTich % 360);
     const keDinhValStr = (keDinhIdx !== -1 ? getThanName(keDinhIdx) : "Trung Cung");
     
-    // Dynamic Bát Hùng Evaluation
+    // Dynamic Bát Hung Evaluation
     const evalBatHung = () => {
         const activeHung = [];
         const taIdx = currRes.core ? currRes.core.taIdx : -1;
