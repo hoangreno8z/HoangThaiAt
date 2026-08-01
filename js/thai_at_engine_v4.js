@@ -525,13 +525,24 @@ class NguyetKeEngine {
         this.namCanIdx = this.tuTru.year.canIdx;
 
         // 1. Vòng Kỷ Dư Tháng (Kỷ Dư Nguyệt Kể):
-        // Lấy Vòng Kỷ Dư Năm của năm có tháng cầu việc trừ 1, nhân 12, cộng số tháng (tháng Giêng=1) + 2 tháng thiên/địa chính
-        const tueTichNam = THUONG_CO_EPOCH + year;
-        const kyDuNam = tueTichNam % 360 || 360;
-        const lunarMonth = (this.tuTru.month && this.tuTru.month.chiIdx !== undefined) ? ((this.tuTru.month.chiIdx + 10) % 12 + 1) : 1;
+        // Lùi về Tiết Đông Chí gần nhất (thường ở tháng 12 năm trước nếu ngày/tháng xem trước ngày 21/12)
+        let dongChiYear = year;
+        if (month < 12 || (month === 12 && day < 21)) {
+            dongChiYear = year - 1;
+        }
 
-        // Tích Tháng = (kyDuNam - 1) * 12 + lunarMonth + 2
-        this.tichThang = (kyDuNam - 1) * 12 + lunarMonth + 2;
+        // Kỷ Dư Năm chứa tiết Đông Chí gần nhất
+        const tueTichDongChi = THUONG_CO_EPOCH + dongChiYear;
+        const kyDuNam = tueTichDongChi % 360 || 360;
+
+        // Chi tháng Tứ Trụ chính xác theo Tiết Khí (Tháng Tý chứa Đông Chí = 0, Sửu = 1, Dần = 2, ..., Hợi = 11)
+        const thangChiIdx = (this.tuTru && this.tuTru.month) ? this.tuTru.month.chiIdx : ((month + 1) % 12);
+        
+        // Số tháng đếm từ Tiết Đông Chí (Tháng Tý)
+        const soThangTuDongChi = (thangChiIdx - 0 + 12) % 12;
+
+        // Tích Tháng = (kyDuNam - 1) * 12 + soThangTuDongChi + 2 (2 tháng Thiên Chính & Địa Chính Tý, Sửu)
+        this.tichThang = (kyDuNam - 1) * 12 + soThangTuDongChi + 2;
 
         let kyDuThang = this.tichThang % 360;
         if (kyDuThang === 0) kyDuThang = 360;
@@ -542,7 +553,7 @@ class NguyetKeEngine {
         this.isDuongDon = (this.namCanIdx % 2 === 0);
 
         this.tueTich = this.tichThang;
-        this.tueTichThuongCo = tueTichNam;
+        this.tueTichThuongCo = tueTichDongChi;
     }
     getEngine(offset = 0) {
         const t = this.tichThang + offset;
