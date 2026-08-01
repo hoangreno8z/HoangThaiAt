@@ -262,10 +262,35 @@ function renderHexagramGraphic(title, subtitle, hexName, lines6, haoDong, accent
     `;
 }
 
-// Populate Vận Quái Thái Ất (Đại Du & Tiểu Du)
+// Populate Vận Quái Thái Ất (Đại Du, Tiểu Du & Thái Tuế Lưu Niên)
 function renderVanQuaiSection(data) {
     const ldContent = document.getElementById("luan-doan-content");
     if (!ldContent) return;
+
+    if (data.thaiTueData) {
+        const tt = data.thaiTueData;
+        const subtitle = `Tích Niên Thái Ất (${tt.tueTich}) chia 64 ➔ Quẻ thứ ${tt.queNum}/64 · ${tt.yearChiName} (${tt.isDuongYear ? 'Năm Dương' : 'Năm Âm'})`;
+        
+        const ttHtml = renderHexagramGraphic(
+            "☯ QUẺ THÁI TUẾ LƯU NIÊN TRỰC QUÁI",
+            subtitle,
+            tt.hexName,
+            tt.lines6,
+            tt.haoDong,
+            "#e74c3c"
+        );
+
+        ldContent.innerHTML = `
+            <div style="max-width: 550px; margin: 0 auto;">
+                ${ttHtml}
+                <div style="margin-top: 15px; padding: 12px; background: rgba(231, 76, 60, 0.08); border-radius: 8px; border: 1px solid rgba(231, 76, 60, 0.3); font-size: 0.85rem; color: #e0e6ed; line-height: 1.6;">
+                    <strong style="color: #e74c3c;">📜 Quy Tắc An Hào Động Thái Tuế Lưu Niên:</strong><br/>
+                    ${tt.ruleText}
+                </div>
+            </div>
+        `;
+        return;
+    }
 
     if (data.luanDoanData && data.luanDoanData.daiTieuDu) {
         const du = data.luanDoanData.daiTieuDu;
@@ -300,7 +325,6 @@ function renderVanQuaiSection(data) {
     } else {
         ldContent.innerHTML = "<p><em>Không có dữ liệu Vận Quái cho chế độ này.</em></p>";
     }
-}
 }
 
 // ========================================

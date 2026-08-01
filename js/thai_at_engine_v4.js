@@ -811,28 +811,135 @@ function calculateThaiAtChart(mode, year, month, day, hour) {
     };
 }
 
-// Fallbacks for Dich/Menh (unchanged logic, just cleaned up)
+const THAI_TUE_HEXAGRAMS_64 = [
+    { num: 1,  name: "Bát Thuần Kiền", lines: [1, 1, 1, 1, 1, 1] },
+    { num: 2,  name: "Bát Thuần Khôn", lines: [0, 0, 0, 0, 0, 0] },
+    { num: 3,  name: "Thủy Lôi Truân", lines: [1, 0, 0, 0, 1, 0] },
+    { num: 4,  name: "Sơn Thủy Mông", lines: [0, 1, 0, 0, 0, 1] },
+    { num: 5,  name: "Thủy Thiên Nhu", lines: [1, 1, 1, 0, 1, 0] },
+    { num: 6,  name: "Thiên Thủy Tụng", lines: [0, 1, 0, 1, 1, 1] },
+    { num: 7,  name: "Địa Thủy Sư", lines: [0, 1, 0, 0, 0, 0] },
+    { num: 8,  name: "Thủy Địa Tỷ", lines: [0, 0, 0, 0, 1, 0] },
+    { num: 9,  name: "Phong Thiên Tiểu Súc", lines: [1, 1, 1, 0, 1, 1] },
+    { num: 10, name: "Thiên Trạch Lý", lines: [1, 1, 0, 1, 1, 1] },
+    { num: 11, name: "Địa Thiên Thái", lines: [1, 1, 1, 0, 0, 0] },
+    { num: 12, name: "Thiên Địa Bĩ", lines: [0, 0, 0, 1, 1, 1] },
+    { num: 13, name: "Thiên Hỏa Đồng Nhân", lines: [1, 0, 1, 1, 1, 1] },
+    { num: 14, name: "Hỏa Thiên Đại Hữu", lines: [1, 1, 1, 1, 0, 1] },
+    { num: 15, name: "Địa Sơn Khiêm", lines: [0, 0, 1, 0, 0, 0] },
+    { num: 16, name: "Lôi Địa Dự", lines: [0, 0, 0, 1, 0, 0] },
+    { num: 17, name: "Trạch Lôi Tùy", lines: [1, 0, 0, 1, 1, 0] },
+    { num: 18, name: "Sơn Phong Cổ", lines: [0, 1, 1, 0, 0, 1] },
+    { num: 19, name: "Địa Trạch Lâm", lines: [1, 1, 0, 0, 0, 0] },
+    { num: 20, name: "Phong Địa Quan", lines: [0, 0, 0, 0, 1, 1] },
+    { num: 21, name: "Hỏa Lôi Phệ Hạp", lines: [1, 0, 0, 1, 0, 1] },
+    { num: 22, name: "Sơn Hỏa Bí", lines: [1, 0, 1, 0, 0, 1] },
+    { num: 23, name: "Sơn Địa Bác", lines: [0, 0, 0, 0, 0, 1] },
+    { num: 24, name: "Địa Lôi Phục", lines: [1, 0, 0, 0, 0, 0] },
+    { num: 25, name: "Thiên Lôi Vô Vọng", lines: [1, 0, 0, 1, 1, 1] },
+    { num: 26, name: "Sơn Thiên Đại Súc", lines: [1, 1, 1, 0, 0, 1] },
+    { num: 27, name: "Sơn Lôi Di", lines: [1, 0, 0, 0, 0, 1] },
+    { num: 28, name: "Trạch Phong Đại Quá", lines: [0, 1, 1, 1, 1, 0] },
+    { num: 29, name: "Bát Thuần Khảm", lines: [0, 1, 0, 0, 1, 0] },
+    { num: 30, name: "Bát Thuần Ly", lines: [1, 0, 1, 1, 0, 1] },
+    { num: 31, name: "Trạch Sơn Hàm", lines: [0, 0, 1, 1, 1, 0] },
+    { num: 32, name: "Lôi Phong Hằng", lines: [0, 1, 1, 1, 0, 0] },
+    { num: 33, name: "Thiên Sơn Độn", lines: [0, 0, 1, 1, 1, 1] },
+    { num: 34, name: "Lôi Thiên Đại Tráng", lines: [1, 1, 1, 1, 0, 0] },
+    { num: 35, name: "Hỏa Địa Tấn", lines: [0, 0, 0, 1, 0, 1] },
+    { num: 36, name: "Địa Hỏa Minh Di", lines: [1, 0, 1, 0, 0, 0] },
+    { num: 37, name: "Phong Hỏa Gia Nhân", lines: [1, 0, 1, 0, 1, 1] },
+    { num: 38, name: "Hỏa Trạch Khuê", lines: [1, 1, 0, 1, 0, 1] },
+    { num: 39, name: "Thủy Sơn Kiển", lines: [0, 0, 1, 0, 1, 0] },
+    { num: 40, name: "Lôi Thủy Giải", lines: [0, 1, 0, 1, 0, 0] },
+    { num: 41, name: "Sơn Trạch Tổn", lines: [1, 1, 0, 0, 0, 1] },
+    { num: 42, name: "Phong Lôi Ích", lines: [1, 0, 0, 0, 1, 1] },
+    { num: 43, name: "Trạch Thiên Quải", lines: [1, 1, 1, 1, 1, 0] },
+    { num: 44, name: "Thiên Phong Cấu", lines: [0, 1, 1, 1, 1, 1] },
+    { num: 45, name: "Trạch Địa Tụy", lines: [0, 0, 0, 1, 1, 0] },
+    { num: 46, name: "Địa Phong Thăng", lines: [0, 1, 1, 0, 0, 0] },
+    { num: 47, name: "Trạch Thủy Khốn", lines: [0, 1, 0, 1, 1, 0] },
+    { num: 48, name: "Thủy Phong Tỉnh", lines: [0, 1, 1, 0, 1, 0] },
+    { num: 49, name: "Trạch Hỏa Cách", lines: [1, 0, 1, 1, 1, 0] },
+    { num: 50, name: "Hỏa Phong Đỉnh", lines: [0, 1, 1, 1, 0, 1] },
+    { num: 51, name: "Bát Thuần Chấn", lines: [1, 0, 0, 1, 0, 0] },
+    { num: 52, name: "Bát Thuần Cấn", lines: [0, 0, 1, 0, 0, 1] },
+    { num: 53, name: "Phong Sơn Tiệm", lines: [0, 0, 1, 0, 1, 1] },
+    { num: 54, name: "Lôi Trạch Quy Muội", lines: [1, 1, 0, 1, 0, 0] },
+    { num: 55, name: "Lôi Hỏa Phong", lines: [1, 0, 1, 1, 0, 0] },
+    { num: 56, name: "Hỏa Sơn Lữ", lines: [0, 0, 1, 1, 0, 1] },
+    { num: 57, name: "Bát Thuần Tốn", lines: [0, 1, 1, 0, 1, 1] },
+    { num: 58, name: "Bát Thuần Đoài", lines: [1, 1, 0, 1, 1, 0] },
+    { num: 59, name: "Phong Thủy Hoán", lines: [0, 1, 0, 0, 1, 1] },
+    { num: 60, name: "Thủy Trạch Tiết", lines: [1, 1, 0, 0, 1, 0] },
+    { num: 61, name: "Phong Trạch Trung Phu", lines: [1, 1, 0, 0, 1, 1] },
+    { num: 62, name: "Lôi Sơn Tiểu Quá", lines: [0, 0, 1, 1, 0, 0] },
+    { num: 63, name: "Thủy Hỏa Ký Tế", lines: [1, 0, 1, 0, 1, 0] },
+    { num: 64, name: "Hỏa Thủy Vị Tế", lines: [0, 1, 0, 1, 0, 1] }
+];
+
 function calculateQueDich(year, month, day, hour) {
     const tuTru = getTuTru(year, month, day, hour);
     const solarTerm = getExactSolarTerm(year, month, day, hour);
-    const BAT_QUAI = ["Càn", "Đoài", "Ly", "Chấn", "Tốn", "Khảm", "Cấn", "Khôn"];
-    const sumToan = tuTru.year.canIdx + tuTru.month.chiIdx + tuTru.day.canIdx + tuTru.day.chiIdx + tuTru.hour.chiIdx;
-    const thuongQuai = BAT_QUAI[sumToan % 8];
-    const haQuai = BAT_QUAI[(sumToan + tuTru.hour.chiIdx) % 8];
-    const haoDong = (sumToan % 6) + 1;
+    const tueTich = THUONG_CO_EPOCH + year;
+
+    // 1. Quẻ Thái Tuế Lưu Niên Trực Quái: Tích Niên Thái Ất mod 64
+    let queNum = tueTich % 64;
+    if (queNum === 0) queNum = 64;
+    const hexObj = THAI_TUE_HEXAGRAMS_64[queNum - 1];
+
+    // 2. Hào Động theo Chi năm
+    const yearChiIdx = tuTru.year.chiIdx; // 0=Tý, 1=Sửu, 2=Dần... 11=Hợi
+    const yearChiNum = yearChiIdx + 1;    // 1..12
+    const yearChiName = CHI_LIST_LOCAL[yearChiIdx];
+    const isDuongYear = (yearChiIdx % 2 === 0);
+
+    let haoDong = 1;
+    let ruleText = "";
+    if (isDuongYear) {
+        // Năm Dương (Thân, Tý, Thìn, Dần, Ngọ, Tuất): Thăng lên các Hào Dương (1, 3, 5)
+        const duongSeq = [1, 3, 5];
+        haoDong = duongSeq[(yearChiNum - 1) % 3];
+        ruleText = `Năm Dương (${yearChiName}): Đếm thăng lên Hào Dương (1 ➔ 3 ➔ 5), đếm ${yearChiNum} bước Chi năm ➔ Hào ${haoDong} Động.`;
+    } else {
+        // Năm Âm (Tị, Dậu, Sửu, Hợi, Mão, Mùi): Giáng xuống các Hào Âm (6, 4, 2)
+        const amSeq = [6, 4, 2];
+        haoDong = amSeq[(yearChiNum - 1) % 3];
+        ruleText = `Năm Âm (${yearChiName}): Đếm giáng xuống Hào Âm (6 ➔ 4 ➔ 2), đếm ${yearChiNum} bước Chi năm ➔ Hào ${haoDong} Động.`;
+    }
 
     const placement = { "trung_cung": [] };
     THAP_LUC_THAN.forEach(t => placement[t.id] = []);
-    placement["kien"].push({ name: `Thượng: ${thuongQuai}`, class: "thai-at" });
-    placement["khon"].push({ name: `Hạ: ${haQuai}`, class: "van-xuong" });
-    placement["ngo"].push({ name: `Hào Động ${haoDong}`, class: "thuy-kich" });
+    placement["kien"].push({ name: `Quẻ ${queNum}: ${hexObj.name}`, class: "thai-at" });
+    placement["ngo"].push({ name: `Hào ${haoDong} Động`, class: "thuy-kich" });
+
+    const thaiTueData = {
+        queNum,
+        hexName: hexObj.name,
+        lines6: hexObj.lines,
+        haoDong,
+        yearChiName,
+        isDuongYear,
+        ruleText,
+        tueTich
+    };
 
     return {
-        modeName: "Quẻ Dịch (Kinh Dịch Nạp Giáp)",
-        tuTru, solarTerm: solarTerm.name,
-        donCucName: `${thuongQuai} trên ${haQuai} — Hào Động ${haoDong}`,
-        batMon: `Hào ${haoDong}`, cuuTinh: `${thuongQuai}/${haQuai}`,
-        placement, batHung: "-", verdict: "Xét ngũ hành nạp giáp.", movingStars: []
+        modeName: "Quẻ Thái Tuế Lưu Niên Trực Quái",
+        tuTru,
+        solarTerm: solarTerm.name,
+        donCucName: `Quẻ thứ ${queNum}/64: ${hexObj.name} — Hào ${haoDong} Động`,
+        batMon: `Hào ${haoDong}`,
+        cuuTinh: hexObj.name,
+        placement,
+        batHung: "-",
+        verdict: ruleText,
+        movingStars: [],
+        thaiTueData,
+        luanDoanData: {
+            daiTieuDu: null,
+            thaiTueData
+        }
     };
 }
 
