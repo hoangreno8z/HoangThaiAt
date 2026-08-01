@@ -213,7 +213,37 @@ const PHAN_DA_CUU_CUNG = {
         predContent.innerHTML = "<p><em>Không có sao nào di chuyển trong chu kỳ tiếp theo, hoặc không có dữ liệu dự báo.</em></p>";
     }
 
-    // Render Vận Quái Thái Ất (Đại Du & Tiểu Du)
+    // Ẩn/Hiện khung sa bàn 16 cung, dự báo tương lai và bản đồ cửu châu cho tab Quẻ Dịch & Bàn Nhân Mệnh
+    const isNoSaBanMode = (currentMode === "dich" || currentMode === "menh");
+
+    const matrixGrid = document.querySelector(".matrix-grid");
+    if (matrixGrid) {
+        matrixGrid.style.display = isNoSaBanMode ? "none" : "grid";
+    }
+
+    const futurePred = document.getElementById("future-predictions");
+    if (futurePred) {
+        futurePred.style.display = isNoSaBanMode ? "none" : "block";
+    }
+
+    const phanDaSec = document.getElementById("phan-da-map-section");
+    if (phanDaSec) {
+        phanDaSec.style.display = isNoSaBanMode ? "none" : "block";
+    }
+
+    // Cập nhật tiêu đề khối Quẻ
+    const resHeader = document.querySelector(".result-section h3");
+    if (resHeader) {
+        if (currentMode === "dich") {
+            resHeader.textContent = "☯ QUẺ THÁI TUẾ LƯU NIÊN TRỰC QUÁI (TAB QUẺ DỊCH)";
+        } else if (currentMode === "menh") {
+            resHeader.textContent = "☯ QUẺ NHÂN MỆNH THÁI ẤT (VÀO ĐỜI & DỰNG NGHIỆP)";
+        } else {
+            resHeader.textContent = "☯ VẬN QUÁI THÁI ẤT (ĐẠI DU & TIỂU DU VẬN QUÁI)";
+        }
+    }
+
+    // Render Vận Quái Thái Ất / Quẻ Dịch / Bàn Nhân Mệnh
     renderVanQuaiSection(data);
 }
 
