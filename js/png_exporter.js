@@ -16,7 +16,7 @@ async function exportChartToPNG() {
     btn.disabled = true;
 
     try {
-        // Use html2canvas with scale 2 and windowWidth 1400 for crisp resolution without text clipping
+        // Use html2canvas with scale 2 and custom onclone styles for crystal-clear HD PNG exports
         const canvas = await html2canvas(chartContainer, {
             scale: 2,
             useCORS: true,
@@ -24,7 +24,105 @@ async function exportChartToPNG() {
             logging: false,
             windowWidth: 1400,
             scrollX: 0,
-            scrollY: 0
+            scrollY: 0,
+            onclone: (clonedDoc) => {
+                const capturedChart = clonedDoc.getElementById("thai-at-chart-capture");
+                if (!capturedChart) return;
+
+                // Explicit container sizing for crisp HD layout
+                capturedChart.style.width = "1350px";
+                capturedChart.style.padding = "24px";
+                capturedChart.style.boxSizing = "border-box";
+                capturedChart.style.backgroundColor = "#050711";
+                capturedChart.style.borderRadius = "16px";
+                capturedChart.style.border = "2px solid rgba(212, 175, 55, 0.4)";
+
+                // Grid layout styling for export
+                const grid = clonedDoc.querySelector(".matrix-grid");
+                if (grid) {
+                    grid.style.gap = "6px";
+                }
+
+                // Cell box styling
+                clonedDoc.querySelectorAll(".cell-box").forEach(cell => {
+                    cell.style.padding = "10px 8px";
+                    cell.style.minHeight = "155px";
+                    cell.style.gap = "4px";
+                    cell.style.backgroundColor = "rgba(18, 24, 52, 0.95)";
+                    cell.style.border = "1.5px solid rgba(212, 175, 55, 0.35)";
+                });
+
+                // Line 1: Header (Palace Title + Status Badge)
+                clonedDoc.querySelectorAll(".cell-line-1").forEach(line => {
+                    line.style.flexDirection = "row";
+                    line.style.justifyContent = "space-between";
+                    line.style.alignItems = "center";
+                    line.style.paddingBottom = "4px";
+                    line.style.marginBottom = "4px";
+                    line.style.borderBottom = "1px solid rgba(255, 255, 255, 0.12)";
+                });
+
+                clonedDoc.querySelectorAll(".palace-title").forEach(title => {
+                    title.style.fontSize = "1rem";
+                    title.style.fontWeight = "900";
+                    title.style.color = "#ffd700";
+                    title.style.letterSpacing = "0.5px";
+                });
+
+                clonedDoc.querySelectorAll(".palace-khi").forEach(khi => {
+                    khi.style.fontSize = "0.82rem";
+                    khi.style.fontWeight = "700";
+                    khi.style.padding = "2px 6px";
+                    khi.style.borderRadius = "4px";
+                    khi.style.color = "#ffffff";
+                    khi.style.backgroundColor = "rgba(212, 175, 55, 0.25)";
+                    khi.style.border = "1px solid rgba(212, 175, 55, 0.5)";
+                });
+
+                // Line 2: Details
+                clonedDoc.querySelectorAll(".cell-line-2").forEach(l2 => {
+                    l2.style.fontSize = "0.85rem";
+                    l2.style.color = "#e0e6ed";
+                    l2.style.lineHeight = "1.4";
+                    l2.style.marginBottom = "4px";
+                    l2.style.fontWeight = "600";
+                });
+
+                // Lines 3-6: Star tags flex containers
+                clonedDoc.querySelectorAll(".cell-line-3, .cell-line-4, .cell-line-5, .cell-line-6").forEach(lx => {
+                    lx.style.gap = "4px";
+                    lx.style.marginBottom = "4px";
+                    lx.style.minHeight = "20px";
+                });
+
+                // Star Tags: Enlarge font, add strong text shadow & padding
+                clonedDoc.querySelectorAll(".star-tag").forEach(tag => {
+                    tag.style.fontSize = "0.82rem";
+                    tag.style.fontWeight = "800";
+                    tag.style.padding = "3px 7px";
+                    tag.style.borderRadius = "4px";
+                    tag.style.lineHeight = "1.3";
+                    tag.style.textShadow = "0 1px 3px rgba(0, 0, 0, 0.85)";
+                    tag.style.display = "inline-block";
+                    tag.style.margin = "2px 0";
+                });
+
+                // Text Muted
+                clonedDoc.querySelectorAll(".text-muted").forEach(tm => {
+                    tm.style.fontSize = "0.82rem";
+                    tm.style.color = "#a0aec0";
+                });
+
+                // Trung cung formatting
+                const tcHeader = clonedDoc.querySelector(".tc-header h2");
+                if (tcHeader) tcHeader.style.fontSize = "1.4rem";
+
+                const tcBody = clonedDoc.querySelector(".tc-body");
+                if (tcBody) {
+                    tcBody.style.fontSize = "0.95rem";
+                    tcBody.style.lineHeight = "1.65";
+                }
+            }
         });
 
         const imgDataUrl = canvas.toDataURL("image/png");
