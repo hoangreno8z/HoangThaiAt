@@ -711,7 +711,8 @@ function calculateThaiAtChart(mode, year, month, day, hour) {
         const namCanIdx = factory.namCanIdx || factory.tuTru.year.canIdx || 0;
         const lunarMonth = (factory.tuTru.month && factory.tuTru.month.chiIdx !== undefined) ? ((factory.tuTru.month.chiIdx + 10) % 12 + 1) : 1;
         const isDuongDon = factory.isDuongDon !== undefined ? factory.isDuongDon : true;
-        const ld = new ThaiAtLuanDoan(factory.tueTich, namCanIdx, isDuongDon, mode, fullTue, lunarMonth);
+        const kyDuVal = factory.kyDu !== undefined ? factory.kyDu : (factory.tueTich % 360);
+        const ld = new ThaiAtLuanDoan(factory.tueTich, namCanIdx, isDuongDon, mode, fullTue, lunarMonth, kyDuVal);
         luanDoanData = ld.generateReport(toanChuVal, toanKhachVal, currRes.core.tkIdx, currRes.core.taIdx);
     }
     

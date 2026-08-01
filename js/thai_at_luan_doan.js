@@ -1,171 +1,155 @@
 // thai_at_luan_doan.js
-// Xử lý các nghiệp vụ luận đoán chuyên sâu (Quái, Hạn, Ngũ Âm, 28 Sao) của Thái Ất
+// Xử lý Đại Du Vận Quái và Tiểu Du Vận Quái theo Thái Ất Thần Số
 
-const HEXAGRAMS_64 = [
-    "Càn", "Khôn", "Truân", "Mông", "Nhu", "Tụng", "Sư", "Tỷ", 
-    "Tiểu Súc", "Lý", "Thái", "Bĩ", "Đồng Nhân", "Đại Hữu", "Khiêm", "Dự", 
-    "Tùy", "Cổ", "Lâm", "Quan", "Phệ Hạp", "Bí", "Bác", "Phục",
-    "Vô Vọng", "Đại Súc", "Di", "Đại Quá", "Khảm", "Ly", "Hàm", "Hằng",
-    "Độn", "Đại Tráng", "Tấn", "Minh Di", "Gia Nhân", "Khuê", "Kiển", "Giải",
-    "Tổn", "Ích", "Quải", "Cấu", "Tụy", "Thăng", "Khốn", "Tỉnh",
-    "Cách", "Đỉnh", "Chấn", "Cấn", "Tiệm", "Quy Muội", "Phong", "Lữ",
-    "Tốn", "Đoài", "Hoán", "Tiết", "Trung Phu", "Tiểu Quá", "Ký Tế", "Vị Tế"
-];
+/**
+ * Bát Quái theo Cửu Cung Biệt Số (bỏ Trung Cung):
+ * Index: 0=Kiền(1), 1=Ly(2), 2=Cấn(3), 3=Chấn(4), 4=Đoài(6), 5=Khôn(7), 6=Khảm(8), 7=Tốn(9)
+ */
+const BAT_QUAI = ["Kiền", "Ly", "Cấn", "Chấn", "Đoài", "Khôn", "Khảm", "Tốn"];
 
-const BAT_QUAI = ["Kiền", "Khảm", "Cấn", "Chấn", "Tốn", "Ly", "Khôn", "Đoài"];
+/**
+ * 64 Quẻ Kinh Dịch — Bảng tra trùng quái
+ * Hàng (Ngoại/Thượng) × Cột (Nội/Hạ) → Tên quẻ
+ * Index: Kiền=0, Ly=1, Cấn=2, Chấn=3, Đoài=4, Khôn=5, Khảm=6, Tốn=7
+ * Theo thứ tự 8 quái Cửu Cung: Kiền-Ly-Cấn-Chấn-Đoài-Khôn-Khảm-Tốn
+ */
+const TRUNG_QUAI_TABLE = {
+    // [ngoại][nội] → tên quẻ
+    "Kiền_Kiền": "Thuần Càn", "Kiền_Ly": "Thiên Hỏa Đồng Nhân", "Kiền_Cấn": "Thiên Sơn Độn",
+    "Kiền_Chấn": "Thiên Lôi Vô Vọng", "Kiền_Đoài": "Thiên Trạch Lý", "Kiền_Khôn": "Thiên Địa Bĩ",
+    "Kiền_Khảm": "Thiên Thủy Tụng", "Kiền_Tốn": "Thiên Phong Cấu",
+
+    "Ly_Kiền": "Hỏa Thiên Đại Hữu", "Ly_Ly": "Thuần Ly", "Ly_Cấn": "Hỏa Sơn Lữ",
+    "Ly_Chấn": "Hỏa Lôi Phệ Hạp", "Ly_Đoài": "Hỏa Trạch Khuê", "Ly_Khôn": "Hỏa Địa Tấn",
+    "Ly_Khảm": "Hỏa Thủy Vị Tế", "Ly_Tốn": "Hỏa Phong Đỉnh",
+
+    "Cấn_Kiền": "Sơn Thiên Đại Súc", "Cấn_Ly": "Sơn Hỏa Bí", "Cấn_Cấn": "Thuần Cấn",
+    "Cấn_Chấn": "Sơn Lôi Di", "Cấn_Đoài": "Sơn Trạch Tổn", "Cấn_Khôn": "Sơn Địa Bác",
+    "Cấn_Khảm": "Sơn Thủy Mông", "Cấn_Tốn": "Sơn Phong Cổ",
+
+    "Chấn_Kiền": "Lôi Thiên Đại Tráng", "Chấn_Ly": "Lôi Hỏa Phong", "Chấn_Cấn": "Lôi Sơn Tiểu Quá",
+    "Chấn_Chấn": "Thuần Chấn", "Chấn_Đoài": "Lôi Trạch Quy Muội", "Chấn_Khôn": "Lôi Địa Dự",
+    "Chấn_Khảm": "Lôi Thủy Giải", "Chấn_Tốn": "Lôi Phong Hằng",
+
+    "Đoài_Kiền": "Trạch Thiên Quải", "Đoài_Ly": "Trạch Hỏa Cách", "Đoài_Cấn": "Trạch Sơn Hàm",
+    "Đoài_Chấn": "Trạch Lôi Tùy", "Đoài_Đoài": "Thuần Đoài", "Đoài_Khôn": "Trạch Địa Tụy",
+    "Đoài_Khảm": "Trạch Thủy Khốn", "Đoài_Tốn": "Trạch Phong Đại Quá",
+
+    "Khôn_Kiền": "Địa Thiên Thái", "Khôn_Ly": "Địa Hỏa Minh Di", "Khôn_Cấn": "Địa Sơn Khiêm",
+    "Khôn_Chấn": "Địa Lôi Phục", "Khôn_Đoài": "Địa Trạch Lâm", "Khôn_Khôn": "Thuần Khôn",
+    "Khôn_Khảm": "Địa Thủy Sư", "Khôn_Tốn": "Địa Phong Thăng",
+
+    "Khảm_Kiền": "Thủy Thiên Nhu", "Khảm_Ly": "Thủy Hỏa Ký Tế", "Khảm_Cấn": "Thủy Sơn Kiển",
+    "Khảm_Chấn": "Thủy Lôi Truân", "Khảm_Đoài": "Thủy Trạch Tiết", "Khảm_Khôn": "Thủy Địa Tỷ",
+    "Khảm_Khảm": "Thuần Khảm", "Khảm_Tốn": "Thủy Phong Tỉnh",
+
+    "Tốn_Kiền": "Phong Thiên Tiểu Súc", "Tốn_Ly": "Phong Hỏa Gia Nhân", "Tốn_Cấn": "Phong Sơn Tiệm",
+    "Tốn_Chấn": "Phong Lôi Ích", "Tốn_Đoài": "Phong Trạch Trung Phu", "Tốn_Khôn": "Phong Địa Quan",
+    "Tốn_Khảm": "Phong Thủy Hoán", "Tốn_Tốn": "Thuần Tốn"
+};
 
 class ThaiAtLuanDoan {
-    constructor(tueTich, namCanIdx, isDuongDon, mode = "tue", fullTueTich = 0, lunarMonth = 1) {
+    /**
+     * @param {number} tueTich - Tích Niên Thái Ất của năm cầu việc
+     * @param {number} namCanIdx - Index Thiên Can năm (0=Giáp, 1=Ất...)
+     * @param {boolean} isDuongDon - Dương Độn hay Âm Độn
+     * @param {string} mode - Chế độ (tue, nguyet, nhat, thoi)
+     * @param {number} fullTueTich - Tích Niên Thượng Cổ (nếu có)
+     * @param {number} lunarMonth - Tháng Âm lịch (1-12)
+     * @param {number} kyDu - Kỷ Dư (Vòng Kỷ Dư) = tueTich % 360
+     */
+    constructor(tueTich, namCanIdx, isDuongDon, mode = "tue", fullTueTich = 0, lunarMonth = 1, kyDu = 0) {
         this.tueTich = tueTich;
-        this.tichTrungCo = tueTich + 250;
-        this.namCanIdx = namCanIdx; // 0=Giáp, 1=Ất...
+        this.namCanIdx = namCanIdx;
         this.isDuongDon = isDuongDon;
         this.mode = mode;
         this.fullTueTich = fullTueTich;
-        this.lunarMonth = lunarMonth; // 1-12
+        this.lunarMonth = lunarMonth;
+        this.kyDu = kyDu || (tueTich % 360);
     }
 
-    // NHÓM 4: Vành Vận Chuyển Quẻ
-    calcQue() {
-        // Đại Du và Tiểu Du
-        let tich = this.tueTich;
-        let tichFull = this.mode === "tue" ? this.tueTich : this.fullTueTich;
+    /**
+     * Tính Đại Du Vận Quái và Tiểu Du Vận Quái
+     * 
+     * ĐẠI DU VẬN QUÁI:
+     * - Nội quái: (Tích Niên + 34) % 2880, rồi % 288, rồi / 36 → index quái
+     * - Ngoại quái: (Tích Niên + 60) % 640, rồi % 80, rồi / 10 → index quái
+     * - Trùng quái: Ngoại trên, Nội dưới
+     * 
+     * TIỂU DU VẬN QUÁI:
+     * - Nội quái: Tích Niên % 192, rồi / 24 → index quái
+     * - Ngoại quái: Kỷ Dư % 24, rồi / 3 → index quái  
+     * - Trùng quái: Ngoại trên, Nội dưới
+     */
+    calcDaiTieuDu() {
+        const tich = this.tueTich;
+        const kyDu = this.kyDu;
 
-        const ddqtStep = Math.floor(((tich + 34) % 2880 % 288) / 36);
-        const ddqt = BAT_QUAI[(6 + ddqtStep) % 8];
+        // ===================== ĐẠI DU VẬN QUÁI =====================
 
-        const ddqnStep = Math.floor(((tich + 34) % 640 % 80) / 70);
-        const ddqn = BAT_QUAI[(6 + ddqnStep) % 8];
+        // --- Đại Du Nội Quái ---
+        // Tích Niên + 34 (doanh sai), chia 2880, lấy dư, dư chia 288, dư chia 36
+        const ddNoiR1 = (tich + 34) % 2880;       // Dư phép chia 2880
+        const ddNoiR2 = ddNoiR1 % 288;             // Dư phép chia 288
+        const ddNoiThanh = Math.floor(ddNoiR2 / 36); // Số quái đã vận qua
+        const ddNoiDu = ddNoiR2 % 36;              // Thời gian đang vận ở quái hiện tại
+        const ddNoiQuai = BAT_QUAI[ddNoiThanh % 8];
 
-        const tdqtStep = Math.floor((tich % 192) / 24);
-        const tdqt = BAT_QUAI[tdqtStep % 8];
+        // --- Đại Du Ngoại Quái (Thiên Số) ---
+        // Tích Niên + 60 (doanh sai), chia 640, lấy dư, dư chia 80, dư chia 10
+        const ddNgoaiR1 = (tich + 60) % 640;       // Dư phép chia 640  
+        const ddNgoaiR2 = ddNgoaiR1 % 80;          // Dư phép chia 80
+        const ddNgoaiThanh = Math.floor(ddNgoaiR2 / 10); // Số quái đã vận qua
+        const ddNgoaiDu = ddNgoaiR2 % 10;          // Thời gian đang vận ở quái hiện tại
+        const ddNgoaiQuai = BAT_QUAI[ddNgoaiThanh % 8];
 
-        const tdqnStep = Math.floor(((tich % 360) % 24) / 3);
-        const tdqn = BAT_QUAI[tdqnStep % 8];
+        // --- Trùng Quái Đại Du: Ngoại trên, Nội dưới ---
+        const ddKey = `${ddNgoaiQuai}_${ddNoiQuai}`;
+        const ddTrungQuai = TRUNG_QUAI_TABLE[ddKey] || `${ddNgoaiQuai} / ${ddNoiQuai}`;
 
-        // Lưu Niên Quẻ (Sử dụng tichFull của Tuế)
-        const lnqStep = tichFull % 64 || 64;
-        let lnq = HEXAGRAMS_64[lnqStep - 1];
+        // ===================== TIỂU DU VẬN QUÁI =====================
 
-        // Quẻ Lưu Nguyệt
-        let queNguyet = lnq;
-        if (this.mode === "nguyet") {
-            if (this.lunarMonth > 6) {
-                // Sáu tháng cuối năm dùng Quẻ Biến (Tạm thời giả lập bằng cách đảo ngược index trong mảng)
-                queNguyet = HEXAGRAMS_64[64 - lnqStep] + " (Quẻ Biến)";
-            }
-        } else if (this.mode === "nhat" || this.mode === "thoi") {
-            lnq = "(Không áp dụng)";
-            queNguyet = "";
-        }
+        // --- Tiểu Du Nội Quái ---
+        // Tích Niên chia 192, lấy dư, dư chia 24
+        const tdNoiR1 = tich % 192;                // Dư phép chia 192
+        const tdNoiThanh = Math.floor(tdNoiR1 / 24); // Số quái đã vận qua
+        const tdNoiDu = tdNoiR1 % 24;              // Thời gian đang vận ở quái hiện tại
+        const tdNoiQuai = BAT_QUAI[tdNoiThanh % 8];
 
-        // Toán Định Sách
-        const SACH = { "Kiền": 36, "Khôn": 24, "Chấn": 28, "Khảm": 28, "Cấn": 28, "Tốn": 32, "Ly": 32, "Đoài": 32 };
-        let ddSach = (ddqt === ddqn) ? SACH[ddqt] : 0;
-        let tdSach = (tdqt === tdqn) ? SACH[tdqt] : 0;
-        
-        let nguyetSach = 0;
-        if (this.mode === "nguyet") {
-            const chiThangIdx = (this.lunarMonth + 1) % 12; // Tháng Giêng là Dần (2), Tý là (0)
-            const isThangDuong = (chiThangIdx % 2 === 0);
-            nguyetSach = isThangDuong ? 36 : 24;
-        }
+        // --- Tiểu Du Ngoại Quái ---
+        // Kỷ Dư chia 24, lấy dư, dư chia 3
+        const tdNgoaiR1 = kyDu % 24;               // Dư phép chia 24
+        const tdNgoaiThanh = Math.floor(tdNgoaiR1 / 3); // Số quái đã vận qua
+        const tdNgoaiDu = tdNgoaiR1 % 3;           // Thời gian đang vận ở quái hiện tại
+        const tdNgoaiQuai = BAT_QUAI[tdNgoaiThanh % 8];
 
-        return { ddqt, ddqn, tdqt, tdqn, lnq, queNguyet, ddSach, tdSach, nguyetSach };
-    }
+        // --- Trùng Quái Tiểu Du: Ngoại trên, Nội dưới ---
+        const tdKey = `${tdNgoaiQuai}_${tdNoiQuai}`;
+        const tdTrungQuai = TRUNG_QUAI_TABLE[tdKey] || `${tdNgoaiQuai} / ${tdNoiQuai}`;
 
-    // NHÓM 5: Các Đại Hạn Dài Hạn
-    calcDaiHan() {
-        const duongCuu = Math.floor((this.tichTrungCo % 4560) / 456);
-        const amBachLuc = (this.tichTrungCo % 4320) - 288;
-        
-        let amDuongAchR = (this.tueTich + 130) % 4560;
-        const chuKy = [9, 7, 6, 3];
-        let idx = 0;
-        let vong = 0;
-        while (amDuongAchR >= chuKy[idx]) {
-            amDuongAchR -= chuKy[idx];
-            idx = (idx + 1) % 4;
-            vong++;
-        }
-        const ach = `Vòng ${Math.floor(vong/4)}, Chu kỳ ${chuKy[idx]} (Dư ${amDuongAchR})`;
-
-        return { duongCuu, amBachLuc, ach };
-    }
-
-    // NHÓM 9: Vi Chỉnh Cờ
-    calcViChinhCo() {
-        const khaoNho = this.tueTich % 3 || 3;
-        const khaoLon = this.tueTich % 9 || 9;
-        const hK = `Khảo nhỏ năm thứ ${khaoNho}. Khảo lớn năm thứ ${khaoLon}.`;
-
-        const chung = Math.floor(this.tueTich / 12);
-        const chungTyle = chung % 4 || 4;
-        const chungDanTan = chung % 9 || 9;
-        const tL = `Chung thứ ${chung}. Đổi mới ${chungTyle}/4. Dân tàn ${chungDanTan}/9.`;
-
-        return { hK, tL };
-    }
-
-    // NHÓM 10-12: Trận Đồ & Địch
-    calcChienCuc(toanChu, toanKhach, tkIdx, taIdx) {
-        const toanDinh = (toanChu + toanKhach) % 10 || 10;
-        
-        let co = "", huong = "";
-        if ([1, 8].includes(toanDinh)) { co = "Khúc Đen"; }
-        else if ([2, 5].includes(toanDinh)) { co = "Tròn Vàng"; }
-        else if (toanDinh === 3) { co = "Thẳng Xanh"; }
-        else if ([4, 9].includes(toanDinh)) { co = "Nhọn Đỏ"; }
-        else if ([6, 7].includes(toanDinh)) { co = "Vuông Trắng"; }
-        
-        const CUNG_HUONG = { 1:"Bắc", 2:"Tây Nam", 3:"Đông", 4:"Đông Nam", 5:"Trung Ương", 6:"Tây Bắc", 7:"Tây", 8:"Đông Bắc", 9:"Nam" };
-        huong = CUNG_HUONG[toanDinh] || "Vô Hướng";
-
-        const soLuongDich = toanKhach >= 16 ? "Giặc đông, tướng giỏi" : (toanKhach <= 15 ? "Giặc ít, dễ tan" : "Bình thường");
-        
-        let tkHuong = "Không xác định";
-        if (tkIdx !== -1 && taIdx !== -1) {
-            if (tkIdx < taIdx) tkHuong = "Đông (Bên trái)";
-            else if (tkIdx > taIdx) tkHuong = "Tây (Bên phải)";
-        }
-
-        return { toanDinh, co, huong, soLuongDich, tkHuong };
-    }
-
-    // NHÓM 6, 7, 8, 12, 13, 14: Các Module khác
-    calcHaoDong() {
-        // Năm dương (chi lẻ): Đếm hào dương (1, 3, 5) từ dưới lên
-        // Năm âm (chi chẵn): Đếm hào âm (6, 4, 2) từ trên xuống
-        const haoTuongUng = this.isDuongDon ? "1/3/5 (Dương)" : "6/4/2 (Âm)";
-        
-        let nguyetHao = "";
-        if (this.mode === "nguyet") {
-            const haoGoc = this.isDuongDon ? 1 : 6;
-            let offset = this.lunarMonth - 1; // 1 -> 0
-            if (!this.isDuongDon) offset = -offset; // Âm đếm xuống
-            
-            let haoThang = (haoGoc + offset) % 6;
-            if (haoThang <= 0) haoThang += 6;
-            nguyetHao = ` (Tháng này rơi vào Hào ${haoThang})`;
-        }
-        
-        return haoTuongUng + nguyetHao;
-    }
-
-    calcNguAm() {
-        // 12 Chi -> Cung, Thương, Dốc, Chủy, Vũ
-        // Sử dụng namCanIdx, giả sử map tạm (nếu cần truyền Chi vào thì map thẳng)
-        return "Tý/Ngọ(Cung), Thìn/Tuất(Thương), Tỵ/Hợi(Dốc), Sửu/Mùi/Dần/Thân(Chủy), Mão/Dậu(Vũ)";
+        return {
+            // Đại Du
+            ddNoiQuai,
+            ddNoiThanh,
+            ddNoiDu,
+            ddNgoaiQuai,
+            ddNgoaiThanh,
+            ddNgoaiDu,
+            ddTrungQuai,
+            // Tiểu Du
+            tdNoiQuai,
+            tdNoiThanh,
+            tdNoiDu,
+            tdNgoaiQuai,
+            tdNgoaiThanh,
+            tdNgoaiDu,
+            tdTrungQuai
+        };
     }
 
     generateReport(toanChu, toanKhach, tkIdx, taIdx) {
         return {
-            que: this.calcQue(),
-            han: this.calcDaiHan(),
-            chienCuc: this.calcChienCuc(toanChu, toanKhach, tkIdx, taIdx),
-            viChinh: this.calcViChinhCo(),
-            haoDong: this.calcHaoDong(),
-            nguAm: this.calcNguAm()
+            daiTieuDu: this.calcDaiTieuDu()
         };
     }
 }

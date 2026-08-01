@@ -213,46 +213,48 @@ const PHAN_DA_CUU_CUNG = {
         predContent.innerHTML = "<p><em>Không có sao nào di chuyển trong chu kỳ tiếp theo, hoặc không có dữ liệu dự báo.</em></p>";
     }
 
-    // Populate Luận Đoán Chuyên Sâu
+    // Populate Vận Quái Thái Ất (Đại Du & Tiểu Du)
     const ldContent = document.getElementById("luan-doan-content");
     if (ldContent) {
-        if (data.luanDoanData) {
-            const ld = data.luanDoanData;
+        if (data.luanDoanData && data.luanDoanData.daiTieuDu) {
+            const du = data.luanDoanData.daiTieuDu;
             ldContent.innerHTML = `
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-                    <div>
-                        <h4 style="color:var(--text-color); margin-bottom:5px;">Vận Chuyển Quẻ</h4>
-                        <ul style="font-size: 0.9em; line-height: 1.5; color:var(--text-color);">
-                            <li><strong>Đại Du (Trong / Ngoài):</strong> ${ld.que.ddqt} / ${ld.que.ddqn} ${ld.que.ddSach ? '(Sách: '+ld.que.ddSach+')' : ''}</li>
-                            <li><strong>Tiểu Du (Trong / Ngoài):</strong> ${ld.que.tdqt} / ${ld.que.tdqn} ${ld.que.tdSach ? '(Sách: '+ld.que.tdSach+')' : ''}</li>
-                            <li><strong>Quẻ Lưu Niên (Năm):</strong> ${ld.que.lnq} (Hào: ${ld.haoDong})</li>
-                            ${ld.que.queNguyet ? '<li><strong>Quẻ Lưu Nguyệt:</strong> ' + ld.que.queNguyet + ' (Sách: ' + ld.que.nguyetSach + ')</li>' : ''}
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 15px;">
+                    <!-- ĐẠI DU VẬN QUÁI -->
+                    <div style="background: rgba(255, 215, 0, 0.04); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 8px; padding: 15px;">
+                        <h4 style="color: var(--gold); border-bottom: 1px dashed rgba(212,175,55,0.3); padding-bottom: 6px; margin-bottom: 10px; font-family: 'Cinzel', serif;">
+                            📜 ĐẠI DU VẬN QUÁI (QUẺ ĐẠI DU)
+                        </h4>
+                        <ul style="font-size: 0.88rem; line-height: 1.8; color: #e0e6ed; list-style: none; padding-left: 0;">
+                            <li><strong>🔹 Nội Quái (Đất):</strong> <span style="color:var(--gold); font-weight:bold;">${du.ddNoiQuai}</span> (Đã vận qua ${du.ddNoiThanh} quái, đang ở năm thứ ${du.ddNoiDu + 1}/36)</li>
+                            <li><strong>🔹 Ngoại Quái (Thiên Số):</strong> <span style="color:var(--gold); font-weight:bold;">${du.ddNgoaiQuai}</span> (Đã vận qua ${du.ddNgoaiThanh} quái, đang ở năm thứ ${du.ddNgoaiDu + 1}/10)</li>
+                            <li style="margin-top: 10px; padding: 8px 12px; background: rgba(212, 175, 55, 0.12); border-radius: 6px; border-left: 4px solid var(--gold);">
+                                <strong>☯ QUẺ ĐẠI DU TRÙNG QUÁI:</strong><br/>
+                                <span style="font-size: 1.15rem; color: #fff; font-weight: bold;">${du.ddTrungQuai}</span> 
+                                <span style="font-size: 0.8rem; color: var(--text-muted);">(Ngoại ${du.ddNgoaiQuai} ở trên / Nội ${du.ddNoiQuai} ở dưới)</span>
+                            </li>
                         </ul>
                     </div>
-                    <div>
-                        <h4 style="color:var(--text-color); margin-bottom:5px;">Luận Chiến Cục</h4>
-                        <ul style="font-size: 0.9em; line-height: 1.5; color:var(--text-color);">
-                            <li><strong>Toán Định:</strong> ${ld.chienCuc.toanDinh}</li>
-                            <li><strong>Trận Đồ:</strong> ${ld.chienCuc.co} (Hướng: ${ld.chienCuc.huong})</li>
-                            <li><strong>Số Lượng:</strong> ${ld.chienCuc.soLuongDich}</li>
-                            <li><strong>Hướng Giặc:</strong> ${ld.chienCuc.tkHuong}</li>
-                        </ul>
-                    </div>
-                    <div style="grid-column: span 2;">
-                        <h4 style="color:var(--text-color); margin-bottom:5px;">Đại Hạn & Vi Chỉnh</h4>
-                        <ul style="font-size: 0.9em; line-height: 1.5; color:var(--text-color);">
-                            <li><strong>Dương Cửu Hạn:</strong> ${ld.han.duongCuu}</li>
-                            <li><strong>Âm Bách Lục:</strong> ${ld.han.amBachLuc}</li>
-                            <li><strong>Âm Dương Ách:</strong> ${ld.han.ach}</li>
-                            <li><strong>Cờ Đen (Khảo):</strong> ${ld.viChinh.hK}</li>
-                            <li><strong>Cờ Xanh (Chung):</strong> ${ld.viChinh.tL}</li>
-                            <li><strong>Ngũ Âm:</strong> ${ld.nguAm}</li>
+
+                    <!-- TIỂU DU VẬN QUÁI -->
+                    <div style="background: rgba(0, 200, 255, 0.04); border: 1px solid rgba(0, 200, 255, 0.25); border-radius: 8px; padding: 15px;">
+                        <h4 style="color: #00d2ff; border-bottom: 1px dashed rgba(0,200,255,0.3); padding-bottom: 6px; margin-bottom: 10px; font-family: 'Cinzel', serif;">
+                            📜 TIỂU DU VẬN QUÁI (QUẺ TIỂU DU)
+                        </h4>
+                        <ul style="font-size: 0.88rem; line-height: 1.8; color: #e0e6ed; list-style: none; padding-left: 0;">
+                            <li><strong>🔹 Nội Quái:</strong> <span style="color:#00d2ff; font-weight:bold;">${du.tdNoiQuai}</span> (Đã vận qua ${du.tdNoiThanh} quái, đang ở năm thứ ${du.tdNoiDu + 1}/24)</li>
+                            <li><strong>🔹 Ngoại Quái:</strong> <span style="color:#00d2ff; font-weight:bold;">${du.tdNgoaiQuai}</span> (Đã vận qua ${du.tdNgoaiThanh} quái, đang ở năm thứ ${du.tdNgoaiDu + 1}/3)</li>
+                            <li style="margin-top: 10px; padding: 8px 12px; background: rgba(0, 200, 255, 0.12); border-radius: 6px; border-left: 4px solid #00d2ff;">
+                                <strong>☯ QUẺ TIỂU DU TRÙNG QUÁI:</strong><br/>
+                                <span style="font-size: 1.15rem; color: #fff; font-weight: bold;">${du.tdTrungQuai}</span> 
+                                <span style="font-size: 0.8rem; color: var(--text-muted);">(Ngoại ${du.tdNgoaiQuai} ở trên / Nội ${du.tdNoiQuai} ở dưới)</span>
+                            </li>
                         </ul>
                     </div>
                 </div>
             `;
         } else {
-            ldContent.innerHTML = "<p><em>Tính năng Luận Đoán chuyên sâu chỉ khả dụng cho chế độ Tuế Kể và Nguyệt Kể.</em></p>";
+            ldContent.innerHTML = "<p><em>Không có dữ liệu Vận Quái cho chế độ này.</em></p>";
         }
     }
 }
