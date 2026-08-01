@@ -167,25 +167,37 @@ const PHAN_DA_CUU_CUNG = {
         `;
     });
 
-    // Populate Future Predictions
-    const predContent = document.getElementById("future-predictions-content");
-    if (data.movingStars && data.movingStars.length > 0) {
-        const nextTimeStr = currentMode === "tue" ? "1 năm" : currentMode === "nguyet" ? "1 tháng" : currentMode === "nhat" ? "1 ngày" : currentMode === "thoi" ? "1 canh giờ" : "";
-        if (nextTimeStr) {
-            let predHtml = `<p>Trong <strong>${nextTimeStr} tiếp theo</strong>, các sao sau đây sẽ thay đổi quỹ đạo:</p><ul style="margin-top: 5px; margin-left: 20px;">`;
-            data.movingStars.forEach(m => {
-                predHtml += `<li><strong>${m.name}</strong> sẽ di chuyển sang <strong>${m.nextCungName}</strong> (hiện tại đang ở ${m.currCungName}).</li>`;
-            });
-            predHtml += `</ul>`;
-            predContent.innerHTML = predHtml;
+    // Populate Deep Analysis Report
+    const deepAnalysisEl = document.getElementById("luan-doan-deep-analysis-content");
+    if (deepAnalysisEl) {
+        if (typeof generateDetailedAnalysisReport === "function") {
+            deepAnalysisEl.innerHTML = generateDetailedAnalysisReport(data);
         } else {
-            predContent.innerHTML = "<p><em>Không dự báo quỹ đạo sao cho chế độ này.</em></p>";
+            deepAnalysisEl.innerHTML = "<p><em>Đang tải báo cáo luận giải chuyên sâu...</em></p>";
         }
-    } else if (predContent) {
-        predContent.innerHTML = "<p><em>Không có sao nào di chuyển trong chu kỳ tiếp theo, hoặc không có dữ liệu dự báo.</em></p>";
     }
 
-    // Ẩn/Hiện khung sa bàn 16 cung, dự báo tương lai và bản đồ cửu châu cho tab Quẻ Dịch & Bàn Nhân Mệnh
+    // Populate Future Predictions
+    const predContent = document.getElementById("future-predictions-content");
+    if (predContent) {
+        if (data.movingStars && data.movingStars.length > 0) {
+            const nextTimeStr = currentMode === "tue" ? "1 năm" : currentMode === "nguyet" ? "1 tháng" : currentMode === "nhat" ? "1 ngày" : currentMode === "thoi" ? "1 canh giờ" : "";
+            if (nextTimeStr) {
+                let predHtml = `<p>Trong <strong>${nextTimeStr} tiếp theo</strong>, các sao sau đây sẽ thay đổi quỹ đạo:</p><ul style="margin-top: 5px; margin-left: 20px;">`;
+                data.movingStars.forEach(m => {
+                    predHtml += `<li><strong>${m.name}</strong> sẽ di chuyển sang <strong>${m.nextCungName}</strong> (hiện tại đang ở ${m.currCungName}).</li>`;
+                });
+                predHtml += `</ul>`;
+                predContent.innerHTML = predHtml;
+            } else {
+                predContent.innerHTML = "<p><em>Không dự báo quỹ đạo sao cho chế độ này.</em></p>";
+            }
+        } else {
+            predContent.innerHTML = "<p><em>Không có sao nào di chuyển trong chu kỳ tiếp theo, hoặc không có dữ liệu dự báo.</em></p>";
+        }
+    }
+
+    // Ẩn/Hiện khung sa bàn 16 cung, các nút luận giải và bản đồ cửu châu cho tab Quẻ Dịch & Bàn Nhân Mệnh
     const isNoSaBanMode = (currentMode === "dich" || currentMode === "menh");
 
     const matrixGrid = document.querySelector(".matrix-grid");
@@ -193,9 +205,9 @@ const PHAN_DA_CUU_CUNG = {
         matrixGrid.style.display = isNoSaBanMode ? "none" : "grid";
     }
 
-    const futurePred = document.getElementById("future-predictions");
-    if (futurePred) {
-        futurePred.style.display = isNoSaBanMode ? "none" : "block";
+    const analysisSec = document.getElementById("analysis-accordion-section");
+    if (analysisSec) {
+        analysisSec.style.display = isNoSaBanMode ? "none" : "block";
     }
 
     const phanDaSec = document.getElementById("phan-da-map-section");
