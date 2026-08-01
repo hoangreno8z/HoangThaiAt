@@ -292,6 +292,55 @@ function renderVanQuaiSection(data) {
         return;
     }
 
+    if (data.nhanMenhData) {
+        const nm = data.nhanMenhData;
+
+        const vaoDoiHtml = renderHexagramGraphic(
+            "👶 QUẺ VÀO ĐỜI LẬP NGHIỆP",
+            `Giai đoạn 1 – 45/50 tuổi · Quẻ thứ ${nm.queVaoDoiNum}/64`,
+            nm.hexVaoDoiName,
+            nm.lines6VaoDoi,
+            nm.haoDongVaoDoi,
+            "#e67e22"
+        );
+
+        const dungNghiepHtml = renderHexagramGraphic(
+            "🏛️ QUẺ HẠN DỰNG NGHIỆP",
+            `Biến Quái từ Hào ${nm.haoDongVaoDoi} Động · Giai đoạn 45/50 tuổi về sau`,
+            nm.hexDungNghiepName,
+            nm.lines6DungNghiep,
+            0,
+            "#2ecc71"
+        );
+
+        const namHtml = renderHexagramGraphic(
+            "📅 QUẺ LƯU NIÊN (NĂM XEM)",
+            `Tuổi mụ ${nm.tuoiMu} tuổi · Quẻ thứ ${nm.queNamNum}/64`,
+            nm.hexNamName,
+            nm.lines6Nam,
+            0,
+            "#9b59b6"
+        );
+
+        ldContent.innerHTML = `
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                ${vaoDoiHtml}
+                ${dungNghiepHtml}
+                ${namHtml}
+            </div>
+            <div style="margin-top: 20px; padding: 15px; background: rgba(15, 20, 42, 0.9); border-radius: 8px; border: 1px solid rgba(212, 175, 55, 0.3); font-size: 0.85rem; color: #e0e6ed; line-height: 1.8;">
+                <h4 style="color: var(--gold); margin-bottom: 8px; font-family: 'Cinzel', serif;">📜 THÔNG TIN NẠP GIÁP & THAI NGUYÊN BÀN NHÂN MỆNH</h4>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li><strong>🔹 Tổng số Nạp Âm Nạp Giáp Tứ Trụ:</strong> ${nm.sumTuTru} (+ 55 Đại Diễn = ${nm.sumTuTru + 55}) ➔ Quẻ Vào Đời thứ <strong>${nm.queVaoDoiNum} (${nm.hexVaoDoiName})</strong></li>
+                    <li><strong>🔹 Ngày Chịu Khí (Thai Nguyên):</strong> Ngày + Giờ = ${nm.sumNgayGio} ➔ Số Hạn = <strong>${nm.soHan}</strong>. Lùi ${nm.soHan} bước từ Ngày sinh ➔ <strong>Ngày Chịu Khí: ${nm.thaiNguyenCanChi}</strong> (${nm.thaiNguyenChiName} - ${nm.isDuongThai ? 'Dương' : 'Âm'})</li>
+                    <li><strong>🔹 Hào Động Quẻ Vào Đời:</strong> ${nm.thaiNguyenRuleText}</li>
+                    <li><strong>🔹 Quẻ Hạn Dựng Nghiệp:</strong> Hào ${nm.haoDongVaoDoi} Quẻ Vào Đời động biến ➔ Quẻ thứ <strong>${nm.queDungNghiepNum} (${nm.hexDungNghiepName})</strong></li>
+                </ul>
+            </div>
+        `;
+        return;
+    }
+
     if (data.luanDoanData && data.luanDoanData.daiTieuDu) {
         const du = data.luanDoanData.daiTieuDu;
 

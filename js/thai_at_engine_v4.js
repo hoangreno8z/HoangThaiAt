@@ -946,23 +946,119 @@ function calculateQueDich(year, month, day, hour) {
 function calculateNhanMenh(year, month, day, hour) {
     const tuTru = getTuTru(year, month, day, hour);
     const solarTerm = getExactSolarTerm(year, month, day, hour);
-    const menhChiIdx = (tuTru.month.chiIdx + tuTru.hour.chiIdx) % 12;
-    const thanChiIdx = (tuTru.month.chiIdx + 12 - tuTru.hour.chiIdx) % 12;
-    const menhName = CHI_LIST_LOCAL[menhChiIdx];
-    const thanName = CHI_LIST_LOCAL[thanChiIdx];
-    
+
+    // CAN_NUMS: Giáp(11), Ất(11), Bính(9), Đinh(9), Mậu(15), Kỷ(15), Canh(13), Tân(13), Nhâm(7), Quý(7)
+    const CAN_NUMS = [11, 11, 9, 9, 15, 15, 13, 13, 7, 7];
+    // CHI_NUMS: Tý(7), Sửu(15), Dần(11), Mão(11), Thìn(15), Tị(9), Ngọ(9), Mùi(15), Thân(13), Dậu(13), Tuất(15), Hợi(7)
+    const CHI_NUMS = [7, 15, 11, 11, 15, 9, 9, 15, 13, 13, 15, 7];
+
+    const numNam   = CAN_NUMS[tuTru.year.canIdx]  + CHI_NUMS[tuTru.year.chiIdx];
+    const numThang = CAN_NUMS[tuTru.month.canIdx] + CHI_NUMS[tuTru.month.chiIdx];
+    const numNgay  = CAN_NUMS[tuTru.day.canIdx]   + CHI_NUMS[tuTru.day.chiIdx];
+    const numGio   = CAN_NUMS[tuTru.hour.canIdx]  + CHI_NUMS[tuTru.hour.chiIdx];
+
+    const sumTuTru = numNam + numThang + numNgay + numGio;
+    const sumNgayGio = numNgay + numGio;
+
+    // 1. Quẻ Vào Đời Lập Nghiệp: (sumTuTru + 55) % 64
+    let queVaoDoiNum = (sumTuTru + 55) % 64;
+    if (queVaoDoiNum === 0) queVaoDoiNum = 64;
+    const hexVaoDoiObj = THAI_TUE_HEXAGRAMS_64[queVaoDoiNum - 1];
+
+    // 2. Tìm Ngày Chịu Khí (Thai Nguyên): (sumNgayGio + 55) % 60
+    let soHan = (sumNgayGio + 55) % 60;
+    if (soHan === 0) soHan = 60;
+
+    const CAN_NAMES_LOCAL = ["Giáp", "Ất", "Bính", "Đinh", "Mậu", "Kỷ", "Canh", "Tân", "Nhâm", "Quý"];
+    const LUC_THAP_HOA_GIAP_LOCAL = [];
+    for (let i = 0; i < 60; i++) {
+        LUC_THAP_HOA_GIAP_LOCAL.push(`${CAN_NAMES_LOCAL[i % 10]} ${CHI_LIST_LOCAL[i % 12]}`);
+    }
+
+    let ngaySinhIdx = 0;
+    for (let i = 0; i < 60; i++) {
+        if (i % 10 === tuTru.day.canIdx && i % 12 === tuTru.day.chiIdx) {
+            ngaySinhIdx = i;
+            break;
+        }
+    }
+
+    const thaiNguyenIdx = (ngaySinhIdx - soHan + 600) % 60;
+    const thaiNguyenCanChi = LUC_THAP_HOA_GIAP_LOCAL[thaiNguyenIdx];
+    const thaiNguyenChiIdx = thaiNguyenIdx % 12;
+    const thaiNguyenChiName = CHI_LIST_LOCAL[thaiNguyenChiIdx];
+    const thaiNguyenChiNum = thaiNguyenChiIdx + 1;
+    const isDuongThai = (thaiNguyenChiIdx % 2 === 0);
+
+    let haoDongVaoDoi = 1;
+    let thaiNguyenRuleText = "";
+    if (isDuongThai) {
+        const duongSeq = [1, 3, 5];
+        haoDongVaoDoi = duongSeq[(thaiNguyenChiNum - 1) % 3];
+        thaiNguyenRuleText = `Ngày chịu khí ${thaiNguyenCanChi} (${thaiNguyenChiName} - Dương): Đếm thăng Hào Dương (1 ➔ 3 ➔ 5) ${thaiNguyenChiNum} bước ➔ Hào ${haoDongVaoDoi} Động.`;
+    } else {
+        const amSeq = [6, 4, 2];
+        haoDongVaoDoi = amSeq[(thaiNguyenChiNum - 1) % 3];
+        thaiNguyenRuleText = `Ngày chịu khí ${thaiNguyenCanChi} (${thaiNguyenChiName} - Âm): Đếm giáng Hào Âm (6 ➔ 4 ➔ 2) ${thaiNguyenChiNum} bước ➔ Hào ${haoDongVaoDoi} Động.`;
+    }
+
+    // 3. Quẻ Hạn Dựng Nghiệp (Biến quái từ Hào Động quẻ Vào Đời)
+    const lines6Bien = [...hexVaoDoiObj.lines];
+    lines6Bien[haoDongVaoDoi - 1] = lines6Bien[haoDongVaoDoi - 1] === 1 ? 0 : 1;
+
+    const hexBienObj = THAI_TUE_HEXAGRAMS_64.find(h => 
+        h.lines.every((val, idx) => val === lines6Bien[idx])
+    ) || hexVaoDoiObj;
+
+    // 4. Quẻ Lưu Niên (Quẻ Năm) theo tuổi mụ hiện tại
+    const currentYear = new Date().getFullYear();
+    const tuoiMu = Math.max(1, currentYear - year + 1);
+    let queNamNum = (queVaoDoiNum + tuoiMu) % 64;
+    if (queNamNum === 0) queNamNum = 64;
+    const hexNamObj = THAI_TUE_HEXAGRAMS_64[queNamNum - 1];
+
+    const nhanMenhData = {
+        sumTuTru,
+        sumNgayGio,
+        queVaoDoiNum,
+        hexVaoDoiName: hexVaoDoiObj.name,
+        lines6VaoDoi: hexVaoDoiObj.lines,
+        soHan,
+        thaiNguyenCanChi,
+        thaiNguyenChiName,
+        isDuongThai,
+        haoDongVaoDoi,
+        thaiNguyenRuleText,
+        queDungNghiepNum: hexBienObj.num,
+        hexDungNghiepName: hexBienObj.name,
+        lines6DungNghiep: hexBienObj.lines,
+        tuoiMu,
+        queNamNum,
+        hexNamName: hexNamObj.name,
+        lines6Nam: hexNamObj.lines
+    };
+
     const placement = { "trung_cung": [] };
     THAP_LUC_THAN.forEach(t => placement[t.id] = []);
-    const menhThan = THAP_LUC_THAN.find(t => t.name === menhName);
-    const thanThan = THAP_LUC_THAN.find(t => t.name === thanName);
-    if (menhThan) placement[menhThan.id].push({ name: "CUNG MỆNH", class: "thai-at" });
-    if (thanThan) placement[thanThan.id].push({ name: "CUNG THÂN", class: "van-xuong" });
+    placement["kien"].push({ name: `Vào Đời: ${hexVaoDoiObj.name}`, class: "thai-at" });
+    placement["khon"].push({ name: `Dựng Nghiệp: ${hexBienObj.name}`, class: "van-xuong" });
+    placement["ngo"].push({ name: `Hào ${haoDongVaoDoi} Động`, class: "thuy-kich" });
 
     return {
         modeName: "Bàn Nhân Mệnh",
-        tuTru, solarTerm: solarTerm.name,
-        donCucName: `Mệnh: ${menhName} — Thân: ${thanName}`,
-        batMon: "-", cuuTinh: "-",
-        placement, batHung: "-", verdict: "Xét ngũ hành bản mệnh.", movingStars: []
+        tuTru,
+        solarTerm: solarTerm.name,
+        donCucName: `Vào Đời: ${hexVaoDoiObj.name} ➔ Dựng Nghiệp: ${hexBienObj.name}`,
+        batMon: `Hào ${haoDongVaoDoi}`,
+        cuuTinh: `${hexVaoDoiObj.name}/${hexBienObj.name}`,
+        placement,
+        batHung: "-",
+        verdict: thaiNguyenRuleText,
+        movingStars: [],
+        nhanMenhData,
+        luanDoanData: {
+            daiTieuDu: null,
+            nhanMenhData
+        }
     };
 }
