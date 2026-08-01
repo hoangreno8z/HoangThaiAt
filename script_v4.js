@@ -10,48 +10,20 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("input-date").value = now.toISOString().split("T")[0];
     document.getElementById("input-time").value = now.toTimeString().substring(0, 5);
 
-    // Mode Nav Buttons
+    // 6 Mode Navigation Tab Buttons
     document.querySelectorAll(".nav-btn").forEach(btn => {
         btn.addEventListener("click", () => {
             document.querySelectorAll(".nav-btn").forEach(b => b.classList.remove("active"));
             btn.classList.add("active");
             currentMode = btn.getAttribute("data-mode");
-            document.getElementById("select-mode").value = currentMode;
             castChart();
         });
-    });
-
-    // Select Dropdown Sync
-    document.getElementById("select-mode").addEventListener("change", (e) => {
-        currentMode = e.target.value;
-        document.querySelectorAll(".nav-btn").forEach(b => {
-            b.classList.toggle("active", b.getAttribute("data-mode") === currentMode);
-        });
-        castChart();
     });
 
     // Form Submit
     document.getElementById("control-form").addEventListener("submit", (e) => {
         e.preventDefault();
         castChart();
-    });
-
-    // Timeline Slider
-    const slider = document.getElementById("timeline-slider");
-    const sliderLabel = document.getElementById("slider-val-label");
-    slider.addEventListener("input", (e) => {
-        const val = parseInt(e.target.value);
-        if (val === 0) sliderLabel.textContent = "Hiện tại";
-        else if (Math.abs(val) < 30) sliderLabel.textContent = val > 0 ? `+${val} Ngày` : `${val} Ngày`;
-        else sliderLabel.textContent = val > 0 ? `+${Math.round(val/30)} Tháng` : `${Math.round(val/30)} Tháng`;
-
-        const baseDate = document.getElementById("input-date").value;
-        if (baseDate) {
-            const parts = baseDate.split("-");
-            const d = new Date(parseInt(parts[0]), parseInt(parts[1]) - 1, parseInt(parts[2]));
-            d.setDate(d.getDate() + val);
-            renderWithDate(d);
-        }
     });
 
     // Initial render

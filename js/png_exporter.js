@@ -16,12 +16,15 @@ async function exportChartToPNG() {
     btn.disabled = true;
 
     try {
-        // Use html2canvas with scale 2 for crisp resolution
+        // Use html2canvas with scale 2 and windowWidth 1400 for crisp resolution without text clipping
         const canvas = await html2canvas(chartContainer, {
             scale: 2,
             useCORS: true,
             backgroundColor: "#050711",
-            logging: false
+            logging: false,
+            windowWidth: 1400,
+            scrollX: 0,
+            scrollY: 0
         });
 
         const imgDataUrl = canvas.toDataURL("image/png");
