@@ -100,8 +100,8 @@ const PHAN_DA_MAP_DATA = [
         chauName: "Dương Châu",
         chauHan: "揚州",
         direction: "Đông Nam",
-        ancientInfo: "Thời cổ gọi là Hoang Phục. Sách Vũ Cống viết: 'Dương Châu là lãnh thổ của Bách Việt ở phía nam'.",
-        modernInfo: "Bao gồm thành phố Thượng Hải, tỉnh Giang Tô, tỉnh Triết Giang, tỉnh Phúc Kiến, tỉnh Quảng Đông.",
+        ancientInfo: "Thời cổ gọi là Hoang Phục. Sách Vũ Cống viết: 'Dương Châu là lãnh thổ của Bách Việt ở phía nam'. Bao gồm cả vùng Hồ Tôn (湖孫) ở phía Nam, thuộc phạm vi lãnh thổ nước Xích Quỷ thời Kinh Dương Vương.",
+        modernInfo: "Bao gồm thành phố Thượng Hải, tỉnh Giang Tô, tỉnh Triết Giang, tỉnh Phúc Kiến, tỉnh Quảng Đông, và vùng Hồ Tôn (湖孫) — khu vực phía Nam lãnh thổ Bách Việt tại vùng Nam Hải.",
         color: "#2ecc71"
     }
 ];
@@ -114,7 +114,7 @@ function initPhanDaMap() {
     // Main AI Map Image
     let mapHtml = `
         <div class="pd-map-image-wrapper">
-            <img src="images/cuu_chau_phan_da_map.jpg?v=4.8.0" 
+            <img src="images/cuu_chau_phan_da_map.jpg?v=4.9.0" 
                  alt="Bản Đồ Cửu Cung Phận Dã - 9 Châu Trung Quốc Cổ Đại" 
                  class="pd-map-image"
                  loading="lazy" />
