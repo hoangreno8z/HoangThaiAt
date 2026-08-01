@@ -119,6 +119,45 @@ function render(year, month, day, hour) {
     document.getElementById("tc-bat-hung").textContent = data.batHung;
     document.getElementById("tc-verdict").textContent = data.verdict;
 
+const TRANG_THAI_KHI = {
+    "kien": "Âm Tuyệt",
+    "hoi": "Âm Thuần",
+    "ty": "Dương Tạp",
+    "suu": "Dương Tạp",
+    "can": "Dương Thuần",
+    "dan": "Dương Thuần",
+    "mao": "Dương Tạp",
+    "thin": "Dương Thuần",
+    "ton": "Dương Tuyệt",
+    "ty_chi": "Dương Tạp",
+    "ngo": "Dương Thuần",
+    "mui": "Âm Thuần",
+    "khon": "Âm Tạp",
+    "than": "Âm Tạp",
+    "dau": "Âm Thuần",
+    "tuat": "Âm Tạp"
+};
+
+const PHAN_DA_CUU_CUNG = {
+    "kien": "Ký Châu",
+    "hoi": "Ký Châu",
+    "ngo": "Kinh Châu",
+    "mui": "Kinh Châu",
+    "suu": "Thanh Châu",
+    "can": "Thanh Châu",
+    "dan": "Thanh Châu",
+    "mao": "Từ Châu",
+    "thin": "Từ Châu",
+    "trung_cung": "Dự Châu",
+    "dau": "Ung Châu",
+    "tuat": "Ung Châu",
+    "khon": "Lương Châu",
+    "than": "Lương Châu",
+    "ty": "Duyên Châu",
+    "ton": "Dương Châu",
+    "ty_chi": "Dương Châu"
+};
+
     // Render 16 outer cells
     THAP_LUC_THAN.forEach(than => {
         const cell = document.getElementById(`cell-${than.id}`);
@@ -140,12 +179,15 @@ function render(year, month, day, hour) {
             else auxHtml += tag;
         });
 
+        const khi = TRANG_THAI_KHI[than.id] || "";
+        const phanDa = PHAN_DA_CUU_CUNG[than.id] || "";
+
         cell.innerHTML = `
             <div class="cell-line-1">
-                <span>${than.name.toUpperCase()}</span>
-                <span>(${than.palaceNum})</span>
+                <span class="palace-title">${than.name.toUpperCase()}</span>
+                <span class="palace-khi">${khi}</span>
             </div>
-            <div class="cell-line-2">${than.alias} • ${than.element}</div>
+            <div class="cell-line-2">${than.alias} • ${phanDa}</div>
             <div class="cell-line-3">${mainHtml || ''}</div>
             <div class="cell-line-4">${generalHtml || ''}</div>
             <div class="cell-line-5">${baseHtml || ''}</div>

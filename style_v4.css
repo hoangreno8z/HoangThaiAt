@@ -194,12 +194,26 @@ h1 {
 
 /* Cell Inner Lines */
 .cell-line-1 {
-    font-family: 'Cinzel', serif; font-weight: 700; font-size: 0.78rem;
+    font-family: 'Cinzel', serif; font-weight: 700; font-size: 0.72rem;
     color: var(--gold); border-bottom: 1px solid rgba(255,255,255,0.08);
-    padding-bottom: 2px; display: flex; justify-content: space-between;
+    padding-bottom: 2px; display: flex; justify-content: space-between; align-items: center;
     white-space: nowrap;
 }
-.cell-line-2 { font-size: 0.68rem; color: var(--text-muted); font-style: italic; }
+.palace-title {
+    font-size: 0.74rem;
+    font-weight: 700;
+}
+.palace-khi {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 0.60rem;
+    font-weight: 600;
+    color: #e0e6ed;
+    background: rgba(212, 175, 55, 0.15);
+    padding: 1px 4px;
+    border-radius: 3px;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+}
+.cell-line-2 { font-size: 0.68rem; color: #a0aec0; font-style: normal; }
 .cell-line-3, .cell-line-4, .cell-line-5, .cell-line-6 {
     display: flex; flex-wrap: wrap; gap: 2px; align-items: center;
 }
