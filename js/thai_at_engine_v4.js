@@ -287,25 +287,43 @@ class ThaiAtBaseEngine {
         ];
     }
 
-    // ------ NHÓM CỬU TINH (MOD 900 / 270) ------
+    // ------ NHÓM CỬU TINH (VĂN XƯƠNG & TRỰC PHÙ) ------
     calcCuuTinh() {
         const res = [];
-        // Cửu Tinh Trực Phù
-        const du90 = (this.tueTich % 900) % 90;
-        const nhom = du90 === 0 ? 9 : Math.ceil(du90 / 10);
-        let curr = CAN_CUNG_MAP[this.namCanIdx] || 1;
+        const CUNG_TO_THAN_IDX = [-1, 3, 13, 7, 9, -1, 1, 15, 5, 11];
+
+        // 1. Cửu Tinh Trực Phù (900/90/10 năm, Lục Can -> Cung Gốc)
+        const TP_SAO_NAMES = ["Thiên Bồng", "Thiên Nhuế", "Thiên Xung", "Thiên Phụ", "Thiên Cầm", "Thiên Tâm", "Thiên Trụ", "Thiên Nhậm", "Thiên Ương"];
+        const CAN_TO_CUNG_TP = { 0: 1, 1: 9, 2: 8, 3: 7, 4: 1, 5: 2, 6: 3, 7: 4, 8: 5, 9: 6 };
+        const r900_tp = (this.tueTich % 900) % 90;
+        const q_tp = Math.floor(r900_tp / 10) + 1;
+        const start_tp = CAN_TO_CUNG_TP[this.namCanIdx] || 1;
         for (let i = 0; i < 9; i++) {
-            let sn = nhom + i; if (sn > 9) sn -= 9;
-            res.push({ thanIdx: CUNG_TO_THAN_IDX[curr], name: CUU_TINH[sn - 1] + " (TP)", class: "truc-phu", unique: 'TP_'+CUU_TINH[sn - 1] });
-            curr = (curr % 9) + 1;
+            const starIdx = (q_tp - 1 + i) % 9;
+            const cungNum = (start_tp - 1 + i) % 9 + 1;
+            res.push({
+                thanIdx: CUNG_TO_THAN_IDX[cungNum],
+                name: TP_SAO_NAMES[starIdx] + " (TP)",
+                class: "truc-phu",
+                unique: 'TP_' + TP_SAO_NAMES[starIdx]
+            });
         }
         
-        // Văn Xương 9 Sao
-        const vxStep = Math.floor((this.tueTich % 270) / 30);
-        const vxSao = (vxStep % 9) + 1;
-        const vxCung = CAN_CUNG_MAP[this.namCanIdx] || 1;
-        const vxNames = ["Bài Văn", "Huyền Phượng", "Minh Duy", "Âm Đức", "Chiêu Dao", "Thừa Minh", "Huyền Vũ", "Huyền Minh", "Hùng Minh"];
-        res.push({ thanIdx: CUNG_TO_THAN_IDX[vxCung], name: vxNames[vxSao - 1] + " (VX)", class: "van-xuong-9" });
+        // 2. Cửu Tinh Văn Xương (270/30 năm, Can năm -> Cung Gốc)
+        const VX_SAO_NAMES = ["Văn Xương", "Huyền Phượng", "Minh Duy", "Âm Đức", "Chiêu Dao", "Hoa Minh", "Huyền Vũ", "Huyền Minh", "Cưu Minh"];
+        const CAN_TO_CUNG_VX = { 0: 3, 1: 4, 2: 9, 3: 2, 4: 5, 5: 5, 6: 7, 7: 6, 8: 1, 9: 8 };
+        const r270_vx = this.tueTich % 270;
+        const q_vx = Math.floor(r270_vx / 30) + 1;
+        const start_vx = CAN_TO_CUNG_VX[this.namCanIdx] || 1;
+        for (let i = 0; i < 9; i++) {
+            const starIdx = (q_vx - 1 + i) % 9;
+            const cungNum = (start_vx - 1 + i) % 9 + 1;
+            res.push({
+                thanIdx: CUNG_TO_THAN_IDX[cungNum],
+                name: VX_SAO_NAMES[starIdx] + " (VX)",
+                class: "van-xuong-9"
+            });
+        }
         
         return res;
     }
@@ -399,29 +417,28 @@ class ThaiAtBaseEngine {
             { thanIdx: bphongIdx, name: "Bát Phong", class: "other-stars" }
         );
 
-        // --- QUÝ THẦN ---
-        // (Kỷ dư + 3) % 9, khởi 1 đi ngược tìm Trực Sự
-        const qtTsR = (this.kyDu + 3) % 9 || 9;
-        const nguocQuyDao = [1, 9, 8, 7, 6, 5, 4, 3, 2];
-        const trucSuCung = nguocQuyDao[qtTsR - 1]; // Trực Sự hiện tại
-        
-        // "Rút trực sự vào trung cung, 8 sao bay thuận"
-        // Tức là sao Trực Sự sẽ nằm ở Trung Cung (Cung 5). Sao tiếp theo bay theo đường Lạc Thư (6, 7, 8, 9, 1, 2, 3, 4).
-        const LAC_THU_PATH = [5, 6, 7, 8, 9, 1, 2, 3, 4];
-        const QT_NAMES = ["Thái Nhất", "Nhiếp Đề", "Hiên Viên", "Chiêu Dao", "Thiên Phù", "Thanh Long", "Hàm Trì", "Thái Âm", "Thiên Hoàng"];
-        
-        // Xác định sao Trực Sự (Thái Nhất = 1, Nhiếp Đề = 2...) dựa theo trucSuCung (vì Trực sự chính là cung chứa sao 1? Hay sao 1 là trực sự?
-        // Theo chuẩn: sao Thái Nhất luôn luôn ở vị trí Trực Sự ban đầu).
-        // Khi bay, sao 1 vào trung cung. Sao 2 bay ra 6. Sao 3 bay ra 7...
-        // Tức là toàn bộ mảng sao sẽ được rải dọc theo LAC_THU_PATH.
-        for (let i = 0; i < 9; i++) {
-            const starIndex = i; // 0=Thái Nhất, 1=Nhiếp Đề...
-            const targetCung = LAC_THU_PATH[i];
-            res.push({ 
-                thanIdx: targetCung === 5 ? -1 : CUNG_TO_THAN_IDX[targetCung], 
-                name: QT_NAMES[starIndex] + " (QT)", 
-                class: "quy-than", 
-                unique: 'QT_'+QT_NAMES[starIndex] 
+        // --- QUÝ THẦN (9 SAO QUÝ THẦN: Nhập Trung Cung, bay lùi 8 cung xung quanh) ---
+        const QT_SAO_NAMES = ["Thái Nhất", "Thiên Hoàng", "Thái Âm", "Hàm Trì", "Thanh Long", "Thiên Phù", "Chiêu Dao", "Hiên Viên", "Nhiếp Đề"];
+        const QT_PATH_8 = [3, 1, 7, 13, 5, 15, 9, 11]; // Kiền, Đoài, Cấn, Ly, Khảm, Khôn, Chấn, Tốn
+        const r_qt = (kVal + 3) % 9 || 9;
+
+        let stIdx = r_qt - 1; // 0-based index of star
+        // Trung Cung
+        res.push({
+            thanIdx: -1,
+            name: QT_SAO_NAMES[stIdx] + " (QT)",
+            class: "quy-than",
+            unique: 'QT_' + QT_SAO_NAMES[stIdx]
+        });
+
+        // Bay lùi 8 cung
+        for (let i = 0; i < 8; i++) {
+            stIdx = (stIdx - 1 + 9) % 9;
+            res.push({
+                thanIdx: QT_PATH_8[i],
+                name: QT_SAO_NAMES[stIdx] + " (QT)",
+                class: "quy-than",
+                unique: 'QT_' + QT_SAO_NAMES[stIdx]
             });
         }
         
