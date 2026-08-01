@@ -597,45 +597,49 @@ class ThoiKeEngine {
         this.tuTru = getTuTru(year, month, day, hour);
         
         const currentJD = getCanChiDay(year, month, day).jdInt || 0;
-        const currentHourIdx = this.tuTru.hour.chiIdx;
+        const gioChiNum = this.tuTru.hour.chiIdx + 1; // 1=Tý, 2=Sửu... 12=Hợi
         
-        // Tiết khí Hạ Chí thường rơi vào 21-22 tháng 6. Đông Chí vào 21-22 tháng 12.
-        // Cần xác định hiện tại thuộc nửa năm Dương Độn (sau ĐC, trước HC) hay Âm Độn (sau HC, trước ĐC).
+        // 1. Phân định Âm Cục và Dương Cục theo Tiết Khí:
+        // Dương Cục: Sau tiết Đông Chí (21/12) đến trước Hạ Chí (21/6)
+        // Âm Cục: Sau tiết Hạ Chí (21/6) đến trước Đông Chí (21/12)
         let isDuongDon = true;
         if ((month > 6 && month < 12) || (month === 6 && day >= 21) || (month === 12 && day < 21)) {
-            isDuongDon = false; // Nửa cuối năm -> Âm Độn
+            isDuongDon = false;
         }
-        
-        // Tìm mốc Đông Chí hoặc Hạ Chí gần nhất
-        let mocYear = year;
-        let mocMonth = isDuongDon ? 12 : 6;
-        if (isDuongDon && (month < 12 || (month === 12 && day < 21))) {
-            mocYear = year - 1; // Đông Chí năm trước
-        }
-        const mocJD = Math.round(getJulianDay(mocYear, mocMonth, 22, 12, 0)); // Ước lượng 22/6 hoặc 22/12
-        
-        // Tìm ngày Giáp Tý hoặc Giáp Ngọ đầu tiên sau mốc này
-        // Giáp Tý: JD % 60 === 11. Giáp Ngọ: Can=Giáp, Chi=Ngọ -> JD % 60 === 41
-        let gtgnJD = mocJD;
-        while (gtgnJD % 60 !== 11 && gtgnJD % 60 !== 41) gtgnJD++;
-        
-        // Số giờ từ nửa đêm ngày Giáp Tý/Giáp Ngọ đó
-        this.soGio = (currentJD - gtgnJD) * 12 + currentHourIdx;
-        if (this.soGio < 0) {
-            // Nếu ngày hiện tại kẹt giữa Tiết Khí và Giáp Tý/Giáp Ngọ, lấy mốc ngược về Tiết khí trước đó
-            this.soGio = 0; // Tạm fallback
-        }
-        
         this.isDuongDon = isDuongDon;
-        this.tueTich = this.soGio; // Để base không lỗi
+
+        // 2. Mốc khởi tính Vòng Kỷ Dư Giờ: Ngày Giáp Tý hoặc Giáp Ngọ gần nhất
+        // Giáp Tý: JD % 60 === 11, Giáp Ngọ: JD % 60 === 41
+        let gtgnJD = currentJD;
+        while (gtgnJD % 60 !== 11 && gtgnJD % 60 !== 41) {
+            gtgnJD--;
+        }
+
+        // Số ngày D đếm từ mốc Giáp Tý/Giáp Ngọ đến ngày cầu việc
+        const numDays = currentJD - gtgnJD + 1; // 1-indexed
+
+        // Tích Giờ = (D - 1) * 12 + gioChiNum
+        this.tichGio = (numDays - 1) * 12 + gioChiNum;
+
+        // Vòng Kỷ Dư Giờ = tichGio % 360
+        let kyDuGio = this.tichGio % 360;
+        if (kyDuGio === 0) kyDuGio = 360;
+        this.kyDu = kyDuGio;
+
         this.namCanIdx = this.tuTru.year.canIdx;
+        this.tueTich = this.tichGio;
     }
+
     getEngine(offset = 0) {
-        const soGioCurrent = this.soGio + offset;
-        return new RealThoiKeEngine(soGioCurrent, soGioCurrent % 360, this.isDuongDon, this.namCanIdx, soGioCurrent, this.tuTru);
+        const tichCurrent = this.tichGio + offset;
+        let kyDuCurrent = tichCurrent % 360;
+        if (kyDuCurrent === 0) kyDuCurrent = 360;
+        return new RealThoiKeEngine(tichCurrent, kyDuCurrent, this.isDuongDon, this.namCanIdx, this.tichGio, this.tuTru);
     }
+
     getMetadata() {
-        return { name: "Thời Kể (Lập Quẻ Giờ)", don: this.isDuongDon ? "Dương Độn" : "Âm Độn", cucNum: (this.soGio % 72) || 72 };
+        const donStr = this.isDuongDon ? "Dương Độn" : "Âm Độn";
+        return { name: "Thời Kể (Lập Quẻ Giờ)", don: donStr, cucNum: (this.tichGio % 72) || 72 };
     }
 }
 
