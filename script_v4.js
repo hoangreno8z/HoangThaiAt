@@ -381,8 +381,10 @@ function renderVanQuaiSection(data) {
 // ========================================
 // BẢNG TRA CỨU Ý NGHĨA (Render on DOMContentLoaded)
 // ========================================
+let refTablesRendered = false;
 function renderReferenceTables() {
-    if (typeof THAI_AT_REFERENCE === 'undefined') return;
+    if (refTablesRendered || typeof THAI_AT_REFERENCE === 'undefined') return;
+    refTablesRendered = true;
     const ref = THAI_AT_REFERENCE;
     
     // 16 Cung

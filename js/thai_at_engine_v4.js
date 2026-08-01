@@ -83,7 +83,9 @@ class ThaiAtBaseEngine {
         let stepCount = 1;
         const pauseArr = this.isDuongDon ? [3, 15] : [7, 11]; // Kiền,Khôn vs Cấn,Tốn
         if (R <= 1) return { thanIdx: current, name: "Văn Xương (Thiên Mục)", class: "van-xuong" };
-        while (stepCount < R) {
+        let safety = 0;
+        while (stepCount < R && safety < 100) {
+            safety++;
             if (pauseArr.includes(current)) {
                 stepCount++;
                 if (stepCount >= R) return { thanIdx: current, name: "Văn Xương (Thiên Mục)", class: "van-xuong" };
@@ -103,7 +105,9 @@ class ThaiAtBaseEngine {
         for (let i = 1; i < R; i++) {
             current = (current - 1 + 16) % 16;
             // Bỏ qua 4 góc (Kiền, Cấn, Tốn, Khôn) khi đếm 12 chi
-            while ([3, 7, 11, 15].includes(current)) {
+            let safety = 0;
+            while ([3, 7, 11, 15].includes(current) && safety < 10) {
+                safety++;
                 current = (current - 1 + 16) % 16;
             }
         }
@@ -116,7 +120,9 @@ class ThaiAtBaseEngine {
         
         let stepCount = 1;
         let p = thanHopIdx;
-        while (p !== vanXuongIdx) {
+        let safety = 0;
+        while (p !== vanXuongIdx && safety < 32) {
+            safety++;
             p = (p + 1) % 16;
             stepCount++;
         }
@@ -152,7 +158,9 @@ class ThaiAtBaseEngine {
             }
             
             let p = (startIdx + 1) % 16;
-            while (p !== taIdx) {
+            let safety = 0;
+            while (p !== taIdx && safety < 32) {
+                safety++;
                 if (MAIN_PALACE_BIET_SO[p] !== undefined) {
                     sum += MAIN_PALACE_BIET_SO[p];
                 }
@@ -339,7 +347,9 @@ class ThaiAtBaseEngine {
             let current = startIdx;
             let stepCount = 1;
             if (steps <= 1) return current;
-            while (true) {
+            let safety = 0;
+            while (safety < 100) {
+                safety++;
                 if (pauseArr.includes(current)) {
                     stepCount++;
                     if (stepCount >= steps) return current;
@@ -348,6 +358,7 @@ class ThaiAtBaseEngine {
                 stepCount++;
                 if (stepCount >= steps) return current;
             }
+            return current;
         };
 
         const kVal = this.kyDu !== undefined ? this.kyDu : (this.tueTich % 360);
@@ -559,15 +570,26 @@ class NhatKeEngine {
         const dongChiJD = Math.round(getJulianDay(dongChiYear, 12, 22, 12, 0));
         
         let giapTyJD = dongChiJD;
-        while (giapTyJD % 60 !== 11) giapTyJD++;
+        let safety1 = 0;
+        while (giapTyJD % 60 !== 11 && safety1 < 120) {
+            giapTyJD++;
+            safety1++;
+        }
         
         this.soNgayTuGiapTy = currentJD - giapTyJD;
-        if (this.soNgayTuGiapTy < 0) {
+        if (this.soNgayTuGiapTy < 0 || isNaN(this.soNgayTuGiapTy)) {
             dongChiYear--;
             const prevDongChiJD = Math.round(getJulianDay(dongChiYear, 12, 22, 12, 0));
             giapTyJD = prevDongChiJD;
-            while (giapTyJD % 60 !== 11) giapTyJD++;
+            let safety2 = 0;
+            while (giapTyJD % 60 !== 11 && safety2 < 120) {
+                giapTyJD++;
+                safety2++;
+            }
             this.soNgayTuGiapTy = currentJD - giapTyJD;
+        }
+        if (isNaN(this.soNgayTuGiapTy) || this.soNgayTuGiapTy < 1) {
+            this.soNgayTuGiapTy = 1;
         }
 
         // Âm Độn / Dương Độn cho Nhật Kể:
@@ -611,12 +633,16 @@ class ThoiKeEngine {
         // 2. Mốc khởi tính Vòng Kỷ Dư Giờ: Ngày Giáp Tý hoặc Giáp Ngọ gần nhất
         // Giáp Tý: JD % 60 === 11, Giáp Ngọ: JD % 60 === 41
         let gtgnJD = currentJD;
-        while (gtgnJD % 60 !== 11 && gtgnJD % 60 !== 41) {
+        let safety3 = 0;
+        while ((gtgnJD % 60 !== 11 && gtgnJD % 60 !== 41) && safety3 < 120) {
             gtgnJD--;
+            safety3++;
         }
+        if (isNaN(gtgnJD)) gtgnJD = currentJD;
 
         // Số ngày D đếm từ mốc Giáp Tý/Giáp Ngọ đến ngày cầu việc
-        const numDays = currentJD - gtgnJD + 1; // 1-indexed
+        let numDays = currentJD - gtgnJD + 1; // 1-indexed
+        if (isNaN(numDays) || numDays < 1) numDays = 1;
 
         // Tích Giờ = (D - 1) * 12 + gioChiNum
         this.tichGio = (numDays - 1) * 12 + gioChiNum;
