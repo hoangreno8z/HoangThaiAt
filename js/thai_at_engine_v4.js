@@ -325,25 +325,36 @@ class ThaiAtBaseEngine {
             }
         };
 
-        // Thiên Tôn (chia 4, đi ngược góc: Cấn(8) -> Kiền(6) -> Tốn(4) -> Khôn(2))
-        const ttonR = this.kyDu % 4 || 4;
-        const ttonIdx = [7, 3, 11, 15][ttonR - 1];
+        const kVal = this.kyDu !== undefined ? this.kyDu : (this.tueTich % 360);
+        const isDuong = this.isDuongDon !== false;
+
+        // 1. Thiên Tôn (dư mod 4, Dương: Khảm->Đoài->Ly->Chấn, Âm: Chấn->Ly->Đoài->Khảm)
+        const r4 = (kVal % 4) || 4;
+        const THIEN_TON_DUONG = [5, 1, 13, 9];
+        const THIEN_TON_AM = [9, 13, 1, 5];
+        const ttonIdx = (isDuong ? THIEN_TON_DUONG : THIEN_TON_AM)[r4 - 1];
         
-        // Thiên Hoàng (chia 20, khởi Thân đi thuận, lưu 2 toán ở 4 góc: Cấn, Tốn, Khôn, Kiền)
-        const thoangR = this.kyDu % 20 || 20;
-        const thoangIdx = countSteps(0, thoangR, [7, 11, 15, 3]); // Thân=0
+        // 2. Thiên Hoàng (dư mod 20, Dương khởi Thân lưu 2 toán ở 4 góc, Âm khởi Dần lưu 2 toán ở 4 góc)
+        const r20 = (kVal % 20) || 20;
+        const THIEN_HOANG_DUONG = [0, 1, 2, 3, 3, 4, 5, 6, 7, 7, 8, 9, 10, 11, 11, 12, 13, 14, 15, 15];
+        const THIEN_HOANG_AM = [8, 7, 7, 6, 5, 4, 3, 3, 2, 1, 0, 15, 15, 14, 13, 12, 11, 11, 10, 9];
+        const thoangIdx = (isDuong ? THIEN_HOANG_DUONG : THIEN_HOANG_AM)[r20 - 1];
         
-        // Thiên Thời (chia 12, khởi Dần đi thuận)
-        const tthoiR = this.kyDu % 12 || 12;
-        const tthoiIdx = CHI_TO_THAN_IDX[(2 + tthoiR - 1) % 12]; // Dần=2
+        // 3. Thiên Thời (dư mod 12, Dương khởi Dần thuận 12 chi, Âm khởi Thân nghịch 12 chi)
+        const r12 = (kVal % 12) || 12;
+        const THIEN_THOI_DUONG = [8, 9, 10, 12, 13, 14, 0, 1, 2, 4, 5, 6];
+        const THIEN_THOI_AM = [0, 14, 13, 12, 10, 9, 8, 6, 5, 4, 2, 1];
+        const tthoiIdx = (isDuong ? THIEN_THOI_DUONG : THIEN_THOI_AM)[r12 - 1];
         
         // Đế Phù (chia 20, khởi Tuất đi thuận, lưu 2 toán ở 4 chính: Tý, Mão, Ngọ, Dậu)
-        const dephuR = this.kyDu % 20 || 20;
+        const dephuR = kVal % 20 || 20;
         const dephuIdx = countSteps(2, dephuR, [5, 9, 13, 1]); // Tuất=2
         
-        // Phi Điểu (chia 9, khởi 1 đi thuận)
-        const pdR = this.kyDu % 9 || 9;
-        const pdIdx = CUNG_TO_THAN_IDX[pdR];
+        // 4. Phi Điểu (dư mod 9, Dương khởi Càn thuận 9 cung, Âm khởi Tốn nghịch 9 cung)
+        const r9 = (kVal % 9) || 9;
+        const PHI_DIEU_DUONG = [3, 13, 7, 9, -1, 1, 15, 5, 11];
+        const PHI_DIEU_AM = [11, 5, 15, 1, -1, 9, 7, 13, 3];
+        const pdIdx = (isDuong ? PHI_DIEU_DUONG : PHI_DIEU_AM)[r9 - 1];
         
         // Ngũ Hành (chia 9, khởi 1 nhảy 5)
         const nhR = this.kyDu % 9 || 9;
