@@ -511,24 +511,37 @@ class TueKeEngine {
 class NguyetKeEngine {
     constructor(year, month, day, hour) {
         this.tuTru = getTuTru(year, month, day, hour);
-        
-        // Tính Tuế Tích Thượng Cổ
-        this.tueTichThuongCo = THUONG_CO_EPOCH + year - 1;
-        const tueTichPrev = THUONG_CO_EPOCH + year - 2;
-        const prevKyDu = tueTichPrev % 360;
-        
-        // Đếm tháng từ tháng 11 năm trước (Tháng Tý)
-        let deltaMonth = month >= 11 ? month - 10 : month + 2;
-        
-        this.tueTich = (prevKyDu * 12) + deltaMonth;
         this.namCanIdx = this.tuTru.year.canIdx;
+
+        // 1. Vòng Kỷ Dư Tháng (Kỷ Dư Nguyệt Kể):
+        // Lấy Vòng Kỷ Dư Năm của năm có tháng cầu việc trừ 1, nhân 12, cộng số tháng (tháng Giêng=1) + 2 tháng thiên/địa chính
+        const tueTichNam = THUONG_CO_EPOCH + year;
+        const kyDuNam = tueTichNam % 360 || 360;
+        const lunarMonth = (this.tuTru.month && this.tuTru.month.chiIdx !== undefined) ? ((this.tuTru.month.chiIdx + 10) % 12 + 1) : 1;
+
+        // Tích Tháng = (kyDuNam - 1) * 12 + lunarMonth + 2
+        this.tichThang = (kyDuNam - 1) * 12 + lunarMonth + 2;
+
+        let kyDuThang = this.tichThang % 360;
+        if (kyDuThang === 0) kyDuThang = 360;
+        this.kyDu = kyDuThang;
+
+        // 2. Định Âm Cục và Dương Cục:
+        // Nguyệt Cục luôn đồng bộ với thuộc tính Tuế Cục (Can năm Dương -> Dương Độn, Can năm Âm -> Âm Độn)
+        this.isDuongDon = (this.namCanIdx % 2 === 0);
+
+        this.tueTich = this.tichThang;
+        this.tueTichThuongCo = tueTichNam;
     }
     getEngine(offset = 0) {
-        const t = this.tueTich + offset;
-        return new RealNguyetKeEngine(t, t % 360, true, this.namCanIdx, this.tueTichThuongCo, this.tuTru);
+        const t = this.tichThang + offset;
+        let k = t % 360;
+        if (k === 0) k = 360;
+        return new RealNguyetKeEngine(t, k, this.isDuongDon, this.namCanIdx, this.tueTichThuongCo, this.tuTru);
     }
     getMetadata() {
-        return { name: "Nguyệt Kể (Lập Quẻ Tháng)", don: "Dương Độn", cucNum: this.getEngine(0).cucNum };
+        const donStr = this.isDuongDon ? "Dương Độn" : "Âm Độn";
+        return { name: "Nguyệt Kể (Lập Quẻ Tháng)", don: donStr, cucNum: this.getEngine(0).cucNum };
     }
 }
 

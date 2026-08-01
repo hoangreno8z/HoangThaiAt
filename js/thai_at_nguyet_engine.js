@@ -6,7 +6,7 @@ class RealNguyetKeEngine extends ThaiAtBaseEngine {
         this.fullTueTich = fullTueTich; // Thượng Cổ Tuế Tích
     }
     
-    // 2. Thái Ất bàn tháng (Chạy 9 cung, cứ 3 cục đổi 1 cung)
+    // 2. Thái Ất bàn tháng (Chạy 9 cung, cứ 3 cục đổi 1 cung - 3 tháng 1 cung)
     calcThaiAt() {
         const step = Math.floor((this.cucNum - 1) / 3);
         const CUNG_TO_THAN = [
@@ -23,6 +23,23 @@ class RealNguyetKeEngine extends ThaiAtBaseEngine {
         const currentCung = (step % 9); // 0 to 8 (Cung 1 to 9)
         const thanIdx = CUNG_TO_THAN[currentCung];
         return { thanIdx, class: 'thai-at', name: 'Thái Ất' + (thanIdx === -1 ? ' (Trung Cung)' : '') };
+    }
+
+    // 3. Thái Tuế Nguyệt Kể: An tại Địa Chi của Tháng cần xem (Điểm khác biệt 4)
+    calcThaiTue() {
+        const thangChiIdx = (this.tuTru && this.tuTru.month) ? this.tuTru.month.chiIdx : 0;
+        const chiToThan = [0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14];
+        const thanIdx = chiToThan[thangChiIdx];
+        return { thanIdx, class: 'thai-tue', name: 'Thái Tuế' };
+    }
+
+    // Thái Âm đứng sau Thái Tuế 2 cung (Chi tháng - 2)
+    calcThaiAm() {
+        const thangChiIdx = (this.tuTru && this.tuTru.month) ? this.tuTru.month.chiIdx : 0;
+        const thaiAmChiIdx = (thangChiIdx - 2 + 12) % 12;
+        const chiToThan = [0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14];
+        const thanIdx = chiToThan[thaiAmChiIdx];
+        return { thanIdx, class: 'thai-am', name: 'Thái Âm' };
     }
     
     // 5. Bát Môn, Cửu Tinh, Tứ Thần, Tam Cơ, Ba Cờ, Phong Vũ, Quý Thần, Đại Tinh...
