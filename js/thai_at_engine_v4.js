@@ -236,11 +236,13 @@ class ThaiAtBaseEngine {
         const trucPhuIdx = MASTER_PATH[(4 + P - 1) % 12];  // Khởi Trung Cung (idx 4 của MASTER_PATH)
         const diaAtIdx = MASTER_PATH[(8 + P - 1) % 12];    // Khởi Tốn (idx 8 của MASTER_PATH)
         
-        const step36 = Math.floor(r36 / 3);
-        const tlR = ((this.tueTich % 60) % 12) || 12;
-        const tlIdx = CHI_TO_THAN_IDX[(11 + tlR - 1) % 12];
+        // 1. Thanh Long: Kỷ Dư % 60 % 12, khởi Hợi thuận 12 địa chi
+        const r60_tl = kVal % 60;
+        const r12_tl = (r60_tl % 12) || 12;
+        const THANH_LONG_PATH = [4, 5, 6, 8, 9, 10, 12, 13, 14, 0, 1, 2];
+        const tlIdx = THANH_LONG_PATH[r12_tl - 1];
         
-        // 1. Thái Âm: luôn đứng sau Thái Tuế 2 cung (Thái Tuế - 2)
+        // 2. Thái Âm: luôn đứng sau Thái Tuế 2 cung (Thái Tuế - 2)
         let thaiTueChiIdx = 6; // Mặc định Ngọ
         if (this.tuTru) {
             if (this.tuTru.hour && this.tuTru.hour.chiIdx !== undefined && this.mode === 'thoi') thaiTueChiIdx = this.tuTru.hour.chiIdx;
@@ -251,7 +253,7 @@ class ThaiAtBaseEngine {
         const thaiAmChiIdx = (thaiTueChiIdx - 2 + 12) % 12;
         const taIdx = CHI_TO_THAN_IDX[thaiAmChiIdx];
         
-        // 2. Phi Phù: Kỷ Dư % 72 / 3 + 1, đếm theo vòng 12 cung Dương/Âm Độn
+        // 3. Phi Phù: Kỷ Dư % 72 / 3 + 1, đếm theo vòng 12 cung Dương/Âm Độn
         const r72 = kVal % 72;
         const P_pp = Math.floor(r72 / 3) + 1;
         const ppStepIdx = (P_pp - 1) % 12;
@@ -260,12 +262,17 @@ class ThaiAtBaseEngine {
         const phiPhuPath = (this.isDuongDon !== false) ? PHI_PHU_DUONG : PHI_PHU_AM;
         const phiPhuIdx = phiPhuPath[ppStepIdx];
         
-        const xkStep = Math.floor(((this.tueTich + 1) % 40) / 4);
-        const xkPath = [11, 0, 12, 8]; // Hợi, Thân, Tị, Dần (4 cung mạnh đi ngược)
-        const xkIdx = xkPath[xkStep % 4];
+        // 4. Xích Kỳ: (Kỷ Dư + 1) % 40 % 4, khởi Hợi->Thân->Tị->Dần
+        const r40_xk = (kVal + 1) % 40;
+        const r4_xk = (r40_xk % 4) || 4;
+        const XICH_KY_PATH = [4, 0, 12, 8];
+        const xkIdx = XICH_KY_PATH[r4_xk - 1];
         
-        const hkStep = Math.floor(((this.tueTich + 25) % 360 % 36) / 3);
-        const hkIdx = CHI_TO_THAN_IDX[(11 - hkStep + 12) % 12];
+        // 5. Hắc Kỳ: (Kỷ Dư + 25) % 36 / 3 + 1, khởi Hợi nghịch 12 địa chi
+        const r36_hk = (kVal + 25) % 36;
+        const P_hk = Math.floor(r36_hk / 3) + 1;
+        const HAC_KY_PATH = [4, 2, 1, 0, 14, 13, 12, 10, 9, 8, 6, 5];
+        const hkIdx = HAC_KY_PATH[(P_hk - 1) % 12];
         
         return [
             { thanIdx: tuThanIdx, name: "Tứ Thần", class: "tu-than" },
