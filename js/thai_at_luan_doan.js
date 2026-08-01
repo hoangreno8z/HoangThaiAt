@@ -59,6 +59,17 @@ const TRIGRAM_LINES = {
     "Khôn": [0, 0, 0]
 };
 
+const TRIGRAM_NATURE = {
+    "Kiền": { nature: "Thiên (Trời)", direction: "Tây Bắc", element: "Kim" },
+    "Khôn": { nature: "Địa (Đất)", direction: "Tây Nam", element: "Thổ" },
+    "Chấn": { nature: "Lôi (Sấm)", direction: "Chính Đông", element: "Mộc" },
+    "Tốn":  { nature: "Phong (Gió)", direction: "Đông Nam", element: "Mộc" },
+    "Khảm": { nature: "Thủy (Nước)", direction: "Chính Bắc", element: "Thủy" },
+    "Ly":   { nature: "Hỏa (Lửa)", direction: "Chính Nam", element: "Hỏa" },
+    "Cấn":  { nature: "Sơn (Núi)", direction: "Đông Bắc", element: "Thổ" },
+    "Đoài": { nature: "Trạch (Đầm)", direction: "Chính Tây", element: "Kim" }
+};
+
 function getTrigramByLines(lines3) {
     for (const name in TRIGRAM_LINES) {
         const t = TRIGRAM_LINES[name];
