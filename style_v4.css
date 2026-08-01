@@ -494,3 +494,97 @@ h1 {
     }
 }
 
+/* ========== GIAO DIỆN QUẺ DỊCH ĐỒ HỌA (GIEOQUE.ID.VN STYLE) ========== */
+.hexagram-ui-card {
+    background: rgba(12, 16, 35, 0.95);
+    border-radius: 10px;
+    padding: 16px;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+.hex-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 4px;
+}
+.hex-subtitle {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    text-align: center;
+    margin-bottom: 15px;
+}
+.hexagram-lines-box {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    max-width: 320px;
+    margin: 0 auto 15px auto;
+    padding: 12px;
+    background: rgba(0, 0, 0, 0.35);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.hex-line-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.78rem;
+}
+.hex-line-name {
+    width: 70px;
+    text-align: right;
+    color: #a0aec0;
+    font-size: 0.72rem;
+    white-space: nowrap;
+}
+.hex-line-bar-wrap {
+    flex-grow: 1;
+    height: 14px;
+    display: flex;
+    align-items: center;
+}
+.hex-line-yang {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, #d4af37, #f39c12);
+    border-radius: 3px;
+    box-shadow: 0 0 6px rgba(212, 175, 55, 0.4);
+}
+.hex-line-yin {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.hex-line-yin-segment {
+    width: 44%;
+    height: 100%;
+    background: linear-gradient(90deg, #34495e, #5d6d7e);
+    border-radius: 3px;
+}
+.hex-line-row.is-dong .hex-line-name {
+    color: #ff4e50;
+    font-weight: bold;
+}
+.hex-line-row.is-dong .hex-line-yang {
+    background: linear-gradient(90deg, #ff4e50, #f9d423);
+    box-shadow: 0 0 12px rgba(255, 78, 80, 0.8);
+}
+.hex-line-row.is-dong .hex-line-yin-segment {
+    background: linear-gradient(90deg, #ff4e50, #f9d423);
+    box-shadow: 0 0 12px rgba(255, 78, 80, 0.8);
+}
+.hex-dong-badge {
+    font-size: 0.68rem;
+    color: #ff4e50;
+    font-weight: bold;
+    background: rgba(255, 78, 80, 0.18);
+    padding: 1px 6px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 78, 80, 0.4);
+    white-space: nowrap;
+}
+
+

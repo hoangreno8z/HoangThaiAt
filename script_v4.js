@@ -209,54 +209,98 @@ const PHAN_DA_CUU_CUNG = {
         } else {
             predContent.innerHTML = "<p><em>Không dự báo quỹ đạo sao cho chế độ này.</em></p>";
         }
-    } else {
+    } else if (predContent) {
         predContent.innerHTML = "<p><em>Không có sao nào di chuyển trong chu kỳ tiếp theo, hoặc không có dữ liệu dự báo.</em></p>";
     }
 
-    // Populate Vận Quái Thái Ất (Đại Du & Tiểu Du)
-    const ldContent = document.getElementById("luan-doan-content");
-    if (ldContent) {
-        if (data.luanDoanData && data.luanDoanData.daiTieuDu) {
-            const du = data.luanDoanData.daiTieuDu;
-            ldContent.innerHTML = `
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 15px;">
-                    <!-- ĐẠI DU VẬN QUÁI -->
-                    <div style="background: rgba(255, 215, 0, 0.04); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 8px; padding: 15px;">
-                        <h4 style="color: var(--gold); border-bottom: 1px dashed rgba(212,175,55,0.3); padding-bottom: 6px; margin-bottom: 10px; font-family: 'Cinzel', serif;">
-                            📜 ĐẠI DU VẬN QUÁI (QUẺ ĐẠI DU)
-                        </h4>
-                        <ul style="font-size: 0.88rem; line-height: 1.8; color: #e0e6ed; list-style: none; padding-left: 0;">
-                            <li><strong>🔹 Nội Quái (Đất):</strong> <span style="color:var(--gold); font-weight:bold;">${du.ddNoiQuai}</span> (Đã vận qua ${du.ddNoiThanh} quái, đang ở năm thứ ${du.ddNoiDu + 1}/36)</li>
-                            <li><strong>🔹 Ngoại Quái (Thiên Số):</strong> <span style="color:var(--gold); font-weight:bold;">${du.ddNgoaiQuai}</span> (Đã vận qua ${du.ddNgoaiThanh} quái, đang ở năm thứ ${du.ddNgoaiDu + 1}/10)</li>
-                            <li style="margin-top: 10px; padding: 8px 12px; background: rgba(212, 175, 55, 0.12); border-radius: 6px; border-left: 4px solid var(--gold);">
-                                <strong>☯ QUẺ ĐẠI DU TRÙNG QUÁI:</strong><br/>
-                                <span style="font-size: 1.15rem; color: #fff; font-weight: bold;">${du.ddTrungQuai}</span> 
-                                <span style="font-size: 0.8rem; color: var(--text-muted);">(Ngoại ${du.ddNgoaiQuai} ở trên / Nội ${du.ddNoiQuai} ở dưới)</span>
-                            </li>
-                        </ul>
-                    </div>
+    // Render Vận Quái Thái Ất (Đại Du & Tiểu Du)
+    renderVanQuaiSection(data);
+}
 
-                    <!-- TIỂU DU VẬN QUÁI -->
-                    <div style="background: rgba(0, 200, 255, 0.04); border: 1px solid rgba(0, 200, 255, 0.25); border-radius: 8px; padding: 15px;">
-                        <h4 style="color: #00d2ff; border-bottom: 1px dashed rgba(0,200,255,0.3); padding-bottom: 6px; margin-bottom: 10px; font-family: 'Cinzel', serif;">
-                            📜 TIỂU DU VẬN QUÁI (QUẺ TIỂU DU)
-                        </h4>
-                        <ul style="font-size: 0.88rem; line-height: 1.8; color: #e0e6ed; list-style: none; padding-left: 0;">
-                            <li><strong>🔹 Nội Quái:</strong> <span style="color:#00d2ff; font-weight:bold;">${du.tdNoiQuai}</span> (Đã vận qua ${du.tdNoiThanh} quái, đang ở năm thứ ${du.tdNoiDu + 1}/24)</li>
-                            <li><strong>🔹 Ngoại Quái:</strong> <span style="color:#00d2ff; font-weight:bold;">${du.tdNgoaiQuai}</span> (Đã vận qua ${du.tdNgoaiThanh} quái, đang ở năm thứ ${du.tdNgoaiDu + 1}/3)</li>
-                            <li style="margin-top: 10px; padding: 8px 12px; background: rgba(0, 200, 255, 0.12); border-radius: 6px; border-left: 4px solid #00d2ff;">
-                                <strong>☯ QUẺ TIỂU DU TRÙNG QUÁI:</strong><br/>
-                                <span style="font-size: 1.15rem; color: #fff; font-weight: bold;">${du.tdTrungQuai}</span> 
-                                <span style="font-size: 0.8rem; color: var(--text-muted);">(Ngoại ${du.tdNgoaiQuai} ở trên / Nội ${du.tdNoiQuai} ở dưới)</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            `;
+function renderHexagramGraphic(title, subtitle, hexName, lines6, haoDong, accentColor) {
+    const HANG_NAMES = ["Hào Sơ (1)", "Hào Nhị (2)", "Hào Tam (3)", "Hào Tứ (4)", "Hào Ngũ (5)", "Hào Thượng (6)"];
+    let linesHtml = "";
+    
+    // Render from Hào Thượng (Index 5) down to Hào Sơ (Index 0)
+    for (let i = 5; i >= 0; i--) {
+        const lineVal = lines6[i]; // 1 = Yang, 0 = Yin
+        const lineNum = i + 1; // 1..6
+        const isDong = (lineNum === haoDong);
+        const nameStr = HANG_NAMES[i];
+        
+        let lineBarHtml = "";
+        if (lineVal === 1) {
+            lineBarHtml = `<div class="hex-line-yang"></div>`;
         } else {
-            ldContent.innerHTML = "<p><em>Không có dữ liệu Vận Quái cho chế độ này.</em></p>";
+            lineBarHtml = `<div class="hex-line-yin"><div class="hex-line-yin-segment"></div><div class="hex-line-yin-segment"></div></div>`;
         }
+        
+        linesHtml += `
+            <div class="hex-line-row ${isDong ? 'is-dong' : ''}">
+                <span class="hex-line-name">${nameStr}</span>
+                <div class="hex-line-bar-wrap">${lineBarHtml}</div>
+                ${isDong ? `<span class="hex-dong-badge">🔥 Hào ${lineNum} Động</span>` : `<span style="width:75px;"></span>`}
+            </div>
+        `;
     }
+
+    return `
+        <div class="hexagram-ui-card" style="border-top: 4px solid ${accentColor}">
+            <h4 class="hex-title" style="color: ${accentColor}">${title}</h4>
+            <div class="hex-subtitle">${subtitle}</div>
+            
+            <div class="hexagram-lines-box">
+                ${linesHtml}
+            </div>
+
+            <div style="text-align: center; padding: 10px; background: rgba(255,255,255,0.03); border-radius: 6px; border: 1px solid rgba(255,255,255,0.08);">
+                <span style="font-size: 0.78rem; color: #a0aec0;">TRÙNG QUÁI HỢP THÀNH</span><br/>
+                <span style="font-size: 1.25rem; font-weight: bold; color: #ffffff;">${hexName}</span><br/>
+                <span style="font-size: 0.8rem; color: #ff4e50; font-weight: bold;">🔥 Đang ở Hào ${haoDong} Động</span>
+            </div>
+        </div>
+    `;
+}
+
+// Populate Vận Quái Thái Ất (Đại Du & Tiểu Du)
+function renderVanQuaiSection(data) {
+    const ldContent = document.getElementById("luan-doan-content");
+    if (!ldContent) return;
+
+    if (data.luanDoanData && data.luanDoanData.daiTieuDu) {
+        const du = data.luanDoanData.daiTieuDu;
+
+        const ddSubtitle = `Nội ${du.ddNoiQuai} (Năm ${du.ddNoiDu + 1}/36) · Ngoại ${du.ddNgoaiQuai} (Năm ${du.ddNgoaiDu + 1}/10)`;
+        const tdSubtitle = `Nội ${du.tdNoiQuai} (Năm ${du.tdNoiDu + 1}/24) · Ngoại ${du.tdNgoaiQuai} (Năm ${du.tdNgoaiDu + 1}/3)`;
+
+        const ddHtml = renderHexagramGraphic(
+            "📜 ĐẠI DU VẬN QUÁI",
+            ddSubtitle,
+            du.ddTrungQuai,
+            du.ddLines6,
+            du.ddHaoDong,
+            "var(--gold)"
+        );
+
+        const tdHtml = renderHexagramGraphic(
+            "📜 TIỂU DU VẬN QUÁI",
+            tdSubtitle,
+            du.tdTrungQuai,
+            du.tdLines6,
+            du.tdHaoDong,
+            "#00d2ff"
+        );
+
+        ldContent.innerHTML = `
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px;">
+                ${ddHtml}
+                ${tdHtml}
+            </div>
+        `;
+    } else {
+        ldContent.innerHTML = "<p><em>Không có dữ liệu Vận Quái cho chế độ này.</em></p>";
+    }
+}
 }
 
 // ========================================

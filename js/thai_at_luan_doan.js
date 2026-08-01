@@ -48,6 +48,17 @@ const TRUNG_QUAI_TABLE = {
     "Tốn_Khảm": "Phong Thủy Hoán", "Tốn_Tốn": "Thuần Tốn"
 };
 
+const TRIGRAM_LINES = {
+    "Kiền": [1, 1, 1], // Sơ=1, Nhị=1, Tam=1
+    "Đoài": [1, 1, 0],
+    "Ly":   [1, 0, 1],
+    "Chấn": [1, 0, 0],
+    "Tốn":  [0, 1, 1],
+    "Khảm": [0, 1, 0],
+    "Cấn":  [0, 0, 1],
+    "Khôn": [0, 0, 0]
+};
+
 class ThaiAtLuanDoan {
     /**
      * @param {number} tueTich - Tích Niên Thái Ất của năm cầu việc
@@ -69,63 +80,57 @@ class ThaiAtLuanDoan {
     }
 
     /**
-     * Tính Đại Du Vận Quái và Tiểu Du Vận Quái
-     * 
-     * ĐẠI DU VẬN QUÁI:
-     * - Nội quái: (Tích Niên + 34) % 2880, rồi % 288, rồi / 36 → index quái
-     * - Ngoại quái: (Tích Niên + 60) % 640, rồi % 80, rồi / 10 → index quái
-     * - Trùng quái: Ngoại trên, Nội dưới
-     * 
-     * TIỂU DU VẬN QUÁI:
-     * - Nội quái: Tích Niên % 192, rồi / 24 → index quái
-     * - Ngoại quái: Kỷ Dư % 24, rồi / 3 → index quái  
-     * - Trùng quái: Ngoại trên, Nội dưới
+     * Tính Đại Du Vận Quái và Tiểu Du Vận Quái (kèm Hào Động và Quẻ 6 hào)
      */
     calcDaiTieuDu() {
         const tich = this.tueTich;
         const kyDu = this.kyDu;
 
         // ===================== ĐẠI DU VẬN QUÁI =====================
-
-        // --- Đại Du Nội Quái ---
-        // Tích Niên + 34 (doanh sai), chia 2880, lấy dư, dư chia 288, dư chia 36
-        const ddNoiR1 = (tich + 34) % 2880;       // Dư phép chia 2880
-        const ddNoiR2 = ddNoiR1 % 288;             // Dư phép chia 288
-        const ddNoiThanh = Math.floor(ddNoiR2 / 36); // Số quái đã vận qua
-        const ddNoiDu = ddNoiR2 % 36;              // Thời gian đang vận ở quái hiện tại
+        const ddNoiR1 = (tich + 34) % 2880;
+        const ddNoiR2 = ddNoiR1 % 288;
+        const ddNoiThanh = Math.floor(ddNoiR2 / 36);
+        const ddNoiDu = ddNoiR2 % 36;
         const ddNoiQuai = BAT_QUAI[ddNoiThanh % 8];
 
-        // --- Đại Du Ngoại Quái (Thiên Số) ---
-        // Tích Niên + 60 (doanh sai), chia 640, lấy dư, dư chia 80, dư chia 10
-        const ddNgoaiR1 = (tich + 60) % 640;       // Dư phép chia 640  
-        const ddNgoaiR2 = ddNgoaiR1 % 80;          // Dư phép chia 80
-        const ddNgoaiThanh = Math.floor(ddNgoaiR2 / 10); // Số quái đã vận qua
-        const ddNgoaiDu = ddNgoaiR2 % 10;          // Thời gian đang vận ở quái hiện tại
+        const ddNgoaiR1 = (tich + 60) % 640;
+        const ddNgoaiR2 = ddNgoaiR1 % 80;
+        const ddNgoaiThanh = Math.floor(ddNgoaiR2 / 10);
+        const ddNgoaiDu = ddNgoaiR2 % 10;
         const ddNgoaiQuai = BAT_QUAI[ddNgoaiThanh % 8];
 
-        // --- Trùng Quái Đại Du: Ngoại trên, Nội dưới ---
         const ddKey = `${ddNgoaiQuai}_${ddNoiQuai}`;
         const ddTrungQuai = TRUNG_QUAI_TABLE[ddKey] || `${ddNgoaiQuai} / ${ddNoiQuai}`;
 
-        // ===================== TIỂU DU VẬN QUÁI =====================
+        // Hào Động Đại Du: 36 năm / 6 hào = 6 năm 1 hào
+        const ddHaoDong = Math.min(6, Math.floor(ddNoiDu / 6) + 1);
 
-        // --- Tiểu Du Nội Quái ---
-        // Tích Niên chia 192, lấy dư, dư chia 24
-        const tdNoiR1 = tich % 192;                // Dư phép chia 192
-        const tdNoiThanh = Math.floor(tdNoiR1 / 24); // Số quái đã vận qua
-        const tdNoiDu = tdNoiR1 % 24;              // Thời gian đang vận ở quái hiện tại
+        // Mảng 6 hào (Index 0 = Hào 1 Sơ, Index 5 = Hào 6 Thượng)
+        const ddNoiLines = TRIGRAM_LINES[ddNoiQuai] || [1, 1, 1];
+        const ddNgoaiLines = TRIGRAM_LINES[ddNgoaiQuai] || [1, 1, 1];
+        const ddLines6 = [...ddNoiLines, ...ddNgoaiLines];
+
+        // ===================== TIỂU DU VẬN QUÁI =====================
+        const tdNoiR1 = tich % 192;
+        const tdNoiThanh = Math.floor(tdNoiR1 / 24);
+        const tdNoiDu = tdNoiR1 % 24;
         const tdNoiQuai = BAT_QUAI[tdNoiThanh % 8];
 
-        // --- Tiểu Du Ngoại Quái ---
-        // Kỷ Dư chia 24, lấy dư, dư chia 3
-        const tdNgoaiR1 = kyDu % 24;               // Dư phép chia 24
-        const tdNgoaiThanh = Math.floor(tdNgoaiR1 / 3); // Số quái đã vận qua
-        const tdNgoaiDu = tdNgoaiR1 % 3;           // Thời gian đang vận ở quái hiện tại
+        const tdNgoaiR1 = kyDu % 24;
+        const tdNgoaiThanh = Math.floor(tdNgoaiR1 / 3);
+        const tdNgoaiDu = tdNgoaiR1 % 3;
         const tdNgoaiQuai = BAT_QUAI[tdNgoaiThanh % 8];
 
-        // --- Trùng Quái Tiểu Du: Ngoại trên, Nội dưới ---
         const tdKey = `${tdNgoaiQuai}_${tdNoiQuai}`;
         const tdTrungQuai = TRUNG_QUAI_TABLE[tdKey] || `${tdNgoaiQuai} / ${tdNoiQuai}`;
+
+        // Hào Động Tiểu Du: 24 năm / 6 hào = 4 năm 1 hào
+        const tdHaoDong = Math.min(6, Math.floor(tdNoiDu / 4) + 1);
+
+        // Mảng 6 hào (Index 0 = Hào 1 Sơ, Index 5 = Hào 6 Thượng)
+        const tdNoiLines = TRIGRAM_LINES[tdNoiQuai] || [1, 1, 1];
+        const tdNgoaiLines = TRIGRAM_LINES[tdNgoaiQuai] || [1, 1, 1];
+        const tdLines6 = [...tdNoiLines, ...tdNgoaiLines];
 
         return {
             // Đại Du
@@ -136,14 +141,18 @@ class ThaiAtLuanDoan {
             ddNgoaiThanh,
             ddNgoaiDu,
             ddTrungQuai,
+            ddHaoDong,
+            ddLines6,
             // Tiểu Du
             tdNoiQuai,
             tdNoiThanh,
             tdNoiDu,
             tdNgoaiQuai,
             tdNgoaiThanh,
-            tdNgoaiDu,
-            tdTrungQuai
+            tdNoiDu,
+            tdTrungQuai,
+            tdHaoDong,
+            tdLines6
         };
     }
 
