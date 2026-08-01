@@ -239,7 +239,26 @@ class ThaiAtBaseEngine {
         const step36 = Math.floor(r36 / 3);
         const tlR = ((this.tueTich % 60) % 12) || 12;
         const tlIdx = CHI_TO_THAN_IDX[(11 + tlR - 1) % 12];
-        const taIdx = CHI_TO_THAN_IDX[(10 + step36) % 12]; // Giữ nguyên Thái Âm gốc
+        
+        // 1. Thái Âm: luôn đứng sau Thái Tuế 2 cung (Thái Tuế - 2)
+        let thaiTueChiIdx = 6; // Mặc định Ngọ
+        if (this.tuTru) {
+            if (this.tuTru.hour && this.tuTru.hour.chiIdx !== undefined && this.mode === 'thoi') thaiTueChiIdx = this.tuTru.hour.chiIdx;
+            else if (this.tuTru.day && this.tuTru.day.chiIdx !== undefined && this.mode === 'nhat') thaiTueChiIdx = this.tuTru.day.chiIdx;
+            else if (this.tuTru.month && this.tuTru.month.chiIdx !== undefined && this.mode === 'nguyet') thaiTueChiIdx = this.tuTru.month.chiIdx;
+            else if (this.tuTru.year && this.tuTru.year.chiIdx !== undefined) thaiTueChiIdx = this.tuTru.year.chiIdx;
+        }
+        const thaiAmChiIdx = (thaiTueChiIdx - 2 + 12) % 12;
+        const taIdx = CHI_TO_THAN_IDX[thaiAmChiIdx];
+        
+        // 2. Phi Phù: Kỷ Dư % 72 / 3 + 1, đếm theo vòng 12 cung Dương/Âm Độn
+        const r72 = kVal % 72;
+        const P_pp = Math.floor(r72 / 3) + 1;
+        const ppStepIdx = (P_pp - 1) % 12;
+        const PHI_PHU_DUONG = [11, 11, 15, 3, 3, 13, 7, 9, -1, 1, 15, 5];
+        const PHI_PHU_AM = [3, 3, 15, 11, 11, 5, 15, 1, -1, 9, 7, 13];
+        const phiPhuPath = (this.isDuongDon !== false) ? PHI_PHU_DUONG : PHI_PHU_AM;
+        const phiPhuIdx = phiPhuPath[ppStepIdx];
         
         const xkStep = Math.floor(((this.tueTich + 1) % 40) / 4);
         const xkPath = [11, 0, 12, 8]; // Hợi, Thân, Tị, Dần (4 cung mạnh đi ngược)
@@ -255,6 +274,7 @@ class ThaiAtBaseEngine {
             { thanIdx: trucPhuIdx, name: "Trực Phù", class: "tu-than" },
             { thanIdx: tlIdx, name: "Thanh Long (Cờ Xanh)", class: "tu-than" },
             { thanIdx: taIdx, name: "Thái Âm", class: "tu-than" },
+            { thanIdx: phiPhuIdx, name: "Phi Phù", class: "tu-than" },
             { thanIdx: xkIdx, name: "Xích Kỳ (Cờ Đỏ)", class: "co-khac" },
             { thanIdx: hkIdx, name: "Hắc Kỳ (Cờ Đen)", class: "co-khac" }
         ];
