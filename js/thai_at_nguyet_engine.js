@@ -1,8 +1,8 @@
 // thai_at_nguyet_engine.js
 class RealNguyetKeEngine extends ThaiAtBaseEngine {
-    constructor(tueTich, kyDu, isDuongDon, namCanIdx, fullTueTich) {
+    constructor(tueTich, kyDu, isDuongDon, namCanIdx, fullTueTich, tuTru) {
         // tueTich here is the Nguyệt Tích Đặc Biệt or Nguyệt Tích
-        super(tueTich, kyDu, isDuongDon, namCanIdx);
+        super(tueTich, kyDu, isDuongDon, namCanIdx, tuTru);
         this.fullTueTich = fullTueTich; // Thượng Cổ Tuế Tích
     }
     
