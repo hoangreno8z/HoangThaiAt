@@ -59,6 +59,36 @@ const TRIGRAM_LINES = {
     "Khôn": [0, 0, 0]
 };
 
+function getTrigramByLines(lines3) {
+    for (const name in TRIGRAM_LINES) {
+        const t = TRIGRAM_LINES[name];
+        if (t[0] === lines3[0] && t[1] === lines3[1] && t[2] === lines3[2]) return name;
+    }
+    return "Kiền";
+}
+
+function calcQueBien(lines6, haoDong) {
+    const idx = Math.max(0, Math.min(5, haoDong - 1));
+    const linesBien = [...lines6];
+    linesBien[idx] = linesBien[idx] === 1 ? 0 : 1;
+
+    const noiLines = linesBien.slice(0, 3);
+    const ngoaiLines = linesBien.slice(3, 6);
+
+    const noiQuai = getTrigramByLines(noiLines);
+    const ngoaiQuai = getTrigramByLines(ngoaiLines);
+
+    const key = `${ngoaiQuai}_${noiQuai}`;
+    const hexName = TRUNG_QUAI_TABLE[key] || `${ngoaiQuai} / ${noiQuai}`;
+
+    return {
+        lines6Bien: linesBien,
+        noiQuai,
+        ngoaiQuai,
+        hexName
+    };
+}
+
 class ThaiAtLuanDoan {
     /**
      * @param {number} tueTich - Tích Niên Thái Ất của năm cầu việc
@@ -79,12 +109,12 @@ class ThaiAtLuanDoan {
         this.kyDu = kyDu || (tueTich % 360);
     }
 
-    /**
-     * Tính Đại Du Vận Quái và Tiểu Du Vận Quái (kèm Hào Động và Quẻ 6 hào)
-     */
     calcDaiTieuDu() {
         const tich = this.tueTich;
         const kyDu = this.kyDu;
+
+        const DAI_DU_NGOAI_LIST = ["Khôn", "Khảm", "Tốn", "Kiền", "Ly", "Cấn", "Chấn", "Đoài"];
+        const TIEU_DU_LIST = ["Kiền", "Ly", "Cấn", "Chấn", "Đoài", "Khôn", "Khảm", "Tốn"];
 
         // ===================== ĐẠI DU VẬN QUÁI =====================
         const ddNoiR1 = (tich + 34) % 2880;
@@ -97,7 +127,7 @@ class ThaiAtLuanDoan {
         const ddNgoaiR2 = ddNgoaiR1 % 80;
         const ddNgoaiThanh = Math.floor(ddNgoaiR2 / 10);
         const ddNgoaiDu = ddNgoaiR2 % 10;
-        const ddNgoaiQuai = BAT_QUAI[ddNgoaiThanh % 8];
+        const ddNgoaiQuai = DAI_DU_NGOAI_LIST[ddNgoaiThanh % 8];
 
         const ddKey = `${ddNgoaiQuai}_${ddNoiQuai}`;
         const ddTrungQuai = TRUNG_QUAI_TABLE[ddKey] || `${ddNgoaiQuai} / ${ddNoiQuai}`;
@@ -109,17 +139,18 @@ class ThaiAtLuanDoan {
         const ddNoiLines = TRIGRAM_LINES[ddNoiQuai] || [1, 1, 1];
         const ddNgoaiLines = TRIGRAM_LINES[ddNgoaiQuai] || [1, 1, 1];
         const ddLines6 = [...ddNoiLines, ...ddNgoaiLines];
+        const ddBien = calcQueBien(ddLines6, ddHaoDong);
 
         // ===================== TIỂU DU VẬN QUÁI =====================
         const tdNoiR1 = tich % 192;
         const tdNoiThanh = Math.floor(tdNoiR1 / 24);
         const tdNoiDu = tdNoiR1 % 24;
-        const tdNoiQuai = BAT_QUAI[tdNoiThanh % 8];
+        const tdNoiQuai = TIEU_DU_LIST[tdNoiThanh % 8];
 
         const tdNgoaiR1 = kyDu % 24;
         const tdNgoaiThanh = Math.floor(tdNgoaiR1 / 3);
         const tdNgoaiDu = tdNgoaiR1 % 3;
-        const tdNgoaiQuai = BAT_QUAI[tdNgoaiThanh % 8];
+        const tdNgoaiQuai = TIEU_DU_LIST[tdNgoaiThanh % 8];
 
         const tdKey = `${tdNgoaiQuai}_${tdNoiQuai}`;
         const tdTrungQuai = TRUNG_QUAI_TABLE[tdKey] || `${tdNgoaiQuai} / ${tdNoiQuai}`;
@@ -131,6 +162,7 @@ class ThaiAtLuanDoan {
         const tdNoiLines = TRIGRAM_LINES[tdNoiQuai] || [1, 1, 1];
         const tdNgoaiLines = TRIGRAM_LINES[tdNgoaiQuai] || [1, 1, 1];
         const tdLines6 = [...tdNoiLines, ...tdNgoaiLines];
+        const tdBien = calcQueBien(tdLines6, tdHaoDong);
 
         return {
             // Đại Du
@@ -143,16 +175,20 @@ class ThaiAtLuanDoan {
             ddTrungQuai,
             ddHaoDong,
             ddLines6,
+            ddQueBienName: ddBien.hexName,
+            ddLines6Bien: ddBien.lines6Bien,
             // Tiểu Du
             tdNoiQuai,
             tdNoiThanh,
             tdNoiDu,
             tdNgoaiQuai,
             tdNgoaiThanh,
-            tdNoiDu,
+            tdNgoaiDu,
             tdTrungQuai,
             tdHaoDong,
-            tdLines6
+            tdLines6,
+            tdQueBienName: tdBien.hexName,
+            tdLines6Bien: tdBien.lines6Bien
         };
     }
 
@@ -287,6 +323,99 @@ function generateDetailedAnalysisReport(data) {
             <div class="luan-doan-summary-box">
                 <strong>📌 Tóm Tắt Cục Diện Tác Chiến:</strong>
                 <p style="margin-top: 6px;">${(tkGoc % 10 === 5 || (dtcPalace === taPalace)) ? "Cả 2 bên Chủ và Khách đều gặp điểm bất lợi hoặc bế tắc thế trận. Chiến lược tối ưu nhất là cố thủ phòng ngự, không nên vội vã tiến công." : "Cục diện đang có sự phân định rõ ràng giữa phe Chủ và phe Khách, cần nương theo vị thế Thái Ất và Bát Môn để nắm giữ thế chủ động."}</p>
+            </div>
+        </div>
+    </div>`;
+}
+
+/**
+ * BÁO CÁO PHÂN TÍCH QUẺ ĐẠI DU & TIỂU DU VẬN QUÁI 4 BƯỚC CHUẨN TÁC
+ * Theo Tôn Chỉ: "Quái nói về việc - Hào nói về thời - Tượng nói lành dữ"
+ */
+function generateVanQuaiAnalysisReport(du) {
+    if (!du) return "";
+
+    const ddNgoaiT = TRIGRAM_NATURE[du.ddNgoaiQuai] || { nature: "Thiên", direction: "Tây Bắc", element: "Kim" };
+    const ddNoiT = TRIGRAM_NATURE[du.ddNoiQuai] || { nature: "Địa", direction: "Tây Nam", element: "Thổ" };
+
+    const tdNgoaiT = TRIGRAM_NATURE[du.tdNgoaiQuai] || { nature: "Thiên", direction: "Tây Bắc", element: "Kim" };
+    const tdNoiT = TRIGRAM_NATURE[du.tdNoiQuai] || { nature: "Địa", direction: "Tây Nam", element: "Thổ" };
+
+    return `
+    <div style="margin-top: 20px; padding: 18px; background: rgba(15, 20, 42, 0.95); border-radius: 10px; border: 1px solid rgba(212, 175, 55, 0.35); font-size: 0.9rem; color: #e0e6ed; line-height: 1.8;">
+        
+        <!-- TÔN CHỈ VẬN QUÁI CỐT LÕI -->
+        <div style="background: rgba(212, 175, 55, 0.08); border-left: 4px solid var(--gold); border-radius: 6px; padding: 12px 16px; margin-bottom: 16px;">
+            <h4 style="color: var(--gold); font-family: 'Cinzel', serif; font-size: 1.05rem; margin-bottom: 4px;">
+                ☯ TÔN CHỈ LUẬN GIẢI CỐT LÕI VẬN QUÁI THÁI ẤT
+            </h4>
+            <p style="font-size: 0.95rem; color: #ffffff; font-weight: 700; margin-bottom: 4px;">
+                👉 <em>"Quái nói về việc — Hào nói về thời — Tượng nói lành dữ"</em>
+            </p>
+            <p style="font-size: 0.86rem; color: #cbd5e0; margin: 0;">
+                - <strong>Quái nói về việc:</strong> Trùng quái xác định chủ đề, tính chất và sự việc/tai ách diễn ra.<br/>
+                - <strong>Hào nói về thời:</strong> Hào đang động chỉ rõ thời điểm và giai đoạn của biến cố.<br/>
+                - <strong>Tượng nói lành dữ:</strong> Kết luận cát hung dựa trên sự dịch chuyển so sánh giữa <strong>Quẻ Chủ (Trực quái)</strong> và <strong>Quẻ Biến (Hào động)</strong>.
+            </p>
+        </div>
+
+        <!-- 1. PHÂN TÍCH QUẺ ĐẠI DU VẬN QUÁI -->
+        <div class="luan-doan-section" style="margin-bottom: 16px;">
+            <h4 class="luan-doan-section-title">1. Phân Tích Quẻ Đại Du Vận Quái (Vận 36 Năm / Quẻ)</h4>
+            
+            <p class="luan-doan-item">
+                <strong>🔹 Bước 1 — Phân Tích Tượng Quẻ & Phương Vị Địa Lý:</strong><br/>
+                - Thượng Quái (Ngoại): Quẻ <strong>${du.ddNgoaiQuai}</strong> (Hình tượng <em>${ddNgoaiT.nature}</em> — Trấn ở Hướng <strong>${ddNgoaiT.direction}</strong>).<br/>
+                - Hạ Quái (Nội): Quẻ <strong>${du.ddNoiQuai}</strong> (Hình tượng <em>${ddNoiT.nature}</em> — Trấn ở Hướng <strong>${ddNoiT.direction}</strong>).<br/>
+                - Tụ Hội Không Gian: Sự tương tác giữa ${ddNgoaiT.nature} trên trời và ${ddNoiT.nature} dưới đất tại dải phương vị ${ddNgoaiT.direction} — ${ddNoiT.direction}.
+            </p>
+
+            <p class="luan-doan-item">
+                <strong>🔹 Bước 2 — Giải Nghĩa Quẻ Chủ Đại Du:</strong><br/>
+                - Quẻ Chủ: <strong>Quẻ ${du.ddTrungQuai}</strong>.<br/>
+                - Ý Nghĩa & Tự Quái: Biểu thị thời đại vận hạn Đại Du. Xác định sự việc chính yếu diễn ra trong chu kỳ vận này.
+            </p>
+
+            <p class="luan-doan-item">
+                <strong>🔹 Bước 3 — Xét Lời Hào & Quẻ Biến (Thời Điểm & Hung Cát):</strong><br/>
+                - Vị Trí Vận Hạn: Đang ở <strong>Hào ${du.ddHaoDong} Động</strong> (Năm thứ ${du.ddNoiDu + 1}/36 trong chu kỳ 36 năm).<br/>
+                - Biến Đổi Âm/Dương: Hào ${du.ddHaoDong} động biến ➔ Quẻ Chủ <strong>${du.ddTrungQuai}</strong> chuyển thành <strong>Quẻ Biến ${du.ddQueBienName}</strong>.<br/>
+                - So Sánh Cát Hung: Căn cứ sự dịch chuyển từ tượng quẻ ${du.ddTrungQuai} sang quẻ ${du.ddQueBienName} để nhận định xu hướng chuyển biến từ Cát sang Hung hay ngược lại.
+            </p>
+
+            <div class="luan-doan-summary-box">
+                <strong>📌 Bước 4 — Phương Châm Xử Thế Đại Du:</strong>
+                <p style="margin-top: 4px;">Nương theo điềm báo của Quẻ Biến <strong>${du.ddQueBienName}</strong> tại Hào ${du.ddHaoDong} động để chủ động điều chỉnh sách lược đối phó, giữ vững trung chính.</p>
+            </div>
+        </div>
+
+        <!-- 2. PHÂN TÍCH QUẺ TIỂU DU VẬN QUÁI -->
+        <div class="luan-doan-section">
+            <h4 class="luan-doan-section-title">2. Phân Tích Quẻ Tiểu Du Vận Quái (Vận 24 Năm / Quẻ)</h4>
+            
+            <p class="luan-doan-item">
+                <strong>🔹 Bước 1 — Phân Tích Tượng Quẻ & Phương Vị Địa Lý:</strong><br/>
+                - Thượng Quái (Ngoại): Quẻ <strong>${du.tdNgoaiQuai}</strong> (Hình tượng <em>${tdNgoaiT.nature}</em> — Trấn ở Hướng <strong>${tdNgoaiT.direction}</strong>).<br/>
+                - Hạ Quái (Nội): Quẻ <strong>${du.tdNoiQuai}</strong> (Hình tượng <em>${tdNoiT.nature}</em> — Trấn ở Hướng <strong>${tdNoiT.direction}</strong>).<br/>
+                - Tụ Hội Không Gian: Sự tương tác giữa ${tdNgoaiT.nature} và ${tdNoiT.nature} tại dải phương vị ${tdNgoaiT.direction} — ${tdNoiT.direction}.
+            </p>
+
+            <p class="luan-doan-item">
+                <strong>🔹 Bước 2 — Giải Nghĩa Quẻ Chủ Tiểu Du:</strong><br/>
+                - Quẻ Chủ: <strong>Quẻ ${du.tdTrungQuai}</strong>.<br/>
+                - Ý Nghĩa & Tự Quái: Biểu thị thời đại vận hạn Tiểu Du trong chu kỳ ngắn hạn 24 năm.
+            </p>
+
+            <p class="luan-doan-item">
+                <strong>🔹 Bước 3 — Xét Lời Hào & Quẻ Biến (Thời Điểm & Hung Cát):</strong><br/>
+                - Vị Trí Vận Hạn: Đang ở <strong>Hào ${du.tdHaoDong} Động</strong> (Năm thứ ${du.tdNoiDu + 1}/24 trong chu kỳ 24 năm).<br/>
+                - Biến Đổi Âm/Dương: Hào ${du.tdHaoDong} động biến ➔ Quẻ Chủ <strong>${du.tdTrungQuai}</strong> chuyển thành <strong>Quẻ Biến ${du.tdQueBienName}</strong>.<br/>
+                - So Sánh Cát Hung: Căn cứ sự dịch chuyển từ tượng quẻ ${du.tdTrungQuai} sang quẻ ${du.tdQueBienName} để nhận định xu hướng chuyển biến từ Cát sang Hung hay ngược lại.
+            </p>
+
+            <div class="luan-doan-summary-box">
+                <strong>📌 Bước 4 — Phương Châm Xử Thế Tiểu Du:</strong>
+                <p style="margin-top: 4px;">Nương theo điềm báo của Quẻ Biến <strong>${du.tdQueBienName}</strong> tại Hào ${du.tdHaoDong} động để chủ động ứng phó thời cuộc trong chu kỳ ngắn hạn.</p>
             </div>
         </div>
     </div>`;

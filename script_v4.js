@@ -379,32 +379,14 @@ function renderVanQuaiSection(data) {
             "#00d2ff"
         );
 
+        const vanQuaiReportHtml = typeof generateVanQuaiAnalysisReport === "function" ? generateVanQuaiAnalysisReport(du) : "";
+
         ldContent.innerHTML = `
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px;">
                 ${ddHtml}
                 ${tdHtml}
             </div>
-            <div style="margin-top: 20px; padding: 16px; background: rgba(15, 20, 42, 0.9); border-radius: 8px; border: 1px solid rgba(212, 175, 55, 0.35); font-size: 0.88rem; color: #e0e6ed; line-height: 1.8;">
-                <h4 style="color: var(--gold); margin-bottom: 10px; font-family: 'Cinzel', serif; font-size: 1.05rem;">📜 CHI TIẾT THUẬT TOÁN & PHÂN TÍCH QUẺ ĐẠI DU — TIỂU DU VẬN QUÁI</h4>
-                
-                <div style="margin-bottom: 12px; padding: 10px 14px; background: rgba(212, 175, 55, 0.06); border-left: 3px solid var(--gold); border-radius: 4px;">
-                    <strong style="color: var(--gold);">🔹 ĐẠI DU VẬN QUÁI (Vận Hạn 36 Năm / Quẻ):</strong>
-                    <ul style="padding-left: 18px; margin-top: 4px;">
-                        <li><strong>Nội quái vận:</strong> [(Tích Niên + 34) % 2880 % 288] / 36 ➔ Cung <strong>${du.ddNoiQuai}</strong> (Năm thứ ${du.ddNoiDu + 1}/36).</li>
-                        <li><strong>Ngoại quái vận (Thiên số):</strong> [(Tích Niên + 60) % 640 % 80] / 10 ➔ Cung <strong>${du.ddNgoaiQuai}</strong> (Năm thứ ${du.ddNgoaiDu + 1}/10).</li>
-                        <li><strong>Trùng Quái Hợp Thành:</strong> Quẻ <strong>${du.ddTrungQuai}</strong>. Hào Động đếm từ dưới lên: 36 năm chia 6 hào ➔ <strong>6 năm 1 hào</strong> (Đang ở <strong>Hào ${du.ddHaoDong} Động</strong>).</li>
-                    </ul>
-                </div>
-
-                <div style="padding: 10px 14px; background: rgba(0, 210, 255, 0.06); border-left: 3px solid #00d2ff; border-radius: 4px;">
-                    <strong style="color: #00d2ff;">🔹 TIỂU DU VẬN QUÁI (Vận Hạn 24 Năm / Quẻ):</strong>
-                    <ul style="padding-left: 18px; margin-top: 4px;">
-                        <li><strong>Nội quái vận:</strong> (Tích Niên % 192) / 24 ➔ Cung <strong>${du.tdNoiQuai}</strong> (Năm thứ ${du.tdNoiDu + 1}/24).</li>
-                        <li><strong>Ngoại quái vận:</strong> (Vòng Kỷ Dư % 24) / 3 ➔ Cung <strong>${du.tdNgoaiQuai}</strong> (Năm thứ ${du.tdNgoaiDu + 1}/3).</li>
-                        <li><strong>Trùng Quái Hợp Thành:</strong> Quẻ <strong>${du.tdTrungQuai}</strong>. Hào Động đếm từ dưới lên: 24 năm chia 6 hào ➔ <strong>4 năm 1 hào</strong> (Đang ở <strong>Hào ${du.tdHaoDong} Động</strong>).</li>
-                    </ul>
-                </div>
-            </div>
+            ${vanQuaiReportHtml}
         `;
     } else {
         ldContent.innerHTML = "<p><em>Không có dữ liệu Vận Quái cho chế độ này.</em></p>";
