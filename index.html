@@ -8,10 +8,23 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Inter:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style_v4.css?v=14.0.0">
+    <link rel="stylesheet" href="style_v4.css?v=14.0.1">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 <body>
+    <noscript>
+        <div style="background:#8b0000; color:#fff; text-align:center; padding:15px; font-weight:bold; position:relative; z-index:99999;">
+            ⚠️ Vui lòng bật JavaScript trên trình duyệt của bạn để sử dụng ứng dụng Thái Ất Thần Số.
+        </div>
+    </noscript>
+    <!-- CỔNG DỊCH HỌC HỢP NHẤT MENU -->
+    <nav class="app-switcher-nav">
+        <div class="nav-container">
+            <a href="/" class="nav-item"><span class="icon">☰</span> KINH DỊCH ĐẠI TOÀN</a>
+            <a href="/thai-at/" class="nav-item active"><span class="icon">☯</span> THÁI ẤT THẦN SỐ</a>
+        </div>
+    </nav>
+
     <div class="stars-bg"></div>
     
     <div class="app-container">
@@ -48,15 +61,13 @@
                         <span class="btn-text">⚡ KHỞI QUẺ THÁI ẤT</span>
                     </button>
                 </form>
-                <button type="button" class="btn-export" id="btn-export-png" onclick="exportChartToPNG()">
-                    📸 TẢI ẢNH SA BÀN (PNG)
-                </button>
                 <div class="info-card">
                     <h3>Thông Số Quẻ</h3>
                     <ul class="info-details">
                         <li><strong>Chế độ:</strong> <span id="info-mode-name">Tuế Kể</span></li>
                         <li><strong>Tiết Khí:</strong> <span id="info-solar-term">-</span></li>
                         <li><strong>Cục Số:</strong> <span id="info-cuc-name">-</span></li>
+                        <li><strong>Khối:</strong> <span id="info-khoi-name">-</span></li>
                         <li><strong>Bát Môn:</strong> <span id="info-mon-name">-</span></li>
                         <li><strong>Cửu Tinh:</strong> <span id="info-tinh-name">-</span></li>
                     </ul>
@@ -65,12 +76,36 @@
 
             <!-- Right: Chart Display Panel -->
             <section class="chart-display-area">
-                <div id="thai-at-chart-capture" class="chart-container">
-                    <!-- Top Header: Năm Tháng Ngày Giờ Lập Quẻ -->
-                    <div class="chart-header-line">
-                        <span class="header-icon">☯</span>
-                        <span id="chart-datetime-header">NĂM THÁNG NGÀY GIỜ LẬP QUẺ</span>
+                <!-- Khu vực hiển thị Ảnh PNG HD trực tiếp cho Mobile touch-hold & PC Right-click -->
+                <div class="chart-image-section">
+                    <div id="chart-img-loader" class="chart-img-loader" style="display: none;">
+                        <span class="spinner"></span> <span>Đang khởi tạo ảnh Sa Bàn HD...</span>
                     </div>
+
+                    <img id="thai-at-chart-img" class="chart-image-output" alt="Sa Bàn Thái Ất Thần Số PNG" style="display: none;">
+
+                    <div class="chart-action-row" style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin: 10px 0;">
+                        <button type="button" onclick="generateThaiAtPNG();" class="btn-primary" style="width: auto; padding: 10px 22px; font-size: 0.85rem; margin-top: 0;">
+                            📸 XUẤT ÁNH SA BÀN HD
+                        </button>
+                        <a id="btn-download-direct" href="#" download="SaBan_ThaiAt.png" class="btn-direct-download" style="display: none;">
+                            💾 TẢI ẢNH SA BÀN (PNG)
+                        </a>
+                        <button type="button" id="btn-ai-luan-giai" class="btn-primary" style="background: #e67e22; border-color: #d35400; width: auto; padding: 10px 22px; font-size: 0.85rem; margin-top: 0; display: none;">
+                            🤖 AI LUẬN GIẢI
+                        </button>
+                    </div>
+                    <p class="download-tip-text">💡 <strong>Mẹo lưu ảnh:</strong> Bạn có thể bấm nút Tải ảnh sa bàn hoặc chạm giữ/click chuột phải để lưu về máy.</p>
+                </div>
+
+                <!-- Hidden DOM Data Binding Wrapper for Thai At Engine -->
+                <div class="chart-scroll-wrapper" style="display: none;">
+                    <div id="thai-at-chart-capture" class="chart-container" style="width: 100%; min-width: 850px; max-width: 1200px; margin: 0 auto; box-sizing: border-box;">
+                        <!-- Top Header: Năm Tháng Ngày Giờ Lập Quẻ -->
+                        <div class="chart-header-line">
+                            <span class="header-icon">☯</span>
+                            <span id="chart-datetime-header">NĂM THÁNG NGÀY GIỜ LẬP QUẺ</span>
+                        </div>
 
                     <!-- 
                         Sa Bàn Ma Trận: 16 Ô vòng ngoài bao quanh Trung Cung
@@ -141,6 +176,7 @@
                         <div class="cell-box" id="cell-kien" data-than="kien"></div>
                     </div>
                 </div>
+            </div>
 
                 <!-- Thẻ Phân Tích & Luận Giải Chuyên Sâu (Dạng Nút Xổ Xuống Tối Ưu Không Gian) -->
                 <section id="analysis-accordion-section" style="margin-top: 20px;">
@@ -225,15 +261,28 @@
         </main>
     </div>
 
-    <script src="js/lunar_solar.js?v=14.0.0"></script>
-    <script src="js/thai_at_luan_doan.js?v=14.0.0"></script>
-    <script src="js/thai_at_reference.js?v=14.0.0"></script>
-    <script src="js/phan_da_map.js?v=14.0.0"></script>
-    <script src="js/thai_at_engine_v4.js?v=14.0.0"></script>
-    <script src="js/thai_at_nguyet_engine.js?v=14.0.0"></script>
-    <script src="js/thai_at_nhat_engine.js?v=14.0.0"></script>
-    <script src="js/thai_at_thoi_engine.js?v=14.0.0"></script>
-    <script src="js/png_exporter.js?v=14.0.0"></script>
-    <script src="script_v4.js?v=14.0.0"></script>
+    <!-- AI Luận Giải Modal -->
+    <div id="ai-luan-giai-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 100000; justify-content: center; align-items: center;">
+        <div style="background: var(--surface); border: 1px solid var(--gold); border-radius: 8px; width: 90%; max-width: 800px; max-height: 90vh; display: flex; flex-direction: column;">
+            <div style="padding: 15px; border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; background: rgba(212, 175, 55, 0.1);">
+                <h3 style="margin: 0; color: var(--gold); font-family: var(--font-ancient); letter-spacing: 1px;">🤖 HỆ THỐNG AI LUẬN GIẢI SA BÀN THÁI ẤT</h3>
+                <button onclick="document.getElementById('ai-luan-giai-modal').style.display='none';" style="background: none; border: none; color: #fff; font-size: 1.5rem; cursor: pointer;">&times;</button>
+            </div>
+            <div id="ai-luan-giai-content" style="padding: 20px; overflow-y: auto; color: var(--text-color); line-height: 1.6; font-size: 0.95rem;">
+                <!-- Nội dung AI sẽ render ở đây -->
+            </div>
+        </div>
+    </div>
+
+    <script src="js/lunar_solar.js?v=15.0.0"></script>
+    <script src="js/thai_at_luan_doan.js?v=15.0.0"></script>
+    <script src="js/thai_at_reference.js?v=15.0.0"></script>
+    <script src="js/phan_da_map.js?v=15.0.0"></script>
+    <script src="js/thai_at_engine_v4.js?v=15.0.0"></script>
+    <script src="js/thai_at_nguyet_engine.js?v=15.0.0"></script>
+    <script src="js/thai_at_nhat_engine.js?v=15.0.0"></script>
+    <script src="js/thai_at_thoi_engine.js?v=15.0.0"></script>
+    <script src="js/png_exporter.js?v=15.0.0"></script>
+    <script src="script_v4.js?v=15.0.0"></script>
 </body>
 </html>
