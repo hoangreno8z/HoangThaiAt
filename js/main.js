@@ -1863,6 +1863,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const buildMasterSearchIndex = () => {
     const rawList = [
+      // 0. Khởi Nguyên Bản Thể Luận Âm Dương Ngũ Hành (10 Tiết)
+      { data: typeof AMDUONG_NGUHANH_PART_1 !== 'undefined' ? AMDUONG_NGUHANH_PART_1 : null, school: 'Âm Dương Bản Thể', anchor: 'amduong-tiet-1' },
+      { data: typeof AMDUONG_NGUHANH_PART_2 !== 'undefined' ? AMDUONG_NGUHANH_PART_2 : null, school: 'Âm Dương Bản Thể', anchor: 'amduong-tiet-2' },
+      { data: typeof AMDUONG_NGUHANH_PART_3 !== 'undefined' ? AMDUONG_NGUHANH_PART_3 : null, school: 'Âm Dương Bản Thể', anchor: 'amduong-tiet-3' },
+      { data: typeof AMDUONG_NGUHANH_PART_4 !== 'undefined' ? AMDUONG_NGUHANH_PART_4 : null, school: 'Âm Dương Bản Thể', anchor: 'amduong-tiet-4' },
+      { data: typeof AMDUONG_NGUHANH_PART_5 !== 'undefined' ? AMDUONG_NGUHANH_PART_5 : null, school: 'Âm Dương Bản Thể', anchor: 'amduong-tiet-5' },
+      { data: typeof AMDUONG_NGUHANH_PART_6 !== 'undefined' ? AMDUONG_NGUHANH_PART_6 : null, school: 'Âm Dương Bản Thể', anchor: 'amduong-tiet-6' },
+      { data: typeof AMDUONG_NGUHANH_PART_7 !== 'undefined' ? AMDUONG_NGUHANH_PART_7 : null, school: 'Âm Dương Bản Thể', anchor: 'amduong-tiet-7' },
+      { data: typeof AMDUONG_NGUHANH_PART_8 !== 'undefined' ? AMDUONG_NGUHANH_PART_8 : null, school: 'Âm Dương Bản Thể', anchor: 'amduong-tiet-8' },
+      { data: typeof AMDUONG_NGUHANH_PART_9 !== 'undefined' ? AMDUONG_NGUHANH_PART_9 : null, school: 'Âm Dương Bản Thể', anchor: 'amduong-tiet-9' },
+      { data: typeof AMDUONG_NGUHANH_PART_10 !== 'undefined' ? AMDUONG_NGUHANH_PART_10 : null, school: 'Âm Dương Bản Thể', anchor: 'amduong-tiet-10' },
+
       // 1. Thờ Cúng
       { data: typeof WORSHIP_FENGSHUI_PART_1 !== 'undefined' ? WORSHIP_FENGSHUI_PART_1 : null, school: 'Thờ Cúng', anchor: 'mach-thocung' },
       { data: typeof WORSHIP_ESOTERIC_DATA !== 'undefined' ? WORSHIP_ESOTERIC_DATA : null, school: 'Thờ Cúng', anchor: 'worship-esoteric-container' },
