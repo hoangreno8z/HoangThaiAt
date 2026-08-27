@@ -1863,38 +1863,80 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Search Engine
+    // =========================================================================
+  // BỘ MÁY TÌM KIẾM BÁCH KHOA TOÀN VĂN & HỖ TRỢ TIẾNG VIỆT ĐA TẦNG
+  // =========================================================================
+  function removeVietnameseTones(str) {
+    if (!str) return '';
+    str = str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    str = str.replace(/[đĐ]/g, 'd');
+    return str.toLowerCase();
+  }
+
   const searchInput = document.getElementById('global-search-input');
   const searchResultsBox = document.getElementById('search-results-box');
 
-  const buildSearchIndex = () => {
-    const idx = [];
-    const addPart = (partObj, schoolName, anchorId) => {
-      if (!partObj) return;
-      idx.push({
-        school: schoolName,
-        title: partObj.chapter_title || '',
-        sub_title: partObj.sub_title || '',
-        anchorId: anchorId,
-        keywords: `${partObj.chapter_title} ${partObj.sub_title} ${JSON.stringify(partObj.scholarly_analysis || '')} ${JSON.stringify(partObj.canonical_texts || '')} ${JSON.stringify(partObj.core_rules || '')}`.toLowerCase()
-      });
-    };
+  const buildMasterSearchIndex = () => {
+    const rawList = [
+      // 1. Thờ Cúng
+      { data: typeof WORSHIP_FENGSHUI_PART_1 !== 'undefined' ? WORSHIP_FENGSHUI_PART_1 : null, school: 'Thờ Cúng', anchor: 'mach-thocung' },
+      { data: typeof WORSHIP_ESOTERIC_DATA !== 'undefined' ? WORSHIP_ESOTERIC_DATA : null, school: 'Thờ Cúng', anchor: 'worship-esoteric-container' },
+      { data: typeof WORSHIP_STATUES_DATA !== 'undefined' ? WORSHIP_STATUES_DATA : null, school: 'Thờ Cúng', anchor: 'worship-statues-container' },
+      { data: typeof WORSHIP_PRAYERS_DATA !== 'undefined' ? WORSHIP_PRAYERS_DATA : null, school: 'Thờ Cúng', anchor: 'worship-prayers-container' },
 
-    if (typeof WORSHIP_FENGSHUI_PART_1 !== 'undefined') addPart(WORSHIP_FENGSHUI_PART_1, 'Thờ Cúng', 'worship-part1-container');
+      // 2. Loan Đầu (10 Tiết)
+      { data: typeof LOANDAU_FENGSHUI_PART_1 !== 'undefined' ? LOANDAU_FENGSHUI_PART_1 : null, school: 'Loan Đầu Phái', anchor: 'loandau-tiet-1' },
+      { data: typeof LOANDAU_FENGSHUI_PART_2 !== 'undefined' ? LOANDAU_FENGSHUI_PART_2 : null, school: 'Loan Đầu Phái', anchor: 'loandau-tiet-2' },
+      { data: typeof LOANDAU_FENGSHUI_PART_3 !== 'undefined' ? LOANDAU_FENGSHUI_PART_3 : null, school: 'Loan Đầu Phái', anchor: 'loandau-tiet-3' },
+      { data: typeof LOANDAU_FENGSHUI_PART_4 !== 'undefined' ? LOANDAU_FENGSHUI_PART_4 : null, school: 'Loan Đầu Phái', anchor: 'loandau-tiet-4' },
+      { data: typeof LOANDAU_FENGSHUI_PART_5 !== 'undefined' ? LOANDAU_FENGSHUI_PART_5 : null, school: 'Loan Đầu Phái', anchor: 'loandau-tiet-5' },
+      { data: typeof LOANDAU_FENGSHUI_PART_6 !== 'undefined' ? LOANDAU_FENGSHUI_PART_6 : null, school: 'Loan Đầu Phái', anchor: 'loandau-tiet-6' },
+      { data: typeof LOANDAU_FENGSHUI_PART_7 !== 'undefined' ? LOANDAU_FENGSHUI_PART_7 : null, school: 'Loan Đầu Phái', anchor: 'loandau-tiet-7' },
+      { data: typeof LOANDAU_FENGSHUI_PART_8 !== 'undefined' ? LOANDAU_FENGSHUI_PART_8 : null, school: 'Loan Đầu Phái', anchor: 'loandau-tiet-8' },
+      { data: typeof LOANDAU_FENGSHUI_PART_9 !== 'undefined' ? LOANDAU_FENGSHUI_PART_9 : null, school: 'Loan Đầu Phái', anchor: 'loandau-tiet-9' },
+      { data: typeof LOANDAU_FENGSHUI_PART_10 !== 'undefined' ? LOANDAU_FENGSHUI_PART_10 : null, school: 'Loan Đầu Phái', anchor: 'loandau-tiet-10' },
 
-    for (let i = 1; i <= 10; i++) {
-      const ld = window[`LOANDAU_FENGSHUI_PART_${i}`];
-      if (ld) addPart(ld, 'Loan Đầu Phái', `loandau-tiet-${i}`);
-      const bt = window[`BATTRACH_FENGSHUI_PART_${i}`];
-      if (bt) addPart(bt, 'Bát Trạch Phái', `battrach-tiet-${i}`);
-      const th = window[`TAMHOP_FENGSHUI_PART_${i}`];
-      if (th) addPart(th, 'Tam Hợp Phái', `tamhop-tiet-${i}`);
-    }
-    return idx;
+      // 3. Bát Trạch (10 Tiết)
+      { data: typeof BATTRACH_FENGSHUI_PART_1 !== 'undefined' ? BATTRACH_FENGSHUI_PART_1 : null, school: 'Bát Trạch Phái', anchor: 'battrach-tiet-1' },
+      { data: typeof BATTRACH_FENGSHUI_PART_2 !== 'undefined' ? BATTRACH_FENGSHUI_PART_2 : null, school: 'Bát Trạch Phái', anchor: 'battrach-tiet-2' },
+      { data: typeof BATTRACH_FENGSHUI_PART_3 !== 'undefined' ? BATTRACH_FENGSHUI_PART_3 : null, school: 'Bát Trạch Phái', anchor: 'battrach-tiet-3' },
+      { data: typeof BATTRACH_FENGSHUI_PART_4 !== 'undefined' ? BATTRACH_FENGSHUI_PART_4 : null, school: 'Bát Trạch Phái', anchor: 'battrach-tiet-4' },
+      { data: typeof BATTRACH_FENGSHUI_PART_5 !== 'undefined' ? BATTRACH_FENGSHUI_PART_5 : null, school: 'Bát Trạch Phái', anchor: 'battrach-tiet-5' },
+      { data: typeof BATTRACH_FENGSHUI_PART_6 !== 'undefined' ? BATTRACH_FENGSHUI_PART_6 : null, school: 'Bát Trạch Phái', anchor: 'battrach-tiet-6' },
+      { data: typeof BATTRACH_FENGSHUI_PART_7 !== 'undefined' ? BATTRACH_FENGSHUI_PART_7 : null, school: 'Bát Trạch Phái', anchor: 'battrach-tiet-7' },
+      { data: typeof BATTRACH_FENGSHUI_PART_8 !== 'undefined' ? BATTRACH_FENGSHUI_PART_8 : null, school: 'Bát Trạch Phái', anchor: 'battrach-tiet-8' },
+      { data: typeof BATTRACH_FENGSHUI_PART_9 !== 'undefined' ? BATTRACH_FENGSHUI_PART_9 : null, school: 'Bát Trạch Phái', anchor: 'battrach-tiet-9' },
+      { data: typeof BATTRACH_FENGSHUI_PART_10 !== 'undefined' ? BATTRACH_FENGSHUI_PART_10 : null, school: 'Bát Trạch Phái', anchor: 'battrach-tiet-10' },
+
+      // 4. Tam Hợp (10 Tiết)
+      { data: typeof TAMHOP_FENGSHUI_PART_1 !== 'undefined' ? TAMHOP_FENGSHUI_PART_1 : null, school: 'Tam Hợp Phái', anchor: 'tamhop-tiet-1' },
+      { data: typeof TAMHOP_FENGSHUI_PART_2 !== 'undefined' ? TAMHOP_FENGSHUI_PART_2 : null, school: 'Tam Hợp Phái', anchor: 'tamhop-tiet-2' },
+      { data: typeof TAMHOP_FENGSHUI_PART_3 !== 'undefined' ? TAMHOP_FENGSHUI_PART_3 : null, school: 'Tam Hợp Phái', anchor: 'tamhop-tiet-3' },
+      { data: typeof TAMHOP_FENGSHUI_PART_4 !== 'undefined' ? TAMHOP_FENGSHUI_PART_4 : null, school: 'Tam Hợp Phái', anchor: 'tamhop-tiet-4' },
+      { data: typeof TAMHOP_FENGSHUI_PART_5 !== 'undefined' ? TAMHOP_FENGSHUI_PART_5 : null, school: 'Tam Hợp Phái', anchor: 'tamhop-tiet-5' },
+      { data: typeof TAMHOP_FENGSHUI_PART_6 !== 'undefined' ? TAMHOP_FENGSHUI_PART_6 : null, school: 'Tam Hợp Phái', anchor: 'tamhop-tiet-6' },
+      { data: typeof TAMHOP_FENGSHUI_PART_7 !== 'undefined' ? TAMHOP_FENGSHUI_PART_7 : null, school: 'Tam Hợp Phái', anchor: 'tamhop-tiet-7' },
+      { data: typeof TAMHOP_FENGSHUI_PART_8 !== 'undefined' ? TAMHOP_FENGSHUI_PART_8 : null, school: 'Tam Hợp Phái', anchor: 'tamhop-tiet-8' },
+      { data: typeof TAMHOP_FENGSHUI_PART_9 !== 'undefined' ? TAMHOP_FENGSHUI_PART_9 : null, school: 'Tam Hợp Phái', anchor: 'tamhop-tiet-9' },
+      { data: typeof TAMHOP_FENGSHUI_PART_10 !== 'undefined' ? TAMHOP_FENGSHUI_PART_10 : null, school: 'Tam Hợp Phái', anchor: 'tamhop-tiet-10' }
+    ];
+
+    return rawList.filter(item => item.data !== null).map(item => {
+      const title = item.data.chapter_title || item.data.title || '';
+      const subTitle = item.data.sub_title || item.data.desc || '';
+      const fullText = title + ' ' + subTitle + ' ' + JSON.stringify(item.data);
+      return {
+        school: item.school,
+        title: title,
+        sub_title: subTitle,
+        anchor: item.anchor,
+        rawText: fullText.toLowerCase(),
+        normText: removeVietnameseTones(fullText)
+      };
+    });
   };
 
-  let searchIndex = [];
-  setTimeout(() => { searchIndex = buildSearchIndex(); }, 500);
+  const searchIndex = buildMasterSearchIndex();
 
   const jumpToSection = (targetId) => {
     const el = document.getElementById(targetId);
@@ -1912,24 +1954,40 @@ document.addEventListener('DOMContentLoaded', () => {
       searchResultsBox.classList.remove('active');
       return;
     }
-    const q = query.trim().toLowerCase();
-    const matches = searchIndex.filter(item => item.keywords.includes(q)).slice(0, 8);
+
+    const rawQ = query.trim().toLowerCase();
+    const normQ = removeVietnameseTones(query.trim());
+
+    const matches = searchIndex.filter(item => {
+      return item.rawText.includes(rawQ) || item.normText.includes(normQ);
+    }).slice(0, 8);
 
     if (matches.length === 0) {
-      searchResultsBox.innerHTML = `<div style="padding:0.9rem; text-align:center; font-size:0.84rem; color:var(--text-muted);">Không tìm thấy bài học nào với từ khóa "${query}"</div>`;
+      searchResultsBox.innerHTML = `
+        <div style="padding:1rem; text-align:center; font-size:0.85rem; color:var(--text-muted);">
+          Không tìm thấy bài học nào với từ khóa "<strong>${query}</strong>"
+        </div>
+      `;
       searchResultsBox.classList.add('active');
       return;
     }
 
-    searchResultsBox.innerHTML = matches.map(m => `
-      <div class="search-result-item" data-target="${m.anchorId}">
-        <div style="display:flex; justify-content:space-between; align-items:center;">
-          <span class="search-result-title">${m.title}</span>
-          <span class="search-result-badge" style="color:${m.school.includes('Loan') ? '#F59E0B' : m.school.includes('Bát') ? '#60A5FA' : '#34D399'};">${m.school}</span>
+    searchResultsBox.innerHTML = matches.map(m => {
+      let badgeColor = '#F59E0B';
+      if (m.school.includes('Bát')) badgeColor = '#60A5FA';
+      else if (m.school.includes('Tam')) badgeColor = '#34D399';
+      else if (m.school.includes('Thờ')) badgeColor = '#E5C07B';
+
+      return `
+        <div class="search-result-item" data-target="${m.anchor}">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.2rem;">
+            <span class="search-result-title">${m.title}</span>
+            <span class="search-result-badge" style="color:${badgeColor};">${m.school}</span>
+          </div>
+          <div class="search-result-snippet">${m.sub_title}</div>
         </div>
-        <div class="search-result-snippet">${m.sub_title}</div>
-      </div>
-    `).join('');
+      `;
+    }).join('');
 
     searchResultsBox.classList.add('active');
 
