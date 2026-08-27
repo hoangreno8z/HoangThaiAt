@@ -1,6 +1,6 @@
 /**
  * PHONG THỦY THỜ CÚNG CHÁNH TÔNG (KHO TÀNG CỔ THƯ & QUY THỨC TẾ TỰ)
- * CHƯƠNG I - LẦN NẠP KIẾN THỨC 1, 2, 3, 4, 5 & 6 / 10
+ * CHƯƠNG I - LẦN NẠP KIẾN THỨC 1, 2, 3, 4, 5, 6 & 7 / 10
  */
 
 // LẦN 1: KHỞI NGUYÊN BẢN THỂ & NGUYÊN TẮC TỌA VỊ
@@ -23,15 +23,15 @@ const WORSHIP_FENGSHUI_PART_1 = {
     title: "2. Phép Định Phương Vị: 'Tọa Cát Hướng Cát' Nghiêm Ngặt",
     comparison_with_kitchen: "Khác biệt bản chất với Bếp Nấu (Bếp dùng phép 'Tọa Hung Hướng Cát' để mượn Hỏa môn thiêu đốt hung sát), Ban Thờ là nơi nạp tôn quý thần linh, BẮT BUỘC PHẢI 'TỌA CÁT HƯỚNG CÁT'.",
     palace_requirements: [
-      { palace: "Cung Tọa (Vị trí đặt lưng ban thờ)", requirement: "Phải ngự tại các cung Sinh Khí, Diên Niên, Thiên Y, Phục Vị (Bát Trạch) hoặc đắc Sơn Tinh sinh vượng (Huyền Không). Tuyệt đối tránh Tuyệt Mệnh, Ngũ Quỷ, Lục Sát, Họa Hại." },
-      { palace: "Cung Hướng (Phương hướng mặt tiền ban thờ trông về)", requirement: "Phải nhìn về hướng đón ánh sáng tự nhiên ôn hòa, hướng Sinh Khí hoặc Thiên Y để nạp sinh khí trời đất." }
+      { palace: "Cung Tọa (Vị trí đặt lưng ban thờ)", requirement: "Phải ngự tại các cung Sinh Khí, Diên Niên, Thiên Y, Phục Vị (Bát Trạch) hoặc đắc Sơn Tinh sinh vượng (Huyền Không)." },
+      { palace: "Cung Hướng (Phương hướng mặt tiền ban thờ trông về)", requirement: "Phải nhìn về hướng đón ánh sáng tự nhiên ôn hòa, hướng Sinh Khí hoặc Thiên Y." }
     ]
   },
 
   loan_dau_rules: {
     title: "3. Quy Tắc Hình Thế Loan Đầu Gian Thờ (Tàng Phong Tụ Khí)",
     rules: [
-      { aspect: "Hậu Chẩm (Bức Tường Tựa Lưng Phía Sau)", standard: "Lưng ban thờ bắt buộc phải tựa vào Bức Tường Vững Chắc (Thực Tường), phẳng phiu, sạch sẽ.", prohibitions: "CẤM KỴ: Không tựa vào kính, cửa sổ rỗng, tường nhà vệ sinh, vách phòng ngủ vợ chồng, tường có ống nước xối xả bên trong." },
+      { aspect: "Hậu Chẩm (Bức Tường Tựa Lưng Phía Sau)", standard: "Lưng ban thờ bắt buộc phải tựa vào Bức Tường Vững Chắc (Thực Tường), phẳng phiu, sạch sẽ.", prohibitions: "CẤM KỴ: Không tựa vào kính, cửa sổ rỗng, tường nhà vệ sinh, vách phòng ngủ vợ chồng, tường có ống nước chảy bên trong." },
       { aspect: "Minh Đường (Khoảng Không Gian Phía Trước)", standard: "Khoảng không trước ban thờ phải sáng sủa, thoáng đãng, chiều sâu tối thiểu gấp 3 lần chiều rộng ban thờ.", prohibitions: "CẤM KỴ: Trực diện cửa chính đâm vào (trực xung sát), dầm xà ngang đè lên bát hương (áp đỉnh sát), gương soi chiếu vào." }
     ]
   },
@@ -208,24 +208,24 @@ const WORSHIP_FENGSHUI_PART_5 = {
     quote: "Tu sái thần vị, tẩy trừ trần trọc. Thân tâm thanh tịnh, cảm ứng thần minh.",
     quote_source: "Chu Tử Gia Lễ - Tu Sái Chi Nghi",
     timing_rules: [
-      { name: "Thời Điểm Đại Lễ Cuối Năm", detail: "Nghi lễ trang trọng nhất diễn ra từ ngày 23 tháng Chạp (sau khi tiễn Táo Quân) đến ngày 30 tháng Chạp để chuẩn bị đón năm mới." },
-      { name: "Thời Điểm Định Kỳ Trong Năm", detail: "Thực hiện vào các ngày sóc vọng (mùng 1, ngày rằm), ngày giỗ chạp, hoặc khi chân nhang quá đầy nhằm phòng tránh hỏa hoạn." },
-      { name: "Khung Giờ Hoàng Đạo Tốt Nhất", detail: "Nên tiến hành vào ban ngày lúc dương khí thịnh: Giờ Thìn (7h - 9h sáng), Giờ Tỵ (9h - 11h trưa), hoặc Giờ Thân (15h - 17h chiều). Tránh bao sái lúc đêm khuya âm khí thịnh." }
+      { name: "Thời Điểm Đại Lễ Cuối Năm", detail: "Nghi lễ trang trọng nhất diễn ra từ ngày 23 tháng Chạp đến ngày 30 tháng Chạp." },
+      { name: "Thời Điểm Định Kỳ Trong Năm", detail: "Thực hiện vào các ngày sóc vọng (mùng 1, rằm), ngày giỗ chạp, hoặc khi chân nhang quá đầy." },
+      { name: "Khung Giờ Hoàng Đạo Tốt Nhất", detail: "Giờ Thìn (7h - 9h sáng), Giờ Tỵ (9h - 11h trưa), hoặc Giờ Thân (15h - 17h chiều)." }
     ],
     purification_water: [
-      { name: "Nước Ngũ Vị Hương (Thảo Mộc Dương Khí)", recipe: "Nấu nước sôi từ 5 loại thảo mộc: Quế khô, Hồi khô, Đinh hương, Gỗ vang (hoặc Vỏ bưởi/Sả), Trầm hương. Mang hương thơm thanh khiết, tịnh hóa không gian." },
-      { name: "Rượu Gừng Tẩy Uế (Dương Hỏa Khử Tà)", recipe: "Dùng rượu trắng nguyên chất (nếp cái hoa vàng) ngâm gừng tươi giã nhuyễn. Tính chất cay nóng dương khí cực mạnh, lau sạch bụi bặm và trừ khử chướng khí bám trên đồ thờ." }
+      { name: "Nước Ngũ Vị Hương (Thảo Mộc Dương Khí)", recipe: "Nấu từ 5 loại thảo mộc: Quế, Hồi, Đinh hương, Gỗ vang (hoặc vỏ bưởi/sả), Trầm hương." },
+      { name: "Rượu Gừng Tẩy Uế (Dương Hỏa Khử Tà)", recipe: "Rượu trắng nguyên chất ngâm gừng tươi giã nhuyễn, tính dương nhiệt cực mạnh." }
     ]
   },
 
   five_steps_process: {
     title: "2. Quy Trình 5 Bước Bao Sái Bát Hương & Tịnh Hóa Bàn Thờ",
     steps: [
-      { step: "Bước 1: Tắm Gội Sạch Sẽ & Thắp Hương Khấn Xin Phép", action: "Gia chủ tắm gội thanh tịnh, trang phục nghiêm trang, thắp 3 nén hương trầm, dâng đĩa hoa quả nước sạch, đọc bài Văn Khấn Xin Bao Sái. Đợi hương tàn hết mới bắt đầu tiến hành." },
-      { step: "Bước 2: Thứ Tự Lau Dọn Ban Thờ (Từ Trên Xuống Dưới, Từ Tôn Đến Ti)", action: "Dùng khăn đỏ/vàng mới tinh nhúng nước ngũ vị hương vắt ráo. Lau tượng Phật trước $\rightarrow$ Lau bài vị Thần Linh $\rightarrow$ Lau bài vị Gia Tiên $\rightarrow$ Lau dọn ngai thờ, chân nến, mâm bồng. Lau từ trên cao xuống dưới thấp." },
-      { step: "Bước 3: Rút Tỉa Chân Nhang (Tuyệt Đối Bất Động Bát Hương)", action: "Một tay giữ chặt thân bát hương cố định trên bàn thờ (cấm xoay lắc xê dịch), tay kia nhẹ nhàng rút từng chân nhang. Chỉ để lại số lẻ chân nhang mang tính Dương: 3, 5, 7 hoặc 9 chân nhang đẹp nhất. Chân nhang rút ra đem đốt thành tro hóa vàng rồi thả xuống sông hồ nước sạch." },
-      { step: "Bước 4: Bổ Sung Tro Nếp & Vệ Sinh Thân Bát Hương", action: "Nếu tro quá đầy, dùng thìa sạch múc bớt phần tro trên bề mặt. Bổ sung tro rơm nếp mới thơm tho, dùng tay nén phẳng phiu bề mặt tro. Dùng khăn mềm thấm nước rượu gừng lau sạch sẽ quanh thân ngoài của bát hương." },
-      { step: "Bước 5: An Vị Đồ Thờ & Thắp Hương Tạ Lễ", action: "Sắp xếp lại các vật phẩm đồ thờ đúng trật tự Đông Bình Tây Quả. Rót nước sạch, rượu mới, dâng hoa quả tươi. Thắp tuần hương mới kính thỉnh Thần Linh Tiên Tổ an vị trở lại, chứng giám lòng thành." }
+      { step: "Bước 1: Tắm Gội Sạch Sẽ & Thắp Hương Khấn Xin Phép", action: "Gia chủ tắm gội thanh tịnh, trang phục nghiêm trang, thắp 3 nén hương trầm, đọc bài Văn Khấn Xin Bao Sái." },
+      { step: "Bước 2: Thứ Tự Lau Dọn Ban Thờ (Từ Trên Xuống Dưới, Từ Tôn Đến Ti)", action: "Lau tượng Phật trước $\rightarrow$ Lau bài vị Thần Linh $\rightarrow$ Lau bài vị Gia Tiên $\rightarrow$ Lau ngai thờ, chân nến." },
+      { step: "Bước 3: Rút Tỉa Chân Nhang (Tuyệt Đối Bất Động Bát Hương)", action: "Một tay giữ chặt thân bát hương, tay kia nhẹ nhàng rút chân nhang. Chỉ để lại số lẻ mang tính Dương: 3, 5, 7 hoặc 9 chân nhang." },
+      { step: "Bước 4: Bổ Sung Tro Nếp & Vệ Sinh Thân Bát Hương", action: "Múc bớt tro thừa, bổ sung tro nếp mới, nén phẳng mặt. Dùng khăn mềm thấm nước rượu gừng lau sạch thân bát hương." },
+      { step: "Bước 5: An Vị Đồ Thờ & Thắp Hương Tạ Lễ", action: "Sắp xếp đồ thờ đúng trật tự Đông Bình Tây Quả, dâng hoa tươi quả mới, thắp tuần hương mới tạ lễ thỉnh thần an vị." }
     ]
   },
 
@@ -240,10 +240,10 @@ Con kính lạy Hội đồng Tiên tổ nội ngoại dòng họ..., các bậc
 
 Hôm nay là ngày... tháng... năm...
 Tín chủ (chúng) con là:..., ngụ tại số nhà:...
-Nhân tiết giao thời (hoặc ngày sóc vọng / thanh minh / cuối năm), lòng thành kính cẩn, con xin được sửa biện hương hoa lễ vật, dâng lên trước án.
+Nhân tiết giao thời, lòng thành kính cẩn, con xin được sửa biện hương hoa lễ vật, dâng lên trước án.
 Kính xin chư vị Tôn Thần, chư vị Tiên Tổ giáng lâm án tiền, chứng giám lòng thành.
 
-Nay trần trọc bụi bặm bám nơi khám thờ, con xin phép được bao sái tịnh hóa bàn thờ, rút tỉa chân nhang, lau dọn thần vị để đón rước thanh khí, bày tỏ lòng tri ấn nguồn cội.
+Nay trần trọc bụi bặm bám nơi khám thờ, con xin phép được bao sái tịnh hóa bàn thờ, rút tỉa chân nhang, lau dọn thần vị để đón rước thanh khí.
 Kính xin Chư vị Tôn Thần, Tiên Tổ tạm lánh sang một bên để con cháu tiện việc bao sái lau dọn.
 Cúi xin phù hộ độ trì cho toàn gia an khang thịnh vượng, vạn sự hanh thông, sở cầu như ý, sở nguyện tòng tâm.
 
@@ -255,71 +255,125 @@ Nam mô A Di Đà Phật! (3 lần, 3 lạy)`
 // LẦN 6: PHONG THỦY BÀN THỜ THẦN TÀI - THỔ ĐỊA & QUY TẮC CHIÊU TÀI TỤ BẢO
 const WORSHIP_FENGSHUI_PART_6 = {
   chapter_id: "tho_cung_part_6",
-  chapter_title: "Chương I (Lần 6/10): Phong Thủy Bàn Thờ Thần Tài - Thổ Địa & Quy Tắc Chiêu Tài Tụ Bảo",
+  chapter_title: "Chương I (Lần 6/10): Phong Thủy Bàn Thờ Thần Tài - Thổ Địa & Quy Tắc Chiêu Tài TỤ BẢO",
   sub_title: "Trích xuất từ Chiêu Tài Tụ Bảo Bí Pháp & Địa Lý Toàn Thư: Bản chất linh vị sát đất, cung Thiên Lộc - Quý Nhân và bài trí Ngũ Phương Ngũ Thổ",
 
-  // 1. Bản chất linh vị & Tiếp nhận Địa Khí
   deity_nature: {
     title: "1. Bản Chất Linh Vị Của Thần Tài - Thổ Địa & Phép Tiếp Địa Khí",
     quote: "Thổ sinh Kim tắc phú quý tự lai, Địa khí thông tắc tài nguyên cuồn cuộn.",
     quote_source: "Chiêu Tài Tụ Bảo Bí Pháp",
     deities: [
-      {
-        name: "Phúc Đức Chánh Thần (Thổ Địa Tôn Thần)",
-        position: "Ngự bên TAY PHẢI (nhìn từ ngoài vào)",
-        role: "Cai quản long mạch, bảo hộ đất đai, ngăn chặn tà ma ám khí quấy phá trạch viên, giữ vững nền móng gia đạo hưng thịnh."
-      },
-      {
-        name: "Văn Võ Thần Tài (Triệu Công Minh / Tài Bạch Tinh Quân)",
-        position: "Ngự bên TAY TRÁI (nhìn từ ngoài vào)",
-        role: "Cai quản tài lộc ngân lượng, kích hoạt cung tài vận kinh thương buôn bán, đón rước khách hàng và chiêu nạp vượng khí."
-      }
+      { name: "Phúc Đức Chánh Thần (Thổ Địa Tôn Thần)", position: "Ngự bên TAY PHẢI (nhìn từ ngoài vào)", role: "Cai quản long mạch, bảo hộ đất đai, ngăn chặn tà ma ám khí quấy phá trạch viên." },
+      { name: "Văn Võ Thần Tài (Triệu Công Minh / Tài Bạch Tinh Quân)", position: "Ngự bên TAY TRÁI (nhìn từ ngoài vào)", role: "Cai quản tài lộc ngân lượng, kích hoạt cung tài vận kinh thương buôn bán." }
     ],
-    ground_principle: "NGUYÊN TẮC TIẾP ĐỊA ĐẶC BIỆT: Khác biệt hoàn toàn với Bàn thờ Phật và Gia tiên phải đặt trên cao thanh tịnh, Bàn thờ Thần Tài - Thổ Địa BẮT BUỘC ĐẶT SÁT MẶT ĐẤT để hấp thu trọn vẹn Địa Khí (Thổ vượng sinh Kim tài lộc). Tuy nhiên nền đặt ban thờ phải luôn khô ráo, sạch bóng, tránh ẩm thấp uế tạp."
+    ground_principle: "NGUYÊN TẮC TIẾP ĐỊA ĐẶC BIỆT: Bắt buộc đặt SÁT MẶT ĐẤT để hấp thu trọn vẹn Địa Khí (Thổ sinh Kim tài lộc). Nền đất phải luôn khô ráo, sạch sẽ."
   },
 
-  // 2. Vị trí & Cung vị Chiêu Tài
   positioning_and_directions: {
     title: "2. Phép Lập Hướng & Định Vị Cung Thiên Lộc - Quý Nhân",
     location_rules: [
-      { name: "Vị Trí Tụ Tài Tốt Nhất", desc: "Đặt tại góc chéo 45 độ so với Cửa Chính (Góc Tụ Tài / Tụ Bảo Bồn) hoặc vị trí nhìn bao quát cửa ra vào đón khách." },
-      { name: "Hậu Chẩm Tựa Tường Vững Chắc", desc: "Lưng bàn thờ Thần Tài bắt buộc phải tựa sát vào Bức Tường Vững Chãi (Thực Tường), phẳng phiu, không có lỗ hổng hoặc cửa sổ phía sau." }
+      { name: "Vị Trí Tụ Tài Tốt Nhất", desc: "Đặt tại góc chéo 45 độ so với Cửa Chính (Góc Tụ Tài / Tụ Bảo Bồn) hoặc nhìn bao quát cửa ra vào đón khách." },
+      { name: "Hậu Chẩm Tựa Tường Vững Chắc", desc: "Lưng bàn thờ bắt buộc phải tựa sát vào Bức Tường Vững Chãi (Thực Tường)." }
     ],
     wealth_palaces: [
-      {
-        palace: "Cung Thiên Lộc (Lâm Quan Cát Tinh)",
-        benefit: "Mang lại tài lộc dồi dào, tiền của gia tăng, kinh doanh buôn bán đại phát đạt, sự nghiệp thăng tiến không ngừng."
-      },
-      {
-        palace: "Cung Quý Nhân (Thiên Ất Quý Nhân)",
-        benefit: "Gặp quý nhân trợ giúp, chuyển nguy thành an, khách hàng tin tưởng, gia đạo bình an, buôn may bán đắt."
-      }
+      { palace: "Cung Thiên Lộc (Lâm Quan Cát Tinh)", benefit: "Tài lộc dồi dào, tiền của gia tăng, kinh doanh buôn bán đại phát đạt." },
+      { palace: "Cung Quý Nhân (Thiên Ất Quý Nhân)", benefit: "Gặp quý nhân trợ giúp, chuyển nguy thành an, khách hàng tin cậy, gia đạo bình an." }
     ]
   },
 
-  // 3. Quy thức bài trí chuẩn mực
   altar_layout: {
     title: "3. Quy Thức Bài Trí Bàn Thờ Thần Tài Chuẩn Cổ Truyền (Từ Trong Ra Ngoài)",
     items_order: [
-      { step: "1. Tấm Bài Vị Gương Khảm", desc: "Khắc danh hiệu 'Ngũ Phương Ngũ Thổ Long Thần, Tiền Hậu Địa Chủ Tài Thần', dán sát vách lưng bàn thờ." },
-      { step: "2. Tượng Hai Ông Thần", desc: "Nhìn từ ngoài vào: Thần Tài bên TRÁI, Thổ Địa bên PHẢI." },
-      { step: "3. Tam Hũ Phú Quý (Muối - Gạo - Nước)", desc: "Đặt ở giữa hai ông thần. Muối (thanh tịnh trường tồn), Gạo (no ấm sung túc), Nước (sinh sôi tài lộc). Chỉ thay vào cuối năm." },
-      { step: "4. Bát Hương Cốt Thất Bảo", desc: "Đặt chính giữa bàn thờ, nạp tro nếp sạch và cốt thất bảo, dán cố định không xê dịch." },
-      { step: "5. Kỷ 5 Chén Nước (Ngũ Hành Thủy Phục)", desc: "Xếp hình chữ Nhất (一) hoặc chữ Thập (十) tượng trưng cho Ngũ Phương Ngũ Thổ và Ngũ Hành luân chuyển." },
-      { step: "6. Cóc Thiềm Thừ (Cóc 3 Chân)", desc: "Đặt bên Trái (bên Thần Tài). Sáng quay đầu ra cửa đớp tài lộc; Tối quay đầu vào trong nhả tiền vào nhà." },
-      { step: "7. Tô Nước Rắc Cánh Hoa (Minh Đường Tụ Thủy)", desc: "Đặt trước mặt ngoài cùng bàn thờ, tượng trưng cho tài lộc tụ tụ, nước chảy về chỗ trũng không bị thất thoát." }
+      { step: "1. Tấm Bài Vị Gương Khảm", desc: "Khắc danh hiệu 'Ngũ Phương Ngũ Thổ Long Thần, Tiền Hậu Địa Chủ Tài Thần', dán sát vách lưng." },
+      { step: "2. Tượng Hai Ông Thần", desc: "Thần Tài bên TRÁI, Thổ Địa bên PHẢI (nhìn từ ngoài vào)." },
+      { step: "3. Tam Hũ Phú Quý (Muối - Gạo - Nước)", desc: "Đặt ở giữa hai ông thần. Chỉ thay vào dịp cuối năm." },
+      { step: "4. Bát Hương Cốt Thất Bảo", desc: "Đặt chính giữa bàn thờ, nạp tro nếp sạch và cốt thất bảo, dán cố định." },
+      { step: "5. Kỷ 5 Chén Nước", desc: "Xếp hình chữ Nhất (一) hoặc chữ Thập (十) biểu trưng Ngũ Phương Ngũ Thổ." },
+      { step: "6. Cóc Thiềm Thừ", desc: "Đặt bên Trái (Thần Tài). Sáng quay đầu ra cửa đớp tài; Tối quay đầu vào trong nhả tiền." },
+      { step: "7. Tô Nước Rắc Cánh Hoa (Minh Đường Tụ Thủy)", desc: "Đặt trước mặt ngoài cùng bàn thờ giữ tụ tài lộc." }
     ]
   },
 
-  // 4. Những điều đại kỵ
   taboos_wealth_altar: {
     title: "4. Đại Kỵ Cần Tránh Khi Thờ Thần Tài - Thổ Địa",
     taboos: [
       "Không tẩy uế, khai quang tượng Thần Tài - Thổ Địa trước khi an vị lên bàn thờ.",
       "Đặt bàn thờ Thần Tài dưới gầm cầu thang, dưới nhà vệ sinh, hoặc đối diện gương soi.",
       "Góc nhọn của các đồ đạc nội thất hoặc góc tường xung chiếu thẳng vào bàn thờ (Thương sát).",
-      "Để khu vực trước bàn thờ Thần Tài bừa bãi, ẩm ướt, bụi bẩn, hoặc để thú cưng quấy phá làm ô uế.",
-      "Quên quay đầu Cóc Thiềm Thừ hoặc dùng hoa quả héo úa, đồ cúng ôi thiu dâng lên bàn thờ."
+      "Để khu vực trước bàn thờ Thần Tài bừa bãi, ẩm ướt, bụi bẩn, hoặc để thú cưng quấy phá.",
+      "Quên quay đầu Cóc Thiềm Thừ hoặc dùng hoa quả héo úa dâng lên bàn thờ."
     ]
+  }
+};
+
+// LẦN 7: PHONG THỦY BÀN THỜ PHẬT TẠI GIA & QUY THỨC THỜ CHUNG PHẬT - GIA TIÊN
+const WORSHIP_FENGSHUI_PART_7 = {
+  chapter_id: "tho_cung_part_7",
+  chapter_title: "Chương I (Lần 7/10): Phong Thủy Bàn Thờ Phật Tại Gia & Quy Thức Thờ Chung Phật - Gia Tiên",
+  sub_title: "Trích từ Phật Thuyết Bát Đại Nhân Giác Kinh & Chu Tử Gia Lễ (Thích Đạo Phối Tự): Quy tắc 'Tiền Phật Hậu Linh', phân cấp nhị tầng và giới luật cúng dường chay tịnh",
+
+  // 1. Bản thể luận & Thứ bậc tôn ty
+  spiritual_hierarchy: {
+    title: "1. Thứ Bậc Tôn Ty Tâm Linh: 'Tiền Phật Hậu Linh / Phật Thượng Tiên Hạ'",
+    quote: "Phật thị Tam Giới Đạo Sư, Tứ Sanh Từ Phụ. Tiên tổ nương thừa Phật lực, siêu sinh Tịnh Độ.",
+    quote_source: "Thích Môn Quy Kính Nghi",
+    hierarchy_rules: [
+      {
+        name: "Đức Phật & Chư Đại Bồ Tát (Đấng Giác Ngộ Tối Thượng)",
+        desc: "Đức Phật là bậc Thiên Nhân Sư (Thầy của Trời và Người), đã thoát khỏi luân hồi sinh tử. Do đó linh vị của Phật bắt buộc phải ngự ở tầng cao nhất, tôn nghiêm nhất, thanh tịnh tuyệt đối."
+      },
+      {
+        name: "Gia Tiên Tiền Tổ (Huyết Thống Đang Nương Tựa Phật Pháp)",
+        desc: "Tiền nhân huyết thống vẫn còn trong cõi luân hồi. Thờ Phật chung với Gia Tiên là để Tiên Tổ ngày ngày nghe kinh niệm Phật, tiêu trừ nghiệp chướng, nương nhờ đại nguyện của Phật để vãng sinh Tây Phương."
+      },
+      {
+        name: "Quy Tắc Tuyệt Đối Về Chiều Cao & Vị Trí",
+        desc: "Tượng Phật / Ảnh Phật BẮT BUỘC ĐẶT CAO HƠN bài vị và bát hương Gia Tiên tối thiểu từ 15cm đến 30cm. Tuyệt đối không bao giờ đặt linh vị Gia Tiên ngang hàng hoặc cao hơn tượng Phật (phạm đại nghịch tôn ty làm tổn hao phước đức)."
+      }
+    ]
+  },
+
+  // 2. Mô hình bố cục bàn thờ Phật và Gia Tiên
+  dual_altar_models: {
+    title: "2. Hai Mô Hình Bố Cục Bàn Thờ Phật & Gia Tiên Chuẩn Phong Thủy",
+    models: [
+      {
+        model_name: "Mô Hình 1: Bàn Thờ Phân Cấp (Nhị Cấp / Tam Cấp)",
+        suitable: "Phù hợp nhà phố, căn hộ chung cư hoặc không gian thờ cúng có diện tích vừa phải.",
+        structure: [
+          "Tầng Thượng (Cấp trên cao nhất): Đặt Tượng Phật (hoặc Tam Thánh Phật), 1 bát hương Phật riêng, 1 bình hoa tươi, 1 đĩa quả chay, 1 chén nước thanh tịnh.",
+          "Tầng Hạ (Cấp dưới thấp hơn): Đặt bài vị Gia Tiên, 3 bát hương thờ Thần Linh & Gia Tiên & Bà Cô Ông Mãnh, kỷ chén nước, đĩa trầu cau."
+        ]
+      },
+      {
+        model_name: "Mô Hình 2: Hai Bàn Thờ Tách Biệt Độc Lập",
+        suitable: "Phù hợp biệt thự, nhà thờ họ, hoặc gia trạch có phòng thờ riêng biệt rộng rãi.",
+        structure: [
+          "Bàn Thờ Phật: Đặt ở chính giữa gian phòng thờ, kê cao nhất, trang nghiêm thanh tịnh hướng ra cửa sáng.",
+          "Bàn Thờ Gia Tiên: Đặt bên tay Phải (nhìn từ ngoài vào) hoặc thấp hơn bàn thờ Phật 1 bậc, tạo sự hài hòa âm dương."
+        ]
+      }
+    ]
+  },
+
+  // 3. Giới luật cúng dường chay tịnh
+  offering_commandments: {
+    title: "3. Giới Luật Cúng Dường Bàn Thờ Phật (100% Chay Tịnh)",
+    rules: [
+      { item: "Lễ Vật Cúng Phật", detail: "TUYỆT ĐỐI 100% ĐỒ CHAY THANH TỊNH: Hoa tươi (Hoa Sen, Hoa Cúc, Hoa Huệ), Quả tươi ngọt ngào, Nước lọc tinh khiết, Trà thơm, Xôi chè, Oản phẩm, Cơm chay." },
+      { item: "Đại Kỵ Tuyệt Đối", detail: "CẤM KỴ TUYỆT ĐỐI: Không dâng đồ mặn (thịt, cá, tôm, trứng), không dâng rượu, tỏi ớt, không đốt vàng mã tiền âm phủ trên bàn thờ Phật (Phật không dùng tiền âm phủ và không sát sinh)." },
+      { item: "Xử Lý Khi Cúng Mặn Gia Tiên", detail: "Nếu gia đình làm cỗ mặn cúng Gia Tiên, mâm cỗ mặn PHẢI ĐẶT Ở BÀN RIÊNG PHÍA DƯỚI, tuyệt đối không đặt mâm cỗ mặn lên cùng mặt phẳng bàn thờ Phật." }
+    ]
+  },
+
+  // 4. Hướng đặt & Chọn tượng Phật tại gia
+  orientations_and_statues: {
+    title: "4. Hướng Đặt Bàn Thờ Phật & Lựa Chọn Tượng Phật Bản Mệnh",
+    statues: [
+      { name: "Tây Phương Tam Thánh", desc: "Đức Phật A Di Đà (ở giữa), Quán Thế Âm Bồ Tát (bên trái cầm nhành dương liễu và bình cam lộ), Đại Thế Chí Bồ Tát (bên phải cầm hoa sen xanh)." },
+      { name: "Đức Bổn Sư Thích Ca Mâu Ni", desc: "Bậc Giáo Chủ cõi Ta Bà, ngồi kiết già tọa thiền trên tòa sen, khai mở trí tuệ thanh tịnh." },
+      { name: "Quán Thế Âm Bồ Tát", desc: "Hiện thân của lòng đại từ đại bi, cứu khổ cứu nạn, che chở gia đạo bình an tai qua nạn khỏi." }
+    ],
+    orientation_rule: "HƯỚNG ĐẠT ĐẠI CÁT: Bàn thờ Phật nên nhìn về hướng TÂY (hướng về cõi Tây Phương Cực Lạc) hoặc hướng nhìn thẳng ra Minh Đường đón ánh sáng tự nhiên. Mặt tượng Phật phải hướng ra nơi thanh tịnh, cấm nhìn thẳng vào giường ngủ, cửa nhà vệ sinh, bàn ăn hoặc góc bếp."
   }
 };

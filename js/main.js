@@ -539,6 +539,92 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
   }
 
+  // 1.11 Render Chuyên Đề Phong Thủy Thờ Cúng (Lần 7 / 10): Phong Thủy Bàn Thờ Phật Tại Gia
+  const worshipPart7Container = document.getElementById('worship-part7-container');
+  if (worshipPart7Container && typeof WORSHIP_FENGSHUI_PART_7 !== 'undefined') {
+    const data7 = WORSHIP_FENGSHUI_PART_7;
+    worshipPart7Container.innerHTML = `
+      <div style="background:var(--bg-card); border:1px solid var(--gold-primary); border-radius:16px; padding:2rem; margin-bottom:2rem; box-shadow:var(--shadow-gold);">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; margin-bottom:1.5rem; border-bottom:1px solid rgba(229,192,123,0.2); padding-bottom:1rem;">
+          <div>
+            <span style="font-size:0.75rem; color:var(--jade-cyan); text-transform:uppercase; letter-spacing:1px; font-weight:700;">THÍCH ĐẠO PHỐI TỰ • TIỀN PHẬT HẬU LINH</span>
+            <h3 style="font-family:var(--font-title); font-size:1.5rem; color:var(--gold-primary); margin:0.2rem 0;">${data7.chapter_title}</h3>
+            <div style="font-size:0.88rem; color:var(--text-muted);">${data7.sub_title}</div>
+          </div>
+          <span style="background:rgba(229,192,123,0.15); color:var(--gold-primary); border:1px solid var(--gold-primary); font-size:0.8rem; font-weight:700; padding:0.3rem 0.8rem; border-radius:20px;">LẦN 7 / 10</span>
+        </div>
+
+        <!-- 1. Thứ bậc tôn ty -->
+        <div style="margin-bottom:1.8rem;">
+          <h4 style="font-family:var(--font-title); font-size:1.2rem; color:var(--text-pure); margin-bottom:0.6rem;">${data7.spiritual_hierarchy.title}</h4>
+          <div style="background:rgba(229,192,123,0.06); border-left:3px solid var(--gold-primary); padding:0.8rem 1.2rem; border-radius:0 8px 8px 0; margin-bottom:1rem;">
+            <div style="font-size:0.95rem; color:var(--text-pure); font-style:italic;">"${data7.spiritual_hierarchy.quote}"</div>
+            <div style="font-size:0.75rem; color:var(--gold-primary); margin-top:0.2rem;">👉 Xuất xứ: <strong>${data7.spiritual_hierarchy.quote_source}</strong></div>
+          </div>
+
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1rem;">
+            ${data7.spiritual_hierarchy.hierarchy_rules.map(h => `
+              <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border-subtle); padding:1.2rem; border-radius:12px;">
+                <strong style="color:var(--gold-primary); font-size:0.95rem; display:block; margin-bottom:0.4rem;">☸️ ${h.name}</strong>
+                <p style="font-size:0.85rem; color:var(--text-muted); line-height:1.6;">${h.desc}</p>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
+        <!-- 2. Mô hình bố cục -->
+        <div style="margin-bottom:1.8rem; border-top:1px solid var(--border-subtle); padding-top:1.5rem;">
+          <h4 style="font-family:var(--font-title); font-size:1.2rem; color:var(--text-pure); margin-bottom:0.8rem;">${data7.dual_altar_models.title}</h4>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:1.2rem;">
+            ${data7.dual_altar_models.models.map(m => `
+              <div style="background:rgba(13,17,26,0.85); border:1px solid var(--border-subtle); border-radius:12px; padding:1.2rem;">
+                <h5 style="color:var(--jade-cyan); font-size:1rem; margin-bottom:0.3rem;">🏛️ ${m.model_name}</h5>
+                <span style="font-size:0.78rem; color:var(--text-muted); display:block; margin-bottom:0.6rem;">${m.suitable}</span>
+                <div style="display:flex; flex-direction:column; gap:0.4rem;">
+                  ${m.structure.map(s => `
+                    <div style="background:rgba(0,0,0,0.3); padding:0.5rem 0.8rem; border-radius:6px; font-size:0.82rem; color:var(--text-pure); line-height:1.5; border-left:2px solid var(--gold-primary);">
+                      • ${s}
+                    </div>
+                  `).join('')}
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
+        <!-- 3. Giới luật cúng dường chay tịnh -->
+        <div style="margin-bottom:1.8rem; border-top:1px solid var(--border-subtle); padding-top:1.5rem;">
+          <h4 style="font-family:var(--font-title); font-size:1.2rem; color:var(--text-pure); margin-bottom:0.8rem;">${data7.offering_commandments.title}</h4>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1rem;">
+            ${data7.offering_commandments.rules.map(r => `
+              <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border-subtle); padding:1rem; border-radius:10px;">
+                <strong style="color:var(--gold-primary); font-size:0.95rem; display:block; margin-bottom:0.3rem;">🌸 ${r.item}</strong>
+                <p style="font-size:0.85rem; color:var(--text-muted); line-height:1.6;">${r.detail}</p>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
+        <!-- 4. Hướng đặt & Tượng Phật -->
+        <div style="border-top:1px solid var(--border-subtle); padding-top:1.5rem;">
+          <h4 style="font-family:var(--font-title); font-size:1.2rem; color:var(--text-pure); margin-bottom:0.8rem;">${data7.orientations_and_statues.title}</h4>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:0.8rem; margin-bottom:1rem;">
+            ${data7.orientations_and_statues.statues.map(st => `
+              <div style="background:rgba(0,0,0,0.4); border:1px solid var(--border-subtle); border-radius:8px; padding:0.8rem 1rem;">
+                <strong style="color:var(--gold-primary); font-size:0.9rem; display:block; margin-bottom:0.2rem;">✨ ${st.name}</strong>
+                <span style="font-size:0.8rem; color:var(--text-muted); line-height:1.4;">${st.desc}</span>
+              </div>
+            `).join('')}
+          </div>
+
+          <div style="background:rgba(16,185,129,0.08); border-left:3px solid #10B981; padding:0.8rem 1rem; border-radius:0 8px 8px 0; font-size:0.85rem; color:var(--text-pure); line-height:1.6;">
+            🧭 <strong>Phép lập hướng đại cát:</strong> ${data7.orientations_and_statues.orientation_rule}
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
   // 2. MẠCH 1: Render Thư Tịch Cốt Lõi Địa Lý Phong Thủy
   const treatisesGrid = document.getElementById('geographic-treatises-grid');
   if (treatisesGrid && COSMIC_DATA.geographic_treatises) {
