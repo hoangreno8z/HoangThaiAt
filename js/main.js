@@ -155,6 +155,110 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
   }
 
+  // 1.6 Render Chuyên Đề Phong Thủy Thờ Cúng (Lần 2 / 10): Thước Lỗ Ban 38.8cm
+  const worshipPart2Container = document.getElementById('worship-part2-container');
+  if (worshipPart2Container && typeof WORSHIP_FENGSHUI_PART_2 !== 'undefined') {
+    const data2 = WORSHIP_FENGSHUI_PART_2;
+    worshipPart2Container.innerHTML = `
+      <div style="background:var(--bg-card); border:1px solid var(--gold-primary); border-radius:16px; padding:2rem; margin-bottom:2rem; box-shadow:var(--shadow-gold);">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; margin-bottom:1.5rem; border-bottom:1px solid rgba(229,192,123,0.2); padding-bottom:1rem;">
+          <div>
+            <span style="font-size:0.75rem; color:var(--jade-cyan); text-transform:uppercase; letter-spacing:1px;">KÍCH THƯỚC BÀN THỜ HOÀNG KIM</span>
+            <h3 style="font-family:var(--font-title); font-size:1.5rem; color:var(--gold-primary); margin:0.2rem 0;">${data2.chapter_title}</h3>
+            <div style="font-size:0.88rem; color:var(--text-muted);">${data2.sub_title}</div>
+          </div>
+          <span style="background:rgba(229,192,123,0.15); color:var(--gold-primary); border:1px solid var(--gold-primary); font-size:0.8rem; font-weight:700; padding:0.3rem 0.8rem; border-radius:20px;">LẦN 2 / 10</span>
+        </div>
+
+        <!-- 1. Phân biệt 3 loại thước Lỗ Ban -->
+        <div style="margin-bottom:1.8rem;">
+          <h4 style="font-family:var(--font-title); font-size:1.2rem; color:var(--text-pure); margin-bottom:0.6rem;">${data2.ruler_classification.title}</h4>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1rem;">
+            ${data2.ruler_classification.rulers.map(r => `
+              <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border-subtle); padding:1rem; border-radius:10px;">
+                <strong style="color:var(--gold-primary); font-size:0.95rem; display:block; margin-bottom:0.4rem;">📏 ${r.name}</strong>
+                <p style="font-size:0.85rem; color:var(--text-muted); line-height:1.6;">${r.use_case}</p>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
+        <!-- 2. Tra cứu trực tiếp thước 38.8cm -->
+        <div style="background:rgba(0,0,0,0.5); border:1px solid var(--border-active); border-radius:12px; padding:1.5rem; margin-bottom:1.8rem;">
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; margin-bottom:1rem;">
+            <div>
+              <h4 style="font-family:var(--font-title); font-size:1.15rem; color:var(--gold-primary); margin-bottom:0.2rem;">
+                CÔNG CỤ TRA CỨU KÍCH THƯỚC LỖ BAN 38.8CM TRỰC QUAN
+              </h4>
+              <span style="font-size:0.8rem; color:var(--text-muted);">Nhập kích thước (cm) chiều rộng, sâu hoặc cao để kiểm tra cung Cát / Hung</span>
+            </div>
+            <div style="display:flex; gap:0.5rem; align-items:center;">
+              <input type="number" id="luban-input" value="127" step="0.5" class="custom-select" style="width:140px; padding:0.6rem 0.8rem; text-align:center; font-size:1.1rem; font-weight:700;">
+              <button id="luban-btn" class="btn-primary" style="padding:0.6rem 1rem; font-size:0.85rem;">Kiểm Tra</button>
+            </div>
+          </div>
+          <div id="luban-result"></div>
+        </div>
+
+        <!-- 3. Cấu trúc 10 Cung Thước 38.8cm -->
+        <div style="margin-bottom:1.8rem;">
+          <h4 style="font-family:var(--font-title); font-size:1.2rem; color:var(--text-pure); margin-bottom:0.8rem;">${data2.ruler_388_structure.title}</h4>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:0.8rem;">
+            ${data2.ruler_388_structure.palaces.map(p => `
+              <div style="background:rgba(13,17,26,0.8); border:1px solid ${p.color}; border-radius:8px; padding:0.8rem;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.3rem;">
+                  <strong style="color:${p.color}; font-size:1rem;">${p.name}</strong>
+                  <span style="font-size:0.7rem; color:${p.color}; font-weight:700;">${p.type === 'cat' ? 'ĐỎ (CÁT)' : 'ĐEN (HUNG)'}</span>
+                </div>
+                <div style="font-size:0.75rem; color:var(--text-muted); margin-bottom:0.4rem;">${p.desc}</div>
+                <div style="font-size:0.7rem; color:var(--text-pure); line-height:1.4;">
+                  ${p.sub_palaces.map(s => `• ${s.split(' ')[0]}`).join(', ')}
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
+        <!-- 4. Kích Thước Bàn Thờ Hoàng Kim -->
+        <div>
+          <h4 style="font-family:var(--font-title); font-size:1.2rem; color:var(--text-pure); margin-bottom:0.8rem;">${data2.altar_golden_dimensions.title}</h4>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:1.2rem;">
+            <!-- Bàn thờ đứng -->
+            <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border-subtle); border-radius:12px; padding:1.2rem;">
+              <h5 style="color:var(--gold-primary); font-size:1rem; margin-bottom:0.6rem;">🏛️ Bàn Thờ Đứng / Án Gian / Tủ Thờ Đại Cát:</h5>
+              <div style="display:flex; flex-direction:column; gap:0.5rem;">
+                ${data2.altar_golden_dimensions.standing_altars.map(a => `
+                  <div style="background:rgba(0,0,0,0.3); padding:0.6rem 0.8rem; border-radius:6px; border-left:2px solid var(--gold-primary);">
+                    <div style="font-size:0.88rem; color:var(--text-pure); font-weight:700;">Ngang ${a.width} x Sâu ${a.depth} x Cao ${a.height}</div>
+                    <div style="font-size:0.78rem; color:var(--text-muted); margin-top:0.2rem;">👉 Phù hợp: ${a.suit_for}</div>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+
+            <!-- Bàn thờ treo -->
+            <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border-subtle); border-radius:12px; padding:1.2rem;">
+              <h5 style="color:var(--jade-cyan); font-size:1rem; margin-bottom:0.6rem;">⛩️ Bàn Thờ Treo Tường (Chung Cư / Nhà Phố):</h5>
+              <div style="display:flex; flex-direction:column; gap:0.5rem;">
+                ${data2.altar_golden_dimensions.hanging_altars.map(a => `
+                  <div style="background:rgba(0,0,0,0.3); padding:0.6rem 0.8rem; border-radius:6px; border-left:2px solid var(--jade-cyan);">
+                    <div style="font-size:0.88rem; color:var(--text-pure); font-weight:700;">Sâu ${a.depth} x Ngang ${a.width}</div>
+                    <div style="font-size:0.78rem; color:var(--text-muted); margin-top:0.2rem;">👉 ${a.height_standard}</div>
+                    <div style="font-size:0.75rem; color:var(--jade-cyan); margin-top:0.2rem;">Ứng dụng: ${a.suit_for}</div>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+
+    // Khởi tạo công cụ tra cứu Thước 38.8cm
+    const luBanEngine = new LuBan388Engine('luban-input', 'luban-btn', 'luban-result');
+    window.luBanEngine = luBanEngine;
+  }
+
   // 2. MẠCH 1: Render Thư Tịch Cốt Lõi Địa Lý Phong Thủy
   const treatisesGrid = document.getElementById('geographic-treatises-grid');
   if (treatisesGrid && COSMIC_DATA.geographic_treatises) {
