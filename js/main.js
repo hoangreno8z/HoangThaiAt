@@ -259,6 +259,93 @@ document.addEventListener('DOMContentLoaded', () => {
     window.luBanEngine = luBanEngine;
   }
 
+  // 1.7 Render Chuyên Đề Phong Thủy Thờ Cúng (Lần 3 / 10): Bài Trí Bát Hương & Ngũ Hành Đồ Thờ
+  const worshipPart3Container = document.getElementById('worship-part3-container');
+  if (worshipPart3Container && typeof WORSHIP_FENGSHUI_PART_3 !== 'undefined') {
+    const data3 = WORSHIP_FENGSHUI_PART_3;
+    worshipPart3Container.innerHTML = `
+      <div style="background:var(--bg-card); border:1px solid var(--gold-primary); border-radius:16px; padding:2rem; margin-bottom:2rem; box-shadow:var(--shadow-gold);">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; margin-bottom:1.5rem; border-bottom:1px solid rgba(229,192,123,0.2); padding-bottom:1rem;">
+          <div>
+            <span style="font-size:0.75rem; color:var(--jade-cyan); text-transform:uppercase; letter-spacing:1px;">BÀI TRÍ ĐỒ THỜ CHÁNH TÔNG</span>
+            <h3 style="font-family:var(--font-title); font-size:1.5rem; color:var(--gold-primary); margin:0.2rem 0;">${data3.chapter_title}</h3>
+            <div style="font-size:0.88rem; color:var(--text-muted);">${data3.sub_title}</div>
+          </div>
+          <span style="background:rgba(229,192,123,0.15); color:var(--gold-primary); border:1px solid var(--gold-primary); font-size:0.8rem; font-weight:700; padding:0.3rem 0.8rem; border-radius:20px;">LẦN 3 / 10</span>
+        </div>
+
+        <!-- 1. Tam Cấp Thần Vị (3 Bát Hương) -->
+        <div style="margin-bottom:1.8rem;">
+          <h4 style="font-family:var(--font-title); font-size:1.2rem; color:var(--text-pure); margin-bottom:0.6rem;">${data3.incense_burners_layout.title}</h4>
+          <div style="background:rgba(229,192,123,0.06); border-left:3px solid var(--gold-primary); padding:0.8rem 1.2rem; border-radius:0 8px 8px 0; margin-bottom:1rem;">
+            <div style="font-size:0.95rem; color:var(--text-pure); font-style:italic;">"${data3.incense_burners_layout.quote}"</div>
+            <div style="font-size:0.75rem; color:var(--gold-primary); margin-top:0.2rem;">👉 Xuất xứ: <strong>${data3.incense_burners_layout.quote_source}</strong></div>
+          </div>
+
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1rem;">
+            ${data3.incense_burners_layout.burners.map(b => `
+              <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border-subtle); padding:1.2rem; border-radius:12px;">
+                <span style="background:rgba(229,192,123,0.15); color:var(--gold-primary); font-size:0.75rem; font-weight:700; padding:0.2rem 0.5rem; border-radius:4px; display:inline-block; margin-bottom:0.4rem;">${b.position}</span>
+                <h5 style="color:var(--text-pure); font-size:1rem; margin-bottom:0.4rem;">${b.worship}</h5>
+                <p style="font-size:0.85rem; color:var(--text-muted); line-height:1.6;">${b.specification}</p>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
+        <!-- 2. Ngũ Hành Đồ Thờ Tương Sinh -->
+        <div style="margin-bottom:1.8rem; border-top:1px solid var(--border-subtle); padding-top:1.5rem;">
+          <h4 style="font-family:var(--font-title); font-size:1.2rem; color:var(--text-pure); margin-bottom:0.4rem;">${data3.five_elements_worship.title}</h4>
+          <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:1rem;">${data3.five_elements_worship.desc}</p>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:0.8rem;">
+            ${data3.five_elements_worship.elements.map(e => `
+              <div style="background:rgba(13,17,26,0.8); border:1px solid var(--border-subtle); border-radius:10px; padding:1rem;">
+                <strong style="color:var(--gold-primary); font-size:0.95rem; display:block; margin-bottom:0.3rem;">${e.element}</strong>
+                <div style="font-size:0.82rem; color:var(--text-pure); margin-bottom:0.4rem;"><strong>Vật phẩm:</strong> ${e.items}</div>
+                <div style="font-size:0.75rem; color:var(--text-muted); line-height:1.5;">${e.role}</div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
+        <!-- 3. Đông Bình Tây Quả -->
+        <div style="margin-bottom:1.8rem; border-top:1px solid var(--border-subtle); padding-top:1.5rem;">
+          <h4 style="font-family:var(--font-title); font-size:1.2rem; color:var(--text-pure); margin-bottom:0.8rem;">${data3.dong_binh_tay_qua.title}</h4>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:1.2rem;">
+            ${data3.dong_binh_tay_qua.principles.map(p => `
+              <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border-subtle); padding:1.2rem; border-radius:12px;">
+                <h5 style="color:var(--jade-cyan); font-size:1rem; margin-bottom:0.4rem;">🌿 ${p.name}</h5>
+                <p style="font-size:0.85rem; color:var(--text-pure); line-height:1.6;">${p.desc}</p>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
+        <!-- 4. Cốt Thất Bảo & Tro Nếp -->
+        <div style="border-top:1px solid var(--border-subtle); padding-top:1.5rem;">
+          <h4 style="font-family:var(--font-title); font-size:1.2rem; color:var(--text-pure); margin-bottom:0.6rem;">${data3.that_bao_consecration.title}</h4>
+          <div style="background:rgba(229,192,123,0.06); border-left:3px solid var(--gold-primary); padding:0.8rem 1.2rem; border-radius:0 8px 8px 0; margin-bottom:1rem;">
+            <div style="font-size:0.95rem; color:var(--text-pure); font-style:italic;">"${data3.that_bao_consecration.quote}"</div>
+            <div style="font-size:0.75rem; color:var(--gold-primary); margin-top:0.2rem;">👉 Xuất xứ: <strong>${data3.that_bao_consecration.quote_source}</strong></div>
+          </div>
+          
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(130px, 1fr)); gap:0.6rem; margin-bottom:1rem;">
+            ${data3.that_bao_consecration.seven_treasures.map(t => `
+              <div style="background:rgba(0,0,0,0.4); border:1px solid var(--border-subtle); border-radius:6px; padding:0.6rem 0.8rem; text-align:center;">
+                <strong style="color:var(--gold-primary); font-size:0.85rem; display:block;">💎 ${t.name}</strong>
+                <span style="font-size:0.7rem; color:var(--text-muted); line-height:1.3; display:block; margin-top:0.2rem;">${t.meaning}</span>
+              </div>
+            `).join('')}
+          </div>
+
+          <div style="background:rgba(16,185,129,0.08); border-left:3px solid #10B981; padding:0.8rem 1rem; border-radius:0 8px 8px 0; font-size:0.85rem; color:var(--text-pure); line-height:1.6;">
+            🌾 <strong>Quy chuẩn vật liệu tro:</strong> ${data3.that_bao_consecration.ash_rule}
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
   // 2. MẠCH 1: Render Thư Tịch Cốt Lõi Địa Lý Phong Thủy
   const treatisesGrid = document.getElementById('geographic-treatises-grid');
   if (treatisesGrid && COSMIC_DATA.geographic_treatises) {

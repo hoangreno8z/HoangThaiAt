@@ -1,6 +1,6 @@
 /**
  * PHONG THỦY THỜ CÚNG CHÁNH TÔNG (KHO TÀNG CỔ THƯ & QUY THỨC TẾ TỰ)
- * CHƯƠNG I - LẦN NẠP KIẾN THỨC 1/10 & 2/10
+ * CHƯƠNG I - LẦN NẠP KIẾN THỨC 1, 2 & 3 / 10
  */
 
 // LẦN 1: KHỞI NGUYÊN BẢN THỂ & NGUYÊN TẮC TỌA VỊ
@@ -74,7 +74,6 @@ const WORSHIP_FENGSHUI_PART_2 = {
   chapter_title: "Chương I (Lần 2/10): Thước Lỗ Ban 38.8cm & Kích Thước Bàn Thờ Chuẩn Phong Thủy",
   sub_title: "Phân biệt 3 loại Thước Lỗ Ban, cấu trúc 10 Cung Thước 38.8cm (Âm Phần/Bàn Thờ) & Kích Thước Bàn Thờ Đại Cát",
   
-  // 1. Phân Biệt 3 Loại Thước Lỗ Ban Kinh Điển
   ruler_classification: {
     title: "1. Phân Biệt Ba Loại Thước Lỗ Ban Trong Phong Thủy Cổ Truyền",
     quote: "Kích thước bất hợp độ số, tắc họa phúc vô sở quy.",
@@ -95,105 +94,23 @@ const WORSHIP_FENGSHUI_PART_2 = {
     ]
   },
 
-  // 2. Cấu Trúc 10 Cung Thước 38.8cm
   ruler_388_structure: {
     title: "2. Cấu Trúc 10 Cung Thước Lỗ Ban 38.8cm (Âm Phần / Bàn Thờ)",
     cycle_length: 38.8,
     palaces: [
-      {
-        index: 1,
-        name: "Đinh (丁)",
-        type: "cat",
-        color: "#10B981",
-        length: "0 - 3.88 cm",
-        desc: "Cung Đinh (Tốt): Chủ về phúc lộc gia đình, con cháu hiếu thuận thành đạt.",
-        sub_palaces: ["Phúc Tinh (Sao may mắn chiếu soi)", "Cập Đệ (Thi cử đỗ đạt)", "Tài Vượng (Tiền bạc sinh sôi)", "Đăng Khoa (Khoa bảng rạng rỡ)"]
-      },
-      {
-        index: 2,
-        name: "Hại (害)",
-        type: "hung",
-        color: "#EF4444",
-        length: "3.88 - 7.76 cm",
-        desc: "Cung Hại (Xấu): Chủ về tai ương bất ngờ, thị phi phiền toái bủa vây.",
-        sub_palaces: ["Khẩu Thiệt (Tranh chấp mồm mép)", "Bệnh Lâm (Bệnh tật giáng xuống)", "Tử Tuyệt (Chia lìa diệt vong)", "Tai Chí (Họa hại ập tới)"]
-      },
-      {
-        index: 3,
-        name: "Vượng (旺)",
-        type: "cat",
-        color: "#10B981",
-        length: "7.76 - 11.64 cm",
-        desc: "Cung Vượng (Tốt): Chủ về vượng khí ngập tràn, việc mừng liên tiếp, tài lộc hanh thông.",
-        sub_palaces: ["Thiên Đức (Trời ban phúc đức)", "Hỷ Sự (Gia đình có chuyện mừng)", "Tiến Bảo (Của cải gia tăng)", "Nạp Phúc (Đón nhận điềm lành)"]
-      },
-      {
-        index: 4,
-        name: "Khổ (苦)",
-        type: "hung",
-        color: "#EF4444",
-        length: "11.64 - 15.52 cm",
-        desc: "Cung Khổ (Xấu): Chủ về cay đắng nhọc nhằn, hao tốn tiền bạc, vất vả cô đơn.",
-        sub_palaces: ["Thất Thoát (Mất mát tài sản)", "Quan Quỷ (Dính líu kiện tụng)", "Kiếp Tài (Bị cướp bóc tiền của)", "Vô Tự (Hiếm muộn con cái)"]
-      },
-      {
-        index: 5,
-        name: "Nghĩa (義)",
-        type: "cat",
-        color: "#10B981",
-        length: "15.52 - 19.40 cm",
-        desc: "Cung Nghĩa (Tốt): Chủ về chính nghĩa, quý nhân giúp đỡ, tăng trưởng điền trạch.",
-        sub_palaces: ["Đại Cát (Mọi việc đều tốt lành)", "Tài Vượng (Kinh doanh phát tài)", "Ích Tử (Thêm con quý tử)", "Thiên Khố (Kho trời chứa của)"]
-      },
-      {
-        index: 6,
-        name: "Quan (官)",
-        type: "cat",
-        color: "#10B981",
-        length: "19.40 - 23.28 cm",
-        desc: "Cung Quan (Tốt): Chủ về đường quan lộ thăng tiến, quyền chức hiển hách, tài vận hoạch phát.",
-        sub_palaces: ["Thuận Khoa (Học hành thi cử hanh thông)", "Hoạch Tài (Tiền bạc bất ngờ)", "Tiến Ích (Lợi nhuận ngày càng tăng)", "Phú Quý (Giàu sang quyền thế)"]
-      },
-      {
-        index: 7,
-        name: "Tử (死)",
-        type: "hung",
-        color: "#EF4444",
-        length: "23.28 - 27.16 cm",
-        desc: "Cung Tử (Cực Xấu): Chủ về sự suy thoái tột cùng, tử biệt ly tán, phá sản tiêu điều.",
-        sub_palaces: ["Ly Hương (Phiêu bạt xa xứ)", "Tử Biệt (Mất người ly tán)", "Thoái Đinh (Con cháu suy tàn)", "Thất Tài (Mất sạch cơ nghiệp)"]
-      },
-      {
-        index: 8,
-        name: "Hưng (興)",
-        type: "cat",
-        color: "#10B981",
-        length: "27.16 - 31.04 cm",
-        desc: "Cung Hưng (Tốt): Chủ về khởi sắc hưng thịnh, sinh con quý tử, gia đạo phát đạt.",
-        sub_palaces: ["Đăng Khoa (Khoa bảng đỗ đạt)", "Quý Tử (Sinh con thông minh tài giỏi)", "Thêm Đinh (Gia đình thêm người nối dõi)", "Hưng Vượng (Toàn gia thịnh vượng)"]
-      },
-      {
-        index: 9,
-        name: "Thất (失)",
-        type: "hung",
-        color: "#EF4444",
-        length: "31.04 - 34.92 cm",
-        desc: "Cung Thất (Xấu): Chủ về mất mát, cô độc lẻ loi, dính vòng lao lý kiện tụng.",
-        sub_palaces: ["Cô Quả (Cô đơn không nơi nương tựa)", "Lao Chấp (Tù đày giam cầm)", "Công Sự (Rắc rối quan tụng)", "Thoái Tài (Tiền của tiêu hao)"]
-      },
-      {
-        index: 10,
-        name: "Tài (財)",
-        type: "cat",
-        color: "#10B981",
-        length: "34.92 - 38.80 cm",
-        desc: "Cung Tài (Tốt): Chủ về tài lộc dồi dào, phúc ấm ngập tràn, vạn sự viên mãn.",
-        sub_palaces: ["Nghinh Phúc (Đón rước phúc lộc)", "Lục Hợp (Mọi bề hòa hợp tốt đẹp)", "Tiến Bảo (Của cải quý giá vào nhà)", "Tài Đức (Có đức có tài, đại phú)"]
-      }
+      { index: 1, name: "Đinh (丁)", type: "cat", color: "#10B981", length: "0 - 3.88 cm", desc: "Cung Đinh (Tốt): Chủ về phúc lộc gia đình, con cháu hiếu thuận thành đạt.", sub_palaces: ["Phúc Tinh", "Cập Đệ", "Tài Vượng", "Đăng Khoa"] },
+      { index: 2, name: "Hại (害)", type: "hung", color: "#EF4444", length: "3.88 - 7.76 cm", desc: "Cung Hại (Xấu): Chủ về tai ương bất ngờ, thị phi phiền toái bủa vây.", sub_palaces: ["Khẩu Thiệt", "Bệnh Lâm", "Tử Tuyệt", "Tai Chí"] },
+      { index: 3, name: "Vượng (旺)", type: "cat", color: "#10B981", length: "7.76 - 11.64 cm", desc: "Cung Vượng (Tốt): Chủ về vượng khí ngập tràn, việc mừng liên tiếp, tài lộc hanh thông.", sub_palaces: ["Thiên Đức", "Hỷ Sự", "Tiến Bảo", "Nạp Phúc"] },
+      { index: 4, name: "Khổ (苦)", type: "hung", color: "#EF4444", length: "11.64 - 15.52 cm", desc: "Cung Khổ (Xấu): Chủ về cay đắng nhọc nhằn, hao tốn tiền bạc, vất vả cô đơn.", sub_palaces: ["Thất Thoát", "Quan Quỷ", "Kiếp Tài", "Vô Tự"] },
+      { index: 5, name: "Nghĩa (義)", type: "cat", color: "#10B981", length: "15.52 - 19.40 cm", desc: "Cung Nghĩa (Tốt): Chủ về chính nghĩa, quý nhân giúp đỡ, tăng trưởng điền trạch.", sub_palaces: ["Đại Cát", "Tài Vượng", "Ích Tử", "Thiên Khố"] },
+      { index: 6, name: "Quan (官)", type: "cat", color: "#10B981", length: "19.40 - 23.28 cm", desc: "Cung Quan (Tốt): Chủ về đường quan lộ thăng tiến, quyền chức hiển hách, tài vận hoạch phát.", sub_palaces: ["Thuận Khoa", "Hoạch Tài", "Tiến Ích", "Phú Quý"] },
+      { index: 7, name: "Tử (死)", type: "hung", color: "#EF4444", length: "23.28 - 27.16 cm", desc: "Cung Tử (Cực Xấu): Chủ về sự suy thoái tột cùng, tử biệt ly tán, phá sản tiêu điều.", sub_palaces: ["Ly Hương", "Tử Biệt", "Thoái Đinh", "Thất Tài"] },
+      { index: 8, name: "Hưng (興)", type: "cat", color: "#10B981", length: "27.16 - 31.04 cm", desc: "Cung Hưng (Tốt): Chủ về khởi sắc hưng thịnh, sinh con quý tử, gia đạo phát đạt.", sub_palaces: ["Đăng Khoa", "Quý Tử", "Thêm Đinh", "Hưng Vượng"] },
+      { index: 9, name: "Thất (失)", type: "hung", color: "#EF4444", length: "31.04 - 34.92 cm", desc: "Cung Thất (Xấu): Chủ về mất mát, cô độc lẻ loi, dính vòng lao lý kiện tụng.", sub_palaces: ["Cô Quả", "Lao Chấp", "Công Sự", "Thoái Tài"] },
+      { index: 10, name: "Tài (財)", type: "cat", color: "#10B981", length: "34.92 - 38.80 cm", desc: "Cung Tài (Tốt): Chủ về tài lộc dồi dào, phúc ấm ngập tràn, vạn sự viên mãn.", sub_palaces: ["Nghinh Phúc", "Lục Hợp", "Tiến Bảo", "Tài Đức"] }
     ]
   },
 
-  // 3. Bảng Kích Thước Bàn Thờ Hoàng Kim (Rộng x Sâu x Cao)
   altar_golden_dimensions: {
     title: "3. Kích Thước Bàn Thờ Chuẩn Hoàng Kim (Thước 38.8cm)",
     standing_altars: [
@@ -209,5 +126,101 @@ const WORSHIP_FENGSHUI_PART_2 = {
       { depth: "49.5 cm (Tiến Bảo)", width: "95 cm (Tài Vượng)", height_standard: "Treo cách mặt sàn: 172cm - 217cm", suit_for: "Căn hộ có diện tích phòng khách rộng, thờ thần linh và gia tiên chung." },
       { depth: "61 cm (Tài Lộc)", width: "107 cm (Quý Tử)", height_standard: "Treo cách mặt sàn: 172cm - 217cm", suit_for: "Bàn thờ treo cỡ lớn, bày đủ tam cấp hoặc 3 bát hương trang trọng." }
     ]
+  }
+};
+
+// LẦN 3: BÀI TRÍ BÁT HƯƠNG, NGŨ HÀNH ĐỒ THỜ & NGUYÊN TẮC TỤ KHÍ BÀN THỜ
+const WORSHIP_FENGSHUI_PART_3 = {
+  chapter_id: "tho_cung_part_3",
+  chapter_title: "Chương I (Lần 3/10): Bài Trí Bát Hương, Ngũ Hành Đồ Thờ & Cốt Thất Bảo Chánh Tông",
+  sub_title: "Quy thức Tam Cấp Thần Vị, bố cục 'Đông Bình Tây Quả', Ngũ Hành Đồ Thờ và thuật nạp Thất Bảo tụ khí linh thiêng",
+
+  // 1. Quy Thức Bài Trí Bát Hương
+  incense_burners_layout: {
+    title: "1. Quy Thức Bài Trí Bát Hương (Tam Cấp Thần Vị)",
+    quote: "Thần linh cư trung, Tiên tổ cư tả, Cô Mãnh cư hữu. Ngôi thứ phân minh, âm dương đắc tự.",
+    quote_source: "Chu Tử Gia Lễ (Tế Lễ Quy Thức)",
+    burners: [
+      {
+        position: "Chính Giữa (Tọa Trung - Kê Cao Nhất)",
+        worship: "Thờ Quan Lớn Đệ Nhất Thần Linh / Thổ Công / Đông Trù Tư Mệnh Táo Phủ Thần Quân / Long Mạch Tôn Thần",
+        specification: "Bát hương lớn nhất, kê cao hơn hai bên từ 3cm đến 5cm (bằng đôn gỗ hoặc tam sơn), đại diện cho Thiên Mệnh và Thần quyền bảo hộ toàn trạch."
+      },
+      {
+        position: "Bên Tay Phải (Nhìn từ ngoài vào là bên phải, bên trái Thần vị)",
+        worship: "Thờ Gia Tiên Tiền Tổ / Cụ Ông Cụ Bà Nội Ngoại / Thân Tộc Huyết Thống",
+        specification: "Kê thấp hơn bát hương trung tâm, đặt thẳng hàng ngang, cách bát hương Thần Linh tối thiểu 10cm - 15cm để tránh nhiễu loạn khí trường."
+      },
+      {
+        position: "Bên Tay Trái (Nhìn từ ngoài vào là bên trái, bên phải Thần vị)",
+        worship: "Thờ Bà Cô Ông Mãnh / Huyền Cô Huyền Cậu / Tiền Chủ Hậu Chủ",
+        specification: "Kê bằng độ cao với bát hương Gia Tiên, đối xứng hoàn hảo qua trục tâm của bát hương Thần Linh."
+      }
+    ]
+  },
+
+  // 2. Ngũ Hành Đồ Thờ Tương Sinh
+  five_elements_worship: {
+    title: "2. Cơ Cấu Ngũ Hành Tương Sinh Trên Mặt Bàn Thờ",
+    desc: "Mặt bàn thờ là một tiểu vũ trụ thu nhỏ, bắt buộc phải hội tụ đầy đủ và cân bằng năng lượng của cả 5 nguyên lý Ngũ Hành:",
+    elements: [
+      {
+        element: "Kim (金) - Nghiêm Cẩn Tinh Khiết",
+        items: "Đỉnh đồng, đôi hạc ngự quy, đôi chân nến đồng, mâm bồng đồng, ống hương đồng.",
+        role: "Tạo nên sự trang nghiêm, khúc xạ ánh sáng ấm, ngưng tụ kim khí thanh khiết xua đuổi tà khí."
+      },
+      {
+        element: "Mộc (木) - Sinh Trưởng Hướng Thượng",
+        items: "Bàn thờ gỗ (gỗ gụ, hương, mít, dổi), bài vị gỗ, ngai khám thờ gỗ, đũa thờ, hoa tươi.",
+        role: "Tượng trưng cho sinh khí mùa xuân, mộc khí nuôi dưỡng sự phát triển bền vững của gia tộc."
+      },
+      {
+        element: "Thủy (水) - Nhu Thuận Thanh Tịnh",
+        items: "Kỷ chén đựng nước sạch và rượu (3 chén hoặc 5 chén), bình cắm hoa tươi.",
+        role: "Chủ về sự tẩy uế, nuôi dưỡng thanh khí, duy trì sự lưu thông tài lộc và nhu hòa trong gia đạo."
+      },
+      {
+        element: "Hỏa (火) - Thăng Hoa Linh Thông",
+        items: "Ngọn đèn dầu, đôi đèn thờ ánh sáng vàng ấm, nến sáp, nén hương đang thắp đỏ.",
+        role: "Chủ về tâm hỏa bừng sáng, sợi dây năng lượng kết nối vô hình giữa cõi hữu hình và cõi siêu thực."
+      },
+      {
+        element: "Thổ (土) - Vững Vàng Dung Nạp",
+        items: "Bát hương bằng gốm sứ (men rạn, men lam Bát Tràng), đĩa sứ, tro nếp sạch bên trong bát hương.",
+        role: "Đất mẹ dung nạp vạn vật, tạo điểm tựa tâm linh kiên cố vững chãi không bị lay động."
+      }
+    ]
+  },
+
+  // 3. Quy Luật "Đông Bình Tây Quả" & Bố Cục Tả Hữu
+  dong_binh_tay_qua: {
+    title: "3. Nguyên Tắc Bố Cục 'Đông Bình Tây Quả' & 'Tả Thanh Long Hữu Bạch Hổ'",
+    principles: [
+      {
+        name: "Đông Bình - Tây Quả (Quy Luật Sinh Thành Thiên Nhiên)",
+        desc: "Nhìn từ ngoài vào bàn thờ: Bên TAY TRÁI (Phương Đông) đặt Bình Hoa Tươi; Bên TAY PHẢI (Phương Tây) đặt Đĩa Hoa Quả (Mâm Bồng). Quy luật: Mặt Trời mọc đằng Đông cây cối đơm hoa (Xuân sinh $\rightarrow$ Hoa), Mặt Trời lặn đằng Tây kết trái thu hoạch (Thu thành $\rightarrow$ Quả). Gió thổi từ phương Đông mang hương hoa thoang thoảng qua đĩa quả sang phương Tây tạo nên luồng sinh khí tuần hoàn trọn vẹn."
+      },
+      {
+        name: "Tả Thanh Long - Hữu Bạch Hổ (Cân Bằng Động Tĩnh)",
+        desc: "Bên Tả (Tay trái nhìn vào): Thuộc Thanh Long, chủ quản Khí Mộc, bố trí vật phẩm cao, trang trọng (Bình hoa, Hạc ngự quy, Cây nến cao). Bên Hữu (Tay phải nhìn vào): Thuộc Bạch Hổ, chủ quản Khí Kim, bố trí vật phẩm thấp, trang nhã (Mâm ngũ quả, Đĩa trầu cau, Kỷ nước chén)."
+      }
+    ]
+  },
+
+  // 4. Thuật Bốc Bát Hương & Nạp Cốt Thất Bảo Chánh Tông
+  that_bao_consecration: {
+    title: "4. Thuật Nạp Cốt Thất Bảo & Tro Nếp Tụ Khí Bát Hương",
+    quote: "Thất bảo nạp cốt, linh khí sở quy. Tro nếp tịnh thổ, vạn đại an khang.",
+    quote_source: "Khai Quang Tế Tự Mật Chỉ",
+    seven_treasures: [
+      { name: "Vàng (Kim)", meaning: "Đại diện cho sự bất biến, tôn quý, tịch tà tối thượng." },
+      { name: "Bạc (Ngân)", meaning: "Đại diện cho sự thanh khiết, quang minh, trừ khử chướng khí." },
+      { name: "Ngọc Bích (Ngọc)", meaning: "Đại diện cho sự nhu hòa, quý phái, tích tụ tinh hoa trời đất." },
+      { name: "Hổ Phách (Huyết Phách)", meaning: "Nhựa cây hóa thạch ngàn năm, kết nối linh khí cõi âm dương." },
+      { name: "Xà Cừ (Ngọc Trai)", meaning: "Hấp thụ tinh hoa đại dương sâu thẳm, điều hòa thủy khí an lành." },
+      { name: "San Hô Đỏ", meaning: "Cây huyết san hô đại diện cho sự trường thọ, may mắn, vượng khí." },
+      { name: "Mã Não", meaning: "Đá quý tự nhiên mang từ trường bảo hộ, bình an, tiêu trừ ám khí." }
+    ],
+    ash_rule: "VẬT LIỆU ĐỰNG BÊN TRONG: Bắt buộc dùng Tro Rơm Nếp Sạch đốt tơi xốp, thơm mùi lúa mới (Thổ tịnh dưỡng Mộc). Trộn kèm chút bột Ngũ Vị Hương (quế, hồi, đinh hương, thảo quả, trầm hương) và nước gừng để bao sái tẩy uế. TUYỆT ĐỐI KHÔNG DÙNG CÁT XÂY DỰNG BẨN làm nặng nề, bí bách và tán khí bát hương."
   }
 };
