@@ -788,7 +788,7 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
   }
 
-  // 1.14 Render Tiết X: Tờ Dị Hiệu Bát Hương & Đại Tổng Kết Chương I
+  // 1.14 Render Tiết X: Đại Giải Mã Phù Cốt Bát Hương & Trận Đồ Càn Khôn
   const worshipPart10Container = document.getElementById('worship-part10-container');
   if (worshipPart10Container && typeof WORSHIP_FENGSHUI_PART_10 !== 'undefined') {
     const data10 = WORSHIP_FENGSHUI_PART_10;
@@ -796,75 +796,76 @@ document.addEventListener('DOMContentLoaded', () => {
       <div style="background:var(--bg-card); border:2px solid var(--gold-primary); border-radius:16px; padding:2rem; margin-bottom:2rem; box-shadow:var(--shadow-gold);">
         <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; margin-bottom:1.5rem; border-bottom:1px solid rgba(229,192,123,0.2); padding-bottom:1rem;">
           <div>
-            <span style="font-size:0.75rem; color:var(--jade-cyan); text-transform:uppercase; letter-spacing:1px; font-weight:700;">ĐỊNH DANH TÂM THỨC • LINH PHÙ BÁT HƯƠNG</span>
+            <span style="font-size:0.75rem; color:var(--jade-cyan); text-transform:uppercase; letter-spacing:1px; font-weight:700;">ĐẠO TẠNG HUYỀN MÔN • KHOA NGHI TẾ TỰ MẬT CHỈ</span>
             <h3 style="font-family:var(--font-title); font-size:1.5rem; color:var(--gold-primary); margin:0.2rem 0;">${data10.chapter_title}</h3>
             <div style="font-size:0.88rem; color:var(--text-muted);">${data10.sub_title}</div>
           </div>
           <span style="background:rgba(229,192,123,0.2); color:var(--gold-primary); border:1px solid var(--gold-primary); font-size:0.8rem; font-weight:700; padding:0.3rem 0.8rem; border-radius:20px;">TIẾT X (VIÊN MÃN)</span>
         </div>
 
-        <!-- 1. Bản chất & Hình vẽ phù hiệu -->
-        <div style="margin-bottom:1.8rem;">
-          <h4 style="font-family:var(--font-title); font-size:1.2rem; color:var(--text-pure); margin-bottom:0.6rem;">${data10.di_hieu_anatomy.title}</h4>
-          <div style="background:rgba(229,192,123,0.06); border-left:3px solid var(--gold-primary); padding:0.8rem 1.2rem; border-radius:0 8px 8px 0; margin-bottom:1rem;">
-            <div style="font-size:0.95rem; color:var(--text-pure); font-style:italic;">"${data10.di_hieu_anatomy.quote}"</div>
-            <div style="font-size:0.75rem; color:var(--gold-primary); margin-top:0.2rem;">👉 Xuất xứ: <strong>${data10.di_hieu_anatomy.quote_source}</strong></div>
-          </div>
-          
-          <p style="font-size:0.88rem; color:var(--text-pure); line-height:1.7; margin-bottom:1.2rem; background:rgba(0,0,0,0.3); padding:1rem; border-radius:8px;">
-            📜 <strong>Bản chất:</strong> ${data10.di_hieu_anatomy.definition}
-          </p>
-
-          <h5 style="color:var(--jade-cyan); font-size:1rem; margin-bottom:0.6rem;">Ý Nghĩa Các Biểu Tượng & Hình Vẽ Trên Tờ Dị Hiệu:</h5>
-          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1rem; margin-bottom:1rem;">
-            ${data10.di_hieu_anatomy.visual_symbols.map(s => `
-              <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border-subtle); padding:1rem; border-radius:10px;">
-                <strong style="color:var(--gold-primary); font-size:0.92rem; display:block; margin-bottom:0.3rem;">⚡ ${s.symbol_name}</strong>
-                <p style="font-size:0.82rem; color:var(--text-muted); line-height:1.5;">${s.meaning}</p>
-              </div>
-            `).join('')}
+        <!-- 1. Trực quan hình ảnh & Tổng quan -->
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:1.5rem; margin-bottom:2rem; align-items:center;">
+          <div style="text-align:center; background:rgba(0,0,0,0.4); border:1px solid var(--gold-primary); border-radius:12px; padding:1rem;">
+            <img src="${data10.image_url}" alt="Phù Cốt Bát Hương" style="max-height:480px; width:auto; max-width:100%; border-radius:8px; box-shadow:0 0 20px rgba(229,192,123,0.25);">
+            <div style="font-size:0.8rem; color:var(--gold-primary); font-weight:700; margin-top:0.6rem;">Đạo Phù Cốt Bát Hương Chánh Tông (Chu Sa Hoàng Chỉ)</div>
           </div>
 
-          <div style="background:rgba(229,192,123,0.08); border-left:3px solid var(--gold-primary); padding:0.8rem 1rem; border-radius:0 8px 8px 0; font-size:0.85rem; color:var(--text-pure); line-height:1.6;">
-            🎨 <strong>Quy chuẩn màu sắc:</strong> ${data10.di_hieu_anatomy.color_rule}
-          </div>
-        </div>
+          <div>
+            <h4 style="font-family:var(--font-title); font-size:1.2rem; color:var(--text-pure); margin-bottom:0.6rem;">${data10.talisman_anatomy.title}</h4>
+            <div style="background:rgba(229,192,123,0.06); border-left:3px solid var(--gold-primary); padding:0.8rem 1.2rem; border-radius:0 8px 8px 0; margin-bottom:1rem;">
+              <div style="font-size:0.95rem; color:var(--text-pure); font-style:italic;">"${data10.talisman_anatomy.quote}"</div>
+              <div style="font-size:0.75rem; color:var(--gold-primary); margin-top:0.2rem;">👉 Xuất xứ: <strong>${data10.talisman_anatomy.quote_source}</strong></div>
+            </div>
+            
+            <p style="font-size:0.88rem; color:var(--text-muted); line-height:1.7; margin-bottom:1rem;">
+              ${data10.talisman_anatomy.overview}
+            </p>
 
-        <!-- 2. Quy cách soạn thảo 5 mẫu Dị Hiệu -->
-        <div style="margin-bottom:1.8rem; border-top:1px solid var(--border-subtle); padding-top:1.5rem;">
-          <h4 style="font-family:var(--font-title); font-size:1.2rem; color:var(--text-pure); margin-bottom:0.4rem;">${data10.di_hieu_writing_templates.title}</h4>
-          <span style="font-size:0.82rem; color:var(--text-muted); display:block; margin-bottom:1rem;">${data10.di_hieu_writing_templates.rule_note}</span>
-          
-          <div style="display:flex; flex-direction:column; gap:0.8rem;">
-            ${data10.di_hieu_writing_templates.templates.map(t => `
-              <div style="background:rgba(13,17,26,0.9); border:1px solid var(--border-subtle); border-radius:10px; padding:1rem 1.2rem;">
-                <h5 style="color:var(--jade-cyan); font-size:0.95rem; margin-bottom:0.4rem;">🔖 ${t.altar_type}</h5>
-                <pre style="background:rgba(0,0,0,0.5); border-left:3px solid var(--gold-primary); padding:0.8rem; font-size:0.82rem; color:var(--gold-primary); font-family:var(--font-sans); white-space:pre-wrap; margin:0; line-height:1.6;">${t.content}</pre>
-              </div>
-            `).join('')}
+            <div style="display:flex; flex-direction:column; gap:0.6rem;">
+              ${data10.matrix_significance.points.map(pt => `
+                <div style="background:rgba(255,255,255,0.02); border-left:2px solid var(--jade-cyan); padding:0.6rem 0.8rem; border-radius:0 6px 6px 0;">
+                  <strong style="color:var(--jade-cyan); font-size:0.88rem;">⚡ ${pt.name}:</strong>
+                  <span style="font-size:0.82rem; color:var(--text-muted); line-height:1.5;"> ${pt.desc}</span>
+                </div>
+              `).join('')}
+            </div>
           </div>
         </div>
 
-        <!-- 3. Thuật gói Dị Hiệu cùng Thất Bảo -->
-        <div style="margin-bottom:1.8rem; border-top:1px solid var(--border-subtle); padding-top:1.5rem;">
-          <h4 style="font-family:var(--font-title); font-size:1.2rem; color:var(--text-pure); margin-bottom:0.8rem;">${data10.wrapping_process.title}</h4>
-          <div style="display:flex; flex-direction:column; gap:0.6rem;">
-            ${data10.wrapping_process.steps.map(step => `
-              <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border-subtle); padding:0.8rem 1rem; border-radius:8px; font-size:0.85rem; color:var(--text-pure); line-height:1.6;">
-                • ${step}
+        <!-- 2. Giải Phẫu Chi Tiết Từng Cột Phù Văn -->
+        <div style="margin-bottom:2rem; border-top:1px solid var(--border-subtle); padding-top:1.5rem;">
+          <h4 style="font-family:var(--font-title); font-size:1.3rem; color:var(--gold-primary); margin-bottom:1rem; text-align:center;">
+            GIẢI MÃ CHI TIẾT TỪNG KÝ TỰ, QUẺ BÁT QUÁI & 28 CHÒM SAO TRÊN ĐẠO PHÙ
+          </h4>
+
+          <div style="display:flex; flex-direction:column; gap:1.2rem;">
+            ${data10.talisman_anatomy.five_columns.map(col => `
+              <div style="background:rgba(13,17,26,0.9); border:1px solid var(--border-subtle); border-radius:12px; padding:1.2rem;">
+                <h5 style="color:var(--gold-primary); font-size:1rem; margin-bottom:0.8rem; border-bottom:1px solid rgba(229,192,123,0.15); padding-bottom:0.4rem;">
+                  📜 ${col.column_name}
+                </h5>
+                <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:0.8rem;">
+                  ${col.character_details.map(c => `
+                    <div style="background:rgba(0,0,0,0.4); border:1px solid var(--border-subtle); border-radius:8px; padding:0.8rem;">
+                      <div style="font-family:var(--font-title); font-size:1.05rem; color:var(--gold-primary); margin-bottom:0.2rem;">${c.han}</div>
+                      <div style="font-size:0.75rem; color:var(--jade-cyan); margin-bottom:0.3rem;">[Âm Hán Việt / Ý niệm: <strong>${c.pinyin}</strong>]</div>
+                      <div style="font-size:0.82rem; color:var(--text-muted); line-height:1.5;">${c.meaning}</div>
+                    </div>
+                  `).join('')}
+                </div>
               </div>
             `).join('')}
           </div>
         </div>
 
-        <!-- 4. Đại tổng kết ma trận Chương I -->
+        <!-- 3. Quy Trình Nạp Cốt & An Vị Chuẩn Mật Chỉ -->
         <div style="border-top:1px solid var(--border-subtle); padding-top:1.5rem;">
-          <h4 style="font-family:var(--font-title); font-size:1.25rem; color:var(--gold-primary); margin-bottom:0.8rem;">${data10.chapter_summary_matrix.title}</h4>
-          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:0.8rem;">
-            ${data10.chapter_summary_matrix.summary_pillars.map(p => `
-              <div style="background:rgba(13,17,26,0.95); border:1px solid var(--gold-primary); border-radius:10px; padding:1rem;">
-                <strong style="color:var(--jade-cyan); font-size:0.95rem; display:block; margin-bottom:0.4rem;">⭐ ${p.pillar}</strong>
-                <p style="font-size:0.82rem; color:var(--text-muted); line-height:1.5;">${p.standard}</p>
+          <h4 style="font-family:var(--font-title); font-size:1.2rem; color:var(--text-pure); margin-bottom:0.8rem;">${data10.ritual_consecration_steps.title}</h4>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:0.8rem;">
+            ${data10.ritual_consecration_steps.steps.map((st, idx) => `
+              <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border-subtle); padding:0.8rem 1rem; border-radius:8px; font-size:0.85rem; color:var(--text-pure); line-height:1.6;">
+                <span style="background:var(--gold-primary); color:#000; font-size:0.75rem; font-weight:800; padding:0.1rem 0.4rem; border-radius:4px; margin-right:0.3rem;">${idx + 1}</span>
+                ${st.substring(3)}
               </div>
             `).join('')}
           </div>

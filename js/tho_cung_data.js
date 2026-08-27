@@ -471,88 +471,84 @@ const WORSHIP_FENGSHUI_PART_9 = {
   }
 };
 
-// TIẾT X: TỜ DỊ HIỆU BÁT HƯƠNG (GIẢI MÃ PHÙ VĂN, HÌNH VẼ, QUY CÁCH VIẾT) & ĐẠI TỔNG KẾT CHƯƠNG I
+// TIẾT X: GIẢI MÃ TOÀN DIỆN PHÙ CỐT BÁT HƯƠNG (ĐỒ HÌNH TRẬN ĐỒ THIÊN ĐỊA BÁT QUÁI - 28 TÚ) & ĐẠI TỔNG KẾT
 const WORSHIP_FENGSHUI_PART_10 = {
   chapter_id: "tho_cung_part_10",
-  chapter_title: "Tiết X: Tờ Dị Hiệu Bát Hương (Cấu Trúc, Phù Văn, Phép Viết) & Đại Tổng Kết",
-  sub_title: "Giải mã 'Thẻ căn cước tâm linh' của Bát Hương, ý nghĩa linh phù đồ hình Bát Quái, Thái Cực, Long Phụng và Đại Ma Trận Phong Thủy Thờ Cúng",
+  chapter_title: "Tiết X: Đại Giải Mã 'Phù Cốt Bát Hương' (Trận Đồ Càn Khôn Bát Quái - Nhị Thập Bát Tú)",
+  sub_title: "Khảo cứu toàn văn Đạo Phù Khai Linh Bát Hương: Ý nghĩa từng chữ Hán, chân ngôn Om, Cửu Cung Bát Quái, Thập Can, Thập Nhị Chi và 28 Chòm Sao",
 
-  // 1. Bản chất & Cấu trúc đồ hình Tờ Dị Hiệu
-  di_hieu_anatomy: {
-    title: "1. Bản Chất & Cấu Trúc Đồ Hình Tờ Dị Hiệu Bát Hương Chánh Tông",
-    quote: "Dị hiệu định danh, thần linh ngự vị. Thất bảo tụ khí, vạn tà bất xâm.",
-    quote_source: "Khai Quang An Vị Chánh Tông",
-    definition: "Tờ Dị Hiệu (hay Tờ Hiệu / Linh Phù Định Vị) là bản 'Căn cước tâm linh' bắt buộc phải có trong mỗi bát hương. Tờ hiệu xác lập tọa độ tâm thức để Thần Linh hoặc Gia Tiên giáng ngự đúng ngôi thứ, đồng thời ngăn chặn tuyệt đối các vong linh vãng lai ngoại quỷ xâm nhập chiếm đoạt linh khí.",
-    visual_symbols: [
-      {
-        symbol_name: "Đồ Hình Thái Cực & Bát Quái Trấn Trạch (Ở Đỉnh Trên Cùng)",
-        meaning: "Biểu trưng cho khởi nguồn càn khôn vũ trụ, tạo lập từ trường cân bằng Âm Dương và kết giới bảo hộ, trấn trừ tà khí xâm phạm vào danh xưng thần thánh."
-      },
-      {
-        symbol_name: "Phù Đầu Tam Thanh (Ba Dấu Chấm Hoặc Phù Ấn)",
-        meaning: "Đại diện cho Tam Bảo (Phật - Pháp - Tăng) hoặc Tam Thanh (Ngọc Thanh - Thượng Thanh - Thái Thanh), là ấn chỉ sắc lệnh cho phép chân linh an ngự."
-      },
-      {
-        symbol_name: "Khung Ô Trống Viền Long Phượng / Kim Cang",
-        meaning: "Khung chữ nhật màu đỏ bảo vệ không gian ghi danh hiệu tôn kính, biểu trưng cho sự tôn nghiêm, không để ô trọc bụi trần xâm phạm danh tính linh thiêng."
-      },
-      {
-        symbol_name: "Hình Tượng Song Long Chầu Nguyệt (Hai Bên Thân)",
-        meaning: "Rồng là linh vật đứng đầu Tứ Linh, đại diện cho dương khí thuần khiết, bảo hộ linh vị bất khả xâm phạm và gia tăng uy lực chiêu phúc."
-      }
-    ],
-    color_rule: "MÀU SẮC & CHẤT LIỆU CHUẨN MỰC: Tờ Dị Hiệu dùng giấy màu VÀNG in mực ĐỎ (hoặc giấy ĐỎ in mực VÀNG), đại diện cho Hoàng Thổ và Chu Sa Tịch Tà. Chữ viết bên trong dùng bút mực đỏ hoặc mực đen đậm nét, trang nghiêm."
-  },
+  image_url: "assets/phu_cot_bat_huong.webp",
 
-  // 2. Quy cách viết nội dung chữ trên 5 loại Tờ Dị Hiệu
-  di_hieu_writing_templates: {
-    title: "2. Quy Cách Soạn Thảo Nội Dung 5 Bản Dị Hiệu Bát Hương Chánh Tông",
-    rule_note: "Chữ viết dọc từ trên xuống dưới theo truyền thống, hoặc viết chữ in hoa trang trọng:",
-    templates: [
+  // 1. Phân tích đồ hình cấu trúc 5 tầng không gian
+  talisman_anatomy: {
+    title: "1. Bản Thể & Trận Đồ Vũ Trụ Thu Nhỏ Của Phù Cốt Bát Hương",
+    quote: "Phù giả, hợp dã. Thượng ứng thiên tinh, hạ chiêu địa chỉ, trung an nhân tâm.",
+    quote_source: "Đạo Tạng - Huyền Môn Khoa Nghi & Tế Tự Mật Chỉ",
+    overview: "Phù Cốt Bát Hương không đơn thuần là một tờ giấy viết chữ, mà là một 'Tiểu Vũ Trụ Càn Khôn Thu Nhỏ' (Trận Đồ Thiên - Địa - Thần - Thời - Không). Tờ phù thiết lập một 'Kết Giới Năng Lượng Tuyệt Đối' gồm 5 lớp bảo vệ, giúp chân linh Tôn Thần và Tiên Tổ định ngự, đồng thời cô lập hoàn toàn mọi tà ma, cô hồn dã quỷ, uế khí tam giới không thể xâm nhập vào bát hương.",
+    
+    five_columns: [
       {
-        altar_type: "1. Bát Hương Quan Lớn Thần Linh (Chính Giữa Ban Gia Tiên)",
-        content: "PHỤNG THỊ: QUAN ĐƯƠNG NIÊN HÀNH KHIỂN THÁI TUẾ CHÍ ĐỨC TÔN THẦN, BẢN CẢNH THÀNH HOÀNG CHƯ VỊ ĐẠI VƯƠNG, BẢN XỨ THẦN LINH THỔ ĐỊA, ĐÔNG TRÙ TƯ MỆNH TÁO PHỦ THẦN QUÂN, NGŨ PHƯƠNG NGŨ THỔ LONG MẠCH TÔN THẦN, TIỀN HẬU ĐỊA CHỦ TÀI THẦN CHI VỊ."
+        column_name: "CỘT 1 (TRỤC TRUNG TÂM): THẦN ĐẠO LINH VỊ & SẮC LỆNH TỐC HÀNG",
+        character_details: [
+          { han: "恭請 (Cung Thỉnh)", pinyin: "Gōng Qǐng", meaning: "Đại tự đỉnh đầu: Cung kính kính cẩn cung thỉnh Chư vị Tôn Thần ngự lâm đàn tràng." },
+          { han: "奉事 本家土公地主五方萬福夫人 (Phụng sự Bản gia Thổ Công Địa Chủ Ngũ Phương Vạn Phúc Phu Nhân)", pinyin: "Thổ Công Địa Chủ", meaning: "Thần chủ cai quản trạch thổ, Mẫu độ mạng che chở đất đai, ban vạn phúc cho gia đình." },
+          { han: "本家東廚司命灶府神君 (Bản gia Đông Trù Tư Mệnh Táo Phủ Thần Quân)", pinyin: "Táo Phủ Thần Quân", meaning: "Vị Táo Quân coi sóc thiện ác, tài phúc, ấm êm của ngọn lửa bếp trạch viên." },
+          { han: "本處土地福德正神 (Bản xứ Thổ Địa Phúc Đức Chính Thần)", pinyin: "Phúc Đức Chính Thần", meaning: "Thần Thổ Địa cai quản địa giới xóm làng, ban phúc tích đức cho gia trạch an khang." },
+          { han: "五方龍脈前後地王接引財神 (Ngũ Phương Long Mạch Tiền Hậu Địa Vương Tiếp Dẫn Tài Thần)", pinyin: "Long Mạch Tài Thần", meaning: "Rút khí Long Mạch 5 phương, kết nối Tiền Hậu Địa Vương chiêu tài tiến bảo tụ lộc." },
+          { han: "尊神洞垂照監在家... (Tôn Thần Động Thùy Chiếu Giám Tại Gia...)", pinyin: "Chiếu Giám", meaning: "Chư vị Tôn Thần soi xét sáng suốt, chứng giám lòng thành con cháu tại gia." },
+          { han: "速降炉香 (Tốc Hàng Lô Hương) + 2 chữ 土 (Thổ)", pinyin: "Tốc Hàng Lô Hương", meaning: "SẮC LỆNH TỐI THƯỢNG: Thần tốc giáng lâm an ngự vào lò hương. Hai chữ 'Thổ' (土) hai bên chân chữ Hương đại diện cho Trung Ương Hoàng Thổ, ghim chặt long khí, tạo điểm tựa vĩnh cửu như núi Thái Sơn." }
+        ]
       },
       {
-        altar_type: "2. Bát Hương Gia Tiên Tiền Tổ (Bên Tay Phải Nhìn Vào)",
-        content: "PHỤNG THỊ: HỘI ĐỒNG CAO TẰNG TỔ KHẢO, CAO TẰNG TỔ TỶ, BÁ THÚC HUYNH ĐỆ, CÔ DI TỶ MUỘI, TIÊN TỔ NỘI NGOẠI DÒNG HỌ [ĐIỀN TÊN HỌ GIA ĐÌNH] CHÂN LINH VỊ TIỀN."
+        column_name: "CỘT 2 (HỮU DỰC NỘI): CHÂN NGÔN TAM QUANG, 4 DƯƠNG QUÁI & 10 THIÊN CAN",
+        character_details: [
+          { han: "唵 三光毓秀 (Án Tam Quang Dục Tú)", pinyin: "Om San Guang Yu Xiu", meaning: "Chữ đầu '唵' (Án/Om - tiếng Phạn) khai thông năng lượng vũ trụ. 'Tam Quang Dục Tú' thỉnh ánh sáng của Mặt Trời (Nhật), Mặt Trăng (Nguyệt), và Các Tinh Tú (Tinh) kết tụ tinh hoa tú khí nuôi dưỡng bát hương." },
+          { han: "4 QUẺ BÁT QUÁI (DƯƠNG & CHỦ KHÍ): ☰ 乾 (Càn), ☵ 坎 (Khảm), ☶ 艮 (Cấn), ☳ 震 (Chấn)", pinyin: "Càn - Khảm - Cấn - Chấn", meaning: "Càn (Trời/Tây Bắc/Thuần Dương), Khảm (Nước/Bắc), Cấn (Núi/Đông Bắc/Vững bền), Chấn (Sấm/Đông/Sinh khởi). 4 Quái lập trận đồ sinh vượng khí." },
+          { han: "THẬP THIÊN CAN (10 CAN VẬN HÀNH): 甲 乙 丙 丁 戊 己 庚 辛 壬 癸 (Giáp, Ất, Bính, Đinh, Mậu, Kỷ, Canh, Tân, Nhâm, Quý)", pinyin: "Thập Can", meaning: "Bao quát toàn bộ 10 chu kỳ biến hóa năng lượng của Thiên Đạo: Giáp-Ất (Mộc), Bính-Đinh (Hỏa), Mậu-Kỷ (Thổ), Canh-Tân (Kim), Nhâm-Quý (Thủy)." },
+          { han: "ĐẨU QUÂN CƯƠNG QUYỀN (斗, 軍, 權)", pinyin: "Bắc Đẩu Tinh Quân", meaning: "Khí uy lực của chòm sao Bắc Đẩu điều hành sinh tử tài lộc." }
+        ]
       },
       {
-        altar_type: "3. Bát Hương Bà Cô Ông Mãnh (Bên Tay Trái Nhìn Vào)",
-        content: "PHỤNG THỊ: HỘI ĐỒNG BÀ CÔ, ÔNG MÃNH, HUYỀN CÔ HUYỀN CẬU, TIỀN CHỦ HẬU CHỦ DÒNG HỌ [ĐIỀN TÊN HỌ GIA ĐÌNH] VỊ TIỀN."
+        column_name: "CỘT 3 (TẢ DỰC NỘI): 4 ÂM QUÁI, 12 ĐỊA CHI & PHƯƠNG VỊ THỜI KHÔNG",
+        character_details: [
+          { han: "4 QUẺ BÁT QUÁI (ÂM & BIẾN HÓA): ☴ 巽 (Tốn), ☲ 離 (Ly), ☷ 坤 (Khôn), ☱ 兌 (Đoài)", pinyin: "Tốn - Ly - Khôn - Đoài", meaning: "Tốn (Gió/Đông Nam), Ly (Lửa/Nam), Khôn (Đất mẹ/Tây Nam/Dung nạp), Đoài (Đầm/Tây/Hỷ lạc). Kết hợp cùng 4 quẻ cột 2 tạo thành BÁT QUÁI CÀN KHÔN ĐẦY ĐỦ 8 HƯỚNG." },
+          { han: "THẬP NHỊ ĐỊA CHI (12 CHI THỜI GIAN): 子 丑 寅 卯 辰 巳 午 未 申 酉 戌 亥 (Tý, Sửu, Dần, Mão, Thìn, Tỵ, Ngọ, Mùi, Thân, Dậu, Tuất, Hợi)", pinyin: "Thập Nhị Chi", meaning: "Đại diện trọn vẹn cho 12 tháng trong năm, 12 canh giờ trong ngày, 12 hướng không gian và chu kỳ 12 năm. Đảm bảo Bát Hương được bảo hộ BẤT KỂ GIỜ NÀO, NGÀY NÀO, THÁNG NÀO, NĂM NÀO." },
+          { han: "PHƯƠNG VỊ HÀNH KHÍ (南 - Nam, 行 - Hành)", pinyin: "Định Phương", meaning: "Luân chuyển ngũ hành khí trong trạch viên thông thuận không bị ách tắc." }
+        ]
       },
       {
-        altar_type: "4. Bát Hương Bàn Thờ Thần Tài - Thổ Địa",
-        content: "PHỤNG THỊ: ĐÔNG HẢI THÁI TẠNG, NAM HẢI CỬU LONG, TÂY HẢI BẠCH HỔ, BẮC HẢI HUYỀN VŨ, TRUNG ƯƠNG HUỲNH LONG NGŨ PHƯƠNG NGŨ THỔ THẦN KỲ, TIỀN HẬU ĐỊA CHỦ TÀI THẦN VỊ TIỀN."
-      },
-      {
-        altar_type: "5. Bát Hương Bàn Thờ Phật Tại Gia",
-        content: "PHỤNG THỊ: THẬP PHƯƠNG THƯỜNG TRỤ TAM BẢO, NAM MÔ BẢN SƯ THÍCH CA MÂU NI PHẬT, NAM MÔ ĐẠI TỪ ĐẠI BI QUÁN THẾ ÂM BỒ TÁT VỊ TIỀN."
+        column_name: "CỘT 4 & 5 (NGOẠI DỰC TẢ HỮU): TRẬN ĐỒ 28 CHÒM SAO NHỊ THẬP BÁT TÚ (KẾT GIỚI THIÊN VĂN)",
+        character_details: [
+          { han: "NGOẠI HỮU (CỘT NGOÀI CÙNG BÊN PHẢI): 唵 木 (Án - Mộc)", pinyin: "Đông & Bắc Tinh Tú", meaning: "Khởi động Thanh Long & Huyền Vũ:" },
+          { han: "• 7 Sao Đông Phương Thanh Long: 角 (Giác), 亢 (Cang), 氐 (Đê), 房 (Phòng), 心 (Tâm), 尾 (Vĩ), 箕 (Cơ)", pinyin: "Đông Phương Thất Tú", meaning: "Mang năng lượng sinh sôi mùa xuân, rồng xanh hộ vệ phương Đông." },
+          { han: "• 7 Sao Bắc Phương Huyền Vũ: 斗 (Đẩu), 牛 (Ngưu), 女 (Nữ), 虚 (Hư), 危 (Nguy), 室 (Thất), 壁 (Bích)", pinyin: "Bắc Phương Thất Tú", meaning: "Mang năng lượng trí tuệ, nước nguồn mùa đông, rùa rắn hộ vệ phương Bắc." },
+          { han: "NGOẠI TẢ (CỘT NGOÀI CÙNG BÊN TRÁI): 唵 金 (Án - Kim) & 火 (Hỏa)", pinyin: "Tây & Nam Tinh Tú", meaning: "Khởi động Bạch Hổ & Chu Tước:" },
+          { han: "• 7 Sao Tây Phương Bạch Hổ: 奎 (Khuê), 婁 (Lâu), 胃 (Vị), 昴 (Mão), 畢 (Tất), 觜 (Chủy), 參 (Sâm)", pinyin: "Tây Phương Thất Tú", meaning: "Mang năng lượng uy dũng nghiêm cẩn mùa thu, hổ trắng trừ tà sát khí phương Tây." },
+          { han: "• 7 Sao Nam Phương Chu Tước: 井 (Tỉnh), 鬼 (Quỷ), 柳 (Liễu), 星 (Tinh), 張 (Trương), 翼 (Dực), 軫 (Chẩn)", pinyin: "Nam Phương Thất Tú", meaning: "Mang năng lượng quang minh rực rỡ mùa hạ, phượng hoàng lửa bảo hộ phương Nam." }
+        ]
       }
     ]
   },
 
-  // 3. Quy luật gói Dị Hiệu cùng Cốt Thất Bảo
-  wrapping_process: {
-    title: "3. Quy Luật Gói Tờ Dị Hiệu Bao Bọc Cốt Thất Bảo Đặt Đáy Bát Hương",
+  // 2. Ý nghĩa tổng hợp của Trận Đồ
+  matrix_significance: {
+    title: "2. Tại Sao Tờ Phù Cốt Này Là Đỉnh Cao Khoa Nghi Huyền Môn?",
+    points: [
+      { name: "Khóa Chặt Thời Gian & Không Gian (Thời Không Nhất Thể)", desc: "10 Thiên Can phối hợp 12 Địa Chi tạo thành 60 Hoa Giáp; 8 Quẻ Bát Quái phân định 8 hướng; 28 Chòm Sao bao quát toàn bộ bầu trời đêm 360 độ. Nghĩa là bát hương được định vị bất biến giữa tâm vũ trụ." },
+      { name: "Kết Giới Kim Cang Bất Khả Xâm Phạm", desc: "Sự hiện diện của 28 vị Tinh Quân và Tứ Linh (Long - Lân - Quy - Phụng) khiến mọi tà tinh, ma quỷ ngoại đạo khi nhìn vào bát hương đều thấy hào quang thiên binh thiên tướng trấn giữ, tuyệt đối không dám mạo phạm." },
+      { name: "Cầu Nối Thần Giao Cách Cảm Tối Thượng", desc: "Các chân ngôn (唵 - Om, 三光毓秀 - Tam Quang Dục Tú, 速降炉香 - Tốc Hàng Lô Hương) hoạt động như tần số sóng tinh thần, giúp lời khấn cầu của gia chủ xuyên qua không gian đến đúng tai Chư vị Tôn Thần." }
+    ]
+  },
+
+  // 3. Quy trình nạp cốt chuẩn khoa nghi
+  ritual_consecration_steps: {
+    title: "3. Quy Trình Nạp Cốt & An Vị Phù Cốt Bát Hương Chuẩn Mật Chỉ",
     steps: [
-      "Bước 1: Viết đầy đủ, chính xác danh hiệu của bát hương lên tờ Dị Hiệu bằng tâm thành kính.",
-      "Bước 2: Đặt gói Cốt Thất Bảo (Vàng, Bạc, Ngọc, San Hô, Mã Não, Hổ Phách, Xà Cừ) vào chính giữa lòng tờ Dị Hiệu.",
-      "Bước 3: Gấp tờ Dị Hiệu lại thành hình vuông hoặc hình chữ nhật bao bọc kín gói Cốt Thất Bảo bên trong (mặt chữ danh xưng hướng vào trong ôm lấy Thất Bảo).",
-      "Bước 4: Đặt gói Dị Hiệu Thất Bảo xuống chính giữa đáy bát hương.",
-      "Bước 5: Đổ tro rơm nếp sạch đã sàng lọc và tẩm hương gừng lên trên cho đến khi cách miệng bát hương khoảng 1-2 cm."
-    ]
-  },
-
-  // 4. Đại Tổng Kết Chương I: Bảng Ma Trận Tổng Hành Dinh Phong Thủy Thờ Cúng
-  chapter_summary_matrix: {
-    title: "4. Đại Tổng Kết Chương I: Ma Trận Toàn Cảnh Phong Thủy Thờ Cúng",
-    summary_pillars: [
-      { pillar: "Định Vị Tọa Hướng", standard: "Bàn thờ luôn TỌA CÁT HƯỚNG CÁT theo Mệnh Quái, lưng tựa Thực Tường vững chãi, Minh Đường thoáng đãng tụ thủy." },
-      { pillar: "Thước Số Hoàng Kim", standard: "Dùng Thước Lỗ Ban 38.8cm (Âm Phần) đo kích thước bàn thờ đứng và bàn thờ treo tường rơi vào các cung Cát (Đỏ)." },
-      { pillar: "Ngũ Hành Hội Tụ", standard: "Bàn thờ hội tụ đủ Kim (Đỉnh/Hạc đồng) - Mộc (Bàn thờ/Bài vị gỗ) - Thủy (Chén nước/Bình hoa) - Hỏa (Đèn/Nến/Nhang) - Thổ (Bát hương sứ/Tro nếp)." },
-      { pillar: "Trật Tự Tôn Ty", standard: "Phật Thượng Tiên Hạ, Thần Linh Cư Trung, Tiên Tổ Cư Tả, Cô Mãnh Cư Hữu, Thần Tài tiếp sát địa khí." },
-      { pillar: "Bảo Hộ Khí Trường", standard: "Cốt Thất Bảo bọc trong Tờ Dị Hiệu định danh đặt đáy bát hương, tro nếp sạch thuần khiết, 4 lớp chắn khói bảo vệ." }
+      "1. Tịnh hóa tờ Phù Cốt bằng khói trầm hương và nước ngũ vị hương (không để nhăn rách, dính uế).",
+      "2. Điền chính xác thông tin bản gia (nếu là bản khấn trống) hoặc giữ nguyên bản in sắc lệnh chánh thần.",
+      "3. Đặt gói Thất Bảo (Vàng, Bạc, Ngọc, Hổ Phách, Xà Cừ, San Hô, Mã Não) vào giữa lòng tờ Phù.",
+      "4. Gấp tờ Phù bọc kín Thất Bảo bên trong (hướng chữ 'Cung Thỉnh' lên phía trên).",
+      "5. Đặt gói Phù Cốt xuống chính giữa đáy bát hương sạch, sau đó phủ tro rơm nếp thanh tịnh lên trên."
     ]
   }
 };
