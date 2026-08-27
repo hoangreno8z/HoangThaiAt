@@ -390,6 +390,76 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
   }
 
+  // 1.9 Render Chuyên Đề Phong Thủy Thờ Cúng (Lần 5 / 10): Nghi Thức Bao Sái & Rút Tỉa Chân Nhang
+  const worshipPart5Container = document.getElementById('worship-part5-container');
+  if (worshipPart5Container && typeof WORSHIP_FENGSHUI_PART_5 !== 'undefined') {
+    const data5 = WORSHIP_FENGSHUI_PART_5;
+    worshipPart5Container.innerHTML = `
+      <div style="background:var(--bg-card); border:1px solid var(--gold-primary); border-radius:16px; padding:2rem; margin-bottom:2rem; box-shadow:var(--shadow-gold);">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; margin-bottom:1.5rem; border-bottom:1px solid rgba(229,192,123,0.2); padding-bottom:1rem;">
+          <div>
+            <span style="font-size:0.75rem; color:var(--jade-cyan); text-transform:uppercase; letter-spacing:1px;">CHU TỬ GIA LỄ • TU SÁI CHI NGHI</span>
+            <h3 style="font-family:var(--font-title); font-size:1.5rem; color:var(--gold-primary); margin:0.2rem 0;">${data5.chapter_title}</h3>
+            <div style="font-size:0.88rem; color:var(--text-muted);">${data5.sub_title}</div>
+          </div>
+          <span style="background:rgba(229,192,123,0.15); color:var(--gold-primary); border:1px solid var(--gold-primary); font-size:0.8rem; font-weight:700; padding:0.3rem 0.8rem; border-radius:20px;">LẦN 5 / 10</span>
+        </div>
+
+        <!-- 1. Thời điểm & Nước bao sái -->
+        <div style="margin-bottom:1.8rem;">
+          <h4 style="font-family:var(--font-title); font-size:1.2rem; color:var(--text-pure); margin-bottom:0.6rem;">${data5.preparation_and_timing.title}</h4>
+          <div style="background:rgba(229,192,123,0.06); border-left:3px solid var(--gold-primary); padding:0.8rem 1.2rem; border-radius:0 8px 8px 0; margin-bottom:1rem;">
+            <div style="font-size:0.95rem; color:var(--text-pure); font-style:italic;">"${data5.preparation_and_timing.quote}"</div>
+            <div style="font-size:0.75rem; color:var(--gold-primary); margin-top:0.2rem;">👉 Xuất xứ: <strong>${data5.preparation_and_timing.quote_source}</strong></div>
+          </div>
+
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1rem; margin-bottom:1rem;">
+            ${data5.preparation_and_timing.timing_rules.map(t => `
+              <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border-subtle); padding:1rem; border-radius:10px;">
+                <strong style="color:var(--gold-primary); font-size:0.9rem; display:block; margin-bottom:0.3rem;">🕒 ${t.name}</strong>
+                <p style="font-size:0.85rem; color:var(--text-muted); line-height:1.6;">${t.detail}</p>
+              </div>
+            `).join('')}
+          </div>
+
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1rem;">
+            ${data5.preparation_and_timing.purification_water.map(w => `
+              <div style="background:rgba(45,212,191,0.04); border:1px solid rgba(45,212,191,0.3); padding:1rem; border-radius:10px;">
+                <strong style="color:var(--jade-cyan); font-size:0.9rem; display:block; margin-bottom:0.3rem;">💧 ${w.name}</strong>
+                <p style="font-size:0.85rem; color:var(--text-pure); line-height:1.6;">${w.recipe}</p>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
+        <!-- 2. Quy trình 5 bước -->
+        <div style="margin-bottom:1.8rem; border-top:1px solid var(--border-subtle); padding-top:1.5rem;">
+          <h4 style="font-family:var(--font-title); font-size:1.2rem; color:var(--text-pure); margin-bottom:0.8rem;">${data5.five_steps_process.title}</h4>
+          <div style="display:flex; flex-direction:column; gap:0.8rem;">
+            ${data5.five_steps_process.steps.map((s, idx) => `
+              <div style="background:rgba(13,17,26,0.85); border:1px solid var(--border-subtle); border-radius:10px; padding:1.2rem;">
+                <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.4rem;">
+                  <span style="background:var(--gold-primary); color:#000; font-weight:800; font-size:0.8rem; padding:0.1rem 0.6rem; border-radius:4px;">BƯỚC 0${idx + 1}</span>
+                  <strong style="color:var(--text-pure); font-size:1rem;">${s.step.split(': ')[1] || s.step}</strong>
+                </div>
+                <p style="font-size:0.88rem; color:var(--text-muted); line-height:1.7;">${s.action}</p>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
+        <!-- 3. Văn khấn bao sái -->
+        <div style="border-top:1px solid var(--border-subtle); padding-top:1.5rem;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.8rem;">
+            <h4 style="font-family:var(--font-title); font-size:1.2rem; color:var(--gold-primary);">${data5.canonical_prayer.title}</h4>
+            <span style="font-size:0.75rem; color:var(--text-muted);">Văn bản chuẩn cổ truyền</span>
+          </div>
+          <pre style="background:rgba(0,0,0,0.5); border:1px solid var(--border-active); border-radius:10px; padding:1.5rem; color:var(--text-pure); font-size:0.88rem; line-height:1.8; white-space:pre-wrap; font-family:var(--font-sans); max-height:400px; overflow-y:auto;">${data5.canonical_prayer.invocation_text}</pre>
+        </div>
+      </div>
+    `;
+  }
+
   // 2. MẠCH 1: Render Thư Tịch Cốt Lõi Địa Lý Phong Thủy
   const treatisesGrid = document.getElementById('geographic-treatises-grid');
   if (treatisesGrid && COSMIC_DATA.geographic_treatises) {
