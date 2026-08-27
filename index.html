@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Vũ Trụ Học Cổ Đại & Đồ Thị Antigravity | Đại Bách Khoa Âm Dương & Dịch Lý Lạc Việt</title>
-  <meta name="description" content="Đại bách khoa toàn thư vũ trụ học cổ đại, cội nguồn Dịch lý nông nghiệp lúa nước Lạc Việt, Trống Đồng Đông Sơn, Hà Đồ Lạc Thư, Tam Thức và Đồ thị Tri thức Không Trọng Lực Antigravity.">
+  <title>Âm Dương Vũ Trụ Học | Đại Bách Khoa Toàn Thư Càn Khôn & Dịch Lý Lạc Việt</title>
+  <meta name="description" content="Đại bách khoa toàn thư vũ trụ học cổ đại phương Đông, cội nguồn Dịch lý nông nghiệp lúa nước Lạc Việt, Trống Đồng Đông Sơn, Hà Đồ Lạc Thư, Tam Thức và Cổ Thư Tàng Kinh Các.">
   
-  <!-- D3.js v7 for Antigravity Force Graph -->
+  <!-- D3.js v7 for Càn Khôn Force Graph -->
   <script src="https://d3js.org/d3.v7.min.js"></script>
   
   <!-- Main Stylesheet -->
@@ -28,39 +28,39 @@
           </svg>
         </div>
         <div class="logo-text">
-          <h1>ÂM DƯƠNG HỌC VIỆN</h1>
-          <p>Encyclopedic Cosmic Atlas & Antigravity Graph</p>
+          <h1>ÂM DƯƠNG VŨ TRỤ HỌC</h1>
+          <p>Tàng Kinh Các Phương Đông & Dịch Lý Lạc Việt</p>
         </div>
       </a>
 
       <ul class="nav-links">
-        <li><a href="#timeline-section" class="nav-link">Dòng Thời Gian</a></li>
-        <li><a href="#antigravity-graph-section" class="nav-link">Đồ Thị Tri Thức</a></li>
+        <li><a href="#timeline-section" class="nav-link">Niên Đại</a></li>
+        <li><a href="#cankhon-graph-section" class="nav-link">Càn Khôn Đồ Hình</a></li>
         <li><a href="#treatises-section" class="nav-link">Đại Luận Thuyết</a></li>
-        <li><a href="#vietorigins" class="nav-link">Cội Nguồn Việt</a></li>
+        <li><a href="#vietorigins" class="nav-link">Cội Nguồn Bách Việt</a></li>
         <li><a href="#hadolacthu" class="nav-link">Hà Đồ • Lạc Thư</a></li>
         <li><a href="#batquai" class="nav-link">Bát Quái</a></li>
         <li><a href="#nguhanh" class="nav-link">Ngũ Hành</a></li>
         <li><a href="#cathung" class="nav-link">Cát Hung</a></li>
         <li><a href="#tamthuc" class="nav-link">Tam Thức</a></li>
-        <li><a href="#sources" class="nav-link">Thư Tịch Cổ</a></li>
+        <li><a href="#classics" class="nav-link">Tàng Kinh Các</a></li>
       </ul>
 
       <button id="audio-toggle" class="audio-toggle-btn" title="Bật/Tắt chuông đồng thanh tịnh">
-        <span>Âm Thanh: BẬT</span>
+        <span>Chuông Đồng: BẬT</span>
       </button>
     </div>
   </header>
 
-  <!-- Mobile Bottom Navigation Dock (iOS / Android) -->
+  <!-- Mobile Bottom Navigation Dock -->
   <nav class="mobile-bottom-dock">
     <a href="#timeline-section" class="mobile-dock-btn">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
       <span>Niên Đại</span>
     </a>
-    <a href="#antigravity-graph-section" class="mobile-dock-btn active">
+    <a href="#cankhon-graph-section" class="mobile-dock-btn active">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><circle cx="12" cy="18" r="3"/><line x1="8.5" y1="7.5" x2="15.5" y2="7.5"/></svg>
-      <span>Đồ Thị</span>
+      <span>Đồ Hình</span>
     </a>
     <a href="#treatises-section" class="mobile-dock-btn">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
@@ -70,9 +70,9 @@
       <svg width="20" height="20" viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="50" cy="50" r="10" fill="currentColor"/></svg>
       <span>Lạc Việt</span>
     </a>
-    <a href="#cathung" class="mobile-dock-btn">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
-      <span>Cát Hung</span>
+    <a href="#classics" class="mobile-dock-btn">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+      <span>Kinh Các</span>
     </a>
   </nav>
 
@@ -81,22 +81,22 @@
     <div class="hero-content">
       <div class="hero-badge">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="#E5C07B"><polygon points="12 2 15 9 22 12 15 15 12 22 9 15 2 12 9 9"/></svg>
-        <span>ĐẠI BÁCH KHOA TOÀN THƯ BẢN THỂ LUẬN & DỊCH LÝ NÔNG NGHIỆP PHƯƠNG NAM</span>
+        <span>ĐẠI BÁCH KHOA TOÀN THƯ VŨ TRỤ HỌC & DỊCH LÝ NÔNG NGHIỆP PHƯƠNG NAM</span>
       </div>
       <h1 class="hero-title">KHỞI NGUYÊN BẢN THỂ VŨ TRỤ</h1>
       <div class="hero-hanzi">太極生兩儀 • 兩儀生四象 • 四象生八卦</div>
       <p class="hero-desc">
         Tái hiện cội nguồn bản thể luận vũ trụ học cổ đại, khảo cổ học văn hóa lúa nước sông Hồng, 
         mật mã thiên văn <strong>Trống Đồng Đông Sơn, Hà Đồ, Lạc Thư, Bát Quái, Ngũ Hành Chế Hóa, Tam Thức Đại Đạo</strong> 
-        và <strong>Đồ thị Tri thức Không trọng lực (Antigravity Graph)</strong>.
+        và toàn bộ kho tàng <strong>Cổ Thư Tàng Kinh Các</strong> đã được thu thập, khảo chứng và Việt hóa toàn diện.
       </p>
       <div class="hero-actions">
         <a href="#treatises-section" class="btn-primary">
           <span>Đọc Đại Luận Thuyết</span>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </a>
-        <a href="#antigravity-graph-section" class="btn-secondary">
-          <span>Bản Đồ Antigravity Graph</span>
+        <a href="#cankhon-graph-section" class="btn-secondary">
+          <span>Khám Phá Càn Khôn Đồ Hình</span>
         </a>
       </div>
     </div>
@@ -105,16 +105,16 @@
   <!-- Main Content Wrapper -->
   <main class="main-wrapper">
 
-    <!-- MODULE 1: DÒNG THỜI GIAN VŨ TRỤ & LỊCH SỬ TIẾN HÓA (CHRONOLOGICAL TIMELINE) -->
+    <!-- MODULE 1: DÒNG THỜI GIAN VŨ TRỤ & LỊCH SỬ TIẾN HÓA (9 KỶ NGUYÊN) -->
     <section id="timeline-section" class="section-block" style="padding-top:1rem;">
       <div class="section-header">
         <span class="section-tag">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          Phân Kỳ Lịch Sử & Tiến Hóa Tri Thức
+          Phân Kỳ Thời Không & Tiến Hóa Tri Thức
         </span>
         <h2 class="section-title">Dòng Thời Gian: 9 Kỷ Nguyên Vũ Trụ Học</h2>
         <p class="section-subtitle">
-          Toàn bộ lịch sử tiến hóa tư tưởng từ Thuở Hồng Hoang, Nông Nghiệp Sơ Khởi Lạc Việt, Phục Hy, Đại Vũ, Đông Sơn, Chu Văn Vương, Tiên Tần đến Vật Lý Lượng Tử Hiện Đại.
+          Toàn bộ lịch sử tiến hóa tư tưởng từ Thuở Hồng Hoang, Nông Nghiệp Sơ Khởi Lạc Việt, Phục Hy, Đại Vũ, Đông Sơn, Chu Văn Vương, Tiên Tần đến Minh Triết Hiện Đại.
         </p>
       </div>
 
@@ -125,14 +125,14 @@
       </div>
     </section>
 
-    <!-- MODULE 2: ANTIGRAVITY KNOWLEDGE GRAPH (D3.js FORCE GRAPH) -->
-    <section id="antigravity-graph-section" class="section-block">
+    <!-- MODULE 2: CÀN KHÔN ĐỒ HÌNH (MẠNG LƯỚI TRI THỨC DỊCH LÝ D3.JS) -->
+    <section id="cankhon-graph-section" class="section-block">
       <div class="section-header">
         <span class="section-tag">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><circle cx="12" cy="18" r="3"/><line x1="8.5" y1="7.5" x2="15.5" y2="7.5"/></svg>
-          Mạng Lưới Tri Thức Không Trọng Lực
+          Càn Khôn Đồ Hình Biến Dịch Thời Không
         </span>
-        <h2 class="section-title">Bản Đồ Tri Thức Antigravity (30+ Nút Đa Chiều)</h2>
+        <h2 class="section-title">Bản Đồ Càn Khôn Tri Thức (30+ Nút Đa Chiều)</h2>
         <p class="section-subtitle">
           Mạng lưới lực liên kết tương tác thời gian thực. <strong>Kéo thả các nút, phóng to thu nhỏ</strong> hoặc <strong>nhấp vào bất kỳ nút nào</strong> để xem giải mã học thuật và các mắt xích liên kết.
         </p>
@@ -141,13 +141,13 @@
       <div class="graph-section-wrapper">
         <div class="graph-top-controls">
           <div class="graph-filter-group">
-            <button class="graph-filter-btn active" data-group="all">Tất Cả (30+ Nút)</button>
-            <button class="graph-filter-btn" data-group="viet">Cội Nguồn Việt</button>
+            <button class="graph-filter-btn active" data-group="all">Toàn Cảnh Càn Khôn (30+ Nút)</button>
+            <button class="graph-filter-btn" data-group="viet">Cội Nguồn Bách Việt</button>
             <button class="graph-filter-btn" data-group="genesis">Bản Thể Luận</button>
             <button class="graph-filter-btn" data-group="math">Hà Đồ • Lạc Thư</button>
             <button class="graph-filter-btn" data-group="wuxing">Ngũ Hành</button>
             <button class="graph-filter-btn" data-group="bagua">Bát Quái</button>
-            <button class="graph-filter-btn" data-group="physics">Cát Hung</button>
+            <button class="graph-filter-btn" data-group="physics">Cát Hung Khí Hóa</button>
             <button class="graph-filter-btn" data-group="tamthuc">Tam Thức</button>
           </div>
 
@@ -183,7 +183,7 @@
     <section id="vietorigins" class="section-block">
       <div class="section-header">
         <span class="section-tag">Chuyên Đề Khảo Cổ • Thiên Văn Cổ</span>
-        <h2 class="section-title">Vũ Trụ Quan Lạc Việt & Trống Đồng Đông Sơn</h2>
+        <h2 class="section-title">Cội Nguồn Bách Việt: Vũ Trụ Quan Trống Đồng</h2>
         <p class="section-subtitle">
           Giải mã mật mã thiên văn 14 cánh sao Thái Cực, đàn chim Lạc bay ngược chiều kim đồng hồ, 4 tượng cóc ngậm mưa Tứ Tượng Thủy Thần và luận án <strong>Việt Lý Tố Nguyên</strong>.
         </p>
@@ -210,7 +210,7 @@
     <!-- MODULE 5: HÀ ĐỒ & LẠC THƯ / MẬT MÃ SỐ HỌC -->
     <section id="hadolacthu" class="section-block">
       <div class="section-header">
-        <span class="section-tag">Chuyên Đề Toán Học Vũ Trụ</span>
+        <span class="section-tag">Chuyên Đề Toán Học Càn Khôn</span>
         <h2 class="section-title">Mật Mã Số Học: Hà Đồ & Lạc Thư</h2>
         <p class="section-subtitle">
           <strong>Hà Đồ</strong> là Thể (Cấu trúc sinh thành cân bằng tĩnh), <strong>Lạc Thư</strong> là Dụng (Động lực học ma phương cửu cung biến chuyển thời không).
@@ -393,42 +393,18 @@
       </div>
     </section>
 
-    <!-- MODULE 10: KHO TÀNG MÃ NGUỒN CÀO DỮ LIỆU & THƯ TỊCH CỔ (SCRAPER ARCHITECTURE) -->
-    <section id="sources" class="section-block">
-      <div class="section-header">
-        <span class="section-tag">Chương Mở • Nguồn Dữ Liệu & Kỹ Thuật Scraper</span>
-        <h2 class="section-title">Kho Tàng Mã Nguồn & Thư Tịch Cổ Quốc Tế</h2>
-        <p class="section-subtitle">
-          Danh mục các thư viện số hóa văn bản cổ lớn nhất thế giới cùng kiến trúc mã nguồn Python Scraper / API 
-          để bạn kết nối, trích xuất dữ liệu và xây dựng cơ sở dữ liệu tri thức độc lập.
-        </p>
-      </div>
-
-      <div id="repos-grid" class="repos-grid"></div>
-
-      <div style="background:var(--bg-card); border:1px solid var(--border-subtle); border-radius:16px; padding:2rem; margin-top:2rem;">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
-          <h4 style="font-family:var(--font-title); font-size:1.15rem; color:var(--gold-primary);">
-            Mẫu Code Python Cào Dữ Liệu Học Thuật Tự Động (CText / Web API)
-          </h4>
-          <span style="font-size:0.75rem; color:var(--text-muted);">Python 3.10+ / BeautifulSoup4</span>
-        </div>
-        <pre class="code-snippet-box"><code id="scraper-code-box"></code></pre>
-      </div>
-    </section>
-
-    <!-- MODULE 11: KHO TÀNG KINH ĐIỂN NGUYÊN BẢN -->
+    <!-- MODULE 10: CỔ THƯ TÀNG KINH CÁC (TOÀN BỘ KINH ĐIỂN ĐÃ THU THẬP & VIỆT HÓA) -->
     <section id="classics" class="section-block">
       <div class="section-header">
-        <span class="section-tag">Văn Bản Học • Kinh Điển & Luận Thuyết</span>
-        <h2 class="section-title">Kho Tàng Trích Dẫn & Kinh Điển Nguyên Bản</h2>
+        <span class="section-tag">Tàng Kinh Các • Kinh Điển & Luận Thuyết Nguyên Bản</span>
+        <h2 class="section-title">Cổ Thư Tàng Kinh Các: Đối Chiếu & Việt Hóa</h2>
         <p class="section-subtitle">
-          Đối chiếu Hán văn cổ, phiên âm Hán-Việt và luận giải sâu sắc từ Dịch Hệ Từ, Đạo Đức Kinh, Hoàng Đế Nội Kinh, Việt Lý Tố Nguyên.
+          Toàn bộ các trước tác kinh điển của Kinh Dịch Hệ Từ, Đạo Đức Kinh, Hoàng Đế Nội Kinh, Hoài Nam Tử, Quản Tử và Việt Lý Tố Nguyên đã được thu thập, đối chiếu chữ Hán, phiên âm và dịch nghĩa trọn vẹn.
         </p>
       </div>
 
       <div style="max-width:500px; margin:0 auto 2.5rem;">
-        <input type="text" id="classics-search" placeholder="Tìm kiếm kinh điển, từ khóa, tác phẩm..." style="width:100%; background:var(--bg-card); border:1px solid var(--border-subtle); color:var(--text-pure); padding:0.8rem 1.2rem; border-radius:30px; outline:none; font-family:var(--font-sans); font-size:0.9rem;">
+        <input type="text" id="classics-search" placeholder="Tra cứu kinh điển, từ khóa, tác phẩm..." style="width:100%; background:var(--bg-card); border:1px solid var(--border-subtle); color:var(--text-pure); padding:0.8rem 1.2rem; border-radius:30px; outline:none; font-family:var(--font-sans); font-size:0.9rem;">
       </div>
 
       <div id="classics-grid" class="quotes-grid"></div>
@@ -452,7 +428,7 @@
       Khi thấu hiểu bản thể của Khí, trật tự của Số và nhịp điệu của Thời - Không, con người không còn chìm đắm trong sợ hãi hay mê tín, mà đạt tới sự tự do, minh triết và hài hòa tuyệt đối cùng Trời Đất."
     </p>
     <div class="footer-credit">
-      © 2026 ÂM DƯƠNG HỌC VIỆN • PHỤC DỰNG TRI THỨC VŨ TRỤ HỌC CỔ ĐẠI CHÂN CHÍNH (VERCEL & GITHUB READY)
+      © 2026 ÂM DƯƠNG VŨ TRỤ HỌC • TÀNG KINH CÁC VĂN MINH PHƯƠNG ĐÔNG & LẠC VIỆT
     </div>
   </footer>
 

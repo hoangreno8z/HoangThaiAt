@@ -1,14 +1,92 @@
 /**
- * ĐẠI BÁCH KHOA TOÀN THƯ VŨ TRỤ HỌC CỔ ĐẠI & CỘI NGUỒN DỊCH LÝ LẠC VIỆT
- * TỔNG HỢP VÀ VIỆT HÓA 100% TOÀN BỘ KHO TÀNG TRI THỨC VÀ THƯ TỊCH CỔ
+ * ĐẠI BÁCH KHOA TOÀN THƯ VŨ TRỤ HỌC & DỊCH LÝ PHƯƠNG ĐÔNG
+ * 100% TIẾNG VIỆT HỌC THUẬT - TOÀN BỘ KHO TÀNG CỔ THƯ ĐÃ ĐƯỢC THU THẬP, KHẢO CHỨNG VÀ VIỆT HÓA
  */
 
 const COSMIC_DATA = {
   // =========================================================================
-  // PHẦN 1: CỘI NGUỒN ÂM DƯƠNG TỪ GÓC NHÌN VĂN HÓA VIỆT (LINH HỒN BÁCH VIỆT)
+  // 1. THỜI KHÔNG TIẾN HÓA (9 KỶ NGUYÊN VŨ TRỤ HỌC & DỊCH LÝ)
+  // =========================================================================
+  timeline: [
+    {
+      id: "era_1",
+      era: "Thuở Hồng Hoang (Tiền Vật Chất)",
+      period: "Vô Thủy Vô Chung (Hỗn Độn Nguyên Sơ)",
+      title: "Khởi Nguyên Bản Thể: Vô Cực -> Thái Cực -> Lưỡng Nghi",
+      category: "Bản Thể Luận",
+      desc: "Trạng thái trước khi không gian và thời gian hình thành (Vô Cực). Năng lượng chân không lượng tử nguyên sơ đạt tới trạng thái kích hoạt, ngưng tụ thành điểm kỳ dị duy nhất mang tên Thái Cực. Từ đây, hai dòng năng lượng đối xứng phát sinh: Dương Khí (vận động, giãn nở, bức xạ) và Âm Khí (tĩnh lặng, ngưng tụ, hấp thu), mở ra nhịp đập đầu tiên của vũ trụ."
+    },
+    {
+      id: "era_2",
+      era: "Thời Đại Nông Nghiệp Lúa Nước Sơ Khởi",
+      period: "Khoảng 5000 - 3000 TCN (Văn hóa Hòa Bình - Bắc Sơn)",
+      title: "Cội Nguồn Dịch Lý Phương Nam (Viêm Việt / Thần Nông)",
+      category: "Cội Nguồn Bách Việt",
+      desc: "Cư dân nông nghiệp trồng lúa nước cổ đại tại lưu vực sông Hồng, sông Mã phụ thuộc trực tiếp vào con nước, sấm sét, mưa nắng và chu kỳ mặt trời để gieo cấy. Huyền sử Mẹ Âu Cơ (dòng Tiên/Núi non/Âm tĩnh) và Cha Lạc Long Quân (dòng Rồng/Biển cả/Dương động) cùng phép phân đôi 50 - 50 chính là sự mã hóa nguyên lý Âm Dương cân bằng sinh thái sơ khai nhất."
+    },
+    {
+      id: "era_3",
+      era: "Thời Đại Phục Hy (Tiên Thiên)",
+      period: "Khoảng 2800 TCN",
+      title: "Hà Đồ & Tiên Thiên Bát Quái (Bản Thể Không Gian Đối Xứng)",
+      category: "Số Học Càn Khôn",
+      desc: "Hà Đồ xuất hiện trên sông Hoàng Hà với 55 chấm đen trắng. Quy luật Số Sinh (1, 2, 3, 4, 5) và Số Thành (6, 7, 8, 9, 10) định vị trật tự 5 hành Thủy, Hỏa, Mộc, Kim, Thổ. Phục Hy quan sát thiên văn địa lý vạch ra Tiên Thiên Bát Quái với cấu trúc nhị phân bù trừ hoàn hảo trong không gian 3 chiều."
+    },
+    {
+      id: "era_4",
+      era: "Thời Đại Vũ Trị Thủy",
+      period: "Khoảng 2200 TCN",
+      title: "Lạc Thư & Ma Trận Cửu Cung (Động Lực Học Biến Dịch)",
+      category: "Số Học Càn Khôn",
+      desc: "Thần Quy nổi lên từ sông Lạc mang ma trận 9 cung số học bậc 3 với hằng số cân bằng bằng 15 trên mọi trục. Lạc Thư đại diện cho trạng thái động lực học thời không, làm cơ sở cho sự vận hành của 8 phương vị và cửu cung luân chuyển."
+    },
+    {
+      id: "era_5",
+      era: "Thời Đại Đồ Đồng Đông Sơn",
+      period: "Khoảng 1000 TCN - Thế kỷ 1 SCN",
+      title: "Trống Đồng Đông Sơn: Đúc Trọn Vẹn Vũ Trụ Quan Vào Đồng Thau",
+      category: "Cội Nguồn Bách Việt",
+      desc: "Đỉnh cao văn minh Lạc Việt: Người Việt cổ đúc toàn bộ tri thức thiên văn lên mặt trống đồng Ngọc Lũ, Hoàng Hạ, Sông Đà. Tâm là Mặt Trời Thái Cực 14 cánh, đàn chim Lạc bay ngược chiều kim đồng hồ phản ánh quỹ đạo Trái Đất, 4 tượng cóc ngậm mưa (Tứ Tượng Thủy Thần điều hòa mùa màng)."
+    },
+    {
+      id: "era_6",
+      era: "Thời Chu Văn Vương & Chu Công (Hậu Thiên)",
+      period: "Khoảng 1100 TCN",
+      title: "Hậu Thiên Bát Quái & Chu Kỳ Khí Tiết Bốn Mùa",
+      category: "Hình Học Vũ Trụ",
+      desc: "Chu Văn Vương sắp xếp lại Bát Quái theo chu kỳ chuyển động của Mặt Trời và thời tiết 4 mùa trên Trái Đất (Ly Nam, Khảm Bắc, Chấn Đông, Đoài Tây), hình thành quy luật biến hóa của vạn vật và địa lý phong thổ."
+    },
+    {
+      id: "era_7",
+      era: "Thời Xuân Thu - Chiến Quốc",
+      period: "770 - 221 TCN",
+      title: "Hệ Từ Truyện, Đạo Đức Kinh & Thuyết Ngũ Hành Khí Hóa",
+      category: "Triết Học Khí Hóa",
+      desc: "Khổng Tử viết Hệ Từ giải mã cơ chế sinh thành Cát - Hung; Lão Tử đúc kết bản thể luận Đạo Đức Kinh ('Vạn vật phụ Âm nhi bão Dương, trùng khí dĩ vi hòa'). Hệ thống hóa 5 vector Khí thành Ngũ Hành Sinh - Khắc - Chế Hóa."
+    },
+    {
+      id: "era_8",
+      era: "Thời Hán - Đường - Tống",
+      period: "206 TCN - 1279 SCN",
+      title: "Đỉnh Cao Tam Thức Đại Đạo & Y Đạo Hoàng Đế Nội Kinh",
+      category: "Toán Học Cổ Đại",
+      desc: "Hoàn thiện 3 cỗ máy toán học thời không: Thái Ất (Thiên Đạo), Kỳ Môn Độn Giáp (Địa Đạo), Đại Lục Nhâm (Nhân Đạo). Hoàng Đế Nội Kinh ứng dụng toàn diện Âm Dương Ngũ Hành vào Y đạo trị bệnh và nhịp sinh học Tý Ngọ Lưu Chú."
+    },
+    {
+      id: "era_9",
+      era: "Thời Cận Đại & Đương Đại",
+      period: "Thế kỷ 20 - Nay",
+      title: "Việt Lý Tố Nguyên & Đối Chiếu Khoa Học Lượng Tử",
+      category: "Minh Triết Đương Đại",
+      desc: "Triết gia Kim Định xuất bản các công trình chứng minh Dịch lý là linh hồn văn hóa nông nghiệp Bách Việt. Khoa học hiện đại đối chiếu Bát Quái với mã di truyền 64 bộ ba DNA, ma trận nhị phân máy tính và vật lý trường lượng tử."
+    }
+  ],
+
+  // =========================================================================
+  // 2. CỘI NGUỒN ÂM DƯƠNG DỊCH LÝ TỪ VĂN HÓA LẠC VIỆT
   // =========================================================================
   viet_origins: {
-    title: "Cội Nguồn Âm Dương Từ Góc Nhìn Văn Hóa Việt (Không Thuộc Riêng Về Trung Hoa)",
+    title: "Cội Nguồn Âm Dương Từ Góc Nhìn Văn Hóa Việt (Linh Hồn Bách Việt)",
     subtitle: "Dịch lý khởi phát từ nền văn minh nông nghiệp lúa nước phương Nam thời Viêm Đế - Thần Nông",
     pillars: [
       {
@@ -46,96 +124,7 @@ const COSMIC_DATA = {
   },
 
   // =========================================================================
-  // PHẦN 2: KHO TÀNG MÃ NGUỒN & THƯ TỊCH CỔ (QUỐC TẾ, ĐÀI LOAN, VIỆT NAM, PHÁP)
-  // =========================================================================
-  data_sources: {
-    title: "Kho Tàng Mã Nguồn & Thư Tịch Cổ Quốc Tế, Đài Loan, Việt Nam & Pháp",
-    subtitle: "Toàn bộ các trung tâm dữ liệu mở để clone, cào dữ liệu (Scrape) và đối chiếu văn bản học",
-    repositories: [
-      {
-        id: "ctext",
-        name: "1. Chinese Text Project (CText.org) - Quốc Tế",
-        url: "https://ctext.org/",
-        role: "Database mở lớn nhất thế giới do học giả Donald Sturgeon sáng lập",
-        desc: "Lưu trữ toàn bộ trước tác Kinh Dịch, Đạo Đức Kinh, Hoàng Đế Nội Kinh, Quản Tử, Hoài Nam Tử. Cung cấp API có cấu trúc để các kỹ sư IT dùng bot Python (BeautifulSoup, Scrapy) cào tự động.",
-        guide: "Sử dụng API endpoint: `https://ctext.org/api.pl?if=en` kèm định danh URN để trích xuất JSON toàn văn từng thiên chương."
-      },
-      {
-        id: "kanripo",
-        name: "2. Kanripo (Kho Tàng Sách Hán Ngữ) - Quốc Tế",
-        url: "https://www.kanripo.org/",
-        role: "Cung cấp văn bản thô (Raw Text) Hán tự chuẩn mã hóa UTF-8",
-        desc: "Lưu trữ trọn bộ Tứ Khố Toàn Thư, Đạo Tạng, Phật Tạng dưới dạng Text thô không dính rác mã HTML, cực kỳ thuận tiện để đưa thẳng vào Database của website.",
-        guide: "Truy cập kho Git repository của Kanripo để tải trọn gói hàng vạn file `.txt` phân theo mã KR (Kanripo Record)."
-      },
-      {
-        id: "scripta_sinica",
-        name: "3. Scripta Sinica (Viện Nghiên Cứu Trung Ương Academia Sinica - Đài Loan)",
-        url: "https://hanchi.ihp.sinica.edu.tw/",
-        role: "Kho Hán tịch điện tử có độ chính xác học thuật cao nhất thế giới",
-        desc: "Hơn 1.3 tỷ chữ Hán cổ được hiệu đính công phu bởi các viện sĩ hàn lâm. Bao gồm Nhị Thập Tứ Sử, Toàn Đường Văn, Tứ Khóa Toàn Thư và các trước tác dịch học cổ phương Đông.",
-        guide: "Dùng cho việc đối chiếu văn bản học (Textual Criticism) để loại bỏ các dị bản sai lệch do sao chép qua các triều đại."
-      },
-      {
-        id: "hannom",
-        name: "4. Viện Nghiên Cứu Hán Nôm (hannom.org.vn) - Việt Nam",
-        url: "http://www.hannom.org.vn/",
-        role: "Trung tâm lưu trữ di sản thư tịch cổ, mộc bản, ngọc phả Việt Nam",
-        desc: "Lưu giữ hàng vạn tư liệu chữ Nôm, thần phả, gia phả các dòng họ, văn bia thời Lý - Trần - Lê - Nguyễn chứng minh nguồn gốc, thiên văn, phong thổ và văn hóa lúa nước của người Việt cổ.",
-        guide: "Khai thác danh mục mộc bản và các bản dịch học thuật của các giáo sư Hán Nôm để làm sáng tỏ cội nguồn Dịch lý phương Nam."
-      },
-      {
-        id: "thivien",
-        name: "5. Thi Viện (Thivien.net) - Việt Nam",
-        url: "https://www.thivien.net/",
-        role: "Nền tảng cấu trúc dữ liệu đối chiếu Tam Ngữ (Hán - Việt - Nôm)",
-        desc: "Mô hình kiến trúc dữ liệu tuyệt vời nhất tại Việt Nam: mỗi tác phẩm cổ đều có chữ Hán nguyên bản, phiên âm Hán-Việt, bản dịch thơ, bản dịch nghĩa và chú giải từ nguyên chi tiết.",
-        guide: "Tham khảo kiến trúc cơ sở dữ liệu quan hệ (Relational Schema) giữa Chữ Hán <-> Chữ Nôm <-> Âm Hán Việt <-> Nghĩa Tiếng Việt."
-      },
-      {
-        id: "gallica",
-        name: "6. Thư Viện Quốc Gia Pháp (Gallica - bnf.fr) - Pháp",
-        url: "https://gallica.bnf.fr/",
-        role: "Kho số hóa tài liệu, bản thảo cổ và bản đồ Đông Dương trước thế kỷ 20",
-        desc: "Lưu trữ hàng ngàn bản thảo cổ, bản đồ địa lý, tư liệu khảo cổ của người Việt thời kỳ tiền thuộc địa được đưa sang Pháp và scan dưới định dạng PDF/IIIF siêu phân giải.",
-        guide: "Sử dụng giao thức IIIF (International Image Interoperability Framework) để nhúng các trang bản thảo cổ trực tiếp lên website."
-      }
-    ],
-    scraper_example_code: `# PYTHON SCRAPER CHUẨN MỰC CÀO DỮ LIỆU CTEXT & KANRIPO VÀO DATABASE
-import requests
-from bs4 import BeautifulSoup
-import json
-import time
-
-def scrape_ctext_chapter(urn):
-    """
-    Cào văn bản cổ từ Chinese Text Project (CText API)
-    Ví dụ URN: 'book-of-changes' (Kinh Dịch), 'dao-de-jing' (Đạo Đức Kinh)
-    """
-    url = f"https://ctext.org/{urn}"
-    headers = {
-        "User-Agent": "AncientCosmologyResearchBot/2.0 (+https://huyenhoc-mu.vercel.app)"
-    }
-    
-    response = requests.get(url, headers=headers)
-    if response.status_code == 200:
-        soup = BeautifulSoup(response.text, "html.parser")
-        extracted_data = []
-        for table in soup.find_all("table", class_="ctext"):
-            chinese_cell = table.find("td", class_="ctext")
-            if chinese_cell:
-                extracted_data.append({
-                    "original_hanzi": chinese_cell.get_text(strip=True),
-                    "timestamp": time.time()
-                })
-        return extracted_data
-    return []
-
-# Xuất dữ liệu sạch sang JSON chuẩn để nạp vào Database trang web`
-  },
-
-  // =========================================================================
-  // PHẦN 3: ĐẠI LUẬN THUYẾT VŨ TRỤ HỌC CHUYÊN SÂU (6 CHƯƠNG ĐẠI HỌC THUẬT)
+  // 3. ĐẠI LUẬN THUYẾT VŨ TRỤ HỌC CHUYÊN SÂU (6 CHƯƠNG ĐẠI HỌC THUẬT)
   // =========================================================================
   treatises: [
     {
@@ -256,85 +245,7 @@ def scrape_ctext_chapter(urn):
   ],
 
   // =========================================================================
-  // PHẦN 4: DÒNG THỜI GIAN TIẾN HÓA VŨ TRỤ HỌC (9 KỶ NGUYÊN)
-  // =========================================================================
-  timeline: [
-    {
-      id: "era_1",
-      era: "Thuở Hồng Hoang (Tiền Vật Chất)",
-      period: "Vô Thủy Vô Chung (Hỗn Độn)",
-      title: "Khởi Nguyên Bản Thể: Vô Cực -> Thái Cực -> Lưỡng Nghi",
-      category: "Bản Thể Luận",
-      desc: "Trạng thái trước khi không gian và thời gian hình thành. Năng lượng chân không lượng tử nguyên sơ ngưng tụ thành điểm kỳ dị Thái Cực, phân hóa thành hai dòng năng lượng đối xứng Âm (Tĩnh) - Dương (Động)."
-    },
-    {
-      id: "era_2",
-      era: "Nông Nghiệp Sơ Khởi Phương Nam",
-      period: "5000 - 3000 TCN (Hòa Bình - Bắc Sơn)",
-      title: "Cội Nguồn Dịch Lý Lúa Nước (Viêm Việt / Thần Nông)",
-      category: "Cội Nguồn Việt",
-      desc: "Cư dân trồng lúa nước quan sát chu kỳ con nước, sấm sét, mưa nắng và mặt trời để đúc kết ra nhịp điệu Âm Dương sơ khai. Huyền sử Mẹ Âu Cơ (Núi/Âm) và Cha Lạc Long Quân (Biển/Dương) mã hóa sự phân đôi cân bằng sinh thái."
-    },
-    {
-      id: "era_3",
-      era: "Thời Đại Phục Hy (Tiên Thiên)",
-      period: "Khoảng 2800 TCN",
-      title: "Hà Đồ & Tiên Thiên Bát Quái (Bản Thể Không Gian Tĩnh)",
-      category: "Số Học Vũ Trụ",
-      desc: "Hà Đồ xuất hiện với quy luật Số Sinh (1-5) và Số Thành (6-10). Phục Hy vạch ra Tiên Thiên Bát Quái đối xứng nhị phân bù trừ hoàn hảo trong không gian 3 chiều."
-    },
-    {
-      id: "era_4",
-      era: "Thời Đại Vũ Trị Thủy",
-      period: "Khoảng 2200 TCN",
-      title: "Lạc Thư & Ma Trận Cửu Cung (Động Lực Học Thời Gian)",
-      category: "Số Học Vũ Trụ",
-      desc: "Thần Quy nổi trên sông Lạc mang ma trận 9 cung số học bậc 3 (tổng mọi trục bằng 15). Chuyển hóa từ thế cân bằng tĩnh của Hà Đồ sang thế luân chuyển biến dịch 8 phương vị của Lạc Thư."
-    },
-    {
-      id: "era_5",
-      era: "Thời Đại Đồ Đồng Đông Sơn",
-      period: "1000 TCN - Thế kỷ 1 SCN",
-      title: "Trống Đồng Đông Sơn: Đúc Vũ Trụ Quan Vào Đồng Thau",
-      category: "Cội Nguồn Việt",
-      desc: "Người Lạc Việt đúc trọn vẹn vũ trụ quan lên mặt trống đồng: Tâm là Mặt Trời Thái Cực 14 cánh, đàn chim Lạc bay ngược chiều kim đồng hồ, 4 tượng cóc ngậm mưa (Tứ Tượng Thủy Thần)."
-    },
-    {
-      id: "era_6",
-      era: "Thời Chu Văn Vương & Chu Công (Hậu Thiên)",
-      period: "Khoảng 1100 TCN",
-      title: "Hậu Thiên Bát Quái & Chu Kỳ 4 Mùa Biến Dịch",
-      category: "Hình Học Vũ Trụ",
-      desc: "Văn Vương sắp xếp lại Bát Quái theo chu kỳ chuyển động của Mặt Trời và thời tiết Trái Đất (Ly Nam, Khảm Bắc, Chấn Đông, Đoài Tây)."
-    },
-    {
-      id: "era_7",
-      era: "Thời Xuân Thu - Chiến Quốc",
-      period: "770 - 221 TCN",
-      title: "Hệ Từ Truyện, Đạo Đức Kinh & Thuyết Ngũ Hành Khí Hóa",
-      category: "Triết Học Khí Hóa",
-      desc: "Khổng Tử viết Hệ Từ giải mã cơ chế Cát - Hung; Lão Tử đúc kết 'Vạn vật cõng Âm ôm Dương, trùng khí dĩ vi hòa'. Hoàn thiện 5 vector Ngũ Hành và nguyên lý Chế Hóa."
-    },
-    {
-      id: "era_8",
-      era: "Thời Hán - Đường - Tống",
-      period: "206 TCN - 1279 SCN",
-      title: "Đỉnh Cao Tam Thức Đại Đạo & Hoàng Đế Nội Kinh",
-      category: "Toán Học Cổ Đại",
-      desc: "Hoàn thiện 3 cỗ máy toán học vũ trụ: Thái Ất (Thiên Đạo), Kỳ Môn Độn Giáp (Địa Đạo), Đại Lục Nhâm (Nhân Đạo). Ứng dụng bản thể Âm Dương Ngũ Hành vào Y đạo trị bệnh và định vị phong thủy."
-    },
-    {
-      id: "era_9",
-      era: "Thời Hiện Đại & Đương Đại",
-      period: "Thế kỷ 20 - Nay",
-      title: "Việt Lý Tố Nguyên & Đối Chiếu Vật Lý Lượng Tử",
-      category: "Hiện Đại Hóa",
-      desc: "Triết gia Kim Định khẳng định Dịch lý là linh hồn văn hóa Bách Việt. Khoa học hiện đại đối chiếu Bát Quái với mã di truyền 64 bộ ba DNA, ma trận nhị phân máy tính và cơ học lượng tử."
-    }
-  ],
-
-  // =========================================================================
-  // PHẦN 5: ĐỒ THỊ TRI THỨC ANTIGRAVITY (30+ NÚT ĐA CHIỀU)
+  // 4. MẠNG LƯỚI CÀN KHÔN TRI THỨC (30+ NÚT ĐỒ THỊ DỊCH LÝ)
   // =========================================================================
   knowledge_graph: {
     nodes: [
@@ -344,15 +255,15 @@ def scrape_ctext_chapter(urn):
       { id: "Dương Khí", group: "polarity", radius: 26, cat: "Lưỡng Nghi", desc: "Vector năng lượng giãn nở, hướng ngoại, bức xạ, phát tán nhiệt lượng, vận động.", quote: "Dương động dĩ phát sinh." },
       { id: "Tứ Tượng", group: "polarity", radius: 28, cat: "Lưỡng Nghi", desc: "Bốn pha dao động nhiệt lượng: Thái Dương (Hạ), Thiếu Dương (Xuân), Thái Âm (Đông), Thiếu Âm (Thu).", quote: "Lưỡng nghi sinh Tứ tượng." },
       
-      { id: "Hà Đồ", group: "math", radius: 28, cat: "Số Học Vũ Trụ", desc: "Trật tự Sinh-Thành số Tiên Thiên, cấu trúc cân bằng tĩnh gồm 55 chấm đen trắng.", quote: "Thiên địa chi số ngũ thập hữu ngũ." },
-      { id: "Lạc Thư", group: "math", radius: 28, cat: "Số Học Vũ Trụ", desc: "Ma phương Cửu Cung bậc 3 với hằng số cân bằng động bằng 15 trên mọi trục.", quote: "Đới cửu lý nhất, ngũ cư trung cung." },
-      { id: "Số Sinh", group: "math", radius: 20, cat: "Số Học Vũ Trụ", desc: "Các số khởi phát từ 1 đến 5 (1 Thủy, 2 Hỏa, 3 Mộc, 4 Kim, 5 Thổ).", quote: "Thiên nhất sinh Thủy, Địa nhị sinh Hỏa." },
-      { id: "Số Thành", group: "math", radius: 20, cat: "Số Học Vũ Trụ", desc: "Các số hoàn tất từ 6 đến 10 (6 Thủy, 7 Hỏa, 8 Mộc, 9 Kim, 10 Thổ).", quote: "Địa lục thành chi, Thiên thất thành chi." },
+      { id: "Hà Đồ", group: "math", radius: 28, cat: "Số Học Càn Khôn", desc: "Trật tự Sinh-Thành số Tiên Thiên, cấu trúc cân bằng tĩnh gồm 55 chấm đen trắng.", quote: "Thiên địa chi số ngũ thập hữu ngũ." },
+      { id: "Lạc Thư", group: "math", radius: 28, cat: "Số Học Càn Khôn", desc: "Ma phương Cửu Cung bậc 3 với hằng số cân bằng động bằng 15 trên mọi trục.", quote: "Đới cửu lý nhất, ngũ cư trung cung." },
+      { id: "Số Sinh", group: "math", radius: 20, cat: "Số Học Càn Khôn", desc: "Các số khởi phát từ 1 đến 5 (1 Thủy, 2 Hỏa, 3 Mộc, 4 Kim, 5 Thổ).", quote: "Thiên nhất sinh Thủy, Địa nhị sinh Hỏa." },
+      { id: "Số Thành", group: "math", radius: 20, cat: "Số Học Càn Khôn", desc: "Các số hoàn tất từ 6 đến 10 (6 Thủy, 7 Hỏa, 8 Mộc, 9 Kim, 10 Thổ).", quote: "Địa lục thành chi, Thiên thất thành chi." },
 
-      { id: "Trống Đồng Đông Sơn", group: "viet", radius: 42, cat: "Cội Nguồn Việt", desc: "Bản đồ thiên văn và vũ trụ luận đúc bằng đồng thau: Sao Thái Cực 14 cánh, chim Lạc, cóc gọi mưa.", quote: "La bàn vũ trụ quan nền văn minh lúa nước sông Hồng." },
-      { id: "Việt Lý Tố Nguyên", group: "viet", radius: 30, cat: "Cội Nguồn Việt", desc: "Học thuyết triết học của Kim Định chứng minh Dịch lý khởi nguyên từ văn hóa Viêm Việt phương Nam.", quote: "Dịch là bản đồ tâm thức nông nghiệp Lạc Việt." },
-      { id: "Lạc Long Quân", group: "viet", radius: 24, cat: "Cội Nguồn Việt", desc: "Biểu trưng Rồng / Biển / Dương tính / Động năng / Mở mang kinh tế sông nước.", quote: "50 con theo Cha xuống biển." },
-      { id: "Âu Cơ", group: "viet", radius: 24, cat: "Cội Nguồn Việt", desc: "Biểu trưng Tiên / Núi / Âm tính / Tĩnh tại / Bồi đắp văn hóa trồng trọt.", quote: "50 con theo Mẹ lên núi." },
+      { id: "Trống Đồng Đông Sơn", group: "viet", radius: 42, cat: "Cội Nguồn Bách Việt", desc: "Bản đồ thiên văn và vũ trụ luận đúc bằng đồng thau: Sao Thái Cực 14 cánh, chim Lạc, cóc gọi mưa.", quote: "La bàn vũ trụ quan nền văn minh lúa nước sông Hồng." },
+      { id: "Việt Lý Tố Nguyên", group: "viet", radius: 30, cat: "Cội Nguồn Bách Việt", desc: "Học thuyết triết học của Kim Định chứng minh Dịch lý khởi nguyên từ văn hóa Viêm Việt phương Nam.", quote: "Dịch là bản đồ tâm thức nông nghiệp Lạc Việt." },
+      { id: "Lạc Long Quân", group: "viet", radius: 24, cat: "Cội Nguồn Bách Việt", desc: "Biểu trưng Rồng / Biển / Dương tính / Động năng / Mở mang kinh tế sông nước.", quote: "50 con theo Cha xuống biển." },
+      { id: "Âu Cơ", group: "viet", radius: 24, cat: "Cội Nguồn Bách Việt", desc: "Biểu trưng Tiên / Núi / Âm tính / Tĩnh tại / Bồi đắp văn hóa trồng trọt.", quote: "50 con theo Mẹ lên núi." },
 
       { id: "Bát Quái", group: "bagua", radius: 30, cat: "Hình Học Vũ Trụ", desc: "Mạng lưới 8 quẻ đơn (3 hào nhị phân) mô phỏng 8 trạng thái năng lượng vật chất nền tảng.", quote: "Bát quái định cát hung." },
       { id: "Tiên Thiên Bát Quái", group: "bagua", radius: 24, cat: "Bát Quái", desc: "Trật tự không gian đối xứng bù trừ tuyệt đối của Phục Hy (Càn Nam Khôn Bắc).", quote: "Thiên Địa định vị, Sơn Trạch thông khí." },
@@ -422,7 +333,69 @@ def scrape_ctext_chapter(urn):
   },
 
   // =========================================================================
-  // PHẦN 6: HÀ ĐỒ & LẠC THƯ SỐ HỌC
+  // 5. CỔ THƯ TÀNG KINH CÁC (KINH ĐIỂN ĐÃ ĐƯỢC THU THẬP & VIỆT HÓA TOÀN VĂN)
+  // =========================================================================
+  classics: [
+    {
+      source: "Kinh Dịch - Hệ Từ Thượng (Thiên Thứ Nhất)",
+      original: "天尊地卑，乾坤定矣。卑高以陳，貴賤位矣。動靜有常，剛柔斷矣。方以類聚，物以群分，吉凶生矣。",
+      trans: "Thiên tôn địa ty, Càn Khôn định hĩ. Ty cao dĩ trần, quý tiện vị hĩ. Động tĩnh hữu thường, cương nhu đoán hĩ. Phương dĩ loại tụ, vật dĩ quần phân, cát hung sinh hĩ.",
+      meaning: "Trời ở trên cao tôn quý, Đất ở dưới thấp dung nạp, thế là quẻ Càn và quẻ Khôn đã định vị. Cao thấp bày ra thì ngôi thứ sang hèn đã phân biệt. Động và tĩnh có quy luật thường hằng thì tính chất cương và nhu được xác định. Các phương hướng theo từng chủng loại mà tụ hội, muôn vật theo từng nhóm mà phân chia, từ đó quy luật Cát - Hung được sinh ra.",
+      tag: "Bản Thể Càn Khôn"
+    },
+    {
+      source: "Kinh Dịch - Hệ Từ Thượng (Thiên Thứ Mười Một)",
+      original: "易有太極，是生兩儀，兩儀生四象，四象生八卦，八卦定吉凶，吉凶生大業。",
+      trans: "Dịch hữu Thái Cực, thị sinh Lưỡng Nghi, Lưỡng Nghi sinh Tứ Tượng, Tứ Tượng sinh Bát Quái, Bát Quái định cát hung, cát hung sinh đại nghiệp.",
+      meaning: "Trong đạo Dịch có Thái Cực (bản thể nguyên sơ), Thái Cực sinh ra Lưỡng Nghi (hai cực Âm - Dương), Lưỡng Nghi sinh ra Tứ Tượng (bốn pha mùa màng, nhiệt lượng), Tứ Tượng sinh ra Bát Quái (tám trạng thái vật chất không gian), Bát Quái xác định trạng thái hòa hợp hay nghịch chuyển (Cát/Hung), hiểu rõ Cát Hung mới kiến tạo nên sự nghiệp vĩ đại.",
+      tag: "Khởi Nguyên Dịch Học"
+    },
+    {
+      source: "Kinh Dịch - Hệ Từ Thượng (Hà Đồ Lạc Thư Thiên)",
+      original: "河出圖，洛出書，聖人則之。天一地二，天三地四，天五地六，天七地八，天九地十。天數五，地數五，五位相得而各有合。",
+      trans: "Hà xuất Đồ, Lạc xuất Thư, thánh nhân tắc chi. Thiên nhất địa nhị, thiên tam địa tứ, thiên ngũ địa lục, thiên thất địa bát, thiên cửu địa thập. Thiên số ngũ, địa số ngũ, ngũ vị tương đắc nhi các hữu hợp.",
+      meaning: "Sông Hoàng Hà hiện ra Đồ hình, sông Lạc hiện ra Thư tịch, bậc thánh nhân lấy đó làm khuôn mẫu. Trời 1 Đất 2, Trời 3 Đất 4, Trời 5 Đất 6, Trời 7 Đất 8, Trời 9 Đất 10. Số Trời có 5 (số lẻ: 1,3,5,7,9), số Đất có 5 (số chẵn: 2,4,6,8,10), năm phương vị tương đắc mà hòa hợp tạo thành 55 số Đại Diễn sinh hóa vạn vật.",
+      tag: "Hà Đồ Lạc Thư"
+    },
+    {
+      source: "Đạo Đức Kinh - Lão Tử (Chương 42)",
+      original: "道生一，一生二，二生三，三生萬物。萬物負陰而抱陽，沖氣以為和。",
+      trans: "Đạo sinh Nhất, Nhất sinh Nhị, Nhị sinh Tam, Tam sinh vạn vật. Vạn vật phụ Âm nhi bão Dương, trùng khí dĩ vi hòa.",
+      meaning: "Đạo sinh Một (Thái Cực nguyên khí), Một sinh Hai (phân hóa Âm Dương), Hai sinh Ba (Âm - Dương - Khí giao hòa xung đột), Ba sinh ra muôn loài vạn vật. Muôn vật đều cõng Âm ở sau lưng mà ôm Dương trước ngực, nhờ dòng khí xung đột giao hoán mà đạt tới trạng thái thái hòa vĩnh cửu.",
+      tag: "Đạo Gia Bản Thể"
+    },
+    {
+      source: "Hoàng Đế Nội Kinh - Tố Vấn (Âm Dương Ứng Tượng Đại Luận)",
+      original: "陰陽者，天地之道也，萬物之綱紀，變化之父母，生殺之本始，神明之府也，治病必求于本。",
+      trans: "Âm Dương giả, thiên địa chi đạo dã, vạn vật chi cương kỷ, biến hóa chi phụ mẫu, sinh sát chi bản thủy, thần minh chi phủ dã, trị bệnh tất cầu vu bản.",
+      meaning: "Âm Dương chính là quy luật của Trời Đất, kỷ cương trật tự của muôn loài, cha mẹ của mọi sự biến dịch, nguồn gốc của sinh sôi và tiêu vong, là cái kho chứa đựng sự huyền diệu màu nhiệm của tự nhiên. Người thầy thuốc muốn trị bệnh ắt phải tìm về cái gốc rễ Âm Dương ấy.",
+      tag: "Y Đạo Khí Hóa"
+    },
+    {
+      source: "Hoài Nam Tử - Thiên Văn Huấn",
+      original: "道始於一，一而不生，故分而為陰陽，陰陽合和而生萬物。故曰：一生二，二生三，三生萬物。",
+      trans: "Đạo thủy ư nhất, nhất nhi bất sinh, cố phân nhi vi âm dương, âm dương hợp hòa nhi sinh vạn vật. Cố viết: nhất sinh nhị, nhị sinh tam, tam sinh vạn vật.",
+      meaning: "Đạo khởi đầu từ Một, nhưng thuần Một đứng yên thì không sinh hóa, vì vậy mới phân tách thành Âm và Dương. Âm và Dương tương giao hòa hợp mới sinh ra muôn vạn thực thể trong vũ trụ.",
+      tag: "Thiên Văn Cổ"
+    },
+    {
+      source: "Quản Tử - Tứ Thời Thiên",
+      original: "陰陽者，天地之大理也；四時者，陰陽之大經也；刑德者，四時之合也。",
+      trans: "Âm Dương giả, thiên địa chi đại lý dã; Tứ thời giả, âm dương chi đại kinh dã; hình đức giả, tứ thời chi hợp dã.",
+      meaning: "Âm Dương là cái lý lớn nhất của Trời Đất; Bốn mùa tuần hoàn (Xuân sinh, Hạ trưởng, Thu liễm, Đông tàng) là đường dây trật tự lớn nhất của Âm Dương; ân đức và hình phạt trị quốc phải thuận theo bốn mùa ấy.",
+      tag: "Thời Tiết Trị Quốc"
+    },
+    {
+      source: "Việt Lý Tố Nguyên - Triết Gia Kim Định",
+      original: "Dịch lý là bản đồ tâm thức và vũ trụ quan của nền văn minh lúa nước Bách Việt phương Nam, xuất phát từ kinh nghiệm trông trời trông đất của cư dân nông nghiệp.",
+      trans: "Dịch lý nông nghiệp lúa nước Bách Việt.",
+      meaning: "Chứng minh toàn bộ hệ thống triết học Âm Dương, Tam Tài, Bát Quái và Lịch pháp khởi sinh từ thực nghiệm gieo cấy lúa nước của người Việt cổ ven sông Hồng và sông Mã trước khi được văn bản hóa ở phương Bắc.",
+      tag: "Minh Triết Lạc Việt"
+    }
+  ],
+
+  // =========================================================================
+  // 6. HÀ ĐỒ & LẠC THƯ FORMULA
   // =========================================================================
   ha_do: {
     title: "Hà Đồ - Bản Thể Tiên Thiên & Trật Tự Sinh Thành",
@@ -452,7 +425,7 @@ def scrape_ctext_chapter(urn):
   },
 
   // =========================================================================
-  // PHẦN 7: BÁT QUÁI TIÊN THIÊN & HẬU THIÊN
+  // 7. BÁT QUÁI
   // =========================================================================
   bat_quai: {
     tien_thien: {
@@ -488,7 +461,7 @@ def scrape_ctext_chapter(urn):
   },
 
   // =========================================================================
-  // PHẦN 8: NGŨ HÀNH BẢN THỂ
+  // 8. NGŨ HÀNH
   // =========================================================================
   ngu_hanh: {
     phases: [
@@ -561,39 +534,5 @@ def scrape_ctext_chapter(urn):
     cycles: {
       che_hoa_explain: "Nguyên lý Chế Hóa tối cao: Khắc mà có Sinh, Sinh mà có Khắc. Kim khắc Mộc, nhưng Mộc sinh Hỏa để Hỏa rèn Kim; Thủy khắc Hỏa, nhưng Hỏa sinh Thổ để Thổ chế ngự Thủy. Nhờ Chế Hóa mà vũ trụ luôn duy trì được trạng thái cân bằng nội môi trường (Homeostasis) bất diệt."
     }
-  },
-
-  // =========================================================================
-  // PHẦN 9: KHO TÀNG KINH ĐIỂN NGUYÊN BẢN
-  // =========================================================================
-  classics: [
-    {
-      source: "Kinh Dịch - Hệ Từ Thượng",
-      original: "易有太極，是生兩儀，兩儀生四象，四象生八卦，八卦定吉凶，吉凶生大業。",
-      trans: "Dịch hữu Thái Cực, thị sinh Lưỡng Nghi, Lưỡng Nghi sinh Tứ Tượng, Tứ Tượng sinh Bát Quái, Bát Quái định cát hung, cát hung sinh đại nghiệp.",
-      meaning: "Trong đạo Dịch có Thái Cực, Thái Cực sinh Lưỡng Nghi, Lưỡng Nghi sinh Tứ Tượng, Tứ Tượng sinh Bát Quái, Bát Quái xác định trạng thái hòa hợp hay nghịch chuyển (Cát/Hung), hiểu rõ Cát Hung mới kiến tạo nên sự nghiệp lớn lao.",
-      tag: "Khởi Nguyên"
-    },
-    {
-      source: "Đạo Đức Kinh - Chương 42",
-      original: "道生一，一生二，二生三，三生萬物。萬物負陰而抱陽，沖氣以為和。",
-      trans: "Đạo sinh Nhất, Nhất sinh Nhị, Nhị sinh Tam, Tam sinh vạn vật. Vạn vật phụ Âm nhi bão Dương, trùng khí dĩ vi hòa.",
-      meaning: "Đạo sinh Một (Thái Cực), Một sinh Hai (Âm Dương), Hai sinh Ba (Âm - Dương - Khí giao hòa), Ba sinh ra vạn vật. Vạn vật đều cõng Âm mà ôm Dương, nhờ dòng khí xung đột dung hòa mà đạt tới trạng thái hài hòa sinh sôi.",
-      tag: "Bản Thể Luận"
-    },
-    {
-      source: "Hoàng Đế Nội Kinh - Tố Vấn",
-      original: "陰陽者，天地之道也，萬物之綱紀，變化之父母，生殺之本始，神明之府也。",
-      trans: "Âm Dương giả, thiên địa chi đạo dã, vạn vật chi cương kỷ, biến hóa chi phụ mẫu, sinh sát chi bản thủy, thần minh chi phủ dã.",
-      meaning: "Âm Dương chính là quy luật của Trời Đất, kỷ cương trật tự của muôn loài, cha mẹ của mọi sự biến dịch, nguồn gốc của sinh sôi và tiêu diệt.",
-      tag: "Khí Hóa Y Đạo"
-    },
-    {
-      source: "Việt Lý Tố Nguyên - Kim Định",
-      original: "Dịch lý là bản đồ tâm thức và vũ trụ quan của nền văn minh lúa nước Bách Việt phương Nam.",
-      trans: "Dịch lý nông nghiệp lúa nước.",
-      meaning: "Khẳng định nền tảng thực nghiệm của Kinh Dịch khởi nguồn từ việc cày cấy, trông mưa trông nắng, quan sát dòng chảy sông nước của cư dân Việt cổ.",
-      tag: "Cội Nguồn Việt"
-    }
-  ]
+  }
 };
