@@ -1,12 +1,13 @@
 /**
  * PHONG THỦY THỜ CÚNG CHÁNH TÔNG (KHO TÀNG CỔ THƯ & QUY THỨC TẾ TỰ)
- * CHƯƠNG I - LẦN NẠP KIẾN THỨC 1 ĐẾN 9 / 10
+ * CHƯƠNG I: ĐẠI BÁCH KHOA PHONG THỦY THỜ CÚNG & LINH VỊ GIA TIÊN CHÁNH TÔNG
+ * 10 TIẾT CHUYÊN KHẢO TOÀN DIỆN
  */
 
-// LẦN 1: KHỞI NGUYÊN BẢN THỂ & NGUYÊN TẮC TỌA VỊ
+// TIẾT I: KHỞI NGUYÊN BẢN THỂ & NGUYÊN TẮC TỌA VỊ
 const WORSHIP_FENGSHUI_PART_1 = {
   chapter_id: "tho_cung_part_1",
-  chapter_title: "Chương I (Lần 1/10): Khởi Nguyên Bản Thể & Nguyên Tắc Tọa Vị Gian Thờ",
+  chapter_title: "Tiết I: Khởi Nguyên Bản Thể & Nguyên Tắc Tọa Vị Gian Thờ",
   sub_title: "Định vị trung tâm linh giác gia trạch, cơ chế nạp thanh khí và phép lập hướng Tọa Cát Hướng Cát",
   
   ontology: {
@@ -48,10 +49,10 @@ const WORSHIP_FENGSHUI_PART_1 = {
   ]
 };
 
-// LẦN 2: THƯỚC LỖ BAN & KÍCH THƯỚC BÀN THỜ CHUẨN PHONG THỦY (THƯỚC 38.8CM ÂM PHẦN)
+// TIẾT II: THƯỚC LỖ BAN & KÍCH THƯỚC BÀN THỜ CHUẨN PHONG THỦY (THƯỚC 38.8CM ÂM PHẦN)
 const WORSHIP_FENGSHUI_PART_2 = {
   chapter_id: "tho_cung_part_2",
-  chapter_title: "Chương I (Lần 2/10): Thước Lỗ Ban 38.8cm & Kích Thước Bàn Thờ Chuẩn Phong Thủy",
+  chapter_title: "Tiết II: Thước Lỗ Ban 38.8cm & Kích Thước Bàn Thờ Chuẩn Phong Thủy",
   sub_title: "Phân biệt 3 loại Thước Lỗ Ban, cấu trúc 10 Cung Thước 38.8cm (Âm Phần/Bàn Thờ) & Kích Thước Bàn Thờ Đại Cát",
   
   ruler_classification: {
@@ -100,10 +101,10 @@ const WORSHIP_FENGSHUI_PART_2 = {
   }
 };
 
-// LẦN 3: BÀI TRÍ BÁT HƯƠNG, NGŨ HÀNH ĐỒ THỜ & NGUYÊN TẮC TỤ KHÍ BÀN THỜ
+// TIẾT III: BÀI TRÍ BÁT HƯƠNG, NGŨ HÀNH ĐỒ THỜ & NGUYÊN TẮC TỤ KHÍ BÀN THỜ
 const WORSHIP_FENGSHUI_PART_3 = {
   chapter_id: "tho_cung_part_3",
-  chapter_title: "Chương I (Lần 3/10): Bài Trí Bát Hương, NgŨ HÀNH ĐỒ THỜ & Cốt Thất Bảo Chánh Tông",
+  chapter_title: "Tiết III: Bài Trí Bát Hương, Ngũ Hành Đồ Thờ & Cốt Thất Bảo Chánh Tông",
   sub_title: "Quy thức Tam Cấp Thần Vị, bố cục 'Đông Bình Tây Quả', Ngũ Hành Đồ Thờ và thuật nạp Thất Bảo tụ khí linh thiêng",
 
   incense_burners_layout: {
@@ -154,10 +155,10 @@ const WORSHIP_FENGSHUI_PART_3 = {
   }
 };
 
-// LẦN 4: 18 ĐẠI KỴ TRONG PHONG THỦY BÀN THỜ & PHÉP HÓA GIẢI CHÁNH TÔNG
+// TIẾT IV: 18 ĐẠI KỴ TRONG PHONG THỦY BÀN THỜ & PHÉP HÓA GIẢI CHÁNH TÔNG
 const WORSHIP_FENGSHUI_PART_4 = {
   chapter_id: "tho_cung_part_4",
-  chapter_title: "Chương I (Lần 4/10): 18 Đại Kỵ Phong Thủy Bàn Thờ & Phương Pháp Hóa Giải Chánh Tông",
+  chapter_title: "Tiết IV: 18 Đại Kỵ Phong Thủy Bàn Thờ & Phương Pháp Hóa Giải Chánh Tông",
   sub_title: "Tổng hợp 18 sát khí nguy hiểm nhất đối với Thần Vị gia trạch từ Dương Trạch Tam Yếu & Lỗ Ban Kinh",
 
   taboo_categories: [
@@ -197,10 +198,10 @@ const WORSHIP_FENGSHUI_PART_4 = {
   ]
 };
 
-// LẦN 5: NGHI THỨC BAO SÁI BÁT HƯƠNG, TẨY UẾ & RÚT TỈA CHÂN NHANG CHÁNH TÔNG
+// TIẾT V: NGHI THỨC BAO SÁI BÁT HƯƠNG, TẨY UẾ & RÚT TỈA CHÂN NHANG CHÁNH TÔNG
 const WORSHIP_FENGSHUI_PART_5 = {
   chapter_id: "tho_cung_part_5",
-  chapter_title: "Chương I (Lần 5/10): Nghi Thức Bao Sái Bát Hương, Tẩy Uế & Rút Tỉa Chân Nhang",
+  chapter_title: "Tiết V: Nghi Thức Bao Sái Bát Hương, Tẩy Uế & Rút Tỉa Chân Nhang",
   sub_title: "Trích từ Chu Tử Gia Lễ (Tu Sái Chương): Thời điểm hoàng đạo, quy trình 5 bước bao sái tịnh hóa và bài Văn Khấn Cổ Truyền",
 
   preparation_and_timing: {
@@ -252,10 +253,10 @@ Nam mô A Di Đà Phật! (3 lần, 3 lạy)`
   }
 };
 
-// LẦN 6: PHONG THỦY BÀN THỜ THẦN TÀI - THỔ ĐỊA & QUY TẮC CHIÊU TÀI TỤ BẢO
+// TIẾT VI: PHONG THỦY BÀN THỜ THẦN TÀI - THỔ ĐỊA & QUY TẮC CHIÊU TÀI TỤ BẢO
 const WORSHIP_FENGSHUI_PART_6 = {
   chapter_id: "tho_cung_part_6",
-  chapter_title: "Chương I (Lần 6/10): Phong Thủy Bàn Thờ Thần Tài - Thổ Địa & Quy Tắc Chiêu Tài TỤ BẢO",
+  chapter_title: "Tiết VI: Phong Thủy Bàn Thờ Thần Tài - Thổ Địa & Quy Tắc Chiêu Tài Tụ Bảo",
   sub_title: "Trích xuất từ Chiêu Tài Tụ Bảo Bí Pháp & Địa Lý Toàn Thư: Bản chất linh vị sát đất, cung Thiên Lộc - Quý Nhân và bài trí Ngũ Phương Ngũ Thổ",
 
   deity_nature: {
@@ -306,10 +307,10 @@ const WORSHIP_FENGSHUI_PART_6 = {
   }
 };
 
-// LẦN 7: PHONG THỦY BÀN THỜ PHẬT TẠI GIA & QUY THỨC THỜ CHUNG PHẬT - GIA TIÊN
+// TIẾT VII: PHONG THỦY BÀN THỜ PHẬT TẠI GIA & QUY THỨC THỜ CHUNG PHẬT - GIA TIÊN
 const WORSHIP_FENGSHUI_PART_7 = {
   chapter_id: "tho_cung_part_7",
-  chapter_title: "Chương I (Lần 7/10): Phong Thủy Bàn Thờ Phật Tại Gia & Quy Thức Thờ Chung Phật - Gia Tiên",
+  chapter_title: "Tiết VII: Phong Thủy Bàn Thờ Phật Tại Gia & Quy Thức Thờ Chung Phật - Gia Tiên",
   sub_title: "Trích từ Phật Thuyết Bát Đại Nhân Giác Kinh & Chu Tử Gia Lễ (Thích Đạo Phối Tự): Quy tắc 'Tiền Phật Hậu Linh', phân cấp nhị tầng và giới luật cúng dường chay tịnh",
 
   spiritual_hierarchy: {
@@ -365,10 +366,10 @@ const WORSHIP_FENGSHUI_PART_7 = {
   }
 };
 
-// LẦN 8: PHONG THỦY NHÀ THỜ HỌ, TỪ ĐƯỜNG DÒNG TỘC & BỐ CỤC 'TẢ CHIÊU HỮU MỤC'
+// TIẾT VIII: PHONG THỦY NHÀ THỜ HỌ, TỪ ĐƯỜNG DÒNG TỘC & BỐ CỤC 'TẢ CHIÊU HỮU MỤC'
 const WORSHIP_FENGSHUI_PART_8 = {
   chapter_id: "tho_cung_part_8",
-  chapter_title: "Chương I (Lần 8/10): Phong Thủy Nhà Thờ Họ, Từ Đường Dòng Tộc & Bố Cục 'Tả Chiêu Hữu Mục'",
+  chapter_title: "Tiết VIII: Phong Thủy Nhà Thờ Họ, Từ Đường Dòng Tộc & Bố Cục 'Tả Chiêu Hữu Mục'",
   sub_title: "Trích xuất từ Kinh Lễ (Tế Thống) & Chu Tử Gia Lễ (Tông Từ Thiên): Bản thể long mạch từ đường, quy luật Chiêu Mục thế thứ và hình thế Loan Đầu 3 gian / 5 gian",
 
   ancestral_hall_ontology: {
@@ -418,13 +419,12 @@ const WORSHIP_FENGSHUI_PART_8 = {
   }
 };
 
-// LẦN 9: PHONG THỦY BÀN THỜ TREO TƯỜNG CHUNG CƯ & NHÀ PHỐ HIỆN ĐẠI
+// TIẾT IX: PHONG THỦY BÀN THỜ TREO TƯỜNG CHUNG CƯ & NHÀ PHỐ HIỆN ĐẠI
 const WORSHIP_FENGSHUI_PART_9 = {
   chapter_id: "tho_cung_part_9",
-  chapter_title: "Chương I (Lần 9/10): Bàn Thờ Treo Tường Chung Cư & Không Gian Thờ Hiện Đại",
+  chapter_title: "Tiết IX: Bàn Thờ Treo Tường Chung Cư & Không Gian Thờ Hiện Đại",
   sub_title: "Quy chuẩn độ cao Thước Lỗ Ban 38.8cm từ mặt sàn, giải pháp 4 lớp bảo vệ tụ khí và 6 đại kỵ không gian hẹp",
 
-  // 1. Độ cao treo bàn thờ chuẩn Thước 38.8cm
   hanging_altar_heights: {
     title: "1. Độ Cao Treo Bàn Thờ Chuẩn Thước Lỗ Ban 38.8cm (Tính Từ Mặt Sàn Hoàn Thiện)",
     quote: "Cao bất quá đầu, đê bất quá phúc. Tôn ti đắc nghi, linh khí trường tồn.",
@@ -448,69 +448,111 @@ const WORSHIP_FENGSHUI_PART_9 = {
     ]
   },
 
-  // 2. Giải pháp 4 lớp bảo vệ tụ khí
   four_layer_protection: {
     title: "2. Giải Pháp 4 Lớp Bảo Vệ & Tàng Phong Tụ Khí Cho Bàn Thờ Chung Cư",
     layers: [
+      { layer: "Lớp 1: Tấm Chống Ám Khói Hương Ốp Trần", role: "Gắn trên trần thạch cao ngay trên đỉnh bát hương, chạm khắc chữ Phúc/Lộc/Thọ hoặc hoa sen, vừa tịnh hóa nhiệt hỏa vừa ngăn ố vàng trần nhà." },
+      { layer: "Lớp 2: Cặp Vách Ngăn CNC Bọc Hai Bên (Tả Long - Hữu Hổ Mini)", role: "Tạo thành một 'Gian Thờ Ảo', chắn gió tạt từ điều hòa, quạt trần và che khuất tầm nhìn trực diện từ khu vực sinh hoạt, sofa, bàn ăn." },
+      { layer: "Lớp 3: Bàn Thờ Gỗ Tự Nhiên Bắt Vít Nở Sắt Chịu Lực", role: "Bắt vít nở sắt trực tiếp vào Tường Bê Tông Chịu Lực (tuyệt đối không bắt vào vách thạch cao rỗng), tích hợp ngăn kéo nhỏ đựng văn khấn, nến, bật lửa." },
+      { layer: "Lớp 4: Tấm Ốp Lưng Gỗ Hậu Chẩm (Thực Tường Giả Lập)", role: "Ốp tấm gỗ màu nâu trầm tựa sát tường để tạo điểm tựa Hậu Chẩm vững chãi, cách ly tường ẩm và tạo sự ấm cúng trang trọng." }
+    ]
+  },
+
+  apartment_taboos: {
+    title: "3. 6 Đại Kỵ Cực Nguy Hiểm Riêng Cho Căn Hộ Chung Cư & Cách Hóa Giải",
+    taboos: [
+      { id: 1, title: "Treo bàn thờ ngay dưới Miệng Gió Điều Hòa (Phong Thủy Sát)", danger: "Gió lạnh thổi tắt nhang, làm tán loạn chân khí; hơi ẩm điều hòa nhỏ giọt vào bát hương.", solution: "Di dời vị trí bàn thờ hoặc lắp tấm kính/gỗ chắn hướng gió điều hòa không cho phả trực tiếp." },
+      { id: 2, title: "Treo bàn thờ dựa lưng vào tường Nhà Vệ Sinh chung cư (Uế Sát)", danger: "Tường nhà vệ sinh căn hộ ẩm ướt và chứa ống thoát nước thải ngầm làm ô uế linh vị.", solution: "Chuyển sang bức tường phòng khách độc lập, hoặc ốp tấm gỗ cách ly dày 2 lớp phía sau." },
+      { id: 3, title: "Treo bàn thờ đối diện Tivi hoặc Dàn Âm Thanh Lớn (Động Sát)", danger: "Tiếng ồn và sóng từ trường loa bass rung lắc làm kinh động thần linh, gia trạch bất an.", solution: "Bố trí lệch góc, dùng vách CNC che chắn phân chia ranh giới âm thanh." },
+      { id: 4, title: "Tầng trên có Nhà Vệ Sinh hoặc Giường Ngủ đè lên đầu Bàn Thờ", danger: "Khí ô uế hoặc năng lượng sinh hoạt nặng nề đè ép linh vị bên dưới (Áp Đỉnh Ô Uế).", solution: "Khảo sát kỹ sơ đồ mặt bằng tầng trên, chọn vị trí trần trên là phòng khách hoặc phòng làm việc tĩnh." },
+      { id: 5, title: "Treo bàn thờ đối diện Bếp Nấu / Bàn Ăn Sinh Hoạt", danger: "Mùi dầu mỡ thức ăn xộc vào làm mất thanh tịnh, nhìn thẳng vào cảnh nhậu nhẹt dung tục.", solution: "Sử dụng rèm hạt gỗ hoặc rèm che rủ trước bàn thờ khi không thắp hương." },
+      { id: 6, title: "Treo bàn thờ bằng vít lỏng lẻo trên Vách Thạch Cao Rỗng", danger: "Nguy cơ rơi vỡ bàn thờ và bát hương - điềm báo hung hiểm cực kỳ nghiêm trọng trong phong thủy.", solution: "Bắt buộc tìm xương thép hộp hoặc đục tường bắt vít nở sắt vào bê tông cốt thép kiên cố." }
+    ]
+  }
+};
+
+// TIẾT X: TỜ DỊ HIỆU BÁT HƯƠNG (GIẢI MÃ PHÙ VĂN, HÌNH VẼ, QUY CÁCH VIẾT) & ĐẠI TỔNG KẾT CHƯƠNG I
+const WORSHIP_FENGSHUI_PART_10 = {
+  chapter_id: "tho_cung_part_10",
+  chapter_title: "Tiết X: Tờ Dị Hiệu Bát Hương (Cấu Trúc, Phù Văn, Phép Viết) & Đại Tổng Kết",
+  sub_title: "Giải mã 'Thẻ căn cước tâm linh' của Bát Hương, ý nghĩa linh phù đồ hình Bát Quái, Thái Cực, Long Phụng và Đại Ma Trận Phong Thủy Thờ Cúng",
+
+  // 1. Bản chất & Cấu trúc đồ hình Tờ Dị Hiệu
+  di_hieu_anatomy: {
+    title: "1. Bản Chất & Cấu Trúc Đồ Hình Tờ Dị Hiệu Bát Hương Chánh Tông",
+    quote: "Dị hiệu định danh, thần linh ngự vị. Thất bảo tụ khí, vạn tà bất xâm.",
+    quote_source: "Khai Quang An Vị Chánh Tông",
+    definition: "Tờ Dị Hiệu (hay Tờ Hiệu / Linh Phù Định Vị) là bản 'Căn cước tâm linh' bắt buộc phải có trong mỗi bát hương. Tờ hiệu xác lập tọa độ tâm thức để Thần Linh hoặc Gia Tiên giáng ngự đúng ngôi thứ, đồng thời ngăn chặn tuyệt đối các vong linh vãng lai ngoại quỷ xâm nhập chiếm đoạt linh khí.",
+    visual_symbols: [
       {
-        layer: "Lớp 1: Tấm Chống Ám Khói Hương Ốp Trần",
-        role: "Gắn trên trần thạch cao ngay trên đỉnh bát hương, chạm khắc chữ Phúc/Lộc/Thọ hoặc hoa sen, vừa tịnh hóa nhiệt hỏa vừa ngăn ố vàng trần nhà."
+        symbol_name: "Đồ Hình Thái Cực & Bát Quái Trấn Trạch (Ở Đỉnh Trên Cùng)",
+        meaning: "Biểu trưng cho khởi nguồn càn khôn vũ trụ, tạo lập từ trường cân bằng Âm Dương và kết giới bảo hộ, trấn trừ tà khí xâm phạm vào danh xưng thần thánh."
       },
       {
-        layer: "Lớp 2: Cặp Vách Ngăn CNC Bọc Hai Bên (Tả Long - Hữu Hổ Mini)",
-        role: "Tạo thành một 'Gian Thờ Ảo', chắn gió tạt từ điều hòa, quạt trần và che khuất tầm nhìn trực diện từ khu vực sinh hoạt, sofa, bàn ăn."
+        symbol_name: "Phù Đầu Tam Thanh (Ba Dấu Chấm Hoặc Phù Ấn)",
+        meaning: "Đại diện cho Tam Bảo (Phật - Pháp - Tăng) hoặc Tam Thanh (Ngọc Thanh - Thượng Thanh - Thái Thanh), là ấn chỉ sắc lệnh cho phép chân linh an ngự."
       },
       {
-        layer: "Lớp 3: Bàn Thờ Gỗ Tự Nhiên Bắt Vít Nở Sắt Chịu Lực",
-        role: "Bắt vít nở sắt trực tiếp vào Tường Bê Tông Chịu Lực (tuyệt đối không bắt vào vách thạch cao rỗng), tích hợp ngăn kéo nhỏ đựng văn khấn, nến, bật lửa."
+        symbol_name: "Khung Ô Trống Viền Long Phượng / Kim Cang",
+        meaning: "Khung chữ nhật màu đỏ bảo vệ không gian ghi danh hiệu tôn kính, biểu trưng cho sự tôn nghiêm, không để ô trọc bụi trần xâm phạm danh tính linh thiêng."
       },
       {
-        layer: "Lớp 4: Tấm Ốp Lưng Gỗ Hậu Chẩm (Thực Tường Giả Lập)",
-        role: "Ốp tấm gỗ màu nâu trầm tựa sát tường để tạo điểm tựa Hậu Chẩm vững chãi, cách ly tường ẩm và tạo sự ấm cúng trang trọng."
+        symbol_name: "Hình Tượng Song Long Chầu Nguyệt (Hai Bên Thân)",
+        meaning: "Rồng là linh vật đứng đầu Tứ Linh, đại diện cho dương khí thuần khiết, bảo hộ linh vị bất khả xâm phạm và gia tăng uy lực chiêu phúc."
+      }
+    ],
+    color_rule: "MÀU SẮC & CHẤT LIỆU CHUẨN MỰC: Tờ Dị Hiệu dùng giấy màu VÀNG in mực ĐỎ (hoặc giấy ĐỎ in mực VÀNG), đại diện cho Hoàng Thổ và Chu Sa Tịch Tà. Chữ viết bên trong dùng bút mực đỏ hoặc mực đen đậm nét, trang nghiêm."
+  },
+
+  // 2. Quy cách viết nội dung chữ trên 5 loại Tờ Dị Hiệu
+  di_hieu_writing_templates: {
+    title: "2. Quy Cách Soạn Thảo Nội Dung 5 Bản Dị Hiệu Bát Hương Chánh Tông",
+    rule_note: "Chữ viết dọc từ trên xuống dưới theo truyền thống, hoặc viết chữ in hoa trang trọng:",
+    templates: [
+      {
+        altar_type: "1. Bát Hương Quan Lớn Thần Linh (Chính Giữa Ban Gia Tiên)",
+        content: "PHỤNG THỊ: QUAN ĐƯƠNG NIÊN HÀNH KHIỂN THÁI TUẾ CHÍ ĐỨC TÔN THẦN, BẢN CẢNH THÀNH HOÀNG CHƯ VỊ ĐẠI VƯƠNG, BẢN XỨ THẦN LINH THỔ ĐỊA, ĐÔNG TRÙ TƯ MỆNH TÁO PHỦ THẦN QUÂN, NGŨ PHƯƠNG NGŨ THỔ LONG MẠCH TÔN THẦN, TIỀN HẬU ĐỊA CHỦ TÀI THẦN CHI VỊ."
+      },
+      {
+        altar_type: "2. Bát Hương Gia Tiên Tiền Tổ (Bên Tay Phải Nhìn Vào)",
+        content: "PHỤNG THỊ: HỘI ĐỒNG CAO TẰNG TỔ KHẢO, CAO TẰNG TỔ TỶ, BÁ THÚC HUYNH ĐỆ, CÔ DI TỶ MUỘI, TIÊN TỔ NỘI NGOẠI DÒNG HỌ [ĐIỀN TÊN HỌ GIA ĐÌNH] CHÂN LINH VỊ TIỀN."
+      },
+      {
+        altar_type: "3. Bát Hương Bà Cô Ông Mãnh (Bên Tay Trái Nhìn Vào)",
+        content: "PHỤNG THỊ: HỘI ĐỒNG BÀ CÔ, ÔNG MÃNH, HUYỀN CÔ HUYỀN CẬU, TIỀN CHỦ HẬU CHỦ DÒNG HỌ [ĐIỀN TÊN HỌ GIA ĐÌNH] VỊ TIỀN."
+      },
+      {
+        altar_type: "4. Bát Hương Bàn Thờ Thần Tài - Thổ Địa",
+        content: "PHỤNG THỊ: ĐÔNG HẢI THÁI TẠNG, NAM HẢI CỬU LONG, TÂY HẢI BẠCH HỔ, BẮC HẢI HUYỀN VŨ, TRUNG ƯƠNG HUỲNH LONG NGŨ PHƯƠNG NGŨ THỔ THẦN KỲ, TIỀN HẬU ĐỊA CHỦ TÀI THẦN VỊ TIỀN."
+      },
+      {
+        altar_type: "5. Bát Hương Bàn Thờ Phật Tại Gia",
+        content: "PHỤNG THỊ: THẬP PHƯƠNG THƯỜNG TRỤ TAM BẢO, NAM MÔ BẢN SƯ THÍCH CA MÂU NI PHẬT, NAM MÔ ĐẠI TỪ ĐẠI BI QUÁN THẾ ÂM BỒ TÁT VỊ TIỀN."
       }
     ]
   },
 
-  // 3. 6 Đại kỵ riêng cho chung cư
-  apartment_taboos: {
-    title: "3. 6 Đại Kỵ Cực Nguy Hiểm Riêng Cho Căn Hộ Chung Cư & Cách Hóa Giải",
-    taboos: [
-      {
-        id: 1,
-        title: "Treo bàn thờ ngay dưới Miệng Gió Điều Hòa (Phong Thủy Sát)",
-        danger: "Gió lạnh thổi tắt nhang, làm tán loạn chân khí; hơi ẩm điều hòa nhỏ giọt vào bát hương.",
-        solution: "Di dời vị trí bàn thờ hoặc lắp tấm kính/gỗ chắn hướng gió điều hòa không cho phả trực tiếp."
-      },
-      {
-        id: 2,
-        title: "Treo bàn thờ dựa lưng vào tường Nhà Vệ Sinh chung cư (Uế Sát)",
-        danger: "Tường nhà vệ sinh căn hộ ẩm ướt và chứa ống thoát nước thải ngầm làm ô uế linh vị.",
-        solution: "Chuyển sang bức tường phòng khách độc lập, hoặc ốp tấm gỗ cách ly dày 2 lớp phía sau."
-      },
-      {
-        id: 3,
-        title: "Treo bàn thờ đối diện Tivi hoặc Dàn Âm Thanh Lớn (Động Sát)",
-        danger: "Tiếng ồn và sóng từ trường loa bass rung lắc làm kinh động thần linh, gia trạch bất an.",
-        solution: "Bố trí lệch góc, dùng vách CNC che chắn phân chia ranh giới âm thanh."
-      },
-      {
-        id: 4,
-        title: "Tầng trên có Nhà Vệ Sinh hoặc Giường Ngủ đè lên đầu Bàn Thờ",
-        danger: "Khí ô uế hoặc năng lượng sinh hoạt nặng nề đè ép linh vị bên dưới (Áp Đỉnh Ô Uế).",
-        solution: "Khảo sát kỹ sơ đồ mặt bằng tầng trên, chọn vị trí trần trên là phòng khách hoặc phòng làm việc tĩnh."
-      },
-      {
-        id: 5,
-        title: "Treo bàn thờ đối diện Bếp Nấu / Bàn Ăn Sinh Hoạt",
-        danger: "Mùi dầu mỡ thức ăn xộc vào làm mất thanh tịnh, nhìn thẳng vào cảnh nhậu nhẹt dung tục.",
-        solution: "Sử dụng rèm hạt gỗ hoặc rèm che rủ trước bàn thờ khi không thắp hương."
-      },
-      {
-        id: 6,
-        title: "Treo bàn thờ bằng vít lỏng lẻo trên Vách Thạch Cao Rỗng",
-        danger: "Nguy cơ rơi vỡ bàn thờ và bát hương - điềm báo hung hiểm cực kỳ nghiêm trọng trong phong thủy.",
-        solution: "Bắt buộc tìm xương thép hộp hoặc đục tường bắt vít nở sắt vào bê tông cốt thép kiên cố."
-      }
+  // 3. Quy luật gói Dị Hiệu cùng Cốt Thất Bảo
+  wrapping_process: {
+    title: "3. Quy Luật Gói Tờ Dị Hiệu Bao Bọc Cốt Thất Bảo Đặt Đáy Bát Hương",
+    steps: [
+      "Bước 1: Viết đầy đủ, chính xác danh hiệu của bát hương lên tờ Dị Hiệu bằng tâm thành kính.",
+      "Bước 2: Đặt gói Cốt Thất Bảo (Vàng, Bạc, Ngọc, San Hô, Mã Não, Hổ Phách, Xà Cừ) vào chính giữa lòng tờ Dị Hiệu.",
+      "Bước 3: Gấp tờ Dị Hiệu lại thành hình vuông hoặc hình chữ nhật bao bọc kín gói Cốt Thất Bảo bên trong (mặt chữ danh xưng hướng vào trong ôm lấy Thất Bảo).",
+      "Bước 4: Đặt gói Dị Hiệu Thất Bảo xuống chính giữa đáy bát hương.",
+      "Bước 5: Đổ tro rơm nếp sạch đã sàng lọc và tẩm hương gừng lên trên cho đến khi cách miệng bát hương khoảng 1-2 cm."
+    ]
+  },
+
+  // 4. Đại Tổng Kết Chương I: Bảng Ma Trận Tổng Hành Dinh Phong Thủy Thờ Cúng
+  chapter_summary_matrix: {
+    title: "4. Đại Tổng Kết Chương I: Ma Trận Toàn Cảnh Phong Thủy Thờ Cúng",
+    summary_pillars: [
+      { pillar: "Định Vị Tọa Hướng", standard: "Bàn thờ luôn TỌA CÁT HƯỚNG CÁT theo Mệnh Quái, lưng tựa Thực Tường vững chãi, Minh Đường thoáng đãng tụ thủy." },
+      { pillar: "Thước Số Hoàng Kim", standard: "Dùng Thước Lỗ Ban 38.8cm (Âm Phần) đo kích thước bàn thờ đứng và bàn thờ treo tường rơi vào các cung Cát (Đỏ)." },
+      { pillar: "Ngũ Hành Hội Tụ", standard: "Bàn thờ hội tụ đủ Kim (Đỉnh/Hạc đồng) - Mộc (Bàn thờ/Bài vị gỗ) - Thủy (Chén nước/Bình hoa) - Hỏa (Đèn/Nến/Nhang) - Thổ (Bát hương sứ/Tro nếp)." },
+      { pillar: "Trật Tự Tôn Ty", standard: "Phật Thượng Tiên Hạ, Thần Linh Cư Trung, Tiên Tổ Cư Tả, Cô Mãnh Cư Hữu, Thần Tài tiếp sát địa khí." },
+      { pillar: "Bảo Hộ Khí Trường", standard: "Cốt Thất Bảo bọc trong Tờ Dị Hiệu định danh đặt đáy bát hương, tro nếp sạch thuần khiết, 4 lớp chắn khói bảo vệ." }
     ]
   }
 };

@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 1.5 Render Chuyên Đề Phong Thủy Thờ Cúng (Lần 1 / 10)
+  // 1.5 Render Tiết I: Khởi Nguyên Bản Thể & Tọa Vị Gian Thờ
   const worshipContainer = document.getElementById('worship-part1-container');
   if (worshipContainer && typeof WORSHIP_FENGSHUI_PART_1 !== 'undefined') {
     const data = WORSHIP_FENGSHUI_PART_1;
@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <h3 style="font-family:var(--font-title); font-size:1.5rem; color:var(--gold-primary); margin:0.2rem 0;">${data.chapter_title}</h3>
             <div style="font-size:0.88rem; color:var(--text-muted);">${data.sub_title}</div>
           </div>
-          <span style="background:rgba(229,192,123,0.15); color:var(--gold-primary); border:1px solid var(--gold-primary); font-size:0.8rem; font-weight:700; padding:0.3rem 0.8rem; border-radius:20px;">LẦN 1 / 10</span>
+          <span style="background:rgba(229,192,123,0.15); color:var(--gold-primary); border:1px solid var(--gold-primary); font-size:0.8rem; font-weight:700; padding:0.3rem 0.8rem; border-radius:20px;">TIẾT I</span>
         </div>
 
         <!-- 1. Bản thể luận -->
@@ -155,7 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
   }
 
-  // 1.6 Render Chuyên Đề Phong Thủy Thờ Cúng (Lần 2 / 10): Thước Lỗ Ban 38.8cm
+  // 1.6 Render Tiết II: Thước Lỗ Ban 38.8cm
   const worshipPart2Container = document.getElementById('worship-part2-container');
   if (worshipPart2Container && typeof WORSHIP_FENGSHUI_PART_2 !== 'undefined') {
     const data2 = WORSHIP_FENGSHUI_PART_2;
@@ -167,7 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <h3 style="font-family:var(--font-title); font-size:1.5rem; color:var(--gold-primary); margin:0.2rem 0;">${data2.chapter_title}</h3>
             <div style="font-size:0.88rem; color:var(--text-muted);">${data2.sub_title}</div>
           </div>
-          <span style="background:rgba(229,192,123,0.15); color:var(--gold-primary); border:1px solid var(--gold-primary); font-size:0.8rem; font-weight:700; padding:0.3rem 0.8rem; border-radius:20px;">LẦN 2 / 10</span>
+          <span style="background:rgba(229,192,123,0.15); color:var(--gold-primary); border:1px solid var(--gold-primary); font-size:0.8rem; font-weight:700; padding:0.3rem 0.8rem; border-radius:20px;">TIẾT II</span>
         </div>
 
         <!-- 1. Phân biệt 3 loại thước Lỗ Ban -->
@@ -223,7 +223,6 @@ document.addEventListener('DOMContentLoaded', () => {
         <div>
           <h4 style="font-family:var(--font-title); font-size:1.2rem; color:var(--text-pure); margin-bottom:0.8rem;">${data2.altar_golden_dimensions.title}</h4>
           <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:1.2rem;">
-            <!-- Bàn thờ đứng -->
             <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border-subtle); border-radius:12px; padding:1.2rem;">
               <h5 style="color:var(--gold-primary); font-size:1rem; margin-bottom:0.6rem;">🏛️ Bàn Thờ Đứng / Án Gian / Tủ Thờ Đại Cát:</h5>
               <div style="display:flex; flex-direction:column; gap:0.5rem;">
@@ -236,7 +235,6 @@ document.addEventListener('DOMContentLoaded', () => {
               </div>
             </div>
 
-            <!-- Bàn thờ treo -->
             <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border-subtle); border-radius:12px; padding:1.2rem;">
               <h5 style="color:var(--jade-cyan); font-size:1rem; margin-bottom:0.6rem;">⛩️ Bàn Thờ Treo Tường (Chung Cư / Nhà Phố):</h5>
               <div style="display:flex; flex-direction:column; gap:0.5rem;">
@@ -259,7 +257,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.luBanEngine = luBanEngine;
   }
 
-  // 1.7 Render Chuyên Đề Phong Thủy Thờ Cúng (Lần 3 / 10): Bài Trí Bát Hương & Ngũ Hành Đồ Thờ
+  // 1.7 Render Tiết III: Bài Trí Bát Hương & Ngũ Hành Đồ Thờ
   const worshipPart3Container = document.getElementById('worship-part3-container');
   if (worshipPart3Container && typeof WORSHIP_FENGSHUI_PART_3 !== 'undefined') {
     const data3 = WORSHIP_FENGSHUI_PART_3;
@@ -271,7 +269,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <h3 style="font-family:var(--font-title); font-size:1.5rem; color:var(--gold-primary); margin:0.2rem 0;">${data3.chapter_title}</h3>
             <div style="font-size:0.88rem; color:var(--text-muted);">${data3.sub_title}</div>
           </div>
-          <span style="background:rgba(229,192,123,0.15); color:var(--gold-primary); border:1px solid var(--gold-primary); font-size:0.8rem; font-weight:700; padding:0.3rem 0.8rem; border-radius:20px;">LẦN 3 / 10</span>
+          <span style="background:rgba(229,192,123,0.15); color:var(--gold-primary); border:1px solid var(--gold-primary); font-size:0.8rem; font-weight:700; padding:0.3rem 0.8rem; border-radius:20px;">TIẾT III</span>
         </div>
 
         <!-- 1. Tam Cấp Thần Vị (3 Bát Hương) -->
@@ -346,7 +344,7 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
   }
 
-  // 1.8 Render Chuyên Đề Phong Thủy Thờ Cúng (Lần 4 / 10): 18 Đại Kỵ Bàn Thờ & Phép Hóa Giải
+  // 1.8 Render Tiết IV: 18 Đại Kỵ Bàn Thờ & Phép Hóa Giải
   const worshipPart4Container = document.getElementById('worship-part4-container');
   if (worshipPart4Container && typeof WORSHIP_FENGSHUI_PART_4 !== 'undefined') {
     const data4 = WORSHIP_FENGSHUI_PART_4;
@@ -358,7 +356,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <h3 style="font-family:var(--font-title); font-size:1.5rem; color:var(--gold-primary); margin:0.2rem 0;">${data4.chapter_title}</h3>
             <div style="font-size:0.88rem; color:var(--text-muted);">${data4.sub_title}</div>
           </div>
-          <span style="background:rgba(239,68,68,0.15); color:#EF4444; border:1px solid #EF4444; font-size:0.8rem; font-weight:700; padding:0.3rem 0.8rem; border-radius:20px;">LẦN 4 / 10</span>
+          <span style="background:rgba(239,68,68,0.15); color:#EF4444; border:1px solid #EF4444; font-size:0.8rem; font-weight:700; padding:0.3rem 0.8rem; border-radius:20px;">TIẾT IV</span>
         </div>
 
         <div style="display:flex; flex-direction:column; gap:1.8rem;">
@@ -390,7 +388,7 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
   }
 
-  // 1.9 Render Chuyên Đề Phong Thủy Thờ Cúng (Lần 5 / 10): Nghi Thức Bao Sái & Rút Tỉa Chân Nhang
+  // 1.9 Render Tiết V: Nghi Thức Bao Sái & Rút Tỉa Chân Nhang
   const worshipPart5Container = document.getElementById('worship-part5-container');
   if (worshipPart5Container && typeof WORSHIP_FENGSHUI_PART_5 !== 'undefined') {
     const data5 = WORSHIP_FENGSHUI_PART_5;
@@ -402,7 +400,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <h3 style="font-family:var(--font-title); font-size:1.5rem; color:var(--gold-primary); margin:0.2rem 0;">${data5.chapter_title}</h3>
             <div style="font-size:0.88rem; color:var(--text-muted);">${data5.sub_title}</div>
           </div>
-          <span style="background:rgba(229,192,123,0.15); color:var(--gold-primary); border:1px solid var(--gold-primary); font-size:0.8rem; font-weight:700; padding:0.3rem 0.8rem; border-radius:20px;">LẦN 5 / 10</span>
+          <span style="background:rgba(229,192,123,0.15); color:var(--gold-primary); border:1px solid var(--gold-primary); font-size:0.8rem; font-weight:700; padding:0.3rem 0.8rem; border-radius:20px;">TIẾT V</span>
         </div>
 
         <!-- 1. Thời điểm & Nước bao sái -->
@@ -460,7 +458,7 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
   }
 
-  // 1.10 Render Chuyên Đề Phong Thủy Thờ Cúng (Lần 6 / 10): Phong Thủy Bàn Thờ Thần Tài - Thổ Địa
+  // 1.10 Render Tiết VI: Phong Thủy Bàn Thờ Thần Tài - Thổ Địa
   const worshipPart6Container = document.getElementById('worship-part6-container');
   if (worshipPart6Container && typeof WORSHIP_FENGSHUI_PART_6 !== 'undefined') {
     const data6 = WORSHIP_FENGSHUI_PART_6;
@@ -472,7 +470,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <h3 style="font-family:var(--font-title); font-size:1.5rem; color:var(--gold-primary); margin:0.2rem 0;">${data6.chapter_title}</h3>
             <div style="font-size:0.88rem; color:var(--text-muted);">${data6.sub_title}</div>
           </div>
-          <span style="background:rgba(229,192,123,0.15); color:var(--gold-primary); border:1px solid var(--gold-primary); font-size:0.8rem; font-weight:700; padding:0.3rem 0.8rem; border-radius:20px;">LẦN 6 / 10</span>
+          <span style="background:rgba(229,192,123,0.15); color:var(--gold-primary); border:1px solid var(--gold-primary); font-size:0.8rem; font-weight:700; padding:0.3rem 0.8rem; border-radius:20px;">TIẾT VI</span>
         </div>
 
         <!-- 1. Bản chất thần vị -->
@@ -539,7 +537,7 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
   }
 
-  // 1.11 Render Chuyên Đề Phong Thủy Thờ Cúng (Lần 7 / 10): Phong Thủy Bàn Thờ Phật Tại Gia
+  // 1.11 Render Tiết VII: Phong Thủy Bàn Thờ Phật Tại Gia
   const worshipPart7Container = document.getElementById('worship-part7-container');
   if (worshipPart7Container && typeof WORSHIP_FENGSHUI_PART_7 !== 'undefined') {
     const data7 = WORSHIP_FENGSHUI_PART_7;
@@ -551,7 +549,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <h3 style="font-family:var(--font-title); font-size:1.5rem; color:var(--gold-primary); margin:0.2rem 0;">${data7.chapter_title}</h3>
             <div style="font-size:0.88rem; color:var(--text-muted);">${data7.sub_title}</div>
           </div>
-          <span style="background:rgba(229,192,123,0.15); color:var(--gold-primary); border:1px solid var(--gold-primary); font-size:0.8rem; font-weight:700; padding:0.3rem 0.8rem; border-radius:20px;">LẦN 7 / 10</span>
+          <span style="background:rgba(229,192,123,0.15); color:var(--gold-primary); border:1px solid var(--gold-primary); font-size:0.8rem; font-weight:700; padding:0.3rem 0.8rem; border-radius:20px;">TIẾT VII</span>
         </div>
 
         <!-- 1. Thứ bậc tôn ty -->
@@ -625,7 +623,7 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
   }
 
-  // 1.12 Render Chuyên Đề Phong Thủy Thờ Cúng (Lần 8 / 10): Phong Thủy Nhà Thờ Họ & Tả Chiêu Hữu Mục
+  // 1.12 Render Tiết VIII: Phong Thủy Nhà Thờ Họ & Tả Chiêu Hữu Mục
   const worshipPart8Container = document.getElementById('worship-part8-container');
   if (worshipPart8Container && typeof WORSHIP_FENGSHUI_PART_8 !== 'undefined') {
     const data8 = WORSHIP_FENGSHUI_PART_8;
@@ -637,7 +635,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <h3 style="font-family:var(--font-title); font-size:1.5rem; color:var(--gold-primary); margin:0.2rem 0;">${data8.chapter_title}</h3>
             <div style="font-size:0.88rem; color:var(--text-muted);">${data8.sub_title}</div>
           </div>
-          <span style="background:rgba(229,192,123,0.15); color:var(--gold-primary); border:1px solid var(--gold-primary); font-size:0.8rem; font-weight:700; padding:0.3rem 0.8rem; border-radius:20px;">LẦN 8 / 10</span>
+          <span style="background:rgba(229,192,123,0.15); color:var(--gold-primary); border:1px solid var(--gold-primary); font-size:0.8rem; font-weight:700; padding:0.3rem 0.8rem; border-radius:20px;">TIẾT VIII</span>
         </div>
 
         <!-- 1. Bản thể luận từ đường -->
@@ -719,7 +717,7 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
   }
 
-  // 1.13 Render Chuyên Đề Phong Thủy Thờ Cúng (Lần 9 / 10): Bàn Thờ Treo Tường Chung Cư & Hiện Đại
+  // 1.13 Render Tiết IX: Bàn Thờ Treo Tường Chung Cư & Hiện Đại
   const worshipPart9Container = document.getElementById('worship-part9-container');
   if (worshipPart9Container && typeof WORSHIP_FENGSHUI_PART_9 !== 'undefined') {
     const data9 = WORSHIP_FENGSHUI_PART_9;
@@ -731,7 +729,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <h3 style="font-family:var(--font-title); font-size:1.5rem; color:var(--gold-primary); margin:0.2rem 0;">${data9.chapter_title}</h3>
             <div style="font-size:0.88rem; color:var(--text-muted);">${data9.sub_title}</div>
           </div>
-          <span style="background:rgba(229,192,123,0.15); color:var(--gold-primary); border:1px solid var(--gold-primary); font-size:0.8rem; font-weight:700; padding:0.3rem 0.8rem; border-radius:20px;">LẦN 9 / 10</span>
+          <span style="background:rgba(229,192,123,0.15); color:var(--gold-primary); border:1px solid var(--gold-primary); font-size:0.8rem; font-weight:700; padding:0.3rem 0.8rem; border-radius:20px;">TIẾT IX</span>
         </div>
 
         <!-- 1. Độ cao thước 38.8cm -->
@@ -782,6 +780,91 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div style="background:rgba(16,185,129,0.06); border-left:2px solid #10B981; padding:0.5rem 0.8rem; border-radius:0 6px 6px 0; font-size:0.82rem; color:#6EE7B7; line-height:1.5;">
                   ✅ <strong>Hóa giải:</strong> ${t.solution}
                 </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  // 1.14 Render Tiết X: Tờ Dị Hiệu Bát Hương & Đại Tổng Kết Chương I
+  const worshipPart10Container = document.getElementById('worship-part10-container');
+  if (worshipPart10Container && typeof WORSHIP_FENGSHUI_PART_10 !== 'undefined') {
+    const data10 = WORSHIP_FENGSHUI_PART_10;
+    worshipPart10Container.innerHTML = `
+      <div style="background:var(--bg-card); border:2px solid var(--gold-primary); border-radius:16px; padding:2rem; margin-bottom:2rem; box-shadow:var(--shadow-gold);">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; margin-bottom:1.5rem; border-bottom:1px solid rgba(229,192,123,0.2); padding-bottom:1rem;">
+          <div>
+            <span style="font-size:0.75rem; color:var(--jade-cyan); text-transform:uppercase; letter-spacing:1px; font-weight:700;">ĐỊNH DANH TÂM THỨC • LINH PHÙ BÁT HƯƠNG</span>
+            <h3 style="font-family:var(--font-title); font-size:1.5rem; color:var(--gold-primary); margin:0.2rem 0;">${data10.chapter_title}</h3>
+            <div style="font-size:0.88rem; color:var(--text-muted);">${data10.sub_title}</div>
+          </div>
+          <span style="background:rgba(229,192,123,0.2); color:var(--gold-primary); border:1px solid var(--gold-primary); font-size:0.8rem; font-weight:700; padding:0.3rem 0.8rem; border-radius:20px;">TIẾT X (VIÊN MÃN)</span>
+        </div>
+
+        <!-- 1. Bản chất & Hình vẽ phù hiệu -->
+        <div style="margin-bottom:1.8rem;">
+          <h4 style="font-family:var(--font-title); font-size:1.2rem; color:var(--text-pure); margin-bottom:0.6rem;">${data10.di_hieu_anatomy.title}</h4>
+          <div style="background:rgba(229,192,123,0.06); border-left:3px solid var(--gold-primary); padding:0.8rem 1.2rem; border-radius:0 8px 8px 0; margin-bottom:1rem;">
+            <div style="font-size:0.95rem; color:var(--text-pure); font-style:italic;">"${data10.di_hieu_anatomy.quote}"</div>
+            <div style="font-size:0.75rem; color:var(--gold-primary); margin-top:0.2rem;">👉 Xuất xứ: <strong>${data10.di_hieu_anatomy.quote_source}</strong></div>
+          </div>
+          
+          <p style="font-size:0.88rem; color:var(--text-pure); line-height:1.7; margin-bottom:1.2rem; background:rgba(0,0,0,0.3); padding:1rem; border-radius:8px;">
+            📜 <strong>Bản chất:</strong> ${data10.di_hieu_anatomy.definition}
+          </p>
+
+          <h5 style="color:var(--jade-cyan); font-size:1rem; margin-bottom:0.6rem;">Ý Nghĩa Các Biểu Tượng & Hình Vẽ Trên Tờ Dị Hiệu:</h5>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1rem; margin-bottom:1rem;">
+            ${data10.di_hieu_anatomy.visual_symbols.map(s => `
+              <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border-subtle); padding:1rem; border-radius:10px;">
+                <strong style="color:var(--gold-primary); font-size:0.92rem; display:block; margin-bottom:0.3rem;">⚡ ${s.symbol_name}</strong>
+                <p style="font-size:0.82rem; color:var(--text-muted); line-height:1.5;">${s.meaning}</p>
+              </div>
+            `).join('')}
+          </div>
+
+          <div style="background:rgba(229,192,123,0.08); border-left:3px solid var(--gold-primary); padding:0.8rem 1rem; border-radius:0 8px 8px 0; font-size:0.85rem; color:var(--text-pure); line-height:1.6;">
+            🎨 <strong>Quy chuẩn màu sắc:</strong> ${data10.di_hieu_anatomy.color_rule}
+          </div>
+        </div>
+
+        <!-- 2. Quy cách soạn thảo 5 mẫu Dị Hiệu -->
+        <div style="margin-bottom:1.8rem; border-top:1px solid var(--border-subtle); padding-top:1.5rem;">
+          <h4 style="font-family:var(--font-title); font-size:1.2rem; color:var(--text-pure); margin-bottom:0.4rem;">${data10.di_hieu_writing_templates.title}</h4>
+          <span style="font-size:0.82rem; color:var(--text-muted); display:block; margin-bottom:1rem;">${data10.di_hieu_writing_templates.rule_note}</span>
+          
+          <div style="display:flex; flex-direction:column; gap:0.8rem;">
+            ${data10.di_hieu_writing_templates.templates.map(t => `
+              <div style="background:rgba(13,17,26,0.9); border:1px solid var(--border-subtle); border-radius:10px; padding:1rem 1.2rem;">
+                <h5 style="color:var(--jade-cyan); font-size:0.95rem; margin-bottom:0.4rem;">🔖 ${t.altar_type}</h5>
+                <pre style="background:rgba(0,0,0,0.5); border-left:3px solid var(--gold-primary); padding:0.8rem; font-size:0.82rem; color:var(--gold-primary); font-family:var(--font-sans); white-space:pre-wrap; margin:0; line-height:1.6;">${t.content}</pre>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
+        <!-- 3. Thuật gói Dị Hiệu cùng Thất Bảo -->
+        <div style="margin-bottom:1.8rem; border-top:1px solid var(--border-subtle); padding-top:1.5rem;">
+          <h4 style="font-family:var(--font-title); font-size:1.2rem; color:var(--text-pure); margin-bottom:0.8rem;">${data10.wrapping_process.title}</h4>
+          <div style="display:flex; flex-direction:column; gap:0.6rem;">
+            ${data10.wrapping_process.steps.map(step => `
+              <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border-subtle); padding:0.8rem 1rem; border-radius:8px; font-size:0.85rem; color:var(--text-pure); line-height:1.6;">
+                • ${step}
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
+        <!-- 4. Đại tổng kết ma trận Chương I -->
+        <div style="border-top:1px solid var(--border-subtle); padding-top:1.5rem;">
+          <h4 style="font-family:var(--font-title); font-size:1.25rem; color:var(--gold-primary); margin-bottom:0.8rem;">${data10.chapter_summary_matrix.title}</h4>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:0.8rem;">
+            ${data10.chapter_summary_matrix.summary_pillars.map(p => `
+              <div style="background:rgba(13,17,26,0.95); border:1px solid var(--gold-primary); border-radius:10px; padding:1rem;">
+                <strong style="color:var(--jade-cyan); font-size:0.95rem; display:block; margin-bottom:0.4rem;">⭐ ${p.pillar}</strong>
+                <p style="font-size:0.82rem; color:var(--text-muted); line-height:1.5;">${p.standard}</p>
               </div>
             `).join('')}
           </div>
