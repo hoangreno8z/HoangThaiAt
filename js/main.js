@@ -625,6 +625,100 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
   }
 
+  // 1.12 Render Chuyên Đề Phong Thủy Thờ Cúng (Lần 8 / 10): Phong Thủy Nhà Thờ Họ & Tả Chiêu Hữu Mục
+  const worshipPart8Container = document.getElementById('worship-part8-container');
+  if (worshipPart8Container && typeof WORSHIP_FENGSHUI_PART_8 !== 'undefined') {
+    const data8 = WORSHIP_FENGSHUI_PART_8;
+    worshipPart8Container.innerHTML = `
+      <div style="background:var(--bg-card); border:1px solid var(--gold-primary); border-radius:16px; padding:2rem; margin-bottom:2rem; box-shadow:var(--shadow-gold);">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; margin-bottom:1.5rem; border-bottom:1px solid rgba(229,192,123,0.2); padding-bottom:1rem;">
+          <div>
+            <span style="font-size:0.75rem; color:var(--gold-primary); text-transform:uppercase; letter-spacing:1px; font-weight:700;">KINH LỄ • TÔNG TỪ THIÊN • HUYẾT THỐNG GIA TỘC</span>
+            <h3 style="font-family:var(--font-title); font-size:1.5rem; color:var(--gold-primary); margin:0.2rem 0;">${data8.chapter_title}</h3>
+            <div style="font-size:0.88rem; color:var(--text-muted);">${data8.sub_title}</div>
+          </div>
+          <span style="background:rgba(229,192,123,0.15); color:var(--gold-primary); border:1px solid var(--gold-primary); font-size:0.8rem; font-weight:700; padding:0.3rem 0.8rem; border-radius:20px;">LẦN 8 / 10</span>
+        </div>
+
+        <!-- 1. Bản thể luận từ đường -->
+        <div style="margin-bottom:1.8rem;">
+          <h4 style="font-family:var(--font-title); font-size:1.2rem; color:var(--text-pure); margin-bottom:0.6rem;">${data8.ancestral_hall_ontology.title}</h4>
+          <div style="background:rgba(229,192,123,0.06); border-left:3px solid var(--gold-primary); padding:0.8rem 1.2rem; border-radius:0 8px 8px 0; margin-bottom:1rem;">
+            <div style="font-size:0.95rem; color:var(--text-pure); font-style:italic;">"${data8.ancestral_hall_ontology.quote}"</div>
+            <div style="font-size:0.75rem; color:var(--gold-primary); margin-top:0.2rem;">👉 Xuất xứ: <strong>${data8.ancestral_hall_ontology.quote_source}</strong></div>
+          </div>
+
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1rem;">
+            ${data8.ancestral_hall_ontology.principles.map(p => `
+              <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border-subtle); padding:1.2rem; border-radius:12px;">
+                <strong style="color:var(--gold-primary); font-size:0.95rem; display:block; margin-bottom:0.4rem;">🏛️ ${p.name}</strong>
+                <p style="font-size:0.85rem; color:var(--text-muted); line-height:1.6;">${p.desc}</p>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
+        <!-- 2. Tả Chiêu Hữu Mục -->
+        <div style="margin-bottom:1.8rem; border-top:1px solid var(--border-subtle); padding-top:1.5rem;">
+          <h4 style="font-family:var(--font-title); font-size:1.2rem; color:var(--text-pure); margin-bottom:0.6rem;">${data8.chieu_muc_system.title}</h4>
+          <div style="background:rgba(229,192,123,0.06); border-left:3px solid var(--gold-primary); padding:0.8rem 1.2rem; border-radius:0 8px 8px 0; margin-bottom:1rem;">
+            <div style="font-size:0.95rem; color:var(--text-pure); font-style:italic;">"${data8.chieu_muc_system.quote}"</div>
+            <div style="font-size:0.75rem; color:var(--gold-primary); margin-top:0.2rem;">👉 Xuất xứ: <strong>${data8.chieu_muc_system.quote_source}</strong></div>
+          </div>
+
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:1rem;">
+            ${data8.chieu_muc_system.generation_rules.map(g => `
+              <div style="background:rgba(13,17,26,0.85); border:1px solid var(--border-subtle); border-radius:10px; padding:1.2rem;">
+                <strong style="color:var(--gold-primary); font-size:1rem; display:block; margin-bottom:0.3rem;">📜 ${g.rank}</strong>
+                <div style="font-size:0.85rem; color:var(--jade-cyan); margin-bottom:0.4rem;">📍 <strong>Vị trí:</strong> ${g.placement}</div>
+                <div style="font-size:0.82rem; color:var(--text-muted);">${g.symbol}</div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
+        <!-- 3. Kiến trúc 3 gian / 5 gian & Loan Đầu -->
+        <div style="margin-bottom:1.8rem; border-top:1px solid var(--border-subtle); padding-top:1.5rem;">
+          <h4 style="font-family:var(--font-title); font-size:1.2rem; color:var(--text-pure); margin-bottom:0.8rem;">${data8.architectural_loan_dau.title}</h4>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:1.2rem; margin-bottom:1.2rem;">
+            ${data8.architectural_loan_dau.bays_layout.map(b => `
+              <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border-subtle); border-radius:10px; padding:1.2rem;">
+                <h5 style="color:var(--gold-primary); font-size:1rem; margin-bottom:0.4rem;">🚪 ${b.bay}</h5>
+                <p style="font-size:0.85rem; color:var(--text-muted); line-height:1.6;">${b.role}</p>
+              </div>
+            `).join('')}
+          </div>
+
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:0.8rem;">
+            ${data8.architectural_loan_dau.landscape_features.map(f => `
+              <div style="background:rgba(0,0,0,0.3); border-left:3px solid var(--jade-cyan); padding:0.8rem 1rem; border-radius:0 8px 8px 0;">
+                <strong style="color:var(--jade-cyan); font-size:0.9rem; display:block; margin-bottom:0.2rem;">${f.feature}</strong>
+                <span style="font-size:0.82rem; color:var(--text-muted); line-height:1.5;">${f.detail}</span>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
+        <!-- 4. Thần Chủ & Hoành Phi -->
+        <div style="border-top:1px solid var(--border-subtle); padding-top:1.5rem;">
+          <h4 style="font-family:var(--font-title); font-size:1.2rem; color:var(--text-pure); margin-bottom:0.8rem;">${data8.sacred_tablets_and_motto.title}</h4>
+          <div style="background:rgba(16,185,129,0.08); border-left:3px solid #10B981; padding:0.8rem 1rem; border-radius:0 8px 8px 0; font-size:0.85rem; color:var(--text-pure); line-height:1.6; margin-bottom:1rem;">
+            🪵 <strong>Chất liệu Thần Chủ:</strong> ${data8.sacred_tablets_and_motto.tablet_material}
+          </div>
+
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:0.8rem;">
+            ${data8.sacred_tablets_and_motto.famous_mottos.map(m => `
+              <div style="background:rgba(0,0,0,0.4); border:1px solid var(--gold-primary); border-radius:8px; padding:0.8rem 1rem;">
+                <strong style="color:var(--gold-primary); font-size:0.95rem; display:block; margin-bottom:0.2rem;">⚜️ ${m.motto}</strong>
+                <span style="font-size:0.82rem; color:var(--text-muted); line-height:1.4;">${m.meaning}</span>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
   // 2. MẠCH 1: Render Thư Tịch Cốt Lõi Địa Lý Phong Thủy
   const treatisesGrid = document.getElementById('geographic-treatises-grid');
   if (treatisesGrid && COSMIC_DATA.geographic_treatises) {
