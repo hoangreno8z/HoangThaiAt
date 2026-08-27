@@ -460,6 +460,85 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
   }
 
+  // 1.10 Render Chuyên Đề Phong Thủy Thờ Cúng (Lần 6 / 10): Phong Thủy Bàn Thờ Thần Tài - Thổ Địa
+  const worshipPart6Container = document.getElementById('worship-part6-container');
+  if (worshipPart6Container && typeof WORSHIP_FENGSHUI_PART_6 !== 'undefined') {
+    const data6 = WORSHIP_FENGSHUI_PART_6;
+    worshipPart6Container.innerHTML = `
+      <div style="background:var(--bg-card); border:1px solid var(--gold-primary); border-radius:16px; padding:2rem; margin-bottom:2rem; box-shadow:var(--shadow-gold);">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; margin-bottom:1.5rem; border-bottom:1px solid rgba(229,192,123,0.2); padding-bottom:1rem;">
+          <div>
+            <span style="font-size:0.75rem; color:var(--gold-primary); text-transform:uppercase; letter-spacing:1px; font-weight:700;">CHIÊU TÀI TỤ BẢO • ĐỊA KHÍ THÔNG THUẬN</span>
+            <h3 style="font-family:var(--font-title); font-size:1.5rem; color:var(--gold-primary); margin:0.2rem 0;">${data6.chapter_title}</h3>
+            <div style="font-size:0.88rem; color:var(--text-muted);">${data6.sub_title}</div>
+          </div>
+          <span style="background:rgba(229,192,123,0.15); color:var(--gold-primary); border:1px solid var(--gold-primary); font-size:0.8rem; font-weight:700; padding:0.3rem 0.8rem; border-radius:20px;">LẦN 6 / 10</span>
+        </div>
+
+        <!-- 1. Bản chất thần vị -->
+        <div style="margin-bottom:1.8rem;">
+          <h4 style="font-family:var(--font-title); font-size:1.2rem; color:var(--text-pure); margin-bottom:0.6rem;">${data6.deity_nature.title}</h4>
+          <div style="background:rgba(229,192,123,0.06); border-left:3px solid var(--gold-primary); padding:0.8rem 1.2rem; border-radius:0 8px 8px 0; margin-bottom:1rem;">
+            <div style="font-size:0.95rem; color:var(--text-pure); font-style:italic;">"${data6.deity_nature.quote}"</div>
+            <div style="font-size:0.75rem; color:var(--gold-primary); margin-top:0.2rem;">👉 Xuất xứ: <strong>${data6.deity_nature.quote_source}</strong></div>
+          </div>
+
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1rem; margin-bottom:1rem;">
+            ${data6.deity_nature.deities.map(d => `
+              <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border-subtle); padding:1.2rem; border-radius:12px;">
+                <span style="background:rgba(229,192,123,0.15); color:var(--gold-primary); font-size:0.75rem; font-weight:700; padding:0.2rem 0.5rem; border-radius:4px; display:inline-block; margin-bottom:0.4rem;">${d.position}</span>
+                <h5 style="color:var(--text-pure); font-size:1.05rem; margin-bottom:0.3rem;">${d.name}</h5>
+                <p style="font-size:0.85rem; color:var(--text-muted); line-height:1.6;">${d.role}</p>
+              </div>
+            `).join('')}
+          </div>
+
+          <div style="background:rgba(16,185,129,0.08); border-left:3px solid #10B981; padding:0.8rem 1rem; border-radius:0 8px 8px 0; font-size:0.85rem; color:var(--text-pure); line-height:1.6;">
+            🌍 <strong>Quy tắc nạp địa khí:</strong> ${data6.deity_nature.ground_principle}
+          </div>
+        </div>
+
+        <!-- 2. Vị trí & Cung Tài Lộc -->
+        <div style="margin-bottom:1.8rem; border-top:1px solid var(--border-subtle); padding-top:1.5rem;">
+          <h4 style="font-family:var(--font-title); font-size:1.2rem; color:var(--text-pure); margin-bottom:0.8rem;">${data6.positioning_and_directions.title}</h4>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1rem;">
+            ${data6.positioning_and_directions.wealth_palaces.map(w => `
+              <div style="background:rgba(13,17,26,0.85); border:1px solid var(--gold-primary); border-radius:10px; padding:1.2rem;">
+                <strong style="color:var(--gold-primary); font-size:1rem; display:block; margin-bottom:0.4rem;">⭐ ${w.palace}</strong>
+                <p style="font-size:0.85rem; color:var(--text-muted); line-height:1.6;">${w.benefit}</p>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
+        <!-- 3. Quy thức bài trí -->
+        <div style="margin-bottom:1.8rem; border-top:1px solid var(--border-subtle); padding-top:1.5rem;">
+          <h4 style="font-family:var(--font-title); font-size:1.2rem; color:var(--text-pure); margin-bottom:0.8rem;">${data6.altar_layout.title}</h4>
+          <div style="display:flex; flex-direction:column; gap:0.6rem;">
+            ${data6.altar_layout.items_order.map(item => `
+              <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border-subtle); border-radius:8px; padding:0.8rem 1.2rem; display:flex; gap:1rem; align-items:center;">
+                <strong style="color:var(--gold-primary); font-size:0.9rem; flex-shrink:0;">${item.step}</strong>
+                <span style="font-size:0.85rem; color:var(--text-muted);">${item.desc}</span>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
+        <!-- 4. Đại kỵ -->
+        <div style="border-top:1px solid var(--border-subtle); padding-top:1.5rem;">
+          <h4 style="font-family:var(--font-title); font-size:1.2rem; color:#EF4444; margin-bottom:0.8rem;">${data6.taboos_wealth_altar.title}</h4>
+          <div style="display:flex; flex-direction:column; gap:0.5rem;">
+            ${data6.taboos_wealth_altar.taboos.map(t => `
+              <div style="background:rgba(239,68,68,0.06); border-left:3px solid #EF4444; padding:0.6rem 1rem; border-radius:0 6px 6px 0; font-size:0.85rem; color:#FCA5A5;">
+                ❌ ${t}
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
   // 2. MẠCH 1: Render Thư Tịch Cốt Lõi Địa Lý Phong Thủy
   const treatisesGrid = document.getElementById('geographic-treatises-grid');
   if (treatisesGrid && COSMIC_DATA.geographic_treatises) {
