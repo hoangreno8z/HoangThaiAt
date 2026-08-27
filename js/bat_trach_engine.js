@@ -13,14 +13,14 @@ class BatTrachEngine {
     
     // Mappings
     this.guaList = {
-      1: { name: "Khảm", element: "Thủy", group: "Đông Tứ Mệnh", symbol: "☵" },
-      2: { name: "Khôn", element: "Thổ", group: "Tây Tứ Mệnh", symbol: "☷" },
-      3: { name: "Chấn", element: "Mộc", group: "Đông Tứ Mệnh", symbol: "☳" },
-      4: { name: "Tốn", element: "Mộc", group: "Đông Tứ Mệnh", symbol: "☴" },
-      6: { name: "Càn", element: "Kim", group: "Tây Tứ Mệnh", symbol: "☰" },
-      7: { name: "Đoài", element: "Kim", group: "Tây Tứ Mệnh", symbol: "☱" },
-      8: { name: "Cấn", element: "Thổ", group: "Tây Tứ Mệnh", symbol: "☶" },
-      9: { name: "Ly", element: "Hỏa", group: "Đông Tứ Mệnh", symbol: "☲" }
+      1: { name: "Khảm", element: "Thủy", group: "Đông Tứ Mệnh", symbol: "" },
+      2: { name: "Khôn", element: "Thổ", group: "Tây Tứ Mệnh", symbol: "" },
+      3: { name: "Chấn", element: "Mộc", group: "Đông Tứ Mệnh", symbol: "" },
+      4: { name: "Tốn", element: "Mộc", group: "Đông Tứ Mệnh", symbol: "" },
+      6: { name: "Càn", element: "Kim", group: "Tây Tứ Mệnh", symbol: "" },
+      7: { name: "Đoài", element: "Kim", group: "Tây Tứ Mệnh", symbol: "" },
+      8: { name: "Cấn", element: "Thổ", group: "Tây Tứ Mệnh", symbol: "" },
+      9: { name: "Ly", element: "Hỏa", group: "Đông Tứ Mệnh", symbol: "" }
     };
 
     this.starTable = {

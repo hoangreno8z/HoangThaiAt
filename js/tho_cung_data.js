@@ -501,7 +501,7 @@ const WORSHIP_FENGSHUI_PART_10 = {
         column_name: "CỘT 2 (HỮU DỰC NỘI): CHÂN NGÔN TAM QUANG, 4 DƯƠNG QUÁI & 10 THIÊN CAN",
         character_details: [
           { han: "唵 三光毓秀 (Án Tam Quang Dục Tú)", pinyin: "Om San Guang Yu Xiu", meaning: "Chữ đầu '唵' (Án/Om - tiếng Phạn) khai thông năng lượng vũ trụ. 'Tam Quang Dục Tú' thỉnh ánh sáng của Mặt Trời (Nhật), Mặt Trăng (Nguyệt), và Các Tinh Tú (Tinh) kết tụ tinh hoa tú khí nuôi dưỡng bát hương." },
-          { han: "4 QUẺ BÁT QUÁI (DƯƠNG & CHỦ KHÍ): ☰ 乾 (Càn), ☵ 坎 (Khảm), ☶ 艮 (Cấn), ☳ 震 (Chấn)", pinyin: "Càn - Khảm - Cấn - Chấn", meaning: "Càn (Trời/Tây Bắc/Thuần Dương), Khảm (Nước/Bắc), Cấn (Núi/Đông Bắc/Vững bền), Chấn (Sấm/Đông/Sinh khởi). 4 Quái lập trận đồ sinh vượng khí." },
+          { han: "4 QUẺ BÁT QUÁI (DƯƠNG & CHỦ KHÍ):  乾 (Càn),  坎 (Khảm),  艮 (Cấn),  震 (Chấn)", pinyin: "Càn - Khảm - Cấn - Chấn", meaning: "Càn (Trời/Tây Bắc/Thuần Dương), Khảm (Nước/Bắc), Cấn (Núi/Đông Bắc/Vững bền), Chấn (Sấm/Đông/Sinh khởi). 4 Quái lập trận đồ sinh vượng khí." },
           { han: "THẬP THIÊN CAN (10 CAN VẬN HÀNH): 甲 乙 丙 丁 戊 己 庚 辛 壬 癸 (Giáp, Ất, Bính, Đinh, Mậu, Kỷ, Canh, Tân, Nhâm, Quý)", pinyin: "Thập Can", meaning: "Bao quát toàn bộ 10 chu kỳ biến hóa năng lượng của Thiên Đạo: Giáp-Ất (Mộc), Bính-Đinh (Hỏa), Mậu-Kỷ (Thổ), Canh-Tân (Kim), Nhâm-Quý (Thủy)." },
           { han: "ĐẨU QUÂN CƯƠNG QUYỀN (斗, 軍, 權)", pinyin: "Bắc Đẩu Tinh Quân", meaning: "Khí uy lực của chòm sao Bắc Đẩu điều hành sinh tử tài lộc." }
         ]
@@ -509,7 +509,7 @@ const WORSHIP_FENGSHUI_PART_10 = {
       {
         column_name: "CỘT 3 (TẢ DỰC NỘI): 4 ÂM QUÁI, 12 ĐỊA CHI & PHƯƠNG VỊ THỜI KHÔNG",
         character_details: [
-          { han: "4 QUẺ BÁT QUÁI (ÂM & BIẾN HÓA): ☴ 巽 (Tốn), ☲ 離 (Ly), ☷ 坤 (Khôn), ☱ 兌 (Đoài)", pinyin: "Tốn - Ly - Khôn - Đoài", meaning: "Tốn (Gió/Đông Nam), Ly (Lửa/Nam), Khôn (Đất mẹ/Tây Nam/Dung nạp), Đoài (Đầm/Tây/Hỷ lạc). Kết hợp cùng 4 quẻ cột 2 tạo thành BÁT QUÁI CÀN KHÔN ĐẦY ĐỦ 8 HƯỚNG." },
+          { han: "4 QUẺ BÁT QUÁI (ÂM & BIẾN HÓA):  巽 (Tốn),  離 (Ly),  坤 (Khôn),  兌 (Đoài)", pinyin: "Tốn - Ly - Khôn - Đoài", meaning: "Tốn (Gió/Đông Nam), Ly (Lửa/Nam), Khôn (Đất mẹ/Tây Nam/Dung nạp), Đoài (Đầm/Tây/Hỷ lạc). Kết hợp cùng 4 quẻ cột 2 tạo thành BÁT QUÁI CÀN KHÔN ĐẦY ĐỦ 8 HƯỚNG." },
           { han: "THẬP NHỊ ĐỊA CHI (12 CHI THỜI GIAN): 子 丑 寅 卯 辰 巳 午 未 申 酉 戌 亥 (Tý, Sửu, Dần, Mão, Thìn, Tỵ, Ngọ, Mùi, Thân, Dậu, Tuất, Hợi)", pinyin: "Thập Nhị Chi", meaning: "Đại diện trọn vẹn cho 12 tháng trong năm, 12 canh giờ trong ngày, 12 hướng không gian và chu kỳ 12 năm. Đảm bảo Bát Hương được bảo hộ BẤT KỂ GIỜ NÀO, NGÀY NÀO, THÁNG NÀO, NĂM NÀO." },
           { han: "PHƯƠNG VỊ HÀNH KHÍ (南 - Nam, 行 - Hành)", pinyin: "Định Phương", meaning: "Luân chuyển ngũ hành khí trong trạch viên thông thuận không bị ách tắc." }
         ]

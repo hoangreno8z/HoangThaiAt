@@ -71,7 +71,7 @@ class LuBan388Engine {
         <div>
           <div style="font-size:0.75rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:1px;">KẾT QUẢ THƯỚC LỖ BAN 38.8CM:</div>
           <div style="font-size:1.6rem; font-family:var(--font-title); color:${palace.color}; margin:0.3rem 0;">
-            ${val} cm 👉 Cung ${palace.name} • ${subName}
+            ${val} cm  Cung ${palace.name} • ${subName}
           </div>
           <div style="font-size:0.85rem; color:var(--text-pure);">
             Đánh giá: <strong style="color:${palace.color};">${palace.tag}</strong>

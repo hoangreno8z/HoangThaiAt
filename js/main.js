@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <h4 style="font-family:var(--font-title); font-size:1.2rem; color:var(--text-pure); margin-bottom:0.6rem;">${data.ontology.title}</h4>
           <div style="background:rgba(229,192,123,0.06); border-left:3px solid var(--gold-primary); padding:0.8rem 1.2rem; border-radius:0 8px 8px 0; margin-bottom:1rem;">
             <div style="font-size:0.95rem; color:var(--text-pure); font-style:italic;">"${data.ontology.quote}"</div>
-            <div style="font-size:0.75rem; color:var(--gold-primary); margin-top:0.2rem;">👉 Xuất xứ: <strong>${data.ontology.quote_source}</strong></div>
+            <div style="font-size:0.75rem; color:var(--gold-primary); margin-top:0.2rem;"> Xuất xứ: <strong>${data.ontology.quote_source}</strong></div>
           </div>
           <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:1rem;">
             ${data.ontology.principles.map(p => `
@@ -110,12 +110,12 @@ document.addEventListener('DOMContentLoaded', () => {
         <div style="margin-bottom:1.8rem; border-top:1px solid var(--border-subtle); padding-top:1.5rem;">
           <h4 style="font-family:var(--font-title); font-size:1.2rem; color:var(--text-pure); margin-bottom:0.4rem;">${data.orientation_rules.title}</h4>
           <p style="font-size:0.88rem; color:var(--gold-primary); line-height:1.6; margin-bottom:1rem; background:rgba(0,0,0,0.4); padding:0.8rem 1rem; border-radius:8px;">
-            ⚠️ <strong>Quy tắc phân biệt cốt tử:</strong> ${data.orientation_rules.comparison_with_kitchen}
+             <strong>Quy tắc phân biệt cốt tử:</strong> ${data.orientation_rules.comparison_with_kitchen}
           </p>
           <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:1rem;">
             ${data.orientation_rules.palace_requirements.map(req => `
               <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border-subtle); padding:1rem; border-radius:10px;">
-                <strong style="color:var(--gold-primary); font-size:0.9rem; display:block; margin-bottom:0.3rem;">📌 ${req.palace}:</strong>
+                <strong style="color:var(--gold-primary); font-size:0.9rem; display:block; margin-bottom:0.3rem;"> ${req.palace}:</strong>
                 <p style="font-size:0.85rem; color:var(--text-muted); line-height:1.6;">${req.requirement}</p>
               </div>
             `).join('')}
@@ -128,7 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:1.2rem;">
             ${data.loan_dau_rules.rules.map(r => `
               <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border-subtle); padding:1.2rem; border-radius:12px;">
-                <h5 style="font-size:0.95rem; color:var(--jade-cyan); margin-bottom:0.4rem;">🏛️ ${r.aspect}</h5>
+                <h5 style="font-size:0.95rem; color:var(--jade-cyan); margin-bottom:0.4rem;"> ${r.aspect}</h5>
                 <div style="font-size:0.85rem; color:var(--text-pure); margin-bottom:0.6rem;"><strong>Tiêu chuẩn:</strong> ${r.standard}</div>
                 <div style="background:rgba(239,68,68,0.08); border-left:3px solid #EF4444; padding:0.6rem 0.8rem; border-radius:0 6px 6px 0; font-size:0.82rem; color:#FCA5A5; line-height:1.5;">
                   ${r.prohibitions}
@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ${data.battrach_worship_matrix.map(m => `
               <div style="background:rgba(13,17,26,0.8); border:1px solid var(--border-subtle); border-radius:8px; padding:0.8rem 1rem;">
                 <strong style="color:var(--gold-primary); font-size:0.9rem; display:block; margin-bottom:0.2rem;">Quẻ ${m.gua}</strong>
-                <div style="font-size:0.85rem; color:var(--text-pure); margin-bottom:0.3rem;">👉 <strong>Tọa vị:</strong> ${m.best_pos}</div>
+                <div style="font-size:0.85rem; color:var(--text-pure); margin-bottom:0.3rem;"> <strong>Tọa vị:</strong> ${m.best_pos}</div>
                 <div style="font-size:0.78rem; color:var(--jade-cyan);">${m.note}</div>
               </div>
             `).join('')}
@@ -176,7 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1rem;">
             ${data2.ruler_classification.rulers.map(r => `
               <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border-subtle); padding:1rem; border-radius:10px;">
-                <strong style="color:var(--gold-primary); font-size:0.95rem; display:block; margin-bottom:0.4rem;">📏 ${r.name}</strong>
+                <strong style="color:var(--gold-primary); font-size:0.95rem; display:block; margin-bottom:0.4rem;"> ${r.name}</strong>
                 <p style="font-size:0.85rem; color:var(--text-muted); line-height:1.6;">${r.use_case}</p>
               </div>
             `).join('')}
@@ -224,24 +224,24 @@ document.addEventListener('DOMContentLoaded', () => {
           <h4 style="font-family:var(--font-title); font-size:1.2rem; color:var(--text-pure); margin-bottom:0.8rem;">${data2.altar_golden_dimensions.title}</h4>
           <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:1.2rem;">
             <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border-subtle); border-radius:12px; padding:1.2rem;">
-              <h5 style="color:var(--gold-primary); font-size:1rem; margin-bottom:0.6rem;">🏛️ Bàn Thờ Đứng / Án Gian / Tủ Thờ Đại Cát:</h5>
+              <h5 style="color:var(--gold-primary); font-size:1rem; margin-bottom:0.6rem;"> Bàn Thờ Đứng / Án Gian / Tủ Thờ Đại Cát:</h5>
               <div style="display:flex; flex-direction:column; gap:0.5rem;">
                 ${data2.altar_golden_dimensions.standing_altars.map(a => `
                   <div style="background:rgba(0,0,0,0.3); padding:0.6rem 0.8rem; border-radius:6px; border-left:2px solid var(--gold-primary);">
                     <div style="font-size:0.88rem; color:var(--text-pure); font-weight:700;">Ngang ${a.width} x Sâu ${a.depth} x Cao ${a.height}</div>
-                    <div style="font-size:0.78rem; color:var(--text-muted); margin-top:0.2rem;">👉 Phù hợp: ${a.suit_for}</div>
+                    <div style="font-size:0.78rem; color:var(--text-muted); margin-top:0.2rem;"> Phù hợp: ${a.suit_for}</div>
                   </div>
                 `).join('')}
               </div>
             </div>
 
             <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border-subtle); border-radius:12px; padding:1.2rem;">
-              <h5 style="color:var(--jade-cyan); font-size:1rem; margin-bottom:0.6rem;">⛩️ Bàn Thờ Treo Tường (Chung Cư / Nhà Phố):</h5>
+              <h5 style="color:var(--jade-cyan); font-size:1rem; margin-bottom:0.6rem;">️ Bàn Thờ Treo Tường (Chung Cư / Nhà Phố):</h5>
               <div style="display:flex; flex-direction:column; gap:0.5rem;">
                 ${data2.altar_golden_dimensions.hanging_altars.map(a => `
                   <div style="background:rgba(0,0,0,0.3); padding:0.6rem 0.8rem; border-radius:6px; border-left:2px solid var(--jade-cyan);">
                     <div style="font-size:0.88rem; color:var(--text-pure); font-weight:700;">Sâu ${a.depth} x Ngang ${a.width}</div>
-                    <div style="font-size:0.78rem; color:var(--text-muted); margin-top:0.2rem;">👉 ${a.height_standard}</div>
+                    <div style="font-size:0.78rem; color:var(--text-muted); margin-top:0.2rem;"> ${a.height_standard}</div>
                     <div style="font-size:0.75rem; color:var(--jade-cyan); margin-top:0.2rem;">Ứng dụng: ${a.suit_for}</div>
                   </div>
                 `).join('')}
@@ -277,7 +277,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <h4 style="font-family:var(--font-title); font-size:1.2rem; color:var(--text-pure); margin-bottom:0.6rem;">${data3.incense_burners_layout.title}</h4>
           <div style="background:rgba(229,192,123,0.06); border-left:3px solid var(--gold-primary); padding:0.8rem 1.2rem; border-radius:0 8px 8px 0; margin-bottom:1rem;">
             <div style="font-size:0.95rem; color:var(--text-pure); font-style:italic;">"${data3.incense_burners_layout.quote}"</div>
-            <div style="font-size:0.75rem; color:var(--gold-primary); margin-top:0.2rem;">👉 Xuất xứ: <strong>${data3.incense_burners_layout.quote_source}</strong></div>
+            <div style="font-size:0.75rem; color:var(--gold-primary); margin-top:0.2rem;"> Xuất xứ: <strong>${data3.incense_burners_layout.quote_source}</strong></div>
           </div>
 
           <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1rem;">
@@ -312,7 +312,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:1.2rem;">
             ${data3.dong_binh_tay_qua.principles.map(p => `
               <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border-subtle); padding:1.2rem; border-radius:12px;">
-                <h5 style="color:var(--jade-cyan); font-size:1rem; margin-bottom:0.4rem;">🌿 ${p.name}</h5>
+                <h5 style="color:var(--jade-cyan); font-size:1rem; margin-bottom:0.4rem;"> ${p.name}</h5>
                 <p style="font-size:0.85rem; color:var(--text-pure); line-height:1.6;">${p.desc}</p>
               </div>
             `).join('')}
@@ -324,20 +324,20 @@ document.addEventListener('DOMContentLoaded', () => {
           <h4 style="font-family:var(--font-title); font-size:1.2rem; color:var(--text-pure); margin-bottom:0.6rem;">${data3.that_bao_consecration.title}</h4>
           <div style="background:rgba(229,192,123,0.06); border-left:3px solid var(--gold-primary); padding:0.8rem 1.2rem; border-radius:0 8px 8px 0; margin-bottom:1rem;">
             <div style="font-size:0.95rem; color:var(--text-pure); font-style:italic;">"${data3.that_bao_consecration.quote}"</div>
-            <div style="font-size:0.75rem; color:var(--gold-primary); margin-top:0.2rem;">👉 Xuất xứ: <strong>${data3.that_bao_consecration.quote_source}</strong></div>
+            <div style="font-size:0.75rem; color:var(--gold-primary); margin-top:0.2rem;"> Xuất xứ: <strong>${data3.that_bao_consecration.quote_source}</strong></div>
           </div>
           
           <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(130px, 1fr)); gap:0.6rem; margin-bottom:1rem;">
             ${data3.that_bao_consecration.seven_treasures.map(t => `
               <div style="background:rgba(0,0,0,0.4); border:1px solid var(--border-subtle); border-radius:6px; padding:0.6rem 0.8rem; text-align:center;">
-                <strong style="color:var(--gold-primary); font-size:0.85rem; display:block;">💎 ${t.name}</strong>
+                <strong style="color:var(--gold-primary); font-size:0.85rem; display:block;"> ${t.name}</strong>
                 <span style="font-size:0.7rem; color:var(--text-muted); line-height:1.3; display:block; margin-top:0.2rem;">${t.meaning}</span>
               </div>
             `).join('')}
           </div>
 
           <div style="background:rgba(16,185,129,0.08); border-left:3px solid #10B981; padding:0.8rem 1rem; border-radius:0 8px 8px 0; font-size:0.85rem; color:var(--text-pure); line-height:1.6;">
-            🌾 <strong>Quy chuẩn vật liệu tro:</strong> ${data3.that_bao_consecration.ash_rule}
+             <strong>Quy chuẩn vật liệu tro:</strong> ${data3.that_bao_consecration.ash_rule}
           </div>
         </div>
       </div>
@@ -373,10 +373,10 @@ document.addEventListener('DOMContentLoaded', () => {
                       <strong style="color:var(--text-pure); font-size:0.95rem; line-height:1.4;">${item.name}</strong>
                     </div>
                     <div style="background:rgba(239,68,68,0.06); padding:0.6rem 0.8rem; border-radius:6px; font-size:0.82rem; color:#FCA5A5; line-height:1.5; margin-bottom:0.6rem;">
-                      ⚠️ <strong>Tác hại:</strong> ${item.danger}
+                       <strong>Tác hại:</strong> ${item.danger}
                     </div>
                     <div style="background:rgba(16,185,129,0.06); border-left:2px solid #10B981; padding:0.6rem 0.8rem; border-radius:0 6px 6px 0; font-size:0.82rem; color:#6EE7B7; line-height:1.5;">
-                      ✅ <strong>Phép hóa giải:</strong> ${item.remedy}
+                       <strong>Phép hóa giải:</strong> ${item.remedy}
                     </div>
                   </div>
                 `).join('')}
@@ -408,13 +408,13 @@ document.addEventListener('DOMContentLoaded', () => {
           <h4 style="font-family:var(--font-title); font-size:1.2rem; color:var(--text-pure); margin-bottom:0.6rem;">${data5.preparation_and_timing.title}</h4>
           <div style="background:rgba(229,192,123,0.06); border-left:3px solid var(--gold-primary); padding:0.8rem 1.2rem; border-radius:0 8px 8px 0; margin-bottom:1rem;">
             <div style="font-size:0.95rem; color:var(--text-pure); font-style:italic;">"${data5.preparation_and_timing.quote}"</div>
-            <div style="font-size:0.75rem; color:var(--gold-primary); margin-top:0.2rem;">👉 Xuất xứ: <strong>${data5.preparation_and_timing.quote_source}</strong></div>
+            <div style="font-size:0.75rem; color:var(--gold-primary); margin-top:0.2rem;"> Xuất xứ: <strong>${data5.preparation_and_timing.quote_source}</strong></div>
           </div>
 
           <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1rem; margin-bottom:1rem;">
             ${data5.preparation_and_timing.timing_rules.map(t => `
               <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border-subtle); padding:1rem; border-radius:10px;">
-                <strong style="color:var(--gold-primary); font-size:0.9rem; display:block; margin-bottom:0.3rem;">🕒 ${t.name}</strong>
+                <strong style="color:var(--gold-primary); font-size:0.9rem; display:block; margin-bottom:0.3rem;"> ${t.name}</strong>
                 <p style="font-size:0.85rem; color:var(--text-muted); line-height:1.6;">${t.detail}</p>
               </div>
             `).join('')}
@@ -423,7 +423,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1rem;">
             ${data5.preparation_and_timing.purification_water.map(w => `
               <div style="background:rgba(45,212,191,0.04); border:1px solid rgba(45,212,191,0.3); padding:1rem; border-radius:10px;">
-                <strong style="color:var(--jade-cyan); font-size:0.9rem; display:block; margin-bottom:0.3rem;">💧 ${w.name}</strong>
+                <strong style="color:var(--jade-cyan); font-size:0.9rem; display:block; margin-bottom:0.3rem;"> ${w.name}</strong>
                 <p style="font-size:0.85rem; color:var(--text-pure); line-height:1.6;">${w.recipe}</p>
               </div>
             `).join('')}
@@ -478,7 +478,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <h4 style="font-family:var(--font-title); font-size:1.2rem; color:var(--text-pure); margin-bottom:0.6rem;">${data6.deity_nature.title}</h4>
           <div style="background:rgba(229,192,123,0.06); border-left:3px solid var(--gold-primary); padding:0.8rem 1.2rem; border-radius:0 8px 8px 0; margin-bottom:1rem;">
             <div style="font-size:0.95rem; color:var(--text-pure); font-style:italic;">"${data6.deity_nature.quote}"</div>
-            <div style="font-size:0.75rem; color:var(--gold-primary); margin-top:0.2rem;">👉 Xuất xứ: <strong>${data6.deity_nature.quote_source}</strong></div>
+            <div style="font-size:0.75rem; color:var(--gold-primary); margin-top:0.2rem;"> Xuất xứ: <strong>${data6.deity_nature.quote_source}</strong></div>
           </div>
 
           <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1rem; margin-bottom:1rem;">
@@ -492,7 +492,7 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
 
           <div style="background:rgba(16,185,129,0.08); border-left:3px solid #10B981; padding:0.8rem 1rem; border-radius:0 8px 8px 0; font-size:0.85rem; color:var(--text-pure); line-height:1.6;">
-            🌍 <strong>Quy tắc nạp địa khí:</strong> ${data6.deity_nature.ground_principle}
+             <strong>Quy tắc nạp địa khí:</strong> ${data6.deity_nature.ground_principle}
           </div>
         </div>
 
@@ -502,7 +502,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1rem;">
             ${data6.positioning_and_directions.wealth_palaces.map(w => `
               <div style="background:rgba(13,17,26,0.85); border:1px solid var(--gold-primary); border-radius:10px; padding:1.2rem;">
-                <strong style="color:var(--gold-primary); font-size:1rem; display:block; margin-bottom:0.4rem;">⭐ ${w.palace}</strong>
+                <strong style="color:var(--gold-primary); font-size:1rem; display:block; margin-bottom:0.4rem;"> ${w.palace}</strong>
                 <p style="font-size:0.85rem; color:var(--text-muted); line-height:1.6;">${w.benefit}</p>
               </div>
             `).join('')}
@@ -528,7 +528,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <div style="display:flex; flex-direction:column; gap:0.5rem;">
             ${data6.taboos_wealth_altar.taboos.map(t => `
               <div style="background:rgba(239,68,68,0.06); border-left:3px solid #EF4444; padding:0.6rem 1rem; border-radius:0 6px 6px 0; font-size:0.85rem; color:#FCA5A5;">
-                ❌ ${t}
+                 ${t}
               </div>
             `).join('')}
           </div>
@@ -557,13 +557,13 @@ document.addEventListener('DOMContentLoaded', () => {
           <h4 style="font-family:var(--font-title); font-size:1.2rem; color:var(--text-pure); margin-bottom:0.6rem;">${data7.spiritual_hierarchy.title}</h4>
           <div style="background:rgba(229,192,123,0.06); border-left:3px solid var(--gold-primary); padding:0.8rem 1.2rem; border-radius:0 8px 8px 0; margin-bottom:1rem;">
             <div style="font-size:0.95rem; color:var(--text-pure); font-style:italic;">"${data7.spiritual_hierarchy.quote}"</div>
-            <div style="font-size:0.75rem; color:var(--gold-primary); margin-top:0.2rem;">👉 Xuất xứ: <strong>${data7.spiritual_hierarchy.quote_source}</strong></div>
+            <div style="font-size:0.75rem; color:var(--gold-primary); margin-top:0.2rem;"> Xuất xứ: <strong>${data7.spiritual_hierarchy.quote_source}</strong></div>
           </div>
 
           <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1rem;">
             ${data7.spiritual_hierarchy.hierarchy_rules.map(h => `
               <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border-subtle); padding:1.2rem; border-radius:12px;">
-                <strong style="color:var(--gold-primary); font-size:0.95rem; display:block; margin-bottom:0.4rem;">☸️ ${h.name}</strong>
+                <strong style="color:var(--gold-primary); font-size:0.95rem; display:block; margin-bottom:0.4rem;">️ ${h.name}</strong>
                 <p style="font-size:0.85rem; color:var(--text-muted); line-height:1.6;">${h.desc}</p>
               </div>
             `).join('')}
@@ -576,7 +576,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:1.2rem;">
             ${data7.dual_altar_models.models.map(m => `
               <div style="background:rgba(13,17,26,0.85); border:1px solid var(--border-subtle); border-radius:12px; padding:1.2rem;">
-                <h5 style="color:var(--jade-cyan); font-size:1rem; margin-bottom:0.3rem;">🏛️ ${m.model_name}</h5>
+                <h5 style="color:var(--jade-cyan); font-size:1rem; margin-bottom:0.3rem;"> ${m.model_name}</h5>
                 <span style="font-size:0.78rem; color:var(--text-muted); display:block; margin-bottom:0.6rem;">${m.suitable}</span>
                 <div style="display:flex; flex-direction:column; gap:0.4rem;">
                   ${m.structure.map(s => `
@@ -596,7 +596,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1rem;">
             ${data7.offering_commandments.rules.map(r => `
               <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border-subtle); padding:1rem; border-radius:10px;">
-                <strong style="color:var(--gold-primary); font-size:0.95rem; display:block; margin-bottom:0.3rem;">🌸 ${r.item}</strong>
+                <strong style="color:var(--gold-primary); font-size:0.95rem; display:block; margin-bottom:0.3rem;"> ${r.item}</strong>
                 <p style="font-size:0.85rem; color:var(--text-muted); line-height:1.6;">${r.detail}</p>
               </div>
             `).join('')}
@@ -609,14 +609,14 @@ document.addEventListener('DOMContentLoaded', () => {
           <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:0.8rem; margin-bottom:1rem;">
             ${data7.orientations_and_statues.statues.map(st => `
               <div style="background:rgba(0,0,0,0.4); border:1px solid var(--border-subtle); border-radius:8px; padding:0.8rem 1rem;">
-                <strong style="color:var(--gold-primary); font-size:0.9rem; display:block; margin-bottom:0.2rem;">✨ ${st.name}</strong>
+                <strong style="color:var(--gold-primary); font-size:0.9rem; display:block; margin-bottom:0.2rem;"> ${st.name}</strong>
                 <span style="font-size:0.8rem; color:var(--text-muted); line-height:1.4;">${st.desc}</span>
               </div>
             `).join('')}
           </div>
 
           <div style="background:rgba(16,185,129,0.08); border-left:3px solid #10B981; padding:0.8rem 1rem; border-radius:0 8px 8px 0; font-size:0.85rem; color:var(--text-pure); line-height:1.6;">
-            🧭 <strong>Phép lập hướng đại cát:</strong> ${data7.orientations_and_statues.orientation_rule}
+             <strong>Phép lập hướng đại cát:</strong> ${data7.orientations_and_statues.orientation_rule}
           </div>
         </div>
       </div>
@@ -643,13 +643,13 @@ document.addEventListener('DOMContentLoaded', () => {
           <h4 style="font-family:var(--font-title); font-size:1.2rem; color:var(--text-pure); margin-bottom:0.6rem;">${data8.ancestral_hall_ontology.title}</h4>
           <div style="background:rgba(229,192,123,0.06); border-left:3px solid var(--gold-primary); padding:0.8rem 1.2rem; border-radius:0 8px 8px 0; margin-bottom:1rem;">
             <div style="font-size:0.95rem; color:var(--text-pure); font-style:italic;">"${data8.ancestral_hall_ontology.quote}"</div>
-            <div style="font-size:0.75rem; color:var(--gold-primary); margin-top:0.2rem;">👉 Xuất xứ: <strong>${data8.ancestral_hall_ontology.quote_source}</strong></div>
+            <div style="font-size:0.75rem; color:var(--gold-primary); margin-top:0.2rem;"> Xuất xứ: <strong>${data8.ancestral_hall_ontology.quote_source}</strong></div>
           </div>
 
           <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1rem;">
             ${data8.ancestral_hall_ontology.principles.map(p => `
               <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border-subtle); padding:1.2rem; border-radius:12px;">
-                <strong style="color:var(--gold-primary); font-size:0.95rem; display:block; margin-bottom:0.4rem;">🏛️ ${p.name}</strong>
+                <strong style="color:var(--gold-primary); font-size:0.95rem; display:block; margin-bottom:0.4rem;"> ${p.name}</strong>
                 <p style="font-size:0.85rem; color:var(--text-muted); line-height:1.6;">${p.desc}</p>
               </div>
             `).join('')}
@@ -661,14 +661,14 @@ document.addEventListener('DOMContentLoaded', () => {
           <h4 style="font-family:var(--font-title); font-size:1.2rem; color:var(--text-pure); margin-bottom:0.6rem;">${data8.chieu_muc_system.title}</h4>
           <div style="background:rgba(229,192,123,0.06); border-left:3px solid var(--gold-primary); padding:0.8rem 1.2rem; border-radius:0 8px 8px 0; margin-bottom:1rem;">
             <div style="font-size:0.95rem; color:var(--text-pure); font-style:italic;">"${data8.chieu_muc_system.quote}"</div>
-            <div style="font-size:0.75rem; color:var(--gold-primary); margin-top:0.2rem;">👉 Xuất xứ: <strong>${data8.chieu_muc_system.quote_source}</strong></div>
+            <div style="font-size:0.75rem; color:var(--gold-primary); margin-top:0.2rem;"> Xuất xứ: <strong>${data8.chieu_muc_system.quote_source}</strong></div>
           </div>
 
           <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:1rem;">
             ${data8.chieu_muc_system.generation_rules.map(g => `
               <div style="background:rgba(13,17,26,0.85); border:1px solid var(--border-subtle); border-radius:10px; padding:1.2rem;">
-                <strong style="color:var(--gold-primary); font-size:1rem; display:block; margin-bottom:0.3rem;">📜 ${g.rank}</strong>
-                <div style="font-size:0.85rem; color:var(--jade-cyan); margin-bottom:0.4rem;">📍 <strong>Vị trí:</strong> ${g.placement}</div>
+                <strong style="color:var(--gold-primary); font-size:1rem; display:block; margin-bottom:0.3rem;"> ${g.rank}</strong>
+                <div style="font-size:0.85rem; color:var(--jade-cyan); margin-bottom:0.4rem;"> <strong>Vị trí:</strong> ${g.placement}</div>
                 <div style="font-size:0.82rem; color:var(--text-muted);">${g.symbol}</div>
               </div>
             `).join('')}
@@ -681,7 +681,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:1.2rem; margin-bottom:1.2rem;">
             ${data8.architectural_loan_dau.bays_layout.map(b => `
               <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border-subtle); border-radius:10px; padding:1.2rem;">
-                <h5 style="color:var(--gold-primary); font-size:1rem; margin-bottom:0.4rem;">🚪 ${b.bay}</h5>
+                <h5 style="color:var(--gold-primary); font-size:1rem; margin-bottom:0.4rem;"> ${b.bay}</h5>
                 <p style="font-size:0.85rem; color:var(--text-muted); line-height:1.6;">${b.role}</p>
               </div>
             `).join('')}
@@ -701,13 +701,13 @@ document.addEventListener('DOMContentLoaded', () => {
         <div style="border-top:1px solid var(--border-subtle); padding-top:1.5rem;">
           <h4 style="font-family:var(--font-title); font-size:1.2rem; color:var(--text-pure); margin-bottom:0.8rem;">${data8.sacred_tablets_and_motto.title}</h4>
           <div style="background:rgba(16,185,129,0.08); border-left:3px solid #10B981; padding:0.8rem 1rem; border-radius:0 8px 8px 0; font-size:0.85rem; color:var(--text-pure); line-height:1.6; margin-bottom:1rem;">
-            🪵 <strong>Chất liệu Thần Chủ:</strong> ${data8.sacred_tablets_and_motto.tablet_material}
+             <strong>Chất liệu Thần Chủ:</strong> ${data8.sacred_tablets_and_motto.tablet_material}
           </div>
 
           <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:0.8rem;">
             ${data8.sacred_tablets_and_motto.famous_mottos.map(m => `
               <div style="background:rgba(0,0,0,0.4); border:1px solid var(--gold-primary); border-radius:8px; padding:0.8rem 1rem;">
-                <strong style="color:var(--gold-primary); font-size:0.95rem; display:block; margin-bottom:0.2rem;">⚜️ ${m.motto}</strong>
+                <strong style="color:var(--gold-primary); font-size:0.95rem; display:block; margin-bottom:0.2rem;">️ ${m.motto}</strong>
                 <span style="font-size:0.82rem; color:var(--text-muted); line-height:1.4;">${m.meaning}</span>
               </div>
             `).join('')}
@@ -737,7 +737,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <h4 style="font-family:var(--font-title); font-size:1.2rem; color:var(--text-pure); margin-bottom:0.6rem;">${data9.hanging_altar_heights.title}</h4>
           <div style="background:rgba(229,192,123,0.06); border-left:3px solid var(--gold-primary); padding:0.8rem 1.2rem; border-radius:0 8px 8px 0; margin-bottom:1rem;">
             <div style="font-size:0.95rem; color:var(--text-pure); font-style:italic;">"${data9.hanging_altar_heights.quote}"</div>
-            <div style="font-size:0.75rem; color:var(--gold-primary); margin-top:0.2rem;">👉 Xuất xứ: <strong>${data9.hanging_altar_heights.quote_source}</strong></div>
+            <div style="font-size:0.75rem; color:var(--gold-primary); margin-top:0.2rem;"> Xuất xứ: <strong>${data9.hanging_altar_heights.quote_source}</strong></div>
           </div>
 
           <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1rem;">
@@ -757,7 +757,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1rem;">
             ${data9.four_layer_protection.layers.map(l => `
               <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border-subtle); border-radius:10px; padding:1.2rem;">
-                <strong style="color:var(--gold-primary); font-size:0.95rem; display:block; margin-bottom:0.4rem;">🛡️ ${l.layer}</strong>
+                <strong style="color:var(--gold-primary); font-size:0.95rem; display:block; margin-bottom:0.4rem;">️ ${l.layer}</strong>
                 <p style="font-size:0.85rem; color:var(--text-muted); line-height:1.6;">${l.role}</p>
               </div>
             `).join('')}
@@ -775,10 +775,10 @@ document.addEventListener('DOMContentLoaded', () => {
                   <strong style="color:var(--text-pure); font-size:0.95rem;">${t.title}</strong>
                 </div>
                 <div style="background:rgba(239,68,68,0.06); padding:0.5rem 0.8rem; border-radius:6px; font-size:0.82rem; color:#FCA5A5; line-height:1.5; margin-bottom:0.5rem;">
-                  ⚠️ <strong>Hậu quả:</strong> ${t.danger}
+                   <strong>Hậu quả:</strong> ${t.danger}
                 </div>
                 <div style="background:rgba(16,185,129,0.06); border-left:2px solid #10B981; padding:0.5rem 0.8rem; border-radius:0 6px 6px 0; font-size:0.82rem; color:#6EE7B7; line-height:1.5;">
-                  ✅ <strong>Hóa giải:</strong> ${t.solution}
+                   <strong>Hóa giải:</strong> ${t.solution}
                 </div>
               </div>
             `).join('')}
@@ -814,7 +814,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <h4 style="font-family:var(--font-title); font-size:1.2rem; color:var(--text-pure); margin-bottom:0.6rem;">${data10.talisman_anatomy.title}</h4>
             <div style="background:rgba(229,192,123,0.06); border-left:3px solid var(--gold-primary); padding:0.8rem 1.2rem; border-radius:0 8px 8px 0; margin-bottom:1rem;">
               <div style="font-size:0.95rem; color:var(--text-pure); font-style:italic;">"${data10.talisman_anatomy.quote}"</div>
-              <div style="font-size:0.75rem; color:var(--gold-primary); margin-top:0.2rem;">👉 Xuất xứ: <strong>${data10.talisman_anatomy.quote_source}</strong></div>
+              <div style="font-size:0.75rem; color:var(--gold-primary); margin-top:0.2rem;"> Xuất xứ: <strong>${data10.talisman_anatomy.quote_source}</strong></div>
             </div>
             
             <p style="font-size:0.88rem; color:var(--text-muted); line-height:1.7; margin-bottom:1rem;">
@@ -824,7 +824,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <div style="display:flex; flex-direction:column; gap:0.6rem;">
               ${data10.matrix_significance.points.map(pt => `
                 <div style="background:rgba(255,255,255,0.02); border-left:2px solid var(--jade-cyan); padding:0.6rem 0.8rem; border-radius:0 6px 6px 0;">
-                  <strong style="color:var(--jade-cyan); font-size:0.88rem;">⚡ ${pt.name}:</strong>
+                  <strong style="color:var(--jade-cyan); font-size:0.88rem;"> ${pt.name}:</strong>
                   <span style="font-size:0.82rem; color:var(--text-muted); line-height:1.5;"> ${pt.desc}</span>
                 </div>
               `).join('')}
@@ -842,7 +842,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ${data10.talisman_anatomy.five_columns.map(col => `
               <div style="background:rgba(13,17,26,0.9); border:1px solid var(--border-subtle); border-radius:12px; padding:1.2rem;">
                 <h5 style="color:var(--gold-primary); font-size:1rem; margin-bottom:0.8rem; border-bottom:1px solid rgba(229,192,123,0.15); padding-bottom:0.4rem;">
-                  📜 ${col.column_name}
+                   ${col.column_name}
                 </h5>
                 <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:0.8rem;">
                   ${col.character_details.map(c => `
@@ -882,7 +882,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <div style="background:linear-gradient(135deg, rgba(20,20,30,0.95), rgba(10,12,18,0.98)); border:2px solid #D97706; border-radius:16px; padding:2rem; margin-bottom:2.5rem; box-shadow:0 0 30px rgba(217,119,6,0.2);">
         <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; margin-bottom:1.5rem; border-bottom:1px solid rgba(217,119,6,0.3); padding-bottom:1rem;">
           <div>
-            <span style="font-size:0.75rem; color:#F59E0B; text-transform:uppercase; letter-spacing:1px; font-weight:800;">🔥 HUYỀN MÔN BÍ CHỈ • MẬT TẠNG KHOA NGHI CHÁNH TÔNG</span>
+            <span style="font-size:0.75rem; color:#F59E0B; text-transform:uppercase; letter-spacing:1px; font-weight:800;"> HUYỀN MÔN BÍ CHỈ • MẬT TẠNG KHOA NGHI CHÁNH TÔNG</span>
             <h3 style="font-family:var(--font-title); font-size:1.6rem; color:#F59E0B; margin:0.2rem 0;">${eso.section_title}</h3>
             <div style="font-size:0.88rem; color:var(--text-muted);">${eso.sub_title}</div>
           </div>
@@ -894,13 +894,13 @@ document.addEventListener('DOMContentLoaded', () => {
           <h4 style="font-family:var(--font-title); font-size:1.25rem; color:var(--text-pure); margin-bottom:0.6rem;">${eso.esoteric_ontology.title}</h4>
           <div style="background:rgba(245,158,11,0.06); border-left:3px solid #F59E0B; padding:0.8rem 1.2rem; border-radius:0 8px 8px 0; margin-bottom:1rem;">
             <div style="font-size:0.95rem; color:var(--text-pure); font-style:italic;">"${eso.esoteric_ontology.quote}"</div>
-            <div style="font-size:0.75rem; color:#F59E0B; margin-top:0.2rem;">👉 Xuất xứ: <strong>${eso.esoteric_ontology.quote_source}</strong></div>
+            <div style="font-size:0.75rem; color:#F59E0B; margin-top:0.2rem;"> Xuất xứ: <strong>${eso.esoteric_ontology.quote_source}</strong></div>
           </div>
 
           <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1rem;">
             ${eso.esoteric_ontology.concepts.map(c => `
               <div style="background:rgba(255,255,255,0.02); border:1px solid rgba(245,158,11,0.2); padding:1.2rem; border-radius:12px;">
-                <strong style="color:#F59E0B; font-size:1rem; display:block; margin-bottom:0.4rem;">☯️ ${c.name}</strong>
+                <strong style="color:#F59E0B; font-size:1rem; display:block; margin-bottom:0.4rem;"> ${c.name}</strong>
                 <p style="font-size:0.85rem; color:var(--text-muted); line-height:1.6;">${c.desc}</p>
               </div>
             `).join('')}
@@ -930,14 +930,14 @@ document.addEventListener('DOMContentLoaded', () => {
             ${eso.four_sacred_mantras.mantras.map(m => `
               <div style="background:rgba(13,17,26,0.9); border:1px solid rgba(245,158,11,0.25); border-radius:12px; padding:1.2rem;">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.4rem;">
-                  <strong style="color:var(--text-pure); font-size:0.95rem;">📿 ${m.name}</strong>
+                  <strong style="color:var(--text-pure); font-size:0.95rem;"> ${m.name}</strong>
                   <span style="font-size:0.75rem; color:#F59E0B; font-weight:700;">${m.count}</span>
                 </div>
                 <div style="background:rgba(0,0,0,0.5); border-left:3px solid #F59E0B; padding:0.8rem; border-radius:0 6px 6px 0; margin:0.6rem 0;">
                   <div style="font-size:0.75rem; color:var(--jade-cyan); margin-bottom:0.2rem;">Chân ngôn Phạn / Mật âm:</div>
                   <div style="font-family:var(--font-title); font-size:1rem; color:#FCD34D;">"${m.phonetic}"</div>
                 </div>
-                <p style="font-size:0.82rem; color:var(--text-muted); line-height:1.5;">✨ <strong>Công năng:</strong> ${m.effect}</p>
+                <p style="font-size:0.82rem; color:var(--text-muted); line-height:1.5;"> <strong>Công năng:</strong> ${m.effect}</p>
               </div>
             `).join('')}
           </div>
@@ -949,9 +949,9 @@ document.addEventListener('DOMContentLoaded', () => {
           <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1rem;">
             ${eso.mudras_system.mudras.map(mu => `
               <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border-subtle); padding:1.2rem; border-radius:12px;">
-                <strong style="color:var(--jade-cyan); font-size:1rem; display:block; margin-bottom:0.3rem;">🤲 ${mu.name}</strong>
+                <strong style="color:var(--jade-cyan); font-size:1rem; display:block; margin-bottom:0.3rem;"> ${mu.name}</strong>
                 <div style="font-size:0.85rem; color:var(--text-pure); margin-bottom:0.4rem;"><strong>Thao tác kết ấn:</strong> ${mu.gesture}</div>
-                <div style="font-size:0.82rem; color:var(--text-muted); line-height:1.5;">👉 <strong>Ý nghĩa khoa nghi:</strong> ${mu.role}</div>
+                <div style="font-size:0.82rem; color:var(--text-muted); line-height:1.5;"> <strong>Ý nghĩa khoa nghi:</strong> ${mu.role}</div>
               </div>
             `).join('')}
           </div>
@@ -964,7 +964,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:1rem; margin-bottom:1rem;">
             <!-- Đắc linh -->
             <div style="background:rgba(16,185,129,0.05); border:1px solid #10B981; border-radius:10px; padding:1.2rem;">
-              <h5 style="color:#10B981; font-size:1rem; margin-bottom:0.6rem;">🟢 Dấu Hiệu Bát Hương "Đắc Linh":</h5>
+              <h5 style="color:#10B981; font-size:1rem; margin-bottom:0.6rem;"> Dấu Hiệu Bát Hương "Đắc Linh":</h5>
               <div style="display:flex; flex-direction:column; gap:0.5rem;">
                 ${eso.signs_and_remedies.signs_dac_linh.map(s => `
                   <div style="font-size:0.85rem; color:var(--text-pure); line-height:1.5;">
@@ -976,7 +976,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             <!-- Mất linh -->
             <div style="background:rgba(239,68,68,0.05); border:1px solid #EF4444; border-radius:10px; padding:1.2rem;">
-              <h5 style="color:#EF4444; font-size:1rem; margin-bottom:0.6rem;">🔴 Dấu Hiệu Bị "Mất Linh / Nhiễm Tà":</h5>
+              <h5 style="color:#EF4444; font-size:1rem; margin-bottom:0.6rem;"> Dấu Hiệu Bị "Mất Linh / Nhiễm Tà":</h5>
               <div style="display:flex; flex-direction:column; gap:0.5rem;">
                 ${eso.signs_and_remedies.signs_mat_linh.map(s => `
                   <div style="font-size:0.85rem; color:var(--text-pure); line-height:1.5;">
@@ -988,7 +988,7 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
 
           <div style="background:rgba(245,158,11,0.08); border-left:3px solid #F59E0B; padding:1rem 1.2rem; border-radius:0 8px 8px 0; font-size:0.88rem; color:var(--text-pure); line-height:1.7;">
-            ⚡ <strong>Phương pháp Tái Tịnh Hóa (Hồi Linh Chi Pháp):</strong> ${eso.signs_and_remedies.remedy_protocol}
+             <strong>Phương pháp Tái Tịnh Hóa (Hồi Linh Chi Pháp):</strong> ${eso.signs_and_remedies.remedy_protocol}
           </div>
         </div>
       </div>
@@ -1003,7 +1003,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <div style="background:var(--bg-card); border:2px solid #EC4899; border-radius:16px; padding:2rem; margin-bottom:2.5rem; box-shadow:0 0 25px rgba(236,72,153,0.2);">
         <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; margin-bottom:1.5rem; border-bottom:1px solid rgba(236,72,153,0.3); padding-bottom:1rem;">
           <div>
-            <span style="font-size:0.75rem; color:#F472B6; text-transform:uppercase; letter-spacing:1px; font-weight:800;">👁️ HÔ THẦN NHẬP TƯỢNG • ĐIỂM NHÃN KHOA NGHI</span>
+            <span style="font-size:0.75rem; color:#F472B6; text-transform:uppercase; letter-spacing:1px; font-weight:800;">️ HÔ THẦN NHẬP TƯỢNG • ĐIỂM NHÃN KHOA NGHI</span>
             <h3 style="font-family:var(--font-title); font-size:1.5rem; color:#F472B6; margin:0.2rem 0;">${st.section_title}</h3>
             <div style="font-size:0.88rem; color:var(--text-muted);">${st.sub_title}</div>
           </div>
@@ -1015,7 +1015,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <h4 style="font-family:var(--font-title); font-size:1.2rem; color:var(--text-pure); margin-bottom:0.6rem;">${st.statue_consecration_doctrine.title}</h4>
           <div style="background:rgba(236,72,153,0.06); border-left:3px solid #EC4899; padding:0.8rem 1.2rem; border-radius:0 8px 8px 0; margin-bottom:1rem;">
             <div style="font-size:0.95rem; color:var(--text-pure); font-style:italic;">"${st.statue_consecration_doctrine.quote}"</div>
-            <div style="font-size:0.75rem; color:#F472B6; margin-top:0.2rem;">👉 Xuất xứ: <strong>${st.statue_consecration_doctrine.quote_source}</strong></div>
+            <div style="font-size:0.75rem; color:#F472B6; margin-top:0.2rem;"> Xuất xứ: <strong>${st.statue_consecration_doctrine.quote_source}</strong></div>
           </div>
           <p style="font-size:0.88rem; color:var(--text-muted); line-height:1.7;">${st.statue_consecration_doctrine.desc}</p>
         </div>
@@ -1023,16 +1023,16 @@ document.addEventListener('DOMContentLoaded', () => {
         <!-- 2. Điểm nhãn Thất Khiếu -->
         <div style="margin-bottom:1.8rem; border-top:1px solid var(--border-subtle); padding-top:1.5rem;">
           <h4 style="font-family:var(--font-title); font-size:1.2rem; color:var(--text-pure); margin-bottom:0.4rem;">${st.seven_apertures_ceremony.title}</h4>
-          <span style="font-size:0.82rem; color:var(--text-muted); display:block; margin-bottom:1rem;">⚙️ ${st.seven_apertures_ceremony.preparation}</span>
+          <span style="font-size:0.82rem; color:var(--text-muted); display:block; margin-bottom:1rem;">️ ${st.seven_apertures_ceremony.preparation}</span>
           
           <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:0.9rem;">
             ${st.seven_apertures_ceremony.incantations.map(ap => `
               <div style="background:rgba(13,17,26,0.9); border:1px solid var(--border-subtle); border-radius:10px; padding:1rem 1.2rem;">
-                <strong style="color:#F472B6; font-size:0.95rem; display:block; margin-bottom:0.3rem;">✨ ${ap.organ}</strong>
+                <strong style="color:#F472B6; font-size:0.95rem; display:block; margin-bottom:0.3rem;"> ${ap.organ}</strong>
                 <div style="background:rgba(0,0,0,0.5); border-left:2px solid #EC4899; padding:0.5rem 0.8rem; font-family:var(--font-title); font-size:0.88rem; color:#FBCFE8; margin-bottom:0.4rem;">
                   "${ap.incantation}"
                 </div>
-                <div style="font-size:0.8rem; color:var(--text-muted); line-height:1.5;">👉 <strong>Tác dụng:</strong> ${ap.role}</div>
+                <div style="font-size:0.8rem; color:var(--text-muted); line-height:1.5;"> <strong>Tác dụng:</strong> ${ap.role}</div>
               </div>
             `).join('')}
           </div>
@@ -1062,7 +1062,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <div style="background:var(--bg-card); border:2px solid var(--jade-cyan); border-radius:16px; padding:2rem; margin-bottom:3rem; box-shadow:0 0 25px rgba(45,212,191,0.2);">
         <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; margin-bottom:1.5rem; border-bottom:1px solid rgba(45,212,191,0.3); padding-bottom:1rem;">
           <div>
-            <span style="font-size:0.75rem; color:var(--jade-cyan); text-transform:uppercase; letter-spacing:1px; font-weight:800;">📜 CHU TỬ GIA LỄ • TOÀN THƯ VĂN KHẤN NGUYÊN BẢN</span>
+            <span style="font-size:0.75rem; color:var(--jade-cyan); text-transform:uppercase; letter-spacing:1px; font-weight:800;"> CHU TỬ GIA LỄ • TOÀN THƯ VĂN KHẤN NGUYÊN BẢN</span>
             <h3 style="font-family:var(--font-title); font-size:1.5rem; color:var(--jade-cyan); margin:0.2rem 0;">${pr.section_title}</h3>
             <div style="font-size:0.88rem; color:var(--text-muted);">${pr.sub_title}</div>
           </div>
@@ -1075,7 +1075,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:1rem;">
             ${pr.twelve_prayers_list.map(p => `
               <div style="background:rgba(13,17,26,0.9); border:1px solid var(--border-subtle); border-radius:10px; padding:1.2rem;">
-                <strong style="color:var(--gold-primary); font-size:0.95rem; display:block; margin-bottom:0.3rem;">📖 ${p.occasion}</strong>
+                <strong style="color:var(--gold-primary); font-size:0.95rem; display:block; margin-bottom:0.3rem;"> ${p.occasion}</strong>
                 <div style="font-size:0.82rem; color:var(--text-muted); line-height:1.5; margin-bottom:0.5rem;">${p.theme}</div>
                 <div style="background:rgba(45,212,191,0.05); border-left:2px solid var(--jade-cyan); padding:0.5rem 0.8rem; border-radius:0 6px 6px 0; font-size:0.82rem; color:#A7F3D0; font-style:italic;">
                   "${p.core_quote}"
@@ -1091,7 +1091,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:0.9rem;">
             ${pr.seasonal_offerings_guide.seasons.map(s => `
               <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border-subtle); padding:1rem 1.2rem; border-radius:10px;">
-                <strong style="color:var(--text-pure); font-size:0.92rem; display:block; margin-bottom:0.4rem;">🍃 ${s.season}</strong>
+                <strong style="color:var(--text-pure); font-size:0.92rem; display:block; margin-bottom:0.4rem;"> ${s.season}</strong>
                 <p style="font-size:0.82rem; color:var(--text-muted); line-height:1.5;">${s.offering}</p>
               </div>
             `).join('')}
@@ -1112,20 +1112,20 @@ document.addEventListener('DOMContentLoaded', () => {
     let borderColor = '#D97706';
     let shadowGlow = 'rgba(217,119,6,0.2)';
     let badgeBg = 'rgba(245,158,11,0.15)';
-    let schoolIcon = '⛰️';
+    let schoolIcon = '';
 
     if (schoolType === 'BÁT TRẠCH') {
       themeColor = '#60A5FA';
       borderColor = '#2563EB';
       shadowGlow = 'rgba(37,99,235,0.2)';
       badgeBg = 'rgba(59,130,246,0.15)';
-      schoolIcon = '🧭';
+      schoolIcon = '';
     } else if (schoolType === 'TAM HỢP') {
       themeColor = '#34D399';
       borderColor = '#059669';
       shadowGlow = 'rgba(5,150,105,0.2)';
       badgeBg = 'rgba(16,185,129,0.15)';
-      schoolIcon = '🌊';
+      schoolIcon = '';
     }
 
     container.innerHTML = `
@@ -1142,14 +1142,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         <!-- 1. Cổ Huấn Nguyên Văn -->
         <div style="margin-bottom:2rem;">
-          <h4 style="font-family:var(--font-title); font-size:1.15rem; color:var(--gold-primary); margin-bottom:0.8rem;">1. 📜 Cổ Huấn Nguyên Văn & Xuất Xứ Thư Tịch Cổ</h4>
+          <h4 style="font-family:var(--font-title); font-size:1.15rem; color:var(--gold-primary); margin-bottom:0.8rem;">1.  Cổ Huấn Nguyên Văn & Xuất Xứ Thư Tịch Cổ</h4>
           <div style="display:flex; flex-direction:column; gap:0.9rem;">
             ${data.canonical_texts.map(ct => `
               <div style="background:rgba(245,158,11,0.05); border-left:3px solid #F59E0B; padding:1rem 1.2rem; border-radius:0 8px 8px 0;">
                 <div style="font-family:'Noto Serif SC', serif; font-size:1.05rem; color:var(--gold-primary); letter-spacing:1px; margin-bottom:0.3rem;">${ct.hanzi}</div>
                 <div style="font-size:0.88rem; color:var(--text-pure); font-style:italic; margin-bottom:0.3rem;">"${ct.pinyin}"</div>
-                <div style="font-size:0.85rem; color:var(--text-muted); line-height:1.6; margin-bottom:0.4rem;">👉 <strong>Dịch nghĩa:</strong> ${ct.meaning}</div>
-                <div style="font-size:0.75rem; color:#F59E0B; font-weight:700;">📖 Nguồn gốc: ${ct.source}</div>
+                <div style="font-size:0.85rem; color:var(--text-muted); line-height:1.6; margin-bottom:0.4rem;"> <strong>Dịch nghĩa:</strong> ${ct.meaning}</div>
+                <div style="font-size:0.75rem; color:#F59E0B; font-weight:700;"> Nguồn gốc: ${ct.source}</div>
               </div>
             `).join('')}
           </div>
@@ -1157,10 +1157,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         <!-- 2. Giải Nghĩa Học Thuật & Danh Sư Đối Chiếu -->
         <div style="margin-bottom:2rem; border-top:1px solid var(--border-subtle); padding-top:1.5rem;">
-          <h4 style="font-family:var(--font-title); font-size:1.15rem; color:var(--jade-cyan); margin-bottom:0.8rem;">2. 🎓 Giải Nghĩa Học Thuật & Đối Chiếu Danh Sư</h4>
+          <h4 style="font-family:var(--font-title); font-size:1.15rem; color:var(--jade-cyan); margin-bottom:0.8rem;">2.  Giải Nghĩa Học Thuật & Đối Chiếu Danh Sư</h4>
           <!-- Từ điển thuật ngữ -->
           <div style="margin-bottom:1rem;">
-            <div style="font-size:0.82rem; color:var(--text-muted); font-weight:700; margin-bottom:0.5rem; text-transform:uppercase;">📖 Bảng Việt Hóa Thuật Ngữ:</div>
+            <div style="font-size:0.82rem; color:var(--text-muted); font-weight:700; margin-bottom:0.5rem; text-transform:uppercase;"> Bảng Việt Hóa Thuật Ngữ:</div>
             <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:0.6rem;">
               ${data.scholarly_analysis.term_glossary.map(tg => `
                 <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border-subtle); padding:0.6rem 0.9rem; border-radius:8px; font-size:0.82rem;">
@@ -1173,7 +1173,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:0.9rem;">
             ${data.scholarly_analysis.masters_views.map(mv => `
               <div style="background:rgba(13,17,26,0.9); border:1px solid var(--border-subtle); border-radius:10px; padding:1rem 1.2rem;">
-                <strong style="color:var(--jade-cyan); font-size:0.92rem; display:block; margin-bottom:0.4rem;">🧑‍🏫 ${mv.master}</strong>
+                <strong style="color:var(--jade-cyan); font-size:0.92rem; display:block; margin-bottom:0.4rem;"> ${mv.master}</strong>
                 <p style="font-size:0.84rem; color:var(--text-muted); line-height:1.6;">${mv.perspective}</p>
               </div>
             `).join('')}
@@ -1182,14 +1182,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         <!-- 3. Quy Luật Cốt Lõi (Bảng IF-THEN / Ma Trận Cát Hung) -->
         <div style="margin-bottom:2rem; border-top:1px solid var(--border-subtle); padding-top:1.5rem;">
-          <h4 style="font-family:var(--font-title); font-size:1.15rem; color:var(--text-pure); margin-bottom:0.8rem;">3. ⚖️ Quy Luật & Công Thức Cốt Lõi (Cát vs Hung)</h4>
+          <h4 style="font-family:var(--font-title); font-size:1.15rem; color:var(--text-pure); margin-bottom:0.8rem;">3.  Quy Luật & Công Thức Cốt Lõi (Cát vs Hung)</h4>
           ${data.core_rules.rule_table ? `
             <div style="display:flex; flex-direction:column; gap:0.7rem; margin-bottom:1rem;">
               ${data.core_rules.rule_table.map(r => `
                 <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border-subtle); border-radius:8px; padding:0.8rem 1.1rem; font-size:0.84rem;">
-                  <div style="color:#60A5FA; font-weight:700; margin-bottom:0.2rem;">🔹 ${r.condition}</div>
-                  <div style="color:#34D399; font-weight:600; margin-bottom:0.2rem;">👉 ${r.result}</div>
-                  <div style="color:var(--text-muted); font-size:0.8rem; font-style:italic;">💡 ${r.principle}</div>
+                  <div style="color:#60A5FA; font-weight:700; margin-bottom:0.2rem;"> ${r.condition}</div>
+                  <div style="color:#34D399; font-weight:600; margin-bottom:0.2rem;"> ${r.result}</div>
+                  <div style="color:var(--text-muted); font-size:0.8rem; font-style:italic;"> ${r.principle}</div>
                 </div>
               `).join('')}
             </div>
@@ -1198,9 +1198,9 @@ document.addEventListener('DOMContentLoaded', () => {
             <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:0.8rem; margin-bottom:1rem;">
               ${data.core_rules.ngu_bat_kha_tang.map(nb => `
                 <div style="background:rgba(13,17,26,0.9); border:1px solid rgba(239,68,68,0.25); border-radius:10px; padding:1rem;">
-                  <strong style="color:#F87171; font-size:0.95rem;">⚠️ ${nb.name}</strong>
+                  <strong style="color:#F87171; font-size:0.95rem;"> ${nb.name}</strong>
                   <div style="font-size:0.82rem; color:var(--text-pure); margin:0.3rem 0;"><strong>Đặc điểm:</strong> ${nb.trait}</div>
-                  <div style="font-size:0.8rem; color:#FCD34D;">👉 <strong>Hậu quả:</strong> ${nb.hazard}</div>
+                  <div style="font-size:0.8rem; color:#FCD34D;"> <strong>Hậu quả:</strong> ${nb.hazard}</div>
                 </div>
               `).join('')}
             </div>
@@ -1209,10 +1209,10 @@ document.addEventListener('DOMContentLoaded', () => {
             <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:0.8rem; margin-bottom:1rem;">
               ${data.core_rules.five_elements_forms.map(f => `
                 <div style="background:rgba(13,17,26,0.9); border:1px solid var(--border-subtle); border-radius:10px; padding:1rem;">
-                  <strong style="color:var(--gold-primary); font-size:0.95rem;">⛰️ ${f.element}</strong>
+                  <strong style="color:var(--gold-primary); font-size:0.95rem;"> ${f.element}</strong>
                   <div style="font-size:0.82rem; color:var(--text-pure); margin:0.3rem 0;"><strong>Hình dáng:</strong> ${f.shape}</div>
                   <div style="font-size:0.8rem; color:#34D399; margin-bottom:0.3rem;">${f.fortune}</div>
-                  <div style="font-size:0.78rem; color:var(--text-muted);">🏙️ <strong>Kiến trúc:</strong> ${f.color_arch}</div>
+                  <div style="font-size:0.78rem; color:var(--text-muted);">️ <strong>Kiến trúc:</strong> ${f.color_arch}</div>
                 </div>
               `).join('')}
             </div>
@@ -1221,7 +1221,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:0.8rem; margin-bottom:1rem;">
               ${data.core_rules.hierarchy_chain.map(hc => `
                 <div style="background:rgba(13,17,26,0.9); border:1px solid var(--border-subtle); border-radius:10px; padding:1rem;">
-                  <strong style="color:var(--gold-primary); font-size:0.95rem;">⛰️ ${hc.level}</strong>
+                  <strong style="color:var(--gold-primary); font-size:0.95rem;"> ${hc.level}</strong>
                   <p style="font-size:0.82rem; color:var(--text-muted); margin-top:0.3rem; line-height:1.5;">${hc.desc}</p>
                 </div>
               `).join('')}
@@ -1231,7 +1231,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:0.8rem; margin-bottom:1rem;">
               ${data.core_rules.four_archetypes.map(a => `
                 <div style="background:rgba(13,17,26,0.9); border:1px solid var(--border-subtle); border-radius:10px; padding:1rem;">
-                  <strong style="color:#F59E0B; font-size:0.95rem;">📍 ${a.name}</strong>
+                  <strong style="color:#F59E0B; font-size:0.95rem;"> ${a.name}</strong>
                   <div style="font-size:0.82rem; color:var(--text-pure); margin:0.3rem 0;"><strong>Hình thế:</strong> ${a.shape}</div>
                   <div style="font-size:0.8rem; color:var(--jade-cyan);">${a.key_point}</div>
                 </div>
@@ -1242,7 +1242,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:0.8rem; margin-bottom:1rem;">
               ${data.core_rules.twenty_four_fatal_spots.map(fs => `
                 <div style="background:rgba(13,17,26,0.9); border:1px solid rgba(239,68,68,0.25); border-radius:10px; padding:1rem;">
-                  <strong style="color:#F87171; font-size:0.92rem;">⚠️ ${fs.category}</strong>
+                  <strong style="color:#F87171; font-size:0.92rem;"> ${fs.category}</strong>
                   <div style="font-size:0.8rem; color:var(--text-muted); margin-top:0.3rem; line-height:1.5;">${fs.examples}</div>
                 </div>
               `).join('')}
@@ -1252,10 +1252,10 @@ document.addEventListener('DOMContentLoaded', () => {
             <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:0.8rem; margin-bottom:1rem;">
               ${data.core_rules.four_emblems.map(e => `
                 <div style="background:rgba(13,17,26,0.9); border:1px solid var(--border-subtle); border-radius:10px; padding:1rem;">
-                  <strong style="color:var(--gold-primary); font-size:0.95rem;">🛡️ ${e.pos}</strong>
+                  <strong style="color:var(--gold-primary); font-size:0.95rem;">️ ${e.pos}</strong>
                   <div style="font-size:0.82rem; color:var(--text-pure); margin:0.3rem 0;"><strong>Chuẩn mực:</strong> ${e.standard}</div>
-                  <div style="font-size:0.8rem; color:#34D399; margin-bottom:0.2rem;">👉 <strong>Chủ về:</strong> ${e.fortune}</div>
-                  <div style="font-size:0.78rem; color:#F87171;">⚠️ <strong>Cấm kỵ:</strong> ${e.taboo}</div>
+                  <div style="font-size:0.8rem; color:#34D399; margin-bottom:0.2rem;"> <strong>Chủ về:</strong> ${e.fortune}</div>
+                  <div style="font-size:0.78rem; color:#F87171;"> <strong>Cấm kỵ:</strong> ${e.taboo}</div>
                 </div>
               `).join('')}
             </div>
@@ -1264,7 +1264,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:0.8rem; margin-bottom:1rem;">
               ${data.core_rules.four_extraordinary_sands.map(s => `
                 <div style="background:rgba(13,17,26,0.9); border:1px solid var(--border-subtle); border-radius:10px; padding:1rem;">
-                  <strong style="color:var(--jade-cyan); font-size:0.92rem;">✨ ${s.name}</strong>
+                  <strong style="color:var(--jade-cyan); font-size:0.92rem;"> ${s.name}</strong>
                   <div style="font-size:0.8rem; color:var(--text-muted); margin-top:0.3rem; line-height:1.5;">${s.role}</div>
                 </div>
               `).join('')}
@@ -1274,7 +1274,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:0.8rem; margin-bottom:1rem;">
               ${data.core_rules.water_matrix.map(w => `
                 <div style="background:rgba(13,17,26,0.9); border:1px solid var(--border-subtle); border-radius:10px; padding:1rem;">
-                  <strong style="color:#60A5FA; font-size:0.95rem;">🌊 ${w.name}</strong>
+                  <strong style="color:#60A5FA; font-size:0.95rem;"> ${w.name}</strong>
                   <div style="font-size:0.82rem; color:var(--text-pure); margin:0.3rem 0;"><strong>Hình thế:</strong> ${w.shape}</div>
                   <div style="font-size:0.8rem; color:${w.fortune.includes('HUNG') ? '#F87171' : '#34D399'};">${w.fortune}</div>
                 </div>
@@ -1309,9 +1309,9 @@ document.addEventListener('DOMContentLoaded', () => {
             <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:0.9rem; margin-bottom:1rem;">
               ${data.core_rules.interior_matrix.map(im => `
                 <div style="background:rgba(13,17,26,0.9); border:1px solid var(--border-subtle); border-radius:10px; padding:1.1rem;">
-                  <strong style="color:var(--gold-primary); font-size:0.95rem; display:block; margin-bottom:0.4rem;">🚪 ${im.component}</strong>
-                  <div style="font-size:0.8rem; color:#F87171; margin-bottom:0.4rem;">⚠️ <strong>Cấm kỵ:</strong> ${im.taboos}</div>
-                  <div style="font-size:0.8rem; color:#34D399;">✨ <strong>Chuẩn mực vàng:</strong> ${im.golden_rule}</div>
+                  <strong style="color:var(--gold-primary); font-size:0.95rem; display:block; margin-bottom:0.4rem;"> ${im.component}</strong>
+                  <div style="font-size:0.8rem; color:#F87171; margin-bottom:0.4rem;"> <strong>Cấm kỵ:</strong> ${im.taboos}</div>
+                  <div style="font-size:0.8rem; color:#34D399;"> <strong>Chuẩn mực vàng:</strong> ${im.golden_rule}</div>
                 </div>
               `).join('')}
             </div>
@@ -1320,7 +1320,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:0.8rem; margin-bottom:1rem;">
               ${data.core_rules.score_matrix_100.map(sm => `
                 <div style="background:rgba(13,17,26,0.9); border:1px solid var(--border-subtle); border-radius:10px; padding:1rem;">
-                  <strong style="color:var(--jade-cyan); font-size:0.92rem;">📊 ${sm.pillar}</strong>
+                  <strong style="color:var(--jade-cyan); font-size:0.92rem;"> ${sm.pillar}</strong>
                   <div style="font-size:0.8rem; color:var(--text-muted); margin-top:0.3rem; line-height:1.5;">${sm.criteria}</div>
                 </div>
               `).join('')}
@@ -1330,7 +1330,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:0.8rem; margin-bottom:1rem;">
               ${data.core_rules.rating_scale.map(rs => `
                 <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border-subtle); border-radius:8px; padding:0.8rem 1rem;">
-                  <strong style="color:var(--gold-primary); font-size:0.88rem;">🎯 ${rs.score_range}</strong>
+                  <strong style="color:var(--gold-primary); font-size:0.88rem;"> ${rs.score_range}</strong>
                   <div style="font-size:0.8rem; color:var(--text-pure); margin-top:0.2rem;">${rs.verdict}</div>
                 </div>
               `).join('')}
@@ -1340,8 +1340,8 @@ document.addEventListener('DOMContentLoaded', () => {
             <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:0.8rem; margin-bottom:1rem;">
               ${data.core_rules.nine_palaces_matrix.map(np => `
                 <div style="background:rgba(13,17,26,0.9); border:1px solid var(--border-subtle); border-radius:10px; padding:1rem;">
-                  <strong style="color:#60A5FA; font-size:0.95rem;">🧭 ${np.num}</strong>
-                  <div style="font-size:0.82rem; color:var(--gold-primary); margin:0.3rem 0;">📍 <strong>Hướng:</strong> ${np.direction} (${np.element})</div>
+                  <strong style="color:#60A5FA; font-size:0.95rem;"> ${np.num}</strong>
+                  <div style="font-size:0.82rem; color:var(--gold-primary); margin:0.3rem 0;"> <strong>Hướng:</strong> ${np.direction} (${np.element})</div>
                   <div style="font-size:0.8rem; color:var(--text-muted); line-height:1.5;">${np.symbol}</div>
                 </div>
               `).join('')}
@@ -1351,7 +1351,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <div style="display:flex; flex-direction:column; gap:0.8rem; margin-bottom:1rem;">
               ${data.core_rules.cung_phi_formula.map(cf => `
                 <div style="background:rgba(59,130,246,0.05); border-left:3px solid #60A5FA; padding:0.9rem 1.1rem; border-radius:0 8px 8px 0; font-size:0.84rem;">
-                  <strong style="color:#60A5FA; display:block; margin-bottom:0.3rem;">📐 ${cf.target}</strong>
+                  <strong style="color:#60A5FA; display:block; margin-bottom:0.3rem;"> ${cf.target}</strong>
                   <div style="color:var(--text-pure); line-height:1.6; white-space:pre-line;">${cf.steps}</div>
                 </div>
               `).join('')}
@@ -1365,8 +1365,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     <strong style="color:var(--gold-primary); font-size:0.95rem;">${eg.gua}</strong>
                     <span style="font-size:0.75rem; color:${eg.group.includes('ĐÔNG') ? '#34D399' : '#F59E0B'}; font-weight:700;">${eg.group}</span>
                   </div>
-                  <div style="font-size:0.8rem; color:var(--jade-cyan); margin-bottom:0.3rem;">✨ Ngũ hành: ${eg.element}</div>
-                  <div style="font-size:0.78rem; color:var(--text-muted); line-height:1.5;">👉 <strong>Hướng tốt:</strong> ${eg.good_dirs}</div>
+                  <div style="font-size:0.8rem; color:var(--jade-cyan); margin-bottom:0.3rem;"> Ngũ hành: ${eg.element}</div>
+                  <div style="font-size:0.78rem; color:var(--text-muted); line-height:1.5;"> <strong>Hướng tốt:</strong> ${eg.good_dirs}</div>
                 </div>
               `).join('')}
             </div>
@@ -1375,8 +1375,8 @@ document.addEventListener('DOMContentLoaded', () => {
             <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:0.8rem; margin-bottom:1rem;">
               ${data.core_rules.eight_houses_matrix.map(eh => `
                 <div style="background:rgba(13,17,26,0.9); border:1px solid var(--border-subtle); border-radius:10px; padding:1rem;">
-                  <strong style="color:#60A5FA; font-size:0.95rem;">🏠 ${eh.house}</strong>
-                  <div style="font-size:0.82rem; color:var(--gold-primary); margin:0.2rem 0;">📍 <strong>Tọa hướng:</strong> ${eh.sitting_facing}</div>
+                  <strong style="color:#60A5FA; font-size:0.95rem;"> ${eh.house}</strong>
+                  <div style="font-size:0.82rem; color:var(--gold-primary); margin:0.2rem 0;"> <strong>Tọa hướng:</strong> ${eh.sitting_facing}</div>
                   <div style="font-size:0.78rem; color:var(--text-muted); line-height:1.5;">${eh.doors}</div>
                 </div>
               `).join('')}
@@ -1387,7 +1387,7 @@ document.addEventListener('DOMContentLoaded', () => {
               ${data.core_rules.eight_stars_detail.map(es => `
                 <div style="background:rgba(13,17,26,0.9); border:1px solid ${es.nature.includes('CÁT') ? 'rgba(52,211,153,0.3)' : 'rgba(239,68,68,0.3)'}; border-radius:10px; padding:1rem;">
                   <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.3rem;">
-                    <strong style="color:${es.nature.includes('CÁT') ? 'var(--gold-primary)' : '#F87171'}; font-size:0.92rem;">⭐ ${es.star}</strong>
+                    <strong style="color:${es.nature.includes('CÁT') ? 'var(--gold-primary)' : '#F87171'}; font-size:0.92rem;"> ${es.star}</strong>
                     <span style="font-size:0.75rem; color:${es.nature.includes('CÁT') ? '#34D399' : '#F87171'}; font-weight:800;">${es.nature}</span>
                   </div>
                   <div style="font-size:0.8rem; color:var(--text-muted); line-height:1.5;">${es.impact}</div>
@@ -1399,9 +1399,9 @@ document.addEventListener('DOMContentLoaded', () => {
             <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:0.8rem; margin-bottom:1rem;">
               ${data.core_rules.hexagram_transformation_rules.map(ht => `
                 <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border-subtle); border-radius:10px; padding:1rem;">
-                  <strong style="color:#60A5FA; font-size:0.9rem; display:block; margin-bottom:0.2rem;">⚡ ${ht.change}</strong>
-                  <div style="font-size:0.82rem; color:#34D399; font-weight:700; margin-bottom:0.2rem;">👉 Tạo sao: ${ht.creates_star}</div>
-                  <div style="font-size:0.78rem; color:var(--text-muted); line-height:1.5;">💡 ${ht.example}</div>
+                  <strong style="color:#60A5FA; font-size:0.9rem; display:block; margin-bottom:0.2rem;"> ${ht.change}</strong>
+                  <div style="font-size:0.82rem; color:#34D399; font-weight:700; margin-bottom:0.2rem;"> Tạo sao: ${ht.creates_star}</div>
+                  <div style="font-size:0.78rem; color:var(--text-muted); line-height:1.5;"> ${ht.example}</div>
                 </div>
               `).join('')}
             </div>
@@ -1410,9 +1410,9 @@ document.addEventListener('DOMContentLoaded', () => {
             <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:0.8rem; margin-bottom:1rem;">
               ${data.core_rules.tam_yeu_matrix.map(ty => `
                 <div style="background:rgba(13,17,26,0.9); border:1px solid var(--border-subtle); border-radius:10px; padding:1.1rem;">
-                  <strong style="color:var(--gold-primary); font-size:0.95rem; display:block; margin-bottom:0.3rem;">🚪 ${ty.pattern}</strong>
-                  <div style="font-size:0.82rem; color:var(--jade-cyan); margin-bottom:0.3rem;">🛌 <strong>Chủ:</strong> ${ty.best_host}</div>
-                  <div style="font-size:0.82rem; color:#F59E0B;">🔥 <strong>Táo:</strong> ${ty.best_kitchen}</div>
+                  <strong style="color:var(--gold-primary); font-size:0.95rem; display:block; margin-bottom:0.3rem;"> ${ty.pattern}</strong>
+                  <div style="font-size:0.82rem; color:var(--jade-cyan); margin-bottom:0.3rem;"> <strong>Chủ:</strong> ${ty.best_host}</div>
+                  <div style="font-size:0.82rem; color:#F59E0B;"> <strong>Táo:</strong> ${ty.best_kitchen}</div>
                 </div>
               `).join('')}
             </div>
@@ -1421,7 +1421,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:0.8rem; margin-bottom:1rem;">
               ${data.core_rules.twenty_four_mountains_map.map(tm => `
                 <div style="background:rgba(13,17,26,0.9); border:1px solid var(--border-subtle); border-radius:10px; padding:1rem;">
-                  <strong style="color:#60A5FA; font-size:0.92rem;">🧭 ${tm.gua}</strong>
+                  <strong style="color:#60A5FA; font-size:0.92rem;"> ${tm.gua}</strong>
                   <div style="font-size:0.8rem; color:var(--text-muted); margin-top:0.3rem; line-height:1.5;">${tm.mountains}</div>
                 </div>
               `).join('')}
@@ -1431,7 +1431,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:0.9rem; margin-bottom:1rem;">
               ${data.core_rules.kitchen_toilet_altar_rules.map(kt => `
                 <div style="background:rgba(13,17,26,0.9); border:1px solid var(--border-subtle); border-radius:10px; padding:1.1rem;">
-                  <strong style="color:var(--gold-primary); font-size:0.95rem; display:block; margin-bottom:0.3rem;">🏛️ ${kt.facility}</strong>
+                  <strong style="color:var(--gold-primary); font-size:0.95rem; display:block; margin-bottom:0.3rem;"> ${kt.facility}</strong>
                   <div style="font-size:0.82rem; color:#F87171; margin-bottom:0.3rem;">${kt.sitting}</div>
                   ${kt.facing ? `<div style="font-size:0.82rem; color:#34D399;">${kt.facing}</div>` : ''}
                 </div>
@@ -1442,7 +1442,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <div style="display:flex; flex-direction:column; gap:0.7rem; margin-bottom:1rem;">
               ${data.core_rules.five_remedy_methods.map(fr => `
                 <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border-subtle); border-radius:8px; padding:0.9rem 1.1rem; font-size:0.84rem;">
-                  <strong style="color:#60A5FA; display:block; margin-bottom:0.2rem;">🔧 ${fr.method}</strong>
+                  <strong style="color:#60A5FA; display:block; margin-bottom:0.2rem;"> ${fr.method}</strong>
                   <div style="color:var(--text-muted); line-height:1.5;">${fr.mechanism}</div>
                 </div>
               `).join('')}
@@ -1452,7 +1452,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:0.8rem; margin-bottom:1rem;">
               ${data.core_rules.master_decision_matrix.map(md => `
                 <div style="background:rgba(13,17,26,0.9); border:1px solid var(--border-subtle); border-radius:10px; padding:1rem;">
-                  <strong style="color:var(--gold-primary); font-size:0.9rem;">⭐ ${md.step}</strong>
+                  <strong style="color:var(--gold-primary); font-size:0.9rem;"> ${md.step}</strong>
                   <div style="font-size:0.8rem; color:var(--text-muted); margin-top:0.3rem; line-height:1.5;">${md.content}</div>
                 </div>
               `).join('')}
@@ -1462,9 +1462,9 @@ document.addEventListener('DOMContentLoaded', () => {
             <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:0.8rem; margin-bottom:1rem;">
               ${data.core_rules.twelve_life_stages.map(ls => `
                 <div style="background:rgba(13,17,26,0.9); border:1px solid var(--border-subtle); border-radius:10px; padding:1rem;">
-                  <strong style="color:var(--gold-primary); font-size:0.95rem; display:block; margin-bottom:0.2rem;">🌱 ${ls.stage}</strong>
-                  <div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:0.3rem;">💡 ${ls.meaning}</div>
-                  <div style="font-size:0.8rem; color:${ls.impact.includes('CÁT') ? '#34D399' : '#F87171'}; font-weight:600;">👉 ${ls.impact}</div>
+                  <strong style="color:var(--gold-primary); font-size:0.95rem; display:block; margin-bottom:0.2rem;"> ${ls.stage}</strong>
+                  <div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:0.3rem;"> ${ls.meaning}</div>
+                  <div style="font-size:0.8rem; color:${ls.impact.includes('CÁT') ? '#34D399' : '#F87171'}; font-weight:600;"> ${ls.impact}</div>
                 </div>
               `).join('')}
             </div>
@@ -1473,9 +1473,9 @@ document.addEventListener('DOMContentLoaded', () => {
             <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:0.9rem; margin-bottom:1rem;">
               ${data.core_rules.four_great_bureaus.map(fb => `
                 <div style="background:rgba(13,17,26,0.9); border:1px solid var(--border-subtle); border-radius:10px; padding:1.1rem;">
-                  <strong style="color:#60A5FA; font-size:0.95rem; display:block; margin-bottom:0.3rem;">🌊 ${fb.bureau}</strong>
-                  <div style="font-size:0.82rem; color:var(--gold-primary); margin-bottom:0.2rem;">🚪 <strong>Thủy Khẩu:</strong> ${fb.water_exit}</div>
-                  <div style="font-size:0.8rem; color:var(--text-muted); line-height:1.5;">✨ ${fb.vital_spots}</div>
+                  <strong style="color:#60A5FA; font-size:0.95rem; display:block; margin-bottom:0.3rem;"> ${fb.bureau}</strong>
+                  <div style="font-size:0.82rem; color:var(--gold-primary); margin-bottom:0.2rem;"> <strong>Thủy Khẩu:</strong> ${fb.water_exit}</div>
+                  <div style="font-size:0.8rem; color:var(--text-muted); line-height:1.5;"> ${fb.vital_spots}</div>
                 </div>
               `).join('')}
             </div>
@@ -1485,7 +1485,7 @@ document.addEventListener('DOMContentLoaded', () => {
               ${data.core_rules.twelve_waters_matrix.map(tw => `
                 <div style="background:rgba(13,17,26,0.9); border:1px solid ${tw.nature.includes('CÁT') ? 'rgba(52,211,153,0.3)' : 'rgba(239,68,68,0.3)'}; border-radius:10px; padding:1rem;">
                   <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.3rem;">
-                    <strong style="color:var(--text-pure); font-size:0.9rem;">💧 ${tw.pos}</strong>
+                    <strong style="color:var(--text-pure); font-size:0.9rem;"> ${tw.pos}</strong>
                     <span style="font-size:0.75rem; color:${tw.nature.includes('CÁT') ? '#34D399' : '#F87171'}; font-weight:800;">${tw.nature}</span>
                   </div>
                   <div style="font-size:0.8rem; color:var(--text-muted); line-height:1.5;">${tw.fortune}</div>
@@ -1497,7 +1497,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:0.8rem; margin-bottom:1rem;">
               ${data.core_rules.four_water_exits.map(fe => `
                 <div style="background:rgba(13,17,26,0.9); border:1px solid var(--border-subtle); border-radius:10px; padding:1rem;">
-                  <strong style="color:var(--gold-primary); font-size:0.92rem;">🔒 ${fe.exit}</strong>
+                  <strong style="color:var(--gold-primary); font-size:0.92rem;"> ${fe.exit}</strong>
                   <div style="font-size:0.8rem; color:#34D399; font-weight:700; margin:0.2rem 0;">Cục: ${fe.bureau}</div>
                   <div style="font-size:0.78rem; color:var(--text-muted); line-height:1.5;">${fe.mechanism}</div>
                 </div>
@@ -1508,9 +1508,9 @@ document.addEventListener('DOMContentLoaded', () => {
             <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:0.9rem; margin-bottom:1rem;">
               ${data.core_rules.three_plates_matrix.map(tp => `
                 <div style="background:rgba(13,17,26,0.9); border:1px solid var(--border-subtle); border-radius:10px; padding:1.1rem;">
-                  <strong style="color:#60A5FA; font-size:0.95rem; display:block; margin-bottom:0.2rem;">🧭 ${tp.plate}</strong>
-                  <div style="font-size:0.8rem; color:var(--gold-primary); margin-bottom:0.3rem;">📐 Độ lệch: ${tp.offset}</div>
-                  <div style="font-size:0.8rem; color:var(--text-muted); line-height:1.5;">🎯 <strong>Công năng:</strong> ${tp.usage}</div>
+                  <strong style="color:#60A5FA; font-size:0.95rem; display:block; margin-bottom:0.2rem;"> ${tp.plate}</strong>
+                  <div style="font-size:0.8rem; color:var(--gold-primary); margin-bottom:0.3rem;"> Độ lệch: ${tp.offset}</div>
+                  <div style="font-size:0.8rem; color:var(--text-muted); line-height:1.5;"> <strong>Công năng:</strong> ${tp.usage}</div>
                 </div>
               `).join('')}
             </div>
@@ -1519,8 +1519,8 @@ document.addEventListener('DOMContentLoaded', () => {
             <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:0.8rem; margin-bottom:1rem;">
               ${data.core_rules.five_types_of_sha.map(fs => `
                 <div style="background:rgba(13,17,26,0.9); border:1px solid var(--border-subtle); border-radius:10px; padding:1rem;">
-                  <strong style="color:var(--gold-primary); font-size:0.92rem; display:block; margin-bottom:0.2rem;">🏔️ ${fs.type}</strong>
-                  <div style="font-size:0.8rem; color:#60A5FA; margin-bottom:0.2rem;">📐 ${fs.formula}</div>
+                  <strong style="color:var(--gold-primary); font-size:0.92rem; display:block; margin-bottom:0.2rem;"> ${fs.type}</strong>
+                  <div style="font-size:0.8rem; color:#60A5FA; margin-bottom:0.2rem;"> ${fs.formula}</div>
                   <div style="font-size:0.78rem; color:var(--text-muted); line-height:1.5;">${fs.result}</div>
                 </div>
               `).join('')}
@@ -1530,9 +1530,9 @@ document.addEventListener('DOMContentLoaded', () => {
             <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:0.9rem; margin-bottom:1rem;">
               ${data.core_rules.eight_yellow_spring_routes.map(ys => `
                 <div style="background:rgba(13,17,26,0.9); border:1px solid var(--border-subtle); border-radius:10px; padding:1.1rem;">
-                  <strong style="color:var(--text-pure); font-size:0.92rem; display:block; margin-bottom:0.3rem;">🏠 ${ys.facing}</strong>
-                  <div style="font-size:0.82rem; color:#F87171; margin-bottom:0.3rem;">💀 ${ys.killer_water}</div>
-                  <div style="font-size:0.82rem; color:#34D399;">💰 ${ys.savior_water}</div>
+                  <strong style="color:var(--text-pure); font-size:0.92rem; display:block; margin-bottom:0.3rem;"> ${ys.facing}</strong>
+                  <div style="font-size:0.82rem; color:#F87171; margin-bottom:0.3rem;"> ${ys.killer_water}</div>
+                  <div style="font-size:0.82rem; color:#34D399;"> ${ys.savior_water}</div>
                 </div>
               `).join('')}
             </div>
@@ -1541,9 +1541,9 @@ document.addEventListener('DOMContentLoaded', () => {
             <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:0.8rem; margin-bottom:1rem;">
               ${data.core_rules.eight_fatal_shas.map(ef => `
                 <div style="background:rgba(13,17,26,0.9); border:1px solid rgba(239,68,68,0.3); border-radius:10px; padding:1rem;">
-                  <strong style="color:var(--gold-primary); font-size:0.9rem; display:block; margin-bottom:0.2rem;">🏛️ ${ef.sitting}</strong>
-                  <div style="font-size:0.82rem; color:#F87171; font-weight:700; margin-bottom:0.2rem;">⚠️ ${ef.fatal_sha}</div>
-                  <div style="font-size:0.78rem; color:var(--text-muted); line-height:1.5;">💡 ${ef.cause}</div>
+                  <strong style="color:var(--gold-primary); font-size:0.9rem; display:block; margin-bottom:0.2rem;"> ${ef.sitting}</strong>
+                  <div style="font-size:0.82rem; color:#F87171; font-weight:700; margin-bottom:0.2rem;"> ${ef.fatal_sha}</div>
+                  <div style="font-size:0.78rem; color:var(--text-muted); line-height:1.5;"> ${ef.cause}</div>
                 </div>
               `).join('')}
             </div>
@@ -1552,8 +1552,8 @@ document.addEventListener('DOMContentLoaded', () => {
             <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:0.8rem; margin-bottom:1rem;">
               ${data.core_rules.urban_water_engineering_matrix.map(uw => `
                 <div style="background:rgba(13,17,26,0.9); border:1px solid var(--border-subtle); border-radius:10px; padding:1rem;">
-                  <strong style="color:#34D399; font-size:0.92rem; display:block; margin-bottom:0.2rem;">🏊 ${uw.component}</strong>
-                  <div style="font-size:0.8rem; color:var(--gold-primary); margin-bottom:0.2rem;">📍 <strong>Vị trí:</strong> ${uw.location}</div>
+                  <strong style="color:#34D399; font-size:0.92rem; display:block; margin-bottom:0.2rem;"> ${uw.component}</strong>
+                  <div style="font-size:0.8rem; color:var(--gold-primary); margin-bottom:0.2rem;"> <strong>Vị trí:</strong> ${uw.location}</div>
                   <div style="font-size:0.78rem; color:var(--text-muted); line-height:1.5;">${uw.standard}</div>
                 </div>
               `).join('')}
@@ -1563,7 +1563,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <div style="display:flex; flex-direction:column; gap:0.8rem; margin-bottom:1rem;">
               ${data.core_rules.master_integration_framework.map(mi => `
                 <div style="background:rgba(255,255,255,0.02); border-left:3px solid var(--gold-primary); padding:0.9rem 1.1rem; border-radius:0 8px 8px 0; font-size:0.84rem;">
-                  <strong style="color:var(--gold-primary); display:block; margin-bottom:0.3rem;">⭐ ${mi.layer}</strong>
+                  <strong style="color:var(--gold-primary); display:block; margin-bottom:0.3rem;"> ${mi.layer}</strong>
                   <div style="color:var(--text-muted); line-height:1.6;">${mi.action}</div>
                 </div>
               `).join('')}
@@ -1573,11 +1573,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         <!-- 4. Áp Dụng Cho 8 Phân Tầng Bất Động Sản -->
         <div style="margin-bottom:2rem; border-top:1px solid var(--border-subtle); padding-top:1.5rem;">
-          <h4 style="font-family:var(--font-title); font-size:1.15rem; color:var(--gold-primary); margin-bottom:0.8rem;">4. 🏠 Hướng Dẫn Thực Hành Theo Từng Loại Bất Động Sản (8 Đối Tượng)</h4>
+          <h4 style="font-family:var(--font-title); font-size:1.15rem; color:var(--gold-primary); margin-bottom:0.8rem;">4.  Hướng Dẫn Thực Hành Theo Từng Loại Bất Động Sản (8 Đối Tượng)</h4>
           <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:0.8rem;">
             ${data.real_estate_applications.map(app => `
               <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border-subtle); border-radius:10px; padding:1rem;">
-                <strong style="color:var(--jade-cyan); font-size:0.9rem; display:block; margin-bottom:0.3rem;">🏢 ${app.category}</strong>
+                <strong style="color:var(--jade-cyan); font-size:0.9rem; display:block; margin-bottom:0.3rem;"> ${app.category}</strong>
                 <p style="font-size:0.82rem; color:var(--text-muted); line-height:1.6;">${app.action_guide}</p>
               </div>
             `).join('')}
@@ -1586,11 +1586,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         <!-- 5. Checklist Tự Đánh Giá -->
         <div style="margin-bottom:2rem; border-top:1px solid var(--border-subtle); padding-top:1.5rem;">
-          <h4 style="font-family:var(--font-title); font-size:1.15rem; color:#34D399; margin-bottom:0.8rem;">5. ✅ ${data.actionable_checklist.title} (Dành Cho Người Không Chuyên)</h4>
+          <h4 style="font-family:var(--font-title); font-size:1.15rem; color:#34D399; margin-bottom:0.8rem;">5.  ${data.actionable_checklist.title} (Dành Cho Người Không Chuyên)</h4>
           <div style="display:flex; flex-direction:column; gap:0.6rem;">
             ${data.actionable_checklist.steps.map(st => `
               <div style="background:rgba(52,211,153,0.05); border-left:3px solid #34D399; padding:0.8rem 1.1rem; border-radius:0 8px 8px 0; font-size:0.84rem;">
-                <strong style="color:#34D399; display:block; margin-bottom:0.2rem;">📋 ${st.step}</strong>
+                <strong style="color:#34D399; display:block; margin-bottom:0.2rem;"> ${st.step}</strong>
                 <div style="color:var(--text-pure); line-height:1.5;">${st.instruction}</div>
               </div>
             `).join('')}
@@ -1599,16 +1599,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
         <!-- 6. Phương Pháp Hóa Giải & Chi Phí -->
         <div style="margin-bottom:2rem; border-top:1px solid var(--border-subtle); padding-top:1.5rem;">
-          <h4 style="font-family:var(--font-title); font-size:1.15rem; color:#F59E0B; margin-bottom:0.8rem;">6. 🔧 ${data.remedy_framework.title} (Đa Tầng & Chi Phí Ước Tính)</h4>
+          <h4 style="font-family:var(--font-title); font-size:1.15rem; color:#F59E0B; margin-bottom:0.8rem;">6.  ${data.remedy_framework.title} (Đa Tầng & Chi Phí Ước Tính)</h4>
           <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:0.9rem;">
             ${data.remedy_framework.remedies.map(r => `
               <div style="background:rgba(13,17,26,0.9); border:1px solid rgba(245,158,11,0.25); border-radius:10px; padding:1.1rem;">
-                <strong style="color:#F87171; font-size:0.92rem; display:block; margin-bottom:0.4rem;">⚠️ Lỗi phạm: ${r.flaw}</strong>
-                <div style="font-size:0.82rem; color:var(--text-pure); margin-bottom:0.3rem;">🏗️ <strong>Vật lý/Kiến trúc:</strong> ${r.physical_fix}</div>
-                ${r.fengshui_fix ? `<div style="font-size:0.82rem; color:var(--gold-primary); margin-bottom:0.3rem;">☯️ <strong>Khí học:</strong> ${r.fengshui_fix}</div>` : ''}
+                <strong style="color:#F87171; font-size:0.92rem; display:block; margin-bottom:0.4rem;"> Lỗi phạm: ${r.flaw}</strong>
+                <div style="font-size:0.82rem; color:var(--text-pure); margin-bottom:0.3rem;"> <strong>Vật lý/Kiến trúc:</strong> ${r.physical_fix}</div>
+                ${r.fengshui_fix ? `<div style="font-size:0.82rem; color:var(--gold-primary); margin-bottom:0.3rem;"> <strong>Khí học:</strong> ${r.fengshui_fix}</div>` : ''}
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-top:0.5rem; font-size:0.78rem; background:rgba(0,0,0,0.3); padding:0.4rem 0.6rem; border-radius:6px;">
-                  <span style="color:#FCD34D;">💰 Chi phí: <strong>${r.cost_level}</strong></span>
-                  <span style="color:#A7F3D0;">👉 ${r.recommendation}</span>
+                  <span style="color:#FCD34D;"> Chi phí: <strong>${r.cost_level}</strong></span>
+                  <span style="color:#A7F3D0;"> ${r.recommendation}</span>
                 </div>
               </div>
             `).join('')}
@@ -1618,7 +1618,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <!-- 7. Mức Độ Tin Cậy & 8. Thực Nghiệm Việt Nam -->
         <div style="border-top:1px solid var(--border-subtle); padding-top:1.5rem; display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:1.2rem;">
           <div>
-            <h4 style="font-family:var(--font-title); font-size:1.1rem; color:#A78BFA; margin-bottom:0.6rem;">7. ⚠️ Đánh Giá Mức Độ Tin Cậy</h4>
+            <h4 style="font-family:var(--font-title); font-size:1.1rem; color:#A78BFA; margin-bottom:0.6rem;">7.  Đánh Giá Mức Độ Tin Cậy</h4>
             <div style="display:flex; flex-direction:column; gap:0.5rem;">
               ${data.reliability_evaluation.map(re => `
                 <div style="background:rgba(167,139,250,0.05); border-left:2px solid #A78BFA; padding:0.6rem 0.9rem; border-radius:0 6px 6px 0; font-size:0.8rem; color:var(--text-muted); line-height:1.5;">
@@ -1628,7 +1628,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
           </div>
           <div>
-            <h4 style="font-family:var(--font-title); font-size:1.1rem; color:var(--jade-cyan); margin-bottom:0.6rem;">8. 🗺️ Thực Nghiệm Hiện Trường Tại Việt Nam</h4>
+            <h4 style="font-family:var(--font-title); font-size:1.1rem; color:var(--jade-cyan); margin-bottom:0.6rem;">8.  Thực Nghiệm Hiện Trường Tại Việt Nam</h4>
             <div style="display:flex; flex-direction:column; gap:0.5rem;">
               ${data.vietnam_case_studies.map(cs => `
                 <div style="background:rgba(45,212,191,0.05); border-left:2px solid var(--jade-cyan); padding:0.6rem 0.9rem; border-radius:0 6px 6px 0; font-size:0.8rem; color:var(--text-muted); line-height:1.5;">
@@ -1755,7 +1755,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <div style="background:rgba(229,192,123,0.06); border-left:3px solid var(--gold-primary); padding:1rem 1.2rem; border-radius:0 8px 8px 0; margin-bottom:1.2rem;">
             <div style="font-size:0.75rem; color:var(--gold-primary); font-weight:700; text-transform:uppercase; margin-bottom:0.2rem;">Khẩu Quyết Kinh Điển:</div>
             <div style="font-size:0.95rem; color:var(--text-pure); font-style:italic; line-height:1.6;">"${t.famous_quote}"</div>
-            <div style="font-size:0.85rem; color:var(--text-muted); margin-top:0.3rem;">👉 ${t.quote_trans}</div>
+            <div style="font-size:0.85rem; color:var(--text-muted); margin-top:0.3rem;"> ${t.quote_trans}</div>
           </div>
           <div style="display:flex; flex-direction:column; gap:0.6rem; font-size:0.88rem; color:var(--text-pure); line-height:1.7;">
             ${t.core_principles.map(p => `<div style="background:rgba(255,255,255,0.02); border:1px solid var(--border-subtle); padding:0.8rem 1rem; border-radius:8px;">• ${p}</div>`).join('')}
@@ -1833,4 +1833,135 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+
+  // =========================================================================
+  // MEGA MENU DRAWER & SMART SEARCH ENGINE CONTROLLER
+  // =========================================================================
+  const drawerOverlay = document.getElementById('drawer-overlay');
+  const drawerToggleBtn = document.getElementById('menu-drawer-toggle');
+  const drawerCloseBtn = document.getElementById('drawer-close-btn');
+
+  const openDrawer = () => { if (drawerOverlay) drawerOverlay.classList.add('open'); };
+  const closeDrawer = () => { if (drawerOverlay) drawerOverlay.classList.remove('open'); };
+
+  if (drawerToggleBtn) drawerToggleBtn.addEventListener('click', openDrawer);
+  if (drawerCloseBtn) drawerCloseBtn.addEventListener('click', closeDrawer);
+  if (drawerOverlay) {
+    drawerOverlay.addEventListener('click', (e) => {
+      if (e.target === drawerOverlay) closeDrawer();
+    });
+  }
+
+  document.querySelectorAll('.drawer-link').forEach(link => {
+    link.addEventListener('click', () => { closeDrawer(); });
+  });
+
+  document.querySelectorAll('.menu-group-header').forEach(header => {
+    header.addEventListener('click', () => {
+      const group = header.parentElement;
+      group.classList.toggle('open');
+    });
+  });
+
+  // Search Engine
+  const searchInput = document.getElementById('global-search-input');
+  const searchResultsBox = document.getElementById('search-results-box');
+
+  const buildSearchIndex = () => {
+    const idx = [];
+    const addPart = (partObj, schoolName, anchorId) => {
+      if (!partObj) return;
+      idx.push({
+        school: schoolName,
+        title: partObj.chapter_title || '',
+        sub_title: partObj.sub_title || '',
+        anchorId: anchorId,
+        keywords: `${partObj.chapter_title} ${partObj.sub_title} ${JSON.stringify(partObj.scholarly_analysis || '')} ${JSON.stringify(partObj.canonical_texts || '')} ${JSON.stringify(partObj.core_rules || '')}`.toLowerCase()
+      });
+    };
+
+    if (typeof WORSHIP_FENGSHUI_PART_1 !== 'undefined') addPart(WORSHIP_FENGSHUI_PART_1, 'Thờ Cúng', 'worship-part1-container');
+
+    for (let i = 1; i <= 10; i++) {
+      const ld = window[`LOANDAU_FENGSHUI_PART_${i}`];
+      if (ld) addPart(ld, 'Loan Đầu Phái', `loandau-tiet-${i}`);
+      const bt = window[`BATTRACH_FENGSHUI_PART_${i}`];
+      if (bt) addPart(bt, 'Bát Trạch Phái', `battrach-tiet-${i}`);
+      const th = window[`TAMHOP_FENGSHUI_PART_${i}`];
+      if (th) addPart(th, 'Tam Hợp Phái', `tamhop-tiet-${i}`);
+    }
+    return idx;
+  };
+
+  let searchIndex = [];
+  setTimeout(() => { searchIndex = buildSearchIndex(); }, 500);
+
+  const jumpToSection = (targetId) => {
+    const el = document.getElementById(targetId);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      el.classList.add('card-highlight-pulse');
+      setTimeout(() => el.classList.remove('card-highlight-pulse'), 3000);
+      if (window.soundCtrl) window.soundCtrl.playBell(528);
+    }
+  };
+
+  const handleSearch = (query) => {
+    if (!query || query.trim().length < 2) {
+      searchResultsBox.innerHTML = '';
+      searchResultsBox.classList.remove('active');
+      return;
+    }
+    const q = query.trim().toLowerCase();
+    const matches = searchIndex.filter(item => item.keywords.includes(q)).slice(0, 8);
+
+    if (matches.length === 0) {
+      searchResultsBox.innerHTML = `<div style="padding:0.9rem; text-align:center; font-size:0.84rem; color:var(--text-muted);">Không tìm thấy bài học nào với từ khóa "${query}"</div>`;
+      searchResultsBox.classList.add('active');
+      return;
+    }
+
+    searchResultsBox.innerHTML = matches.map(m => `
+      <div class="search-result-item" data-target="${m.anchorId}">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <span class="search-result-title">${m.title}</span>
+          <span class="search-result-badge" style="color:${m.school.includes('Loan') ? '#F59E0B' : m.school.includes('Bát') ? '#60A5FA' : '#34D399'};">${m.school}</span>
+        </div>
+        <div class="search-result-snippet">${m.sub_title}</div>
+      </div>
+    `).join('');
+
+    searchResultsBox.classList.add('active');
+
+    searchResultsBox.querySelectorAll('.search-result-item').forEach(item => {
+      item.addEventListener('click', () => {
+        jumpToSection(item.dataset.target);
+        searchResultsBox.classList.remove('active');
+        searchInput.value = '';
+      });
+    });
+  };
+
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => handleSearch(e.target.value));
+    searchInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        const firstMatch = searchResultsBox.querySelector('.search-result-item');
+        if (firstMatch) {
+          jumpToSection(firstMatch.dataset.target);
+          searchResultsBox.classList.remove('active');
+          searchInput.value = '';
+        }
+      } else if (e.key === 'Escape') {
+        searchResultsBox.classList.remove('active');
+      }
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!searchInput.contains(e.target) && !searchResultsBox.contains(e.target)) {
+        searchResultsBox.classList.remove('active');
+      }
+    });
+  }
+
 });

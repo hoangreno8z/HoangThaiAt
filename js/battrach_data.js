@@ -848,42 +848,42 @@ const BATTRACH_FENGSHUI_PART_5 = {
       {
         "change": "1. Đổi HÀO 3 (Hào Thượng)",
         "creates_star": "SINH KHÍ (Tham Lang Mộc)",
-        "example": "Càn ☰ (3 nét liền) đổi hào trên thành Đoài ☱ (hào trên đứt) --> Càn gặp Đoài là Sinh Khí."
+        "example": "Càn  (3 nét liền) đổi hào trên thành Đoài  (hào trên đứt) --> Càn gặp Đoài là Sinh Khí."
       },
       {
         "change": "2. Đổi HÀO 2 (Hào Trung)",
         "creates_star": "TUYỆT MỆNH (Phá Quân Kim)",
-        "example": "Càn ☰ đổi hào giữa thành Ly ☲ (hào giữa đứt) --> Càn gặp Ly là Tuyệt Mệnh."
+        "example": "Càn  đổi hào giữa thành Ly  (hào giữa đứt) --> Càn gặp Ly là Tuyệt Mệnh."
       },
       {
         "change": "3. Đổi HÀO 1 (Hào Sơ)",
         "creates_star": "HỌA HẠI (Lộc Tồn Thổ)",
-        "example": "Càn ☰ đổi hào dưới thành Tốn ☴ (hào dưới đứt) --> Càn gặp Tốn là Họa Hại."
+        "example": "Càn  đổi hào dưới thành Tốn  (hào dưới đứt) --> Càn gặp Tốn là Họa Hại."
       },
       {
         "change": "4. Đổi HÀO 2 & 3 (Trung + Thượng)",
         "creates_star": "NGŨ QUỶ (Liêm Trinh Hỏa)",
-        "example": "Càn ☰ đổi hào 2 và 3 thành Chấn ☳ --> Càn gặp Chấn là Ngũ Quỷ."
+        "example": "Càn  đổi hào 2 và 3 thành Chấn  --> Càn gặp Chấn là Ngũ Quỷ."
       },
       {
         "change": "5. Đổi HÀO 1 & 3 (Sơ + Thượng)",
         "creates_star": "THIÊN Y (Cự Môn Thổ)",
-        "example": "Càn ☰ đổi hào 1 và 3 thành Cấn ☶ --> Càn gặp Cấn là Thiên Y."
+        "example": "Càn  đổi hào 1 và 3 thành Cấn  --> Càn gặp Cấn là Thiên Y."
       },
       {
         "change": "6. Đổi HÀO 1 & 2 (Sơ + Trung)",
         "creates_star": "LỤC SÁT (Văn Khúc Thủy)",
-        "example": "Càn ☰ đổi hào 1 và 2 thành Khảm ☵ --> Càn gặp Khảm là Lục Sát."
+        "example": "Càn  đổi hào 1 và 2 thành Khảm  --> Càn gặp Khảm là Lục Sát."
       },
       {
         "change": "7. Đổi CẢ 3 HÀO (1, 2, 3)",
         "creates_star": "DIÊN NIÊN (Vũ Khúc Kim)",
-        "example": "Càn ☰ (toàn Dương) đổi cả 3 hào thành Khôn ☷ (toàn Âm) --> Càn gặp Khôn là Diên Niên."
+        "example": "Càn  (toàn Dương) đổi cả 3 hào thành Khôn  (toàn Âm) --> Càn gặp Khôn là Diên Niên."
       },
       {
         "change": "8. GIỮ NGUYÊN (Không đổi)",
         "creates_star": "PHỤC VỊ (Phụ Bật Mộc)",
-        "example": "Càn ☰ gặp Càn ☰ --> Càn gặp Càn là Phục Vị."
+        "example": "Càn  gặp Càn  --> Càn gặp Càn là Phục Vị."
       }
     ]
   },
@@ -926,11 +926,11 @@ const BATTRACH_FENGSHUI_PART_5 = {
     "steps": [
       {
         "step": "Bước 1: Hình Dung Quẻ Bản Mệnh Trên Bàn Tay",
-        "instruction": "Ví dụ bạn là mệnh CÀN ☰ (3 nét liền). Bạn muốn xem hướng ĐÔNG BẮC (Cung CẤN ☶ - trên liền dưới 2 đứt)."
+        "instruction": "Ví dụ bạn là mệnh CÀN  (3 nét liền). Bạn muốn xem hướng ĐÔNG BẮC (Cung CẤN  - trên liền dưới 2 đứt)."
       },
       {
         "step": "Bước 2: So Sánh Số Hào Thay Đổi Giữa 2 Quẻ",
-        "instruction": "Từ Càn ☰ sang Cấn ☶: Hào 1 (dưới) đổi từ liền sang đứt, Hào 3 (trên) giữ nguyên, Hào 2 đổi từ liền sang đứt --> Như vậy đổi Hào 1 và Hào 2."
+        "instruction": "Từ Càn  sang Cấn : Hào 1 (dưới) đổi từ liền sang đứt, Hào 3 (trên) giữ nguyên, Hào 2 đổi từ liền sang đứt --> Như vậy đổi Hào 1 và Hào 2."
       },
       {
         "step": "Bước 3: Tra Khẩu Quyết",
