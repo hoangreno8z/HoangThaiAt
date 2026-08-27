@@ -30,7 +30,7 @@ class LuBan388Engine {
   init() {
     if (this.btn) {
       this.btn.addEventListener('click', () => {
-        if (window.soundCtrl) window.soundCtrl.playBell(528);
+        
         this.calculate();
       });
     }

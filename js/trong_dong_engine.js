@@ -95,7 +95,7 @@ class TrongDongEngine {
 
   selectRing(ringKey) {
     this.activeRing = ringKey;
-    if (window.soundCtrl) window.soundCtrl.playBell(540);
+    
 
     // Update active class on SVG elements
     const rings = this.container.querySelectorAll('.drum-ring');

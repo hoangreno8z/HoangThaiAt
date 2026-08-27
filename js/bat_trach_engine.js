@@ -40,7 +40,7 @@ class BatTrachEngine {
   init() {
     if (this.calcBtn) {
       this.calcBtn.addEventListener('click', () => {
-        if (window.soundCtrl) window.soundCtrl.playBell(528);
+        
         this.calculate();
       });
     }

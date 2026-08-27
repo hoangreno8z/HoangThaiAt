@@ -150,7 +150,7 @@ class AntigravityGraph {
     if (!event.active) this.simulation.alphaTarget(0.3).restart();
     d.fx = d.x;
     d.fy = d.y;
-    if (window.soundCtrl) window.soundCtrl.playBell(580);
+    
   }
 
   dragged(event, d) {
@@ -180,7 +180,7 @@ class AntigravityGraph {
 
   showNodeDetail(nodeData) {
     if (!this.drawer) return;
-    if (window.soundCtrl) window.soundCtrl.playBell(528);
+    
 
     // Find connections
     const connections = this.data.links.filter(l => 

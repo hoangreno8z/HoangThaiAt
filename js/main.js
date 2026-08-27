@@ -57,22 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.soundCtrl = soundCtrl;
 
   // 1. Chuông Đồng Thanh Tịnh (Bật / Tắt)
-  const audioBtn = document.getElementById('audio-toggle');
-  if (audioBtn) {
-    const updateAudioBtnUI = () => {
-      audioBtn.innerHTML = soundCtrl.enabled
-        ? `${renderIcon('bellOn', 16, '#E5C07B')} <span>Chuông Đồng: BẬT</span>`
-        : `${renderIcon('bellOff', 16, '#94A3B8')} <span>Chuông Đồng: TẮT</span>`;
-      audioBtn.style.borderColor = soundCtrl.enabled ? 'var(--gold-primary)' : 'var(--border-subtle)';
-    };
-    updateAudioBtnUI();
-
-    audioBtn.addEventListener('click', () => {
-      soundCtrl.toggle();
-      updateAudioBtnUI();
-      if (soundCtrl.enabled) soundCtrl.playBell(528);
-    });
-  }
+  
 
   // 1.5 Render Tiết I: Khởi Nguyên Bản Thể & Tọa Vị Gian Thờ
   const worshipContainer = document.getElementById('worship-part1-container');
@@ -1787,7 +1772,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.querySelectorAll('.graph-filter-btn').forEach(btn => {
     btn.addEventListener('click', () => {
-      soundCtrl.playBell(480);
+      
       document.querySelectorAll('.graph-filter-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       antigravityGraph.filterGroup(btn.dataset.group);
@@ -1797,7 +1782,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const resetGraphBtn = document.getElementById('btn-reset-graph');
   if (resetGraphBtn) {
     resetGraphBtn.addEventListener('click', () => {
-      soundCtrl.playBell(528);
+      
       antigravityGraph.resetView();
     });
   }
@@ -1956,7 +1941,7 @@ document.addEventListener('DOMContentLoaded', () => {
       el.scrollIntoView({ behavior: 'smooth', block: 'start' });
       el.classList.add('card-highlight-pulse');
       setTimeout(() => el.classList.remove('card-highlight-pulse'), 3000);
-      if (window.soundCtrl) window.soundCtrl.playBell(528);
+      
     }
   };
 

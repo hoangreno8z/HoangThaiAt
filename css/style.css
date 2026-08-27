@@ -171,25 +171,9 @@ body::before {
   border: 1px solid var(--border-active);
 }
 
-.audio-toggle-btn {
-  background: transparent;
-  border: 1px solid var(--border-subtle);
-  color: var(--gold-primary);
-  padding: 0.45rem 0.9rem;
-  border-radius: 20px;
-  cursor: pointer;
-  font-size: 0.8rem;
-  font-family: var(--font-sans);
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  transition: all 0.3s ease;
-}
 
-.audio-toggle-btn:hover {
-  background: rgba(229, 192, 123, 0.15);
-  border-color: var(--gold-primary);
-}
+
+
 
 /* Mobile Bottom Navigation Dock (iOS / Android) */
 .mobile-bottom-dock {
