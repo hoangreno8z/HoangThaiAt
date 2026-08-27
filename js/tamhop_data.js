@@ -159,7 +159,7 @@ const TAMHOP_FENGSHUI_PART_1 = {
     }
   ],
   "actionable_checklist": {
-    "title": "Checklist 4 Bước Nhận Diện Vòng Trường Sinh Trước Cửa Nhà",
+    "title": "Quy Trình Khảo Sát 4 Bước Nhận Diện Vòng Trường Sinh Trước Cửa Nhà",
     "steps": [
       {
         "step": "Bước 1: Xác Định Hướng Nhà & Cục Tam Hợp",
@@ -317,7 +317,7 @@ const TAMHOP_FENGSHUI_PART_2 = {
     }
   ],
   "actionable_checklist": {
-    "title": "Checklist 3 Bước Xác Định Đại Cục Của Thửa Đất",
+    "title": "Quy Trình Khảo Sát 3 Bước Xác Định Đại Cục Của Thửa Đất",
     "steps": [
       {
         "step": "Bước 1: Tìm Vị Trí Cửa Thoát Nước (THỦY KHẨU)",
@@ -486,7 +486,7 @@ const TAMHOP_FENGSHUI_PART_3 = {
     }
   ],
   "actionable_checklist": {
-    "title": "Checklist 3 Bước Kiểm Tra Thủy Pháp Trước Nhà",
+    "title": "Quy Trình Khảo Sát 3 Bước Kiểm Tra Thủy Pháp Trước Nhà",
     "steps": [
       {
         "step": "Bước 1: Xác Định Hướng Dòng Nước / Dòng Xe Chảy Đến",
@@ -635,7 +635,7 @@ const TAMHOP_FENGSHUI_PART_4 = {
     }
   ],
   "actionable_checklist": {
-    "title": "Checklist 3 Bước Kiểm Tra Khóa Khí Thủy Khẩu",
+    "title": "Quy Trình Khảo Sát 3 Bước Kiểm Tra Khóa Khí Thủy Khẩu",
     "steps": [
       {
         "step": "Bước 1: Xác Định Vị Trí Hố Ga Cuối Cùng",
@@ -779,7 +779,7 @@ const TAMHOP_FENGSHUI_PART_5 = {
     }
   ],
   "actionable_checklist": {
-    "title": "Checklist 3 Bước Phân Biệt & Sử Dụng 3 Tầng Đĩa La Kinh",
+    "title": "Quy Trình Khảo Sát 3 Bước Phân Biệt & Sử Dụng 3 Tầng Đĩa La Kinh",
     "steps": [
       {
         "step": "Bước 1: Khi Đo Hướng Nhà / Cửa Chính",
@@ -938,7 +938,7 @@ const TAMHOP_FENGSHUI_PART_6 = {
     }
   ],
   "actionable_checklist": {
-    "title": "Checklist 4 Bước Đo & Tiêu Trừ Sát Sa Bằng Nhân Bàn",
+    "title": "Quy Trình Khảo Sát 4 Bước Đo & Tiêu Trừ Sát Sa Bằng Nhân Bàn",
     "steps": [
       {
         "step": "Bước 1: Xác Định Ngũ Hành Của Tọa Nhà",
@@ -1091,7 +1091,7 @@ const TAMHOP_FENGSHUI_PART_7 = {
     }
   ],
   "actionable_checklist": {
-    "title": "Checklist 3 Bước Tự Kiểm Tra Hoàng Tuyền Sát Trước Cửa",
+    "title": "Quy Trình Khảo Sát 3 Bước Tự Kiểm Tra Hoàng Tuyền Sát Trước Cửa",
     "steps": [
       {
         "step": "Bước 1: Xác Định Hướng Nhà Thuộc Nhóm Nào",
@@ -1260,7 +1260,7 @@ const TAMHOP_FENGSHUI_PART_8 = {
     }
   ],
   "actionable_checklist": {
-    "title": "Checklist 3 Bước Kiểm Tra & Vô Hiệu Hóa Bát Sát",
+    "title": "Quy Trình Khảo Sát 3 Bước Kiểm Tra & Vô Hiệu Hóa Bát Sát",
     "steps": [
       {
         "step": "Bước 1: Xác Định Tọa Sơn Ngôi Nhà",
@@ -1409,7 +1409,7 @@ const TAMHOP_FENGSHUI_PART_9 = {
     }
   ],
   "actionable_checklist": {
-    "title": "Checklist 4 Bước Thiết Kế Hồ Nước Chuẩn Phong Thủy Tam Hợp",
+    "title": "Quy Trình Khảo Sát 4 Bước Thiết Kế Hồ Nước Chuẩn Phong Thủy Tam Hợp",
     "steps": [
       {
         "step": "Bước 1: Chọn Cung Vị Sinh Vượng Để Đặt Hồ",
@@ -1553,7 +1553,7 @@ const TAMHOP_FENGSHUI_PART_10 = {
     }
   ],
   "actionable_checklist": {
-    "title": "Checklist Đại Toàn Thư 10 Bước Chuẩn Hóa Phong Thủy Toàn Năng",
+    "title": "Quy Trình Khảo Sát Đại Toàn Thư 10 Bước Chuẩn Hóa Phong Thủy Toàn Năng",
     "steps": [
       {
         "step": "1. Khảo sát ngoại cảnh: Thế đất cao ráo, nở hậu hoặc vuông vức",
@@ -1602,7 +1602,7 @@ const TAMHOP_FENGSHUI_PART_10 = {
     "remedies": [
       {
         "flaw": "Gia chủ muốn hoàn thiện phong thủy nhà ở của mình một cách khoa học nhất",
-        "physical_fix": "Thực hiện từng bước theo Checklist 10 bước đại toàn thư; tối ưu hóa không gian sống xanh, sạch, thông gió, ngập tràn ánh sáng tự nhiên.",
+        "physical_fix": "Thực hiện từng bước theo Quy Trình Khảo Sát 10 bước đại toàn thư; tối ưu hóa không gian sống xanh, sạch, thông gió, ngập tràn ánh sáng tự nhiên.",
         "fengshui_fix": "Vận dụng linh hoạt các phương pháp hóa giải ngũ hành mềm dẻo; tuyệt đối không tin theo những lời hù dọa mê tín dị đoan tốn kém tiền bạc.",
         "cost_level": "Chủ động kiểm soát hoàn toàn (từ 0đ đến vài triệu đồng)",
         "recommendation": "Phong thủy là khoa học tổ chức không gian sống hài hòa với vũ trụ để con người hạnh phúc và thành công hơn."

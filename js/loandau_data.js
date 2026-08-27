@@ -156,7 +156,7 @@ const LOANDAU_FENGSHUI_PART_1 = {
     }
   ],
   "actionable_checklist": {
-    "title": "Checklist 4 Bước Tự Thẩm Định Đất Loan Đầu Cơ Bản",
+    "title": "Quy Trình Khảo Sát 4 Bước Tự Thẩm Định Đất Loan Đầu Cơ Bản",
     "steps": [
       {
         "step": "Bước 1: Khảo Sát Gió (Tàng Phong)",
@@ -358,7 +358,7 @@ const LOANDAU_FENGSHUI_PART_2 = {
     }
   ],
   "actionable_checklist": {
-    "title": "Checklist 3 Bước Nhận Diện Ngũ Hành Hình Tướng Tòa Nhà",
+    "title": "Quy Trình Khảo Sát 3 Bước Nhận Diện Ngũ Hành Hình Tướng Tòa Nhà",
     "steps": [
       {
         "step": "Bước 1: Xác Định Ngũ Hành Bản Thân Ngôi Nhà",
@@ -531,7 +531,7 @@ const LOANDAU_FENGSHUI_PART_3 = {
     }
   ],
   "actionable_checklist": {
-    "title": "Checklist Nhận Diện Điểm Tụ Khí Sau Quá Hạp",
+    "title": "Quy Trình Khảo Sát Nhận Diện Điểm Tụ Khí Sau Quá Hạp",
     "steps": [
       {
         "step": "Bước 1: Quan Sát Tuyến Đường Dẫn Vào Nhà",
@@ -707,7 +707,7 @@ const LOANDAU_FENGSHUI_PART_4 = {
     }
   ],
   "actionable_checklist": {
-    "title": "Checklist 3 Bước Quét Sát Khí Huyệt Trường",
+    "title": "Quy Trình Khảo Sát 3 Bước Quét Sát Khí Huyệt Trường",
     "steps": [
       {
         "step": "Bước 1: Quét Thế Đất Bằng Phẳng / Cao Ráo",
@@ -888,7 +888,7 @@ const LOANDAU_FENGSHUI_PART_5 = {
     }
   ],
   "actionable_checklist": {
-    "title": "Checklist Thẩm Định Tả Long Hữu Hổ Nhà Ở",
+    "title": "Quy Trình Khảo Sát Thẩm Định Tả Long Hữu Hổ Nhà Ở",
     "steps": [
       {
         "step": "Bước 1: Định Vị Tả Hữu",
@@ -1061,7 +1061,7 @@ const LOANDAU_FENGSHUI_PART_6 = {
     }
   ],
   "actionable_checklist": {
-    "title": "Checklist 3 Bước Nhận Diện Thủy Cát vs Thủy Hung",
+    "title": "Quy Trình Khảo Sát 3 Bước Nhận Diện Thủy Cát vs Thủy Hung",
     "steps": [
       {
         "step": "Bước 1: Quan Sát Hình Dạng Khúc Cua Trước Cửa",
@@ -1239,7 +1239,7 @@ const LOANDAU_FENGSHUI_PART_7 = {
     }
   ],
   "actionable_checklist": {
-    "title": "Checklist 4 Bước Tự Đánh Giá Ngoại Cảnh & Minh Đường",
+    "title": "Quy Trình Khảo Sát 4 Bước Tự Đánh Giá Ngoại Cảnh & Minh Đường",
     "steps": [
       {
         "step": "Bước 1: Đo Đạc Hình Thể Thửa Đất",
@@ -1555,7 +1555,7 @@ const LOANDAU_FENGSHUI_PART_8 = {
     }
   ],
   "actionable_checklist": {
-    "title": "Checklist 5 Bước Tự Quét & Triệt Hạ 28 Đại Sát Khí",
+    "title": "Quy Trình Khảo Sát 5 Bước Tự Quét & Triệt Hạ 28 Đại Sát Khí",
     "steps": [
       {
         "step": "Bước 1: Quét Từ Cửa Chính (Góc Nhìn 180 Độ)",
@@ -1744,7 +1744,7 @@ const LOANDAU_FENGSHUI_PART_9 = {
     }
   ],
   "actionable_checklist": {
-    "title": "Checklist 6 Điểm Tự Rà Soát Nội Thất Nhà Ở",
+    "title": "Quy Trình Khảo Sát 6 Điểm Tự Rà Soát Nội Thất Nhà Ở",
     "steps": [
       {
         "step": "1. Kiểm Tra Cửa Trước - Cửa Sau",
@@ -1940,7 +1940,7 @@ const LOANDAU_FENGSHUI_PART_10 = {
     }
   ],
   "actionable_checklist": {
-    "title": "Checklist Đại Tổng Kết Quyết Định Đầu Tư & An Cư",
+    "title": "Quy Trình Khảo Sát Đại Tổng Kết Quyết Định Đầu Tư & An Cư",
     "steps": [
       {
         "step": "Bước 1: Chấm Điểm 5 Trụ Cột (Thang 100 Điểm)",

@@ -42,7 +42,7 @@ const COSMIC_DATA = {
       school: "Lý Khí (Tính Toán La Bàn & Thời Gian)",
       title: "Thanh Nang Kinh (青囊經) - Hoàng Thạch Công / Dương Quân Tùng",
       author: "Hoàng Thạch Công truyền thừa Dương Quân Tùng (Dương Cứu Bần)",
-      role: "Khởi nguồn trường phái Huyền Không Phi Tinh (Flying Star)",
+      role: "Khởi nguồn trường phái Huyền Không Phi Tinh (Phi Tinh)",
       famous_quote: "Càn Khôn đại phụ mẫu, Cửu khí phối Cửu tinh. Nhất bạch nhị hắc tam bích tứ lục ngũ hoàng lục bạch thất xích bát bạch cửu tử.",
       quote_trans: "Càn Khôn là cha mẹ lớn của vạn vật, 9 luồng khí phối hợp cùng 9 ngôi sao trên bầu trời. Gồm: 1 Nhất Bạch, 2 Nhị Hắc, 3 Tam Bích, 4 Tứ Lục, 5 Ngũ Hoàng, 6 Lục Bạch, 7 Thất Xích, 8 Bát Bạch, 9 Cửu Tử.",
       core_principles: [
@@ -114,9 +114,9 @@ const COSMIC_DATA = {
     ]
   },
 
-  // 2. Dữ liệu Huyền Không Phi Tinh (Xuan Kong Flying Stars)
+  // 2. Dữ liệu Huyền Không Phi Tinh (Xuan Kong Huyền Không Phi Tinh)
   huyen_khong: {
-    title: "Thuật Toán Ma Trận Cửu Cung Huyền Không Phi Tinh (Flying Star)",
+    title: "Thuật Toán Ma Trận Cửu Cung Huyền Không Phi Tinh (Phi Tinh)",
     desc: "Tính toán Tinh Bàn 3 tầng (Vận Tinh - Tọa Tinh - Hướng Tinh) phi thuận/nghịch trên ma trận Lạc Thư cho 24 Sơn Hướng trong 9 Vận.",
     periods: [
       { period: 1, years: "1864 - 1883", star: "Nhất Bạch Khảm Thủy" },
@@ -169,7 +169,7 @@ const COSMIC_DATA = {
     ]
   },
 
-  // 3. Mạng Lưới Đồ Thị Tri Thức Địa Lý & Thuật Toán (30+ Nút D3.js)
+  // 3. Mạng Lưới Đồ Thị Tri Thức Địa Lý & Thuật Toán (30+ Nút Đồ Hình Toán Học)
   knowledge_graph: {
     nodes: [
       { id: "Táng Thư", group: "books", radius: 36, cat: "Thư Tịch Cốt Lõi", desc: "Quách Phác soạn: Định nghĩa 'Khí thừa phong tắc tán, giới thủy tắc chỉ' - khởi thủy bộ môn Phong Thủy.", quote: "Tàng phong tụ khí, đắc thủy vi thượng." },

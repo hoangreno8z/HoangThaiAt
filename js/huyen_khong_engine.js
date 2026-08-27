@@ -1,5 +1,5 @@
 /**
- * BỘ TÍNH TOÁN MA TRẬN HUYỀN KHÔNG PHI TINH (XUAN KONG FLYING STARS ALGORITHM)
+ * BỘ TÍNH TOÁN MA TRẬN HUYỀN KHÔNG PHI TINH (THUẬT TOÁN HUYỀN KHÔNG PHI TINH CHÁNH TÔNG)
  * Lập Tinh Bàn 3 tầng (Vận - Tọa - Hướng) cho 24 Sơn Hướng trong 9 Vận theo quỹ đạo Lạc Thư.
  */
 

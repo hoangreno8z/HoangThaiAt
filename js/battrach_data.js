@@ -153,7 +153,7 @@ const BATTRACH_FENGSHUI_PART_1 = {
     }
   ],
   "actionable_checklist": {
-    "title": "Checklist 4 Bước Xác Định Lưới Cửu Cung Trong Nhà",
+    "title": "Quy Trình Khảo Sát 4 Bước Xác Định Lưới Cửu Cung Trong Nhà",
     "steps": [
       {
         "step": "Bước 1: Vẽ Sơ Đồ Mặt Bằng Tỉ Lệ Chuẩn",
@@ -355,7 +355,7 @@ const BATTRACH_FENGSHUI_PART_2 = {
     }
   ],
   "actionable_checklist": {
-    "title": "Checklist 3 Bước Tự Tính Cung Phi Cá Nhân Trong 30 Giây",
+    "title": "Quy Trình Khảo Sát 3 Bước Tự Tính Cung Phi Cá Nhân Trong 30 Giây",
     "steps": [
       {
         "step": "Bước 1: Lấy Năm Sinh Âm Lịch",
@@ -540,7 +540,7 @@ const BATTRACH_FENGSHUI_PART_3 = {
     }
   ],
   "actionable_checklist": {
-    "title": "Checklist 4 Bước Đo Độ Số Hướng Nhà Bằng La Bàn Điện Thoại",
+    "title": "Quy Trình Khảo Sát 4 Bước Đo Độ Số Hướng Nhà Bằng La Bàn Điện Thoại",
     "steps": [
       {
         "step": "Bước 1: Chuẩn Bị & Khử Nhiễu Từ Trường",
@@ -738,7 +738,7 @@ const BATTRACH_FENGSHUI_PART_4 = {
     }
   ],
   "actionable_checklist": {
-    "title": "Checklist 4 Bước Gán 8 Du Niên Vào Không Gian Nhà Ở",
+    "title": "Quy Trình Khảo Sát 4 Bước Gán 8 Du Niên Vào Không Gian Nhà Ở",
     "steps": [
       {
         "step": "Bước 1: Tra Bảng Cung Phi Để Lấy Danh Sách 8 Sao",
@@ -922,7 +922,7 @@ const BATTRACH_FENGSHUI_PART_5 = {
     }
   ],
   "actionable_checklist": {
-    "title": "Checklist 3 Bước Tự Bấm Đốt Ngón Tay Biến Quẻ Tìm Sao",
+    "title": "Quy Trình Khảo Sát 3 Bước Tự Bấm Đốt Ngón Tay Biến Quẻ Tìm Sao",
     "steps": [
       {
         "step": "Bước 1: Hình Dung Quẻ Bản Mệnh Trên Bàn Tay",
@@ -1076,7 +1076,7 @@ const BATTRACH_FENGSHUI_PART_6 = {
     }
   ],
   "actionable_checklist": {
-    "title": "Checklist 4 Bước Kiểm Tra Tính Âm Dương Tam Yếu",
+    "title": "Quy Trình Khảo Sát 4 Bước Kiểm Tra Tính Âm Dương Tam Yếu",
     "steps": [
       {
         "step": "Bước 1: Xác Định Quái Của Cửa Chính (MÔN)",
@@ -1253,7 +1253,7 @@ const BATTRACH_FENGSHUI_PART_7 = {
     }
   ],
   "actionable_checklist": {
-    "title": "Checklist 4 Bước Định Vị 24 Sơn Hướng Bằng La Bàn",
+    "title": "Quy Trình Khảo Sát 4 Bước Định Vị 24 Sơn Hướng Bằng La Bàn",
     "steps": [
       {
         "step": "Bước 1: Đo Độ Số Góc Cửa Chính",
@@ -1401,7 +1401,7 @@ const BATTRACH_FENGSHUI_PART_8 = {
     }
   ],
   "actionable_checklist": {
-    "title": "Checklist 4 Bước Kiểm Tra Tọa & Hướng Bếp Chuẩn Bát Trạch",
+    "title": "Quy Trình Khảo Sát 4 Bước Kiểm Tra Tọa & Hướng Bếp Chuẩn Bát Trạch",
     "steps": [
       {
         "step": "Bước 1: Xác Định Cung Vị Đặt Bếp (TỌA BẾP)",
@@ -1559,7 +1559,7 @@ const BATTRACH_FENGSHUI_PART_9 = {
     }
   ],
   "actionable_checklist": {
-    "title": "Checklist 5 Bước Chọn Phương Pháp Hóa Giải Phù Hợp",
+    "title": "Quy Trình Khảo Sát 5 Bước Chọn Phương Pháp Hóa Giải Phù Hợp",
     "steps": [
       {
         "step": "Bước 1: Xác Định Cặp Sao Xấu Của Hướng Cửa",
@@ -1707,7 +1707,7 @@ const BATTRACH_FENGSHUI_PART_10 = {
     }
   ],
   "actionable_checklist": {
-    "title": "Checklist Đại Tổng Kết 10 Tiêu Chí Phong Thủy Hoàn Hảo",
+    "title": "Quy Trình Khảo Sát Đại Tổng Kết 10 Tiêu Chí Phong Thủy Hoàn Hảo",
     "steps": [
       {
         "step": "1. Địa thế đất cao ráo, nở hậu hoặc vuông vức",

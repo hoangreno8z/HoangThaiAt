@@ -1,6 +1,6 @@
 /**
  * ĐỒ THỊ TRI THỨC KHÔNG TRỌNG LỰC (ANTIGRAVITY KNOWLEDGE GRAPH)
- * Sử dụng D3.js v7 Force Simulation để mô phỏng mạng lưới tri thức đa chiều.
+ * Sử dụng Đồ Hình Toán Học v7 Force Simulation để mô phỏng mạng lưới tri thức đa chiều.
  * Hỗ trợ kéo thả (Drag), phóng to/thu nhỏ (Zoom), chạm cảm ứng (Touch) trên iOS/Android.
  */
 

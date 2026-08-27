@@ -1569,7 +1569,7 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
         </div>
 
-        <!-- 5. Checklist Tự Đánh Giá -->
+        <!-- 5. Quy Trình Khảo Sát Tự Đánh Giá -->
         <div style="margin-bottom:2rem; border-top:1px solid var(--border-subtle); padding-top:1.5rem;">
           <h4 style="font-family:var(--font-title); font-size:1.15rem; color:#34D399; margin-bottom:0.8rem;">5.  ${data.actionable_checklist.title} (Dành Cho Người Không Chuyên)</h4>
           <div style="display:flex; flex-direction:column; gap:0.6rem;">
@@ -1766,7 +1766,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }, 'huyenkhong-result-display');
   window.huyenKhongEngine = huyenKhongEngine;
 
-  // 4. Càn Khôn Đồ Hình (Mạng Lưới Tri Thức Phong Thủy D3.js)
+  // 4. Càn Khôn Đồ Hình (Mạng Lưới Tri Thức Phong Thủy Đồ Hình Toán Học)
   const antigravityGraph = new AntigravityGraph('graph-container', 'graph-drawer');
   window.antigravityGraph = antigravityGraph;
 

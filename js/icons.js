@@ -140,7 +140,7 @@ const ICONS = {
     </svg>
   `,
 
-  // Checklist / Tích Chọn
+  // Quy Trình Khảo Sát / Tích Chọn
   check: (size = 16, color = '#34D399') => `
     <svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="${color}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="svg-icon">
       <path d="M20 6L9 17l-5-5"/>
