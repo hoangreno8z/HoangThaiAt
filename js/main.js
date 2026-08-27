@@ -874,6 +874,127 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
   }
 
+  // 1.15 Render Đại Chuyên Đề: Phần "Linh" (Mật Giáo & Phù Chú Khoa Nghi Bát Hương Chánh Tông)
+  const worshipEsotericContainer = document.getElementById('worship-esoteric-container');
+  if (worshipEsotericContainer && typeof WORSHIP_ESOTERIC_RITUALS !== 'undefined') {
+    const eso = WORSHIP_ESOTERIC_RITUALS;
+    worshipEsotericContainer.innerHTML = `
+      <div style="background:linear-gradient(135deg, rgba(20,20,30,0.95), rgba(10,12,18,0.98)); border:2px solid #D97706; border-radius:16px; padding:2rem; margin-bottom:2.5rem; box-shadow:0 0 30px rgba(217,119,6,0.2);">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; margin-bottom:1.5rem; border-bottom:1px solid rgba(217,119,6,0.3); padding-bottom:1rem;">
+          <div>
+            <span style="font-size:0.75rem; color:#F59E0B; text-transform:uppercase; letter-spacing:1px; font-weight:800;">🔥 HUYỀN MÔN BÍ CHỈ • MẬT TẠNG KHOA NGHI CHÁNH TÔNG</span>
+            <h3 style="font-family:var(--font-title); font-size:1.6rem; color:#F59E0B; margin:0.2rem 0;">${eso.section_title}</h3>
+            <div style="font-size:0.88rem; color:var(--text-muted);">${eso.sub_title}</div>
+          </div>
+          <span style="background:rgba(245,158,11,0.15); color:#F59E0B; border:1px solid #F59E0B; font-size:0.85rem; font-weight:800; padding:0.4rem 1rem; border-radius:20px;">MẬT TRUYỀN PHẦN LINH</span>
+        </div>
+
+        <!-- 1. Bản thể luận Hình - Khí - Thần -->
+        <div style="margin-bottom:2rem;">
+          <h4 style="font-family:var(--font-title); font-size:1.25rem; color:var(--text-pure); margin-bottom:0.6rem;">${eso.esoteric_ontology.title}</h4>
+          <div style="background:rgba(245,158,11,0.06); border-left:3px solid #F59E0B; padding:0.8rem 1.2rem; border-radius:0 8px 8px 0; margin-bottom:1rem;">
+            <div style="font-size:0.95rem; color:var(--text-pure); font-style:italic;">"${eso.esoteric_ontology.quote}"</div>
+            <div style="font-size:0.75rem; color:#F59E0B; margin-top:0.2rem;">👉 Xuất xứ: <strong>${eso.esoteric_ontology.quote_source}</strong></div>
+          </div>
+
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1rem;">
+            ${eso.esoteric_ontology.concepts.map(c => `
+              <div style="background:rgba(255,255,255,0.02); border:1px solid rgba(245,158,11,0.2); padding:1.2rem; border-radius:12px;">
+                <strong style="color:#F59E0B; font-size:1rem; display:block; margin-bottom:0.4rem;">☯️ ${c.name}</strong>
+                <p style="font-size:0.85rem; color:var(--text-muted); line-height:1.6;">${c.desc}</p>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
+        <!-- 2. Quy trình 7 bước khởi linh bát hương -->
+        <div style="margin-bottom:2rem; border-top:1px solid rgba(255,255,255,0.1); padding-top:1.5rem;">
+          <h4 style="font-family:var(--font-title); font-size:1.25rem; color:var(--text-pure); margin-bottom:1rem;">${eso.seven_consecration_steps.title}</h4>
+          <div style="display:flex; flex-direction:column; gap:0.9rem;">
+            ${eso.seven_consecration_steps.steps.map((st, idx) => `
+              <div style="background:rgba(13,17,26,0.9); border:1px solid var(--border-subtle); border-radius:10px; padding:1.2rem;">
+                <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.4rem;">
+                  <span style="background:#F59E0B; color:#000; font-weight:800; font-size:0.8rem; padding:0.15rem 0.6rem; border-radius:4px;">BƯỚC ${idx + 1}</span>
+                  <strong style="color:var(--text-pure); font-size:1.05rem;">${st.step.split(': ')[1] || st.step}</strong>
+                </div>
+                <p style="font-size:0.88rem; color:var(--text-muted); line-height:1.7;">${st.action}</p>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
+        <!-- 3. Hệ thống 4 Chân ngôn Mật chú -->
+        <div style="margin-bottom:2rem; border-top:1px solid rgba(255,255,255,0.1); padding-top:1.5rem;">
+          <h4 style="font-family:var(--font-title); font-size:1.25rem; color:#F59E0B; margin-bottom:1rem;">${eso.four_sacred_mantras.title}</h4>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:1rem;">
+            ${eso.four_sacred_mantras.mantras.map(m => `
+              <div style="background:rgba(13,17,26,0.9); border:1px solid rgba(245,158,11,0.25); border-radius:12px; padding:1.2rem;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.4rem;">
+                  <strong style="color:var(--text-pure); font-size:0.95rem;">📿 ${m.name}</strong>
+                  <span style="font-size:0.75rem; color:#F59E0B; font-weight:700;">${m.count}</span>
+                </div>
+                <div style="background:rgba(0,0,0,0.5); border-left:3px solid #F59E0B; padding:0.8rem; border-radius:0 6px 6px 0; margin:0.6rem 0;">
+                  <div style="font-size:0.75rem; color:var(--jade-cyan); margin-bottom:0.2rem;">Chân ngôn Phạn / Mật âm:</div>
+                  <div style="font-family:var(--font-title); font-size:1rem; color:#FCD34D;">"${m.phonetic}"</div>
+                </div>
+                <p style="font-size:0.82rem; color:var(--text-muted); line-height:1.5;">✨ <strong>Công năng:</strong> ${m.effect}</p>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
+        <!-- 4. Hệ thống 3 Thủ ấn -->
+        <div style="margin-bottom:2rem; border-top:1px solid rgba(255,255,255,0.1); padding-top:1.5rem;">
+          <h4 style="font-family:var(--font-title); font-size:1.25rem; color:var(--text-pure); margin-bottom:1rem;">${eso.mudras_system.title}</h4>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1rem;">
+            ${eso.mudras_system.mudras.map(mu => `
+              <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border-subtle); padding:1.2rem; border-radius:12px;">
+                <strong style="color:var(--jade-cyan); font-size:1rem; display:block; margin-bottom:0.3rem;">🤲 ${mu.name}</strong>
+                <div style="font-size:0.85rem; color:var(--text-pure); margin-bottom:0.4rem;"><strong>Thao tác kết ấn:</strong> ${mu.gesture}</div>
+                <div style="font-size:0.82rem; color:var(--text-muted); line-height:1.5;">👉 <strong>Ý nghĩa khoa nghi:</strong> ${mu.role}</div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
+        <!-- 5. Dấu hiệu Đắc linh & Phương pháp hồi linh -->
+        <div style="border-top:1px solid rgba(255,255,255,0.1); padding-top:1.5rem;">
+          <h4 style="font-family:var(--font-title); font-size:1.25rem; color:var(--text-pure); margin-bottom:1rem;">${eso.signs_and_remedies.title}</h4>
+          
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:1rem; margin-bottom:1rem;">
+            <!-- Đắc linh -->
+            <div style="background:rgba(16,185,129,0.05); border:1px solid #10B981; border-radius:10px; padding:1.2rem;">
+              <h5 style="color:#10B981; font-size:1rem; margin-bottom:0.6rem;">🟢 Dấu Hiệu Bát Hương "Đắc Linh":</h5>
+              <div style="display:flex; flex-direction:column; gap:0.5rem;">
+                ${eso.signs_and_remedies.signs_dac_linh.map(s => `
+                  <div style="font-size:0.85rem; color:var(--text-pure); line-height:1.5;">
+                    • <strong>${s.name}:</strong> <span style="color:var(--text-muted);">${s.desc}</span>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+
+            <!-- Mất linh -->
+            <div style="background:rgba(239,68,68,0.05); border:1px solid #EF4444; border-radius:10px; padding:1.2rem;">
+              <h5 style="color:#EF4444; font-size:1rem; margin-bottom:0.6rem;">🔴 Dấu Hiệu Bị "Mất Linh / Nhiễm Tà":</h5>
+              <div style="display:flex; flex-direction:column; gap:0.5rem;">
+                ${eso.signs_and_remedies.signs_mat_linh.map(s => `
+                  <div style="font-size:0.85rem; color:var(--text-pure); line-height:1.5;">
+                    • <strong>${s.name}:</strong> <span style="color:var(--text-muted);">${s.desc}</span>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+          </div>
+
+          <div style="background:rgba(245,158,11,0.08); border-left:3px solid #F59E0B; padding:1rem 1.2rem; border-radius:0 8px 8px 0; font-size:0.88rem; color:var(--text-pure); line-height:1.7;">
+            ⚡ <strong>Phương pháp Tái Tịnh Hóa (Hồi Linh Chi Pháp):</strong> ${eso.signs_and_remedies.remedy_protocol}
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
   // 2. MẠCH 1: Render Thư Tịch Cốt Lõi Địa Lý Phong Thủy
   const treatisesGrid = document.getElementById('geographic-treatises-grid');
   if (treatisesGrid && COSMIC_DATA.geographic_treatises) {
