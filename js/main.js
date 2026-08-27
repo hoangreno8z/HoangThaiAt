@@ -1101,6 +1101,624 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
   }
 
+  // =========================================================================
+  // BỘ RENDER CHUYÊN SÂU: ĐẠI BÁCH KHOA PHONG THỦY LOAN ĐẦU (8 TRỤ CỘT HỌC THUẬT)
+  // =========================================================================
+  function renderLoanDauAcademicSection(containerId, data, romanNum, tagTitle) {
+    const container = document.getElementById(containerId);
+    if (!container || !data) return;
+
+    container.innerHTML = `
+      <div style="background:var(--bg-card); border:2px solid #D97706; border-radius:16px; padding:2rem; margin-bottom:2.5rem; box-shadow:0 0 25px rgba(217,119,6,0.15);">
+        <!-- Header -->
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; margin-bottom:1.8rem; border-bottom:1px solid rgba(217,119,6,0.3); padding-bottom:1.2rem;">
+          <div>
+            <span style="font-size:0.75rem; color:#F59E0B; text-transform:uppercase; letter-spacing:1px; font-weight:800;">⛰️ PHONG THỦY LOAN ĐẦU • ${tagTitle}</span>
+            <h3 style="font-family:var(--font-title); font-size:1.5rem; color:#F59E0B; margin:0.3rem 0;">${data.chapter_title}</h3>
+            <div style="font-size:0.88rem; color:var(--text-muted);">${data.sub_title}</div>
+          </div>
+          <span style="background:rgba(245,158,11,0.15); color:#F59E0B; border:1px solid #F59E0B; font-size:0.82rem; font-weight:700; padding:0.35rem 0.9rem; border-radius:20px;">TIẾT ${romanNum} (LOAN ĐẦU)</span>
+        </div>
+
+        <!-- 1. Cổ Huấn Nguyên Văn -->
+        <div style="margin-bottom:2rem;">
+          <h4 style="font-family:var(--font-title); font-size:1.15rem; color:var(--gold-primary); margin-bottom:0.8rem;">1. 📜 Cổ Huấn Nguyên Văn & Xuất Xứ Thư Tịch Cổ</h4>
+          <div style="display:flex; flex-direction:column; gap:0.9rem;">
+            ${data.canonical_texts.map(ct => `
+              <div style="background:rgba(245,158,11,0.05); border-left:3px solid #F59E0B; padding:1rem 1.2rem; border-radius:0 8px 8px 0;">
+                <div style="font-family:'Noto Serif SC', serif; font-size:1.05rem; color:var(--gold-primary); letter-spacing:1px; margin-bottom:0.3rem;">${ct.hanzi}</div>
+                <div style="font-size:0.88rem; color:var(--text-pure); font-style:italic; margin-bottom:0.3rem;">"${ct.pinyin}"</div>
+                <div style="font-size:0.85rem; color:var(--text-muted); line-height:1.6; margin-bottom:0.4rem;">👉 <strong>Dịch nghĩa:</strong> ${ct.meaning}</div>
+                <div style="font-size:0.75rem; color:#F59E0B; font-weight:700;">📖 Nguồn gốc: ${ct.source}</div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
+        <!-- 2. Giải Nghĩa Học Thuật & Danh Sư Đối Chiếu -->
+        <div style="margin-bottom:2rem; border-top:1px solid var(--border-subtle); padding-top:1.5rem;">
+          <h4 style="font-family:var(--font-title); font-size:1.15rem; color:var(--jade-cyan); margin-bottom:0.8rem;">2. 🎓 Giải Nghĩa Học Thuật & Đối Chiếu Danh Sư</h4>
+          <!-- Từ điển thuật ngữ -->
+          <div style="margin-bottom:1rem;">
+            <div style="font-size:0.82rem; color:var(--text-muted); font-weight:700; margin-bottom:0.5rem; text-transform:uppercase;">📖 Bảng Việt Hóa Thuật Ngữ:</div>
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:0.6rem;">
+              ${data.scholarly_analysis.term_glossary.map(tg => `
+                <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border-subtle); padding:0.6rem 0.9rem; border-radius:8px; font-size:0.82rem;">
+                  <strong style="color:var(--gold-primary);">${tg.term}</strong> <span style="color:#94A3B8;">(${tg.hanzi})</span>: <span style="color:var(--text-pure);">${tg.plain_vn}</span>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+          <!-- Quan điểm Danh sư -->
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:0.9rem;">
+            ${data.scholarly_analysis.masters_views.map(mv => `
+              <div style="background:rgba(13,17,26,0.9); border:1px solid var(--border-subtle); border-radius:10px; padding:1rem 1.2rem;">
+                <strong style="color:var(--jade-cyan); font-size:0.92rem; display:block; margin-bottom:0.4rem;">🧑‍🏫 ${mv.master}</strong>
+                <p style="font-size:0.84rem; color:var(--text-muted); line-height:1.6;">${mv.perspective}</p>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
+        <!-- 3. Quy Luật Cốt Lõi (Bảng IF-THEN / Ma Trận Cát Hung) -->
+        <div style="margin-bottom:2rem; border-top:1px solid var(--border-subtle); padding-top:1.5rem;">
+          <h4 style="font-family:var(--font-title); font-size:1.15rem; color:var(--text-pure); margin-bottom:0.8rem;">3. ⚖️ Quy Luật & Công Thức Cốt Lõi (Cát vs Hung)</h4>
+          ${data.core_rules.rule_table ? `
+            <div style="display:flex; flex-direction:column; gap:0.7rem; margin-bottom:1rem;">
+              ${data.core_rules.rule_table.map(r => `
+                <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border-subtle); border-radius:8px; padding:0.8rem 1.1rem; font-size:0.84rem;">
+                  <div style="color:#60A5FA; font-weight:700; margin-bottom:0.2rem;">🔹 ${r.condition}</div>
+                  <div style="color:#34D399; font-weight:600; margin-bottom:0.2rem;">👉 ${r.result}</div>
+                  <div style="color:var(--text-muted); font-size:0.8rem; font-style:italic;">💡 ${r.principle}</div>
+                </div>
+              `).join('')}
+            </div>
+          ` : ''}
+          ${data.core_rules.ngu_bat_kha_tang ? `
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:0.8rem; margin-bottom:1rem;">
+              ${data.core_rules.ngu_bat_kha_tang.map(nb => `
+                <div style="background:rgba(13,17,26,0.9); border:1px solid rgba(239,68,68,0.25); border-radius:10px; padding:1rem;">
+                  <strong style="color:#F87171; font-size:0.95rem;">⚠️ ${nb.name}</strong>
+                  <div style="font-size:0.82rem; color:var(--text-pure); margin:0.3rem 0;"><strong>Đặc điểm:</strong> ${nb.trait}</div>
+                  <div style="font-size:0.8rem; color:#FCD34D;">👉 <strong>Hậu quả:</strong> ${nb.hazard}</div>
+                </div>
+              `).join('')}
+            </div>
+          ` : ''}
+          ${data.core_rules.five_elements_forms ? `
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:0.8rem; margin-bottom:1rem;">
+              ${data.core_rules.five_elements_forms.map(f => `
+                <div style="background:rgba(13,17,26,0.9); border:1px solid var(--border-subtle); border-radius:10px; padding:1rem;">
+                  <strong style="color:var(--gold-primary); font-size:0.95rem;">⛰️ ${f.element}</strong>
+                  <div style="font-size:0.82rem; color:var(--text-pure); margin:0.3rem 0;"><strong>Hình dáng:</strong> ${f.shape}</div>
+                  <div style="font-size:0.8rem; color:#34D399; margin-bottom:0.3rem;">${f.fortune}</div>
+                  <div style="font-size:0.78rem; color:var(--text-muted);">🏙️ <strong>Kiến trúc:</strong> ${f.color_arch}</div>
+                </div>
+              `).join('')}
+            </div>
+          ` : ''}
+          ${data.core_rules.hierarchy_chain ? `
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:0.8rem; margin-bottom:1rem;">
+              ${data.core_rules.hierarchy_chain.map(hc => `
+                <div style="background:rgba(13,17,26,0.9); border:1px solid var(--border-subtle); border-radius:10px; padding:1rem;">
+                  <strong style="color:var(--gold-primary); font-size:0.95rem;">⛰️ ${hc.level}</strong>
+                  <p style="font-size:0.82rem; color:var(--text-muted); margin-top:0.3rem; line-height:1.5;">${hc.desc}</p>
+                </div>
+              `).join('')}
+            </div>
+          ` : ''}
+          ${data.core_rules.four_archetypes ? `
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:0.8rem; margin-bottom:1rem;">
+              ${data.core_rules.four_archetypes.map(a => `
+                <div style="background:rgba(13,17,26,0.9); border:1px solid var(--border-subtle); border-radius:10px; padding:1rem;">
+                  <strong style="color:#F59E0B; font-size:0.95rem;">📍 ${a.name}</strong>
+                  <div style="font-size:0.82rem; color:var(--text-pure); margin:0.3rem 0;"><strong>Hình thế:</strong> ${a.shape}</div>
+                  <div style="font-size:0.8rem; color:var(--jade-cyan);">${a.key_point}</div>
+                </div>
+              `).join('')}
+            </div>
+          ` : ''}
+          ${data.core_rules.twenty_four_fatal_spots ? `
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:0.8rem; margin-bottom:1rem;">
+              ${data.core_rules.twenty_four_fatal_spots.map(fs => `
+                <div style="background:rgba(13,17,26,0.9); border:1px solid rgba(239,68,68,0.25); border-radius:10px; padding:1rem;">
+                  <strong style="color:#F87171; font-size:0.92rem;">⚠️ ${fs.category}</strong>
+                  <div style="font-size:0.8rem; color:var(--text-muted); margin-top:0.3rem; line-height:1.5;">${fs.examples}</div>
+                </div>
+              `).join('')}
+            </div>
+          ` : ''}
+          ${data.core_rules.four_emblems ? `
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:0.8rem; margin-bottom:1rem;">
+              ${data.core_rules.four_emblems.map(e => `
+                <div style="background:rgba(13,17,26,0.9); border:1px solid var(--border-subtle); border-radius:10px; padding:1rem;">
+                  <strong style="color:var(--gold-primary); font-size:0.95rem;">🛡️ ${e.pos}</strong>
+                  <div style="font-size:0.82rem; color:var(--text-pure); margin:0.3rem 0;"><strong>Chuẩn mực:</strong> ${e.standard}</div>
+                  <div style="font-size:0.8rem; color:#34D399; margin-bottom:0.2rem;">👉 <strong>Chủ về:</strong> ${e.fortune}</div>
+                  <div style="font-size:0.78rem; color:#F87171;">⚠️ <strong>Cấm kỵ:</strong> ${e.taboo}</div>
+                </div>
+              `).join('')}
+            </div>
+          ` : ''}
+          ${data.core_rules.four_extraordinary_sands ? `
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:0.8rem; margin-bottom:1rem;">
+              ${data.core_rules.four_extraordinary_sands.map(s => `
+                <div style="background:rgba(13,17,26,0.9); border:1px solid var(--border-subtle); border-radius:10px; padding:1rem;">
+                  <strong style="color:var(--jade-cyan); font-size:0.92rem;">✨ ${s.name}</strong>
+                  <div style="font-size:0.8rem; color:var(--text-muted); margin-top:0.3rem; line-height:1.5;">${s.role}</div>
+                </div>
+              `).join('')}
+            </div>
+          ` : ''}
+          ${data.core_rules.water_matrix ? `
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:0.8rem; margin-bottom:1rem;">
+              ${data.core_rules.water_matrix.map(w => `
+                <div style="background:rgba(13,17,26,0.9); border:1px solid var(--border-subtle); border-radius:10px; padding:1rem;">
+                  <strong style="color:#60A5FA; font-size:0.95rem;">🌊 ${w.name}</strong>
+                  <div style="font-size:0.82rem; color:var(--text-pure); margin:0.3rem 0;"><strong>Hình thế:</strong> ${w.shape}</div>
+                  <div style="font-size:0.8rem; color:${w.fortune.includes('HUNG') ? '#F87171' : '#34D399'};">${w.fortune}</div>
+                </div>
+              `).join('')}
+            </div>
+          ` : ''}
+          ${data.core_rules.ngu_hu_ngu_thuc ? `
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:0.9rem; margin-bottom:1rem;">
+              ${data.core_rules.ngu_hu_ngu_thuc.map(nh => `
+                <div style="background:rgba(13,17,26,0.9); border:1px solid ${nh.type.includes('HƯ') ? 'rgba(239,68,68,0.3)' : 'rgba(52,211,153,0.3)'}; border-radius:10px; padding:1.1rem;">
+                  <strong style="color:${nh.type.includes('HƯ') ? '#F87171' : '#34D399'}; font-size:0.92rem; display:block; margin-bottom:0.4rem;">${nh.type}</strong>
+                  <p style="font-size:0.82rem; color:var(--text-muted); line-height:1.6;">${nh.detail}</p>
+                </div>
+              `).join('')}
+            </div>
+          ` : ''}
+          ${data.core_rules.twenty_eight_shas ? `
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:0.8rem; margin-bottom:1rem; max-height:550px; overflow-y:auto; padding-right:0.5rem;">
+              ${data.core_rules.twenty_eight_shas.map(s => `
+                <div style="background:rgba(13,17,26,0.9); border:1px solid rgba(239,68,68,0.25); border-radius:10px; padding:0.9rem;">
+                  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.3rem;">
+                    <span style="font-size:0.75rem; color:#EF4444; font-weight:800; background:rgba(239,68,68,0.1); padding:0.1rem 0.5rem; border-radius:4px;">${s.id}</span>
+                    <strong style="color:var(--gold-primary); font-size:0.88rem;">${s.name}</strong>
+                  </div>
+                  <div style="font-size:0.8rem; color:var(--text-pure); margin-bottom:0.3rem;"><strong>Hình thế:</strong> ${s.form}</div>
+                  <div style="font-size:0.78rem; color:${s.danger.includes('CỰC HUNG') ? '#F87171' : '#FCD34D'}; line-height:1.5;">${s.danger}</div>
+                </div>
+              `).join('')}
+            </div>
+          ` : ''}
+          ${data.core_rules.interior_matrix ? `
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:0.9rem; margin-bottom:1rem;">
+              ${data.core_rules.interior_matrix.map(im => `
+                <div style="background:rgba(13,17,26,0.9); border:1px solid var(--border-subtle); border-radius:10px; padding:1.1rem;">
+                  <strong style="color:var(--gold-primary); font-size:0.95rem; display:block; margin-bottom:0.4rem;">🚪 ${im.component}</strong>
+                  <div style="font-size:0.8rem; color:#F87171; margin-bottom:0.4rem;">⚠️ <strong>Cấm kỵ:</strong> ${im.taboos}</div>
+                  <div style="font-size:0.8rem; color:#34D399;">✨ <strong>Chuẩn mực vàng:</strong> ${im.golden_rule}</div>
+                </div>
+              `).join('')}
+            </div>
+          ` : ''}
+          ${data.core_rules.score_matrix_100 ? `
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:0.8rem; margin-bottom:1rem;">
+              ${data.core_rules.score_matrix_100.map(sm => `
+                <div style="background:rgba(13,17,26,0.9); border:1px solid var(--border-subtle); border-radius:10px; padding:1rem;">
+                  <strong style="color:var(--jade-cyan); font-size:0.92rem;">📊 ${sm.pillar}</strong>
+                  <div style="font-size:0.8rem; color:var(--text-muted); margin-top:0.3rem; line-height:1.5;">${sm.criteria}</div>
+                </div>
+              `).join('')}
+            </div>
+          ` : ''}
+          ${data.core_rules.rating_scale ? `
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:0.8rem; margin-bottom:1rem;">
+              ${data.core_rules.rating_scale.map(rs => `
+                <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border-subtle); border-radius:8px; padding:0.8rem 1rem;">
+                  <strong style="color:var(--gold-primary); font-size:0.88rem;">🎯 ${rs.score_range}</strong>
+                  <div style="font-size:0.8rem; color:var(--text-pure); margin-top:0.2rem;">${rs.verdict}</div>
+                </div>
+              `).join('')}
+            </div>
+          ` : ''}
+          ${data.core_rules.nine_palaces_matrix ? `
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:0.8rem; margin-bottom:1rem;">
+              ${data.core_rules.nine_palaces_matrix.map(np => `
+                <div style="background:rgba(13,17,26,0.9); border:1px solid var(--border-subtle); border-radius:10px; padding:1rem;">
+                  <strong style="color:#60A5FA; font-size:0.95rem;">🧭 ${np.num}</strong>
+                  <div style="font-size:0.82rem; color:var(--gold-primary); margin:0.3rem 0;">📍 <strong>Hướng:</strong> ${np.direction} (${np.element})</div>
+                  <div style="font-size:0.8rem; color:var(--text-muted); line-height:1.5;">${np.symbol}</div>
+                </div>
+              `).join('')}
+            </div>
+          ` : ''}
+          ${data.core_rules.cung_phi_formula ? `
+            <div style="display:flex; flex-direction:column; gap:0.8rem; margin-bottom:1rem;">
+              ${data.core_rules.cung_phi_formula.map(cf => `
+                <div style="background:rgba(59,130,246,0.05); border-left:3px solid #60A5FA; padding:0.9rem 1.1rem; border-radius:0 8px 8px 0; font-size:0.84rem;">
+                  <strong style="color:#60A5FA; display:block; margin-bottom:0.3rem;">📐 ${cf.target}</strong>
+                  <div style="color:var(--text-pure); line-height:1.6; white-space:pre-line;">${cf.steps}</div>
+                </div>
+              `).join('')}
+            </div>
+          ` : ''}
+          ${data.core_rules.eight_gua_people_matrix ? `
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:0.8rem; margin-bottom:1rem;">
+              ${data.core_rules.eight_gua_people_matrix.map(eg => `
+                <div style="background:rgba(13,17,26,0.9); border:1px solid var(--border-subtle); border-radius:10px; padding:1rem;">
+                  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.3rem;">
+                    <strong style="color:var(--gold-primary); font-size:0.95rem;">${eg.gua}</strong>
+                    <span style="font-size:0.75rem; color:${eg.group.includes('ĐÔNG') ? '#34D399' : '#F59E0B'}; font-weight:700;">${eg.group}</span>
+                  </div>
+                  <div style="font-size:0.8rem; color:var(--jade-cyan); margin-bottom:0.3rem;">✨ Ngũ hành: ${eg.element}</div>
+                  <div style="font-size:0.78rem; color:var(--text-muted); line-height:1.5;">👉 <strong>Hướng tốt:</strong> ${eg.good_dirs}</div>
+                </div>
+              `).join('')}
+            </div>
+          ` : ''}
+          ${data.core_rules.eight_houses_matrix ? `
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:0.8rem; margin-bottom:1rem;">
+              ${data.core_rules.eight_houses_matrix.map(eh => `
+                <div style="background:rgba(13,17,26,0.9); border:1px solid var(--border-subtle); border-radius:10px; padding:1rem;">
+                  <strong style="color:#60A5FA; font-size:0.95rem;">🏠 ${eh.house}</strong>
+                  <div style="font-size:0.82rem; color:var(--gold-primary); margin:0.2rem 0;">📍 <strong>Tọa hướng:</strong> ${eh.sitting_facing}</div>
+                  <div style="font-size:0.78rem; color:var(--text-muted); line-height:1.5;">${eh.doors}</div>
+                </div>
+              `).join('')}
+            </div>
+          ` : ''}
+          ${data.core_rules.eight_stars_detail ? `
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:0.8rem; margin-bottom:1rem;">
+              ${data.core_rules.eight_stars_detail.map(es => `
+                <div style="background:rgba(13,17,26,0.9); border:1px solid ${es.nature.includes('CÁT') ? 'rgba(52,211,153,0.3)' : 'rgba(239,68,68,0.3)'}; border-radius:10px; padding:1rem;">
+                  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.3rem;">
+                    <strong style="color:${es.nature.includes('CÁT') ? 'var(--gold-primary)' : '#F87171'}; font-size:0.92rem;">⭐ ${es.star}</strong>
+                    <span style="font-size:0.75rem; color:${es.nature.includes('CÁT') ? '#34D399' : '#F87171'}; font-weight:800;">${es.nature}</span>
+                  </div>
+                  <div style="font-size:0.8rem; color:var(--text-muted); line-height:1.5;">${es.impact}</div>
+                </div>
+              `).join('')}
+            </div>
+          ` : ''}
+          ${data.core_rules.hexagram_transformation_rules ? `
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:0.8rem; margin-bottom:1rem;">
+              ${data.core_rules.hexagram_transformation_rules.map(ht => `
+                <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border-subtle); border-radius:10px; padding:1rem;">
+                  <strong style="color:#60A5FA; font-size:0.9rem; display:block; margin-bottom:0.2rem;">⚡ ${ht.change}</strong>
+                  <div style="font-size:0.82rem; color:#34D399; font-weight:700; margin-bottom:0.2rem;">👉 Tạo sao: ${ht.creates_star}</div>
+                  <div style="font-size:0.78rem; color:var(--text-muted); line-height:1.5;">💡 ${ht.example}</div>
+                </div>
+              `).join('')}
+            </div>
+          ` : ''}
+          ${data.core_rules.tam_yeu_matrix ? `
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:0.8rem; margin-bottom:1rem;">
+              ${data.core_rules.tam_yeu_matrix.map(ty => `
+                <div style="background:rgba(13,17,26,0.9); border:1px solid var(--border-subtle); border-radius:10px; padding:1.1rem;">
+                  <strong style="color:var(--gold-primary); font-size:0.95rem; display:block; margin-bottom:0.3rem;">🚪 ${ty.pattern}</strong>
+                  <div style="font-size:0.82rem; color:var(--jade-cyan); margin-bottom:0.3rem;">🛌 <strong>Chủ:</strong> ${ty.best_host}</div>
+                  <div style="font-size:0.82rem; color:#F59E0B;">🔥 <strong>Táo:</strong> ${ty.best_kitchen}</div>
+                </div>
+              `).join('')}
+            </div>
+          ` : ''}
+          ${data.core_rules.twenty_four_mountains_map ? `
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:0.8rem; margin-bottom:1rem;">
+              ${data.core_rules.twenty_four_mountains_map.map(tm => `
+                <div style="background:rgba(13,17,26,0.9); border:1px solid var(--border-subtle); border-radius:10px; padding:1rem;">
+                  <strong style="color:#60A5FA; font-size:0.92rem;">🧭 ${tm.gua}</strong>
+                  <div style="font-size:0.8rem; color:var(--text-muted); margin-top:0.3rem; line-height:1.5;">${tm.mountains}</div>
+                </div>
+              `).join('')}
+            </div>
+          ` : ''}
+          ${data.core_rules.kitchen_toilet_altar_rules ? `
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:0.9rem; margin-bottom:1rem;">
+              ${data.core_rules.kitchen_toilet_altar_rules.map(kt => `
+                <div style="background:rgba(13,17,26,0.9); border:1px solid var(--border-subtle); border-radius:10px; padding:1.1rem;">
+                  <strong style="color:var(--gold-primary); font-size:0.95rem; display:block; margin-bottom:0.3rem;">🏛️ ${kt.facility}</strong>
+                  <div style="font-size:0.82rem; color:#F87171; margin-bottom:0.3rem;">${kt.sitting}</div>
+                  ${kt.facing ? `<div style="font-size:0.82rem; color:#34D399;">${kt.facing}</div>` : ''}
+                </div>
+              `).join('')}
+            </div>
+          ` : ''}
+          ${data.core_rules.five_remedy_methods ? `
+            <div style="display:flex; flex-direction:column; gap:0.7rem; margin-bottom:1rem;">
+              ${data.core_rules.five_remedy_methods.map(fr => `
+                <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border-subtle); border-radius:8px; padding:0.9rem 1.1rem; font-size:0.84rem;">
+                  <strong style="color:#60A5FA; display:block; margin-bottom:0.2rem;">🔧 ${fr.method}</strong>
+                  <div style="color:var(--text-muted); line-height:1.5;">${fr.mechanism}</div>
+                </div>
+              `).join('')}
+            </div>
+          ` : ''}
+          ${data.core_rules.master_decision_matrix ? `
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:0.8rem; margin-bottom:1rem;">
+              ${data.core_rules.master_decision_matrix.map(md => `
+                <div style="background:rgba(13,17,26,0.9); border:1px solid var(--border-subtle); border-radius:10px; padding:1rem;">
+                  <strong style="color:var(--gold-primary); font-size:0.9rem;">⭐ ${md.step}</strong>
+                  <div style="font-size:0.8rem; color:var(--text-muted); margin-top:0.3rem; line-height:1.5;">${md.content}</div>
+                </div>
+              `).join('')}
+            </div>
+          ` : ''}
+          ${data.core_rules.twelve_life_stages ? `
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:0.8rem; margin-bottom:1rem;">
+              ${data.core_rules.twelve_life_stages.map(ls => `
+                <div style="background:rgba(13,17,26,0.9); border:1px solid var(--border-subtle); border-radius:10px; padding:1rem;">
+                  <strong style="color:var(--gold-primary); font-size:0.95rem; display:block; margin-bottom:0.2rem;">🌱 ${ls.stage}</strong>
+                  <div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:0.3rem;">💡 ${ls.meaning}</div>
+                  <div style="font-size:0.8rem; color:${ls.impact.includes('CÁT') ? '#34D399' : '#F87171'}; font-weight:600;">👉 ${ls.impact}</div>
+                </div>
+              `).join('')}
+            </div>
+          ` : ''}
+          ${data.core_rules.four_great_bureaus ? `
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:0.9rem; margin-bottom:1rem;">
+              ${data.core_rules.four_great_bureaus.map(fb => `
+                <div style="background:rgba(13,17,26,0.9); border:1px solid var(--border-subtle); border-radius:10px; padding:1.1rem;">
+                  <strong style="color:#60A5FA; font-size:0.95rem; display:block; margin-bottom:0.3rem;">🌊 ${fb.bureau}</strong>
+                  <div style="font-size:0.82rem; color:var(--gold-primary); margin-bottom:0.2rem;">🚪 <strong>Thủy Khẩu:</strong> ${fb.water_exit}</div>
+                  <div style="font-size:0.8rem; color:var(--text-muted); line-height:1.5;">✨ ${fb.vital_spots}</div>
+                </div>
+              `).join('')}
+            </div>
+          ` : ''}
+          ${data.core_rules.twelve_waters_matrix ? `
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:0.8rem; margin-bottom:1rem;">
+              ${data.core_rules.twelve_waters_matrix.map(tw => `
+                <div style="background:rgba(13,17,26,0.9); border:1px solid ${tw.nature.includes('CÁT') ? 'rgba(52,211,153,0.3)' : 'rgba(239,68,68,0.3)'}; border-radius:10px; padding:1rem;">
+                  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.3rem;">
+                    <strong style="color:var(--text-pure); font-size:0.9rem;">💧 ${tw.pos}</strong>
+                    <span style="font-size:0.75rem; color:${tw.nature.includes('CÁT') ? '#34D399' : '#F87171'}; font-weight:800;">${tw.nature}</span>
+                  </div>
+                  <div style="font-size:0.8rem; color:var(--text-muted); line-height:1.5;">${tw.fortune}</div>
+                </div>
+              `).join('')}
+            </div>
+          ` : ''}
+          ${data.core_rules.four_water_exits ? `
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:0.8rem; margin-bottom:1rem;">
+              ${data.core_rules.four_water_exits.map(fe => `
+                <div style="background:rgba(13,17,26,0.9); border:1px solid var(--border-subtle); border-radius:10px; padding:1rem;">
+                  <strong style="color:var(--gold-primary); font-size:0.92rem;">🔒 ${fe.exit}</strong>
+                  <div style="font-size:0.8rem; color:#34D399; font-weight:700; margin:0.2rem 0;">Cục: ${fe.bureau}</div>
+                  <div style="font-size:0.78rem; color:var(--text-muted); line-height:1.5;">${fe.mechanism}</div>
+                </div>
+              `).join('')}
+            </div>
+          ` : ''}
+          ${data.core_rules.three_plates_matrix ? `
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:0.9rem; margin-bottom:1rem;">
+              ${data.core_rules.three_plates_matrix.map(tp => `
+                <div style="background:rgba(13,17,26,0.9); border:1px solid var(--border-subtle); border-radius:10px; padding:1.1rem;">
+                  <strong style="color:#60A5FA; font-size:0.95rem; display:block; margin-bottom:0.2rem;">🧭 ${tp.plate}</strong>
+                  <div style="font-size:0.8rem; color:var(--gold-primary); margin-bottom:0.3rem;">📐 Độ lệch: ${tp.offset}</div>
+                  <div style="font-size:0.8rem; color:var(--text-muted); line-height:1.5;">🎯 <strong>Công năng:</strong> ${tp.usage}</div>
+                </div>
+              `).join('')}
+            </div>
+          ` : ''}
+          ${data.core_rules.five_types_of_sha ? `
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:0.8rem; margin-bottom:1rem;">
+              ${data.core_rules.five_types_of_sha.map(fs => `
+                <div style="background:rgba(13,17,26,0.9); border:1px solid var(--border-subtle); border-radius:10px; padding:1rem;">
+                  <strong style="color:var(--gold-primary); font-size:0.92rem; display:block; margin-bottom:0.2rem;">🏔️ ${fs.type}</strong>
+                  <div style="font-size:0.8rem; color:#60A5FA; margin-bottom:0.2rem;">📐 ${fs.formula}</div>
+                  <div style="font-size:0.78rem; color:var(--text-muted); line-height:1.5;">${fs.result}</div>
+                </div>
+              `).join('')}
+            </div>
+          ` : ''}
+          ${data.core_rules.eight_yellow_spring_routes ? `
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:0.9rem; margin-bottom:1rem;">
+              ${data.core_rules.eight_yellow_spring_routes.map(ys => `
+                <div style="background:rgba(13,17,26,0.9); border:1px solid var(--border-subtle); border-radius:10px; padding:1.1rem;">
+                  <strong style="color:var(--text-pure); font-size:0.92rem; display:block; margin-bottom:0.3rem;">🏠 ${ys.facing}</strong>
+                  <div style="font-size:0.82rem; color:#F87171; margin-bottom:0.3rem;">💀 ${ys.killer_water}</div>
+                  <div style="font-size:0.82rem; color:#34D399;">💰 ${ys.savior_water}</div>
+                </div>
+              `).join('')}
+            </div>
+          ` : ''}
+          ${data.core_rules.eight_fatal_shas ? `
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:0.8rem; margin-bottom:1rem;">
+              ${data.core_rules.eight_fatal_shas.map(ef => `
+                <div style="background:rgba(13,17,26,0.9); border:1px solid rgba(239,68,68,0.3); border-radius:10px; padding:1rem;">
+                  <strong style="color:var(--gold-primary); font-size:0.9rem; display:block; margin-bottom:0.2rem;">🏛️ ${ef.sitting}</strong>
+                  <div style="font-size:0.82rem; color:#F87171; font-weight:700; margin-bottom:0.2rem;">⚠️ ${ef.fatal_sha}</div>
+                  <div style="font-size:0.78rem; color:var(--text-muted); line-height:1.5;">💡 ${ef.cause}</div>
+                </div>
+              `).join('')}
+            </div>
+          ` : ''}
+          ${data.core_rules.urban_water_engineering_matrix ? `
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:0.8rem; margin-bottom:1rem;">
+              ${data.core_rules.urban_water_engineering_matrix.map(uw => `
+                <div style="background:rgba(13,17,26,0.9); border:1px solid var(--border-subtle); border-radius:10px; padding:1rem;">
+                  <strong style="color:#34D399; font-size:0.92rem; display:block; margin-bottom:0.2rem;">🏊 ${uw.component}</strong>
+                  <div style="font-size:0.8rem; color:var(--gold-primary); margin-bottom:0.2rem;">📍 <strong>Vị trí:</strong> ${uw.location}</div>
+                  <div style="font-size:0.78rem; color:var(--text-muted); line-height:1.5;">${uw.standard}</div>
+                </div>
+              `).join('')}
+            </div>
+          ` : ''}
+          ${data.core_rules.master_integration_framework ? `
+            <div style="display:flex; flex-direction:column; gap:0.8rem; margin-bottom:1rem;">
+              ${data.core_rules.master_integration_framework.map(mi => `
+                <div style="background:rgba(255,255,255,0.02); border-left:3px solid var(--gold-primary); padding:0.9rem 1.1rem; border-radius:0 8px 8px 0; font-size:0.84rem;">
+                  <strong style="color:var(--gold-primary); display:block; margin-bottom:0.3rem;">⭐ ${mi.layer}</strong>
+                  <div style="color:var(--text-muted); line-height:1.6;">${mi.action}</div>
+                </div>
+              `).join('')}
+            </div>
+          ` : ''}
+        </div>
+
+        <!-- 4. Áp Dụng Cho 8 Phân Tầng Bất Động Sản -->
+        <div style="margin-bottom:2rem; border-top:1px solid var(--border-subtle); padding-top:1.5rem;">
+          <h4 style="font-family:var(--font-title); font-size:1.15rem; color:var(--gold-primary); margin-bottom:0.8rem;">4. 🏠 Hướng Dẫn Thực Hành Theo Từng Loại Bất Động Sản (8 Đối Tượng)</h4>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:0.8rem;">
+            ${data.real_estate_applications.map(app => `
+              <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border-subtle); border-radius:10px; padding:1rem;">
+                <strong style="color:var(--jade-cyan); font-size:0.9rem; display:block; margin-bottom:0.3rem;">🏢 ${app.category}</strong>
+                <p style="font-size:0.82rem; color:var(--text-muted); line-height:1.6;">${app.action_guide}</p>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
+        <!-- 5. Checklist Tự Đánh Giá -->
+        <div style="margin-bottom:2rem; border-top:1px solid var(--border-subtle); padding-top:1.5rem;">
+          <h4 style="font-family:var(--font-title); font-size:1.15rem; color:#34D399; margin-bottom:0.8rem;">5. ✅ ${data.actionable_checklist.title} (Dành Cho Người Không Chuyên)</h4>
+          <div style="display:flex; flex-direction:column; gap:0.6rem;">
+            ${data.actionable_checklist.steps.map(st => `
+              <div style="background:rgba(52,211,153,0.05); border-left:3px solid #34D399; padding:0.8rem 1.1rem; border-radius:0 8px 8px 0; font-size:0.84rem;">
+                <strong style="color:#34D399; display:block; margin-bottom:0.2rem;">📋 ${st.step}</strong>
+                <div style="color:var(--text-pure); line-height:1.5;">${st.instruction}</div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
+        <!-- 6. Phương Pháp Hóa Giải & Chi Phí -->
+        <div style="margin-bottom:2rem; border-top:1px solid var(--border-subtle); padding-top:1.5rem;">
+          <h4 style="font-family:var(--font-title); font-size:1.15rem; color:#F59E0B; margin-bottom:0.8rem;">6. 🔧 ${data.remedy_framework.title} (Đa Tầng & Chi Phí Ước Tính)</h4>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:0.9rem;">
+            ${data.remedy_framework.remedies.map(r => `
+              <div style="background:rgba(13,17,26,0.9); border:1px solid rgba(245,158,11,0.25); border-radius:10px; padding:1.1rem;">
+                <strong style="color:#F87171; font-size:0.92rem; display:block; margin-bottom:0.4rem;">⚠️ Lỗi phạm: ${r.flaw}</strong>
+                <div style="font-size:0.82rem; color:var(--text-pure); margin-bottom:0.3rem;">🏗️ <strong>Vật lý/Kiến trúc:</strong> ${r.physical_fix}</div>
+                ${r.fengshui_fix ? `<div style="font-size:0.82rem; color:var(--gold-primary); margin-bottom:0.3rem;">☯️ <strong>Khí học:</strong> ${r.fengshui_fix}</div>` : ''}
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-top:0.5rem; font-size:0.78rem; background:rgba(0,0,0,0.3); padding:0.4rem 0.6rem; border-radius:6px;">
+                  <span style="color:#FCD34D;">💰 Chi phí: <strong>${r.cost_level}</strong></span>
+                  <span style="color:#A7F3D0;">👉 ${r.recommendation}</span>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
+        <!-- 7. Mức Độ Tin Cậy & 8. Thực Nghiệm Việt Nam -->
+        <div style="border-top:1px solid var(--border-subtle); padding-top:1.5rem; display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:1.2rem;">
+          <div>
+            <h4 style="font-family:var(--font-title); font-size:1.1rem; color:#A78BFA; margin-bottom:0.6rem;">7. ⚠️ Đánh Giá Mức Độ Tin Cậy</h4>
+            <div style="display:flex; flex-direction:column; gap:0.5rem;">
+              ${data.reliability_evaluation.map(re => `
+                <div style="background:rgba(167,139,250,0.05); border-left:2px solid #A78BFA; padding:0.6rem 0.9rem; border-radius:0 6px 6px 0; font-size:0.8rem; color:var(--text-muted); line-height:1.5;">
+                  <strong style="color:#C4B5FD;">${re.level}</strong>: ${re.content}
+                </div>
+              `).join('')}
+            </div>
+          </div>
+          <div>
+            <h4 style="font-family:var(--font-title); font-size:1.1rem; color:var(--jade-cyan); margin-bottom:0.6rem;">8. 🗺️ Thực Nghiệm Hiện Trường Tại Việt Nam</h4>
+            <div style="display:flex; flex-direction:column; gap:0.5rem;">
+              ${data.vietnam_case_studies.map(cs => `
+                <div style="background:rgba(45,212,191,0.05); border-left:2px solid var(--jade-cyan); padding:0.6rem 0.9rem; border-radius:0 6px 6px 0; font-size:0.8rem; color:var(--text-muted); line-height:1.5;">
+                  <strong style="color:var(--jade-cyan);">${cs.location}</strong>: ${cs.analysis}
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  // Render 6 Tiết Loan Đầu Chánh Tông
+  if (typeof LOANDAU_FENGSHUI_PART_1 !== 'undefined') {
+    renderLoanDauAcademicSection('loandau-part1-container', LOANDAU_FENGSHUI_PART_1, 'I', 'BẢN THỂ LUẬN & LONG MẠCH');
+  }
+  if (typeof LOANDAU_FENGSHUI_PART_2 !== 'undefined') {
+    renderLoanDauAcademicSection('loandau-part2-container', LOANDAU_FENGSHUI_PART_2, 'II', 'NGŨ HÀNH & CỬU TINH');
+  }
+  if (typeof LOANDAU_FENGSHUI_PART_3 !== 'undefined') {
+    renderLoanDauAcademicSection('loandau-part3-container', LOANDAU_FENGSHUI_PART_3, 'III', 'TẦM LONG & BÁC HOÁN');
+  }
+  if (typeof LOANDAU_FENGSHUI_PART_4 !== 'undefined') {
+    renderLoanDauAcademicSection('loandau-part4-container', LOANDAU_FENGSHUI_PART_4, 'IV', 'ĐIỂM HUYỆT & 24 HUNG HUYỆT');
+  }
+  if (typeof LOANDAU_FENGSHUI_PART_5 !== 'undefined') {
+    renderLoanDauAcademicSection('loandau-part5-container', LOANDAU_FENGSHUI_PART_5, 'V', 'KHẢO SA & TỨ LINH');
+  }
+  if (typeof LOANDAU_FENGSHUI_PART_6 !== 'undefined') {
+    renderLoanDauAcademicSection('loandau-part6-container', LOANDAU_FENGSHUI_PART_6, 'VI', 'THẨM THỦY & THỦY KHẨU');
+  }
+  if (typeof LOANDAU_FENGSHUI_PART_7 !== 'undefined') {
+    renderLoanDauAcademicSection('loandau-part7-container', LOANDAU_FENGSHUI_PART_7, 'VII', 'DƯƠNG TRẠCH & MINH ĐƯỜNG');
+  }
+  if (typeof LOANDAU_FENGSHUI_PART_8 !== 'undefined') {
+    renderLoanDauAcademicSection('loandau-part8-container', LOANDAU_FENGSHUI_PART_8, 'VIII', '28 ĐẠI SÁT KHÍ ĐÔ THỊ');
+  }
+  if (typeof LOANDAU_FENGSHUI_PART_9 !== 'undefined') {
+    renderLoanDauAcademicSection('loandau-part9-container', LOANDAU_FENGSHUI_PART_9, 'IX', 'NỘI CỤC LOAN ĐẦU');
+  }
+  if (typeof LOANDAU_FENGSHUI_PART_10 !== 'undefined') {
+    renderLoanDauAcademicSection('loandau-part10-container', LOANDAU_FENGSHUI_PART_10, 'X', 'ĐẠI TỔNG KẾT & CẢI MỆNH');
+  }
+
+  // Render 10 Tiết Bát Trạch Chánh Tông
+  if (typeof BATTRACH_FENGSHUI_PART_1 !== 'undefined') {
+    renderLoanDauAcademicSection('battrach-part1-container', BATTRACH_FENGSHUI_PART_1, 'I', 'HÀ ĐỒ LẠC THƯ & CỬU CUNG');
+  }
+  if (typeof BATTRACH_FENGSHUI_PART_2 !== 'undefined') {
+    renderLoanDauAcademicSection('battrach-part2-container', BATTRACH_FENGSHUI_PART_2, 'II', 'CUNG PHI NAM NỮ & MỆNH QUÁI');
+  }
+  if (typeof BATTRACH_FENGSHUI_PART_3 !== 'undefined') {
+    renderLoanDauAcademicSection('battrach-part3-container', BATTRACH_FENGSHUI_PART_3, 'III', 'ĐÔNG TÂY TỨ TRẠCH & 8 HƯỚNG');
+  }
+  if (typeof BATTRACH_FENGSHUI_PART_4 !== 'undefined') {
+    renderLoanDauAcademicSection('battrach-part4-container', BATTRACH_FENGSHUI_PART_4, 'IV', 'BÁT ĐẠI DU NIÊN TOÀN THƯ');
+  }
+  if (typeof BATTRACH_FENGSHUI_PART_5 !== 'undefined') {
+    renderLoanDauAcademicSection('battrach-part5-container', BATTRACH_FENGSHUI_PART_5, 'V', 'PHÉP BIẾN QUÁI & ĐẠI DU NIÊN');
+  }
+  if (typeof BATTRACH_FENGSHUI_PART_6 !== 'undefined') {
+    renderLoanDauAcademicSection('battrach-part6-container', BATTRACH_FENGSHUI_PART_6, 'VI', 'DƯƠNG TRẠCH TAM YẾU');
+  }
+  if (typeof BATTRACH_FENGSHUI_PART_7 !== 'undefined') {
+    renderLoanDauAcademicSection('battrach-part7-container', BATTRACH_FENGSHUI_PART_7, 'VII', '24 SƠN & SAO PHÚC ĐỨC');
+  }
+  if (typeof BATTRACH_FENGSHUI_PART_8 !== 'undefined') {
+    renderLoanDauAcademicSection('battrach-part8-container', BATTRACH_FENGSHUI_PART_8, 'VIII', 'TỌA HUNG HƯỚNG CÁT BẾP & WC');
+  }
+  if (typeof BATTRACH_FENGSHUI_PART_9 !== 'undefined') {
+    renderLoanDauAcademicSection('battrach-part9-container', BATTRACH_FENGSHUI_PART_9, 'IX', 'MA TRẬN HÓA GIẢI HƯỚNG XẤU');
+  }
+  if (typeof BATTRACH_FENGSHUI_PART_10 !== 'undefined') {
+    renderLoanDauAcademicSection('battrach-part10-container', BATTRACH_FENGSHUI_PART_10, 'X', 'ĐẠI TỔNG KẾT BÁT TRẠCH');
+  }
+
+  // Render 10 Tiết Tam Hợp Chánh Tông
+  if (typeof TAMHOP_FENGSHUI_PART_1 !== 'undefined') {
+    renderLoanDauAcademicSection('tamhop-part1-container', TAMHOP_FENGSHUI_PART_1, 'I', '12 CUNG TRƯỜNG SINH');
+  }
+  if (typeof TAMHOP_FENGSHUI_PART_2 !== 'undefined') {
+    renderLoanDauAcademicSection('tamhop-part2-container', TAMHOP_FENGSHUI_PART_2, 'II', 'TỨ ĐẠI CỤC TAM HỢP');
+  }
+  if (typeof TAMHOP_FENGSHUI_PART_3 !== 'undefined') {
+    renderLoanDauAcademicSection('tamhop-part3-container', TAMHOP_FENGSHUI_PART_3, 'III', 'TAM HỢP THỦY PHÁP');
+  }
+  if (typeof TAMHOP_FENGSHUI_PART_4 !== 'undefined') {
+    renderLoanDauAcademicSection('tamhop-part4-container', TAMHOP_FENGSHUI_PART_4, 'IV', 'TỨ ĐẠI THỦY KHẨU');
+  }
+  if (typeof TAMHOP_FENGSHUI_PART_5 !== 'undefined') {
+    renderLoanDauAcademicSection('tamhop-part5-container', TAMHOP_FENGSHUI_PART_5, 'V', 'TAM BÀN LA KINH');
+  }
+  if (typeof TAMHOP_FENGSHUI_PART_6 !== 'undefined') {
+    renderLoanDauAcademicSection('tamhop-part6-container', TAMHOP_FENGSHUI_PART_6, 'VI', 'CỬU TINH TIÊU SA');
+  }
+  if (typeof TAMHOP_FENGSHUI_PART_7 !== 'undefined') {
+    renderLoanDauAcademicSection('tamhop-part7-container', TAMHOP_FENGSHUI_PART_7, 'VII', 'HOÀNG TUYỀN SÁT');
+  }
+  if (typeof TAMHOP_FENGSHUI_PART_8 !== 'undefined') {
+    renderLoanDauAcademicSection('tamhop-part8-container', TAMHOP_FENGSHUI_PART_8, 'VIII', 'BÁT SÁT HOÀNG TUYỀN');
+  }
+  if (typeof TAMHOP_FENGSHUI_PART_9 !== 'undefined') {
+    renderLoanDauAcademicSection('tamhop-part9-container', TAMHOP_FENGSHUI_PART_9, 'IX', 'THỦY PHÁP ĐÔ THỊ & HỒ KOI');
+  }
+  if (typeof TAMHOP_FENGSHUI_PART_10 !== 'undefined') {
+    renderLoanDauAcademicSection('tamhop-part10-container', TAMHOP_FENGSHUI_PART_10, 'X', 'ĐẠI TỔNG KẾT TAM ĐẠI PHÁI');
+  }
+
+
   // 2. MẠCH 1: Render Thư Tịch Cốt Lõi Địa Lý Phong Thủy
   const treatisesGrid = document.getElementById('geographic-treatises-grid');
   if (treatisesGrid && COSMIC_DATA.geographic_treatises) {
