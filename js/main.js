@@ -1838,7 +1838,26 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   document.querySelectorAll('.drawer-link').forEach(link => {
-    link.addEventListener('click', () => { closeDrawer(); });
+    link.addEventListener('click', (e) => {
+      const href = link.getAttribute('href');
+      if (href && href.startsWith('#')) {
+        const targetId = href.substring(1);
+        const el = document.getElementById(targetId);
+        if (el) {
+          e.preventDefault();
+          closeDrawer();
+          setTimeout(() => {
+            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            el.classList.add('card-highlight-pulse');
+            setTimeout(() => el.classList.remove('card-highlight-pulse'), 3000);
+          }, 350);
+        } else {
+          closeDrawer();
+        }
+      } else {
+        closeDrawer();
+      }
+    });
   });
 
   document.querySelectorAll('.menu-group-header').forEach(header => {
