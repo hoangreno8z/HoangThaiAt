@@ -850,7 +850,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ${data10.ritual_consecration_steps.steps.map((st, idx) => `
               <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border-subtle); padding:0.8rem 1rem; border-radius:8px; font-size:0.85rem; color:var(--text-pure); line-height:1.6;">
                 <span style="background:var(--gold-primary); color:#000; font-size:0.75rem; font-weight:800; padding:0.1rem 0.4rem; border-radius:4px; margin-right:0.3rem;">${idx + 1}</span>
-                ${st.substring(3)}
+                ${st.replace(/^Bước\s*\d+:\s*|^\d+[\.\)]\s*/i, '')}
               </div>
             `).join('')}
           </div>
@@ -1030,7 +1030,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ${st.mirror_and_cloth_ritual.steps.map((stStep, idx) => `
               <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border-subtle); padding:0.8rem 1rem; border-radius:8px; font-size:0.85rem; color:var(--text-pure); line-height:1.6;">
                 <span style="background:#EC4899; color:#fff; font-size:0.75rem; font-weight:800; padding:0.1rem 0.4rem; border-radius:4px; margin-right:0.3rem;">${idx + 1}</span>
-                ${stStep.substring(9)}
+                ${stStep.replace(/^Bước\s*\d+:\s*|^\d+[\.\)]\s*/i, '')}
               </div>
             `).join('')}
           </div>
