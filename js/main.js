@@ -1104,20 +1104,40 @@ document.addEventListener('DOMContentLoaded', () => {
   // =========================================================================
   // BỘ RENDER CHUYÊN SÂU: ĐẠI BÁCH KHOA PHONG THỦY LOAN ĐẦU (8 TRỤ CỘT HỌC THUẬT)
   // =========================================================================
-  function renderLoanDauAcademicSection(containerId, data, romanNum, tagTitle) {
+  function renderLoanDauAcademicSection(containerId, data, romanNum, tagTitle, schoolType = 'LOAN ĐẦU', anchorId = '') {
     const container = document.getElementById(containerId);
     if (!container || !data) return;
 
+    let themeColor = '#F59E0B';
+    let borderColor = '#D97706';
+    let shadowGlow = 'rgba(217,119,6,0.2)';
+    let badgeBg = 'rgba(245,158,11,0.15)';
+    let schoolIcon = '⛰️';
+
+    if (schoolType === 'BÁT TRẠCH') {
+      themeColor = '#60A5FA';
+      borderColor = '#2563EB';
+      shadowGlow = 'rgba(37,99,235,0.2)';
+      badgeBg = 'rgba(59,130,246,0.15)';
+      schoolIcon = '🧭';
+    } else if (schoolType === 'TAM HỢP') {
+      themeColor = '#34D399';
+      borderColor = '#059669';
+      shadowGlow = 'rgba(5,150,105,0.2)';
+      badgeBg = 'rgba(16,185,129,0.15)';
+      schoolIcon = '🌊';
+    }
+
     container.innerHTML = `
-      <div style="background:var(--bg-card); border:2px solid #D97706; border-radius:16px; padding:2rem; margin-bottom:2.5rem; box-shadow:0 0 25px rgba(217,119,6,0.15);">
+      <div id="${anchorId}" style="background:var(--bg-card); border:2px solid ${borderColor}; border-radius:18px; padding:2rem; margin-bottom:2.5rem; box-shadow:0 0 25px ${shadowGlow}; scroll-margin-top:100px;">
         <!-- Header -->
-        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; margin-bottom:1.8rem; border-bottom:1px solid rgba(217,119,6,0.3); padding-bottom:1.2rem;">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; margin-bottom:1.8rem; border-bottom:1px solid ${borderColor}44; padding-bottom:1.2rem;">
           <div>
-            <span style="font-size:0.75rem; color:#F59E0B; text-transform:uppercase; letter-spacing:1px; font-weight:800;">⛰️ PHONG THỦY LOAN ĐẦU • ${tagTitle}</span>
-            <h3 style="font-family:var(--font-title); font-size:1.5rem; color:#F59E0B; margin:0.3rem 0;">${data.chapter_title}</h3>
-            <div style="font-size:0.88rem; color:var(--text-muted);">${data.sub_title}</div>
+            <span style="font-size:0.75rem; color:${themeColor}; text-transform:uppercase; letter-spacing:1.2px; font-weight:800;">${schoolIcon} PHONG THỦY ${schoolType} • ${tagTitle}</span>
+            <h3 style="font-family:var(--font-title); font-size:1.5rem; color:${themeColor}; margin:0.3rem 0; font-weight:700;">${data.chapter_title}</h3>
+            <div style="font-size:0.9rem; color:var(--text-muted); line-height:1.5;">${data.sub_title}</div>
           </div>
-          <span style="background:rgba(245,158,11,0.15); color:#F59E0B; border:1px solid #F59E0B; font-size:0.82rem; font-weight:700; padding:0.35rem 0.9rem; border-radius:20px;">TIẾT ${romanNum} (LOAN ĐẦU)</span>
+          <span style="background:${badgeBg}; color:${themeColor}; border:1px solid ${themeColor}; font-size:0.82rem; font-weight:800; padding:0.4rem 1rem; border-radius:20px;">TIẾT ${romanNum} (${schoolType})</span>
         </div>
 
         <!-- 1. Cổ Huấn Nguyên Văn -->
@@ -1622,100 +1642,100 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
   }
 
-  // Render 6 Tiết Loan Đầu Chánh Tông
+  // Render 10 Tiết Loan Đầu Chánh Tông
   if (typeof LOANDAU_FENGSHUI_PART_1 !== 'undefined') {
-    renderLoanDauAcademicSection('loandau-part1-container', LOANDAU_FENGSHUI_PART_1, 'I', 'BẢN THỂ LUẬN & LONG MẠCH');
+    renderLoanDauAcademicSection('loandau-part1-container', LOANDAU_FENGSHUI_PART_1, 'I', 'BẢN THỂ LUẬN & LONG MẠCH', 'LOAN ĐẦU', 'loandau-tiet-1');
   }
   if (typeof LOANDAU_FENGSHUI_PART_2 !== 'undefined') {
-    renderLoanDauAcademicSection('loandau-part2-container', LOANDAU_FENGSHUI_PART_2, 'II', 'NGŨ HÀNH & CỬU TINH');
+    renderLoanDauAcademicSection('loandau-part2-container', LOANDAU_FENGSHUI_PART_2, 'II', 'NGŨ HÀNH & CỬU TINH', 'LOAN ĐẦU', 'loandau-tiet-2');
   }
   if (typeof LOANDAU_FENGSHUI_PART_3 !== 'undefined') {
-    renderLoanDauAcademicSection('loandau-part3-container', LOANDAU_FENGSHUI_PART_3, 'III', 'TẦM LONG & BÁC HOÁN');
+    renderLoanDauAcademicSection('loandau-part3-container', LOANDAU_FENGSHUI_PART_3, 'III', 'TẦM LONG & BÁC HOÁN', 'LOAN ĐẦU', 'loandau-tiet-3');
   }
   if (typeof LOANDAU_FENGSHUI_PART_4 !== 'undefined') {
-    renderLoanDauAcademicSection('loandau-part4-container', LOANDAU_FENGSHUI_PART_4, 'IV', 'ĐIỂM HUYỆT & 24 HUNG HUYỆT');
+    renderLoanDauAcademicSection('loandau-part4-container', LOANDAU_FENGSHUI_PART_4, 'IV', 'ĐIỂM HUYỆT & 24 HUNG HUYỆT', 'LOAN ĐẦU', 'loandau-tiet-4');
   }
   if (typeof LOANDAU_FENGSHUI_PART_5 !== 'undefined') {
-    renderLoanDauAcademicSection('loandau-part5-container', LOANDAU_FENGSHUI_PART_5, 'V', 'KHẢO SA & TỨ LINH');
+    renderLoanDauAcademicSection('loandau-part5-container', LOANDAU_FENGSHUI_PART_5, 'V', 'KHẢO SA & TỨ LINH', 'LOAN ĐẦU', 'loandau-tiet-5');
   }
   if (typeof LOANDAU_FENGSHUI_PART_6 !== 'undefined') {
-    renderLoanDauAcademicSection('loandau-part6-container', LOANDAU_FENGSHUI_PART_6, 'VI', 'THẨM THỦY & THỦY KHẨU');
+    renderLoanDauAcademicSection('loandau-part6-container', LOANDAU_FENGSHUI_PART_6, 'VI', 'THẨM THỦY & THỦY KHẨU', 'LOAN ĐẦU', 'loandau-tiet-6');
   }
   if (typeof LOANDAU_FENGSHUI_PART_7 !== 'undefined') {
-    renderLoanDauAcademicSection('loandau-part7-container', LOANDAU_FENGSHUI_PART_7, 'VII', 'DƯƠNG TRẠCH & MINH ĐƯỜNG');
+    renderLoanDauAcademicSection('loandau-part7-container', LOANDAU_FENGSHUI_PART_7, 'VII', 'DƯƠNG TRẠCH & MINH ĐƯỜNG', 'LOAN ĐẦU', 'loandau-tiet-7');
   }
   if (typeof LOANDAU_FENGSHUI_PART_8 !== 'undefined') {
-    renderLoanDauAcademicSection('loandau-part8-container', LOANDAU_FENGSHUI_PART_8, 'VIII', '28 ĐẠI SÁT KHÍ ĐÔ THỊ');
+    renderLoanDauAcademicSection('loandau-part8-container', LOANDAU_FENGSHUI_PART_8, 'VIII', '28 ĐẠI SÁT KHÍ ĐÔ THỊ', 'LOAN ĐẦU', 'loandau-tiet-8');
   }
   if (typeof LOANDAU_FENGSHUI_PART_9 !== 'undefined') {
-    renderLoanDauAcademicSection('loandau-part9-container', LOANDAU_FENGSHUI_PART_9, 'IX', 'NỘI CỤC LOAN ĐẦU');
+    renderLoanDauAcademicSection('loandau-part9-container', LOANDAU_FENGSHUI_PART_9, 'IX', 'NỘI CỤC LOAN ĐẦU', 'LOAN ĐẦU', 'loandau-tiet-9');
   }
   if (typeof LOANDAU_FENGSHUI_PART_10 !== 'undefined') {
-    renderLoanDauAcademicSection('loandau-part10-container', LOANDAU_FENGSHUI_PART_10, 'X', 'ĐẠI TỔNG KẾT & CẢI MỆNH');
+    renderLoanDauAcademicSection('loandau-part10-container', LOANDAU_FENGSHUI_PART_10, 'X', 'ĐẠI TỔNG KẾT & CẢI MỆNH', 'LOAN ĐẦU', 'loandau-tiet-10');
   }
 
   // Render 10 Tiết Bát Trạch Chánh Tông
   if (typeof BATTRACH_FENGSHUI_PART_1 !== 'undefined') {
-    renderLoanDauAcademicSection('battrach-part1-container', BATTRACH_FENGSHUI_PART_1, 'I', 'HÀ ĐỒ LẠC THƯ & CỬU CUNG');
+    renderLoanDauAcademicSection('battrach-part1-container', BATTRACH_FENGSHUI_PART_1, 'I', 'HÀ ĐỒ LẠC THƯ & CỬU CUNG', 'BÁT TRẠCH', 'battrach-tiet-1');
   }
   if (typeof BATTRACH_FENGSHUI_PART_2 !== 'undefined') {
-    renderLoanDauAcademicSection('battrach-part2-container', BATTRACH_FENGSHUI_PART_2, 'II', 'CUNG PHI NAM NỮ & MỆNH QUÁI');
+    renderLoanDauAcademicSection('battrach-part2-container', BATTRACH_FENGSHUI_PART_2, 'II', 'CUNG PHI NAM NỮ & MỆNH QUÁI', 'BÁT TRẠCH', 'battrach-tiet-2');
   }
   if (typeof BATTRACH_FENGSHUI_PART_3 !== 'undefined') {
-    renderLoanDauAcademicSection('battrach-part3-container', BATTRACH_FENGSHUI_PART_3, 'III', 'ĐÔNG TÂY TỨ TRẠCH & 8 HƯỚNG');
+    renderLoanDauAcademicSection('battrach-part3-container', BATTRACH_FENGSHUI_PART_3, 'III', 'ĐÔNG TÂY TỨ TRẠCH & 8 HƯỚNG', 'BÁT TRẠCH', 'battrach-tiet-3');
   }
   if (typeof BATTRACH_FENGSHUI_PART_4 !== 'undefined') {
-    renderLoanDauAcademicSection('battrach-part4-container', BATTRACH_FENGSHUI_PART_4, 'IV', 'BÁT ĐẠI DU NIÊN TOÀN THƯ');
+    renderLoanDauAcademicSection('battrach-part4-container', BATTRACH_FENGSHUI_PART_4, 'IV', 'BÁT ĐẠI DU NIÊN TOÀN THƯ', 'BÁT TRẠCH', 'battrach-tiet-4');
   }
   if (typeof BATTRACH_FENGSHUI_PART_5 !== 'undefined') {
-    renderLoanDauAcademicSection('battrach-part5-container', BATTRACH_FENGSHUI_PART_5, 'V', 'PHÉP BIẾN QUÁI & ĐẠI DU NIÊN');
+    renderLoanDauAcademicSection('battrach-part5-container', BATTRACH_FENGSHUI_PART_5, 'V', 'PHÉP BIẾN QUÁI & ĐẠI DU NIÊN', 'BÁT TRẠCH', 'battrach-tiet-5');
   }
   if (typeof BATTRACH_FENGSHUI_PART_6 !== 'undefined') {
-    renderLoanDauAcademicSection('battrach-part6-container', BATTRACH_FENGSHUI_PART_6, 'VI', 'DƯƠNG TRẠCH TAM YẾU');
+    renderLoanDauAcademicSection('battrach-part6-container', BATTRACH_FENGSHUI_PART_6, 'VI', 'DƯƠNG TRẠCH TAM YẾU', 'BÁT TRẠCH', 'battrach-tiet-6');
   }
   if (typeof BATTRACH_FENGSHUI_PART_7 !== 'undefined') {
-    renderLoanDauAcademicSection('battrach-part7-container', BATTRACH_FENGSHUI_PART_7, 'VII', '24 SƠN & SAO PHÚC ĐỨC');
+    renderLoanDauAcademicSection('battrach-part7-container', BATTRACH_FENGSHUI_PART_7, 'VII', '24 SƠN & SAO PHÚC ĐỨC', 'BÁT TRẠCH', 'battrach-tiet-7');
   }
   if (typeof BATTRACH_FENGSHUI_PART_8 !== 'undefined') {
-    renderLoanDauAcademicSection('battrach-part8-container', BATTRACH_FENGSHUI_PART_8, 'VIII', 'TỌA HUNG HƯỚNG CÁT BẾP & WC');
+    renderLoanDauAcademicSection('battrach-part8-container', BATTRACH_FENGSHUI_PART_8, 'VIII', 'TỌA HUNG HƯỚNG CÁT BẾP & WC', 'BÁT TRẠCH', 'battrach-tiet-8');
   }
   if (typeof BATTRACH_FENGSHUI_PART_9 !== 'undefined') {
-    renderLoanDauAcademicSection('battrach-part9-container', BATTRACH_FENGSHUI_PART_9, 'IX', 'MA TRẬN HÓA GIẢI HƯỚNG XẤU');
+    renderLoanDauAcademicSection('battrach-part9-container', BATTRACH_FENGSHUI_PART_9, 'IX', 'MA TRẬN HÓA GIẢI HƯỚNG XẤU', 'BÁT TRẠCH', 'battrach-tiet-9');
   }
   if (typeof BATTRACH_FENGSHUI_PART_10 !== 'undefined') {
-    renderLoanDauAcademicSection('battrach-part10-container', BATTRACH_FENGSHUI_PART_10, 'X', 'ĐẠI TỔNG KẾT BÁT TRẠCH');
+    renderLoanDauAcademicSection('battrach-part10-container', BATTRACH_FENGSHUI_PART_10, 'X', 'ĐẠI TỔNG KẾT BÁT TRẠCH', 'BÁT TRẠCH', 'battrach-tiet-10');
   }
 
   // Render 10 Tiết Tam Hợp Chánh Tông
   if (typeof TAMHOP_FENGSHUI_PART_1 !== 'undefined') {
-    renderLoanDauAcademicSection('tamhop-part1-container', TAMHOP_FENGSHUI_PART_1, 'I', '12 CUNG TRƯỜNG SINH');
+    renderLoanDauAcademicSection('tamhop-part1-container', TAMHOP_FENGSHUI_PART_1, 'I', '12 CUNG TRƯỜNG SINH', 'TAM HỢP', 'tamhop-tiet-1');
   }
   if (typeof TAMHOP_FENGSHUI_PART_2 !== 'undefined') {
-    renderLoanDauAcademicSection('tamhop-part2-container', TAMHOP_FENGSHUI_PART_2, 'II', 'TỨ ĐẠI CỤC TAM HỢP');
+    renderLoanDauAcademicSection('tamhop-part2-container', TAMHOP_FENGSHUI_PART_2, 'II', 'TỨ ĐẠI CỤC TAM HỢP', 'TAM HỢP', 'tamhop-tiet-2');
   }
   if (typeof TAMHOP_FENGSHUI_PART_3 !== 'undefined') {
-    renderLoanDauAcademicSection('tamhop-part3-container', TAMHOP_FENGSHUI_PART_3, 'III', 'TAM HỢP THỦY PHÁP');
+    renderLoanDauAcademicSection('tamhop-part3-container', TAMHOP_FENGSHUI_PART_3, 'III', 'TAM HỢP THỦY PHÁP', 'TAM HỢP', 'tamhop-tiet-3');
   }
   if (typeof TAMHOP_FENGSHUI_PART_4 !== 'undefined') {
-    renderLoanDauAcademicSection('tamhop-part4-container', TAMHOP_FENGSHUI_PART_4, 'IV', 'TỨ ĐẠI THỦY KHẨU');
+    renderLoanDauAcademicSection('tamhop-part4-container', TAMHOP_FENGSHUI_PART_4, 'IV', 'TỨ ĐẠI THỦY KHẨU', 'TAM HỢP', 'tamhop-tiet-4');
   }
   if (typeof TAMHOP_FENGSHUI_PART_5 !== 'undefined') {
-    renderLoanDauAcademicSection('tamhop-part5-container', TAMHOP_FENGSHUI_PART_5, 'V', 'TAM BÀN LA KINH');
+    renderLoanDauAcademicSection('tamhop-part5-container', TAMHOP_FENGSHUI_PART_5, 'V', 'TAM BÀN LA KINH', 'TAM HỢP', 'tamhop-tiet-5');
   }
   if (typeof TAMHOP_FENGSHUI_PART_6 !== 'undefined') {
-    renderLoanDauAcademicSection('tamhop-part6-container', TAMHOP_FENGSHUI_PART_6, 'VI', 'CỬU TINH TIÊU SA');
+    renderLoanDauAcademicSection('tamhop-part6-container', TAMHOP_FENGSHUI_PART_6, 'VI', 'CỬU TINH TIÊU SA', 'TAM HỢP', 'tamhop-tiet-6');
   }
   if (typeof TAMHOP_FENGSHUI_PART_7 !== 'undefined') {
-    renderLoanDauAcademicSection('tamhop-part7-container', TAMHOP_FENGSHUI_PART_7, 'VII', 'HOÀNG TUYỀN SÁT');
+    renderLoanDauAcademicSection('tamhop-part7-container', TAMHOP_FENGSHUI_PART_7, 'VII', 'HOÀNG TUYỀN SÁT', 'TAM HỢP', 'tamhop-tiet-7');
   }
   if (typeof TAMHOP_FENGSHUI_PART_8 !== 'undefined') {
-    renderLoanDauAcademicSection('tamhop-part8-container', TAMHOP_FENGSHUI_PART_8, 'VIII', 'BÁT SÁT HOÀNG TUYỀN');
+    renderLoanDauAcademicSection('tamhop-part8-container', TAMHOP_FENGSHUI_PART_8, 'VIII', 'BÁT SÁT HOÀNG TUYỀN', 'TAM HỢP', 'tamhop-tiet-8');
   }
   if (typeof TAMHOP_FENGSHUI_PART_9 !== 'undefined') {
-    renderLoanDauAcademicSection('tamhop-part9-container', TAMHOP_FENGSHUI_PART_9, 'IX', 'THỦY PHÁP ĐÔ THỊ & HỒ KOI');
+    renderLoanDauAcademicSection('tamhop-part9-container', TAMHOP_FENGSHUI_PART_9, 'IX', 'THỦY PHÁP ĐÔ THỊ & HỒ KOI', 'TAM HỢP', 'tamhop-tiet-9');
   }
   if (typeof TAMHOP_FENGSHUI_PART_10 !== 'undefined') {
-    renderLoanDauAcademicSection('tamhop-part10-container', TAMHOP_FENGSHUI_PART_10, 'X', 'ĐẠI TỔNG KẾT TAM ĐẠI PHÁI');
+    renderLoanDauAcademicSection('tamhop-part10-container', TAMHOP_FENGSHUI_PART_10, 'X', 'ĐẠI TỔNG KẾT TAM ĐẠI PHÁI', 'TAM HỢP', 'tamhop-tiet-10');
   }
 
 
