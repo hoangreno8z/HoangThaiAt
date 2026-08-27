@@ -346,6 +346,50 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
   }
 
+  // 1.8 Render Chuyên Đề Phong Thủy Thờ Cúng (Lần 4 / 10): 18 Đại Kỵ Bàn Thờ & Phép Hóa Giải
+  const worshipPart4Container = document.getElementById('worship-part4-container');
+  if (worshipPart4Container && typeof WORSHIP_FENGSHUI_PART_4 !== 'undefined') {
+    const data4 = WORSHIP_FENGSHUI_PART_4;
+    worshipPart4Container.innerHTML = `
+      <div style="background:var(--bg-card); border:1px solid var(--gold-primary); border-radius:16px; padding:2rem; margin-bottom:2rem; box-shadow:var(--shadow-gold);">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; margin-bottom:1.5rem; border-bottom:1px solid rgba(229,192,123,0.2); padding-bottom:1rem;">
+          <div>
+            <span style="font-size:0.75rem; color:#EF4444; text-transform:uppercase; letter-spacing:1px; font-weight:700;">TRÁNH HUNG HÓA CÁT • TRÁCH PHÒNG SÁT KHÍ</span>
+            <h3 style="font-family:var(--font-title); font-size:1.5rem; color:var(--gold-primary); margin:0.2rem 0;">${data4.chapter_title}</h3>
+            <div style="font-size:0.88rem; color:var(--text-muted);">${data4.sub_title}</div>
+          </div>
+          <span style="background:rgba(239,68,68,0.15); color:#EF4444; border:1px solid #EF4444; font-size:0.8rem; font-weight:700; padding:0.3rem 0.8rem; border-radius:20px;">LẦN 4 / 10</span>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:1.8rem;">
+          ${data4.taboo_categories.map(cat => `
+            <div>
+              <h4 style="font-family:var(--font-title); font-size:1.2rem; color:var(--gold-primary); margin-bottom:0.8rem; border-left:3px solid var(--gold-primary); padding-left:0.6rem;">
+                ${cat.category_name}
+              </h4>
+              <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:1rem;">
+                ${cat.items.map(item => `
+                  <div style="background:rgba(13,17,26,0.85); border:1px solid var(--border-subtle); border-radius:10px; padding:1.2rem;">
+                    <div style="display:flex; align-items:flex-start; gap:0.6rem; margin-bottom:0.5rem;">
+                      <span style="background:rgba(239,68,68,0.2); color:#EF4444; font-weight:800; font-size:0.8rem; padding:0.1rem 0.5rem; border-radius:4px; flex-shrink:0;">KỴ ${item.id}</span>
+                      <strong style="color:var(--text-pure); font-size:0.95rem; line-height:1.4;">${item.name}</strong>
+                    </div>
+                    <div style="background:rgba(239,68,68,0.06); padding:0.6rem 0.8rem; border-radius:6px; font-size:0.82rem; color:#FCA5A5; line-height:1.5; margin-bottom:0.6rem;">
+                      ⚠️ <strong>Tác hại:</strong> ${item.danger}
+                    </div>
+                    <div style="background:rgba(16,185,129,0.06); border-left:2px solid #10B981; padding:0.6rem 0.8rem; border-radius:0 6px 6px 0; font-size:0.82rem; color:#6EE7B7; line-height:1.5;">
+                      ✅ <strong>Phép hóa giải:</strong> ${item.remedy}
+                    </div>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+  }
+
   // 2. MẠCH 1: Render Thư Tịch Cốt Lõi Địa Lý Phong Thủy
   const treatisesGrid = document.getElementById('geographic-treatises-grid');
   if (treatisesGrid && COSMIC_DATA.geographic_treatises) {

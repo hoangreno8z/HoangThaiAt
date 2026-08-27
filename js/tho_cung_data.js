@@ -1,6 +1,6 @@
 /**
  * PHONG THỦY THỜ CÚNG CHÁNH TÔNG (KHO TÀNG CỔ THƯ & QUY THỨC TẾ TỰ)
- * CHƯƠNG I - LẦN NẠP KIẾN THỨC 1, 2 & 3 / 10
+ * CHƯƠNG I - LẦN NẠP KIẾN THỨC 1, 2, 3 & 4 / 10
  */
 
 // LẦN 1: KHỞI NGUYÊN BẢN THỂ & NGUYÊN TẮC TỌA VỊ
@@ -79,18 +79,9 @@ const WORSHIP_FENGSHUI_PART_2 = {
     quote: "Kích thước bất hợp độ số, tắc họa phúc vô sở quy.",
     quote_source: "Lỗ Ban Kinh Chánh Tông",
     rulers: [
-      {
-        name: "Thước Lỗ Ban 52.2 cm (Thông Thủy / Khối Rỗng)",
-        use_case: "Dùng để đo lường các khoảng lọt sáng (thông thủy) của cửa đi, cửa sổ, giếng trời, chiều cao tầng nhà. Cung gồm 8 cung: Quý Nhân, Hiểm Họa, Thiên Tai, Thiên Tài, Nhân Lộc, Cô Độc, Thiên Tặc, Tể Tướng."
-      },
-      {
-        name: "Thước Lỗ Ban 42.9 cm (Dương Trạch / Khối Đặc)",
-        use_case: "Dùng để đo kích thước phủ bì các vật dụng nội thất dương trạch bằng gỗ, kim loại (giường ngủ, tủ quần áo, bàn làm việc, kệ bếp, bậc cầu thang). Cung gồm 8 cung: Tài, Bệnh, Ly, Nghĩa, Quan, Kiếp, Hại, Bản."
-      },
-      {
-        name: "Thước Lỗ Ban 38.8 cm (Âm Phần & Thờ Cúng)",
-        use_case: "ĐẶC TRÁCH CHO KHÔNG GIAN TÂM LINH: Dùng riêng để đo kích thước bàn thờ (chiều dài, chiều sâu, chiều cao), tủ thờ, án gian, ngai thờ, sập thờ, bài vị, tiểu quách, lăng mộ. Chu kỳ lặp lại đúng 38.8 cm, gồm 10 cung (6 cung Cát, 4 cung Hung)."
-      }
+      { name: "Thước Lỗ Ban 52.2 cm (Thông Thủy / Khối Rỗng)", use_case: "Dùng để đo lường các khoảng lọt sáng của cửa đi, cửa sổ, giếng trời, chiều cao tầng nhà." },
+      { name: "Thước Lỗ Ban 42.9 cm (Dương Trạch / Khối Đặc)", use_case: "Dùng để đo kích thước phủ bì các vật dụng nội thất dương trạch (giường, tủ, bàn làm việc, kệ bếp)." },
+      { name: "Thước Lỗ Ban 38.8 cm (Âm Phần & Thờ Cúng)", use_case: "ĐẶC TRÁCH CHO KHÔNG GIAN TÂM LINH: Đo bàn thờ, tủ thờ, án gian, ngai thờ, bài vị, mộ phần. Gồm 10 cung (6 Cát, 4 Hung)." }
     ]
   },
 
@@ -135,7 +126,6 @@ const WORSHIP_FENGSHUI_PART_3 = {
   chapter_title: "Chương I (Lần 3/10): Bài Trí Bát Hương, Ngũ Hành Đồ Thờ & Cốt Thất Bảo Chánh Tông",
   sub_title: "Quy thức Tam Cấp Thần Vị, bố cục 'Đông Bình Tây Quả', Ngũ Hành Đồ Thờ và thuật nạp Thất Bảo tụ khí linh thiêng",
 
-  // 1. Quy Thức Bài Trí Bát Hương
   incense_burners_layout: {
     title: "1. Quy Thức Bài Trí Bát Hương (Tam Cấp Thần Vị)",
     quote: "Thần linh cư trung, Tiên tổ cư tả, Cô Mãnh cư hữu. Ngôi thứ phân minh, âm dương đắc tự.",
@@ -159,55 +149,32 @@ const WORSHIP_FENGSHUI_PART_3 = {
     ]
   },
 
-  // 2. Ngũ Hành Đồ Thờ Tương Sinh
   five_elements_worship: {
     title: "2. Cơ Cấu Ngũ Hành Tương Sinh Trên Mặt Bàn Thờ",
     desc: "Mặt bàn thờ là một tiểu vũ trụ thu nhỏ, bắt buộc phải hội tụ đầy đủ và cân bằng năng lượng của cả 5 nguyên lý Ngũ Hành:",
     elements: [
-      {
-        element: "Kim (金) - Nghiêm Cẩn Tinh Khiết",
-        items: "Đỉnh đồng, đôi hạc ngự quy, đôi chân nến đồng, mâm bồng đồng, ống hương đồng.",
-        role: "Tạo nên sự trang nghiêm, khúc xạ ánh sáng ấm, ngưng tụ kim khí thanh khiết xua đuổi tà khí."
-      },
-      {
-        element: "Mộc (木) - Sinh Trưởng Hướng Thượng",
-        items: "Bàn thờ gỗ (gỗ gụ, hương, mít, dổi), bài vị gỗ, ngai khám thờ gỗ, đũa thờ, hoa tươi.",
-        role: "Tượng trưng cho sinh khí mùa xuân, mộc khí nuôi dưỡng sự phát triển bền vững của gia tộc."
-      },
-      {
-        element: "Thủy (水) - Nhu Thuận Thanh Tịnh",
-        items: "Kỷ chén đựng nước sạch và rượu (3 chén hoặc 5 chén), bình cắm hoa tươi.",
-        role: "Chủ về sự tẩy uế, nuôi dưỡng thanh khí, duy trì sự lưu thông tài lộc và nhu hòa trong gia đạo."
-      },
-      {
-        element: "Hỏa (火) - Thăng Hoa Linh Thông",
-        items: "Ngọn đèn dầu, đôi đèn thờ ánh sáng vàng ấm, nến sáp, nén hương đang thắp đỏ.",
-        role: "Chủ về tâm hỏa bừng sáng, sợi dây năng lượng kết nối vô hình giữa cõi hữu hình và cõi siêu thực."
-      },
-      {
-        element: "Thổ (土) - Vững Vàng Dung Nạp",
-        items: "Bát hương bằng gốm sứ (men rạn, men lam Bát Tràng), đĩa sứ, tro nếp sạch bên trong bát hương.",
-        role: "Đất mẹ dung nạp vạn vật, tạo điểm tựa tâm linh kiên cố vững chãi không bị lay động."
-      }
+      { element: "Kim (金) - Nghiêm Cẩn Tinh Khiết", items: "Đỉnh đồng, đôi hạc ngự quy, đôi chân nến đồng, mâm bồng đồng, ống hương đồng.", role: "Tạo nên sự trang nghiêm, khúc xạ ánh sáng ấm, ngưng tụ kim khí thanh khiết xua đuổi tà khí." },
+      { element: "Mộc (木) - Sinh Trưởng Hướng Thượng", items: "Bàn thờ gỗ (gỗ gụ, hương, mít, dổi), bài vị gỗ, ngai khám thờ gỗ, đũa thờ, hoa tươi.", role: "Tượng trưng cho sinh khí mùa xuân, mộc khí nuôi dưỡng sự phát triển bền vững của gia tộc." },
+      { element: "Thủy (水) - Nhu Thuận Thanh Tịnh", items: "Kỷ chén đựng nước sạch và rượu (3 chén hoặc 5 chén), bình cắm hoa tươi.", role: "Chủ về sự tẩy uế, nuôi dưỡng thanh khí, duy trì sự lưu thông tài lộc và nhu hòa trong gia đạo." },
+      { element: "Hỏa (火) - Thăng Hoa Linh Thông", items: "Ngọn đèn dầu, đôi đèn thờ ánh sáng vàng ấm, nến sáp, nén hương đang thắp đỏ.", role: "Chủ về tâm hỏa bừng sáng, sợi dây năng lượng kết nối vô hình giữa cõi hữu hình và cõi siêu thực." },
+      { element: "Thổ (土) - Vững Vàng Dung Nạp", items: "Bát hương bằng gốm sứ (men rạn, men lam Bát Tràng), đĩa sứ, tro nếp sạch bên trong bát hương.", role: "Đất mẹ dung nạp vạn vật, tạo điểm tựa tâm linh kiên cố vững chãi không bị lay động." }
     ]
   },
 
-  // 3. Quy Luật "Đông Bình Tây Quả" & Bố Cục Tả Hữu
   dong_binh_tay_qua: {
     title: "3. Nguyên Tắc Bố Cục 'Đông Bình Tây Quả' & 'Tả Thanh Long Hữu Bạch Hổ'",
     principles: [
       {
         name: "Đông Bình - Tây Quả (Quy Luật Sinh Thành Thiên Nhiên)",
-        desc: "Nhìn từ ngoài vào bàn thờ: Bên TAY TRÁI (Phương Đông) đặt Bình Hoa Tươi; Bên TAY PHẢI (Phương Tây) đặt Đĩa Hoa Quả (Mâm Bồng). Quy luật: Mặt Trời mọc đằng Đông cây cối đơm hoa (Xuân sinh $\rightarrow$ Hoa), Mặt Trời lặn đằng Tây kết trái thu hoạch (Thu thành $\rightarrow$ Quả). Gió thổi từ phương Đông mang hương hoa thoang thoảng qua đĩa quả sang phương Tây tạo nên luồng sinh khí tuần hoàn trọn vẹn."
+        desc: "Nhìn từ ngoài vào bàn thờ: Bên TAY TRÁI (Phương Đông) đặt Bình Hoa Tươi; Bên TAY PHẢI (Phương Tây) đặt Đĩa Hoa Quả (Mâm Bồng). Gió thổi từ phương Đông mang hương hoa qua đĩa quả sang phương Tây tạo luồng sinh khí tuần hoàn."
       },
       {
         name: "Tả Thanh Long - Hữu Bạch Hổ (Cân Bằng Động Tĩnh)",
-        desc: "Bên Tả (Tay trái nhìn vào): Thuộc Thanh Long, chủ quản Khí Mộc, bố trí vật phẩm cao, trang trọng (Bình hoa, Hạc ngự quy, Cây nến cao). Bên Hữu (Tay phải nhìn vào): Thuộc Bạch Hổ, chủ quản Khí Kim, bố trí vật phẩm thấp, trang nhã (Mâm ngũ quả, Đĩa trầu cau, Kỷ nước chén)."
+        desc: "Bên Tả (Thanh Long - Mộc): Bố trí vật phẩm cao, trang trọng (Bình hoa, Hạc ngự quy, Cây nến cao). Bên Hữu (Bạch Hổ - Kim): Bố trí vật phẩm thấp, trang nhã (Mâm ngũ quả, Đĩa trầu cau, Kỷ nước chén)."
       }
     ]
   },
 
-  // 4. Thuật Bốc Bát Hương & Nạp Cốt Thất Bảo Chánh Tông
   that_bao_consecration: {
     title: "4. Thuật Nạp Cốt Thất Bảo & Tro Nếp Tụ Khí Bát Hương",
     quote: "Thất bảo nạp cốt, linh khí sở quy. Tro nếp tịnh thổ, vạn đại an khang.",
@@ -221,6 +188,139 @@ const WORSHIP_FENGSHUI_PART_3 = {
       { name: "San Hô Đỏ", meaning: "Cây huyết san hô đại diện cho sự trường thọ, may mắn, vượng khí." },
       { name: "Mã Não", meaning: "Đá quý tự nhiên mang từ trường bảo hộ, bình an, tiêu trừ ám khí." }
     ],
-    ash_rule: "VẬT LIỆU ĐỰNG BÊN TRONG: Bắt buộc dùng Tro Rơm Nếp Sạch đốt tơi xốp, thơm mùi lúa mới (Thổ tịnh dưỡng Mộc). Trộn kèm chút bột Ngũ Vị Hương (quế, hồi, đinh hương, thảo quả, trầm hương) và nước gừng để bao sái tẩy uế. TUYỆT ĐỐI KHÔNG DÙNG CÁT XÂY DỰNG BẨN làm nặng nề, bí bách và tán khí bát hương."
+    ash_rule: "VẬT LIỆU ĐỰNG BÊN TRONG: Bắt buộc dùng Tro Rơm Nếp Sạch đốt tơi xốp, thơm mùi lúa mới. Trộn kèm bột Ngũ Vị Hương và nước gừng tẩy uế. TUYỆT ĐỐI KHÔNG DÙNG CÁT XÂY DỰNG BẨN."
   }
+};
+
+// LẦN 4: 18 ĐẠI KỴ TRONG PHONG THỦY BÀN THỜ & PHÉP HÓA GIẢI CHÁNH TÔNG
+const WORSHIP_FENGSHUI_PART_4 = {
+  chapter_id: "tho_cung_part_4",
+  chapter_title: "Chương I (Lần 4/10): 18 Đại Kỵ Phong Thủy Bàn Thờ & Phương Pháp Hóa Giải Chánh Tông",
+  sub_title: "Tổng hợp 18 sát khí nguy hiểm nhất đối với Thần Vị gia trạch từ Dương Trạch Tam Yếu & Lỗ Ban Kinh",
+
+  taboo_categories: [
+    {
+      category_name: "Nhóm I: Đại Kỵ Về Không Gian Vị Trí (Tọa & Tựa Sát)",
+      items: [
+        {
+          id: 1,
+          name: "Ban thờ tựa lưng hoặc đối diện Nhà Vệ Sinh (Uế Khí Xung Sát)",
+          danger: "Uế khí ẩm mốc xâm phạm linh vị, dẫn tới gia đạo lục đục, bệnh tật đường ruột, tiêu hao tiền của.",
+          remedy: "Di chuyển vị trí; nếu không thể di chuyển, dựng vách gỗ kín 2 lớp ngăn cách và treo rèm hạt gỗ hóa giải."
+        },
+        {
+          id: 2,
+          name: "Ban thờ đặt dưới hoặc cạnh Bếp Nấu (Hỏa Thiêu Thần Vị)",
+          danger: "Hỏa khí quá vượng thiêu đốt linh khí, khiến tính khí gia chủ nóng nảy, dễ xảy ra hỏa hoạn, tai ương.",
+          remedy: "Tách biệt hoàn toàn khỏi bếp nấu, tạo lớp cách nhiệt hoặc dùng vách thạch cao ngăn khí Hỏa."
+        },
+        {
+          id: 3,
+          name: "Ban thờ tựa lưng vào Phòng Ngủ Vợ Chồng (Bất Kính Sắc Khí)",
+          danger: "Phạm vào giới sắc bất kính với thần linh tiền tổ, sinh ra bất hòa vợ chồng, giấc ngủ bất an mộng mị.",
+          remedy: "Kê giường ngủ cách xa tường thờ, bố trí tủ quần áo làm lớp đệm ngăn cách giữa hai không gian."
+        },
+        {
+          id: 4,
+          name: "Dầm xà ngang đè lên đỉnh Bàn Thờ (Áp Đỉnh Sát)",
+          danger: "Tạo áp lực trường khí cực nặng nề, ức chế con đường công danh, gia chủ thường xuyên đau đầu suy nhược.",
+          remedy: "Làm trần thạch cao che kín xà dầm, hoặc treo hồ lô gỗ đào tự nhiên dưới dầm để hóa sát."
+        },
+        {
+          id: 5,
+          name: "Đặt bàn thờ dưới gầm Cầu Thang (Đạp Đầu Sát / Tiệt Khí)",
+          danger: "Người đi lại giẫm đạp lên đầu linh vị, sinh khí bị đè nén khiến con cháu khó phát triển, sa sút tài vận.",
+          remedy: "Tuyệt đối không đặt dưới gầm cầu thang, bắt buộc chuyển lên gian phòng trang nghiêm ở tầng trên."
+        }
+      ]
+    },
+    {
+      category_name: "Nhóm II: Đại Kỵ Về Luồng Khí & Hướng Chiếu (Xung Khí Sát)",
+      items: [
+        {
+          id: 6,
+          name: "Cửa chính đâm thẳng vào chính diện Bàn Thờ (Trực Xung Sát)",
+          danger: "Luồng gió xộc thẳng làm tán động chân khí, người ngoài nhìn thấu nội đường, tài lộc khó tích tụ.",
+          remedy: "Lắp đặt bình phong gỗ hoặc rèm che rủ trước bàn thờ để dòng khí uốn lượn tụ khí êm dịu."
+        },
+        {
+          id: 7,
+          name: "Nắng gắt chiếu thẳng hoặc Gió lùa lồng lộng (Phong Xung & Quang Sát)",
+          danger: "Dương khí thái quá hoặc gió mạnh làm tắt hương, cháy chân nhang, tạo cảm giác bất an tán khí.",
+          remedy: "Kéo rèm che cửa sổ bằng vải gấm hoặc gỗ, sử dụng vách ngăn chắn gió lùa trực diện."
+        },
+        {
+          id: 8,
+          name: "Gương soi phản chiếu trực tiếp vào Bàn Thờ (Quang Minh Đảo Điên Sát)",
+          danger: "Gương sinh ra từ trường phản xạ hỗn loạn, tạo ảo giác kinh động vong linh tiền tổ, gia trạch bất an.",
+          remedy: "Tháo bỏ gương hoặc di dời gương sang vị trí khác, tuyệt đối không để gương đối diện ban thờ."
+        },
+        {
+          id: 9,
+          name: "Bàn thờ đặt sát lối đi lại ồn ào (Động Sát)",
+          danger: "Mất đi tính Âm Tĩnh tôn nghiêm, linh khí bị kinh động làm gia đạo hay tranh cãi, khó an định tâm trí.",
+          remedy: "Lập vách CNC chắn lối đi, tạo không gian phòng thờ biệt lập, tĩnh lặng thanh tịnh."
+        }
+      ]
+    },
+    {
+      category_name: "Nhóm III: Đại Kỵ Về Bát Hương & Đồ Thờ (Vật Khí Sát)",
+      items: [
+        {
+          id: 10,
+          name: "Tự tiện xê dịch xoay chuyển Bát Hương (Động Bát Hương Sát)",
+          danger: "Bát hương đã an vị tụ khí khi bị xê dịch tùy tiện sẽ làm đứt gãy trường năng lượng bảo hộ, tán tài tán lộc.",
+          remedy: "Cố định bát hương bằng đôn gỗ/keo dán đế. Khi bao sái chỉ dùng khăn sạch lau quanh, giữ chặt thân bát hương."
+        },
+        {
+          id: 11,
+          name: "Bày hoa giả, quả nhựa, đồ chơi lên Bàn Thờ (Hư Linh Bất Kính)",
+          danger: "Thờ cúng lấy chữ 'Thành' và 'Chân' làm gốc, đồ giả mang năng lượng chết, làm giảm sút linh khí trang nghiêm.",
+          remedy: "Chỉ dùng hoa tươi (cúc, sen, huệ, đồng tiền), quả tươi thật dâng cúng, héo úa phải thay ngay."
+        },
+        {
+          id: 12,
+          name: "Đồ đạc bừa bãi dưới gầm chân Bàn Thờ (Tạp Vật Ô Trọc)",
+          danger: "Để quạt hỏng, giày dép, chổi quét nhà dưới gầm bàn thờ sinh uế khí bốc lên, cản trở tài lộc.",
+          remedy: "Dọn dẹp sạch sẽ gầm bàn thờ, chỉ để trống hoặc để đồ cúng lễ sạch sẽ chưa dùng tới."
+        },
+        {
+          id: 13,
+          name: "Thờ lẫn lộn quá nhiều Bát Hương (Khí Trường Hỗn Loạn)",
+          danger: "Cắm lẫn lộn bát hương họ nội, họ ngoại, bạn bè cùng một chỗ làm xung đột trường khí gia tộc.",
+          remedy: "Quy hoạch chuẩn 3 bát hương (Thần Linh, Gia Tiên, Bà Cô Ông Mãnh); thờ họ ngoại lập ban riêng."
+        },
+        {
+          id: 14,
+          name: "Tượng Phật đặt thấp hơn Bài Vị Gia Tiên (Nghịch Ngôi Tôn Ty)",
+          danger: "Phật là bậc Giác ngộ tối thượng Tam Giới, đặt dưới gia tiên là phạm nghịch ngôi thứ, tổn hao phúc đức.",
+          remedy: "Tượng Phật / Ảnh Phật bắt buộc đặt ở tầng trên cao hơn hẳn bài vị và bát hương gia tiên."
+        },
+        {
+          id: 15,
+          name: "Dùng hương tẩm hóa chất cuốn tàn độc hại (Ô Nhiễm Khí Trường)",
+          danger: "Hóa chất cháy sinh khí độc làm ngột ngạt không gian thờ, gây hại sức khỏe và làm tán mất chân khí thanh tịnh.",
+          remedy: "Sử dụng hương thảo mộc tự nhiên (hương trầm, quế, bài) thuần khiết, thơm dịu, an toàn."
+        },
+        {
+          id: 16,
+          name: "Bàn thờ đặt trên nóc Tủ Quần Áo / Kệ Sinh Hoạt",
+          danger: "Đóng mở tủ sinh rung lắc mạnh, làm động bát hương và thể hiện sự thiếu tôn kính trang nghiêm.",
+          remedy: "Sử dụng bàn thờ chân đứng độc lập vững chãi hoặc bàn thờ treo tường bắt vít kiên cố."
+        },
+        {
+          id: 17,
+          name: "Đèn thờ nhấp nháy nhiều màu hoặc quá chói lọi (Hỗn Loạn Quang Sát)",
+          danger: "Tạo cảm giác ma mị, kích động thần kinh, phá vỡ bầu không khí trang nghiêm thanh tịnh.",
+          remedy: "Dùng đèn thờ ánh sáng vàng ấm cố định (2700K - 3000K), ánh sáng dịu nhẹ, tĩnh tại."
+        },
+        {
+          id: 18,
+          name: "Đặt Bể Cá Cảnh ngay dưới hoặc cạnh Bàn Thờ (Chính Thần Hạ Thủy)",
+          danger: "Bàn thờ thuộc Hỏa/Thổ ngưng tụ, nước chuyển động liên tục của bể cá dập tắt hỏa khí, gây tán tài phá sản.",
+          remedy: "Di dời bể cá sang cung tài lộc phòng khách, tuyệt đối giữ khu vực thờ cúng khô ráo thanh tịnh."
+        }
+      ]
+    }
+  ]
 };
