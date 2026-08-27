@@ -1,6 +1,6 @@
 /**
- * MA TRẬN CỘNG HƯỞNG TRƯỜNG KHÍ & CƠ CHẾ SINH CÁT HUNG
- * Giải mã cơ học phương vị, thời gian và con người.
+ * MA TRẬN CỘNG HƯỞNG TRƯỜNG KHÍ & CƠ CHẾ KHOA HỌC SINH CÁT HUNG
+ * Giải mã cơ học lượng tử cổ đại, tương tác 3 tầng: Thiên (Thời) - Địa (Không) - Nhân (Tâm thể).
  */
 
 class CatHungMatrixEngine {
@@ -22,27 +22,27 @@ class CatHungMatrixEngine {
 
   populateOptions() {
     const thienOptions = [
-      { id: "spring", name: "Mùa Xuân (Dương khí sơ sinh, Mộc vượng)", element: "wood" },
-      { id: "summer", name: "Mùa Hạ (Dương khí cực thịnh, Hỏa vượng)", element: "fire" },
-      { id: "autumn", name: "Mùa Thu (Âm khí sơ giáng, Kim vượng)", element: "metal" },
-      { id: "winter", name: "Mùa Đông (Âm khí cực thịnh, Thủy vượng)", element: "water" },
-      { id: "interseason", name: "Tứ Quý Giao Thời (Khí điều hòa, Thổ vượng)", element: "earth" }
+      { id: "spring", name: "Mùa Xuân (Dương khí sơ sinh, Mộc vượng - Tiết Lập Xuân/Xuân Phân)", element: "wood", qi: "Khí Ôn vươn tỏa" },
+      { id: "summer", name: "Mùa Hạ (Dương khí cực thịnh, Hỏa vượng - Tiết Lập Hạ/Hạ Chí)", element: "fire", qi: "Khí Nhiệt thăng hoa" },
+      { id: "autumn", name: "Mùa Thu (Âm khí sơ giáng, Kim vượng - Tiết Lập Thu/Thu Phân)", element: "metal", qi: "Khí Táo thu liễm" },
+      { id: "winter", name: "Mùa Đông (Âm khí cực thịnh, Thủy vượng - Tiết Lập Đông/Đông Chí)", element: "water", qi: "Khí Hàn tàng ẩn" },
+      { id: "interseason", name: "Tứ Quý Giao Thời (Khí điều hòa, Thổ vượng - Tháng 3,6,9,12 âm lịch)", element: "earth", qi: "Khí Thấp dung nạp" }
     ];
 
     const diaOptions = [
-      { id: "east", name: "Phương Đông (Khí Chấn Mộc - Khai mở)", element: "wood" },
-      { id: "south", name: "Phương Nam (Khí Ly Hỏa - Quang minh/Nhiệt)", element: "fire" },
-      { id: "west", name: "Phương Tây (Khí Đoài Kim - Thu liễm/Sát)", element: "metal" },
-      { id: "north", name: "Phương Bắc (Khí Khảm Thủy - Trầm tĩnh/Hàn)", element: "water" },
-      { id: "center", name: "Trung Cung / Thổ địa (Khí Khôn Cấn - Nuôi dưỡng)", element: "earth" }
+      { id: "east", name: "Phương Đông (Tọa Giáp - Mão - Ất: Chấn Mộc, Đón Khí Thái Dương)", element: "wood", field: "Từ trường sinh trưởng" },
+      { id: "south", name: "Phương Nam (Tọa Bính - Ngọ - Đinh: Ly Hỏa, Đón Bức Xạ Quang Minh)", element: "fire", field: "Từ trường quang nhiệt cực đại" },
+      { id: "west", name: "Phương Tây (Tọa Canh - Dậu - Tân: Đoài Kim, Đón Khí Thu Liễm Sát)", element: "metal", field: "Từ trường thanh lọc ngưng kết" },
+      { id: "north", name: "Phương Bắc (Tọa Nhâm - Tý - Quý: Khảm Thủy, Đón Khí Phục Tàng)", element: "water", field: "Từ trường tiềm năng lắng đọng" },
+      { id: "center", name: "Trung Cung / Tứ Duy (Tọa Khôn Cấn Tốn Càn: Thổ Địa Nuôi Dưỡng)", element: "earth", field: "Từ trường ổn định trung hòa" }
     ];
 
     const nhanOptions = [
-      { id: "wood_person", name: "Mệnh/Tâm Mộc (Khát khao sáng tạo, hướng thượng)", element: "wood" },
-      { id: "fire_person", name: "Mệnh/Tâm Hỏa (Nhiệt huyết, bộc phát, hành động)", element: "fire" },
-      { id: "earth_person", name: "Mệnh/Tâm Thổ (Vững chãi, bảo bọc, trung dung)", element: "earth" },
-      { id: "metal_person", name: "Mệnh/Tâm Kim (Kỷ luật, thanh lọc, quyết đoán)", element: "metal" },
-      { id: "water_person", name: "Mệnh/Tâm Thủy (Linh hoạt, mưu lược, trực giác)", element: "water" }
+      { id: "wood_person", name: "Mệnh / Thể Trạng Mộc (Tạng Can, Cần Sinh Khí Vươn Tỏa)", element: "wood", trait: "Sáng tạo, kiên trì, lòng nhân" },
+      { id: "fire_person", name: "Mệnh / Thể Trạng Hỏa (Tạng Tâm, Cần Nhiệt Lượng Bộc Lộ)", element: "fire", trait: "Nhiệt huyết, minh mẫn, lễ nghĩa" },
+      { id: "earth_person", name: "Mệnh / Thể Trạng Thổ (Tạng Tỳ, Cần Sự Vững Chãi Dung Nạp)", element: "earth", trait: "Bảo bọc, trung tín, ổn định" },
+      { id: "metal_person", name: "Mệnh / Thể Trạng Kim (Tạng Phế, Cần Khí Tiết Thanh Lọc)", element: "metal", trait: "Kỷ luật, quyết đoán, nghĩa khí" },
+      { id: "water_person", name: "Mệnh / Thể Trạng Thủy (Tạng Thận, Cần Chiều Sâu Trí Tuệ)", element: "water", trait: "Linh hoạt, mưu lược, thông tuệ" }
     ];
 
     this.fillSelect(this.thienSelect, thienOptions);
@@ -65,87 +65,99 @@ class CatHungMatrixEngine {
     const elDia = this.diaSelect.value;
     const elNhan = this.nhanSelect.value;
 
-    // Evaluate Relationship:
-    // Score based on Sinh, Đồng Hành (Tỉ hòa), Khắc
     let score = 50; // Neutral baseline
     let log = [];
 
     // 1. Thiên vs Địa
-    const thienDiaRel = this.getRelationship(elThien, elDia);
+    const thienDiaRel = this.getRelationship(elThien, elDia, "Thiên Thời", "Địa Lợi");
     score += thienDiaRel.score;
-    log.push(`• <strong>Thiên - Địa:</strong> ${thienDiaRel.desc}`);
+    log.push(thienDiaRel.desc);
 
     // 2. Địa vs Nhân
-    const diaNhanRel = this.getRelationship(elDia, elNhan);
+    const diaNhanRel = this.getRelationship(elDia, elNhan, "Địa Lợi", "Nhân Khí");
     score += diaNhanRel.score;
-    log.push(`• <strong>Địa - Nhân:</strong> ${diaNhanRel.desc}`);
+    log.push(diaNhanRel.desc);
 
     // 3. Thiên vs Nhân
-    const thienNhanRel = this.getRelationship(elThien, elNhan);
+    const thienNhanRel = this.getRelationship(elThien, elNhan, "Thiên Thời", "Nhân Khí");
     score += thienNhanRel.score;
-    log.push(`• <strong>Thiên - Nhân:</strong> ${thienNhanRel.desc}`);
+    log.push(thienNhanRel.desc);
 
-    // Determine Status
+    // Status Determination
     let badgeClass = "resonance-trunghoa";
-    let stateName = "BÌNH HÒA / TRUNG DUNG";
+    let stateName = "BÌNH HÒA (CÂN BẰNG TĨNH)";
     let physicsExplanation = "";
 
-    if (score >= 80) {
+    if (score >= 85) {
       badgeClass = "resonance-cat";
-      stateName = "ĐẠI CÁT (CỘNG HƯỞNG ĐỒNG PHA)";
-      physicsExplanation = "Trường lực ba ngôi (Thiên - Địa - Nhân) rơi vào trạng thái <strong>Cộng hưởng tích cực (Constructive Phase Resonance)</strong>. Dòng khí lưu thông trơn tru, không có lực cản hay nhiễu loạn từ trường, giúp tâm trí hanh thông, sinh lực dồi dào, thu hút mọi cơ duyên cát lợi.";
-    } else if (score >= 60) {
+      stateName = "ĐẠI CÁT: CỘNG HƯỞNG ĐỒNG PHA TUYỆT ĐỐI";
+      physicsExplanation = `
+        <strong>Cơ Học Vật Lý Trường Khí:</strong> Ba vector năng lượng (Góc chiếu Thiên văn, Từ trường Phương vị Địa lý và Tần số Sinh học Nhân thể) hội tụ cùng pha dao động (Constructive Wave Interference). Dòng khí lưu thông với trở kháng bằng 0, kích thích hệ thần kinh trung ương tiết ra hormone cân bằng, tăng cường năng lực trực giác và đưa ra các quyết sách chuẩn xác. Đây chính là bản chất của <em>'Thuận Thiên giả tồn, đắc Khí giả vượng'</em>.
+      `;
+    } else if (score >= 65) {
       badgeClass = "resonance-cat";
-      stateName = "TIỂU CÁT (TƯƠNG SINH THUẬN KHÍ)";
-      physicsExplanation = "Địa khí và Thiên khí tương trợ hoặc nâng đỡ Nhân thể, tạo ra môi trường tương thích thuận chiều phát triển.";
+      stateName = "TIỂU CÁT: TƯƠNG SINH THUẬN DÒNG";
+      physicsExplanation = `
+        <strong>Cơ Học Vật Lý Trường Khí:</strong> Môi trường địa từ trường và thời gian nuôi dưỡng, bổ trợ cho thể trạng nhân sinh. Các xung lực phản kháng ở mức thấp, sinh thái nội môi trường ổn định, cơ thể duy trì được thế cân bằng sinh hóa tích cực.
+      `;
     } else if (score <= 30) {
       badgeClass = "resonance-hung";
-      stateName = "ĐẠI HUNG (XUNG SÁT NGHỊCH PHA)";
-      physicsExplanation = "Trường lực xảy ra <strong>Xung đột pha cực đại (Phase Cancellation / Destructive Interference)</strong>. Các vectơ năng lượng đối kháng trực diện, bẻ gãy từ trường sinh học, gây ức chế thần kinh, tạo ra sự ứ trệ và hao tổn nặng nề.";
+      stateName = "ĐẠI HUNG: XUNG ĐỘT PHA & PHÁ VỠ TỪ TRƯỜNG SINH HỌC";
+      physicsExplanation = `
+        <strong>Cơ Học Vật Lý Trường Khí:</strong> Xảy ra hiện tượng <strong>Triệt Tiêu Pha & Nhiễu Loạn Dòng Xoáy (Destructive Phase Interference / Severe Turbulence)</strong>. Vector năng lượng của thời gian và không gian đối kháng trực diện với tạng phủ con người, làm lệch pha dao động điện từ của tế bào, dẫn tới ức chế tuần hoàn máu não, mất ngủ, căng thẳng và sai lầm trong hành động.
+      `;
     } else if (score < 50) {
       badgeClass = "resonance-hung";
-      stateName = "TIỂU HUNG (KHÍ KHẮC Ứ TRỆ)";
-      physicsExplanation = "Xuất hiện sự xung khắc giữa thời gian hoặc phương vị với nhân thể. Cần dùng nguyên lý <em>Chế Hóa</em> (hành trung gian) để bắc cầu hóa giải xung lực.";
+      stateName = "TIỂU HUNG: KHÍ KHẮC Ứ TRỆ";
+      physicsExplanation = `
+        <strong>Cơ Học Vật Lý Trường Khí:</strong> Xuất hiện sự áp chế giữa không gian hoặc thời gian với nhân thể. Cần sử dụng nguyên lý <em>'Chế Hóa'</em> (bổ sung hành trung gian làm cầu nối chuyển tiếp) để hóa giải xung lực trực diện.
+      `;
     } else {
-      physicsExplanation = "Năng lượng ở trạng thái cân bằng động, không tương sinh cực đại cũng không xung khắc tiêu hủy.";
+      physicsExplanation = `
+        <strong>Cơ Học Vật Lý Trường Khí:</strong> Năng lượng ở trạng thái chuyển tiếp trung dung, không tương sinh cực đại cũng không có xung sát tiêu hủy. Thích hợp cho việc củng cố nội lực và bảo toàn trạng thái hiện hữu.
+      `;
     }
 
     this.renderResult(score, stateName, badgeClass, log, physicsExplanation);
   }
 
-  getRelationship(elemA, elemB) {
-    const sinhMap = {
-      wood: "fire",
-      fire: "earth",
-      earth: "metal",
-      metal: "water",
-      water: "wood"
-    };
+  getRelationship(elemA, elemB, labelA, labelB) {
+    const sinhMap = { wood: "fire", fire: "earth", earth: "metal", metal: "water", water: "wood" };
+    const khacMap = { wood: "earth", earth: "water", water: "fire", fire: "metal", metal: "wood" };
 
-    const khacMap = {
-      wood: "earth",
-      earth: "water",
-      water: "fire",
-      fire: "metal",
-      metal: "wood"
-    };
+    const nameMap = { wood: "MỘC", fire: "HỎA", earth: "THỔ", metal: "KIM", water: "THỦY" };
 
     if (elemA === elemB) {
-      return { score: 15, desc: `Đồng khí tương cầu (Cùng hành ${elemA.toUpperCase()}), trường lực củng cố vững bền (+15 điểm).` };
+      return { 
+        score: 15, 
+        desc: `• <strong>${labelA} [${nameMap[elemA]}] song hành ${labelB} [${nameMap[elemB]}]:</strong> Đồng thanh tương ứng, đồng khí tương cầu, trường lực củng cố vững bền (+15 điểm).` 
+      };
     }
     if (sinhMap[elemA] === elemB) {
-      return { score: 20, desc: `${elemA.toUpperCase()} sinh ${elemB.toUpperCase()}: Dòng năng lượng dồi dào nuôi dưỡng phát triển (+20 điểm).` };
+      return { 
+        score: 20, 
+        desc: `• <strong>${labelA} [${nameMap[elemA]}] Tương Sinh ${labelB} [${nameMap[elemB]}]:</strong> Dòng năng lượng chuyển hóa dồi dào, thuận tự nhiên nuôi dưỡng (+20 điểm).` 
+      };
     }
     if (sinhMap[elemB] === elemA) {
-      return { score: 15, desc: `${elemB.toUpperCase()} được ${elemA.toUpperCase()} hỗ trợ: Đắc sinh khí thuận lợi (+15 điểm).` };
+      return { 
+        score: 15, 
+        desc: `• <strong>${labelB} [${nameMap[elemB]}] sinh trợ ${labelA} [${nameMap[elemA]}]:</strong> Đắc sinh khí tương trợ, mở rộng tiềm năng (+15 điểm).` 
+      };
     }
     if (khacMap[elemA] === elemB) {
-      return { score: -20, desc: `${elemA.toUpperCase()} khắc ${elemB.toUpperCase()}: Xung lực áp chế, nghịch dòng khí quyển (-20 điểm).` };
+      return { 
+        score: -20, 
+        desc: `• <strong>${labelA} [${nameMap[elemA]}] Tương Khắc ${labelB} [${nameMap[elemB]}]:</strong> Xung lực áp chế trực diện, bẻ gãy từ trường (-20 điểm).` 
+      };
     }
     if (khacMap[elemB] === elemA) {
-      return { score: -15, desc: `${elemB.toUpperCase()} phản khắc ${elemA.toUpperCase()}: Tổn hao năng lượng (-15 điểm).` };
+      return { 
+        score: -15, 
+        desc: `• <strong>${labelB} [${nameMap[elemB]}] Phản Khắc ${labelA} [${nameMap[elemA]}]:</strong> Tổn hao năng lượng, lực cản nội tại phát sinh (-15 điểm).` 
+      };
     }
-    return { score: 0, desc: "Bình hòa tương đối." };
+    return { score: 0, desc: `• <strong>${labelA} và ${labelB}:</strong> Bình hòa tương đối.` };
   }
 
   renderResult(score, stateName, badgeClass, log, physicsExplanation) {
@@ -160,10 +172,10 @@ class CatHungMatrixEngine {
         <h4 style="font-family:var(--font-title); font-size:1.15rem; color:var(--gold-primary); margin-bottom:0.6rem;">
           Giải Mã Cơ Học Trường Khí Tương Tác:
         </h4>
-        <div style="font-size:0.88rem; color:var(--text-muted); margin-bottom:1rem; line-height:1.6;">
+        <div style="font-size:0.88rem; color:var(--text-muted); margin-bottom:1rem; line-height:1.7;">
           ${log.join('<br>')}
         </div>
-        <div style="background:rgba(255,255,255,0.03); border:1px solid var(--border-subtle); border-radius:10px; padding:0.9rem 1.2rem; font-size:0.85rem; color:var(--text-pure); line-height:1.6;">
+        <div style="background:rgba(255,255,255,0.03); border:1px solid var(--border-subtle); border-radius:10px; padding:1.1rem 1.4rem; font-size:0.9rem; color:var(--text-pure); line-height:1.7;">
           ${physicsExplanation}
         </div>
       </div>

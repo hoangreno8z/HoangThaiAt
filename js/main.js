@@ -155,7 +155,41 @@ document.addEventListener('DOMContentLoaded', () => {
     window.selectGenesisStage(stages[0].id);
   }
 
-  // 3. Initialize Trống Đồng Đông Sơn Engine
+  // 3. Đại Luận Thuyết Chuyên Sâu Renderer (6 Chương Đại Học Thuật)
+  const treatisesContainer = document.getElementById('treatises-container');
+  if (treatisesContainer && COSMIC_DATA.treatises) {
+    treatisesContainer.innerHTML = COSMIC_DATA.treatises.map((tr, idx) => `
+      <div class="treatise-card ${idx === 0 ? 'active' : ''}" id="treatise-${tr.id}">
+        <div class="treatise-header" onclick="toggleTreatise('${tr.id}')">
+          <div style="display:flex; align-items:center; gap:1rem;">
+            <span class="treatise-number">${tr.number}</span>
+            <div>
+              <h3 class="treatise-title">${tr.title}</h3>
+              <span class="treatise-author">${tr.author}</span>
+            </div>
+          </div>
+          <div class="treatise-toggle-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+        </div>
+        <div class="treatise-body">
+          <div class="treatise-content-wrap">
+            ${tr.content}
+          </div>
+        </div>
+      </div>
+    `).join('');
+
+    window.toggleTreatise = function(id) {
+      soundCtrl.playBell(528);
+      const card = document.getElementById(`treatise-${id}`);
+      if (card) {
+        card.classList.toggle('active');
+      }
+    };
+  }
+
+  // 4. Initialize Trống Đồng Đông Sơn Engine
   const trongDongEngine = new TrongDongEngine('trongdong-svg-wrap', 'trongdong-detail-display');
   window.trongDongEngine = trongDongEngine;
 

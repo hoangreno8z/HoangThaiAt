@@ -508,6 +508,127 @@ body::before {
   line-height: 1.7;
 }
 
+/* Treatises Accordion Styling */
+.treatises-accordion-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.treatise-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(12px);
+}
+
+.treatise-card:hover {
+  border-color: var(--border-active);
+}
+
+.treatise-card.active {
+  border-color: var(--gold-primary);
+  box-shadow: var(--shadow-gold);
+}
+
+.treatise-header {
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  background: rgba(13, 17, 26, 0.7);
+  transition: background 0.2s ease;
+}
+
+.treatise-header:hover {
+  background: rgba(229, 192, 123, 0.08);
+}
+
+.treatise-number {
+  font-family: var(--font-title);
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--gold-primary);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #06080E;
+  border: 1px solid var(--border-active);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.treatise-title {
+  font-family: var(--font-title);
+  font-size: 1.25rem;
+  color: var(--text-pure);
+  margin-bottom: 0.2rem;
+}
+
+.treatise-author {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  color: var(--jade-cyan);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.treatise-toggle-icon {
+  color: var(--gold-primary);
+  transition: transform 0.3s ease;
+}
+
+.treatise-card.active .treatise-toggle-icon {
+  transform: rotate(180deg);
+}
+
+.treatise-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+  background: rgba(7, 9, 14, 0.6);
+}
+
+.treatise-card.active .treatise-body {
+  max-height: 1600px;
+}
+
+.treatise-content-wrap {
+  padding: 2rem;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  line-height: 1.8;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.treatise-content-wrap p {
+  margin-bottom: 1rem;
+}
+
+.treatise-content-wrap ul {
+  padding-left: 1.5rem;
+  margin-bottom: 1.2rem;
+}
+
+.treatise-content-wrap li {
+  margin-bottom: 0.5rem;
+}
+
+.treatise-content-wrap code {
+  background: rgba(229, 192, 123, 0.1);
+  color: var(--gold-primary);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-family: monospace;
+}
+
 /* Genesis Cards */
 .genesis-grid {
   display: grid;

@@ -1,6 +1,6 @@
 /**
  * ĐỒ THỊ TRI THỨC KHÔNG TRỌNG LỰC (ANTIGRAVITY KNOWLEDGE GRAPH)
- * Sử dụng D3.js v7 Force Simulation để mô phỏng lực đẩy phản trọng lực giữa các nút tri thức.
+ * Sử dụng D3.js v7 Force Simulation để mô phỏng mạng lưới tri thức đa chiều.
  * Hỗ trợ kéo thả (Drag), phóng to/thu nhỏ (Zoom), chạm cảm ứng (Touch) trên iOS/Android.
  */
 
@@ -60,7 +60,7 @@ class AntigravityGraph {
     this.g = this.svg.append('g').attr('class', 'graph-content');
 
     this.zoom = d3.zoom()
-      .scaleExtent([0.4, 2.5])
+      .scaleExtent([0.3, 3])
       .on('zoom', (event) => {
         this.g.attr('transform', event.transform);
       });
@@ -69,10 +69,10 @@ class AntigravityGraph {
 
     // 2. Initialize Force Simulation (Anti-gravity physics)
     this.simulation = d3.forceSimulation(displayNodes)
-      .force('link', d3.forceLink(displayLinks).id(d => d.id).distance(90))
-      .force('charge', d3.forceManyBody().strength(-350)) // Lực đẩy phản trọng lực
+      .force('link', d3.forceLink(displayLinks).id(d => d.id).distance(80))
+      .force('charge', d3.forceManyBody().strength(-300)) // Lực đẩy phản trọng lực
       .force('center', d3.forceCenter(width / 2, height / 2))
-      .force('collide', d3.forceCollide().radius(d => d.radius + 15));
+      .force('collide', d3.forceCollide().radius(d => d.radius + 12));
 
     // 3. Draw Connecting Links
     const link = this.g.append('g')
@@ -121,7 +121,7 @@ class AntigravityGraph {
       .attr('text-anchor', 'middle')
       .attr('dy', '.35em')
       .attr('fill', '#F8FAFC')
-      .attr('font-size', d => d.radius > 28 ? '12px' : '10px')
+      .attr('font-size', d => d.radius > 26 ? '12px' : '10px')
       .attr('font-family', "'Inter', sans-serif")
       .attr('font-weight', '600')
       .style('pointer-events', 'none')
@@ -138,6 +138,12 @@ class AntigravityGraph {
       node
         .attr('transform', d => `translate(${d.x},${d.y})`);
     });
+
+    // Auto select first node to showcase details
+    if (displayNodes.length > 0 && !this.drawer.classList.contains('open')) {
+      const rootNode = displayNodes.find(n => n.id === 'Thái Cực') || displayNodes[0];
+      this.showNodeDetail(rootNode);
+    }
   }
 
   dragStarted(event, d) {
@@ -200,17 +206,33 @@ class AntigravityGraph {
 
       <div class="drawer-body">
         <div class="drawer-desc-card">
-          <h4 style="color:var(--gold-primary); font-size:0.9rem; margin-bottom:0.4rem; text-transform:uppercase;">Ý Nghĩa Khởi Nguyên:</h4>
+          <h4 style="color:var(--gold-primary); font-size:0.85rem; margin-bottom:0.4rem; text-transform:uppercase; letter-spacing:1px;">Ý Nghĩa Khởi Nguyên & Bản Thể:</h4>
           <p style="color:var(--text-pure); font-size:0.95rem; line-height:1.7;">${nodeData.desc}</p>
         </div>
 
+        ${nodeData.quote ? `
+          <div style="background:rgba(229,192,123,0.08); border-left:3px solid var(--gold-primary); padding:0.8rem 1rem; border-radius:0 8px 8px 0; margin-top:1rem;">
+            <div style="font-size:0.75rem; color:var(--gold-primary); font-weight:600; text-transform:uppercase; margin-bottom:0.2rem;">Cổ Thư Trích Yếu:</div>
+            <div style="font-size:0.9rem; color:var(--text-pure); font-style:italic;">"${nodeData.quote}"</div>
+          </div>
+        ` : ''}
+
         <div style="margin-top:1.5rem;">
-          <h4 style="color:var(--jade-cyan); font-size:0.85rem; text-transform:uppercase; margin-bottom:0.6rem;">Liên Kết Mạng Lưới (${connections.length}):</h4>
+          <h4 style="color:var(--jade-cyan); font-size:0.85rem; text-transform:uppercase; letter-spacing:1px; margin-bottom:0.6rem;">
+            Liên Kết Trong Mạng Lưới (${connections.length}):
+          </h4>
           <div style="display:flex; flex-wrap:wrap; gap:0.4rem;">
             ${connections.map(c => `
               <span class="connection-tag" onclick="window.antigravityGraph.focusNode('${c}')">${c}</span>
             `).join('')}
           </div>
+        </div>
+
+        <div style="margin-top:1.8rem; border-top:1px solid var(--border-subtle); padding-top:1rem;">
+          <a href="#treatises-section" class="btn-secondary" style="width:100%; justify-content:center; font-size:0.85rem; padding:0.6rem 1rem;">
+            <span>Xem Đại Luận Thuyết Chuyên Sâu</span>
+            ${renderIcon('arrowRight', 12)}
+          </a>
         </div>
       </div>
     `;
