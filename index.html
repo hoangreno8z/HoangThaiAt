@@ -1,288 +1,513 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thái Ất Thần Số - Hệ Thống Lập Quẻ Tự Động</title>
-    <meta name="description" content="Ứng dụng lập quẻ Thái Ất Thần Số tự động 6 chế độ: Tuế Kể, Nguyệt Kể, Nhật Kể, Thời Kể, Quẻ Dịch, Bàn Nhân Mệnh. Chuẩn theo Thái Ất Thần Kinh Trạng Trình Nguyễn Bỉnh Khiêm.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Inter:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style_v4.css?v=14.0.1">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Vũ Trụ Học Cổ Đại & Đồ Thị Antigravity | Khởi Nguyên Âm Dương & Dịch Lý Lạc Việt</title>
+  <meta name="description" content="Khám phá bản thể luận vũ trụ học cổ đại, cội nguồn Dịch lý lúa nước Lạc Việt, Trống Đồng Đông Sơn, Hà Đồ Lạc Thư, Tam Thức và Đồ thị Tri thức Không Trọng Lực Antigravity.">
+  
+  <!-- D3.js v7 for Antigravity Force Graph -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <noscript>
-        <div style="background:#8b0000; color:#fff; text-align:center; padding:15px; font-weight:bold; position:relative; z-index:99999;">
-            ⚠️ Vui lòng bật JavaScript trên trình duyệt của bạn để sử dụng ứng dụng Thái Ất Thần Số.
+
+  <!-- Navigation Header -->
+  <header class="nav-header">
+    <div class="nav-container">
+      <a href="#hero" class="logo-brand">
+        <div id="logo-icon-wrap" style="width:34px; height:34px; display:flex; align-items:center; justify-content:center;">
+          <!-- Injected via SVG Icons -->
+          <svg width="32" height="32" viewBox="0 0 100 100" class="svg-icon svg-taiji">
+            <circle cx="50" cy="50" r="46" fill="none" stroke="#E5C07B" stroke-width="3"/>
+            <path d="M 50 4 A 46 46 0 0 1 50 96 A 23 23 0 0 1 50 50 A 23 23 0 0 0 50 4" fill="#E5C07B"/>
+            <path d="M 50 4 A 23 23 0 0 1 50 50 A 23 23 0 0 0 50 96 A 46 46 0 0 1 50 4" fill="#0A0E17"/>
+            <circle cx="50" cy="27" r="6" fill="#0A0E17"/>
+            <circle cx="50" cy="73" r="6" fill="#E5C07B"/>
+          </svg>
         </div>
-    </noscript>
-    <!-- CỔNG DỊCH HỌC HỢP NHẤT MENU -->
-    <nav class="app-switcher-nav">
-        <div class="nav-container">
-            <a href="/" class="nav-item"><span class="icon">☰</span> KINH DỊCH ĐẠI TOÀN</a>
-            <a href="/thai-at/" class="nav-item active"><span class="icon">☯</span> THÁI ẤT THẦN SỐ</a>
+        <div class="logo-text">
+          <h1>ÂM DƯƠNG HỌC VIỆN</h1>
+          <p>Cosmological Knowledge & Antigravity Atlas</p>
         </div>
-    </nav>
+      </a>
 
-    <div class="stars-bg"></div>
-    
-    <div class="app-container">
-        <header>
-            <div class="logo">太乙神數</div>
-            <h1>THÁI ẤT THẦN SỐ</h1>
-            <p class="subtitle">Hệ Thống Lập Quẻ Tự Động — Thái Ất Thần Kinh (Trạng Trình Nguyễn Bỉnh Khiêm)</p>
-        </header>
+      <ul class="nav-links">
+        <li><a href="#timeline-section" class="nav-link">Dòng Thời Gian</a></li>
+        <li><a href="#antigravity-graph-section" class="nav-link">Đồ Thị Tri Thức</a></li>
+        <li><a href="#vietorigins" class="nav-link">Cội Nguồn Việt</a></li>
+        <li><a href="#genesis" class="nav-link">Khởi Nguyên</a></li>
+        <li><a href="#hadolacthu" class="nav-link">Hà Đồ • Lạc Thư</a></li>
+        <li><a href="#batquai" class="nav-link">Bát Quái</a></li>
+        <li><a href="#nguhanh" class="nav-link">Ngũ Hành</a></li>
+        <li><a href="#cathung" class="nav-link">Cát Hung</a></li>
+        <li><a href="#tamthuc" class="nav-link">Tam Thức</a></li>
+        <li><a href="#sources" class="nav-link">Thư Tịch Cổ</a></li>
+      </ul>
 
-        <!-- 6 Mode Navigation Tabs -->
-        <nav class="mode-nav glass">
-            <button class="nav-btn active" data-mode="tue">Quẻ Năm (Tuế Kể)</button>
-            <button class="nav-btn" data-mode="nguyet">Quẻ Tháng (Nguyệt Kể)</button>
-            <button class="nav-btn" data-mode="nhat">Quẻ Ngày (Nhật Kể)</button>
-            <button class="nav-btn" data-mode="thoi">Quẻ Giờ (Thời Kể)</button>
-            <button class="nav-btn" data-mode="dich">Quẻ Dịch</button>
-            <button class="nav-btn" data-mode="menh">Bàn Nhân Mệnh</button>
-        </nav>
-
-        <main class="main-layout">
-            <!-- Left Sidebar Controls -->
-            <aside class="sidebar glass">
-                <h2 class="sidebar-title">🔮 Điều Chỉnh Thời Gian</h2>
-                <form id="control-form">
-                    <div class="form-group">
-                        <label for="input-date">Chọn Ngày Lập Quẻ (Dương Lịch)</label>
-                        <input type="date" id="input-date" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="input-time">Chọn Giờ Lập Quẻ</label>
-                        <input type="time" id="input-time" required>
-                    </div>
-                    <button type="submit" class="btn-primary" id="btn-cast">
-                        <span class="btn-text">⚡ KHỞI QUẺ THÁI ẤT</span>
-                    </button>
-                </form>
-                <div class="info-card">
-                    <h3>Thông Số Quẻ</h3>
-                    <ul class="info-details">
-                        <li><strong>Chế độ:</strong> <span id="info-mode-name">Tuế Kể</span></li>
-                        <li><strong>Tiết Khí:</strong> <span id="info-solar-term">-</span></li>
-                        <li><strong>Cục Số:</strong> <span id="info-cuc-name">-</span></li>
-                        <li><strong>Khối:</strong> <span id="info-khoi-name">-</span></li>
-                        <li><strong>Bát Môn:</strong> <span id="info-mon-name">-</span></li>
-                        <li><strong>Cửu Tinh:</strong> <span id="info-tinh-name">-</span></li>
-                    </ul>
-                </div>
-            </aside>
-
-            <!-- Right: Chart Display Panel -->
-            <section class="chart-display-area">
-                <!-- Khu vực hiển thị Ảnh PNG HD trực tiếp cho Mobile touch-hold & PC Right-click -->
-                <div class="chart-image-section">
-                    <div id="chart-img-loader" class="chart-img-loader" style="display: none;">
-                        <span class="spinner"></span> <span>Đang khởi tạo ảnh Sa Bàn HD...</span>
-                    </div>
-
-                    <img id="thai-at-chart-img" class="chart-image-output" alt="Sa Bàn Thái Ất Thần Số PNG" style="display: none;">
-
-                    <div class="chart-action-row" style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin: 10px 0;">
-                        <button type="button" onclick="generateThaiAtPNG();" class="btn-primary" style="width: auto; padding: 10px 22px; font-size: 0.85rem; margin-top: 0;">
-                            📸 XUẤT ÁNH SA BÀN HD
-                        </button>
-                        <a id="btn-download-direct" href="#" download="SaBan_ThaiAt.png" class="btn-direct-download" style="display: none;">
-                            💾 TẢI ẢNH SA BÀN (PNG)
-                        </a>
-                        <button type="button" id="btn-ai-luan-giai" class="btn-primary" style="background: #e67e22; border-color: #d35400; width: auto; padding: 10px 22px; font-size: 0.85rem; margin-top: 0; display: none;">
-                            🤖 AI LUẬN GIẢI
-                        </button>
-                    </div>
-                    <p class="download-tip-text">💡 <strong>Mẹo lưu ảnh:</strong> Bạn có thể bấm nút Tải ảnh sa bàn hoặc chạm giữ/click chuột phải để lưu về máy.</p>
-                </div>
-
-                <!-- Hidden DOM Data Binding Wrapper for Thai At Engine -->
-                <div class="chart-scroll-wrapper" style="display: none;">
-                    <div id="thai-at-chart-capture" class="chart-container" style="width: 100%; min-width: 850px; max-width: 1200px; margin: 0 auto; box-sizing: border-box;">
-                        <!-- Top Header: Năm Tháng Ngày Giờ Lập Quẻ -->
-                        <div class="chart-header-line">
-                            <span class="header-icon">☯</span>
-                            <span id="chart-datetime-header">NĂM THÁNG NGÀY GIỜ LẬP QUẺ</span>
-                        </div>
-
-                    <!-- 
-                        Sa Bàn Ma Trận: 16 Ô vòng ngoài bao quanh Trung Cung
-                        Layout dạng hình chữ nhật 5 cột x 5 hàng
-                        Trung Cung chiếm 3 cột x 3 hàng ở giữa
-                        
-                        Hàng 1:  Tốn  |  Tị  |  Ngọ  |  Mùi  | Khôn
-                        Hàng 2: Thìn  | ---- TRUNG CUNG ---- | Thân
-                        Hàng 3:  Mão  | ---- TRUNG CUNG ---- | Dậu
-                        Hàng 4:  Dần  | ---- TRUNG CUNG ---- | Tuất
-                        Hàng 5:  Cấn  |  Sửu |  Tý  |  Hợi  | Kiền
-                    -->
-                    <div class="matrix-grid">
-                        <!-- Row 1 -->
-                        <div class="cell-box" id="cell-ton" data-than="ton"></div>
-                        <div class="cell-box" id="cell-ty_chi" data-than="ty_chi"></div>
-                        <div class="cell-box" id="cell-ngo" data-than="ngo"></div>
-                        <div class="cell-box" id="cell-mui" data-than="mui"></div>
-                        <div class="cell-box" id="cell-khon" data-than="khon"></div>
-
-                        <!-- Row 2 -->
-                        <div class="cell-box" id="cell-thin" data-than="thin"></div>
-                        <div class="trung-cung-block" id="cell-trung-cung">
-                            <div class="tc-header">
-                                <h2>TRUNG CUNG</h2>
-                                <p class="tc-subtitle">Thái Cực — Hoàng Cực — Bàn Luận</p>
-                            </div>
-                            <div class="tc-body">
-                                <p><strong>Tứ Trụ:</strong> <span id="tc-tu-tru">-</span></p>
-                                <p><strong>Cục Số:</strong> <span id="tc-don-cuc">-</span></p>
-                                <p><strong>Tiết Khí:</strong> <span id="tc-tiet-khi">-</span></p>
-                                <p><strong>Kế Đại (Tích):</strong> <span id="tc-ke-dai" style="color:var(--gold); font-weight:bold;">-</span></p>
-                                <p><strong>Kế Tiểu (Dư):</strong> <span id="tc-ke-tieu" style="color:var(--gold); font-weight:bold;">-</span></p>
-                                <p><strong>Kế Định:</strong> <span id="tc-ke-dinh" style="color:var(--gold); font-weight:bold;">-</span></p>
-                                <p><strong>Bát Môn:</strong> <span id="tc-bat-mon">-</span></p>
-                                <p><strong>Cửu Tinh:</strong> <span id="tc-cuu-tinh">-</span></p>
-                                <p><strong>Toán Chủ:</strong> <span id="tc-toan-chu" style="color:var(--color-hoa); font-weight:bold;">-</span></p>
-                                <p><strong>Toán Khách:</strong> <span id="tc-toan-khach" style="color:var(--color-thuy); font-weight:bold;">-</span></p>
-                                <p><strong>Toán Định:</strong> <span id="tc-toan-dinh" style="color:var(--color-tho); font-weight:bold;">-</span></p>
-                                <p><strong>Trung Cung:</strong> <span id="tc-stars">-</span></p>
-                                <div class="tc-verdict-box">
-                                    <p><strong>Bát Hung:</strong> <span id="tc-bat-hung">-</span></p>
-                                    <p><strong>Luận Đoán:</strong> <span id="tc-verdict">-</span></p>
-                                </div>
-                            </div>
-                            <div class="tc-author-footer">
-                                <div class="author-name">Nguyễn Huy Hoàng</div>
-                                <div class="author-zalo">Zalo: 0933116860</div>
-                            </div>
-                        </div>
-                        <div class="cell-box" id="cell-than" data-than="than"></div>
-
-                        <!-- Row 3 -->
-                        <div class="cell-box" id="cell-mao" data-than="mao"></div>
-                        <!-- Trung Cung spans here (col 2-4, already placed) -->
-                        <div class="cell-box" id="cell-dau" data-than="dau"></div>
-
-                        <!-- Row 4 -->
-                        <div class="cell-box" id="cell-dan" data-than="dan"></div>
-                        <!-- Trung Cung spans here (col 2-4, already placed) -->
-                        <div class="cell-box" id="cell-tuat" data-than="tuat"></div>
-
-                        <!-- Row 5 -->
-                        <div class="cell-box" id="cell-can" data-than="can"></div>
-                        <div class="cell-box" id="cell-suu" data-than="suu"></div>
-                        <div class="cell-box" id="cell-ty" data-than="ty"></div>
-                        <div class="cell-box" id="cell-hoi" data-than="hoi"></div>
-                        <div class="cell-box" id="cell-kien" data-than="kien"></div>
-                    </div>
-                </div>
-            </div>
-
-                <!-- Thẻ Phân Tích & Luận Giải Chuyên Sâu (Dạng Nút Xổ Xuống Tối Ưu Không Gian) -->
-                <section id="analysis-accordion-section" style="margin-top: 20px;">
-                    <!-- 1. Luận Giải Chuyên Sâu Cục Diện Sa Bàn -->
-                    <details id="details-deep-analysis" style="margin-bottom: 14px; border: 1px solid var(--panel-border); border-radius: 10px; overflow: hidden; background: var(--panel-bg);" open>
-                        <summary style="cursor: pointer; color: var(--gold); font-weight: 700; padding: 12px 16px; font-family: 'Cinzel', serif; background: rgba(212, 175, 55, 0.12); border-bottom: 1px solid rgba(212,175,55,0.25); font-size: 1rem; user-select: none;">
-                            🔮 LUẬN GIẢI CHUYÊN SÂU CỤC DIỆN SA BÀN (BẤM ĐỂ MỞ / THU GỌN)
-                        </summary>
-                        <div id="luan-doan-deep-analysis-content" style="padding: 16px; font-size: 0.92rem; line-height: 1.7; color: var(--text-light);">
-                            <!-- JS sẽ điền báo cáo luận giải chuyên sâu tại đây -->
-                        </div>
-                    </details>
-
-                    <!-- 2. Dự Báo Quỹ Đạo Sao Thay Đổi -->
-                    <details id="details-future-predictions" style="margin-bottom: 14px; border: 1px solid var(--panel-border); border-radius: 10px; overflow: hidden; background: var(--panel-bg);">
-                        <summary style="cursor: pointer; color: var(--gold); font-weight: 700; padding: 12px 16px; font-family: 'Cinzel', serif; background: rgba(212, 175, 55, 0.12); border-bottom: 1px solid rgba(212,175,55,0.25); font-size: 1rem; user-select: none;">
-                            🔮 DỰ ĐOÁN DI DIỄN CÁC SAO TIẾP THEO (BẤM ĐỂ MỞ / THU GỌN)
-                        </summary>
-                        <div id="future-predictions-content" style="padding: 16px; line-height: 1.6; font-size: 0.95rem;">
-                            <!-- JS sẽ điền dự báo tại đây -->
-                        </div>
-                    </details>
-                </section>
-
-                <div class="result-section">
-                    <h3>☯ VẬN QUÁI THÁI ẤT (ĐẠI DU & TIỂU DU VẬN QUÁI)</h3>
-                    <div id="luan-doan-content" class="luan-doan-box">
-                        <!-- Data will be injected here -->
-                    </div>
-                </div>
-
-                <!-- BẢN ĐỒ MẶC ĐỊNH CỬU CUNG PHẬN DÃ 9 CHÂU -->
-                <section id="phan-da-map-section" class="pd-section">
-                    <div class="pd-section-header">
-                        <h3>🗺️ BẢN ĐỒ MẶC ĐỊNH CỬU CUNG PHẬN DÃ (9 CHÂU)</h3>
-                        <p class="pd-subtitle">Hệ Thống Phân Định Địa Lý & Phận Dã Cổ Đại Theo Lạc Thư Bát Quái — Độc Lập Mặc Định</p>
-                    </div>
-
-                    <!-- 3x3 Grid Visual Map -->
-                    <div id="phan-da-grid-map" class="pd-grid-container">
-                        <!-- JS will populate 3x3 interactive map boxes -->
-                    </div>
-
-                    <h4 style="color: var(--gold); font-family: 'Cinzel', serif; margin-bottom: 12px; font-size: 1rem; text-align: center;">📜 Chi Tiết Lịch Sử & Địa Lý Ngày Nay Của 9 Châu</h4>
-
-                    <!-- Detailed Cards Container -->
-                    <div id="phan-da-cards-list" class="pd-cards-container">
-                        <!-- JS will populate detailed cards -->
-                    </div>
-                </section>
-
-                <!-- BẢNG TRA CỨU Ý NGHĨA -->
-                <div id="reference-section" class="glass" style="margin-top: 20px; padding: 20px; border-radius: 8px;">
-                    <h3 style="color: var(--gold); border-bottom: 1px solid var(--panel-border); padding-bottom: 10px; margin-bottom: 15px; font-family: 'Cinzel', serif;">📖 Bảng Tra Cứu Ý Nghĩa</h3>
-                    
-                    <details style="margin-bottom: 10px;">
-                        <summary style="cursor: pointer; color: var(--gold); font-weight: bold; padding: 8px 0;">🏛️ 16 Cung Thần Vị</summary>
-                        <div id="ref-cung-table" style="padding: 10px; line-height: 1.8; font-size: 0.9rem; color: var(--text-color);"></div>
-                    </details>
-                    
-                    <details style="margin-bottom: 10px;">
-                        <summary style="cursor: pointer; color: var(--gold); font-weight: bold; padding: 8px 0;">⭐ Ý Nghĩa Các Sao, Tướng, Thần</summary>
-                        <div id="ref-star-table" style="padding: 10px; line-height: 1.8; font-size: 0.9rem; color: var(--text-color);"></div>
-                    </details>
-                    
-                    <details style="margin-bottom: 10px;">
-                        <summary style="cursor: pointer; color: var(--gold); font-weight: bold; padding: 8px 0;">🚪 Bát Môn Thái Ất (8 Cửa)</summary>
-                        <div id="ref-batmon-table" style="padding: 10px; line-height: 1.8; font-size: 0.9rem; color: var(--text-color);"></div>
-                    </details>
-                    
-                    <details style="margin-bottom: 10px;">
-                        <summary style="cursor: pointer; color: var(--gold); font-weight: bold; padding: 8px 0;">⚔️ 11 Cách Cục Bất Thường</summary>
-                        <div id="ref-cachcuc-table" style="padding: 10px; line-height: 1.8; font-size: 0.9rem; color: var(--text-color);"></div>
-                    </details>
-                    
-                    <details style="margin-bottom: 10px;">
-                        <summary style="cursor: pointer; color: var(--gold); font-weight: bold; padding: 8px 0;">☰ 64 Quẻ Kinh Dịch — Giải Nghĩa Sơ Lược</summary>
-                        <div id="ref-hexagram-table" style="padding: 10px; line-height: 1.8; font-size: 0.9rem; color: var(--text-color);"></div>
-                    </details>
-                </div>
-            </section>
-        </main>
+      <button id="audio-toggle" class="audio-toggle-btn" title="Bật/Tắt chuông đồng thanh tịnh">
+        <!-- SVG injected by main.js -->
+        <span>Âm Thanh: BẬT</span>
+      </button>
     </div>
+  </header>
 
-    <!-- AI Luận Giải Modal -->
-    <div id="ai-luan-giai-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 100000; justify-content: center; align-items: center;">
-        <div style="background: var(--surface); border: 1px solid var(--gold); border-radius: 8px; width: 90%; max-width: 800px; max-height: 90vh; display: flex; flex-direction: column;">
-            <div style="padding: 15px; border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; background: rgba(212, 175, 55, 0.1);">
-                <h3 style="margin: 0; color: var(--gold); font-family: var(--font-ancient); letter-spacing: 1px;">🤖 HỆ THỐNG AI LUẬN GIẢI SA BÀN THÁI ẤT</h3>
-                <button onclick="document.getElementById('ai-luan-giai-modal').style.display='none';" style="background: none; border: none; color: #fff; font-size: 1.5rem; cursor: pointer;">&times;</button>
-            </div>
-            <div id="ai-luan-giai-content" style="padding: 20px; overflow-y: auto; color: var(--text-color); line-height: 1.6; font-size: 0.95rem;">
-                <!-- Nội dung AI sẽ render ở đây -->
-            </div>
-        </div>
+  <!-- Mobile Bottom Navigation Dock (iOS / Android) -->
+  <nav class="mobile-bottom-dock">
+    <a href="#antigravity-graph-section" class="mobile-dock-btn active">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><circle cx="12" cy="18" r="3"/><line x1="8.5" y1="7.5" x2="15.5" y2="7.5"/><line x1="7.5" y1="8.5" x2="10.5" y2="15.5"/><line x1="16.5" y1="8.5" x2="13.5" y2="15.5"/></svg>
+      <span>Đồ Thị</span>
+    </a>
+    <a href="#vietorigins" class="mobile-dock-btn">
+      <svg width="20" height="20" viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="50" cy="50" r="10" fill="currentColor"/></svg>
+      <span>Lạc Việt</span>
+    </a>
+    <a href="#hadolacthu" class="mobile-dock-btn">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="3" x2="9" y2="21"/></svg>
+      <span>Hà Lạc</span>
+    </a>
+    <a href="#cathung" class="mobile-dock-btn">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+      <span>Cát Hung</span>
+    </a>
+    <a href="#sources" class="mobile-dock-btn">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+      <span>Thư Tịch</span>
+    </a>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="hero" class="hero-section">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="#E5C07B"><polygon points="12 2 15 9 22 12 15 15 12 22 9 15 2 12 9 9"/></svg>
+        <span>KHO TÀNG BẢN THỂ LUẬN & DỊCH LÝ NÔNG NGHIỆP PHƯƠNG NAM</span>
+      </div>
+      <h1 class="hero-title">KHỞI NGUYÊN BẢN THỂ VŨ TRỤ</h1>
+      <div class="hero-hanzi">太極生兩儀 • 兩儀生四象 • 四象生八卦</div>
+      <p class="hero-desc">
+        Tái hiện trọn vẹn quy luật vận hành của Trời Đất, Con Người, Phương Vị và Cát Hung từ thuở hồng hoang. 
+        Kết hợp bản sắc <strong>Vũ trụ quan Trống Đồng Đông Sơn, Việt Lý Tố Nguyên</strong> và <strong>Bản đồ Tri thức Không trọng lực (Antigravity Knowledge Graph)</strong>.
+      </p>
+      <div class="hero-actions">
+        <a href="#antigravity-graph-section" class="btn-primary">
+          <span>Khám Phá Đồ Thị Tri Thức</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <a href="#vietorigins" class="btn-secondary">
+          <span>Vũ Trụ Quan Trống Đồng</span>
+        </a>
+      </div>
     </div>
+  </section>
 
-    <script src="js/lunar_solar.js?v=15.0.1"></script>
-    <script src="js/thai_at_luan_doan.js?v=15.0.1"></script>
-    <script src="js/thai_at_reference.js?v=15.0.1"></script>
-    <script src="js/phan_da_map.js?v=15.0.1"></script>
-    <script src="js/thai_at_engine_v4.js?v=15.0.1"></script>
-    <script src="js/thai_at_nguyet_engine.js?v=15.0.1"></script>
-    <script src="js/thai_at_nhat_engine.js?v=15.0.1"></script>
-    <script src="js/thai_at_thoi_engine.js?v=15.0.1"></script>
-    <script src="js/png_exporter.js?v=15.0.1"></script>
-    <script src="script_v4.js?v=15.0.1"></script>
+  <!-- Main Content Wrapper -->
+  <main class="main-wrapper">
+
+    <!-- MODULE 0: DÒNG THỜI GIAN VŨ TRỤ & LỊCH SỬ DỊCH LÝ (CHRONOLOGICAL TIMELINE) -->
+    <section id="timeline-section" class="section-block" style="padding-top:1rem;">
+      <div class="section-header">
+        <span class="section-tag">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Phân Kỳ Lịch Sử & Tiến Hóa Tri Thức
+        </span>
+        <h2 class="section-title">Dòng Thời Gian: Từ Hồng Hoang Đến Hiện Đại</h2>
+        <p class="section-subtitle">
+          Toàn bộ hệ thống tri thức được <strong>Việt hóa 100%</strong> và sắp xếp rành mạch theo <strong>Thứ Tự Dòng Thời Gian</strong> 
+          qua 9 thời kỳ tiến hóa của nhân loại và văn minh phương Đông.
+        </p>
+      </div>
+
+      <div class="timeline-container">
+        <div id="timeline-track" class="timeline-track">
+          <!-- Rendered dynamically by main.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- MODULE 1: ANTIGRAVITY KNOWLEDGE GRAPH (D3.js FORCE GRAPH) -->
+    <section id="antigravity-graph-section" class="section-block">
+      <div class="section-header">
+        <span class="section-tag">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><circle cx="12" cy="18" r="3"/><line x1="8.5" y1="7.5" x2="15.5" y2="7.5"/></svg>
+          Mạng Lưới Tri Thức Đa Chiều
+        </span>
+        <h2 class="section-title">Bản Đồ Tri Thức Không Trọng Lực (Antigravity Graph)</h2>
+        <p class="section-subtitle">
+          Các nút tri thức tự do tương tác theo trường lực đẩy vật lý (Force Simulation). 
+          Bạn có thể <strong>kéo thả các nút, phóng to thu nhỏ</strong> hoặc <strong>nhấp vào bất kỳ nút nào</strong> để xem giải mã học thuật chi tiết.
+        </p>
+      </div>
+
+      <div class="graph-section-wrapper">
+        <!-- Floating Controls -->
+        <div class="graph-top-controls">
+          <div class="graph-filter-group">
+            <button class="graph-filter-btn active" data-group="all">Tất Cả</button>
+            <button class="graph-filter-btn" data-group="viet">Cội Nguồn Việt</button>
+            <button class="graph-filter-btn" data-group="genesis">Bản Thể Luận</button>
+            <button class="graph-filter-btn" data-group="math">Hà Đồ • Lạc Thư</button>
+            <button class="graph-filter-btn" data-group="wuxing">Ngũ Hành</button>
+            <button class="graph-filter-btn" data-group="bagua">Bát Quái</button>
+            <button class="graph-filter-btn" data-group="physics">Cát Hung</button>
+          </div>
+
+          <button id="btn-reset-graph" class="graph-filter-btn" style="pointer-events:auto;" title="Đặt lại góc nhìn">
+            ↺ Đặt Lại
+          </button>
+        </div>
+
+        <!-- D3 SVG Container -->
+        <div id="graph-container"></div>
+
+        <!-- Slide-in Drawer Detail -->
+        <div id="graph-drawer" class="graph-drawer">
+          <!-- Populated dynamically by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- MODULE 1: CỘI NGUỒN VĂN HÓA LẠC VIỆT & TRỐNG ĐỒNG ĐÔNG SƠN -->
+    <section id="vietorigins" class="section-block">
+      <div class="section-header">
+        <span class="section-tag">Chương I • Cội Nguồn Phương Nam</span>
+        <h2 class="section-title">Vũ Trụ Quan Lạc Việt & Trống Đồng Đông Sơn</h2>
+        <p class="section-subtitle">
+          Giải mã mật mã thiên văn, sự vận hành của Âm Dương - Tứ Tượng - Bát Quái đúc trên mặt trống đồng 
+          và luận thuyết <strong>Việt Lý Tố Nguyên</strong> của nền văn minh lúa nước phương Nam.
+        </p>
+      </div>
+
+      <div class="trongdong-stage">
+        <div class="trongdong-svg-wrap">
+          <div id="trongdong-svg-wrap" style="width:100%; display:flex; justify-content:center;">
+            <!-- SVG rendered by JS -->
+          </div>
+        </div>
+
+        <div id="trongdong-detail-display">
+          <!-- Dynamic details on selected drum ring -->
+        </div>
+      </div>
+
+      <!-- 3 Pillars Grid -->
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:1.5rem; margin-top:2.5rem;">
+        <div style="background:var(--bg-card); border:1px solid var(--border-subtle); border-radius:12px; padding:1.8rem;">
+          <h4 style="font-family:var(--font-title); font-size:1.2rem; color:var(--gold-primary); margin-bottom:0.6rem;">
+            Mật Mã Trống Đồng Đông Sơn
+          </h4>
+          <p style="font-size:0.88rem; color:var(--text-muted); line-height:1.6;">
+            Mặt trống là một la bàn thiên văn: Tâm là Ngôi sao Thái Cực 14 cánh, vòng chim Lạc Dương bay ngược chiều kim đồng hồ, 4 tượng cóc ngậm mưa mang tính Thủy/Âm điều hòa mùa màng.
+          </p>
+        </div>
+
+        <div style="background:var(--bg-card); border:1px solid var(--border-subtle); border-radius:12px; padding:1.8rem;">
+          <h4 style="font-family:var(--font-title); font-size:1.2rem; color:var(--jade-cyan); margin-bottom:0.6rem;">
+            Việt Lý Tố Nguyên (Kim Định)
+          </h4>
+          <p style="font-size:0.88rem; color:var(--text-muted); line-height:1.6;">
+            Dịch lý bắt nguồn từ cư dân trồng lúa nước Viêm Việt. Nhìn sấm chớp, mưa nắng, con nước thủy triều mà đúc kết thành nguyên lý biến dịch trước khi được văn bản hóa phương Bắc.
+          </p>
+        </div>
+
+        <div style="background:var(--bg-card); border:1px solid var(--border-subtle); border-radius:12px; padding:1.8rem;">
+          <h4 style="font-family:var(--font-title); font-size:1.2rem; color:var(--cinnabar); margin-bottom:0.6rem;">
+            Huyền Sử Hồng Bàng Lưỡng Cực
+          </h4>
+          <p style="font-size:0.88rem; color:var(--text-muted); line-height:1.6;">
+            Cha Lạc Long Quân (Biển/Rồng/Dương động) và Mẹ Âu Cơ (Núi/Tiên/Âm tĩnh). Sự phân chia 50 con lên núi, 50 con xuống biển chính là phép phân hóa Thái Cực sinh Lưỡng Nghi.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODULE 2: GENESIS / KHỞI NGUYÊN BẢN THỂ -->
+    <section id="genesis" class="section-block">
+      <div class="section-header">
+        <span class="section-tag">Chương II • Bản Thể Luận</span>
+        <h2 class="section-title">Khởi Nguyên Vũ Trụ & Động Lực Học Âm Dương</h2>
+        <p class="section-subtitle">
+          Từ chân không lượng tử nguyên sơ (Vô Cực) đến sự xuất hiện của điểm kỳ dị (Thái Cực), 
+          phân cực pha (Âm Dương) và mạng lưới 8 trạng thái vật chất (Bát Quái).
+        </p>
+      </div>
+
+      <div id="genesis-grid" class="genesis-grid">
+        <!-- Dynamic Stage Cards -->
+      </div>
+
+      <div id="stage-detail" class="detail-box">
+        <!-- Dynamic Detail Display -->
+      </div>
+    </section>
+
+    <!-- MODULE 3: HÀ ĐỒ & LẠC THƯ / MẬT MÃ SỐ HỌC -->
+    <section id="hadolacthu" class="section-block">
+      <div class="section-header">
+        <span class="section-tag">Chương III • Toán Học Vũ Trụ</span>
+        <h2 class="section-title">Mật Mã Số Học: Hà Đồ & Lạc Thư</h2>
+        <p class="section-subtitle">
+          <strong>Hà Đồ</strong> là Thể (Cấu trúc sinh thành cân bằng tĩnh), <strong>Lạc Thư</strong> là Dụng (Động lực học ma phương cửu cung biến chuyển thời không).
+        </p>
+      </div>
+
+      <div class="twin-container">
+        <!-- Panel 1: Hà Đồ -->
+        <div class="diagram-panel">
+          <div class="diagram-header">
+            <h3 style="font-family:var(--font-title); font-size:1.4rem; color:var(--gold-primary);">Hà Đồ (河圖) - Bản Thể Tiên Thiên</h3>
+            <p style="font-size:0.85rem; color:var(--text-muted); margin-top:0.3rem;">Trật tự Sinh - Thành số & Trục trung tâm Thổ 5 - 10</p>
+          </div>
+
+          <div class="diagram-canvas-wrap">
+            <canvas id="hado-canvas" class="diagram-canvas"></canvas>
+          </div>
+
+          <div id="hado-pairs" style="width:100%;">
+            <!-- Pair items generated by JS -->
+          </div>
+
+          <div class="math-pill" style="margin-top:1rem; width:100%; text-align:center;">
+            Tổng Thiên Số (25) + Địa Số (30) = <strong>55 (Đại Diễn Số)</strong>
+          </div>
+        </div>
+
+        <!-- Panel 2: Lạc Thư -->
+        <div class="diagram-panel">
+          <div class="diagram-header">
+            <h3 style="font-family:var(--font-title); font-size:1.4rem; color:var(--gold-primary);">Lạc Thư (洛書) - Ma Phương Cửu Cung</h3>
+            <p style="font-size:0.85rem; color:var(--text-muted); margin-top:0.3rem;">Ma trận ma phương bậc 3 với Hằng số cân bằng động = 15</p>
+          </div>
+
+          <div id="lacthu-grid" class="magic-grid">
+            <!-- 3x3 Magic Square Cells -->
+          </div>
+
+          <div style="background:rgba(229,192,123,0.06); border:1px solid var(--border-subtle); border-radius:10px; padding:1rem; width:100%; margin-top:0.5rem;">
+            <div style="font-family:var(--font-title); font-size:0.85rem; color:var(--gold-primary); margin-bottom:0.3rem;">Khẩu Quyết Cửu Cung Kinh Điển:</div>
+            <p style="font-size:0.85rem; color:var(--text-pure); line-height:1.6; font-style:italic;">
+              "Đới cửu lý nhất, tả tam hữu thất, nhị tứ vi kiên, lục bát vi túc, ngũ cư trung cung."
+            </p>
+          </div>
+
+          <div id="lacthu-info" style="width:100%; margin-top:1rem; min-height:70px;">
+            <!-- Hover details -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODULE 4: BÁT QUÁI / TIÊN THIÊN VS HẬU THIÊN -->
+    <section id="batquai" class="section-block">
+      <div class="section-header">
+        <span class="section-tag">Chương IV • Không Gian & Thời Gian</span>
+        <h2 class="section-title">Chuyển Dịch Bát Quái: Tiên Thiên & Hậu Thiên</h2>
+        <p class="section-subtitle">
+          Sự biến chuyển từ Trật tự Không gian Đối xứng Lưỡng cực (Tiên Thiên - Phục Hy) 
+          sang Quy luật Chu kỳ Thời gian, Khí tiết Bốn Mùa và Địa lý Trái Đất (Hậu Thiên - Văn Vương).
+        </p>
+      </div>
+
+      <div class="bagua-controller">
+        <button id="tab-tienthien" class="tab-btn active">Tiên Thiên Bát Quái (Không Gian)</button>
+        <button id="tab-hauthien" class="tab-btn">Hậu Thiên Bát Quái (Thời Gian)</button>
+      </div>
+
+      <div class="bagua-stage">
+        <div class="bagua-wheel-wrap">
+          <div id="bagua-svg-wrap">
+            <!-- SVG rendered by JS -->
+          </div>
+        </div>
+
+        <div id="bagua-detail-display">
+          <!-- Dynamic details on selected Trigram -->
+        </div>
+      </div>
+    </section>
+
+    <!-- MODULE 5: NGŨ HÀNH & CHẾ HÓA -->
+    <section id="nguhanh" class="section-block">
+      <div class="section-header">
+        <span class="section-tag">Chương V • Động Lực Học Khí Hóa</span>
+        <h2 class="section-title">Bản Chất Ngũ Hành & Cơ Chế Chế Hóa</h2>
+        <p class="section-subtitle">
+          Ngũ Hành là <strong>5 pha chuyển động vector của Khí</strong>: Vươn Tỏa (Mộc), Thăng Hoa (Hỏa), Trung Hòa (Thổ), Thu Liễm (Kim) và Lắng Đọng (Thủy).
+        </p>
+      </div>
+
+      <div class="cycle-controls">
+        <button class="cycle-btn active" data-cycle="all">Toàn Bộ Mạng Lưới</button>
+        <button class="cycle-btn" data-cycle="sinh">Vòng Tương Sinh</button>
+        <button class="cycle-btn" data-cycle="khac">Vòng Tương Khắc</button>
+        <button class="cycle-btn" data-cycle="che_hoa">Nguyên Lý Chế Hóa</button>
+      </div>
+
+      <div class="nguhanh-wrap">
+        <div class="wuxing-canvas-box">
+          <canvas id="wuxing-canvas"></canvas>
+        </div>
+
+        <div id="wuxing-info-panel">
+          <!-- Dynamic phase details -->
+        </div>
+      </div>
+    </section>
+
+    <!-- MODULE 6: CƠ CHẾ SINH CÁT HUNG & PHƯƠNG VỊ -->
+    <section id="cathung" class="section-block">
+      <div class="section-header">
+        <span class="section-tag">Chương VI • Cơ Học Trường Khí</span>
+        <h2 class="section-title">Quy Luật Nào Sinh Ra Cát - Hung & Phương Vị?</h2>
+        <p class="section-subtitle">
+          Khám phá bản chất thực sự của Cát - Hung dưới lăng kính 
+          <strong>Sự Tương Thích Pha & Cộng Hưởng Trường Lực Tam Tài (Thiên - Địa - Nhân)</strong>.
+        </p>
+      </div>
+
+      <!-- Interactive Resonance Simulator -->
+      <div class="matrix-interactive-card">
+        <h3 style="font-family:var(--font-title); font-size:1.5rem; color:var(--gold-primary); text-align:center; margin-bottom:0.5rem;">
+          MÔ PHỎNG CỘNG HƯỞNG TRƯỜNG KHÍ THIÊN - ĐỊA - NHÂN
+        </h3>
+        <p style="text-align:center; color:var(--text-muted); font-size:0.9rem; margin-bottom:2rem;">
+          Thử nghiệm tương tác giữa Thời Khắc (Thiên), Phương Vị (Địa) và Tâm Thể (Nhân) để quan sát sự chuyển dịch Cát - Hung.
+        </p>
+
+        <div class="selector-triad">
+          <div class="select-group">
+            <label for="select-thien">1. THIÊN THỜI (Thời Điểm / Tiết Khí)</label>
+            <select id="select-thien" class="custom-select"></select>
+          </div>
+
+          <div class="select-group">
+            <label for="select-dia">2. ĐỊA LỢI (Phương Vị / Không Gian)</label>
+            <select id="select-dia" class="custom-select"></select>
+          </div>
+
+          <div class="select-group">
+            <label for="select-nhan">3. NHÂN HÒA (Mệnh Khí / Ý Chí)</label>
+            <select id="select-nhan" class="custom-select"></select>
+          </div>
+        </div>
+
+        <div id="resonance-result-display" class="resonance-result-box">
+          <!-- Calculated resonance result -->
+        </div>
+      </div>
+    </section>
+
+    <!-- MODULE 7: TAM THỨC ĐẠI ĐẠO -->
+    <section id="tamthuc" class="section-block">
+      <div class="section-header">
+        <span class="section-tag">Chương VII • Khung Tính Toán Vũ Trụ</span>
+        <h2 class="section-title">Tam Thức Đại Đạo: Thái Ất • Kỳ Môn • Lục Nhâm</h2>
+        <p class="section-subtitle">
+          Ba cỗ máy toán học - hình học không thời gian đỉnh cao của cổ nhân phân chia theo 3 trục: <strong>Thiên Đạo</strong> (Thái Ất), <strong>Địa Đạo</strong> (Kỳ Môn) và <strong>Nhân Đạo</strong> (Lục Nhâm).
+        </p>
+      </div>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:2rem;">
+        <div style="background:var(--bg-card); border:1px solid var(--border-subtle); border-radius:16px; padding:2rem;">
+          <span style="font-size:0.75rem; color:var(--jade-cyan); background:rgba(45,212,191,0.1); padding:0.2rem 0.6rem; border-radius:10px;">THIÊN ĐẠO</span>
+          <h3 style="font-family:var(--font-title); font-size:1.3rem; color:var(--text-pure); margin:0.8rem 0 0.4rem;">Thái Ất Thần Kinh</h3>
+          <p style="font-size:0.88rem; color:var(--text-muted); line-height:1.6;">Khảo sát đại chu kỳ thiên văn, vận nước, biến động khí hậu và lịch sử địa cầu qua 16 Thần và 72 Cục.</p>
+        </div>
+
+        <div style="background:var(--bg-card); border:1px solid var(--border-subtle); border-radius:16px; padding:2rem;">
+          <span style="font-size:0.75rem; color:var(--gold-primary); background:rgba(229,192,123,0.1); padding:0.2rem 0.6rem; border-radius:10px;">ĐỊA ĐẠO</span>
+          <h3 style="font-family:var(--font-title); font-size:1.3rem; color:var(--text-pure); margin:0.8rem 0 0.4rem;">Kỳ Môn Độn Giáp</h3>
+          <p style="font-size:0.88rem; color:var(--text-muted); line-height:1.6;">Ma trận 4 tầng bàn (Địa - Thiên - Nhân - Thần) điều hướng không-thời gian để tìm Cửa Sinh cát lành.</p>
+        </div>
+
+        <div style="background:var(--bg-card); border:1px solid var(--border-subtle); border-radius:16px; padding:2rem;">
+          <span style="font-size:0.75rem; color:var(--cinnabar); background:rgba(224,108,117,0.1); padding:0.2rem 0.6rem; border-radius:10px;">NHÂN ĐẠO</span>
+          <h3 style="font-family:var(--font-title); font-size:1.3rem; color:var(--text-pure); margin:0.8rem 0 0.4rem;">Đại Lục Nhâm</h3>
+          <p style="font-size:0.88rem; color:var(--text-muted); line-height:1.6;">Hệ thống xác suất giải mã vi tế mọi sự vụ nhân sinh qua Tứ Khóa và Tam Truyền (Quá khứ - Hiện tại - Vị lai).</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODULE 8: KHO TÀNG MÃ NGUỒN CÀO DỮ LIỆU & THƯ TỊCH CỔ (SCRAPER ARCHITECTURE) -->
+    <section id="sources" class="section-block">
+      <div class="section-header">
+        <span class="section-tag">Chương VIII • Nguồn Dữ Liệu & Kỹ Thuật Scraper</span>
+        <h2 class="section-title">Kho Tàng Mã Nguồn & Thư Tịch Cổ Quốc Tế</h2>
+        <p class="section-subtitle">
+          Danh mục các thư viện số hóa văn bản cổ lớn nhất thế giới cùng kiến trúc mã nguồn Python Scraper / API 
+          để bạn kết nối, trích xuất dữ liệu và xây dựng cơ sở dữ liệu tri thức độc lập.
+        </p>
+      </div>
+
+      <!-- Repositories Grid -->
+      <div id="repos-grid" class="repos-grid">
+        <!-- Rendered by JS -->
+      </div>
+
+      <!-- Scraper Code Architecture -->
+      <div style="background:var(--bg-card); border:1px solid var(--border-subtle); border-radius:16px; padding:2rem; margin-top:2rem;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+          <h4 style="font-family:var(--font-title); font-size:1.15rem; color:var(--gold-primary);">
+            Mẫu Code Python Cào Dữ Liệu Học Thuật Tự Động (CText / Web API)
+          </h4>
+          <span style="font-size:0.75rem; color:var(--text-muted);">Python 3.10+ / BeautifulSoup4</span>
+        </div>
+        <pre class="code-snippet-box"><code id="scraper-code-box"></code></pre>
+      </div>
+    </section>
+
+    <!-- MODULE 9: KHO TÀNG KINH ĐIỂN NGUYÊN BẢN -->
+    <section id="classics" class="section-block">
+      <div class="section-header">
+        <span class="section-tag">Chương IX • Kinh Điển & Luận Thuyết</span>
+        <h2 class="section-title">Kho Tàng Trích Dẫn & Kinh Điển Nguyên Bản</h2>
+        <p class="section-subtitle">
+          Đối chiếu Hán văn cổ, phiên âm Hán-Việt và luận giải sâu sắc từ Dịch Hệ Từ, Đạo Đức Kinh, Hoàng Đế Nội Kinh, Việt Lý Tố Nguyên.
+        </p>
+      </div>
+
+      <div style="max-width:500px; margin:0 auto 2.5rem;">
+        <input type="text" id="classics-search" placeholder="Tìm kiếm kinh điển, từ khóa, tác phẩm..." style="width:100%; background:var(--bg-card); border:1px solid var(--border-subtle); color:var(--text-pure); padding:0.8rem 1.2rem; border-radius:30px; outline:none; font-family:var(--font-sans); font-size:0.9rem;">
+      </div>
+
+      <div id="classics-grid" class="quotes-grid">
+        <!-- Quote cards rendered by JS -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-seal">
+      <svg width="48" height="48" viewBox="0 0 100 100" class="svg-icon">
+        <circle cx="50" cy="50" r="46" fill="none" stroke="#E5C07B" stroke-width="2"/>
+        <circle cx="50" cy="50" r="40" fill="none" stroke="#E5C07B" stroke-width="1" stroke-dasharray="3 3"/>
+        <g transform="translate(50, 50)">
+          <circle cx="0" cy="0" r="10" fill="#E5C07B"/>
+        </g>
+      </svg>
+    </div>
+    <p class="footer-text">
+      "Tri thức nguyên sơ về Âm Dương, Vũ Trụ Học và Dịch Lý Lạc Việt là di sản trí tuệ vô giá của nhân loại. 
+      Khi thấu hiểu bản thể của Khí, trật tự của Số và nhịp điệu của Thời - Không, con người không còn chìm đắm trong sợ hãi hay mê tín, mà đạt tới sự tự do, minh triết và hài hòa tuyệt đối cùng Trời Đất."
+    </p>
+    <div class="footer-credit">
+      © 2026 ÂM DƯƠNG HỌC VIỆN • PHỤC DỰNG TRI THỨC VŨ TRỤ HỌC CỔ ĐẠI CHÂN CHÍNH (VERCEL & GITHUB READY)
+    </div>
+  </footer>
+
+  <!-- Core Scripts -->
+  <script src="js/icons.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/antigravity_graph.js"></script>
+  <script src="js/trong_dong_engine.js"></script>
+  <script src="js/ha_do_lac_thu.js"></script>
+  <script src="js/bat_quai_simulator.js"></script>
+  <script src="js/ngu_hanh_engine.js"></script>
+  <script src="js/cat_hung_matrix.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
