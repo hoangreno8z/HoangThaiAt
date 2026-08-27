@@ -1,6 +1,6 @@
 /**
  * PHONG THỦY THỜ CÚNG CHÁNH TÔNG (KHO TÀNG CỔ THƯ & QUY THỨC TẾ TỰ)
- * CHƯƠNG I - LẦN NẠP KIẾN THỨC 1, 2, 3, 4, 5, 6, 7 & 8 / 10
+ * CHƯƠNG I - LẦN NẠP KIẾN THỨC 1 ĐẾN 9 / 10
  */
 
 // LẦN 1: KHỞI NGUYÊN BẢN THỂ & NGUYÊN TẮC TỌA VỊ
@@ -103,7 +103,7 @@ const WORSHIP_FENGSHUI_PART_2 = {
 // LẦN 3: BÀI TRÍ BÁT HƯƠNG, NGŨ HÀNH ĐỒ THỜ & NGUYÊN TẮC TỤ KHÍ BÀN THỜ
 const WORSHIP_FENGSHUI_PART_3 = {
   chapter_id: "tho_cung_part_3",
-  chapter_title: "Chương I (Lần 3/10): Bài Trí Bát Hương, Ngũ Hành Đồ Thờ & Cốt Thất Bảo Chánh Tông",
+  chapter_title: "Chương I (Lần 3/10): Bài Trí Bát Hương, NgŨ HÀNH ĐỒ THỜ & Cốt Thất Bảo Chánh Tông",
   sub_title: "Quy thức Tam Cấp Thần Vị, bố cục 'Đông Bình Tây Quả', Ngũ Hành Đồ Thờ và thuật nạp Thất Bảo tụ khí linh thiêng",
 
   incense_burners_layout: {
@@ -255,7 +255,7 @@ Nam mô A Di Đà Phật! (3 lần, 3 lạy)`
 // LẦN 6: PHONG THỦY BÀN THỜ THẦN TÀI - THỔ ĐỊA & QUY TẮC CHIÊU TÀI TỤ BẢO
 const WORSHIP_FENGSHUI_PART_6 = {
   chapter_id: "tho_cung_part_6",
-  chapter_title: "Chương I (Lần 6/10): Phong Thủy Bàn Thờ Thần Tài - Thổ Địa & Quy Tắc Chiêu Tài Tụ Bảo",
+  chapter_title: "Chương I (Lần 6/10): Phong Thủy Bàn Thờ Thần Tài - Thổ Địa & Quy Tắc Chiêu Tài TỤ BẢO",
   sub_title: "Trích xuất từ Chiêu Tài Tụ Bảo Bí Pháp & Địa Lý Toàn Thư: Bản chất linh vị sát đất, cung Thiên Lộc - Quý Nhân và bài trí Ngũ Phương Ngũ Thổ",
 
   deity_nature: {
@@ -371,80 +371,146 @@ const WORSHIP_FENGSHUI_PART_8 = {
   chapter_title: "Chương I (Lần 8/10): Phong Thủy Nhà Thờ Họ, Từ Đường Dòng Tộc & Bố Cục 'Tả Chiêu Hữu Mục'",
   sub_title: "Trích xuất từ Kinh Lễ (Tế Thống) & Chu Tử Gia Lễ (Tông Từ Thiên): Bản thể long mạch từ đường, quy luật Chiêu Mục thế thứ và hình thế Loan Đầu 3 gian / 5 gian",
 
-  // 1. Bản thể luận Từ Đường & Long Mạch Dòng Tộc
   ancestral_hall_ontology: {
     title: "1. Bản Thể Luận Từ Đường: Điểm Tụ Long Mạch & Huyết Mạch Dòng Tộc",
     quote: "Tế giả, phụng tổ chi bản dã. Chiêu Mục đắc tự, tôn ti hữu tự, thiên địa hòa yên, nhân luân chính yên.",
     quote_source: "Kinh Lễ - Tế Thống Thiên",
     principles: [
-      {
-        name: "Trung Tâm Tụ Khí Toàn Tộc (Huyết Thống Chi Căn)",
-        desc: "Từ đường (Nhà thờ họ) không đơn thuần là nơi hội họp gia tộc, mà là 'Huyệt Vị Tâm Linh' tối cao quy tụ trường sinh học của toàn bộ con cháu muôn đời. Khí mạch của Từ Đường hưng vượng thì con cháu đời đời đỗ đạt vinh hiển, nhân đinh đông đúc, phúc trạch dài lâu."
-      },
-      {
-        name: "Nguyên Lý Bất Biến Về Trật Tự Thế Thứ",
-        desc: "Trong nhà thờ họ, quy luật 'Tôn Ti Phân Minh' được xem là rường cột. Bất kỳ sự xáo trộn nào về vị trí bài vị giữa các chi, các nhánh hoặc đảo lộn trên dưới đều tạo nên sự nghịch loạn trường khí, gây bất hòa chia rẽ nội bộ dòng họ."
-      }
+      { name: "Trung Tâm Tụ Khí Toàn Tộc (Huyết Thống Chi Căn)", desc: "Từ đường là 'Huyệt Vị Tâm Linh' tối cao quy tụ trường sinh học của toàn bộ con cháu muôn đời." },
+      { name: "Nguyên Lý Bất Biến Về Trật Tự Thế Thứ", desc: "Quy luật 'Tôn Ti Phân Minh' được xem là rường cột, đảm bảo trường khí hòa hợp không chia rẽ." }
     ]
   },
 
-  // 2. Quy luật Tả Chiêu Hữu Mục
   chieu_muc_system: {
     title: "2. Quy Tắc Bố Cục 'Tả Chiêu Hữu Mục' (Trật Tự Tông Tộc Vĩnh Cửu)",
     quote: "Tổ cư trung, Chiêu cư tả, Mục cư hữu. Đời đời nối dõi không sai thứ bậc.",
     quote_source: "Chu Tử Gia Lễ - Tông Từ Chi Đồ",
     generation_rules: [
-      {
-        rank: "Thủy Tổ (Vị Tổ Khởi Đầu Dòng Họ)",
-        placement: "Tọa Trung (Chính giữa hậu cung, kê ở tầng cao nhất)",
-        symbol: "Là gốc rễ của cây đại thụ dòng họ, độc tôn vị trí trung tâm."
-      },
-      {
-        rank: "Đời Chẵn / Nhánh Chiêu (Đời 2, 4, 6, 8...)",
-        placement: "Ngự bên TẢ (Bên Trái Thủy Tổ - Phương Đông / Dương vị)",
-        symbol: "Gọi là CHIÊU (昭) - tượng trưng cho ánh sáng ban mai, sinh sôi nảy nở."
-      },
-      {
-        rank: "Đời Lẻ / Nhánh Mục (Đời 3, 5, 7, 9...)",
-        placement: "Ngự bên HỮU (Bên Phải Thủy Tổ - Phương Tây / Âm vị)",
-        symbol: "Gọi là MỤC (穆) - tượng trưng cho sự thuần hòa, trang nghiêm gìn giữ cơ nghiệp."
-      }
+      { rank: "Thủy Tổ (Vị Tổ Khởi Đầu)", placement: "Tọa Trung (Chính giữa hậu cung, tầng cao nhất)", symbol: "Gốc rễ đại thụ dòng họ, độc tôn trung tâm." },
+      { rank: "Đời Chẵn / Nhánh Chiêu (2, 4, 6, 8...)", placement: "Ngự bên TẢ (Trái Thủy Tổ - Phương Đông / Dương)", symbol: "CHIÊU (昭) - ánh sáng sinh sôi nảy nở." },
+      { rank: "Đời Lẻ / Nhánh Mục (3, 5, 7, 9...)", placement: "Ngự bên HỮU (Phải Thủy Tổ - Phương Tây / Âm)", symbol: "MỤC (穆) - thuần hòa, gìn giữ cơ nghiệp." }
     ]
   },
 
-  // 3. Hình thế Loan Đầu kiến trúc 3 gian / 5 gian
   architectural_loan_dau: {
     title: "3. Hình Thế Kiến Trúc & Loan Đầu Nhà Thờ Họ (3 Gian / 5 Gian)",
     bays_layout: [
-      {
-        bay: "Gian Chính Giữa (Trung Gian / Thượng Điện)",
-        role: "Đặt Khám Thờ Thần Chủ Lớn, Bàn thờ Thủy Tổ và các đời Viễn Tổ. Bố trí Hoành phi câu đối chính đại diện cho tinh hoa đạo đức dòng họ."
-      },
-      {
-        bay: "Gian Bên Trái (Tả Gian - Chiêu Vị)",
-        role: "Thờ Chi Trưởng, các vị Tiền bối có công đức lớn, đỗ đạt khoa bảng, rạng danh dòng tộc."
-      },
-      {
-        bay: "Gian Bên Phải (Hữu Gian - Mục Vị)",
-        role: "Thờ Chi Thứ, các bậc Hậu bối kế thừa, Mẹ Việt Nam anh hùng, Liệt sĩ xả thân vì đất nước."
-      }
+      { bay: "Gian Chính Giữa (Trung Gian)", role: "Khám Thờ Thần Chủ Lớn, Bàn thờ Thủy Tổ và Viễn Tổ, Hoành phi câu đối chính." },
+      { bay: "Gian Bên Trái (Tả Gian - Chiêu)", role: "Thờ Chi Trưởng, các bậc tiền bối khoa bảng hiển đạt." },
+      { bay: "Gian Bên Phải (Hữu Gian - Mục)", role: "Thờ Chi Thứ, Mẹ Việt Nam anh hùng, Liệt sĩ xả thân vì nước." }
     ],
     landscape_features: [
-      { feature: "Hậu Chẩm Tựa Sơn", detail: "Phía sau lưng nhà thờ họ cần thế đất cao ráo, tựa vào đồi núi hoặc bờ tường kiên cố, tạo thế vững như bàn thạch." },
-      { feature: "Minh Đường Tụ Thủy", detail: "Phía trước có sân gạch rộng thoáng (Ngoại Minh Đường), ao bán nguyệt hoặc hồ sen tụ thủy trước cửa để tụ tụ tài lộc và sinh khí." },
-      { feature: "Tả Long Hữu Hổ", detail: "Hai bên hông có dãy nhà ngang (Tả vu - Hữu vu) hoặc tường cây che chắn, hình thành thế tay ngai ôm trọn linh đường." }
+      { feature: "Hậu Chẩm Tựa Sơn", detail: "Thế đất cao ráo, tựa vào đồi núi hoặc tường kiên cố." },
+      { feature: "Minh Đường Tụ Thủy", detail: "Sân gạch rộng (Ngoại Minh Đường), ao bán nguyệt tụ thủy sinh tài." },
+      { feature: "Tả Long Hữu Hổ", detail: "Dãy nhà ngang hoặc tường cây che chắn, tạo thế tay ngai ôm trọn linh đường." }
     ]
   },
 
-  // 4. Thần Chủ & Hoành Phi Câu Đối
   sacred_tablets_and_motto: {
     title: "4. Quy Cách Thần Chủ (Bài Vị) & Hoành Phi Điển Tích Dòng Họ",
-    tablet_material: "GỖ LÀM BÀI VỊ THẦN CHỦ: Bắt buộc dùng Gỗ Vàng Tâm, Gỗ Mít hoặc Gỗ Thị cổ thụ (loại gỗ có mùi thơm tinh khiết, tính Dương mộc ngưng tụ linh khí ngàn năm, không bao giờ bị mối mọt đục khoét).",
+    tablet_material: "GỖ LÀM BÀI VỊ THẦN CHỦ: Bắt buộc dùng Gỗ Vàng Tâm, Gỗ Mít hoặc Gỗ Thị cổ thụ không mối mọt, thơm tự nhiên.",
     famous_mottos: [
-      { motto: "ĐỨC LƯU QUANG (德流光)", meaning: "Đức độ của tổ tiên tỏa sáng và lưu truyền muôn đời cho con cháu." },
-      { motto: "ẨM THỦY TƯ NGUYÊN (飲水思源)", meaning: "Uống nước nhớ nguồn, ngàn năm không quên công lao tiên tổ." },
-      { motto: "QUANG TIỀN DỤ HẬU (光前裕後)", meaning: "Làm rạng rỡ đời trước, mở lối giàu sang phúc đức cho đời sau." },
-      { motto: "PHÚC MÃN ĐƯỜNG (福滿堂)", meaning: "Phúc ấm của tiền nhân tràn ngập khắp toàn thể linh đường dòng tộc." }
+      { motto: "ĐỨC LƯU QUANG (德流光)", meaning: "Đức độ tổ tiên tỏa sáng lưu truyền muôn đời." },
+      { motto: "ẨM THỦY TƯ NGUYÊN (飲水思源)", meaning: "Uống nước nhớ nguồn, không quên công lao tiên tổ." },
+      { motto: "QUANG TIỀN DỤ HẬU (光前裕後)", meaning: "Rạng rỡ đời trước, mở lối giàu sang cho đời sau." },
+      { motto: "PHÚC MÃN ĐƯỜNG (福滿堂)", meaning: "Phúc ấm tràn ngập khắp linh đường dòng tộc." }
+    ]
+  }
+};
+
+// LẦN 9: PHONG THỦY BÀN THỜ TREO TƯỜNG CHUNG CƯ & NHÀ PHỐ HIỆN ĐẠI
+const WORSHIP_FENGSHUI_PART_9 = {
+  chapter_id: "tho_cung_part_9",
+  chapter_title: "Chương I (Lần 9/10): Bàn Thờ Treo Tường Chung Cư & Không Gian Thờ Hiện Đại",
+  sub_title: "Quy chuẩn độ cao Thước Lỗ Ban 38.8cm từ mặt sàn, giải pháp 4 lớp bảo vệ tụ khí và 6 đại kỵ không gian hẹp",
+
+  // 1. Độ cao treo bàn thờ chuẩn Thước 38.8cm
+  hanging_altar_heights: {
+    title: "1. Độ Cao Treo Bàn Thờ Chuẩn Thước Lỗ Ban 38.8cm (Tính Từ Mặt Sàn Hoàn Thiện)",
+    quote: "Cao bất quá đầu, đê bất quá phúc. Tôn ti đắc nghi, linh khí trường tồn.",
+    quote_source: "Dương Trạch Khí Pháp Tân Biên",
+    height_levels: [
+      {
+        level: "Tầm Thấp (Cung Đại Cát / Tiến Bảo)",
+        height_cm: "172 cm (Cung Đại Cát) hoặc 175 cm (Cung Phú Quý)",
+        suitable: "Phù hợp trần nhà thấp dưới 2.6m, gia chủ có chiều cao vừa phải dễ dàng với tay thắp nhang và bao sái."
+      },
+      {
+        level: "Tầm Trung Chuẩn Mực (Cung Tiến Bảo / Đăng Khoa)",
+        height_cm: "193.5 cm (Cung Tiến Bảo) hoặc 197.5 cm (Cung Đăng Khoa)",
+        suitable: "CHIỀU CAO HOÀNG KIM CHO CĂN HỘ CHUNG CƯ: Trần cao từ 2.6m - 2.8m, vừa đảm bảo sự tôn nghiêm thoát tục, vừa thuận tiện đứng trên ghế đôn cúng bái."
+      },
+      {
+        level: "Tầm Cao Tôn Nghiêm (Cung Thuận Khoa / Tài Vượng)",
+        height_cm: "212 cm (Cung Thuận Khoa) hoặc 217 cm (Cung Tài Vượng)",
+        suitable: "Phù hợp nhà phố hoặc chung cư cao cấp trần cao trên 3m, bàn thờ treo độc lập trên cao không bị ai vô tình chạm vào."
+      }
+    ]
+  },
+
+  // 2. Giải pháp 4 lớp bảo vệ tụ khí
+  four_layer_protection: {
+    title: "2. Giải Pháp 4 Lớp Bảo Vệ & Tàng Phong Tụ Khí Cho Bàn Thờ Chung Cư",
+    layers: [
+      {
+        layer: "Lớp 1: Tấm Chống Ám Khói Hương Ốp Trần",
+        role: "Gắn trên trần thạch cao ngay trên đỉnh bát hương, chạm khắc chữ Phúc/Lộc/Thọ hoặc hoa sen, vừa tịnh hóa nhiệt hỏa vừa ngăn ố vàng trần nhà."
+      },
+      {
+        layer: "Lớp 2: Cặp Vách Ngăn CNC Bọc Hai Bên (Tả Long - Hữu Hổ Mini)",
+        role: "Tạo thành một 'Gian Thờ Ảo', chắn gió tạt từ điều hòa, quạt trần và che khuất tầm nhìn trực diện từ khu vực sinh hoạt, sofa, bàn ăn."
+      },
+      {
+        layer: "Lớp 3: Bàn Thờ Gỗ Tự Nhiên Bắt Vít Nở Sắt Chịu Lực",
+        role: "Bắt vít nở sắt trực tiếp vào Tường Bê Tông Chịu Lực (tuyệt đối không bắt vào vách thạch cao rỗng), tích hợp ngăn kéo nhỏ đựng văn khấn, nến, bật lửa."
+      },
+      {
+        layer: "Lớp 4: Tấm Ốp Lưng Gỗ Hậu Chẩm (Thực Tường Giả Lập)",
+        role: "Ốp tấm gỗ màu nâu trầm tựa sát tường để tạo điểm tựa Hậu Chẩm vững chãi, cách ly tường ẩm và tạo sự ấm cúng trang trọng."
+      }
+    ]
+  },
+
+  // 3. 6 Đại kỵ riêng cho chung cư
+  apartment_taboos: {
+    title: "3. 6 Đại Kỵ Cực Nguy Hiểm Riêng Cho Căn Hộ Chung Cư & Cách Hóa Giải",
+    taboos: [
+      {
+        id: 1,
+        title: "Treo bàn thờ ngay dưới Miệng Gió Điều Hòa (Phong Thủy Sát)",
+        danger: "Gió lạnh thổi tắt nhang, làm tán loạn chân khí; hơi ẩm điều hòa nhỏ giọt vào bát hương.",
+        solution: "Di dời vị trí bàn thờ hoặc lắp tấm kính/gỗ chắn hướng gió điều hòa không cho phả trực tiếp."
+      },
+      {
+        id: 2,
+        title: "Treo bàn thờ dựa lưng vào tường Nhà Vệ Sinh chung cư (Uế Sát)",
+        danger: "Tường nhà vệ sinh căn hộ ẩm ướt và chứa ống thoát nước thải ngầm làm ô uế linh vị.",
+        solution: "Chuyển sang bức tường phòng khách độc lập, hoặc ốp tấm gỗ cách ly dày 2 lớp phía sau."
+      },
+      {
+        id: 3,
+        title: "Treo bàn thờ đối diện Tivi hoặc Dàn Âm Thanh Lớn (Động Sát)",
+        danger: "Tiếng ồn và sóng từ trường loa bass rung lắc làm kinh động thần linh, gia trạch bất an.",
+        solution: "Bố trí lệch góc, dùng vách CNC che chắn phân chia ranh giới âm thanh."
+      },
+      {
+        id: 4,
+        title: "Tầng trên có Nhà Vệ Sinh hoặc Giường Ngủ đè lên đầu Bàn Thờ",
+        danger: "Khí ô uế hoặc năng lượng sinh hoạt nặng nề đè ép linh vị bên dưới (Áp Đỉnh Ô Uế).",
+        solution: "Khảo sát kỹ sơ đồ mặt bằng tầng trên, chọn vị trí trần trên là phòng khách hoặc phòng làm việc tĩnh."
+      },
+      {
+        id: 5,
+        title: "Treo bàn thờ đối diện Bếp Nấu / Bàn Ăn Sinh Hoạt",
+        danger: "Mùi dầu mỡ thức ăn xộc vào làm mất thanh tịnh, nhìn thẳng vào cảnh nhậu nhẹt dung tục.",
+        solution: "Sử dụng rèm hạt gỗ hoặc rèm che rủ trước bàn thờ khi không thắp hương."
+      },
+      {
+        id: 6,
+        title: "Treo bàn thờ bằng vít lỏng lẻo trên Vách Thạch Cao Rỗng",
+        danger: "Nguy cơ rơi vỡ bàn thờ và bát hương - điềm báo hung hiểm cực kỳ nghiêm trọng trong phong thủy.",
+        solution: "Bắt buộc tìm xương thép hộp hoặc đục tường bắt vít nở sắt vào bê tông cốt thép kiên cố."
+      }
     ]
   }
 };

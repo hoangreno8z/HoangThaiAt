@@ -719,6 +719,77 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
   }
 
+  // 1.13 Render Chuyên Đề Phong Thủy Thờ Cúng (Lần 9 / 10): Bàn Thờ Treo Tường Chung Cư & Hiện Đại
+  const worshipPart9Container = document.getElementById('worship-part9-container');
+  if (worshipPart9Container && typeof WORSHIP_FENGSHUI_PART_9 !== 'undefined') {
+    const data9 = WORSHIP_FENGSHUI_PART_9;
+    worshipPart9Container.innerHTML = `
+      <div style="background:var(--bg-card); border:1px solid var(--gold-primary); border-radius:16px; padding:2rem; margin-bottom:2rem; box-shadow:var(--shadow-gold);">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; margin-bottom:1.5rem; border-bottom:1px solid rgba(229,192,123,0.2); padding-bottom:1rem;">
+          <div>
+            <span style="font-size:0.75rem; color:var(--jade-cyan); text-transform:uppercase; letter-spacing:1px; font-weight:700;">DƯƠNG TRẠCH TÂN THỜI • KHÔNG GIAN HẸP TỤ KHÍ</span>
+            <h3 style="font-family:var(--font-title); font-size:1.5rem; color:var(--gold-primary); margin:0.2rem 0;">${data9.chapter_title}</h3>
+            <div style="font-size:0.88rem; color:var(--text-muted);">${data9.sub_title}</div>
+          </div>
+          <span style="background:rgba(229,192,123,0.15); color:var(--gold-primary); border:1px solid var(--gold-primary); font-size:0.8rem; font-weight:700; padding:0.3rem 0.8rem; border-radius:20px;">LẦN 9 / 10</span>
+        </div>
+
+        <!-- 1. Độ cao thước 38.8cm -->
+        <div style="margin-bottom:1.8rem;">
+          <h4 style="font-family:var(--font-title); font-size:1.2rem; color:var(--text-pure); margin-bottom:0.6rem;">${data9.hanging_altar_heights.title}</h4>
+          <div style="background:rgba(229,192,123,0.06); border-left:3px solid var(--gold-primary); padding:0.8rem 1.2rem; border-radius:0 8px 8px 0; margin-bottom:1rem;">
+            <div style="font-size:0.95rem; color:var(--text-pure); font-style:italic;">"${data9.hanging_altar_heights.quote}"</div>
+            <div style="font-size:0.75rem; color:var(--gold-primary); margin-top:0.2rem;">👉 Xuất xứ: <strong>${data9.hanging_altar_heights.quote_source}</strong></div>
+          </div>
+
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1rem;">
+            ${data9.hanging_altar_heights.height_levels.map(lvl => `
+              <div style="background:rgba(13,17,26,0.85); border:1px solid var(--gold-primary); border-radius:12px; padding:1.2rem;">
+                <span style="color:var(--jade-cyan); font-size:0.8rem; font-weight:700; text-transform:uppercase;">${lvl.level}</span>
+                <div style="font-size:1.3rem; font-family:var(--font-title); color:var(--gold-primary); margin:0.3rem 0;">${lvl.height_cm}</div>
+                <p style="font-size:0.82rem; color:var(--text-muted); line-height:1.5;">${lvl.suitable}</p>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
+        <!-- 2. Giải pháp 4 lớp bảo vệ -->
+        <div style="margin-bottom:1.8rem; border-top:1px solid var(--border-subtle); padding-top:1.5rem;">
+          <h4 style="font-family:var(--font-title); font-size:1.2rem; color:var(--text-pure); margin-bottom:0.8rem;">${data9.four_layer_protection.title}</h4>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1rem;">
+            ${data9.four_layer_protection.layers.map(l => `
+              <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border-subtle); border-radius:10px; padding:1.2rem;">
+                <strong style="color:var(--gold-primary); font-size:0.95rem; display:block; margin-bottom:0.4rem;">🛡️ ${l.layer}</strong>
+                <p style="font-size:0.85rem; color:var(--text-muted); line-height:1.6;">${l.role}</p>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
+        <!-- 3. 6 Đại kỵ chung cư -->
+        <div style="border-top:1px solid var(--border-subtle); padding-top:1.5rem;">
+          <h4 style="font-family:var(--font-title); font-size:1.2rem; color:#EF4444; margin-bottom:0.8rem;">${data9.apartment_taboos.title}</h4>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:1rem;">
+            ${data9.apartment_taboos.taboos.map(t => `
+              <div style="background:rgba(13,17,26,0.85); border:1px solid var(--border-subtle); border-radius:10px; padding:1.2rem;">
+                <div style="display:flex; align-items:flex-start; gap:0.6rem; margin-bottom:0.4rem;">
+                  <span style="background:rgba(239,68,68,0.2); color:#EF4444; font-weight:800; font-size:0.8rem; padding:0.1rem 0.5rem; border-radius:4px; flex-shrink:0;">KỴ 0${t.id}</span>
+                  <strong style="color:var(--text-pure); font-size:0.95rem;">${t.title}</strong>
+                </div>
+                <div style="background:rgba(239,68,68,0.06); padding:0.5rem 0.8rem; border-radius:6px; font-size:0.82rem; color:#FCA5A5; line-height:1.5; margin-bottom:0.5rem;">
+                  ⚠️ <strong>Hậu quả:</strong> ${t.danger}
+                </div>
+                <div style="background:rgba(16,185,129,0.06); border-left:2px solid #10B981; padding:0.5rem 0.8rem; border-radius:0 6px 6px 0; font-size:0.82rem; color:#6EE7B7; line-height:1.5;">
+                  ✅ <strong>Hóa giải:</strong> ${t.solution}
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
   // 2. MẠCH 1: Render Thư Tịch Cốt Lõi Địa Lý Phong Thủy
   const treatisesGrid = document.getElementById('geographic-treatises-grid');
   if (treatisesGrid && COSMIC_DATA.geographic_treatises) {
