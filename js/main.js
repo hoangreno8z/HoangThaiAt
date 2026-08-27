@@ -1918,7 +1918,19 @@ document.addEventListener('DOMContentLoaded', () => {
       { data: typeof TAMHOP_FENGSHUI_PART_7 !== 'undefined' ? TAMHOP_FENGSHUI_PART_7 : null, school: 'Tam Hợp Phái', anchor: 'tamhop-tiet-7' },
       { data: typeof TAMHOP_FENGSHUI_PART_8 !== 'undefined' ? TAMHOP_FENGSHUI_PART_8 : null, school: 'Tam Hợp Phái', anchor: 'tamhop-tiet-8' },
       { data: typeof TAMHOP_FENGSHUI_PART_9 !== 'undefined' ? TAMHOP_FENGSHUI_PART_9 : null, school: 'Tam Hợp Phái', anchor: 'tamhop-tiet-9' },
-      { data: typeof TAMHOP_FENGSHUI_PART_10 !== 'undefined' ? TAMHOP_FENGSHUI_PART_10 : null, school: 'Tam Hợp Phái', anchor: 'tamhop-tiet-10' }
+      { data: typeof TAMHOP_FENGSHUI_PART_10 !== 'undefined' ? TAMHOP_FENGSHUI_PART_10 : null, school: 'Tam Hợp Phái', anchor: 'tamhop-tiet-10' },
+      // 5. Huyền Không (10 Tiết)
+      { data: typeof HUYENKHONG_FENGSHUI_PART_1 !== 'undefined' ? HUYENKHONG_FENGSHUI_PART_1 : null, school: 'Huyền Không Phái', anchor: 'huyenkhong-tiet-1' },
+      { data: typeof HUYENKHONG_FENGSHUI_PART_2 !== 'undefined' ? HUYENKHONG_FENGSHUI_PART_2 : null, school: 'Huyền Không Phái', anchor: 'huyenkhong-tiet-2' },
+      { data: typeof HUYENKHONG_FENGSHUI_PART_3 !== 'undefined' ? HUYENKHONG_FENGSHUI_PART_3 : null, school: 'Huyền Không Phái', anchor: 'huyenkhong-tiet-3' },
+      { data: typeof HUYENKHONG_FENGSHUI_PART_4 !== 'undefined' ? HUYENKHONG_FENGSHUI_PART_4 : null, school: 'Huyền Không Phái', anchor: 'huyenkhong-tiet-4' },
+      { data: typeof HUYENKHONG_FENGSHUI_PART_5 !== 'undefined' ? HUYENKHONG_FENGSHUI_PART_5 : null, school: 'Huyền Không Phái', anchor: 'huyenkhong-tiet-5' },
+      { data: typeof HUYENKHONG_FENGSHUI_PART_6 !== 'undefined' ? HUYENKHONG_FENGSHUI_PART_6 : null, school: 'Huyền Không Phái', anchor: 'huyenkhong-tiet-6' },
+      { data: typeof HUYENKHONG_FENGSHUI_PART_7 !== 'undefined' ? HUYENKHONG_FENGSHUI_PART_7 : null, school: 'Huyền Không Phái', anchor: 'huyenkhong-tiet-7' },
+      { data: typeof HUYENKHONG_FENGSHUI_PART_8 !== 'undefined' ? HUYENKHONG_FENGSHUI_PART_8 : null, school: 'Huyền Không Phái', anchor: 'huyenkhong-tiet-8' },
+      { data: typeof HUYENKHONG_FENGSHUI_PART_9 !== 'undefined' ? HUYENKHONG_FENGSHUI_PART_9 : null, school: 'Huyền Không Phái', anchor: 'huyenkhong-tiet-9' },
+      { data: typeof HUYENKHONG_FENGSHUI_PART_10 !== 'undefined' ? HUYENKHONG_FENGSHUI_PART_10 : null, school: 'Huyền Không Phái', anchor: 'huyenkhong-tiet-10' },
+
     ];
 
     return rawList.filter(item => item.data !== null).map(item => {
