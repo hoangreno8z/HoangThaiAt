@@ -189,9 +189,22 @@ document.addEventListener('DOMContentLoaded', () => {
     };
   }
 
-  // 4. Initialize Trống Đồng Đông Sơn Engine
+  // 4. Initialize Trống Đồng Đông Sơn Engine & 3 Trụ Cột Cội Nguồn Việt
   const trongDongEngine = new TrongDongEngine('trongdong-svg-wrap', 'trongdong-detail-display');
   window.trongDongEngine = trongDongEngine;
+
+  const vietPillarsGrid = document.getElementById('viet-pillars-grid');
+  if (vietPillarsGrid && COSMIC_DATA.viet_origins && COSMIC_DATA.viet_origins.pillars) {
+    vietPillarsGrid.innerHTML = COSMIC_DATA.viet_origins.pillars.map(p => `
+      <div class="viet-pillar-card" style="background:var(--bg-card); border:1px solid var(--border-subtle); border-radius:14px; padding:1.8rem; display:flex; flex-direction:column; backdrop-filter:blur(10px);">
+        <h4 style="font-family:var(--font-title); font-size:1.15rem; color:var(--gold-primary); margin-bottom:0.5rem; line-height:1.4;">${p.title}</h4>
+        <p style="font-size:0.88rem; color:var(--jade-cyan); margin-bottom:1rem; font-style:italic;">${p.summary}</p>
+        <div style="display:flex; flex-direction:column; gap:0.6rem; font-size:0.85rem; color:var(--text-muted); line-height:1.6;">
+          ${p.details.map(d => `<div style="background:rgba(255,255,255,0.02); padding:0.6rem 0.8rem; border-radius:6px; border-left:2px solid var(--border-active);">• ${d}</div>`).join('')}
+        </div>
+      </div>
+    `).join('');
+  }
 
   // 4. Initialize Antigravity Knowledge Graph (D3.js)
   const antigravityGraph = new AntigravityGraph('graph-container', 'graph-drawer');
@@ -291,13 +304,14 @@ document.addEventListener('DOMContentLoaded', () => {
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.6rem;">
           <span style="font-family:var(--font-sans); font-size:0.75rem; color:var(--jade-cyan); border:1px solid rgba(45,212,191,0.3); padding:0.2rem 0.6rem; border-radius:12px;">Kho Lưu Trữ 0${idx + 1}</span>
           <a href="${repo.url}" target="_blank" rel="noopener noreferrer" style="color:var(--gold-primary); text-decoration:none; font-size:0.8rem; display:flex; align-items:center; gap:0.3rem;">
-            <span>Truy Cập</span> ${renderIcon('arrowRight', 12)}
+            <span>Truy Cập Gốc</span> ${renderIcon('arrowRight', 12)}
           </a>
         </div>
         <h4 style="font-family:var(--font-title); font-size:1.15rem; color:var(--text-pure); margin-bottom:0.4rem;">${repo.name}</h4>
+        <div style="font-size:0.8rem; color:var(--gold-primary); font-weight:500; margin-bottom:0.5rem;">${repo.role}</div>
         <p style="font-size:0.85rem; color:var(--text-muted); line-height:1.6; margin-bottom:0.8rem;">${repo.desc}</p>
-        <div style="background:rgba(255,255,255,0.03); padding:0.6rem 0.8rem; border-radius:6px; font-size:0.8rem; color:var(--gold-primary);">
-          <strong>Gợi ý API:</strong> ${repo.api_tip}
+        <div style="background:rgba(255,255,255,0.03); border-left:3px solid var(--jade-cyan); padding:0.6rem 0.8rem; border-radius:0 6px 6px 0; font-size:0.8rem; color:var(--text-pure);">
+          <strong style="color:var(--jade-cyan);">Hướng Dẫn Khai Thác / API:</strong> ${repo.guide}
         </div>
       </div>
     `).join('');
