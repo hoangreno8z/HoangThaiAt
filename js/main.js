@@ -1089,6 +1089,211 @@ document.addEventListener('DOMContentLoaded', () => {
   // =========================================================================
   // BỘ RENDER CHUYÊN SÂU: ĐẠI BÁCH KHOA PHONG THỦY LOAN ĐẦU (8 TRỤ CỘT HỌC THUẬT)
   // =========================================================================
+  
+  // =========================================================================
+  // RENDERER ĐẠI BÁCH KHOA: ÂM DƯƠNG BẢN THỂ & HUYỀN KHÔNG PHI TINH
+  // =========================================================================
+  function renderGeneric10Parts(containerId, partsList, schoolPrefix, schoolName, themeColor, borderColor, shadowGlow, badgeBg) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+
+    const validParts = partsList.filter(p => p !== null && typeof p !== 'undefined');
+    if (validParts.length === 0) return;
+
+    container.innerHTML = validParts.map((part, index) => {
+      const pNum = part.chapter_number || (index + 1);
+      const anchorId = `${schoolPrefix}-tiet-${pNum}`;
+
+      const canonicalHtml = (part.canonical_texts || []).map(item => `
+        <div style="background:rgba(255,255,255,0.03); border-left:3px solid ${themeColor}; padding:1rem 1.2rem; border-radius:0 8px 8px 0; margin-bottom:0.8rem;">
+          <div style="font-family:'Ma Shan Zheng', var(--font-title); color:${themeColor}; font-size:1.15rem; letter-spacing:0.05em; margin-bottom:0.4rem;">
+            ${item.hanzi}
+          </div>
+          <div style="font-style:italic; color:#FEF3C7; font-size:0.88rem; margin-bottom:0.45rem;">
+            "${item.pinyin}"
+          </div>
+          <div style="color:var(--text-pure); font-size:0.92rem; line-height:1.6; margin-bottom:0.4rem;">
+            <strong>Dịch nghĩa:</strong> ${item.meaning}
+          </div>
+          <div style="text-align:right; font-size:0.8rem; color:${themeColor}; font-weight:700;">
+            — ${item.source}
+          </div>
+        </div>
+      `).join('');
+
+      const glossaryHtml = (part.scholarly_analysis?.term_glossary || []).map(g => `
+        <div style="border-bottom:1px solid rgba(255,255,255,0.08); padding:0.6rem 0;">
+          <div style="font-weight:700; color:${themeColor}; font-size:0.92rem; margin-bottom:0.2rem;">
+            ${g.term}
+          </div>
+          <div style="font-size:0.86rem; color:var(--text-muted); line-height:1.5;">
+            ${g.definition || g.plain_vn || ''}
+          </div>
+        </div>
+      `).join('');
+
+      const mastersHtml = (part.scholarly_analysis?.masters_views || []).map(mv => `
+        <div style="background:rgba(18,24,38,0.7); border:1px solid rgba(255,255,255,0.06); border-radius:8px; padding:0.85rem 1rem; margin-bottom:0.6rem;">
+          <div style="font-weight:700; color:${themeColor}; font-size:0.9rem; margin-bottom:0.2rem;">
+            ${mv.master} (${mv.work})
+          </div>
+          <div style="font-size:0.85rem; color:var(--text-pure); line-height:1.5;">
+            ${mv.perspective}
+          </div>
+        </div>
+      `).join('');
+
+      const realEstateHtml = (part.real_estate_applications || []).map(r => `
+        <div style="background:rgba(18,24,38,0.8); border:1px solid ${borderColor}55; border-radius:10px; padding:0.9rem; margin-bottom:0.75rem;">
+          <div style="font-weight:700; color:${themeColor}; font-size:0.9rem; margin-bottom:0.35rem; display:flex; align-items:center; gap:0.4rem;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="${themeColor}" stroke-width="2.2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+            ${r.tier}
+          </div>
+          <div style="font-size:0.86rem; color:var(--text-pure); line-height:1.5;">
+            ${r.action_guide}
+          </div>
+        </div>
+      `).join('');
+
+      const checklistHtml = (part.actionable_checklist || []).map(c => `
+        <li style="margin-bottom:0.45rem; font-size:0.88rem; color:var(--text-pure); line-height:1.5; display:flex; align-items:flex-start; gap:0.5rem;">
+          <span style="color:${themeColor}; font-weight:700;">•</span>
+          <span>${c}</span>
+        </li>
+      `).join('');
+
+      const casesHtml = (part.vietnam_case_studies || []).map(cs => `
+        <div style="background:rgba(7,9,14,0.6); border-left:3px solid ${themeColor}; padding:0.75rem 0.9rem; border-radius:4px; margin-bottom:0.6rem;">
+          <div style="font-weight:700; color:#FEF3C7; font-size:0.88rem; margin-bottom:0.25rem;">
+            ${cs.case_title}
+          </div>
+          <div style="font-size:0.82rem; color:var(--text-muted); margin-bottom:0.2rem;">
+            <strong>Hiện trạng:</strong> ${cs.diagnosis}
+          </div>
+          <div style="font-size:0.82rem; color:${themeColor};">
+            <strong>Hiệu nghiệm:</strong> ${cs.result}
+          </div>
+        </div>
+      `).join('');
+
+      return `
+        <article id="${anchorId}" class="academic-part-card" style="background:var(--bg-card); border:2px solid ${borderColor}; border-radius:18px; padding:2rem; margin-bottom:2.5rem; box-shadow:0 0 25px ${shadowGlow}; scroll-margin-top:100px;">
+          <!-- Header -->
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:1rem; margin-bottom:1.8rem; border-bottom:1px solid ${borderColor}44; padding-bottom:1.2rem;">
+            <div>
+              <span style="font-size:0.75rem; color:${themeColor}; text-transform:uppercase; letter-spacing:1.2px; font-weight:800;">
+                ${schoolName} • TIẾT ${pNum} / 10
+              </span>
+              <h3 style="font-family:var(--font-title); font-size:1.45rem; color:${themeColor}; margin:0.3rem 0; font-weight:700; line-height:1.4;">
+                ${part.chapter_title}
+              </h3>
+              <div style="font-size:0.9rem; color:var(--text-muted); line-height:1.5;">
+                ${part.sub_title}
+              </div>
+            </div>
+            <span style="background:${badgeBg}; color:${themeColor}; border:1px solid ${themeColor}; font-size:0.82rem; font-weight:800; padding:0.4rem 1rem; border-radius:20px; white-space:nowrap;">
+              TIẾT ${pNum} (${schoolName})
+            </span>
+          </div>
+
+          <!-- Body Grid -->
+          <div>
+            <!-- 1. Cổ Huấn Kinh Điển -->
+            <div style="margin-bottom:1.8rem;">
+              <h4 style="font-family:var(--font-title); font-size:1.15rem; color:var(--gold-primary); margin-bottom:0.8rem; display:flex; align-items:center; gap:0.5rem;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                1. Cổ Huấn Nguyên Văn & Trích Dẫn Thư Tịch Cổ
+              </h4>
+              ${canonicalHtml}
+            </div>
+
+            <!-- 2. Giải Nghĩa Thuật Ngữ & Quan Điểm Danh Sư -->
+            <div style="margin-bottom:1.8rem; border-top:1px solid var(--border-subtle); padding-top:1.5rem;">
+              <h4 style="font-family:var(--font-title); font-size:1.15rem; color:var(--jade-cyan); margin-bottom:0.8rem; display:flex; align-items:center; gap:0.5rem;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                2. Phân Tích Bản Thể Luận & Đối Chiếu Danh Sư
+              </h4>
+              <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1rem;">
+                <div style="background:rgba(18,24,38,0.5); padding:0.9rem 1.1rem; border-radius:8px; border:1px solid rgba(255,255,255,0.05);">
+                  <div style="font-size:0.82rem; color:var(--text-muted); font-weight:700; margin-bottom:0.5rem; text-transform:uppercase;">Từ Điển Thuật Ngữ Cốt Lõi:</div>
+                  ${glossaryHtml}
+                </div>
+                <div>
+                  <div style="font-size:0.82rem; color:var(--text-muted); font-weight:700; margin-bottom:0.5rem; text-transform:uppercase;">Quan Điểm Danh Sư Càn Khôn:</div>
+                  ${mastersHtml}
+                </div>
+              </div>
+            </div>
+
+            <!-- 3. Cẩm Nang Ứng Dụng 5 Tầng Lớp -->
+            <div style="margin-bottom:1.8rem; border-top:1px solid var(--border-subtle); padding-top:1.5rem;">
+              <h4 style="font-family:var(--font-title); font-size:1.15rem; color:#A78BFA; margin-bottom:0.8rem; display:flex; align-items:center; gap:0.5rem;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                3. Cẩm Nang Ứng Dụng Thực Chiến 5 Tầng Lớp
+              </h4>
+              <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:0.8rem;">
+                ${realEstateHtml}
+              </div>
+            </div>
+
+            <!-- 4. Quy Trình Khảo Sát & Án Nghiệm Thực Tế -->
+            <div style="border-top:1px solid var(--border-subtle); padding-top:1.5rem; display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1.2rem;">
+              <div style="background:rgba(18,24,38,0.6); padding:1.1rem; border-radius:8px; border:1px solid ${borderColor}44;">
+                <h5 style="color:${themeColor}; font-size:0.95rem; font-weight:700; margin-bottom:0.7rem; display:flex; align-items:center; gap:0.4rem;">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="${themeColor}" stroke-width="2.5"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                  Quy Trình Đo Đạc & Khảo Sát
+                </h5>
+                <ul style="list-style:none; padding:0; margin:0;">
+                  ${checklistHtml}
+                </ul>
+              </div>
+
+              <div style="background:rgba(18,24,38,0.6); padding:1.1rem; border-radius:8px; border:1px solid ${borderColor}44;">
+                <h5 style="color:${themeColor}; font-size:0.95rem; font-weight:700; margin-bottom:0.7rem; display:flex; align-items:center; gap:0.4rem;">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="${themeColor}" stroke-width="2.2"><polygon points="12 2 15 8.5 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 9 8.5 12 2"/></svg>
+                  Án Nghiệm Thực Tế Tại Việt Nam
+                </h5>
+                ${casesHtml}
+              </div>
+            </div>
+          </div>
+        </article>
+      `;
+    }).join('');
+  }
+
+  function renderAmDuongAcademicSection() {
+    const parts = [
+      typeof AMDUONG_NGUHANH_PART_1 !== 'undefined' ? AMDUONG_NGUHANH_PART_1 : null,
+      typeof AMDUONG_NGUHANH_PART_2 !== 'undefined' ? AMDUONG_NGUHANH_PART_2 : null,
+      typeof AMDUONG_NGUHANH_PART_3 !== 'undefined' ? AMDUONG_NGUHANH_PART_3 : null,
+      typeof AMDUONG_NGUHANH_PART_4 !== 'undefined' ? AMDUONG_NGUHANH_PART_4 : null,
+      typeof AMDUONG_NGUHANH_PART_5 !== 'undefined' ? AMDUONG_NGUHANH_PART_5 : null,
+      typeof AMDUONG_NGUHANH_PART_6 !== 'undefined' ? AMDUONG_NGUHANH_PART_6 : null,
+      typeof AMDUONG_NGUHANH_PART_7 !== 'undefined' ? AMDUONG_NGUHANH_PART_7 : null,
+      typeof AMDUONG_NGUHANH_PART_8 !== 'undefined' ? AMDUONG_NGUHANH_PART_8 : null,
+      typeof AMDUONG_NGUHANH_PART_9 !== 'undefined' ? AMDUONG_NGUHANH_PART_9 : null,
+      typeof AMDUONG_NGUHANH_PART_10 !== 'undefined' ? AMDUONG_NGUHANH_PART_10 : null
+    ];
+    renderGeneric10Parts('amduong-academic-container', parts, 'amduong', 'ÂM DƯƠNG BẢN THỂ', '#FBBF24', '#D97706', 'rgba(217,119,6,0.2)', 'rgba(245,158,11,0.15)');
+  }
+
+  function renderHuyenKhongAcademicSection() {
+    const parts = [
+      typeof HUYENKHONG_FENGSHUI_PART_1 !== 'undefined' ? HUYENKHONG_FENGSHUI_PART_1 : null,
+      typeof HUYENKHONG_FENGSHUI_PART_2 !== 'undefined' ? HUYENKHONG_FENGSHUI_PART_2 : null,
+      typeof HUYENKHONG_FENGSHUI_PART_3 !== 'undefined' ? HUYENKHONG_FENGSHUI_PART_3 : null,
+      typeof HUYENKHONG_FENGSHUI_PART_4 !== 'undefined' ? HUYENKHONG_FENGSHUI_PART_4 : null,
+      typeof HUYENKHONG_FENGSHUI_PART_5 !== 'undefined' ? HUYENKHONG_FENGSHUI_PART_5 : null,
+      typeof HUYENKHONG_FENGSHUI_PART_6 !== 'undefined' ? HUYENKHONG_FENGSHUI_PART_6 : null,
+      typeof HUYENKHONG_FENGSHUI_PART_7 !== 'undefined' ? HUYENKHONG_FENGSHUI_PART_7 : null,
+      typeof HUYENKHONG_FENGSHUI_PART_8 !== 'undefined' ? HUYENKHONG_FENGSHUI_PART_8 : null,
+      typeof HUYENKHONG_FENGSHUI_PART_9 !== 'undefined' ? HUYENKHONG_FENGSHUI_PART_9 : null,
+      typeof HUYENKHONG_FENGSHUI_PART_10 !== 'undefined' ? HUYENKHONG_FENGSHUI_PART_10 : null
+    ];
+    renderGeneric10Parts('huyenkhong-academic-container', parts, 'huyenkhong', 'HUYỀN KHÔNG PHI TINH', '#C084FC', '#7C3AED', 'rgba(124,58,237,0.25)', 'rgba(139,92,246,0.15)');
+  }
+
   function renderLoanDauAcademicSection(containerId, data, romanNum, tagTitle, schoolType = 'LOAN ĐẦU', anchorId = '') {
     const container = document.getElementById(containerId);
     if (!container || !data) return;
@@ -1626,6 +1831,12 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>
     `;
   }
+
+  // Render 10 Tiết Khởi Nguyên Bản Thể Luận Âm Dương Ngũ Hành
+  renderAmDuongAcademicSection();
+
+  // Render 10 Tiết Huyền Không Phi Tinh Chánh Tông
+  renderHuyenKhongAcademicSection();
 
   // Render 10 Tiết Loan Đầu Chánh Tông
   if (typeof LOANDAU_FENGSHUI_PART_1 !== 'undefined') {
