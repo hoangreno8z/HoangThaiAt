@@ -1,7 +1,6 @@
 /**
  * PHONG THỦY THỜ CÚNG CHÁNH TÔNG (KHO TÀNG CỔ THƯ & QUY THỨC TẾ TỰ)
- * CHƯƠNG I: ĐẠI BÁCH KHOA PHONG THỦY THỜ CÚNG & LINH VỊ GIA TIÊN CHÁNH TÔNG
- * 10 TIẾT HỌC THUẬT & TOÀN BỘ PHẦN "LINH" (MẬT GIÁO & PHÙ CHÚ KHOA NGHI CHÁNH TÔNG)
+ * ĐẠI HỆ THỐNG TOÀN THƯ: 10 TIẾT HỌC THUẬT, MẬT TRUYỀN PHẦN LINH & 2 ĐẠI CHUYÊN ĐỀ TỐI HẬU
  */
 
 // TIẾT I: KHỞI NGUYÊN BẢN THỂ & NGUYÊN TẮC TỌA VỊ
@@ -471,7 +470,7 @@ const WORSHIP_FENGSHUI_PART_9 = {
   }
 };
 
-// TIẾT X: GIẢI MÃ TOÀN DIỆN PHÙ CỐT BÁT HƯƠNG (ĐỒ HÌNH TRẬN ĐỒ THIÊN ĐỊA BÁT QUÁI - 28 TÚ) & ĐẠI TỔNG KẾT
+// TIẾT X: GIẢI MÃ TOÀN DIỆN PHÙ CỐT BÁT HƯƠNG (ĐỒ HÌNH TRẬN ĐỒ THIÊN ĐỊA BÁT QUÁI - 28 TÚ)
 const WORSHIP_FENGSHUI_PART_10 = {
   chapter_id: "tho_cung_part_10",
   chapter_title: "Tiết X: Đại Giải Mã 'Phù Cốt Bát Hương' (Trận Đồ Càn Khôn Bát Quái - Nhị Thập Bát Tú)",
@@ -556,124 +555,49 @@ const WORSHIP_ESOTERIC_RITUALS = {
   section_title: "ĐẠI BÁCH KHOA MẬT GIÁO & PHÙ CHÚ KHOA NGHI BÁT HƯƠNG",
   sub_title: "Trích từ Đạo Tạng Bí Chỉ, Khoa Nghi Bốc Bát Hương & Khai Quang Điểm Nhãn Huyền Môn: Bảy bước khởi linh, Chân ngôn Mật chú, Thủ ấn Khai quang và Phép chiêu linh hô thần",
 
-  // 1. Bản thể luận về "Linh"
   esoteric_ontology: {
     title: "1. Bản Thể Luận Về 'Linh' Trong Huyền Môn: Hình - Khí - Thần Tam Tài",
     quote: "Họa phù bất tri khiếu, địch đắc quỷ thần tiếu. Họa phù tri đắc khiếu, kinh đắc quỷ thần khiếu.",
     quote_source: "Huyền Môn Bí Chỉ - Phù Đạo Khẩu Quyết",
     concepts: [
-      {
-        name: "HÌNH (Phần Thô - Thể Xác Bát Hương)",
-        desc: "Là cái bát bằng gốm sứ/đồng, tro rơm nếp sạch, đỉnh nến, mâm bồng. Nếu chỉ có 'Hình' mà không có 'Linh' thì bát hương chỉ là một đồ gốm vô tri vô giác, thậm chí trở thành nơi cho cô hồn tà quỷ ẩn náu."
-      },
-      {
-        name: "KHÍ (Phần Vận Động - Trường Năng Lượng Đồ Trận)",
-        desc: "Là trường sinh học của Đạo Phù Cốt Bát Hương (Trận đồ Càn Khôn Bát Quái - Nhị Thập Bát Tú - Thất Bảo ngọc báu) kết hợp với hướng Tọa Cát Hướng Cát đón sinh khí của vũ trụ."
-      },
-      {
-        name: "THẦN (Phần Linh Cảm - Thần Thức Chân Linh Giáng Ngự)",
-        desc: "Là kết quả của Nghi Thức Khai Quang Trì Chú, Chiêu Linh Hô Thần và Tâm Thức Thành Kính của gia chủ. Khi Thần - Khí - Hình hòa làm một, bát hương mới chính thức 'ĐẮC LINH'."
-      }
+      { name: "HÌNH (Phần Thô - Thể Xác Bát Hương)", desc: "Là cái bát bằng gốm sứ/đồng, tro rơm nếp sạch, đỉnh nến, mâm bồng. Nếu chỉ có 'Hình' mà không có 'Linh' thì bát hương chỉ là một đồ gốm vô tri vô giác, thậm chí trở thành nơi cho cô hồn tà quỷ ẩn náu." },
+      { name: "KHÍ (Phần Vận Động - Trường Năng Lượng Đồ Trận)", desc: "Là trường sinh học của Đạo Phù Cốt Bát Hương (Trận đồ Càn Khôn Bát Quái - Nhị Thập Bát Tú - Thất Bảo ngọc báu) kết hợp với hướng Tọa Cát Hướng Cát đón sinh khí của vũ trụ." },
+      { name: "THẦN (Phần Linh Cảm - Thần Thức Chân Linh Giáng Ngự)", desc: "Là kết quả của Nghi Thức Khai Quang Trì Chú, Chiêu Linh Hô Thần và Tâm Thức Thành Kính của gia chủ. Khi Thần - Khí - Hình hòa làm một, bát hương mới chính thức 'ĐẮC LINH'." }
     ]
   },
 
-  // 2. Quy trình 7 bước bốc bát hương khởi linh
   seven_consecration_steps: {
     title: "2. Quy Trình 7 Bước Khởi Linh & Nạp Cốt Bát Hương Chuẩn Khoa Nghi",
     steps: [
-      {
-        step: "Bước 1: Tịnh Đàn Khử Uế Chi Pháp (Tẩy Uế Tuyệt Đối)",
-        action: "Dùng nước Ngũ Vị Hương nấu sôi để nguội hoặc Rượu Gừng tịnh sái Bát hương rỗng và bàn hành lễ. Thắp 1 nén nhang trầm xông quanh 3 vòng. Tay bắt ấn Bảo Bình, miệng trì tụng Tịnh Pháp Giới Chân Ngôn và Tịnh Khẩu Nghiệp Chân Ngôn để tống khứ mọi uế khí tạp niệm."
-      },
-      {
-        step: "Bước 2: Phép Nạp Khí Thất Bảo (Thất Bảo Bí Quyết)",
-        action: "Chuẩn bị 7 bảo vật thuần khiết tự nhiên (Vàng, Bạc, Ngọc bích, Hổ phách, Xà cừ, San hô đỏ, Mã não). Đặt Thất Bảo vào đĩa sứ, sái tịnh bằng rượu gừng. Trì niệm Lục Tự Đại Minh Chân Ngôn (Om Mani Padme Hum - 21 biến hoặc 108 biến) để phóng linh quang kích hoạt linh khí ngũ hành trong từng hạt bảo ngọc."
-      },
-      {
-        step: "Bước 3: Phép Thần Chú Khai Bút & Chuẩn Bị Đạo Phù",
-        action: "Trải tờ Phù Cốt (Hoàng chỉ Chu sa) lên mặt đàn sạch. Người bốc bát hương tay cầm bút lông (hoặc kiếm chỉ), hướng mặt về phương Đông hít một hơi chân khí, niệm Khai Bút Thần Chú: 'Cư bi bút, hạ bi mặc. Thiên viên địa phương, luật lệnh cửu chương. Ngô kim hạ bút, vạn quỷ phục tàng. Cấp cấp như luật lệnh!'."
-      },
-      {
-        step: "Bước 4: Phép Kết Ấn Khai Quang Điểm Nhãn Phù Cốt",
-        action: "Tay trái bắt Tam Sơn Ấn (hoặc Kim Cang Quyền), tay phải bắt Kiếm Chỉ chỉ thẳng vào chữ 'Cung Thỉnh' và 'Tốc Hàng Lô Hương'. Niệm Tam Quang Khai Linh Chú: 'Thiên quang, Địa quang, Nhật Nguyệt Tinh quang, Tam Quang Dục Tú, chiếu diệu thập phương, thần thông hiển hiện!'. Sau đó thổi 3 hơi Dương khí ấm áp từ đan điền vào mặt phù để truyền thần thức."
-      },
-      {
-        step: "Bước 5: Thuật Gói Càn Khôn (Bọc Thất Bảo Đặt Đáy Bát Hương)",
-        action: "Đặt gói Thất Bảo vào chính giữa lòng tờ Phù. Gấp theo chiều từ Dưới lên Trên, từ Trái sang Phải (chiều Thuận Âm Dương bao bọc). Đặt gói Phù Cốt Thất Bảo ngay ngắn xuống chính giữa đáy Bát Hương, mặt chữ 'Cung Thỉnh' hướng lên trời."
-      },
-      {
-        step: "Bước 6: Phép Nạp Tro Nếp & Phong Cương Tụ Khí",
-        action: "Dùng bát sứ sạch múc từng bát tro rơm nếp đã trộn bột quế trầm hương trút vào bát hương. Vừa trút vừa nhẩm niệm: 'Nhất trút Thiên Nguyên bình an, Nhị trút Địa Mạch phú quý, Tam trút Nhân Đinh hưng vượng'. Đổ tro đến khi cách mép miệng bát hương 1 - 2 cm, dùng lòng bàn tay nén nhẹ cho phẳng mặt (không nén quá chặt làm gãy chân nhang)."
-      },
-      {
-        step: "Bước 7: Đại Lễ Khai Quang Điểm Nhãn & Chiêu Linh Hô Thần",
-        action: "An vị bát hương lên đúng vị trí trên bàn thờ. Thắp 3 nén nhang trầm thượng đẳng cắm thẳng đứng vào tâm bát hương. Dùng cành hoa sen hoặc hoa cúc nhúng nước thơm sái tịnh 3 vòng theo chiều kim đồng hồ quanh bát hương. Gia chủ quỳ nghiêm trang đọc 'Văn Khấn An Vị & Chiêu Linh Hô Thần Thần Chú' để chính thức cung nghinh Chư Thần Tiên Tổ an ngự vĩnh cửu."
-      }
+      { step: "Bước 1: Tịnh Đàn Khử Uế Chi Pháp (Tẩy Uế Tuyệt Đối)", action: "Dùng nước Ngũ Vị Hương nấu sôi để nguội hoặc Rượu Gừng tịnh sái Bát hương rỗng và bàn hành lễ. Thắp 1 nén nhang trầm xông quanh 3 vòng. Tay bắt ấn Bảo Bình, miệng trì tụng Tịnh Pháp Giới Chân Ngôn và Tịnh Khẩu Nghiệp Chân Ngôn để tống khứ mọi uế khí tạp niệm." },
+      { step: "Bước 2: Phép Nạp Khí Thất Bảo (Thất Bảo Bí Quyết)", action: "Chuẩn bị 7 bảo vật thuần khiết tự nhiên (Vàng, Bạc, Ngọc bích, Hổ phách, Xà cừ, San hô đỏ, Mã não). Đặt Thất Bảo vào đĩa sứ, sái tịnh bằng rượu gừng. Trì niệm Lục Tự Đại Minh Chân Ngôn (Om Mani Padme Hum - 21 biến hoặc 108 biến) để phóng linh quang kích hoạt linh khí ngũ hành trong từng hạt bảo ngọc." },
+      { step: "Bước 3: Phép Thần Chú Khai Bút & Chuẩn Bị Đạo Phù", action: "Trải tờ Phù Cốt (Hoàng chỉ Chu sa) lên mặt đàn sạch. Người bốc bát hương tay cầm bút lông (hoặc kiếm chỉ), hướng mặt về phương Đông hít một hơi chân khí, niệm Khai Bút Thần Chú: 'Cư bi bút, hạ bi mặc. Thiên viên địa phương, luật lệnh cửu chương. Ngô kim hạ bút, vạn quỷ phục tàng. Cấp cấp như luật lệnh!'." },
+      { step: "Bước 4: Phép Kết Ấn Khai Quang Điểm Nhãn Phù Cốt", action: "Tay trái bắt Tam Sơn Ấn (hoặc Kim Cang Quyền), tay phải bắt Kiếm Chỉ chỉ thẳng vào chữ 'Cung Thỉnh' và 'Tốc Hàng Lô Hương'. Niệm Tam Quang Khai Linh Chú: 'Thiên quang, Địa quang, Nhật Nguyệt Tinh quang, Tam Quang Dục Tú, chiếu diệu thập phương, thần thông hiển hiện!'. Sau đó thổi 3 hơi Dương khí ấm áp từ đan điền vào mặt phù để truyền thần thức." },
+      { step: "Bước 5: Thuật Gói Càn Khôn (Bọc Thất Bảo Đặt Đáy Bát Hương)", action: "Đặt gói Thất Bảo vào chính giữa lòng tờ Phù. Gấp theo chiều từ Dưới lên Trên, từ Trái sang Phải (chiều Thuận Âm Dương bao bọc). Đặt gói Phù Cốt Thất Bảo ngay ngắn xuống chính giữa đáy Bát Hương, mặt chữ 'Cung Thỉnh' hướng lên trời." },
+      { step: "Bước 6: Phép Nạp Tro Nếp & Phong Cương Tụ Khí", action: "Dùng bát sứ sạch múc từng bát tro rơm nếp đã trộn bột quế trầm hương trút vào bát hương. Vừa trút vừa nhẩm niệm: 'Nhất trút Thiên Nguyên bình an, Nhị trút Địa Mạch phú quý, Tam trút Nhân Đinh hưng vượng'. Đổ tro đến khi cách mép miệng bát hương 1 - 2 cm, dùng lòng bàn tay nén nhẹ cho phẳng mặt (không nén quá chặt làm gãy chân nhang)." },
+      { step: "Bước 7: Đại Lễ Khai Quang Điểm Nhãn & Chiêu Linh Hô Thần", action: "An vị bát hương lên đúng vị trí trên bàn thờ. Thắp 3 nén nhang trầm thượng đẳng cắm thẳng đứng vào tâm bát hương. Dùng cành hoa sen hoặc hoa cúc nhúng nước thơm sái tịnh 3 vòng theo chiều kim đồng hồ quanh bát hương. Gia chủ quỳ nghiêm trang đọc 'Văn Khấn An Vị & Chiêu Linh Hô Thần Thần Chú' để chính thức cung nghinh Chư Thần Tiên Tổ an ngự vĩnh cửu." }
     ]
   },
 
-  // 3. Hệ thống 4 Chân ngôn Mật chú bắt buộc
   four_sacred_mantras: {
     title: "3. Hệ Thống 4 Chân Ngôn & Mật Chú Bắt Buộc Khi Bốc Bát Hương",
     mantras: [
-      {
-        id: 1,
-        name: "Tịnh Pháp Giới Chân Ngôn (Tẩy trừ uế khí không gian)",
-        sanskrit: "Oṃ Ram Svāhā",
-        phonetic: "Án Lam Tát Bà Ha (hoặc Án Lam Tỏa Ha)",
-        count: "Trì tụng 7 biến hoặc 21 biến",
-        effect: "Thanh tịnh hóa toàn bộ không gian đàn tràng, đốt cháy mọi chướng khí vô hình, biến nơi thờ tự thành thanh tịnh cõi Phật."
-      },
-      {
-        id: 2,
-        name: "Tịnh Khẩu Nghiệp Chân Ngôn (Tịnh hóa khẩu nghiệp người hành lễ)",
-        sanskrit: "Śrī Śrī Mahā-Śrī Śrīnī Svāhā",
-        phonetic: "Tu rị tu rị, ma ha tu rị, tu tu rị, tát bà ha",
-        count: "Trì tụng 7 biến",
-        effect: "Tẩy rửa mọi lời nói thô uế, khẩu nghiệp trần tục, giúp lời khẩn nguyện phát ra trở thành luồng thanh âm thuần khiết rung động cõi thiêng."
-      },
-      {
-        id: 3,
-        name: "An Thổ Địa Chân Ngôn (Triệu thỉnh Long Thần nạp địa mạch)",
-        sanskrit: "Namo Samanta Buddhānām Oṃ Dhuru Dhuru Pṛthivyī Svāhā",
-        phonetic: "Nam mô tam mãn đa một đà nẫm, án độ rô độ rô, địa vĩ tát bà ha",
-        count: "Trì tụng 21 biến",
-        effect: "Kích hoạt Long Mạch ngũ phương, liên kết Thần Thổ Địa và Tiền Hậu Địa Chủ bảo hộ mảnh đất, khiến tà ma quỷ quái lập tức thối lui."
-      },
-      {
-        id: 4,
-        name: "Chiêu Linh Hô Thần Chân Ngôn (An Vị Thần Vị)",
-        sanskrit: "Mật chú Đạo Gia Thỉnh Thần",
-        phonetic: "Cung thỉnh Chư Tôn Thần / Bản gia Tiên Tổ giáng phó lô hương, thường trụ cát bảo, bất ly bổn vị, thùy từ chứng giám, độ trì toàn gia khang ninh thịnh vượng, cấp cấp như luật lệnh!",
-        count: "Đọc 3 lần khi cắm tuần hương đầu tiên",
-        effect: "Mở đường linh thông dẫn truyền linh giác của Tiên Tổ và Tôn Thần an tọa đúng ngôi thứ trong bát hương."
-      }
+      { id: 1, name: "Tịnh Pháp Giới Chân Ngôn (Tẩy trừ uế khí không gian)", sanskrit: "Oṃ Ram Svāhā", phonetic: "Án Lam Tát Bà Ha (hoặc Án Lam Tỏa Ha)", count: "Trì tụng 7 biến hoặc 21 biến", effect: "Thanh tịnh hóa toàn bộ không gian đàn tràng, đốt cháy mọi chướng khí vô hình, biến nơi thờ tự thành thanh tịnh cõi Phật." },
+      { id: 2, name: "Tịnh Khẩu Nghiệp Chân Ngôn (Tịnh hóa khẩu nghiệp người hành lễ)", sanskrit: "Śrī Śrī Mahā-Śrī Śrīnī Svāhā", phonetic: "Tu rị tu rị, ma ha tu rị, tu tu rị, tát bà ha", count: "Trì tụng 7 biến", effect: "Tẩy rửa mọi lời nói thô uế, khẩu nghiệp trần tục, giúp lời khẩn nguyện phát ra trở thành luồng thanh âm thuần khiết rung động cõi thiêng." },
+      { id: 3, name: "An Thổ Địa Chân Ngôn (Triệu thỉnh Long Thần nạp địa mạch)", sanskrit: "Namo Samanta Buddhānām Oṃ Dhuru Dhuru Pṛthivyī Svāhā", phonetic: "Nam mô tam mãn đa một đà nẫm, án độ rô độ rô, địa vĩ tát bà ha", count: "Trì tụng 21 biến", effect: "Kích hoạt Long Mạch ngũ phương, liên kết Thần Thổ Địa và Tiền Hậu Địa Chủ bảo hộ mảnh đất, khiến tà ma quỷ quái lập tức thối lui." },
+      { id: 4, name: "Chiêu Linh Hô Thần Chân Ngôn (An Vị Thần Vị)", sanskrit: "Mật chú Đạo Gia Thỉnh Thần", phonetic: "Cung thỉnh Chư Tôn Thần / Bản gia Tiên Tổ giáng phó lô hương, thường trụ cát bảo, bất ly bổn vị, thùy từ chứng giám, độ trì toàn gia khang ninh thịnh vượng, cấp cấp như luật lệnh!", count: "Đọc 3 lần khi cắm tuần hương đầu tiên", effect: "Mở đường linh thông dẫn truyền linh giác của Tiên Tổ và Tôn Thần an tọa đúng ngôi thứ trong bát hương." }
     ]
   },
 
-  // 4. Các thủ ấn cơ bản trong khoa nghi
   mudras_system: {
     title: "4. Hệ Thống 3 Thủ Ấn Khởi Linh Huyền Môn",
     mudras: [
-      {
-        name: "Tam Sơn Ấn (Thủ Ấn Tả Ngạn)",
-        gesture: "Ngón cái bấm giữ móng ngón áp út và ngón út; ngón trỏ, ngón giữa và ngón áp út (hoặc ngón cái kẹp ngón út, 3 ngón giữa dựng thẳng)",
-        role: "Tượng trưng cho Tam Sơn (Thái Sơn - Hoa Sơn - Côn Lôn Sơn) vững vàng như bàn thạch, dùng tay trái giữ ấn khi trì chú."
-      },
-      {
-        name: "Kiếm Chỉ / Lôi Cục Chỉ (Thủ Ấn Phóng Linh Quang)",
-        gesture: "Ngón trỏ và ngón giữa duỗi thẳng song song khép sát; ngón cái bấm lên móng ngón áp út và ngón út",
-        role: "Tập trung toàn bộ Dương khí và tâm lực phóng xuất qua đầu 2 ngón tay để điểm nhãn khai quang phù chú và bát hương."
-      },
-      {
-        name: "Bảo Bình Ấn (Thủ Ấn Tụ Khí)",
-        gesture: "Hai bàn tay đan các ngón vào nhau, hai ngón cái và hai ngón trỏ dựng đứng chạm đầu vào nhau tạo hình bình hoa sen",
-        role: "Hấp thụ tú khí của Tam Quang (Nhật Nguyệt Tinh) dung nạp vào tâm thức trước khi truyền khí vào đồ thờ."
-      }
+      { name: "Tam Sơn Ấn (Thủ Ấn Tả Ngạn)", gesture: "Ngón cái bấm giữ móng ngón áp út và ngón út; ngón trỏ, ngón giữa và ngón áp út dựng thẳng", role: "Tượng trưng cho Tam Sơn (Thái Sơn - Hoa Sơn - Côn Lôn Sơn) vững vàng như bàn thạch, dùng tay trái giữ ấn khi trì chú." },
+      { name: "Kiếm Chỉ / Lôi Cục Chỉ (Thủ Ấn Phóng Linh Quang)", gesture: "Ngón trỏ và ngón giữa duỗi thẳng song song khép sát; ngón cái bấm lên móng ngón áp út và ngón út", role: "Tập trung toàn bộ Dương khí và tâm lực phóng xuất qua đầu 2 ngón tay để điểm nhãn khai quang phù chú và bát hương." },
+      { name: "Bảo Bình Ấn (Thủ Ấn Tụ Khí)", gesture: "Hai bàn tay đan các ngón vào nhau, hai ngón cái và hai ngón trỏ dựng đứng chạm đầu vào nhau tạo hình bình hoa sen", role: "Hấp thụ tú khí của Tam Quang (Nhật Nguyệt Tinh) dung nạp vào tâm thức trước khi truyền khí vào đồ thờ." }
     ]
   },
 
-  // 5. Dấu hiệu đắc linh & Hóa giải mất linh
   signs_and_remedies: {
     title: "5. Dấu Hiệu Bát Hương 'Đắc Linh' & Phương Pháp Hóa Giải Khi Bị 'Mất Linh'",
     signs_dac_linh: [
@@ -685,5 +609,135 @@ const WORSHIP_ESOTERIC_RITUALS = {
       { name: "Phòng Thờ Lạnh Lẽo, Cảm Giác Bất An", desc: "Bước vào phòng thờ cảm thấy lạnh gáy, rợn người, nặng nề u ám; gia đình liên tục xảy ra tranh cãi vô cớ, hao tài tán lộc." }
     ],
     remedy_protocol: "PHƯƠNG PHÁP TÁI TỊNH HÓA (HỒI LINH CHI PHÁP): Tiến hành bao sái toàn diện bằng nước Ngũ Vị Hương và rượu gừng $\rightarrow$ Thắp 7 ngọn nến sáp quanh bàn thờ để bổ sung Dương Hỏa $\rightarrow$ Trì tụng An Thổ Địa Chân Ngôn 108 biến $\rightarrow$ Dâng lễ chay thanh tịnh thỉnh thần an vị trở lại."
+  }
+};
+
+// ĐẠI CHUYÊN ĐỀ TỐI HẬU I: KHAI QUANG ĐIỂM NHÃN THẤT KHIẾU TƯỢNG THẦN & LINH VẬT CHIÊU TÀI
+const WORSHIP_KHAI_QUANG_STATUES = {
+  section_id: "worship_khai_quang_statues",
+  section_title: "CHUYÊN ĐỀ: KHAI QUANG ĐIỂM NHÃN THẤT KHIẾU TƯỢNG THẦN & LINH VẬT",
+  sub_title: "Trích từ Khai Quang Điểm Nhãn Khoa Nghi & Hô Thần Nhập Tượng Chi Pháp: Quy chuẩn điểm nhãn Thất khiếu, Khai quang Gương Kính và Chiêu tài Thần thú",
+
+  statue_consecration_doctrine: {
+    title: "1. Bản Thể Luận: Tại Sao Tượng Thờ Bắt Buộc Phải Khai Quang Điểm Nhãn?",
+    quote: "Tượng bất khai quang, tắc đồng ngoan thạch. Điểm nhãn hữu linh, thần quang chiếu triệt.",
+    quote_source: "Khai Quang Khoa Nghi Bí Quyết",
+    desc: "Tượng Thần Tài, Thổ Địa, Tượng Phật, Thiềm Thừ, Tỳ Hưu khi mới thỉnh từ xưởng sản xuất về bản chất chỉ là 'Khối vật chất trần tục' (gốm, đá, đồng, gỗ) chứa đựng tạp khí của nơi chế tác và bàn tay người thợ. Nếu đặt thẳng lên bàn thờ mà không Khai Quang Điểm Nhãn thì tượng vô linh, chẳng những không chiêu được tài lộc mà còn dễ bị tà ma, ngạ quỷ tá túc hưởng hương khói."
+  },
+
+  seven_apertures_ceremony: {
+    title: "2. Nghi Thức Điểm Nhãn Thất Khiếu (7 Cửa Linh Giác)",
+    preparation: "Chuẩn bị: Nước Ngũ Vị Hương, Bột Chu Sa trộn rượu trắng, Bút lông mới tinh khiết, Khăn vải đỏ bịt mắt tượng, Gương đồng (hoặc gương soi mới chưa qua sử dụng).",
+    incantations: [
+      { organ: "1. ĐIỂM MẮT (ĐIỂM NHÃN)", incantation: "Điểm nhãn nhãn quang minh, chiếu triệt tam thiên đại thiên thế giới, thấu thị càn khôn vạn vật.", role: "Mở linh nhãn để Tôn Thần nhìn thấu thiện ác, phân biệt chân giả, dẫn đường tài lộc." },
+      { organ: "2. ĐIỂM TAI (ĐIỂM NHĨ)", incantation: "Điểm nhĩ nhĩ thông thính, văn thanh cứu khổ, lắng nghe tâm nguyện thiện tâm của gia chủ.", role: "Mở linh nhĩ để tiếp nhận lời cầu khấn, thấu triệt âm thanh bốn phương." },
+      { organ: "3. ĐIỂM MŨI (ĐIỂM TỴ)", incantation: "Điểm tỵ tỵ thông hương, nạp thiên địa chi thanh khí, phân biệt tà chính trần hoàn.", role: "Mở linh tỵ để thưởng thức hương hoa quả mới thuần khiết." },
+      { organ: "4. ĐIỂM MIỆNG (ĐIỂM KHẨU)", incantation: "Điểm khẩu khẩu năng ngôn, khai khẩu xuất chân ngôn, hộ trì thiện gia tăng phúc thọ.", role: "Mở linh khẩu để ban phúc lành, hóa giải khẩu thiệt thị phi." },
+      { organ: "5. ĐIỂM TIM (ĐIỂM TÂM)", incantation: "Điểm tâm tâm giác ngộ, từ bi phổ độ, ngưng tụ kim ngân tài bảo vào trạch viên.", role: "Kích hoạt tâm giác ngộ, biến pho tượng thành trung tâm tụ phúc." },
+      { organ: "6. ĐIỂM TAY (ĐIỂM THỦ)", incantation: "Điểm thủ thủ năng cầm, chưởng quản thiên tài, nắm giữ ngân lượng châu báu vững bền.", role: "Mở linh thủ để cầm giữ ngọc ngà, tài bảo không bị thất thoát." },
+      { organ: "7. ĐIỂM CHÂN (ĐIỂM TÚC)", incantation: "Điểm túc túc năng hành, bộ bộ sinh liên hoa, giáng phó đàn tràng bất ly linh vị.", role: "Mở linh túc để thần tốc giáng lâm, an vị vững chắc như bàn thạch." }
+    ]
+  },
+
+  mirror_and_cloth_ritual: {
+    title: "3. Bí Quyết Mở Khăn Đỏ & Phép Soi Gương Khai Quang",
+    steps: [
+      "Bước 1: Sau khi chấm son chu sa vào Thất Khiếu, người hành lễ tay cầm Gương soi hướng mặt kính về phía ánh sáng mặt trời (hoặc ánh nến bàn thờ) để hứng tụ 'Dương Quang'.",
+      "Bước 2: Phản chiếu luồng ánh sáng từ mặt gương thẳng vào trán và giữa ngực của Tượng Thần.",
+      "Bước 3: Mở dải khăn đỏ bịt mắt tượng, đồng thanh hô lớn: 'KHAI TÂM, KHAI THẦN, KHAI QUANG ĐẮC LINH! CẤP CẤP NHƯ LUẬT LỆNH!'",
+      "Bước 4: An vị Tượng Thần lên bàn thờ, thắp tuần hương đầu tiên dâng lễ tạ."
+    ]
+  }
+};
+
+// ĐẠI CHUYÊN ĐỀ TỐI HẬU II: TOÀN THƯ 12 BÀI VĂN KHẤN CỔ TRUYỀN & THỰC DƯỠNG TẾ TỰ 24 TIẾT KHÍ
+const WORSHIP_CANONICAL_PRAYERS_FULL = {
+  section_id: "worship_canonical_prayers_full",
+  section_title: "TOÀN THƯ 12 BÀI VĂN KHẤN CỔ TRUYỀN & NGUYÊN TẮC DÂNG LỄ 24 TIẾT KHÍ",
+  sub_title: "Tuyển tập 12 bản văn khấn chánh tông cổ truyền ngàn năm của dân tộc và nghệ thuật dâng lễ thuận theo âm dương thời tiết",
+
+  twelve_prayers_list: [
+    {
+      id: 1,
+      occasion: "1. Văn Khấn Ngày Mùng 1 & Ngày Rằm (Sóc Vọng Thường Nhật)",
+      theme: "Cầu bình an, gia đạo hòa thuận, công việc hanh thông định kỳ mỗi tháng.",
+      core_quote: "Cung thỉnh Thành Hoàng Bản Cảnh, Thổ Địa Tôn Thần, Gia Tiên Tiền Tổ... giáng lâm án tiền chứng giám lòng thành."
+    },
+    {
+      id: 2,
+      occasion: "2. Văn Khấn Lễ Tạ Táo Quân Chầu Trời (23 Tháng Chạp)",
+      theme: "Tiễn Táo Phủ Thần Quân cưỡi cá chép về Thiên Đình tâu báo việc trần gian.",
+      core_quote: "Kính lạy Đông Trù Tư Mệnh Táo Phủ Thần Quân, ngài thượng đạt thiên đình, tâu lời thiện lành, bảo hộ toàn gia."
+    },
+    {
+      id: 3,
+      occasion: "3. Văn Khấn Lễ Tất Niên (Chiều 30 Tháng Chạp)",
+      theme: "Tống cựu nghinh tân, tạ ơn Thần Linh và Tiên Tổ đã che chở suốt một năm qua.",
+      core_quote: "Kính cẩn sửa biện hương hoa cơm canh, dâng lên trước án, kính thỉnh Chư Thần Tiên Tổ về sum vầy Tết cổ truyền."
+    },
+    {
+      id: 4,
+      occasion: "4. Văn Khấn Giao Thừa Ngoài Trời (Trừ Tịch Thiên Địa)",
+      theme: "Nghinh đón Quan Đương Niên Hành Khiển Thái Tuế Chí Đức Tôn Thần kế nhiệm cai quản năm mới.",
+      core_quote: "Kính lạy Quan Đương Niên, Quan Đương Cảnh, Thiên Binh Thiên Tướng... phán xét cát hung, ban phúc thái hòa."
+    },
+    {
+      id: 5,
+      occasion: "5. Văn Khấn Giao Thừa Trong Nhà (Thời Khắc Đầu Năm Mới)",
+      theme: "Kính thỉnh Bản Gia Thần Linh và Hội Đồng Gia Tiên ngự tại linh từ trong giờ khắc chuyển giao năm mới.",
+      core_quote: "Thời khắc thiêng liêng, càn khôn giao hòa, kính rước Tôn Thần Tiên Tổ giáng lâm hưởng lễ đón xuân an khang."
+    },
+    {
+      id: 6,
+      occasion: "6. Văn Khấn Sáng Mùng 1 Tết Nguyên Đán",
+      theme: "Nghi lễ mở đầu nguyên đán, cầu phúc thọ khang ninh cho toàn thể huyết tộc.",
+      core_quote: "Tiết khai hoa nở, con cháu dâng quả thực trà sen, kính chúc tổ tiên an lạc, độ trì con cháu thăng tiến vinh hoa."
+    },
+    {
+      id: 7,
+      occasion: "7. Văn Khấn Lễ Hóa Vàng / Tạ Năm Mới (Mùng 3 hoặc Mùng 4 Tết)",
+      theme: "Nghi lễ tạ linh, tiễn đưa tổ tiên trở lại cõi vô vi thanh tịnh sau những ngày Tết đầm ấm.",
+      core_quote: "Kính dâng kim ngân lễ bạc hóa thiêu, tiễn đưa chư vị quy hồi bản vị, lưu phúc lưu ân lưu tài tại gia."
+    },
+    {
+      id: 8,
+      occasion: "8. Văn Khấn Tết Nguyên Tiêu (Rằm Tháng Giêng - Thượng Nguyên Cát Khánh)",
+      theme: "Cúng cả năm không bằng Rằm tháng Giêng - Cầu tài lộc thông thuận nguyên niên.",
+      core_quote: "Thượng Nguyên Tứ Phúc Thiên Quan giáng lâm, xá tội giải ách, ban phát tài lộc trường cửu."
+    },
+    {
+      id: 9,
+      occasion: "9. Văn Khấn Tết Hàn Thực (Mùng 3 Tháng Ba)",
+      theme: "Dâng bánh trôi bánh chay, tưởng nhớ cội nguồn và thanh lọc thân tâm đón khí thanh minh.",
+      core_quote: "Bánh thơm ngọt mát dâng lên án tiền, tỏ lòng hiếu kính, cầu thanh tịnh an lành."
+    },
+    {
+      id: 10,
+      occasion: "10. Văn Khấn Tết Đoan Ngọ (Mùng 5 Tháng Năm - Giết Sâu Bọ)",
+      theme: "Thuận theo khí cực Dương của mùa hè, trừ khử tà khí chướng dịch, trừ sâu bọ hại mùa màng.",
+      core_quote: "Tiết Đoan Dương dương khí cực thịnh, dâng hoa quả tươi ngọt, xua tan tật bệnh tai ương."
+    },
+    {
+      id: 11,
+      occasion: "11. Văn Khấn Đại Lễ Vu Lan Báo Hiếu & Tết Trung Nguyên (Rằm Tháng Bảy)",
+      theme: "Báo ân cha mẹ tổ tiên, mở lượng từ bi cúng thí cô hồn giải thoát nghiệp chướng.",
+      core_quote: "Địa Quan Xá Tội, Đức Mục Kiền Liên cứu mẹ, ngưỡng nhờ Phật lực gia trì siêu độ cửu huyền thất tổ."
+    },
+    {
+      id: 12,
+      occasion: "12. Văn Khấn Lễ Nhập Trạch / Cung Thỉnh An Vị Bàn Thờ Mới",
+      theme: "Nghi lễ trang nghiêm nhất khi chuyển về nhà mới hoặc tôn tạo bàn thờ gia tiên.",
+      core_quote: "Đất lành chim đậu, trạch viên kiên cố, kính thỉnh Chư Tôn Thần giáng ngự an vị, khai sinh tài lộc muôn đời."
+    }
+  ],
+
+  seasonal_offerings_guide: {
+    title: "Nguyên Tắc Dâng Lễ Thuận 4 Mùa & 24 Tiết Khí",
+    seasons: [
+      { season: "MÙA XUÂN (MỘC VƯỢNG - SINH KHÍ)", offering: "Dâng hoa tươi đầu cành (đào, mai, cúc), quả ngọt mọng, bánh nếp thơm. Kỵ đồ vị đắng chát, đồ khô héo." },
+      { season: "MÙA HẠ (HỎA VƯỢNG - QUANG MINH)", offering: "Dâng hoa sen thơm mát, nước suối nguồn thanh khiết, chè sen long nhãn, trà ướp hương hoa dịu nhiệt Hỏa." },
+      { season: "MÙA THU (KIM VƯỢNG - THU HOẠCH)", offering: "Dâng ngũ quả mùa thu (bưởi vàng, hồng đỏ, chuối chín ngự), bánh nướng bánh dẻo tạ ơn mùa màng bội thu." },
+      { season: "MÙA ĐÔNG (THỦY VƯỢNG - TÀNG KHÍ)", offering: "Dâng xôi gấc đỏ thắm, nến sáp mật ong ấm áp, thắp hương trầm bài nguyên chất để bổ sung Dương Hỏa xua tan hàn khí." }
+    ]
   }
 };

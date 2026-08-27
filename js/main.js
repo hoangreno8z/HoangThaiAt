@@ -995,6 +995,112 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
   }
 
+  // 1.16 Render Đại Chuyên Đề Tối Hậu I: Khai Quang Điểm Nhãn Thất Khiếu Tượng Thờ & Linh Vật
+  const worshipStatuesContainer = document.getElementById('worship-statues-container');
+  if (worshipStatuesContainer && typeof WORSHIP_KHAI_QUANG_STATUES !== 'undefined') {
+    const st = WORSHIP_KHAI_QUANG_STATUES;
+    worshipStatuesContainer.innerHTML = `
+      <div style="background:var(--bg-card); border:2px solid #EC4899; border-radius:16px; padding:2rem; margin-bottom:2.5rem; box-shadow:0 0 25px rgba(236,72,153,0.2);">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; margin-bottom:1.5rem; border-bottom:1px solid rgba(236,72,153,0.3); padding-bottom:1rem;">
+          <div>
+            <span style="font-size:0.75rem; color:#F472B6; text-transform:uppercase; letter-spacing:1px; font-weight:800;">👁️ HÔ THẦN NHẬP TƯỢNG • ĐIỂM NHÃN KHOA NGHI</span>
+            <h3 style="font-family:var(--font-title); font-size:1.5rem; color:#F472B6; margin:0.2rem 0;">${st.section_title}</h3>
+            <div style="font-size:0.88rem; color:var(--text-muted);">${st.sub_title}</div>
+          </div>
+          <span style="background:rgba(236,72,153,0.15); color:#F472B6; border:1px solid #F472B6; font-size:0.8rem; font-weight:700; padding:0.3rem 0.8rem; border-radius:20px;">CHUYÊN ĐỀ ĐIỂM NHÃN</span>
+        </div>
+
+        <!-- 1. Bản thể luận -->
+        <div style="margin-bottom:1.8rem;">
+          <h4 style="font-family:var(--font-title); font-size:1.2rem; color:var(--text-pure); margin-bottom:0.6rem;">${st.statue_consecration_doctrine.title}</h4>
+          <div style="background:rgba(236,72,153,0.06); border-left:3px solid #EC4899; padding:0.8rem 1.2rem; border-radius:0 8px 8px 0; margin-bottom:1rem;">
+            <div style="font-size:0.95rem; color:var(--text-pure); font-style:italic;">"${st.statue_consecration_doctrine.quote}"</div>
+            <div style="font-size:0.75rem; color:#F472B6; margin-top:0.2rem;">👉 Xuất xứ: <strong>${st.statue_consecration_doctrine.quote_source}</strong></div>
+          </div>
+          <p style="font-size:0.88rem; color:var(--text-muted); line-height:1.7;">${st.statue_consecration_doctrine.desc}</p>
+        </div>
+
+        <!-- 2. Điểm nhãn Thất Khiếu -->
+        <div style="margin-bottom:1.8rem; border-top:1px solid var(--border-subtle); padding-top:1.5rem;">
+          <h4 style="font-family:var(--font-title); font-size:1.2rem; color:var(--text-pure); margin-bottom:0.4rem;">${st.seven_apertures_ceremony.title}</h4>
+          <span style="font-size:0.82rem; color:var(--text-muted); display:block; margin-bottom:1rem;">⚙️ ${st.seven_apertures_ceremony.preparation}</span>
+          
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:0.9rem;">
+            ${st.seven_apertures_ceremony.incantations.map(ap => `
+              <div style="background:rgba(13,17,26,0.9); border:1px solid var(--border-subtle); border-radius:10px; padding:1rem 1.2rem;">
+                <strong style="color:#F472B6; font-size:0.95rem; display:block; margin-bottom:0.3rem;">✨ ${ap.organ}</strong>
+                <div style="background:rgba(0,0,0,0.5); border-left:2px solid #EC4899; padding:0.5rem 0.8rem; font-family:var(--font-title); font-size:0.88rem; color:#FBCFE8; margin-bottom:0.4rem;">
+                  "${ap.incantation}"
+                </div>
+                <div style="font-size:0.8rem; color:var(--text-muted); line-height:1.5;">👉 <strong>Tác dụng:</strong> ${ap.role}</div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
+        <!-- 3. Mở khăn đỏ và gương soi -->
+        <div style="border-top:1px solid var(--border-subtle); padding-top:1.5rem;">
+          <h4 style="font-family:var(--font-title); font-size:1.2rem; color:var(--text-pure); margin-bottom:0.8rem;">${st.mirror_and_cloth_ritual.title}</h4>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:0.8rem;">
+            ${st.mirror_and_cloth_ritual.steps.map((stStep, idx) => `
+              <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border-subtle); padding:0.8rem 1rem; border-radius:8px; font-size:0.85rem; color:var(--text-pure); line-height:1.6;">
+                <span style="background:#EC4899; color:#fff; font-size:0.75rem; font-weight:800; padding:0.1rem 0.4rem; border-radius:4px; margin-right:0.3rem;">${idx + 1}</span>
+                ${stStep.substring(9)}
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  // 1.17 Render Đại Chuyên Đề Tối Hậu II: Toàn Thư 12 Bài Văn Khấn Cổ Truyền & Dâng Lễ 24 Tiết Khí
+  const worshipPrayersContainer = document.getElementById('worship-prayers-container');
+  if (worshipPrayersContainer && typeof WORSHIP_CANONICAL_PRAYERS_FULL !== 'undefined') {
+    const pr = WORSHIP_CANONICAL_PRAYERS_FULL;
+    worshipPrayersContainer.innerHTML = `
+      <div style="background:var(--bg-card); border:2px solid var(--jade-cyan); border-radius:16px; padding:2rem; margin-bottom:3rem; box-shadow:0 0 25px rgba(45,212,191,0.2);">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; margin-bottom:1.5rem; border-bottom:1px solid rgba(45,212,191,0.3); padding-bottom:1rem;">
+          <div>
+            <span style="font-size:0.75rem; color:var(--jade-cyan); text-transform:uppercase; letter-spacing:1px; font-weight:800;">📜 CHU TỬ GIA LỄ • TOÀN THƯ VĂN KHẤN NGUYÊN BẢN</span>
+            <h3 style="font-family:var(--font-title); font-size:1.5rem; color:var(--jade-cyan); margin:0.2rem 0;">${pr.section_title}</h3>
+            <div style="font-size:0.88rem; color:var(--text-muted);">${pr.sub_title}</div>
+          </div>
+          <span style="background:rgba(45,212,191,0.15); color:var(--jade-cyan); border:1px solid var(--jade-cyan); font-size:0.8rem; font-weight:700; padding:0.3rem 0.8rem; border-radius:20px;">12 VĂN KHẤN ĐẠI CÁT</span>
+        </div>
+
+        <!-- 1. Danh sách 12 Văn Khấn -->
+        <div style="margin-bottom:2rem;">
+          <h4 style="font-family:var(--font-title); font-size:1.2rem; color:var(--text-pure); margin-bottom:1rem;">Kho Báu 12 Bản Văn Khấn Cổ Truyền Định Kỳ & Đại Lễ Trong Năm:</h4>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:1rem;">
+            ${pr.twelve_prayers_list.map(p => `
+              <div style="background:rgba(13,17,26,0.9); border:1px solid var(--border-subtle); border-radius:10px; padding:1.2rem;">
+                <strong style="color:var(--gold-primary); font-size:0.95rem; display:block; margin-bottom:0.3rem;">📖 ${p.occasion}</strong>
+                <div style="font-size:0.82rem; color:var(--text-muted); line-height:1.5; margin-bottom:0.5rem;">${p.theme}</div>
+                <div style="background:rgba(45,212,191,0.05); border-left:2px solid var(--jade-cyan); padding:0.5rem 0.8rem; border-radius:0 6px 6px 0; font-size:0.82rem; color:#A7F3D0; font-style:italic;">
+                  "${p.core_quote}"
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
+        <!-- 2. Dâng lễ 4 mùa 24 tiết khí -->
+        <div style="border-top:1px solid var(--border-subtle); padding-top:1.5rem;">
+          <h4 style="font-family:var(--font-title); font-size:1.2rem; color:var(--jade-cyan); margin-bottom:1rem;">${pr.seasonal_offerings_guide.title}</h4>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:0.9rem;">
+            ${pr.seasonal_offerings_guide.seasons.map(s => `
+              <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border-subtle); padding:1rem 1.2rem; border-radius:10px;">
+                <strong style="color:var(--text-pure); font-size:0.92rem; display:block; margin-bottom:0.4rem;">🍃 ${s.season}</strong>
+                <p style="font-size:0.82rem; color:var(--text-muted); line-height:1.5;">${s.offering}</p>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
   // 2. MẠCH 1: Render Thư Tịch Cốt Lõi Địa Lý Phong Thủy
   const treatisesGrid = document.getElementById('geographic-treatises-grid');
   if (treatisesGrid && COSMIC_DATA.geographic_treatises) {
