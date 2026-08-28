@@ -7,7 +7,7 @@
 class ThienDiaNhanEngine {
   constructor() {
     this.hazards = [
-      { id: 'flood_plain', name: 'Vùng Trũng Rốn Lũ / Họng Thoát Lũ (Nước ngập sâu > 1m)', severity: 'NGHIÊM TRỌNG', rule: 'Bất cư chính đương thủy lưu xứ (Dương Trạch Thập Thư)' },
+      { id: 'flood_plain', name: 'Vùng Trũng Rốn Lũ / Họng Thoát Lũ (Nước ngập sâu > 1 mét)', severity: 'NGHIÊM TRỌNG', rule: 'Bất cư chính đương thủy lưu xứ (Dương Trạch Thập Thư)' },
       { id: 'landslide_slope', name: 'Chân Taluy Sạt Lở Đất / Vách Đá Dốc Đứng', severity: 'NGHIÊM TRỌNG', rule: 'Bất cư sơn tích xung xứ / Thạch Sát (Hám Long Kinh)' },
       { id: 'seismic_fault', name: 'Vệt Đứt Gãy Địa Chấn / Nền Bùn Lún Sụt', severity: 'CAO', rule: 'Định Cương Trữ Cơ (Doanh Tạo Pháp Thức)' },
       { id: 'extreme_wind_crest', name: 'Đỉnh Đồi Hứng Bão Giật Trơ Trọi (Xung Phong Sát)', severity: 'CAO', rule: 'Phong xuy thủy kiếp khước phi huyệt (Táng Thư)' },
@@ -48,7 +48,6 @@ class ThienDiaNhanEngine {
     };
   }
 
-  // Tính toán góc chiếu Mặt Trời 4 mùa theo vĩ độ Việt Nam
   calculateSolarProfile(latitude = 21.0) {
     const summerSolsticeAltitude = 90 - latitude + 23.45;
     const winterSolsticeAltitude = 90 - latitude - 23.45;
@@ -61,11 +60,10 @@ class ThienDiaNhanEngine {
       winterAltitude: winterSolsticeAltitude.toFixed(1),
       equinoxAltitude: equinoxAltitude.toFixed(1),
       recommendedEavesMeters: recommendedEaves,
-      thermalComfortVerdict: 'Tọa Bắc Triều Nam: Mái hiên ' + recommendedEaves + 'm chắn 100% nắng gắt mùa hè (góc ' + Math.min(summerSolsticeAltitude, 180 - summerSolsticeAltitude).toFixed(1) + '°), đón trọn vẹn nắng sưởi ấm mùa đông (góc ' + winterSolsticeAltitude.toFixed(1) + '°).'
+      thermalComfortVerdict: 'Tọa Bắc Triều Nam: Mái hiên ' + recommendedEaves + ' mét chắn 100% nắng gắt mùa hè (góc ' + Math.min(summerSolsticeAltitude, 180 - summerSolsticeAltitude).toFixed(1) + '°), đón trọn vẹn nắng sưởi ấm mùa đông (góc ' + winterSolsticeAltitude.toFixed(1) + '°).'
     };
   }
 
-  // Đánh giá toàn diện đa tầng và quyền bác bỏ
   evaluateSiteIntelligence(inputs) {
     const report = {
       timestamp: new Date().toISOString(),
@@ -78,7 +76,6 @@ class ThienDiaNhanEngine {
       modernTechnicalRecommendations: []
     };
 
-    // 1. TẦNG NGUY CƠ THIÊN TAI (BƯỚC KIỂM SOÁT TỐI THƯỢNG)
     const criticalHazards = inputs.activeHazards.filter(h => {
       const hazardDef = this.hazards.find(item => item.id === h);
       return hazardDef && hazardDef.severity === 'NGHIÊM TRỌNG';
@@ -95,14 +92,13 @@ class ThienDiaNhanEngine {
         const hDef = this.hazards.find(item => item.id === h);
         report.vetoReasons.push('[BÁC BỎ KHẨN CẤP] ' + hDef.name + ': Vi phạm nguyên tắc ' + hDef.rule);
       });
-      report.verdict = '❌ BÁC BỎ KHU ĐẤT — PHONG THỦY KHÔNG CÓ QUYỀN PHỦ QUYẾT NGUY CƠ THIÊN TAI!';
+      report.verdict = 'BÁC BỎ KHU ĐẤT — PHONG THỦY KHÔNG CÓ QUYỀN PHỦ QUYẾT NGUY CƠ THIÊN TAI!';
       report.classicalEvidences.push(this.classicalCorpus.E1_DUONGTRACH);
       report.classicalEvidences.push(this.classicalCorpus.E1_TANGTHU);
       report.totalUnifiedScore = 15;
       return report;
     }
 
-    // 2. TẦNG THIÊN THỜI & NHẬT CHIẾU
     let thienScore = 70;
     if (['Nam', 'Đông Nam'].includes(inputs.orientation)) {
       thienScore = 95;
@@ -112,31 +108,28 @@ class ThienDiaNhanEngine {
       report.modernTechnicalRecommendations.push('Cảnh báo hướng Tây: Bức xạ nhiệt buổi chiều gay gắt (Hỏa Táo Cục), bắt buộc bổ sung lam chắn nắng hoặc cây xanh cách nhiệt.');
     }
 
-    // 3. TẦNG ĐỊA THỂ & THỦY VĂN
     let diaScore = 70;
     if (inputs.elevationAboveFloodLevel >= 0.8) {
       diaScore += 20;
-      report.modernTechnicalRecommendations.push('Cốt nền cao +' + inputs.elevationAboveFloodLevel + 'm vượt đỉnh lũ an toàn (Thế Tọa Cao Vọng Sùng).');
+      report.modernTechnicalRecommendations.push('Cốt nền cao +' + inputs.elevationAboveFloodLevel + ' mét vượt đỉnh lũ an toàn (Thế Tọa Cao Vọng Sùng).');
     } else {
       diaScore -= 30;
-      report.modernTechnicalRecommendations.push('Cảnh báo: Cốt nền chỉ cao +' + inputs.elevationAboveFloodLevel + 'm so với mặt đường, có nguy cơ ngập úng khi mưa bão cực đoan.');
+      report.modernTechnicalRecommendations.push('Cảnh báo: Cốt nền chỉ cao +' + inputs.elevationAboveFloodLevel + ' mét so với mặt đường, có nguy cơ ngập úng khi mưa bão cực đoan.');
     }
 
     if (inputs.hasRearBacking) diaScore += 10;
     if (inputs.hasFrontWater) diaScore += 10;
 
-    // 4. TẦNG KIẾN TRÚC VI KHÍ HẬU
     let kienTrucScore = 60;
     if (inputs.eavesOverhang >= 1.8) {
       kienTrucScore += 20;
-      report.modernTechnicalRecommendations.push('Mái hiên đua ' + inputs.eavesOverhang + 'm tạo khoảng đệm nhiệt cản 100% nắng gắt mùa hè.');
+      report.modernTechnicalRecommendations.push('Mái hiên đua ' + inputs.eavesOverhang + ' mét tạo khoảng đệm nhiệt cản 100% nắng gắt mùa hè.');
     }
     if (inputs.hasStackVentilation) {
       kienTrucScore += 20;
       report.modernTechnicalRecommendations.push('Có giếng trời/khe thoáng đối lưu ống khói tự nhiên: Khí nóng thoát lên nóc, hút dưỡng khí tươi mát liên tục 24/24.');
     }
 
-    // 5. TẦNG NHÂN THỂ (NGŨ HƯ NGŨ THỰC)
     let nhanScore = 80;
     const areaPerPerson = inputs.houseAreaM2 / Math.max(inputs.occupantCount, 1);
     if (areaPerPerson >= 20 && areaPerPerson <= 50) {
@@ -147,7 +140,6 @@ class ThienDiaNhanEngine {
       report.modernTechnicalRecommendations.push('Cảnh báo: Nhà quá rộng ít người (' + areaPerPerson.toFixed(1) + ' m²/người): Phạm Trạch Đại Nhân Thiểu - Nhất Hư, khí trường lạnh lẽo cần bố trí thêm công năng sử dụng.');
     }
 
-    // 6. TỔNG HỢP ĐIỂM SỐ TAM TÀI THỐNG NHẤT
     const fengShuiScore = inputs.classicalFengShuiScore || 85;
     report.layerScores = {
       hazardSafety: highHazards.length === 0 ? 100 : 60,
@@ -168,11 +160,11 @@ class ThienDiaNhanEngine {
     );
 
     if (report.totalUnifiedScore >= 85) {
-      report.verdict = '🌟 CÔNG TRÌNH ĐẮC TAM TÀI TOÀN HẢO (THUẬN THIÊN THỜI - AN TOÀN ĐỊA LỢI - VƯỢNG NHÂN HÒA)';
+      report.verdict = 'CÔNG TRÌNH ĐẮC TAM TÀI TOÀN HẢO (THUẬN THIÊN THỜI - AN TOÀN ĐỊA LỢI - VƯỢNG NHÂN HÒA)';
     } else if (report.totalUnifiedScore >= 65) {
-      report.verdict = '⚖️ CÔNG TRÌNH ĐẠT CHUẨN TRUNG BÌNH (CẦN TỐI ƯU HÓA CÁC ĐIỂM NGHẼN VI KHÍ HẬU & THOÁT NƯỚC)';
+      report.verdict = 'CÔNG TRÌNH ĐẠT CHUẨN TRUNG BÌNH (CẦN TỐI ƯU HÓA CÁC ĐIỂM NGHẼN VI KHÍ HẬU & THOÁT NƯỚC)';
     } else {
-      report.verdict = '⚠️ CÔNG TRÌNH TIỀM ẨN RỦI RO (CẦN CẢI TẠO HẠ TẦNG KỸ THUẬT VÀ VI KHÍ HẬU TRƯỚC KHI Ở)';
+      report.verdict = 'CÔNG TRÌNH TIỀM ẨN RỦI RO (CẦN CẢI TẠO HẠ TẦNG KỸ THUẬT VÀ VI KHÍ HẬU TRƯỚC KHI Ở)';
     }
 
     report.classicalEvidences.push(this.classicalCorpus.E1_THANHNANG);
