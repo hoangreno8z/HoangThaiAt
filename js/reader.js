@@ -481,15 +481,23 @@ class ScholarlyReader {
         <div style="margin-bottom:1.5rem; border-top:1px solid rgba(255,255,255,0.06); padding-top:1rem;">
           <h2 style="font-size:0.95rem; font-weight:600; color:${track.theme}; margin-bottom:0.5rem;">${lesson.ruler_388_structure.title} (Chu kỳ ${lesson.ruler_388_structure.cycle_length})</h2>
           <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:0.5rem;">
-            ${lesson.ruler_388_structure.palaces.map(pal => `
-              <div style="background:rgba(18,24,38,0.7); border:1px solid rgba(255,255,255,0.06); border-left:3px solid ${pal.nature === 'Cát' ? '#34D399' : '#EF4444'}; padding:0.6rem 0.8rem; border-radius:4px;">
-                <div style="display:flex; justify-content:space-between; margin-bottom:0.2rem;">
-                  <strong style="color:#FEF3C7; font-size:0.84rem;">${pal.name}</strong>
-                  <span style="font-size:0.75rem; font-weight:700; color:${pal.nature === 'Cát' ? '#34D399' : '#EF4444'};">${pal.nature}</span>
+            ${lesson.ruler_388_structure.palaces.map(pal => {
+              const isCat = pal.type === 'cat' || pal.nature === 'Cát';
+              return `
+                <div style="background:rgba(18,24,38,0.7); border:1px solid rgba(255,255,255,0.06); border-left:3px solid ${isCat ? '#34D399' : '#EF4444'}; padding:0.6rem 0.8rem; border-radius:4px;">
+                  <div style="display:flex; justify-content:space-between; margin-bottom:0.2rem;">
+                    <strong style="color:#FEF3C7; font-size:0.84rem;">${pal.name || pal.palace_name}</strong>
+                    <span style="font-size:0.75rem; font-weight:700; color:${isCat ? '#34D399' : '#EF4444'};">${isCat ? 'Cát' : 'Hung'}${pal.length ? ` (${pal.length})` : ''}</span>
+                  </div>
+                  <div style="font-size:0.78rem; color:var(--text-muted); line-height:1.4; margin-bottom:0.2rem;">${pal.desc || pal.meaning || ''}</div>
+                  ${Array.isArray(pal.sub_palaces) ? `
+                    <div style="font-size:0.72rem; color:${track.theme};">
+                      ${pal.sub_palaces.join(' • ')}
+                    </div>
+                  ` : ''}
                 </div>
-                <div style="font-size:0.78rem; color:var(--text-muted); line-height:1.4;">${pal.meaning}</div>
-              </div>
-            `).join('')}
+              `;
+            }).join('')}
           </div>
         </div>
       `;
@@ -506,7 +514,8 @@ class ScholarlyReader {
                 <h3 style="font-size:0.86rem; color:${track.theme}; margin:0 0 0.4rem 0;">Bàn Thờ Đứng (Án Gian / Tủ Thờ)</h3>
                 ${ag.standing_altars.map(sa => `
                   <div style="margin-bottom:0.4rem; padding-bottom:0.4rem; border-bottom:1px solid rgba(255,255,255,0.04); font-size:0.8rem;">
-                    <strong style="color:#FEF3C7;">${sa.name}:</strong> ${sa.dimensions} (${sa.meaning})
+                    <div style="color:#FEF3C7; font-weight:600;">Ngang ${sa.width} × Sâu ${sa.depth} × Cao ${sa.height}</div>
+                    <div style="color:var(--text-muted); font-size:0.76rem;">Phù hợp: ${sa.suit_for}</div>
                   </div>
                 `).join('')}
               </div>
@@ -516,7 +525,8 @@ class ScholarlyReader {
                 <h3 style="font-size:0.86rem; color:${track.theme}; margin:0 0 0.4rem 0;">Bàn Thờ Treo Tường (Chung Cư / Nhà Nhỏ)</h3>
                 ${ag.hanging_altars.map(ha => `
                   <div style="margin-bottom:0.4rem; padding-bottom:0.4rem; border-bottom:1px solid rgba(255,255,255,0.04); font-size:0.8rem;">
-                    <strong style="color:#FEF3C7;">${ha.name}:</strong> ${ha.dimensions} (${ha.meaning})
+                    <div style="color:#FEF3C7; font-weight:600;">Ngang ${ha.width} × Sâu ${ha.depth} (${ha.height_standard || ''})</div>
+                    <div style="color:var(--text-muted); font-size:0.76rem;">Phù hợp: ${ha.suit_for}</div>
                   </div>
                 `).join('')}
               </div>
@@ -533,9 +543,9 @@ class ScholarlyReader {
           <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:0.6rem;">
             ${lesson.incense_burners_layout.burners.map(b => `
               <div style="background:rgba(18,24,38,0.7); border:1px solid rgba(255,255,255,0.06); border-top:3px solid ${track.theme}; padding:0.7rem; border-radius:6px;">
-                <strong style="color:${track.theme}; font-size:0.86rem; display:block; margin-bottom:0.2rem;">${b.position}: ${b.name}</strong>
-                <p style="font-size:0.8rem; color:var(--text-pure); margin-bottom:0.2rem;"><strong>Ý nghĩa:</strong> ${b.significance}</p>
-                <p style="font-size:0.76rem; color:var(--text-muted); margin:0;">${b.rules}</p>
+                <strong style="color:${track.theme}; font-size:0.86rem; display:block; margin-bottom:0.2rem;">${b.position}</strong>
+                <p style="font-size:0.8rem; color:var(--text-pure); margin-bottom:0.2rem;"><strong>Thờ phụng:</strong> ${b.worship || b.name || ''}</p>
+                <p style="font-size:0.76rem; color:var(--text-muted); margin:0;"><strong>Quy thức:</strong> ${b.specification || b.rules || ''}</p>
               </div>
             `).join('')}
           </div>
@@ -551,9 +561,9 @@ class ScholarlyReader {
           <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:0.5rem;">
             ${lesson.five_elements_worship.elements.map(el => `
               <div style="background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.06); padding:0.6rem; border-radius:4px;">
-                <strong style="color:#FEF3C7; font-size:0.82rem;">Hành ${el.element}</strong>
+                <strong style="color:#FEF3C7; font-size:0.82rem;">${el.element}</strong>
                 <div style="font-size:0.78rem; color:${track.theme}; margin:0.15rem 0;">${el.items}</div>
-                <div style="font-size:0.74rem; color:var(--text-muted);">${el.meaning}</div>
+                <div style="font-size:0.74rem; color:var(--text-muted);">${el.role || el.meaning || ''}</div>
               </div>
             `).join('')}
           </div>
@@ -601,11 +611,15 @@ class ScholarlyReader {
                 ${(cat.items || []).map(item => `
                   <div style="background:rgba(18,24,38,0.7); border:1px solid rgba(255,255,255,0.06); border-left:3px solid #EF4444; padding:0.7rem; border-radius:4px;">
                     <div style="display:flex; justify-content:space-between; margin-bottom:0.2rem;">
-                      <strong style="color:#FEF3C7; font-size:0.84rem;">${item.id}. ${item.name}</strong>
-                      <span style="font-size:0.72rem; color:#EF4444; font-weight:700;">${item.danger_level}</span>
+                      <strong style="color:#FEF3C7; font-size:0.84rem;">${item.id ? `${item.id}. ` : ''}${item.name || item.title || 'Đại Kỵ'}</strong>
+                      <span style="font-size:0.72rem; color:#EF4444; font-weight:700;">${item.danger_level || 'Đại Kỵ'}</span>
                     </div>
-                    <div style="font-size:0.78rem; color:#FCA5A5; margin-bottom:0.2rem;"><strong>Hậu họa:</strong> ${item.consequence}</div>
-                    <div style="font-size:0.78rem; color:#34D399;"><strong>Hóa giải:</strong> ${item.remedy_standard}</div>
+                    <div style="font-size:0.78rem; color:#FCA5A5; margin-bottom:0.2rem;">
+                      <strong>Hậu họa:</strong> ${item.danger || item.consequence || 'Gây tổn hại trường khí linh vị'}
+                    </div>
+                    <div style="font-size:0.78rem; color:#34D399;">
+                      <strong>Hóa giải:</strong> ${item.remedy || item.remedy_standard || item.solution || 'Cần điều chỉnh vị trí và bài trí đúng chuẩn'}
+                    </div>
                   </div>
                 `).join('')}
               </div>
@@ -643,20 +657,83 @@ class ScholarlyReader {
     }
 
     // 11. BÀN THỜ THẦN TÀI THỔ ĐỊA (Part 6 Worship)
-    if (lesson.positioning_and_directions) {
-      const pd = lesson.positioning_and_directions;
+    if (lesson.deity_nature && Array.isArray(lesson.deity_nature.deities)) {
       contentHtml += `
         <div style="margin-bottom:1.5rem;">
-          <h2 style="font-size:0.95rem; font-weight:600; color:${track.theme}; margin-bottom:0.4rem;">${pd.title}</h2>
-          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:0.6rem;">
-            ${(pd.wealth_palaces || []).map(wp => `
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:0.6rem; margin-bottom:0.6rem;">
+            ${lesson.deity_nature.deities.map(d => `
               <div style="background:rgba(18,24,38,0.7); border:1px solid rgba(255,255,255,0.06); padding:0.7rem; border-radius:6px;">
-                <strong style="color:${track.theme}; font-size:0.84rem;">${wp.palace}</strong>
-                <div style="font-size:0.8rem; color:#FEF3C7; margin:0.15rem 0;">${wp.direction}</div>
-                <div style="font-size:0.76rem; color:var(--text-muted);">${wp.benefit}</div>
+                <strong style="color:${track.theme}; font-size:0.86rem; display:block; margin-bottom:0.15rem;">${d.name}</strong>
+                <div style="font-size:0.8rem; color:#FEF3C7; margin-bottom:0.15rem;">${d.position}</div>
+                <p style="font-size:0.78rem; color:var(--text-muted); line-height:1.45; margin:0;">${d.role}</p>
               </div>
             `).join('')}
           </div>
+          ${lesson.deity_nature.ground_principle ? `
+            <div style="background:rgba(245,158,11,0.06); border-left:3px solid ${track.theme}; padding:0.6rem 0.9rem; border-radius:0 6px 6px 0; font-size:0.82rem; color:#FEF3C7; line-height:1.5;">
+              ${lesson.deity_nature.ground_principle}
+            </div>
+          ` : ''}
+        </div>
+      `;
+    }
+
+    if (lesson.positioning_and_directions) {
+      const pd = lesson.positioning_and_directions;
+      contentHtml += `
+        <div style="margin-bottom:1.5rem; border-top:1px solid rgba(255,255,255,0.06); padding-top:1rem;">
+          <h2 style="font-size:0.95rem; font-weight:600; color:${track.theme}; margin-bottom:0.4rem;">${pd.title}</h2>
+          ${Array.isArray(pd.location_rules) ? `
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:0.6rem; margin-bottom:0.6rem;">
+              ${pd.location_rules.map(lr => `
+                <div style="background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.06); padding:0.7rem; border-radius:6px;">
+                  <strong style="color:${track.theme}; font-size:0.84rem; display:block; margin-bottom:0.15rem;">${lr.name}</strong>
+                  <p style="font-size:0.8rem; color:var(--text-muted); line-height:1.45; margin:0;">${lr.desc}</p>
+                </div>
+              `).join('')}
+            </div>
+          ` : ''}
+          ${Array.isArray(pd.wealth_palaces) ? `
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:0.6rem;">
+              ${pd.wealth_palaces.map(wp => `
+                <div style="background:rgba(18,24,38,0.7); border:1px solid rgba(255,255,255,0.06); padding:0.7rem; border-radius:6px;">
+                  <strong style="color:${track.theme}; font-size:0.84rem;">${wp.palace}</strong>
+                  <div style="font-size:0.78rem; color:var(--text-muted); margin-top:0.15rem;">${wp.benefit}</div>
+                </div>
+              `).join('')}
+            </div>
+          ` : ''}
+        </div>
+      `;
+    }
+
+    if (lesson.altar_layout && Array.isArray(lesson.altar_layout.items_order)) {
+      contentHtml += `
+        <div style="margin-bottom:1.5rem; border-top:1px solid rgba(255,255,255,0.06); padding-top:1rem;">
+          <h2 style="font-size:0.95rem; font-weight:600; color:${track.theme}; margin-bottom:0.4rem;">${lesson.altar_layout.title}</h2>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:0.5rem;">
+            ${lesson.altar_layout.items_order.map(it => `
+              <div style="background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.06); padding:0.6rem 0.8rem; border-radius:4px;">
+                <strong style="color:${track.theme}; font-size:0.82rem;">${it.step || ''}</strong>
+                <div style="font-size:0.78rem; color:var(--text-pure); line-height:1.4; margin-top:0.15rem;">${it.desc || ''}</div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+    }
+
+    if (lesson.taboos_wealth_altar && Array.isArray(lesson.taboos_wealth_altar.taboos)) {
+      contentHtml += `
+        <div style="margin-bottom:1.5rem; border-top:1px solid rgba(255,255,255,0.06); padding-top:1rem;">
+          <h2 style="font-size:0.95rem; font-weight:600; color:#EF4444; margin-bottom:0.4rem;">${lesson.taboos_wealth_altar.title}</h2>
+          <ul style="list-style:none; padding:0; margin:0;">
+            ${lesson.taboos_wealth_altar.taboos.map(t => `
+              <li style="background:rgba(239,68,68,0.06); border-left:2px solid #EF4444; padding:0.4rem 0.7rem; border-radius:0 4px 4px 0; margin-bottom:0.35rem; font-size:0.8rem; color:#FCA5A5;">
+                • ${t}
+              </li>
+            `).join('')}
+          </ul>
         </div>
       `;
     }
@@ -679,14 +756,75 @@ class ScholarlyReader {
       `;
     }
 
+    if (lesson.offering_commandments && Array.isArray(lesson.offering_commandments.rules)) {
+      contentHtml += `
+        <div style="margin-bottom:1.5rem; border-top:1px solid rgba(255,255,255,0.06); padding-top:1rem;">
+          <h2 style="font-size:0.95rem; font-weight:600; color:${track.theme}; margin-bottom:0.4rem;">${lesson.offering_commandments.title}</h2>
+          <div style="background:rgba(255,255,255,0.02); padding:0.8rem; border-radius:6px; font-size:0.82rem; color:var(--text-pure); line-height:1.5;">
+            ${lesson.offering_commandments.rules.map(r => `<p style="margin:0 0 0.3rem 0;">• ${r}</p>`).join('')}
+          </div>
+        </div>
+      `;
+    }
+
     // 13. NHÀ THỜ HỌ & TẢ CHIÊU HỮU MỤC (Part 8 Worship)
-    if (lesson.chieu_muc_system) {
+    if (lesson.ancestral_hall_ontology && Array.isArray(lesson.ancestral_hall_ontology.principles)) {
       contentHtml += `
         <div style="margin-bottom:1.5rem;">
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:0.6rem;">
+            ${lesson.ancestral_hall_ontology.principles.map(p => `
+              <div style="background:rgba(18,24,38,0.7); border:1px solid rgba(255,255,255,0.06); padding:0.7rem; border-radius:6px;">
+                <strong style="color:${track.theme}; font-size:0.84rem; display:block; margin-bottom:0.15rem;">${p.name}</strong>
+                <p style="font-size:0.8rem; color:var(--text-muted); margin:0;">${p.desc}</p>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+    }
+
+    if (lesson.chieu_muc_system) {
+      contentHtml += `
+        <div style="margin-bottom:1.5rem; border-top:1px solid rgba(255,255,255,0.06); padding-top:1rem;">
           <h2 style="font-size:0.95rem; font-weight:600; color:${track.theme}; margin-bottom:0.4rem;">${lesson.chieu_muc_system.title}</h2>
           <div style="background:rgba(255,255,255,0.02); padding:0.8rem; border-radius:6px; font-size:0.82rem; color:var(--text-pure); line-height:1.5;">
             ${(lesson.chieu_muc_system.generation_rules || []).map(r => `<p style="margin:0 0 0.3rem 0;">• ${r}</p>`).join('')}
           </div>
+        </div>
+      `;
+    }
+
+    if (lesson.architectural_loan_dau) {
+      const ald = lesson.architectural_loan_dau;
+      contentHtml += `
+        <div style="margin-bottom:1.5rem; border-top:1px solid rgba(255,255,255,0.06); padding-top:1rem;">
+          <h2 style="font-size:0.95rem; font-weight:600; color:${track.theme}; margin-bottom:0.4rem;">${ald.title}</h2>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:0.6rem;">
+            ${(ald.bays_layout || []).map(b => `
+              <div style="background:rgba(18,24,38,0.7); border:1px solid rgba(255,255,255,0.06); padding:0.7rem; border-radius:6px;">
+                <strong style="color:${track.theme}; font-size:0.84rem;">${b.bay}</strong>
+                <div style="font-size:0.78rem; color:var(--text-pure); margin-top:0.15rem;">${b.role}</div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+    }
+
+    if (lesson.sacred_tablets_and_motto) {
+      const st = lesson.sacred_tablets_and_motto;
+      contentHtml += `
+        <div style="margin-bottom:1.5rem; border-top:1px solid rgba(255,255,255,0.06); padding-top:1rem;">
+          <h2 style="font-size:0.95rem; font-weight:600; color:${track.theme}; margin-bottom:0.4rem;">${st.title}</h2>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:0.5rem; margin-bottom:0.6rem;">
+            ${(st.famous_mottos || []).map(m => `
+              <div style="background:rgba(18,24,38,0.7); border:1px solid rgba(255,255,255,0.06); padding:0.6rem 0.8rem; border-radius:4px;">
+                <strong style="color:${track.theme}; font-size:0.84rem;">${m.motto}</strong>
+                <div style="font-size:0.78rem; color:var(--text-muted);">${m.meaning}</div>
+              </div>
+            `).join('')}
+          </div>
+          ${st.tablet_material ? `<div style="font-size:0.8rem; color:#FEF3C7; background:rgba(245,158,11,0.08); padding:0.5rem 0.8rem; border-radius:4px;">${st.tablet_material}</div>` : ''}
         </div>
       `;
     }
@@ -701,6 +839,39 @@ class ScholarlyReader {
               <div style="background:rgba(18,24,38,0.7); border:1px solid rgba(255,255,255,0.06); padding:0.6rem 0.8rem; border-radius:4px;">
                 <strong style="color:${track.theme}; font-size:0.84rem;">${hl.level}: ${hl.height_cm}</strong>
                 <div style="font-size:0.78rem; color:var(--text-muted); margin-top:0.15rem;">${hl.suitable}</div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+    }
+
+    if (lesson.four_layer_protection && Array.isArray(lesson.four_layer_protection.layers)) {
+      contentHtml += `
+        <div style="margin-bottom:1.5rem; border-top:1px solid rgba(255,255,255,0.06); padding-top:1rem;">
+          <h2 style="font-size:0.95rem; font-weight:600; color:${track.theme}; margin-bottom:0.4rem;">${lesson.four_layer_protection.title}</h2>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:0.6rem;">
+            ${lesson.four_layer_protection.layers.map(l => `
+              <div style="background:rgba(18,24,38,0.7); border:1px solid rgba(255,255,255,0.06); padding:0.7rem; border-radius:6px;">
+                <strong style="color:${track.theme}; font-size:0.84rem;">${l.layer}</strong>
+                <div style="font-size:0.78rem; color:var(--text-pure); margin-top:0.15rem;">${l.role}</div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+    }
+
+    if (lesson.apartment_taboos && Array.isArray(lesson.apartment_taboos.taboos)) {
+      contentHtml += `
+        <div style="margin-bottom:1.5rem; border-top:1px solid rgba(255,255,255,0.06); padding-top:1rem;">
+          <h2 style="font-size:0.95rem; font-weight:600; color:#EF4444; margin-bottom:0.4rem;">${lesson.apartment_taboos.title}</h2>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:0.6rem;">
+            ${lesson.apartment_taboos.taboos.map(t => `
+              <div style="background:rgba(18,24,38,0.7); border:1px solid rgba(255,255,255,0.06); border-left:3px solid #EF4444; padding:0.7rem; border-radius:4px;">
+                <strong style="color:#FEF3C7; font-size:0.84rem; display:block; margin-bottom:0.2rem;">${t.id}. ${t.title}</strong>
+                <div style="font-size:0.78rem; color:#FCA5A5; margin-bottom:0.2rem;"><strong>Hậu họa:</strong> ${t.danger}</div>
+                <div style="font-size:0.78rem; color:#34D399;"><strong>Hóa giải:</strong> ${t.solution}</div>
               </div>
             `).join('')}
           </div>
@@ -724,6 +895,37 @@ class ScholarlyReader {
               `).join('')}
             </div>
           ` : ''}
+        </div>
+      `;
+    }
+
+    if (lesson.matrix_significance && Array.isArray(lesson.matrix_significance.points)) {
+      contentHtml += `
+        <div style="margin-bottom:1.5rem; border-top:1px solid rgba(255,255,255,0.06); padding-top:1rem;">
+          <h2 style="font-size:0.95rem; font-weight:600; color:${track.theme}; margin-bottom:0.4rem;">${lesson.matrix_significance.title}</h2>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:0.6rem;">
+            ${lesson.matrix_significance.points.map(p => `
+              <div style="background:rgba(18,24,38,0.7); border:1px solid rgba(255,255,255,0.06); padding:0.7rem; border-radius:6px;">
+                <strong style="color:${track.theme}; font-size:0.84rem; display:block; margin-bottom:0.15rem;">${p.name}</strong>
+                <p style="font-size:0.8rem; color:var(--text-muted); margin:0;">${p.desc}</p>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+    }
+
+    if (lesson.ritual_consecration_steps && Array.isArray(lesson.ritual_consecration_steps.steps)) {
+      contentHtml += `
+        <div style="margin-bottom:1.5rem; border-top:1px solid rgba(255,255,255,0.06); padding-top:1rem;">
+          <h2 style="font-size:0.95rem; font-weight:600; color:${track.theme}; margin-bottom:0.4rem;">${lesson.ritual_consecration_steps.title}</h2>
+          <div style="display:flex; flex-direction:column; gap:0.4rem;">
+            ${lesson.ritual_consecration_steps.steps.map(st => `
+              <div style="background:rgba(255,255,255,0.02); border-left:3px solid ${track.theme}; padding:0.5rem 0.8rem; border-radius:0 4px 4px 0; font-size:0.8rem; color:var(--text-pure);">
+                ${st}
+              </div>
+            `).join('')}
+          </div>
         </div>
       `;
     }
@@ -951,26 +1153,34 @@ class ScholarlyReader {
 
     // Extract terms
     if (lesson.scholarly_analysis && Array.isArray(lesson.scholarly_analysis.term_glossary)) {
-      terms = lesson.scholarly_analysis.term_glossary.map(t => ({ term: t.term, definition: t.definition || t.plain_vn || '' }));
+      terms = lesson.scholarly_analysis.term_glossary.map(t => ({ term: t.term, definition: t.plain_vn || t.definition || t.desc || '' }));
     } else if (lesson.ontology && Array.isArray(lesson.ontology.principles)) {
-      terms = lesson.ontology.principles.map(p => ({ term: p.name, definition: p.desc }));
+      terms = lesson.ontology.principles.map(p => ({ term: p.name, definition: p.desc || p.meaning || '' }));
     } else if (lesson.ruler_388_structure && Array.isArray(lesson.ruler_388_structure.palaces)) {
-      terms = lesson.ruler_388_structure.palaces.map(p => ({ term: `Cung ${p.name} (${p.nature})`, definition: p.meaning }));
+      terms = lesson.ruler_388_structure.palaces.map(p => ({ term: `Cung ${p.name || p.palace_name} (${(p.type === 'cat' || p.nature === 'Cát') ? 'Cát' : 'Hung'})`, definition: p.desc || (Array.isArray(p.sub_palaces) ? p.sub_palaces.join(', ') : (p.meaning || '')) }));
     } else if (lesson.five_elements_worship && Array.isArray(lesson.five_elements_worship.elements)) {
-      terms = lesson.five_elements_worship.elements.map(e => ({ term: `Hành ${e.element}`, definition: `${e.items} — ${e.meaning}` }));
+      terms = lesson.five_elements_worship.elements.map(e => ({ term: e.element, definition: `${e.items} — ${e.role || e.meaning || ''}` }));
     } else if (lesson.taboo_categories) {
       lesson.taboo_categories.forEach(cat => {
-        (cat.items || []).slice(0, 3).forEach(it => {
-          terms.push({ term: it.name, definition: it.consequence });
+        (cat.items || []).forEach(it => {
+          terms.push({ term: it.name || it.title, definition: it.danger || it.remedy || it.consequence || 'Đại kỵ thần vị gia trạch' });
         });
+      });
+    } else if (lesson.apartment_taboos && Array.isArray(lesson.apartment_taboos.taboos)) {
+      lesson.apartment_taboos.taboos.forEach(it => {
+        terms.push({ term: it.title, definition: it.danger || it.solution || '' });
       });
     }
 
     // Extract masters / sources
     if (lesson.scholarly_analysis && Array.isArray(lesson.scholarly_analysis.masters_views)) {
-      masters = lesson.scholarly_analysis.masters_views;
+      masters = lesson.scholarly_analysis.masters_views.map(mv => ({
+        master: mv.master,
+        work: mv.work || '',
+        perspective: mv.perspective || mv.view || ''
+      }));
     } else if (lesson.canonical_texts && lesson.canonical_texts.length > 0) {
-      masters = lesson.canonical_texts.map(ct => ({ master: 'Kinh Điển', work: ct.source, perspective: ct.meaning }));
+      masters = lesson.canonical_texts.map(ct => ({ master: 'Kinh Điển', work: ct.source || '', perspective: ct.meaning || '' }));
     } else {
       const bWithQuote = [lesson.ontology, lesson.ruler_classification, lesson.incense_burners_layout, lesson.preparation_and_timing, lesson.deity_nature, lesson.spiritual_hierarchy, lesson.ancestral_hall_ontology, lesson.hanging_altar_heights, lesson.talisman_anatomy].find(b => b && b.quote);
       if (bWithQuote) {
@@ -987,7 +1197,7 @@ class ScholarlyReader {
 
     const mastersHtml = masters.slice(0, 4).map(mv => `
       <div class="context-master-item" style="background:rgba(255,255,255,0.02); border-left:2px solid ${track.theme}; padding:0.4rem 0.6rem; border-radius:0 4px 4px 0; margin-bottom:0.4rem; font-size:0.78rem;">
-        <strong style="color:#FEF3C7;">${mv.master}</strong> (${mv.work}): <span style="color:var(--text-muted);">${mv.perspective}</span>
+        <strong style="color:#FEF3C7;">${mv.master}</strong>${mv.work ? ` (${mv.work})` : ''}: <span style="color:var(--text-muted);">${mv.perspective}</span>
       </div>
     `).join('');
 
@@ -1006,6 +1216,7 @@ class ScholarlyReader {
         <div class="context-masters-list">
           ${mastersHtml || '<div style="font-size:0.78rem; color:var(--text-muted);">Không có dẫn chiếu bổ sung.</div>'}
         </div>
+      </div>
     `;
   }
 
@@ -1034,15 +1245,31 @@ class ScholarlyReader {
     const lesson = track?.parts[this.currentLessonIndex - 1];
     if (!lesson) return;
 
-    let terms = lesson.scholarly_analysis?.term_glossary || [];
-    if (terms.length === 0 && lesson.ontology?.principles) {
-      terms = lesson.ontology.principles.map(p => ({ term: p.name, definition: p.desc }));
+    let terms = [];
+    if (lesson.scholarly_analysis && Array.isArray(lesson.scholarly_analysis.term_glossary)) {
+      terms = lesson.scholarly_analysis.term_glossary.map(t => ({ term: t.term, definition: t.plain_vn || t.definition || t.desc || '' }));
+    } else if (lesson.ontology && Array.isArray(lesson.ontology.principles)) {
+      terms = lesson.ontology.principles.map(p => ({ term: p.name, definition: p.desc || p.meaning || '' }));
+    } else if (lesson.ruler_388_structure && Array.isArray(lesson.ruler_388_structure.palaces)) {
+      terms = lesson.ruler_388_structure.palaces.map(p => ({ term: `Cung ${p.name || p.palace_name} (${(p.type === 'cat' || p.nature === 'Cát') ? 'Cát' : 'Hung'})`, definition: p.desc || (Array.isArray(p.sub_palaces) ? p.sub_palaces.join(', ') : (p.meaning || '')) }));
+    } else if (lesson.five_elements_worship && Array.isArray(lesson.five_elements_worship.elements)) {
+      terms = lesson.five_elements_worship.elements.map(e => ({ term: e.element, definition: `${e.items} — ${e.role || e.meaning || ''}` }));
+    } else if (lesson.taboo_categories) {
+      lesson.taboo_categories.forEach(cat => {
+        (cat.items || []).forEach(it => {
+          terms.push({ term: it.name || it.title, definition: it.danger || it.remedy || it.consequence || 'Đại kỵ thần vị gia trạch' });
+        });
+      });
+    } else if (lesson.apartment_taboos && Array.isArray(lesson.apartment_taboos.taboos)) {
+      lesson.apartment_taboos.taboos.forEach(it => {
+        terms.push({ term: it.title, definition: it.danger || it.solution || '' });
+      });
     }
 
-    const listHtml = terms.map(g => `
+    const listHtml = terms.slice(0, 15).map(g => `
       <div style="border-bottom:1px solid rgba(255,255,255,0.06); padding:0.6rem 0;">
         <div style="font-weight:600; color:${track.theme}; margin-bottom:0.15rem; font-size:0.88rem;">${g.term}</div>
-        <div style="font-size:0.82rem; color:var(--text-muted); line-height:1.45;">${g.definition || g.plain_vn || ''}</div>
+        <div style="font-size:0.82rem; color:var(--text-muted); line-height:1.45;">${g.definition}</div>
       </div>
     `).join('') || '<div style="color:var(--text-muted); font-size:0.85rem;">Không có chú giải riêng trong bài này.</div>';
 
