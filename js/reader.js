@@ -575,8 +575,13 @@ class ScholarlyReader {
       contentHtml += `
         <div style="margin-bottom:1.5rem; border-top:1px solid rgba(255,255,255,0.06); padding-top:1rem;">
           <h2 style="font-size:0.95rem; font-weight:600; color:${track.theme}; margin-bottom:0.4rem;">${lesson.dong_binh_tay_qua.title}</h2>
-          <div style="background:rgba(255,255,255,0.02); padding:0.7rem; border-radius:6px; font-size:0.82rem; color:var(--text-pure); line-height:1.5;">
-            ${(lesson.dong_binh_tay_qua.principles || []).map(p => `<p style="margin:0 0 0.3rem 0;">• ${p}</p>`).join('')}
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:0.6rem;">
+            ${(lesson.dong_binh_tay_qua.principles || []).map(p => `
+              <div style="background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.06); padding:0.7rem; border-radius:6px;">
+                <strong style="color:${track.theme}; font-size:0.84rem; display:block; margin-bottom:0.15rem;">${p.name || ''}</strong>
+                <p style="font-size:0.8rem; color:var(--text-pure); margin:0; line-height:1.45;">${p.desc || p}</p>
+              </div>
+            `).join('')}
           </div>
         </div>
       `;
@@ -760,8 +765,13 @@ class ScholarlyReader {
       contentHtml += `
         <div style="margin-bottom:1.5rem; border-top:1px solid rgba(255,255,255,0.06); padding-top:1rem;">
           <h2 style="font-size:0.95rem; font-weight:600; color:${track.theme}; margin-bottom:0.4rem;">${lesson.offering_commandments.title}</h2>
-          <div style="background:rgba(255,255,255,0.02); padding:0.8rem; border-radius:6px; font-size:0.82rem; color:var(--text-pure); line-height:1.5;">
-            ${lesson.offering_commandments.rules.map(r => `<p style="margin:0 0 0.3rem 0;">• ${r}</p>`).join('')}
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:0.6rem;">
+            ${lesson.offering_commandments.rules.map(r => `
+              <div style="background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.06); padding:0.7rem; border-radius:6px;">
+                <strong style="color:${track.theme}; font-size:0.84rem; display:block; margin-bottom:0.15rem;">${r.item || ''}</strong>
+                <p style="font-size:0.8rem; color:var(--text-pure); margin:0; line-height:1.45;">${r.detail || r}</p>
+              </div>
+            `).join('')}
           </div>
         </div>
       `;
@@ -787,8 +797,14 @@ class ScholarlyReader {
       contentHtml += `
         <div style="margin-bottom:1.5rem; border-top:1px solid rgba(255,255,255,0.06); padding-top:1rem;">
           <h2 style="font-size:0.95rem; font-weight:600; color:${track.theme}; margin-bottom:0.4rem;">${lesson.chieu_muc_system.title}</h2>
-          <div style="background:rgba(255,255,255,0.02); padding:0.8rem; border-radius:6px; font-size:0.82rem; color:var(--text-pure); line-height:1.5;">
-            ${(lesson.chieu_muc_system.generation_rules || []).map(r => `<p style="margin:0 0 0.3rem 0;">• ${r}</p>`).join('')}
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:0.6rem;">
+            ${(lesson.chieu_muc_system.generation_rules || []).map(r => `
+              <div style="background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.06); padding:0.7rem; border-radius:6px;">
+                <strong style="color:${track.theme}; font-size:0.84rem; display:block; margin-bottom:0.15rem;">${r.rank || ''}</strong>
+                <div style="font-size:0.8rem; color:#FEF3C7; margin-bottom:0.15rem;"><strong>Vị trí:</strong> ${r.placement || ''}</div>
+                <div style="font-size:0.78rem; color:var(--text-muted); line-height:1.4;">${r.symbol || ''}</div>
+              </div>
+            `).join('')}
           </div>
         </div>
       `;
@@ -886,11 +902,19 @@ class ScholarlyReader {
           <h2 style="font-size:0.95rem; font-weight:600; color:${track.theme}; margin-bottom:0.4rem;">${lesson.talisman_anatomy.title}</h2>
           <p style="font-size:0.82rem; color:var(--text-muted); margin-bottom:0.6rem;">${lesson.talisman_anatomy.overview || ''}</p>
           ${Array.isArray(lesson.talisman_anatomy.five_columns) ? `
-            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:0.6rem;">
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:0.7rem;">
               ${lesson.talisman_anatomy.five_columns.map(col => `
-                <div style="background:rgba(18,24,38,0.7); border:1px solid rgba(255,255,255,0.06); padding:0.7rem; border-radius:6px;">
-                  <strong style="color:${track.theme}; font-size:0.84rem; display:block; margin-bottom:0.2rem;">${col.column_name}</strong>
-                  <div style="font-size:0.78rem; color:var(--text-pure); line-height:1.45;">${col.character_details}</div>
+                <div style="background:rgba(18,24,38,0.7); border:1px solid rgba(255,255,255,0.06); border-top:3px solid ${track.theme}; padding:0.8rem; border-radius:6px;">
+                  <strong style="color:${track.theme}; font-size:0.86rem; display:block; margin-bottom:0.4rem;">${col.column_name}</strong>
+                  <div style="display:flex; flex-direction:column; gap:0.4rem;">
+                    ${Array.isArray(col.character_details) ? col.character_details.map(cd => `
+                      <div style="background:rgba(255,255,255,0.02); padding:0.4rem 0.6rem; border-radius:4px; border-left:2px solid rgba(255,255,255,0.1);">
+                        <div style="color:#FEF3C7; font-weight:600; font-size:0.82rem;">${cd.han}</div>
+                        ${cd.pinyin ? `<div style="font-size:0.74rem; color:${track.theme}; margin-bottom:0.15rem;">${cd.pinyin}</div>` : ''}
+                        <div style="font-size:0.78rem; color:var(--text-muted); line-height:1.4;">${cd.meaning}</div>
+                      </div>
+                    `).join('') : `<div style="font-size:0.78rem; color:var(--text-pure);">${col.character_details}</div>`}
+                  </div>
                 </div>
               `).join('')}
             </div>
