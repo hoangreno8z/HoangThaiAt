@@ -1,5 +1,5 @@
 // =========================================================================
-// HUYỀN HỌC MỤ — SCHOLARLY TOOL UI & SITE INTELLIGENCE CONTROLLER (PHASE 11)
+// HUYỀN HỌC MỤ — BÀN TÍNH SỐ HÓA & ĐÁNH GIÁ AN TOÀN VỊ TRÍ (THUẦN VIỆT 100%)
 // =========================================================================
 
 class ToolUI {
@@ -11,7 +11,6 @@ class ToolUI {
       houseDirection: 'Nam',
       period: 9,
       mountain: 'ty_mountain',
-      // Thiên - Địa - Nhân inputs
       latitude: 21.0,
       activeHazards: [],
       elevationAboveFlood: 1.2,
@@ -31,23 +30,23 @@ class ToolUI {
 
     container.innerHTML = `
       <div style="max-width:1200px; margin:0 auto; padding-bottom:3rem;">
-        <!-- Header -->
+        <!-- Tiêu đề đầu trang -->
         <header style="margin-bottom:2rem; text-align:center;">
           <div style="display:inline-block; padding:0.25rem 0.8rem; background:rgba(245,158,11,0.12); border:1px solid rgba(245,158,11,0.3); border-radius:20px; font-size:0.8rem; font-weight:700; color:#FBBF24; margin-bottom:0.6rem;">
-            🏛️ THIÊN — ĐỊA — NHÂN SITE INTELLIGENCE & PHONG THỦY ENGINE
+            🏛️ BỘ MÁY ĐÁNH GIÁ THIÊN — ĐỊA — NHÂN & PHONG THỦY CHÁNH TÔNG
           </div>
           <h1 style="font-family:var(--font-title); font-size:2.2rem; color:#FEF3C7; margin:0 0 0.5rem 0;">
             Bàn Tính Số Hóa Càn Khôn & Đánh Giá An Toàn Vị Trí
           </h1>
           <p style="font-size:0.92rem; color:var(--text-muted); max-width:750px; margin:0 auto; line-height:1.6;">
-            Hệ thống phân tích 8 tầng tích hợp: Kiểm soát nguy cơ thiên tai thực tế (Hazard Veto), quang học mặt trời 4 mùa, vi khí hậu thông gió và phong thủy chánh tông.
+            Hệ thống phân tích 8 tầng tích hợp: Kiểm soát nguy cơ thiên tai thực tế (Quyền Bác Bỏ Khẩn Cấp), quang học mặt trời 4 mùa, vi khí hậu thông gió và phong thủy chánh tông.
           </p>
         </header>
 
-        <!-- Navigation Tabs -->
+        <!-- Thanh điều hướng chuyển tab -->
         <div style="display:flex; justify-content:center; gap:0.8rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:1rem; margin-bottom:2rem; flex-wrap:wrap;">
           <button onclick="window.toolUI.render('thiendianhan')" style="background:${this.currentToolTab === 'thiendianhan' ? 'rgba(245,158,11,0.25)' : 'rgba(255,255,255,0.04)'}; border:1px solid ${this.currentToolTab === 'thiendianhan' ? '#FBBF24' : 'rgba(255,255,255,0.1)'}; color:#FEF3C7; padding:0.65rem 1.3rem; border-radius:8px; font-weight:700; font-size:0.88rem; cursor:pointer;">
-            🌐 Thiên — Địa — Nhân & Hazard Engine
+            🌐 Thiên — Địa — Nhân & Nguy Cơ Thiên Tai
           </button>
           <button onclick="window.toolUI.render('battrach')" style="background:${this.currentToolTab === 'battrach' ? 'rgba(245,158,11,0.25)' : 'rgba(255,255,255,0.04)'}; border:1px solid ${this.currentToolTab === 'battrach' ? '#FBBF24' : 'rgba(255,255,255,0.1)'}; color:#FEF3C7; padding:0.65rem 1.3rem; border-radius:8px; font-weight:700; font-size:0.88rem; cursor:pointer;">
             🏠 Bát Trạch Trạch Mệnh
@@ -60,7 +59,7 @@ class ToolUI {
           </button>
         </div>
 
-        <!-- Tool Content Area -->
+        <!-- Vùng nội dung công cụ -->
         <div id="tool-active-area">
           ${this.getToolContent(this.currentToolTab)}
         </div>
@@ -82,7 +81,7 @@ class ToolUI {
   }
 
   // =========================================================================
-  // RENDER THIÊN — ĐỊA — NHÂN SITE INTELLIGENCE TOOL
+  // GIAO DIỆN THIÊN — ĐỊA — NHÂN & PHÒNG CHỐNG THIÊN TAI (THUẦN VIỆT 100%)
   // =========================================================================
   renderThienDiaNhanTool() {
     const engine = window.thienDiaNhanEngine;
@@ -106,16 +105,16 @@ class ToolUI {
 
     return `
       <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(360px, 1fr)); gap:2rem;">
-        <!-- Left Pane: Input Parameters -->
+        <!-- Khung Trái: Nhập Liệu Khảo Sát -->
         <div style="background:#121722; border:1px solid rgba(255,255,255,0.08); border-radius:14px; padding:1.8rem;">
           <h3 style="font-family:var(--font-title); font-size:1.25rem; color:#FEF3C7; margin:0 0 1.2rem 0; display:flex; align-items:center; gap:0.5rem;">
             <span>📋</span> Bảng Khảo Sát Đa Tầng Thực Địa
           </h3>
 
-          <!-- TẦNG 7: HAZARD CHECK -->
+          <!-- TẦNG NGUY CƠ THIÊN TAI -->
           <div style="background:rgba(239,68,68,0.06); border:1px solid rgba(239,68,68,0.2); border-radius:10px; padding:1rem; margin-bottom:1.4rem;">
             <div style="font-size:0.85rem; font-weight:800; color:#F87171; text-transform:uppercase; margin-bottom:0.6rem; letter-spacing:0.04em;">
-              🚨 1. Khảo Sát Nguy Cơ Thiên Tai Thực Tế (Hazard Layer)
+              🚨 1. Khảo Sát Nguy Cơ Thiên Tai Thực Tế (Phân Tầng Hiểm Họa)
             </div>
             <div style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.8rem;">
               Nguyên tắc: Tích chọn nếu khu đất nằm trong các vùng nguy hiểm sau:
@@ -131,13 +130,13 @@ class ToolUI {
             `).join('')}
           </div>
 
-          <!-- TẦNG 1: THIÊN THỜI & QUANG HỌC -->
+          <!-- TẦNG THIÊN THỜI & QUANG HỌC -->
           <div style="margin-bottom:1.2rem;">
             <label style="display:block; font-size:0.85rem; color:var(--text-muted); margin-bottom:0.3rem;">Khu Vực Khảo Sát (Vĩ Độ):</label>
             <select onchange="window.toolUI.updateState('latitude', parseFloat(this.value))" style="width:100%; background:#0D111A; border:1px solid rgba(255,255,255,0.15); color:#FEF3C7; padding:0.55rem; border-radius:8px; font-size:0.9rem;">
-              <option value="21.0" ${this.state.latitude === 21.0 ? 'selected' : ''}>Miền Bắc (Hà Nội & Châu thổ Sông Hồng ~21°N)</option>
-              <option value="16.0" ${this.state.latitude === 16.0 ? 'selected' : ''}>Miền Trung (Đà Nẵng / Huế ~16°N)</option>
-              <option value="10.8" ${this.state.latitude === 10.8 ? 'selected' : ''}>Miền Nam (TP.HCM & Nam Bộ ~10.8°N)</option>
+              <option value="21.0" ${this.state.latitude === 21.0 ? 'selected' : ''}>Miền Bắc (Hà Nội & Châu thổ Sông Hồng ~21° Bắc)</option>
+              <option value="16.0" ${this.state.latitude === 16.0 ? 'selected' : ''}>Miền Trung (Đà Nẵng / Huế ~16° Bắc)</option>
+              <option value="10.8" ${this.state.latitude === 10.8 ? 'selected' : ''}>Miền Nam (TP.HCM & Nam Bộ ~10.8° Bắc)</option>
             </select>
           </div>
 
@@ -152,7 +151,7 @@ class ToolUI {
             </select>
           </div>
 
-          <!-- TẦNG 2 & 4: ĐỊA THỂ & KIẾN TRÚC -->
+          <!-- TẦNG ĐỊA THỂ & KIẾN TRÚC -->
           <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.8rem; margin-bottom:1.2rem;">
             <div>
               <label style="display:block; font-size:0.8rem; color:var(--text-muted); margin-bottom:0.3rem;">Cốt Nền Vượt Lũ (m):</label>
@@ -164,7 +163,7 @@ class ToolUI {
             </div>
           </div>
 
-          <!-- LOAN ĐẦU & VI KHÍ HẬU CHECKBOXES -->
+          <!-- HÌNH THẾ LOAN ĐẦU & VI KHÍ HẬU -->
           <div style="background:#0D111A; border-radius:8px; padding:0.8rem; margin-bottom:1.2rem;">
             <label style="display:flex; align-items:center; gap:0.5rem; font-size:0.82rem; color:#FEF3C7; margin-bottom:0.4rem; cursor:pointer;">
               <input type="checkbox" ${this.state.hasRearBacking ? 'checked' : ''} onchange="window.toolUI.updateState('hasRearBacking', this.checked)">
@@ -176,11 +175,11 @@ class ToolUI {
             </label>
             <label style="display:flex; align-items:center; gap:0.5rem; font-size:0.82rem; color:#FEF3C7; cursor:pointer;">
               <input type="checkbox" ${this.state.hasStackVentilation ? 'checked' : ''} onchange="window.toolUI.updateState('hasStackVentilation', this.checked)">
-              Có giếng trời/khe thoáng đối lưu ống khói (Thermosiphon)
+              Có giếng trời/khe thoáng đối lưu ống khói tự nhiên
             </label>
           </div>
 
-          <!-- TẦNG 6: NHÂN KHẨU (NGŨ HƯ NGŨ THỰC) -->
+          <!-- TẦNG NHÂN KHẨU (NGŨ HƯ NGŨ THỰC) -->
           <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.8rem;">
             <div>
               <label style="display:block; font-size:0.8rem; color:var(--text-muted); margin-bottom:0.3rem;">Số Người Ở:</label>
@@ -193,12 +192,12 @@ class ToolUI {
           </div>
         </div>
 
-        <!-- Right Pane: Live Analysis & Hazard Verdict -->
+        <!-- Khung Phải: Phân Tích & Kết Quả Đánh Giá -->
         <div style="background:#121722; border:1px solid rgba(255,255,255,0.08); border-radius:14px; padding:1.8rem;">
-          <!-- Top Verdict Banner -->
+          <!-- Băng Thông Báo Kết Quả -->
           <div style="background:${isVeto ? 'rgba(239,68,68,0.15)' : (evaluation.totalUnifiedScore >= 80 ? 'rgba(16,185,129,0.15)' : 'rgba(245,158,11,0.15)')}; border:1px solid ${isVeto ? '#EF4444' : (evaluation.totalUnifiedScore >= 80 ? '#10B981' : '#F59E0B')}; border-radius:12px; padding:1.2rem; margin-bottom:1.5rem;">
             <div style="font-size:0.8rem; font-weight:800; color:${isVeto ? '#F87171' : (evaluation.totalUnifiedScore >= 80 ? '#34D399' : '#FBBF24')}; margin-bottom:0.3rem;">
-              KẾT QUẢ ĐÁNH GIÁ THỐNG NHẤT (TAM TÀI SCORE: ${evaluation.totalUnifiedScore}/100)
+              KẾT QUẢ ĐÁNH GIÁ THỐNG NHẤT (ĐIỂM ĐÁNH GIÁ TAM TÀI: ${evaluation.totalUnifiedScore}/100)
             </div>
             <div style="font-size:1.05rem; font-weight:800; color:#FEF3C7; line-height:1.4;">
               ${evaluation.verdict}
@@ -210,7 +209,7 @@ class ToolUI {
             ` : ''}
           </div>
 
-          <!-- Solar Geometry Widget -->
+          <!-- Đo Đạc Quang Học Góc Chiếu Mặt Trời -->
           <div style="background:#0D111A; border:1px solid rgba(255,255,255,0.06); border-radius:10px; padding:1.2rem; margin-bottom:1.5rem;">
             <h4 style="font-size:0.92rem; color:#FEF3C7; margin:0 0 0.8rem 0; display:flex; align-items:center; gap:0.4rem;">
               <span>☀️</span> Quang Học Thiên Văn Góc Chiếu Mặt Trời (Thổ Khuê Trắc Cảnh)
@@ -237,15 +236,15 @@ class ToolUI {
             </div>
           </div>
 
-          <!-- Multi-layer Score Bars -->
+          <!-- Thanh Đo Chỉ Số Phân Tầng Hệ Thống -->
           <div style="margin-bottom:1.5rem;">
             <h4 style="font-size:0.92rem; color:#FEF3C7; margin:0 0 0.8rem 0;">
-              Chỉ Số Phân Tầng Hệ Thống (Layer Metrics):
+              Chỉ Số Phân Tầng Hệ Thống:
             </h4>
             <div style="display:grid; gap:0.5rem; font-size:0.8rem;">
               <div>
                 <div style="display:flex; justify-content:space-between; margin-bottom:0.2rem;">
-                  <span>🛡️ An Toàn Thiên Tai (Hazard Safety - Trọng số 30%):</span>
+                  <span>🛡️ An Toàn Thiên Tai (Trọng số 30%):</span>
                   <span style="font-weight:700; color:${evaluation.layerScores.hazardSafety >= 80 ? '#34D399' : '#F87171'};">${evaluation.layerScores.hazardSafety}/100</span>
                 </div>
                 <div style="height:6px; background:rgba(255,255,255,0.08); border-radius:3px; overflow:hidden;">
@@ -255,7 +254,7 @@ class ToolUI {
 
               <div>
                 <div style="display:flex; justify-content:space-between; margin-bottom:0.2rem;">
-                  <span>🏞️ Địa Thể & Thủy Văn (Địa Layer - Trọng số 20%):</span>
+                  <span>🏞️ Tầng Địa Thể & Thủy Văn (Trọng số 20%):</span>
                   <span style="font-weight:700; color:#60A5FA;">${evaluation.layerScores.dia}/100</span>
                 </div>
                 <div style="height:6px; background:rgba(255,255,255,0.08); border-radius:3px; overflow:hidden;">
@@ -265,7 +264,7 @@ class ToolUI {
 
               <div>
                 <div style="display:flex; justify-content:space-between; margin-bottom:0.2rem;">
-                  <span>☀️ Thiên Thời & Nhật Chiếu (Thiên Layer - Trọng số 15%):</span>
+                  <span>☀️ Tầng Thiên Thời & Nhật Chiếu (Trọng số 15%):</span>
                   <span style="font-weight:700; color:#FBBF24;">${evaluation.layerScores.thien}/100</span>
                 </div>
                 <div style="height:6px; background:rgba(255,255,255,0.08); border-radius:3px; overflow:hidden;">
@@ -275,7 +274,7 @@ class ToolUI {
 
               <div>
                 <div style="display:flex; justify-content:space-between; margin-bottom:0.2rem;">
-                  <span>🏛️ Kiến Trúc Vi Khí Hậu (Built Environment - Trọng số 15%):</span>
+                  <span>🏛️ Kiến Trúc Vi Khí Hậu (Trọng số 15%):</span>
                   <span style="font-weight:700; color:#A78BFA;">${evaluation.layerScores.kienTruc}/100</span>
                 </div>
                 <div style="height:6px; background:rgba(255,255,255,0.08); border-radius:3px; overflow:hidden;">
@@ -295,7 +294,7 @@ class ToolUI {
 
               <div>
                 <div style="display:flex; justify-content:space-between; margin-bottom:0.2rem;">
-                  <span>👥 Nhân Thể & Ngũ Hư Ngũ Thực (Nhân Layer - Trọng số 10%):</span>
+                  <span>👥 Tầng Nhân Thể & Ngũ Hư Ngũ Thực (Trọng số 10%):</span>
                   <span style="font-weight:700; color:#F472B6;">${evaluation.layerScores.nhan}/100</span>
                 </div>
                 <div style="height:6px; background:rgba(255,255,255,0.08); border-radius:3px; overflow:hidden;">
@@ -305,10 +304,10 @@ class ToolUI {
             </div>
           </div>
 
-          <!-- Classical Evidences Modal Card -->
+          <!-- Khung Trích Dẫn Chứng Cứ Cổ Thư -->
           <div style="background:rgba(245,158,11,0.04); border:1px solid rgba(245,158,11,0.15); border-radius:10px; padding:1rem;">
             <div style="font-size:0.8rem; font-weight:800; color:#FBBF24; margin-bottom:0.5rem;">
-              📜 Trích Dẫn Chứng Cứ Cổ Thư Tương Ứng (Evidence Mapping E1-E4):
+              📜 Bản Đồ Chứng Cứ Cổ Thư Tương Ứng:
             </div>
             ${evaluation.classicalEvidences.map(ev => `
               <div style="margin-bottom:0.6rem; font-size:0.78rem; line-height:1.5;">
@@ -324,7 +323,7 @@ class ToolUI {
   }
 
   // =========================================================================
-  // RENDER BÁT TRẠCH TOOL
+  // GIAO DIỆN BÁT TRẠCH TOOL
   // =========================================================================
   renderBatTrachTool() {
     const res = window.masterRuleEngine ? window.masterRuleEngine.calculateBatTrachGua(this.state.birthYear, this.state.gender) : null;
@@ -346,7 +345,7 @@ class ToolUI {
 
     return `
       <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:2rem;">
-        <!-- Input Form -->
+        <!-- Form Nhập Liệu -->
         <div style="background:#121722; border:1px solid rgba(255,255,255,0.08); border-radius:14px; padding:1.8rem;">
           <h3 style="font-family:var(--font-title); font-size:1.3rem; color:#FEF3C7; margin:0 0 1.2rem 0;">
             1. Nhập Thông Tin Gia Chủ
@@ -377,7 +376,7 @@ class ToolUI {
           </div>
         </div>
 
-        <!-- Calculation Result -->
+        <!-- Kết Quả Tính Toán -->
         <div style="background:#121722; border:1px solid rgba(255,255,255,0.08); border-radius:14px; padding:1.8rem;">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem; border-bottom:1px solid rgba(255,255,255,0.06); padding-bottom:0.6rem;">
             <h3 style="font-family:var(--font-title); font-size:1.3rem; color:#FEF3C7; margin:0;">
@@ -414,7 +413,7 @@ class ToolUI {
   }
 
   // =========================================================================
-  // RENDER HUYỀN KHÔNG TOOL
+  // GIAO DIỆN HUYỀN KHÔNG TOOL
   // =========================================================================
   renderHuyenKhongTool() {
     return `
@@ -423,7 +422,7 @@ class ToolUI {
           🌌 Tinh Bàn Cửu Cung Vận 9 (2024 - 2043)
         </h3>
 
-        <!-- 3x3 Flying Star Grid -->
+        <!-- Bảng Cửu Cung 3x3 -->
         <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:0.8rem; max-width:500px; margin:0 auto 1.5rem auto;">
           <div style="background:#0D111A; border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:0.8rem; text-align:center;">
             <div style="font-size:0.75rem; color:var(--text-muted);">Tốn (Đông Nam)</div>
@@ -482,45 +481,45 @@ class ToolUI {
   }
 
   // =========================================================================
-  // RENDER REPORT TOOL
+  // GIAO DIỆN BÁO CÁO XUẤT BẢN
   // =========================================================================
   renderReportTool() {
     const res = window.masterRuleEngine ? window.masterRuleEngine.calculateBatTrachGua(this.state.birthYear, this.state.gender) : null;
     const currentStar = res ? res.duNienMap[this.state.houseDirection] : '';
     const isGood = currentStar.includes('Tốt');
 
-    const markdownReport = `# BÁO CÁO CHẨN ĐOÁN TAM TÀI & PHONG THỦY HỌC THUẬT TOÀN DIỆN
-**Đơn vị thực hiện:** Huyền Học Mụ — Digital Scholarly Library & Site Intelligence Engine
-**Chủ sự:** Hoàng Thái Ất | **Hotline:** 0933116860
-**Ngày lập:** ${new Date().toLocaleDateString('vi-VN')}
+    const reportText = `# BÁO CÁO CHẨN ĐOÁN TAM TÀI & PHONG THỦY HỌC THUẬT TOÀN DIỆN
+Đơn vị thực hiện: Huyền Học Mụ — Thư Viện Cổ Thư & Bộ Máy Đánh Giá An Toàn Vị Trí
+Chủ sự: Hoàng Thái Ất | Đường dây nóng: 0933116860
+Ngày lập: ${new Date().toLocaleDateString('vi-VN')}
 
 ---
 
-## 1. THÔNG TIN KHẢO SÁT & VỊ TRÍ
+1. THÔNG TIN KHẢO SÁT & VỊ TRÍ
 * Gia chủ: Sinh năm ${this.state.birthYear} (${this.state.gender} Mệnh).
 * Cung Phi Bát Trạch: Cung ${res.guaName} (${res.element}) — ${res.group}.
-* Hướng nhà khảo sát: Hướng ${this.state.houseDirection} (Vĩ độ: ${this.state.latitude}°N).
+* Hướng nhà khảo sát: Hướng ${this.state.houseDirection} (Vĩ độ: ${this.state.latitude}° Bắc).
 * Cốt nền vượt đỉnh lũ: +${this.state.elevationAboveFlood}m.
 * Độ vươn mái hiên: ${this.state.eavesOverhang}m.
 * Mật độ diện tích: ${(this.state.houseAreaM2 / Math.max(this.state.occupantCount, 1)).toFixed(1)} m²/người.
 
-## 2. KẾT QUẢ ĐÁNH GIÁ TAM TÀI & NGUY CƠ THIÊN TAI (HAZARD VETO)
-* Tình trạng Hazard Veto: ${this.state.activeHazards.length === 0 ? 'AN TOÀN (0 phát hiện nguy cơ nghiêm trọng)' : 'CẢNH BÁO (' + this.state.activeHazards.join(', ') + ')'}
-* Đánh giá Bát Trạch: Hướng nhà ${this.state.houseDirection} đạt sao **${currentStar}** (${isGood ? 'Cát Khí' : 'Cần Chế Hóa'}).
+2. KẾT QUẢ ĐÁNH GIÁ TAM TÀI & NGUY CƠ THIÊN TAI
+* Tình trạng Nguy cơ thiên tai: ${this.state.activeHazards.length === 0 ? 'AN TOÀN (0 phát hiện nguy cơ nghiêm trọng)' : 'CẢNH BÁO (' + this.state.activeHazards.join(', ') + ')'}
+* Đánh giá Bát Trạch: Hướng nhà ${this.state.houseDirection} đạt sao ${currentStar} (${isGood ? 'Cát Khí' : 'Cần Chế Hóa'}).
 * Quang học góc nắng: Mái hiên ${this.state.eavesOverhang}m cản nắng gắt mùa hè, đón nắng ấm mùa đông.
 
-## 3. KHUYẾN NGHỊ BỐ TRÍ DƯƠNG TRẠCH & VI KHÍ HẬU
-1. **Đại Môn (Cửa chính):** Đặt tại cung cát hoặc mở rộng khẩu độ đón sinh khí Vận 9.
-2. **Chủ Phòng (Phòng ngủ):** Đặt tại phương vị Sinh Khí / Thiên Y.
-3. **Bếp Nấu:** Áp dụng nguyên tắc "Tọa Hung Hướng Cát" (Đặt bếp tại hướng xấu, miệng bếp quay về hướng tốt).
-4. **Hệ Thống Thoát Nước:** Tuân thủ 《Hoàng Đế Trạch Kinh》 mương rãnh xuôi về Đông Nam, chống ngập úng.
-5. **Thông Gió Đối Lưu:** Bố trí giếng trời hút khí nóng thoát lên nóc (Thermosiphon).
+3. KHUYẾN NGHỊ BỐ TRÍ DƯƠNG TRẠCH & VI KHÍ HẬU
+1. Đại Môn (Cửa chính): Đặt tại cung cát hoặc mở rộng khẩu độ đón sinh khí Vận 9.
+2. Chủ Phòng (Phòng ngủ): Đặt tại phương vị Sinh Khí / Thiên Y.
+3. Bếp Nấu: Áp dụng nguyên tắc "Tọa Hung Hướng Cát" (Đặt bếp tại hướng xấu, miệng bếp quay về hướng tốt).
+4. Hệ Thống Thoát Nước: Tuân thủ 《Hoàng Đế Trạch Kinh》 mương rãnh xuôi về Đông Nam, chống ngập úng.
+5. Thông Gió Đối Lưu: Bố trí giếng trời hút khí nóng thoát lên nóc (Đối lưu ống khói tự nhiên).
 
-## 4. TRÍCH DẪN NGUỒN CHÍNH ĐIỂN (E1 - E4)
-* *Thanh Nang Kinh* (Hoàng Thạch Công) - URN:CORPUS:FENGSHUI:THANH_NANG_KINH.
-* *Hoàng Đế Trạch Kinh* (Cổ bản Đường triều) - URN:CORPUS:FENGSHUI:HOANG_DE_TRACH_KINH.
-* *Chu Lễ: Khảo Công Ký* (Chu triều) - URN:CORPUS:ARCHITECTURE:KHAO_CONG_KY.
-* *Táng Thư* (Quách Phác, Tứ Khố Toàn Thư) - URN:CORPUS:FENGSHUI:TANG_SHU.
+4. TRÍCH DẪN NGUỒN CHÍNH ĐIỂN
+* Thanh Nang Kinh (Hoàng Thạch Công)
+* Hoàng Đế Trạch Kinh (Cổ bản Đường triều)
+* Chu Lễ: Khảo Công Ký (Chu triều)
+* Táng Thư (Quách Phác, Tứ Khố Toàn Thư)
 `;
 
     return `
@@ -536,17 +535,17 @@ class ToolUI {
           </div>
 
           <div style="display:flex; gap:0.6rem;">
-            <button onclick="navigator.clipboard.writeText(\`${markdownReport.replace(/[`\\]/g, '\\$&')}\`); alert('Đã sao chép Báo Cáo Markdown vào clipboard!');" style="background:rgba(245,158,11,0.15); border:1px solid #FBBF24; color:#FEF3C7; padding:0.5rem 1rem; border-radius:8px; font-weight:700; font-size:0.85rem; cursor:pointer;">
-              📋 Sao Chép Markdown
+            <button onclick="navigator.clipboard.writeText(\`${reportText.replace(/[`\\]/g, '\\$&')}\`); alert('Đã sao chép Báo Cáo vào bộ nhớ tạm!');" style="background:rgba(245,158,11,0.15); border:1px solid #FBBF24; color:#FEF3C7; padding:0.5rem 1rem; border-radius:8px; font-weight:700; font-size:0.85rem; cursor:pointer;">
+              📋 Sao Chép Văn Bản
             </button>
             <button onclick="window.print();" style="background:rgba(59,130,246,0.15); border:1px solid #60A5FA; color:#60A5FA; padding:0.5rem 1rem; border-radius:8px; font-weight:700; font-size:0.85rem; cursor:pointer;">
-              🖨️ In / Lưu PDF
+              🖨️ In / Lưu Tài Liệu
             </button>
           </div>
         </div>
 
         <div style="background:#0D111A; border:1px solid rgba(255,255,255,0.06); border-radius:10px; padding:1.8rem; font-family:monospace; font-size:0.88rem; color:#FEF3C7; line-height:1.7; white-space:pre-wrap;">
-${markdownReport}
+${reportText}
         </div>
       </div>
     `;
@@ -567,7 +566,6 @@ ${markdownReport}
   }
 }
 
-// Khởi tạo ToolUI
 if (typeof window !== 'undefined') {
   window.toolUI = new ToolUI();
 }

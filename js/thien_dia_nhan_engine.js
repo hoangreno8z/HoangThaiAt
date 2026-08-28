@@ -1,29 +1,29 @@
 // =========================================================================
-// HUYỀN HỌC MỤ — THIÊN — ĐỊA — NHÂN SITE INTELLIGENCE ENGINE & HAZARD VETO SYSTEM
+// HUYỀN HỌC MỤ — BỘ MÁY ĐÁNH GIÁ THIÊN — ĐỊA — NHÂN & PHÒNG CHỐNG THIÊN TAI
 // Nền tảng: 《青囊經》, 《黃帝宅經》, 《周禮·考工記》, 《營造法式》, 《陽宅十書》, 《葬書》
-// Nguyên tắc tối thượng: PHONG THỦY KHÔNG ĐƯỢC PHÉP OVERRIDE NGUY CƠ THIÊN TAI (HAZARD VETO)
+// Nguyên tắc tối thượng: PHONG THỦY KHÔNG ĐƯỢC PHÉP PHỦ QUYẾT NGUY CƠ THIÊN TAI (QUYỀN BÁC BỎ TỐI CAO)
 // =========================================================================
 
 class ThienDiaNhanEngine {
   constructor() {
     this.hazards = [
-      { id: 'flood_plain', name: 'Vùng Trũng Rốn Lũ / Thoát Lũ (Nước ngập > 1m)', severity: 'CRITICAL', rule: 'Bất cư chính đương thủy lưu xứ (Dương Trạch Thập Thư)' },
-      { id: 'landslide_slope', name: 'Chân Taluy Sạt Lở Đất / Vách Đá Dốc Đứng', severity: 'CRITICAL', rule: 'Bất cư sơn tích xung xứ / Thạch Sát (Hám Long Kinh)' },
-      { id: 'seismic_fault', name: 'Vệt Đứt Gãy Địa Chấn / Nền Bùn Lún Sụt', severity: 'HIGH', rule: 'Định Cương Trữ Cơ (Doanh Tạo Pháp Thức)' },
-      { id: 'extreme_wind_crest', name: 'Đỉnh Đồi Hứng Bão Giật Trơ Trọi (Xung Phong Sát)', severity: 'HIGH', rule: 'Phong xuy thủy kiếp khước phi huyệt (Táng Thư)' },
-      { id: 'solar_overheating_west', name: 'Mặt Tiền Chính Tây Không Mái Hiên (Hỏa Táo Cục)', severity: 'MEDIUM', rule: 'Hỏa táo phần trạch (Hoài Nam Tử)' }
+      { id: 'flood_plain', name: 'Vùng Trũng Rốn Lũ / Họng Thoát Lũ (Nước ngập sâu > 1m)', severity: 'NGHIÊM TRỌNG', rule: 'Bất cư chính đương thủy lưu xứ (Dương Trạch Thập Thư)' },
+      { id: 'landslide_slope', name: 'Chân Taluy Sạt Lở Đất / Vách Đá Dốc Đứng', severity: 'NGHIÊM TRỌNG', rule: 'Bất cư sơn tích xung xứ / Thạch Sát (Hám Long Kinh)' },
+      { id: 'seismic_fault', name: 'Vệt Đứt Gãy Địa Chấn / Nền Bùn Lún Sụt', severity: 'CAO', rule: 'Định Cương Trữ Cơ (Doanh Tạo Pháp Thức)' },
+      { id: 'extreme_wind_crest', name: 'Đỉnh Đồi Hứng Bão Giật Trơ Trọi (Xung Phong Sát)', severity: 'CAO', rule: 'Phong xuy thủy kiếp khước phi huyệt (Táng Thư)' },
+      { id: 'solar_overheating_west', name: 'Mặt Tiền Chính Tây Không Mái Hiên (Hỏa Táo Cục)', severity: 'TRUNG BÌNH', rule: 'Hỏa táo phần trạch (Hoài Nam Tử)' }
     ];
 
     this.classicalCorpus = {
       'E1_THANHNANG': {
         code: 'E1',
-        source: '《青囊經·中卷》',
+        source: '《青囊經·中卷》 (Thanh Nang Kinh)',
         hanzi: '天有五星，地有五行。天分星宿，地列山川。氣行於地，形麗於天。因形察氣，以立人紀。地德上載，天光下臨……上下相須而成一體。',
         meaning: 'Trời có Ngũ Tinh, Đất có Ngũ Hành. Trời phân Tinh Tú, Đất bày Núi Sông. Khí vận hành dưới đất, hình tượng ứng với trời. Từ hình xét khí để lập quy tắc cho con người. Đức Đất nâng đỡ, Quang Trời chiếu rọi, trên dưới nương nhau thành một thể thống nhất.'
       },
       'E1_TRACHKINH': {
         code: 'E1',
-        source: '《黃帝宅經·卷上》',
+        source: '《黃帝宅經·卷上》 (Hoàng Đế Trạch Kinh)',
         hanzi: '宅者，人之本。人以宅為家，居若安即家代吉昌……宅有五虛令人貧耗，五實令人富貴……宅水溝東南流五實。',
         meaning: 'Nhà là gốc rễ của con người. Người lấy nhà làm nơi an cư, ở yên ổn thì con cháu hưng vượng. Nhà có Ngũ Hư khiến người nghèo suy, có Ngũ Thực khiến người giàu sang. Mương rãnh thoát nước chảy về Đông Nam là Thực thứ 5.'
       },
@@ -35,27 +35,24 @@ class ThienDiaNhanEngine {
       },
       'E1_DUONGTRACH': {
         code: 'E1',
-        source: '《陽宅十書·論宅外形第一》',
+        source: '《陽宅十書·論宅外形第一》 (Dương Trạch Thập Thư)',
         hanzi: '凡宅：不居當衝口處，不居正當水流處，不居山脊衝處，不居百川口處。',
         meaning: 'Phàm xây nhà: Không ở ngay họng gió hút, không ở ngay lòng dòng chảy thoát lũ, không ở trên sống lưng đồi trơ trọi, không ở nơi cửa xả của trăm con suối.'
       },
       'E1_KHAOCONGKY': {
         code: 'E1',
-        source: '《周禮·考工記·匠人建國》',
+        source: '《周禮·考工記·匠人建國》 (Khảo Công Ký)',
         hanzi: '晝參諸日中之景，夜考之極星，以正朝夕。',
         meaning: 'Ban ngày đo bóng nắng giữa trưa, ban đêm quan sát sao Bắc Cực để định hướng tuyệt đối Bắc - Nam và Đông - Tây.'
       }
     };
   }
 
-  // =========================================================================
-  // TOÁN HỌC QUANG HỌC: TÍNH GÓC CHIẾU MẶT TRỜI 4 MÙA TẠI VĨ ĐỘ VIỆT NAM (21°N / 10°N)
-  // =========================================================================
+  // Tính toán góc chiếu Mặt Trời 4 mùa theo vĩ độ Việt Nam
   calculateSolarProfile(latitude = 21.0) {
     const summerSolsticeAltitude = 90 - latitude + 23.45;
     const winterSolsticeAltitude = 90 - latitude - 23.45;
     const equinoxAltitude = 90 - latitude;
-
     const recommendedEaves = 2.0;
 
     return {
@@ -68,9 +65,7 @@ class ThienDiaNhanEngine {
     };
   }
 
-  // =========================================================================
-  // HỆ THỐNG ĐÁNH GIÁ ĐA TẦNG & HAZARD VETO ENGINE
-  // =========================================================================
+  // Đánh giá toàn diện đa tầng và quyền bác bỏ
   evaluateSiteIntelligence(inputs) {
     const report = {
       timestamp: new Date().toISOString(),
@@ -83,31 +78,31 @@ class ThienDiaNhanEngine {
       modernTechnicalRecommendations: []
     };
 
-    // 1. LAYER 7: REAL-WORLD HAZARD VETO CHECK (BƯỚC 1 TỐI THƯỢNG)
+    // 1. TẦNG NGUY CƠ THIÊN TAI (BƯỚC KIỂM SOÁT TỐI THƯỢNG)
     const criticalHazards = inputs.activeHazards.filter(h => {
       const hazardDef = this.hazards.find(item => item.id === h);
-      return hazardDef && hazardDef.severity === 'CRITICAL';
+      return hazardDef && hazardDef.severity === 'NGHIÊM TRỌNG';
     });
 
     const highHazards = inputs.activeHazards.filter(h => {
       const hazardDef = this.hazards.find(item => item.id === h);
-      return hazardDef && hazardDef.severity === 'HIGH';
+      return hazardDef && hazardDef.severity === 'CAO';
     });
 
     if (criticalHazards.length > 0) {
       report.vetoTriggered = true;
       criticalHazards.forEach(h => {
         const hDef = this.hazards.find(item => item.id === h);
-        report.vetoReasons.push('[CRITICAL VETO] ' + hDef.name + ': Vi phạm nguyên tắc ' + hDef.rule);
+        report.vetoReasons.push('[BÁC BỎ KHẨN CẤP] ' + hDef.name + ': Vi phạm nguyên tắc ' + hDef.rule);
       });
-      report.verdict = '❌ BÁC BỎ KHU ĐẤT (REJECT SITE) — PHONG THỦY KHÔNG CÓ QUYỀN OVERRIDE NGUY CƠ THIÊN TAI!';
+      report.verdict = '❌ BÁC BỎ KHU ĐẤT — PHONG THỦY KHÔNG CÓ QUYỀN PHỦ QUYẾT NGUY CƠ THIÊN TAI!';
       report.classicalEvidences.push(this.classicalCorpus.E1_DUONGTRACH);
       report.classicalEvidences.push(this.classicalCorpus.E1_TANGTHU);
       report.totalUnifiedScore = 15;
       return report;
     }
 
-    // 2. LAYER 1: THIÊN THỜI & NHẬT CHIẾU
+    // 2. TẦNG THIÊN THỜI & NHẬT CHIẾU
     let thienScore = 70;
     if (['Nam', 'Đông Nam'].includes(inputs.orientation)) {
       thienScore = 95;
@@ -117,7 +112,7 @@ class ThienDiaNhanEngine {
       report.modernTechnicalRecommendations.push('Cảnh báo hướng Tây: Bức xạ nhiệt buổi chiều gay gắt (Hỏa Táo Cục), bắt buộc bổ sung lam chắn nắng hoặc cây xanh cách nhiệt.');
     }
 
-    // 3. LAYER 2: ĐỊA THỂ & THỦY VĂN
+    // 3. TẦNG ĐỊA THỂ & THỦY VĂN
     let diaScore = 70;
     if (inputs.elevationAboveFloodLevel >= 0.8) {
       diaScore += 20;
@@ -130,7 +125,7 @@ class ThienDiaNhanEngine {
     if (inputs.hasRearBacking) diaScore += 10;
     if (inputs.hasFrontWater) diaScore += 10;
 
-    // 4. LAYER 4: BUILT ENVIRONMENT (KIẾN TRÚC VI KHÍ HẬU)
+    // 4. TẦNG KIẾN TRÚC VI KHÍ HẬU
     let kienTrucScore = 60;
     if (inputs.eavesOverhang >= 1.8) {
       kienTrucScore += 20;
@@ -138,10 +133,10 @@ class ThienDiaNhanEngine {
     }
     if (inputs.hasStackVentilation) {
       kienTrucScore += 20;
-      report.modernTechnicalRecommendations.push('Có giếng trời/khe thoáng đối lưu Thermosiphon: Khí nóng thoát lên nóc, hút dưỡng khí tươi mát liên tục 24/24.');
+      report.modernTechnicalRecommendations.push('Có giếng trời/khe thoáng đối lưu ống khói tự nhiên: Khí nóng thoát lên nóc, hút dưỡng khí tươi mát liên tục 24/24.');
     }
 
-    // 5. LAYER 6: NHÂN (NGŨ HƯ NGŨ THỰC)
+    // 5. TẦNG NHÂN THỂ (NGŨ HƯ NGŨ THỰC)
     let nhanScore = 80;
     const areaPerPerson = inputs.houseAreaM2 / Math.max(inputs.occupantCount, 1);
     if (areaPerPerson >= 20 && areaPerPerson <= 50) {

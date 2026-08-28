@@ -130,6 +130,30 @@ class ScholarlyReader {
           typeof HUYENKHONG_FENGSHUI_PART_10 !== 'undefined' ? HUYENKHONG_FENGSHUI_PART_10 : null
         ]
       },
+            'thien-dia-nhan': {
+        id: 'thien-dia-nhan',
+        vol: 'TẬP VII',
+        title: 'Thiên — Địa — Nhân Khắc Chế Thiên Tai',
+        badge: '10 Tiết Tam Tài',
+        school: 'TAM TÀI NHẤT THỂ',
+        theme: '#10B981',
+        desc: 'Thanh Nang Kinh, Hoàng Đế Trạch Kinh, Khảo Công Ký, Doanh Tạo Pháp Thức, Dương Trạch Thập Thư và Tả Ao Dương Trạch Thư.',
+        prereq: 'Bản Thể Luận (Tiết 1 & 2)',
+        prereqLink: '#/learn/nen-tang/1',
+        conceptTags: ['Tam Tài Nhất Thể', 'Thiên Quang Hạ Lâm', 'Ngũ Hư Ngũ Thực', 'Thổ Khuê Trắc Cảnh', 'Cốt Nền Vượt Lũ'],
+        parts: [
+          typeof THIEN_DIA_NHAN_PART_1 !== 'undefined' ? THIEN_DIA_NHAN_PART_1 : null,
+          typeof THIEN_DIA_NHAN_PART_2 !== 'undefined' ? THIEN_DIA_NHAN_PART_2 : null,
+          typeof THIEN_DIA_NHAN_PART_3 !== 'undefined' ? THIEN_DIA_NHAN_PART_3 : null,
+          typeof THIEN_DIA_NHAN_PART_4 !== 'undefined' ? THIEN_DIA_NHAN_PART_4 : null,
+          typeof THIEN_DIA_NHAN_PART_5 !== 'undefined' ? THIEN_DIA_NHAN_PART_5 : null,
+          typeof THIEN_DIA_NHAN_PART_6 !== 'undefined' ? THIEN_DIA_NHAN_PART_6 : null,
+          typeof THIEN_DIA_NHAN_PART_7 !== 'undefined' ? THIEN_DIA_NHAN_PART_7 : null,
+          typeof THIEN_DIA_NHAN_PART_8 !== 'undefined' ? THIEN_DIA_NHAN_PART_8 : null,
+          typeof THIEN_DIA_NHAN_PART_9 !== 'undefined' ? THIEN_DIA_NHAN_PART_9 : null,
+          typeof THIEN_DIA_NHAN_PART_10 !== 'undefined' ? THIEN_DIA_NHAN_PART_10 : null
+        ]
+      },
       'tho-cung': {
         id: 'tho-cung',
         vol: 'TẬP VI',
