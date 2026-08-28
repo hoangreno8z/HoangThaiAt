@@ -349,23 +349,43 @@ class ScholarlyReader {
       `;
     }
 
-    // 1.5 KHẢO LUẬN KHÍ HÓA & PHÂN TẦNG BẢN THỂ CỔ THƯ (Cosmological Stages)
+    // 1.5 GIẢI MÃ CHUYÊN KHẢO CHI TIẾT TỪNG CHƯƠNG MỤC CỔ THƯ
     if (Array.isArray(lesson.cosmological_stages) && lesson.cosmological_stages.length > 0) {
+      const sectionTitle = lesson.stages_title || 'Giải Mã Chi Tiết Từng Chương Mục Cổ Thư (Chuyên Khảo Sư Phạm)';
       contentHtml += `
-        <section class="reader-section-block" style="margin-bottom:1.5rem;">
-          <h2 style="font-size:0.95rem; font-weight:600; color:${track.theme}; margin-bottom:0.6rem;">
-            Khảo Luận Khí Hóa & Phân Tầng Bản Thể Cổ Thư
+        <section class="reader-section-block" style="margin-bottom:1.8rem;">
+          <h2 style="font-size:0.95rem; font-weight:600; color:${track.theme}; margin-bottom:0.8rem; display:flex; align-items:center; gap:0.4rem;">
+            <span>${sectionTitle}</span>
           </h2>
-          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:0.6rem;">
-            ${lesson.cosmological_stages.map(cs => `
-              <div style="background:rgba(18,24,38,0.7); border:1px solid rgba(255,255,255,0.06); border-top:2px solid ${track.theme}; padding:0.8rem; border-radius:6px;">
-                <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:0.25rem;">
-                  <strong style="color:#FEF3C7; font-size:0.86rem;">${cs.stage}</strong>
-                  <span style="font-size:0.75rem; color:${track.theme}; font-weight:600;">${cs.state || ''}</span>
+          <div style="display:flex; flex-direction:column; gap:0.9rem;">
+            ${lesson.cosmological_stages.map((cs, idx) => `
+              <div style="background:rgba(18,24,38,0.7); border:1px solid rgba(255,255,255,0.08); border-left:3px solid ${track.theme}; padding:1rem 1.2rem; border-radius:0 8px 8px 0;">
+                <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:0.4rem; flex-wrap:wrap; gap:0.3rem;">
+                  <strong style="color:#FEF3C7; font-size:0.92rem; font-weight:600;">${cs.stage || cs.title}</strong>
+                  ${cs.state ? `<span style="font-size:0.76rem; color:${track.theme}; background:rgba(255,255,255,0.04); border:1px solid ${track.theme}33; padding:0.15rem 0.5rem; border-radius:4px; font-weight:600;">${cs.state}</span>` : ''}
                 </div>
-                <p style="font-size:0.8rem; color:var(--text-pure); line-height:1.5; margin:0;">
-                  ${cs.philosophical_meaning}
-                </p>
+                
+                ${cs.detailed_explanation ? `
+                  <div style="font-size:0.84rem; color:var(--text-pure); line-height:1.65; margin-bottom:0.5rem;">
+                    ${cs.detailed_explanation}
+                  </div>
+                ` : (cs.philosophical_meaning ? `
+                  <div style="font-size:0.84rem; color:var(--text-pure); line-height:1.65; margin-bottom:0.5rem;">
+                    ${cs.philosophical_meaning}
+                  </div>
+                ` : '')}
+
+                ${cs.practical_manifestation ? `
+                  <div style="background:rgba(255,255,255,0.02); border-radius:4px; padding:0.5rem 0.8rem; margin-top:0.4rem; font-size:0.8rem; color:#A7F3D0; line-height:1.5;">
+                    <strong style="color:#34D399;">• Biểu hiện thực tế & Nhận biết:</strong> ${cs.practical_manifestation}
+                  </div>
+                ` : ''}
+
+                ${cs.key_takeaway ? `
+                  <div style="font-size:0.78rem; color:var(--text-muted); margin-top:0.35rem; line-height:1.45;">
+                    <strong style="color:#FDE68A;">• Bí quyết cốt lõi:</strong> ${cs.key_takeaway}
+                  </div>
+                ` : ''}
               </div>
             `).join('')}
           </div>

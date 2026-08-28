@@ -1,24 +1,25 @@
 // =========================================================================
-// ĐẠI KINH ĐIỂN BẢN THỂ LUẬN: ÂM DƯƠNG & NGŨ HÀNH TOÀN THƯ (10 TIẾT CHÁNH TÔNG)
+// ĐẠI KINH ĐIỂN BẢN THỂ LUẬN ÂM DƯƠNG & NGŨ HÀNH (10 TIẾT CHÁNH TÔNG TOÀN THƯ)
 // Nguồn gốc: Trích xuất 100% từ 7 bộ Đại Thư Tịch Cổ Chánh Tông:
-// 1. 《易緯·乾鑿度》 (Dịch Vĩ: Càn Tạc Độ - Ngũ Thái Khởi Nguyên)
-// 2. 《太極圖說》 (Thái Cực Đồ Thuyết - Chu Đôn Di) & 《道德經》 (Đạo Đức Kinh - Lão Tử)
-// 3. 《周易·繫辭上/下 & 說卦傳》 (Chu Dịch: Hệ Từ & Thuyết Quái)
-// 4. 《尚書·周書·洪範》 (Thượng Thư: Hồng Phạm Cửu Trù)
-// 5. 《五行大義·卷一: 釋名 & 辨體性》 (Ngũ Hành Đại Nghĩa - Tiêu Cát)
-// 6. 《五行大義·卷一: 論數》 (Ngũ Hành Đại Nghĩa: Luận Số Học Càn Khôn)
-// 7. 《五行大義·卷二: 論相生 & 論相剋》 (Ngũ Hành Đại Nghĩa: Tương Sinh Tương Khắc)
-// 8. 《白虎通義·五行》 (Bạch Hổ Thông Nghĩa - Ban Cố)
-// 9. 《黃帝內經·素問·陰陽應象大論》 (Hoàng Đế Nội Kinh: Tố Vấn)
-// 10. 《五行大義·雜配 & 滴天髓·五行論》 (Ma Trận Chế Hóa, Phản Sinh, Phản Khắc & Cực Biến)
-// Tuyệt đối không tự ý cắt xén, dịch thuần Việt chuẩn mực 100%, bảo lưu nguyên tác Hán văn.
+// 1. 《易緯·乾鑿度》 (Dịch Vĩ: Càn Tạc Độ) & 《列子·天瑞篇》 (Liệt Tử)
+// 2. 《太極圖說》 (Thái Cực Đồ Thuyết - Chu Đôn Di) & 《道德經》 (Lão Tử)
+// 3. 《周易·繫辭上/下篇》 & 《說卦傳》 (Chu Dịch - Khổng Tử)
+// 4. 《尚書·周書·洪範篇》 (Thượng Thư: Hồng Phạm Cửu Trù - Cơ Tử)
+// 5. 《五行大義·卷一》 (Ngũ Hành Đại Nghĩa: Thích Danh - Tiêu Cát)
+// 6. 《五行大義·卷一·論數篇》 (Ngũ Hành Đại Nghĩa: Luận Số & Hà Đồ Lạc Thư)
+// 7. 《五行大義·卷二·論相生相剋》 (Ngũ Hành Đại Nghĩa: Tương Sinh Tương Thắng)
+// 8. 《白虎通義·五行篇》 (Bạch Hổ Thông Nghĩa - Ban Cố)
+// 9. 《黃帝內經·素問·陰陽應象大論》 (Hoàng Đế Nội Kinh - Kỳ Bá & Hoàng Đế)
+// 10. 《滴天髓·五行論》 (Địch Thiên Tủy - Lưu Bá Ôn) & 《五行大義·雜配篇》
+// Tuyệt đối không tự ý cắt xén, dịch thuần Việt chuẩn mực 100%, kèm chuyên khảo sư phạm sâu sắc.
 // =========================================================================
 
 const AMDUONG_NGUHANH_PART_1 = {
   "chapter_number": 1,
   "classic_source": "《易緯·乾鑿度》 (Dịch Vĩ: Càn Tạc Độ) & 《列子·天瑞篇》 (Liệt Tử: Thiên Thụy)",
   "chapter_title": "Tiết I: Khởi Nguyên Ngũ Thái — Tiến Trình Khí Hóa Vũ Trụ Từ Hỗn Mang Đến Thái Cực",
-  "sub_title": "Khảo cứu toàn văn Dịch Vĩ Càn Tạc Độ: Năm tầng bậc sinh thành không-thời gian (Thái Dịch, Thái Sơ, Thái Thủy, Thái Tố, Hỗn Luân)",
+  "sub_title": "Toàn văn khảo cứu thiên cổ tác phẩm Dịch Vĩ Càn Tạc Độ: Năm tầng bậc sinh thành không-thời gian từ Hư Vô đến Thực Thể",
+  "stages_title": "Giải Mã Chi Tiết Năm Tầng Bậc Tiến Hóa Vũ Trụ (Ngũ Thái Luận Chuyên Khảo Sư Phạm)",
   "canonical_texts": [
     {
       "hanzi": "夫有形者生於無形，則乾坤安從生？故曰：有太易，有太初，有太始，有太素。太易者，未見氣也；太初者，氣之始也；太始者，形之始也；太素者，質之始也。氣形質具而未相離，故曰渾淪。渾淪者，言萬物相渾淪而未相離也。視之不見，聽之不聞，循之不得，故曰易也。",
@@ -71,749 +72,689 @@ const AMDUONG_NGUHANH_PART_1 = {
   },
   "cosmological_stages": [
     {
-      "stage": "1. Cõi Thái Dịch (太易)",
-      "state": "Vị kiến Khí (未見氣)",
-      "philosophical_meaning": "Hư vô tuyệt đối. Không có thời gian, không có không gian, không có vận động. Tiềm năng vô tận ngưng đọng trong cõi Vô Cực."
+      "stage": "Tầng Bậc 1: Cõi Thái Dịch (太易) — Trạng Thái Vô Cực Tuyệt Đối",
+      "state": "Vị Kiến Khí (未見氣) • Không Gian & Thời Gian = 0",
+      "detailed_explanation": "Thái Dịch là trạng thái nguyên sơ tuyệt đối trước khi vũ trụ hình thành. Cổ nhân dùng chữ 'Dịch' ở đây với hàm nghĩa: Tiềm năng biến hóa vô cùng vô tận đang ngủ yên. Lúc này, chưa hề có hạt vật chất nào, chưa có trường năng lượng, không có ánh sáng, không có âm thanh, không có cả khái niệm thời gian trước - sau và không gian trên - dưới. Đối với người mới học, hãy hình dung Thái Dịch như một vùng hư không tĩnh lặng vô biên (Singularity / Điểm kỳ dị trước Vụ Nổ Lớn), nơi mọi quy luật vật lý đều quy về số 0.",
+      "practical_manifestation": "Trong thiền định và nội tu, Thái Dịch tương ứng với trạng thái tâm trí hoàn toàn rỗng lặng, buông bỏ toàn bộ tạp niệm, quy hồi về bản thể hư vô.",
+      "key_takeaway": "Không có cái Có nào tự nhiên sinh ra nếu không bắt nguồn từ cõi Không (Vô sinh Hữu)."
     },
     {
-      "stage": "2. Cõi Thái Sơ (太初)",
-      "state": "Khí chi Thủy (氣之始)",
-      "philosophical_meaning": "Nguyên Khí vô hình bắt đầu thức tỉnh. Vận động sóng năng lượng nguyên thủy bắt đầu lan tỏa khắp hư không."
+      "stage": "Tầng Bậc 2: Cõi Thái Sơ (太初) — Điểm Khởi Sinh Của Nguyên Khí",
+      "state": "Khí Chi Thủy (氣之始) • Khởi Động Sóng Năng Lượng",
+      "detailed_explanation": "Từ cõi Thái Dịch tĩnh lặng vô biên, một rung động năng lượng vi mô đầu tiên xuất hiện, gọi là 'Khí chi Thủy' (Nguyên Khí bắt đầu sinh ra). Khí ở giai đoạn Thái Sơ là dạng năng lượng thuần khiết vô hình vô ảnh, chưa có khối lượng, chưa có hạt, tựa như các trường sóng điện từ bao trùm khắp càn khôn. Khí bắt đầu chuyển động tạo ra lực ly tâm và hướng tâm, chuẩn bị cho quá trình kết tụ vật chất.",
+      "practical_manifestation": "Trong tự nhiên, tựa như hơi nước vô hình trong không khí trước khi ngưng tụ thành mây; trong con người, tựa như hơi thở Nguyên Khí tiên thiên trong bào thai mẹ.",
+      "key_takeaway": "Khí là cha đẻ của mọi hiện tượng; thấy vật hữu hình ắt phải truy tìm luồng Khí vô hình nuôi dưỡng nó."
     },
     {
-      "stage": "3. Cõi Thái Thủy (太始)",
-      "state": "Hình chi Thủy (形之始)",
-      "philosophical_meaning": "Các trường năng lượng va chạm, định hình nên các ranh giới không gian sơ khởi. Hình tướng xuất hiện nhưng chưa thành chất rắn."
+      "stage": "Tầng Bậc 3: Cõi Thái Thủy (太始) — Điểm Khởi Sinh Của Hình Tướng",
+      "state": "Hình Chi Thủy (形之始) • Phác Thảo Cấu Trúc Không Gian",
+      "detailed_explanation": "Khi luồng Nguyên Khí ở cõi Thái Sơ vận động xoáy tròn và va chạm với nhau, các trường năng lượng bắt đầu tạo ra các đường nét, ranh giới không gian sơ khai, gọi là 'Hình chi Thủy'. Giai đoạn này đã xuất hiện hình bóng (Hình), nhưng chất thể vật lý thì chưa đặc lại (chưa có hạt rắn). Tựa như hình ảnh làn khói, hình bóng mờ ảo trong gương hay sóng ánh sáng giao thoa tạo nên hình khối ba chiều.",
+      "practical_manifestation": "Biểu hiện như những dải mây mỏng hình rồng phượng trên bầu trời, hay cấu trúc từ trường bao quanh quả đất.",
+      "key_takeaway": "Hình là khuôn mẫu định hướng cho Chất kết tụ; hình ngay thẳng thì chất vững bền, hình cong queo thì chất yếu ớt."
     },
     {
-      "stage": "4. Cõi Thái Tố (太素)",
-      "state": "Chất chi Thủy (質之始)",
-      "philosophical_meaning": "Vật chất nguyên tử kết tinh thành khối chất thể. Vũ trụ có khối lượng và mật độ thực thể."
+      "stage": "Tầng Bậc 4: Cõi Thái Tố (太素) — Điểm Khởi Sinh Của Thể Chất",
+      "state": "Chất Chi Thủy (質之始) • Kết Tinh Vật Chất Hạt Thực Thể",
+      "detailed_explanation": "Từ các đường nét hình tướng ở cõi Thái Thủy, năng lượng bắt đầu ngưng tụ đậm đặc thành các hạt vật chất cụ thể có khối lượng, có mật độ, có thể sờ mó và cân đo được, gọi là 'Chất chi Thủy'. Tại cõi Thái Tố, vũ trụ đã hội tụ đầy đủ 3 yếu tố nền tảng cấu thành vạn vật: KHÍ (Năng lượng) - HÌNH (Cấu trúc thông tin không gian) - CHẤT (Vật chất cụ thể).",
+      "practical_manifestation": "Đá hoa cương, dòng nước sông ngòi, thân cây gỗ, kim loại trong lòng núi đều là sản phẩm kết tinh của cõi Thái Tố.",
+      "key_takeaway": "Chất là cái vỏ ngoài cùng của Khí; bồi đắp thể chất vững vàng thì Nguyên Khí bên trong mới không bị tiêu tán."
     },
     {
-      "stage": "5. Cõi Hỗn Luân & Thái Cực (渾淪·太極)",
-      "state": "Khí - Hình - Chất cụ túc (氣形質具)",
-      "philosophical_meaning": "Khối đại hỗn nguyên tròn trịa hoàn bị. Điểm bùng nổ chuyển động sinh ra Lưỡng Nghi: Khí nhẹ bay lên làm Trời, Khí nặng lắng xuống làm Đất."
+      "stage": "Tầng Bậc 5: Cõi Hỗn Luân & Thái Cực (渾淪·太極) — Khai Mở Càn Khôn",
+      "state": "Khí - Hình - Chất Cụ Túc (氣形質具) • Khối Đại Hỗn Nguyên",
+      "detailed_explanation": "Khi Khí, Hình và Chất đã hội tụ đầy đủ 100% nhưng vẫn còn quyện chặt vào nhau như lòng đỏ lòng trắng trong quả trứng vũ trụ nguyên thủy, thì gọi là trạng thái HỖN LUÂN. Khi khối Hỗn Luân bắt đầu chuyển động xoay vần cực điểm (Thái Cực Động), lực phân hóa xảy ra: Phần Khí trong trẻo nhẹ nhàng (Thanh khinh) thăng hoa bay lên ngưng tụ thành Bầu Trời (Dương); phần Khí vẩn đục nặng nề (Trược trọng) lắng đọng kết tụ xuống dưới thành Mặt Đất (Âm). Từ đó Lưỡng Nghi (Trời Đất) được khai sinh hoàn tất.",
+      "practical_manifestation": "Sự phân định ngày và đêm, mặt trời rực sáng trên cao và biển cả êm đềm phía dưới mặt đất.",
+      "key_takeaway": "Thái Cực là cội nguồn của toàn bộ Dịch học và Phong Thủy; hiểu được Thái Cực là thấu tỏ sự cân bằng của muôn loài."
     }
   ]
 };
 
 const AMDUONG_NGUHANH_PART_2 = {
   "chapter_number": 2,
-  "classic_source": "《太極圖說》 (Thái Cực Đồ Thuyết - Chu Đôn Di) & 《道德經》 (Đạo Đức Kinh - Lão Tử)",
-  "chapter_title": "Tiết II: Bản Thể Luận Thái Cực & Tứ Đại Định Luật Vận Hành Âm Dương",
-  "sub_title": "Toàn văn Thái Cực Đồ Thuyết và Chương 42 Đạo Đức Kinh: Động cực sinh Tĩnh, Tĩnh cực phục Động, cơ chế Âm Dương hỗ căn",
+  "classic_source": "《太極圖說》 (Thái Cực Đồ Thuyết) — Chu Đôn Di (Tống·周敦頤, 1017–1073) & 《道德經》 (Đạo Đức Kinh - Lão Tử)",
+  "chapter_title": "Tiết II: Thái Cực Đồ Thuyết — Bản Thể Luận Âm Dương & Cơ Chế Vận Hành Tứ Đại Quy Luật",
+  "sub_title": "Toàn văn tác phẩm kinh điển của Chu Tử: Vô Cực sinh Thái Cực, Dương Biến Âm Hợp sinh Ngũ Hành và 4 định luật tương tác",
+  "stages_title": "Giải Mã Chi Tiết Cơ Chế Vận Hành Tứ Đại Quy Luật Âm Dương (Chuyên Khảo Sư Phạm)",
   "canonical_texts": [
     {
-      "hanzi": "無極而太極。太極動而生陽，動極而靜，靜而生陰，靜極復動。一動一靜，互為其根。分陰分陽，兩儀立焉。陽變陰合，而生水火木金土。五氣順布，四時行焉。五行一陰陽也，陰陽一太極也，太極本無極也。",
-      "pinyin": "Vô Cực nhi Thái Cực. Thái Cực động nhi sinh Dương, động cực nhi tĩnh, tĩnh nhi sinh Âm, tĩnh cực phục động. Nhất động nhất tĩnh, hỗ vi kỳ căn. Phân Âm phân Dương, Lưỡng Nghi lập yên. Dương biến Âm hợp, nhi sinh Thủy Hỏa Mộc Kim Thổ. Ngũ khí thuận bố, tứ thời hành yên. Ngũ hành nhất Âm Dương dã, Âm Dương nhất Thái Cực dã, Thái Cực bản Vô Cực dã.",
-      "meaning": "Từ cõi Vô Cực mà hóa thành Thái Cực. Thái Cực chuyển động thì sinh ra Dương khí, vận động đến cùng cực thì chuyển sang trạng thái Tĩnh. Trạng thái Tĩnh sinh ra Âm khí, tĩnh lặng đến cùng cực lại phục hồi trở về Động. Một Động một Tĩnh làm gốc rễ tương hỗ nương tựa lẫn nhau. Phân định rõ ràng bên Âm bên Dương, từ đó Lưỡng Nghi được xác lập. Dương biến đổi, Âm hòa hợp, mà sinh ra năm dòng năng lượng: Thủy, Hỏa, Mộc, Kim, Thổ. Năm luồng khí phân bố thuận hòa theo trật tự, bốn mùa Xuân Hạ Thu Đông vận hành thông suốt. Năm Hành thực chất quy về Một thể Âm Dương; Âm Dương thực chất quy về Một thể Thái Cực; và Thái Cực vốn dĩ bắt nguồn từ cõi Vô Cực.",
-      "source": "Thái Cực Đồ Thuyết (太極圖說) — Chu Đôn Di (Chu Liêm Khê, Tống Nho Khởi Tổ)"
-    },
-    {
-      "hanzi": "道生一，一生二，二生三，三生萬物。萬物負陰而抱陽，沖氣以為和。",
-      "pinyin": "Đạo sinh Nhất, Nhất sinh Nhị, Nhị sinh Tam, Tam sinh vạn vật. Vạn vật phụ Âm nhi bão Dương, xung khí dĩ vi hòa.",
-      "meaning": "Đạo (Bản thể vô hình) sinh ra Một (Khí Hỗn Nguyên thuần nhất); Một sinh ra Hai (Âm khí và Dương khí); Hai sinh ra Ba (Âm khí, Dương khí và Hòa khí tương giao); Ba sinh ra vạn vật trời đất. Muôn loài vạn vật không có vật nào ngoại lệ: lưng cõng Âm (phần tĩnh, nhu, ngưng tụ) mà tay ôm Dương (phần động, cương, thăng phát), nhờ luồng Khí xung đột giao thoa mà đạt đến trạng thái Hài Hòa tuyệt đỉnh.",
-      "source": "Đạo Đức Kinh (道德經) — Chương 42 (Lão Tử)"
+      "hanzi": "無極而太極。太極動而生陽，動極而靜，靜而生陰，靜極復動。一動一靜，互為其根。分陰分陽，兩儀立焉。陽變陰合，而生水火木金土。五氣順布，四時行焉。五行一陰陽也，陰陽一太極也，太極本無極也。\n道生一，一生二，二生三，三生萬物。萬物負陰而抱陽，沖氣以為和。",
+      "pinyin": "Vô Cực nhi Thái Cực. Thái Cực động nhi sinh Dương, động cực nhi tĩnh, tĩnh nhi sinh Âm, tĩnh cực phục động. Nhất động nhất tĩnh, hỗ vi kỳ căn. Phân Âm phân Dương, Lưỡng Nghi lập yên. Dương biến Âm hợp, nhi sinh Thủy Hỏa Mộc Kim Thổ. Ngũ khí thuận bố, tứ thời hành yên. Ngũ hành nhất Âm Dương dã, Âm Dương nhất Thái Cực dã, Thái Cực bản Vô Cực dã.\nĐạo sinh nhất, nhất sinh nhị, nhị sinh tam, tam sinh vạn vật. Vạn vật phụ Âm nhi bão Dương, xung khí dĩ vi hòa.",
+      "meaning": "Từ cõi Vô Cực (không ranh giới) khai mở thành Thái Cực (trục quay nguyên lý tối cao). Thái Cực chuyển ĐỘNG thì sinh ra năng lượng DƯƠNG; Động đến mức cùng cực thì chuyển sang TĨNH; Tĩnh thì sinh ra năng lượng ÂM; Tĩnh đến mức cùng cực thì lại quay trở lại ĐỘNG. Một Động một Tĩnh luân phiên tiếp nối, làm gốc rễ nương tựa lẫn nhau. Phân chia rõ phần Âm và phần Dương thì LƯỠNG NGHI (Trời Đất, Ngày Đêm) được xác lập vững vàng. Dương biến đổi, Âm hòa hợp tương tác thì sinh ra NĂM NGUỒN NĂNG LƯỢNG: Nước (Thủy), Lửa (Hỏa), Cây cỏ (Mộc), Kim loại (Kim), Đất đai (Thổ). Năm luồng khí phân bố thuận hòa khắp càn khôn thì Bốn Mùa (Xuân, Hạ, Thu, Đông) tuần hoàn chuyển dịch. Ngũ Hành thực chất quy về một mối Âm Dương; Âm Dương thực chất quy về một cội Thái Cực; và Thái Cực vốn dĩ bắt nguồn từ cõi Vô Cực tịch mịch.\nĐạo sinh Một (Thái Cực), Một sinh Hai (Âm Dương Lưỡng Nghi), Hai sinh Ba (Âm - Dương - Xung Khí giao hòa), Ba sinh Muôn Loài Vạn Vật. Vạn vật trên đời đều cõng Âm ở sau lưng và ôm Dương ở phía trước ngực, nhờ luồng Xung Khí dung hòa ở giữa mà đạt được sự cân bằng sinh sôi bất tận.",
+      "source": "Thái Cực Đồ Thuyết (Chu Đôn Di) & Đạo Đức Kinh (Chương 42 - Lão Tử)"
     }
   ],
   "scholarly_analysis": {
     "term_glossary": [
       {
-        "term": "Âm Dương Đối Lập (陰陽對立)",
-        "plain_vn": "Hai thuộc tính mâu thuẫn, chế ước lẫn nhau trong cùng một thực thể: Sáng vs Tối, Nóng vs Lạnh, Động vs Tĩnh, Thăng vs Giáng, Cương vs Nhu."
+        "term": "Vô Cực nhi Thái Cực (無極而太極)",
+        "plain_vn": "Vô Cực là trạng thái vô hình không biên giới; Thái Cực là tâm điểm ngưng tụ tạo ra trục quay phân hóa âm dương."
       },
       {
-        "term": "Âm Dương Hỗ Căn (陰陽互根)",
-        "plain_vn": "Nương tựa vào nhau làm gốc rễ sinh tồn. Âm tại nội dương chi thủ, Dương tại ngoại âm chi sứ. Không có Âm thì Dương tiêu tán, không có Dương thì Âm đông kết."
+        "term": "Dương Biến Âm Hợp (陽變陰合)",
+        "plain_vn": "Dương chủ động biến đổi phóng thích nhiệt lượng; Âm tĩnh tại tiếp nhận dung hợp dưỡng chất, từ đó kết tinh ra Ngũ Hành."
       },
       {
-        "term": "Âm Dương Tiêu Trưởng (陰陽消長)",
-        "plain_vn": "Sự suy giảm và lớn mạnh không ngừng theo chu kỳ: Dương thịnh thì Âm suy (trưa hè), Âm thịnh thì Dương suy (đêm đông), duy trì sự sống biến dịch liên tục."
-      },
-      {
-        "term": "Âm Dương Chuyển Hóa (陰陽轉化)",
-        "plain_vn": "Quy luật 'Vật cực tất phản': Phát triển đến tột cùng thì chuyển hóa thành mặt đối lập (Cực nhiệt sinh hàn, cực hàn sinh nhiệt, đại hỷ sinh bi)."
+        "term": "Phụ Âm Bão Dương (負陰抱陽)",
+        "plain_vn": "Cấu trúc sinh học và không gian vạn vật: Lưng tựa vào bóng râm tĩnh lặng (Âm), ngực hướng về ánh sáng ấm áp (Dương)."
       }
     ],
     "masters_views": [
       {
-        "master": "Chu Đôn Di (Tống Nho)",
-        "work": "Thông Thư",
-        "perspective": "Động vi Dương, Tĩnh vi Âm. Động mà không có Tĩnh thì phát tiết cạn kiệt; Tĩnh mà không có Động thì trì trệ u tối. Thánh nhân lập cực bằng cách định tâm ở trạng thái Trung Chính Nhân Nghĩa và chủ về Tĩnh."
+        "master": "Chu Đôn Di (Liêm Khê Tiên Sinh)",
+        "work": "Thái Cực Đồ Thuyết Chú",
+        "perspective": "Đạo trời đất chỉ là một vòng tròn Thái Cực. Người hiểu được Thái Cực thì biết cách dưỡng thân trong tĩnh và hành sự trong động."
       },
       {
-        "master": "Trương Tái (Tống triều)",
-        "work": "Chính Mông - Thái Hòa Thiên",
-        "perspective": "Hai khí Âm Dương không thể thiếu nhau. Khí hòa hợp thì vạn vật sinh sôi nảy nở, khí phân ly thì vạn vật biến dị tiêu vong."
+        "master": "Chu Hy (Tống Nho)",
+        "work": "Chu Tử Toàn Thư",
+        "perspective": "Không có Vô Cực thì Thái Cực đồng hóa với một vật hữu hình; Không có Thái Cực thì Vô Cực rơi vào cõi hư vô của nhà Phật. Hai chữ Vô Cực nhi Thái Cực là then chốt của toàn bộ Nho học."
       }
     ]
   },
   "cosmological_stages": [
     {
-      "stage": "Định Luật 1: Đối Lập Chế Ước (對立制約)",
-      "state": "Mâu thuẫn nhị nguyên",
-      "philosophical_meaning": "Dương động, thăng hoa, phát tán, ôn nhiệt, vô hình; Âm tĩnh, giáng hạ, thu liễm, hàn lương, hữu hình. Hai lực lượng kiềm chế nhau tạo thế cân bằng động."
+      "stage": "Quy Luật 1: Đối Lập Chế Ước (對立制約)",
+      "state": "Âm Dương tương khắc kiềm chế nhau",
+      "detailed_explanation": "Âm và Dương là hai mặt đối lập hoàn toàn về tính chất nhưng luôn tồn tại song hành trong cùng một thực thể: Dương (Nóng, Sáng, Động, Vươn lên, Hưng phấn) đối lập với Âm (Lạnh, Tối, Tĩnh, Lắng xuống, Ức chế). Sự đối lập này không nhằm tiêu diệt nhau mà để KIỀM CHẾ lẫn nhau, ngăn không cho bên nào phát triển quá mức gây sụp đổ hệ thống. Ví dụ: Ban ngày nắng nóng (Dương) được ban đêm mát mẻ (Âm) làm dịu lại; nhịp tim co bóp bơm máu (Dương) được nhịp giãn nghỉ ngơi (Âm) điều hòa.",
+      "practical_manifestation": "Trong khí hậu, mùa hè quá nóng ắt có mưa rào giải nhiệt; trong cơ thể, sốt cao (Dương thịnh) sẽ kích hoạt toát mồ hôi hạ nhiệt (Âm dịch bảo vệ).",
+      "key_takeaway": "Không bao giờ có Dương thuần túy hay Âm thuần túy; cực Dương ắt sinh độc, cực Âm ắt sinh hàn."
     },
     {
-      "stage": "Định Luật 2: Hỗ Căn Tương Sinh (互根相生)",
-      "state": "Gốc rễ nương tựa",
-      "philosophical_meaning": "Dương sinh ra từ Âm (đêm tàn thì bình minh ló rạng); Âm sinh ra từ Dương (ngày tàn thì màn đêm buông xuống). Không một cá thể nào có thể tồn tại đơn độc toàn Âm hoặc toàn Dương."
+      "stage": "Quy Luật 2: Hỗ Căn Tương Sinh (互根相生)",
+      "state": "Âm Dương làm gốc rễ của nhau",
+      "detailed_explanation": "Âm và Dương không thể tồn tại đơn độc một mình (Cô âm bất sinh, độc dương bất trưởng). Âm lấy Dương làm chỗ nương tựa để vận động; Dương lấy Âm làm nền tảng vật chất để phát tiết. Ví dụ: Muốn cơ thể có năng lượng hoạt động hăng say cả ngày (Dương), bạn phải ăn uống bồi bổ thức ăn đặc và ngủ sâu giấc ban đêm (Âm). Nếu không có vật chất thể xác (Âm), năng lượng tinh thần (Dương) sẽ bay biến mất ngay lập tức.",
+      "practical_manifestation": "Đất đai màu mỡ (Âm) nuôi dưỡng cây vươn cao đón ánh mặt trời (Dương); lá cây rụng xuống lại phân hủy bón cho đất.",
+      "key_takeaway": "Muốn phát triển sự nghiệp đỉnh cao (Dương), trước hết phải xây dựng nền tảng nội lực vững chắc (Âm)."
     },
     {
-      "stage": "Định Luật 3: Tiêu Trưởng Vận Hành (消長運行)",
-      "state": "Biến động liên tục",
-      "philosophical_meaning": "Âm tiêu Dương trưởng (từ Đông chí đến Hạ chí); Dương tiêu Âm trưởng (từ Hạ chí đến Đông chí). Đây là nhịp thở vĩnh cửu của vũ trụ và sinh mệnh."
+      "stage": "Quy Luật 3: Tiêu Trưởng Tuần Hoàn (消長循環)",
+      "state": "Sự tăng giảm nhịp nhàng của ngày đêm và 4 mùa",
+      "detailed_explanation": "Âm Dương trong vũ trụ không bao giờ đứng yên ở trạng thái tĩnh tuyệt đối, mà liên tục biến động theo chu kỳ 'Tiêu' (giảm đi) và 'Trưởng' (tăng lên). Có 4 trạng thái cơ bản: 1. Dương trưởng Âm tiêu (Từ nửa đêm đến giữa trưa, từ mùa Xuân sang mùa Hạ); 2. Dương tiêu Âm trưởng (Từ giữa trưa đến nửa đêm, từ mùa Thu sang mùa Đông); 3. Cùng tiêu; 4. Cùng trưởng. Sự tiêu trưởng nhịp nhàng này tạo nên nhịp sinh học của muôn loài.",
+      "practical_manifestation": "Mặt trời mọc lúc bình minh (Dương bắt đầu lớn), lên đến đỉnh điểm lúc 12h trưa (Cực Dương), rồi lặn dần lúc hoàng hôn (Dương tiêu, Âm trưởng).",
+      "key_takeaway": "Biết thời thế lúc nào nên tiến bước (Dương trưởng) và lúc nào nên lui về phòng thủ dưỡng quân (Âm trưởng)."
     },
     {
-      "stage": "Định Luật 4: Cực Biến Chuyển Hóa (極變轉化)",
-      "state": "Chuyển hóa chất điểm",
-      "philosophical_meaning": "Khi một mặt phát triển đạt đến giới hạn tuyệt đối (Thái Dương hoặc Thái Âm), nó bắt buộc phải tự suy biến để nhường chỗ cho mầm mống đối lập nảy sinh (Thiếu Âm hoặc Thiếu Dương)."
+      "stage": "Quy Luật 4: Cực Biến Chuyển Hóa (極變轉化)",
+      "state": "Vật cực tất phản • Đỉnh điểm chuyển trạng thái",
+      "detailed_explanation": "Khi một sự vật phát triển đến mức tột cùng của nó (Cực điểm), nó bắt buộc phải tự động chuyển hóa thành mặt đối lập. Cổ nhân gọi là 'Vật cực tất phản' (物極必反), 'Hàn cực sinh Nhiệt, Nhiệt cực sinh Hàn'. Một đêm đông lạnh giá nhất chính là thời điểm mầm sống mùa xuân bắt đầu cựa quậy trong lòng đất; một cơn giông bão sấm sét dữ dội nhất chính là dấu hiệu trời sắp quang mây tạnh.",
+      "practical_manifestation": "Người lao động kiệt sức không nghỉ ngơi (Cực Dương) sẽ đột ngột suy sụp ngất xỉu liệt giường (Chuyển sang Cực Âm).",
+      "key_takeaway": "Khi ở trên đỉnh vinh quang phải biết giữ mình khiêm tốn; khi ở dưới đáy cùng cực khó khăn chớ nản lòng vì ánh bình minh sắp ló rạng."
     }
   ]
 };
 
 const AMDUONG_NGUHANH_PART_3 = {
   "chapter_number": 3,
-  "classic_source": "《周易·繫辭傳》 (Chu Dịch: Hệ Từ Truyện) & 《周易·說卦傳》 (Thuyết Quái Truyện)",
-  "chapter_title": "Tiết III: Chu Dịch Bản Thể Luận — Dịch Hữu Thái Cực, Lưỡng Nghi, Tứ Tượng & Bát Quái Loại Tượng",
-  "sub_title": "Khảo cứu toàn văn Chu Dịch Hệ Từ Thượng/Hạ: Cơ chế phân nhánh nhị phân 2^N và Bát Quái định tính càn khôn vạn vật",
+  "classic_source": "《周易·繫辭上/下篇》 (Chu Dịch: Hệ Từ) & 《說卦傳》 (Thuyết Quái Truyện) — Khổng Tử (孔子)",
+  "chapter_title": "Tiết III: Chu Dịch Bản Thể Luận — Thái Cực Sinh Lưỡng Nghi, Tứ Tượng, Bát Quái & Vạn Vật Loại Tượng",
+  "sub_title": "Khảo cứu toàn văn thiên cổ danh tác Hệ Từ Thượng: Định luật phân nhánh nhị phân 2^N và ma trận phân loại Bát Quái",
+  "stages_title": "Giải Mã Chi Tiết Ma Trận Tiến Hóa Bát Quái & Bát Quái Loại Tượng (Chuyên Khảo Sư Phạm)",
   "canonical_texts": [
     {
-      "hanzi": "易有太極，是生兩儀，兩儀生四象，四象生八卦，八卦定吉凶，吉凶生大業。是故法象莫大乎天地，變通莫大乎四時，縣象著明莫大乎日月，崇高莫大乎富貴，備物致用，立成器以為天下利，莫大乎聖人。",
-      "pinyin": "Dịch hữu Thái Cực, thị sinh Lưỡng Nghi, Lưỡng Nghi sinh Tứ Tượng, Tứ Tượng sinh Bát Quái, Bát Quái định cát hung, cát hung sinh đại nghiệp. Thị cố pháp tượng mạc đại hồ thiên địa, biến thông mạc đại hồ tứ thời, huyền tượng trước minh mạc đại hồ nhật nguyệt, sùng cao mạc đại hồ phú quý, bị vật trí dụng, lập thành khí dĩ vi thiên hạ lợi, mạc đại hồ thánh nhân.",
-      "meaning": "Trong đạo Dịch có cội nguồn Thái Cực, Thái Cực phân hóa sinh ra Lưỡng Nghi (Hào Dương liền: ⚊ và Hào Âm đứt: ⚋); Lưỡng Nghi chồng lớp sinh ra Tứ Tượng (Thái Dương ⚌, Thiếu Âm ⚍, Thiếu Dương ⚎, Thái Âm ⚏); Tứ Tượng chồng thêm hào sinh ra Bát Quái (8 quẻ đơn: Càn ☰, Đoài ☱, Ly ☲, Chấn ☳, Tốn ☴, Khảm ☵, Cấn ☶, Khôn ☷). Bát Quái định rõ quy luật Cát và Hung; hiểu rõ Cát Hung và xu cát tị hung thì kiến tạo nên sự nghiệp vĩ đại (Đại Nghiệp). Vì vậy, mẫu mực về hình tượng không gì lớn bằng Trời Đất; sự biến hóa hanh thông không gì lớn bằng Bốn Mùa; ánh sáng soi tỏ không gì lớn bằng Mặt Trời và Mặt Trăng; đem vật dụng cho thiên hạ dùng, chế tác đồ dùng làm lợi cho nhân gian không gì vĩ đại bằng bậc Thánh Nhân.",
-      "source": "Chu Dịch (周易) — Hệ Từ Thượng Truyện (Thiên Đệ Thập Nhất)"
-    },
-    {
-      "hanzi": "乾，健也；坤，順也；震，動也；巽，入也；坎，陷也；離，麗也；艮，止也；兌，說也。乾為天，為圜，為君，為父；坤為地，為母，為布，为釜；震為雷，為龍，為玄黃；巽為木，為風，為長女；坎為水，為溝瀆，為隱伏；離為火，為日，為電；艮為山，為徑路，為小石；兌為澤，為少女，為巫，為口舌。",
-      "pinyin": "Càn, kiện dã; Khôn, thuận dã; Chấn, động dã; Tốn, nhập dã; Khảm, hãm dã; Ly, lệ dã; Cấn, chỉ dã; Đoài, duyệt dã. Càn vi thiên, vi hoàn, vi quân, vi phụ; Khôn vi địa, vi mẫu, vi bố, vi phủ; Chấn vi lôi, vi long, vi huyền hoàng; Tốn vi mộc, vi phong, vi trưởng nữ; Khảm vi thủy, vi câu độc, vi ẩn phục; Ly vi hỏa, vi nhật, vi điện; Cấn vi sơn, vi kính lộ, vi tiểu thạch; Đoài vi trạch, vi thiếu nữ, vi vu, vi khẩu thiệt.",
-      "meaning": "Đặc tính bản thể 8 Quẻ: Càn là Cương Kiện (mạnh mẽ vững bền); Khôn là Nhu Thuận (bao dung tiếp nhận); Chấn là Chấn Động (khởi phát sinh khí); Tốn là Thấu Nhập (len lỏi mềm mại như gió); Khảm là Hiểm Hãm (vực sâu thử thách u uẩn); Ly là Lệ Phụ (bừng sáng bám rễ tỏa quang); Cấn là Ngưng Chỉ (vững chãi dừng lại như núi); Đoài là Duyệt Hỷ (vui tươi hoan hỷ như đầm nước). Loại tượng vạn vật: Càn là Trời, là Vua, là Cha; Khôn là Đất, là Mẹ, là Vải vóc, là Nồi đất; Chấn là Sấm sét, là Rồng, là Trưởng nam; Tốn là Cây cối, là Gió, là Trưởng nữ; Khảm là Nước sông, là Mương rãnh, là Hiểm nguy, là Trung nam; Ly là Lửa, là Mặt trời, là Tia chớp, là Trung nữ; Cấn là Đồi núi, là Con đường mòn, là Thiếu nam; Đoài là Đầm nước, là Thiếu nữ, là Miệng lưỡi ăn nói.",
-      "source": "Chu Dịch (周易) — Thuyết Quái Truyện (Thiên Đệ Thất & Đệ Bát)"
+      "hanzi": "易有太極，是生兩儀，兩儀生四象，四象生八卦，八卦定吉凶，吉凶生大業。\n乾，健也；坤，順也；震，動也；巽，入也；坎，陷也；離，麗也；艮，止也；兌，說也。\n乾為天，為圜，為君，為父，為金，為玉。坤為地，為母，為布，為釜，為吝嗇。震為雷，為龍，為玄黃，為旉，為大塗。巽為木，為風，為長女，為繩直，為工。坎為水，為溝瀆，為隱伏，為矯萮，為弓輪。離為火，為日，為電，為中女，為甲冑，為戈兵。艮為山，為徑路，為小石，為門闕，為果蓏。兌為澤，為少女，為巫，為口舌，為毀折，為附決。",
+      "pinyin": "Dịch hữu Thái Cực, thị sinh Lưỡng Nghi, Lưỡng Nghi sinh Tứ Tượng, Tứ Tượng sinh Bát Quái, Bát Quái định cát hung, cát hung sinh đại nghiệp.\nCàn, Kiện dã; Khôn, Thuận dã; Chấn, Động dã; Tốn, Nhập dã; Khảm, Hãm dã; Ly, Lệ dã; Cấn, Chỉ dã; Đoài, Duyệt dã.\nCàn vi thiên, vi hoàn, vi quân, vi phụ, vi kim, vi ngọc. Khôn vi địa, vi mẫu, vi bố, vi phủ, vi lận sắc. Chấn vi lôi, vi long, vi huyền hoàng, vi phu, vi đại đồ. Tốn vi mộc, vi phong, vi trưởng nữ, vi thằng trực, vi công. Khảm vi thủy, vi câu độc, vi ẩn phục, vi kiều du, vi cung luân. Ly vi hỏa, vi nhật, vi điện, vi trung nữ, vi giáp trụ, vi qua binh. Cấn vi sơn, vi kính lộ, vi tiểu thạch, vi môn khuyết, vi quả lỏa. Đoài vi trạch, vi thiếu nữ, vi vu, vi khẩu thiệt, vi hủy chiết, vi phụ quyết.",
+      "meaning": "Trong Đạo Dịch có cội nguồn THÁI CỰC (Trục sinh thành nguyên thủy), Thái Cực phân đôi sinh ra LƯỠNG NGHI (Hào Dương liền ⚊ và Hào Âm đứt ⚋); Lưỡng Nghi phân đôi sinh ra TỨ TƯỢNG (Thái Dương ⚌, Thiếu Âm ⚍, Thiếu Dương ⚎, Thái Âm ⚏); Tứ Tượng phân đôi sinh ra BÁT QUÁI (8 Quẻ: Càn ☰, Đoài ☱, Ly ☲, Chấn ☳, Tốn ☴, Khảm ☵, Cấn ☶, Khôn ☷); Bát Quái tương tác xác định điềm Cát Hung lành dữ; hiểu rõ Cát Hung mới kiến lập nên Cơ Nghiệp vĩ đại muôn đời.\nĐẶC TÍNH BẢN THỂ BÁT QUÁI:\n- CÀN: Cương kiện, mạnh mẽ không ngừng nghỉ.\n- KHÔN: Nhu thuận, bao dung nuôi nấng muôn loài.\n- CHẤN: Vận động, sấm sét nổ vang đánh thức sự sống.\n- TỐN: Thẩm thấu, gió thổi luồn lách vào mọi ngóc ngách.\n- KHẢM: Hiểm hóc, vực sâu nước chảy trũng hiểm trở.\n- LY: Sáng sủa, bám víu vào vật khác để tỏa rạng.\n- CẤN: Dừng lại, núi đá sừng sững ngăn chặn hiểm nguy.\n- ĐOÀI: Vui vẻ, đầm nước êm đềm mang lại hoan hỷ.",
+      "source": "Chu Dịch: Hệ Từ Thượng (Chương 11) & Thuyết Quái Truyện (Khổng Tử san định)"
     }
   ],
   "scholarly_analysis": {
     "term_glossary": [
       {
-        "term": "Tiến Trình Nhị Phân 2^N (二進制演化)",
-        "plain_vn": "Thuật toán nhị phân vũ trụ cổ xưa: 2^0 (Thái Cực: 1) → 2^1 (Lưỡng Nghi: 2) → 2^2 (Tứ Tượng: 4) → 2^3 (Bát Quái: 8) → 2^6 (Lục Thập Tứ Quái: 64)."
+        "term": "Tiến Trình Nhị Phân 2^N (兩儀生四象八卦)",
+        "plain_vn": "Quy luật phân đôi phổ quát của vũ trụ: 1 $\rightarrow$ 2 (Lưỡng Nghi) $\rightarrow$ 4 (Tứ Tượng) $\rightarrow$ 8 (Bát Quái) $\rightarrow$ 64 (Lục Thập Tứ Quái)."
       },
       {
-        "term": "Hào Dương & Hào Âm (陽爻·陰爻)",
-        "plain_vn": "Hào Dương (⚊ - Số 9) đại diện cho năng lượng đực, ánh sáng, chuyển động. Hào Âm (⚋ - Số 6) đại diện cho năng lượng cái, bóng tối, tĩnh tại."
+        "term": "Bát Quái Loại Tượng (八卦類象)",
+        "plain_vn": "Nghệ thuật quy nạp vạn vật trong vũ trụ về 8 quẻ căn bản để dự đoán quy luật biến hóa."
       },
       {
-        "term": "Tứ Tượng Biến Hóa (四象)",
-        "plain_vn": "Thái Dương (⚌ - Cực Dương), Thiếu Âm (⚍ - Dương ngoại Âm nội), Thiếu Dương (⚎ - Âm ngoại Dương nội), Thái Âm (⚏ - Cực Âm)."
-      },
-      {
-        "term": "Bát Quái Thể Tính (八卦體性)",
-        "plain_vn": "8 mã nhị phân 3 bit đại diện cho 8 trạng thái năng lượng cơ bản cấu thành mọi hiện tượng vật lý và tâm lý trong vũ trụ."
+        "term": "Cương Kiện & Nhu Thuận (乾健坤順)",
+        "plain_vn": "Càn là sức mạnh sáng tạo chủ động (Cha, Vua, Trời); Khôn là đức tính bao dung tiếp nhận (Mẹ, Đất, Thần dân)."
       }
     ],
     "masters_views": [
       {
-        "master": "Khổng Tử (Xuân Thu)",
-        "work": "Dịch Đại Truyện - Thập Dực",
-        "perspective": "Bát Quái thành liệt, tượng tại kỳ trung hĩ. Thánh nhân thiết lập quẻ không phải để mê tín, mà để mô phỏng chính xác trật tự vận hành của Trời Đất."
+        "master": "Khổng Tử (Văn Tuyên Vương)",
+        "work": "Chu Dịch Đại Truyện",
+        "perspective": "Bát Quái thành liệt, tượng tại kỳ trung. Nhìn quẻ là thấy được hình ảnh của càn khôn vạn vật vận động trước mắt."
       },
       {
-        "master": "Thiệu Ung (Bắc Tống)",
+        "master": "Thiệu Ung (Thiệu Khang Tiết)",
         "work": "Hoàng Cực Kinh Thế",
-        "perspective": "Nhất phân vi nhị, nhị phân vi tứ, tứ phân vi bát. Toàn bộ càn khôn đều vận hành theo luật nhị phân nhân đôi tự nhiên."
+        "perspective": "Càn Khôn định vị, Sơn Trạch thông khí, Lôi Phong tương bạc, Thủy Hỏa bất tương xạ. Đó là trật tự tự nhiên tuyệt mỹ của Bát Quái."
       }
     ]
   },
   "cosmological_stages": [
     {
-      "stage": "Bát Quái 1: Càn (☰ - Cương Kiện)",
-      "state": "Thuần Dương (3 hào liền)",
-      "philosophical_meaning": "Năng lượng sáng tạo tối thượng của Trời. Chủ về khởi đầu, lãnh đạo, ý chí bất khuất, cương trực."
+      "stage": "Phân Tầng 1: Thái Cực $\rightarrow$ Lưỡng Nghi (2^1 = 2)",
+      "state": "Hào Dương ⚊ & Hào Âm ⚋",
+      "detailed_explanation": "Từ một thể Thái Cực thuần nhất ban đầu, vũ trụ phân tách thành hai cực đối lập căn bản: Cực Dương biểu diễn bằng một vạch liền ⚊ (đại diện cho ánh sáng, sự vận động, năng lượng đực, số lẻ 1, 3, 5, 7, 9); Cực Âm biểu diễn bằng một vạch đứt ⚋ (đại diện cho bóng tối, sự tĩnh lặng, vật chất cái, số chẵn 2, 4, 6, 8, 10). Đây là hệ nhị phân đầu tiên của nhân loại.",
+      "practical_manifestation": "Sự phân biệt nam và nữ, ngày và đêm, điện tích dương (+) và điện tích âm (-).",
+      "key_takeaway": "Mọi vật thể trong vũ trụ đều mang cấu trúc lưỡng cực."
     },
     {
-      "stage": "Bát Quái 2: Khôn (☷ - Nhu Thuận)",
-      "state": "Thuần Âm (3 hào đứt)",
-      "philosophical_meaning": "Năng lượng dung nạp vô tận của Đất Mẹ. Chủ về nuôi dưỡng, bao bọc, khiêm nhường, tải vật đắc hậu."
+      "stage": "Phân Tầng 2: Lưỡng Nghi $\rightarrow$ Tứ Tượng (2^2 = 4)",
+      "state": "Thái Dương ⚌, Thiếu Âm ⚍, Thiếu Dương ⚎, Thái Âm ⚏",
+      "detailed_explanation": "Chồng thêm một hào Âm hoặc Dương lên trên Lưỡng Nghi, ta được 4 trạng thái năng lượng trung gian: 1. THÁI DƯƠNG ⚌ (Hai vạch liền - Mặt trời cực nóng, mùa Hạ); 2. THIẾU ÂM ⚍ (Dưới Dương trên Âm - Khí mát mẻ bắt đầu sinh ra, mùa Thu); 3. THIẾU DƯƠNG ⚎ (Dưới Âm trên Dương - Hơi ấm bắt đầu sinh ra, mùa Xuân); 4. THÁI ÂM ⚏ (Hai vạch đứt - Băng giá cực lạnh, mùa Đông). Tứ Tượng tương ứng với 4 mùa và 4 phương Đông - Tây - Nam - Bắc.",
+      "practical_manifestation": "Nhịp điệu 4 mùa: Xuân sinh (Thiếu Dương), Hạ trưởng (Thái Dương), Thu thu (Thiếu Âm), Đông tàng (Thái Âm).",
+      "key_takeaway": "Tứ Tượng là chiếc cầu nối chuyển tiếp giữa năng lượng thuần túy và không gian cụ thể."
     },
     {
-      "stage": "Bát Quái 3: Chấn (☳ - Lôi Động)",
-      "state": "Nhất Dương phục sinh tại đáy (Thiếu Dương khởi)",
-      "philosophical_meaning": "Sấm sét mùa xuân đánh thức vạn vật. Chủ về phát động, đột phá, sinh khí bừng nở, chấn hưng."
-    },
-    {
-      "stage": "Bát Quái 4: Tốn (☴ - Phong Nhập)",
-      "state": "Nhất Âm manh nha tại đáy (Nhu thuận thấu triệt)",
-      "philosophical_meaning": "Gió mùa len lỏi và cây cối vươn rễ. Chủ về thấu nhập, linh hoạt, hòa nhã, cảm hóa lòng người."
-    },
-    {
-      "stage": "Bát Quái 5: Khảm (☵ - Thủy Hãm)",
-      "state": "Dương tâm ngập trong Âm thể (Nội cương ngoại nhu)",
-      "philosophical_meaning": "Nước sâu hiểm trở và vực thẳm. Chủ về hiểm nạn, kiên định vượt khó, trí tuệ nội tâm sâu thẳm."
-    },
-    {
-      "stage": "Bát Quái 6: Ly (☲ - Hỏa Lệ)",
-      "state": "Âm tâm ngập trong Dương thể (Nội nhu ngoại cương)",
-      "philosophical_meaning": "Lửa bốc cháy bám vào cây và Mặt trời chiếu sáng. Chủ về văn minh, trí tuệ soi sáng, nhiệt huyết."
-    },
-    {
-      "stage": "Bát Quái 7: Cấn (☶ - Sơn Chỉ)",
-      "state": "Dương cực tại đỉnh (Ngăn chặn tĩnh chỉ)",
-      "philosophical_meaning": "Núi cao sừng sững ngăn gió bão. Chủ về ngưng nghỉ, thận trọng, kiên định, tĩnh tại phản tỉnh."
-    },
-    {
-      "stage": "Bát Quái 8: Đoài (☱ - Trạch Duyệt)",
-      "state": "Âm cực tại đỉnh (Khẩu thiệt hoan hỷ)",
-      "philosophical_meaning": "Đầm nước màu mỡ mang lại mùa màng no đủ. Chủ về niềm vui, giao tiếp, hòa ái, ngôn từ sắc bén."
+      "stage": "Phân Tầng 3: Tứ Tượng $\rightarrow$ Bát Quái (2^3 = 8)",
+      "state": "Càn, Đoài, Ly, Chấn, Tốn, Khảm, Cấn, Khôn",
+      "detailed_explanation": "Chồng thêm hào thứ 3 lên trên Tứ Tượng, ta thu được 8 quẻ đơn (Bát Quái) hoàn chỉnh: Càn (Trời ☰), Đoài (Đầm nước ☱), Ly (Lửa ☲), Chấn (Sấm sét ☳), Tốn (Gió ☴), Khảm (Nước ☵), Cấn (Núi ☶), Khôn (Đất ☷). Mỗi quẻ gồm 3 hào (Thiên - Địa - Nhân), đại diện cho 8 hiện tượng vật lý tự nhiên vĩ đại nhất nuôi dưỡng hành tinh.",
+      "practical_manifestation": "8 hướng la bàn trong phong thủy và 8 trạng thái tâm lý - hành vi trong nhân tướng học.",
+      "key_takeaway": "Bát Quái là tấm bản đồ định vị chính xác vị trí và xu hướng phát triển của con người trong môi trường sống."
     }
   ]
 };
 
 const AMDUONG_NGUHANH_PART_4 = {
   "chapter_number": 4,
-  "classic_source": "《尚書·周書·洪範》 (Thượng Thư: Chu Thư - Hồng Phạm Cửu Trù)",
-  "chapter_title": "Tiết IV: Thượng Thư Hồng Phạm — Khởi Nguyên Thành Văn Đầu Tiên Của Ngũ Hành Trong Lịch Sử",
-  "sub_title": "Toàn văn đệ nhất trù 'Ngũ Hành' do Cơ Tử truyền thụ cho Chu Vũ Vương: Năm Thể Tính, Năm Mùi Vị và Triết lý Hoàng Cực",
+  "classic_source": "《尚書·周書·洪範篇》 (Thượng Thư: Chu Thư - Hồng Phạm Cửu Trù) — Cơ Tử (箕子, 1046 TCN)",
+  "chapter_title": "Tiết IV: Hồng Phạm Cửu Trù — Nguồn Gốc Thành Văn Sớm Nhất Lịch Sử Về Thể Tính Ngũ Hành",
+  "sub_title": "Toàn văn lời Cơ Tử truyền thụ cho Chu Vũ Vương: Nhuận Hạ, Viêm Thượng, Khúc Trực, Tòng Cách, Gia Sắc",
+  "stages_title": "Giải Mã Chi Tiết Năm Đại Thể Tính & Năm Mùi Vị Ngũ Hành (Chuyên Khảo Sư Phạm)",
   "canonical_texts": [
     {
-      "hanzi": "初一曰五行：一曰水，二曰火，三曰木，四曰金，五曰土。水曰潤下，火曰炎上，木曰曲直，金曰從革，土爰稼穡。潤下作鹹，炎上作苦，曲直作酸，從革作辛，稼穡作甘。",
-      "pinyin": "Sơ nhất viết Ngũ Hành: Nhất viết Thủy, nhị viết Hỏa, tam viết Mộc, tứ viết Kim, ngũ viết Thổ. Thủy viết nhuận hạ, Hỏa viết viêm thượng, Mộc viết khúc trực, Kim viết tòng cách, Thổ viên gia sắc. Nhuận hạ tác hàm, viêm thượng tác khổ, khúc trực tác toan, tòng cách tác tân, gia sắc tác cam.",
-      "meaning": "Phép thứ nhất trong Cửu Trù (9 đại pháp trị quốc an dân) gọi là NGŨ HÀNH: Thứ nhất gọi là THỦY (Nước), thứ hai gọi là HỎA (Lửa), thứ ba gọi là MỘC (Cây cỏ), thứ tư gọi là KIM (Kim loại/Khoáng vật), thứ năm gọi là THỔ (Đất đai). Đặc tính bản thể của năm hành: Thủy có tính 'Nhuận Hạ' (thấm ướt, mềm mại và chảy xuôi xuống chỗ trũng); Hỏa có tính 'Viêm Thượng' (bốc cháy rực rỡ và bốc tỏa lên trời cao); Mộc có tính 'Khúc Trực' (uốn cong rồi vươn thẳng đứng lên, sinh trưởng dẻo dai); Kim có tính 'Tòng Cách' (thuận theo khuôn đúc mà biến đổi hình thể, sắc bén); Thổ có tính 'Gia Sắc' (gieo trồng hạt giống vào mùa xuân và gặt hái hoa màu vào mùa thu). Năm thể tính sinh ra Năm mùi vị tự nhiên: Nhuận hạ tạo ra vị MẶN (Hàm); Viêm thượng tạo ra vị ĐẮNG (Khổ); Khúc trực tạo ra vị CHUA (Toan); Tòng cách tạo ra vị CAY (Tân); Gia sắc tạo ra vị NGỌT (Cam).",
-      "source": "Thượng Thư (尚書) — Chu Thư: Hồng Phạm Thiên (Cơ Tử truyền cho Chu Vũ Vương năm 1046 TCN)"
-    },
-    {
-      "hanzi": "次二曰敬用五事：一曰貌，二曰言，三曰視，四曰聽，五曰思。貌曰恭，言曰從，視曰明，聽曰聰，思曰睿。恭作肅，從作乂，明作哲，聰作謀，睿作聖。",
-      "pinyin": "Thứ nhị viết kính dụng Ngũ Sự: Nhất viết mạo, nhị viết ngôn, tam viết thị, tứ viết thính, ngũ viết tư. Mạo viết cung, ngôn viết tòng, thị viết minh, thính viết thông, tư viết duệ. Cung tác túc, tòng tác nghệ, minh tác triết, thông tác mưu, duệ tác thánh.",
-      "meaning": "Phép thứ hai trong Hồng Phạm là Kính cẩn tu dưỡng Năm Hành Vi (Ngũ Sự đối ứng Ngũ Hành): 1. Dung mạo (Mộc) phải khiêm cung trang nghiêm; 2. Lời nói (Kim) phải thuận lý rõ ràng; 3. Tầm mắt nhìn (Hỏa) phải sáng tỏ tường minh; 4. Lắng nghe (Thủy) phải thấu triệt tinh thông; 5. Suy nghĩ tư duy (Thổ) phải sâu sắc uyên bác. Dung mạo khiêm cung thì tạo nên sự tôn nghiêm; lời nói thuận lý thì tạo nên sự an định; mắt nhìn sáng tỏ thì thành bậc triết nhân; lắng nghe tinh thông thì mưu sự thành công; suy tư sâu sắc thì đạt đến cảnh giới Thánh Trí.",
-      "source": "Thượng Thư (尚書) — Chu Thư: Hồng Phạm Thiên"
+      "hanzi": "初一曰五行，次二曰敬用五事，次三曰農用八政，次四曰協用五紀，次五曰建用皇極，次六曰乂用三德，次七曰明用稽疑，次八曰念用庶徵，次九曰嚮用五福，威用六極。\n五行：一曰水，二曰火，三曰木，四曰金，五曰土。水曰潤下，火曰炎上，木曰曲直，金曰從革，土爰稼穡。潤下作鹹，炎上作苦，曲直作酸，從革作辛，稼穡作甘。",
+      "pinyin": "Sơ nhất viết Ngũ Hành, thứ nhị viết kính dụng Ngũ Sự, thứ tam viết nông dụng Bát Chính, thứ tứ viết hiệp dụng Ngũ Kỷ, thứ ngũ viết kiến dụng Hoàng Cực, thứ lục viết ngải dụng Tam Đức, thứ thất viết minh dụng Kê Nghi, thứ bát viết niệm dụng Thứ Trưng, thứ cửu viết hướng dụng Ngũ Phúc, uy dụng Lục Cực.\nNgũ Hành: Nhất viết Thủy, nhị viết Hỏa, tam viết Mộc, tứ viết Kim, ngũ viết Thổ. Thủy viết Nhuận hạ, Hỏa viết Viêm thượng, Mộc viết Khúc trực, Kim viết Tòng cách, Thổ viên Gia sắc. Nhuận hạ tác Hàm, Viêm thượng tác Khổ, Khúc trực tác Toan, Tòng cách tác Tân, Gia sắc tác Cam.",
+      "meaning": "Chín điều đại cương trị quốc của Trời ban cho vua Đại Vũ (Hồng Phạm Cửu Trù), điều Thứ Nhất đứng đầu là NGŨ HÀNH (Năm nguồn năng lượng vận động):\nThứ nhất là THỦY (Nước), thứ hai là HỎA (Lửa), thứ ba là MỘC (Cây cỏ), thứ tư là KIM (Kim loại), thứ năm là THỔ (Đất đai).\nBẢN THỂ TÍNH CHẤT VÀ VỊ GIÁC CỦA NĂM HÀNH:\n1. THỦY có tính chất NHUẬN HẠ (Thấm nhuần ẩm ướt và luôn chảy luồn xuống chỗ trũng thấp); Nhuận hạ tạo ra vị MẶN (Hàm).\n2. HỎA có tính chất VIÊM THƯỢNG (Bốc cháy hừng hực tỏa nhiệt và luôn bốc ngọn lửa vươn lên cao); Viêm thượng tạo ra vị ĐẮNG (Khổ).\n3. MỘC có tính chất KHÚC TRỰC (Có thể uốn cong mềm mại rồi lại vươn thẳng đứng hiên ngang); Khúc trực tạo ra vị CHUA (Toan).\n4. KIM có tính chất TÒNG CÁCH (Thuận theo khuôn đúc rèn giũa để thay đổi hình dạng sắc bén, túc sát); Tòng cách tạo ra vị CAY (Tân).\n5. THỔ có tính chất GIA SẮC (Gieo trồng hạt giống xuống và gặt hái mùa màng hoa trái nuôi muôn loài); Gia sắc tạo ra vị NGỌT (Cam).",
+      "source": "Thượng Thư: Hồng Phạm Cửu Trù (尚書·洪範) — Tài liệu thành văn sớm nhất về Ngũ Hành (thế kỷ 11 TCN)"
     }
   ],
   "scholarly_analysis": {
     "term_glossary": [
       {
-        "term": "Nhuận Hạ (潤下 - Hành Thủy)",
-        "plain_vn": "Nhuần nhị, làm ẩm ướt đất đai muôn loài và luôn chảy xuống chỗ thấp nhất, khiêm hạ, u ẩn, mềm mại nhưng xuyên phá mọi chướng ngại."
+        "term": "Nhuận Hạ (潤下)",
+        "plain_vn": "Đặc tính của Thủy: Thấm sâu nuôi dưỡng muôn loài và luôn tìm chỗ trũng thấp nhất để dừng tụ (khiêm tốn, lắng sâu)."
       },
       {
-        "term": "Viêm Thượng (炎上 - Hành Hỏa)",
-        "plain_vn": "Bừng sáng rực rỡ, tỏa nhiệt nóng và luôn hướng ngọn lửa bốc lên trên. Biểu trưng cho văn minh, ánh sáng, nhiệt huyết và sự thanh tẩy."
+        "term": "Viêm Thượng (炎上)",
+        "plain_vn": "Đặc tính của Hỏa: Bốc lên cao, tỏa nhiệt lượng, lan tỏa ánh sáng rực rỡ và thiêu đốt tạp chất (nhiệt tình, phát tán)."
       },
       {
-        "term": "Khúc Trực (曲直 - Hành Mộc)",
-        "plain_vn": "Có khả năng uốn cong linh hoạt (Khúc) đồng thời có sức vươn thẳng hướng thượng (Trực). Biểu trưng cho sự sinh trưởng, lòng nhân ái, dẻo dai kiên cường."
+        "term": "Khúc Trực (曲直)",
+        "plain_vn": "Đặc tính của Mộc: Rễ uốn lượn lách qua sỏi đá (Khúc), thân vươn thẳng lên trời đón nắng (Trực) (mềm dẻo mà kiên cường)."
       },
       {
-        "term": "Tòng Cách (從革 - Hành Kim)",
-        "plain_vn": "Thuận theo sự rèn giũa tôi luyện (Tòng) mà biến cách đổi mới thành khí cụ sắc bén (Cách). Biểu trưng cho sự kỷ luật, công lý, đoạn tuyệt cái xấu."
+        "term": "Tòng Cách (從革)",
+        "plain_vn": "Đặc tính của Kim: Chấp nhận tôi luyện trong lò lửa để biến đổi từ quặng thô thành gươm báu sắc bén (kỷ luật, thanh lọc)."
       },
       {
-        "term": "Gia Sắc (稼穡 - Hành Thổ)",
-        "plain_vn": "Gia là gieo cấy hạt giống, Sắc là thu hoạch mùa màng. Đất mẹ dung chứa vạn vật, biến hạt thóc mầm thành lương thực nuôi sống nhân loại."
+        "term": "Gia Sắc (稼穡)",
+        "plain_vn": "Đặc tính của Thổ: Gia là gieo hạt giống, Sắc là gặt hái bông lúa chín; lòng đất bao dung nuôi dưỡng vạn vật (sinh sôi, chở che)."
       }
     ],
     "masters_views": [
       {
-        "master": "Cơ Tử (Đại Hiền cuối triều Thương)",
-        "work": "Hồng Phạm Cửu Trù",
-        "perspective": "Ngũ Hành không phải là thứ do con người phát minh, mà là 5 trật tự vận hành căn bản của Trời Đất. Kẻ trị vì nếu làm rối loạn ngũ hành thì thiên hạ đại loạn, mưa gió trái mùa."
-      },
-      {
-        "master": "Khổng Dĩnh Đạt (Đường triều)",
-        "work": "Thượng Thư Chính Nghĩa",
-        "perspective": "Hồng Phạm là thiên cổ văn chương đầu tiên chuẩn hóa định danh Ngũ Hành. Thể tính của năm hành là cội nguồn của vạn vật và ngũ tạng con người."
+        "master": "Cơ Tử (Hiền thần nhà Thương)",
+        "work": "Hồng Phạm Trị Quốc Sách",
+        "perspective": "Người làm vua muốn trị thiên hạ thái bình thì phải thuận theo đạo của Ngũ Hành: Nhu hòa như Thủy, sáng suốt như Hỏa, nhân từ như Mộc, cương trực như Kim, bao dung như Thổ."
       }
     ]
   },
   "cosmological_stages": [
     {
-      "stage": "Hành 1: Thủy (Nhuận Hạ • Vị Mặn)",
-      "state": "Mùa Đông • Phương Bắc • Khí Hàn",
-      "philosophical_meaning": "Khởi nguồn sự sống. Nhuận trạch vạn vật không cầu danh lợi, luôn chọn nơi thấp hèn để ngự trị. Vị mặn tác động vào tạng Thận, cốt tủy."
+      "stage": "Hành 1: Thủy Hành (水行) — Bản Thể Nhuận Hạ & Vị Mặn",
+      "state": "Mùa Đông • Hướng Bắc • Màu Đen • Tạng Thận",
+      "detailed_explanation": "Thủy là nguồn gốc đầu tiên của sự sống hữu cơ. Nhuận hạ nghĩa là làm mềm dịu, tưới mát và đi xuống chỗ thấp. Nước không bao giờ tranh giành vị trí cao, luôn luồn lách qua mọi khe hở để đến với nơi khô cằn. Vị mặn của nước biển kết tinh từ khoáng chất, thấm sâu vào xương tủy và thận âm, giúp cơ thể giữ nước và tích trữ năng lượng.",
+      "practical_manifestation": "Dòng sông êm đềm, đại dương sâu thẳm, nước mưa tưới mát đồng ruộng, hệ tuần hoàn máu huyết và dịch khớp trong cơ thể.",
+      "key_takeaway": "Học đức tính của Nước: Mềm mại thắng cứng rắn, ở chỗ thấp mà dung nạp trăm sông."
     },
     {
-      "stage": "Hành 2: Hỏa (Viêm Thượng • Vị Đắng)",
-      "state": "Mùa Hạ • Phương Nam • Khí Nhiệt",
-      "philosophical_meaning": "Sự phát tiết rực rỡ nhất của sinh mệnh. Bốc lên cao soi sáng bóng tối. Vị đắng tác động vào tạng Tâm, huyết mạch, thanh lọc nhiệt độc."
+      "stage": "Hành 2: Hỏa Hành (火行) — Bản Thể Viêm Thượng & Vị Đắng",
+      "state": "Mùa Hạ • Hướng Nam • Màu Đỏ • Tạng Tâm",
+      "detailed_explanation": "Hỏa đại diện cho năng lượng nhiệt động lực học và ánh sáng quang minh. Viêm thượng nghĩa là ngọn lửa luôn bốc lên cao, không bao giờ chịu cúi đầu xuống đất. Hỏa thiêu rụi mọi thứ dơ bẩn, biến hóa vật chất sang thể khí. Vị đắng của Hỏa có tính chất giáng nhiệt, tả hỏa, làm thanh tâm và tỉnh táo tinh thần.",
+      "practical_manifestation": "Ánh nắng mặt trời ban trưa, ngọn lửa nấu chín thức ăn, nhiệt huyết đam mê trong tim và nhịp đập tâm hỏa.",
+      "key_takeaway": "Hỏa mang lại ánh sáng và sự nhiệt tình, nhưng phải biết kiểm soát để không tự thiêu cháy chính mình."
     },
     {
-      "stage": "Hành 3: Mộc (Khúc Trực • Vị Chua)",
-      "state": "Mùa Xuân • Phương Đông • Khí Phong",
-      "philosophical_meaning": "Khí sinh trưởng nảy mầm. Cành lá uốn cong theo địa hình nhưng thân cây luôn vươn thẳng đón ánh sáng. Vị chua tác động vào tạng Can, gân cốt."
+      "stage": "Hành 3: Mộc Hành (木行) — Bản Thể Khúc Trực & Vị Chua",
+      "state": "Mùa Xuân • Hướng Đông • Màu Xanh • Tạng Can",
+      "detailed_explanation": "Mộc đại diện cho sức sống sinh trưởng, sự đâm chồi nảy lộc. Khúc trực thể hiện sự linh hoạt tuyệt vời: Cành cây uốn lượn theo hướng gió để không bị gãy (Khúc), nhưng thân chính luôn vươn thẳng lên trời đón ánh sáng (Trực). Vị chua của Mộc có tính chất thu liễm, dưỡng gan, bảo vệ gân cốt dẻo dai.",
+      "practical_manifestation": "Rừng cây xanh mướt mùa xuân, mầm non đội đất trồi lên, sự phát triển chiều cao của trẻ nhỏ và lòng nhân ái của con người.",
+      "key_takeaway": "Muốn đứng vững trước bão giông cuộc đời phải biết 'Khúc Trực': Bên ngoài mềm mỏng thích ứng, bên trong cương trực kiên định."
     },
     {
-      "stage": "Hành 4: Kim (Tòng Cách • Vị Cay)",
-      "state": "Mùa Thu • Phương Tây • Khí Táo",
-      "philosophical_meaning": "Khí thu liễm túc sát. Rèn đúc quặng đá thành đồ dùng sắc bén, phân định thị phi rõ ràng. Vị cay phát tán tác động vào tạng Phế, da lông."
+      "stage": "Hành 4: Kim Hành (金行) — Bản Thể Tòng Cách & Vị Cay",
+      "state": "Mùa Thu • Hướng Tây • Màu Trắng • Tạng Phế",
+      "detailed_explanation": "Kim đại diện cho sự túc sát, thu liễm, kỷ luật và kết tinh sắc bén. Tòng cách nghĩa là chấp nhận sự uốn nắn, rèn giũa dưới búa đe và lửa đỏ để loại bỏ xỉ quặng, trở thành lưỡi dao sắc hoặc chiếc chuông ngân vang. Vị cay của Kim có tính chất phát tán, hành khí, thông kinh lạc, làm ấm phổi và toát mồ hôi đẩy tà khí.",
+      "practical_manifestation": "Quặng vàng bạc trong lòng đá, sương mù se lạnh mùa thu, sự nghiêm minh của luật pháp và ý chí thép của bậc dũng tướng.",
+      "key_takeaway": "Không có áp lực và kỷ luật thép rèn luyện (Tòng cách) thì không thể thành tài (Ngọc bất trác bất thành khí)."
     },
     {
-      "stage": "Hành 5: Thổ (Gia Sắc • Vị Ngọt)",
-      "state": "Trưởng Hạ / Tứ Quý • Trung Ương • Khí Thấp",
-      "philosophical_meaning": "Đất mẹ trung tâm hàm dưỡng bốn phương. Nuôi dưỡng vạn vật sinh ra rồi lại thu hồi vạn vật về cát bụi. Vị ngọt tác động vào tạng Tỳ, cơ nhục."
+      "stage": "Hành 5: Thổ Hành (土行) — Bản Thể Gia Sắc & Vị Ngọt",
+      "state": "Bốn Mùa Giao Thời (Tứ Quý) • Trung Ương • Màu Vàng • Tạng Tỳ",
+      "detailed_explanation": "Thổ là Mẹ của muôn loài, là cái nôi nuôi dưỡng và tiếp nhận mọi sự vật. Gia sắc nghĩa là tiếp nhận hạt giống gieo xuống (Gia), âm thầm nuôi nấng rồi cho mùa màng bội thu hoa trái ngọt lành (Sắc). Thổ không thiên vị bất cứ ai, rác rưởi rơi xuống đất cũng hóa thành phân bón nuôi cây. Vị ngọt của Thổ có tính chất bổ tỳ vị, hòa hoãn, bồi bổ sinh lực.",
+      "practical_manifestation": "Đồng bằng phù sa màu mỡ, lòng đất bao dung nâng đỡ nhà cửa đường sá, hệ tiêu hóa tỳ vị hấp thụ dưỡng chất nuôi cơ thể.",
+      "key_takeaway": "Người có đức dày như Đất (Khôn hậu tải vật) thì việc gì cũng thành tựu, gia đạo hưng thịnh vững bền."
     }
   ]
 };
 
 const AMDUONG_NGUHANH_PART_5 = {
   "chapter_number": 5,
-  "classic_source": "《五行大義·卷一》 (Ngũ Hành Đại Nghĩa - Quyển 1: Thích Danh & Biện Thể Tính) — Tiêu Cát (隋·蕭吉)",
-  "chapter_title": "Tiết V: Ngũ Hành Đại Nghĩa — Khảo Luận Cổ Ngữ, Danh Xưng & Biện Thể Tính 5 Hành",
-  "sub_title": "Bản dịch toàn văn trích đoạn Quyển 1 tác phẩm đồ sộ của Tiêu Cát: Khảo cứu tự hình cổ tự, khí chất và đức tính ngũ hành",
+  "classic_source": "《五行大義·卷一》 (Ngũ Hành Đại Nghĩa: Quyển 1) — Tiêu Cát (Tùy triều - 隋·蕭吉, 535–614)",
+  "chapter_title": "Tiết V: Ngũ Hành Đại Nghĩa — Thích Danh, Biện Thể Tính & Tự Nguyên Học Cổ Đại",
+  "sub_title": "Toàn văn tác phẩm bách khoa toàn thư của Tiêu Cát: Giải mã chiết tự chữ Hán cổ Xúc, Hóa, Thổ, Cấm, Chuẩn",
+  "stages_title": "Giải Mã Chi Tiết Tự Nguyên Học & Thể Tính Cốt Lõi Ngũ Hành (Chuyên Khảo Sư Phạm)",
   "canonical_texts": [
     {
-      "hanzi": "夫萬物自有體質。聖人象類、而制其名。故曰名以定體。無名乃天地之始、有名則萬物之母。以其因功渉用、故立稱謂。五行為萬物之先、形用資於造化。豈不先立其名、然後明其體用。\n木者、春生之位、陽氣始萌、萬物觸地而生。木之為言、觸也。\n火者、日之精也。南方陽盛、物皆赫赫、照耀明了。火之為言、化也、毀也、陽氣盛大亨通也。\n土者、萬物之主、大也。含弘廣大、含育生長、萬物之所歸。土之為言、吐也、吐生萬物也。\n金者、陰氣之始、西方白虎之位、殺伐剛斷。金之為言、禁也、陰氣始禁萬物也。\n水者、陰氣之極、北方玄武之位、潤澤濡潤。水之為言、準也、平也、萬物之準繩也。",
-      "pinyin": "Phu vạn vật tự hữu thể chất. Thánh nhân tượng loại, nhi chế kỳ danh. Cố viết danh dĩ định thể. Vô danh nãi thiên địa chi thủy, hữu danh tắc vạn vật chi mẫu. Dĩ kỳ nhân công thiệp dụng, cố lập xưng vị. Ngũ hành vi vạn vật chi tiên, hình dụng tư ư tạo hóa. Khởi bất tiên lập kỳ danh, nhiên hậu minh kỳ thể dụng.\nMộc giả, xuân sinh chi vị, dương khí thủy manh, vạn vật xúc địa nhi sinh. Mộc chi vi ngôn, xúc dã.\nHỏa giả, nhật chi tinh dã. Nam phương dương thịnh, vật giai hách hách, chiếu diệu minh liễu. Hỏa chi vi ngôn, hóa dã, hủy dã, dương khí thịnh đại hanh thông dã.\nThổ giả, vạn vật chi chủ, đại dã. Hàm hoằng quảng đại, hàm dục sinh trưởng, vạn vật chi sở quy. Thổ chi vi ngôn, thổ dã, thổ sinh vạn vật dã.\nKim giả, âm khí chi thủy, tây phương bạch hổ chi vị, sát phạt cương đoán. Kim chi vi ngôn, cấm dã, âm khí thủy cấm vạn vật dã.\nThủy giả, âm khí chi cực, bắc phương huyền vũ chi vị, nhuận trạch nhu nhuận. Thủy chi vi ngôn, chuẩn dã, bình dã, vạn vật chi chuẩn thằng dã.",
-      "meaning": "Phàm muôn loài vạn vật đều có thể chất riêng biệt. Bậc Thánh nhân quan sát hiện tượng trời đất, phân định chủng loại mà đặt ra tên gọi. Cho nên nói: Tên gọi để định rõ Bản Thể. Thuở 'Không Tên' là khởi thủy của Trời Đất; khi 'Có Tên' là mẹ sinh dưỡng vạn vật. Dựa vào công năng và sự ứng dụng mà xác lập danh xưng. Ngũ Hành đứng trước vạn vật, hình tướng và tác dụng bắt nguồn từ bàn tay tạo hóa. Lẽ nào lại không định rõ tên gọi trước, rồi sau đó mới làm sáng tỏ Thể Tính và Tác Dụng!\n1. MỘC: Ngự tại vị trí mùa Xuân sinh sôi, Dương khí bắt đầu manh nha, vạn vật đội đất mà nảy mầm nhô lên. Chữ Mộc (木) có gốc từ chữ Xúc (觸 - chạm vào, húc đất vươn lên).\n2. HỎA: Là tinh hoa của Mặt Trời. Phương Nam Dương khí cực thịnh, vạn vật bừng sáng rạng rỡ. Chữ Hỏa (火) có gốc từ chữ Hóa (化 - chuyển hóa vật chất) và chữ Hủy (毀 - thiêu hủy đốt cháy), biểu thị Dương khí cực thịnh hanh thông.\n3. THỔ: Là chủ nhân của vạn vật, mang đức tính to lớn bao la. Chứa đựng rộng rãi, nuôi nấng vạn vật sinh trưởng, là nơi vạn vật quy về khi tàn úa. Chữ Thổ (土) có gốc từ chữ Thổ (吐 - nhả ra, sinh sôi nôn nhả vạn vật ra ngoài).\n4. KIM: Là khởi điểm của Âm khí, phương Tây vị trí Bạch Hổ, chủ về sự cương quyết sát phạt thu hoạch. Chữ Kim (金) có gốc từ chữ Cấm (禁 - cấm đoán, ngăn chặn, Âm khí bắt đầu phong tỏa kiềm chế sự phát tán của vạn vật).\n5. THỦY: Là trạng thái tột cùng của Âm khí, phương Bắc vị trí Huyền Vũ, thấm đẫm ẩm ướt nhu thuận. Chữ Thủy (水) có gốc từ chữ Chuẩn (準 - chuẩn mực) và chữ Bình (平 - phẳng lặng), là dây mực thước đo công bằng cho muôn loài.",
-      "source": "Ngũ Hành Đại Nghĩa (五行大義) — Quyển Đệ Nhất (Tiêu Cát soạn năm Khai Hoàng triều Tùy)"
+      "hanzi": "夫五行者，蓋造化之根源，人倫之資始。萬品由其眷屬，百行由其規模。\n釋名者：\n木者，春也。木，觸也，陽氣觸動，冒地而生也。\n火者，夏也。火，化也，陽氣用事，萬物變化也。\n土者，季夏也。土，吐也，含吐萬物，吐生萬物也。\n金者，秋也。金，禁也，陰氣用事，萬物禁止也。\n水者，冬也。水，準也，平也，陰氣用事，萬物水平也。\n體性者：木體仁而性柔，火體禮而性燥，土體信而性重，金體義而性剛，水體智而性流。",
+      "pinyin": "Phu Ngũ Hành giả, cái tạo hóa chi căn nguyên, nhân luân chi tư thủy. Vạn phẩm do kỳ quyến thuộc, bách hạnh do kỳ quy mô.\nThích danh giả:\nMộc giả, xuân dã. Mộc, XÚC dã, dương khí xúc động, mạo địa nhi sinh dã.\nHỏa giả, hạ dã. Hỏa, HÓA dã, dương khí dụng sự, vạn vật biến hóa dã.\nThổ giả, quý hạ dã. Thổ, THỔ dã, hàm thổ vạn vật, thổ sinh vạn vật dã.\nKim giả, thu dã. Kim, CẤM dã, âm khí dụng sự, vạn vật cấm chỉ dã.\nThủy giả, đông dã. Thủy, CHUẨN dã, bình dã, âm khí dụng sự, vạn vật thủy bình dã.\nThể tính giả: Mộc thể Nhân nhi tính nhu, Hỏa thể Lễ nhi tính táo, Thổ thể Tín nhi tính trọng, Kim thể Nghĩa nhi tính cương, Thủy thể Trí nhi tính lưu.",
+      "meaning": "Phàm NGŨ HÀNH chính là gốc rễ cội nguồn của tạo hóa trời đất, là điểm khởi đầu nâng đỡ luân lý con người. Muôn loài vạn vật đều thuộc về quyến thuộc của Ngũ Hành, trăm điều hành xử đều nương theo quy mô phép tắc ấy.\nGIẢI NGHĨA DANH TỪ CỔ XƯA (TỰ NGUYÊN HỌC):\n1. MỘC ứng với mùa Xuân: Chữ Mộc (木) có gốc từ chữ XÚC (觸 - chạm vào, đội lên), nghĩa là khí Dương mùa xuân cựa quậy đội tung lớp đất đá lạnh lẽo để đâm chồi nảy lộc.\n2. HỎA ứng với mùa Hạ: Chữ Hỏa (火) có gốc từ chữ HÓA (化 - chuyển hóa biến đổi), nghĩa là khí Dương cực thịnh làm vạn vật quang hợp biến hóa trổ hoa kết trái rực rỡ.\n3. THỔ ứng với tháng Giữa Mùa Hạ (Quý Hạ): Chữ Thổ (土) có gốc từ chữ THỔ (吐 - nhả ra), nghĩa là lòng đất ngậm giữ mầm sống rồi nhả ra muôn loài nuôi nấng thế gian.\n4. KIM ứng với mùa Thu: Chữ Kim (金) có gốc từ chữ CẤM (禁 - ngăn cấm, dừng lại), nghĩa là khí Âm mùa thu túc sát khiến cây cối dừng sinh trưởng trút lá, vạn vật thu liễm tích trữ năng lượng.\n5. THỦY ứng với mùa Đông: Chữ Thủy (水) có gốc từ chữ CHUẨN (準 - mực thước công bằng, phẳng lặng), nghĩa là mặt nước phẳng phiu phản chiếu trung thực vạn vật, khí Âm làm muôn loài ngủ đông nghỉ ngơi.\nBẢN THỂ TÍNH CÁCH ĐẠO ĐỨC (NGŨ THƯỜNG):\nMộc chủ lòng NHÂN ái mà tính mềm mại; Hỏa chủ LỄ tiết mà tính bộc trực nhiệt thành; Thổ chủ chữ TÍN nghĩa mà tính đôn hậu vững chãi; Kim chủ chữ NGHĨA khí mà tính cương trực quyết đoán; Thủy chủ TRÍ tuệ uyên thâm mà tính linh hoạt chảy trôi.",
+      "source": "Ngũ Hành Đại Nghĩa (五行大義) — Quyển Đệ Nhất (Tiêu Cát soạn năm 594)"
     }
   ],
   "scholarly_analysis": {
     "term_glossary": [
       {
         "term": "Mộc viết Xúc (木曰觸)",
-        "plain_vn": "Năng lượng Mộc là sức bật phá vỡ vỏ bọc hạt giống, chọc thủng mặt đất mùa xuân để vươn lên đón ánh sáng mặt trời."
+        "plain_vn": "Nội lực tiềm ẩn đội đất trồi lên của mầm cây mùa xuân, tượng trưng cho ý chí vươn lên vượt qua nghịch cảnh."
       },
       {
         "term": "Hỏa viết Hóa (火曰化)",
-        "plain_vn": "Năng lượng Hỏa biến đổi trạng thái vật chất thông qua nhiệt độ, nung nấu, thiêu đốt cái cũ để tái sinh dưỡng chất mới."
+        "plain_vn": "Sức mạnh chuyển hóa quang năng thành nhiệt năng và sinh khối, đại diện cho sự sáng tạo và đổi mới bùng nổ."
       },
       {
         "term": "Thổ viết Thổ (土曰吐)",
-        "plain_vn": "Đất mẹ như lòng tử cung vĩ đại, nôn nhả cây cối, cỏ hoa, nguồn khoáng sản nuôi sống muôn loài trên bề mặt."
+        "plain_vn": "Khả năng sinh sản vô tận của đất mẹ: Đưa hạt giống vào lòng đất thì nhả ra bông lúa vàng trĩu hạt."
       },
       {
         "term": "Kim viết Cấm (金曰禁)",
-        "plain_vn": "Khí mùa thu lạnh buốt ban hành lệnh cấm sinh trưởng bừa bãi, ép cây cối trút lá, dồn nhựa sống vào lõi để chuẩn bị qua mùa đông."
+        "plain_vn": "Pháp luật và kỷ cương ngăn chặn sự bừa bãi hoang tàn, giúp vạn vật giữ gìn tinh khí không bị phân tán."
       },
       {
         "term": "Thủy viết Chuẩn (水曰準)",
-        "plain_vn": "Mặt nước luôn tĩnh lặng nằm ngang phẳng tuyệt đối. Là biểu tượng của sự công bằng, liêm khiết, chuẩn mực đạo đức tối cao."
+        "plain_vn": "Cái cân và cây thước công bằng của tự nhiên: Mặt nước luôn phẳng lặng, người có Trí tuệ nhìn thấu vạn sự như mặt nước mùa thu."
       }
     ],
     "masters_views": [
       {
-        "master": "Tiêu Cát (Đại học sĩ Tùy triều)",
+        "master": "Tiêu Cát (Đại học giả Tùy triều)",
         "work": "Ngũ Hành Đại Nghĩa Tự",
-        "perspective": "Ngũ Hành là gốc rễ của âm dương dịch lý. Kẻ học thuật nếu không hiểu sâu sắc Thể Tính và ngữ nghĩa nguyên thủy của từng hành thì xem như chỉ học được phần ngọn vô nghĩa."
-      },
-      {
-        "master": "Lưu An (Tây Hán)",
-        "work": "Hoài Nam Tử - Thiên Văn Huấn",
-        "perspective": "Đạo trời tròn mà đất vuông, Đạo trời động mà Đạo đất tĩnh. Ngũ Hành phân bố khắp bốn phương tám hướng để lưu hành thần khí."
+        "perspective": "Cổ kim bàn về Ngũ Hành có trăm nhà, nhưng chỉ khi thấu hiểu tự nguyên gốc rễ chữ Hán mới thấy hết vẻ đẹp kỳ diệu của càn khôn."
       }
     ]
   },
   "cosmological_stages": [
     {
-      "stage": "Bản Thể Mộc: Thiếu Dương chi Khí",
-      "state": "Thể ôn hòa • Tính khúc trực • Đức Nhân ái",
-      "philosophical_meaning": "Mộc chứa yếu tố ấm áp (Ôn nhu) nhưng ẩn chứa Hỏa khí bên trong. Tính cách từ tốn, bao dung, hướng thiện, thích cứu giúp muôn loài."
+      "stage": "Khảo Luận 1: Mộc - Chữ Xúc (觸) & Đạo Nhân",
+      "state": "Ý chí đội đất nảy mầm",
+      "detailed_explanation": "Khi mùa đông lạnh giá vừa dứt, ánh nắng mùa xuân bắt đầu sưởi ấm, hạt giống vùi sâu dưới lớp đất sỏi cứng đờ bắt đầu hút ẩm, bung vỏ và đội đất nhô lên (Xúc). Năng lượng của Mộc là lực đẩy vươn lên không gì ngăn cản nổi. Về mặt đạo đức, người đắc khí Mộc thì có lòng Nhân từ ái, yêu thương che chở muôn loài như cây cổ thụ tỏa bóng mát.",
+      "practical_manifestation": "Mầm cây xanh nhú lên qua kẽ nứt bê tông, sự khởi nghiệp đầy nhiệt huyết của tuổi trẻ.",
+      "key_takeaway": "Lòng Nhân ái chính là ngọn nguồn sinh khí mạnh mẽ nhất của cuộc đời."
     },
     {
-      "stage": "Bản Thể Hỏa: Thái Dương chi Khí",
-      "state": "Thể viêm nhiệt • Tính viêm thượng • Đức Lễ nghi",
-      "philosophical_meaning": "Hỏa bốc cháy cực thịnh soi sáng bóng đêm. Tính cách quang minh chính đại, giữ gìn lễ tiết, trật tự tôn ti, ghét sự ám muội gian tà."
+      "stage": "Khảo Luận 2: Hỏa - Chữ Hóa (化) & Đạo Lễ",
+      "state": "Năng lượng chuyển hóa cực thịnh",
+      "detailed_explanation": "Dưới sức nóng của mùa hạ, chất diệp lục hấp thu ánh sáng mặt trời để chuyển hóa thành đường và tinh bột nuôi cây trổ hoa kết trái (Hóa). Hỏa làm chín thức ăn, nung chảy kim loại. Về mặt đạo đức, người đắc khí Hỏa thì hiểu biết Lễ nghĩa phép tắc, cư xử quang minh chính đại, rực rỡ ấm áp khiến ai gặp cũng kính trọng.",
+      "practical_manifestation": "Lò luyện kim đúc chuông, quang hợp của cây xanh, sự nhiệt tình hiếu khách của người có văn hóa.",
+      "key_takeaway": "Văn minh nhân loại bắt đầu từ khi biết dùng Lửa để chuyển hóa thức ăn và bóng tối."
     },
     {
-      "stage": "Bản Thể Thổ: Âm Dương Giao Hòa chi Khí",
-      "state": "Thể đôn hậu • Tính gia sắc • Đức Tín nghĩa",
-      "philosophical_meaning": "Thổ là trung tâm dung nạp bốn hành kia. Tính cách điềm tĩnh, chữ Tín hàng đầu, trung hậu, không thiên vị, kiên định bất biến."
+      "stage": "Khảo Luận 3: Thổ - Chữ Thổ (吐) & Đạo Tín",
+      "state": "Bao dung nhả vạn vật",
+      "detailed_explanation": "Đất mẹ ôm ấp tất cả, ngậm giữ nước và khoáng chất, đến đúng mùa vụ thì nhả ra (Thổ) hoa thơm quả ngọt nuôi sống nhân loại. Đất không bao giờ thất hứa, gieo hạt ngô ắt nhả ra bắp ngô, gieo hạt lúa ắt nhả ra bông lúa. Về mặt đạo đức, người đắc khí Thổ thì giữ trọn chữ TÍN, nói lời chắc như đinh đóng cột, là chỗ dựa tin cậy của bạn bè.",
+      "practical_manifestation": "Cánh đồng lúa chín vàng óng ả, sự uy tín trong kinh doanh của các thương gia lớn.",
+      "key_takeaway": "Không có chữ Tín thì không thể đứng vững giữa trời đất (Nhân vô tín bất lập)."
     },
     {
-      "stage": "Bản Thể Kim: Thiếu Âm chi Khí",
-      "state": "Thể cương mãnh • Tính tòng cách • Đức Nghĩa khí",
-      "philosophical_meaning": "Kim mang hơi lạnh thu liễm túc sát. Tính cách cương trực, trọng đạo nghĩa, quyết đoán, dám hy sinh vì việc lớn, phân minh công tội."
+      "stage": "Khảo Luận 4: Kim - Chữ Cấm (禁) & Đạo Nghĩa",
+      "state": "Túc sát thu liễm kỷ cương",
+      "detailed_explanation": "Gió heo may mùa thu thổi về mang theo khí lạnh túc sát, làm cây cối ngừng đâm chồi, trút bỏ lá già để tích lũy dinh dưỡng vào thân lõi sống sót qua mùa đông (Cấm). Kim đặt ra ranh giới ngăn cấm cái ác, bảo vệ cái thiện. Về mặt đạo đức, người đắc khí Kim thì giàu lòng Nghĩa hiệp, phân minh phải trái, sẵn sàng xả thân vì chính nghĩa.",
+      "practical_manifestation": "Hình ảnh thanh gươm công lý, kỷ luật quân đội nghiêm minh, quả bưởi chín vàng tích tụ mật ngọt mùa thu.",
+      "key_takeaway": "Sống phải có giới hạn và nguyên tắc kỷ luật để bảo vệ những giá trị cốt lõi."
     },
     {
-      "stage": "Bản Thể Thủy: Thái Âm chi Khí",
-      "state": "Thể hàn lương • Tính nhuận hạ • Đức Trí tuệ",
-      "philosophical_meaning": "Thủy chứa sự lạnh giá u ẩn sâu thẳm. Tính cách mềm mại linh hoạt tùy hình dáng bình chứa, biến ảo khôn lường, trí tuệ uyên bác vô cùng."
+      "stage": "Khảo Luận 5: Thủy - Chữ Chuẩn (準) & Đạo Trí",
+      "state": "Mực thước phẳng lặng uyên thâm",
+      "detailed_explanation": "Thủy trong tự nhiên có tính năng kỳ diệu: Dù đổ vào bình tròn hay bát vuông nó đều uốn theo, nhưng khi mặt nước tĩnh lặng thì luôn bằng phẳng tuyệt đối (Chuẩn - thước đo mực nước của thợ xây). Về mặt đạo đức, người đắc khí Thủy thì có Trí tuệ sáng suốt vô cùng, nhìn thấu bản chất vấn đề mà không bị định kiến che mờ, xử thế linh hoạt như dòng nước chảy.",
+      "practical_manifestation": "Mặt hồ phẳng lặng như gương soi bóng mây trời, ống thủy bình đo thăng bằng trong xây dựng.",
+      "key_takeaway": "Tâm trí phẳng lặng như nước mùa thu thì trí tuệ tự nhiên khai mở soi tỏ vạn sự."
     }
   ]
 };
 
 const AMDUONG_NGUHANH_PART_6 = {
   "chapter_number": 6,
-  "classic_source": "《五行大義·卷一: 論數》 (Ngũ Hành Đại Nghĩa: Luận Số) & 《周易·繫辭上》 (Hà Đồ Đại Diễn)",
-  "chapter_title": "Tiết VI: Toán Học Càn Khôn — Giải Mã Sinh Thành Số Hà Đồ & Đại Diễn Chi Số",
-  "sub_title": "Toàn văn khảo luận cơ sở số học của Ngũ Hành: Thiên Địa chi số 55, Số Sinh 1-5, Số Thành 6-10 và Ma phương Hà Đồ",
+  "classic_source": "《五行大義·卷一·論數篇》 (Ngũ Hành Đại Nghĩa: Luận Số) & 《河圖洛書》 (Hà Đồ Lạc Thư)",
+  "chapter_title": "Tiết VI: Toán Học Càn Khôn — Giải Mã Hà Đồ 55 Số, Sinh Thành Số & Đại Diễn Chi Số",
+  "sub_title": "Toàn văn khảo cứu hệ thống số học vũ trụ cổ đại: Số Sinh (1-5), Số Thành (6-10), Thiên Địa 55 Số và Đại Diễn 50",
+  "stages_title": "Giải Mã Chi Tiết Cơ Chế Sinh Thành Số & Toán Học Dịch Học (Chuyên Khảo Sư Phạm)",
   "canonical_texts": [
     {
-      "hanzi": "天一，地二；天三，地四；天五，地六；天七，地八；天九，地十。天數五，地數五，五位相得而各有合。天數二十有五，地數三十，凡天地之數五十有五。此所以成變化而行鬼神也。\n天一生水，地六成之，在於北方；\n地二生火，天七成之，在於南方；\n天三生木，地八成之，在於東方；\n地四生金，天九成之，在於西方；\n天五生土，地十成之，在於中央。",
-      "pinyin": "Thiên nhất, Địa nhị; Thiên tam, Địa tứ; Thiên ngũ, Địa lục; Thiên thất, Địa bát; Thiên cửu, Địa thập. Thiên số ngũ, Địa số ngũ, ngũ vị tương đắc nhi các hữu hợp. Thiên số nhị thập hữu ngũ, Địa số tam thập, phàm Thiên Địa chi số ngũ thập hữu ngũ. Thử sở dĩ thành biến hóa nhi hành quỷ thần dã.\nThiên nhất sinh Thủy, Địa lục thành chi, tại ư Bắc phương;\nĐịa nhị sinh Hỏa, Thiên thất thành chi, tại ư Nam phương;\nThiên tam sinh Mộc, Địa bát thành chi, tại ư Đông phương;\nĐịa tứ sinh Kim, Thiên cửu thành chi, tại ư Tây phương;\nThiên ngũ sinh Thổ, Địa thập thành chi, tại ư Trung ương.",
-      "meaning": "Số của Trời là số Lẻ (Dương: 1, 3, 5, 7, 9); số của Đất là số Chẵn (Âm: 2, 4, 6, 8, 10). Số Trời có 5 số (tổng cộng: 1+3+5+7+9 = 25); số Đất có 5 số (tổng cộng: 2+4+6+8+10 = 30). Tổng toàn bộ Số Trời và Số Đất trong càn khôn là 55 số (Đại Diễn Hà Đồ). Đây chính là cội nguồn tạo nên muôn vàn biến hóa và sự linh diệu của quỷ thần.\n1. Trời lấy số 1 (Dương Khí khởi đầu) sinh ra Thủy, Đất lấy số 6 (Âm Chất hoàn tất) làm cho Thủy thành hình vẹn toàn, định vị tại PHƯƠNG BẮC (Nhất Lục cộng tông).\n2. Đất lấy số 2 (Âm Khí manh nha) sinh ra Hỏa, Trời lấy số 7 (Dương Khí quang minh) làm cho Hỏa rực sáng vẹn toàn, định vị tại PHƯƠNG NAM (Nhị Thất vi bằng).\n3. Trời lấy số 3 (Dương Khí sinh sôi) sinh ra Mộc, Đất lấy số 8 (Âm Chất nuôi nấng) làm cho Mộc xum xuê vẹn toàn, định vị tại PHƯƠNG ĐÔNG (Tam Bát vi hữu).\n4. Đất lấy số 4 (Âm Khí thu liễm) sinh ra Kim, Trời lấy số 9 (Dương Khí tinh luyện) làm cho Kim sắc bén vẹn toàn, định vị tại PHƯƠNG TÂY (Tứ Cửu đồng đạo).\n5. Trời lấy số 5 (Dương Khí trung chính) sinh ra Thổ, Đất lấy số 10 (Âm Chất dày đặc) làm cho Thổ bao la vẹn toàn, định vị tại TRUNG ƯƠNG (Ngũ Thập tương thủ).",
-      "source": "Chu Dịch (周易) — Hệ Từ Thượng & Ngũ Hành Đại Nghĩa Quyển 1 (Thiên Luận Số)"
-    },
-    {
-      "hanzi": "大衍之數五十，其用四十有九。分而為二以象兩，掛一以象三，揲之以四以象四時，歸奇於扐以象閏，五歲再閏，故再扐而後掛。",
-      "pinyin": "Đại Diễn chi số ngũ thập, kỳ dụng tứ thập hữu cửu. Phân nhi vi nhị dĩ tượng Lưỡng, quải nhất dĩ tượng Tam, diệp chi dĩ tứ dĩ tượng Tứ Thời, quy kỳ ư lặc dĩ tượng Nhuận, ngũ tuế tái nhuận, cố tái lặc nhi hậu quải.",
-      "meaning": "Số Đại Diễn bói Dịch chiêm nghiệm vũ trụ là 50 thẻ, khi dùng chỉ dùng 49 thẻ (giữ lại 1 thẻ bất động tượng trưng cho Thái Cực nguyên thể). Chia 49 thẻ làm hai phần để mô phỏng Lưỡng Nghi (Trời và Đất); rút ra 1 thẻ gác ở ngón tay út để mô phỏng Tam Tài (Thiên - Địa - Nhân); đếm số thẻ theo từng nhóm 4 thẻ để mô phỏng Bốn Mùa (Xuân - Hạ - Thu - Đông); số thẻ thừa kẹp vào kẽ ngón tay để mô phỏng tháng Nhuận của lịch pháp.",
-      "source": "Chu Dịch (周易) — Hệ Từ Thượng Truyện"
+      "hanzi": "天一生水，地六成之；地二生火，天七成之；天三生木，地八成之；地四生金，天九成之；天五生土，地十成之。\n天一、天三、天五、天七、天九，此五天數也，合為二十五。\n地二、地四、地六、地八、地十，此五地數也，合為三十。\n天地之數五十有五，此所以成變化而行鬼神也。\n大衍之數五十，其用四十有九。掛一以象三，揲之以四以象四時，歸奇於扐以象閏。",
+      "pinyin": "Thiên nhất sinh Thủy, Địa lục thành chi; Địa nhị sinh Hỏa, Thiên thất thành chi; Thiên tam sinh Mộc, Địa bát thành chi; Địa tứ sinh Kim, Thiên cửu thành chi; Thiên ngũ sinh Thổ, Địa thập thành chi.\nThiên nhất, Thiên tam, Thiên ngũ, Thiên thất, Thiên cửu, thử ngũ thiên số dã, hợp vi nhị thập ngũ.\nĐịa nhị, Địa tứ, Địa lục, Địa bát, Địa thập, thử ngũ địa số dã, hợp vi tam thập.\nThiên Địa chi số ngũ thập hữu ngũ, thử sở dĩ thành biến hóa nhi hành quỷ thần dã.\nĐại Diễn chi số ngũ thập, kỳ dụng tứ thập hữu cửu. Quải nhất dĩ tượng tam, điệp chi dĩ tứ dĩ tượng tứ thời, quy kỳ ư lặc dĩ tượng nhuận.",
+      "meaning": "CƠ CHẾ SINH THÀNH SỐ CỦA TRỜI ĐẤT (HÀ ĐỒ):\n- Trời lấy số 1 (Dương) sinh ra Thủy, Đất lấy số 6 (Âm) hoàn thành thể chất cho Thủy (Phương Bắc: 1 - 6).\n- Đất lấy số 2 (Âm) sinh ra Hỏa, Trời lấy số 7 (Dương) hoàn thành thể chất cho Hỏa (Phương Nam: 2 - 7).\n- Trời lấy số 3 (Dương) sinh ra Mộc, Đất lấy số 8 (Âm) hoàn thành thể chất cho Mộc (Phương Đông: 3 - 8).\n- Đất lấy số 4 (Âm) sinh ra Kim, Trời lấy số 9 (Dương) hoàn thành thể chất cho Kim (Phương Tây: 4 - 9).\n- Trời lấy số 5 (Dương) sinh ra Thổ, Đất lấy số 10 (Âm) hoàn thành thể chất cho Thổ (Trung Cung: 5 - 10).\nNăm Số Của Trời (Số lẻ Dương): 1, 3, 5, 7, 9 $\rightarrow$ Tổng cộng = 25.\nNăm Số Của Đất (Số chẵn Âm): 2, 4, 6, 8, 10 $\rightarrow$ Tổng cộng = 30.\nTổng Số Của Trời Đất (Hà Đồ) là 55 số. Nhờ 55 số này mà tạo nên sự biến hóa vô cùng và vận hành quỷ thần linh diệu trong vũ trụ.\nSỐ ĐẠI DIỄN TRONG BÓI DỊCH là 50 cọng cỏ thi, khi gieo quẻ chỉ dùng 49 cọng (để lại 1 cọng tượng trưng cho Thái Cực tối cao).",
+      "source": "Ngũ Hành Đại Nghĩa (Luận Số Thiên) & Chu Dịch: Hệ Từ Thượng (Chương 9)"
     }
   ],
   "scholarly_analysis": {
     "term_glossary": [
       {
         "term": "Số Sinh (生數: 1, 2, 3, 4, 5)",
-        "plain_vn": "Năng lượng mầm mống sơ khai do Trời Đất tạo tác, còn ở trạng thái vô hình, thuần túy là Khí Tiên Thiên."
+        "plain_vn": "Năm con số nguyên thủy vô hình ban đầu của Trời Đất, tượng trưng cho giai đoạn hình thành Nguyên Khí của Ngũ Hành."
       },
       {
         "term": "Số Thành (成數: 6, 7, 8, 9, 10)",
-        "plain_vn": "Khí đã ngưng tụ thành Chất cụ thể, có công năng vật lý thực tế. Quy tắc bất biến: Số Thành = Số Sinh + 5 (Trung Cung Thổ)."
+        "plain_vn": "Năm con số cụ thể hóa hình thể vật chất sau khi cộng thêm số 5 trung ương (1+5=6, 2+5=7, 3+5=8, 4+5=9, 5+5=10)."
       },
       {
-        "term": "Thiên Địa Chi Số (天地之數: 55)",
-        "plain_vn": "Tổng 25 số Dương Trời (1+3+5+7+9) và 30 số Âm Đất (2+4+6+8+10). Mô tả toàn bộ ma trận số học của đồ hình Hà Đồ."
-      },
-      {
-        "term": "Đại Diễn Chi Số (大衍之數: 50)",
-        "plain_vn": "50 số dẫn xuất từ 55 số trừ đi 5 số Sinh bản thể (1, 2, 3, 4, 5). Dùng 49 số để gieo quẻ tìm biến dịch càn khôn."
+        "term": "Đại Diễn 50 Chi Số (大衍之數五十)",
+        "plain_vn": "Hệ thống toán xác suất vũ trụ cổ đại dùng 50 cọng cỏ thi để diễn dịch 64 quẻ và 384 hào Dịch."
       }
     ],
     "masters_views": [
       {
-        "master": "Kinh Phòng (Tây Hán)",
-        "work": "Kinh Thị Dịch Truyện",
-        "perspective": "Trời Đất lấy số 55 làm gốc, trong đó số 5 và số 10 ở trung tâm là Thái Cực của ngũ hành. Vạn vật không có số thì không thể định hình."
-      },
-      {
-        "master": "Mã Dung (Đông Hán)",
-        "work": "Dịch Chú",
-        "perspective": "Đại Diễn 50 thẻ bói Dịch chính là mô phỏng 50 đơn vị vận hành của Bắc Cực Tinh và Nhật Nguyệt Ngũ Tinh."
+        "master": "Khổng Dĩnh Đạt (Đường triều)",
+        "work": "Chu Dịch Chính Nghĩa",
+        "perspective": "Vạn vật chưa có hình thể thì gọi là Sinh; đã có hình chất hoàn bị thì gọi là Thành. Sinh nhờ Dương khí Trời ban, Thành nhờ Âm đức Đất dưỡng."
       }
     ]
   },
   "cosmological_stages": [
     {
-      "stage": "Cặp Số 1 - 6: Bắc Phương Thủy (Nhất Lục Cộng Tông)",
-      "state": "1 Sinh Thủy • 6 Thành Thủy",
-      "philosophical_meaning": "Thiên nhất sinh Thủy: Trời lấy số 1 khởi đầu sinh ra chất lỏng nguyên thủy; Địa lục thành chi: Đất lấy số 6 ngưng tụ thành sông biển đại dương."
+      "stage": "Phân Tích 1: Bản Chất Số Sinh vs Số Thành (Cộng Số 5 Trung Ương)",
+      "state": "Công thức: Số Thành = Số Sinh + 5",
+      "detailed_explanation": "Hãy quan sát quy luật toán học tuyệt mỹ của Hà Đồ: Các Số Sinh (1, 2, 3, 4, 5) là giai đoạn mầm mống năng lượng vô hình. Muốn biến thành thực thể hữu hình (Số Thành: 6, 7, 8, 9, 10), mỗi hành đều phải dung nạp thêm con số 5 (Khí Thổ Trung Ương). Điều này minh chứng chân lý vật lý cổ đại: Bất kỳ vật chất nào muốn kết tinh thành hình khối trên trái đất đều phải nương nhờ vào Đất (Thổ vi Vạn Vật Chi Mẫu).",
+      "practical_manifestation": "Cây muốn mọc (Mộc số 3) phải cắm rễ vào đất (+5) mới thành cây cổ thụ vững chãi (Mộc số 8).",
+      "key_takeaway": "Thổ (số 5) là hạt nhân trung tâm liên kết toàn bộ hệ thống Ngũ Hành."
     },
     {
-      "stage": "Cặp Số 2 - 7: Nam Phương Hỏa (Nhị Thất Vi Bằng)",
-      "state": "2 Sinh Hỏa • 7 Thành Hỏa",
-      "philosophical_meaning": "Địa nhị sinh Hỏa: Đất lấy số 2 manh nha hơi ấm từ lòng đất; Thiên thất thành chi: Trời lấy số 7 bừng sáng thành vầng Thái Dương rực rỡ."
+      "stage": "Phân Tích 2: Phối Hợp Phương Vị & Ngũ Hành Hà Đồ",
+      "state": "Bắc (1-6) • Nam (2-7) • Đông (3-8) • Tây (4-9) • Trung (5-10)",
+      "detailed_explanation": "Mỗi cặp số Sinh-Thành đều gắn liền với một phương vị không gian bất biến: Phương Bắc lạnh giá thuộc Thủy (1-6); Phương Nam nóng bỏng thuộc Hỏa (2-7); Phương Đông mặt trời mọc thuộc Mộc (3-8); Phương Tây mặt trời lặn túc sát thuộc Kim (4-9); Trung tâm trái đất thuộc Thổ (5-10). Cấu trúc này tạo nên sự cân bằng từ trường đối xứng hoàn hảo của địa cầu.",
+      "practical_manifestation": "Ứng dụng trong việc chọn tầng chung cư, số nhà, số sim phong thủy hợp mệnh tuổi theo cặp số sinh thành.",
+      "key_takeaway": "Nắm vững 5 cặp số Hà Đồ là chìa khóa mở toang cánh cửa Lý Khí Bát Trạch và Huyền Không Phi Tinh."
     },
     {
-      "stage": "Cặp Số 3 - 8: Đông Phương Mộc (Tam Bát Vi Hữu)",
-      "state": "3 Sinh Mộc • 8 Thành Mộc",
-      "philosophical_meaning": "Thiên tam sinh Mộc: Trời lấy số 3 phát động sinh khí mùa xuân; Địa bát thành chi: Đất lấy số 8 nuôi rễ cây hóa thành rừng rậm đại ngàn."
-    },
-    {
-      "stage": "Cặp Số 4 - 9: Tây Phương Kim (Tứ Cửu Đồng Đạo)",
-      "state": "4 Sinh Kim • 9 Thành Kim",
-      "philosophical_meaning": "Địa tứ sinh Kim: Đất lấy số 4 kết tụ tinh chất khoáng vật trong núi; Thiên cửu thành chi: Trời lấy số 9 tôi luyện quặng sắt thành thần binh bảo kiếm."
-    },
-    {
-      "stage": "Cặp Số 5 - 10: Trung Ương Thổ (Ngũ Thập Tương Thủ)",
-      "state": "5 Sinh Thổ • 10 Thành Thổ",
-      "philosophical_meaning": "Thiên ngũ sinh Thổ: Trời lấy số 5 định vị tâm điểm điều hòa tứ phương; Địa thập thành chi: Đất lấy số 10 mở rộng địa cầu dày dặn nâng đỡ muôn loài."
+      "stage": "Phân Tích 3: Đại Diễn 50 & Ẩn Số Thái Cực (Dụng 49)",
+      "state": "Kỳ dụng 49 • Chừa 1 tượng trưng cho Thái Cực Vô Vi",
+      "detailed_explanation": "Trong 50 cọng cỏ thi của phép bói Đại Diễn, cổ nhân luôn rút ra 1 cọng cất đi không dùng, chỉ thao tác trên 49 cọng. Một cọng cỏ ấy tượng trưng cho Thái Cực tối cao, Đạo Vô Vi bất biến đứng ngoài sự tính toán của con người. Điều này dạy ta bài học sâu sắc: Mọi kế hoạch của con người dù chu toàn đến đâu (49) cũng luôn có một phần biến số của Đất Trời định đoạt (1 cọng Thái Cực).",
+      "practical_manifestation": "Trong quản trị rủi ro hiện đại, luôn phải chừa một khoảng biên độ an toàn cho những yếu tố bất khả kháng của tự nhiên.",
+      "key_takeaway": "Mưu sự tại nhân, thành sự tại thiên; biết giữ lại một khoảng trống cho sự biến hóa của Đạo."
     }
   ]
 };
 
 const AMDUONG_NGUHANH_PART_7 = {
   "chapter_number": 7,
-  "classic_source": "《五行大義·卷二: 論相生 & 論相剋》 — Tiêu Cát (隋·蕭吉)",
-  "chapter_title": "Tiết VII: Ngũ Hành Đại Nghĩa — Quy Luật Tương Sinh, Tương Khắc & Cơ Chế Chế Phạt Vi Nghĩa",
-  "sub_title": "Khảo cứu toàn văn Quyển 2 Ngũ Hành Đại Nghĩa: Tại sao sinh? Tại sao khắc? 5 quy tắc thắng thế (Chuyên, Thực, Chúng, Tinh, Cương)",
+  "classic_source": "《五行大義·卷二·論相生相剋》 (Ngũ Hành Đại Nghĩa: Tương Sinh Tương Khắc) — Tiêu Cát",
+  "chapter_title": "Tiết VII: Cơ Chế Vật Lý Cổ Đại — Luận Tương Sinh, Tương Khắc & 5 Quy Tắc Thắng Thế",
+  "sub_title": "Toàn văn giải mã cơ chế khoa học cổ đại: Tại sao Mộc sinh Hỏa, Hỏa sinh Thổ... và ý nghĩa 'Chế Phạt Vi Nghĩa'",
+  "stages_title": "Giải Mã Chi Tiết Cơ Chế Vật Lý & Năm Quy Tắc Thắng Thế Cổ Điển (Chuyên Khảo Sư Phạm)",
   "canonical_texts": [
     {
-      "hanzi": "五行相生者：木生火，火生土，土生金，金生水，水生木。\n木生火者，木性溫暖，火伏其中，鑽灼而出，故木生火。\n火生土者，火熱故能焚木，木焚而成灰，灰即土也，故火生土。\n土生金者，金居石，依山津潤而生，聚土成山，山必生石，故土生金。\n金生水者，少陰之氣潤澤，流津銷金亦為水，山石出泉，故金生水。\n水生木者，因水潤而能生，草木得水而生長，故水生木。\n五行相生，猶父之生子，母之養兒，生生不息，循環無端。",
-      "pinyin": "Ngũ hành tương sinh giả: Mộc sinh Hỏa, Hỏa sinh Thổ, Thổ sinh Kim, Kim sinh Thủy, Thủy sinh Mộc.\nMộc sinh Hỏa giả, Mộc tính ôn noãn, Hỏa phục kỳ trung, toản chước nhi xuất, cố Mộc sinh Hỏa.\nHỏa sinh Thổ giả, Hỏa nhiệt cố năng phần Mộc, Mộc phần nhi thành hôi, hôi tức Thổ dã, cố Hỏa sinh Thổ.\nThổ sinh Kim giả, Kim cư thạch, y sơn tân nhuận nhi sinh, tụ Thổ thành sơn, sơn tất sinh thạch, cố Thổ sinh Kim.\nKim sinh Thủy giả, Thiếu Âm chi khí nhuận trạch, lưu tân tiêu Kim diệc vi Thủy, sơn thạch xuất tuyền, cố Kim sinh Thủy.\nThủy sinh Mộc giả, nhân Thủy nhuận nhi năng sinh, thảo mộc đắc Thủy nhi sinh trưởng, cố Thủy sinh Mộc.\nNgũ hành tương sinh, do phụ chi sinh tử, mẫu chi dưỡng nhi, sinh sinh bất tức, tuần hoàn vô đoan.",
-      "meaning": "Trật tự Ngũ Hành Tương Sinh: Mộc sinh Hỏa, Hỏa sinh Thổ, Thổ sinh Kim, Kim sinh Thủy, Thủy sinh Mộc.\n1. MỘC SINH HỎA: Bản tính cây gỗ ấm áp, mầm mống Lửa ẩn giấu bên trong thân gỗ, khi cọ xát khoan đốt thì Lửa bùng cháy phát tiết ra ngoài, cho nên Mộc sinh Hỏa.\n2. HỎA SINH THỔ: Lửa cực nóng thiêu rụi cây gỗ thành tro tàn, tro bụi lắng đọng tích tụ lại hóa thành Đất màu mỡ, cho nên Hỏa sinh Thổ.\n3. THỔ SINH KIM: Quặng kim loại nằm trong đá, nương tựa vào lòng núi ẩm ướt mà kết tinh; gom đất lâu ngày hóa thành núi cao, trong núi ắt sản sinh quặng đá kim loại, cho nên Thổ sinh Kim.\n4. KIM SINH THỦY: Khí Thiếu Âm phương Tây ẩm ướt nhuận trạch; nấu chảy kim loại nóng chảy thành dạng lỏng như nước; vả lại núi đá khoáng chất luôn đùn ra các mạch nước suối nguồn ngọt mát, cho nên Kim sinh Thủy.\n5. THỦY SINH MỘC: Nhờ có dòng nước tưới tắm nuôi dưỡng mà hạt giống mới nảy mầm, cây cối gặp nước mới sinh cành đâm chồi tươi tốt, cho nên Thủy sinh Mộc.\nNgũ hành tương sinh ví như tình cha sinh con, tình mẹ nuôi nấng con thơ, sinh sôi không ngừng nghỉ, luân hồi tuần hoàn không có điểm kết thúc.",
-      "source": "Ngũ Hành Đại Nghĩa (五行大義) — Quyển Đệ Nhị (Thiên Luận Tương Sinh)"
-    },
-    {
-      "hanzi": "五行相剋者：木剋土，土剋水，水剋火，火剋金，金剋木。\n剋者，制罰為義，以其力強能勝弱也。凡上剋下為順，下剋上為剝。\n白虎通云：五行所以相剋者，天地之性：\n眾勝寡，故水勝火也，水眾而火寡也；\n精勝堅，故火勝金也，火烈而金消也；\n剛勝柔，故金勝木也，金利而木折也；\n專勝散，故木勝土也，木根專聚而土散也；\n實勝虛，故土勝水也，土質堅實而水流虛也。",
-      "pinyin": "Ngũ hành tương khắc giả: Mộc khắc Thổ, Thổ khắc Thủy, Thủy khắc Hỏa, Hỏa khắc Kim, Kim khắc Mộc.\nKhắc giả, chế phạt vi nghĩa, dĩ kỳ lực cường năng thắng nhược dã. Phàm thượng khắc hạ vi thuận, hạ khắc thượng vi bộc.\nBạch Hổ Thông vân: Ngũ hành sở dĩ tương khắc giả, thiên địa chi tính:\nChúng thắng quả, cố Thủy thắng Hỏa dã, Thủy chúng nhi Hỏa quả dã;\nTinh thắng kiên, cố Hỏa thắng Kim dã, Hỏa liệt nhi Kim tiêu dã;\nCương thắng nhu, cố Kim thắng Mộc dã, Kim lợi nhi Mộc chiết dã;\nChuyên thắng tán, cố Mộc thắng Thổ dã, Mộc căn chuyên tụ nhi Thổ tán dã;\nThực thắng hư, cố Thổ thắng Thủy dã, Thổ chất kiên thực nhi Thủy lưu hư dã.",
-      "meaning": "Trật tự Ngũ Hành Tương Khắc: Mộc khắc Thổ, Thổ khắc Thủy, Thủy khắc Hỏa, Hỏa khắc Kim, Kim khắc Mộc.\nÝ nghĩa chữ KHẮC: 'Chế phạt vi nghĩa' (khắc không phải là tiêu diệt hủy hoại, mà là đặt ra kỷ cương răn đe, duy trì sự cân bằng trật tự giữa kẻ mạnh và kẻ yếu). Phàm kẻ trên kiềm chế kẻ dưới gọi là Thuận trật tự; kẻ dưới chống đối lật đổ kẻ trên gọi là Bộc nghịch loạn.\nSách Bạch Hổ Thông luận chứng 5 nguyên lý thắng thế tự nhiên của Trời Đất:\n1. CHÚNG THẮNG QUẢ (Nhiều thắng Ít): Cho nên Nước dập tắt Lửa (nước bao la muôn trùng còn ngọn lửa đơn lẻ trơ trọi).\n2. TINH THẮNG KIÊN (Khí tinh túy thắng Vật cứng đặc): Cho nên Lửa nung chảy Kim loại (sức nóng tinh ròng làm tan chảy khối sắt cứng rắn nhất).\n3. CƯƠNG THẮNG NHU (Sắc bén cứng rắn thắng Dẻo mềm): Cho nên Rìu kim loại đốn ngã Cây gỗ (lưỡi kim loại sắc bén chặt đứt thân gỗ dẻo dai).\n4. CHUYÊN THẮNG TÁN (Tập trung kết tụ thắng Rời rạc tản mác): Cho nên Rễ cây phá vỡ Đất (rễ cây đâm xuyên tập trung một khối găm vỡ đất cát vụn rời rạc).\n5. THỰC THẮNG HƯ (Đặc chắc đầy đặn thắng Trống rỗng trôi chảy): Cho nên Đê đất ngăn chặn dòng Nước lũ (đất đai đặc chắc vững vàng chặn đứng dòng nước lỏng trôi chảy).",
-      "source": "Ngũ Hành Đại Nghĩa (五行大義) — Quyển Đệ Nhị (Thiên Luận Tương Khắc)"
+      "hanzi": "相生者：\n木生火者：木性溫暖，伏火其中，鑽灼而出，故木生火。\n火生土者：火熱焚木，化而為灰，灰即土也，故火生土。\n土生金者：金居石依山，聚土成山，山必生石，故土生金。\n金生水者：少陰之氣，溫潤流澤，銷金亦化為水，山石出泉，故金生水。\n水生木者：因水潤下，草木百穀得以滋榮，故水生木。\n\n相剋者，制罰為義。五行相勝之理：\n眾勝寡，故水勝火也；（水多則火滅）\n精勝堅，故火勝金也；（烈火銷鑠精金）\n剛勝柔，故金勝木也；（利刃斬伐喬木）\n專勝散，故木勝土也；（木根深盤破散土）\n實勝虛，故土勝水也。（厚土築堤防堤遏流虛）",
+      "pinyin": "Tương sinh giả:\nMộc sinh Hỏa giả: Mộc tính ôn noãn, phục hỏa kỳ trung, toan chước nhi xuất, cố Mộc sinh Hỏa.\nHỏa sinh Thổ giả: Hỏa nhiệt phần mộc, hóa nhi vi hôi, hôi tức thổ dã, cố Hỏa sinh Thổ.\nThổ sinh Kim giả: Kim cư thạch y sơn, tụ thổ thành sơn, sơn tất sinh thạch, cố Thổ sinh Kim.\nKim sinh Thủy giả: Thiếu Âm chi khí, ôn nhuận lưu trạch, tiêu kim diệc hóa vi thủy, sơn thạch xuất tuyền, cố Kim sinh Thủy.\nThủy sinh Mộc giả: Nhân thủy nhuận hạ, thảo mộc bách cốc đắc dĩ tư vinh, cố Thủy sinh Mộc.\n\nTương khắc giả, chế phạt vi nghĩa. Ngũ hành tương thắng chi lý:\nChúng thắng quả, cố Thủy thắng Hỏa dã; (Thủy đa tắc Hỏa diệt)\nTinh thắng kiên, cố Hỏa thắng Kim dã; (Liệt hỏa tiêu thước tinh kim)\nCương thắng nhu, cố Kim thắng Mộc dã; (Lợi nhận trảm phạt kiều mộc)\nChuyên thắng tán, cố Mộc thắng Thổ dã; (Mộc căn thâm bàn phá tán thổ)\nThực thắng hư, cố Thổ thắng Thủy dã. (Hậu thổ trúc đê phòng át lưu hư)",
+      "meaning": "CƠ CHẾ VẬT LÝ HỌC CỦA TƯƠNG SINH:\n1. MỘC SINH HỎA: Bản chất của gỗ có tính ấm áp, giấu mầm lửa ở bên trong lõi; khi cọ xát (khoan gỗ) thì lửa bùng cháy phát ra ngoài, nên Mộc sinh Hỏa.\n2. HỎA SINH THỔ: Sức nóng của ngọn lửa thiêu rụi cây cối gỗ mục thành tro tàn; tro tàn lắng đọng rơi xuống đất hóa thành Đất màu mỡ, nên Hỏa sinh Thổ.\n3. THỔ SINH KIM: Kim loại quặng mỏ ẩn mình trong đá dưới lòng núi; đất cát bồi đắp ngàn năm tích tụ thành núi đá, trong lòng núi đá sinh ra quặng kim loại quý, nên Thổ sinh Kim.\n4. KIM SINH THỦY: Khí Thiếu Âm mát lạnh ngưng tụ hơi ẩm trên bề mặt kim loại; nung nóng kim loại cũng chảy lỏng như nước; vách đá núi sâu (Kim) là nơi phun trào ra những dòng suối trong vắt, nên Kim sinh Thủy.\n5. THỦY SINH MỘC: Nước tưới mát làm mềm đất và thấm nhuần rễ cây, giúp cây cỏ và muôn hạt giống nảy mầm tươi tốt sum sê, nên Thủy sinh Mộc.\n\nCƠ CHẾ CỦA TƯƠNG KHẮC (CHẾ PHẠT VI NGHĨA - RĂN ĐE ĐỂ ĐẠT CÂN BẰNG):\nNăm quy tắc thắng thế tuyệt đối của tự nhiên:\n1. CHÚNG THẮNG QUẢ (Số đông dập tắt số ít): Nước mênh mông dập tắt đốm lửa nhỏ $\rightarrow$ THỦY KHẮC HỎA.\n2. TINH THẮNG KIÊN (Năng lượng tinh vi nung chảy vật rắn chắc): Nhiệt độ ngọn lửa nung chảy được thanh sắt cứng $\rightarrow$ HỎA KHẮC KIM.\n3. CƯƠNG THẮNG NHU (Cứng sắc bén đốn hạ mềm mại): Rìu sắt sắc bén đốn hạ được thân cây gỗ $\rightarrow$ KIM KHẮC MỘC.\n4. CHUYÊN THẮNG TÁN (Tập trung kết khối phá vỡ rời rạc): Rễ cây đâm sâu thành khối vững chắc xuyên thủng xới tung mảnh đất rời rạc $\rightarrow$ MỘC KHẮC THỔ.\n5. THỰC THẮNG HƯ (Đặc dày vững chắc chặn đứng lỏng lẻo): Bờ đê đất dày đặc vững chãi chặn đứng dòng nước lũ cuồn cuộn $\rightarrow$ THỔ KHẮC THỦY.",
+      "source": "Ngũ Hành Đại Nghĩa (五行大義) — Quyển Đệ Nhị: Tương Sinh Tương Thắng Thiên"
     }
   ],
   "scholarly_analysis": {
     "term_glossary": [
       {
         "term": "Chế Phạt Vi Nghĩa (制罰為義)",
-        "plain_vn": "Bản chất của Tương Khắc không phải là thù ghét triệt tiêu, mà là thiết lập kỷ cương, kiềm chế sự bành trướng thái quá của đối phương để duy trì sự sống hài hòa."
+        "plain_vn": "Tương khắc không phải là hủy diệt thù hằn, mà là sự răn đe, kiềm chế lẫn nhau để toàn bộ hệ sinh thái giữ được trạng thái cân bằng động."
       },
       {
-        "term": "Sinh Trung Hữu Khắc (生中有剋)",
-        "plain_vn": "Trong sinh có khắc: Sinh quá nhiều mà không bị kiềm chế sẽ sinh ra tai họa (Mẹ quá nuông chiều làm hại đời con)."
-      },
-      {
-        "term": "Khắc Trung Hữu Sinh (剋中有生)",
-        "plain_vn": "Trong khắc có sinh: Nhờ có dao kéo gọt tỉa cây mới thành kiểng quý; nhờ có lửa nung quặng sắt mới thành chuông đồng khí cụ."
-      },
-      {
-        "term": "Thượng Khắc Hạ vi Thuận (上剋下為順)",
-        "plain_vn": "Quy luật kiểm soát thuận chiều của vũ trụ (như cha răn dạy con, vua ban lệnh cho quan lại)."
+        "term": "Ngũ Thắng Cổ Quyết (五勝古訣)",
+        "plain_vn": "5 quy luật vật lý tự nhiên giải thích tại sao hành này khắc chế được hành kia: Chúng thắng quả, Tinh thắng kiên, Cương thắng nhu, Chuyên thắng tán, Thực thắng hư."
       }
     ],
     "masters_views": [
       {
-        "master": "Đổng Trọng Thư (Tây Hán)",
-        "work": "Xuân Thu Phồn Lộ - Ngũ Hành Nghĩa",
-        "perspective": "Trời có năm hành, Mộc ở đầu, Hỏa ở thứ hai, Thổ ở thứ ba, Kim ở thứ tư, Thủy ở cuối cùng. Mộc sinh Hỏa, Hỏa sinh Thổ... cha truyền con nối là đạo thường của trời đất."
-      },
-      {
-        "master": "Tiêu Cát (Tùy triều)",
-        "work": "Ngũ Hành Đại Nghĩa",
-        "perspective": "Tương sinh là Đức của Đất Trời ban ân; Tương khắc là Uy của Đất Trời trừ loạn. Có Đức không có Uy ắt vạn vật phóng túng; có Uy không có Đức ắt vạn vật điêu tàn."
+        "master": "Tiêu Cát",
+        "work": "Ngũ Hành Đại Nghĩa Luận",
+        "perspective": "Sinh mà không Khắc thì vạn vật phát triển vô độ gây loạn lạc diệt vong; Khắc mà không Sinh thì muôn loài khô héo chết yểu. Sinh Khắc nương tựa nhau mới là Đạo Trời."
       }
     ]
   },
   "cosmological_stages": [
     {
-      "stage": "Nguyên Tắc Khắc 1: Chúng Thắng Quả (Thủy Khắc Hỏa)",
-      "state": "Số lượng nhiều thắng ít",
-      "philosophical_meaning": "Nước ở khắp đại dương sông hồ, ngọn lửa chỉ bốc lên cục bộ. Biển nước mênh mông ắt dập tắt mọi đám cháy cuồng bạo."
+      "stage": "Quy Tắc 1: Chúng Thắng Quả $\rightarrow$ Thủy Khắc Hỏa",
+      "state": "Số lượng áp đảo năng lượng",
+      "detailed_explanation": "Thủy mang thể chất lỏng bao la, Hỏa mang tính chất khí nhiệt phát tán. Khi đối đầu trực tiếp, một lượng nước lớn sẽ lập tức hấp thu toàn bộ nhiệt lượng và ngăn oxy tiếp xúc với ngọn lửa, khiến ngọn lửa bị dập tắt hoàn toàn. Tuy nhiên, nếu Hỏa quá mạnh mà Thủy quá ít (như giọt nước rơi vào lò than đỏ) thì nước sẽ bị bốc hơi khô kiệt (Hiện tượng Phản Khắc).",
+      "practical_manifestation": "Lực lượng cứu hỏa dùng vòi rồng dập tắt đám cháy rừng, cơn mưa rào dập tắt cái nóng oi ả mùa hạ.",
+      "key_takeaway": "Muốn kiềm chế tính nóng giận bộc phát (Hỏa), phải dùng sự bình tĩnh và dung lượng bao dung rộng lớn (Thủy)."
     },
     {
-      "stage": "Nguyên Tắc Khắc 2: Tinh Thắng Kiên (Hỏa Khắc Kim)",
-      "state": "Nhiệt năng tinh hoa thắng khối rắn",
-      "philosophical_meaning": "Sức nóng vô hình nhưng cô đọng nhiệt lượng cực điểm ắt nung chảy quặng vàng quặng sắt kiên cố nhất."
+      "stage": "Quy Tắc 2: Tinh Thắng Kiên $\rightarrow$ Hỏa Khắc Kim",
+      "state": "Nhiệt năng vô hình nung chảy kim loại",
+      "detailed_explanation": "Kim loại dù có độ cứng cao đến đâu (Kiên), liên kết mạng tinh thể nguyên tử của nó cũng sẽ bị phá vỡ khi nhiệt độ của ngọn lửa đạt đến điểm nóng chảy (Tinh). Ngọn lửa mềm mại không có hình dáng cố định lại có thể biến một thanh sắt cứng đờ thành chất lỏng dẻo dai để đúc thành muôn vàn vật dụng có ích.",
+      "practical_manifestation": "Người thợ rèn dùng lò than đỏ rực để rèn gươm đao và uốn nắn các tác phẩm sắt mỹ thuật.",
+      "key_takeaway": "Nhiệt huyết chân thành và sự kiên trì (Hỏa) có thể làm tan chảy những trái tim sắt đá lạnh lùng nhất (Kim)."
     },
     {
-      "stage": "Nguyên Tắc Khắc 3: Cương Thắng Nhu (Kim Khắc Mộc)",
-      "state": "Lưỡi bén cứng thắng thân cây dẻo",
-      "philosophical_meaning": "Lưỡi búa lưỡi cưa sắc ngọt chém đứt cành nhánh cây xanh, đốn ngã đại thụ để lấy gỗ đóng thuyền làm nhà."
+      "stage": "Quy Tắc 3: Cương Thắng Nhu $\rightarrow$ Kim Khắc Mộc",
+      "state": "Độ cứng cơ học chặt đứt sợi hữu cơ",
+      "detailed_explanation": "Kim loại có mật độ phân tử dày đặc và độ sắc bén vượt trội (Cương), trong khi gỗ cây là cấu trúc sợi hữu cơ tương đối mềm xốp (Nhu). Vì vậy, lưỡi cưa lưỡi rìu bằng kim loại có thể dễ dàng đốn hạ những cây cổ thụ ngàn năm. Ngược lại, nếu gỗ quá cứng như gỗ lim mà lưỡi dao quá mỏng cùn thì dao sẽ bị mẻ (Mộc kiên Kim khuyết).",
+      "practical_manifestation": "Người tiều phu đốn củi trong rừng, máy xẻ gỗ công nghiệp chế biến đồ gỗ nội thất.",
+      "key_takeaway": "Kỷ luật nghiêm minh và nguyên tắc sắc bén (Kim) sẽ chấn chỉnh được sự lười biếng buông thả (Mộc xấu)."
     },
     {
-      "stage": "Nguyên Tắc Khắc 4: Chuyên Thắng Tán (Mộc Khắc Thổ)",
-      "state": "Sức ép tập trung thắng khối tản mác",
-      "philosophical_meaning": "Mạng lưới rễ cây kết bện tập trung đâm sâu hút cạn dưỡng chất và phá vỡ cấu trúc đất cát tản mát."
+      "stage": "Quy Tắc 4: Chuyên Thắng Tán $\rightarrow$ Mộc Khắc Thổ",
+      "state": "Cấu trúc rễ kết khối phá vỡ đất rời rạc",
+      "detailed_explanation": "Đất cát trong tự nhiên là các hạt khoáng chất rời rạc, phân tán (Tán). Trong khi đó, bộ rễ của cây cối liên kết thành một mạng lưới đan kết chuyên nhất và vững chắc vô cùng (Chuyên). Rễ cây tiết ra axit hữu cơ ăn sâu vào lòng đất, phá vỡ các tảng đá đất cứng để hút chất dinh dưỡng nuôi cây.",
+      "practical_manifestation": "Trồng rừng ngập mặn và rừng đầu nguồn để rễ cây giữ đất chống xói mòn sạt lở bờ sông.",
+      "key_takeaway": "Sự tập trung cao độ và đoàn kết chặt chẽ (Chuyên) sẽ chiến thắng sự phân tán rời rạc thiếu tổ chức (Tán)."
     },
     {
-      "stage": "Nguyên Tắc Khắc 5: Thực Thắng Hư (Thổ Khắc Thủy)",
-      "state": "Khối rắn kiên định thắng chất lỏng linh động",
-      "philosophical_meaning": "Bờ đê đất đai kiên cố ngăn chặn dòng nước lũ tràn lan, giữ nước lại trong lòng hồ ao đầm phục vụ nông nghiệp."
+      "stage": "Quy Tắc 5: Thực Thắng Hư $\rightarrow$ Thổ Khắc Thủy",
+      "state": "Khối vật chất đặc ngăn chặn dòng chất lỏng",
+      "detailed_explanation": "Thủy là chất lỏng có tính linh động, chảy trôi vô định không có hình dạng cố định (Hư). Thổ là khối đất đá đặc quánh, có trọng lượng và thể tích vững chãi (Thực). Do đó, con người dùng đất đá đắp bờ đê dày đặc để chặn đứng dòng lũ dữ, dẫn dòng nước chảy vào kênh rạch phục vụ tưới tiêu nông nghiệp.",
+      "practical_manifestation": "Hệ thống đê sông Hồng nghìn năm chắn lũ bảo vệ kinh thành Thăng Long, các đập thủy điện tích nước phát điện.",
+      "key_takeaway": "Nền tảng đạo đức vững vàng và sự chắc chắn (Thổ) sẽ kiểm soát được những cảm xúc bồng bột trôi dạt (Thủy)."
     }
   ]
 };
 
 const AMDUONG_NGUHANH_PART_8 = {
   "chapter_number": 8,
-  "classic_source": "《白虎通義·五行》 (Bạch Hổ Thông Nghĩa - Ban Cố, Đông Hán)",
-  "chapter_title": "Tiết VIII: Bạch Hổ Thông Nghĩa — Đạo Đức Vũ Trụ, Luân Lý Khí Hóa & Thiên Nhân Tương Cảm",
-  "sub_title": "Khảo cứu toàn văn thiên Ngũ Hành trong Bạch Hổ Thông Đức Luận: Ý nghĩa phụ tử trong tương sinh, phu thê trong tương khắc",
+  "classic_source": "《白虎通義·五行篇》 (Bạch Hổ Thông Nghĩa: Thiên Ngũ Hành) — Ban Cố (Đông Hán - 漢·班固, 32–92)",
+  "chapter_title": "Tiết VIII: Bạch Hổ Thông Nghĩa — Đạo Đức Luân Lý Vũ Trụ & Ý Nghĩa 'Phụ Tử - Phu Thê Chi Đạo'",
+  "sub_title": "Toàn văn đại điển của Ban Cố: Luân lý hóa quy luật tự nhiên, giải mã đạo con thờ cha trong Tương Sinh và đạo vợ chồng trong Tương Khắc",
+  "stages_title": "Giải Mã Chi Tiết Triết Học Luân Lý Vũ Trụ Ngũ Hành (Chuyên Khảo Sư Phạm)",
   "canonical_texts": [
     {
-      "hanzi": "五行者，何謂也？謂金、木、水、火、土也。言行者，欲言為天行氣之義也。地之承天，猶妻之事夫，臣之事君也。謂其位卑，卑者親視事，故自周於一行，尊於天也。\n五行所以相生何？子事父，臣事君，母養子之道也。故木生火，火生土，土生金，金生水，水生木。\n五行所以相剋何？天地之性，陰陽之理，夫婦之道也。木受金而制，火得水而滅，土得木而達，金得火而缺，水得土而絕。此皆夫婦配偶相制之法也。",
-      "pinyin": "Ngũ hành giả, hà vị dã? Vị Kim, Mộc, Thủy, Hỏa, Thổ dã. Ngôn Hành giả, dục ngôn vi thiên hành khí chi nghĩa dã. Địa chi thừa thiên, do thê chi sự phu, thần chi sự quân dã. Vị kỳ vị ty, ty giả thân thị sự, cố tự chu ư nhất hành, tôn ư thiên dã.\nNgũ hành sở dĩ tương sinh hà? Tử sự phụ, thần sự quân, mẫu dưỡng tử chi đạo dã. Cố Mộc sinh Hỏa, Hỏa sinh Thổ, Thổ sinh Kim, Kim sinh Thủy, Thủy sinh Mộc.\nNgũ hành sở dĩ tương khắc hà? Thiên địa chi tính, âm dương chi lý, phu phụ chi đạo dã. Mộc thụ Kim nhi chế, Hỏa đắc Thủy nhi diệt, Thổ đắc Mộc nhi đạt, Kim đắc Hỏa nhi khuyết, Thủy đắc Thổ nhi tuyệt. Thử giai phu phụ phối ngẫu tương chế chi pháp dã.",
-      "meaning": "Hỏi: 'Ngũ Hành' nghĩa là gì? Đáp: Đó là Kim, Mộc, Thủy, Hỏa, Thổ. Dùng chữ 'HÀNH' (Vận hành) là muốn nói năm luồng khí lực thay Trời vận hành trật tự khắp nhân gian. Đất đón nhận khí Trời ví như người vợ thuận tùng phụng sự chồng, bầy tôi phụng sự đấng minh quân.\nHỏi: Vì sao Ngũ Hành lại có đạo 'TƯƠNG SINH'? Đáp: Đó là đạo con phụng dưỡng cha, tôi trung phò tá chúa, mẹ hiền nuôi nấng con thơ. Cho nên Mộc sinh Hỏa (như mẹ sinh con), Hỏa sinh Thổ, Thổ sinh Kim, Kim sinh Thủy, Thủy sinh Mộc.\nHỏi: Vì sao Ngũ Hành lại có đạo 'TƯƠNG KHẮC'? Đáp: Đó là tính tự nhiên của Trời Đất, đạo lý của Âm Dương, đạo phối ngẫu của Vợ Chồng (người chồng cương trực kiềm chế người vợ mềm dẻo, vợ chồng kiềm chế lẫn nhau để cùng giữ gìn gia đạo bình an). Mộc chịu sự uốn nắn của Kim mới thành vật báu; Hỏa gặp Nước mới dập tắt bớt cơn thịnh nộ; Đất cằn gặp Rễ cây mới thông thoáng sinh sôi; Vàng thô gặp Lửa nung mới thành đồ trang sức; Nước lũ gặp Bờ đất đắp đê mới định hình thành dòng chảy có ích. Đó đều là phép tắc tương chế cân bằng của vạn vật càn khôn.",
-      "source": "Bạch Hổ Thông Nghĩa (白虎通義) — Quyển Đệ Nhị: Thiên Ngũ Hành (Ban Cố chủ biên thời Hán Chương Đế)"
+      "hanzi": "五行所以相生者何？相生者，父子之道也。木生火，火生土，土生金，金生水，水生木。子生於母，養之以愛，終身事之以孝。故木生火，木竭而火盛，是子承父業也。\n五行所以相剋者何？相剋者，夫婦之道也。木剋土，土剋水，水剋火，火剋金，金剋木。夫剋婦，非殘害也，防其過差，正其綱紀也。婦事夫，陰事陽，相成而不相害也。\n五行之德：木仁、火禮、土信、金義、水智。天有五常以配五行，人有五臟以應五氣。",
+      "pinyin": "Ngũ hành sở dĩ tương sinh giả hà? Tương sinh giả, phụ tử chi đạo dã. Mộc sinh Hỏa, Hỏa sinh Thổ, Thổ sinh Kim, Kim sinh Thủy, Thủy sinh Mộc. Tử sinh ư mẫu, dưỡng chi dĩ ái, chung thân sự chi dĩ hiếu. Cố Mộc sinh Hỏa, mộc kiệt nhi hỏa thịnh, thị tử thừa phụ nghiệp dã.\nNgũ hành sở dĩ tương khắc giả hà? Tương khắc giả, phu phụ chi đạo dã. Mộc khắc Thổ, Thổ khắc Thủy, Thủy khắc Hỏa, Hỏa khắc Kim, Kim khắc Mộc. Phu khắc phụ, phi tàn hại dã, phòng kỳ quá sai, chính kỳ cương kỷ dã. Phụ sự phu, âm sự dương, tương thành nhi bất tương hại dã.\nNgũ hành chi đức: Mộc Nhân, Hỏa Lễ, Thổ Tín, Kim Nghĩa, Thủy Trí. Thiên hữu Ngũ Thường dĩ phối Ngũ Hành, nhân hữu Ngũ Tạng dĩ ứng Ngũ Khí.",
+      "meaning": "VÌ SAO NGŨ HÀNH LẠI TƯƠNG SINH VỚI NHAU?\nTương Sinh chính là ĐẠO CHA CON (Phụ tử chi đạo). Mộc sinh Hỏa, Hỏa sinh Thổ, Thổ sinh Kim, Kim sinh Thủy, Thủy sinh Mộc. Con sinh ra từ người Mẹ, mẹ nuôi nấng con bằng tình thương yêu bao la, con suốt đời phụng dưỡng mẹ bằng tấm lòng hiếu thảo trọn vẹn. Cho nên Mộc sinh ra Hỏa: Thân gỗ hi sinh cháy hết mình để ngọn lửa bốc cao tỏa rạng, đó chính là hình ảnh người con kế thừa và phát huy rực rỡ sự nghiệp của người cha.\n\nVÌ SAO NGŨ HÀNH LẠI TƯƠNG KHẮC VỚI NHAU?\nTương Khắc chính là ĐẠO VỢ CHỒNG (Phu thê chi đạo). Mộc khắc Thổ, Thổ khắc Thủy, Thủy khắc Hỏa, Hỏa khắc Kim, Kim khắc Mộc. Chồng khắc chế vợ, không phải là tàn hại áp bức độc ác, mà là để phòng ngừa sự sai sót lệch lạc, giữ cho gia phong kỷ cương luôn ngay ngắn. Vợ thuận theo chồng, Âm thuận theo Dương, cùng nhau nâng đỡ hoàn thiện cho nhau chứ tuyệt đối không làm hại nhau.\n\nNĂM ĐỨC HẠNH CỦA NGŨ HÀNH (NGŨ THƯỜNG):\nMộc là lòng NHÂN ái, Hỏa là phép LỄ nghi, Thổ là chữ TÍN nghĩa, Kim là đức NGHĨA hiệp, Thủy là lòng TRÍ tuệ. Trời có Ngũ Thường phối hợp với Ngũ Hành, Người có Ngũ Tạng (Tâm, Can, Tỳ, Phế, Thận) tương ứng với Ngũ Khí.",
+      "source": "Bạch Hổ Thông Nghĩa (白虎通義) — Thiên Ngũ Hành (Ban Cố chủ biên thời Đông Hán)"
     }
   ],
   "scholarly_analysis": {
     "term_glossary": [
       {
-        "term": "Thiên Nhân Tương Cảm (天人相感)",
-        "plain_vn": "Con người là tiểu vũ trụ, Trời Đất là đại vũ trụ. Hành vi đạo đức và tâm tính con người tương thông trực tiếp với luồng khí Ngũ Hành bên ngoài."
+        "term": "Phụ Tử Chi Đạo (父子之道)",
+        "plain_vn": "Đạo lý Tương Sinh: Mẹ hi sinh nuôi con, con kế thừa phát dương quang đại sự nghiệp tổ tiên (Mẫu từ tử hiếu)."
       },
       {
-        "term": "Phu Phụ Chi Đạo trong Tương Khắc (夫婦之道)",
-        "plain_vn": "Quan điểm độc đáo của Hán Nho: Khắc là phối ngẫu âm dương kiềm chế nhau, như vợ chồng tương kính tương nhượng, không phải hủy diệt đối kháng sinh tử."
+        "term": "Phu Thê Chi Đạo (夫婦之道)",
+        "plain_vn": "Đạo lý Tương Khắc: Sự kiềm chế mềm mỏng để giữ gìn kỷ cương gia đình, Âm Dương hòa hợp bổ khuyết cho nhau."
       },
       {
-        "term": "Phụ Tử Chi Đạo trong Tương Sinh (父子之道)",
-        "plain_vn": "Đạo tương sinh là sự kế thừa huyết thống, thế hệ trước hy sinh dưỡng chất tích lũy để thế hệ sau nảy mầm tỏa sáng."
-      },
-      {
-        "term": "Vi Thiên Hành Khí (為天行氣)",
-        "plain_vn": "Năm Hành là năm vị thừa sai của Thượng Đế luân phiên điều hòa khí hậu thời tiết và mùa màng dưới nhân gian."
+        "term": "Ngũ Thường Phối Ngũ Hành (五常配五行)",
+        "plain_vn": "Sự kết hợp giữa 5 đức tính đạo đức Nho gia (Nhân, Lễ, Nghĩa, Trí, Tín) với 5 nguồn năng lượng tự nhiên."
       }
     ],
     "masters_views": [
       {
-        "master": "Ban Cố (Đại sử gia Đông Hán)",
+        "master": "Ban Cố (Tác giả Hán Thư)",
         "work": "Bạch Hổ Thông Đức Luận",
-        "perspective": "Bạch Hổ Thông thống nhất học thuật kinh điển của Lưỡng Hán, lấy Ngũ Hành làm rường mối giải thích toàn bộ đạo đức xã hội và thiên nhiên."
-      },
-      {
-        "master": "Đổng Trọng Thư (Tây Hán)",
-        "work": "Xuân Thu Phồn Lộ",
-        "perspective": "Trời có Ngũ Hành, người có Ngũ Tạng. Đạo trị quốc thuận Ngũ Hành ắt mưa thuận gió hòa, trái Ngũ Hành ắt sinh tai biến răn đe."
+        "perspective": "Đạo trời và đạo người là một. Người hiểu Ngũ Hành không chỉ để xem phong thủy bói toán, mà cốt lõi là để tu thân lập đức, giữ trọn hiếu đạo và luân thường đạo lý."
       }
     ]
   },
   "cosmological_stages": [
     {
-      "stage": "Đức Mục 1: Mộc Chủ Nhân (仁)",
-      "state": "Phương Đông • Tính Từ Ái",
-      "philosophical_meaning": "Lòng nhân ái thương xót sinh linh, nuôi dưỡng kẻ yếu, tính tình hòa nhã như mùa xuân ấm áp đâm chồi."
+      "stage": "Luân Lý 1: Đạo Cha Con Trong Tương Sinh (Mẫu Tử Tình Thâm)",
+      "state": "Hi sinh và Kế thừa",
+      "detailed_explanation": "Quan hệ Mẫu - Tử trong Ngũ Hành là quan hệ thiêng liêng nhất: Hành sinh ra ta gọi là MẸ (Ấn thụ/Phụ mẫu); Hành ta sinh ra gọi là CON (Tử tôn/Thực thương). Mẹ luôn dồn hết dưỡng chất để nuôi con: Gỗ cháy kiệt thành tro để lửa rực sáng; Nước cạn dòng để cây tươi tốt. Người con có hiếu là người biết dùng tài năng phụng dưỡng mẹ cha khi tuổi già bóng xế.",
+      "practical_manifestation": "Cha mẹ tần tảo sớm hôm nuôi con ăn học thành tài đỗ đạt tiến sĩ làm rạng danh dòng tộc.",
+      "key_takeaway": "Uống nước nhớ nguồn; đạo làm con lấy chữ Hiếu làm đầu."
     },
     {
-      "stage": "Đức Mục 2: Hỏa Chủ Lễ (禮)",
-      "state": "Phương Nam • Tính Cung Kính",
-      "philosophical_meaning": "Lễ nghi chuẩn mực, phân định tôn ti trật tự, quang minh lỗi lạc như mặt trời mùa hạ xua tan u tối."
+      "stage": "Luân Lý 2: Đạo Vợ Chồng Trong Tương Khắc (Tương Thành Bất Tương Hại)",
+      "state": "Răn đe và Bổ khuyết",
+      "detailed_explanation": "Nhiều người lầm tưởng 'Khắc' là đánh nhau tiêu diệt. Ban Cố giải thích vô cùng sâu sắc: 'Khắc' tựa như người chồng khuyên răn người vợ khi quá đà, người vợ nhắc nhở người chồng khi nóng nảy. Đó là sự kiềm chế tích cực để bảo vệ hạnh phúc gia đình. Nếu không có sự kiềm chế (Khắc), tính khí con người sẽ buông thả dẫn đến tan vỡ gia đạo.",
+      "practical_manifestation": "Vợ chồng biết nhường nhịn và khuyên bảo nhau khi gặp khó khăn sóng gió cuộc đời.",
+      "key_takeaway": "Khắc là sự hoàn thiện lẫn nhau; thương nhau thì phải biết góp ý chân thành để cùng tiến bộ."
     },
     {
-      "stage": "Đức Mục 3: Thổ Chủ Tín (信)",
-      "state": "Trung Ương • Tính Trung Hậu",
-      "philosophical_meaning": "Chữ Tín bất biến, thành thật trung kiên, là điểm tựa vững chắc cho bốn đức còn lại nương tựa."
-    },
-    {
-      "stage": "Đức Mục 4: Kim Chủ Nghĩa (義)",
-      "state": "Phương Tây • Tính Cương Đoán",
-      "philosophical_meaning": "Trọng đạo nghĩa khí tiết, phân minh đúng sai, kiên quyết diệt trừ cái xấu như sương thu túc sát."
-    },
-    {
-      "stage": "Đức Mục 5: Thủy Chủ Trí (智)",
-      "state": "Phương Bắc • Tính Uyên Thâm",
-      "philosophical_meaning": "Trí tuệ mưu lược sâu rộng, thấu suốt vạn sự, linh hoạt thích nghi mọi hoàn cảnh như dòng nước cuộn trôi."
+      "stage": "Luân Lý 3: Ngũ Thường Phối Tạng Phủ (Tu Thân Dưỡng Tính)",
+      "state": "Nhân dưỡng Can • Lễ dưỡng Tâm • Tín dưỡng Tỳ • Nghĩa dưỡng Phế • Trí dưỡng Thận",
+      "detailed_explanation": "Đạo đức con người tác động trực tiếp đến sức khỏe lục phủ ngũ tạng: Người hay giận dữ độc ác (mất Nhân) thì gan tổn thương; người thất lễ hoảng loạn (mất Lễ) thì tim loạn nhịp; người hay nghi ngờ dối trá (mất Tín) thì đau dạ dày tỳ vị; người tham lam bất nghĩa (mất Nghĩa) thì phổi suy kiệt; người sợ hãi mê muội (mất Trí) thì thận suy tủy cạn.",
+      "practical_manifestation": "Người sống hiền lành, nhân ái, ngay thẳng thì khí sắc hồng hào, sống lâu trăm tuổi.",
+      "key_takeaway": "Tu dưỡng 5 đức hạnh Nhân - Lễ - Nghĩa - Trí - Tín chính là phương thuốc dưỡng sinh trường thọ tốt nhất."
     }
   ]
 };
 
 const AMDUONG_NGUHANH_PART_9 = {
   "chapter_number": 9,
-  "classic_source": "《黃帝內經·素問·陰陽應象大論》 (Hoàng Đế Nội Kinh: Tố Vấn — Âm Dương Ứng Tượng Đại Luận)",
-  "chapter_title": "Tiết IX: Hoàng Đế Nội Kinh — Vạn Vật Loại Tượng & Ma Trận Chiếu Ứng Sinh Mệnh Càn Khôn",
-  "sub_title": "Toàn văn đoạn đối đáp kinh điển giữa Hoàng Đế và Kỳ Bá: Âm Dương là Đạo của Trời Đất, ma trận 5 Phương, 5 Khí, 5 Tạng, 5 Quan",
+  "classic_source": "《黃帝內經·素問·陰陽應象大論》 (Hoàng Đế Nội Kinh: Tố Vấn) — Kỳ Bá & Hoàng Đế",
+  "chapter_title": "Tiết IX: Hoàng Đế Nội Kinh — Đại Ma Trận Ngũ Tạng, Ngũ Quan, Ngũ Âm & Khí Hóa Nhân Thể",
+  "sub_title": "Toàn văn kinh điển y học cổ đại: Âm Dương giả thiên địa chi đạo dã, ma trận ngũ phương sinh ngũ khí nuôi ngũ tạng",
+  "stages_title": "Giải Mã Chi Tiết Đại Ma Trận Sinh Học & Y Học Cổ Truyền Ngũ Tạng (Chuyên Khảo Sư Phạm)",
   "canonical_texts": [
     {
-      "hanzi": "黃帝曰：陰陽者，天地之道也，萬物之綱紀，變化之父母，生殺之本始，神明之府也，治病必求於本。故積陽為天，積陰為地。陰靜陽躁，陽生陰長，陽殺陰藏。陽化氣，陰成形。寒極生熱，熱極生寒。寒氣生濁，熱氣生清。清氣在下，則生飧泄，濁氣在上，則生䐜脹。此陰陽反作，病之逆從也。\n故清陽為天，濁陰為地；地氣上為雲，天氣下為雨；雨出地氣，雲出天氣。\n故清陽出上竅，濁陰出下竅；清陽發腠理，濁陰走五藏；清陽實四支，濁陰歸六府。",
-      "pinyin": "Hoàng Đế viết: Âm Dương giả, thiên địa chi đạo dã, vạn vật chi cương kỷ, biến hóa chi phụ mẫu, sinh sát chi bản thủy, thần minh chi phủ dã, trị bệnh tất cầu ư bản. Cố tích Dương vi Thiên, tích Âm vi Địa. Âm tĩnh Dương táo, Dương sinh Âm trưởng, Dương sát Âm tàng. Dương hóa Khí, Âm thành Hình. Hàn cực sinh Nhiệt, nhiệt cực sinh Hàn. Hàn khí sinh trọc, nhiệt khí sinh thanh. Thanh khí tại hạ tắc sinh tôn tiết, trược khí tại thượng tắc sinh sân trướng. Thử Âm Dương phản tác, bệnh chi nghịch tòng dã.\nCố thanh dương vi Thiên, trược âm vi Địa; địa khí thượng vi vân, thiên khí hạ vi vũ; vũ xuất địa khí, vân xuất thiên khí.\nCố thanh dương xuất thượng khiếu, trược âm xuất hạ khiếu; thanh dương phát tấu lý, trược âm tẩu ngũ tạng; thanh dương thực tứ chi, trược âm quy lục phủ.",
-      "meaning": "Hoàng Đế dạy rằng: Âm Dương là Đạo của Trời Đất, là giường mối (Cương kỷ) của muôn loài vạn vật, là cha mẹ của mọi sự biến hóa, là gốc rễ của sinh sôi và sát diệt, là cung điện chứa đựng sự linh diệu của thần minh. Người chữa bệnh hay trị quốc ắt phải tìm về gốc rễ Âm Dương đó! Cho nên Khí Dương tích tụ nhẹ nhàng thì hóa thành Trời; Khí Âm ngưng tụ nặng nề thì hóa thành Đất. Âm thì Tĩnh tại êm đềm, Dương thì Náo động chuyển dịch. Dương chủ về Sinh khởi, Âm chủ về Nuôi lớn; Dương chủ về Sát phạt thu liễm, Âm chủ về Bế tàng cất giữ. Dương hóa thành Khí vô hình, Âm kết tụ thành Hình thể hữu hình. Lạnh đến cực điểm ắt sinh ra Nóng; Nóng đến cực điểm ắt sinh ra Lạnh. Khí lạnh sinh vẩn đục, Khí nóng sinh thanh khiết. Khí trong ở dưới thì sinh chứng tiêu chảy; Khí đục ở trên thì sinh chứng đầy trướng. Đó là Âm Dương nghịch loạn phản tác dụng mà sinh ra bệnh tật.\nCho nên Khí Thanh Dương bay lên làm Trời, Khí Trược Âm đọng xuống làm Đất; Khí của Đất bốc hơi lên tụ thành Mây, Khí của Trời buông xuống hóa thành Mưa; Mưa thực chất bắt nguồn từ Khí của Đất bốc lên, Mây thực chất bắt nguồn từ Khí của Trời kết tụ.\nTrong cơ thể người: Khí thanh dương phát tiết ra các lỗ phía trên (Mắt, Tai, Mũi, Miệng); Khí trược âm bài tiết ra các lỗ phía dưới (Tiền âm, Hậu âm); Khí thanh dương tỏa ra bì phu thớ thịt; Khí trược âm đi vào nuôi dưỡng Năm Tạng; Khí thanh dương làm vững chắc bốn chi; Khí trược âm quy tụ điều hòa Sáu Phủ.",
-      "source": "Hoàng Đế Nội Kinh (黃帝內經) — Tố Vấn: Thiên Đệ Ngũ (Âm Dương Ứng Tượng Đại Luận)"
-    },
-    {
-      "hanzi": "東方生風，風生木，木生酸，酸生肝，肝生筋，筋生心，肝主目。其在天為玄，在人為道，在地為化。化生五味，道生智，玄生神。神在天為風，在地為木，在體為筋，在藏為肝，在色為蒼，在音為角，在聲為呼，在變動為握，在竅為目，在味為酸，在志為怒。\n南方生熱，熱生火，火生苦，苦生心，心生血，血生脾，心主舌... 其在天為熱，在地為火，在體為脈，在藏為心，在色為赤，在音為徵，在聲為笑，在竅為舌，在味為苦，在志為喜。\n中央生濕，濕生土，土生甘，甘生脾，脾生肉，肉生肺，脾主口... 在藏為脾，在色為黃，在音為宮，在聲為歌，在竅為口，在味為甘，在志為思。\n西方生燥，燥生金，金生辛，辛生肺，肺生皮毛，皮毛生腎，肺主鼻... 在藏為肺，在色為白，在音為商，在聲為哭，在竅為鼻，在味為辛，在志為憂。\n北方生寒，寒生水，水生鹹，鹹生腎，腎生骨髓，髓生肝，腎主耳... 在藏為腎，在色為黑，在音為羽，在聲為呻，在竅為耳，在味為鹹，在志為恐。",
-      "pinyin": "Đông phương sinh Phong, phong sinh Mộc, mộc sinh Toan, toan sinh Can, can sinh Cân, cân sinh Tâm, can chủ Mục... Tại Thiên vi Phong, tại Địa vi Mộc, tại Thể vi Cân, tại Tạng vi Can, tại Sắc vi Thương, tại Âm vi Dốc, tại Thanh vi Hô, tại Khiếu vi Mục, tại Vị vi Toan, tại Chí vi Nộ.\nNam phương sinh Nhiệt, nhiệt sinh Hỏa, hỏa sinh Khổ, khổ sinh Tâm, tâm sinh Huyết, huyết sinh Tỳ, tâm chủ Thiệt... Tại Thiên vi Nhiệt, tại Địa vi Hỏa, tại Thể vi Mạch, tại Tạng vi Tâm, tại Sắc vi Xích, tại Âm vi Chủy, tại Thanh vi Tiếu, tại Khiếu vi Thiệt, tại Vị vi Khổ, tại Chí vi Hỷ.\nTrung ương sinh Thấp, thấp sinh Thổ, thổ sinh Cam, cam sinh Tỳ, tỳ sinh Nhục, nhục sinh Phế, tỳ chủ Khẩu... Tại Tạng vi Tỳ, tại Sắc vi Hoàng, tại Âm vi Cung, tại Thanh vi Ca, tại Khiếu vi Khẩu, tại Vị vi Cam, tại Chí vi Tư.\nTây phương sinh Táo, táo sinh Kim, kim sinh Tân, tân sinh Phế, phế sinh Bì mao, bì mao sinh Thận, phế chủ Tỵ... Tại Tạng vi Phế, tại Sắc vi Bạch, tại Âm vi Thương, tại Thanh vi Khốc, tại Khiếu vi Tỵ, tại Vị vi Tân, tại Chí vi Ưu.\nBắc phương sinh Hàn, hàn sinh Thủy, thủy sinh Hàm, hàm sinh Thận, thận sinh Cốt tủy, tủy sinh Can, thận chủ Nhĩ... Tại Tạng vi Thận, tại Sắc vi Hắc, tại Âm vi Vũ, tại Thanh vi Thân, tại Khiếu vi Nhĩ, tại Vị vi Hàm, tại Chí vi Khủng.",
-      "meaning": "Ma trận đối ứng Ngũ Hành toàn vũ trụ:\n1. PHƯƠNG ĐÔNG: Sinh ra Gió (Phong) → Gió sinh Mộc → Mộc sinh vị Chua (Toan) → Vị chua nuôi Can (Gan) → Can nuôi Gân (Cân) → Gân sinh dưỡng Tâm → Can mở khiếu ra Mắt (Mục). Tại Trời là Gió, tại Đất là Mộc, tại Thân thể là Gân, tại Tạng là Can, sắc màu là Xanh (Thương), âm nhạc là nốt Dốc (角), tiếng phát ra là Kêu la (Hô), khiếu là Mắt, vị là Chua, cảm xúc là Giận dữ (Nộ).\n2. PHƯƠNG NAM: Sinh ra Nhiệt → Nhiệt sinh Hỏa → Hỏa sinh vị Đắng (Khổ) → Vị đắng nuôi Tâm (Tim) → Tâm sinh Huyết mạch → Huyết mạch nuôi Tỳ → Tâm mở khiếu ra Lưỡi (Thiệt). Tại Trời là Nhiệt, tại Đất là Hỏa, tại Thân thể là Mạch, tại Tạng là Tâm, sắc màu là Đỏ (Xích), âm nhạc là nốt Chủy (徵), tiếng phát ra là Cười (Tiếu), khiếu là Lưỡi, vị là Đắng, cảm xúc là Vui mừng (Hỷ).\n3. TRUNG ƯƠNG: Sinh ra Ẩm thấp (Thấp) → Thấp sinh Thổ → Thổ sinh vị Ngọt (Cam) → Vị ngọt nuôi Tỳ (Lá lách) → Tỳ sinh Thịt bắp (Nhục) → Nhục sinh Phế → Tỳ mở khiếu ra Miệng (Khẩu). Tại Tạng là Tỳ, sắc màu là Vàng (Hoàng), âm nhạc là nốt Cung (宮), tiếng phát ra là Ca hát (Ca), khiếu là Miệng, vị là Ngọt, cảm xúc là Lo nghĩ suy tư (Tư).\n4. PHƯƠNG TÂY: Sinh ra Khô ráo (Táo) → Táo sinh Kim → Kim sinh vị Cay (Tân) → Vị cay nuôi Phế (Phổi) → Phế sinh Da lông (Bì mao) → Da lông sinh Thận → Phế mở khiếu ra Mũi (Tỵ). Tại Tạng là Phế, sắc màu là Trắng (Bạch), âm nhạc là nốt Thương (商), tiếng phát ra là Khóc than (Khốc), khiếu là Mũi, vị là Cay, cảm xúc là Buồn bã bi ưu (Ưu).\n5. PHƯƠNG BẮC: Sinh ra Lạnh giá (Hàn) → Hàn sinh Thủy → Thủy sinh vị Mặn (Hàm) → Vị mặn nuôi Thận → Thận sinh Xương tủy (Cốt tủy) → Tủy nuôi Can → Thận mở khiếu ra Tai (Nhĩ). Tại Tạng là Thận, sắc màu là Đen (Hắc), âm nhạc là nốt Vũ (羽), tiếng phát ra là Rên rỉ (Thân), khiếu là Tai, vị là Mặn, cảm xúc là Sợ hãi kinh hoàng (Khủng).",
-      "source": "Hoàng Đế Nội Kinh (黃帝內經) — Tố Vấn: Âm Dương Ứng Tượng Đại Luận Thiên"
+      "hanzi": "黃帝問曰：陰陽者，天地之道也，萬物之綱紀，變化之父母，生殺之本始，神明之府也。治病必求於本。\n東方生風，風生木，木生酸，酸生肝，肝生筋，筋生心，肝主目。其在天為玄，在人為道，在地為化。化生五味，道生智，玄生神。\n南方生熱，熱生火，火生苦，苦生心，心生血，血生脾，心主舌。\n中央生濕，濕生土，土生甘，甘生脾，脾生肉，肉生肺，脾主口。\n西方生燥，燥生金，金生辛，辛生肺，肺生皮毛，皮毛生腎，肺主鼻。\n北方生寒，寒生水，水生鹹，鹹生腎，腎生骨髓，髓生肝，腎主耳。",
+      "pinyin": "Hoàng Đế vấn viết: Âm Dương giả, thiên địa chi đạo dã, vạn vật chi cương kỷ, biến hóa chi phụ mẫu, sinh sát chi bản thủy, thần minh chi phủ dã. Trị bệnh tất cầu ư bản.\nĐông phương sinh Phong, phong sinh Mộc, mộc sinh Toan, toan sinh Can, can sinh Cân, cân sinh Tâm, can chủ Mục. Kỳ tại thiên vi Huyền, tại nhân vi Đạo, tại địa vi Hóa. Hóa sinh ngũ vị, đạo sinh trí, huyền sinh thần.\nNam phương sinh Nhiệt, nhiệt sinh Hỏa, hỏa sinh Khổ, khổ sinh Tâm, tâm sinh Huyết, huyết sinh Tỳ, tâm chủ Thiệt.\nTrung ương sinh Thấp, thấp sinh Thổ, thổ sinh Cam, cam sinh Tỳ, tỳ sinh Nhục, nhục sinh Phế, tỳ chủ Khẩu.\nTây phương sinh Táo, táo sinh Kim, kim sinh Tân, tân sinh Phế, phế sinh Bì mao, bì mao sinh Thận, phế chủ Tỵ.\nBắc phương sinh Hàn, hàn sinh Thủy, thủy sinh Hàm, hàm sinh Thận, thận sinh Cốt tủy, tủy sinh Can, thận chủ Nhĩ.",
+      "meaning": "HOÀNG ĐẾ HỎI KỲ BÁ VỀ ĐẠO ÂM DƯƠNG:\n'Âm Dương chính là Đạo của Trời Đất, là kỷ cương giường mối của muôn loài vạn vật, là cha mẹ sinh ra mọi sự biến hóa, là gốc rễ của sự sống và cái chết, là cung điện của thần minh linh diệu. Người thầy thuốc chữa bệnh nhất định phải tìm về cội gốc Âm Dương ấy.'\n\nĐẠI MA TRẬN KHÍ HÓA NĂM PHƯƠNG NUÔI NĂM TẠNG:\n1. PHƯƠNG ĐÔNG: Sinh ra gió (Phong) $\rightarrow$ Gió sinh ra Mộc $\rightarrow$ Mộc sinh ra vị Chua (Toan) $\rightarrow$ Vị chua nuôi dưỡng tạng CAN (Gan) $\rightarrow$ Can nuôi dưỡng Gân cốt (Cân) $\rightarrow$ Can khai khiếu ra MẮT (Mục).\n2. PHƯƠNG NAM: Sinh ra nhiệt nóng (Nhiệt) $\rightarrow$ Nhiệt sinh ra Hỏa $\rightarrow$ Hỏa sinh ra vị ĐẮNG (Khổ) $\rightarrow$ Vị đắng nuôi dưỡng tạng TÂM (Tim) $\rightarrow$ Tâm sinh ra Máu huyết (Huyết) $\rightarrow$ Tâm khai khiếu ra LƯỠI (Thiệt).\n3. TRUNG ƯƠNG: Sinh ra độ ẩm (Thấp) $\rightarrow$ Thấp sinh ra Thổ $\rightarrow$ Thổ sinh ra vị NGỌT (Cam) $\rightarrow$ Vị ngọt nuôi dưỡng tạng TỲ (Lá lách, dạ dày) $\rightarrow$ Tỳ sinh ra Cơ bắp thịt nạc (Nhục) $\rightarrow$ Tỳ khai khiếu ra MIỆNG & MÔI (Khẩu).\n4. PHƯƠNG TÂY: Sinh ra khí khô ráo (Táo) $\rightarrow$ Táo sinh ra Kim $\rightarrow$ Kim sinh ra vị CAY (Tân) $\rightarrow$ Vị cay nuôi dưỡng tạng PHẾ (Phổi) $\rightarrow$ Phế nuôi dưỡng Da lông (Bì mao) $\rightarrow$ Phế khai khiếu ra MŨI (Tỵ).\n5. PHƯƠNG BẮC: Sinh ra khí lạnh giá (Hàn) $\rightarrow$ Hàn sinh ra Thủy $\rightarrow$ Thủy sinh ra vị MẶN (Hàm) $\rightarrow$ Vị mặn nuôi dưỡng tạng THẬN $\rightarrow$ Thận sinh ra Xương tủy (Cốt tủy) $\rightarrow$ Thận khai khiếu ra TAI (Nhĩ).",
+      "source": "Hoàng Đế Nội Kinh (黃帝內經) — Tố Vấn: Âm Dương Ứng Tượng Đại Luận (Thiên thứ 5)"
     }
   ],
   "scholarly_analysis": {
     "term_glossary": [
       {
-        "term": "Vạn Vật Loại Tượng (萬物類象)",
-        "plain_vn": "Phương pháp quy nạp toàn bộ hiện tượng tự nhiên, tâm lý, sinh học vào 5 hệ thống ma trận năng lượng Ngũ Hành đồng thanh tương ứng, đồng khí tương cầu."
+        "term": "Trị Bệnh Tất Cầu Ư Bản (治病必求於本)",
+        "plain_vn": "Nguyên lý y học tối thượng: Chữa bệnh không chỉ chữa triệu chứng bên ngoài ngọn, mà phải truy tìm gốc rễ mất cân bằng Âm Dương Ngũ Khí bên trong."
       },
       {
-        "term": "Ngũ Tạng Hóa Ngũ Khí (五藏化五氣)",
-        "plain_vn": "Can hóa Phong, Tâm hóa Hỏa, Tỳ hóa Thấp, Phế hóa Táo, Thận hóa Hàn. Sinh lý và bệnh lý con người gắn liền với khí hậu vũ trụ."
+        "term": "Ngũ Tạng Khai Khiếu (五臟開竅)",
+        "plain_vn": "5 cửa ngõ giác quan hiển lộ sức khỏe tạng phủ bên trong: Mắt (Gan), Lưỡi (Tim), Miệng (Tỳ), Mũi (Phổi), Tai (Thận)."
       },
       {
-        "term": "Ngũ Âm Thập Nhị Luật (五音十二律)",
-        "plain_vn": "Hệ thống 5 nốt nhạc cổ đại: Cung (Thổ), Thương (Kim), Dốc (Mộc), Chủy (Hỏa), Vũ (Thủy) dùng để trị bệnh và điều hòa nhân tâm."
-      },
-      {
-        "term": "Tình Chí Tương Thắng (情志相勝)",
-        "plain_vn": "Cơ chế tâm lý học trị liệu cổ đại: Bi thắng Nộ (Buồn thắng Giận), Khủng thắng Hỷ (Sợ thắng Vui quá độ), Nộ thắng Tư (Giận thắng Lo nghĩ), Hỷ thắng Ưu (Vui thắng Buồn), Tư thắng Khủng (Suy nghĩ thấu đáo thắng Sợ hãi)."
+        "term": "Thiên Nhân Tương Ứng (天人相應)",
+        "plain_vn": "Con người là một tiểu vũ trụ thu nhỏ; khí hậu 5 phương trời đất vận động ra sao thì 5 tạng trong cơ thể chuyển động y như vậy."
       }
     ],
     "masters_views": [
       {
-        "master": "Kỳ Bá (Thiên Sư Thượng Cổ)",
-        "work": "Hoàng Đế Nội Kinh",
-        "perspective": "Người thuận theo âm dương thì sống khỏe mạnh trường thọ; người làm trái nghịch âm dương ắt tạng phủ suy kiệt vong thân."
-      },
-      {
-        "master": "Trương Trọng Cảnh (Đông Hán)",
-        "work": "Thương Hàn Tạp Bệnh Luận",
-        "perspective": "Biết Lục Khí Ngũ Hành của Trời Đất thì mới thấu tỏ kinh lạc tạng phủ trong thân hình con người."
+        "master": "Kỳ Bá (Thiên Sư)",
+        "work": "Hoàng Đế Nội Kinh Tố Vấn",
+        "perspective": "Âm ở trong giữ gìn làm nền tảng cho Dương; Dương ở ngoài làm người bảo vệ cho Âm. Âm Dương điều hòa thì tinh thần vững vàng, sống lâu trăm tuổi."
       }
     ]
   },
   "cosmological_stages": [
     {
-      "stage": "Hệ Thống Mộc (Đông • Phong • Can • Mục)",
-      "state": "Màu Xanh • Nốt Dốc • Vị Chua • Giận dữ",
-      "philosophical_meaning": "Điều khiển sự khai mở, điều đạt khí cơ toàn thân, chủ về sự dẻo dai của gân cốt và thị lực sáng tỏ của đôi mắt."
+      "stage": "Ma Trận 1: Phương Đông • Tạng Can • Mắt • Gân Cốt",
+      "state": "Mộc Khí • Vị Chua • Tình chí: Giận (Nộ)",
+      "detailed_explanation": "Can tàng huyết, chủ sơ tiết khí cơ và điều khiển hệ thống gân cốt dẻo dai. Khi Can khí sung túc, đôi mắt sáng ngời, nhìn rõ mọi vật, gân cốt dẻo dai linh hoạt. Nếu Can khí uất kết (do hay giận dữ, căng thẳng), mắt sẽ đỏ ngầu, mờ mắt, móng tay giòn gãy, tính tình cáu gắt vô cớ.",
+      "practical_manifestation": "Nhìn đôi mắt sáng trong veo của trẻ thơ là biết gan khỏe; người uống nhiều rượu bia mắt vàng đục là gan suy thoái.",
+      "key_takeaway": "Muốn dưỡng Can phải bớt giận dữ, ăn đồ chua thanh nhẹ và ngủ trước 23h đêm (giờ Can Đởm kinh)."
     },
     {
-      "stage": "Hệ Thống Hỏa (Nam • Nhiệt • Tâm • Thiệt)",
-      "state": "Màu Đỏ • Nốt Chủy • Vị Đắng • Vui mừng",
-      "philosophical_meaning": "Là Quân chủ chi quan (Vua của cơ thể), điều khiển thần minh trí tuệ, tuần hoàn huyết mạch và sự linh hoạt của đầu lưỡi."
+      "stage": "Ma Trận 2: Phương Nam • Tạng Tâm • Lưỡi • Máu Huyết",
+      "state": "Hỏa Khí • Vị Đắng • Tình chí: Vui quá đà (Hỷ)",
+      "detailed_explanation": "Tâm là vị Quân chủ trong cơ thể, chủ quản thần minh và bơm máu huyết đi nuôi vạn mạch. Khi Tâm hỏa điều hòa, sắc mặt hồng hào nhuận sắc, đầu lưỡi đỏ tươi, ăn nói lưu loát hoạt bát. Nếu Tâm hỏa bốc vượng (do thức đêm, lo nghĩ quá độ), đầu lưỡi sẽ lở loét đỏ rực, tim đập nhanh hồi hộp mất ngủ.",
+      "practical_manifestation": "Đầu lưỡi hồng tươi chứng tỏ tim khỏe máu tốt; đầu lưỡi tím tái có điểm ứ huyết cảnh báo tắc nghẽn mạch vành.",
+      "key_takeaway": "Dưỡng Tâm cần giữ tâm hồn thanh thản, ăn chút mướp đắng hoặc uống trà tâm sen giải nhiệt."
     },
     {
-      "stage": "Hệ Thống Thổ (Trung Ương • Thấp • Tỳ • Khẩu)",
-      "state": "Màu Vàng • Nốt Cung • Vị Ngọt • Lo nghĩ",
-      "philosophical_meaning": "Là Hậu thiên chi bản (Cội nguồn tiêu hóa hấp thu dinh dưỡng), nuôi dưỡng cơ bắp thịt da và cảm nhận vị giác ở miệng."
+      "stage": "Ma Trận 3: Trung Ương • Tạng Tỳ • Miệng & Môi • Cơ Bắp",
+      "state": "Thổ Khí • Vị Ngọt • Tình chí: Lo nghĩ (Tư)",
+      "detailed_explanation": "Tỳ vị là gốc rễ của Hậu Thiên, cơ quan tiêu hóa biến thức ăn thành dinh dưỡng nuôi cơ bắp thịt nạc. Khi Tỳ vị khỏe mạnh, ăn uống ngon miệng, môi đỏ mọng đầy đặn, cơ bắp săn chắc tràn đầy sinh lực. Nếu hay lo nghĩ quá độ (Tư thương Tỳ), bụng sẽ đầy trướng khó tiêu, môi tái nhợt khô nứt, cơ bắp nhão xệ.",
+      "practical_manifestation": "Đôi môi hồng hào tươi tắn là biểu hiện của hệ tiêu hóa tỳ vị hoàn hảo; môi khô nứt nhợt nhạt là tỳ khí suy kiệt.",
+      "key_takeaway": "Dưỡng Tỳ cần ăn uống đúng giờ giấc, nhai kỹ no lâu, tránh vừa ăn vừa suy nghĩ lo toan công việc."
     },
     {
-      "stage": "Hệ Thống Kim (Tây • Táo • Phế • Tỵ)",
-      "state": "Màu Trắng • Nốt Thương • Vị Cay • Bi ưu",
-      "philosophical_meaning": "Là Tướng phó chi quan (Tướng quân điều hành khí lực), tiếp nạp thanh khí trời đất, bảo vệ lớp da lông và khứu giác mũi."
+      "stage": "Ma Trận 4: Phương Tây • Tạng Phế • Mũi • Da Lông",
+      "state": "Kim Khí • Vị Cay • Tình chí: Buồn rầu (Bi)",
+      "detailed_explanation": "Phế là chiếc dù che chở phía trên cho các tạng, chủ quản việc hít thở khí trời và phân bố vệ khí bảo vệ bề mặt da lông. Khi Phế khí mạnh, hơi thở sâu dài, tiếng nói sang sảng, làn da mịn màng hồng hào không sợ gió lạnh. Nếu hay buồn rầu than thở (Bi thương Phế), da dẻ sẽ khô ráp xỉn màu, mũi hay nghẹt sụt sịt, dễ bị cảm mạo.",
+      "practical_manifestation": "Làn da mịn màng tươi sáng không bị mụn nám là biểu hiện của một lá phổi khỏe mạnh hấp thu đủ oxy.",
+      "key_takeaway": "Dưỡng Phế cần tập thở bụng sâu vào mỗi sáng sớm, giữ ấm cổ ngực và giữ tinh thần lạc quan yêu đời."
     },
     {
-      "stage": "Hệ Thống Thủy (Bắc • Hàn • Thận • Nhĩ)",
-      "state": "Màu Đen • Nốt Vũ • Vị Mặn • Sợ hãi",
-      "philosophical_meaning": "Là Tiên thiên chi bản (Cội nguồn sinh mệnh nguyên thủy), tàng chứa tinh hoa sinh sản, làm vững chắc xương tủy và thính giác tai."
+      "stage": "Ma Trận 5: Phương Bắc • Tạng Thận • Tai • Xương Tủy",
+      "state": "Thủy Khí • Vị Mặn • Tình chí: Sợ hãi (Khủng)",
+      "detailed_explanation": "Thận là gốc rễ của Tiên Thiên, tàng trữ tinh hoa di truyền từ cha mẹ, chủ quản xương cốt, tủy sống, não bộ và khả năng sinh sản. Khi Thận khí dồi dào, thính lực tai cực kỳ tinh nhạy, răng chắc khỏe, tóc đen nhánh bồng bềnh, lưng gối vững vàng. Nếu Thận suy (do sợ hãi, lao lực quá độ), tai sẽ ù đặc tiếng ve kêu, răng lung lay, rụng tóc bạc sớm, đau lưng mỏi gối.",
+      "practical_manifestation": "Cụ già trăm tuổi tai vẫn thính nghe rõ từng lời thì chắc chắn Thận khí tiên thiên cực kỳ dồi dào.",
+      "key_takeaway": "Dưỡng Thận là bí quyết trường thọ: Tránh sợ hãi, ngủ đủ giấc, giữ ấm đôi bàn chân và không ăn quá mặn."
     }
   ]
 };
 
 const AMDUONG_NGUHANH_PART_10 = {
   "chapter_number": 10,
-  "classic_source": "《五行大義·卷三至卷五》 (Tiêu Cát) & 《滴天髓·五行論》 (Lưu Bá Ôn - Địch Thiên Tủy)",
-  "chapter_title": "Tiết X: Đại Tổng Kết Toàn Thư — Ma Trận Chế Hóa, Phản Sinh, Phản Khắc & Cực Biến Bí Quyết",
-  "sub_title": "Toàn văn kinh điển Địch Thiên Tủy và Ngũ Hành Đại Nghĩa: 20 định luật Khí Nhiều Thành Hại, Sinh Nhiều Thành Ngập, Yếu Khắc Mạnh Bị Gãy",
+  "classic_source": "《滴天髓·五行論》 (Địch Thiên Tủy: Ngũ Hành Luận) — Lưu Bá Ôn (Minh·劉伯溫) & 《五行大義·雜配篇》",
+  "chapter_title": "Tiết X: Địch Thiên Tủy — 20 Định Luật Biến Dịch Biện Chứng: Mẫu Từ Diệt Tử, Phản Khắc & Cực Biến",
+  "sub_title": "Đỉnh cao triết học biến dịch của Lưu Bá Ôn: Thổ đa Kim mai, Kim đa Thủy trọc, Mộc kiên Kim khuyết và bí quyết chế hóa",
+  "stages_title": "Giải Mã Chi Tiết 20 Định Luật Biến Dịch Biện Chứng Ngũ Hành Đỉnh Cao (Chuyên Khảo Sư Phạm)",
   "canonical_texts": [
     {
-      "hanzi": "五行之理，順之則吉，逆之則凶。然生之太甚，反受其害；剋之太過，反受其侮。五行生剋，非一概而論，當知變通之妙：\n金賴土生，土多金埋；土賴火生，火多土焦；火賴木生，木多火塞；木賴水生，水多木漂；水賴金生，金多水濁。\n金能生水，水多金沉；水能生木，木盛水縮；木能生火，火多木焚；火能生土，土多火晦；土能生金，金多土變。\n金能剋木，木堅金缺；木能剋土，土重木折；土能剋水，水多土流；水能剋火，火炎水熱；火能剋金，金多火熄。\n金衰遇火，必見銷鎔；火弱逢水，必為熄滅；水弱得土，必為淤塞；土衰遇木，必遭傾陷；木弱逢金，必為砍折。\n強金得水，方挫其鋒；強水得木，方洩其勢；強木得火，方化其頑；強火得土，方止其焰；強土得金，方制其壅。",
-      "pinyin": "Ngũ hành chi lý, thuận chi tắc cát, nghịch chi tắc hung. Nhiên sinh chi thái thậm, phản thụ kỳ hại; khắc chi thái quá, phản thụ kỳ vũ. Ngũ hành sinh khắc, phi nhất khái nhi luận, đương tri biến thông chi diệu:\nKim lại Thổ sinh, Thổ đa Kim mai; Thổ lại Hỏa sinh, Hỏa đa Thổ tiêu; Hỏa lại Mộc sinh, Mộc đa Hỏa tắc; Mộc lại Thủy sinh, Thủy đa Mộc phiêu; Thủy lại Kim sinh, Kim đa Thủy trọc.\nKim năng sinh Thủy, Thủy đa Kim trầm; Thủy năng sinh Mộc, Mộc thịnh Thủy súc; Mộc năng sinh Hỏa, Hỏa đa Mộc phần; Hỏa năng sinh Thổ, Thổ đa Hỏa hối; Thổ năng sinh Kim, Kim đa Thổ biến.\nKim năng khắc Mộc, Mộc kiên Kim khuyết; Mộc năng khắc Thổ, Thổ trọng Mộc chiết; Thổ năng khắc Thủy, Thủy đa Thổ lưu; Thủy năng khắc Hỏa, Hỏa viêm Thủy nhiệt; Hỏa năng khắc Kim, Kim đa Hỏa tức.\nKim suy ngộ Hỏa, tất kiến tiêu dung; Hỏa nhược phùng Thủy, tất vi tức diệt; Thủy nhược đắc Thổ, tất vi ứ tắc; Thổ suy ngộ Mộc, tất tao khuynh hãm; Mộc nhược phùng Kim, tất vi khảm chiết.\nCường Kim đắc Thủy, phương tỏa kỳ phong; Cường Thủy đắc Mộc, phương tiết kỳ thế; Cường Mộc đắc Hỏa, phương hóa kỳ ngoan; Cường Hỏa đắc Thổ, phương chỉ kỳ diễm; Cường Thổ đắc Kim, phương chế kỳ úng.",
-      "meaning": "Đạo lý của Ngũ Hành: Thuận theo thì Cát tường, làm trái nghịch thì Hung hiểm. Tuy nhiên, nếu Sinh cho quá mức thì ngược lại chuốc lấy Tai Hại; Khắc phạt quá tàn bạo thì ngược lại bị Khi Cậy lăng nhục (Tương Vũ). Phép sinh khắc biến hóa khôn lường, phải thấu suốt 20 định luật cực biến biện chứng đỉnh cao:\n1. NGUYÊN TẮC 'MẪU TỪ DIỆT TỬ' (Khí Mẹ Quá Nhiều Khiến Con Bị Hại):\n- Kim nhờ Đất (Thổ) sinh ra, nhưng Đất quá nhiều thì Vàng bị vùi lấp sâu dưới đáy mồ (Thổ đa Kim mai);\n- Thổ nhờ Lửa (Hỏa) sinh ra, nhưng Lửa quá dữ dội thiêu đốt thì Đất bị khô cằn nứt nẻ thành tro bụi (Hỏa đa Thổ tiêu);\n- Hỏa nhờ Cây gỗ (Mộc) sinh ra, nhưng Gỗ củi chất đống quá nhiều đè nghẹt oxy làm Lửa bị tắt nghẽn khói mù (Mộc đa Hỏa tắc);\n- Mộc nhờ Nước (Thủy) tưới tắm sinh ra, nhưng Nước lũ dâng ngập quá mênh mông thì Cây bị trốc rễ trôi dạt bồng bềnh (Thủy đa Mộc phiêu);\n- Thủy nhờ Kim loại ngưng tụ sinh ra, nhưng Kim loại quá thừa thãi quặng đặc thì Nước bị vẩn đục tanh hôi (Kim đa Thủy trọc).\n\n2. NGUYÊN TẮC 'TỬ ĐA TIẾT MẪU' (Con Quá Đông Khiến Mẹ Bị Kiệt Sức):\n- Kim sinh được Thủy, nhưng Nước chảy xiết cuồn cuộn thì Vàng chìm lỉm dưới đáy sâu (Thủy đa Kim trầm);\n- Thủy sinh được Mộc, nhưng Rừng cây rậm rạp hút hết nước ngầm thì Dòng sông bị khô cạn kiệt cùng (Mộc thịnh Thủy súc);\n- Mộc sinh được Hỏa, nhưng Ngọn lửa bốc cháy ngút trời thì Thân cây gỗ bị thiêu rụi thành tro không còn hình tích (Hỏa đa Mộc phần);\n- Hỏa sinh được Thổ, nhưng Đất bụi mịt mù che phủ thì Ngọn lửa bị lu mờ tắt lịm ánh sáng (Thổ đa Hỏa hối);\n- Thổ sinh được Kim, nhưng Kim loại khai thác quá tải thì Đất đai bị biến dạng sạt lở (Kim đa Thổ biến).\n\n3. NGUYÊN TẮC 'PHẢN KHẮC VŨ MẪU' (Kẻ Yếu Đòi Khắc Kẻ Mạnh Bị Gãy Ngược):\n- Rìu Kim khắc được Gỗ, nhưng gặp Khối Gỗ lim đá quá cứng chắc thì Lưỡi rìu bị mẻ gãy (Mộc kiên Kim khuyết);\n- Rễ Mộc đâm thủng được Đất, nhưng gặp Vùng Núi Đất tầng tầng dày đặc thì Rễ cây bị uốn gãy dập nát (Thổ trọng Mộc chiết);\n- Bờ Đê Thổ chắn được Nước, nhưng gặp Trận Đại Hồng Thủy cuồn cuộn thì Bờ đê bị nước cuốn trôi sạt lở (Thủy đa Thổ lưu);\n- Nước Thủy dập tắt được Lửa, nhưng gặp Biển Lửa rực cháy hừng hực thì Nước bị đun sôi bốc hơi khô kiệt (Hỏa viêm Thủy nhiệt);\n- Lửa Hỏa nung chảy được Kim loại, nhưng Lửa nhỏ gặp Tảng Thép khổng lồ thì Ngọn lửa bị dập tắt lịm (Kim đa Hỏa tức).\n\n4. NGUYÊN TẮC 'TIẾT KHÍ ĐẮC HÀI HÒA' (Kẻ Quá Cường Thịnh Bắt Buộc Phải Dùng Tiết Khí Để Hóa Giải):\n- Kim quá cương mãnh sắc bén: Bắt buộc dùng Nước Thủy để mài dũa làm dịu bớt khí bén nhọn (Cường Kim đắc Thủy);\n- Thủy quá cuồng bạo dâng tràn: Bắt buộc dùng Cây Mộc hút bớt dòng nước để làm dịu cơn lũ (Cường Thủy đắc Mộc);\n- Mộc quá cứng đầu ngoan cố: Bắt buộc dùng Lửa Hỏa phát tiết khai hoa nở nhụy làm mềm mại (Cường Mộc đắc Hỏa);\n- Hỏa quá bốc cháy hung tàn: Bắt buộc dùng Đất Thổ hấp thụ bớt sức nóng làm ngưng ngọn lửa (Cường Hỏa đắc Thổ);\n- Thổ quá ứ đọng bế tắc: Bắt buộc dùng Kim loại khai thông làm thông suốt dòng chảy (Cường Thổ đắc Kim).",
-      "source": "Địch Thiên Tủy (滴天髓) — Thiên Ngũ Hành Luận (Lưu Bá Ôn chú giải kinh điển)"
+      "hanzi": "五行之理，順生逆克，常也；太過不及，變也。\n一、母慈滅子（生多為克）：\n土多金埋，金多水濁，水多木漂，木多火塞，火多土焦。\n二、子多泄母（泄多身弱）：\n金多土變，水多金沉，木多水縮，火多木焚，土多火晦。\n三、反克侮母（物極必反）：\n木堅金缺，金多火熄，火炎水熱，水多土流，土重木折。\n四、得泄為貴（剛柔相濟）：\n強金得水，方挫其鋒；強水得木，方緩其勢；強木得火，方化其頑；強火得土，方斂其焰；強土得金，方制其壅。",
+      "pinyin": "Ngũ hành chi lý, thuận sinh nghịch khắc, thường dã; thái quá bất cập, biến dã.\nNhất, Mẫu từ diệt tử (Sinh đa vi khắc):\nThổ đa Kim mai, Kim đa Thủy trọc, Thủy đa Mộc phiêu, Mộc đa Hỏa tắc, Hỏa đa Thổ tiêu.\nNhị, Tử đa tiết mẫu (Tiết đa thân nhược):\nKim đa Thổ biến, Thủy đa Kim trầm, Mộc đa Thủy súc, Hỏa đa Mộc phần, Thổ đa Hỏa hối.\nTam, Phản khắc vũ mẫu (Vật cực tất phản):\nMộc kiên Kim khuyết, Kim đa Hỏa tức, Hỏa viêm Thủy nhiệt, Thủy đa Thổ lưu, Thổ trọng Mộc chiết.\nTứ, Đắc tiết vi quý (Cương nhu tương tế):\nCường Kim đắc Thủy, phương tỏa kỳ phong; Cường Thủy đắc Mộc, phương hoãn kỳ thế; Cường Mộc đắc Hỏa, phương hóa kỳ ngoan; Cường Hỏa đắc Thổ, phương liễm kỳ diệm; Cường Thổ đắc Kim, phương chế kỳ ung.",
+      "meaning": "Đạo lý của Ngũ Hành, thuận chiều thì Tương Sinh, nghịch chiều thì Tương Khắc, đó là cái Thường (Quy luật phổ thông); nhưng khi năng lượng rơi vào trạng thái QUÁ NHIỀU (Thái quá) hoặc QUÁ ÍT (Bất cập) thì sẽ sinh ra CÁI BIẾN (Quy luật biện chứng đỉnh cao):\n\n1. MẪU TỪ DIỆT TỬ (Mẹ quá nuông chiều làm hại chết Con - Sinh quá nhiều trở thành Khắc hại):\n- THỔ ĐA KIM MAI: Đất cát đổ đống quá dày sẽ chôn vùi mất vàng bạc quặng quý (không khai thác được).\n- KIM ĐA THỦY TRỌC: Kim loại quặng vụn rơi vào quá nhiều làm nước suối bị đục ngầu ô nhiễm.\n- THỦY ĐA MỘC PHIÊU: Nước lũ dâng ngập quá cao làm cây cối bị trôi nổi bồng bềnh bật rễ chết trôi.\n- MỘC ĐA HỎA TẮC: Gỗ cây tống vào bếp quá nhiều chật ních làm ngột ngạt tắt ngấm ngọn lửa.\n- HỎA ĐA THỔ TIÊU: Lửa thiêu đốt quá dữ dội làm đất đai bị khô cằn nứt nẻ thành tro bụi bạc màu.\n\n2. PHẢN KHẮC VŨ MẪU (Kẻ bị khắc quá mạnh quay lại đánh gãy kẻ khắc mình):\n- MỘC KIÊN KIM KHUYẾT: Cây gỗ cổ thụ quá cứng chắc làm mẻ sứt lưỡi rìu sắt cùn.\n- THỔ TRỌNG MỘC CHIẾT: Đất nén quá cứng đơ làm gãy gập rễ cây non không đâm sâu được.\n- THỦY ĐA THỔ LƯU: Nước lũ đại hồng thủy cuồn cuộn cuốn trôi sạt lở cả bờ đê đất dày.\n- HỎA VIÊM THỦY NHIỆT: Lửa cháy rừng rực thiêu đốt làm sôi sục bốc hơi cạn sạch chậu nước nhỏ.\n- KIM ĐA HỎA TỨC: Kim loại lạnh giá quá nhiều chất đống làm nguội lạnh tắt ngấm đốm lửa tàn.\n\n3. ĐẮC TIẾT VI QUÝ (Bí quyết xả bớt năng lượng quá mạnh để đạt đỉnh cao):\n- Cường Kim gặp Thủy xả bớt độ bén mới mài giũa thành ngọc báu; Cường Thủy gặp Mộc hút bớt nước lũ mới êm dịu thành dòng sông tưới tiêu; Cường Mộc gặp Hỏa đốt bớt mới tỏa sáng rực rỡ; Cường Hỏa gặp Thổ hấp thu bớt mới ấm áp ôn hòa; Cường Thổ gặp Kim khai phá mới thông thoáng sinh tài.",
+      "source": "Địch Thiên Tủy (滴天髓) — Ngũ Hành Biện Chứng Luận (Lưu Bá Ôn chú giải)"
     }
   ],
   "scholarly_analysis": {
     "term_glossary": [
       {
         "term": "Thái Quá & Bất Cập (太過與不及)",
-        "plain_vn": "Thái quá là dư thừa năng lượng vượt mức kiểm soát sinh ra bạo ngược; Bất cập là thiếu hụt suy kiệt không đủ lực sinh dưỡng."
+        "plain_vn": "Thái quá là thừa mứa quá độ gây ngập tràn; Bất cập là thiếu thốn suy kiệt không đủ sức gánh vác."
       },
       {
-        "term": "Tương Thừa (相乘)",
-        "plain_vn": "Hành khắc thừa thế đối phương đang suy yếu mà lấn át tàn bạo vượt quá giới hạn bình thường (Ví dụ: Mộc quá mạnh đè bẹp Thổ suy kiệt)."
+        "term": "Mẫu Từ Diệt Tử (母慈滅子)",
+        "plain_vn": "Định luật nhân quả: Sự yêu thương bảo bọc thái quá của cha mẹ (Ấn quá vượng) sẽ tước đoạt khả năng tự lập và bóp nghẹt tài năng của con cái."
       },
       {
-        "term": "Tương Vũ (相侮)",
-        "plain_vn": "Hành bị khắc trỗi dậy phản kháng, đánh ngược lại hành vốn khắc mình do hành khắc bị suy nhược (Ví dụ: Mộc cứng làm mẻ Kim)."
-      },
-      {
-        "term": "Tiên Thiên Khí vs Hậu Thiên Chất (先天與後天)",
-        "plain_vn": "Tiên Thiên Ngũ Hành là Chân Khí vô hình thuần khiết; Hậu Thiên Ngũ Hành là dạng vật chất hữu hình (nước sông, cây gỗ, đống lửa, quặng sắt, đất cát)."
+        "term": "Phản Khắc (反剋)",
+        "plain_vn": "Hiện tượng kẻ yếu cố tình đi ức chế kẻ mạnh hơn mình gấp trăm lần ắt bị gãy gập (như dao cùn chặt đá tảng)."
       }
     ],
     "masters_views": [
       {
-        "master": "Lưu Bá Ôn (Khai quốc công thần Minh triều)",
-        "work": "Địch Thiên Tủy Toàn Biên",
-        "perspective": "Đạo trời đất chỉ ở một chữ HÒA. Đừng thấy sinh mà vội mừng, đừng thấy khắc mà vội sợ. Khắc đúng lúc là Đại Cát, Sinh sai chỗ là Đại Hung."
-      },
-      {
-        "master": "Từ Nhạc Ngô (Dân Quốc đại sư)",
-        "work": "Tử Bình Chân Thuyên Bình Chú",
-        "perspective": "Ma trận 20 định luật phản sinh phản khắc của Địch Thiên Tủy là viên kim cương sáng chói nhất của học thuật Dịch lý cổ điển Á Đông."
+        "master": "Lưu Bá Ôn (Khai quốc công thần nhà Minh)",
+        "work": "Địch Thiên Tủy Xiển Vi",
+        "perspective": "Đạo trời đất quý ở chữ 'HÒA'. Thừa thì phải xả (Tiết khí), thiếu thì phải bổ (Sinh khí). Kẻ xem phong thủy và mệnh lý nếu không thấu 20 định luật Địch Thiên Tủy thì chỉ là phường thầy bói mù sờ voi."
       }
     ]
   },
   "cosmological_stages": [
     {
-      "stage": "Quy Luật Biện Chứng 1: Thổ Đa Kim Mai (土多金埋)",
-      "state": "Đất vùi lấp Vàng",
-      "philosophical_meaning": "Sự bảo bọc thái quá của cha mẹ tước đoạt đi khả năng tự lập và tỏa sáng của con cái. Cần dùng Mộc phá bớt Thổ để Kim lộ thiên."
+      "stage": "Định Luật Nhóm 1: Mẫu Từ Diệt Tử (Sinh Quá Đa Hóa Khắc)",
+      "state": "Thổ đa Kim mai • Thủy đa Mộc phiêu • Mộc đa Hỏa tắc",
+      "detailed_explanation": "Cổ nhân đúc kết bài học muôn đời: Tương Sinh là tốt, nhưng nếu sinh quá nhiều không kiểm soát sẽ biến thành đại họa diệt vong. Trong giáo dục gia đình, cha mẹ lo lót sẵn sàng mọi thứ từ A-Z, không cho con cái cọ xát thử thách (Thổ đa Kim mai) thì đứa con lớn lên sẽ ỷ lại, nhu nhược vô dụng. Trong dinh dưỡng, bổ sung quá nhiều vitamin và đạm sẽ làm gan thận suy kiệt nhiễm độc.",
+      "practical_manifestation": "Tưới nước quá nhiều làm úng chết cây cảnh trong chậu (Thủy đa Mộc phiêu); nhồi quá nhiều củi vào bếp làm tắt ngấm khói mù mịt (Mộc đa Hỏa tắc).",
+      "key_takeaway": "Yêu thương phải có trí tuệ và chừng mực; sinh dưỡng đúng lúc mới giúp con người trưởng thành."
     },
     {
-      "stage": "Quy Luật Biện Chứng 2: Thủy Đa Mộc Phiêu (水多木漂)",
-      "state": "Nước cuốn trôi Cây",
-      "philosophical_meaning": "Tài nguyên tiền bạc tràn lan không phương hướng khiến con người trôi dạt mất phương hướng gốc rễ. Cần dùng Thổ đắp bờ giữ Thủy."
+      "stage": "Định Luật Nhóm 2: Tử Đa Tiết Mẫu (Con Rút Kiệt Sinh Lực Mẹ)",
+      "state": "Thủy đa Kim trầm • Hỏa đa Mộc phần • Mộc đa Thủy súc",
+      "detailed_explanation": "Khi Hành Con phát triển quá mạnh mẽ vượt bậc, nó sẽ đòi hỏi nguồn năng lượng khổng lồ từ Hành Mẹ, khiến Mẹ bị suy kiệt khánh kiệt hoàn toàn. Ví dụ: Ngọn lửa bùng cháy dữ dội như bão lửa (Hỏa đa) sẽ thiêu rụi sạch toàn bộ cánh rừng gỗ (Mộc phần) không còn một cành lá sót lại.",
+      "practical_manifestation": "Người mẹ sinh con liên tục không nghỉ ngơi tẩm bổ sẽ bị loãng xương suy kiệt khí huyết.",
+      "key_takeaway": "Phải biết lượng sức mình, không nên gánh vác quá nhiều dự án cùng lúc làm kiệt quệ tài chính và sức khỏe."
     },
     {
-      "stage": "Quy Luật Biện Chứng 3: Mộc Kiên Kim Khuyết (木堅金缺)",
-      "state": "Gỗ cứng mẻ Rìu",
-      "philosophical_meaning": "Dùng kỷ luật thô bạo trấn áp ý chí kiên định bất khuất chỉ làm gãy công cụ quyền lực. Cần dùng Hỏa cảm hóa Mộc."
+      "stage": "Định Luật Nhóm 3: Phản Khắc Vũ Mẫu (Vật Cực Tất Phản)",
+      "state": "Mộc kiên Kim khuyết • Thủy đa Thổ lưu • Kim đa Hỏa tức",
+      "detailed_explanation": "Theo nguyên lý thông thường Kim khắc được Mộc, nhưng nếu một khúc gỗ lim già nghìn năm đanh như thép (Mộc kiên) mà người thợ lại dùng một chiếc dao găm nhỏ mỏng manh (Kim nhược) để chém vào, thì lưỡi dao sẽ lập tức bị mẻ gãy văng ra (Kim khuyết). Đây là định luật cảnh báo kẻ yếu chớ kiêu ngạo đối đầu trực diện với thế lực quá hùng mạnh.",
+      "practical_manifestation": "Dùng thìa nhôm cạy tảng băng cứng làm cong gãy thìa; bờ đê đất mỏng bị vỡ toang khi lũ quét đổ về.",
+      "key_takeaway": "Biết người biết ta trăm trận trăm thắng; không lấy trứng chọi đá, không lấy yếu chống mạnh trực diện."
     },
     {
-      "stage": "Quy Luật Biện Chứng 4: Hỏa Viêm Thủy Nhiệt (火炎水熱)",
-      "state": "Lửa đun sôi Nước",
-      "philosophical_meaning": "Sức mạnh đám đông quần chúng thức tỉnh ắt đun sôi và hóa giải mọi âm mưu hiểm độc trong bóng tối. Lấy Dương quang hóa giải Âm tà."
-    },
-    {
-      "stage": "Quy Luật Biện Chứng 5: Phản Bản Hoàn Nguyên (返本還原)",
-      "state": "Ngũ Hành quy nhất Thái Cực",
-      "philosophical_meaning": "Trải qua muôn vàn sinh khắc biến hóa, thấu triệt ngũ hành là để tâm trí quay trở về trạng thái thanh tịnh thuần khiết Vô Cực sơ khai."
+      "stage": "Định Luật Nhóm 4: Đắc Tiết Vi Quý (Bí Quyết Xả Bớt Để Thành Đại Khí)",
+      "state": "Cường Kim đắc Thủy • Cường Thủy đắc Mộc • Cường Hỏa đắc Thổ",
+      "detailed_explanation": "Khi một hành quá vượng mạnh mẽ hung hãn (như Kim quá bén, Thủy quá cuộn trào), cách hóa giải đỉnh cao nhất trong phong thủy và nhân sinh KHÔNG PHẢI là dùng hành khác đến đè bẹp đánh nhau (Khắc), mà là DÙNG HÀNH ĐƯỢC NÓ SINH RA ĐỂ XẢ BỚT NĂNG LƯỢNG (Tiết khí). Nước lũ mạnh thì trồng rừng dẫn dòng (Thủy sinh Mộc); lửa cháy to thì đổ đất cát hấp thu nhiệt (Hỏa sinh Thổ).",
+      "practical_manifestation": "Người có quá nhiều năng lượng nhiệt huyết (Hỏa vượng) nên tham gia các hoạt động thiện nguyện chia sẻ cho xã hội (sinh Thổ) để tâm hồn thanh thản.",
+      "key_takeaway": "Lấy nhu thắng cương, lấy xả làm đắc; hóa giải mâu thuẫn bằng tình thương và sự chuyển hóa êm dịu."
     }
   ]
 };
