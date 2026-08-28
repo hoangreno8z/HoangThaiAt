@@ -1,0 +1,38 @@
+[
+  {
+    "id": "TRM-001",
+    "term": "Vô Cực",
+    "hanzi": "無極",
+    "pinyin": "Wú jí",
+    "definition": "Trạng thái hư vô tuyệt đối trước khi vũ trụ phân hóa.",
+    "plain_vn": "Khoảng không trống rỗng ban đầu, điểm khởi đầu số 0 của vạn vật.",
+    "domains": [
+      "Bản Thể Luận",
+      "Dịch Học"
+    ]
+  },
+  {
+    "id": "TRM-002",
+    "term": "Thái Cực",
+    "hanzi": "太極",
+    "pinyin": "Tài jí",
+    "definition": "Trọng tâm năng lượng nhất nguyên, nguồn gốc sinh hóa Âm Dương.",
+    "plain_vn": "Năng lượng cội nguồn số 1 bắt đầu chuyển động sinh ra trời đất.",
+    "domains": [
+      "Bản Thể Luận",
+      "Dịch Học"
+    ]
+  },
+  {
+    "id": "TRM-003",
+    "term": "Tàng Phong Tụ Khí",
+    "hanzi": "藏風聚氣",
+    "pinyin": "Cáng fēng jù qì",
+    "definition": "Trạng thái địa hình chắn được gió dữ và thu gom được sinh khí hiền hòa.",
+    "plain_vn": "Nhà đất kín gió độc nhưng đón nhận được khí lành và nguồn nước tụ lại.",
+    "domains": [
+      "Loan Đầu",
+      "Hình Thế"
+    ]
+  }
+]

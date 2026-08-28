@@ -1,0 +1,52 @@
+[
+  {
+    "id": "SRC-001",
+    "title": "Táng Thư",
+    "hanzi": "葬書",
+    "author": "Quách Phác (郭璞)",
+    "dynasty": "Đông Tấn (276–324)",
+    "repository": "Tứ Khố Toàn Thư (Tử Bộ - Thuật Số Loại)",
+    "priority": "A",
+    "edition": "Văn Uyên Các Tứ Khố Toàn Thư Bản"
+  },
+  {
+    "id": "SRC-002",
+    "title": "Thanh Nang Kinh",
+    "hanzi": "青囊經",
+    "author": "Hoàng Thạch Công (黃石公)",
+    "dynasty": "Tần - Hán",
+    "repository": "Chính Thống Đạo Tạng",
+    "priority": "A",
+    "edition": "Minh Đạo Tạng Khắc Bản"
+  },
+  {
+    "id": "SRC-003",
+    "title": "Hoàng Đế Trạch Kinh",
+    "hanzi": "黃帝宅經",
+    "author": "Khuyết Danh",
+    "dynasty": "Hán - Đường",
+    "repository": "Tứ Khố Toàn Thư",
+    "priority": "A",
+    "edition": "Tứ Khố Toàn Thư Bản"
+  },
+  {
+    "id": "SRC-004",
+    "title": "Bát Trạch Minh Kính",
+    "hanzi": "八宅明鏡",
+    "author": "Dương Quân Tùng / Cố Ngô Huệ Cảnh",
+    "dynasty": "Thanh Triều",
+    "repository": "Cổ Bản Khắc Gỗ Thanh Đại",
+    "priority": "B",
+    "edition": "Càn Long Ngự Đề Mộc Bản"
+  },
+  {
+    "id": "SRC-005",
+    "title": "Thẩm Thị Huyền Không Học",
+    "hanzi": "沈氏玄空學",
+    "author": "Thẩm Trúc Nhưng (沈竹礽)",
+    "dynasty": "Thanh Mạt - Dân Quốc (1927)",
+    "repository": "Hoằng Hóa Xã Xuất Bản",
+    "priority": "B",
+    "edition": "Đệ Nhất Ấn Bản 1927"
+  }
+]

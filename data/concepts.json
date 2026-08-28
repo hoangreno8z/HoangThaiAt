@@ -1,0 +1,230 @@
+[
+  {
+    "id": "CPT-000",
+    "name": "Khái Luận Nhập Môn Huyền Học",
+    "hanzi": "玄學概論",
+    "pinyin": "Xuán xué gài lùn",
+    "domain": "Đại Cương Triết Học",
+    "subdomain": "Bản Thể Luận Phương Đông",
+    "prerequisites": [],
+    "related_concepts": [
+      "CPT-001",
+      "CPT-002"
+    ],
+    "schools": [
+      "Đại Cương Học Thuật"
+    ],
+    "summary": "Tổng quan thế giới quan cổ đại, cơ chế tương tác giữa Trời (Thiên văn), Đất (Địa lý) và Con người (Nhân văn).",
+    "status": "READY"
+  },
+  {
+    "id": "CPT-001",
+    "name": "Vô Cực",
+    "hanzi": "無極",
+    "pinyin": "Wú jí",
+    "domain": "Bản Thể Luận",
+    "subdomain": "Khởi Nguyên Vũ Trụ",
+    "prerequisites": [
+      "CPT-000"
+    ],
+    "related_concepts": [
+      "CPT-002",
+      "CPT-003"
+    ],
+    "schools": [
+      "Đạo Gia",
+      "Tống Nho Lý Học"
+    ],
+    "summary": "Trạng thái hư vô tuyệt đối, hỗn mang tiên thiên trước khi hình thành vật chất và năng lượng định hình.",
+    "status": "READY"
+  },
+  {
+    "id": "CPT-002",
+    "name": "Thái Cực",
+    "hanzi": "太極",
+    "pinyin": "Tài jí",
+    "domain": "Bản Thể Luận",
+    "subdomain": "Nhất Nguyên Đạo Khí",
+    "prerequisites": [
+      "CPT-001"
+    ],
+    "related_concepts": [
+      "CPT-003",
+      "CPT-004"
+    ],
+    "schools": [
+      "Dịch Học",
+      "Tống Nho"
+    ],
+    "summary": "Khởi điểm xuất hiện của năng lượng nhất nguyên, nguồn gốc sinh thành của vạn vật qua chu trình Động và Tĩnh.",
+    "status": "READY"
+  },
+  {
+    "id": "CPT-003",
+    "name": "Âm Dương",
+    "hanzi": "陰陽",
+    "pinyin": "Yīn yáng",
+    "domain": "Bản Thể Luận",
+    "subdomain": "Nhị Nguyên Đối Lập & Hỗ Căn",
+    "prerequisites": [
+      "CPT-002"
+    ],
+    "related_concepts": [
+      "CPT-004",
+      "CPT-007"
+    ],
+    "schools": [
+      "Âm Dương Gia",
+      "Dịch Học",
+      "Đông Y Học"
+    ],
+    "summary": "Hai trạng thái phân cực căn bản của năng lượng: Âm (Tĩnh, Tối, Thuần hậu, Nước) và Dương (Động, Sáng, Cương cường, Lửa).",
+    "status": "READY"
+  },
+  {
+    "id": "CPT-004",
+    "name": "Tứ Tượng",
+    "hanzi": "四象",
+    "pinyin": "Sì xiàng",
+    "domain": "Bản Thể Luận",
+    "subdomain": "Phân Hóa Nhị Cực",
+    "prerequisites": [
+      "CPT-003"
+    ],
+    "related_concepts": [
+      "CPT-005",
+      "CPT-007"
+    ],
+    "schools": [
+      "Dịch Học Tiên Thiên"
+    ],
+    "summary": "Bốn trạng thái tiến hóa nhị phân: Thái Dương, Thiếu Âm, Thiếu Dương, Thái Âm tương ứng với 4 mùa và 4 hướng.",
+    "status": "READY"
+  },
+  {
+    "id": "CPT-005",
+    "name": "Tiên Thiên Bát Quái",
+    "hanzi": "伏羲八卦",
+    "pinyin": "Fú xī bā guà",
+    "domain": "Dịch Học",
+    "subdomain": "Bát Quái Phục Hy",
+    "prerequisites": [
+      "CPT-004"
+    ],
+    "related_concepts": [
+      "CPT-006",
+      "CPT-009"
+    ],
+    "schools": [
+      "Phục Hy",
+      "Thiệu Ung"
+    ],
+    "summary": "Đồ hình không gian đối xứng cân bằng tuyệt đối: Càn Khôn định vị, Sơn Trạch thông khí, Lôi Phong tương bạc, Thủy Hỏa bất tương xạ.",
+    "status": "READY"
+  },
+  {
+    "id": "CPT-006",
+    "name": "Hậu Thiên Bát Quái",
+    "hanzi": "文王八卦",
+    "pinyin": "Wén wáng bā guà",
+    "domain": "Dịch Học",
+    "subdomain": "Bát Quái Văn Vương",
+    "prerequisites": [
+      "CPT-005"
+    ],
+    "related_concepts": [
+      "CPT-010",
+      "CPT-014",
+      "CPT-016"
+    ],
+    "schools": [
+      "Văn Vương",
+      "Chu Dịch",
+      "Phong Thủy Lý Khí"
+    ],
+    "summary": "Đồ hình ứng dụng trên trục thời gian tuần hoàn 4 mùa và 8 phương vị La Bàn trên mặt đất.",
+    "status": "READY"
+  },
+  {
+    "id": "CPT-007",
+    "name": "Ngũ Hành Bản Thể & Tương Sinh Tương Khắc",
+    "hanzi": "五行生剋",
+    "pinyin": "Wǔ xíng shēng kè",
+    "domain": "Bản Thể Luận",
+    "subdomain": "Ngũ Hành Động Học",
+    "prerequisites": [
+      "CPT-003",
+      "CPT-004"
+    ],
+    "related_concepts": [
+      "CPT-008",
+      "CPT-009"
+    ],
+    "schools": [
+      "Hồng Phạm",
+      "Âm Dương Gia"
+    ],
+    "summary": "Năm trạng thái vận động của vật chất: Kim, Mộc, Thủy, Hỏa, Thổ. Sinh để nuôi dưỡng, Khắc để duy trì cân bằng sinh thái.",
+    "status": "READY"
+  },
+  {
+    "id": "CPT-008",
+    "name": "Ngũ Hành Phản Sinh, Phản Khắc & Thừa Vũ",
+    "hanzi": "五行反生反剋",
+    "pinyin": "Wǔ xíng fǎn shēng fǎn kè",
+    "domain": "Bản Thể Luận",
+    "subdomain": "Biện Chứng Vượt Ngưỡng",
+    "prerequisites": [
+      "CPT-007"
+    ],
+    "related_concepts": [
+      "CPT-011"
+    ],
+    "schools": [
+      "Mệnh Lý Biện Chứng",
+      "Đông Y Học"
+    ],
+    "summary": "Hiện tượng vật cực tất phản: Vật sinh quá nhiều sẽ phản thành hại (Thổ nhiều Kim bị vùi lấp, Mộc nhiều Hỏa bị ngạt thở).",
+    "status": "READY"
+  },
+  {
+    "id": "CPT-009",
+    "name": "Hà Đồ",
+    "hanzi": "河圖",
+    "pinyin": "Hé tú",
+    "domain": "Thần Bí Số Học",
+    "subdomain": "Số Sinh & Số Thành",
+    "prerequisites": [
+      "CPT-007"
+    ],
+    "related_concepts": [
+      "CPT-010"
+    ],
+    "schools": [
+      "Dịch Học Khải Mông"
+    ],
+    "summary": "Bản đồ 55 chấm đen trắng: Thiên 1 sinh Thủy - Địa 6 thành chi; Địa 2 sinh Hỏa - Thiên 7 thành chi; Thiên 3 sinh Mộc - Địa 8 thành chi; Địa 4 sinh Kim - Thiên 9 thành chi; Thiên 5 sinh Thổ - Địa 10 thành chi.",
+    "status": "READY"
+  },
+  {
+    "id": "CPT-010",
+    "name": "Lạc Thư",
+    "hanzi": "洛書",
+    "pinyin": "Luò shū",
+    "domain": "Thần Bí Số Học",
+    "subdomain": "Ma Phương Cửu Cung 3x3",
+    "prerequisites": [
+      "CPT-006",
+      "CPT-009"
+    ],
+    "related_concepts": [
+      "CPT-016"
+    ],
+    "schools": [
+      "Cửu Cung Học",
+      "Huyền Không Phi Tinh"
+    ],
+    "summary": "Khẩu quyết Đới Cửu Lý Nhất, Tả Tam Hữu Thất, Nhị Tứ Vi Kiên, Lục Bát Vi Túc, Ngũ Cư Trung Cung. Tổng hàng ngang, dọc, chéo luôn bằng 15.",
+    "status": "READY"
+  }
+]

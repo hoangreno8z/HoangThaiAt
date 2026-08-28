@@ -2,681 +2,354 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Đại Bách Khoa Địa Lý Phong Thủy Học & Thuật Toán Càn Khôn</title>
-  <meta name="description" content="Hệ thống hóa toàn diện Địa Lý Phong Thủy Học: Thư tịch cốt lõi (Táng Thư, Tuyết Tâm Phú, Thanh Nang Kinh, La Kinh Thấu Giải, Địa Lý Tả Ao) và Thuật toán số hóa (Bát Trạch, Huyền Không Phi Tinh).">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Huyền Học Mụ — Đại Thư Viện Số Địa Lý & Dịch Học Cổ Điển</title>
   
-  <!-- Đồ Hình Toán Học v7 for Càn Khôn Mạng Lưới Khí Vận -->
-  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <!-- Fonts: Google Fonts for Classical & Modern Vietnamese Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Cinzel:wght@600;700;800&family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@500;700;900&display=swap" rel="stylesheet">
   
-  <!-- Main Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="theme-dark">
 
-    <!-- Navigation Header with Instant Search & Mega Drawer Button -->
-  <header class="nav-header">
-    <div class="nav-container">
-      <a href="#hero" class="logo-brand">
-        <div id="logo-icon-wrap" style="width:32px; height:32px; display:flex; align-items:center; justify-content:center;">
-          <svg width="30" height="30" viewBox="0 0 100 100" class="svg-icon svg-taiji">
-            <circle cx="50" cy="50" r="46" fill="none" stroke="#E5C07B" stroke-width="3"/>
-            <path d="M 50 4 A 46 46 0 0 1 50 96 A 23 23 0 0 1 50 50 A 23 23 0 0 0 50 4" fill="#E5C07B"/>
-            <path d="M 50 4 A 23 23 0 0 1 50 50 A 23 23 0 0 0 50 96 A 46 46 0 0 1 50 4" fill="#0A0E17"/>
-            <circle cx="50" cy="27" r="6" fill="#0A0E17"/>
-            <circle cx="50" cy="73" r="6" fill="#E5C07B"/>
-          </svg>
-        </div>
-        <div class="logo-text">
-          <h1>HUY HOÀNG</h1>
-          <p>0933116860</p>
-        </div>
+  <!-- =========================================================================
+       HEADER & TOP GLOBAL NAVIGATION (5 CỬA CHÍNH)
+       ========================================================================= -->
+  <header class="app-header">
+    <div class="header-left">
+      <a href="#/" class="brand-logo" style="text-decoration:none;">
+        <h1 style="font-size:1.15rem; font-weight:800; color:#FBBF24; margin:0; letter-spacing:0.04em;">HUY HOÀNG</h1>
+        <p style="font-size:0.75rem; color:#38BDF8; font-weight:700; margin:0;">0933116860</p>
       </a>
+    </div>
 
-      <!-- Thanh Tìm Kiếm Từ Khóa Thông Minh -->
-      <div class="header-search-wrap">
-        <span class="header-search-icon">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#E5C07B" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        </span>
-        <input type="text" id="global-search-input" class="header-search-input" placeholder="Tìm từ khóa (vd: Hoàng Tuyền, Bếp, Cung Phi, Minh Đường, Hồ Cá, 28 Sát...)" autocomplete="off">
-        <div id="search-results-box" class="search-results-dropdown"></div>
-      </div>
+    <!-- 5 Cửa Chính Của Website -->
+    <nav class="nav-gates-bar">
+      <a href="#/" class="nav-gate-link active" data-gate="lobby">
+        <span>🏛️ Sảnh Thư Viện</span>
+      </a>
+      <a href="#/learn" class="nav-gate-link" data-gate="learn">
+        <span>📖 Học</span>
+      </a>
+      <a href="#/library" class="nav-gate-link" data-gate="library">
+        <span>📜 Thư Tịch</span>
+      </a>
+      <a href="#/search" class="nav-gate-link" data-gate="search">
+        <span>🔍 Tra Cứu</span>
+      </a>
+      <a href="#/research" class="nav-gate-link" data-gate="research">
+        <span>⚖️ Khảo Cứu</span>
+      </a>
+      <a href="#/tools" class="nav-gate-link" data-gate="tools">
+        <span>⚙️ Công Cụ</span>
+      </a>
+    </nav>
 
-      <!-- Action Group -->
-      <div class="nav-actions-group">
-        <button id="menu-drawer-toggle" class="menu-drawer-btn" title="Mở danh mục bách khoa">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-          <span style="display:inline-block;">Menu</span>
-        </button>
+    <div class="header-right" style="display:flex; align-items:center; gap:0.6rem;">
+      <!-- Toggle Chế độ Đọc / Khảo cứu -->
+      <button id="view-mode-toggle" class="btn-mode-toggle" style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); color:var(--text-pure); padding:0.4rem 0.8rem; border-radius:8px; font-size:0.8rem; font-weight:600; cursor:pointer;">
+        <span>📖 Chế Độ Đọc</span>
+      </button>
 
-        
-      </div>
+      <!-- Nút mở drawer trên mobile -->
+      <button id="drawer-toggle-btn" class="drawer-toggle-btn" aria-label="Mở Menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
     </div>
   </header>
 
-  <!-- Mega Menu Drawer Phân Cấp Đa Tầng -->
-  <div id="drawer-overlay" class="drawer-overlay">
-    <div class="drawer-menu">
-      <div class="drawer-header">
-        <div style="display:flex; align-items:center; gap:0.6rem;">
-          <svg width="22" height="22" viewBox="0 0 100 100" class="svg-icon">
-            <circle cx="50" cy="50" r="46" fill="none" stroke="#E5C07B" stroke-width="4"/>
-            <path d="M 50 4 A 46 46 0 0 1 50 96 A 23 23 0 0 1 50 50 A 23 23 0 0 0 50 4" fill="#E5C07B"/>
-            <path d="M 50 4 A 23 23 0 0 1 50 50 A 23 23 0 0 0 50 96 A 46 46 0 0 1 50 4" fill="#0A0E17"/>
-          </svg>
-          <h3>MỤC LỤC BÁCH KHOA</h3>
+  <!-- =========================================================================
+       GATE 0: SẢNH THƯ VIỆN (LOBBY VIEW - /)
+       ========================================================================= -->
+  <main id="gate-lobby" class="app-gate-view">
+    <!-- Lobby Hero -->
+    <section class="lobby-hero">
+      <div class="lobby-badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="#FBBF24"><polygon points="12 2 15 9 22 12 15 15 12 22 9 15 2 12 9 9"/></svg>
+        <span>ĐẠI THƯ VIỆN SỐ HUYỀN HỌC CHÁNH TÔNG & ĐỊA LÝ DỊCH HỌC</span>
+      </div>
+      <h1 class="lobby-title">HUYỀN HỌC MỤ</h1>
+      <div class="lobby-hanzi">氣乘風則散 • 界水則止 • 藏風聚氣 • 陰陽得宜</div>
+      <p class="lobby-desc">
+        Hệ thống thư tịch số hóa, khảo cứu kinh điển cổ thư và bàn tính số học chuẩn mực: 
+        <strong>Bản Thể Luận Âm Dương</strong>, <strong>Địa Lý Loan Đầu</strong>, <strong>Bát Trạch Minh Kính</strong>, 
+        <strong>Tam Hợp Thủy Pháp</strong>, <strong>Huyền Không Phi Tinh</strong> và <strong>Khoa Nghi Thờ Cúng</strong>.
+      </p>
+
+      <!-- Big Search Bar -->
+      <div class="lobby-search-box">
+        <svg class="lobby-search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="lobby-big-search" class="lobby-search-input" placeholder="Bạn muốn tìm hiểu điều gì? (vd: Vô Cực, Thái Cực, Hà Đồ, Hoàng Tuyền, Vận 9...)">
+      </div>
+    </section>
+
+    <!-- KỆ SÁCH TRI THỨC CÀN KHÔN (SCHOLARLY BOOKSHELF) -->
+    <section class="pathway-section" style="max-width:1100px; margin:0 auto; padding:1.5rem 1rem;">
+      <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:1.5rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:0.8rem; flex-wrap:wrap; gap:0.5rem;">
+        <div>
+          <span style="font-size:0.75rem; font-weight:800; color:#FBBF24; text-transform:uppercase; letter-spacing:0.08em;">TỦ SÁCH ĐỊA LÝ DỊCH HỌC</span>
+          <h2 style="font-family:var(--font-title); font-size:1.6rem; color:#FEF3C7; margin:0.2rem 0 0 0;">
+            6 Ngăn Sách Chánh Tông (Mỗi Ngăn Một Bộ Sách Độc Lập)
+          </h2>
         </div>
-        <button id="drawer-close-btn" class="drawer-close-btn">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-        </button>
+        <span style="font-size:0.82rem; color:var(--text-muted);">Mở từng cuốn • Lật từng trang</span>
       </div>
 
-      <div class="drawer-body">
-                <!-- PHÂN CẤP 1: KHỞI NGUYÊN BẢN THỂ LUẬN ÂM DƯƠNG & NGŨ HÀNH -->
-        <div class="menu-group open">
-          <div class="menu-group-header">
-            <span class="menu-group-title" style="color:#FBBF24;">
-              <svg width="18" height="18" viewBox="0 0 100 100" class="svg-icon">
-                <circle cx="50" cy="50" r="46" fill="none" stroke="#FBBF24" stroke-width="4"/>
-                <path d="M 50 4 A 46 46 0 0 1 50 96 A 23 23 0 0 1 50 50 A 23 23 0 0 0 50 4" fill="#FBBF24"/>
-                <path d="M 50 4 A 23 23 0 0 1 50 50 A 23 23 0 0 0 50 96 A 46 46 0 0 1 50 4" fill="#0A0E17"/>
-              </svg>
-              1. Âm Dương & Ngũ Hành Bản Thể
-            </span>
-            <span class="menu-group-toggle-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></span>
+      <div class="bookshelf-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:1.2rem;">
+        <!-- Cuốn 1: Bản Thể Luận -->
+        <a href="#/learn/nen-tang/1" class="book-volume-card" style="background:#121722; border:1px solid rgba(251,191,36,0.25); border-left:5px solid #FBBF24; border-radius:12px; padding:1.2rem; text-decoration:none; display:flex; flex-direction:column; justify-content:space-between; transition:all 0.2s ease;">
+          <div>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
+              <span style="font-size:0.72rem; font-weight:800; color:#FBBF24; background:rgba(251,191,36,0.12); padding:0.2rem 0.6rem; border-radius:10px;">TẬP I • 6 TIẾT</span>
+              <span style="font-size:0.75rem; color:var(--text-muted);">Khởi Nguyên</span>
+            </div>
+            <h3 style="font-family:var(--font-title); font-size:1.2rem; color:#FEF3C7; margin:0 0 0.4rem 0;">Bản Thể Luận & Ngũ Hành</h3>
+            <p style="font-size:0.85rem; color:var(--text-muted); line-height:1.5; margin:0;">Vô Cực, Thái Cực, Lưỡng Nghi, Tứ Tượng, Bát Quái, Ngũ Hành tương sinh tương khắc và Hà Đồ Lạc Thư.</p>
           </div>
-          <div class="menu-sublist">
-            <a href="#mach-amduong-10tiet" class="menu-subitem drawer-link" style="color:#FDE68A; font-weight:700;">
-              <span>Tổng Quan Chương Bản Thể Luận</span>
-              <span class="menu-subitem-badge" style="background:rgba(245,158,11,0.15); color:#FBBF24;">10 Tiết</span>
-            </a>
-            <a href="#amduong-tiet-1" class="menu-subitem drawer-link">Tiết I: Bản Thể Luận Vô Cực - Thái Cực - Lưỡng Nghi</a>
-            <a href="#amduong-tiet-2" class="menu-subitem drawer-link">Tiết II: Hà Đồ Lạc Thư & Căn Nguyên Ngũ Hành</a>
-            <a href="#amduong-tiet-3" class="menu-subitem drawer-link">Tiết III: Tiên Thiên Bát Quái Chân Thể Vô Hình</a>
-            <a href="#amduong-tiet-4" class="menu-subitem drawer-link">Tiết IV: Hậu Thiên Bát Quái Biến Dịch Giáng Trần</a>
-            <a href="#amduong-tiet-5" class="menu-subitem drawer-link">Tiết V: Bản Chất Đích Thực Của Sinh & Khắc</a>
-            <a href="#amduong-tiet-6" class="menu-subitem drawer-link">Tiết VI: Ma Trận Phản Sinh & Phản Khắc Thâm Sâu</a>
-            <a href="#amduong-tiet-7" class="menu-subitem drawer-link">Tiết VII: Quy Luật Vật Cực Tất Phản Biện Chứng</a>
-            <a href="#amduong-tiet-8" class="menu-subitem drawer-link">Tiết VIII: Vạn Vật Loại Tượng Ngũ Hành Toàn Thư</a>
-            <a href="#amduong-tiet-9" class="menu-subitem drawer-link">Tiết IX: Cẩm Nang Vật Lý Ngũ Hành Thực Chiến</a>
-            <a href="#amduong-tiet-10" class="menu-subitem drawer-link">Tiết X: Đại Tổng Kết Bản Thể Luận Càn Khôn</a>
+          <div style="margin-top:1rem; font-size:0.82rem; font-weight:700; color:#FBBF24; display:flex; align-items:center; gap:0.3rem;">
+            <span>Rút Sách Ra Đọc (Tiết 1)</span> <span>➡️</span>
           </div>
-        </div>
+        </a>
 
-        <!-- PHÂN CẤP 2: PHONG THỦY THỜ CÚNG -->
-        <div class="menu-group open">
-          <div class="menu-group-header">
-            <span class="menu-group-title">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E5C07B" stroke-width="2"><path d="M3 8h18v4H3z"/><path d="M6 12v8M18 12v8"/><path d="M2 4h20"/><path d="M12 4v4"/></svg>
-              2. Phong Thủy Thờ Cúng
-            </span>
-            <span class="menu-group-toggle-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></span>
+        <!-- Cuốn 2: Loan Đầu -->
+        <a href="#/learn/loan-dau/1" class="book-volume-card" style="background:#121722; border:1px solid rgba(217,119,6,0.25); border-left:5px solid #D97706; border-radius:12px; padding:1.2rem; text-decoration:none; display:flex; flex-direction:column; justify-content:space-between; transition:all 0.2s ease;">
+          <div>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
+              <span style="font-size:0.72rem; font-weight:800; color:#F59E0B; background:rgba(217,119,6,0.12); padding:0.2rem 0.6rem; border-radius:10px;">TẬP II • 10 TIẾT</span>
+              <span style="font-size:0.75rem; color:var(--text-muted);">Hình Thế Phái</span>
+            </div>
+            <h3 style="font-family:var(--font-title); font-size:1.2rem; color:#FEF3C7; margin:0 0 0.4rem 0;">Địa Lý Loan Đầu Hình Thế</h3>
+            <p style="font-size:0.85rem; color:var(--text-muted); line-height:1.5; margin:0;">Khí thừa phong tắc tán, giới thủy tắc chỉ. Thấu triệt Long mạch, Tọa huyệt, Sa bọc và Thủy tụ thực chiến.</p>
           </div>
-          <div class="menu-sublist">
-            <a href="#mach-thocung" class="menu-subitem drawer-link">
-              <span>Tiết I: Bản Thể & Tọa Vị Gian Thờ</span>
-              <span class="menu-subitem-badge" style="background:rgba(229,192,123,0.15); color:var(--gold-primary);">Cốt lõi</span>
-            </a>
-            <a href="#worship-esoteric-container" class="menu-subitem drawer-link">
-              <span>Cổ Pháp Bàn Thờ & Bài Vị Gia Tiên</span>
-            </a>
-            <a href="#worship-statues-container" class="menu-subitem drawer-link">
-              <span>Thần Tượng & Trí Lập Chư Vị</span>
-            </a>
-            <a href="#worship-prayers-container" class="menu-subitem drawer-link">
-              <span>Nghi Thức & Văn Khấn Cổ Truyền</span>
-            </a>
+          <div style="margin-top:1rem; font-size:0.82rem; font-weight:700; color:#F59E0B; display:flex; align-items:center; gap:0.3rem;">
+            <span>Rút Sách Ra Đọc (Tiết 1)</span> <span>➡️</span>
           </div>
-        </div>
+        </a>
 
-        <!-- PHÂN CẤP 2: PHONG THỦY NHÀ Ở & ĐÔ THỊ (DƯƠNG TRẠCH) -->
-        <div class="menu-group open">
-          <div class="menu-group-header">
-            <span class="menu-group-title" style="color:#60A5FA;">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 22v-4h6v4"/></svg>
-              3. Phong Thủy Nhà Ở (Địa Lý Học)
-            </span>
-            <span class="menu-group-toggle-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></span>
+        <!-- Cuốn 3: Bát Trạch -->
+        <a href="#/learn/bat-trach/1" class="book-volume-card" style="background:#121722; border:1px solid rgba(96,165,250,0.25); border-left:5px solid #60A5FA; border-radius:12px; padding:1.2rem; text-decoration:none; display:flex; flex-direction:column; justify-content:space-between; transition:all 0.2s ease;">
+          <div>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
+              <span style="font-size:0.72rem; font-weight:800; color:#60A5FA; background:rgba(96,165,250,0.12); padding:0.2rem 0.6rem; border-radius:10px;">TẬP III • 10 TIẾT</span>
+              <span style="font-size:0.75rem; color:var(--text-muted);">Lý Khí Phái</span>
+            </div>
+            <h3 style="font-family:var(--font-title); font-size:1.2rem; color:#FEF3C7; margin:0 0 0.4rem 0;">Bát Trạch Minh Kính Lý Khí</h3>
+            <p style="font-size:0.85rem; color:var(--text-muted); line-height:1.5; margin:0;">Cung Phi Mệnh Quái, Đông Tây Tứ Trạch, 8 Du Niên Cát Hung, phép Biến Hào và hóa giải dương trạch sát.</p>
           </div>
-          <div class="menu-sublist">
-            <!-- 2.1 Loan Đầu -->
-            <a href="#mach-loandau" class="menu-subitem drawer-link" style="color:#F59E0B; font-weight:700;">
-              <span>2.1. Loan Đầu (Hình Thế Phái)</span>
-              <span class="menu-subitem-badge" style="background:rgba(217,119,6,0.15); color:#F59E0B;">10 Tiết</span>
-            </a>
-            <!-- 2.2 Bát Trạch -->
-            <a href="#mach-battrach-10tiet" class="menu-subitem drawer-link" style="color:#60A5FA; font-weight:700;">
-              <span>2.2. Bát Trạch (Lý Khí Phái)</span>
-              <span class="menu-subitem-badge" style="background:rgba(37,99,235,0.15); color:#60A5FA;">10 Tiết</span>
-            </a>
-            <!-- 2.3 Tam Hợp -->
-            <a href="#mach-tamhop-10tiet" class="menu-subitem drawer-link" style="color:#34D399; font-weight:700;">
-              <span>2.3. Tam Hợp (Huyết Mạch Thủy Pháp)</span>
-              <span class="menu-subitem-badge" style="background:rgba(5,150,105,0.15); color:#34D399;">10 Tiết</span>
-            </a>
-            <!-- 2.4 Huyền Không (10 Tiết & Tinh Bàn) -->
-            <a href="#mach-huyenkhong-10tiet" class="menu-subitem drawer-link" style="color:#C084FC; font-weight:700;">
-              <span>2.4. Huyền Không Phi Tinh</span>
-              <span class="menu-subitem-badge" style="background:rgba(192,132,252,0.15); color:#C084FC;">10 Tiết Chánh Tông</span>
-            </a>
-            <a href="#huyenkhong-tiet-1" class="menu-subitem drawer-link">Tiết I: Tam Nguyên Cửu Vận & Vận 9 Ly Hỏa</a>
-            <a href="#huyenkhong-tiet-2" class="menu-subitem drawer-link">Tiết II: 24 Sơn Hướng & Tam Nguyên Long</a>
-            <a href="#huyenkhong-tiet-3" class="menu-subitem drawer-link">Tiết III: Lập Tinh Bàn Cửu Cung Ma Trận</a>
-            <a href="#huyenkhong-tiet-4" class="menu-subitem drawer-link">Tiết IV: Tứ Đại Cục Tinh Bàn & Loan Đầu</a>
-            <a href="#huyenkhong-tiet-5" class="menu-subitem drawer-link">Tiết V: Thành Môn Quyết & Khai Môn Điểm Nhãn</a>
-            <a href="#huyenkhong-tiet-6" class="menu-subitem drawer-link">Tiết VI: Phục Ngâm, Phản Ngâm & Tam Ban Quái</a>
-            <a href="#huyenkhong-tiet-7" class="menu-subitem drawer-link">Tiết VII: 81 Cặp Tinh Diệu Biến Hóa</a>
-            <a href="#huyenkhong-tiet-8" class="menu-subitem drawer-link">Tiết VIII: Huyền Không Đô Thị & Chung Cư</a>
-            <a href="#huyenkhong-tiet-9" class="menu-subitem drawer-link">Tiết IX: Động Thái Học — Niên Nguyệt Phi Tinh</a>
-            <a href="#huyenkhong-tiet-10" class="menu-subitem drawer-link">Tiết X: Đại Tổng Kết & 100 Điểm Khảo Sát</a>
-            <a href="#mach2-huyenkhong" class="menu-subitem drawer-link" style="color:#E5C07B; font-weight:700;">
-              <span>> Cỗ Máy Tinh Bàn Tương Tác 9 Vận</span>
-            </a>
+          <div style="margin-top:1rem; font-size:0.82rem; font-weight:700; color:#60A5FA; display:flex; align-items:center; gap:0.3rem;">
+            <span>Rút Sách Ra Đọc (Tiết 1)</span> <span>➡️</span>
           </div>
-        </div>
+        </a>
 
-        <!-- PHÂN CẤP 3: CÔNG CỤ TÍNH TOÁN SỐ HÓA & ĐỒ HÌNH -->
-        <div class="menu-group">
-          <div class="menu-group-header">
-            <span class="menu-group-title" style="color:#38BDF8;">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><path d="M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01"/></svg>
-              4. Bộ Tính Toán & Đồ Hình
-            </span>
-            <span class="menu-group-toggle-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></span>
+        <!-- Cuốn 4: Tam Hợp -->
+        <a href="#/learn/tam-hop/1" class="book-volume-card" style="background:#121722; border:1px solid rgba(52,211,153,0.25); border-left:5px solid #34D399; border-radius:12px; padding:1.2rem; text-decoration:none; display:flex; flex-direction:column; justify-content:space-between; transition:all 0.2s ease;">
+          <div>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
+              <span style="font-size:0.72rem; font-weight:800; color:#34D399; background:rgba(52,211,153,0.12); padding:0.2rem 0.6rem; border-radius:10px;">TẬP IV • 10 TIẾT</span>
+              <span style="font-size:0.75rem; color:var(--text-muted);">Thủy Pháp Phái</span>
+            </div>
+            <h3 style="font-family:var(--font-title); font-size:1.2rem; color:#FEF3C7; margin:0 0 0.4rem 0;">Tam Hợp Phái Thủy Pháp</h3>
+            <p style="font-size:0.85rem; color:var(--text-muted); line-height:1.5; margin:0;">12 Cung Trường Sinh, Tứ Đại Cục Thủy Pháp, Bát Đại Cục và giải trừ tuyệt đỉnh Hoàng Tuyền Sát Quyết.</p>
           </div>
-          <div class="menu-sublist">
-            <a href="#mach2-battrach" class="menu-subitem drawer-link">Lập Quẻ Bát Trạch Minh Kính</a>
-            <a href="#mach2-huyenkhong" class="menu-subitem drawer-link">Tinh Bàn Huyền Không Phi Tinh</a>
-            <a href="#cankhon-graph-section" class="menu-subitem drawer-link">Càn Khôn Đồ Hình (Mạng Lưới Khí Vận Tương Sinh Tương Khắc)</a>
-            <a href="#mach1-thutich" class="menu-subitem drawer-link">Thư Tịch Cổ Điển Chính Thống</a>
+          <div style="margin-top:1rem; font-size:0.82rem; font-weight:700; color:#34D399; display:flex; align-items:center; gap:0.3rem;">
+            <span>Rút Sách Ra Đọc (Tiết 1)</span> <span>➡️</span>
           </div>
-        </div>
+        </a>
+
+        <!-- Cuốn 5: Huyền Không -->
+        <a href="#/learn/huyen-khong/1" class="book-volume-card" style="background:#121722; border:1px solid rgba(192,132,252,0.25); border-left:5px solid #C084FC; border-radius:12px; padding:1.2rem; text-decoration:none; display:flex; flex-direction:column; justify-content:space-between; transition:all 0.2s ease;">
+          <div>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
+              <span style="font-size:0.72rem; font-weight:800; color:#C084FC; background:rgba(192,132,252,0.12); padding:0.2rem 0.6rem; border-radius:10px;">TẬP V • 10 TIẾT</span>
+              <span style="font-size:0.75rem; color:var(--text-muted);">Huyền Không Phái</span>
+            </div>
+            <h3 style="font-family:var(--font-title); font-size:1.2rem; color:#FEF3C7; margin:0 0 0.4rem 0;">Huyền Không Phi Tinh Cửu Cung</h3>
+            <p style="font-size:0.85rem; color:var(--text-muted); line-height:1.5; margin:0;">Tam Nguyên Cửu Vận, Tinh Bàn 24 Sơn Hướng, phi tinh Cửu Cung Lạc Thư và Tử Bạch Quyết Vận 9 (2024-2043).</p>
+          </div>
+          <div style="margin-top:1rem; font-size:0.82rem; font-weight:700; color:#C084FC; display:flex; align-items:center; gap:0.3rem;">
+            <span>Rút Sách Ra Đọc (Tiết 1)</span> <span>➡️</span>
+          </div>
+        </a>
+
+        <!-- Cuốn 6: Thờ Cúng -->
+        <a href="#/learn/tho-cung/1" class="book-volume-card" style="background:#121722; border:1px solid rgba(245,158,11,0.25); border-left:5px solid #F59E0B; border-radius:12px; padding:1.2rem; text-decoration:none; display:flex; flex-direction:column; justify-content:space-between; transition:all 0.2s ease;">
+          <div>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
+              <span style="font-size:0.72rem; font-weight:800; color:#F59E0B; background:rgba(245,158,11,0.12); padding:0.2rem 0.6rem; border-radius:10px;">TẬP VI • 10 TIẾT</span>
+              <span style="font-size:0.75rem; color:var(--text-muted);">Khoa Nghi Tế Tự</span>
+            </div>
+            <h3 style="font-family:var(--font-title); font-size:1.2rem; color:#FEF3C7; margin:0 0 0.4rem 0;">Phong Thủy Thờ Cúng Chánh Tông</h3>
+            <p style="font-size:0.85rem; color:var(--text-muted); line-height:1.5; margin:0;">Định vị Thần Vị gia trạch, Tọa Cát Hướng Cát, thước Lỗ Ban 38.8cm âm phần, bài trí bát hương ngũ hành.</p>
+          </div>
+          <div style="margin-top:1rem; font-size:0.82rem; font-weight:700; color:#F59E0B; display:flex; align-items:center; gap:0.3rem;">
+            <span>Rút Sách Ra Đọc (Tiết 1)</span> <span>➡️</span>
+          </div>
+        </a>
       </div>
+    </section>
+  </main>
+
+  <!-- =========================================================================
+       GATE 1: PHÂN HỆ HỌC TẬP (LEARN VIEW - 3-PANE SHELL)
+       ========================================================================= -->
+  <section id="gate-learn" class="app-gate-view" style="display:none;">
+    <div class="reader-3pane-shell">
+      <!-- CỘT TRÁI: CÂY ĐIỀU HƯỚNG BÀI HỌC -->
+      <aside id="shell-left-pane" class="pane-left-tree">
+        <div style="font-size:0.85rem; font-weight:800; color:#FBBF24; text-transform:uppercase; margin-bottom:1rem; letter-spacing:0.06em; padding:0 0.4rem;">
+          📚 Giáo Trình Sư Phạm
+        </div>
+        <nav id="reader-nav-tree">
+          <!-- Rendered dynamically by reader.js -->
+        </nav>
+      </aside>
+
+      <!-- CỘT GIỮA: KHUNG ĐỌC BÀI HỌC CHÍNH -->
+      <main id="shell-center-reader" class="pane-center-reader">
+        <div id="shell-main-content">
+          <!-- Rendered dynamically by reader.js -->
+        </div>
+      </main>
+
+      <!-- CỘT PHẢI: KHUNG NGỮ CẢNH & CHÚ GIẢI -->
+      <aside id="shell-right-pane" class="pane-right-context">
+        <div id="shell-right-context">
+          <!-- Rendered dynamically by reader.js -->
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       GATE 2: PHÂN HỆ THƯ TỊCH (LIBRARY VIEW)
+       ========================================================================= -->
+  <section id="gate-library" class="app-gate-view" style="display:none; padding:2rem 1.5rem; max-width:1200px; margin:0 auto;">
+    <h2 style="font-family:var(--font-title); font-size:1.8rem; color:#FEF3C7; margin-bottom:0.6rem;">📜 Thư Khố Cổ Điển Chính Thống</h2>
+    <p style="color:var(--text-muted); margin-bottom:2rem;">Toàn thư các tác phẩm kinh điển chữ Hán, chú giải và bản dịch nguyên bản.</p>
+    <div id="library-books-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:1.5rem;"></div>
+  </section>
+
+  <!-- =========================================================================
+       GATE 3: PHÂN HỆ TRA CỨU (SEARCH VIEW)
+       ========================================================================= -->
+  <section id="gate-search" class="app-gate-view" style="display:none; padding:2rem 1.5rem; max-width:1100px; margin:0 auto;">
+    <h2 style="font-family:var(--font-title); font-size:1.8rem; color:#FEF3C7; margin-bottom:1.5rem;">🔍 Tra Cứu Đa Chiều Phân Nhóm</h2>
+    <div style="margin-bottom:2rem;">
+      <input type="text" id="grouped-search-input" class="lobby-search-input" placeholder="Nhập từ khóa cần tra cứu...">
+    </div>
+    <div id="grouped-search-results"></div>
+  </section>
+
+  <!-- =========================================================================
+       GATE 4: PHÂN HỆ KHẢO CỨU (RESEARCH VIEW)
+       ========================================================================= -->
+  <section id="gate-research" class="app-gate-view" style="display:none; padding:2rem 1.5rem; max-width:1200px; margin:0 auto;">
+    <h2 style="font-family:var(--font-title); font-size:1.8rem; color:#FEF3C7; margin-bottom:0.6rem;">⚖️ Phân Hệ Khảo Cứu & Đối Chiếu Dị Bản</h2>
+    <p style="color:var(--text-muted); margin-bottom:2rem;">Phân tích nguồn gốc xuất xứ thư tịch (Hạng A-F), đối chiếu dị bản và quét mâu thuẫn giữa các môn phái.</p>
+    <div id="research-evidence-panel"></div>
+  </section>
+
+  <!-- =========================================================================
+       GATE 5: PHÂN HỆ CÔNG CỤ (TOOLS VIEW - DYNAMIC RENDER BY TOOLUI)
+       ========================================================================= -->
+  <section id="gate-tools" class="app-gate-view" style="display:none; padding:2rem 1.5rem; max-width:1200px; margin:0 auto;"></section>
+
+  <!-- =========================================================================
+       MOBILE BOTTOM BAR (CỐ ĐỊNH ĐÁY MÀN HÌNH DI ĐỘNG)
+       ========================================================================= -->
+  <nav id="mobile-bottom-bar" class="mobile-bottom-bar">
+    <button id="mobile-btn-toc" class="mobile-bar-btn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+      <span>Mục Lục</span>
+    </button>
+    <button id="mobile-btn-glossary" class="mobile-bar-btn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+      <span>Chú Giải</span>
+    </button>
+    <a href="#/search" class="mobile-bar-btn" style="text-decoration:none;">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <span>Tra Cứu</span>
+    </a>
+    <a href="#/tools" class="mobile-bar-btn" style="text-decoration:none;">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/></svg>
+      <span>Công Cụ</span>
+    </a>
+  </nav>
+
+  <!-- =========================================================================
+       MOBILE DRAWER MENU (DANH MỤC TRANG RIÊNG BIỆT TRÊN ĐIỆN THOẠI)
+       ========================================================================= -->
+  <div id="mobile-drawer-overlay" class="mobile-drawer-overlay"></div>
+  <aside id="app-mobile-drawer" class="app-mobile-drawer">
+    <div class="mobile-drawer-header">
+      <div>
+        <div style="font-size:0.7rem; font-weight:800; color:#FBBF24; text-transform:uppercase; letter-spacing:0.06em;">ĐẠI THƯ VIỆN SỐ</div>
+        <h2 style="font-size:1.15rem; font-weight:800; color:#FEF3C7; margin:0;">HUY HOÀNG</h2>
+        <p style="font-size:0.78rem; color:#38BDF8; font-weight:700; margin:0;">Hotline: 0933116860</p>
+      </div>
+      <button id="mobile-drawer-close" class="mobile-drawer-close" aria-label="Đóng Tủ Sách">✕</button>
+    </div>
+
+    <div class="mobile-drawer-body">
+      <!-- CÁC NGĂN TỦ SÁCH CHÍNH -->
+      <div class="drawer-section-title">📚 TỦ SÁCH GIÁO TRÌNH (6 BỘ SÁCH ĐỘC LẬP)</div>
+      
+      <a href="#/learn/nen-tang/1" class="drawer-nav-item book-shelf-item" style="border-left-color:#FBBF24;">
+        <div style="font-weight:700; color:#FEF3C7; font-size:0.92rem;">🌟 Tập I: Bản Thể Luận & Ngũ Hành</div>
+        <div style="font-size:0.75rem; color:#FBBF24;">6 Tiết • Khởi Nguyên Âm Dương & Lạc Thư</div>
+      </a>
+
+      <a href="#/learn/loan-dau/1" class="drawer-nav-item book-shelf-item" style="border-left-color:#D97706;">
+        <div style="font-weight:700; color:#FEF3C7; font-size:0.92rem;">⛰️ Tập II: Địa Lý Loan Đầu Hình Thế</div>
+        <div style="font-size:0.75rem; color:#F59E0B;">10 Tiết • Long Huyệt Sa Thủy Huyết Mạch</div>
+      </a>
+
+      <a href="#/learn/bat-trach/1" class="drawer-nav-item book-shelf-item" style="border-left-color:#60A5FA;">
+        <div style="font-weight:700; color:#FEF3C7; font-size:0.92rem;">🏠 Tập III: Bát Trạch Minh Kính Lý Khí</div>
+        <div style="font-size:0.75rem; color:#93C5FD;">10 Tiết • Cung Phi & 8 Du Niên Cát Hung</div>
+      </a>
+
+      <a href="#/learn/tam-hop/1" class="drawer-nav-item book-shelf-item" style="border-left-color:#34D399;">
+        <div style="font-weight:700; color:#FEF3C7; font-size:0.92rem;">🌊 Tập IV: Tam Hợp Phái Thủy Pháp</div>
+        <div style="font-size:0.75rem; color:#6EE7B7;">10 Tiết • 12 Cung Trường Sinh & Hoàng Tuyền</div>
+      </a>
+
+      <a href="#/learn/huyen-khong/1" class="drawer-nav-item book-shelf-item" style="border-left-color:#C084FC;">
+        <div style="font-weight:700; color:#FEF3C7; font-size:0.92rem;">🌌 Tập V: Huyền Không Phi Tinh Cửu Cung</div>
+        <div style="font-size:0.75rem; color:#D8B4FE;">10 Tiết • 24 Sơn Hướng & Phi Tinh Vận 9</div>
+      </a>
+
+      <a href="#/learn/tho-cung/1" class="drawer-nav-item book-shelf-item" style="border-left-color:#F59E0B;">
+        <div style="font-weight:700; color:#FEF3C7; font-size:0.92rem;">🪔 Tập VI: Phong Thủy Thờ Cúng Chánh Tông</div>
+        <div style="font-size:0.75rem; color:#FCD34D;">10 Tiết • Thần Vị Tọa Cát & Lỗ Ban 38.8cm</div>
+      </a>
+
+      <!-- CÁC PHÂN HỆ NGHIÊN CỨU & TRA CỨU -->
+      <div class="drawer-section-title" style="margin-top:1.2rem;">🏛️ KHẢO CỨU & CÔNG CỤ</div>
+      <a href="#/library" class="drawer-nav-item">📜 Thư Khố Cổ Thư (Chữ Hán & Dịch Chú)</a>
+      <a href="#/search" class="drawer-nav-item">🔍 Bộ Tra Cứu Đa Chiều Toàn Thư</a>
+      <a href="#/research" class="drawer-nav-item">⚖️ Khảo Cứu Bằng Chứng & Dị Bản</a>
+      <a href="#/tools" class="drawer-nav-item">⚙️ Bàn Tính Bát Trạch & Phi Tinh Vận 9</a>
+      <a href="#/" class="drawer-nav-item" style="opacity:0.8;">🏛️ Về Sảnh Thư Viện Chính</a>
+    </div>
+  </aside>
+
+  <!-- =========================================================================
+       MOBILE BOTTOM SHEET MODAL
+       ========================================================================= -->
+  <div id="reader-sheet-overlay" class="reader-sheet-overlay">
+    <div class="reader-sheet-container">
+      <div class="reader-sheet-header">
+        <h3 id="reader-sheet-title" class="reader-sheet-title">Mục Lục</h3>
+        <button id="reader-sheet-close" class="reader-sheet-close">✕</button>
+      </div>
+      <div id="reader-sheet-body" class="reader-sheet-body"></div>
     </div>
   </div>
 
-  <!-- Hero Section -->
-  <section id="hero" class="hero-section">
-    <div class="hero-content">
-      <div class="hero-badge">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="#E5C07B"><polygon points="12 2 15 9 22 12 15 15 12 22 9 15 2 12 9 9"/></svg>
-        <span>ĐẠI BÁCH KHOA TOÀN THƯ ĐỊA LÝ PHONG THỦY HỌC PHƯƠNG ĐÔNG & VIỆT NAM</span>
-      </div>
-      <h1 class="hero-title">ĐỊA LÝ & THUẬT TOÁN CÀN KHÔN</h1>
-      <div class="hero-hanzi">氣乘風則散 • 界水則止 • 藏風聚氣 • 陰陽得宜</div>
-      <p class="hero-desc">
-        Hệ thống hóa trọn vẹn hai mạch lớn: <strong>Thư Tịch Cốt Lõi</strong> (Loan Đầu Táng Thư, Tuyết Tâm Phú, Lý Khí Thanh Nang Kinh, La Kinh Thấu Giải, Thánh tổ Địa Lý Tả Ao) 
-        và <strong>Thuật Toán Số Hóa Tương Tác</strong> (Bát Trạch Minh Kính, Ma trận Cửu Cung Huyền Không Phi Tinh 9 Vận 24 Sơn Hướng).
-      </p>
-      <div class="hero-actions" style="display:flex; flex-wrap:wrap; gap:0.8rem; justify-content:center; margin-top:1.5rem;">
-        <a href="#mach-amduong-10tiet" class="btn-primary" style="background:linear-gradient(135deg, #D97706, #78350F); border-color:#FBBF24;">
-          <span>1. Âm Dương & Ngũ Hành (10 Tiết)</span>
-        </a>
-        <a href="#mach-thocung" class="btn-secondary" style="border-color:#E5C07B;">
-          <span>2. Phong Thủy Thờ Cúng</span>
-        </a>
-        <a href="#mach-loandau" class="btn-primary" style="background:linear-gradient(135deg, #D97706, #B45309); border-color:#F59E0B;">
-          <span>3.1. Loan Đầu (10 Tiết)</span>
-        </a>
-        <a href="#mach-battrach-10tiet" class="btn-primary" style="background:linear-gradient(135deg, #2563EB, #1D4ED8); border-color:#60A5FA;">
-          <span>3.2. Bát Trạch (10 Tiết)</span>
-        </a>
-        <a href="#mach-tamhop-10tiet" class="btn-primary" style="background:linear-gradient(135deg, #059669, #047857); border-color:#34D399;">
-          <span>3.3. Tam Hợp (10 Tiết)</span>
-        </a>
-        <a href="#mach-huyenkhong-10tiet" class="btn-primary" style="background:linear-gradient(135deg, #7C3AED, #5B21B6); border-color:#C084FC;">
-          <span>3.4. Huyền Không (10 Tiết)</span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Main Content Wrapper -->
-  <main class="main-wrapper">
-
-    <!-- =========================================================================
-         CHƯƠNG I: ĐẠI BÁCH KHOA KHỞI NGUYÊN BẢN THỂ LUẬN: ÂM DƯƠNG - THÁI CỰC - TIÊN THIÊN HẬU THIÊN - NGŨ HÀNH
-         ========================================================================= -->
-    <section id="mach-amduong-10tiet" class="academic-school-section">
-      <div class="school-header-banner" style="background: radial-gradient(circle at center, rgba(245,158,11,0.18) 0%, rgba(10,14,23,0.95) 75%); border-color: rgba(245,158,11,0.5);">
-        <span class="school-badge-tag" style="color:#FBBF24; border-color:#FBBF24; background:rgba(245,158,11,0.1);">BẢN THỂ LUẬN VŨ TRỤ • VÔ CỰC • THÁI CỰC • TIÊN THIÊN HẬU THIÊN • NGŨ HÀNH CHÁNH TÔNG</span>
-        <h2 class="school-master-title" style="color:#FEF3C7;">Chương I: Đại Bách Khoa Khởi Nguyên Bản Thể Luận Âm Dương & Ngũ Hành Chánh Tông</h2>
-        <p class="school-master-desc">
-          Truy nguyên cội nguồn từ <strong>Thái Cực Đồ Thuyết</strong> (Chu Đôn Di), <strong>Hoàng Cực Kinh Thế</strong> (Thiệu Ung), 
-          <strong>Chu Dịch Hệ Từ Truyện</strong>, <strong>Uyên Hải Tử Bình</strong>, <strong>Tích Thiên Tủy</strong> & <strong>Hoàng Đế Nội Kinh</strong>: 
-          10 Tiết học thuật đại thụ về Vô Cực, Thái Cực, Lưỡng Nghi, Hà Đồ Lạc Thư, Tiên Thiên vs Hậu Thiên, bản chất tại sao Sinh Khắc, 
-          ma trận Phản Sinh Phản Khắc và quy luật Vật Cực Tất Phản muôn đời.
-        </p>
-
-        <div class="school-quick-nav-pills">
-          <a href="#amduong-tiet-1" class="quick-pill" style="border-color:rgba(245,158,11,0.4); color:#FDE68A;">Tiết I: Vô Cực - Thái Cực</a>
-          <a href="#amduong-tiet-2" class="quick-pill" style="border-color:rgba(245,158,11,0.4); color:#FDE68A;">Tiết II: Hà Đồ Lạc Thư</a>
-          <a href="#amduong-tiet-3" class="quick-pill" style="border-color:rgba(245,158,11,0.4); color:#FDE68A;">Tiết III: Tiên Thiên Bát Quái</a>
-          <a href="#amduong-tiet-4" class="quick-pill" style="border-color:rgba(245,158,11,0.4); color:#FDE68A;">Tiết IV: Hậu Thiên Bát Quái</a>
-          <a href="#amduong-tiet-5" class="quick-pill" style="border-color:rgba(245,158,11,0.4); color:#FDE68A;">Tiết V: Bản Chất Sinh Khắc</a>
-          <a href="#amduong-tiet-6" class="quick-pill" style="border-color:rgba(245,158,11,0.4); color:#FDE68A;">Tiết VI: Phản Sinh Phản Khắc</a>
-          <a href="#amduong-tiet-7" class="quick-pill" style="border-color:rgba(245,158,11,0.4); color:#FDE68A;">Tiết VII: Vật Cực Tất Phản</a>
-          <a href="#amduong-tiet-8" class="quick-pill" style="border-color:rgba(245,158,11,0.4); color:#FDE68A;">Tiết VIII: Vạn Vật Loại Tượng</a>
-          <a href="#amduong-tiet-9" class="quick-pill" style="border-color:rgba(245,158,11,0.4); color:#FDE68A;">Tiết IX: Vật Lý Ngũ Hành</a>
-          <a href="#amduong-tiet-10" class="quick-pill" style="border-color:rgba(245,158,11,0.4); color:#FDE68A;">Tiết X: Đại Tổng Kết</a>
-        </div>
-      </div>
-
-      <!-- Container nạp 10 Tiết Bản Thể Luận -->
-      <div id="amduong-academic-container" class="academic-cards-wrapper"></div>
-    </section>
-
-
-    <!-- CHUYÊN ĐỀ ĐẶC BIỆT: PHONG THỦY THỜ CÚNG CHÁNH TÔNG (LẦN 1/10) -->
-    <section id="mach-thocung" class="section-block">
-      <div class="section-header">
-        <span class="section-tag" style="background:rgba(229,192,123,0.15); border-color:var(--gold-primary); color:var(--gold-primary);">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-          Chuyên Đề Thờ Cúng Chánh Tông • Lần Nạp Kiến Thức 01 / 10
-        </span>
-        <h2 class="section-title">Phong Thủy Thờ Cúng: Khởi Nguyên & Tọa Vị Gian Thờ</h2>
-        <p class="section-subtitle">
-          Cổ thư Kinh Lễ, Chu Tử Gia Lễ & Dương Trạch Tam Yếu: Khảo cứu bản thể Thần Vị, nguyên tắc Tọa Cát Hướng Cát và quy thức Loan Đầu tàng phong tụ khí chốn linh thiêng.
-        </p>
-      </div>
-
-      <div id="worship-part1-container">
-        <!-- Rendered dynamically by main.js -->
-      </div>
-
-      <div id="worship-esoteric-container">
-        <!-- Rendered dynamically by main.js -->
-      </div>
-
-      <div id="worship-statues-container">
-        <!-- Rendered dynamically by main.js -->
-      </div>
-
-      <div id="worship-prayers-container">
-        <!-- Rendered dynamically by main.js -->
-      </div>
-
-      <div id="worship-esoteric-container">
-        <!-- Rendered dynamically by main.js -->
-      </div>
-
-      <div id="worship-statues-container">
-        <!-- Rendered dynamically by main.js -->
-      </div>
-
-      <div id="worship-prayers-container">
-        <!-- Rendered dynamically by main.js -->
-      </div>
-    </section>
-
-    <!-- MẠCH ĐẶC BIỆT: ĐẠI TOÀN THƯ PHONG THỦY LOAN ĐẦU (HÌNH THẾ PHÁI / GIANG TÂY PHÁI) -->
-    <section id="mach-loandau" class="section-block">
-      <div class="section-header">
-        <span class="section-tag" style="background:rgba(217,119,6,0.15); color:#F59E0B; border:1px solid #D97706;">
-           HÌNH THẾ PHÁI • LONG HUYỆT SA THỦY HƯỚNG
-        </span>
-        <h2 class="section-title">Chương II: Đại Bách Khoa Phong Thủy Loan Đầu (Hình Thế Phái)</h2>
-        <p class="section-subtitle">
-          Khảo cứu đỉnh cao học thuyết Táng Thư (Quách Phác), Hám Long Kinh, Nghi Long Kinh (Dương Quân Tùng) & Địa Lý Tả Ao: 10 Tiết học thuật toàn thư từ tầm long, điểm huyệt đến ứng dụng quy hoạch đô thị hiện đại.
-        </p>
-
-        <!-- Quick Jump 10 Tiết Loan Đầu -->
-        <div class="lesson-quick-pills" style="display:flex; flex-wrap:wrap; gap:0.5rem; justify-content:center; margin-top:1.2rem;">
-          <a href="#loandau-tiet-1" class="pill-btn" style="background:rgba(217,119,6,0.1); border:1px solid #D97706; color:#FCĐồ Hình4D; padding:0.35rem 0.8rem; border-radius:20px; font-size:0.8rem; text-decoration:none; font-weight:600;">Tiết I: Khí & Bản Thể</a>
-          <a href="#loandau-tiet-2" class="pill-btn" style="background:rgba(217,119,6,0.1); border:1px solid #D97706; color:#FCĐồ Hình4D; padding:0.35rem 0.8rem; border-radius:20px; font-size:0.8rem; text-decoration:none; font-weight:600;">Tiết II: Ngũ Tinh & 9 Sao</a>
-          <a href="#loandau-tiet-3" class="pill-btn" style="background:rgba(217,119,6,0.1); border:1px solid #D97706; color:#FCĐồ Hình4D; padding:0.35rem 0.8rem; border-radius:20px; font-size:0.8rem; text-decoration:none; font-weight:600;">Tiết III: Tầm Long</a>
-          <a href="#loandau-tiet-4" class="pill-btn" style="background:rgba(217,119,6,0.1); border:1px solid #D97706; color:#FCĐồ Hình4D; padding:0.35rem 0.8rem; border-radius:20px; font-size:0.8rem; text-decoration:none; font-weight:600;">Tiết IV: Điểm Huyệt</a>
-          <a href="#loandau-tiet-5" class="pill-btn" style="background:rgba(217,119,6,0.1); border:1px solid #D97706; color:#FCĐồ Hình4D; padding:0.35rem 0.8rem; border-radius:20px; font-size:0.8rem; text-decoration:none; font-weight:600;">Tiết V: Khảo Sa & Tứ Linh</a>
-          <a href="#loandau-tiet-6" class="pill-btn" style="background:rgba(217,119,6,0.1); border:1px solid #D97706; color:#FCĐồ Hình4D; padding:0.35rem 0.8rem; border-radius:20px; font-size:0.8rem; text-decoration:none; font-weight:600;">Tiết VI: Thẩm Thủy</a>
-          <a href="#loandau-tiet-7" class="pill-btn" style="background:rgba(217,119,6,0.1); border:1px solid #D97706; color:#FCĐồ Hình4D; padding:0.35rem 0.8rem; border-radius:20px; font-size:0.8rem; text-decoration:none; font-weight:600;">Tiết VII: Dương Trạch & Thế Đất</a>
-          <a href="#loandau-tiet-8" class="pill-btn" style="background:rgba(217,119,6,0.1); border:1px solid #D97706; color:#FCĐồ Hình4D; padding:0.35rem 0.8rem; border-radius:20px; font-size:0.8rem; text-decoration:none; font-weight:600;">Tiết VIII: 28 Sát Khí</a>
-          <a href="#loandau-tiet-9" class="pill-btn" style="background:rgba(217,119,6,0.1); border:1px solid #D97706; color:#FCĐồ Hình4D; padding:0.35rem 0.8rem; border-radius:20px; font-size:0.8rem; text-decoration:none; font-weight:600;">Tiết IX: Nội Cục Loan Đầu</a>
-          <a href="#loandau-tiet-10" class="pill-btn" style="background:rgba(217,119,6,0.1); border:1px solid #D97706; color:#FCĐồ Hình4D; padding:0.35rem 0.8rem; border-radius:20px; font-size:0.8rem; text-decoration:none; font-weight:600;">Tiết X: Đại Tổng Kết</a>
-        </div>
-      </div>
-
-      <div id="loandau-part1-container">
-        <!-- Rendered dynamically by main.js -->
-      </div>
-
-      <div id="loandau-part2-container">
-        <!-- Rendered dynamically by main.js -->
-      </div>
-
-      <div id="loandau-part3-container">
-        <!-- Rendered dynamically by main.js -->
-      </div>
-
-      <div id="loandau-part4-container">
-        <!-- Rendered dynamically by main.js -->
-      </div>
-
-      <div id="loandau-part5-container">
-        <!-- Rendered dynamically by main.js -->
-      </div>
-
-      <div id="loandau-part6-container">
-        <!-- Rendered dynamically by main.js -->
-      </div>
-      <div id="loandau-part7-container"></div>
-      <div id="loandau-part8-container"></div>
-      <div id="loandau-part9-container"></div>
-      <div id="loandau-part10-container"></div>
-    </section>
-
-        <!-- MẠCH ĐẶC BIỆT: ĐẠI TOÀN THƯ PHONG THỦY BÁT TRẠCH (LÝ KHÍ PHÁI / MỆNH QUÁI & DU NIÊN) -->
-    <section id="mach-battrach-10tiet" class="section-block">
-      <div class="section-header">
-        <span class="section-tag" style="background:rgba(59,130,246,0.15); color:#60A5FA; border:1px solid #3B82F6;">
-           LÝ KHÍ PHÁI • ĐÔNG TÂY TỨ MỆNH & BÁT ĐẠI DU NIÊN
-        </span>
-        <h2 class="section-title">Chương III: Đại Bách Khoa Phong Thủy Bát Trạch (Lý Khí Phái)</h2>
-        <p class="section-subtitle">
-          Khảo cứu toàn thư học thuyết Bát Trạch Minh Kính (Cơ Phượng Thường), Dương Trạch Tam Yếu (Triệu Cửu Phong) & Hoàng Đế Trạch Kinh: 10 Tiết học thuật chuẩn hóa từ Cung Phi Mệnh Quái, 24 Sơn Hướng đến ma trận hóa giải nhà không hợp hướng.
-        </p>
-
-        <!-- Quick Jump 10 Tiết Bát Trạch -->
-        <div class="lesson-quick-pills" style="display:flex; flex-wrap:wrap; gap:0.5rem; justify-content:center; margin-top:1.2rem;">
-          <a href="#battrach-tiet-1" class="pill-btn" style="background:rgba(59,130,246,0.1); border:1px solid #3B82F6; color:#93C5FD; padding:0.35rem 0.8rem; border-radius:20px; font-size:0.8rem; text-decoration:none; font-weight:600;">Tiết I: Hà Đồ Lạc Thư</a>
-          <a href="#battrach-tiet-2" class="pill-btn" style="background:rgba(59,130,246,0.1); border:1px solid #3B82F6; color:#93C5FD; padding:0.35rem 0.8rem; border-radius:20px; font-size:0.8rem; text-decoration:none; font-weight:600;">Tiết II: Cung Phi Mệnh Quái</a>
-          <a href="#battrach-tiet-3" class="pill-btn" style="background:rgba(59,130,246,0.1); border:1px solid #3B82F6; color:#93C5FD; padding:0.35rem 0.8rem; border-radius:20px; font-size:0.8rem; text-decoration:none; font-weight:600;">Tiết III: Đông Tây Tứ Trạch</a>
-          <a href="#battrach-tiet-4" class="pill-btn" style="background:rgba(59,130,246,0.1); border:1px solid #3B82F6; color:#93C5FD; padding:0.35rem 0.8rem; border-radius:20px; font-size:0.8rem; text-decoration:none; font-weight:600;">Tiết IV: Bát Đại Du Niên</a>
-          <a href="#battrach-tiet-5" class="pill-btn" style="background:rgba(59,130,246,0.1); border:1px solid #3B82F6; color:#93C5FD; padding:0.35rem 0.8rem; border-radius:20px; font-size:0.8rem; text-decoration:none; font-weight:600;">Tiết V: Phép Biến Quái</a>
-          <a href="#battrach-tiet-6" class="pill-btn" style="background:rgba(59,130,246,0.1); border:1px solid #3B82F6; color:#93C5FD; padding:0.35rem 0.8rem; border-radius:20px; font-size:0.8rem; text-decoration:none; font-weight:600;">Tiết VI: Dương Trạch Tam Yếu</a>
-          <a href="#battrach-tiet-7" class="pill-btn" style="background:rgba(59,130,246,0.1); border:1px solid #3B82F6; color:#93C5FD; padding:0.35rem 0.8rem; border-radius:20px; font-size:0.8rem; text-decoration:none; font-weight:600;">Tiết VII: 24 Sơn Phúc Đức</a>
-          <a href="#battrach-tiet-8" class="pill-btn" style="background:rgba(59,130,246,0.1); border:1px solid #3B82F6; color:#93C5FD; padding:0.35rem 0.8rem; border-radius:20px; font-size:0.8rem; text-decoration:none; font-weight:600;">Tiết VIII: Tọa Hung Hướng Cát</a>
-          <a href="#battrach-tiet-9" class="pill-btn" style="background:rgba(59,130,246,0.1); border:1px solid #3B82F6; color:#93C5FD; padding:0.35rem 0.8rem; border-radius:20px; font-size:0.8rem; text-decoration:none; font-weight:600;">Tiết IX: Đại Hóa Giải</a>
-          <a href="#battrach-tiet-10" class="pill-btn" style="background:rgba(59,130,246,0.1); border:1px solid #3B82F6; color:#93C5FD; padding:0.35rem 0.8rem; border-radius:20px; font-size:0.8rem; text-decoration:none; font-weight:600;">Tiết X: Đại Tổng Kết</a>
-        </div>
-      </div>
-
-      <div id="battrach-part1-container"></div>
-      <div id="battrach-part2-container"></div>
-      <div id="battrach-part3-container"></div>
-      <div id="battrach-part4-container"></div>
-      <div id="battrach-part5-container"></div>
-      <div id="battrach-part6-container"></div>
-      <div id="battrach-part7-container"></div>
-      <div id="battrach-part8-container"></div>
-      <div id="battrach-part9-container"></div>
-      <div id="battrach-part10-container"></div>
-    </section>
-
-        <!-- MẠCH ĐẶC BIỆT: ĐẠI TOÀN THƯ PHONG THỦY TAM HỢP (TAM HỢP PHÁI / 12 TRƯỜNG SINH & THỦY PHÁP) -->
-    <section id="mach-tamhop-10tiet" class="section-block">
-      <div class="section-header">
-        <span class="section-tag" style="background:rgba(16,185,129,0.15); color:#34D399; border:1px solid #10B981;">
-           TAM HỢP PHÁI • 12 CUNG TRƯỜNG SINH & TAM BÀN LA KINH
-        </span>
-        <h2 class="section-title">Chương IV: Đại Bách Khoa Phong Thủy Tam Hợp (Huyết Mạch Phái)</h2>
-        <p class="section-subtitle">
-          Khảo cứu toàn thư học thuyết Thanh Nang Áo Ngữ (Dương Quân Tùng), Địa Lý Ngũ Quyết (Triệu Cửu Phong), Tuyết Tâm Phú & Tả Ao Thủy Pháp: 10 Tiết học thuật chuyên sâu về Vòng 12 Trường Sinh, Tứ Đại Thủy Khẩu, Tam Bàn La Kinh và Bát Lộ Hoàng Tuyền Sát.
-        </p>
-
-        <!-- Quick Jump 10 Tiết Tam Hợp -->
-        <div class="lesson-quick-pills" style="display:flex; flex-wrap:wrap; gap:0.5rem; justify-content:center; margin-top:1.2rem;">
-          <a href="#tamhop-tiet-1" class="pill-btn" style="background:rgba(16,185,129,0.1); border:1px solid #10B981; color:#6EE7B7; padding:0.35rem 0.8rem; border-radius:20px; font-size:0.8rem; text-decoration:none; font-weight:600;">Tiết I: 12 Cung Trường Sinh</a>
-          <a href="#tamhop-tiet-2" class="pill-btn" style="background:rgba(16,185,129,0.1); border:1px solid #10B981; color:#6EE7B7; padding:0.35rem 0.8rem; border-radius:20px; font-size:0.8rem; text-decoration:none; font-weight:600;">Tiết II: Tứ Đại Cục</a>
-          <a href="#tamhop-tiet-3" class="pill-btn" style="background:rgba(16,185,129,0.1); border:1px solid #10B981; color:#6EE7B7; padding:0.35rem 0.8rem; border-radius:20px; font-size:0.8rem; text-decoration:none; font-weight:600;">Tiết III: Thủy Pháp Sinh Vượng</a>
-          <a href="#tamhop-tiet-4" class="pill-btn" style="background:rgba(16,185,129,0.1); border:1px solid #10B981; color:#6EE7B7; padding:0.35rem 0.8rem; border-radius:20px; font-size:0.8rem; text-decoration:none; font-weight:600;">Tiết IV: Tứ Đại Thủy Khẩu</a>
-          <a href="#tamhop-tiet-5" class="pill-btn" style="background:rgba(16,185,129,0.1); border:1px solid #10B981; color:#6EE7B7; padding:0.35rem 0.8rem; border-radius:20px; font-size:0.8rem; text-decoration:none; font-weight:600;">Tiết V: Tam Bàn La Kinh</a>
-          <a href="#tamhop-tiet-6" class="pill-btn" style="background:rgba(16,185,129,0.1); border:1px solid #10B981; color:#6EE7B7; padding:0.35rem 0.8rem; border-radius:20px; font-size:0.8rem; text-decoration:none; font-weight:600;">Tiết VI: Cửu Tinh Tiêu Sa</a>
-          <a href="#tamhop-tiet-7" class="pill-btn" style="background:rgba(16,185,129,0.1); border:1px solid #10B981; color:#6EE7B7; padding:0.35rem 0.8rem; border-radius:20px; font-size:0.8rem; text-decoration:none; font-weight:600;">Tiết VII: Hoàng Tuyền Sát</a>
-          <a href="#tamhop-tiet-8" class="pill-btn" style="background:rgba(16,185,129,0.1); border:1px solid #10B981; color:#6EE7B7; padding:0.35rem 0.8rem; border-radius:20px; font-size:0.8rem; text-decoration:none; font-weight:600;">Tiết VIII: Bát Sát Long Khí</a>
-          <a href="#tamhop-tiet-9" class="pill-btn" style="background:rgba(16,185,129,0.1); border:1px solid #10B981; color:#6EE7B7; padding:0.35rem 0.8rem; border-radius:20px; font-size:0.8rem; text-decoration:none; font-weight:600;">Tiết IX: Thủy Pháp Đô Thị</a>
-          <a href="#tamhop-tiet-10" class="pill-btn" style="background:rgba(16,185,129,0.1); border:1px solid #10B981; color:#6EE7B7; padding:0.35rem 0.8rem; border-radius:20px; font-size:0.8rem; text-decoration:none; font-weight:600;">Tiết X: Đại Tổng Kết</a>
-        </div>
-      </div>
-
-      <div id="tamhop-part1-container"></div>
-      <div id="tamhop-part2-container"></div>
-      <div id="tamhop-part3-container"></div>
-      <div id="tamhop-part4-container"></div>
-      <div id="tamhop-part5-container"></div>
-      <div id="tamhop-part6-container"></div>
-      <div id="tamhop-part7-container"></div>
-      <div id="tamhop-part8-container"></div>
-      <div id="tamhop-part9-container"></div>
-      <div id="tamhop-part10-container"></div>
-    </section>
-
-    <!-- MẠCH 1: THƯ TỊCH CỐT LÕI (LOAN ĐẦU - LÝ KHÍ - ĐỊA LÝ TẢ AO) -->
-    <section id="mach1-thutich" class="section-block">
-      <div class="section-header">
-        <span class="section-tag">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-          Mạch I: Thư Tịch Cốt Lõi & Nền Tảng Lý Thuyết
-        </span>
-        <h2 class="section-title">Kinh Điển Địa Lý: Loan Đầu • Lý Khí • Tả Ao</h2>
-        <p class="section-subtitle">
-          Những trước tác kinh điển định hình toàn bộ lịch sử Địa lý phong thủy học phương Đông và di sản thực chứng sông núi Việt Nam.
-        </p>
-      </div>
-
-      <div id="geographic-treatises-grid">
-        <!-- Rendered dynamically by main.js -->
-      </div>
-    </section>
-
-    <!-- MẠCH 2.1: THUẬT TOÁN BÁT TRẠCH MINH KÍNH (EIGHT MANSIONS CALCULATOR) -->
-    <section id="mach2-battrach" class="section-block">
-      <div class="section-header">
-        <span class="section-tag">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
-          Mạch II.1: Thuật Toán Số Hóa
-        </span>
-        <h2 class="section-title">Thuật Toán Bát Trạch Minh Kính (Eight Mansions)</h2>
-        <p class="section-subtitle">
-          Nhập <strong>Năm Sinh, Giới Tính và Hướng Nhà</strong> để hệ thống tự động tính toán Mệnh Quái, phân chia Đông/Tây Tứ Mệnh và xuất ma trận 8 phương vị Cát - Hung.
-        </p>
-      </div>
-
-      <div class="matrix-interactive-card">
-        <div class="selector-triad" style="grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));">
-          <div class="select-group">
-            <label for="battrach-year">NĂM SINH (DƯƠNG LỊCH)</label>
-            <input type="number" id="battrach-year" value="1990" min="1900" max="2050" class="custom-select" style="padding:0.75rem 1rem;">
-          </div>
-
-          <div class="select-group">
-            <label for="battrach-gender">GIỚI TÍNH GIA CHỦ</label>
-            <select id="battrach-gender" class="custom-select">
-              <option value="male" selected>Nam Mệnh</option>
-              <option value="female">Nữ Mệnh</option>
-            </select>
-          </div>
-
-          <div class="select-group">
-            <label for="battrach-dir">HƯỚNG NHÀ HIỆN TẠI</label>
-            <select id="battrach-dir" class="custom-select">
-              <option value="S" selected>Chính Nam (Ly Hỏa - 180°)</option>
-              <option value="SE">Đông Nam (Tốn Mộc - 135°)</option>
-              <option value="E">Chính Đông (Chấn Mộc - 90°)</option>
-              <option value="NE">Đông Bắc (Cấn Thổ - 45°)</option>
-              <option value="N">Chính Bắc (Khảm Thủy - 0°)</option>
-              <option value="NW">Tây Bắc (Càn Kim - 315°)</option>
-              <option value="W">Chính Tây (Đoài Kim - 270°)</option>
-              <option value="SW">Tây Nam (Khôn Thổ - 225°)</option>
-            </select>
-          </div>
-        </div>
-
-        <div style="text-align:center; margin-bottom:1.5rem;">
-          <button id="battrach-calc-btn" class="btn-primary" style="display:inline-flex;">
-            <span>Tính Toán Ma Trận Bát Trạch</span>
-          </button>
-        </div>
-
-        <div id="battrach-result-display">
-          <!-- Dynamic Bat Trach Calculation Result -->
-        </div>
-      </div>
-    </section>
-
-    <!-- MẠCH 2.2: THUẬT TOÁN MA TRẬN HUYỀN KHÔNG PHI TINH (XUAN KONG FLYING STARS) -->
-    
-  <!-- =========================================================================
-       CHƯƠNG V: ĐẠI BÁCH KHOA PHONG THỦY HUYỀN KHÔNG PHI TINH (CHÁNH TÔNG 10 TIẾT)
-       ========================================================================= -->
-  <section id="mach-huyenkhong-10tiet" class="academic-school-section">
-    <div class="school-header-banner" style="background: radial-gradient(circle at center, rgba(168,85,247,0.15) 0%, rgba(10,14,23,0.95) 75%); border-color: rgba(168,85,247,0.4);">
-      <span class="school-badge-tag" style="color:#C084FC; border-color:#C084FC; background:rgba(168,85,247,0.1);">THỜI KHÔNG HỌC • TAM NGUYÊN CỬU VẬN & 9 SAO LẠC THƯ</span>
-      <h2 class="school-master-title" style="color:#F3E8FF;">Chương V: Đại Bách Khoa Phong Thủy Huyền Không Phi Tinh (Thời Không Phái)</h2>
-      <p class="school-master-desc">
-        Khảo cứu toàn thư học thuyết <strong>Thẩm Thị Huyền Không Học</strong> (Thẩm Trúc Ranh), <strong>Thiên Ngọc Kinh</strong> (Dương Quân Tùng), 
-        <strong>Tử Bạch Quyết</strong> & <strong>Trạch Vận Tân Án</strong> (Vưu Tuyết Lư): 10 Tiết học thuật chánh tông từ Tam Nguyên Cửu Vận, Lập Tinh Bàn Cửu Cung, 
-        Tứ Đại Cục, Thành Môn Quyết, Tam Ban Quái đến ma trận 81 cặp tinh diệu và động thái học Niên Nguyệt Phi Tinh.
-      </p>
-
-      <div class="school-quick-nav-pills">
-        <a href="#huyenkhong-tiet-1" class="quick-pill" style="border-color:rgba(192,132,252,0.4); color:#E9D5FF;">Tiết I: Tam Nguyên Vận 9</a>
-        <a href="#huyenkhong-tiet-2" class="quick-pill" style="border-color:rgba(192,132,252,0.4); color:#E9D5FF;">Tiết II: 24 Sơn Hướng</a>
-        <a href="#huyenkhong-tiet-3" class="quick-pill" style="border-color:rgba(192,132,252,0.4); color:#E9D5FF;">Tiết III: Lập Tinh Bàn</a>
-        <a href="#huyenkhong-tiet-4" class="quick-pill" style="border-color:rgba(192,132,252,0.4); color:#E9D5FF;">Tiết IV: Tứ Đại Cục</a>
-        <a href="#huyenkhong-tiet-5" class="quick-pill" style="border-color:rgba(192,132,252,0.4); color:#E9D5FF;">Tiết V: Thành Môn Quyết</a>
-        <a href="#huyenkhong-tiet-6" class="quick-pill" style="border-color:rgba(192,132,252,0.4); color:#E9D5FF;">Tiết VI: Tam Ban Quái</a>
-        <a href="#huyenkhong-tiet-7" class="quick-pill" style="border-color:rgba(192,132,252,0.4); color:#E9D5FF;">Tiết VII: 81 Cặp Tinh Diệu</a>
-        <a href="#huyenkhong-tiet-8" class="quick-pill" style="border-color:rgba(192,132,252,0.4); color:#E9D5FF;">Tiết VIII: Huyền Không Đô Thị</a>
-        <a href="#huyenkhong-tiet-9" class="quick-pill" style="border-color:rgba(192,132,252,0.4); color:#E9D5FF;">Tiết IX: Niên Nguyệt Phi Tinh</a>
-        <a href="#huyenkhong-tiet-10" class="quick-pill" style="border-color:rgba(192,132,252,0.4); color:#E9D5FF;">Tiết X: Đại Tổng Kết</a>
-      </div>
-    </div>
-
-    <!-- Container nạp 10 Tiết Huyền Không -->
-    <div id="huyenkhong-academic-container" class="academic-cards-wrapper"></div>
-  </section>
-
-
-  <section id="mach2-huyenkhong" class="section-block">
-      <div class="section-header">
-        <span class="section-tag">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/></svg>
-          Mạch II.2: Đỉnh Cao Tính Toán Thời Không
-        </span>
-        <h2 class="section-title">Thuật Toán Huyền Không Phi Tinh (Xuan Kong Phi Tinh)</h2>
-        <p class="section-subtitle">
-          Lập Tinh Bàn Ma Trận 3 tầng <strong>(Vận Tinh - Tọa Tinh - Hướng Tinh)</strong> theo quỹ đạo Lạc Thư cho 24 Sơn Hướng trong 9 Vận (180 năm). Tự động phân tích các cách cục kinh điển: <em>Vượng Sơn Vượng Hướng, Song Tinh Đáo Hướng, Song Tinh Đáo Tọa, Thượng Sơn Hạ Thủy</em>.
-        </p>
-      </div>
-
-      <div class="matrix-interactive-card">
-        <div class="selector-triad" style="grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));">
-          <div class="select-group">
-            <label for="huyenkhong-period">CHỌN THỜI KỲ / NGUYÊN VẬN</label>
-            <select id="huyenkhong-period" class="custom-select"></select>
-          </div>
-
-          <div class="select-group">
-            <label for="huyenkhong-mountain">CHỌN TỌA - HƯỚNG (24 SƠN HƯỚNG)</label>
-            <select id="huyenkhong-mountain" class="custom-select"></select>
-          </div>
-        </div>
-
-        <div style="text-align:center; margin-bottom:1.5rem;">
-          <button id="huyenkhong-calc-btn" class="btn-primary" style="display:inline-flex;">
-            <span>Lập Tinh Bàn Cửu Cung Phi Tinh</span>
-          </button>
-        </div>
-
-        <div id="huyenkhong-result-display">
-          <!-- Dynamic Xuan Kong Calculation Result -->
-        </div>
-      </div>
-    </section>
-
-    <!-- MODULE 3: CÀN KHÔN ĐỒ HÌNH (Đồ Hình.JS GRAPH) -->
-    <section id="cankhon-graph-section" class="section-block">
-      <div class="section-header">
-        <span class="section-tag">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><circle cx="12" cy="18" r="3"/><line x1="8.5" y1="7.5" x2="15.5" y2="7.5"/></svg>
-          Mạng Lưới Tri Thức Địa Lý Càn Khôn
-        </span>
-        <h2 class="section-title">Bản Đồ Càn Khôn Tri Thức (Đồ Thị Tương Tác)</h2>
-        <p class="section-subtitle">
-          Mạng lưới liên kết đa chiều giữa Thư Tịch Cốt Lõi, Trường Phái Loan Đầu - Lý Khí, Bát Trạch, Huyền Không Phi Tinh và 24 Sơn Hướng.
-        </p>
-      </div>
-
-      <div class="graph-section-wrapper">
-        <div class="graph-top-controls">
-          <div class="graph-filter-group">
-            <button class="graph-filter-btn active" data-group="all">Toàn Cảnh Càn Khôn</button>
-            <button class="graph-filter-btn" data-group="books">Thư Tịch Cốt Lõi</button>
-            <button class="graph-filter-btn" data-group="school">Loan Đầu & Lý Khí</button>
-            <button class="graph-filter-btn" data-group="algo">Thuật Toán Số Hóa</button>
-            <button class="graph-filter-btn" data-group="compass">24 Sơn Hướng</button>
-          </div>
-
-          <button id="btn-reset-graph" class="graph-filter-btn" style="pointer-events:auto;" title="Đặt lại góc nhìn">
-            ↺ Đặt Lại
-          </button>
-        </div>
-
-        <div id="graph-container"></div>
-        <div id="graph-drawer" class="graph-drawer"></div>
-      </div>
-    </section>
-
-    <!-- MODULE 4: PHƯƠNG PHÁP KHAI THÁC & XỬ LÝ CỔ THƯ (HÁN-NÔM OCR) -->
-    <section id="ocr-methodology" class="section-block">
-      <div class="section-header">
-        <span class="section-tag">Khảo Cứu Học Thuật • Công Nghệ Văn Bản Cổ</span>
-        <h2 class="section-title">Quy Trình Khảo Cứu & Số Hóa Cổ Thư Địa Lý</h2>
-        <p class="section-subtitle">
-          Phương pháp thu thập từ các kho tàng quốc tế và quy trình ứng dụng mô hình trí tuệ nhân tạo nhận diện ký tự quang học (Hán-Nôm OCR) để số hóa di sản.
-        </p>
-      </div>
-
-      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:1.8rem;">
-        <div style="background:var(--bg-card); border:1px solid var(--border-subtle); border-radius:14px; padding:1.8rem;">
-          <span style="font-size:0.75rem; color:var(--jade-cyan); background:rgba(45,212,191,0.1); padding:0.2rem 0.6rem; border-radius:10px;">NGUỒN THƯ TỊCH HÁN TỰ</span>
-          <h4 style="font-family:var(--font-title); font-size:1.2rem; color:var(--gold-primary); margin:0.8rem 0 0.4rem;">Chinese Text Project & Kanripo</h4>
-          <p style="font-size:0.88rem; color:var(--text-muted); line-height:1.6;">
-            Trích xuất toàn văn bản gốc chữ Hán của <em>Táng Thư, Tuyết Tâm Phú, Thanh Nang Kinh, La Kinh Thấu Giải</em> từ các kho lưu trữ mở chuẩn học thuật, đối chiếu dị bản qua <em>Scripta Sinica</em> (Đài Loan).
-          </p>
-        </div>
-
-        <div style="background:var(--bg-card); border:1px solid var(--border-subtle); border-radius:14px; padding:1.8rem;">
-          <span style="font-size:0.75rem; color:var(--gold-primary); background:rgba(229,192,123,0.1); padding:0.2rem 0.6rem; border-radius:10px;">DI SẢN NÔM TẢ AO</span>
-          <h4 style="font-family:var(--font-title); font-size:1.2rem; color:var(--gold-primary); margin:0.8rem 0 0.4rem;">Thư Viện Quốc Gia Pháp & Hán Nôm</h4>
-          <p style="font-size:0.88rem; color:var(--text-muted); line-height:1.6;">
-            Tiếp cận các bản scan mộc bản chữ Nôm cổ của cụ Tả Ao (<em>Địa đạo diễn ca, Dã đàm Tả Ao</em>) lưu trữ tại Gallica (BNF Paris) và Viện Nghiên Cứu Hán Nôm Việt Nam.
-          </p>
-        </div>
-
-        <div style="background:var(--bg-card); border:1px solid var(--border-subtle); border-radius:14px; padding:1.8rem;">
-          <span style="font-size:0.75rem; color:var(--cinnabar); background:rgba(224,108,117,0.1); padding:0.2rem 0.6rem; border-radius:10px;">QUY TRÌNH HÁN-NÔM OCR</span>
-          <h4 style="font-family:var(--font-title); font-size:1.2rem; color:var(--gold-primary); margin:0.8rem 0 0.4rem;">Nhận Diện & Chuyển Đổi Ký Tự Tự Động</h4>
-          <p style="font-size:0.88rem; color:var(--text-muted); line-height:1.6;">
-            Sử dụng mô hình thị giác máy tính chuyên sâu đã được huấn luyện trọng số cho nét chữ Hán/Nôm cổ, quét trực tiếp từ ảnh chụp độ nét cao để xuất ra văn bản thô, hỗ trợ tra cứu ngữ liệu song ngữ.
-          </p>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- Footer -->
-  <footer>
-    <div class="footer-seal">
-      <svg width="48" height="48" viewBox="0 0 100 100" class="svg-icon">
-        <circle cx="50" cy="50" r="46" fill="none" stroke="#E5C07B" stroke-width="2"/>
-        <circle cx="50" cy="50" r="40" fill="none" stroke="#E5C07B" stroke-width="1" stroke-dasharray="3 3"/>
-        <g transform="translate(50, 50)">
-          <circle cx="0" cy="0" r="10" fill="#E5C07B"/>
-        </g>
-      </svg>
-    </div>
-    <p class="footer-text">
-      "Khí thừa phong tắc tán, giới thủy tắc chỉ. Cổ nhân tụ chi sử bất tán, hành chi sử hữu chỉ, cố vị chi phong thủy. 
-      Khi thấu hiểu hình thế Loan Đầu và tinh thông phép tính Lý Khí, con người sống hòa hợp cùng đất trời, kiến tạo phúc trạch trường tồn."
-    </p>
-    <div class="footer-credit">
-      © 2026 ĐỊA LÝ PHONG THỦY HỌC • TÀNG KINH CÁC THƯ TỊCH CỔ & THUẬT TOÁN CÀN KHÔN
-    </div>
-  </footer>
-
-  <!-- Core Scripts -->
+  <!-- Scripts: Data Layer -->
   <script src="js/icons.js"></script>
   <script src="js/data.js"></script>
   <script src="js/amduong_nguhanh_data.js"></script>
@@ -685,10 +358,22 @@
   <script src="js/battrach_data.js"></script>
   <script src="js/tamhop_data.js"></script>
   <script src="js/huyenkhong_data.js"></script>
-  <script src="js/tho_cung_engine.js"></script>
-  <script src="js/antigravity_graph.js"></script>
+
+  <!-- Scripts: Domain Engine Layer -->
+  <script src="js/master_rule_engine.js"></script>
   <script src="js/bat_trach_engine.js"></script>
   <script src="js/huyen_khong_engine.js"></script>
+  <script src="js/tho_cung_engine.js"></script>
+
+  <!-- Scripts: UI & Routing Layer -->
+  <script src="js/knowledge_registry.js"></script>
+  <script src="js/search_engine.js"></script>
+  <script src="js/library_ui.js"></script>
+  <script src="js/research_ui.js"></script>
+  <script src="js/evidence_graph_ui.js"></script>
+  <script src="js/tool_ui.js"></script>
+  <script src="js/reader.js"></script>
+  <script src="js/router.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

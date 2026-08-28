@@ -1,0 +1,10 @@
+[
+  {
+    "id": "VAR-001",
+    "source_a_id": "SRC-001",
+    "source_b_id": "SRC-001",
+    "target_passage": "PSG-001",
+    "differences": "Bản Tứ Khố chép là 'Giới thủy tắc chỉ', một số bản khắc thời Minh chép là 'Đắc thủy vi thượng'.",
+    "notes": "Nghĩa học thuật cốt lõi tương đồng về vai trò tụ khí của nguồn nước."
+  }
+]

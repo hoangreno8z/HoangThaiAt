@@ -1,0 +1,37 @@
+[
+  {
+    "id": "RUL-001",
+    "domain": "BatTrach",
+    "name": "Thuật Toán Tính Cung Mệnh Quái",
+    "inputs": [
+      "Năm Sinh Âm Lịch",
+      "Giới Tính"
+    ],
+    "outputs": [
+      "Mã Quái Số 1-9",
+      "Tên Quái",
+      "Đông/Tây Tứ Mệnh"
+    ],
+    "conditions": "Cộng dồn các chữ số năm sinh mod 9, nam lấy 11 - rem, nữ lấy 4 + rem (cho người sinh trước 2000).",
+    "source_ids": [
+      "SRC-004"
+    ]
+  },
+  {
+    "id": "RUL-002",
+    "domain": "HuyenKhong",
+    "name": "Thuật Toán Phi Tinh Cửu Cung Lạc Thư",
+    "inputs": [
+      "Vận Số (1-9)",
+      "Tọa Sơn",
+      "Hướng Sơn"
+    ],
+    "outputs": [
+      "Ma Trận Tinh Bàn 3x3 3 Tầng"
+    ],
+    "conditions": "Lấy sao Vận nhập Trung Cung bay thuận, tìm sao Tọa/Hướng nhập Trung Cung xét Tam Nguyên Long bay thuận (+) hoặc nghịch (-).",
+    "source_ids": [
+      "SRC-005"
+    ]
+  }
+]

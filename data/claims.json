@@ -1,0 +1,22 @@
+[
+  {
+    "id": "CLM-001",
+    "concept_id": "CPT-013",
+    "passage_id": "PSG-001",
+    "claim_type": "DEFINITION",
+    "text": "Phong Thủy là nghệ thuật tàng phong tụ khí: Khí gặp gió thì tán, gặp nước thì dừng.",
+    "school": "Loan Đầu Phái",
+    "confidence": "A",
+    "status": "VERIFIED"
+  },
+  {
+    "id": "CLM-002",
+    "concept_id": "CPT-016",
+    "passage_id": "PSG-002",
+    "claim_type": "RULE",
+    "text": "Vận khí dương trạch biến thiên theo chu kỳ Tam Nguyên Cửu Vận 180 năm (mỗi vận 20 năm).",
+    "school": "Huyền Không Phi Tinh",
+    "confidence": "B",
+    "status": "VERIFIED"
+  }
+]
