@@ -2188,3 +2188,36 @@ footer {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
   border-color: rgba(251, 191, 36, 0.5) !important;
 }
+
+/* SLEEK COMPACT PAGINATION PILLS */
+.pag-pill {
+  padding: 0.35rem 0.65rem;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 500;
+  transition: all 0.15s ease;
+}
+
+.pag-pill:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #FEF3C7;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.pag-pill.active {
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.reader-nav-btn {
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.reader-nav-btn:hover {
+  opacity: 0.85;
+}
