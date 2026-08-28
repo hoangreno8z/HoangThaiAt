@@ -349,6 +349,30 @@ class ScholarlyReader {
       `;
     }
 
+    // 1.5 KHẢO LUẬN KHÍ HÓA & PHÂN TẦNG BẢN THỂ CỔ THƯ (Cosmological Stages)
+    if (Array.isArray(lesson.cosmological_stages) && lesson.cosmological_stages.length > 0) {
+      contentHtml += `
+        <section class="reader-section-block" style="margin-bottom:1.5rem;">
+          <h2 style="font-size:0.95rem; font-weight:600; color:${track.theme}; margin-bottom:0.6rem;">
+            Khảo Luận Khí Hóa & Phân Tầng Bản Thể Cổ Thư
+          </h2>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:0.6rem;">
+            ${lesson.cosmological_stages.map(cs => `
+              <div style="background:rgba(18,24,38,0.7); border:1px solid rgba(255,255,255,0.06); border-top:2px solid ${track.theme}; padding:0.8rem; border-radius:6px;">
+                <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:0.25rem;">
+                  <strong style="color:#FEF3C7; font-size:0.86rem;">${cs.stage}</strong>
+                  <span style="font-size:0.75rem; color:${track.theme}; font-weight:600;">${cs.state || ''}</span>
+                </div>
+                <p style="font-size:0.8rem; color:var(--text-pure); line-height:1.5; margin:0;">
+                  ${cs.philosophical_meaning}
+                </p>
+              </div>
+            `).join('')}
+          </div>
+        </section>
+      `;
+    }
+
     // 2. BẢN THỂ LUẬN & TRÍCH DẪN (Ontology & Quotes from Thờ Cúng Parts)
     const quoteBlocks = [
       lesson.ontology,
@@ -1127,6 +1151,11 @@ class ScholarlyReader {
           <h1 class="reader-main-title" style="font-family:var(--font-title); font-size:1.15rem; font-weight:600; color:#FEF3C7; line-height:1.4; margin:0.2rem 0 0.35rem 0;">
             ${lesson.chapter_title}
           </h1>
+          ${lesson.classic_source ? `
+            <div style="display:inline-block; font-size:0.76rem; color:${track.theme}; background:rgba(255,255,255,0.03); border:1px solid ${track.theme}44; padding:0.2rem 0.6rem; border-radius:4px; margin-bottom:0.35rem; font-weight:600;">
+              Thư Tịch Cổ Nguyên Tác: ${lesson.classic_source}
+            </div>
+          ` : ''}
           <p class="reader-subtitle" style="font-size:0.86rem; color:var(--text-muted); line-height:1.45; margin:0;">
             ${lesson.sub_title}
           </p>
