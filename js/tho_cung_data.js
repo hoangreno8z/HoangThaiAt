@@ -222,7 +222,7 @@ const WORSHIP_FENGSHUI_PART_5 = {
     title: "2. Quy Trình 5 Bước Bao Sái Bát Hương & Tịnh Hóa Bàn Thờ",
     steps: [
       { step: "Bước 1: Tắm Gội Sạch Sẽ & Thắp Hương Khấn Xin Phép", action: "Gia chủ tắm gội thanh tịnh, trang phục nghiêm trang, thắp 3 nén hương trầm, đọc bài Văn Khấn Xin Bao Sái." },
-      { step: "Bước 2: Thứ Tự Lau Dọn Ban Thờ (Từ Trên Xuống Dưới, Từ Tôn Đến Ti)", action: "Lau tượng Phật trước $\rightarrow$ Lau bài vị Thần Linh $\rightarrow$ Lau bài vị Gia Tiên $\rightarrow$ Lau ngai thờ, chân nến." },
+      { step: "Bước 2: Thứ Tự Lau Dọn Ban Thờ (Từ Trên Xuống Dưới, Từ Tôn Đến Ti)", action: "Lau tượng Phật trước  →  Lau bài vị Thần Linh  →  Lau bài vị Gia Tiên  →  Lau ngai thờ, chân nến." },
       { step: "Bước 3: Rút Tỉa Chân Nhang (Tuyệt Đối Bất Động Bát Hương)", action: "Một tay giữ chặt thân bát hương, tay kia nhẹ nhàng rút chân nhang. Chỉ để lại số lẻ mang tính Dương: 3, 5, 7 hoặc 9 chân nhang." },
       { step: "Bước 4: Bổ Sung Tro Nếp & Vệ Sinh Thân Bát Hương", action: "Múc bớt tro thừa, bổ sung tro nếp mới, nén phẳng mặt. Dùng khăn mềm thấm nước rượu gừng lau sạch thân bát hương." },
       { step: "Bước 5: An Vị Đồ Thờ & Thắp Hương Tạ Lễ", action: "Sắp xếp đồ thờ đúng trật tự Đông Bình Tây Quả, dâng hoa tươi quả mới, thắp tuần hương mới tạ lễ thỉnh thần an vị." }
@@ -608,7 +608,7 @@ const WORSHIP_ESOTERIC_RITUALS = {
       { name: "Bát Hương Bốc Hỏa (Cháy Chân Nhang Bất Thường)", desc: "Do uế khí tích tụ hoặc trường năng lượng xung đột khiến chân nhang bốc cháy dữ dội. Cần bình tĩnh dập lửa bằng nước gừng hoặc nước thơm, tuyệt đối không dùng chân giẫm đạp." },
       { name: "Phòng Thờ Lạnh Lẽo, Cảm Giác Bất An", desc: "Bước vào phòng thờ cảm thấy lạnh gáy, rợn người, nặng nề u ám; gia đình liên tục xảy ra tranh cãi vô cớ, hao tài tán lộc." }
     ],
-    remedy_protocol: "PHƯƠNG PHÁP TÁI TỊNH HÓA (HỒI LINH CHI PHÁP): Tiến hành bao sái toàn diện bằng nước Ngũ Vị Hương và rượu gừng $\rightarrow$ Thắp 7 ngọn nến sáp quanh bàn thờ để bổ sung Dương Hỏa $\rightarrow$ Trì tụng An Thổ Địa Chân Ngôn 108 biến $\rightarrow$ Dâng lễ chay thanh tịnh thỉnh thần an vị trở lại."
+    remedy_protocol: "PHƯƠNG PHÁP TÁI TỊNH HÓA (HỒI LINH CHI PHÁP): Tiến hành bao sái toàn diện bằng nước Ngũ Vị Hương và rượu gừng  →  Thắp 7 ngọn nến sáp quanh bàn thờ để bổ sung Dương Hỏa  →  Trì tụng An Thổ Địa Chân Ngôn 108 biến  →  Dâng lễ chay thanh tịnh thỉnh thần an vị trở lại."
   }
 };
 

@@ -91,7 +91,7 @@ const LOANDAU_PART_1 = {
     {
       "stage": "Chương 4: Ngũ Bất Táng & Thập Căn (Tạp Thiên)",
       "state": "5 thế đất cấm kỵ tuyệt đối",
-      "detailed_explanation": "Quách Phác liệt kê 5 loại đất chết (Ngũ Bất Táng) tuyệt đối không được xây nhà hay đặt mộ: 1. ĐỒNG SƠN (Núi trơ trọi không có cây cỏ sinh sống $\rightarrow$ Đất chết khí kiệt); 2. ĐOẠN SƠN (Mạch núi bị xẻ thịt đào phá đứt đoạn $\rightarrow$ Mạch máu bị chặt đứt); 3. THẠCH SƠN (Núi toàn sỏi đá khô cằn hiểm trở $\rightarrow$ Sát khí nặng nề); 4. QUÁ SƠN (Thế đất trôi tuột lao dốc $\rightarrow$ Khí đang chạy chưa dừng); 5. ĐỘC SƠN (Ngọn đồi trơ trọi đứng một mình giữa đồng trống $\rightarrow$ Bị gió lùa 8 hướng cô độc).",
+      "detailed_explanation": "Quách Phác liệt kê 5 loại đất chết (Ngũ Bất Táng) tuyệt đối không được xây nhà hay đặt mộ: 1. ĐỒNG SƠN (Núi trơ trọi không có cây cỏ sinh sống  →  Đất chết khí kiệt); 2. ĐOẠN SƠN (Mạch núi bị xẻ thịt đào phá đứt đoạn  →  Mạch máu bị chặt đứt); 3. THẠCH SƠN (Núi toàn sỏi đá khô cằn hiểm trở  →  Sát khí nặng nề); 4. QUÁ SƠN (Thế đất trôi tuột lao dốc  →  Khí đang chạy chưa dừng); 5. ĐỘC SƠN (Ngọn đồi trơ trọi đứng một mình giữa đồng trống  →  Bị gió lùa 8 hướng cô độc).",
       "practical_manifestation": "Khu đất ven sườn dốc cheo leo dễ sạt lở, hoặc bãi đất hoang khô cằn cỏ không mọc nổi đều là Ngũ Bất Táng.",
       "key_takeaway": "Tránh xa 5 thế đất hung họa để bảo tồn sinh mệnh và tài sản gia tộc."
     }
@@ -217,7 +217,7 @@ const LOANDAU_PART_3 = {
     },
     {
       "stage": "Phân Tích 2: Quá Trình Bác Hoán (Lột Xác Từ Thô Sang Tinh)",
-      "state": "Đá $\rightarrow$ Đất • Cao $\rightarrow$ Thấp • Thô $\rightarrow$ Mịn",
+      "state": "Đá  →  Đất • Cao  →  Thấp • Thô  →  Mịn",
       "detailed_explanation": "Long mạch từ Tổ Sơn chạy đi ngàn dặm mang theo sát khí hung bạo của núi đá chọc trời. Muốn kết thành huyệt vị nuôi dưỡng con người, rồng bắt buộc phải trải qua quá trình BÁC HOÁN (Lột xác): Núi đá chuyển dần thành núi đất, vách dốc đứng chuyển dần thành đồi thoai thoải, gồ ghề chuyển thành mịn màng, thô bạo chuyển thành nhu hòa. Càng qua nhiều lần bác hoán thì sinh khí càng tinh ròng, phát phúc càng bền vững.",
       "practical_manifestation": "Dãy núi đá vôi hiểm trở chuyển dần thành các gò đồi đất đỏ bazan phì nhiêu trồng cây ăn trái.",
       "key_takeaway": "Nơi kết huyệt phải là phần thịt non tơ mịn màng sau khi đã lột sạch sát khí."
@@ -464,7 +464,7 @@ const LOANDAU_PART_7 = {
     {
       "stage": "Khảo Sát 3: Đại Hung Thủy Pháp (Phản Cung, Xuyên Tâm, Lâm Đầu)",
       "state": "Lưỡi liềm chém sát chân đất",
-      "detailed_explanation": "CÁC THẾ NƯỚC SÁT KHÍ NGUY HIỂM NHẤT: 1. PHẢN CUNG THỦY: Đoạn sông cong quay lưng ra ngoài, mũi nhọn của khúc cua đâm thẳng vào nhà như lưỡi dao chém ngang ngực $\rightarrow$ Gia đình ly tán, tai nạn liên miên; 2. XUYÊN TÂM THỦY: Dòng nước đâm thẳng vào chính diện cửa nhà như mũi tên bắn $\rightarrow$ Tán gia bại sản; 3. LÂM ĐẦU THỦY: Nước từ trên vách núi dội thẳng xuống nóc nhà $\rightarrow$ Tổn hại nhân đinh chết trẻ.",
+      "detailed_explanation": "CÁC THẾ NƯỚC SÁT KHÍ NGUY HIỂM NHẤT: 1. PHẢN CUNG THỦY: Đoạn sông cong quay lưng ra ngoài, mũi nhọn của khúc cua đâm thẳng vào nhà như lưỡi dao chém ngang ngực  →  Gia đình ly tán, tai nạn liên miên; 2. XUYÊN TÂM THỦY: Dòng nước đâm thẳng vào chính diện cửa nhà như mũi tên bắn  →  Tán gia bại sản; 3. LÂM ĐẦU THỦY: Nước từ trên vách núi dội thẳng xuống nóc nhà  →  Tổn hại nhân đinh chết trẻ.",
       "practical_manifestation": "Nhà nằm ở bờ sông bên lở (bị dòng chảy thúc thẳng vào móng) thường xuyên bị sụt lún nguy hiểm.",
       "key_takeaway": "Tuyệt đối tránh xa các mũi nhọn của dòng sông và ngã ba đường đâm thẳng."
     }
@@ -635,7 +635,7 @@ const LOANDAU_PART_10 = {
     },
     {
       "stage": "Quy Luật 2: Khảo Cứu Địa Mạch Sông Núi Việt Nam (Thánh Tả Ao)",
-      "state": "Hoàng Liên Sơn $\rightarrow$ Trường Sơn $\rightarrow$ Đồng Bằng Bắc - Nam",
+      "state": "Hoàng Liên Sơn  →  Trường Sơn  →  Đồng Bằng Bắc - Nam",
       "detailed_explanation": "Thánh Tả Ao khảo sát thực địa địa lý nước nhà: Đỉnh Fansipan hùng vĩ của dãy Hoàng Liên Sơn là Thái Tổ Sơn của toàn bộ long mạch Đại Việt. Từ đây mạch rồng phân làm hai cánh: Cánh phía Đông uốn lượn ôm trọn đồng bằng Bắc Bộ được bọc bởi sông Hồng và sông Thái Bình; Cánh phía Nam chạy dài dọc dãy Trường Sơn hùng vĩ ra đến tận mũi Cà Mau được nuôi dưỡng bởi chín nhánh sông Cửu Long. Đây là thế đất 'Long bàn Hổ cứ' ngàn năm văn hiến bất khả xâm phạm.",
       "practical_manifestation": "Vị thế trung tâm đầu não chính trị của thủ đô Hà Nội tựa núi Ba Vì, nhìn ra sông Hồng.",
       "key_takeaway": "Địa lý Việt Nam đắc thế non sông gấm vóc, ngàn đời hưng thịnh vững bền."
