@@ -46,16 +46,16 @@ class ScholarlyReader {
         prereqLink: '#/learn/nen-tang/1',
         conceptTags: ['CPT-013', 'Long Mạch', 'Tàng Phong Tụ Khí', 'Tả Long Hữu Hổ'],
         parts: [
-          typeof LOANDAU_FENGSHUI_PART_1 !== 'undefined' ? LOANDAU_FENGSHUI_PART_1 : null,
-          typeof LOANDAU_FENGSHUI_PART_2 !== 'undefined' ? LOANDAU_FENGSHUI_PART_2 : null,
-          typeof LOANDAU_FENGSHUI_PART_3 !== 'undefined' ? LOANDAU_FENGSHUI_PART_3 : null,
-          typeof LOANDAU_FENGSHUI_PART_4 !== 'undefined' ? LOANDAU_FENGSHUI_PART_4 : null,
-          typeof LOANDAU_FENGSHUI_PART_5 !== 'undefined' ? LOANDAU_FENGSHUI_PART_5 : null,
-          typeof LOANDAU_FENGSHUI_PART_6 !== 'undefined' ? LOANDAU_FENGSHUI_PART_6 : null,
-          typeof LOANDAU_FENGSHUI_PART_7 !== 'undefined' ? LOANDAU_FENGSHUI_PART_7 : null,
-          typeof LOANDAU_FENGSHUI_PART_8 !== 'undefined' ? LOANDAU_FENGSHUI_PART_8 : null,
-          typeof LOANDAU_FENGSHUI_PART_9 !== 'undefined' ? LOANDAU_FENGSHUI_PART_9 : null,
-          typeof LOANDAU_FENGSHUI_PART_10 !== 'undefined' ? LOANDAU_FENGSHUI_PART_10 : null
+          typeof LOANDAU_PART_1 !== 'undefined' ? LOANDAU_PART_1 : (typeof LOANDAU_FENGSHUI_PART_1 !== 'undefined' ? LOANDAU_FENGSHUI_PART_1 : null),
+          typeof LOANDAU_PART_2 !== 'undefined' ? LOANDAU_PART_2 : (typeof LOANDAU_FENGSHUI_PART_2 !== 'undefined' ? LOANDAU_FENGSHUI_PART_2 : null),
+          typeof LOANDAU_PART_3 !== 'undefined' ? LOANDAU_PART_3 : (typeof LOANDAU_FENGSHUI_PART_3 !== 'undefined' ? LOANDAU_FENGSHUI_PART_3 : null),
+          typeof LOANDAU_PART_4 !== 'undefined' ? LOANDAU_PART_4 : (typeof LOANDAU_FENGSHUI_PART_4 !== 'undefined' ? LOANDAU_FENGSHUI_PART_4 : null),
+          typeof LOANDAU_PART_5 !== 'undefined' ? LOANDAU_PART_5 : (typeof LOANDAU_FENGSHUI_PART_5 !== 'undefined' ? LOANDAU_FENGSHUI_PART_5 : null),
+          typeof LOANDAU_PART_6 !== 'undefined' ? LOANDAU_PART_6 : (typeof LOANDAU_FENGSHUI_PART_6 !== 'undefined' ? LOANDAU_FENGSHUI_PART_6 : null),
+          typeof LOANDAU_PART_7 !== 'undefined' ? LOANDAU_PART_7 : (typeof LOANDAU_FENGSHUI_PART_7 !== 'undefined' ? LOANDAU_FENGSHUI_PART_7 : null),
+          typeof LOANDAU_PART_8 !== 'undefined' ? LOANDAU_PART_8 : (typeof LOANDAU_FENGSHUI_PART_8 !== 'undefined' ? LOANDAU_FENGSHUI_PART_8 : null),
+          typeof LOANDAU_PART_9 !== 'undefined' ? LOANDAU_PART_9 : (typeof LOANDAU_FENGSHUI_PART_9 !== 'undefined' ? LOANDAU_FENGSHUI_PART_9 : null),
+          typeof LOANDAU_PART_10 !== 'undefined' ? LOANDAU_PART_10 : (typeof LOANDAU_FENGSHUI_PART_10 !== 'undefined' ? LOANDAU_FENGSHUI_PART_10 : null)
         ]
       },
       'bat-trach': {
@@ -978,7 +978,7 @@ class ScholarlyReader {
       `;
     }
 
-    // 16. CÁC QUY TẮC CỐT LÕI (Core Rules IF-THEN)
+    // 16. CÁC QUY TẮC CỐT LÕI (Core Rules)
     if (lesson.core_rules && Array.isArray(lesson.core_rules.rule_table)) {
       contentHtml += `
         <section class="reader-section-block" style="margin-bottom:1.5rem; border-top:1px solid rgba(255,255,255,0.06); padding-top:1rem;">
@@ -986,13 +986,18 @@ class ScholarlyReader {
             Quy Tắc Học Thuật Cốt Lõi (Định Luật Cát Hung)
           </h2>
           <div style="display:flex; flex-direction:column; gap:0.6rem;">
-            ${lesson.core_rules.rule_table.map(rule => `
-              <div style="background:rgba(18,24,38,0.7); border:1px solid rgba(255,255,255,0.06); padding:0.7rem 0.9rem; border-radius:6px;">
-                <div style="font-size:0.82rem; color:${track.theme}; font-weight:600; margin-bottom:0.2rem;">${rule.condition}</div>
-                <div style="font-size:0.82rem; color:#FEF3C7; margin-bottom:0.2rem;">${rule.result}</div>
-                <div style="font-size:0.78rem; color:var(--text-muted);">${rule.principle}</div>
-              </div>
-            `).join('')}
+            ${lesson.core_rules.rule_table.map(rule => {
+              const cond = (rule.condition || '').replace(/^IF\s*\((.*?)\)$/i, '$1').replace(/^IF\s*/i, '');
+              const res = (rule.result || '').replace(/^THEN\s*\((.*?)\)$/i, '$1').replace(/^THEN\s*/i, '');
+              const bec = (rule.principle || '').replace(/^BECAUSE:\s*/i, '');
+              return `
+                <div style="background:rgba(18,24,38,0.7); border:1px solid rgba(255,255,255,0.06); padding:0.7rem 0.9rem; border-radius:6px;">
+                  <div style="font-size:0.82rem; color:${track.theme}; font-weight:600; margin-bottom:0.2rem;">${cond}</div>
+                  <div style="font-size:0.82rem; color:#FEF3C7; margin-bottom:0.2rem;"><strong>Hệ quả:</strong> ${res}</div>
+                  ${bec ? `<div style="font-size:0.78rem; color:var(--text-muted);"><strong>Nguyên lý:</strong> ${bec}</div>` : ''}
+                </div>
+              `;
+            }).join('')}
           </div>
         </section>
       `;
