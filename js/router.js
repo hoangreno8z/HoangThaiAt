@@ -14,6 +14,8 @@ class LibraryRouter {
       'search': (params) => this.renderSearch(params),
       'research': (params) => this.renderResearch(params),
       'tools': (params) => this.renderTools(params),
+      'hoagiaicothu': (params) => this.renderTools({ segments: ['hoagiaicothu'] }),
+      'hoa-giai': (params) => this.renderTools({ segments: ['hoagiaicothu'] }),
       'diachat64': (params) => this.renderTools({ segments: ['diachat64'] }),
       'dia-chat': (params) => this.renderTools({ segments: ['diachat64'] })
     };
