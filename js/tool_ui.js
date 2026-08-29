@@ -20,8 +20,14 @@ class ToolUI {
       hasStackVentilation: true,
       occupantCount: 4,
       houseAreaM2: 120,
-      lobanDimMm: 810,
       lobanRulerType: '522',
+      lobanDoorWidthCm: 81,
+      lobanDoorHeightCm: 212,
+      lobanBedWidthCm: 160,
+      lobanBedLengthCm: 200,
+      lobanAltarWidthCm: 107,
+      lobanAltarDepthCm: 61,
+      lobanAltarHeightCm: 127,
       thienVanSon: 'Tý'
     };
   }
@@ -557,56 +563,118 @@ ${reportText}
   // =========================================================================
   // =========================================================================
   // =========================================================================
-  // PHÂN HỆ THƯỚC LỖ BAN TAM GIỚI (52.2cm • 42.9cm • 38.8cm)
   // =========================================================================
-  updateLoBanDim(val) {
-    const mm = parseFloat(val) * 10;
-    this.state.lobanDimMm = mm;
-    const container = document.getElementById("tool-active-area");
-    if (container) container.innerHTML = this.getToolContent("loban");
+  // PHÂN HỆ THƯỚC LỖ BAN TAM GIỚI (52.2cm • 42.9cm • 38.8cm) - ĐA CHIỀU
+  // =========================================================================
+  updateLoBanMultiDim(field, val) {
+    this.state[field] = parseFloat(val) || 1;
+    const container = document.getElementById('tool-active-area');
+    if (container) container.innerHTML = this.getToolContent('loban');
   }
 
   updateLoBanRuler(type) {
     this.state.lobanRulerType = type;
-    const container = document.getElementById("tool-active-area");
-    if (container) container.innerHTML = this.getToolContent("loban");
+    const container = document.getElementById('tool-active-area');
+    if (container) container.innerHTML = this.getToolContent('loban');
   }
 
-  setLoBanPreset(cm) {
-    this.state.lobanDimMm = cm * 10;
-    const container = document.getElementById("tool-active-area");
-    if (container) container.innerHTML = this.getToolContent("loban");
+  setLoBanPreset(type, dims) {
+    if (type === '522') {
+      this.state.lobanDoorWidthCm = dims.w;
+      this.state.lobanDoorHeightCm = dims.h;
+    } else if (type === '429') {
+      this.state.lobanBedWidthCm = dims.w;
+      this.state.lobanBedLengthCm = dims.l;
+    } else if (type === '388') {
+      this.state.lobanAltarWidthCm = dims.w;
+      this.state.lobanAltarDepthCm = dims.d;
+      this.state.lobanAltarHeightCm = dims.h;
+    }
+    const container = document.getElementById('tool-active-area');
+    if (container) container.innerHTML = this.getToolContent('loban');
   }
 
   renderLoBanTool() {
-    const engine = (typeof window !== "undefined" && window.loBanEngine) ? window.loBanEngine : new LoBanEngine();
-    const rulerType = this.state.lobanRulerType || "522";
-    const dimMm = this.state.lobanDimMm || 810;
-    const res = engine.calculate(dimMm, rulerType);
+    const engine = (typeof window !== 'undefined' && window.loBanEngine) ? window.loBanEngine : new LoBanEngine();
+    const rulerType = this.state.lobanRulerType || '522';
+
+    let dimsToEval = [];
+    let titleContext = '';
+    let presetsHtml = '';
+
+    if (rulerType === '522') {
+      titleContext = 'ĐO CỬA THÔNG THỦY (BẮT BUỘC ĐO CẢ CHIỀU RỘNG VÀ CHIỀU CAO LỌT LÒNG)';
+      const w = this.state.lobanDoorWidthCm || 81;
+      const h = this.state.lobanDoorHeightCm || 212;
+      dimsToEval = [
+        { label: 'Chiều Rộng Lọt Lòng Cửa', cm: w },
+        { label: 'Chiều Cao Lọt Lòng Cửa', cm: h }
+      ];
+      presetsHtml = `
+        <span style="font-size:0.75rem; color:var(--text-muted);">Mẫu cửa chuẩn:</span>
+        <button onclick="window.toolUI.setLoBanPreset('522', {w:81, h:212})" style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); color:#FEF3C7; padding:0.2rem 0.5rem; border-radius:4px; font-size:0.75rem; cursor:pointer;">81cm x 212cm (Cửa 1 cánh)</button>
+        <button onclick="window.toolUI.setLoBanPreset('522', {w:69, h:197})" style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); color:#FEF3C7; padding:0.2rem 0.5rem; border-radius:4px; font-size:0.75rem; cursor:pointer;">69cm x 197cm (Cửa phòng nhỏ)</button>
+        <button onclick="window.toolUI.setLoBanPreset('522', {w:87, h:215})" style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); color:#FEF3C7; padding:0.2rem 0.5rem; border-radius:4px; font-size:0.75rem; cursor:pointer;">87cm x 215cm (Cửa chính lớn)</button>
+      `;
+    } else if (rulerType === '429') {
+      titleContext = 'ĐO GIƯỜNG NGỦ & BÀN GHẾ (ĐO PHỦ BÌ CHIỀU RỘNG VÀ CHIỀU DÀI)';
+      const w = this.state.lobanBedWidthCm || 160;
+      const l = this.state.lobanBedLengthCm || 200;
+      dimsToEval = [
+        { label: 'Chiều Rộng Phủ Bì', cm: w },
+        { label: 'Chiều Dài Phủ Bì', cm: l }
+      ];
+      presetsHtml = `
+        <span style="font-size:0.75rem; color:var(--text-muted);">Mẫu giường/bàn chuẩn:</span>
+        <button onclick="window.toolUI.setLoBanPreset('429', {w:160, l:200})" style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); color:#FEF3C7; padding:0.2rem 0.5rem; border-radius:4px; font-size:0.75rem; cursor:pointer;">160cm x 200cm (Giường đôi)</button>
+        <button onclick="window.toolUI.setLoBanPreset('429', {w:180, l:200})" style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); color:#FEF3C7; padding:0.2rem 0.5rem; border-radius:4px; font-size:0.75rem; cursor:pointer;">180cm x 200cm (Giường King)</button>
+        <button onclick="window.toolUI.setLoBanPreset('429', {w:120, l:60})" style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); color:#FEF3C7; padding:0.2rem 0.5rem; border-radius:4px; font-size:0.75rem; cursor:pointer;">120cm x 60cm (Bàn làm việc)</button>
+      `;
+    } else if (rulerType === '388') {
+      titleContext = 'ĐO BÀN THỜ GIA TIÊN (BẮT BUỘC ĐO CẢ 3 CHIỀU: NGANG x SÂU x CAO)';
+      const w = this.state.lobanAltarWidthCm || 107;
+      const d = this.state.lobanAltarDepthCm || 61;
+      const h = this.state.lobanAltarHeightCm || 127;
+      dimsToEval = [
+        { label: 'Chiều Ngang Mặt Bàn Thờ', cm: w },
+        { label: 'Chiều Sâu Mặt Bàn Thờ', cm: d },
+        { label: 'Chiều Cao Bàn Thờ', cm: h }
+      ];
+      presetsHtml = `
+        <span style="font-size:0.75rem; color:var(--text-muted);">Mẫu bàn thờ chuẩn:</span>
+        <button onclick="window.toolUI.setLoBanPreset('388', {w:107, d:61, h:127})" style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); color:#FEF3C7; padding:0.2rem 0.5rem; border-radius:4px; font-size:0.75rem; cursor:pointer;">107x61x127cm (Cỡ vừa)</button>
+        <button onclick="window.toolUI.setLoBanPreset('388', {w:127, d:67, h:127})" style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); color:#FEF3C7; padding:0.2rem 0.5rem; border-radius:4px; font-size:0.75rem; cursor:pointer;">127x67x127cm (Cỡ trung)</button>
+        <button onclick="window.toolUI.setLoBanPreset('388', {w:153, d:69, h:127})" style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); color:#FEF3C7; padding:0.2rem 0.5rem; border-radius:4px; font-size:0.75rem; cursor:pointer;">153x69x127cm (Cỡ đại)</button>
+      `;
+    }
+
+    const setEvaluation = engine.calculateSet(dimsToEval, rulerType);
 
     return `
       <div style="background:#0D111A; border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:1.4rem; max-width:1050px; margin:0 auto 2rem auto;">
+        
+        <!-- Header -->
         <div style="margin-bottom:1.2rem; border-bottom:1px solid rgba(255,255,255,0.06); padding-bottom:0.8rem;">
           <div style="display:inline-block; font-size:0.75rem; font-weight:800; color:#EF4444; background:rgba(239,68,68,0.1); border:1px solid rgba(239,68,68,0.25); padding:0.2rem 0.6rem; border-radius:4px; margin-bottom:0.3rem;">
-            CỔ THƯ 《LỖ BAN TIÊN SƯ BÍ THƯ》
+            CỔ THƯ 《LỖ BAN TIÊN SƯ BÍ THƯ》 & 《DƯƠNG TRẠCH THẬP THƯ》
           </div>
           <h2 style="font-size:1.4rem; color:#FEF3C7; margin:0.1rem 0;">
             Thước Lỗ Ban Tam Giới
           </h2>
           <p style="font-size:0.84rem; color:var(--text-muted); margin:0;">
-            Tách bạch chuẩn mực 3 loại thước: Thông Thủy (52.2cm) • Khối Đặc (42.9cm) • Thờ Cúng (38.8cm).
+            Khảo chứng toán học 3 tầng thước độc lập: Thông Thủy (52.2cm) • Khối Đặc (42.9cm) • Thờ Cúng (38.8cm).
           </p>
         </div>
 
-        <!-- HƯỚNG DẪN ĐO NGOÀI ĐỜI THỰC -->
+        <!-- HƯỚNG DẪN ĐO THỰC TẾ -->
         <div style="background:#121722; border:1px solid rgba(56,189,248,0.25); border-radius:10px; padding:0.9rem 1.1rem; margin-bottom:1.2rem;">
           <div style="font-size:0.82rem; font-weight:700; color:#38BDF8; margin-bottom:0.3rem;">
-            HƯỚNG DẪN ĐO NGOÀI THỰC TẾ:
+            HƯỚNG DẪN ĐO ĐẦY ĐỦ NGOÀI ĐỜI THỰC:
           </div>
           <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:0.6rem; font-size:0.78rem; color:var(--text-primary); line-height:1.5;">
-            <div>• <strong>Đo Cửa (Thước 52.2cm):</strong> Đo khoảng <em>lọt lòng ánh sáng</em> từ mép trong khuôn bên này sang mép trong khuôn bên kia.</div>
-            <div>• <strong>Đo Giường/Bàn (Thước 42.9cm):</strong> Đo kích thước <em>phủ bì toàn bộ</em> (dài x rộng x cao của khối đồ gỗ).</div>
-            <div>• <strong>Đo Bàn Thờ (Thước 38.8cm):</strong> Đo kích thước <em>mặt bàn thờ</em> (chiều dài ngang, chiều sâu và chiều cao).</div>
+            <div>• <strong>Đo Cửa (Thước 52.2cm):</strong> Bắt buộc đo cả <strong>Chiều Rộng Lọt Lòng</strong> và <strong>Chiều Cao Lọt Lòng</strong> (khoảng ánh sáng đi qua, không tính khuôn gỗ).</div>
+            <div>• <strong>Đo Giường/Bàn (Thước 42.9cm):</strong> Đo phủ bì cả <strong>Chiều Rộng</strong> và <strong>Chiều Dài</strong> của khối đồ gỗ.</div>
+            <div>• <strong>Đo Bàn Thờ (Thước 38.8cm):</strong> Bắt buộc đo đủ cả 3 chiều: <strong>Chiều Ngang x Chiều Sâu x Chiều Cao</strong> mặt bàn thờ.</div>
           </div>
         </div>
 
@@ -617,7 +685,7 @@ ${reportText}
             style="background:${rulerType === '522' ? '#EF4444' : 'rgba(255,255,255,0.03)'}; color:${rulerType === '522' ? '#FFFFFF' : 'var(--text-muted)'}; border:1px solid ${rulerType === '522' ? '#EF4444' : 'rgba(255,255,255,0.08)'}; padding:0.7rem 0.5rem; border-radius:8px; font-weight:700; font-size:0.84rem; cursor:pointer; text-align:center;"
           >
             <div>🚪 52.2 cm (Thông Thủy)</div>
-            <div style="font-size:0.72rem; font-weight:400; opacity:0.9; margin-top:0.2rem;">Đo Cửa, Cổng, Giếng Trời</div>
+            <div style="font-size:0.72rem; font-weight:400; opacity:0.9; margin-top:0.2rem;">Đo Cửa Đi, Cửa Sổ, Cổng</div>
           </button>
 
           <button 
@@ -637,68 +705,129 @@ ${reportText}
           </button>
         </div>
 
-        <!-- Ô NHẬP KÍCH THƯỚC (CM) -->
-        <div style="background:#121722; border:1.5px solid rgba(251,191,36,0.35); border-radius:10px; padding:1rem; margin-bottom:1.2rem;">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem; flex-wrap:wrap; gap:0.5rem;">
-            <label style="font-size:0.88rem; font-weight:800; color:#FEF3C7;">
-              Nhập Kích Thước Cần Soi Chiếu (Đơn vị: Centimet):
-            </label>
-            <span style="font-size:0.8rem; color:#94A3B8;">Đang dùng: <strong>${res.rulerName}</strong></span>
+        <!-- KHUNG NHẬP ĐA CHIỀU (RỘNG x CAO HOẶC RỘNG x SÂU x CAO) -->
+        <div style="background:#121722; border:1.5px solid rgba(251,191,36,0.35); border-radius:10px; padding:1.1rem; margin-bottom:1.2rem;">
+          <div style="font-size:0.85rem; font-weight:800; color:#FBBF24; margin-bottom:0.6rem;">
+            ${titleContext}
           </div>
 
-          <div style="display:flex; gap:0.6rem; align-items:center;">
-            <input 
-              type="number" 
-              step="0.1" 
-              min="1" 
-              max="1000" 
-              value="${res.dimensionCm}"
-              onchange="window.toolUI.updateLoBanDim(this.value)"
-              oninput="window.toolUI.updateLoBanDim(this.value)"
-              style="flex:1; background:#07090E; border:1px solid rgba(255,255,255,0.2); color:#FEF3C7; padding:0.65rem 1rem; border-radius:8px; font-size:16px !important; font-weight:800; outline:none;"
-            />
-            <span style="font-weight:700; color:#FEF3C7; font-size:1rem;">cm</span>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:0.8rem; margin-bottom:0.8rem;">
+            ${rulerType === '522' ? `
+              <div>
+                <label style="display:block; font-size:0.8rem; color:#FEF3C7; margin-bottom:0.25rem; font-weight:700;">1. Chiều Rộng Lọt Lòng (cm):</label>
+                <input 
+                  type="number" step="0.1" min="1" max="1000"
+                  value="${this.state.lobanDoorWidthCm || 81}"
+                  oninput="window.toolUI.updateLoBanMultiDim('lobanDoorWidthCm', this.value)"
+                  style="width:100%; background:#07090E; border:1px solid rgba(255,255,255,0.2); color:#FEF3C7; padding:0.6rem 0.8rem; border-radius:8px; font-size:16px !important; font-weight:800; box-sizing:border-box; outline:none;"
+                />
+              </div>
+              <div>
+                <label style="display:block; font-size:0.8rem; color:#FEF3C7; margin-bottom:0.25rem; font-weight:700;">2. Chiều Cao Lọt Lòng (cm):</label>
+                <input 
+                  type="number" step="0.1" min="1" max="1000"
+                  value="${this.state.lobanDoorHeightCm || 212}"
+                  oninput="window.toolUI.updateLoBanMultiDim('lobanDoorHeightCm', this.value)"
+                  style="width:100%; background:#07090E; border:1px solid rgba(255,255,255,0.2); color:#FEF3C7; padding:0.6rem 0.8rem; border-radius:8px; font-size:16px !important; font-weight:800; box-sizing:border-box; outline:none;"
+                />
+              </div>
+            ` : (rulerType === '429' ? `
+              <div>
+                <label style="display:block; font-size:0.8rem; color:#FEF3C7; margin-bottom:0.25rem; font-weight:700;">1. Chiều Rộng Phủ Bì (cm):</label>
+                <input 
+                  type="number" step="0.1" min="1" max="1000"
+                  value="${this.state.lobanBedWidthCm || 160}"
+                  oninput="window.toolUI.updateLoBanMultiDim('lobanBedWidthCm', this.value)"
+                  style="width:100%; background:#07090E; border:1px solid rgba(255,255,255,0.2); color:#FEF3C7; padding:0.6rem 0.8rem; border-radius:8px; font-size:16px !important; font-weight:800; box-sizing:border-box; outline:none;"
+                />
+              </div>
+              <div>
+                <label style="display:block; font-size:0.8rem; color:#FEF3C7; margin-bottom:0.25rem; font-weight:700;">2. Chiều Dài Phủ Bì (cm):</label>
+                <input 
+                  type="number" step="0.1" min="1" max="1000"
+                  value="${this.state.lobanBedLengthCm || 200}"
+                  oninput="window.toolUI.updateLoBanMultiDim('lobanBedLengthCm', this.value)"
+                  style="width:100%; background:#07090E; border:1px solid rgba(255,255,255,0.2); color:#FEF3C7; padding:0.6rem 0.8rem; border-radius:8px; font-size:16px !important; font-weight:800; box-sizing:border-box; outline:none;"
+                />
+              </div>
+            ` : `
+              <div>
+                <label style="display:block; font-size:0.8rem; color:#FEF3C7; margin-bottom:0.25rem; font-weight:700;">1. Chiều Ngang Bàn Thờ (cm):</label>
+                <input 
+                  type="number" step="0.1" min="1" max="1000"
+                  value="${this.state.lobanAltarWidthCm || 107}"
+                  oninput="window.toolUI.updateLoBanMultiDim('lobanAltarWidthCm', this.value)"
+                  style="width:100%; background:#07090E; border:1px solid rgba(255,255,255,0.2); color:#FEF3C7; padding:0.6rem 0.8rem; border-radius:8px; font-size:16px !important; font-weight:800; box-sizing:border-box; outline:none;"
+                />
+              </div>
+              <div>
+                <label style="display:block; font-size:0.8rem; color:#FEF3C7; margin-bottom:0.25rem; font-weight:700;">2. Chiều Sâu Bàn Thờ (cm):</label>
+                <input 
+                  type="number" step="0.1" min="1" max="1000"
+                  value="${this.state.lobanAltarDepthCm || 61}"
+                  oninput="window.toolUI.updateLoBanMultiDim('lobanAltarDepthCm', this.value)"
+                  style="width:100%; background:#07090E; border:1px solid rgba(255,255,255,0.2); color:#FEF3C7; padding:0.6rem 0.8rem; border-radius:8px; font-size:16px !important; font-weight:800; box-sizing:border-box; outline:none;"
+                />
+              </div>
+              <div>
+                <label style="display:block; font-size:0.8rem; color:#FEF3C7; margin-bottom:0.25rem; font-weight:700;">3. Chiều Cao Bàn Thờ (cm):</label>
+                <input 
+                  type="number" step="0.1" min="1" max="1000"
+                  value="${this.state.lobanAltarHeightCm || 127}"
+                  oninput="window.toolUI.updateLoBanMultiDim('lobanAltarHeightCm', this.value)"
+                  style="width:100%; background:#07090E; border:1px solid rgba(255,255,255,0.2); color:#FEF3C7; padding:0.6rem 0.8rem; border-radius:8px; font-size:16px !important; font-weight:800; box-sizing:border-box; outline:none;"
+                />
+              </div>
+            `)}
           </div>
 
-          <!-- Dải Phím Chọn Nhanh Kích Thước Vàng Phổ Biến -->
-          <div style="margin-top:0.8rem; display:flex; gap:0.4rem; flex-wrap:wrap; align-items:center;">
-            <span style="font-size:0.75rem; color:var(--text-muted);">Mẫu hay dùng:</span>
-            <button onclick="window.toolUI.setLoBanPreset(81)" style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); color:#FEF3C7; padding:0.2rem 0.5rem; border-radius:4px; font-size:0.75rem; cursor:pointer;">81cm (Cửa 1 cánh)</button>
-            <button onclick="window.toolUI.setLoBanPreset(212)" style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); color:#FEF3C7; padding:0.2rem 0.5rem; border-radius:4px; font-size:0.75rem; cursor:pointer;">212cm (Cao cửa)</button>
-            <button onclick="window.toolUI.setLoBanPreset(107)" style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); color:#FEF3C7; padding:0.2rem 0.5rem; border-radius:4px; font-size:0.75rem; cursor:pointer;">107cm (Bàn thờ)</button>
-            <button onclick="window.toolUI.setLoBanPreset(127)" style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); color:#FEF3C7; padding:0.2rem 0.5rem; border-radius:4px; font-size:0.75rem; cursor:pointer;">127cm (Cao bàn thờ)</button>
-            <button onclick="window.toolUI.setLoBanPreset(160)" style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); color:#FEF3C7; padding:0.2rem 0.5rem; border-radius:4px; font-size:0.75rem; cursor:pointer;">160cm (Giường)</button>
+          <!-- Mẫu Chọn Nhanh -->
+          <div style="display:flex; gap:0.4rem; flex-wrap:wrap; align-items:center;">
+            ${presetsHtml}
           </div>
         </div>
 
-        <!-- HỘP KẾT QUẢ PHÂN TÍCH CÁT HUNG TOÀN DIỆN -->
-        <div style="background:${res.isGood ? 'rgba(16,185,129,0.06)' : 'rgba(239,68,68,0.06)'}; border:1.5px solid ${res.isGood ? '#10B981' : '#EF4444'}; border-radius:10px; padding:1.2rem; margin-bottom:1.4rem;">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.6rem; flex-wrap:wrap; gap:0.5rem;">
-            <div style="font-size:0.8rem; font-weight:800; color:${res.isGood ? '#34D399' : '#F87171'}; letter-spacing:0.04em;">
-              ${res.isGood ? 'CUNG ĐỎ: ĐẠI CÁT ĐẠI LỢI' : 'CẢNH BÁO: CUNG ĐEN HUNG SÁT'}
-            </div>
-            <span style="font-size:0.75rem; color:var(--text-muted);">Khoảng cách: <strong>${res.dimensionCm} cm (${res.dimensionMm} mm)</strong></span>
+        <!-- HỘP ĐÁNH GIÁ TỔNG QUAN SONG CÁT / TAM CÁT -->
+        <div style="background:${setEvaluation.isAllGood ? 'rgba(16,185,129,0.08)' : 'rgba(239,68,68,0.08)'}; border:1.5px solid ${setEvaluation.isAllGood ? '#10B981' : '#EF4444'}; border-radius:10px; padding:1.2rem; margin-bottom:1.4rem;">
+          <div style="font-size:0.85rem; font-weight:800; color:${setEvaluation.isAllGood ? '#34D399' : '#F87171'}; margin-bottom:0.6rem; letter-spacing:0.04em;">
+            ${setEvaluation.verdictTitle}
           </div>
 
-          <div style="font-size:1.3rem; font-weight:800; color:#FEF3C7; margin-bottom:0.4rem;">
-            Cung ${res.majorName} — Cung Phụ: <span style="color:${res.isGood ? '#34D399' : '#F87171'};">${res.minorName}</span>
+          <!-- Lưới Kết Quả Chi Tiết Từng Chiều -->
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:0.8rem;">
+            ${setEvaluation.results.map(r => `
+              <div style="background:#0D111A; border:1px solid rgba(255,255,255,0.06); border-top:3px solid ${r.calc.isGood ? '#34D399' : '#F87171'}; padding:0.85rem; border-radius:6px;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.3rem;">
+                  <span style="font-size:0.8rem; color:var(--text-muted); font-weight:700;">${r.label}:</span>
+                  <span style="font-size:0.95rem; font-weight:800; color:#FEF3C7;">${r.cm} cm</span>
+                </div>
+                <div style="font-size:1.05rem; font-weight:800; color:#FEF3C7; margin-bottom:0.3rem;">
+                  Cung ${r.calc.majorName} — <span style="color:${r.calc.isGood ? '#34D399' : '#F87171'};">${r.calc.minorName}</span>
+                  <span style="font-size:0.7rem; font-weight:700; padding:0.1rem 0.4rem; border-radius:3px; background:${r.calc.isGood ? 'rgba(52,211,153,0.15)' : 'rgba(248,113,113,0.15)'}; color:${r.calc.isGood ? '#34D399' : '#F87171'}; margin-left:0.3rem;">
+                    ${r.calc.isGood ? 'CUNG ĐỎ CÁT' : 'CUNG ĐEN HUNG'}
+                  </span>
+                </div>
+                <div style="font-size:0.78rem; color:var(--text-primary); line-height:1.45; margin-bottom:0.4rem;">
+                  ${r.calc.meaning}
+                </div>
+                <div style="font-size:0.75rem; color:#93C5FD; line-height:1.45; background:rgba(255,255,255,0.02); padding:0.4rem 0.5rem; border-radius:4px; margin-bottom:0.4rem;">
+                  ${r.calc.whyGoodOrBad}
+                </div>
+                ${!r.calc.isGood && r.calc.suggestedGoodDimensions && r.calc.suggestedGoodDimensions.length > 0 ? `
+                  <div style="font-size:0.75rem; color:#FDE68A; background:rgba(251,191,36,0.08); border-left:2px solid #FBBF24; padding:0.3rem 0.5rem;">
+                    <strong>Gợi ý chỉnh:</strong> ${r.calc.suggestedGoodDimensions.map(s => `${s.cm}cm (${s.name})`).join(' hoặc ')}
+                  </div>
+                ` : ''}
+              </div>
+            `).join('')}
           </div>
 
-          <div style="font-size:0.85rem; color:var(--text-primary); line-height:1.55; margin-bottom:0.6rem;">
-            <strong>Ý nghĩa cổ thư:</strong> ${res.meaning}
+          <div style="margin-top:0.8rem; font-size:0.75rem; color:var(--text-muted); border-top:1px dashed rgba(255,255,255,0.08); padding-top:0.6rem;">
+            <strong>Thư tịch khảo chứng:</strong> ${engine.ruler522.classicalSource}
           </div>
-
-          ${!res.isGood && res.suggestedGoodDimensions && res.suggestedGoodDimensions.length > 0 ? `
-            <div style="background:rgba(0,0,0,0.3); border-left:3px solid #FBBF24; padding:0.6rem 0.8rem; border-radius:0 6px 6px 0; font-size:0.82rem; color:#FEF3C7; line-height:1.5;">
-              <strong style="color:#FBBF24;">Gợi ý điều chỉnh kích thước vàng gần nhất:</strong>
-              ${res.suggestedGoodDimensions.map(s => `
-                <div style="margin-top:0.2rem;">• Chỉnh sang: <strong>${s.cm} cm</strong> — Cung Đỏ Cát: <span style="color:#34D399;">${s.name}</span></div>
-              `).join('')}
-            </div>
-          ` : ''}
         </div>
 
-        <!-- BẢNG THAM KHẢO KÍCH THƯỚC VÀNG CHUẨN CỔ THƯ -->
+        <!-- BẢNG KÍCH THƯỚC VÀNG CHUẨN CỔ THƯ -->
         <div style="background:#121722; border:1px solid rgba(255,255,255,0.06); border-radius:10px; padding:1.1rem;">
           <div style="font-size:0.82rem; font-weight:800; color:#FBBF24; margin-bottom:0.8rem;">
             BẢNG KÍCH THƯỚC VÀNG THÔNG DỤNG (KIẾN TRÚC SƯ TIN DÙNG):
@@ -717,6 +846,7 @@ ${reportText}
             `).join('')}
           </div>
         </div>
+
       </div>
     `;
   }
@@ -726,17 +856,19 @@ ${reportText}
   // =========================================================================
   updateThienVanSon(son) {
     this.state.thienVanSon = son;
-    const container = document.getElementById("tool-active-area");
-    if (container) container.innerHTML = this.getToolContent("thienvankymon");
+    const container = document.getElementById('tool-active-area');
+    if (container) container.innerHTML = this.getToolContent('thienvankymon');
   }
 
   renderThienVanKyMonTool() {
-    const engine = (typeof window !== "undefined" && window.thienVanKyMonEngine) ? window.thienVanKyMonEngine : new ThienVanKyMonEngine();
-    const selectedSon = this.state.thienVanSon || "Tý";
+    const engine = (typeof window !== 'undefined' && window.thienVanKyMonEngine) ? window.thienVanKyMonEngine : new ThienVanKyMonEngine();
+    const selectedSon = this.state.thienVanSon || 'Tý';
     const thaiDuongData = engine.lookupThaiDuong(selectedSon);
 
     return `
       <div style="background:#0D111A; border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:1.4rem; max-width:1050px; margin:0 auto 2rem auto;">
+        
+        <!-- Header -->
         <div style="margin-bottom:1.2rem; border-bottom:1px solid rgba(255,255,255,0.06); padding-bottom:0.8rem;">
           <div style="display:inline-block; font-size:0.75rem; font-weight:800; color:#A855F7; background:rgba(168,85,247,0.1); border:1px solid rgba(168,85,247,0.25); padding:0.2rem 0.6rem; border-radius:4px; margin-bottom:0.3rem;">
             CỔ THƯ 《HIỆP KỶ BIỆN PHƯƠNG THƯ》 & 《KỲ MÔN ĐỘN GIÁP》
@@ -749,14 +881,14 @@ ${reportText}
           </p>
         </div>
 
-        <!-- HƯỚNG DẪN SỬ DỤNG -->
+        <!-- HƯỚNG DẪN SỬ DỤNG (ĐÃ SỬA LỖI MŨI TÊN HOÀN TOÀN) -->
         <div style="background:#121722; border:1px solid rgba(168,85,247,0.25); border-radius:10px; padding:0.9rem 1.1rem; margin-bottom:1.2rem;">
           <div style="font-size:0.82rem; font-weight:700; color:#C084FC; margin-bottom:0.3rem;">
             HƯỚNG DẪN TRA CỨU THỰC TẾ:
           </div>
-          <div style="font-size:0.78rem; color:var(--text-primary); line-height:1.5;">
-            • <strong>Thái Dương Đáo Sơn (Tọa):</strong> Ngày Mặt Trời chiếu thẳng vào lưng nhà $\\rightarrow$ Hóa giải 100 loại hung sát, vượng nhân đinh.<br/>
-            • <strong>Thái Dương Đáo Hướng:</strong> Ngày Mặt Trời chiếu thẳng vào mặt tiền nhà $\\rightarrow$ Đại vượng tài lộc, thời điểm vàng khởi công tu tạo.<br/>
+          <div style="font-size:0.78rem; color:var(--text-primary); line-height:1.55;">
+            • <strong>Thái Dương Đáo Sơn (Tọa):</strong> Ngày Mặt Trời chiếu thẳng vào lưng nhà → Hóa giải 100 loại hung sát, vượng nhân đinh.<br/>
+            • <strong>Thái Dương Đáo Hướng:</strong> Ngày Mặt Trời chiếu thẳng vào mặt tiền nhà → Đại vượng tài lộc, thời điểm vàng khởi công tu tạo.<br/>
             • <strong>Kỳ Môn Bát Môn:</strong> Mở Cửa chính hoặc phòng làm việc tại <strong>Sinh Môn, Khai Môn, Hưu Môn</strong> để nạp trọn sinh khí.
           </div>
         </div>
@@ -778,7 +910,7 @@ ${reportText}
           </select>
         </div>
 
-        <!-- HỘP THÔNG TIN THÁI DƯƠNG ĐÁO HƯỚNG CHI TIẾT -->
+        <!-- HỘP THÔNG TIN THÁI DƯƠNG ĐÁO HƯỚNG CHI TIẾT KÈM GIẢI TRÌNH QUANG HỌC -->
         <div style="background:#121722; border:1px solid rgba(255,255,255,0.06); border-radius:10px; padding:1.2rem; margin-bottom:1.2rem;">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.8rem; border-bottom:1px solid rgba(255,255,255,0.05); padding-bottom:0.6rem; flex-wrap:wrap; gap:0.5rem;">
             <div style="font-size:1.1rem; font-weight:800; color:#FEF3C7;">
@@ -803,34 +935,41 @@ ${reportText}
             </div>
           </div>
 
-          <div style="font-size:0.82rem; color:var(--text-primary); line-height:1.5;">
-            <strong>Khảo chứng học thuật:</strong> ${thaiDuongData.meaning}
+          <div style="background:rgba(255,255,255,0.02); border-left:3px solid #FBBF24; padding:0.7rem 0.85rem; border-radius:0 6px 6px 0; font-size:0.8rem; color:#FEF3C7; line-height:1.55; margin-bottom:0.6rem;">
+            ${thaiDuongData.whyGood}
+          </div>
+
+          <div style="font-size:0.75rem; color:var(--text-muted);">
+            <strong>Thư tịch gốc:</strong> ${engine.classicalSource}
           </div>
         </div>
 
-        <!-- BẢNG KỲ MÔN BÁT MÔN NẠP KHÍ -->
+        <!-- BẢNG KỲ MÔN BÁT MÔN NẠP KHÍ KÈM NGUYÊN NHÂN TỐT / XẤU -->
         <div style="background:#121722; border:1px solid rgba(255,255,255,0.06); border-radius:10px; padding:1.1rem;">
           <div style="font-size:0.82rem; font-weight:800; color:#FEF3C7; margin-bottom:0.8rem;">
             QUY TẮC NẠP KHÍ KỲ MÔN ĐỘN GIÁP (BÁT MÔN TRẠCH THUẬT):
           </div>
-          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:0.6rem;">
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:0.7rem;">
             ${engine.kyMonBatMon.map(m => `
-              <div style="background:#0D111A; border:1px solid rgba(255,255,255,0.06); border-top:2px solid ${m.nature === 'ĐẠI CÁT' ? '#34D399' : (m.nature === 'TRUNG BÌNH' ? '#38BDF8' : '#EF4444')}; padding:0.7rem 0.8rem; border-radius:6px;">
+              <div style="background:#0D111A; border:1px solid rgba(255,255,255,0.06); border-top:2px solid ${m.nature === 'ĐẠI CÁT' ? '#34D399' : (m.nature === 'TRUNG BÌNH' ? '#38BDF8' : '#EF4444')}; padding:0.8rem; border-radius:6px;">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.3rem;">
                   <span style="font-size:0.85rem; font-weight:800; color:#FEF3C7;">${m.mon} (${m.element})</span>
                   <span style="font-size:0.7rem; font-weight:700; color:${m.nature === 'ĐẠI CÁT' ? '#34D399' : (m.nature === 'TRUNG BÌNH' ? '#38BDF8' : '#F87171')};">${m.nature}</span>
                 </div>
-                <div style="font-size:0.76rem; color:var(--text-muted); line-height:1.45;">${m.usage}</div>
+                <div style="font-size:0.76rem; color:var(--text-muted); line-height:1.45; margin-bottom:0.4rem;">${m.usage}</div>
+                <div style="font-size:0.73rem; color:#93C5FD; line-height:1.4; background:rgba(255,255,255,0.02); padding:0.35rem 0.5rem; border-radius:4px;">
+                  ${m.whyGoodOrBad}
+                </div>
               </div>
             `).join('')}
           </div>
         </div>
+
       </div>
     `;
   }
 
-  // =========================================================================
-  // PHÂN HỆ THƯ TỊCH HÓA GIẢI & PHÁP TRỊ TRẠCH PHÁP (21 PHÁP HÓA GIẢI)
+    // PHÂN HỆ THƯ TỊCH HÓA GIẢI & PHÁP TRỊ TRẠCH PHÁP (21 PHÁP HÓA GIẢI)
   // =========================================================================
   selectHoaGiaiProfile(id) {
     this.selectedHoaGiaiId = id;
