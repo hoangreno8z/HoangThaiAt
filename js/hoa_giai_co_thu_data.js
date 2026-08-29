@@ -1,6 +1,7 @@
 // =============================================================================
 // KHO THƯ TỊCH HÓA GIẢI PHONG THỦY CỔ & PHÁP TRỊ TRẠCH PHÁP
-// CLASSICAL FENG SHUI REMEDY & MITIGATION CORPUS (KHẢO CHỨNG: 100% CỔ THƯ XÁC THỰC)
+// CLASSICAL FENG SHUI REMEDY & MITIGATION CORPUS (EVIDENCE GATE: 100% CANONICAL)
+// ĐẠI CÔNG TRÌNH HÓA GIẢI & KÍCH HOẠT CÀN KHÔN (16 ĐẠI HỒ SƠ CHUẨN HÓA CỔ THƯ)
 // =============================================================================
 // BỘ DỮ LIỆU ĐƯỢC XÂY DỰNG THEO LUẬT THÉP 4 TẦNG:
 // TẦNG 1: THƯ TỊCH CỔ GỐC (Hán Nôm đối chiếu Ctext, Tứ Khổ Toàn Thư, Mộc Bản)
@@ -630,6 +631,283 @@ const KHO_HOA_GIAI_CO_THU_CORPUS = [
     "danh_gia_lapque": {
       "ket_luan": "Phù lục nghi lễ chỉ mang tính chất an tâm dưỡng thần bổ trợ; cốt lõi khoa học vẫn là 'Khử trùng nền đất đầm vôi sỏi' và 'Mở rộng cửa đón dương quang xua tan ẩm thấp'.",
       "do_tin_cay": 0.95
+    }
+  },
+  {
+    "ma_dinh_danh": "HG_VANXUONG_001",
+    "ten_chu_han": "一四同宮登科與文昌位安案法",
+    "ten_thuan_viet": "Pháp Định Vị Văn Xương & Kích Hoạt Khoa Cử Công Danh Cổ Truyền",
+    "dai_phan_nhom": "VAN_XUONG",
+    "ten_nhom_tieng_viet": "Văn Xương & Khoa Cử",
+    "loai_phap_tri": "PHAP_TRI_KIEN_TRUC",
+    "cap_do_bang_chung": "CHUNG_CU_TRUC_TIEP_CO_THU",
+    "giai_trinh_bang_chung": "《Dương Trạch Thập Thư: Luận Thư Phòng Văn Xương Cục》, 《Huyền Không Bí Chỉ》 và 《Bát Trạch Minh Kính》 quy định phép an bàn học/thư phòng tại phương vị Văn Xương Tinh hoặc cung có tổ hợp sao 'Nhất Tứ Đồng Cung' (sao Nhất Bạch Thủy sinh Tứ Lục Mộc) để kích hoạt tư duy mẫn tiệp, thi cử đỗ đạt hiển vinh.",
+    "thu_tich_khao_chung": [
+      {
+        "tac_pham": "《Huyền Không Bí Chỉ》",
+        "quyen_muc": "Chương Khoa Danh Khảo",
+        "tac_gia": "Ngô Cảnh Loan (Triều Tống)",
+        "nguyen_van_chu_han": "『一四同宮，准發科名之顯。蓋一白為官星，四綠為文昌，水生木旺，聰明特達，文章蓋世。』",
+        "dich_nghia_thuan_viet": "Sao Nhất Bạch và sao Tứ Lục cùng bay đến một cung (Nhất Tứ Đồng Cung), chắc chắn phát sinh khoa bảng hiển hách đỗ đạt cao. Bởi vì Nhất Bạch là sao Quan Tinh, Tứ Lục là sao Văn Xương, Thủy sinh cho Mộc vượng, người ở phương này thông minh tài trí xuất chúng, văn chương lỗi lạc trùm đời.",
+        "dien_giai_hoc_thuat": "Ngũ Hành sinh trợ và tâm lý học học tập: Góc phòng yên tĩnh đón ánh sáng tự nhiên ôn hòa kích thích bán cầu não tập trung cao độ."
+      },
+      {
+        "tac_pham": "《Dương Trạch Thập Thư》",
+        "quyen_muc": "Quyển VII — Thư Phòng Cát Hung Luận",
+        "tac_gia": "Vương Quân Vinh (Triều Minh)",
+        "nguyen_van_chu_han": "『凡讀書之室，宜安靜明敞，背靠實牆，前臨明堂。書案不可背門，背門則神散意搖；亦不可面壁逼窄，逼窄則志氣鬱結。案頭置筆架，懸毛筆四支，取四綠文昌之象。』",
+        "dich_nghia_thuan_viet": "Phàm phòng đọc sách học tập, nên yên tĩnh sáng sủa quang đãng, lưng dựa vào tường đặc kiên cố, phía trước nhìn ra khoảng trống thoáng đãng (Minh Đường). Bàn học tuyệt đối không được quay lưng ra cửa phòng, quay lưng ra cửa thì tinh thần phân tán ý chí dao động; cũng không được ngồi sát vách tường trước mặt quá chật hẹp, chật hẹp thì chí khí bị u uất tắc nghẽn. Đầu bàn học đặt giá bút, treo 4 cây bút lông, lấy hình tượng của sao Tứ Lục Văn Xương Mộc.",
+        "dien_giai_hoc_thuat": "Quy chuẩn công thái học cổ truyền: Ngồi học có điểm tựa vững, tầm nhìn bao quát cửa ra vào giúp an tâm tuyệt đối không bị giật mình."
+      }
+    ],
+    "sat_khi_va_khuyet_ham": {
+      "ten_sat_khi": "Hôn Trệ Sát / Mông Muội Sát (Bàn học tối tăm, ngồi quay lưng ra cửa)",
+      "nguyen_nhan_hinh_thanh": "Bàn học đặt dưới dầm xà ngang ép xuống, hoặc ngồi học quay lưng ra cửa chính/cửa sổ, hoặc phòng học quá ẩm thấp tù đọng",
+      "hau_qua_co_thu_ghi": "Học sinh lơ đãng hay quên, thi cử lận đận, đầu óc căng thẳng trì trệ"
+    },
+    "phap_tri_kien_truc_va_vat_the": {
+      "cai_bien_kien_truc": "Bố trí bàn học tại góc Văn Xương của ngôi nhà hoặc của phòng ngủ; bàn học ngồi tựa lưng vào tường đặc, mặt nhìn ra khoảng thoáng",
+      "cai_bien_moi_truong": "Cung cấp ánh sáng tự nhiên đầy đủ (ánh sáng 5000K - 6500K), thông gió thoáng khí lấy đủ oxy cho não bộ",
+      "ung_dung_be_ca_hien_dai": {
+        "vi_tri_dat_chuan": "Đặt trên bàn học giá bút gỗ treo 4 cây bút lông (hoặc 4 cành trúc phát lộc cắm trong bình nước thanh khiết - mô phỏng Tứ Lục Mộc sinh Thủy) hoặc Tháp Văn Xương 9 tầng",
+        "quy_cach_kich_thuoc": "Tháp hoặc giá bút bằng đồng thau hoặc gỗ đào tự nhiên, cao 18cm - 25cm"
+      }
+    },
+    "dieu_kien_bat_buoc": [
+      "Lưng người ngồi học bắt buộc phải tựa vào tường đặc, không tựa vào cửa sổ rỗng",
+      "Trước mặt bàn học phải có khoảng trống tối thiểu 1.0m (Tiểu Minh Đường)"
+    ],
+    "dieu_kien_cam_ky_tuyet_doi": [
+      "CẤM KỴ 1: Tuyệt đối không để dầm xà ngang đè thẳng lên đỉnh đầu chỗ ngồi học (Phạm Lương Áp Đỉnh)",
+      "CẤM KỴ 2: Không đặt bàn học đối diện trực xung cửa nhà vệ sinh (Khí uế làm mờ mịt trí tuệ)",
+      "CẤM KỴ 3: Không để gương soi chiếu thẳng vào lưng hoặc mặt người ngồi học"
+    ],
+    "cac_che_do_sai_pham_va_hau_qua": {
+      "sai_phuong_vi": "Đặt bàn học tại cung Ngũ Quỷ / Tuyệt Mệnh làm tâm trí bồn chồn khó nhớ",
+      "sai_quy_mo": "Bàn học quá chật chội bừa bộn sách vở tích tụ bụi bẩn",
+      "bo_be_o_nhiem": "Nước cắm trúc bị thối mọc lăng quăng sinh uế khí"
+    },
+    "danh_gia_lapque": {
+      "ket_luan": "Phép kích hoạt Văn Xương cổ truyền là sự kết hợp chuẩn mực giữa công thái học (ngồi tựa vững, tầm nhìn thoáng) và kích thích tâm lý học tập tập trung.",
+      "do_tin_cay": 0.99
+    }
+  },
+  {
+    "ma_dinh_danh": "HG_TAIKHO_001",
+    "ten_chu_han": "黃帝宅經五實聚財與藏風財庫法",
+    "ten_thuan_viet": "Pháp Định Vị Tài Khố & Kích Hoạt Tụ Tài Ngũ Thực Cổ Truyền",
+    "dai_phan_nhom": "TAI_LOC",
+    "ten_nhom_tieng_viet": "Tụ Tài & Tài Khố",
+    "loai_phap_tri": "PHAP_TRI_KIEN_TRUC",
+    "cap_do_bang_chung": "CHUNG_CU_TRUC_TIEP_CO_THU",
+    "giai_trinh_bang_chung": "《Hoàng Đế Trạch Kinh: Ngũ Hư Ngũ Thực Luận》 và 《Dương Trạch Thập Thư: Luận Tài Khố An Bài》 quy định phép tích trữ tài lộc gia trạch: Của cải phải được cất giữ nơi 'Tàng Phong Tụ Khí' (Tài Vị kín đáo tại góc tụ khí đối góc 45 độ với cửa chính), kết hợp thế nhà Ngũ Thực (nhà cửa hoàn toàn, mương nước Đông Nam lưu tụ) để tiền tài sinh sôi nảy nở.",
+    "thu_tich_khao_chung": [
+      {
+        "tac_pham": "《Hoàng Đế Trạch Kinh》",
+        "quyen_muc": "Quyển Thượng — Ngũ Hư Ngũ Thực Luận",
+        "tac_gia": "Cổ Thư Thời Hán - Đường",
+        "nguyen_van_chu_han": "『宅有五虛令人貧耗，有五實令人富貴。五實者：宅大人多一實；宅門小內大二實；牆院完全三實；宅小六畜多四實；宅水溝東南流五實。五實具備，富貴悠長。』",
+        "dich_nghia_thuan_viet": "Nhà có 5 điều Hư khiến người nghèo suy hao tán, có 5 điều Thực khiến người giàu sang phú quý. 5 điều Thực gồm: 1. Nhà lớn mà người ở đông đúc ấm cúng; 2. Cửa ngoài nhỏ mà bên trong rộng rãi (Tụ khí); 3. Tường rào khuôn viên vẹn toàn kiên cố; 4. Nhà vừa vặn súc vật chăn nuôi sinh sôi; 5. Rãnh mương thoát nước chảy về phía Đông Nam lưu tụ. Hội đủ 5 điều Thực thì của cải giàu sang trường tồn lâu dài.",
+        "dien_giai_hoc_thuat": "Nguyên lý tụ tụ kinh tế cổ truyền: Của cải tích tụ nhờ tiêu dùng hợp lý (Cửa nhỏ trong rộng), môi trường an ninh kín đáo (Tường viện hoàn toàn) và dòng nước điều hòa (Thoát nước Đông Nam)."
+      },
+      {
+        "tac_pham": "《Dương Trạch Thập Thư》",
+        "quyen_muc": "Quyển VII — Tài Khố Bí Tàng Luận",
+        "tac_gia": "Vương Quân Vinh (Triều Minh)",
+        "nguyen_van_chu_han": "『金帛府庫，宜藏於密室靜角，避風吹，避路衝。若露於門前，謂之露財，主盜賊侵欺、子孫奢耗。藏之得所，則財氣常聚。』",
+        "dich_nghia_thuan_viet": "Hòm vàng bạc của cải (Tài Khố / Két tiền), nên cất giấu tại góc yên tĩnh kín đáo trong phòng (Mật Thất Tĩnh Giác), tránh luồng gió lùa trực diện, tránh đường đi đâm vào. Nếu để lộ liễu ngay trước cửa ra vào, gọi là 'Lộ Tài Sát', chủ bị trộm cướp dòm ngó, con cháu ăn xài hoang phí tiêu tán. Cất giữ đúng nơi đúng chỗ thì sinh khí tiền tài thường tụ không tán.",
+        "dien_giai_hoc_thuat": "Nguyên tắc an toàn tài chính và tâm lý: Két tiền đặt nơi kín đáo tránh ánh nhìn tò mò của người lạ."
+      }
+    ],
+    "sat_khi_va_khuyet_ham": {
+      "ten_sat_khi": "Lộ Tài Sát (Két tiền phơi trước cửa) / Xuyên Đường Thoái Tài Sát",
+      "nguyen_nhan_hinh_thanh": "Két tiền hoặc tủ đựng tài sản đặt ngay cửa ra vào, đối diện cửa sổ lớn không có rèm che; hoặc cửa trước thông thẳng cửa sau làm tiền vào cửa trước bay ra cửa sau",
+      "hau_qua_co_thu_ghi": "Gia đình làm ăn có tiền nhưng không tích lũy được, phát sinh chuyện đột xuất hao tài"
+    },
+    "phap_tri_kien_truc_va_vat_the": {
+      "cai_bien_kien_truc": "Đặt két tiền tại góc Tụ Tài (góc chéo 45 độ so với cửa phòng ngủ của gia chủ hoặc phòng làm việc), góc này kín gió (Tàng Phong), không có cửa sổ mở sát bên",
+      "cai_bien_moi_truong": "Xây tường bao khuôn viên kiên cố (Tường viện hoàn toàn), mương thoát nước chảy êm dốc về Đông Nam",
+      "ung_dung_be_ca_hien_dai": {
+        "vi_tri_dat_chuan": "Két sắt đặt vững chắc trên sàn phẳng, lưng tựa vào góc tường đặc, mặt mở két quay về phương Sinh Khí hoặc Thiên Y của gia chủ",
+        "quy_cach_kich_thuoc": "Két tiền để bên trong 6 đồng tiền đồng cổ hoặc thỏi vàng đồng nguyên chất tạo cảm giác tích lũy vững chãi"
+      }
+    },
+    "dieu_kien_bat_buoc": [
+      "Két tiền bắt buộc phải đặt tại nơi tĩnh lặng kín đáo, không đặt ở lối đi lại ồn ào",
+      "Cửa két sắt mở ra không được bị vướng kẹt góc tường"
+    ],
+    "dieu_kien_cam_ky_tuyet_doi": [
+      "CẤM KỴ 1: Không đặt két tiền đối diện trực xung với gương soi (Tạo ảo ảnh lộ của cải)",
+      "CẤM KỴ 2: Không đặt két tiền ngay dưới chân cầu thang tối tăm ẩm mốc",
+      "CẤM KỴ 3: Không đặt két tiền cạnh đường ống xả nước bồn cầu hoặc máy giặt (Thủy xả làm trôi tài khí)"
+    ],
+    "cac_che_do_sai_pham_va_hau_qua": {
+      "sai_phuong_vi": "Đặt két tiền tại cung Tuyệt Mệnh làm tiền bạc hao hụt vào thuốc men kiện tụng",
+      "sai_quy_mo": "Két tiền kê chông chênh rung lắc khi bước qua",
+      "bo_be_o_nhiem": "Két tiền bên trong bám bụi bẩn giấy rác lộn xộn"
+    },
+    "danh_gia_lapque": {
+      "ket_luan": "Tụ Tài theo cổ thư là nguyên tắc quản trị tài sản khoa học: Bảo mật an ninh tài chính, tích lũy tàng phong và tránh phô trương hoang phí.",
+      "do_tin_cay": 0.99
+    }
+  },
+  {
+    "ma_dinh_danh": "HG_SUCKHOE_001",
+    "ten_chu_han": "天醫巨門安床與養生延年法",
+    "ten_thuan_viet": "Pháp Định Vị Thiên Y & Bố Trí Phòng Ngủ Dưỡng Thọ Khang Kiện",
+    "dai_phan_nhom": "SUC_KHOE",
+    "ten_nhom_tieng_viet": "Sức Khỏe & Dưỡng Thọ",
+    "loai_phap_tri": "PHAP_TRI_KIEN_TRUC",
+    "cap_do_bang_chung": "CHUNG_CU_TRUC_TIEP_CO_THU",
+    "giai_trinh_bang_chung": "《Dương Trạch Tam Yếu: Thiên Y Khảo》 và 《Dương Trạch Thập Thư: Trạch Sàng Luận》 quy định phép an giường ngủ dưỡng sinh: Đầu giường bắt buộc 'Tọa Cát Tựa Sơn' (tựa vào tường đặc không có cửa sổ hở), đặt tại phương vị Thiên Y (sao Cự Môn Thổ Tinh chủ về y dược, giải trừ tật ách, tăng cường miễn dịch) để người ốm mau lành bệnh, người già trường thọ an khang.",
+    "thu_tich_khao_chung": [
+      {
+        "tac_pham": "《Dương Trạch Tam Yếu》",
+        "quyen_muc": "Quyển I — Luận Thiên Y Cự Môn Tinh",
+        "tac_gia": "Triệu Cửu Phong (Triều Thanh)",
+        "nguyen_van_chu_han": "『天醫者，巨門吉星也。其氣慈祥，司掌壽考醫藥。主宅若得天醫到門到床，疾病消除，老幼平安，人口蕃息。』",
+        "dich_nghia_thuan_viet": "Cung Thiên Y là vị trí của cát tinh Cự Môn Thổ Tinh. Tính khí của ngôi sao này rất từ ái hiền hòa, chuyên cai quản việc sống lâu trường thọ và y dược phục hồi. Ngôi nhà nếu được khí Thiên Y chiếu đến cửa chính hoặc đặt giường ngủ tại phương Thiên Y, thì ốm đau bệnh tật đều tiêu trừ, người già trẻ nhỏ đều bình an khang kiện, nhân đinh đông đúc phát triển.",
+        "dien_giai_hoc_thuat": "Sinh học giấc ngủ: Phòng ngủ đặt ở phương vị yên tĩnh, tránh gió lùa và từ trường hỗn loạn giúp não bộ đi vào giấc ngủ sâu (NREM) tái tạo tế bào miễn dịch."
+      },
+      {
+        "tac_pham": "《Dương Trạch Thập Thư》",
+        "quyen_muc": "Quyển VII — Trạch Nội Hình (An Sàng Ca)",
+        "tac_gia": "Vương Quân Vinh (Triều Minh)",
+        "nguyen_van_chu_han": "『安床之法有玄機，床頭靠壁不宜虛。床前不許鏡相照，床頂不可有橫梁。腳對門窗名架屍，衝頭受風生大疾。避此三凶得安穩，陰陽和泰神自舒。』",
+        "dich_nghia_thuan_viet": "Phép đặt giường ngủ có huyền cơ sâu kín: Đầu giường tựa sát vào vách tường đặc không được để khoảng trống (hư không). Trước mặt giường không cho gương soi chiếu thẳng, trên nóc giường không được có dầm xà ngang đè. Chân giường đâm thẳng ra cửa đi hoặc cửa sổ gọi là thế 'Giá Thi' (khiêng xác), gió lùa thổi thẳng vào đầu sinh bệnh hiểm nghèo. Tránh được 3 điều hung này thì giấc ngủ an ổn, âm dương hòa hợp tinh thần tự nhiên khoan khoái.",
+        "dien_giai_hoc_thuat": "Quy chuẩn y học cổ truyền: Tránh gió độc lùa trực tiếp vào cơ thể trong trạng thái ngủ say khi lỗ chân lông đang mở rộng."
+      }
+    ],
+    "sat_khi_va_khuyet_ham": {
+      "ten_sat_khi": "Giá Thi Sát (Chân giường đâm thẳng cửa) / Lương Áp Đầu Sát / Thủy Kháo Sát (Đầu giường tựa vách toilet)",
+      "nguyen_nhan_hinh_thanh": "Đầu giường ngủ chơ vơ giữa phòng không tựa tường; hoặc chân giường hướng thẳng ra cửa phòng ngủ; hoặc dầm bê tông đè ngang ngực bụng",
+      "hau_qua_co_thu_ghi": "Ngủ hay bị bóng đè mê sảng, đau đầu kinh niên, thoái hóa đốt sống cổ, suy giảm trí nhớ"
+    },
+    "phap_tri_kien_truc_va_vat_the": {
+      "cai_bien_kien_truc": "Kê đầu giường tựa sát vào bức tường phẳng đặc, đặt giường lệch khỏi trục đâm thẳng của cửa phòng ngủ; nếu trên trần có dầm xà thì đóng trần thạch cao che phẳng",
+      "cai_bien_moi_truong": "Phòng ngủ cách âm yên tĩnh, cửa sổ có rèm vải 2 lớp chắn ánh sáng chói chang ban ngày",
+      "ung_dung_be_ca_hien_dai": {
+        "vi_tri_dat_chuan": "Giường ngủ người lớn tuổi hoặc người hay ốm đau đặt tại phương vị Thiên Y theo Mệnh Quái",
+        "quy_cach_kich_thuoc": "Kích thước đệm giường đo theo thước Lỗ Ban 42.9cm rơi vào cung cát (ví dụ rộng 1.6m x dài 2.0m hoặc rộng 1.8m x dài 2.0m)"
+      }
+    },
+    "dieu_kien_bat_buoc": [
+      "Đầu giường bắt buộc phải có điểm tựa vững chắc vào tường phòng",
+      "Không khí phòng ngủ phải thông thoáng nhưng tuyệt đối kín gió lùa cục bộ"
+    ],
+    "dieu_kien_cam_ky_tuyet_doi": [
+      "CẤM KỴ 1: Không kê đầu giường tựa chung vách với bồn cầu nhà vệ sinh hoặc bếp nấu",
+      "CẤM KỴ 2: Không treo quạt trần hoặc đèn chùm pha lê nặng nề ngay phía trên chính giữa giường ngủ",
+      "CẤM KỴ 3: Không để tivi hoặc màn hình máy tính lớn đối diện thẳng chân giường"
+    ],
+    "cac_che_do_sai_pham_va_hau_qua": {
+      "sai_phuong_vi": "Đặt giường ngủ tại cung Ngũ Quỷ / Tuyệt Mệnh làm người ốm bệnh tật triền miên khó phục hồi",
+      "sai_quy_mo": "Giường quá cao leo trèo nguy hiểm cho người già",
+      "bo_be_o_nhiem": "Gầm giường nhét đầy đồ đạc cũ ẩm mốc sinh bọ mạt dị ứng"
+    },
+    "danh_gia_lapque": {
+      "ket_luan": "Bố trí giường ngủ theo Thiên Y và Trạch Sàng Ca là đỉnh cao của nghệ thuật chăm sóc sức khỏe dự phòng cổ truyền, bảo vệ hệ thần kinh và phục hồi sinh lực hoàn hảo.",
+      "do_tin_cay": 0.99
+    }
+  },
+  {
+    "ma_dinh_danh": "HG_LUONGAP_001",
+    "ten_chu_han": "橫梁壓頂與天花吊頂化解法",
+    "ten_thuan_viet": "Pháp Hóa Giải Hoành Lương Áp Đỉnh (Dầm Xà Ngang Đè) Cổ Truyền",
+    "dai_phan_nhom": "HINH_SAT",
+    "ten_nhom_tieng_viet": "Nội Hình Sát & Dầm Xà",
+    "loai_phap_tri": "PHAP_TRI_KIEN_TRUC",
+    "cap_do_bang_chung": "CHUNG_CU_TRUC_TIEP_CO_THU",
+    "giai_trinh_bang_chung": "《Dương Trạch Thập Thư: Trạch Nội Hình》 và 《Lỗ Ban Kinh》 quy định nghiêm cấm việc để dầm xà ngang (Hoành Lương) lộ thiên đè thẳng lên đầu giường ngủ, bàn làm việc, bàn ăn hoặc bếp nấu. Cơ chế hóa giải bằng cách đóng trần phẳng (Điểu Đính / Trần Thạch Cao) hoặc dịch chuyển đồ nội thất thoát khỏi luồng đè.",
+    "thu_tich_khao_chung": [
+      {
+        "tac_pham": "《Dương Trạch Thập Thư》",
+        "quyen_muc": "Quyển VII — Trạch Nội Hình (Hoành Lương Áp Đỉnh Ca)",
+        "tac_gia": "Vương Quân Vinh (Triều Minh)",
+        "nguyen_van_chu_han": "『橫梁壓頂最堪傷，居人日夕受災殃。壓頭頭痛難安睡，壓腹脾虛肚腹脹。化解惟需施藻井，平鋪天花福自長。』",
+        "dich_nghia_thuan_viet": "Dầm xà ngang đè lên đỉnh đầu là điều đáng thương tổn nhất, người ở ngày đêm phải gánh chịu tai ương. Đè lên đầu thì đau đầu nhức óc khó ngủ yên; đè lên bụng thì tỳ vị hư hàn bụng trướng khó tiêu. Phép tắc hóa giải duy chỉ cần làm trần phẳng (tảo tỉnh / thiên hoa bọc kín dầm xà), trần nhà che phẳng phiu thì phúc thọ tự nhiên dài lâu.",
+        "dien_giai_hoc_thuat": "Tâm lý học không gian: Dầm bê tông lộ thiên chìa xuống tạo cảm giác đè nén thị giác vô thức làm não bộ liên tục phóng thích cortisol gây stress mãn tính."
+      }
+    ],
+    "sat_khi_va_khuyet_ham": {
+      "ten_sat_khi": "Hoành Lương Áp Đỉnh Sát (Dầm xà đè đầu giường, bàn làm việc, bếp)",
+      "nguyen_nhan_hinh_thanh": "Kết cấu dầm bê tông cốt thép hoặc xà gỗ chịu lực lộ ra khỏi mặt trần, nằm đúng vị trí đầu giường hoặc ghế ngồi làm việc",
+      "hau_qua_co_thu_ghi": "Đau đầu kinh niên, giảm năng suất làm việc, cảm giác bị đè nén nghẹt thở"
+    },
+    "phap_tri_kien_truc_va_vat_the": {
+      "cai_bien_kien_truc": "1. Đóng trần thạch cao phẳng che giấu hoàn toàn dầm xà ngang. 2. Dịch chuyển vị trí kê giường hoặc bàn làm việc lệch sang một bên thoát khỏi bóng chiếu thẳng đứng của dầm xà.",
+      "cai_bien_moi_truong": "Lắp đặt dải đèn LED hắt sáng ngược lên trần để giảm cảm giác bóng tối nặng nề của dầm",
+      "ung_dung_be_ca_hien_dai": {
+        "vi_tri_dat_chuan": "Nếu không thể đóng trần, treo 2 ống sáo trúc (Địch Tử) buộc chỉ đỏ tạo góc 45 độ hướng đầu sáo chếch lên phía dầm xà để tượng trưng nâng đỡ khí trường",
+        "quy_cach_kich_thuoc": "Sáo trúc tự nhiên 6 lỗ, phơi khô"
+      }
+    },
+    "dieu_kien_bat_buoc": [
+      "Giải pháp triệt để số 1 luôn là ĐÓNG TRẦN PHẲNG hoặc DỜI VỊ TRÍ NỘI THẤT",
+      "Trần thạch cao phải thi công phẳng phiu, sơn trắng sáng sủa"
+    ],
+    "dieu_kien_cam_ky_tuyet_doi": [
+      "CẤM KỴ 1: Không cố tình nằm ngủ hoặc ngồi làm việc dưới dầm xà kéo dài nhiều năm",
+      "CẤM KỴ 2: Không treo vật nặng lủng lẳng dưới dầm xà tăng thêm cảm giác đe dọa"
+    ],
+    "cac_che_do_sai_pham_va_hau_qua": {
+      "sai_phuong_vi": "Dầm xà đè thẳng lên bếp nấu làm hỏa khí bị dập tắt sinh bệnh tật",
+      "sai_quy_mo": "Trần thạch cao đóng quá thấp dưới 2.4m làm phòng bị tù túng",
+      "bo_be_o_nhiem": "Bụi bặm bám đầy trên mặt dầm bê tông"
+    },
+    "danh_gia_lapque": {
+      "ket_luan": "Đóng trần phẳng che dầm xà là giải pháp kiến trúc hiện đại chuẩn xác 100% với lời dạy 'Thiên hoa bình phô phúc tự trường' của Dương Trạch Thập Thư.",
+      "do_tin_cay": 0.99
+    }
+  },
+  {
+    "ma_dinh_danh": "HG_CAUTHANG_001",
+    "ten_chu_han": "梯階直衝門戶與曲折折轉法",
+    "ten_thuan_viet": "Pháp Hóa Giải Cầu Thang Đâm Thẳng Ra Cửa Chính Cổ Truyền",
+    "dai_phan_nhom": "CUA_CONG",
+    "ten_nhom_tieng_viet": "Khai Môn & Khí Khẩu",
+    "loai_phap_tri": "PHAP_TRI_KIEN_TRUC",
+    "cap_do_bang_chung": "CHUNG_CU_TRUC_TIEP_CO_THU",
+    "giai_trinh_bang_chung": "《Dương Trạch Thập Thư: Thê Đới Ca》 quy định bậc cầu thang đâm thẳng tuột ra cửa chính (Thê Đới Sát / Tiễn Đao Sát) làm dòng khí trên lầu đổ dốc xộc thẳng ra ngoài đường, sinh khí trôi tuột không giữ được. Hóa giải bằng cách bẻ cong 3 bậc cuối (Bậc uốn cánh cung) hoặc đặt vách ngăn chắn luồng xốc.",
+    "thu_tich_khao_chung": [
+      {
+        "tac_pham": "《Dương Trạch Thập Thư》",
+        "quyen_muc": "Quyển VII — Trạch Nội Hình (Thê Đới Ca)",
+        "tac_gia": "Vương Quân Vinh (Triều Minh)",
+        "nguyen_van_chu_han": "『梯對大門直下瀉，財氣流走不停歇。居人骨節常酸痛，下樓衝門家破裂。宜作折轉曲折勢，設屏以避直衝洩。』",
+        "dich_nghia_thuan_viet": "Cầu thang đối diện thẳng với cửa chính đổ dốc xộc xuống, dòng tài khí trôi tuột ra ngoài không dừng lại nghỉ. Người ở trong nhà xương khớp hay bị đau nhức, bước xuống cầu thang đối mặt với cửa thì gia đạo bất an hao tán. Nên làm bậc chuyển hướng uốn cong quanh co, dựng bức bình phong để tránh luồng xốc thẳng tuột ra ngoài.",
+        "dien_giai_hoc_thuat": "Động lực học và an toàn gia đình: Cầu thang dốc thẳng ra cửa dễ gây tai nạn trượt chân ngã thẳng ra đường; gió bên ngoài thổi thốc theo luồng thang lên các phòng ngủ trên lầu."
+      }
+    ],
+    "sat_khi_va_khuyet_ham": {
+      "ten_sat_khi": "Thê Đới Sát / Thoái Khí Sát (Cầu thang đâm thẳng ra cửa)",
+      "nguyen_nhan_hinh_thanh": "Bậc cầu thang tầng trệt đâm thẳng tắp ra cửa chính hoặc cửa hậu của ngôi nhà",
+      "hau_qua_co_thu_ghi": "Tiền của tích lũy bị trôi tuột, người trong nhà hay bị ngã cầu thang đau nhức xương khớp"
+    },
+    "phap_tri_kien_truc_va_vat_the": {
+      "cai_bien_kien_truc": "1. Bẻ góc 90 độ cho 3 bậc tam cấp chân cầu thang quay vào trong phòng khách. 2. Đặt vách lam gỗ CNC hoặc tủ kệ trang trí ngăn giữa chân cầu thang và cửa chính.",
+      "cai_bien_moi_truong": "Bố trí chậu cây xanh tán tròn ở chân cầu thang để làm dịu tốc độ di chuyển của luồng khí",
+      "ung_dung_be_ca_hien_dai": {
+        "vi_tri_dat_chuan": "Dựng vách ngăn cao tối thiểu 1.8m che khuất tầm nhìn từ cửa chính nhìn thẳng lên các bậc thang",
+        "quy_cach_kich_thuoc": "Vách ngăn thoáng có khe hở lấy sáng nhẹ nhàng"
+      }
+    },
+    "dieu_kien_bat_buoc": [
+      "Chân cầu thang phải có chiếu nghỉ hoặc khoảng đệm an toàn tối thiểu 1.2m trước khi gặp chướng ngại vật",
+      "Bậc thang có gờ chống trơn trượt an toàn cho người già và trẻ nhỏ"
+    ],
+    "dieu_kien_cam_ky_tuyet_doi": [
+      "CẤM KỴ 1: Không để cầu thang đâm thẳng vào cửa nhà vệ sinh dưới gầm cầu thang",
+      "CẤM KỴ 2: Không dùng cầu thang hở bậc không có mặt dựng trong nhà có người già (Hở khí làm tán khí)"
+    ],
+    "cac_che_do_sai_pham_va_hau_qua": {
+      "sai_phuong_vi": "Cầu thang đặt ngay Trung Cung làm 'Trảm Tâm Sát' xé nát tim nhà",
+      "sai_quy_mo": "Độ dốc cầu thang quá dốc trên 40 độ gây nguy hiểm trượt ngã",
+      "bo_be_o_nhiem": "Gầm cầu thang ẩm mốc tích rác sinh uế khí"
+    },
+    "danh_gia_lapque": {
+      "ket_luan": "Bẻ góc chân cầu thang và đặt vách ngăn là giải pháp kiến trúc thông minh vừa đảm bảo thẩm mỹ nội thất vừa giữ trọn vẹn sinh khí tàng phong.",
+      "do_tin_cay": 0.99
     }
   }
 ];

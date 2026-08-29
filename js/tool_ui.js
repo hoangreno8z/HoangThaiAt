@@ -560,19 +560,22 @@ ${reportText}
     const searchQuery = (this.hoaGiaiSearchQuery || '').trim().toLowerCase();
     const selectedEvidence = this.hoaGiaiEvidenceFilter || 'TAT_CA';
 
-    // Categories list
+    // Categories list (Hóa Sát, Tụ Tài, Văn Xương, Sức Khỏe Cổ Thư)
     const categories = [
-      { id: 'TAT_CA', name: 'Tất Cả 10 Đại Phân Nhóm' },
-      { id: 'THUY_PHAP', name: '01. Thủy Pháp & Tụ Thủy (Bể Cá, Ao Hồ, Giếng Trời)' },
-      { id: 'GUONG_KIM_LOAI', name: '02. Gương Đồng & Vật Phản Chiếu' },
-      { id: 'TRAN_THACH', name: '03. Trấn Thạch & Thạch Cảm Đương' },
-      { id: 'CAY_MOC', name: '04. Thực Vật & Mộc Bản Địa (Gỗ Đào, Tre Trúc)' },
-      { id: 'CUA_CONG', name: '05. Khai Môn & Khí Khẩu (Đối Môn, Xuyên Tâm Sát)' },
-      { id: 'BINH_PHONG', name: '06. Bình Phong, Ảnh Bích & Chiếu Tường' },
-      { id: 'TAO_HOA', name: '07. Táo Vị & Hỏa Lộ (Bếp Nấu, Thủy Hỏa Tương Xung)' },
-      { id: 'HINH_SAT', name: '08. Ngoại Hình Sát & Đường Cầu (Lộ Xung, Phản Cung)' },
-      { id: 'KIM_KHI', name: '09. Kim Khí & Cổ Tiền Trấn Sát (Tiền Ngũ Đế, Chuông Đồng)' },
-      { id: 'PHU_LUC', name: '10. Phù Lục & Trấn Trạch Nghi Lễ Cổ Truyền' }
+      { id: 'TAT_CA', name: 'Tất Cả Các Phân Nhóm Hóa Giải & Kích Hoạt' },
+      { id: 'VAN_XUONG', name: '• Văn Xương & Khoa Cử Học Hành (Nhất Tứ Đồng Cung)' },
+      { id: 'TAI_LOC', name: '• Tụ Tài Khố & Tài Lộc Phú Quý (Hoàng Đế Trạch Kinh)' },
+      { id: 'SUC_KHOE', name: '• Sức Khỏe & Dưỡng Thọ (Phòng Ngủ Thiên Y Cổ Bản)' },
+      { id: 'THUY_PHAP', name: '• Thủy Pháp & Tụ Thủy (Bể Cá, Ao Hồ, Giếng Trời)' },
+      { id: 'GUONG_KIM_LOAI', name: '• Gương Đồng & Vật Phản Chiếu' },
+      { id: 'TRAN_THACH', name: '• Trấn Thạch & Thạch Cảm Đương' },
+      { id: 'CAY_MOC', name: '• Thực Vật & Mộc Bản Địa (Gỗ Đào, Tre Trúc)' },
+      { id: 'CUA_CONG', name: '• Khai Môn & Khí Khẩu (Đối Môn, Cầu Thang, Xuyên Tâm Sát)' },
+      { id: 'BINH_PHONG', name: '• Bình Phong, Ảnh Bích & Chiếu Tường' },
+      { id: 'TAO_HOA', name: '• Táo Vị & Hỏa Lộ (Bếp Nấu, Thủy Hỏa Tương Xung)' },
+      { id: 'HINH_SAT', name: '• Nội & Ngoại Hình Sát (Lộ Xung, Phản Cung, Dầm Xà Đè)' },
+      { id: 'KIM_KHI', name: '• Kim Khí & Cổ Tiền Trấn Sát (Tiền Ngũ Đế, Chuông Đồng)' },
+      { id: 'PHU_LUC', name: '• Phù Lục & Trấn Trạch Nghi Lễ Cổ Truyền' }
     ];
 
     // Filter logic
