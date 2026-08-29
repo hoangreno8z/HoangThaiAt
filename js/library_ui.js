@@ -1,7 +1,7 @@
 // =========================================================================
 // HUYỀN HỌC MỤ — THƯ KHỐ CỔ ĐIỂN CHÁNH TÔNG (LIBRARY UI CONTROLLER)
 // TOÀN THƯ 22 BỘ KINH ĐIỂN: KHẢO CHỨNG THƯ TỊCH • HÁN VĂN • DỊCH NGHĨA
-// LUẬN GIẢI KHÍ TRƯỜNG • TÁC ĐỘNG ĐỜI SỐNG • QUY TRÌNH THỰC HÀNH 6 BƯỚC
+// LUẬN GIẢI KHÍ TRƯỜNG • TÁC ĐỘNG ĐỜI SỐNG • QUY TRÌNH THỰC HÀNH CỔ TRUYỀN
 // =========================================================================
 
 class LibraryUI {
@@ -22,8 +22,8 @@ class LibraryUI {
   }
 
   renderCatalog() {
-    const container = document.getElementById('library-books-grid');
-    if (!container) return;
+    const gate = document.getElementById('gate-library');
+    if (!gate) return;
 
     const allBooks = this.getBooks();
     const filteredBooks = (this.currentCategory === 'ALL')
@@ -56,7 +56,7 @@ class LibraryUI {
                 <span style="font-size:0.72rem; font-weight:800; color:#FEF3C7; background:rgba(255,255,255,0.06); padding:0.2rem 0.5rem; border-radius:4px;">
                   ${b.grade}
                 </span>
-                <span style="font-size:0.75rem; color:#94A3B8;">${b.extantDating.split('.')[0]}</span>
+                <span style="font-size:0.75rem; color:#94A3B8;">${b.extantDating ? b.extantDating.split('.')[0] : ''}</span>
               </div>
 
               <h3 style="font-family:var(--font-title); font-size:1.25rem; color:#FEF3C7; margin:0 0 0.25rem 0;">
@@ -75,7 +75,11 @@ class LibraryUI {
               </div>
             </div>
 
-            <a href="#/library/${b.id}/1" style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.15); color:#FEF3C7; text-decoration:none; padding:0.6rem 1rem; border-radius:6px; font-weight:700; font-size:0.82rem; text-align:center; display:block; transition:all 0.2s ease;">
+            <a 
+              href="#/library/${b.id}/1" 
+              onclick="event.preventDefault(); window.location.hash='#/library/${b.id}/1'; window.libraryUI.renderBookReader('${b.id}', '1');"
+              style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.15); color:#FEF3C7; text-decoration:none; padding:0.6rem 1rem; border-radius:6px; font-weight:700; font-size:0.82rem; text-align:center; display:block; transition:all 0.2s ease; cursor:pointer;"
+            >
               Mở Đọc Khảo Chứng & Luận Giải Sâu Sắc →
             </a>
           </div>
@@ -83,25 +87,22 @@ class LibraryUI {
       </div>
     `;
 
-    const gate = document.getElementById('gate-library');
-    if (gate) {
-      gate.innerHTML = `
-        <div style="max-width:1200px; margin:0 auto; padding:1.5rem 1rem;">
-          <div style="margin-bottom:1.5rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:1rem;">
-            <span style="font-size:0.75rem; font-weight:800; color:#FBBF24; text-transform:uppercase; letter-spacing:0.08em;">THƯ KHỐ CHÁNH TÔNG</span>
-            <h2 style="font-family:var(--font-title); font-size:1.8rem; color:#FEF3C7; margin:0.2rem 0 0.3rem 0;">
-              Đại Kho Tàng 22 Bộ Thư Tịch Cổ Điển
-            </h2>
-            <p style="font-size:0.86rem; color:var(--text-muted); margin:0;">
-              Khảo chứng văn bản học nghiêm cẩn (Red-Team Provenance), nguyên văn chữ Hán, dịch nghĩa tường tận, luận giải bản chất khí trường và quy trình khảo sát 6 bước thực chiến.
-            </p>
-          </div>
-
-          ${filterButtonsHtml}
-          ${gridHtml}
+    gate.innerHTML = `
+      <div style="max-width:1200px; margin:0 auto; padding:1.5rem 1rem;">
+        <div style="margin-bottom:1.5rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:1rem;">
+          <span style="font-size:0.75rem; font-weight:800; color:#FBBF24; text-transform:uppercase; letter-spacing:0.08em;">THƯ KHỐ CHÁNH TÔNG</span>
+          <h2 style="font-family:var(--font-title); font-size:1.8rem; color:#FEF3C7; margin:0.2rem 0 0.3rem 0;">
+            Đại Kho Tàng 22 Bộ Thư Tịch Cổ Điển
+          </h2>
+          <p style="font-size:0.86rem; color:var(--text-muted); margin:0;">
+            Khảo chứng văn bản học nghiêm cẩn, nguyên văn chữ Hán, dịch nghĩa tường tận, luận giải bản chất khí trường và quy trình khảo sát thực chiến chánh tông.
+          </p>
         </div>
-      `;
-    }
+
+        ${filterButtonsHtml}
+        ${gridHtml}
+      </div>
+    `;
   }
 
   renderBookReader(bookId, chapterId = '1') {
@@ -127,7 +128,13 @@ class LibraryUI {
         <nav style="margin-bottom:1.2rem; font-size:0.82rem; color:var(--text-muted); display:flex; align-items:center; gap:0.5rem; flex-wrap:wrap;">
           <a href="#/" style="color:var(--text-muted); text-decoration:none;">Sảnh Thư Viện</a>
           <span>/</span>
-          <a href="#/library" style="color:#FBBF24; text-decoration:none;">Thư Khố Cổ Điển</a>
+          <a 
+            href="#/library" 
+            onclick="event.preventDefault(); window.location.hash='#/library'; window.libraryUI.renderCatalog();"
+            style="color:#FBBF24; text-decoration:none; font-weight:700; cursor:pointer;"
+          >
+            Thư Khố Cổ Điển
+          </a>
           <span>/</span>
           <span style="color:#FEF3C7; font-weight:700;">${book.title}</span>
         </nav>
@@ -138,7 +145,11 @@ class LibraryUI {
             <span style="font-size:0.75rem; font-weight:800; color:#FBBF24; background:rgba(251,191,36,0.1); border:1px solid rgba(251,191,36,0.25); padding:0.2rem 0.6rem; border-radius:4px;">
               ${book.grade} • ${book.categoryName}
             </span>
-            <a href="#/library" style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.12); color:#FEF3C7; padding:0.35rem 0.8rem; border-radius:6px; font-size:0.78rem; text-decoration:none; font-weight:600;">
+            <a 
+              href="#/library" 
+              onclick="event.preventDefault(); window.location.hash='#/library'; window.libraryUI.renderCatalog();"
+              style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.2); color:#FEF3C7; padding:0.45rem 1rem; border-radius:6px; font-size:0.82rem; text-decoration:none; font-weight:700; cursor:pointer; display:inline-block;"
+            >
               ← Về Danh Mục Thư Khố
             </a>
           </div>
@@ -147,7 +158,7 @@ class LibraryUI {
             ${book.title}
           </h1>
           
-          <!-- HỘP KHẢO CHỨNG THƯ TỊCH (RED-TEAM PROVENANCE) -->
+          <!-- HỘP KHẢO CHỨNG THƯ TỊCH -->
           <div style="background:#0D111A; border:1px solid rgba(168,85,247,0.3); border-left:4px solid #A855F7; border-radius:8px; padding:0.9rem 1.1rem; margin-top:0.9rem;">
             <div style="font-size:0.8rem; font-weight:800; color:#C084FC; margin-bottom:0.4rem; letter-spacing:0.04em;">
               🔍 KHẢO CHỨNG VĂN BẢN HỌC (RED-TEAM TEXTUAL PROVENANCE):
@@ -166,7 +177,8 @@ class LibraryUI {
             ${book.chapters.map(c => `
               <a 
                 href="#/library/${book.id}/${c.id}"
-                style="background:${c.id === chapter.id ? '#FBBF24' : 'rgba(255,255,255,0.05)'}; color:${c.id === chapter.id ? '#07090E' : 'var(--text-primary)'}; text-decoration:none; padding:0.3rem 0.7rem; border-radius:4px; font-size:0.78rem; font-weight:700; border:1px solid ${c.id === chapter.id ? '#FBBF24' : 'rgba(255,255,255,0.1)'};"
+                onclick="event.preventDefault(); window.location.hash='#/library/${book.id}/${c.id}'; window.libraryUI.renderBookReader('${book.id}', '${c.id}');"
+                style="background:${c.id === chapter.id ? '#FBBF24' : 'rgba(255,255,255,0.05)'}; color:${c.id === chapter.id ? '#07090E' : 'var(--text-primary)'}; text-decoration:none; padding:0.35rem 0.75rem; border-radius:4px; font-size:0.78rem; font-weight:700; border:1px solid ${c.id === chapter.id ? '#FBBF24' : 'rgba(255,255,255,0.1)'}; cursor:pointer;"
               >
                 ${c.title}
               </a>
@@ -243,11 +255,11 @@ class LibraryUI {
           </div>
         ` : ''}
 
-        <!-- Khối 4: Quy Chuẩn Thực Hành 6 Bước & Hóa Giải Chánh Tông -->
+        <!-- Khối 4: Quy Chuẩn Thực Hành & Hóa Giải Chánh Tông -->
         ${chapter.practicalProtocol ? `
           <div style="background:#121722; border:1px solid rgba(251,191,36,0.35); border-left:4px solid #FBBF24; border-radius:10px; padding:1.3rem 1.5rem; margin-bottom:2rem;">
             <div style="font-size:0.85rem; font-weight:800; color:#FBBF24; margin-bottom:0.7rem; letter-spacing:0.04em;">
-              🛠️ QUY TRÌNH THỰC HÀNH KHẢO SÁT & HÓA GIẢI CHÁNH TÔNG (KHOA HỌC KHÍ TRƯỜNG):
+              🛠️ QUY TRÌNH THỰC HÀNH KHẢO SÁT & HÓA GIẢI CHÁNH TÔNG:
             </div>
             <div style="font-size:0.86rem; color:#FEF3C7; line-height:1.65;">
               ${formatMultiLine(chapter.practicalProtocol)}

@@ -12,7 +12,6 @@ class LibraryRouter {
       'learn': (params) => this.renderLearn(params),
       'library': (params) => this.renderLibrary(params),
       'search': (params) => this.renderSearch(params),
-      'research': (params) => this.renderResearch(params),
       'tools': (params) => this.renderTools(params),
       'loban': (params) => this.renderTools({ segments: ['loban'] }),
       'thuoc-lo-ban': (params) => this.renderTools({ segments: ['loban'] }),
@@ -123,18 +122,7 @@ class LibraryRouter {
     }
   }
 
-  toggleViewMode() {
-    this.currentMode = this.currentMode === 'reading' ? 'research' : 'reading';
-    const btn = document.getElementById('view-mode-toggle');
-    const rightPane = document.getElementById('shell-right-pane');
-    
-    if (btn) {
-      btn.innerHTML = this.currentMode === 'reading' 
-        ? '<span>📖 Chế Độ Đọc</span>' 
-        : '<span>⚖️ Chế Độ Khảo Cứu</span>';
-    }
-
-    if (rightPane) {
+      if (rightPane) {
       rightPane.style.display = this.currentMode === 'research' ? 'block' : 'none';
     }
   }
@@ -177,18 +165,7 @@ class LibraryRouter {
     }
   }
 
-  // GATE 4: KHẢO CỨU (RESEARCH)
-  renderResearch(params) {
-    this.showGate('gate-research');
-    document.title = "Khảo Cứu & Đồ Hình Tri Thức — Huyền Học Mụ";
-    if (window.evidenceGraphUI && typeof window.evidenceGraphUI.render === 'function') {
-      window.evidenceGraphUI.render('graph');
-    } else if (window.researchUI && typeof window.researchUI.renderPanel === 'function') {
-      window.researchUI.renderPanel();
-    }
-  }
-
-  // GATE 5: CÔNG CỤ (TOOLS)
+  // GATE 4: CÔNG CỤ (TOOLS)
   renderTools(params) {
     this.showGate('gate-tools');
     document.title = "Địa Chất Đồ 64 Tỉnh Thành & Bàn Tính — Huyền Học Mụ";
