@@ -4,7 +4,7 @@
 
 class ToolUI {
   constructor() {
-    this.currentToolTab = 'thiendianhan';
+    this.currentToolTab = 'diachat64';
     this.state = {
       birthYear: 1988,
       gender: 'Nam',
@@ -23,7 +23,7 @@ class ToolUI {
     };
   }
 
-  render(tab = 'thiendianhan') {
+  render(tab = 'diachat64') {
     this.currentToolTab = tab;
     const container = document.getElementById('gate-tools');
     if (!container) return;
@@ -68,7 +68,9 @@ class ToolUI {
   }
 
   getToolContent(tab) {
-    if (tab === 'thiendianhan') {
+    if (tab === 'diachat64') {
+      return this.renderDiaChat64Tab();
+    } else if (tab === 'thiendianhan') {
       return this.renderThienDiaNhanTool();
     } else if (tab === 'battrach') {
       return this.renderBatTrachTool();
@@ -77,7 +79,7 @@ class ToolUI {
     } else if (tab === 'report') {
       return this.renderReportTool();
     }
-    return '';
+    return this.renderDiaChat64Tab();
   }
 
   renderThienDiaNhanTool() {

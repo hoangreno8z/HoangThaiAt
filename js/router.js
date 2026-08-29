@@ -13,7 +13,9 @@ class LibraryRouter {
       'library': (params) => this.renderLibrary(params),
       'search': (params) => this.renderSearch(params),
       'research': (params) => this.renderResearch(params),
-      'tools': (params) => this.renderTools(params)
+      'tools': (params) => this.renderTools(params),
+      'diachat64': (params) => this.renderTools({ segments: ['diachat64'] }),
+      'dia-chat': (params) => this.renderTools({ segments: ['diachat64'] })
     };
     
     this.init();
@@ -183,9 +185,10 @@ class LibraryRouter {
   // GATE 5: CÔNG CỤ (TOOLS)
   renderTools(params) {
     this.showGate('gate-tools');
-    document.title = "Bàn Tính Số Hóa Càn Khôn — Huyền Học Mụ";
+    document.title = "Địa Chất Đồ 64 Tỉnh Thành & Bàn Tính — Huyền Học Mụ";
+    const tab = (params && params.segments && params.segments[0]) ? params.segments[0] : 'diachat64';
     if (window.toolUI && typeof window.toolUI.render === 'function') {
-      window.toolUI.render('battrach');
+      window.toolUI.render(tab);
     }
   }
 }
