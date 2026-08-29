@@ -549,61 +549,11 @@ ${reportText}
 
   // =========================================================================
   // =========================================================================
-  // PHÂN HỆ THƯ TỊCH HÓA GIẢI & PHÁP TRỊ TRẠCH PHÁP (21 ĐẠI HỒ SƠ CỔ THƯ)
+  // =========================================================================
+  // PHÂN HỆ THƯ TỊCH HÓA GIẢI & PHÁP TRỊ TRẠCH PHÁP (21 PHÁP HÓA GIẢI)
   // =========================================================================
   selectHoaGiaiProfile(id) {
     this.selectedHoaGiaiId = id;
-    const container = document.getElementById('tool-active-area');
-    if (container) {
-      container.innerHTML = this.getToolContent('hoagiaicothu');
-    }
-  }
-
-  navigateHoaGiai(direction) {
-    const corpus = (typeof KHO_HOA_GIAI_CO_THU_CORPUS !== 'undefined') ? KHO_HOA_GIAI_CO_THU_CORPUS : [];
-    if (!corpus.length) return;
-    const currentId = this.selectedHoaGiaiId || corpus[0].ma_dinh_danh;
-    let idx = corpus.findIndex(item => item.ma_dinh_danh === currentId);
-    if (idx === -1) idx = 0;
-    
-    idx += direction;
-    if (idx < 0) idx = corpus.length - 1;
-    if (idx >= corpus.length) idx = 0;
-    
-    this.selectHoaGiaiProfile(corpus[idx].ma_dinh_danh);
-  }
-
-  searchHoaGiai(query) {
-    this.hoaGiaiSearchQuery = query;
-    const corpus = (typeof KHO_HOA_GIAI_CO_THU_CORPUS !== 'undefined') ? KHO_HOA_GIAI_CO_THU_CORPUS : [];
-    if (query && query.trim() && corpus.length) {
-      const normQ = this.removeVietnameseTones(query.trim().toLowerCase());
-      const match = corpus.find(item => {
-        const normTitle = this.removeVietnameseTones(item.ten_thuan_viet + ' ' + item.ten_chu_han);
-        const normSat = this.removeVietnameseTones(item.sat_khi_va_khuyet_ham.ten_sat_khi);
-        const normSources = this.removeVietnameseTones(item.thu_tich_khao_chung.map(s => s.tac_pham + ' ' + s.dich_nghia_thuan_viet).join(' '));
-        return normTitle.includes(normQ) || normSat.includes(normQ) || normSources.includes(normQ);
-      });
-      if (match) {
-        this.selectedHoaGiaiId = match.ma_dinh_danh;
-      }
-    }
-    const container = document.getElementById('tool-active-area');
-    if (container) {
-      container.innerHTML = this.getToolContent('hoagiaicothu');
-    }
-  }
-
-  filterHoaGiaiCategory(catId) {
-    this.hoaGiaiCategory = catId;
-    const container = document.getElementById('tool-active-area');
-    if (container) {
-      container.innerHTML = this.getToolContent('hoagiaicothu');
-    }
-  }
-
-  filterHoaGiaiEvidence(evId) {
-    this.hoaGiaiEvidenceFilter = evId;
     const container = document.getElementById('tool-active-area');
     if (container) {
       container.innerHTML = this.getToolContent('hoagiaicothu');
@@ -615,6 +565,30 @@ ${reportText}
     if (!corpus || corpus.length === 0) {
       return '<div style="padding:2rem; text-align:center; color:var(--text-muted);">Đang nạp cơ sở dữ liệu Kho Thư Tịch Hóa Giải Cổ...</div>';
     }
+
+    const shortNames = [
+      "01. Bát Sát Hoàng Tuyền (Thủy Pháp)",
+      "02. Xuyên Cung Cửu Tinh (Chọn Tầng)",
+      "03. Động Thổ Tu Tạo (Thần Sát)",
+      "04. Thủy Khẩu Khóa Khí (Thủy Long)",
+      "05. Thích Cơ Đầm Vôi (Tả Ao)",
+      "06. Văn Xương Khoa Cử (Nhất Tứ)",
+      "07. Tụ Tài Khố (Ngũ Thực)",
+      "08. Sức Khỏe Dưỡng Thọ (Thiên Y)",
+      "09. Hoành Lương Áp Đỉnh (Dầm Xà)",
+      "10. Thê Đới Trực Xung (Cầu Thang)",
+      "11. Thủy Pháp Minh Đường (Bể Cá)",
+      "12. Giếng Trời Thiên Tỉnh (Tứ Thủy)",
+      "13. Trấn Thạch Thạch Cảm Đương",
+      "14. Gương Đồng Chiếu Yêu (Bát Quái)",
+      "15. Đào Mộc & Cây Chắn Gió",
+      "16. Táo Vị Hỏa Lộ (Bếp Nấu)",
+      "17. Khai Môn Đối Môn (Lỗ Ban)",
+      "18. Bình Phong Ảnh Bích (Tàng Phong)",
+      "19. Phản Cung Sát & Cầu Vượt",
+      "20. Kim Khí Tiền Ngũ Đế (Ngũ Hoàng)",
+      "21. Phù Lục Trấn Trạch Nghi Lễ"
+    ];
 
     const currentId = this.selectedHoaGiaiId || corpus[0].ma_dinh_danh;
     let currentItem = corpus.find(item => item.ma_dinh_danh === currentId) || corpus[0];
@@ -633,93 +607,34 @@ ${reportText}
       <div style="background:#0D111A; border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:1.2rem; max-width:1050px; margin:0 auto 2rem auto;">
         
         <!-- Header Thanh Nhã -->
-        <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:1.2rem; border-bottom:1px solid rgba(255,255,255,0.06); padding-bottom:1rem; flex-wrap:wrap; gap:0.8rem;">
-          <div>
-            <div style="display:flex; align-items:center; gap:0.4rem; margin-bottom:0.3rem; flex-wrap:wrap;">
-              <span style="font-size:0.75rem; font-weight:800; color:#FBBF24; background:rgba(251,191,36,0.1); border:1px solid rgba(251,191,36,0.25); padding:0.2rem 0.6rem; border-radius:4px;">
-                21 ĐẠI HỒ SƠ CỔ THƯ
-              </span>
-              <span style="font-size:0.75rem; font-weight:700; color:#94A3B8; background:rgba(255,255,255,0.04); padding:0.2rem 0.5rem; border-radius:4px;">
-                QUY TRÌNH 4 TẦNG
-              </span>
-            </div>
-            <h2 style="font-size:1.4rem; color:#FEF3C7; margin:0.1rem 0;">
-              Thư Tịch Hóa Giải
-            </h2>
-            <p style="font-size:0.84rem; color:var(--text-muted); margin:0;">
-              Khảo chứng nguyên văn chữ Hán, dịch nghĩa học thuật và pháp trị kiến trúc chuẩn mực.
-            </p>
-          </div>
-
-          <!-- Nút Chuyển Hồ Sơ Trước / Sau -->
-          <div style="display:flex; align-items:center; gap:0.4rem;">
-            <button onclick="window.toolUI.navigateHoaGiai(-1)" style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.12); color:#FEF3C7; padding:0.45rem 0.8rem; border-radius:6px; font-size:0.82rem; font-weight:600; cursor:pointer;">
-              ← Trước
-            </button>
-            <span style="font-size:0.82rem; color:#FBBF24; font-weight:700; padding:0 0.3rem;">
-              ${currentIndex + 1} / ${corpus.length}
-            </span>
-            <button onclick="window.toolUI.navigateHoaGiai(1)" style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.12); color:#FEF3C7; padding:0.45rem 0.8rem; border-radius:6px; font-size:0.82rem; font-weight:600; cursor:pointer;">
-              Sau →
-            </button>
-          </div>
+        <div style="margin-bottom:1.2rem; border-bottom:1px solid rgba(255,255,255,0.06); padding-bottom:0.8rem;">
+          <h2 style="font-size:1.35rem; color:#FEF3C7; margin:0 0 0.2rem 0;">
+            Thư Tịch Hóa Giải
+          </h2>
+          <p style="font-size:0.84rem; color:var(--text-muted); margin:0;">
+            Khảo chứng nguyên văn chữ Hán, dịch nghĩa học thuật và pháp trị kiến trúc chuẩn mực.
+          </p>
         </div>
 
-        <!-- BẢNG ĐIỀU HƯỚNG TÌM KIẾM & CHỌN TRỰC TIẾP 21 HỒ SƠ -->
-        <div style="background:#121722; border:1px solid rgba(255,255,255,0.06); border-radius:10px; padding:1rem; margin-bottom:1.4rem;">
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.8rem; margin-bottom:0.8rem;">
-            
-            <!-- Ô Chọn Trực Tiếp 21 Hồ Sơ -->
-            <div>
-              <label style="display:block; font-size:0.78rem; font-weight:700; color:#FEF3C7; margin-bottom:0.35rem;">
-                Chọn trực tiếp trong 21 Đại Hồ Sơ:
-              </label>
-              <select 
-                onchange="window.toolUI.selectHoaGiaiProfile(this.value)"
-                style="width:100%; background:#0D111A; border:1px solid #FBBF24; color:#FEF3C7; padding:0.55rem 0.8rem; border-radius:6px; font-size:0.85rem; font-weight:600; cursor:pointer; outline:none;"
-              >
-                ${corpus.map((item, idx) => `
-                  <option value="${item.ma_dinh_danh}" ${item.ma_dinh_danh === currentItem.ma_dinh_danh ? 'selected' : ''}>
-                    [${idx + 1 < 10 ? '0' + (idx + 1) : idx + 1}] ${item.ten_thuan_viet}
-                  </option>
-                `).join('')}
-              </select>
-            </div>
-
-            <!-- Ô Tìm Kiếm Nhanh Bằng Chữ Cái -->
-            <div>
-              <label style="display:block; font-size:0.78rem; font-weight:700; color:#FEF3C7; margin-bottom:0.35rem;">
-                Gõ từ khóa tìm kiếm:
-              </label>
-              <input 
-                type="text" 
-                value="${this.hoaGiaiSearchQuery || ''}" 
-                placeholder="Gõ từ khóa (vd: hoàng tuyền, bể cá, văn xương, két tiền, dầm xà...)" 
-                oninput="window.toolUI.searchHoaGiai(this.value)"
-                style="width:100%; background:#0D111A; border:1px solid rgba(255,255,255,0.15); color:#FEF3C7; padding:0.55rem 0.8rem; border-radius:6px; font-size:0.85rem; outline:none;"
-              />
-            </div>
-
-          </div>
-
-          <!-- Dải Danh Mục Nhanh Dạng Thẻ Cuộn Ngang Nhẹ Nhàng -->
-          <div style="display:flex; gap:0.4rem; overflow-x:auto; padding-bottom:0.3rem; scrollbar-width:thin;">
-            ${corpus.map((item, idx) => {
-              const isActive = item.ma_dinh_danh === currentItem.ma_dinh_danh;
-              return `
-                <button 
-                  onclick="window.toolUI.selectHoaGiaiProfile('${item.ma_dinh_danh}')"
-                  style="flex-shrink:0; background:${isActive ? '#FBBF24' : 'rgba(255,255,255,0.03)'}; color:${isActive ? '#000000' : 'var(--text-muted)'}; border:1px solid ${isActive ? '#FBBF24' : 'rgba(255,255,255,0.06)'}; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:${isActive ? '800' : '500'}; cursor:pointer; white-space:nowrap; transition:all 0.15s ease;"
-                >
-                  ${idx + 1}. ${item.ten_nhom_tieng_viet || 'Hồ Sơ'}
-                </button>
-              `;
-            }).join('')}
-          </div>
+        <!-- KHUNG CHỌN DUY NHẤT: 21 PHÁP HÓA GIẢI (CÓ VIỀN KHUNG GỌN GÀNG, KHÔNG ZOOM GIẬT) -->
+        <div style="background:#121722; border:1.5px solid rgba(251,191,36,0.35); border-radius:10px; padding:0.9rem 1rem; margin-bottom:1.2rem;">
+          <label style="display:block; font-size:0.85rem; font-weight:800; color:#FBBF24; margin-bottom:0.4rem; letter-spacing:0.02em;">
+            21 Pháp Hóa Giải (Bấm chọn để xem chi tiết):
+          </label>
+          <select 
+            onchange="window.toolUI.selectHoaGiaiProfile(this.value)"
+            style="width:100%; background:#07090E; border:1px solid rgba(255,255,255,0.18); color:#FEF3C7; padding:0.65rem 0.9rem; border-radius:8px; font-size:16px !important; font-weight:600; cursor:pointer; outline:none; box-sizing:border-box;"
+          >
+            ${corpus.map((item, idx) => `
+              <option value="${item.ma_dinh_danh}" ${item.ma_dinh_danh === currentItem.ma_dinh_danh ? 'selected' : ''}>
+                ${shortNames[idx] || (idx + 1) + '. ' + item.ten_thuan_viet}
+              </option>
+            `).join('')}
+          </select>
         </div>
 
         <!-- THẺ CHI TIẾT HỒ SƠ ĐANG CHỌN (TRÌNH BÀY THANH LỊCH, MÀU DỊU MẮT) -->
-        <div style="background:#121722; border:1px solid rgba(255,255,255,0.06); border-radius:10px; padding:1.4rem;">
+        <div style="background:#121722; border:1px solid rgba(255,255,255,0.06); border-radius:10px; padding:1.2rem;">
           
           <!-- Tiêu Đề Hồ Sơ -->
           <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:1rem; flex-wrap:wrap; gap:0.6rem; border-bottom:1px solid rgba(255,255,255,0.05); padding-bottom:0.8rem;">
@@ -735,7 +650,7 @@ ${reportText}
                   Hồ Sơ ${currentIndex + 1}
                 </span>
               </div>
-              <h3 style="font-size:1.25rem; color:#FEF3C7; margin:0.2rem 0 0.1rem 0;">
+              <h3 style="font-size:1.2rem; color:#FEF3C7; margin:0.2rem 0 0.1rem 0;">
                 ${currentItem.ten_thuan_viet}
               </h3>
               <div style="font-size:0.88rem; color:#FDE68A; font-family:'Ma Shan Zheng', var(--font-title);">

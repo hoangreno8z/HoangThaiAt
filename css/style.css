@@ -2378,3 +2378,10 @@ footer {
     max-width: 100% !important;
   }
 }
+
+
+/* Ngăn chặn trình duyệt di động tự động phóng to (zoom) khi chạm vào ô chọn */
+select, input, textarea, button {
+  font-size: 16px !important;
+  touch-action: manipulation;
+}
