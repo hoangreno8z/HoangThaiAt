@@ -1,5 +1,5 @@
 // =========================================================================
-// HUYỀN HỌC MỤ — CLIENT-SIDE SPA ROUTER & 4-GATE SHELL CONTROLLER
+// HUYỀN HỌC MỤ — CLIENT-SIDE SPA ROUTER & 3-GATE SHELL CONTROLLER
 // =========================================================================
 
 class LibraryRouter {
@@ -9,8 +9,6 @@ class LibraryRouter {
       '': () => this.renderLobby(),
       'lobby': () => this.renderLobby(),
       'learn': (params) => this.renderLearn(params),
-      'library': (params) => this.renderLibrary(params),
-      'search': (params) => this.renderSearch(params),
       'tools': (params) => this.renderTools(params),
       'loban': (params) => this.renderTools({ segments: ['loban'] }),
       'thuoc-lo-ban': (params) => this.renderTools({ segments: ['loban'] }),
@@ -28,25 +26,6 @@ class LibraryRouter {
   init() {
     window.addEventListener('hashchange', () => this.handleHashChange());
     window.addEventListener('load', () => this.handleHashChange());
-
-    // Bind Big Search in Lobby
-    const bigSearch = document.getElementById('lobby-big-search');
-    if (bigSearch) {
-      bigSearch.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter' && bigSearch.value.trim()) {
-          this.navigateTo(`/search?q=${encodeURIComponent(bigSearch.value.trim())}`);
-        }
-      });
-    }
-
-    const groupedSearch = document.getElementById('grouped-search-input');
-    if (groupedSearch) {
-      groupedSearch.addEventListener('input', (e) => {
-        if (typeof window.executeGroupedSearch === 'function') {
-          window.executeGroupedSearch(e.target.value.trim());
-        }
-      });
-    }
 
     // Bind Quick Nav items
     document.querySelectorAll('.nav-gate-link').forEach(link => {
@@ -132,28 +111,7 @@ class LibraryRouter {
     }
   }
 
-  // GATE 2: THƯ TỊCH (LIBRARY)
-  renderLibrary(params) {
-    this.showGate('gate-library');
-    document.title = "Thư Khố Cổ Điển — Huyền Học Mụ";
-    if (typeof window.loadLibraryBook === 'function') {
-      const book = (params && params.segments && params.segments[0]) ? params.segments[0] : null;
-      const chapter = (params && params.segments && params.segments[1]) ? params.segments[1] : '1';
-      window.loadLibraryBook(book, chapter);
-    }
-  }
-
-  // GATE 3: TRA CỨU (SEARCH)
-  renderSearch(params) {
-    this.showGate('gate-search');
-    document.title = "Tra Cứu Đa Chiều — Huyền Học Mụ";
-    const q = params.query ? params.query.get('q') : '';
-    if (q && typeof window.executeGroupedSearch === 'function') {
-      window.executeGroupedSearch(q);
-    }
-  }
-
-  // GATE 4: CÔNG CỤ (TOOLS)
+  // GATE 2: CÔNG CỤ (TOOLS)
   renderTools(params) {
     this.showGate('gate-tools');
     document.title = "Bàn Tính & Công Cụ Cổ Điển — Huyền Học Mụ";

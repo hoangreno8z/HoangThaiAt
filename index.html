@@ -17,46 +17,34 @@
   <!-- =========================================================================
        HEADER & TOP GLOBAL NAVIGATION (5 CỬA CHÍNH)
        ========================================================================= -->
-  <header class="app-header">
-    <div class="header-left">
-      <a href="#/" class="brand-logo" style="text-decoration:none;">
-        <h1 style="font-size:1.15rem; font-weight:800; color:#FBBF24; margin:0; letter-spacing:0.04em;">HUY HOÀNG</h1>
-        <p style="font-size:0.75rem; color:#38BDF8; font-weight:700; margin:0;">0933116860</p>
-      </a>
-    </div>
+    <header class="app-header-wrapper">
+    <div class="app-header">
+      <div class="header-left">
+        <a href="#/" class="brand-logo" style="text-decoration:none;">
+          <h1 style="font-size:1.15rem; font-weight:800; color:#FBBF24; margin:0; letter-spacing:0.04em;">HUY HOÀNG</h1>
+          <p style="font-size:0.75rem; color:#38BDF8; font-weight:700; margin:0;">0933116860</p>
+        </a>
+      </div>
 
-    <!-- 5 Cửa Chính Của Website -->
-    <nav class="nav-gates-bar">
-      <a href="#/" class="nav-gate-link active" data-gate="lobby">
-        <span>Sảnh Thư Viện</span>
-      </a>
-      <a href="#/learn" class="nav-gate-link" data-gate="learn">
-        <span>Giáo Trình</span>
-      </a>
-      <a href="#/library" class="nav-gate-link" data-gate="library">
-        <span>Thư Khố</span>
-      </a>
-      <a href="#/search" class="nav-gate-link" data-gate="search">
-        <span>Tra Cứu</span>
-      </a>
-      <a href="#/research" class="nav-gate-link" data-gate="research">
-        <span>Khảo Cứu</span>
-      </a>
-      <a href="#/tools" class="nav-gate-link" data-gate="tools">
-        <span>Công Cụ</span>
-      </a>
-    </nav>
+      <!-- 3 Cửa Cốt Lõi Của Website -->
+      <nav class="nav-gates-bar">
+        <a href="#/" class="nav-gate-link active" data-gate="lobby">
+          <span>Sảnh Chính</span>
+        </a>
+        <a href="#/learn" class="nav-gate-link" data-gate="learn">
+          <span>Giáo Trình</span>
+        </a>
+        <a href="#/tools" class="nav-gate-link" data-gate="tools">
+          <span>Bàn Tính & Công Cụ</span>
+        </a>
+      </nav>
 
-    <div class="header-right" style="display:flex; align-items:center; gap:0.6rem;">
-      <!-- Toggle Chế độ Đọc / Khảo cứu -->
-      <button id="view-mode-toggle" class="btn-mode-toggle" style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); color:var(--text-pure); padding:0.4rem 0.8rem; border-radius:8px; font-size:0.8rem; font-weight:600; cursor:pointer;">
-        <span>Chế Độ Đọc</span>
-      </button>
-
-      <!-- Nút mở drawer trên mobile -->
-      <button id="drawer-toggle-btn" class="drawer-toggle-btn" aria-label="Mở Menu" onclick="if(window.mobileDrawer){window.mobileDrawer.open();}else{document.getElementById(&quot;app-mobile-drawer&quot;).classList.add(&quot;active&quot;);document.getElementById(&quot;mobile-drawer-overlay&quot;).classList.add(&quot;active&quot;);document.body.style.overflow=&quot;hidden&quot;;}">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-      </button>
+      <div class="header-right">
+        <!-- Nút mở drawer trên mobile -->
+        <button id="drawer-toggle-btn" class="drawer-toggle-btn" aria-label="Mở Menu" onclick="if(window.mobileDrawer){window.mobileDrawer.open();}else{document.getElementById(&quot;app-mobile-drawer&quot;).classList.add(&quot;active&quot;);document.getElementById(&quot;mobile-drawer-overlay&quot;).classList.add(&quot;active&quot;);document.body.style.overflow=&quot;hidden&quot;;}">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
     </div>
   </header>
 
@@ -78,12 +66,7 @@
         <strong>Tam Hợp Thủy Pháp</strong>, <strong>Huyền Không Phi Tinh</strong> và <strong>Khoa Nghi Thờ Cúng</strong>.
       </p>
 
-      <!-- Big Search Bar -->
-      <div class="lobby-search-box">
-        <svg class="lobby-search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        <input type="text" id="lobby-big-search" class="lobby-search-input" placeholder="Bạn muốn tìm hiểu điều gì? (vd: Vô Cực, Thái Cực, Hà Đồ, Hoàng Tuyền, Vận 9...)">
-      </div>
-    </section>
+      </section>
 
         <!-- 4 ĐẠI PHÂN HỆ CÔNG CỤ & BÀN TÍNH CỔ ĐIỂN -->
     <section style="max-width:1100px; margin:2rem auto 0 auto; padding:0 1rem;">
@@ -329,25 +312,9 @@
     </div>
   </section>
 
-  <!-- =========================================================================
-       CỔNG 2: PHÂN HỆ THƯ TỊCH (PHÂN HỆ THƯ TỊCH)
-       ========================================================================= -->
-  <section id="gate-library" class="app-gate-view" style="display:none; padding:2rem 1.5rem; max-width:1200px; margin:0 auto;">
-    <h2 style="font-family:var(--font-title); font-size:1.8rem; color:#FEF3C7; margin-bottom:0.6rem;">Thư Khố Cổ Điển Chính Thống</h2>
-    <p style="color:var(--text-muted); margin-bottom:2rem;">Toàn thư các tác phẩm kinh điển chữ Hán, chú giải và bản dịch nguyên bản.</p>
-    <div id="library-books-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:1.5rem;"></div>
-  </section>
+  
 
-  <!-- =========================================================================
-       CỔNG 3: PHÂN HỆ TRA CỨU (PHÂN HỆ TRA CỨU)
-       ========================================================================= -->
-  <section id="gate-search" class="app-gate-view" style="display:none; padding:2rem 1.5rem; max-width:1100px; margin:0 auto;">
-    <h2 style="font-family:var(--font-title); font-size:1.8rem; color:#FEF3C7; margin-bottom:1.5rem;">Tra Cứu Đa Chiều Phân Nhóm</h2>
-    <div style="margin-bottom:2rem;">
-      <input type="text" id="grouped-search-input" class="lobby-search-input" placeholder="Nhập từ khóa cần tra cứu...">
-    </div>
-    <div id="grouped-search-results"></div>
-  </section>
+  
 
   
 
@@ -356,7 +323,7 @@
        ========================================================================= -->
   <section id="gate-tools" class="app-gate-view" style="display:none; padding:2rem 1.5rem; max-width:1200px; margin:0 auto;"></section>
 
-  <!-- =========================================================================
+    <!-- =========================================================================
        MOBILE BOTTOM BAR (CỐ ĐỊNH ĐÁY MÀN HÌNH DI ĐỘNG)
        ========================================================================= -->
   <nav id="mobile-bottom-bar" class="mobile-bottom-bar">
@@ -364,13 +331,9 @@
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
       <span>Sảnh Chính</span>
     </a>
-    <a href="#/library" class="mobile-bar-btn" style="text-decoration:none;">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-      <span>Thư Khố</span>
-    </a>
-    <a href="#/search" class="mobile-bar-btn" style="text-decoration:none;">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      <span>Tra Cứu</span>
+    <a href="#/learn" class="mobile-bar-btn" style="text-decoration:none;">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+      <span>Giáo Trình</span>
     </a>
     <a href="#/tools" class="mobile-bar-btn" style="text-decoration:none;">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/></svg>
@@ -441,11 +404,8 @@
       </a>
 
       <!-- CÁC PHÂN HỆ NGHIÊN CỨU & TRA CỨU -->
-      <div class="drawer-section-title" style="margin-top:1.2rem;">KHẢO CỨU & CÔNG CỤ</div>
-      <a href="#/library" class="drawer-nav-item">Thư Khố Cổ Thư</a>
-      <a href="#/search" class="drawer-nav-item">Tra Cứu Toàn Thư</a>
-      <a href="#/research" class="drawer-nav-item">Khảo Cứu Dị Bản</a>
-                  <a href="#/tools/loban" class="drawer-nav-item book-shelf-item" style="border-left-color:#EF4444; background:rgba(239,68,68,0.08); margin-bottom:0.6rem;">
+      <div class="drawer-section-title" style="margin-top:1.2rem;">4 PHÂN HỆ CÔNG CỤ CỔ TRUYỀN</div>
+      <a href="#/tools/loban" class="drawer-nav-item book-shelf-item" style="border-left-color:#EF4444; background:rgba(239,68,68,0.08); margin-bottom:0.6rem;">
         <div style="font-weight:700; color:#FEF3C7; font-size:0.92rem;">Thước Lỗ Ban Tam Giới</div>
         <div style="font-size:0.75rem; color:#EF4444;">52.2cm • 42.9cm • 38.8cm Chuẩn Xác Từng Milimet</div>
       </a>
@@ -492,7 +452,6 @@
   <script src="js/quy_trinh_thuc_chien_data.js"></script>
   <script src="js/dia_ly_64_tinh_thanh_data.js"></script>
   <script src="js/hoa_giai_co_thu_data.js"></script>
-  <script src="js/co_thu_kinh_dien_data.js"></script>
   <script src="js/loban_engine.js"></script>
   <script src="js/thien_van_kymon_engine.js"></script>
 

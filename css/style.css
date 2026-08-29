@@ -2451,3 +2451,97 @@ select, input, textarea, button {
     display: flex !important;
   }
 }
+
+
+/* =========================================================================
+   CLEAN APP HEADER & ZERO OVERFLOW LAYOUT
+   ========================================================================= */
+.app-header-wrapper {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(11, 14, 20, 0.96);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.app-header {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.65rem 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.nav-gates-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.nav-gate-link {
+  color: #94A3B8;
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 700;
+  padding: 0.45rem 0.95rem;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.nav-gate-link:hover {
+  color: #FEF3C7;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.nav-gate-link.active {
+  color: #07090E;
+  background: #FBBF24;
+  border-color: #FBBF24;
+}
+
+.drawer-toggle-btn {
+  display: none;
+  background: rgba(251, 191, 36, 0.15);
+  border: 1px solid rgba(251, 191, 36, 0.4);
+  color: #FBBF24;
+  padding: 0.45rem 0.65rem;
+  border-radius: 8px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  min-width: 42px;
+  min-height: 42px;
+  touch-action: manipulation;
+}
+
+.drawer-toggle-btn svg {
+  stroke: #FBBF24;
+}
+
+@media (max-width: 900px) {
+  .nav-gates-bar {
+    display: none !important;
+  }
+  .drawer-toggle-btn {
+    display: flex !important;
+  }
+}
