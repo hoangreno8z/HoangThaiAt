@@ -1,60 +1,48 @@
-﻿/**
- * HUYEN HOC MU — CORE APPLICATION BOOTSTRAPPER (LEAN & CRASH-FREE)
- * Toi uu hoa tuyet doi: Khu bo toan bo DOM rendering hang loat cu,
- * chuyen giao hoan toan quyen dieu khien cho Router SPA va Reader Engine.
- */
+// =========================================================================
+// HUYỀN HỌC MỤ — MAIN APP CONTROLLER & MOBILE DRAWER (BULLETPROOF)
+// =========================================================================
 
+// Sound Controller for ancient chime
 class SoundController {
   constructor() {
-    this.ctx = null;
+    this.audioCtx = null;
     this.enabled = true;
   }
 
-  initContext() {
-    if (!this.ctx) {
-      const AudioContext = window.AudioContext || window.webkitAudioContext;
-      if (AudioContext) {
-        this.ctx = new AudioContext();
-      }
-    }
-    if (this.ctx && this.ctx.state === 'suspended') {
-      this.ctx.resume();
+  initAudio() {
+    if (!this.audioCtx && typeof window !== 'undefined' && (window.AudioContext || window.webkitAudioContext)) {
+      const AudioCtx = window.AudioContext || window.webkitAudioContext;
+      this.audioCtx = new AudioCtx();
     }
   }
 
-  playBell(freq = 432) {
+  playBell(freq = 432, duration = 2.5) {
     if (!this.enabled) return;
     try {
-      this.initContext();
-      if (!this.ctx) return;
+      this.initAudio();
+      if (!this.audioCtx) return;
+      if (this.audioCtx.state === 'suspended') {
+        this.audioCtx.resume();
+      }
 
-      const osc = this.ctx.createOscillator();
-      const gain = this.ctx.createGain();
-      const filter = this.ctx.createBiquadFilter();
+      const osc = this.audioCtx.createOscillator();
+      const gain = this.audioCtx.createGain();
 
       osc.type = 'sine';
-      osc.frequency.setValueAtTime(freq, this.ctx.currentTime);
+      osc.frequency.setValueAtTime(freq, this.audioCtx.currentTime);
 
-      filter.type = 'lowpass';
-      filter.frequency.setValueAtTime(freq * 3, this.ctx.currentTime);
+      gain.gain.setValueAtTime(0, this.audioCtx.currentTime);
+      gain.gain.linearRampToValueAtTime(0.3, this.audioCtx.currentTime + 0.05);
+      gain.gain.exponentialRampToValueAtTime(0.001, this.audioCtx.currentTime + duration);
 
-      gain.gain.setValueAtTime(0.25, this.ctx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.0001, this.ctx.currentTime + 2.4);
-
-      osc.connect(filter);
-      filter.connect(gain);
-      gain.connect(this.ctx.destination);
+      osc.connect(gain);
+      gain.connect(this.audioCtx.destination);
 
       osc.start();
-      osc.stop(this.ctx.currentTime + 2.5);
+      osc.stop(this.audioCtx.currentTime + duration);
     } catch (e) {
-      // Audio autoplay policy
+      // Audio autoplay policy fallback
     }
-  }
-
-  toggle() {
-    this.enabled = !this.enabled;
-    return this.enabled;
   }
 }
 
@@ -74,18 +62,29 @@ class MobileDrawerController {
         e.preventDefault();
         this.open();
       });
+      this.toggleBtn.addEventListener('touchend', (e) => {
+        e.preventDefault();
+        this.open();
+      });
     }
+
     if (this.closeBtn) {
       this.closeBtn.addEventListener('click', (e) => {
         e.preventDefault();
         this.close();
       });
-    }
-    if (this.overlay) {
-      this.overlay.addEventListener('click', () => this.close());
+      this.closeBtn.addEventListener('touchend', (e) => {
+        e.preventDefault();
+        this.close();
+      });
     }
 
-    // Tu dong dong drawer khi bam vao bat ky lien ket nao trong menu
+    if (this.overlay) {
+      this.overlay.addEventListener('click', () => this.close());
+      this.overlay.addEventListener('touchend', () => this.close());
+    }
+
+    // Auto-close drawer on link click
     if (this.drawer) {
       this.drawer.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => this.close());
@@ -106,14 +105,20 @@ class MobileDrawerController {
   }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  window.soundCtrl = new SoundController();
-  window.mobileDrawer = new MobileDrawerController();
+function initializeApp() {
+  if (!window.soundCtrl) {
+    window.soundCtrl = new SoundController();
+  }
+  if (!window.mobileDrawer) {
+    window.mobileDrawer = new MobileDrawerController();
+  }
+}
 
-  // Play subtle bell sound on first user click
-  const firstClickSound = () => {
-    window.soundCtrl.playBell(528);
-    document.removeEventListener('click', firstClickSound);
-  };
-  document.addEventListener('click', firstClickSound, { once: true });
-});
+// Immediate init & Event Listeners
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initializeApp);
+} else {
+  initializeApp();
+}
+
+window.addEventListener('load', initializeApp);

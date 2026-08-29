@@ -1,11 +1,10 @@
 // =========================================================================
-// HUYỀN HỌC MỤ — CLIENT-SIDE SPA ROUTER & 5-GATE SHELL CONTROLLER (PHASE 2)
+// HUYỀN HỌC MỤ — CLIENT-SIDE SPA ROUTER & 4-GATE SHELL CONTROLLER
 // =========================================================================
 
 class LibraryRouter {
   constructor() {
     this.currentRoute = '';
-    this.currentMode = 'reading'; // 'reading' | 'research' | 'tool'
     this.routes = {
       '': () => this.renderLobby(),
       'lobby': () => this.renderLobby(),
@@ -29,12 +28,6 @@ class LibraryRouter {
   init() {
     window.addEventListener('hashchange', () => this.handleHashChange());
     window.addEventListener('load', () => this.handleHashChange());
-    
-    // Bind Mode Toggles
-    const modeBtn = document.getElementById('view-mode-toggle');
-    if (modeBtn) {
-      modeBtn.addEventListener('click', () => this.toggleViewMode());
-    }
 
     // Bind Big Search in Lobby
     const bigSearch = document.getElementById('lobby-big-search');
@@ -122,11 +115,6 @@ class LibraryRouter {
     }
   }
 
-      if (rightPane) {
-      rightPane.style.display = this.currentMode === 'research' ? 'block' : 'none';
-    }
-  }
-
   // GATE 0: SẢNH THƯ VIỆN (LOBBY)
   renderLobby() {
     this.showGate('gate-lobby');
@@ -159,7 +147,7 @@ class LibraryRouter {
   renderSearch(params) {
     this.showGate('gate-search');
     document.title = "Tra Cứu Đa Chiều — Huyền Học Mụ";
-    const q = params.query.get('q');
+    const q = params.query ? params.query.get('q') : '';
     if (q && typeof window.executeGroupedSearch === 'function') {
       window.executeGroupedSearch(q);
     }
@@ -168,7 +156,7 @@ class LibraryRouter {
   // GATE 4: CÔNG CỤ (TOOLS)
   renderTools(params) {
     this.showGate('gate-tools');
-    document.title = "Địa Chất Đồ 64 Tỉnh Thành & Bàn Tính — Huyền Học Mụ";
+    document.title = "Bàn Tính & Công Cụ Cổ Điển — Huyền Học Mụ";
     const tab = (params && params.segments && params.segments[0]) ? params.segments[0] : 'loban';
     if (window.toolUI && typeof window.toolUI.render === 'function') {
       window.toolUI.render(tab);
