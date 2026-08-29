@@ -52,6 +52,9 @@ class ToolUI {
           <button onclick="window.toolUI.render('huyenkhong')" style="background:${this.currentToolTab === 'huyenkhong' ? 'rgba(245,158,11,0.25)' : 'rgba(255,255,255,0.04)'}; border:1px solid ${this.currentToolTab === 'huyenkhong' ? '#FBBF24' : 'rgba(255,255,255,0.1)'}; color:#FEF3C7; padding:0.65rem 1.3rem; border-radius:8px; font-weight:700; font-size:0.88rem; cursor:pointer;">
             Huyền Không Phi Tinh (Vận 9)
           </button>
+          <button onclick="window.toolUI.render('diachat64')" style="background:${this.currentToolTab === 'diachat64' ? 'rgba(245,158,11,0.25)' : 'rgba(255,255,255,0.04)'}; border:1px solid ${this.currentToolTab === 'diachat64' ? '#38BDF8' : 'rgba(255,255,255,0.1)'}; color:#38BDF8; padding:0.65rem 1.3rem; border-radius:8px; font-weight:700; font-size:0.88rem; cursor:pointer;">
+            Địa Chất Đồ & Khí Hậu 64 Tỉnh Thành
+          </button>
           <button onclick="window.toolUI.render('report')" style="background:${this.currentToolTab === 'report' ? 'rgba(245,158,11,0.25)' : 'rgba(255,255,255,0.04)'}; border:1px solid ${this.currentToolTab === 'report' ? '#FBBF24' : 'rgba(255,255,255,0.1)'}; color:#FEF3C7; padding:0.65rem 1.3rem; border-radius:8px; font-weight:700; font-size:0.88rem; cursor:pointer;">
             Báo Cáo Chẩn Đoán Toàn Diện
           </button>
@@ -534,6 +537,167 @@ ${reportText}
   updateState(key, val) {
     this.state[key] = val;
     this.render(this.currentToolTab);
+  }
+
+  // =========================================================================
+  // PHÂN HỆ KHẢO SÁT ĐỊA CHẤT ĐỒ & KHÍ HẬU 64 ĐƠN VỊ ĐỊA LÝ LỊCH SỬ
+  // =========================================================================
+  renderDiaChat64Tab(selectedId = 'HN_PRE2008') {
+    const corpus = (typeof DIA_LY_64_TINH_THANH_CORPUS !== 'undefined') ? DIA_LY_64_TINH_THANH_CORPUS : [];
+    if (!corpus || corpus.length === 0) {
+      return '<div style="padding:2rem; text-align:center; color:var(--text-muted);">Đang nạp cơ sở dữ liệu Địa lý 64 Tỉnh Thành...</div>';
+    }
+
+    const currentProvince = corpus.find(p => p.historical_id === selectedId) || corpus[0];
+
+    const optionsHtml = corpus.map(p => `
+      <option value="${p.historical_id}" ${p.historical_id === currentProvince.historical_id ? 'selected' : ''}>
+        ${p.name} (${p.region})
+      </option>
+    `).join('');
+
+    return `
+      <div style="background:rgba(18,24,38,0.75); border:1px solid rgba(56,189,248,0.3); border-radius:12px; padding:1.8rem; margin-bottom:2rem;">
+        
+        <!-- Header Chọn Tỉnh Thành -->
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; margin-bottom:1.8rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:1.2rem;">
+          <div>
+            <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.3rem;">
+              <span style="font-size:0.75rem; font-weight:800; color:#38BDF8; background:rgba(56,189,248,0.15); padding:0.2rem 0.6rem; border-radius:4px;">
+                ĐỊA – KHÍ – THỦY – THỔ CORPUS
+              </span>
+              <span style="font-size:0.75rem; font-weight:700; color:#34D399; background:rgba(52,211,153,0.15); padding:0.2rem 0.6rem; border-radius:4px;">
+                EVIDENCE GATE: ${currentProvince.evidence_gate.status} (Độ tin cậy ${Math.round(currentProvince.evidence_gate.confidence * 100)}%)
+              </span>
+            </div>
+            <h2 style="font-size:1.6rem; color:#FEF3C7; margin:0;">
+              ${currentProvince.name} — Hồ Sơ Khảo Sát Địa Lý Lịch Sử & Vi Khí Hậu
+            </h2>
+            <div style="font-size:0.84rem; color:var(--text-muted); margin-top:0.2rem;">
+              <strong>Địa giới lịch sử:</strong> ${currentProvince.historical_mapping} • <strong>Quy chiếu hiện hành:</strong> ${currentProvince.current_mapping}
+            </div>
+          </div>
+
+          <div style="display:flex; align-items:center; gap:0.6rem;">
+            <label style="font-size:0.86rem; color:#FEF3C7; font-weight:600;">Chọn Tỉnh / Đơn Vị:</label>
+            <select onchange="window.toolUI.renderDiaChatSelection(this.value)" style="background:#0D111A; border:1px solid #38BDF8; color:#38BDF8; padding:0.5rem 1rem; border-radius:8px; font-weight:700; font-size:0.9rem; cursor:pointer;">
+              ${optionsHtml}
+            </select>
+          </div>
+        </div>
+
+        <!-- Lưới 4 Cột: Địa Hình - Địa Chất - Thủy Văn - Khí Hậu -->
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:1rem; margin-bottom:1.8rem;">
+          
+          <!-- Thẻ 01: Địa Hình -->
+          <div style="background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.06); border-top:3px solid #F59E0B; padding:1rem; border-radius:8px;">
+            <h3 style="font-size:0.92rem; color:#F59E0B; margin:0 0 0.5rem 0;">01. ĐỊA HÌNH & TIỂU VÙNG</h3>
+            <div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:0.4rem;"><strong>Cao độ:</strong> ${currentProvince.terrain.elevation}</div>
+            <div style="font-size:0.82rem; color:var(--text-pure); line-height:1.5; margin-bottom:0.5rem;">${currentProvince.terrain.geomorphology}</div>
+            <div style="border-top:1px dashed rgba(255,255,255,0.08); padding-top:0.4rem;">
+              <strong style="font-size:0.76rem; color:#FEF3C7;">Tiểu vùng thực địa:</strong>
+              ${currentProvince.terrain.sub_regions.map(sr => `<div style="font-size:0.75rem; color:var(--text-muted); margin-top:0.2rem;">• ${sr}</div>`).join('')}
+            </div>
+          </div>
+
+          <!-- Thẻ 02: Địa Chất -->
+          <div style="background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.06); border-top:3px solid #EF4444; padding:1rem; border-radius:8px;">
+            <h3 style="font-size:0.92rem; color:#EF4444; margin:0 0 0.5rem 0;">02. ĐỊA CHẤT & CHỊU TẢI</h3>
+            <div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:0.3rem;"><strong>Chất đất:</strong> ${currentProvince.geology.soil_types}</div>
+            <div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:0.4rem;"><strong>Đá gốc:</strong> ${currentProvince.geology.bedrock}</div>
+            <div style="background:rgba(239,68,68,0.08); padding:0.4rem 0.6rem; border-radius:4px; font-size:0.78rem; color:#FEF3C7; line-height:1.45; margin-bottom:0.4rem;">
+              <strong>Sức chịu tải & móng:</strong> ${currentProvince.geology.engineering_geology}
+            </div>
+            <div style="font-size:0.74rem; color:var(--text-dim);"><strong>Địa chấn:</strong> ${currentProvince.geology.seismic_hazard}</div>
+          </div>
+
+          <!-- Thẻ 03: Thủy Văn -->
+          <div style="background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.06); border-top:3px solid #3B82F6; padding:1rem; border-radius:8px;">
+            <h3 style="font-size:0.92rem; color:#3B82F6; margin:0 0 0.5rem 0;">03. THỦY VĂN & TRIỀU CƯỜNG</h3>
+            <div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:0.3rem;"><strong>Sông chính:</strong> ${currentProvince.water.major_rivers}</div>
+            <div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:0.3rem;"><strong>Mùa lũ:</strong> ${currentProvince.water.flood_season}</div>
+            <div style="font-size:0.8rem; color:#93C5FD; margin-bottom:0.3rem;"><strong>Mức lũ lịch sử:</strong> ${currentProvince.water.historic_flood_level}</div>
+            ${currentProvince.water.hydrology_regime ? `<div style="font-size:0.76rem; color:var(--text-muted);"><strong>Chế độ triều:</strong> ${currentProvince.water.hydrology_regime}</div>` : ''}
+          </div>
+
+          <!-- Thẻ 04: Khí Tượng -->
+          <div style="background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.06); border-top:3px solid #10B981; padding:1rem; border-radius:8px;">
+            <h3 style="font-size:0.92rem; color:#10B981; margin:0 0 0.5rem 0;">04. KHÍ TƯỢNG & GIÓ 4 MÙA</h3>
+            <div style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.25rem;"><strong>Nhiệt độ TB:</strong> ${currentProvince.climate.temperature_avg}</div>
+            <div style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.25rem;"><strong>Lượng mưa:</strong> ${currentProvince.climate.rainfall_avg}</div>
+            <div style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.35rem;"><strong>Độ ẩm / Nồm:</strong> ${currentProvince.climate.humidity_avg}</div>
+            <div style="font-size:0.76rem; color:#A7F3D0; line-height:1.4;">
+              <strong>Gió mùa Đông Bắc:</strong> ${currentProvince.wind.winter_monsoon}
+            </div>
+            <div style="font-size:0.76rem; color:#FDE68A; line-height:1.4; margin-top:0.2rem;">
+              <strong>Gió mùa Đông Nam:</strong> ${currentProvince.wind.summer_monsoon}
+            </div>
+          </div>
+        </div>
+
+        <!-- Cổ Thư Khảo Chứng (Evidence Card) -->
+        <div style="background:rgba(245,158,11,0.05); border:1px solid rgba(245,158,11,0.25); border-left:4px solid #FBBF24; padding:1.2rem 1.4rem; border-radius:0 8px 8px 0; margin-bottom:1.8rem;">
+          <div style="font-size:0.76rem; font-weight:800; color:#FBBF24; margin-bottom:0.3rem;">
+            THƯ TỊCH CỔ ĐIỂN KHẢO CHỨNG (CANONICAL SOURCE)
+          </div>
+          ${currentProvince.classical_sources.map(cs => `
+            <div style="margin-bottom:0.8rem;">
+              <div style="font-weight:700; color:#FEF3C7; font-size:0.95rem; margin-bottom:0.2rem;">${cs.work} — ${cs.volume} (${cs.author})</div>
+              <div style="font-family:'Ma Shan Zheng', var(--font-title); font-size:1.05rem; color:#FDE68A; margin-bottom:0.3rem; line-height:1.5;">${cs.original_text}</div>
+              <div style="font-size:0.85rem; color:var(--text-pure); line-height:1.6; margin-bottom:0.3rem;"><strong>Dịch nghĩa:</strong> ${cs.translation}</div>
+              <div style="font-size:0.82rem; color:#38BDF8; font-style:italic;"><strong>Diễn giải học thuật:</strong> ${cs.interpretation}</div>
+            </div>
+          `).join('')}
+        </div>
+
+        <!-- Bảng Ma Trận 8 Hướng Thực Địa (Site-specific Orientation Matrix) -->
+        <div style="margin-bottom:1.8rem;">
+          <h3 style="font-size:1.15rem; color:#FEF3C7; margin:0 0 0.8rem 0;">
+            Ma Trận Đánh Giá 8 Hướng Nhà Thực Địa (${currentProvince.name})
+          </h3>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:0.8rem;">
+            ${currentProvince.orientation_matrix.map(om => {
+              const isTop = om.rank.includes('ĐỆ NHẤT') || om.rank.includes('THỨ CÁT');
+              const isBad = om.rank.includes('HUNG');
+              const borderColor = isTop ? '#34D399' : (isBad ? '#EF4444' : '#F59E0B');
+              return `
+                <div style="background:rgba(18,24,38,0.8); border:1px solid rgba(255,255,255,0.06); border-left:4px solid ${borderColor}; padding:0.9rem 1.1rem; border-radius:0 8px 8px 0;">
+                  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.3rem;">
+                    <strong style="color:#FEF3C7; font-size:0.95rem;">Hướng ${om.direction}</strong>
+                    <span style="font-size:0.75rem; font-weight:800; color:${borderColor}; background:rgba(255,255,255,0.04); padding:0.15rem 0.5rem; border-radius:4px;">
+                      ${om.rank} • ${om.score}/10
+                    </span>
+                  </div>
+                  <div style="font-size:0.82rem; color:var(--text-pure); line-height:1.55;">
+                    ${om.reasoning}
+                  </div>
+                </div>
+              `;
+            }).join('')}
+          </div>
+        </div>
+
+        <!-- Khuyến Nghị Kiến Trúc Vi Khí Hậu -->
+        <div style="background:rgba(56,189,248,0.06); border:1px solid rgba(56,189,248,0.2); padding:1.2rem; border-radius:8px;">
+          <h3 style="font-size:0.95rem; color:#38BDF8; margin:0 0 0.6rem 0;">KHUYẾN NGHỊ THIẾT KẾ KIẾN TRÚC VI KHÍ HẬU BẢN ĐỊA</h3>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:0.6rem; font-size:0.82rem; color:var(--text-pure); line-height:1.55;">
+            <div><strong>• Mở cửa chính:</strong> ${currentProvince.architecture_guide.entrance}</div>
+            ${currentProvince.architecture_guide.windows ? `<div><strong>• Cửa sổ đón gió:</strong> ${currentProvince.architecture_guide.windows}</div>` : ''}
+            ${currentProvince.architecture_guide.eaves_and_shading ? `<div><strong>• Mái hiên & che nắng:</strong> ${currentProvince.architecture_guide.eaves_and_shading}</div>` : ''}
+            ${currentProvince.architecture_guide.foundation ? `<div><strong>• Xử lý móng:</strong> ${currentProvince.architecture_guide.foundation}</div>` : ''}
+            ${currentProvince.architecture_guide.ground_elevation ? `<div><strong>• Cốt nền chống ngập:</strong> ${currentProvince.architecture_guide.ground_elevation}</div>` : ''}
+          </div>
+        </div>
+
+      </div>
+    `;
+  }
+
+  renderDiaChatSelection(provinceId) {
+    const activeArea = document.getElementById('tool-active-area');
+    if (activeArea) {
+      activeArea.innerHTML = this.renderDiaChat64Tab(provinceId);
+    }
   }
 }
 
