@@ -2290,3 +2290,91 @@ footer {
     font-size: 0.9rem !important;
   }
 }
+
+
+/* =========================================================================
+   TỐI ƯU GIAO DIỆN DI ĐỘNG (MOBILE EDGE-TO-EDGE & THANH THOÁT)
+   Giảm tối đa lề viền, mở rộng 100% chiều ngang hiển thị văn bản
+   ========================================================================= */
+@media (max-width: 768px) {
+  html, body {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    font-size: 15px !important;
+  }
+
+  .app-gate-view,
+  #gate-tools,
+  #gate-lobby,
+  #gate-learn,
+  #gate-library,
+  #gate-search,
+  #gate-research {
+    padding: 0.35rem 0.4rem !important;
+    margin: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Khung thẻ và container công cụ */
+  .tool-box-card,
+  .tool-active-box,
+  [style*="padding:1.8rem"],
+  [style*="padding: 1.8rem"],
+  [style*="padding:1.5rem"],
+  [style*="padding: 1.5rem"] {
+    padding: 0.65rem 0.65rem !important;
+    margin-bottom: 0.8rem !important;
+    border-radius: 8px !important;
+  }
+
+  [style*="padding:1.4rem"],
+  [style*="padding: 1.4rem"],
+  [style*="padding:1.2rem"],
+  [style*="padding: 1.2rem"],
+  [style*="padding:1.1rem"],
+  [style*="padding: 1.1rem"],
+  [style*="padding:1rem"],
+  [style*="padding: 1rem"] {
+    padding: 0.5rem 0.6rem !important;
+    margin-bottom: 0.6rem !important;
+  }
+
+  /* Lưới cột hiển thị 1 cột mượt mà */
+  [style*="grid-template-columns:repeat(auto-fit, minmax(280px, 1fr))"],
+  [style*="grid-template-columns:repeat(auto-fit, minmax(260px, 1fr))"] {
+    grid-template-columns: 1fr !important;
+    gap: 0.6rem !important;
+  }
+
+  /* Mở rộng chiều ngang đọc sách */
+  .reader-3pane-shell {
+    padding: 0 !important;
+    gap: 0 !important;
+  }
+
+  .reader-content-pane {
+    padding: 0.5rem 0.4rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .reader-article-body {
+    padding: 0.2rem 0.2rem !important;
+    max-width: 100% !important;
+  }
+
+  .reader-quote-card {
+    padding: 0.6rem 0.75rem !important;
+    margin-bottom: 0.6rem !important;
+  }
+
+  /* Rút gọn tiêu đề trên mobile */
+  h1 { font-size: 1.35rem !important; }
+  h2 { font-size: 1.15rem !important; }
+  h3 { font-size: 0.95rem !important; }
+
+  .diachat-combobox-wrapper {
+    max-width: 100% !important;
+  }
+}

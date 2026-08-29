@@ -6,7 +6,7 @@
 // =============================================================================
 // NGUỒN DỮ LIỆU THỰC NGHIỆM: QCVN 02:2022/BXD, Tổng cục Khí tượng Thủy văn, Viện Hàn lâm KHCNVN, Viện Địa chất, Viện Hải dương học.
 // NGUỒN CỔ THƯ KINH ĐIỂN: 《Đại Nam Nhất Thống Chí》, 《Gia Định Thành Thông Chí》, 《Lịch Triều Hiến Chương Loại Chí: Dư Địa Chí》, 《Kiến Văn Tiểu Lục》, 《Ô Châu Cận Lục》, 《Hà Tiên Thập Vịnh》.
-// TRẠNG THÁI: 100% Thuần Việt, Zero Emoji, Zero LaTeX artifacts, Evidence Gate Verified 100%.
+// TRẠNG THÁI: 100% Thuần Việt, Zero Emoji, Zero LaTeX artifacts, Khảo Chứng Xác Thực 100%.
 // =============================================================================
 
 const DIA_LY_64_TINH_THANH_CORPUS = [
@@ -126,7 +126,7 @@ const DIA_LY_64_TINH_THANH_CORPUS = [
       "cot_nen_chong_ngap": "Cốt nền tầng 1 đắp cao hơn mặt đường tối thiểu 45cm - 75cm (3 - 5 bậc tam cấp) chống ngập úng"
     },
     "evidence_gate": {
-      "status": "CHÍNH XÁC XÁC THỰC (VERIFIED)",
+      "status": "CHÍNH XÁC XÁC THỰC",
       "scientific_sources": [
         "QCVN 02:2022/BXD (Bộ Xây Dựng)",
         "Tổng cục Khí tượng Thủy văn trạm Láng 50 năm",
@@ -254,7 +254,7 @@ const DIA_LY_64_TINH_THANH_CORPUS = [
       "san_vuon_vi_khi_hau": "Trước nhà đào ao cá bán nguyệt (Tiền Trì) nuôi dưỡng vi khí hậu mát mẻ, sau nhà trồng rặng tre xanh cản gió"
     },
     "evidence_gate": {
-      "status": "CHÍNH XÁC XÁC THỰC (VERIFIED)",
+      "status": "CHÍNH XÁC XÁC THỰC",
       "scientific_sources": [
         "QCVN 02:2022/BXD",
         "Bản đồ thổ nhưỡng đá ong Xứ Đoài (Viện Thổ nhưỡng Nông hóa)",
@@ -384,7 +384,7 @@ const DIA_LY_64_TINH_THANH_CORPUS = [
       "chong_an_mon_muoi_bien": "Toàn bộ sắt thép lộ ngoài trời phải mạ kẽm nhúng nóng hoặc sơn epoxy chống muối mặn"
     },
     "evidence_gate": {
-      "status": "CHÍNH XÁC XÁC THỰC (VERIFIED)",
+      "status": "CHÍNH XÁC XÁC THỰC",
       "scientific_sources": [
         "QCVN 02:2022/BXD",
         "Trạm Hải văn Hòn Dấu - Chuỗi số liệu thủy triều 60 năm",
@@ -513,7 +513,7 @@ const DIA_LY_64_TINH_THANH_CORPUS = [
       "phong_chong_bao_gio": "Khung nhà bê tông cốt thép toàn khối, liên kết vì kèo thép chắc chắn chống gió bão giật cấp 13"
     },
     "evidence_gate": {
-      "status": "CHÍNH XÁC XÁC THỰC (VERIFIED)",
+      "status": "CHÍNH XÁC XÁC THỰC",
       "scientific_sources": [
         "QCVN 02:2022/BXD",
         "Trạm Khí tượng Cửa Ông & Bãi Cháy",
@@ -640,7 +640,7 @@ const DIA_LY_64_TINH_THANH_CORPUS = [
       "san_vuon_vi_khi_hau": "Bố trí sân gạch đỏ phía trước hấp thụ dương khí, trồng cây cau trước nhà đón gió nồm"
     },
     "evidence_gate": {
-      "status": "CHÍNH XÁC XÁC THỰC (VERIFIED)",
+      "status": "CHÍNH XÁC XÁC THỰC",
       "scientific_sources": [
         "QCVN 02:2022/BXD",
         "Trạm Khí tượng Bắc Ninh",
@@ -766,7 +766,7 @@ const DIA_LY_64_TINH_THANH_CORPUS = [
       "xu_ly_nen_mong": "Nền đất đồi gò rất tốt, chỉ cần móng băng gạch/bê tông đá hộc kiên cố"
     },
     "evidence_gate": {
-      "status": "CHÍNH XÁC XÁC THỰC (VERIFIED)",
+      "status": "CHÍNH XÁC XÁC THỰC",
       "scientific_sources": [
         "QCVN 02:2022/BXD",
         "Trạm Khí tượng Bắc Giang",
@@ -892,7 +892,7 @@ const DIA_LY_64_TINH_THANH_CORPUS = [
       "chong_nong_cach_nhiet": "Mái hiên rộng 1.8m che mưa tạt và nắng xiên"
     },
     "evidence_gate": {
-      "status": "CHÍNH XÁC XÁC THỰC (VERIFIED)",
+      "status": "CHÍNH XÁC XÁC THỰC",
       "scientific_sources": [
         "QCVN 02:2022/BXD",
         "Trạm Thủy văn Phả Lại",
@@ -1019,7 +1019,7 @@ const DIA_LY_64_TINH_THANH_CORPUS = [
       "san_vuon_vi_khi_hau": "Thiết kế sân trước rộng có cây cau, giàn trầu hoặc hồ cá nhỏ điều hòa vi khí hậu"
     },
     "evidence_gate": {
-      "status": "CHÍNH XÁC XÁC THỰC (VERIFIED)",
+      "status": "CHÍNH XÁC XÁC THỰC",
       "scientific_sources": [
         "QCVN 02:2022/BXD",
         "Trạm Khí tượng Hưng Yên",
@@ -1145,7 +1145,7 @@ const DIA_LY_64_TINH_THANH_CORPUS = [
       "xu_ly_nen_mong": "Tại vùng trũng Bình Lục bắt buộc nâng cốt nền cao hơn mức ngập lịch sử 0.8m"
     },
     "evidence_gate": {
-      "status": "CHÍNH XÁC XÁC THỰC (VERIFIED)",
+      "status": "CHÍNH XÁC XÁC THỰC",
       "scientific_sources": [
         "QCVN 02:2022/BXD",
         "Trạm Thủy văn Phủ Lý",
@@ -1272,7 +1272,7 @@ const DIA_LY_64_TINH_THANH_CORPUS = [
       "chong_an_mon_muoi_bien": "Dùng vật liệu gạch không nung hoặc sơn chống thấm mặn bảo vệ công trình"
     },
     "evidence_gate": {
-      "status": "CHÍNH XÁC XÁC THỰC (VERIFIED)",
+      "status": "CHÍNH XÁC XÁC THỰC",
       "scientific_sources": [
         "QCVN 02:2022/BXD",
         "Trạm Thủy văn Ba Lạt & Nam Định",
@@ -1398,7 +1398,7 @@ const DIA_LY_64_TINH_THANH_CORPUS = [
       "cot_nen_chong_ngap": "Nâng cốt nền 45cm - 60cm chống nồm ẩm và nước dâng mùa mưa"
     },
     "evidence_gate": {
-      "status": "CHÍNH XÁC XÁC THỰC (VERIFIED)",
+      "status": "CHÍNH XÁC XÁC THỰC",
       "scientific_sources": [
         "QCVN 02:2022/BXD",
         "Trạm Thủy văn Thái Bình",
@@ -1523,7 +1523,7 @@ const DIA_LY_64_TINH_THANH_CORPUS = [
       "xu_ly_nen_mong": "Tại vùng chân núi đá vôi kiểm tra kỹ hang Karst ngầm; tại vùng Kim Sơn móng cọc sâu"
     },
     "evidence_gate": {
-      "status": "CHÍNH XÁC XÁC THỰC (VERIFIED)",
+      "status": "CHÍNH XÁC XÁC THỰC",
       "scientific_sources": [
         "QCVN 02:2022/BXD",
         "Trạm Khí tượng Ninh Bình",
@@ -1649,7 +1649,7 @@ const DIA_LY_64_TINH_THANH_CORPUS = [
       "xu_ly_nen_mong": "Nền đất đồi gò trung du rất cứng chắc, móng băng đá hộc/bê tông"
     },
     "evidence_gate": {
-      "status": "CHÍNH XÁC XÁC THỰC (VERIFIED)",
+      "status": "CHÍNH XÁC XÁC THỰC",
       "scientific_sources": [
         "QCVN 02:2022/BXD",
         "Trạm Khí tượng Tam Đảo & Vĩnh Yên",
@@ -1776,7 +1776,7 @@ const DIA_LY_64_TINH_THANH_CORPUS = [
       "san_vuon_vi_khi_hau": "Trước nhà đào ao bán nguyệt tụ thủy, trồng hàng cọ xanh đặc trưng Xứ Đoan che mát"
     },
     "evidence_gate": {
-      "status": "CHÍNH XÁC XÁC THỰC (VERIFIED)",
+      "status": "CHÍNH XÁC XÁC THỰC",
       "scientific_sources": [
         "QCVN 02:2022/BXD",
         "Trạm Thủy văn Việt Trì - Chuỗi số liệu 60 năm",
@@ -1903,7 +1903,7 @@ const DIA_LY_64_TINH_THANH_CORPUS = [
       "kien_truc_nha_san": "Kiến trúc nhà sàn truyền thống cách mặt đất 1.5m - 2.0m giúp thoát ẩm đất và tránh côn trùng thú dữ"
     },
     "evidence_gate": {
-      "status": "CHÍNH XÁC XÁC THỰC (VERIFIED)",
+      "status": "CHÍNH XÁC XÁC THỰC",
       "scientific_sources": [
         "QCVN 02:2022/BXD",
         "Trạm Thủy văn Hòa Bình & Chi Nê",
@@ -2030,7 +2030,7 @@ const DIA_LY_64_TINH_THANH_CORPUS = [
       "thiet_ke_khang_chan": "Khung nhà mộng gỗ hoặc khung bê tông cốt thép giằng móng kiên cố chống rung chấn địa chấn cấp VII"
     },
     "evidence_gate": {
-      "status": "CHÍNH XÁC XÁC THỰC (VERIFIED)",
+      "status": "CHÍNH XÁC XÁC THỰC",
       "scientific_sources": [
         "QCVN 02:2022/BXD",
         "Trạm Khí tượng Mộc Châu & Sơn La",
@@ -2157,7 +2157,7 @@ const DIA_LY_64_TINH_THANH_CORPUS = [
       "thiet_ke_khang_chan": "BẮT BUỘC THIẾT KẾ KHÁNG CHẤN ĐỊA CHẤN CẤP VIII: Kết cấu khung bê tông cốt thép toàn khối hoặc khung gỗ mộng giằng kép"
     },
     "evidence_gate": {
-      "status": "CHÍNH XÁC XÁC THỰC (VERIFIED)",
+      "status": "CHÍNH XÁC XÁC THỰC",
       "scientific_sources": [
         "QCVN 02:2022/BXD",
         "Trạm Khí tượng Thủy văn Điện Biên",
@@ -2283,7 +2283,7 @@ const DIA_LY_64_TINH_THANH_CORPUS = [
       "thoat_nuoc_sinh_hoat": "Nước sinh hoạt qua hầm tự hoại thấm lọc thoát ra mương đá sườn đồi dốc về suối hạ nguồn; tuyệt đối không xả thải vào các hố sụt karst ngầm trên đồi vì sẽ làm ô nhiễm toàn bộ mó nước ăn của bản làng."
     },
     "evidence_gate": {
-      "status": "CHÍNH XÁC XÁC THỰC (VERIFIED)",
+      "status": "CHÍNH XÁC XÁC THỰC",
       "scientific_sources": [
         "QCVN 02:2022/BXD",
         "Trạm Khí tượng Sìn Hồ & Lai Châu",
@@ -2409,7 +2409,7 @@ const DIA_LY_64_TINH_THANH_CORPUS = [
       "thoat_nuoc_sinh_hoat": "Nước thải sinh hoạt sau khi qua hầm tự hoại 3 ngăn đạt chuẩn cần thoát theo mương ngầm dốc tự nhiên về phía hạ lưu (Đông Nam); tuyệt đối không xả ngược hướng đầu nguồn mạch nước ngầm giếng khoan sinh hoạt."
     },
     "evidence_gate": {
-      "status": "CHÍNH XÁC XÁC THỰC (VERIFIED)",
+      "status": "CHÍNH XÁC XÁC THỰC",
       "scientific_sources": [
         "QCVN 02:2022/BXD",
         "Trạm Khí tượng Sa Pa & Lào Cai - Số liệu 70 năm",
@@ -2535,7 +2535,7 @@ const DIA_LY_64_TINH_THANH_CORPUS = [
       "on_dinh_ke_taluy": "Tại Mù Cang Chải, Trạm Tấu xây nhà trên sườn dốc bắt buộc làm móng giật cấp bám đá gốc và rãnh thoát nước đỉnh đồi"
     },
     "evidence_gate": {
-      "status": "CHÍNH XÁC XÁC THỰC (VERIFIED)",
+      "status": "CHÍNH XÁC XÁC THỰC",
       "scientific_sources": [
         "QCVN 02:2022/BXD",
         "Trạm Thủy văn Yên Bái & Thác Bà",
@@ -2661,7 +2661,7 @@ const DIA_LY_64_TINH_THANH_CORPUS = [
       "xu_ly_nen_mong": "Nền đồi gò bán sơn địa rất cứng chắc, dùng móng băng gạch/bê tông đá hộc"
     },
     "evidence_gate": {
-      "status": "CHÍNH XÁC XÁC THỰC (VERIFIED)",
+      "status": "CHÍNH XÁC XÁC THỰC",
       "scientific_sources": [
         "QCVN 02:2022/BXD",
         "Trạm Khí tượng Thủy văn Thái Nguyên",
@@ -2787,7 +2787,7 @@ const DIA_LY_64_TINH_THANH_CORPUS = [
       "san_vuon_vi_khi_hau": "Trồng rặng cọ xanh mát trước sân tạo vi khí hậu mát mẻ đặc trưng vùng Xứ Tuyên"
     },
     "evidence_gate": {
-      "status": "CHÍNH XÁC XÁC THỰC (VERIFIED)",
+      "status": "CHÍNH XÁC XÁC THỰC",
       "scientific_sources": [
         "QCVN 02:2022/BXD",
         "Trạm Thủy văn Tuyên Quang & Na Hang",
@@ -2914,7 +2914,7 @@ const DIA_LY_64_TINH_THANH_CORPUS = [
       "ho_tru_nuoc_ngot": "Bắt buộc thiết kế hệ thống máng thu gom và bể chứa nước mưa (Hồ Tụ Thủy) dung tích tối thiểu 20m³ - 30m³"
     },
     "evidence_gate": {
-      "status": "CHÍNH XÁC XÁC THỰC (VERIFIED)",
+      "status": "CHÍNH XÁC XÁC THỰC",
       "scientific_sources": [
         "QCVN 02:2022/BXD",
         "Trạm Khí tượng Đồng Văn & Bắc Quang - Chuỗi số liệu 60 năm",
@@ -3041,7 +3041,7 @@ const DIA_LY_64_TINH_THANH_CORPUS = [
       "san_vuon_vi_khi_hau": "Trước nhà bố trí khoảng sân thoáng nhìn ra dòng suối uốn lượn"
     },
     "evidence_gate": {
-      "status": "CHÍNH XÁC XÁC THỰC (VERIFIED)",
+      "status": "CHÍNH XÁC XÁC THỰC",
       "scientific_sources": [
         "QCVN 02:2022/BXD",
         "Trạm Khí tượng Cao Bằng & Trùng Khánh",
@@ -3167,7 +3167,7 @@ const DIA_LY_64_TINH_THANH_CORPUS = [
       "kien_truc_nha_san": "Kiến trúc nhà sàn gỗ truyền thống của người Tày ven hồ cách mặt đất 1.8m giúp thoát ẩm đất và hòa quyện cảnh quan"
     },
     "evidence_gate": {
-      "status": "CHÍNH XÁC XÁC THỰC (VERIFIED)",
+      "status": "CHÍNH XÁC XÁC THỰC",
       "scientific_sources": [
         "QCVN 02:2022/BXD",
         "Trạm Khí tượng Ba Bể & Bắc Kạn",
@@ -3293,7 +3293,7 @@ const DIA_LY_64_TINH_THANH_CORPUS = [
       "thoat_nuoc_sinh_hoat": "Thoát nước sinh hoạt theo rãnh đá dốc tự nhiên về phía hạ lưu dòng chảy (Tây Bắc); hầm tự hoại xây trên nền đá cứng có lớp đệm cát sỏi lọc nước."
     },
     "evidence_gate": {
-      "status": "CHÍNH XÁC XÁC THỰC (VERIFIED)",
+      "status": "CHÍNH XÁC XÁC THỰC",
       "scientific_sources": [
         "QCVN 02:2022/BXD",
         "Trạm Khí tượng Mẫu Sơn & Lạng Sơn - Chuỗi số liệu 70 năm",
@@ -3420,7 +3420,7 @@ const DIA_LY_64_TINH_THANH_CORPUS = [
       "chong_nong_cach_nhiet": "Hướng Tây và Tây Nam phải xây tường đôi cách nhiệt 220mm, làm lam che nắng hoặc trồng hàng cây xanh cản gió Lào"
     },
     "evidence_gate": {
-      "status": "CHÍNH XÁC XÁC THỰC (VERIFIED)",
+      "status": "CHÍNH XÁC XÁC THỰC",
       "scientific_sources": [
         "QCVN 02:2022/BXD",
         "Trạm Khí tượng Thủy văn Thanh Hóa & Sầm Sơn",
@@ -3548,7 +3548,7 @@ const DIA_LY_64_TINH_THANH_CORPUS = [
       "chong_nong_cach_nhiet": "HƯỚNG TÂY VÀ TÂY NAM BẮT BUỘC LÀM TƯỜNG DÀY CÁCH NHIỆT, TRỒNG HÀNG CÂY TÁN RỘNG CHẮN GIÓ LÀO"
     },
     "evidence_gate": {
-      "status": "CHÍNH XÁC XÁC THỰC (VERIFIED)",
+      "status": "CHÍNH XÁC XÁC THỰC",
       "scientific_sources": [
         "QCVN 02:2022/BXD",
         "Trạm Khí tượng Vinh - Chuỗi số liệu gió Lào 70 năm",
@@ -3675,7 +3675,7 @@ const DIA_LY_64_TINH_THANH_CORPUS = [
       "chong_nong_cach_nhiet": "Mái hiên rộng và hệ lam chắn nắng hướng Tây"
     },
     "evidence_gate": {
-      "status": "CHÍNH XÁC XÁC THỰC (VERIFIED)",
+      "status": "CHÍNH XÁC XÁC THỰC",
       "scientific_sources": [
         "QCVN 02:2022/BXD",
         "Trạm Khí tượng Hà Tĩnh & Hương Khê",
@@ -3802,7 +3802,7 @@ const DIA_LY_64_TINH_THANH_CORPUS = [
       "thoat_nuoc_sinh_hoat": "Thoát nước sinh hoạt qua hầm tự hoại thoát ra rãnh tiêu phía Đông/Đông Nam; vùng ven biển cát trắng cần đào hố thấm xa giếng khơi lấy nước ngọt tối thiểu 20m tránh nhiễm khuẩn vi sinh."
     },
     "evidence_gate": {
-      "status": "CHÍNH XÁC XÁC THỰC (VERIFIED)",
+      "status": "CHÍNH XÁC XÁC THỰC",
       "scientific_sources": [
         "QCVN 02:2022/BXD",
         "Trạm Khí tượng Đồng Hới & Ba Đồn",
@@ -3929,7 +3929,7 @@ const DIA_LY_64_TINH_THANH_CORPUS = [
       "chong_nong_cach_nhiet": "Hệ lam che nắng và trồng cây xanh tán rộng hướng Tây"
     },
     "evidence_gate": {
-      "status": "CHÍNH XÁC XÁC THỰC (VERIFIED)",
+      "status": "CHÍNH XÁC XÁC THỰC",
       "scientific_sources": [
         "QCVN 02:2022/BXD",
         "Trạm Khí tượng Đông Hà & Khe Sanh",
@@ -4057,7 +4057,7 @@ const DIA_LY_64_TINH_THANH_CORPUS = [
       "san_vuon_vi_khi_hau": "KIẾN TRÚC NHÀ VƯỜN XỨ HUẾ: Nhà rường gỗ mít 3 gian 2 chái, bình phong trước sân, bể cạn non bộ tụ thủy, vườn cây che mát"
     },
     "evidence_gate": {
-      "status": "CHÍNH XÁC XÁC THỰC (VERIFIED)",
+      "status": "CHÍNH XÁC XÁC THỰC",
       "scientific_sources": [
         "QCVN 02:2022/BXD",
         "Trạm Khí tượng Thủy văn Huế & Bạch Mã - Chuỗi số liệu 80 năm",
@@ -4185,7 +4185,7 @@ const DIA_LY_64_TINH_THANH_CORPUS = [
       "phong_chong_bao_gio": "Toàn bộ cửa kính mặt biển dùng kính hộp 2 lớp cường lực dán an toàn chống áp lực gió bão cấp 13 và chống ăn mòn muối biển"
     },
     "evidence_gate": {
-      "status": "CHÍNH XÁC XÁC THỰC (VERIFIED)",
+      "status": "CHÍNH XÁC XÁC THỰC",
       "scientific_sources": [
         "QCVN 02:2022/BXD",
         "Trạm Khí tượng Hải văn Đà Nẵng & Sơn Trà - Số liệu 75 năm",
@@ -4313,7 +4313,7 @@ const DIA_LY_64_TINH_THANH_CORPUS = [
       "cot_nen_chong_ngap": "Toàn bộ vật liệu tầng 1 dùng gạch gốm Bát Tràng/Thanh Hà chịu ngập nước, bố trí móc treo thuyền nan cứu hộ"
     },
     "evidence_gate": {
-      "status": "CHÍNH XÁC XÁC THỰC (VERIFIED)",
+      "status": "CHÍNH XÁC XÁC THỰC",
       "scientific_sources": [
         "QCVN 02:2022/BXD",
         "Trạm Thủy văn Nông Sơn & Hội An",
@@ -4440,7 +4440,7 @@ const DIA_LY_64_TINH_THANH_CORPUS = [
       "thoat_nuoc_sinh_hoat": "Thoát nước sinh hoạt qua hầm tự hoại thoát ra rãnh tiêu phía Đông/Đông Nam; vùng ven biển cát trắng cần đào hố thấm xa giếng khơi lấy nước ngọt tối thiểu 20m tránh nhiễm khuẩn vi sinh."
     },
     "evidence_gate": {
-      "status": "CHÍNH XÁC XÁC THỰC (VERIFIED)",
+      "status": "CHÍNH XÁC XÁC THỰC",
       "scientific_sources": [
         "QCVN 02:2022/BXD",
         "Trạm Khí tượng Thủy văn Quảng Ngãi & Lý Sơn",
@@ -4568,7 +4568,7 @@ const DIA_LY_64_TINH_THANH_CORPUS = [
       "phong_chong_bao_gio": "Toàn bộ cửa sổ và cửa đi mặt tiền biển dùng kính cường lực 2 lớp chịu bão cấp 12"
     },
     "evidence_gate": {
-      "status": "CHÍNH XÁC XÁC THỰC (VERIFIED)",
+      "status": "CHÍNH XÁC XÁC THỰC",
       "scientific_sources": [
         "QCVN 02:2022/BXD",
         "Trạm Khí tượng Thủy văn Quy Nhơn - Chuỗi số liệu 70 năm",
@@ -4695,7 +4695,7 @@ const DIA_LY_64_TINH_THANH_CORPUS = [
       "thoat_nuoc_sinh_hoat": "Thoát nước sinh hoạt qua hầm tự hoại thoát ra rãnh tiêu phía Đông/Đông Nam; vùng ven biển cát trắng cần đào hố thấm xa giếng khơi lấy nước ngọt tối thiểu 20m tránh nhiễm khuẩn vi sinh."
     },
     "evidence_gate": {
-      "status": "CHÍNH XÁC XÁC THỰC (VERIFIED)",
+      "status": "CHÍNH XÁC XÁC THỰC",
       "scientific_sources": [
         "QCVN 02:2022/BXD",
         "Trạm Khí tượng Thủy văn Tuy Hòa - Chuỗi số liệu 65 năm",
@@ -4824,7 +4824,7 @@ const DIA_LY_64_TINH_THANH_CORPUS = [
       "chong_an_mon_muoi_bien": "Vật liệu kim loại lộ thiên mạ kẽm nhúng nóng hoặc sơn phủ epoxy chống muối biển"
     },
     "evidence_gate": {
-      "status": "CHÍNH XÁC XÁC THỰC (VERIFIED)",
+      "status": "CHÍNH XÁC XÁC THỰC",
       "scientific_sources": [
         "QCVN 02:2022/BXD",
         "Trạm Khí tượng Thủy văn & Viện Hải dương học Nha Trang - Số liệu 100 năm",
@@ -4952,7 +4952,7 @@ const DIA_LY_64_TINH_THANH_CORPUS = [
       "chong_nong_cach_nhiet": "Tường xây gạch dày hoặc ốp vật liệu cách nhiệt, mái nhà lắp đặt pin năng lượng mặt trời vừa chống nóng vừa sinh năng lượng sạch"
     },
     "evidence_gate": {
-      "status": "CHÍNH XÁC XÁC THỰC (VERIFIED)",
+      "status": "CHÍNH XÁC XÁC THỰC",
       "scientific_sources": [
         "QCVN 02:2022/BXD",
         "Trạm Khí tượng Phan Rang - Chuỗi số liệu nắng gió 70 năm",
@@ -5079,7 +5079,7 @@ const DIA_LY_64_TINH_THANH_CORPUS = [
       "thoat_nuoc_sinh_hoat": "Thoát nước sinh hoạt qua hầm tự hoại thoát ra rãnh tiêu phía Đông/Đông Nam; vùng ven biển cát trắng cần đào hố thấm xa giếng khơi lấy nước ngọt tối thiểu 20m tránh nhiễm khuẩn vi sinh."
     },
     "evidence_gate": {
-      "status": "CHÍNH XÁC XÁC THỰC (VERIFIED)",
+      "status": "CHÍNH XÁC XÁC THỰC",
       "scientific_sources": [
         "QCVN 02:2022/BXD",
         "Trạm Khí tượng Phan Thiết & Phú Quý - Chuỗi số liệu 80 năm",
@@ -5207,7 +5207,7 @@ const DIA_LY_64_TINH_THANH_CORPUS = [
       "thiet_ke_khang_chan": "BẮT BUỘC THIẾT KẾ KHÁNG CHẤN CẤP VII TẠI MĂNG ĐEN (KON PLÔNG): Khung nhà liên kết giằng mộng gỗ hoặc khung bê tông cốt thép kiên cố"
     },
     "evidence_gate": {
-      "status": "CHÍNH XÁC XÁC THỰC (VERIFIED)",
+      "status": "CHÍNH XÁC XÁC THỰC",
       "scientific_sources": [
         "QCVN 02:2022/BXD",
         "Trạm Khí tượng Kon Tum & Măng Đen",
@@ -5334,7 +5334,7 @@ const DIA_LY_64_TINH_THANH_CORPUS = [
       "thoat_nuoc_sinh_hoat": "Nước thải sinh hoạt sau khi qua hầm tự hoại 3 ngăn đạt chuẩn cần thoát theo mương ngầm dốc tự nhiên về phía hạ lưu (Đông Nam); tuyệt đối không xả ngược hướng đầu nguồn mạch nước ngầm giếng khoan sinh hoạt."
     },
     "evidence_gate": {
-      "status": "CHÍNH XÁC XÁC THỰC (VERIFIED)",
+      "status": "CHÍNH XÁC XÁC THỰC",
       "scientific_sources": [
         "QCVN 02:2022/BXD",
         "Trạm Khí tượng Pleiku & An Khê - Số liệu 70 năm",
@@ -5463,7 +5463,7 @@ const DIA_LY_64_TINH_THANH_CORPUS = [
       "kien_truc_nha_san": "KIẾN TRÚC NHÀ DÀI Ê ĐÊ TRUYỀN THỐNG: Nhà sàn gỗ dài theo hướng Bắc - Nam, cửa chính mở ở đầu hồi phía Bắc hoặc Đông đón gió mát, cầu thang đực cầu thang cái điêu khắc trăng sao phồn thực"
     },
     "evidence_gate": {
-      "status": "CHÍNH XÁC XÁC THỰC (VERIFIED)",
+      "status": "CHÍNH XÁC XÁC THỰC",
       "scientific_sources": [
         "QCVN 02:2022/BXD",
         "Trạm Khí tượng Buôn Ma Thuột - Chuỗi số liệu 80 năm",
@@ -5590,7 +5590,7 @@ const DIA_LY_64_TINH_THANH_CORPUS = [
       "thoat_nuoc_sinh_hoat": "Nước thải sinh hoạt sau khi qua hầm tự hoại 3 ngăn đạt chuẩn cần thoát theo mương ngầm dốc tự nhiên về phía hạ lưu (Đông Nam); tuyệt đối không xả ngược hướng đầu nguồn mạch nước ngầm giếng khoan sinh hoạt."
     },
     "evidence_gate": {
-      "status": "CHÍNH XÁC XÁC THỰC (VERIFIED)",
+      "status": "CHÍNH XÁC XÁC THỰC",
       "scientific_sources": [
         "QCVN 02:2022/BXD",
         "Trạm Khí tượng Đắk Nông & Đắk Mil",
@@ -5718,7 +5718,7 @@ const DIA_LY_64_TINH_THANH_CORPUS = [
       "on_dinh_ke_taluy": "Xây dựng trên sườn đồi bắt buộc làm kè bê tông giật cấp hoặc kè đá hộc taluy âm, rãnh thoát nước đỉnh đồi chống sạt trượt"
     },
     "evidence_gate": {
-      "status": "CHÍNH XÁC XÁC THỰC (VERIFIED)",
+      "status": "CHÍNH XÁC XÁC THỰC",
       "scientific_sources": [
         "QCVN 02:2022/BXD",
         "Trạm Khí tượng Đà Lạt & Liên Khương - Số liệu 100 năm",
@@ -5847,7 +5847,7 @@ const DIA_LY_64_TINH_THANH_CORPUS = [
       "chong_nong_cach_nhiet": "Hướng Tây bắt buộc làm tường đôi cách nhiệt 220mm có lớp đệm khí, hệ lam che nắng hoặc lô gia sâu"
     },
     "evidence_gate": {
-      "status": "CHÍNH XÁC XÁC THỰC (VERIFIED)",
+      "status": "CHÍNH XÁC XÁC THỰC",
       "scientific_sources": [
         "QCVN 02:2022/BXD",
         "Trạm Khí tượng Tân Sơn Nhất & Hải văn Phú An - Số liệu 80 năm",
@@ -5974,7 +5974,7 @@ const DIA_LY_64_TINH_THANH_CORPUS = [
       "san_vuon_vi_khi_hau": "Bố trí vườn cây ăn trái quanh nhà (măng cụt, dâu da) tạo bóng râm che mát tự nhiên"
     },
     "evidence_gate": {
-      "status": "CHÍNH XÁC XÁC THỰC (VERIFIED)",
+      "status": "CHÍNH XÁC XÁC THỰC",
       "scientific_sources": [
         "QCVN 02:2022/BXD",
         "Trạm Khí tượng Thủ Dầu Một & Bến Cát",
@@ -6101,7 +6101,7 @@ const DIA_LY_64_TINH_THANH_CORPUS = [
       "xu_ly_nen_mong": "Nền đất bazan và phù sa cổ rất cứng chắc, móng băng gạch/bê tông kiên cố"
     },
     "evidence_gate": {
-      "status": "CHÍNH XÁC XÁC THỰC (VERIFIED)",
+      "status": "CHÍNH XÁC XÁC THỰC",
       "scientific_sources": [
         "QCVN 02:2022/BXD",
         "Trạm Khí tượng Biên Hòa & Trị An",
@@ -6228,7 +6228,7 @@ const DIA_LY_64_TINH_THANH_CORPUS = [
       "chong_an_mon_muoi_bien": "Toàn bộ sắt thép, phụ kiện cửa dùng inox 316 hoặc sơn mạ chống ăn mòn hơi muối biển"
     },
     "evidence_gate": {
-      "status": "CHÍNH XÁC XÁC THỰC (VERIFIED)",
+      "status": "CHÍNH XÁC XÁC THỰC",
       "scientific_sources": [
         "QCVN 02:2022/BXD",
         "Trạm Khí tượng Hải văn Vũng Tàu & Côn Đảo - Số liệu 80 năm",
@@ -6355,7 +6355,7 @@ const DIA_LY_64_TINH_THANH_CORPUS = [
       "he_thong_chong_set": "BẮT BUỘC LẮP ĐẶT HỆ THỐNG KIM THU SÉT HIỆN ĐẠI (BÁN KÍNH BẢO VỆ CẤP 1) do Tây Ninh có mật độ sét đánh tự nhiên cao nhất miền Nam"
     },
     "evidence_gate": {
-      "status": "CHÍNH XÁC XÁC THỰC (VERIFIED)",
+      "status": "CHÍNH XÁC XÁC THỰC",
       "scientific_sources": [
         "QCVN 02:2022/BXD",
         "Trạm Khí tượng Tây Ninh - Chuỗi số liệu 70 năm",
@@ -6482,7 +6482,7 @@ const DIA_LY_64_TINH_THANH_CORPUS = [
       "xu_ly_nen_mong": "Nền đất đỏ bazan rất cứng chắc, móng băng bê tông kiên cố"
     },
     "evidence_gate": {
-      "status": "CHÍNH XÁC XÁC THỰC (VERIFIED)",
+      "status": "CHÍNH XÁC XÁC THỰC",
       "scientific_sources": [
         "QCVN 02:2022/BXD",
         "Trạm Khí tượng Đồng Xoài & Phước Long",
@@ -6608,7 +6608,7 @@ const DIA_LY_64_TINH_THANH_CORPUS = [
       "ho_tru_nuoc_ngot": "BẮT BUỘC BỐ TRÍ BỂ HOẶC HỒ TRỮ NƯỚC MƯA NGỌT DUNG TÍCH TỐI THIỂU 20m³ - 30m³ phòng mùa xâm nhập mặn tháng 2 - 5"
     },
     "evidence_gate": {
-      "status": "CHÍNH XÁC XÁC THỰC (VERIFIED)",
+      "status": "CHÍNH XÁC XÁC THỰC",
       "scientific_sources": [
         "QCVN 02:2022/BXD",
         "Trạm Thủy văn Tân An & Bến Lức",
@@ -6735,7 +6735,7 @@ const DIA_LY_64_TINH_THANH_CORPUS = [
       "san_vuon_vi_khi_hau": "Kiến trúc nhà vườn Nam Bộ mái ngói râm mát, có ao sen hoặc rạch nước nhỏ bao quanh điều hòa vi khí hậu"
     },
     "evidence_gate": {
-      "status": "CHÍNH XÁC XÁC THỰC (VERIFIED)",
+      "status": "CHÍNH XÁC XÁC THỰC",
       "scientific_sources": [
         "QCVN 02:2022/BXD",
         "Trạm Thủy văn Mỹ Tho & Hòa Bình",
@@ -6861,7 +6861,7 @@ const DIA_LY_64_TINH_THANH_CORPUS = [
       "ho_tru_nuoc_ngot": "Xây lu hoặc hồ ngầm trữ nước mưa ngọt phục vụ sinh hoạt mùa hạn mặn"
     },
     "evidence_gate": {
-      "status": "CHÍNH XÁC XÁC THỰC (VERIFIED)",
+      "status": "CHÍNH XÁC XÁC THỰC",
       "scientific_sources": [
         "QCVN 02:2022/BXD",
         "Trạm Thủy văn Bến Tre & Ba Tri",
@@ -6988,7 +6988,7 @@ const DIA_LY_64_TINH_THANH_CORPUS = [
       "xu_ly_nen_mong": "TẬN DỤNG CÁC GIỒNG CÁT CAO RÁO XÂY NHÀ: Tiết kiệm chi phí làm móng, nền nhà luôn khô ráo và không bao giờ bị ngập lũ hay triều cường"
     },
     "evidence_gate": {
-      "status": "CHÍNH XÁC XÁC THỰC (VERIFIED)",
+      "status": "CHÍNH XÁC XÁC THỰC",
       "scientific_sources": [
         "QCVN 02:2022/BXD",
         "Trạm Thủy văn Càng Long & Duyên Hải",
@@ -7114,7 +7114,7 @@ const DIA_LY_64_TINH_THANH_CORPUS = [
       "thoat_nuoc_sinh_hoat": "Thoát nước sinh hoạt theo hướng kênh rạch hạ lưu có van ngăn triều; hầm tự hoại xây kín đáy chống nước ngầm mặn ngấm vào."
     },
     "evidence_gate": {
-      "status": "CHÍNH XÁC XÁC THỰC (VERIFIED)",
+      "status": "CHÍNH XÁC XÁC THỰC",
       "scientific_sources": [
         "QCVN 02:2022/BXD",
         "Trạm Thủy văn Vĩnh Long & Ba Càng",
@@ -7241,7 +7241,7 @@ const DIA_LY_64_TINH_THANH_CORPUS = [
       "cot_nen_chong_ngap": "KIẾN TRÚC NHÀ SÀN THÍCH ỨNG MÙA NƯỚC NỔI: Cốt sàn nhà đắp cao hoặc dùng cột sàn bê tông cao hơn đỉnh lũ lịch sử năm 2000 (+5.0m tại vùng đầu nguồn)"
     },
     "evidence_gate": {
-      "status": "CHÍNH XÁC XÁC THỰC (VERIFIED)",
+      "status": "CHÍNH XÁC XÁC THỰC",
       "scientific_sources": [
         "QCVN 02:2022/BXD",
         "Trạm Thủy văn Cao Lãnh & Hồng Ngự",
@@ -7368,7 +7368,7 @@ const DIA_LY_64_TINH_THANH_CORPUS = [
       "kien_truc_nha_san": "Kiến trúc Nhà Bè Châu Đốc trên sông ngã ba Châu Đốc hoặc nhà sàn giật cấp thích ứng mùa nước nổi"
     },
     "evidence_gate": {
-      "status": "CHÍNH XÁC XÁC THỰC (VERIFIED)",
+      "status": "CHÍNH XÁC XÁC THỰC",
       "scientific_sources": [
         "QCVN 02:2022/BXD",
         "Trạm Thủy văn Tân Châu & Châu Đốc - Chuỗi số liệu 80 năm",
@@ -7494,7 +7494,7 @@ const DIA_LY_64_TINH_THANH_CORPUS = [
       "thoat_nuoc_sinh_hoat": "Thoát nước sinh hoạt theo hướng kênh rạch hạ lưu có van ngăn triều; hầm tự hoại xây kín đáy chống nước ngầm mặn ngấm vào."
     },
     "evidence_gate": {
-      "status": "CHÍNH XÁC XÁC THỰC (VERIFIED)",
+      "status": "CHÍNH XÁC XÁC THỰC",
       "scientific_sources": [
         "QCVN 02:2022/BXD",
         "Trạm Khí tượng Hải văn Phú Quốc & Rạch Giá - Số liệu 80 năm",
@@ -7620,7 +7620,7 @@ const DIA_LY_64_TINH_THANH_CORPUS = [
       "cot_nen_chong_ngap": "TẠI KHU VỰC ĐÔ THỊ TRUNG TÂM NINH KIỀU BẮT BUỘC NÂNG CỐT NỀN TẦNG 1 CAO HƠN MỨC TRIỀU CƯỜNG LỊCH SỬ (+2.3m so với mực nước biển)"
     },
     "evidence_gate": {
-      "status": "CHÍNH XÁC XÁC THỰC (VERIFIED)",
+      "status": "CHÍNH XÁC XÁC THỰC",
       "scientific_sources": [
         "QCVN 02:2022/BXD",
         "Trạm Thủy văn Cần Thơ & Đại Ngãi - Chuỗi số liệu 80 năm",
@@ -7747,7 +7747,7 @@ const DIA_LY_64_TINH_THANH_CORPUS = [
       "xu_ly_nen_mong": "Nền đất phù sa sông mềm dẻo, bắt buộc gia cố cọc cừ tràm mật độ 25 cọc/m² hoặc ép cọc bê tông"
     },
     "evidence_gate": {
-      "status": "CHÍNH XÁC XÁC THỰC (VERIFIED)",
+      "status": "CHÍNH XÁC XÁC THỰC",
       "scientific_sources": [
         "QCVN 02:2022/BXD",
         "Trạm Thủy văn Vị Thanh & Phụng Hiệp",
@@ -7873,7 +7873,7 @@ const DIA_LY_64_TINH_THANH_CORPUS = [
       "thoat_nuoc_sinh_hoat": "Thoát nước sinh hoạt theo hướng kênh rạch hạ lưu có van ngăn triều; hầm tự hoại xây kín đáy chống nước ngầm mặn ngấm vào."
     },
     "evidence_gate": {
-      "status": "CHÍNH XÁC XÁC THỰC (VERIFIED)",
+      "status": "CHÍNH XÁC XÁC THỰC",
       "scientific_sources": [
         "QCVN 02:2022/BXD",
         "Trạm Thủy văn Sóc Trăng & Trần Đề",
@@ -7999,7 +7999,7 @@ const DIA_LY_64_TINH_THANH_CORPUS = [
       "cot_nen_chong_ngap": "Nâng cốt nền tầng 1 cao hơn đỉnh triều cường +2.0m"
     },
     "evidence_gate": {
-      "status": "CHÍNH XÁC XÁC THỰC (VERIFIED)",
+      "status": "CHÍNH XÁC XÁC THỰC",
       "scientific_sources": [
         "QCVN 02:2022/BXD",
         "Trạm Thủy văn Bạc Liêu & Gành Hào",
@@ -8127,7 +8127,7 @@ const DIA_LY_64_TINH_THANH_CORPUS = [
       "kien_truc_nha_san": "KIẾN TRÚC NHÀ SÀN GỖ ĐƯỚC TRUYỀN THỐNG: Cột gỗ đước cắm sâu vào nền bùn, sàn nhà cao cách mặt nước 1.5m - 2.0m chống triều cường và lưu thông gió mát"
     },
     "evidence_gate": {
-      "status": "CHÍNH XÁC XÁC THỰC (VERIFIED)",
+      "status": "CHÍNH XÁC XÁC THỰC",
       "scientific_sources": [
         "QCVN 02:2022/BXD",
         "Trạm Khí tượng Hải văn Cà Mau & Hòn Khoai - Số liệu 80 năm",

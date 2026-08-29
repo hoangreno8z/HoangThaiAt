@@ -1,12 +1,12 @@
 // =============================================================================
 // KHO THƯ TỊCH HÓA GIẢI PHONG THỦY CỔ & PHÁP TRỊ TRẠCH PHÁP
-// CLASSICAL FENG SHUI REMEDY & MITIGATION CORPUS (EVIDENCE GATE: 100% CANONICAL)
+// CLASSICAL FENG SHUI REMEDY & MITIGATION CORPUS (KHẢO CHỨNG: 100% CỔ THƯ XÁC THỰC)
 // =============================================================================
 // BỘ DỮ LIỆU ĐƯỢC XÂY DỰNG THEO LUẬT THÉP 4 TẦNG:
 // TẦNG 1: THƯ TỊCH CỔ GỐC (Hán Nôm đối chiếu Ctext, Tứ Khổ Toàn Thư, Mộc Bản)
 // TẦNG 2: TRÍCH XUẤT NGUYÊN TẮC HÓA GIẢI CỐT LÕI (Bản chất hình thế, khí động học)
 // TẦNG 3: ĐỐI CHIẾU 4 NHÓM PHƯƠNG TIỆN (Kiến trúc, Môi trường, Vật phẩm cổ, Phù chú)
-// TẦNG 4: LẬP BỘ QUY TẮC THỰC CHIẾN LAPQUE (13 tiêu chí bắt buộc & Failure Modes)
+// TẦNG 4: LẬP BỘ QUY TẮC THỰC CHIẾN LAPQUE (13 tiêu chí bắt buộc & Các Chế Độ Sai Phạm)
 // 100% THUẦN VIỆT / HÁN VIỆT CHUẨN MỰC — MINH BẠCH BẰNG CHỨNG HỌC THUẬT
 // =============================================================================
 
@@ -101,7 +101,7 @@ const KHO_HOA_GIAI_CO_THU_CORPUS = [
         "tac_gia": "Vương Quân Vinh (Triều Minh)",
         "nguyen_van_chu_han": "『天井者，陽宅之通氣孔也。四水歸堂，聚金聚財。井不宜太深狹，狹則陰氣凝滯；亦不宜太闊蕩，闊則風吹氣散。得中和之度，則宅宇明朗，陰陽和調。』",
         "dich_nghia_thuan_viet": "Giếng trời (Thiên Tỉnh) là lỗ thông khí huyết của dương trạch. Nước bốn mái dồn về giữa sân (Tứ Thủy Quy Đường) là thế tụ vàng tụ bạc. Giếng trời không nên quá sâu hẹp, hẹp quá thì âm khí ngưng trệ ứ đọng; cũng không nên quá rộng thênh thang, rộng quá thì gió lùa làm sinh khí tản mát. Được mức độ trung hòa vừa vặn thì nhà cửa sáng sủa quang đãng, âm dương hòa hợp điều hòa.",
-        "dien_giai_hoc_thuat": "Thiên Tỉnh là giải pháp kiến trúc kinh điển tạo hiệu ứng ống khói nhiệt (Stack Effect) hút khí nóng bay lên và lấy ánh sáng tự nhiên xua tan nồm ẩm."
+        "dien_giai_hoc_thuat": "Thiên Tỉnh là giải pháp kiến trúc kinh điển tạo hiệu ứng ống khói nhiệt (hiệu ứng ống khói đối lưu nhiệt) hút khí nóng bay lên và lấy ánh sáng tự nhiên xua tan nồm ẩm."
       }
     ],
     "sat_khi_va_khuyet_ham": {

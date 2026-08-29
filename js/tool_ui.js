@@ -32,10 +32,10 @@ class ToolUI {
       <div style="max-width:1200px; margin:0 auto; padding-bottom:3rem;">
         <header style="margin-bottom:2rem; text-align:center;">
           <div style="display:inline-block; padding:0.25rem 0.8rem; background:rgba(245,158,11,0.12); border:1px solid rgba(245,158,11,0.3); border-radius:20px; font-size:0.8rem; font-weight:700; color:#FBBF24; margin-bottom:0.6rem;">
-            BỘ MÁY ĐÁNH GIÁ THIÊN — ĐỊA — NHÂN & PHONG THỦY CHÁNH TÔNG
+            BÀN TÍNH TAM TÀI
           </div>
           <h1 style="font-family:var(--font-title); font-size:2.2rem; color:#FEF3C7; margin:0 0 0.5rem 0;">
-            Bàn Tính Số Hóa Càn Khôn & Đánh Giá An Toàn Vị Trí
+            Bàn Tính Phong Thủy
           </h1>
           <p style="font-size:0.92rem; color:var(--text-muted); max-width:750px; margin:0 auto; line-height:1.6;">
             Hệ thống phân tích 8 tầng tích hợp: Kiểm soát nguy cơ thiên tai thực tế (Quyền Bác Bỏ Khẩn Cấp), quang học mặt trời 4 mùa, vi khí hậu thông gió và phong thủy chánh tông.
@@ -44,22 +44,22 @@ class ToolUI {
 
         <div style="display:flex; justify-content:center; gap:0.8rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:1rem; margin-bottom:2rem; flex-wrap:wrap;">
           <button onclick="window.toolUI.render('thiendianhan')" style="background:${this.currentToolTab === 'thiendianhan' ? 'rgba(245,158,11,0.25)' : 'rgba(255,255,255,0.04)'}; border:1px solid ${this.currentToolTab === 'thiendianhan' ? '#FBBF24' : 'rgba(255,255,255,0.1)'}; color:#FEF3C7; padding:0.65rem 1.3rem; border-radius:8px; font-weight:700; font-size:0.88rem; cursor:pointer;">
-            Thiên — Địa — Nhân & Nguy Cơ Thiên Tai
+            Thiên Địa Nhân
           </button>
           <button onclick="window.toolUI.render('battrach')" style="background:${this.currentToolTab === 'battrach' ? 'rgba(245,158,11,0.25)' : 'rgba(255,255,255,0.04)'}; border:1px solid ${this.currentToolTab === 'battrach' ? '#FBBF24' : 'rgba(255,255,255,0.1)'}; color:#FEF3C7; padding:0.65rem 1.3rem; border-radius:8px; font-weight:700; font-size:0.88rem; cursor:pointer;">
-            Bát Trạch Trạch Mệnh
+            Bát Trạch Minh Cảnh
           </button>
           <button onclick="window.toolUI.render('huyenkhong')" style="background:${this.currentToolTab === 'huyenkhong' ? 'rgba(245,158,11,0.25)' : 'rgba(255,255,255,0.04)'}; border:1px solid ${this.currentToolTab === 'huyenkhong' ? '#FBBF24' : 'rgba(255,255,255,0.1)'}; color:#FEF3C7; padding:0.65rem 1.3rem; border-radius:8px; font-weight:700; font-size:0.88rem; cursor:pointer;">
-            Huyền Không Phi Tinh (Vận 9)
+            Huyền Không Vận 9
           </button>
           <button onclick="window.toolUI.render('hoagiaicothu')" style="background:${this.currentToolTab === 'hoagiaicothu' ? 'rgba(245,158,11,0.25)' : 'rgba(255,255,255,0.04)'}; border:1px solid ${this.currentToolTab === 'hoagiaicothu' ? '#F59E0B' : 'rgba(255,255,255,0.1)'}; color:#FEF3C7; padding:0.65rem 1.3rem; border-radius:8px; font-weight:700; font-size:0.88rem; cursor:pointer;">
-            Kho Thư Tịch Hóa Giải Cổ
+            Thư Tịch Hóa Giải
           </button>
           <button onclick="window.toolUI.render('diachat64')" style="background:${this.currentToolTab === 'diachat64' ? 'rgba(56,189,248,0.25)' : 'rgba(255,255,255,0.04)'}; border:1px solid ${this.currentToolTab === 'diachat64' ? '#38BDF8' : 'rgba(255,255,255,0.1)'}; color:#38BDF8; padding:0.65rem 1.3rem; border-radius:8px; font-weight:700; font-size:0.88rem; cursor:pointer;">
-            Địa Chất Đồ & Khí Hậu 64 Tỉnh Thành
+            Địa Chất 64 Tỉnh
           </button>
           <button onclick="window.toolUI.render('report')" style="background:${this.currentToolTab === 'report' ? 'rgba(245,158,11,0.25)' : 'rgba(255,255,255,0.04)'}; border:1px solid ${this.currentToolTab === 'report' ? '#FBBF24' : 'rgba(255,255,255,0.1)'}; color:#FEF3C7; padding:0.65rem 1.3rem; border-radius:8px; font-weight:700; font-size:0.88rem; cursor:pointer;">
-            Báo Cáo Chẩn Đoán Toàn Diện
+            Báo Cáo Tổng Hợp
           </button>
         </div>
 
@@ -548,7 +548,7 @@ ${reportText}
 
 
   // =========================================================================
-  // PHÂN HỆ KHO THƯ TỊCH HÓA GIẢI PHONG THỦY CỔ & PHÁP TRỊ TRẠCH PHÁP
+  // PHÂN HỆ THƯ TỊCH HÓA GIẢI & PHÁP TRỊ TRẠCH PHÁP
   // =========================================================================
   renderHoaGiaiCoThuTab() {
     const corpus = (typeof KHO_HOA_GIAI_CO_THU_CORPUS !== 'undefined') ? KHO_HOA_GIAI_CO_THU_CORPUS : [];
@@ -607,15 +607,15 @@ ${reportText}
               KHO THƯ TỊCH HÓA GIẢI PHONG THỦY CỔ
             </span>
             <span style="font-size:0.75rem; font-weight:700; color:#34D399; background:rgba(52,211,153,0.15); padding:0.2rem 0.6rem; border-radius:4px;">
-              LUẬT THÉP 4 TẦNG: CHỨNG CỨ GỐC 《DƯƠNG TRẠCH THẬP THƯ》
+              QUY TRÌNH 4 TẦNG
             </span>
             <span style="font-size:0.75rem; font-weight:700; color:#38BDF8; background:rgba(56,189,248,0.15); padding:0.2rem 0.6rem; border-radius:4px;">
-              100% THUẦN VIỆT / HÁN VIỆT
+              CHUẨN MỰC HÁN NÔM
             </span>
           </div>
 
           <h2 style="font-size:1.65rem; color:#FEF3C7; margin:0 0 0.5rem 0;">
-            Kho Thư Tịch Hóa Giải Phong Thủy Cổ & Pháp Trị Trạch Pháp
+            Thư Tịch Hóa Giải
           </h2>
           <p style="font-size:0.86rem; color:var(--text-muted); line-height:1.55; margin:0;">
             Hệ thống đối chiếu nghiêm ngặt giữa Thư Tịch Cổ Kinh Điển (Dương Trạch Thập Thư, Hoàng Đế Trạch Kinh, Táng Thư, Dương Trạch Tam Yếu, Nhập Địa Nhãn...) với thực tế kiến trúc và vi khí hậu. Phân định rạch ròi giữa <strong>Vật Phẩm Cổ Thư Chứng Thực</strong> và <strong>Ngoại Suy Diễn Giải Hiện Đại (như Bể Cá mô phỏng Thủy Thể Minh Đường)</strong>.
@@ -653,16 +653,16 @@ ${reportText}
               </select>
             </div>
 
-            <!-- Bộ Lọc Bằng Chứng Evidence Gate -->
+            <!-- Bộ Lọc Mức Khảo Chứng -->
             <div>
               <label style="display:block; font-size:0.8rem; font-weight:700; color:#FEF3C7; margin-bottom:0.4rem;">
-                Cấp độ bằng chứng (Evidence Gate):
+                Mức khảo chứng:
               </label>
               <select 
                 onchange="window.toolUI.filterHoaGiaiEvidence(this.value)" 
                 style="width:100%; background:#0D111A; border:1px solid #34D399; color:#34D399; padding:0.55rem 1rem; border-radius:8px; font-weight:700; font-size:0.86rem; cursor:pointer;"
               >
-                <option value="TAT_CA" ${selectedEvidence === 'TAT_CA' ? 'selected' : ''}>Tất Cả Cấp Độ Bằng Chứng</option>
+                <option value="TAT_CA" ${selectedEvidence === 'TAT_CA' ? 'selected' : ''}>Tất Cả Mức Khảo Chứng</option>
                 <option value="CHUNG_CU_TRUC_TIEP_CO_THU" ${selectedEvidence === 'CHUNG_CU_TRUC_TIEP_CO_THU' ? 'selected' : ''}>Chứng Cứ Trực Tiếp Nguyên Văn Cổ Thư</option>
                 <option value="NGOAI_SUY_DIEN_GIAI_HOP_LE" ${selectedEvidence === 'NGOAI_SUY_DIEN_GIAI_HOP_LE' ? 'selected' : ''}>Ngoại Suy Diễn Giải Hợp Lệ (vd: Bể Cá)</option>
               </select>
@@ -685,7 +685,7 @@ ${reportText}
           ` : filteredList.map((item, idx) => {
             const isDirect = item.cap_do_bang_chung === 'CHUNG_CU_TRUC_TIEP_CO_THU';
             const badgeColor = isDirect ? '#34D399' : '#F59E0B';
-            const badgeText = isDirect ? 'CHỨNG CỨ TRỰC TIẾP NGUYÊN VĂN CỔ THƯ' : 'NGOẠI SUY DIỄN GIẢI HỢP LỆ (ANALOGICAL)';
+            const badgeText = isDirect ? 'CHÍNH VĂN CỔ THƯ' : 'NGOẠI SUY HỢP LỆ';
 
             let remedyTypeLabel = 'CẢI BIẾN KIẾN TRÚC';
             if (item.loai_phap_tri === 'PHAP_TRI_MOI_TRUONG') remedyTypeLabel = 'CẢI BIẾN MÔI TRƯỜNG & HÌNH THẾ';
@@ -726,7 +726,7 @@ ${reportText}
                 <!-- Thư tịch cổ khảo chứng -->
                 <div style="background:rgba(245,158,11,0.04); border:1px solid rgba(245,158,11,0.2); padding:1rem 1.2rem; border-radius:8px; margin-bottom:1rem;">
                   <div style="font-size:0.75rem; font-weight:800; color:#F59E0B; margin-bottom:0.5rem;">
-                    NGUỒN THƯ TỊCH CỔ ĐIỂN KHẢO CHỨNG:
+                    THƯ TỊCH KHẢO CHỨNG:
                   </div>
                   ${item.thu_tich_khao_chung.map(s => `
                     <div style="margin-bottom:0.6rem;">
@@ -751,14 +751,14 @@ ${reportText}
 
                   <!-- Khối 2: Phương Pháp Hóa Giải Kiến Trúc / Môi Trường -->
                   <div style="background:rgba(52,211,153,0.04); border:1px solid rgba(52,211,153,0.18); border-top:3px solid #34D399; padding:0.9rem; border-radius:6px;">
-                    <h4 style="font-size:0.86rem; color:#34D399; margin:0 0 0.4rem 0;">PHƯƠNG PHÁP HÓA GIẢI CỐT LÕI</h4>
+                    <h4 style="font-size:0.86rem; color:#34D399; margin:0 0 0.4rem 0;">PHƯƠNG PHÁP HÓA GIẢI</h4>
                     <div style="font-size:0.8rem; color:var(--text-pure); line-height:1.5; margin-bottom:0.4rem;"><strong>Cải tạo kiến trúc:</strong> ${item.phap_tri_kien_truc_va_vat_the.cai_bien_kien_truc}</div>
                     <div style="font-size:0.8rem; color:var(--text-pure); line-height:1.5;"><strong>Cải tạo môi trường:</strong> ${item.phap_tri_kien_truc_va_vat_the.cai_bien_moi_truong}</div>
                   </div>
 
                   <!-- Khối 3: Bố Trí Vật Thể & Quy Chuẩn Hiện Đại -->
                   <div style="background:rgba(56,189,248,0.04); border:1px solid rgba(56,189,248,0.18); border-top:3px solid #38BDF8; padding:0.9rem; border-radius:6px;">
-                    <h4 style="font-size:0.86rem; color:#38BDF8; margin:0 0 0.4rem 0;">BỐ TRÍ VẬT THỂ & QUY CHUẨN THỰC THI</h4>
+                    <h4 style="font-size:0.86rem; color:#38BDF8; margin:0 0 0.4rem 0;">QUY CHUẨN BỐ TRÍ</h4>
                     ${item.phap_tri_kien_truc_va_vat_the.ung_dung_be_ca_hien_dai ? `
                       <div style="font-size:0.8rem; color:var(--text-pure); line-height:1.5; margin-bottom:0.3rem;"><strong>Vị trí đặt:</strong> ${item.phap_tri_kien_truc_va_vat_the.ung_dung_be_ca_hien_dai.vi_tri_dat_chuan}</div>
                       ${item.phap_tri_kien_truc_va_vat_the.ung_dung_be_ca_hien_dai.quy_cach_kich_thuoc ? `<div style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.3rem;"><strong>Kích thước quy chuẩn:</strong> ${item.phap_tri_kien_truc_va_vat_the.ung_dung_be_ca_hien_dai.quy_cach_kich_thuoc}</div>` : ''}
@@ -771,7 +771,7 @@ ${reportText}
                 <!-- Bảng 5 Điều Cấm Kỵ Tuyệt Đối & Các Chế Độ Sai Phạm -->
                 <div style="background:rgba(0,0,0,0.25); border:1px solid rgba(255,255,255,0.06); padding:0.9rem 1.1rem; border-radius:6px; margin-bottom:0.8rem;">
                   <div style="font-size:0.8rem; font-weight:800; color:#F87171; margin-bottom:0.4rem;">
-                    CÁC ĐIỀU CẤM KỴ TUYỆT ĐỐI KHI THỰC HIỆN:
+                    ĐIỀU CẤM KỴ TUYỆT ĐỐI:
                   </div>
                   <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:0.4rem; font-size:0.78rem; color:var(--text-pure); line-height:1.45; margin-bottom:0.6rem;">
                     ${item.dieu_kien_cam_ky_tuyet_doi.map(c => `<div>• ${c}</div>`).join('')}
@@ -849,14 +849,14 @@ ${reportText}
           <div>
             <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.3rem;">
               <span style="font-size:0.75rem; font-weight:800; color:#38BDF8; background:rgba(56,189,248,0.15); padding:0.2rem 0.6rem; border-radius:4px;">
-                ĐỊA – KHÍ – THỦY – THỔ CORPUS
+                ĐỊA KHÍ THỦY THỔ
               </span>
               <span style="font-size:0.75rem; font-weight:700; color:#34D399; background:rgba(52,211,153,0.15); padding:0.2rem 0.6rem; border-radius:4px;">
-                EVIDENCE GATE: ${currentProvince.evidence_gate.status} (Độ tin cậy ${Math.round(currentProvince.evidence_gate.confidence * 100)}%)
+                KHẢO CHỨNG: ${currentProvince.evidence_gate.status} (Độ tin cậy ${Math.round(currentProvince.evidence_gate.confidence * 100)}%)
               </span>
             </div>
             <h2 style="font-size:1.6rem; color:#FEF3C7; margin:0;">
-              ${currentProvince.name} — Hồ Sơ Khảo Sát Địa Lý Lịch Sử & Vi Khí Hậu
+              ${currentProvince.name} — Hồ Sơ Địa Lý
             </h2>
             <div style="font-size:0.84rem; color:var(--text-muted); margin-top:0.2rem;">
               <strong>Địa giới lịch sử:</strong> ${currentProvince.historical_mapping} • <strong>Quy chiếu hiện hành:</strong> ${currentProvince.current_mapping}
@@ -903,7 +903,7 @@ ${reportText}
           
           <!-- Thẻ 01: Địa Hình -->
           <div style="background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.06); border-top:3px solid #F59E0B; padding:1rem; border-radius:8px;">
-            <h3 style="font-size:0.92rem; color:#F59E0B; margin:0 0 0.5rem 0;">01. ĐỊA HÌNH & TIỂU VÙNG</h3>
+            <h3 style="font-size:0.92rem; color:#F59E0B; margin:0 0 0.5rem 0;">01. Địa Hình Tiểu Vùng</h3>
             <div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:0.4rem;"><strong>Cao độ:</strong> ${currentProvince.terrain.elevation}</div>
             <div style="font-size:0.82rem; color:var(--text-pure); line-height:1.5; margin-bottom:0.5rem;">${currentProvince.terrain.geomorphology}</div>
             <div style="border-top:1px dashed rgba(255,255,255,0.08); padding-top:0.4rem;">
@@ -914,7 +914,7 @@ ${reportText}
 
           <!-- Thẻ 02: Địa Chất -->
           <div style="background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.06); border-top:3px solid #EF4444; padding:1rem; border-radius:8px;">
-            <h3 style="font-size:0.92rem; color:#EF4444; margin:0 0 0.5rem 0;">02. ĐỊA CHẤT & CHỊU TẢI</h3>
+            <h3 style="font-size:0.92rem; color:#EF4444; margin:0 0 0.5rem 0;">02. Địa Chất Chịu Tải</h3>
             ${currentProvince.geology.soil_types ? `<div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:0.3rem;"><strong>Chất đất:</strong> ${currentProvince.geology.soil_types}</div>` : ''}
             ${currentProvince.geology.bedrock ? `<div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:0.4rem;"><strong>Đá gốc:</strong> ${currentProvince.geology.bedrock}</div>` : ''}
             ${currentProvince.geology.engineering_geology ? `<div style="background:rgba(239,68,68,0.08); padding:0.4rem 0.6rem; border-radius:4px; font-size:0.78rem; color:#FEF3C7; line-height:1.45; margin-bottom:0.4rem;"><strong>Sức chịu tải & móng:</strong> ${currentProvince.geology.engineering_geology}</div>` : ''}
@@ -924,7 +924,7 @@ ${reportText}
           <!-- Thẻ 03: Thủy Văn, Mạch Ngầm & Hướng Thoát Nước -->
           <div style="background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.06); border-top:3px solid #3B82F6; padding:1.1rem; border-radius:8px; display:flex; flex-direction:column; justify-content:space-between;">
             <div>
-              <h3 style="font-size:0.92rem; color:#3B82F6; margin:0 0 0.6rem 0;">03. THỦY VĂN, MẠCH NƯỚC NGẦM & HƯỚNG THOÁT NƯỚC</h3>
+              <h3 style="font-size:0.92rem; color:#3B82F6; margin:0 0 0.6rem 0;">03. Thủy Văn & Mạch Ngầm</h3>
               ${currentProvince.water.major_rivers ? `<div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:0.4rem;"><strong>Sông chính:</strong> ${currentProvince.water.major_rivers}</div>` : ''}
               ${currentProvince.water.flow_direction ? `<div style="font-size:0.8rem; color:#93C5FD; line-height:1.45; margin-bottom:0.4rem; background:rgba(59,130,246,0.08); padding:0.4rem 0.6rem; border-radius:4px;"><strong>Hướng dòng chảy sông ngòi:</strong> ${currentProvince.water.flow_direction}</div>` : ''}
               ${currentProvince.water.groundwater_flow ? `<div style="font-size:0.78rem; color:#A5B4FC; line-height:1.4; margin-bottom:0.4rem;"><strong>Hướng mạch nước ngầm:</strong> ${currentProvince.water.groundwater_flow}</div>` : ''}
@@ -941,7 +941,7 @@ ${reportText}
           <!-- Thẻ 04: Khí Tượng, Khí Lộ & Hướng Đón Gió -->
           <div style="background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.06); border-top:3px solid #10B981; padding:1.1rem; border-radius:8px; display:flex; flex-direction:column; justify-content:space-between;">
             <div>
-              <h3 style="font-size:0.92rem; color:#10B981; margin:0 0 0.6rem 0;">04. KHÍ TƯỢNG, KHÍ LỘ & HƯỚNG ĐÓN GIÓ</h3>
+              <h3 style="font-size:0.92rem; color:#10B981; margin:0 0 0.6rem 0;">04. Khí Tượng & Đón Gió</h3>
               ${currentProvince.wind && currentProvince.wind.wind_path_and_intake ? `<div style="font-size:0.8rem; color:#A7F3D0; line-height:1.45; margin-bottom:0.4rem; background:rgba(16,185,129,0.08); padding:0.4rem 0.6rem; border-radius:4px;"><strong>Khí lộ & Đón gió 4 mùa:</strong> ${currentProvince.wind.wind_path_and_intake}</div>` : ''}
               ${currentProvince.wind && currentProvince.wind.summer_monsoon ? `<div style="font-size:0.78rem; color:#FDE68A; line-height:1.4; margin-bottom:0.3rem;"><strong>Gió mùa Đông Nam / Tây Nam:</strong> ${currentProvince.wind.summer_monsoon}</div>` : ''}
               ${currentProvince.wind && currentProvince.wind.winter_monsoon ? `<div style="font-size:0.78rem; color:#BAE6FD; line-height:1.4; margin-bottom:0.3rem;"><strong>Gió mùa Đông Bắc:</strong> ${currentProvince.wind.winter_monsoon}</div>` : ''}
@@ -957,7 +957,7 @@ ${reportText}
         <!-- Cổ Thư Khảo Chứng (Evidence Card) -->
         <div style="background:rgba(245,158,11,0.05); border:1px solid rgba(245,158,11,0.25); border-left:4px solid #FBBF24; padding:1.2rem 1.4rem; border-radius:0 8px 8px 0; margin-bottom:1.8rem;">
           <div style="font-size:0.76rem; font-weight:800; color:#FBBF24; margin-bottom:0.3rem;">
-            THƯ TỊCH CỔ ĐIỂN KHẢO CHỨNG (CANONICAL SOURCE)
+            Thư Tịch Khảo Chứng
           </div>
           ${currentProvince.classical_sources.map(cs => `
             <div style="margin-bottom:0.8rem;">
@@ -972,7 +972,7 @@ ${reportText}
         <!-- Bảng Ma Trận 8 Hướng Thực Địa (Site-specific Orientation Matrix) -->
         <div style="margin-bottom:1.8rem;">
           <h3 style="font-size:1.15rem; color:#FEF3C7; margin:0 0 0.8rem 0;">
-            Ma Trận Đánh Giá 8 Hướng Nhà Thực Địa (${currentProvince.name})
+            Ma Trận 8 Hướng (${currentProvince.name})
           </h3>
           <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:0.8rem;">
             ${currentProvince.orientation_matrix.map(om => {
@@ -1000,10 +1000,10 @@ ${reportText}
         <div style="background:rgba(56,189,248,0.06); border:1px solid rgba(56,189,248,0.25); padding:1.4rem; border-radius:10px;">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.8rem; border-bottom:1px solid rgba(56,189,248,0.2); padding-bottom:0.5rem; flex-wrap:wrap; gap:0.5rem;">
             <h3 style="font-size:1rem; color:#38BDF8; margin:0; font-weight:700;">
-              KHUYẾN NGHỊ THIẾT KẾ KIẾN TRÚC & THOÁT NƯỚC VI KHÍ HẬU BẢN ĐỊA
+              Khuyến Nghị Kiến Trúc
             </h3>
             <span style="font-size:0.75rem; color:#34D399; font-weight:700; background:rgba(52,211,153,0.12); padding:0.2rem 0.5rem; border-radius:4px;">
-              CHUẨN MỰC 100% THUẦN VIỆT / HÁN VIỆT
+              CHUẨN MỰC BẢN ĐỊA
             </span>
           </div>
 
@@ -1013,8 +1013,8 @@ ${reportText}
               if (k === 'mo_cua_chinh' || k === 'entrance') label = 'Khai Mở Đại Môn';
               else if (k === 'cua_so_don_gio' || k === 'windows') label = 'Cửa Sổ & Giếng Trời';
               else if (k === 'thoat_nuoc_sinh_hoat' || k === 'drainage') label = 'Thoát Nước & Hầm Tự Hoại';
-              else if (k === 'xu_ly_nen_mong' || k === 'foundation' || k === 'deep_piling') label = 'Xử Lý Nền Móng Kỹ Thuật';
-              else if (k === 'cot_nen_chong_ngap' || k === 'ground_elevation' || k === 'tidal_defense') label = 'Cốt Nền Vượt Đỉnh Lũ & Triều Cường';
+              else if (k === 'xu_ly_nen_mong' || k === 'foundation' || k === 'xu_ly_mong_sau') label = 'Xử Lý Nền Móng Kỹ Thuật';
+              else if (k === 'cot_nen_chong_ngap' || k === 'ground_elevation' || k === 'khong_che_trieu') label = 'Cốt Nền Vượt Đỉnh Lũ & Triều Cường';
               else if (k === 'chong_nong_cach_nhiet' || k === 'shading' || k === 'thermal_shield') label = 'Cách Nhiệt & Chống Nắng Hướng Tây';
               else if (k === 'phong_chong_bao_gio' || k === 'storm_protection') label = 'Phòng Chống Bão Gió & Tốc Mái';
               else if (k === 'chong_an_mon_muoi_bien' || k === 'corrosion_prevention' || k === 'anti_corrosion') label = 'Chống Ăn Mòn Muối Biển';
