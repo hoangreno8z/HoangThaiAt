@@ -705,8 +705,8 @@ ${reportText}
                       <span style="font-size:0.72rem; font-weight:700; color:#38BDF8; background:rgba(56,189,248,0.12); padding:0.15rem 0.5rem; border-radius:4px;">
                         ${remedyTypeLabel}
                       </span>
-                      <span style="font-size:0.72rem; color:var(--text-muted); font-family:monospace;">
-                        ${item.ma_dinh_danh}
+                      <span style="font-size:0.72rem; font-weight:700; color:#F59E0B; background:rgba(245,158,11,0.12); padding:0.15rem 0.5rem; border-radius:4px;">
+                        Hồ Sơ ${idx + 1}
                       </span>
                     </div>
                     <h3 style="font-size:1.25rem; color:#FEF3C7; margin:0;">
@@ -1105,7 +1105,7 @@ ${reportText}
             <span style="font-weight:700; color:${isActive ? '#38BDF8' : '#FEF3C7'}; font-size:0.86rem;">${p.name}</span>
             <span style="font-size:0.75rem; color:var(--text-muted); margin-left:0.4rem;">(${p.region})</span>
           </div>
-          <span style="font-size:0.72rem; color:rgba(255,255,255,0.3); font-family:monospace;">${p.historical_id}</span>
+          <span style="font-size:0.72rem; color:rgba(255,255,255,0.35);">Đơn Vị ${idx + 1}</span>
         </div>
       `;
     }).join('');
