@@ -603,35 +603,31 @@ ${reportText}
           <!-- Thẻ 02: Địa Chất -->
           <div style="background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.06); border-top:3px solid #EF4444; padding:1rem; border-radius:8px;">
             <h3 style="font-size:0.92rem; color:#EF4444; margin:0 0 0.5rem 0;">02. ĐỊA CHẤT & CHỊU TẢI</h3>
-            <div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:0.3rem;"><strong>Chất đất:</strong> ${currentProvince.geology.soil_types}</div>
-            <div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:0.4rem;"><strong>Đá gốc:</strong> ${currentProvince.geology.bedrock}</div>
-            <div style="background:rgba(239,68,68,0.08); padding:0.4rem 0.6rem; border-radius:4px; font-size:0.78rem; color:#FEF3C7; line-height:1.45; margin-bottom:0.4rem;">
-              <strong>Sức chịu tải & móng:</strong> ${currentProvince.geology.engineering_geology}
-            </div>
-            <div style="font-size:0.74rem; color:var(--text-dim);"><strong>Địa chấn:</strong> ${currentProvince.geology.seismic_hazard}</div>
+            ${currentProvince.geology.soil_types ? `<div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:0.3rem;"><strong>Chất đất:</strong> ${currentProvince.geology.soil_types}</div>` : ''}
+            ${currentProvince.geology.bedrock ? `<div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:0.4rem;"><strong>Đá gốc:</strong> ${currentProvince.geology.bedrock}</div>` : ''}
+            ${currentProvince.geology.engineering_geology ? `<div style="background:rgba(239,68,68,0.08); padding:0.4rem 0.6rem; border-radius:4px; font-size:0.78rem; color:#FEF3C7; line-height:1.45; margin-bottom:0.4rem;"><strong>Sức chịu tải & móng:</strong> ${currentProvince.geology.engineering_geology}</div>` : ''}
+            ${currentProvince.geology.seismic_hazard ? `<div style="font-size:0.74rem; color:var(--text-dim);"><strong>Địa chấn:</strong> ${currentProvince.geology.seismic_hazard}</div>` : ''}
           </div>
 
           <!-- Thẻ 03: Thủy Văn -->
           <div style="background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.06); border-top:3px solid #3B82F6; padding:1rem; border-radius:8px;">
             <h3 style="font-size:0.92rem; color:#3B82F6; margin:0 0 0.5rem 0;">03. THỦY VĂN & TRIỀU CƯỜNG</h3>
-            <div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:0.3rem;"><strong>Sông chính:</strong> ${currentProvince.water.major_rivers}</div>
-            <div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:0.3rem;"><strong>Mùa lũ:</strong> ${currentProvince.water.flood_season}</div>
-            <div style="font-size:0.8rem; color:#93C5FD; margin-bottom:0.3rem;"><strong>Mức lũ lịch sử:</strong> ${currentProvince.water.historic_flood_level}</div>
-            ${currentProvince.water.hydrology_regime ? `<div style="font-size:0.76rem; color:var(--text-muted);"><strong>Chế độ triều:</strong> ${currentProvince.water.hydrology_regime}</div>` : ''}
+            ${currentProvince.water.major_rivers ? `<div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:0.3rem;"><strong>Sông chính:</strong> ${currentProvince.water.major_rivers}</div>` : ''}
+            ${currentProvince.water.flood_season ? `<div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:0.3rem;"><strong>Mùa lũ:</strong> ${currentProvince.water.flood_season}</div>` : ''}
+            ${currentProvince.water.historic_flood_level ? `<div style="font-size:0.8rem; color:#93C5FD; margin-bottom:0.3rem;"><strong>Mức lũ lịch sử:</strong> ${currentProvince.water.historic_flood_level}</div>` : ''}
+            ${currentProvince.water.hydrology_regime ? `<div style="font-size:0.76rem; color:var(--text-muted); margin-bottom:0.3rem;"><strong>Chế độ triều:</strong> ${currentProvince.water.hydrology_regime}</div>` : ''}
+            ${currentProvince.water.salinity_intrusion ? `<div style="font-size:0.76rem; color:#FCA5A5; margin-bottom:0.3rem;"><strong>Xâm nhập mặn:</strong> ${currentProvince.water.salinity_intrusion}</div>` : ''}
+            ${currentProvince.water.groundwater ? `<div style="font-size:0.76rem; color:var(--text-dim);"><strong>Nước ngầm:</strong> ${currentProvince.water.groundwater}</div>` : ''}
           </div>
 
           <!-- Thẻ 04: Khí Tượng -->
           <div style="background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.06); border-top:3px solid #10B981; padding:1rem; border-radius:8px;">
             <h3 style="font-size:0.92rem; color:#10B981; margin:0 0 0.5rem 0;">04. KHÍ TƯỢNG & GIÓ 4 MÙA</h3>
-            <div style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.25rem;"><strong>Nhiệt độ TB:</strong> ${currentProvince.climate.temperature_avg}</div>
-            <div style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.25rem;"><strong>Lượng mưa:</strong> ${currentProvince.climate.rainfall_avg}</div>
-            <div style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.35rem;"><strong>Độ ẩm / Nồm:</strong> ${currentProvince.climate.humidity_avg}</div>
-            <div style="font-size:0.76rem; color:#A7F3D0; line-height:1.4;">
-              <strong>Gió mùa Đông Bắc:</strong> ${currentProvince.wind.winter_monsoon}
-            </div>
-            <div style="font-size:0.76rem; color:#FDE68A; line-height:1.4; margin-top:0.2rem;">
-              <strong>Gió mùa Đông Nam:</strong> ${currentProvince.wind.summer_monsoon}
-            </div>
+            ${currentProvince.climate.temperature_avg ? `<div style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.25rem;"><strong>Nhiệt độ TB:</strong> ${currentProvince.climate.temperature_avg}</div>` : ''}
+            ${currentProvince.climate.rainfall_avg ? `<div style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.25rem;"><strong>Lượng mưa:</strong> ${currentProvince.climate.rainfall_avg}</div>` : ''}
+            ${currentProvince.climate.humidity_avg ? `<div style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.35rem;"><strong>Độ ẩm / Nồm:</strong> ${currentProvince.climate.humidity_avg}</div>` : ''}
+            ${currentProvince.wind && currentProvince.wind.winter_monsoon ? `<div style="font-size:0.76rem; color:#A7F3D0; line-height:1.4;"><strong>Gió mùa Đông Bắc:</strong> ${currentProvince.wind.winter_monsoon}</div>` : ''}
+            ${currentProvince.wind && currentProvince.wind.summer_monsoon ? `<div style="font-size:0.76rem; color:#FDE68A; line-height:1.4; margin-top:0.2rem;"><strong>Gió mùa Đông Nam:</strong> ${currentProvince.wind.summer_monsoon}</div>` : ''}
           </div>
         </div>
 
@@ -681,11 +677,26 @@ ${reportText}
         <div style="background:rgba(56,189,248,0.06); border:1px solid rgba(56,189,248,0.2); padding:1.2rem; border-radius:8px;">
           <h3 style="font-size:0.95rem; color:#38BDF8; margin:0 0 0.6rem 0;">KHUYẾN NGHỊ THIẾT KẾ KIẾN TRÚC VI KHÍ HẬU BẢN ĐỊA</h3>
           <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:0.6rem; font-size:0.82rem; color:var(--text-pure); line-height:1.55;">
-            <div><strong>• Mở cửa chính:</strong> ${currentProvince.architecture_guide.entrance}</div>
-            ${currentProvince.architecture_guide.windows ? `<div><strong>• Cửa sổ đón gió:</strong> ${currentProvince.architecture_guide.windows}</div>` : ''}
-            ${currentProvince.architecture_guide.eaves_and_shading ? `<div><strong>• Mái hiên & che nắng:</strong> ${currentProvince.architecture_guide.eaves_and_shading}</div>` : ''}
-            ${currentProvince.architecture_guide.foundation ? `<div><strong>• Xử lý móng:</strong> ${currentProvince.architecture_guide.foundation}</div>` : ''}
-            ${currentProvince.architecture_guide.ground_elevation ? `<div><strong>• Cốt nền chống ngập:</strong> ${currentProvince.architecture_guide.ground_elevation}</div>` : ''}
+            ${Object.entries(currentProvince.architecture_guide || {}).map(([k, v]) => {
+              let label = k;
+              if (k === 'entrance') label = 'Mở cửa chính';
+              else if (k === 'windows') label = 'Cửa sổ đón gió';
+              else if (k === 'eaves_and_shading') label = 'Mái hiên & che nắng';
+              else if (k === 'foundation') label = 'Xử lý nền móng';
+              else if (k === 'ground_elevation' || k === 'ground_level') label = 'Cốt nền chống ngập';
+              else if (k === 'ventilation') label = 'Thông gió & giếng trời';
+              else if (k === 'storm_protection' || k === 'storm_structure' || k === 'storm_and_salt_proofing') label = 'Chống bão gió';
+              else if (k === 'corrosion_prevention' || k === 'anti_corrosion') label = 'Chống ăn mòn muối biển';
+              else if (k === 'stilt_house' || k === 'ede_longhouse') label = 'Kiến trúc nhà sàn / nhà dài';
+              else if (k === 'seismic_design' || k === 'seismic_resistance' || k === 'earthquake_design') label = 'Thiết kế kháng chấn';
+              else if (k === 'shading' || k === 'thermal_shield' || k === 'thermal_envelope' || k === 'thermal_insulation' || k === 'insulation') label = 'Cách nhiệt chống nắng';
+              else if (k === 'water_storage' || k === 'water_tank' || k === 'irrigation_pond' || k === 'freshwater_retention') label = 'Hồ trữ nước ngọt';
+              else if (k === 'courtyard' || k === 'garden_setting' || k === 'garden_house' || k === 'orchard_villa') label = 'Sân vườn vi khí hậu';
+              else if (k === 'flood_defense' || k === 'flood_resilience' || k === 'flood_proofing' || k === 'flood_adaptation') label = 'Thích ứng lũ lụt';
+              else if (k === 'slope_stabilization' || k === 'slope_building' || k === 'safety_site') label = 'Ổn định sườn đồi';
+              else if (k === 'lightning_protection') label = 'Hệ thống chống sét';
+              return '<div><strong>• ' + label + ':</strong> ' + v + '</div>';
+            }).join('')}
           </div>
         </div>
 
