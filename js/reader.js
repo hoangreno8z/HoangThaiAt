@@ -154,6 +154,30 @@ class ScholarlyReader {
           typeof THIEN_DIA_NHAN_PART_10 !== 'undefined' ? THIEN_DIA_NHAN_PART_10 : null
         ]
       },
+            'quy-trinh-thuc-chien': {
+        id: 'quy-trinh-thuc-chien',
+        vol: 'TẬP VIII',
+        title: 'Đại Quy Trình Phong Thủy Thực Chiến',
+        badge: '10 Tiết Thực Chiến',
+        school: 'KHẢO ĐỊA & BỐ CỤC TOÀN THƯ',
+        theme: '#38BDF8',
+        desc: 'Khảo Địa 100 Ngoại Sát, Trúc Móng Thích Cơ, Cốt Nền Vượt Lũ, Thước Lỗ Ban 52.2cm & Khai Môn Nạp Khí.',
+        prereq: 'Bản Thể Luận & Loan Đầu',
+        prereqLink: '#/learn/nen-tang/1',
+        conceptTags: ['100 Loại Ngoại Sát', 'Trúc Móng Thích Cơ', 'Cốt Nền Vượt Lũ', 'Thước Lỗ Ban 52.2cm', 'Tọa Hung Hướng Cát', 'Trấn Hung Áp Sát'],
+        parts: [
+          typeof QUY_TRINH_THUC_CHIEN_PART_1 !== 'undefined' ? QUY_TRINH_THUC_CHIEN_PART_1 : null,
+          typeof QUY_TRINH_THUC_CHIEN_PART_2 !== 'undefined' ? QUY_TRINH_THUC_CHIEN_PART_2 : null,
+          typeof QUY_TRINH_THUC_CHIEN_PART_3 !== 'undefined' ? QUY_TRINH_THUC_CHIEN_PART_3 : null,
+          typeof QUY_TRINH_THUC_CHIEN_PART_4 !== 'undefined' ? QUY_TRINH_THUC_CHIEN_PART_4 : null,
+          typeof QUY_TRINH_THUC_CHIEN_PART_5 !== 'undefined' ? QUY_TRINH_THUC_CHIEN_PART_5 : null,
+          typeof QUY_TRINH_THUC_CHIEN_PART_6 !== 'undefined' ? QUY_TRINH_THUC_CHIEN_PART_6 : null,
+          typeof QUY_TRINH_THUC_CHIEN_PART_7 !== 'undefined' ? QUY_TRINH_THUC_CHIEN_PART_7 : null,
+          typeof QUY_TRINH_THUC_CHIEN_PART_8 !== 'undefined' ? QUY_TRINH_THUC_CHIEN_PART_8 : null,
+          typeof QUY_TRINH_THUC_CHIEN_PART_9 !== 'undefined' ? QUY_TRINH_THUC_CHIEN_PART_9 : null,
+          typeof QUY_TRINH_THUC_CHIEN_PART_10 !== 'undefined' ? QUY_TRINH_THUC_CHIEN_PART_10 : null
+        ]
+      },
       'tho-cung': {
         id: 'tho-cung',
         vol: 'TẬP VI',
