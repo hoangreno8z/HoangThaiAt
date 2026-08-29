@@ -1,6 +1,6 @@
 // =============================================================================
 // KHO THƯ TỊCH HÓA GIẢI PHONG THỦY CỔ & PHÁP TRỊ TRẠCH PHÁP
-// CLASSICAL FENG SHUI REMEDY & MITIGATION CORPUS (EVIDENCE GATE: 100% CANONICAL)
+// CLASSICAL FENG SHUI REMEDY & MITIGATION CORPUS (KHẢO CHỨNG BẰNG CHỨNG: 100% CANONICAL)
 // ĐẠI CÔNG TRÌNH TOÀN TẬP 21 ĐẠI HỒ SƠ CHUYÊN SÂU CHUẨN HÓA CỔ THƯ
 // =============================================================================
 // BỘ DỮ LIỆU ĐƯỢC XÂY DỰNG THEO LUẬT THÉP 4 TẦNG:
