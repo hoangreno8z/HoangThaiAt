@@ -1,6 +1,7 @@
 // =========================================================================
 // HUYỀN HỌC MỤ — THƯ KHỐ CỔ ĐIỂN CHÁNH TÔNG (LIBRARY UI CONTROLLER)
-// TOÀN THƯ 22 BỘ KINH ĐIỂN: HÁN VĂN • DỊCH NGHĨA • KHÍ TRƯỜNG • THỰC CHIẾN
+// TOÀN THƯ 22 BỘ KINH ĐIỂN: KHẢO CHỨNG THƯ TỊCH • HÁN VĂN • DỊCH NGHĨA
+// LUẬN GIẢI KHÍ TRƯỜNG • TÁC ĐỘNG ĐỜI SỐNG • QUY TRÌNH THỰC HÀNH 6 BƯỚC
 // =========================================================================
 
 class LibraryUI {
@@ -32,16 +33,16 @@ class LibraryUI {
     const filterButtonsHtml = `
       <div style="display:flex; justify-content:center; gap:0.6rem; flex-wrap:wrap; margin-bottom:2rem; width:100%;">
         <button onclick="window.libraryUI.filterCategory('ALL')" style="background:${this.currentCategory === 'ALL' ? '#FBBF24' : 'rgba(255,255,255,0.05)'}; color:${this.currentCategory === 'ALL' ? '#07090E' : 'var(--text-primary)'}; border:1px solid ${this.currentCategory === 'ALL' ? '#FBBF24' : 'rgba(255,255,255,0.1)'}; padding:0.5rem 1rem; border-radius:8px; font-weight:700; font-size:0.85rem; cursor:pointer;">
-          Tất Cả Thư Khố (${allBooks.length} Bộ)
+          Tất Cả Thư Khố (${allBooks.length} Bộ Kinh Điển)
         </button>
         <button onclick="window.libraryUI.filterCategory('LOAN_DAU_CHON_DAT')" style="background:${this.currentCategory === 'LOAN_DAU_CHON_DAT' ? '#34D399' : 'rgba(255,255,255,0.05)'}; color:${this.currentCategory === 'LOAN_DAU_CHON_DAT' ? '#07090E' : 'var(--text-primary)'}; border:1px solid ${this.currentCategory === 'LOAN_DAU_CHON_DAT' ? '#34D399' : 'rgba(255,255,255,0.1)'}; padding:0.5rem 1rem; border-radius:8px; font-weight:700; font-size:0.85rem; cursor:pointer;">
-          1. Chọn Đất & Tầm Long (${allBooks.filter(b => b.category === 'LOAN_DAU_CHON_DAT').length})
+          1. Chọn Đất & Tầm Long (${allBooks.filter(b => b.category === 'LOAN_DAU_CHON_DAT').length} Bộ)
         </button>
         <button onclick="window.libraryUI.filterCategory('DUONG_TRACH_XEM_NHA')" style="background:${this.currentCategory === 'DUONG_TRACH_XEM_NHA' ? '#38BDF8' : 'rgba(255,255,255,0.05)'}; color:${this.currentCategory === 'DUONG_TRACH_XEM_NHA' ? '#07090E' : 'var(--text-primary)'}; border:1px solid ${this.currentCategory === 'DUONG_TRACH_XEM_NHA' ? '#38BDF8' : 'rgba(255,255,255,0.1)'}; padding:0.5rem 1rem; border-radius:8px; font-weight:700; font-size:0.85rem; cursor:pointer;">
-          2. Xem Nhà & Trạch Thuật (${allBooks.filter(b => b.category === 'DUONG_TRACH_XEM_NHA').length})
+          2. Xem Nhà & Trạch Thuật (${allBooks.filter(b => b.category === 'DUONG_TRACH_XEM_NHA').length} Bộ)
         </button>
         <button onclick="window.libraryUI.filterCategory('THIEN_VAN_CHIEM_TINH')" style="background:${this.currentCategory === 'THIEN_VAN_CHIEM_TINH' ? '#C084FC' : 'rgba(255,255,255,0.05)'}; color:${this.currentCategory === 'THIEN_VAN_CHIEM_TINH' ? '#07090E' : 'var(--text-primary)'}; border:1px solid ${this.currentCategory === 'THIEN_VAN_CHIEM_TINH' ? '#C084FC' : 'rgba(255,255,255,0.1)'}; padding:0.5rem 1rem; border-radius:8px; font-weight:700; font-size:0.85rem; cursor:pointer;">
-          3. Thiên Văn & Tam Thức (${allBooks.filter(b => b.category === 'THIEN_VAN_CHIEM_TINH').length})
+          3. Thiên Văn & Tam Thức (${allBooks.filter(b => b.category === 'THIEN_VAN_CHIEM_TINH').length} Bộ)
         </button>
       </div>
     `;
@@ -55,14 +56,14 @@ class LibraryUI {
                 <span style="font-size:0.72rem; font-weight:800; color:#FEF3C7; background:rgba(255,255,255,0.06); padding:0.2rem 0.5rem; border-radius:4px;">
                   ${b.grade}
                 </span>
-                <span style="font-size:0.75rem; color:#94A3B8;">${b.dynasty}</span>
+                <span style="font-size:0.75rem; color:#94A3B8;">${b.extantDating.split('.')[0]}</span>
               </div>
 
               <h3 style="font-family:var(--font-title); font-size:1.25rem; color:#FEF3C7; margin:0 0 0.25rem 0;">
                 ${b.title}
               </h3>
               <div style="font-size:0.82rem; color:#38BDF8; font-weight:700; margin-bottom:0.6rem;">
-                Tác giả: ${b.author}
+                Tác giả truyền thống: ${b.traditionalAuthor || b.author}
               </div>
 
               <p style="font-size:0.82rem; color:var(--text-muted); line-height:1.5; margin-bottom:0.8rem;">
@@ -75,7 +76,7 @@ class LibraryUI {
             </div>
 
             <a href="#/library/${b.id}/1" style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.15); color:#FEF3C7; text-decoration:none; padding:0.6rem 1rem; border-radius:6px; font-weight:700; font-size:0.82rem; text-align:center; display:block; transition:all 0.2s ease;">
-              Mở Đọc Toàn Bộ Nguyên Tác & Luận Giải →
+              Mở Đọc Khảo Chứng & Luận Giải Sâu Sắc →
             </a>
           </div>
         `).join('')}
@@ -92,7 +93,7 @@ class LibraryUI {
               Đại Kho Tàng 22 Bộ Thư Tịch Cổ Điển
             </h2>
             <p style="font-size:0.86rem; color:var(--text-muted); margin:0;">
-              Toàn văn chữ Hán, phiên âm Hán-Việt, dịch nghĩa tường tận, luận giải bản chất khí trường và quy chuẩn ứng dụng thực chiến.
+              Khảo chứng văn bản học nghiêm cẩn (Red-Team Provenance), nguyên văn chữ Hán, dịch nghĩa tường tận, luận giải bản chất khí trường và quy trình khảo sát 6 bước thực chiến.
             </p>
           </div>
 
@@ -110,19 +111,14 @@ class LibraryUI {
     const container = document.getElementById('gate-library');
     if (!container) return;
 
-    const formattedCommentary = (chapter.commentary || '')
-      .split('\n')
-      .map(line => line.trim())
-      .filter(line => line.length > 0)
-      .map(line => `<p style="margin:0 0 0.6rem 0; line-height:1.65;">${line}</p>`)
-      .join('');
-
-    const formattedApplication = (chapter.application || '')
-      .split('\n')
-      .map(line => line.trim())
-      .filter(line => line.length > 0)
-      .map(line => `<p style="margin:0 0 0.6rem 0; line-height:1.65;">${line}</p>`)
-      .join('');
+    const formatMultiLine = (str) => {
+      if (!str) return '';
+      return str.split('\n')
+        .map(line => line.trim())
+        .filter(line => line.length > 0)
+        .map(line => `<p style="margin:0 0 0.6rem 0; line-height:1.65;">${line}</p>`)
+        .join('');
+    };
 
     container.innerHTML = `
       <div style="max-width:1150px; margin:0 auto; padding:1.5rem 1rem;">
@@ -140,7 +136,7 @@ class LibraryUI {
         <header style="background:#121722; border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:1.4rem; margin-bottom:1.5rem;">
           <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.8rem; margin-bottom:0.6rem;">
             <span style="font-size:0.75rem; font-weight:800; color:#FBBF24; background:rgba(251,191,36,0.1); border:1px solid rgba(251,191,36,0.25); padding:0.2rem 0.6rem; border-radius:4px;">
-              ${book.grade} • ${book.dynasty}
+              ${book.grade} • ${book.categoryName}
             </span>
             <a href="#/library" style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.12); color:#FEF3C7; padding:0.35rem 0.8rem; border-radius:6px; font-size:0.78rem; text-decoration:none; font-weight:600;">
               ← Về Danh Mục Thư Khố
@@ -150,8 +146,18 @@ class LibraryUI {
           <h1 style="font-family:var(--font-title); font-size:1.8rem; color:#FEF3C7; margin:0 0 0.3rem 0;">
             ${book.title}
           </h1>
-          <div style="font-size:0.86rem; color:#38BDF8;">
-            Tác giả: <strong>${book.author}</strong> • Lưu trữ: <em>${book.repository}</em>
+          
+          <!-- HỘP KHẢO CHỨNG THƯ TỊCH (RED-TEAM PROVENANCE) -->
+          <div style="background:#0D111A; border:1px solid rgba(168,85,247,0.3); border-left:4px solid #A855F7; border-radius:8px; padding:0.9rem 1.1rem; margin-top:0.9rem;">
+            <div style="font-size:0.8rem; font-weight:800; color:#C084FC; margin-bottom:0.4rem; letter-spacing:0.04em;">
+              🔍 KHẢO CHỨNG VĂN BẢN HỌC (RED-TEAM TEXTUAL PROVENANCE):
+            </div>
+            <div style="font-size:0.78rem; color:var(--text-primary); line-height:1.55;">
+              • <strong>Tác giả truyền thống:</strong> ${book.traditionalAuthor || book.author}<br/>
+              • <strong>Niên đại văn bản hiện tồn:</strong> ${book.extantDating}<br/>
+              • <strong>Phân định nguyên văn vs bồi đắp:</strong> ${book.textualProvenance}<br/>
+              • <strong>Khung lý thuyết hệ thống:</strong> ${book.systematicFramework}
+            </div>
           </div>
 
           <!-- Thanh Chọn Chương Mục -->
@@ -181,7 +187,7 @@ class LibraryUI {
           <!-- Cột Trái: Chữ Hán Cổ Chuẩn Mộc Bản & Phiên Âm -->
           <div style="background:#121722; border:1px solid rgba(251,191,36,0.25); border-radius:10px; padding:1.4rem;">
             <div style="font-size:0.8rem; font-weight:800; color:#FBBF24; margin-bottom:0.8rem; letter-spacing:0.04em; border-bottom:1px solid rgba(255,255,255,0.06); padding-bottom:0.4rem;">
-              📜 NGUYÊN VĂN CHỮ HÁN CHÁNH TÔNG:
+              📜 NGUYÊN VĂN CHỮ HÁN CHÁNH TÔNG TOÀN BẢN:
             </div>
             <div style="font-family:'Ma Shan Zheng', var(--font-title); font-size:1.35rem; color:#FEF3C7; line-height:1.9; letter-spacing:0.06em; margin-bottom:1.2rem;">
               ${chapter.hanzi}
@@ -203,24 +209,48 @@ class LibraryUI {
 
         </div>
 
-        <!-- Khối Luận Giải Sâu Sắc: VÌ SAO TỐT / VÌ SAO XẤU & BẢN CHẤT KHÍ TRƯỜNG -->
-        <div style="background:#121722; border:1px solid rgba(52,211,153,0.3); border-left:4px solid #34D399; border-radius:10px; padding:1.3rem 1.5rem; margin-bottom:1.3rem;">
+        <!-- Khối 1: Bản Chất Khí Trường & Vì Sao Tốt / Vì Sao Xấu -->
+        <div style="background:#121722; border:1px solid rgba(52,211,153,0.3); border-left:4px solid #34D399; border-radius:10px; padding:1.3rem 1.5rem; margin-bottom:1.2rem;">
           <div style="font-size:0.85rem; font-weight:800; color:#34D399; margin-bottom:0.7rem; letter-spacing:0.04em;">
             ⚖️ KHẢO CHỨNG HỌC THUẬT: BẢN CHẤT KHÍ TRƯỜNG & VÌ SAO TỐT / VÌ SAO XẤU:
           </div>
           <div style="font-size:0.86rem; color:#FEF3C7; line-height:1.65;">
-            ${formattedCommentary}
+            ${formatMultiLine(chapter.commentary)}
           </div>
         </div>
 
-        <!-- Khối Quy Chuẩn Ứng Dụng Thực Chiến -->
-        ${chapter.application ? `
-          <div style="background:#121722; border:1px solid rgba(251,191,36,0.3); border-left:4px solid #FBBF24; border-radius:10px; padding:1.3rem 1.5rem; margin-bottom:2rem;">
-            <div style="font-size:0.85rem; font-weight:800; color:#FBBF24; margin-bottom:0.7rem; letter-spacing:0.04em;">
-              🛠️ QUY CHUẨN ỨNG DỤNG THỰC CHIẾN BỐ CỤC KIẾN TRÚC:
+        <!-- Khối 2: Phân Tích Tác Động Chi Tiết Đến Đời Sống -->
+        ${chapter.impactAnalysis ? `
+          <div style="background:#121722; border:1px solid rgba(56,189,248,0.3); border-left:4px solid #38BDF8; border-radius:10px; padding:1.3rem 1.5rem; margin-bottom:1.2rem;">
+            <div style="font-size:0.85rem; font-weight:800; color:#38BDF8; margin-bottom:0.7rem; letter-spacing:0.04em;">
+              📊 PHÂN TÍCH TÁC ĐỘNG ĐỜI SỐNG (SỨC KHỎE • TÀI LỘC • CÔNG DANH • GIA ĐẠO • NHÂN ĐINH):
             </div>
             <div style="font-size:0.86rem; color:#FEF3C7; line-height:1.65;">
-              ${formattedApplication}
+              ${formatMultiLine(chapter.impactAnalysis)}
+            </div>
+          </div>
+        ` : ''}
+
+        <!-- Khối 3: Chu Kỳ Thời Vận -->
+        ${chapter.cycleAnalysis ? `
+          <div style="background:#121722; border:1px solid rgba(192,132,252,0.3); border-left:4px solid #C084FC; border-radius:10px; padding:1.1rem 1.4rem; margin-bottom:1.2rem;">
+            <div style="font-size:0.85rem; font-weight:800; color:#C084FC; margin-bottom:0.5rem; letter-spacing:0.04em;">
+              ⏳ CHU KỲ THỜI VẬN TÁC ĐỘNG (XEM CHO CẢ ĐỜI • VẬN 20 NĂM • HAY LƯU NIÊN TỪNG NĂM?):
+            </div>
+            <div style="font-size:0.85rem; color:#FEF3C7; line-height:1.6;">
+              ${formatMultiLine(chapter.cycleAnalysis)}
+            </div>
+          </div>
+        ` : ''}
+
+        <!-- Khối 4: Quy Chuẩn Thực Hành 6 Bước & Hóa Giải Chánh Tông -->
+        ${chapter.practicalProtocol ? `
+          <div style="background:#121722; border:1px solid rgba(251,191,36,0.35); border-left:4px solid #FBBF24; border-radius:10px; padding:1.3rem 1.5rem; margin-bottom:2rem;">
+            <div style="font-size:0.85rem; font-weight:800; color:#FBBF24; margin-bottom:0.7rem; letter-spacing:0.04em;">
+              🛠️ QUY TRÌNH THỰC HÀNH KHẢO SÁT & HÓA GIẢI CHÁNH TÔNG (KHOA HỌC KHÍ TRƯỜNG):
+            </div>
+            <div style="font-size:0.86rem; color:#FEF3C7; line-height:1.65;">
+              ${formatMultiLine(chapter.practicalProtocol)}
             </div>
           </div>
         ` : ''}
