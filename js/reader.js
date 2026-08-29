@@ -358,6 +358,54 @@ class ScholarlyReader {
   }
 
   // =========================================================================
+  // BỘ ĐỊNH DẠNG ĐOẠN VĂN & DANH MỤC HỌC THUẬT RÕ RÀNG, DỄ ĐỌC (RICH FORMATTER)
+  // =========================================================================
+  formatRichText(text, themeColor = '#FBBF24') {
+    if (!text || typeof text !== 'string') return '';
+    let cleaned = text.replace(/\r\n/g, '\n').replace(/\\n/g, '\n');
+    
+    // Tự động phân tách các mục đánh số 1. 2. 3. hoặc A. B. C. hoặc gạch đầu dòng nếu bị viết dính liền
+    cleaned = cleaned.replace(/;\s*(\d+\.\s+)/g, '\n\n$1');
+    cleaned = cleaned.replace(/([^\n])\s+(\d+\.\s+[A-ZÀÁẢÃẠĂẮẰẲẴẶÂẤẦẨẪẬĐÈÉẺẼẸÊẾỀỂỄỆÌÍỈĨỊÒÓỎÕỌÔỐỒỔỖỘƠỚỜỞỠỢÙÚỦŨỤƯỨỪỬỮỰỲÝỶỸỴ0-9])/gu, '$1\n\n$2');
+    cleaned = cleaned.replace(/([^\n])\s+([A-Z]\.\s+[A-ZÀÁẢÃẠĂẮẰẲẴẶÂẤẦẨẪẬĐÈÉẺẼẸÊẾỀỂỄỆÌÍỈĨỊÒÓỎÕỌÔỐỒỔỖỘƠỚỜỞỠỢÙÚỦŨỤƯỨỪỬỮỰỲÝỶỸỴ])/gu, '$1\n\n$2');
+    cleaned = cleaned.replace(/([^\n])\s+([—–-]\s+[A-ZÀÁẢÃẠĂẮẰẲẴẶÂẤẦẨẪẬĐÈÉẺẼẸÊẾỀỂỄỆÌÍỈĨỊÒÓỎÕỌÔỐỒỔỖỘƠỚỜỞỠỢÙÚỦŨỤƯỨỪỬỮỰỲÝỶỸỴ])/gu, '$1\n\n$2');
+
+    const paragraphs = cleaned.split(/\n+/).map(p => p.trim()).filter(p => p.length > 0);
+
+    return paragraphs.map(p => {
+      // Nhóm tiêu đề danh mục: A. B. C.
+      if (/^[A-Z]\.\s+/.test(p)) {
+        return `<div class="rich-section-header" style="font-weight:700; color:#38BDF8; font-size:0.92rem; margin-top:0.9rem; margin-bottom:0.4rem; padding-bottom:0.25rem; border-bottom:1px solid rgba(56,189,248,0.25);">${p}</div>`;
+      }
+      
+      // Nhóm đánh số thứ tự: 1. 2. 3.
+      const numMatch = p.match(/^(\d+\.)\s*(.*)$/);
+      if (numMatch) {
+        return `
+          <div class="rich-num-item" style="margin-bottom:0.75rem; padding-left:0.3rem; line-height:1.7; display:flex; gap:0.5rem; align-items:baseline;">
+            <span style="font-weight:800; color:${themeColor}; flex-shrink:0; font-size:0.88rem; background:rgba(255,255,255,0.05); padding:0.1rem 0.45rem; border-radius:4px; border:1px solid ${themeColor}33;">${numMatch[1]}</span>
+            <div style="color:var(--text-pure); font-size:0.86rem; flex:1;">${numMatch[2]}</div>
+          </div>
+        `;
+      }
+      
+      // Nhóm gạch đầu dòng: - • —
+      if (p.startsWith('- ') || p.startsWith('• ') || p.startsWith('— ')) {
+        const bulletText = p.replace(/^[-•—]\s*/, '');
+        return `
+          <div class="rich-bullet-item" style="margin-bottom:0.5rem; padding-left:1.2rem; line-height:1.7; position:relative; font-size:0.85rem; color:var(--text-primary);">
+            <span style="color:${themeColor}; position:absolute; left:0.3rem; font-weight:700;">•</span>
+            <span>${bulletText}</span>
+          </div>
+        `;
+      }
+      
+      // Đoạn văn chuẩn
+      return `<p style="margin-bottom:0.7rem; line-height:1.7; font-size:0.86rem; color:var(--text-pure);">${p}</p>`;
+    }).join('');
+  }
+
+  // =========================================================================
   // UNIVERSAL CONTENT RENDER ENGINE: NẠP ĐẦY ĐỦ 100% NỘI DUNG MỌI BÀI HỌC
   // =========================================================================
   renderMainReader(track, lesson, lessonIndex) {
@@ -385,8 +433,9 @@ class ScholarlyReader {
               <div class="reader-pinyin-text" style="font-style:italic; color:#FEF3C7; font-size:0.85rem; margin-bottom:0.3rem;">
                 "${ct.pinyin}"
               </div>
-              <div class="reader-vietnamese-text" style="color:var(--text-pure); font-size:0.88rem; line-height:1.6; margin-bottom:0.3rem;">
-                <strong>Dịch nghĩa:</strong> ${ct.meaning}
+              <div class="reader-vietnamese-text" style="color:var(--text-pure); font-size:0.88rem; line-height:1.65; margin-bottom:0.3rem;">
+                <strong style="color:${track.theme}; display:block; margin-bottom:0.35rem; font-size:0.9rem;">Dịch nghĩa học thuật:</strong>
+                ${this.formatRichText(ct.meaning, track.theme)}
               </div>
               <div class="reader-source-text" style="text-align:right; font-size:0.78rem; color:${track.theme}; font-weight:600;">
                 — ${ct.source}
@@ -414,12 +463,12 @@ class ScholarlyReader {
                 </div>
                 
                 ${cs.detailed_explanation ? `
-                  <div style="font-size:0.84rem; color:var(--text-pure); line-height:1.65; margin-bottom:0.5rem;">
-                    ${cs.detailed_explanation}
+                  <div style="font-size:0.86rem; color:var(--text-pure); line-height:1.7; margin-bottom:0.5rem;">
+                    ${this.formatRichText(cs.detailed_explanation, track.theme)}
                   </div>
                 ` : (cs.philosophical_meaning ? `
-                  <div style="font-size:0.84rem; color:var(--text-pure); line-height:1.65; margin-bottom:0.5rem;">
-                    ${cs.philosophical_meaning}
+                  <div style="font-size:0.86rem; color:var(--text-pure); line-height:1.7; margin-bottom:0.5rem;">
+                    ${this.formatRichText(cs.philosophical_meaning, track.theme)}
                   </div>
                 ` : '')}
 
