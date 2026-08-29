@@ -14,6 +14,10 @@ class LibraryRouter {
       'search': (params) => this.renderSearch(params),
       'research': (params) => this.renderResearch(params),
       'tools': (params) => this.renderTools(params),
+      'loban': (params) => this.renderTools({ segments: ['loban'] }),
+      'thuoc-lo-ban': (params) => this.renderTools({ segments: ['loban'] }),
+      'thienvankymon': (params) => this.renderTools({ segments: ['thienvankymon'] }),
+      'thai-duong': (params) => this.renderTools({ segments: ['thienvankymon'] }),
       'hoagiaicothu': (params) => this.renderTools({ segments: ['hoagiaicothu'] }),
       'hoa-giai': (params) => this.renderTools({ segments: ['hoagiaicothu'] }),
       'diachat64': (params) => this.renderTools({ segments: ['diachat64'] }),
@@ -188,7 +192,7 @@ class LibraryRouter {
   renderTools(params) {
     this.showGate('gate-tools');
     document.title = "Địa Chất Đồ 64 Tỉnh Thành & Bàn Tính — Huyền Học Mụ";
-    const tab = (params && params.segments && params.segments[0]) ? params.segments[0] : 'diachat64';
+    const tab = (params && params.segments && params.segments[0]) ? params.segments[0] : 'loban';
     if (window.toolUI && typeof window.toolUI.render === 'function') {
       window.toolUI.render(tab);
     }
