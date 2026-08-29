@@ -580,11 +580,38 @@ ${reportText}
             </div>
           </div>
 
-          <div style="display:flex; align-items:center; gap:0.6rem;">
-            <label style="font-size:0.86rem; color:#FEF3C7; font-weight:600;">Chọn Tỉnh / Đơn Vị:</label>
-            <select onchange="window.toolUI.renderDiaChatSelection(this.value)" style="background:#0D111A; border:1px solid #38BDF8; color:#38BDF8; padding:0.5rem 1rem; border-radius:8px; font-weight:700; font-size:0.9rem; cursor:pointer;">
-              ${optionsHtml}
-            </select>
+          <div style="display:flex; align-items:center; gap:0.6rem; width:100%; max-width:420px;">
+            <label style="font-size:0.86rem; color:#FEF3C7; font-weight:600; white-space:nowrap;">Chọn Tỉnh / Đơn Vị:</label>
+            <div class="diachat-combobox-wrapper" style="position:relative; width:100%;">
+              <div style="position:relative; display:flex; align-items:center;">
+                <svg style="position:absolute; left:10px; pointer-events:none; color:#38BDF8;" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <input 
+                  type="text" 
+                  id="diachat-search-input" 
+                  value="${currentProvince.name} (${currentProvince.region.split('(')[0].trim()})" 
+                  placeholder="Gõ tìm nhanh (vd: Sơn La, Hà Tây, s, h...)" 
+                  autocomplete="off" 
+                  onclick="window.toolUI.toggleDiaChatDropdown(true)"
+                  onfocus="this.select(); window.toolUI.toggleDiaChatDropdown(true);"
+                  oninput="window.toolUI.filterDiaChatList(this.value)"
+                  onkeydown="window.toolUI.handleDiaChatKeydown(event)"
+                  style="width:100%; background:#0D111A; border:1px solid #38BDF8; color:#FEF3C7; padding:0.5rem 2rem 0.5rem 2rem; border-radius:8px; font-weight:700; font-size:0.86rem; outline:none; transition:all 0.2s ease; box-shadow:0 0 8px rgba(56,189,248,0.15);"
+                />
+                <button 
+                  type="button" 
+                  onclick="window.toolUI.toggleDiaChatDropdown()" 
+                  style="position:absolute; right:6px; background:none; border:none; color:#38BDF8; cursor:pointer; padding:4px; display:flex; align-items:center;">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+              </div>
+
+              <!-- Danh Sách Xổ Xuống Tự Động Thu Gọn & Cuộn Mượt -->
+              <div 
+                id="diachat-dropdown-list" 
+                style="display:none; position:absolute; top:calc(100% + 4px); left:0; right:0; background:#0A0E17; border:1px solid rgba(56,189,248,0.5); border-radius:8px; max-height:280px; overflow-y:auto; z-index:1000; box-shadow:0 12px 30px rgba(0,0,0,0.85); backdrop-filter:blur(10px);"
+              >
+              </div>
+            </div>
           </div>
         </div>
 
@@ -706,12 +733,192 @@ ${reportText}
     `;
   }
 
+    // =========================================================================
+  // BỘ TÌM KIẾM TỈNH THÀNH THEO KÝ TỰ (SEARCHABLE COMBOBOX 64 TỈNH THÀNH)
+  // =========================================================================
+  removeVietnameseTones(str) {
+    if (!str) return '';
+    str = str.toLowerCase();
+    str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a");
+    str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, "e");
+    str = str.replace(/ì|í|ị|ỉ|ĩ/g, "i");
+    str = str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g, "o");
+    str = str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g, "u");
+    str = str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g, "y");
+    str = str.replace(/đ/g, "d");
+    str = str.replace(/\u0300|\u0301|\u0303|\u0309|\u0323/g, "");
+    str = str.replace(/\u02C6|\u0306|\u031B/g, "");
+    return str.trim();
+  }
+
+  toggleDiaChatDropdown(forceOpen) {
+    const list = document.getElementById('diachat-dropdown-list');
+    if (!list) return;
+
+    const isOpen = list.style.display === 'block';
+    if (forceOpen === true || !isOpen) {
+      list.style.display = 'block';
+      this.populateDiaChatDropdown();
+      
+      // Auto close when click outside
+      setTimeout(() => {
+        const closeHandler = (e) => {
+          if (!e.target.closest('.diachat-combobox-wrapper')) {
+            list.style.display = 'none';
+            document.removeEventListener('click', closeHandler);
+          }
+        };
+        document.addEventListener('click', closeHandler);
+      }, 50);
+    } else {
+      list.style.display = 'none';
+    }
+  }
+
+  populateDiaChatDropdown(customList = null) {
+    const list = document.getElementById('diachat-dropdown-list');
+    if (!list) return;
+
+    const corpus = (typeof DIA_LY_64_TINH_THANH_CORPUS !== 'undefined') ? DIA_LY_64_TINH_THANH_CORPUS : [];
+    const items = customList || corpus;
+
+    if (items.length === 0) {
+      list.innerHTML = '<div style="padding:0.8rem; text-align:center; color:var(--text-muted); font-size:0.82rem;">Không tìm thấy tỉnh thành phù hợp</div>';
+      return;
+    }
+
+    const currentSelectedId = this.selectedDiaChatId || 'HN_PRE2008';
+
+    list.innerHTML = items.map((p, idx) => {
+      const isActive = p.historical_id === currentSelectedId;
+      return `
+        <div 
+          class="diachat-opt-item ${isActive ? 'active' : ''}" 
+          onclick="window.toolUI.selectDiaChatProvince('${p.historical_id}')"
+          data-id="${p.historical_id}"
+          data-index="${idx}"
+          style="padding:0.55rem 0.85rem; cursor:pointer; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(255,255,255,0.04); background:${isActive ? 'rgba(56,189,248,0.18)' : 'transparent'}; transition:background 0.15s ease;"
+          onmouseover="this.style.background='rgba(56,189,248,0.2)'"
+          onmouseout="this.style.background='${isActive ? 'rgba(56,189,248,0.18)' : 'transparent'}'"
+        >
+          <div>
+            <span style="font-weight:700; color:${isActive ? '#38BDF8' : '#FEF3C7'}; font-size:0.86rem;">${p.name}</span>
+            <span style="font-size:0.75rem; color:var(--text-muted); margin-left:0.4rem;">(${p.region})</span>
+          </div>
+          <span style="font-size:0.72rem; color:rgba(255,255,255,0.3); font-family:monospace;">${p.historical_id}</span>
+        </div>
+      `;
+    }).join('');
+  }
+
+  filterDiaChatList(query) {
+    const list = document.getElementById('diachat-dropdown-list');
+    if (!list) return;
+    list.style.display = 'block';
+
+    const corpus = (typeof DIA_LY_64_TINH_THANH_CORPUS !== 'undefined') ? DIA_LY_64_TINH_THANH_CORPUS : [];
+    if (!query || !query.trim()) {
+      this.populateDiaChatDropdown(corpus);
+      return;
+    }
+
+    const normQ = this.removeVietnameseTones(query.trim());
+    const exactQ = query.trim().toLowerCase();
+
+    const getScore = (p) => {
+      const normName = this.removeVietnameseTones(p.name);
+      const words = normName.split(/\s+/);
+      
+      // 1. Trùng khớp hoàn toàn tên
+      if (normName === normQ || p.name.toLowerCase() === exactQ) return 100;
+      // 2. Tên bắt đầu bằng từ khóa tìm kiếm (vd: "s" -> Sơn La, Sóc Trăng; "h" -> Hà Nội, Hà Tây)
+      if (normName.startsWith(normQ)) return 90;
+      // 3. Có từ đơn trong tên bắt đầu bằng từ khóa (vd: "la" -> Sơn La, Gia Lai, Đắk Lắk; "nam" -> Hà Nam, Nam Định)
+      if (words.some(w => w.startsWith(normQ))) return 80;
+      // 4. Tên chứa từ khóa
+      if (normName.includes(normQ) || p.name.toLowerCase().includes(exactQ)) return 70;
+      // 5. Vùng địa lý bắt đầu hoặc chứa
+      const normRegion = this.removeVietnameseTones(p.region);
+      if (normRegion.startsWith(normQ)) return 60;
+      if (normRegion.includes(normQ)) return 50;
+      // 6. Địa giới lịch sử / huyện lỵ chứa từ khóa (vd: "ba tri" -> Bến Tre; "dong van" -> Hà Giang)
+      const normMapping = this.removeVietnameseTones(p.historical_mapping);
+      if (normMapping.includes(normQ)) return 40;
+      // 7. Mã ID lịch sử chứa từ khóa (vd: "HN", "SG", "LD")
+      if (p.historical_id.toLowerCase().includes(normQ)) return 30;
+      return 0;
+    };
+
+    const scored = corpus.map(p => ({ province: p, score: getScore(p) }))
+                         .filter(item => item.score > 0);
+
+    scored.sort((a, b) => b.score - a.score);
+
+    const filtered = scored.map(item => item.province);
+    this.populateDiaChatDropdown(filtered);
+  }
+
+  selectDiaChatProvince(provinceId) {
+    this.selectedDiaChatId = provinceId;
+    const list = document.getElementById('diachat-dropdown-list');
+    if (list) list.style.display = 'none';
+
+    this.renderDiaChatSelection(provinceId);
+  }
+
+  handleDiaChatKeydown(e) {
+    const list = document.getElementById('diachat-dropdown-list');
+    if (!list || list.style.display === 'none') {
+      if (e.key === 'ArrowDown' || e.key === 'Enter') {
+        this.toggleDiaChatDropdown(true);
+      }
+      return;
+    }
+
+    const items = list.querySelectorAll('.diachat-opt-item');
+    if (items.length === 0) return;
+
+    let activeIdx = -1;
+    items.forEach((item, idx) => {
+      if (item.classList.contains('focused') || item.classList.contains('active')) {
+        activeIdx = idx;
+      }
+    });
+
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      const nextIdx = (activeIdx + 1) % items.length;
+      items.forEach(it => it.classList.remove('focused'));
+      items[nextIdx].classList.add('focused');
+      items[nextIdx].style.background = 'rgba(56,189,248,0.25)';
+      items[nextIdx].scrollIntoView({ block: 'nearest' });
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      const prevIdx = (activeIdx - 1 + items.length) % items.length;
+      items.forEach(it => it.classList.remove('focused'));
+      items[prevIdx].classList.add('focused');
+      items[prevIdx].style.background = 'rgba(56,189,248,0.25)';
+      items[prevIdx].scrollIntoView({ block: 'nearest' });
+    } else if (e.key === 'Enter') {
+      e.preventDefault();
+      const focused = list.querySelector('.diachat-opt-item.focused') || items[0];
+      if (focused) {
+        const id = focused.getAttribute('data-id');
+        this.selectDiaChatProvince(id);
+      }
+    } else if (e.key === 'Escape') {
+      list.style.display = 'none';
+    }
+  }
+
   renderDiaChatSelection(provinceId) {
+    this.selectedDiaChatId = provinceId;
     const activeArea = document.getElementById('tool-active-area');
     if (activeArea) {
       activeArea.innerHTML = this.renderDiaChat64Tab(provinceId);
     }
   }
+
 }
 
 if (typeof window !== 'undefined') {
