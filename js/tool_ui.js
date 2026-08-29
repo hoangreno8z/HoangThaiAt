@@ -560,22 +560,22 @@ ${reportText}
     const searchQuery = (this.hoaGiaiSearchQuery || '').trim().toLowerCase();
     const selectedEvidence = this.hoaGiaiEvidenceFilter || 'TAT_CA';
 
-    // Categories list (Hóa Sát, Tụ Tài, Văn Xương, Sức Khỏe Cổ Thư)
+    // Categories list (21 Đại Hồ Sơ Hóa Giải & Kích Hoạt Cổ Thư Toàn Diện)
     const categories = [
-      { id: 'TAT_CA', name: 'Tất Cả Các Phân Nhóm Hóa Giải & Kích Hoạt' },
-      { id: 'VAN_XUONG', name: '• Văn Xương & Khoa Cử Học Hành (Nhất Tứ Đồng Cung)' },
-      { id: 'TAI_LOC', name: '• Tụ Tài Khố & Tài Lộc Phú Quý (Hoàng Đế Trạch Kinh)' },
-      { id: 'SUC_KHOE', name: '• Sức Khỏe & Dưỡng Thọ (Phòng Ngủ Thiên Y Cổ Bản)' },
-      { id: 'THUY_PHAP', name: '• Thủy Pháp & Tụ Thủy (Bể Cá, Ao Hồ, Giếng Trời)' },
-      { id: 'GUONG_KIM_LOAI', name: '• Gương Đồng & Vật Phản Chiếu' },
-      { id: 'TRAN_THACH', name: '• Trấn Thạch & Thạch Cảm Đương' },
-      { id: 'CAY_MOC', name: '• Thực Vật & Mộc Bản Địa (Gỗ Đào, Tre Trúc)' },
-      { id: 'CUA_CONG', name: '• Khai Môn & Khí Khẩu (Đối Môn, Cầu Thang, Xuyên Tâm Sát)' },
-      { id: 'BINH_PHONG', name: '• Bình Phong, Ảnh Bích & Chiếu Tường' },
-      { id: 'TAO_HOA', name: '• Táo Vị & Hỏa Lộ (Bếp Nấu, Thủy Hỏa Tương Xung)' },
-      { id: 'HINH_SAT', name: '• Nội & Ngoại Hình Sát (Lộ Xung, Phản Cung, Dầm Xà Đè)' },
-      { id: 'KIM_KHI', name: '• Kim Khí & Cổ Tiền Trấn Sát (Tiền Ngũ Đế, Chuông Đồng)' },
-      { id: 'PHU_LUC', name: '• Phù Lục & Trấn Trạch Nghi Lễ Cổ Truyền' }
+      { id: 'TAT_CA', name: 'Tất Cả 21 Đại Hồ Sơ Cổ Thư' },
+      { id: 'THUY_PHAP', name: '01. Thủy Pháp & Bát Sát Hoàng Tuyền (Ao Hồ, Cửa Xả, Bể Cá)' },
+      { id: 'VAN_XUONG', name: '02. Văn Xương Khoa Cử & Học Hành (Nhất Tứ Đồng Cung)' },
+      { id: 'TAI_LOC', name: '03. Tụ Tài Khố & Tài Lộc Ngũ Thực (Hoàng Đế Trạch Kinh)' },
+      { id: 'SUC_KHOE', name: '04. Sức Khỏe & Dưỡng Thọ Khang Kiện (Phòng Ngủ Thiên Y)' },
+      { id: 'CUA_CONG', name: '05. Khai Môn, Xuyên Cung & Phân Tầng Nhà Cao Tầng / Chung Cư' },
+      { id: 'TRAN_THACH', name: '06. Trấn Thạch, Thạch Cảm Đương & Thích Cơ Đầm Vôi Tả Ao' },
+      { id: 'GUONG_KIM_LOAI', name: '07. Gương Đồng & Vật Phản Chiếu Chiếu Yêu' },
+      { id: 'CAY_MOC', name: '08. Thực Vật & Mộc Bản Địa (Gỗ Đào, Tre Trúc Chắn Gió)' },
+      { id: 'BINH_PHONG', name: '09. Bình Phong, Ảnh Bích & Chiếu Tường Tàng Phong' },
+      { id: 'TAO_HOA', name: '10. Táo Vị & Hỏa Lộ (Bố Trí Bếp Cát Hung, Thủy Hỏa Ký Tế)' },
+      { id: 'HINH_SAT', name: '11. Hình Sát, Dầm Xà Đè & Động Thổ Tu Tạo Niên Nguyệt' },
+      { id: 'KIM_KHI', name: '12. Kim Khí & Cổ Tiền Trấn Sát (Tiền Ngũ Đế, Chuông Đồng)' },
+      { id: 'PHU_LUC', name: '13. Phù Lục & Trấn Trạch Nghi Lễ Cổ Truyền' }
     ];
 
     // Filter logic
@@ -782,9 +782,10 @@ ${reportText}
 
                   <div style="border-top:1px dashed rgba(255,255,255,0.08); padding-top:0.4rem; font-size:0.76rem; color:var(--text-dim); line-height:1.45;">
                     <strong style="color:#FEF3C7;">Hậu quả khi làm sai:</strong> 
-                    Sai hướng: ${item.cac_che_do_sai_pham_va_hau_qua.sai_phuong_vi} • 
-                    Sai kích cỡ: ${item.cac_che_do_sai_pham_va_hau_qua.sai_quy_mo} • 
-                    Bỏ bê ô nhiễm: ${item.cac_che_do_sai_pham_va_hau_qua.bo_be_o_nhiem}
+                    ${item.cac_che_do_sai_pham_va_hau_qua.sai_phuong_vi ? `Sai hướng: ${item.cac_che_do_sai_pham_va_hau_qua.sai_phuong_vi} • ` : ''}
+                    ${item.cac_che_do_sai_pham_va_hau_qua.sai_quy_mo ? `Sai quy mô: ${item.cac_che_do_sai_pham_va_hau_qua.sai_quy_mo} • ` : ''}
+                    ${item.cac_che_do_sai_pham_va_hau_qua.sai_thoi_van ? `Sai thời vận: ${item.cac_che_do_sai_pham_va_hau_qua.sai_thoi_van} • ` : ''}
+                    ${item.cac_che_do_sai_pham_va_hau_qua.bo_be_o_nhiem ? `Bỏ bê ô nhiễm: ${item.cac_che_do_sai_pham_va_hau_qua.bo_be_o_nhiem}` : ''}
                   </div>
                 </div>
 

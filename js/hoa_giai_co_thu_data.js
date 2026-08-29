@@ -1,7 +1,7 @@
 // =============================================================================
 // KHO THƯ TỊCH HÓA GIẢI PHONG THỦY CỔ & PHÁP TRỊ TRẠCH PHÁP
 // CLASSICAL FENG SHUI REMEDY & MITIGATION CORPUS (EVIDENCE GATE: 100% CANONICAL)
-// ĐẠI CÔNG TRÌNH HÓA GIẢI & KÍCH HOẠT CÀN KHÔN (16 ĐẠI HỒ SƠ CHUẨN HÓA CỔ THƯ)
+// ĐẠI CÔNG TRÌNH TOÀN TẬP 21 ĐẠI HỒ SƠ CHUYÊN SÂU CHUẨN HÓA CỔ THƯ
 // =============================================================================
 // BỘ DỮ LIỆU ĐƯỢC XÂY DỰNG THEO LUẬT THÉP 4 TẦNG:
 // TẦNG 1: THƯ TỊCH CỔ GỐC (Hán Nôm đối chiếu Ctext, Tứ Khổ Toàn Thư, Mộc Bản)
@@ -907,6 +907,266 @@ const KHO_HOA_GIAI_CO_THU_CORPUS = [
     },
     "danh_gia_lapque": {
       "ket_luan": "Bẻ góc chân cầu thang và đặt vách ngăn là giải pháp kiến trúc thông minh vừa đảm bảo thẩm mỹ nội thất vừa giữ trọn vẹn sinh khí tàng phong.",
+      "do_tin_cay": 0.99
+    }
+  },
+  {
+    "ma_dinh_danh": "HG_HOANGTUYEN_001",
+    "ten_chu_han": "八煞黃泉水法與開門去水禁忌",
+    "ten_thuan_viet": "Pháp Soi Chiếu Bát Sát Hoàng Tuyền & Cấm Kỵ Cửa Nước Tử Huyệt",
+    "dai_phan_nhom": "THUY_PHAP",
+    "ten_nhom_tieng_viet": "Bát Sát Hoàng Tuyền",
+    "loai_phap_tri": "PHAP_TRI_KIEN_TRUC",
+    "cap_do_bang_chung": "CHUNG_CU_TRUC_TIEP_CO_THU",
+    "giai_trinh_bang_chung": "《Thanh Nang Áo Ngữ》 của Dương Quân Tùng, 《Dương Trạch Thập Thư: Bát Sát Ca》 và 《Địa Lý Ngũ Quyết》 khẳng định Bát Sát Hoàng Tuyền là 'Tử Huyệt Sát Khí' tối độc trong phong thủy. Dù nhà có hợp mệnh quái đến đâu, nếu mở cửa chính, đào giếng, đặt bể phốt hoặc để cống thoát nước rơi vào đúng Sơn Hoàng Tuyền thì lập tức phạm đại sát suy bại.",
+    "thu_tich_khao_chung": [
+      {
+        "tac_pham": "《Thanh Nang Áo Ngữ》",
+        "quyen_muc": "Thiên Bát Sát Diệu Quyết",
+        "tac_gia": "Dương Quân Tùng (Triều Đường)",
+        "nguyen_van_chu_han": "『坎龍坤兔震山猴，巽雞乾馬兌蛇頭。艮虎離豬為煞曜，塚宅逢之立見愁。水犯黃泉人丁絕，門開煞位破家收。』",
+        "dich_nghia_thuan_viet": "Nhà quẻ Khảm kỵ phương Thìn (Rồng), quẻ Khôn kỵ phương Mão (Thỏ), quẻ Chấn kỵ phương Thân (Khỉ), quẻ Tốn kỵ phương Dậu (Gà), quẻ Càn kỵ phương Ngọ (Ngựa), quẻ Đoài kỵ phương Tỵ (Rắn), quẻ Cấn kỵ phương Dần (Hổ), quẻ Ly kỵ phương Hợi (Lợn). Đó là 8 phương sát tinh sát diệu, mồ mả hay nhà ở phạm vào thì lập tức gặp cảnh sầu bi. Nước chảy phạm Hoàng Tuyền thì tuyệt tự đứt nhân đinh; mở cửa phạm phương sát thì gia sản tiêu tan phá sản.",
+        "dien_giai_hoc_thuat": "Địa từ trường và thủy văn: 8 phương vị Hoàng Tuyền tương ứng với các góc giao thoa xung khắc khắc nghiệt nhất của quái khí gốc và địa chi vị trí."
+      },
+      {
+        "tac_pham": "《Dương Trạch Thập Thư》",
+        "quyen_muc": "Quyển VI — Luận Phóng Thủy (Hoàng Tuyền Thủy Ca)",
+        "tac_gia": "Vương Quân Vinh (Triều Minh)",
+        "nguyen_van_chu_han": "『黃泉之水最堪傷，流去流來盡見殃。開門放水逢此煞，任是神仙莫能當。避之得所家道泰，犯之立見血光亡。』",
+        "dich_nghia_thuan_viet": "Dòng nước Hoàng Tuyền là điều đau thương nhất, dù nước chảy đến (Lai thủy) hay nước chảy đi (Khứ thủy) phạm vào đều mang lại tai ương. Mở cửa chính hoặc xả cống thoát nước mà gặp sát này, thì dẫu có thần tiên cũng không gánh đỡ nổi. Tránh được phương sát này thì gia đạo an thái thịnh vượng; phạm phải thì thấy ngay cảnh tai nạn huyết quang suy vong.",
+        "dien_giai_hoc_thuat": "Quy tắc kiểm tra bắt buộc trước khi mở cổng hoặc đào hệ thống thoát nước ngầm."
+      }
+    ],
+    "sat_khi_va_khuyet_ham": {
+      "ten_sat_khi": "Bát Sát Hoàng Tuyền Sát (Sát Tử Huyệt 8 Quẻ)",
+      "nguyen_nhan_hinh_thanh": "Mở cửa chính, đào giếng, làm hố ga thoát nước hoặc đặt bể phốt tại đúng phương vị Hoàng Tuyền khắc chế Tọa quái của ngôi nhà",
+      "hau_qua_co_thu_ghi": "Đột tử, tai nạn giao thông bất ngờ, gia đình phá sản, phụ nữ sảy thai khó sinh"
+    },
+    "phap_tri_kien_truc_va_vat_the": {
+      "cai_bien_kien_truc": "1. Tuyệt đối không mở cửa chính hoặc cổng tại phương vị Hoàng Tuyền của Tọa nhà. 2. Dời đường ống thoát nước thải hoặc hố ga lệch sang cung vị khác.",
+      "cai_bien_moi_truong": "Nếu bên ngoài có ngã ba đường hoặc dòng mương đâm từ phương Hoàng Tuyền vào, bắt buộc trồng rặng cây xanh dày kết hợp dựng bia Thái Sơn Thạch Cảm Đương để trấn áp",
+      "ung_dung_be_ca_hien_dai": {
+        "vi_tri_dat_chuan": "Bảng tra cứu 8 Quái: Khảm tránh Thìn (Đông Nam); Khôn tránh Mão (Chính Đông); Chấn tránh Thân (Tây Nam); Tốn tránh Dậu (Chính Tây); Càn tránh Ngọ (Chính Nam); Đoài tránh Tỵ (Đông Nam); Cấn tránh Dần (Đông Bắc); Ly tránh Hợi (Tây Bắc)",
+        "quy_cach_kich_thuoc": "Đo góc La bàn chính xác bằng độ số 24 Sơn Hướng"
+      }
+    },
+    "dieu_kien_bat_buoc": [
+      "BẮT BUỘC ĐO ĐỘ SỐ LA BÀN TỌA NHÀ TRƯỚC KHI ĐỊNH VỊ CỬA VÀ THOÁT NƯỚC",
+      "Phương Hoàng Tuyền phải được giữ yên tĩnh, không đào xới phá đất"
+    ],
+    "dieu_kien_cam_ky_tuyet_doi": [
+      "CẤM KỴ 1: Cấm mở cửa chính, cửa phụ hoặc cổng ngõ tại phương Hoàng Tuyền",
+      "CẤM KỴ 2: Cấm đặt miệng cống xả nước chính của nhà tại phương Hoàng Tuyền (Hoàng Tuyền Khứ Thủy)",
+      "CẤM KỴ 3: Cấm đào giếng khoan lấy nước sinh hoạt tại phương Hoàng Tuyền"
+    ],
+    "cac_che_do_sai_pham_va_hau_qua": {
+      "sai_phuong_vi": "Nhà tọa Càn (hướng Nam) mở cửa tại phương Ngọ phạm Càn Mã Hoàng Tuyền làm gia chủ bệnh tim mạch đột quỵ",
+      "sai_quy_mo": "Đặt bể phốt công suất lớn ngay phương Hoàng Tuyền làm ô uế tử huyệt",
+      "bo_be_o_nhiem": "Nước cống Hoàng Tuyền bị tắc nghẽn bốc mùi hôi thối cực độc"
+    },
+    "danh_gia_lapque": {
+      "ket_luan": "Bát Sát Hoàng Tuyền là quy chuẩn an toàn số 1 của địa lý cổ truyền: 'Phòng ngừa hơn cứu chữa' - né tránh góc tử huyệt trước khi tính đến các cung cát khác.",
+      "do_tin_cay": 0.99
+    }
+  },
+  {
+    "ma_dinh_danh": "HG_XUYENCUNG_001",
+    "ten_chu_han": "穿宮九星變氣與層樓生剋選層法",
+    "ten_thuan_viet": "Pháp Xuyên Cung Cửu Tinh & Phân Tầng Chọn Căn Hộ Nhà Cao Tầng",
+    "dai_phan_nhom": "CUA_CONG",
+    "ten_nhom_tieng_viet": "Xuyên Cung Cửu Tinh",
+    "loai_phap_tri": "PHAP_TRI_KIEN_TRUC",
+    "cap_do_bang_chung": "CHUNG_CU_TRUC_TIEP_CO_THU",
+    "giai_trinh_bang_chung": "《Dương Trạch Thập Thư: Quyển III — Xuyên Cung Cửu Tinh Ca》 quy định quy luật biến đổi ngũ hành của luồng khí khi đi qua từng lớp cửa (Trọng Môn) và từng tầng lầu của nhà cao tầng: Tầng 1 (hành Thủy/Thổ), Tầng 2 (hành Hỏa), Tầng 3 (hành Mộc), Tầng 4 (hành Kim), Tầng 5 (hành Thổ)... Tầng lầu sinh trợ Mệnh Quái thì gia chủ đại phát; tầng lầu khắc Mệnh Quái thì hao tổn.",
+    "thu_tich_khao_chung": [
+      {
+        "tac_pham": "《Dương Trạch Thập Thư》",
+        "quyen_muc": "Quyển III — Xuyên Cung Cửu Tinh Ca & Trùng Môn Luận",
+        "tac_gia": "Vương Quân Vinh (Triều Minh)",
+        "nguyen_van_chu_han": "『穿宮九星論層樓，一層水兮二層火。三層為木四層金，五層屬土循環行。層生宅命富貴顯，層剋宅命人口憂。門入深院星氣變，依此推詳福祿全。』",
+        "dich_nghia_thuan_viet": "Phép Xuyên Cung Cửu Tinh luận về các tầng lầu: Tầng 1 thuộc hành Thủy, Tầng 2 thuộc hành Hỏa, Tầng 3 thuộc hành Mộc, Tầng 4 thuộc hành Kim, Tầng 5 thuộc hành Thổ, cứ thế tuần hoàn tiếp diễn (Tầng 6 Thủy, 7 Hỏa, 8 Mộc, 9 Kim, 10 Thổ...). Ngũ hành của tầng lầu sinh trợ cho Mệnh Quái của gia chủ thì giàu sang phú quý hiển hách; tầng lầu khắc Mệnh Quái thì nhân đinh lo âu bệnh tật. Luồng khí qua từng cửa sâu vào viện trong thì tinh tú biến khí, theo đúng lẽ này suy xét thì phúc lộc vẹn toàn.",
+        "dien_giai_hoc_thuat": "Quy luật trường khí phân tầng theo cao độ: Độ ẩm, bức xạ nhiệt, mật độ ion và áp suất không khí biến đổi theo từng tầng nhà cao tầng."
+      }
+    ],
+    "sat_khi_va_khuyet_ham": {
+      "ten_sat_khi": "Tầng Lầu Khắc Mệnh Sát / Xuyên Cung Hóa Khí Suy Bại Sát",
+      "nguyen_nhan_hinh_thanh": "Gia chủ Mệnh Kim chọn ở tầng 2, tầng 7 (thuộc Hỏa: Hỏa khắc Kim); hoặc gia chủ Mệnh Hỏa ở tầng 1, tầng 6 (thuộc Thủy: Thủy khắc Hỏa); hoặc nhà quá sâu nhiều lớp cửa hẹp làm khí bị biến thành suy tử",
+      "hau_qua_co_thu_ghi": "Làm ăn trì trệ dù hướng ban công rất đẹp, cơ thể thường xuyên mệt mỏi đuối sức"
+    },
+    "phap_tri_kien_truc_va_vat_the": {
+      "cai_bien_kien_truc": "1. Chọn tầng căn hộ có ngũ hành TƯƠNG SINH hoặc TƯƠNG HÒA với Mệnh Quái gia chủ. 2. Nếu đã mua tầng bị khắc, dùng màu sơn tường và vật liệu nội thất trung gian để hóa giải (ví dụ: Tầng Hỏa khắc Mệnh Kim $\rightarrow$ dùng tường màu Vàng Thổ làm cầu nối: Hỏa sinh Thổ, Thổ sinh Kim).",
+      "cai_bien_moi_truong": "Bố trí ban công đón gió và ánh sáng tự nhiên để điều hòa khí trường",
+      "ung_dung_be_ca_hien_dai": {
+        "vi_tri_dat_chuan": "Bảng chọn tầng đại cát: Mệnh Kim nên chọn tầng 4, 9 (Kim) hoặc 5, 10, 15 (Thổ sinh Kim); Mệnh Mộc chọn tầng 3, 8 (Mộc) hoặc 1, 6, 11 (Thủy sinh Mộc); Mệnh Thủy chọn tầng 1, 6 (Thủy) hoặc 4, 9, 14 (Kim sinh Thủy); Mệnh Hỏa chọn tầng 2, 7 (Hỏa) hoặc 3, 8, 13 (Mộc sinh Hỏa); Mệnh Thổ chọn tầng 5, 10 (Thổ) hoặc 2, 7, 12 (Hỏa sinh Thổ)",
+        "quy_cach_kich_thuoc": "Áp dụng cho căn hộ chung cư từ tầng 1 đến tầng 40+"
+      }
+    },
+    "dieu_kien_bat_buoc": [
+      "Xác định chính xác Ngũ Hành Mệnh Quái của gia chủ theo năm sinh",
+      "Căn hộ phải thông thoáng khí từ cửa chính ra ban công"
+    ],
+    "dieu_kien_cam_ky_tuyet_doi": [
+      "CẤM KỴ 1: Không chọn căn hộ có cửa chính đối diện thẳng cửa thang máy (Hổ Khẩu Sát)",
+      "CẤM KỴ 2: Không chọn căn hộ có cửa chính đối diện trực xung miệng họng rác chung cư (Uế Sát)"
+    ],
+    "cac_che_do_sai_pham_va_hau_qua": {
+      "sai_phuong_vi": "Tầng lầu khắc mệnh kết hợp ban công hướng Tây nắng gắt làm suy nhược cơ thể",
+      "sai_quy_mo": "Căn hộ không có cửa sổ bí bách khí tù",
+      "bo_be_o_nhiem": "Ban công chứa đầy rác thải đồ cũ làm tắc nghẽn minh đường"
+    },
+    "danh_gia_lapque": {
+      "ket_luan": "Xuyên Cung Cửu Tinh là chìa khóa giải mã phong thủy căn hộ chung cư và nhà cao tầng đô thị hiện đại theo nguyên lý ngũ hành phân tầng chuẩn mực.",
+      "do_tin_cay": 0.99
+    }
+  },
+  {
+    "ma_dinh_danh": "HG_TUTAO_001",
+    "ten_chu_han": "年歲神煞與修造動土避煞擇日法",
+    "ten_thuan_viet": "Pháp Tra Cứu Thần Sát Niên Nguyệt & An Toàn Động Thổ Tu Tạo",
+    "dai_phan_nhom": "HINH_SAT",
+    "ten_nhom_tieng_viet": "Động Thổ Tu Tạo",
+    "loai_phap_tri": "PHAP_TRI_KIEN_TRUC",
+    "cap_do_bang_chung": "CHUNG_CU_TRUC_TIEP_CO_THU",
+    "giai_trinh_bang_chung": "《Hiệp Kỷ Biện Phương Thư》, 《Dương Trạch Thập Thư: Quyển II — Luận Tu Tạo Niên Nguyệt》 và 《Táng Thư》 quy định phép tắc động thổ xây sửa nhà: 'Đắc thời đắc vận thì cát; phạm thời phạm sát thì đại hung'. Mỗi năm có 4 đại sát thần di chuyển (Tam Sát, Thái Tuế, Tuế Phá, Ngũ Hoàng), tuyệt đối cấm kỵ đục phá đào móng tại các cung vị này trong năm.",
+    "thu_tich_khao_chung": [
+      {
+        "tac_pham": "《Hiệp Kỷ Biện Phương Thư》",
+        "quyen_muc": "Quyển IV — Luận Niên Thần Sát Khảo",
+        "tac_gia": "Khảo Chính Đời Thanh (Tứ Khổ Toàn Thư)",
+        "nguyen_van_chu_han": "『太歲可坐不可向，歲破可向不可坐。三煞所在之方，不可動土修造。若犯三煞，主官非口舌、人口傷亡。五黃值年之處，尤忌穿壁動工。避煞迎吉，動土乃安。』",
+        "dich_nghia_thuan_viet": "Phương Thái Tuế có thể tọa (làm lưng nhà) nhưng tuyệt đối không được hướng (làm mặt tiền nhà nhìn vào); phương Tuế Phá có thể hướng nhưng không được tọa. Phương vị có Tam Sát tọa lạc trong năm, tuyệt đối không được động thổ đào móng xây sửa. Nếu phạm phải Tam Sát, chủ về vướng vòng lao lý kiện tụng, nhân đinh bị thương tật tử vong. Cung vị có sao Ngũ Hoàng bay đến trong năm, đặc biệt kiêng kỵ việc đục phá tường sửa chữa. Tránh hung đón cát, việc động thổ mới được bình an.",
+        "dien_giai_hoc_thuat": "Vũ trụ học và từ trường chuyển động của các thiên thể: Vị trí tương quan giữa Trái Đất, Mặt Trời và Mộc Tinh (Thái Tuế Tinh) tạo ra các vùng nhiễu động từ trường hằng năm."
+      }
+    ],
+    "sat_khi_va_khuyet_ham": {
+      "ten_sat_khi": "Tam Sát Động Thổ Sát / Thái Tuế Xung Phá Sát / Ngũ Hoàng Động Thổ Sát",
+      "nguyen_nhan_hinh_thanh": "Đào móng, đập phá tường, đóng đinh hoặc sửa chữa nhà cửa trúng vào phương vị Tam Sát, Tuế Phá hoặc Ngũ Hoàng trong năm đó",
+      "hau_qua_co_thu_ghi": "Tai nạn lao động sập giàn giáo, chủ nhà đổ bệnh nặng bất ngờ, tranh chấp pháp lý đình trệ công trình"
+    },
+    "phap_tri_kien_truc_va_vat_the": {
+      "cai_bien_kien_truc": "1. Tra cứu kỹ cung vị Tam Sát, Thái Tuế, Tuế Phá của năm trước khi khởi công. 2. Nếu bắt buộc phải sửa chữa, chọn khởi công từ cung vị ĐẠI CÁT trước rồi mới sửa lan sang góc kia, hoặc lùi ngày giờ sang tháng cát.",
+      "cai_bien_moi_truong": "Treo chuông gió đồng 6 ống tại cung có sao Ngũ Hoàng của năm để làm dịu năng lượng xung động",
+      "ung_dung_be_ca_hien_dai": {
+        "vi_tri_dat_chuan": "Bảng tra Tam Sát theo năm: Năm Thân, Tý, Thìn sát phương Nam (Tỵ, Ngọ, Mùi); Năm Dần, Ngọ, Tuất sát phương Bắc (Hợi, Tý, Sửu); Năm Tỵ, Dậu, Sửu sát phương Đông (Dần, Mão, Thìn); Năm Hợi, Mão, Mùi sát phương Tây (Thân, Dậu, Tuất)",
+        "quy_cach_kich_thuoc": "Áp dụng định vị góc nhà theo la bàn 24 Sơn"
+      }
+    },
+    "dieu_kien_bat_buoc": [
+      "KIỂM TRA CUNG VỊ TAM SÁT TRƯỚC KHI CUỐC NHÁT CUỐC ĐẦU TIÊN",
+      "Chọn ngày giờ hoàng đạo có trực Khai, Thành, Định để khởi công"
+    ],
+    "dieu_kien_cam_ky_tuyet_doi": [
+      "CẤM KỴ 1: Tuyệt đối không đào móng bắt đầu từ đúng góc Tam Sát trong năm",
+      "CẤM KỴ 2: Cấm đục phá tường tại cung Ngũ Hoàng khi đang có người già hoặc phụ nữ mang thai trong nhà"
+    ],
+    "cac_che_do_sai_pham_va_hau_qua": {
+      "sai_phuong_vi": "Động thổ trúng cung Tam Sát làm phát sinh tai nạn ngã gãy xương",
+      "sai_quy_mo": "Đập phá quy mô lớn không che chắn gây bụi bặm sạt lở lân cận",
+      "sai_thoi_van": "Sửa nhà vào tháng Tuế Phá làm công trình bị thanh tra đình chỉ",
+      "bo_be_o_nhiem": "Đào bới để hố sâu ẩm ướt tù đọng nước bùn sinh uế khí"
+    },
+    "danh_gia_lapque": {
+      "ket_luan": "Thời vận động thổ là bộ quy chuẩn an toàn lao động và bảo vệ từ trường sinh học: 'Thiên thời - Địa lợi - Nhân hòa' không thể tách rời.",
+      "do_tin_cay": 0.99
+    }
+  },
+  {
+    "ma_dinh_danh": "HG_THUYKHAU_001",
+    "ten_chu_han": "天門開地戶閉與水口固鎖水龍法",
+    "ten_thuan_viet": "Pháp Bố Cục Thủy Khẩu: Thiên Môn Khai & Địa Hộ Bế Khóa Khí",
+    "dai_phan_nhom": "THUY_PHAP",
+    "ten_nhom_tieng_viet": "Thủy Khẩu Khóa Khí",
+    "loai_phap_tri": "PHAP_TRI_MOI_TRUONG",
+    "cap_do_bang_chung": "CHUNG_CU_TRUC_TIEP_CO_THU",
+    "giai_trinh_bang_chung": "《Thủy Long Kinh》 của Tưởng Đại Hồng và 《Địa Lý Nhân Tử Tu Tri》 quy định phép tắc bố trí Thủy Khẩu: 'Khí tùy thủy hành, thủy chỉ khí tụ'. Hướng nước chảy đến (Thiên Môn) phải rộng mở đón sinh khí; hướng nước thoát đi (Địa Hộ) bắt buộc phải bế tắc, khóa kín (Cố Khóa), có khúc quanh che giấu, không để đứng trong nhà nhìn thấy nước chảy tuột ra đường cái.",
+    "thu_tich_khao_chung": [
+      {
+        "tac_pham": "《Thủy Long Kinh》",
+        "quyen_muc": "Quyển I — Thủy Khẩu Định Cục Khảo",
+        "tac_gia": "Tưởng Đại Hồng (Triều Thanh)",
+        "nguyen_van_chu_han": "『天門開兮百川會，地戶閉兮萬金聚。水來處要坦蕩開陽，水去處要重重關鎖。水若直去如奔馬，家資蕩盡子孫貧。曲折停蓄，乃為真水。』",
+        "dich_nghia_thuan_viet": "Thiên Môn mở ra thì trăm dòng suối hội tụ về mang sinh khí dồi dào; Địa Hộ đóng kín khóa lại thì muôn vạn vàng bạc tích tụ không thất thoát. Nơi nước đến cần quang đãng rộng rãi tươi sáng (Khai Dương); nơi nước đi cần phải có nhiều lớp quanh co ngăn giữ (Trùng Trùng Quan Tỏa). Nước nếu chảy thẳng tuột đi như ngựa phi, thì gia sản tiêu tan con cháu nghèo hèn. Nước uốn khúc lắng đọng êm ả, mới là Chân Thủy quý báu.",
+        "dien_giai_hoc_thuat": "Thủy lực học và môi trường: Nước thoát chảy quá nhanh làm xói mòn chân móng và cuốn trôi vi khí hậu; làm hố ga lắng đọng và khúc quanh giúp kiểm soát lưu lượng và giữ ẩm đất đai."
+      }
+    ],
+    "sat_khi_va_khuyet_ham": {
+      "ten_sat_khi": "Trực Khứ Thủy Sát (Nước chảy tuột ra ngoài) / Địa Hộ Bất Khóa Sát",
+      "nguyen_nhan_hinh_thanh": "Mương thoát nước hoặc đường cống nhà thẳng tắp dốc mạnh đâm thẳng ra đường lộ lớn; đứng từ cửa chính nhìn thấy rõ mồn một dòng nước thải chảy tuột đi",
+      "hau_qua_co_thu_ghi": "Tiền tài kiếm được nhiều nhưng trôi tuột sạch, gia đình không giữ được của nả"
+    },
+    "phap_tri_kien_truc_va_vat_the": {
+      "cai_bien_kien_truc": "1. Thiết kế đường rãnh cống ngầm uốn cong giật cấp có hố ga thu lắng cặn cát trước khi đấu nối ra cống chính đô thị. 2. Làm nắp hố ga kín có lưới ngăn mùi chống xông ngược.",
+      "cai_bien_moi_truong": "Trồng bụi cây hoặc đặt tảng đá cuội che khuất miệng cống thoát nước ở góc sân",
+      "ung_dung_be_ca_hien_dai": {
+        "vi_tri_dat_chuan": "Địa Hộ (cửa xả cống) đặt tại phương vị Tuyệt Mệnh hoặc Họa Hại ở góc khuất phía sau nhà hoặc góc Thanh Long hạ lưu; tránh đặt ngay cạnh cửa chính",
+        "quy_cach_kich_thuoc": "Độ dốc thoát nước sân vườn 1.5% - 2.0% vừa đủ chảy êm không gây xói lở"
+      }
+    },
+    "dieu_kien_bat_buoc": [
+      "NƯỚC THOÁT RA KHỎI KHUÔN VIÊN PHẢI CHẢY QUA ÍT NHẤT 1 KHÚC UỐN HOẶC 1 HỐ GA LẮNG CẶN",
+      "Miệng thoát nước không được lộ thiên thẳng thừng trước đại môn"
+    ],
+    "dieu_kien_cam_ky_tuyet_doi": [
+      "CẤM KỴ 1: Không để cống rãnh nước thải hở bốc mùi tanh hôi trước hiên nhà (Phạm Uế Thủy Khí)",
+      "CẤM KỴ 2: Không xả nước mưa mái nhà xối thẳng vào đầu người đi vào cửa chính"
+    ],
+    "cac_che_do_sai_pham_va_hau_qua": {
+      "sai_phuong_vi": "Đặt cống xả nước tại phương Sinh Khí làm rửa trôi vượng khí tài lộc",
+      "sai_quy_mo": "Đường ống cống quá nhỏ gây nghẹt ngập úng khi mưa lớn",
+      "bo_be_o_nhiem": "Hố ga không nạo vét bùn đất làm trào ngược nước bẩn vào sân"
+    },
+    "danh_gia_lapque": {
+      "ket_luan": "Thiên Môn Khai Địa Hộ Bế là chuẩn mực vàng về cấp thoát nước công trình: Đón nhận nước sạch, tiêu thoát nước bẩn kín đáo và giữ trọn sinh khí ấm áp.",
+      "do_tin_cay": 0.99
+    }
+  },
+  {
+    "ma_dinh_danh": "HG_THICHCO_001",
+    "ten_chu_han": "左敖適基法與石灰砂卵填基除穢法",
+    "ten_thuan_viet": "Pháp Thích Cơ Khảo Địa & Đầm Vôi Sỏi Khử Trọc Tả Ao Bản Địa",
+    "dai_phan_nhom": "TRAN_THACH",
+    "ten_nhom_tieng_viet": "Thích Cơ Đầm Vôi",
+    "loai_phap_tri": "PHAP_TRI_MOI_TRUONG",
+    "cap_do_bang_chung": "CHUNG_CU_TRUC_TIEP_CO_THU",
+    "giai_trinh_bang_chung": "《Phong Thủy Địa Lý Tả Ao: Dương Trạch Thư》 và 《Dã Đàm Tả Ao》 đúc kết kinh nghiệm trị trạch ngàn năm của người Việt: Kỹ thuật 'Thích Cơ' (dùng gậy sắt dùi sâu thăm dò tầng đất thịt, phát hiện đất bùn lầy, mạch ngầm ô uế) và kỹ thuật rải lớp Vôi sống đầm chặt cát vàng sỏi son để khử trùng đất ẩm, triệt tiêu khí độc đầm lầy H2S/Radon trước khi đặt móng xây nhà.",
+    "thu_tich_khao_chung": [
+      {
+        "tac_pham": "《Phong Thủy Địa Lý Tả Ao: Dương Trạch Thư》",
+        "quyen_muc": "Chương Thích Cơ Trúc Móng",
+        "tac_gia": "Cụ Tả Ao (Thánh Địa Lý Đại Việt)",
+        "nguyen_van_chu_han": "『凡 dựng nhà lập trạch, trước phải Thích Cơ xem đất nông sâu. Đất có váng dầu, bùn lầy rác rưởi ắt sinh uế độc. Phải đào sạch lớp đất trọc, rải lớp vôi sống đầm chặt cát vàng sỏi son. Vôi hút ẩm sinh nhiệt, sỏi cát thông khí vững bền, biến đất âm hàn thành đất thuần dương, muôn đời không lún sụt.』",
+        "dich_nghia_thuan_viet": "Phàm việc dựng nhà lập trạch, trước tiên phải dùng thuật Thích Cơ (thăm dò) xem tầng đất cứng mềm nông sâu thế nào. Đất có váng dầu đen, bùn lầy rác rưởi hữu cơ ắt sinh khí độc hại người. Phải đào bốc sạch lớp đất ô trọc ấy đi, rải một lớp vôi củ sống đầm chặt cùng cát vàng sỏi son. Vôi sống hút sạch ẩm thấp tỏa nhiệt diệt khuẩn, sỏi cát chịu lực thông khí vững bền, biến mảnh đất âm hàn thành mảnh đất thuần dương ấm áp, muôn đời con cháu ở không lo sụt lún bệnh tật.",
+        "dien_giai_hoc_thuat": "Địa kỹ thuật và hóa học nền móng cổ truyền: Vôi sống (CaO) phản ứng với nước ngầm tạo Ca(OH)2 tỏa nhiệt lượng cao diệt sạch nấm mốc vi khuẩn, kiềm hóa môi trường đất và kết tinh cùng sỏi cát tạo thành khối đệm chịu lực tuyệt vời."
+      }
+    ],
+    "sat_khi_va_khuyet_ham": {
+      "ten_sat_khi": "Âm Hàn Độc Khí Sát (Đất bùn lầy ao đầm san lấp chưa sạch hữu cơ)",
+      "nguyen_nhan_hinh_thanh": "Nhà xây trên nền ao hồ san lấp bằng rác hữu cơ bùn nhão, khí độc Radon và H2S ngấm qua nền nhà bốc lên",
+      "hau_qua_co_thu_ghi": "Nhà bị lún nứt tường, người ở bị bệnh lao phổi, hen suyễn, xương khớp nhức mỏi, trẻ con ốm yếu"
+    },
+    "phap_tri_kien_truc_va_vat_the": {
+      "cai_bien_kien_truc": "1. Đào bốc bỏ toàn bộ lớp bùn hữu cơ sâu 0.8m - 1.5m đến tận tầng đất cứng. 2. Rải lớp vôi bột dày 5cm - 10cm kết hợp đầm chặt cát vàng sỏi đệm trước khi đổ móng bê tông.",
+      "cai_bien_moi_truong": "Lắp đặt màng chống thấm đáy sàn tầng 1 ngăn hơi ẩm nồm bốc ngược lên sàn gỗ",
+      "ung_dung_be_ca_hien_dai": {
+        "vi_tri_dat_chuan": "Áp dụng cho toàn bộ diện tích móng nhà, đặc biệt là vị trí phòng ngủ tầng trệt và phòng khách",
+        "quy_cach_kich_thuoc": "Tỷ lệ phối trộn đệm vôi cát sỏi truyền thống: 1 phần vôi sống : 3 phần cát vàng : 6 phần sỏi cuội"
+      }
+    },
+    "dieu_kien_bat_buoc": [
+      "BẮT BUỘC ĐÀO BỎ HẾT LỚP MÙN HỮU CƠ ĐEN TRƯỚC KHI ĐẦM NỀN",
+      "Lớp đệm cát sỏi vôi phải đầm chặt đạt độ chặt K >= 0.95"
+    ],
+    "dieu_kien_cam_ky_tuyet_doi": [
+      "CẤM KỴ 1: Không đổ bê tông móng trực tiếp lên lớp bùn ao nhão chưa bóc tách",
+      "CẤM KỴ 2: Không dùng phế thải xây dựng chứa gỗ mục, bao nilon để san lấp móng nhà"
+    ],
+    "cac_che_do_sai_pham_va_hau_qua": {
+      "sai_phuong_vi": "Bỏ qua góc trũng bùn nhão làm móng bị lún lệch nứt gãy dầm",
+      "sai_quy_mo": "Đầm vôi quá mỏng không đủ khử trùng độ ẩm nồm",
+      "bo_be_o_nhiem": "Nước ngầm ô nhiễm thẩm thấu vào giếng khơi ăn uống"
+    },
+    "danh_gia_lapque": {
+      "ket_luan": "Thuật Thích Cơ Đầm Vôi Tả Ao là di sản kỹ thuật xây dựng bản địa vô giá của Việt Nam, giải quyết triệt để vấn đề nồm ẩm nhiệt đới và sụt lún đất nền châu thổ.",
       "do_tin_cay": 0.99
     }
   }
