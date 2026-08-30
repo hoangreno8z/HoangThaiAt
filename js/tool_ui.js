@@ -56,36 +56,36 @@ class ToolUI {
           </p>
         </header>
 
-        <div style="display:flex; justify-content:center; gap:0.8rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:1rem; margin-bottom:2rem; flex-wrap:wrap;">
-          <button onclick="window.toolUI.render('thiendianhan')" style="background:${this.currentToolTab === 'thiendianhan' ? 'rgba(245,158,11,0.25)' : 'rgba(255,255,255,0.04)'}; border:1px solid ${this.currentToolTab === 'thiendianhan' ? '#FBBF24' : 'rgba(255,255,255,0.1)'}; color:#FEF3C7; padding:0.65rem 1.3rem; border-radius:8px; font-weight:700; font-size:0.88rem; cursor:pointer;">
+        <div style="display:flex; justify-content:center; gap:0.4rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:0.8rem; margin-bottom:1.5rem; flex-wrap:wrap;">
+          <button onclick="window.toolUI.render('thiendianhan')" style="background:${this.currentToolTab === 'thiendianhan' ? 'rgba(245,158,11,0.25)' : 'rgba(255,255,255,0.04)'}; border:1px solid ${this.currentToolTab === 'thiendianhan' ? '#FBBF24' : 'rgba(255,255,255,0.1)'}; color:#FEF3C7; padding:0.35rem 0.75rem; border-radius:20px; font-weight:700; font-size:0.78rem; cursor:pointer; transition:all 0.15s ease;">
             Thiên Địa Nhân
           </button>
-          <button onclick="window.toolUI.render('battrach')" style="background:${this.currentToolTab === 'battrach' ? 'rgba(245,158,11,0.25)' : 'rgba(255,255,255,0.04)'}; border:1px solid ${this.currentToolTab === 'battrach' ? '#FBBF24' : 'rgba(255,255,255,0.1)'}; color:#FEF3C7; padding:0.65rem 1.3rem; border-radius:8px; font-weight:700; font-size:0.88rem; cursor:pointer;">
-            Bát Trạch Minh Cảnh
+          <button onclick="window.toolUI.render('battrach')" style="background:${this.currentToolTab === 'battrach' ? 'rgba(245,158,11,0.25)' : 'rgba(255,255,255,0.04)'}; border:1px solid ${this.currentToolTab === 'battrach' ? '#FBBF24' : 'rgba(255,255,255,0.1)'}; color:#FEF3C7; padding:0.35rem 0.75rem; border-radius:20px; font-weight:700; font-size:0.78rem; cursor:pointer; transition:all 0.15s ease;">
+            Bát Trạch
           </button>
-          <button onclick="window.toolUI.render('huyenkhong')" style="background:${this.currentToolTab === 'huyenkhong' ? 'rgba(245,158,11,0.25)' : 'rgba(255,255,255,0.04)'}; border:1px solid ${this.currentToolTab === 'huyenkhong' ? '#FBBF24' : 'rgba(255,255,255,0.1)'}; color:#FEF3C7; padding:0.65rem 1.3rem; border-radius:8px; font-weight:700; font-size:0.88rem; cursor:pointer;">
-            Huyền Không Vận 9
+          <button onclick="window.toolUI.render('huyenkhong')" style="background:${this.currentToolTab === 'huyenkhong' ? 'rgba(245,158,11,0.25)' : 'rgba(255,255,255,0.04)'}; border:1px solid ${this.currentToolTab === 'huyenkhong' ? '#FBBF24' : 'rgba(255,255,255,0.1)'}; color:#FEF3C7; padding:0.35rem 0.75rem; border-radius:20px; font-weight:700; font-size:0.78rem; cursor:pointer; transition:all 0.15s ease;">
+            Huyền Không
           </button>
-          <button onclick="window.toolUI.render('hoagiaicothu')" style="background:${this.currentToolTab === 'hoagiaicothu' ? 'rgba(245,158,11,0.25)' : 'rgba(255,255,255,0.04)'}; border:1px solid ${this.currentToolTab === 'hoagiaicothu' ? '#F59E0B' : 'rgba(255,255,255,0.1)'}; color:#FEF3C7; padding:0.65rem 1.3rem; border-radius:8px; font-weight:700; font-size:0.88rem; cursor:pointer;">
-            Thư Tịch Hóa Giải
+          <button onclick="window.toolUI.render('hoagiaicothu')" style="background:${this.currentToolTab === 'hoagiaicothu' ? 'rgba(245,158,11,0.25)' : 'rgba(255,255,255,0.04)'}; border:1px solid ${this.currentToolTab === 'hoagiaicothu' ? '#F59E0B' : 'rgba(255,255,255,0.1)'}; color:#FEF3C7; padding:0.35rem 0.75rem; border-radius:20px; font-weight:700; font-size:0.78rem; cursor:pointer; transition:all 0.15s ease;">
+            Hóa Giải
           </button>
-          <button onclick="window.toolUI.render('diachat64')" style="background:${this.currentToolTab === 'diachat64' ? 'rgba(56,189,248,0.25)' : 'rgba(255,255,255,0.04)'}; border:1px solid ${this.currentToolTab === 'diachat64' ? '#38BDF8' : 'rgba(255,255,255,0.1)'}; color:#38BDF8; padding:0.65rem 1.3rem; border-radius:8px; font-weight:700; font-size:0.88rem; cursor:pointer;">
-            Địa Chất 64 Tỉnh
+          <button onclick="window.toolUI.render('diachat64')" style="background:${this.currentToolTab === 'diachat64' ? 'rgba(56,189,248,0.25)' : 'rgba(255,255,255,0.04)'}; border:1px solid ${this.currentToolTab === 'diachat64' ? '#38BDF8' : 'rgba(255,255,255,0.1)'}; color:#38BDF8; padding:0.35rem 0.75rem; border-radius:20px; font-weight:700; font-size:0.78rem; cursor:pointer; transition:all 0.15s ease;">
+            Địa Chất 64
           </button>
-          <button onclick="window.toolUI.render('thuyphap')" style="background:${this.currentToolTab === 'thuyphap' ? 'rgba(52,211,153,0.25)' : 'rgba(255,255,255,0.04)'}; border:1px solid ${this.currentToolTab === 'thuyphap' ? '#34D399' : 'rgba(255,255,255,0.1)'}; color:#34D399; padding:0.65rem 1.3rem; border-radius:8px; font-weight:700; font-size:0.88rem; cursor:pointer;">
-            Thủy Pháp Dương Công
+          <button onclick="window.toolUI.render('thuyphap')" style="background:${this.currentToolTab === 'thuyphap' ? 'rgba(52,211,153,0.25)' : 'rgba(255,255,255,0.04)'}; border:1px solid ${this.currentToolTab === 'thuyphap' ? '#34D399' : 'rgba(255,255,255,0.1)'}; color:#34D399; padding:0.35rem 0.75rem; border-radius:20px; font-weight:700; font-size:0.78rem; cursor:pointer; transition:all 0.15s ease;">
+            Thủy Pháp
           </button>
-          <button onclick="window.toolUI.render('loban')" style="background:${this.currentToolTab === 'loban' ? 'rgba(245,158,11,0.25)' : 'rgba(255,255,255,0.04)'}; border:1px solid ${this.currentToolTab === 'loban' ? '#FBBF24' : 'rgba(255,255,255,0.1)'}; color:#FEF3C7; padding:0.65rem 1.3rem; border-radius:8px; font-weight:700; font-size:0.88rem; cursor:pointer;">
+          <button onclick="window.toolUI.render('loban')" style="background:${this.currentToolTab === 'loban' ? 'rgba(245,158,11,0.25)' : 'rgba(255,255,255,0.04)'}; border:1px solid ${this.currentToolTab === 'loban' ? '#FBBF24' : 'rgba(255,255,255,0.1)'}; color:#FEF3C7; padding:0.35rem 0.75rem; border-radius:20px; font-weight:700; font-size:0.78rem; cursor:pointer; transition:all 0.15s ease;">
             Thước Lỗ Ban
           </button>
-          <button onclick="window.toolUI.render('thienvankymon')" style="background:${this.currentToolTab === 'thienvankymon' ? 'rgba(168,85,247,0.25)' : 'rgba(255,255,255,0.04)'}; border:1px solid ${this.currentToolTab === 'thienvankymon' ? '#A855F7' : 'rgba(255,255,255,0.1)'}; color:#C084FC; padding:0.65rem 1.3rem; border-radius:8px; font-weight:700; font-size:0.88rem; cursor:pointer;">
-            Thiên Văn Kỳ Môn
+          <button onclick="window.toolUI.render('thienvankymon')" style="background:${this.currentToolTab === 'thienvankymon' ? 'rgba(168,85,247,0.25)' : 'rgba(255,255,255,0.04)'}; border:1px solid ${this.currentToolTab === 'thienvankymon' ? '#A855F7' : 'rgba(255,255,255,0.1)'}; color:#C084FC; padding:0.35rem 0.75rem; border-radius:20px; font-weight:700; font-size:0.78rem; cursor:pointer; transition:all 0.15s ease;">
+            Kỳ Môn
           </button>
-          <button onclick="window.toolUI.render('goiythietke')" style="background:${this.currentToolTab === 'goiythietke' ? 'rgba(56,189,248,0.25)' : 'rgba(255,255,255,0.04)'}; border:1px solid ${this.currentToolTab === 'goiythietke' ? '#38BDF8' : 'rgba(255,255,255,0.1)'}; color:#38BDF8; padding:0.65rem 1.3rem; border-radius:8px; font-weight:700; font-size:0.88rem; cursor:pointer;">
+          <button onclick="window.toolUI.render('goiythietke')" style="background:${this.currentToolTab === 'goiythietke' ? 'rgba(56,189,248,0.25)' : 'rgba(255,255,255,0.04)'}; border:1px solid ${this.currentToolTab === 'goiythietke' ? '#38BDF8' : 'rgba(255,255,255,0.1)'}; color:#38BDF8; padding:0.35rem 0.75rem; border-radius:20px; font-weight:700; font-size:0.78rem; cursor:pointer; transition:all 0.15s ease;">
             Gợi Ý Thiết Kế
           </button>
-          <button onclick="window.toolUI.render('report')" style="background:${this.currentToolTab === 'report' ? 'rgba(245,158,11,0.25)' : 'rgba(255,255,255,0.04)'}; border:1px solid ${this.currentToolTab === 'report' ? '#FBBF24' : 'rgba(255,255,255,0.1)'}; color:#FEF3C7; padding:0.65rem 1.3rem; border-radius:8px; font-weight:700; font-size:0.88rem; cursor:pointer;">
-            Báo Cáo Tổng Hợp
+          <button onclick="window.toolUI.render('report')" style="background:${this.currentToolTab === 'report' ? 'rgba(245,158,11,0.25)' : 'rgba(255,255,255,0.04)'}; border:1px solid ${this.currentToolTab === 'report' ? '#FBBF24' : 'rgba(255,255,255,0.1)'}; color:#FEF3C7; padding:0.35rem 0.75rem; border-radius:20px; font-weight:700; font-size:0.78rem; cursor:pointer; transition:all 0.15s ease;">
+            Báo Cáo
           </button>
         </div>
 
@@ -2009,215 +2009,155 @@ ${reportText}
     const activeBp = blueprints.find(b => b.id === activeBpId) || blueprints[0] || {};
 
     return `
-      <div style="display:flex; flex-direction:column; gap:2.5rem;">
+      <div style="display:flex; flex-direction:column; gap:1.5rem;">
         
-        <!-- BANNER GIỚI THIỆU -->
-        <div style="background:linear-gradient(135deg, #0F172A 0%, #1E293B 100%); border:1px solid rgba(56,189,248,0.3); border-left:6px solid #38BDF8; border-radius:12px; padding:1.8rem;">
-          <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.4rem;">
-            <span style="background:rgba(56,189,248,0.15); color:#38BDF8; padding:0.2rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:800;">
-              CÔNG CỤ THIẾT KẾ KHÍ ĐỘNG HỌC & CỔ TRUYỀN
+        <!-- HEADER TINH GỌN -->
+        <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:0.6rem; flex-wrap:wrap; gap:0.5rem;">
+          <div style="display:flex; align-items:center; gap:0.6rem;">
+            <span style="background:rgba(56,189,248,0.15); color:#38BDF8; padding:0.25rem 0.75rem; border-radius:20px; font-size:0.8rem; font-weight:800; border:1px solid rgba(56,189,248,0.3);">
+              Gợi Ý Thiết Kế
             </span>
-            <span style="color:var(--text-muted); font-size:0.8rem;">
-              Chống Bão Miền Trung • Trị Gió Cuộn Chân Cao Ốc • Thoát Nhiệt Mùa Hè
-            </span>
+            <span style="font-size:0.82rem; color:var(--text-muted);">Khí Động Học & Cổ Thư</span>
           </div>
-          <h2 style="font-family:var(--font-title); font-size:1.6rem; color:#FEF3C7; margin:0 0 0.6rem 0;">
-            Gợi Ý Thiết Kế Khí Động Học & Phong Thủy Cổ Thư
-          </h2>
-          <p style="font-size:0.9rem; color:var(--text-muted); line-height:1.6; margin:0;">
-            Hệ thống bản vẽ mẫu trực quan và giải pháp kỹ thuật tích hợp giữa <strong>Định luật Khí Động Học hiện đại (Bernoulli, Venturi, Downwash, Stack Effect)</strong> và <strong>Thư tịch cổ phong thủy chính tông (《Táng Thư》, 《Hoàng Đế Trạch Kinh》, 《Khảo Công Ký》)</strong>, hướng dẫn cụ thể về bố cục cây xanh và kết cấu kiến trúc.
-          </p>
+
+          <!-- DROPDOWN CHỌN NHANH KHI CÓ NHIỀU MẪU (10-20 MẪU) -->
+          <div style="display:flex; align-items:center; gap:0.5rem;">
+            <span style="font-size:0.78rem; color:var(--text-muted);">Chọn mẫu nhanh:</span>
+            <select onchange="window.toolUI.selectDesignBlueprint(this.value)" style="background:#0F172A; color:#FEF3C7; border:1px solid rgba(56,189,248,0.4); padding:0.3rem 0.6rem; border-radius:6px; font-size:0.8rem; font-weight:700; outline:none; cursor:pointer;">
+              ${blueprints.map(bp => `
+                <option value="${bp.id}" ${bp.id === activeBp.id ? 'selected' : ''}>${bp.name}</option>
+              `).join('')}
+            </select>
+          </div>
         </div>
 
         <!-- =========================================================================
-             PHẦN 1: TOÀN BỘ LÝ THUYẾT CỔ THƯ & ĐỊNH LUẬT KHÍ ĐỘNG HỌC
+             PHẦN 2: BỘ BẢN VẼ HÌNH MẪU TRỰC QUAN & HƯỚNG DẪN THI CÔNG (ĐƯA LÊN TRƯỚC)
              ========================================================================= -->
-        <section style="background:#121722; border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:1.8rem;">
-          <div style="border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:0.8rem; margin-bottom:1.5rem; display:flex; justify-content:space-between; align-items:center;">
-            <div>
-              <span style="font-size:0.75rem; font-weight:800; color:#FBBF24; text-transform:uppercase; letter-spacing:0.06em;">PHẦN 1: HỌC THUẬT CỐT LÕI</span>
-              <h3 style="font-family:var(--font-title); font-size:1.35rem; color:#FEF3C7; margin:0.2rem 0 0 0;">
-                Lý Thuyết Khí Động Học & Cổ Thư Phong Thủy Trị Thiên Tai
-              </h3>
-            </div>
-            <span style="font-size:0.8rem; color:var(--text-muted);">Đối chiếu 3 đại nguyên lý</span>
-          </div>
-
-          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:1.2rem;">
-            ${(theory ? theory.sections : []).map((sec, idx) => `
-              <div style="background:#0D111A; border:1px solid rgba(255,255,255,0.06); border-radius:8px; padding:1.3rem; display:flex; flex-direction:column; justify-content:space-between;">
-                <div>
-                  <div style="font-size:0.75rem; font-weight:800; color:#38BDF8; margin-bottom:0.4rem;">
-                    NGUYÊN LÝ 0${idx + 1}
-                  </div>
-                  <h4 style="font-size:1.05rem; color:#FEF3C7; margin:0 0 0.8rem 0; font-weight:700;">
-                    ${sec.title}
-                  </h4>
-
-                  <div style="background:rgba(245,158,11,0.08); border-left:3px solid #F59E0B; padding:0.6rem 0.8rem; border-radius:4px; margin-bottom:0.8rem; font-size:0.82rem; color:#FEF3C7;">
-                    <div style="font-weight:700; color:#FBBF24; margin-bottom:0.2rem;">Thư Tịch Cổ Thư:</div>
-                    ${sec.classic_source}
-                  </div>
-
-                  <div style="background:rgba(56,189,248,0.08); border-left:3px solid #38BDF8; padding:0.6rem 0.8rem; border-radius:4px; margin-bottom:0.8rem; font-size:0.82rem; color:#E0F2FE;">
-                    <div style="font-weight:700; color:#38BDF8; margin-bottom:0.2rem;">Định Luật Khí Động Học:</div>
-                    ${sec.physics_law}
-                  </div>
-
-                  <div style="font-size:0.84rem; color:var(--text-muted); line-height:1.6; margin-bottom:0.8rem;">
-                    <strong style="color:#FEF3C7;">Cơ chế vật lý:</strong> ${sec.mechanism}
-                  </div>
-
-                  <div style="font-size:0.84rem; color:var(--text-muted); line-height:1.6; margin-bottom:0.8rem;">
-                    <strong style="color:#FCD34D;">Góc nhìn Phong Thủy Cổ Thư:</strong> ${sec.classical_view}
-                  </div>
-                </div>
-
-                <div style="background:#161E2E; border:1px solid rgba(52,211,153,0.25); border-radius:6px; padding:0.8rem; margin-top:0.8rem;">
-                  <div style="font-size:0.78rem; font-weight:800; color:#34D399; margin-bottom:0.3rem;">• YẾU QUYẾT HÓA GIẢI & THIẾT KẾ:</div>
-                  <div style="font-size:0.82rem; color:#E2E8F0; line-height:1.5; white-space:pre-line;">${sec.remedy_principle}</div>
-                </div>
-              </div>
-            `).join('')}
-          </div>
-        </section>
-
-        <!-- =========================================================================
-             PHẦN 2: BỘ BẢN VẼ HÌNH MẪU TRỰC QUAN & HƯỚNG DẪN THI CÔNG
-             ========================================================================= -->
-        <section style="background:#121722; border:1px solid rgba(56,189,248,0.25); border-radius:12px; padding:1.8rem;">
-          <div style="border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:0.8rem; margin-bottom:1.5rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.6rem;">
-            <div>
-              <span style="font-size:0.75rem; font-weight:800; color:#38BDF8; text-transform:uppercase; letter-spacing:0.06em;">PHẦN 2: BẢN VẼ MẪU & KỸ THUẬT THỰC ĐỊA</span>
-              <h3 style="font-family:var(--font-title); font-size:1.35rem; color:#FEF3C7; margin:0.2rem 0 0 0;">
-                5 Bộ Bản Vẽ Khí Động Học & Quy Chuẩn Cây Xanh — Kiến Trúc
-              </h3>
-            </div>
-            <span style="font-size:0.8rem; color:#34D399; font-weight:700;">Tra cứu & áp dụng tức thì</span>
-          </div>
-
-          <!-- NÚT CHỌN 5 HÌNH MẪU -->
-          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:0.6rem; margin-bottom:1.8rem;">
+        <section style="background:#121722; border:1px solid rgba(56,189,248,0.25); border-radius:10px; padding:1.2rem;">
+          
+          <!-- THANH CUỘN NGANG CHỌN MẪU TINH GỌN (PILL CHIPS - HỖ TRỢ 10-20 MẪU KHÔNG CHIẾM DIỆN TÍCH) -->
+          <div style="display:flex; overflow-x:auto; gap:0.4rem; padding-bottom:0.6rem; margin-bottom:1rem; scrollbar-width:thin; -webkit-overflow-scrolling:touch;">
             ${blueprints.map((bp, idx) => `
-              <button onclick="window.toolUI.selectDesignBlueprint('${bp.id}')" style="background:${bp.id === activeBp.id ? 'rgba(56,189,248,0.2)' : 'rgba(255,255,255,0.03)'}; border:1px solid ${bp.id === activeBp.id ? '#38BDF8' : 'rgba(255,255,255,0.08)'}; border-left:4px solid ${bp.id === activeBp.id ? '#38BDF8' : 'rgba(255,255,255,0.2)'}; padding:0.8rem 1rem; border-radius:6px; text-align:left; cursor:pointer; transition:all 0.2s ease;">
-                <div style="font-size:0.7rem; font-weight:800; color:${bp.id === activeBp.id ? '#38BDF8' : 'var(--text-muted)'}; margin-bottom:0.2rem;">
-                  MẪU 0${idx + 1}
-                </div>
-                <div style="font-size:0.85rem; font-weight:700; color:${bp.id === activeBp.id ? '#FEF3C7' : '#94A3B8'}; line-height:1.3;">
-                  ${bp.name.replace(/^\d+\.\s*/, '')}
-                </div>
+              <button onclick="window.toolUI.selectDesignBlueprint('${bp.id}')" style="flex:0 0 auto; background:${bp.id === activeBp.id ? 'rgba(56,189,248,0.25)' : 'rgba(255,255,255,0.03)'}; border:1px solid ${bp.id === activeBp.id ? '#38BDF8' : 'rgba(255,255,255,0.1)'}; padding:0.35rem 0.85rem; border-radius:20px; font-size:0.78rem; font-weight:700; color:${bp.id === activeBp.id ? '#FEF3C7' : '#94A3B8'}; cursor:pointer; transition:all 0.15s ease; white-space:nowrap;">
+                Mẫu 0${idx + 1}: ${bp.name.replace(/^\d+\.\s*/, '').split('&')[0].trim()}
               </button>
             `).join('')}
           </div>
 
           <!-- CHI TIẾT BẢN VẼ HÌNH MẪU ĐƯỢC CHỌN -->
-          <div style="background:#090D16; border:1px solid rgba(255,255,255,0.1); border-radius:10px; padding:1.5rem;">
+          <div style="background:#090D16; border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:1.2rem;">
             
             <!-- HEADER HÌNH MẪU -->
-            <div style="margin-bottom:1.2rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:1rem;">
-              <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:0.6rem;">
-                <div>
-                  <span style="background:rgba(56,189,248,0.15); color:#38BDF8; font-size:0.75rem; font-weight:800; padding:0.2rem 0.6rem; border-radius:4px;">
+            <div style="margin-bottom:1rem; border-bottom:1px solid rgba(255,255,255,0.06); padding-bottom:0.8rem; display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:0.5rem;">
+              <div>
+                <div style="display:flex; align-items:center; gap:0.5rem;">
+                  <span style="background:rgba(56,189,248,0.15); color:#38BDF8; font-size:0.72rem; font-weight:800; padding:0.15rem 0.5rem; border-radius:4px;">
                     ${activeBp.code || ''}
                   </span>
-                  <h4 style="font-family:var(--font-title); font-size:1.3rem; color:#FEF3C7; margin:0.4rem 0 0.2rem 0;">
+                  <h3 style="font-size:1.15rem; color:#FEF3C7; margin:0; font-weight:700;">
                     ${activeBp.name || ''}
-                  </h4>
-                  <p style="font-size:0.88rem; color:#94A3B8; margin:0; line-height:1.5;">
-                    ${activeBp.summary || ''}
-                  </p>
+                  </h3>
                 </div>
-                <div style="background:rgba(239,68,68,0.1); border:1px solid rgba(239,68,68,0.3); border-radius:6px; padding:0.6rem 0.8rem; max-width:350px;">
-                  <div style="font-size:0.75rem; font-weight:800; color:#F87171; margin-bottom:0.2rem;">NGUY CƠ BẢN ĐỊA:</div>
-                  <div style="font-size:0.8rem; color:#FEF3C7; line-height:1.4;">${activeBp.problem_analysis || ''}</div>
-                </div>
+                <p style="font-size:0.82rem; color:#94A3B8; margin:0.3rem 0 0 0; line-height:1.4;">
+                  ${activeBp.summary || ''}
+                </p>
+              </div>
+              <div style="background:rgba(239,68,68,0.1); border:1px solid rgba(239,68,68,0.25); border-radius:6px; padding:0.4rem 0.6rem; max-width:320px; font-size:0.75rem; color:#FEF3C7; line-height:1.3;">
+                <strong style="color:#F87171;">Nguy cơ:</strong> ${activeBp.problem_analysis || ''}
               </div>
             </div>
 
             <!-- BẢN VẼ SƠ ĐỒ KHÍ ĐỘNG HỌC VECTOR (SVG) -->
-            <div style="margin-bottom:1.5rem;">
-              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.6rem;">
-                <span style="font-size:0.78rem; font-weight:800; color:#38BDF8; text-transform:uppercase;">
-                  Sơ Đồ Đường Dòng Khí Động Học & Phân Vùng Áp Suất (Vector CAD Blueprint)
-                </span>
-                <span style="font-size:0.75rem; color:var(--text-muted);">Tỉ lệ chuẩn khí động học</span>
-              </div>
-              <div style="width:100%; height:auto; max-height:450px; overflow:hidden; border-radius:8px; border:1px solid rgba(255,255,255,0.08);">
-                ${activeBp.svg_diagram || ''}
-              </div>
+            <div style="margin-bottom:1.2rem; width:100%; height:auto; max-height:420px; overflow:hidden; border-radius:6px; border:1px solid rgba(255,255,255,0.08);">
+              ${activeBp.svg_diagram || ''}
             </div>
 
             <!-- 2 BẢNG HƯỚNG DẪN CÂY CỐI & KIẾN TRÚC -->
-            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:1.2rem;">
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:1rem;">
               
               <!-- CỘT 1: HƯỚNG DẪN CÂY CỐI -->
-              <div style="background:#0F172A; border:1px solid rgba(52,211,153,0.3); border-top:4px solid #10B981; border-radius:8px; padding:1.2rem;">
-                <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.8rem;">
-                  <span style="font-size:0.75rem; font-weight:800; color:#10B981; background:rgba(16,185,129,0.12); padding:0.15rem 0.5rem; border-radius:4px;">
-                    QUY CHUẨN CÂY CỐI
-                  </span>
-                  <h5 style="font-size:0.98rem; color:#FEF3C7; margin:0; font-weight:700;">
-                    ${activeBp.tree_guidelines ? activeBp.tree_guidelines.title : 'Quy Chuẩn Cây Xanh'}
-                  </h5>
+              <div style="background:#0F172A; border:1px solid rgba(52,211,153,0.3); border-top:3px solid #10B981; border-radius:6px; padding:1rem;">
+                <div style="font-size:0.75rem; font-weight:800; color:#10B981; margin-bottom:0.5rem;">
+                  QUY CHUẨN CÂY CỐI
                 </div>
-
-                <div style="display:flex; flex-direction:column; gap:0.6rem; font-size:0.83rem;">
-                  <div>
-                    <span style="color:#34D399; font-weight:700;">• Chủng loại cây khuyên dùng:</span>
-                    <span style="color:#E2E8F0;"> ${activeBp.tree_guidelines ? activeBp.tree_guidelines.species : ''}</span>
-                  </div>
-                  <div>
-                    <span style="color:#34D399; font-weight:700;">• Khoảng cách & Vị trí trồng:</span>
-                    <span style="color:#E2E8F0;"> ${activeBp.tree_guidelines ? activeBp.tree_guidelines.distance : ''}</span>
-                  </div>
-                  <div>
-                    <span style="color:#34D399; font-weight:700;">• Kết cấu tầng lớp:</span>
-                    <span style="color:#E2E8F0;"> ${activeBp.tree_guidelines ? activeBp.tree_guidelines.structure : ''}</span>
-                  </div>
-                  <div style="background:rgba(16,185,129,0.1); border-radius:4px; padding:0.5rem; color:#6EE7B7; font-weight:600;">
-                    ✓ Công dụng: ${activeBp.tree_guidelines ? activeBp.tree_guidelines.benefit : ''}
+                <div style="display:flex; flex-direction:column; gap:0.5rem; font-size:0.8rem; line-height:1.4;">
+                  <div><strong style="color:#34D399;">• Chủng loại:</strong> ${activeBp.tree_guidelines ? activeBp.tree_guidelines.species : ''}</div>
+                  <div><strong style="color:#34D399;">• Khoảng cách:</strong> ${activeBp.tree_guidelines ? activeBp.tree_guidelines.distance : ''}</div>
+                  <div><strong style="color:#34D399;">• Tầng lớp:</strong> ${activeBp.tree_guidelines ? activeBp.tree_guidelines.structure : ''}</div>
+                  <div style="background:rgba(16,185,129,0.08); border-radius:4px; padding:0.4rem 0.5rem; color:#6EE7B7;">
+                    ✓ <strong>Công dụng:</strong> ${activeBp.tree_guidelines ? activeBp.tree_guidelines.benefit : ''}
                   </div>
                 </div>
               </div>
 
               <!-- CỘT 2: HƯỚNG DẪN KIẾN TRÚC & KẾT CẤU -->
-              <div style="background:#0F172A; border:1px solid rgba(56,189,248,0.3); border-top:4px solid #38BDF8; border-radius:8px; padding:1.2rem;">
-                <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.8rem;">
-                  <span style="font-size:0.75rem; font-weight:800; color:#38BDF8; background:rgba(56,189,248,0.12); padding:0.15rem 0.5rem; border-radius:4px;">
-                    QUY CHUẨN KIẾN TRÚC
-                  </span>
-                  <h5 style="font-size:0.98rem; color:#FEF3C7; margin:0; font-weight:700;">
-                    ${activeBp.architecture_guidelines ? activeBp.architecture_guidelines.title : 'Quy Chuẩn Kiến Trúc & Kết Cấu'}
-                  </h5>
+              <div style="background:#0F172A; border:1px solid rgba(56,189,248,0.3); border-top:3px solid #38BDF8; border-radius:6px; padding:1rem;">
+                <div style="font-size:0.75rem; font-weight:800; color:#38BDF8; margin-bottom:0.5rem;">
+                  QUY CHUẨN KIẾN TRÚC & KẾT CẤU
                 </div>
-
-                <div style="display:flex; flex-direction:column; gap:0.6rem; font-size:0.83rem;">
-                  <div>
-                    <span style="color:#38BDF8; font-weight:700;">• Hình dạng & Góc dốc:</span>
-                    <span style="color:#E2E8F0;"> ${activeBp.architecture_guidelines ? activeBp.architecture_guidelines.shape : ''}</span>
-                  </div>
-                  <div>
-                    <span style="color:#38BDF8; font-weight:700;">• Vị trí tiền sảnh & Cửa:</span>
-                    <span style="color:#E2E8F0;"> ${activeBp.architecture_guidelines ? activeBp.architecture_guidelines.position : ''}</span>
-                  </div>
-                  <div>
-                    <span style="color:#38BDF8; font-weight:700;">• Kết cấu mộng & Đai neo xà gồ:</span>
-                    <span style="color:#E2E8F0;"> ${activeBp.architecture_guidelines ? activeBp.architecture_guidelines.structure : ''}</span>
-                  </div>
-                  <div style="background:rgba(56,189,248,0.1); border-radius:4px; padding:0.5rem; color:#7DD3FC; font-weight:600;">
-                    ✓ Công dụng: ${activeBp.architecture_guidelines ? activeBp.architecture_guidelines.benefit : ''}
+                <div style="display:flex; flex-direction:column; gap:0.5rem; font-size:0.8rem; line-height:1.4;">
+                  <div><strong style="color:#38BDF8;">• Hình dạng mái:</strong> ${activeBp.architecture_guidelines ? activeBp.architecture_guidelines.shape : ''}</div>
+                  <div><strong style="color:#38BDF8;">• Tiền sảnh & Cửa:</strong> ${activeBp.architecture_guidelines ? activeBp.architecture_guidelines.position : ''}</div>
+                  <div><strong style="color:#38BDF8;">• Đai neo xà gồ:</strong> ${activeBp.architecture_guidelines ? activeBp.architecture_guidelines.structure : ''}</div>
+                  <div style="background:rgba(56,189,248,0.08); border-radius:4px; padding:0.4rem 0.5rem; color:#7DD3FC;">
+                    ✓ <strong>Công dụng:</strong> ${activeBp.architecture_guidelines ? activeBp.architecture_guidelines.benefit : ''}
                   </div>
                 </div>
               </div>
 
             </div>
+          </div>
+        </section>
+
+        <!-- =========================================================================
+             PHẦN 1: TOÀN BỘ LÝ THUYẾT CỔ THƯ & ĐỊNH LUẬT KHÍ ĐỘNG HỌC (GỌN GÀNG)
+             ========================================================================= -->
+        <section style="background:#121722; border:1px solid rgba(255,255,255,0.08); border-radius:10px; padding:1.2rem;">
+          <div style="border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:0.6rem; margin-bottom:1rem; display:flex; justify-content:space-between; align-items:center;">
+            <div>
+              <span style="font-size:0.72rem; font-weight:800; color:#FBBF24; text-transform:uppercase;">PHẦN 1: LÝ THUYẾT CỔ THƯ & ĐỊNH LUẬT KHÍ ĐỘNG HỌC</span>
+              <h3 style="font-size:1.15rem; color:#FEF3C7; margin:0.2rem 0 0 0;">
+                Đối Chiếu 3 Đại Nguyên Lý
+              </h3>
+            </div>
+          </div>
+
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:1rem;">
+            ${(theory ? theory.sections : []).map((sec, idx) => `
+              <div style="background:#0D111A; border:1px solid rgba(255,255,255,0.06); border-radius:6px; padding:1rem; display:flex; flex-direction:column; justify-content:space-between;">
+                <div>
+                  <div style="font-size:0.72rem; font-weight:800; color:#38BDF8; margin-bottom:0.3rem;">
+                    NGUYÊN LÝ 0${idx + 1}
+                  </div>
+                  <h4 style="font-size:0.95rem; color:#FEF3C7; margin:0 0 0.6rem 0; font-weight:700;">
+                    ${sec.title}
+                  </h4>
+
+                  <div style="background:rgba(245,158,11,0.08); border-left:3px solid #F59E0B; padding:0.4rem 0.6rem; border-radius:4px; margin-bottom:0.5rem; font-size:0.76rem; color:#FEF3C7;">
+                    <strong>Cổ Thư:</strong> ${sec.classic_source}
+                  </div>
+
+                  <div style="background:rgba(56,189,248,0.08); border-left:3px solid #38BDF8; padding:0.4rem 0.6rem; border-radius:4px; margin-bottom:0.5rem; font-size:0.76rem; color:#E0F2FE;">
+                    <strong>Khí Động Học:</strong> ${sec.physics_law}
+                  </div>
+
+                  <div style="font-size:0.78rem; color:var(--text-muted); line-height:1.5; margin-bottom:0.5rem;">
+                    ${sec.mechanism}
+                  </div>
+                </div>
+
+                <div style="background:#161E2E; border:1px solid rgba(52,211,153,0.25); border-radius:4px; padding:0.6rem; margin-top:0.5rem; font-size:0.76rem; color:#E2E8F0; line-height:1.4; white-space:pre-line;">
+                  <strong style="color:#34D399;">• Yếu Quyết Hóa Giải:</strong>\n${sec.remedy_principle}
+                </div>
+              </div>
+            `).join('')}
           </div>
         </section>
 
       </div>
     `;
   }
-
 }
 
 if (typeof window !== 'undefined') {
