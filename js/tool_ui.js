@@ -2005,6 +2005,7 @@ ${reportText}
   renderGoiYThietKeTool() {
     const theory = typeof DESIGN_BLUEPRINT_THEORY !== 'undefined' ? DESIGN_BLUEPRINT_THEORY : null;
     const blueprints = typeof DESIGN_BLUEPRINTS !== 'undefined' ? DESIGN_BLUEPRINTS : [];
+    const hazards = typeof CONSTRUCTION_HAZARDS_MATRIX !== 'undefined' ? CONSTRUCTION_HAZARDS_MATRIX : [];
     const activeBpId = this.state.selectedBlueprintId || 'nha_bao_mientrung';
     const activeBp = blueprints.find(b => b.id === activeBpId) || blueprints[0] || {};
 
@@ -2020,7 +2021,7 @@ ${reportText}
             <span style="font-size:0.82rem; color:var(--text-muted);">Khí Động Học & Cổ Thư</span>
           </div>
 
-          <!-- 1 MENU CHỌN MẪU DUY NHẤT TINH GỌN -->
+          <!-- 1 MENU CHỌN MẪU DUY NHẤT TINH GỌN (8 BẢN VẼ MẪU) -->
           <div style="display:flex; align-items:center; gap:0.4rem;">
             <span style="font-size:0.78rem; color:var(--text-muted);">Mẫu bản vẽ:</span>
             <select onchange="window.toolUI.selectDesignBlueprint(this.value)" style="background:#0F172A; color:#FEF3C7; border:1px solid rgba(56,189,248,0.4); padding:0.28rem 0.6rem; border-radius:6px; font-size:0.8rem; font-weight:700; outline:none; cursor:pointer;">
@@ -2032,7 +2033,7 @@ ${reportText}
         </div>
 
         <!-- =========================================================================
-             PHẦN 2: BỘ BẢN VẼ HÌNH MẪU TRỰC QUAN & HƯỚNG DẪN THI CÔNG
+             PHẦN 1: BỘ BẢN VẼ HÌNH MẪU TRỰC QUAN & HƯỚNG DẪN THI CÔNG
              ========================================================================= -->
         <section style="background:#121722; border:1px solid rgba(56,189,248,0.25); border-radius:10px; padding:1.2rem;">
           
@@ -2102,16 +2103,59 @@ ${reportText}
         </section>
 
         <!-- =========================================================================
-             PHẦN 1: TOÀN BỘ LÝ THUYẾT CỔ THƯ & ĐỊNH LUẬT KHÍ ĐỘNG HỌC (GỌN GÀNG)
+             PHẦN 2: MA TRẬN 10 ĐẠI RỦI RO XÂY DỰNG & BIỆN PHÁP KHẮC PHỤC
+             ========================================================================= -->
+        <section style="background:#121722; border:1px solid rgba(239,68,68,0.25); border-radius:10px; padding:1.2rem;">
+          <div style="border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:0.6rem; margin-bottom:1rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem;">
+            <div>
+              <span style="font-size:0.72rem; font-weight:800; color:#EF4444; text-transform:uppercase;">TRA CỨU RỦI RO CÔNG TRÌNH</span>
+              <h3 style="font-size:1.15rem; color:#FEF3C7; margin:0.2rem 0 0 0;">
+                Ma Trận 10 Đại Rủi Ro Thường Gặp & Giải Pháp Cổ Thư — Khí Động Học
+              </h3>
+            </div>
+            <span style="font-size:0.75rem; color:var(--text-muted);">10 Hồ sơ rủi ro thực tế</span>
+          </div>
+
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:0.8rem;">
+            ${hazards.map((hz, idx) => `
+              <div style="background:#0D111A; border:1px solid rgba(255,255,255,0.06); border-left:4px solid ${hz.risk_level.includes('CỰC KỲ') ? '#EF4444' : (hz.risk_level.includes('NGUY HIỂM') ? '#F59E0B' : '#38BDF8')}; border-radius:6px; padding:0.9rem; display:flex; flex-direction:column; justify-content:space-between;">
+                <div>
+                  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.3rem;">
+                    <span style="font-size:0.7rem; font-weight:800; color:#94A3B8;">RỦI RO 0${idx + 1}</span>
+                    <span style="font-size:0.68rem; font-weight:800; color:${hz.risk_level.includes('CỰC KỲ') ? '#EF4444' : '#F59E0B'}; background:rgba(239,68,68,0.1); padding:0.1rem 0.4rem; border-radius:4px;">
+                      ${hz.risk_level}
+                    </span>
+                  </div>
+                  <h4 style="font-size:0.92rem; color:#FEF3C7; margin:0 0 0.4rem 0; font-weight:700;">
+                    ${hz.name}
+                  </h4>
+                  <div style="font-size:0.76rem; color:#94A3B8; margin-bottom:0.4rem; line-height:1.4;">
+                    <strong style="color:#F87171;">• Hiện tượng:</strong> ${hz.phenomenon}
+                  </div>
+                  <div style="font-size:0.74rem; color:var(--text-muted); margin-bottom:0.4rem;">
+                    <span style="color:#FBBF24;">${hz.classic_ref}</span> | <span style="color:#38BDF8;">${hz.physics_ref}</span>
+                  </div>
+                </div>
+                <div style="background:rgba(52,211,153,0.1); border:1px solid rgba(52,211,153,0.2); border-radius:4px; padding:0.4rem 0.6rem; font-size:0.76rem; color:#A7F3D0; line-height:1.4;">
+                  <strong>✓ Giải pháp:</strong> ${hz.solution}
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </section>
+
+        <!-- =========================================================================
+             PHẦN 3: TOÀN BỘ 6 ĐẠI NGUYÊN LÝ CỔ THƯ & ĐỊNH LUẬT KHÍ ĐỘNG HỌC
              ========================================================================= -->
         <section style="background:#121722; border:1px solid rgba(255,255,255,0.08); border-radius:10px; padding:1.2rem;">
           <div style="border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:0.6rem; margin-bottom:1rem; display:flex; justify-content:space-between; align-items:center;">
             <div>
-              <span style="font-size:0.72rem; font-weight:800; color:#FBBF24; text-transform:uppercase;">PHẦN 1: LÝ THUYẾT CỔ THƯ & ĐỊNH LUẬT KHÍ ĐỘNG HỌC</span>
+              <span style="font-size:0.72rem; font-weight:800; color:#FBBF24; text-transform:uppercase;">PHẦN 3: HỌC THUẬT CỐT LÕI</span>
               <h3 style="font-size:1.15rem; color:#FEF3C7; margin:0.2rem 0 0 0;">
-                Đối Chiếu 3 Đại Nguyên Lý
+                6 Đại Định Luật Khí Động Học & Cổ Thư Phong Thủy
               </h3>
             </div>
+            <span style="font-size:0.75rem; color:var(--text-muted);">Đối chiếu khoa học & thư tịch cổ</span>
           </div>
 
           <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:1rem;">
