@@ -17,7 +17,9 @@ class LibraryRouter {
       'hoagiaicothu': (params) => this.renderTools({ segments: ['hoagiaicothu'] }),
       'hoa-giai': (params) => this.renderTools({ segments: ['hoagiaicothu'] }),
       'diachat64': (params) => this.renderTools({ segments: ['diachat64'] }),
-      'dia-chat': (params) => this.renderTools({ segments: ['diachat64'] })
+      'dia-chat': (params) => this.renderTools({ segments: ['diachat64'] }),
+      'goiythietke': (params) => this.renderTools({ segments: ['goiythietke'] }),
+      'goi-y-thiet-ke': (params) => this.renderTools({ segments: ['goiythietke'] })
     };
     
     this.init();
