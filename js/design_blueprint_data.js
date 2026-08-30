@@ -1,7 +1,7 @@
 /**
- * DỮ LIỆU CÔNG CỤ: GỢI Ý THIẾT KẾ KHÍ ĐỘNG HỌC & CỔ TRUYỀN
+ * DỮ LIỆU CÔNG CỤ: GỢI Ý THIẾT KẾ KHÍ ĐỘNG HỌC & CỔ TRUYỀN TOÀN THƯ (20 ĐẠI MẪU BẢN VẼ)
  * Tích hợp toàn diện 6 Đại Nguyên Lý Cốt Lõi (Cổ Thư & Khí Động Học),
- * 8 Bộ Bản Vẽ Mẫu Trực Quan (SVG Vector), và Ma Trận 10 Đại Rủi Ro Xây Dựng Thực Tế.
+ * 20 Bộ Bản Vẽ Mẫu Trực Quan (SVG Vector), và Ma Trận 10 Đại Rủi Ro Xây Dựng Thực Tế.
  */
 
 const DESIGN_BLUEPRINT_THEORY = {
@@ -39,9 +39,9 @@ const DESIGN_BLUEPRINT_THEORY = {
       title: "4. Hiệu Ứng Cắt Gió Góc Mái & Bung Mép Tôn (Conical Corner Vortices)",
       classic_source: "《營造法式》 (Doanh Tạo Pháp Thức: Đẩu Củng Phi Diêm & Ngõa Trích Thủy)",
       physics_law: "Hiện Tượng Xoáy Nón Khí Động Học Góc Mái (Conical Edge Vortices Peak Suction)",
-      mechanism: "Khi gió bão thổi xiên góc 45° vào góc công trình, dòng khí bị tách đôi cuốn tròn dọc theo 2 mép diềm mái tạo thành cặp Xoáy Nón (Conical Vortices). Vùng tâm xoáy nón này có áp suất âm cục bộ gấp 2.5 - 3.0 lần so với vùng giữa mái, làm bung đinh vít mép tôn đầu tiên rồi lật tung toàn bộ mái.",
+      mechanism: "Khi gió bão thổi xiên góc 45° vào góc công trình, dòng khí bị tách đôi cuốn tròn dọc theo 2 mép diềm mái tạo thành cặp Xoáy Nón. Vùng tâm xoáy nón này có áp suất âm cục bộ gấp 2.5 - 3.0 lần so với vùng giữa mái, làm bung đinh vít mép tôn đầu tiên rồi lật tung toàn bộ mái.",
       classical_view: "Kiến trúc cổ truyền trong 《Doanh Tạo Pháp Thức》 uốn cong góc mái (Phi Diêm) và dùng hàng ngói câu đầu trích thủy nặng đè mép mái để triệt tiêu góc chết tụ xoáy.",
-      remedy_principle: "1. Bố trí gờ chắn gió (Bargeboard/Parapet) dốc 15° dọc viền mái.\n2. Gia cố mật độ đinh vít ke chống bão tại dải biên 1.5m quanh mái với khoảng cách < 40cm."
+      remedy_principle: "1. Bố trí gờ chắn gió dốc 15° dọc viền mái.\n2. Gia cố mật độ đinh vít ke chống bão tại dải biên 1.5m quanh mái với khoảng cách < 40cm."
     },
     {
       id: "internal_pressurization",
@@ -57,7 +57,7 @@ const DESIGN_BLUEPRINT_THEORY = {
       title: "6. Gió Nồm Ẩm Bão Hòa & Hiện Tượng Đọng Sương Sàn Nhà (Dew Point Condensation)",
       classic_source: "《陽宅十書》 (Ẩm Khí Trọc Thủy Đọng Nền & Cách Ẩm Hóa Thổ)",
       physics_law: "Hiện Tượng Ngưng Tụ Điểm Sương (Dew Point Psychrometric Condensation & Thermal Mass Lag)",
-      mechanism: "Vào mùa xuân tại Miền Bắc và Bắc Trung Bộ, gió Đông Nam mang khối khí có độ ẩm tương đối > 95% tràn vào nhà. Mặt sàn bê tông và tường đá có quán tính nhiệt lớn nên nhiệt độ bề mặt vẫn lạnh hơn nhiệt độ điểm sương của không khí (T_floor < T_dew), khiến hơi nước ngưng tụ thành vũng gây ẩm mốc, trơn trượt và hư hỏng thiết bị điện tử.",
+      mechanism: "Vào mùa xuân tại Miền Bắc và Bắc Trung Bộ, gió Đông Nam mang khối khí có độ ẩm tương đối > 95% tràn vào nhà. Mặt sàn bê tông và tường đá có quán tính nhiệt lớn nên nhiệt độ bề mặt vẫn lạnh hơn nhiệt độ điểm sương của không khí, khiến hơi nước ngưng tụ thành vũng gây ẩm mốc, trơn trượt và hư hỏng thiết bị điện tử.",
       classical_view: "《Dương Trạch Thập Thư》 xếp ẩm thấp nền nhà vào 'Trọc Thủy Sát', làm suy giảm chính khí và phát sinh bệnh tật.",
       remedy_principle: "1. Lớp đệm xỉ than hoặc đất sét nung cách nhiệt dưới sàn dày 15-20cm chống cầu lạnh.\n2. Màng chống ẩm PE 2 lớp lót trước khi đổ bê tông lót sàn.\n3. Đóng kín cửa hướng Đông Nam trong những ngày nồm ẩm, chỉ mở cửa thông gió cưỡng bức mặt Bắc."
     }
@@ -288,23 +288,15 @@ const DESIGN_BLUEPRINTS = [
     svg_diagram: `
       <svg viewBox="0 0 800 420" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" style="background:#090D16; border-radius:10px;">
         <rect x="0" y="340" width="800" height="80" fill="#1E293B"/>
-        <line x1="0" y1="340" x2="800" y2="340" stroke="#475569" stroke-width="2"/>
         <g transform="translate(100, 120)">
-          <!-- Khối móng sàn cách ẩm -->
           <rect x="0" y="100" width="600" height="120" fill="#0F172A" stroke="#38BDF8" stroke-width="2"/>
           <text x="300" y="80" fill="#FEF3C7" font-size="13" font-weight="700" text-anchor="middle">MẶT CẮT KẾT CẤU SÀN CHỐNG NỒM ĐIỂM SƯƠNG</text>
-          <!-- Lớp xỉ than cách nhiệt -->
           <rect x="20" y="140" width="560" height="35" fill="#334155" stroke="#F59E0B"/>
-          <text x="300" y="162" fill="#FBBF24" font-size="10" font-weight="700" text-anchor="middle">Lớp Đệm Xỉ Than Hoạt Tính / Gốm Xốp Cách Nhiệt (15cm - 20cm)</text>
-          <!-- Màng chống ẩm PE -->
+          <text x="300" y="162" fill="#FBBF24" font-size="10" font-weight="700" text-anchor="middle">Lớp Đệm Xỉ Than Cách Nhiệt (15cm - 20cm)</text>
           <line x1="20" y1="135" x2="580" y2="135" stroke="#38BDF8" stroke-width="3" stroke-dasharray="6,2"/>
-          <text x="300" y="130" fill="#38BDF8" font-size="9" text-anchor="middle">Màng Chống Ẩm PE 2 Lớp Chống Thấm Ngược</text>
-          <!-- Lớp gạch gốm bề mặt ấm -->
           <rect x="20" y="105" width="560" height="25" fill="#1E293B" stroke="#34D399"/>
-          <text x="300" y="122" fill="#34D399" font-size="10" font-weight="700" text-anchor="middle">Gạch Gốm / Sàn Gỗ Tự Nhiên (Nhiệt Độ Bề Mặt Luôn > T_dew)</text>
+          <text x="300" y="122" fill="#34D399" font-size="10" font-weight="700" text-anchor="middle">Gạch Gốm / Sàn Gỗ (Nhiệt Độ Bề Mặt Luôn > T_dew)</text>
         </g>
-        <path d="M40,260 Q150,220 260,260" fill="none" stroke="#60A5FA" stroke-width="3" stroke-dasharray="4,2"/>
-        <text x="150" y="245" fill="#60A5FA" font-size="10" font-weight="700">Khí Ẩm Đông Nam Bị Cách Ly</text>
       </svg>
     `,
     tree_guidelines: {
@@ -333,19 +325,14 @@ const DESIGN_BLUEPRINTS = [
         <rect x="0" y="320" width="800" height="100" fill="#0284C7" opacity="0.6"/>
         <text x="120" y="350" fill="#FEF3C7" font-size="12" font-weight="700">MỰC NƯỚC LŨ DÂNG CAO</text>
         <g transform="translate(260, 80)">
-          <!-- Cọc móng sâu chống xói -->
           <rect x="40" y="240" width="20" height="90" fill="#475569"/>
           <rect x="220" y="240" width="20" height="90" fill="#475569"/>
-          <!-- Móng bè cốt thép liên kết -->
           <rect x="20" y="220" width="240" height="25" fill="#334155" stroke="#FEF3C7"/>
           <text x="140" y="237" fill="#FEF3C7" font-size="10" font-weight="700" text-anchor="middle">Móng Bè Cốt Thép Chống Lún Lệch</text>
-          <!-- Khung nhà nâng cao vượt lũ -->
           <rect x="30" y="40" width="220" height="180" fill="#0F172A" stroke="#38BDF8" stroke-width="2"/>
           <line x1="30" y1="120" x2="250" y2="120" stroke="#F59E0B" stroke-width="3"/>
           <text x="140" y="110" fill="#FBBF24" font-size="10" font-weight="800" text-anchor="middle">Sàn Gác Lửng Vượt Lũ (+0.8m)</text>
         </g>
-        <path d="M40,360 L240,360" fill="none" stroke="#38BDF8" stroke-width="3"/>
-        <text x="140" y="380" fill="#E0F2FE" font-size="10">Dòng Chảy Xiết Không Xói Móng</text>
       </svg>
     `,
     tree_guidelines: {
@@ -375,15 +362,11 @@ const DESIGN_BLUEPRINTS = [
         <path d="M200,40 L200,360" stroke="#475569" stroke-width="2"/>
         <text x="100" y="320" fill="#94A3B8" font-size="11" font-weight="700">NGÃ TƯ GIAO LỘ</text>
         <g transform="translate(240, 100)">
-          <!-- Nhà vát góc bo tròn -->
           <path d="M40,0 L260,0 L260,220 L0,220 L0,40 Q0,0 40,0 Z" fill="#0F172A" stroke="#38BDF8" stroke-width="2"/>
           <text x="140" y="110" fill="#FEF3C7" font-size="13" font-weight="700" text-anchor="middle">NHÀ VÁT GÓC BO TRÒN R=1.5m</text>
-          <!-- Ban công cong tiêu xoáy -->
           <path d="M-15,40 Q-15,-15 40,-15" fill="none" stroke="#F59E0B" stroke-width="4"/>
           <text x="35" y="-20" fill="#FBBF24" font-size="10" font-weight="700">Ban Công Cong Xé Gió Xoáy</text>
         </g>
-        <path d="M120,180 Q200,180 200,240 Q200,300 260,300" fill="none" stroke="#34D399" stroke-width="3"/>
-        <text x="140" y="165" fill="#34D399" font-size="10">Gió Xoáy Giao Lộ Trượt Êm</text>
       </svg>
     `,
     tree_guidelines: {
@@ -399,6 +382,400 @@ const DESIGN_BLUEPRINTS = [
       position: "Cửa chính bố trí tại cạnh vát đón khí từ cung cát; lam nhôm chữ Z chắn mưa tạt.",
       structure: "Khung vách kính cong cường lực 12mm cách âm cách nhiệt.",
       benefit: "Triệt tiêu góc nhọn xung sát, biến giao lộ ồn ào thành mặt tiền kinh doanh thịnh vượng."
+    }
+  },
+  {
+    id: "nha_thop_hau",
+    name: "Nhà Thóp Hậu",
+    code: "MẪU 09 - NỞ HẬU ẢO & GIẾNG TRỜI ĐỆM",
+    summary: "Hóa giải thế đất thắt cổ chai, giải tỏa áp suất khí nén tích tụ cuối nhà bằng giếng trời và sân vườn nở hậu.",
+    problem_analysis: "Nhà hẹp dần về sau làm luồng khí bị bóp nghẽn tăng áp suất cục bộ, khí ứ đọng không thông thoát gây ngột ngạt và tán tài.",
+    svg_diagram: `
+      <svg viewBox="0 0 800 420" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" style="background:#090D16; border-radius:10px;">
+        <polygon points="150,80 650,80 550,340 250,340" fill="#0F172A" stroke="#38BDF8" stroke-width="2"/>
+        <text x="400" y="60" fill="#FEF3C7" font-size="13" font-weight="700" text-anchor="middle">MẶT BẰNG ĐẤT THÓP HẬU (HÓA GIẢI BẰNG GIẾNG TRỜI CUỐI)</text>
+        <rect x="340" y="240" width="120" height="80" fill="#1E293B" stroke="#F59E0B" stroke-dasharray="4,2"/>
+        <text x="400" y="285" fill="#FBBF24" font-size="11" font-weight="700" text-anchor="middle">Giếng Trời Sau (Nở Hậu Ảo)</text>
+        <circle cx="280" cy="300" r="15" fill="#10B981"/>
+        <circle cx="520" cy="300" r="15" fill="#10B981"/>
+      </svg>
+    `,
+    tree_guidelines: {
+      title: "Quy Chuẩn Cây Xanh Tụ Khí Cuối Nhà",
+      species: "Cây Kim Tiền, Trúc Nhật, Dương Xỉ Cổ Đại.",
+      distance: "Bố trí tại tiểu cảnh giếng trời góc cuối nhà.",
+      structure: "Cây bụi xanh tạo trường năng lượng sinh khí bù đắp cho góc khuyết đất.",
+      benefit: "Hấp thụ thán khí tồn đọng ở góc hẹp cuối nhà."
+    },
+    architecture_guidelines: {
+      title: "Quy Chuẩn Nở Hậu Ảo & Phòng Vuông Vắn",
+      shape: "Ngăn phòng chức năng chính vuông vức ở phía trước; phần góc xéo phía sau làm giếng trời, kho hoặc sân vườn.",
+      position: "Mở giếng trời lớn ở phần đuôi thóp hậu tạo lực hút giải áp khí nén.",
+      structure: "Tường sau ốp kính hoặc gương phản chiếu tạo cảm giác không gian mở rộng.",
+      benefit: "Biến thế đất thóp hậu thành bố cục nở hậu thịnh vượng."
+    }
+  },
+  {
+    id: "nha_ong_dai_hep",
+    name: "Nhà Ống Dài Hẹp",
+    code: "MẪU 10 - SONG TỈNH ĐỐI LƯU GIÓ CHÉO",
+    summary: "Bố trí 2 giếng trời Trước - Sau tạo luồng thông gió chéo (Cross-ventilation) xuyên suốt cho nhà phố dài sâu.",
+    problem_analysis: "Nhà ống sâu 20-25m bị bịt kín 2 bên hông biến thành ống tối tăm tù khí, phòng ngủ giữa nhà thiếu dưỡng khí trầm trọng.",
+    svg_diagram: `
+      <svg viewBox="0 0 800 420" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" style="background:#090D16; border-radius:10px;">
+        <rect x="100" y="120" width="600" height="180" fill="#0F172A" stroke="#38BDF8" stroke-width="2"/>
+        <text x="400" y="100" fill="#FEF3C7" font-size="13" font-weight="700" text-anchor="middle">MẶT CẮT NHÀ PHỐ DÀI VỚI SONG TỈNH (2 GIẾNG TRỜI)</text>
+        <rect x="200" y="80" width="60" height="220" fill="#1E293B" stroke="#F59E0B" stroke-dasharray="4,2"/>
+        <text x="230" y="190" fill="#FBBF24" font-size="10" font-weight="700" text-anchor="middle">Giếng Trời 1</text>
+        <rect x="540" y="80" width="60" height="220" fill="#1E293B" stroke="#F59E0B" stroke-dasharray="4,2"/>
+        <text x="570" y="190" fill="#FBBF24" font-size="10" font-weight="700" text-anchor="middle">Giếng Trời 2</text>
+        <path d="M120,260 L220,240 L520,240 L580,100" fill="none" stroke="#34D399" stroke-width="3"/>
+        <text x="380" y="230" fill="#34D399" font-size="10" font-weight="700" text-anchor="middle">Luồng Gió Chéo Đối Lưu 24/7 →</text>
+      </svg>
+    `,
+    tree_guidelines: {
+      title: "Quy Chuẩn Cây Xanh Trong Giếng Trời",
+      species: "Cây Khế, Cây Phát Tài Núi, Cây Trầu Bà Thanh Xuân.",
+      distance: "Trồng tại bồn đất tự nhiên dưới đáy 2 giếng trời.",
+      structure: "Thân cây vươn thẳng đứng theo trục đứng hút ánh sáng tự nhiên.",
+      benefit: "Cung cấp oxy tươi cho toàn bộ các phòng ngủ tầng trên."
+    },
+    architecture_guidelines: {
+      title: "Quy Chuẩn Song Tỉnh Hút Gió Chéo",
+      shape: "2 Giếng trời cách nhau tối thiểu 8m; tổng diện tích giếng trời chiếm 8% - 10% diện tích sàn.",
+      position: "Giếng 1 đặt cạnh cầu thang giữa nhà, Giếng 2 đặt sát góc cuối nhà.",
+      structure: "Cửa chớp lật thông gió trên nóc giếng trời điều chỉnh được góc mở.",
+      benefit: "Triệt tiêu 100% khí tù ẩm mốc, nhà luôn mát mẻ và sáng tự nhiên."
+    }
+  },
+  {
+    id: "nha_khuc_song_phan_cung",
+    name: "Sông Phản Cung",
+    code: "MẪU 11 - BỜ KÈ TIÊU NĂNG & RẶNG DỪA NƯỚC",
+    summary: "Hóa giải Thủy Sát từ khúc sông cong lưỡi liềm chém vào nhà bằng bờ kè xếp đá phân tán năng lượng sóng và rặng cây chắn dòng.",
+    problem_analysis: "Dòng chảy xiết của khúc sông cong thúc thẳng vào bờ gây xói lở móng và mang theo xung lực tàn phá phong thủy.",
+    svg_diagram: `
+      <svg viewBox="0 0 800 420" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" style="background:#090D16; border-radius:10px;">
+        <path d="M50,100 Q400,300 750,100 L750,0 L50,0 Z" fill="#0284C7" opacity="0.6"/>
+        <text x="400" y="80" fill="#FEF3C7" font-size="13" font-weight="700" text-anchor="middle">KHÚC SÔNG CONG PHẢN CUNG (THỦY ĐAO SÁT)</text>
+        <path d="M100,240 Q400,380 700,240" fill="none" stroke="#F59E0B" stroke-width="8"/>
+        <text x="400" y="320" fill="#FBBF24" font-size="10" font-weight="800" text-anchor="middle">Bờ Kè Đá Xếp Bậc Thang Tiêu Năng</text>
+        <g transform="translate(300, 260)">
+          <rect x="0" y="40" width="200" height="90" fill="#0F172A" stroke="#38BDF8" stroke-width="2"/>
+          <text x="100" y="90" fill="#FEF3C7" font-size="12" font-weight="700" text-anchor="middle">NHÀ Ở AN TOÀN</text>
+        </g>
+      </svg>
+    `,
+    tree_guidelines: {
+      title: "Quy Chuẩn Cây Thủy Sinh Chắn Sóng",
+      species: "Dừa Nước, Cây Bần, Cây Đước, Cỏ Vetiver.",
+      distance: "Trồng thành dải dày 3m - 5m dọc mép nước bờ kè.",
+      structure: "Rễ chùm cắm sâu giữ đất, thân dẻo uốn lượn tiêu tán sóng vỗ.",
+      benefit: "Bảo vệ bờ kè chống xói lở móng 100%."
+    },
+    architecture_guidelines: {
+      title: "Quy Chuẩn Bờ Kè Xếp Đá Phân Tầng",
+      shape: "Kè mái nghiêng 1:2 xếp đá hộc bậc thang tiêu tán năng lượng thủy lực.",
+      position: "Nhà lùi cách mép bờ sông tối thiểu 10m - 15m.",
+      structure: "Móng cọc bê tông sâu cắm vào tầng địa chất ổn định.",
+      benefit: "Biến thế Phản Cung nguy hiểm thành minh đường thủy tụ sinh thái."
+    }
+  },
+  {
+    id: "nha_huong_tay_chong_nang",
+    name: "Chống Nắng Tây",
+    code: "MẪU 12 - MẶT ĐỨNG 2 LỚP & GIÀN CÂY XANH",
+    summary: "Thiết kế Double-skin Façade (Mặt đứng 2 lớp thông khí) và giàn hoa leo hạ nhiệt bức xạ mặt trời hướng Tây từ 6°C - 8°C.",
+    problem_analysis: "Nắng chiều hướng Tây hun đốt tường nhà lên 45°C tỏa nhiệt cả ban đêm gây ngột ngạt và tốn điện điều hòa.",
+    svg_diagram: `
+      <svg viewBox="0 0 800 420" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" style="background:#090D16; border-radius:10px;">
+        <circle cx="100" cy="80" r="40" fill="#EF4444"/>
+        <text x="100" y="85" fill="#FEF3C7" font-size="11" font-weight="800" text-anchor="middle">NẮNG TÂY</text>
+        <g transform="translate(260, 100)">
+          <rect x="0" y="0" width="400" height="220" fill="#0F172A" stroke="#38BDF8" stroke-width="2"/>
+          <line x1="-30" y1="0" x2="-30" y2="220" stroke="#F59E0B" stroke-width="8" stroke-dasharray="10,4"/>
+          <text x="-40" y="115" fill="#FBBF24" font-size="10" font-weight="700" transform="rotate(-90 -40 115)" text-anchor="middle">Lớp Lam Gạch Hoa Gió (-6°C)</text>
+          <text x="200" y="110" fill="#FEF3C7" font-size="13" font-weight="700" text-anchor="middle">KHÔNG GIAN SỐNG MÁT MẺ</text>
+        </g>
+      </svg>
+    `,
+    tree_guidelines: {
+      title: "Quy Chuẩn Giàn Cây Leo Chống Nắng",
+      species: "Hoa Giấy, Cát Đằng, Cúc Tần Ấn Độ, Sử Quân Tử.",
+      distance: "Trồng tại bồn hoa ban công và giàn leo mặt đứng hướng Tây.",
+      structure: "Màn chắn sinh học xanh hấp thụ 80% bức xạ nhiệt mặt trời.",
+      benefit: "Giảm nhiệt độ bề mặt tường từ 6°C - 8°C."
+    },
+    architecture_guidelines: {
+      title: "Quy Chuẩn Mặt Đứng 2 Lớp (Double-Skin)",
+      shape: "Lớp ngoài bằng gạch hoa gió/lam nhôm cách lớp tường kính bên trong 0.6m - 1.0m.",
+      position: "Hành lang đệm thông khí giải nhiệt liên tục từ dưới lên nóc.",
+      structure: "Kính Low-E cản nhiệt kết hợp rèm cuốn cách nhiệt.",
+      benefit: "Tiết kiệm 50% chi phí điện năng làm mát mùa hè."
+    }
+  },
+  {
+    id: "nha_canh_cau_vuot",
+    name: "Gần Cầu Vượt",
+    code: "MẪU 13 - TƯỜNG CÁCH ÂM & ĐỆM KHÍ ÂM",
+    summary: "Hóa giải Liềm Đao Sát và ô nhiễm tiếng ồn, bụi mịn từ cầu vượt cao tốc chém ngang mặt tiền nhà.",
+    problem_analysis: "Cầu vượt trên cao tạo luồng khí cắt ngang tầm nhìn, xe cộ rung lắc phát sinh sóng âm trầm làm hại thần kinh.",
+    svg_diagram: `
+      <svg viewBox="0 0 800 420" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" style="background:#090D16; border-radius:10px;">
+        <rect x="40" y="160" width="280" height="25" fill="#475569" stroke="#FEF3C7"/>
+        <text x="180" y="150" fill="#EF4444" font-size="11" font-weight="800">CẦU VƯỢT CAO TỐC (LIỀM ĐAO SÁT)</text>
+        <g transform="translate(360, 80)">
+          <rect x="0" y="0" width="360" height="260" fill="#0F172A" stroke="#38BDF8" stroke-width="2"/>
+          <rect x="10" y="10" width="20" height="240" fill="#10B981"/>
+          <text x="20" y="130" fill="#FEF3C7" font-size="9" font-weight="700" transform="rotate(-90 20 130)" text-anchor="middle">Vách Cây Xanh Cách Âm</text>
+          <text x="190" y="130" fill="#FEF3C7" font-size="13" font-weight="700" text-anchor="middle">KHÔNG GIAN CÁCH ÂM 100%</text>
+        </g>
+      </svg>
+    `,
+    tree_guidelines: {
+      title: "Quy Chuẩn Cây Xanh Cách Âm & Chắn Bụi",
+      species: "Trắc Bách Diệp, Cây Sanh Tán Dày, Trúc Quân Tử.",
+      distance: "Trồng thành dải xanh dày sát tường biên đối diện cầu vượt.",
+      structure: "Lá cây dày hấp thụ sóng âm và giữ bụi mịn từ xe cộ.",
+      benefit: "Giảm 65% tiếng ồn và 80% bụi mịn xâm nhập vào nhà."
+    },
+    architecture_guidelines: {
+      title: "Quy Chuẩn Cửa Kính Cách Âm Hộp Chân Không",
+      shape: "Mặt tiền hướng cầu vượt bố trí logia đệm sâu 1.5m; không đặt phòng ngủ hướng cầu.",
+      position: "Cửa đi mở tại mặt sau hoặc ngõ hông yên tĩnh.",
+      structure: "Kính hộp 2 lớp chân không 5-9-5mm cách âm 40dB.",
+      benefit: "Triệt tiêu hoàn toàn rung chấn và Liềm Đao Sát."
+    }
+  },
+  {
+    id: "nha_dat_ao_dam_lay",
+    name: "Đất Ao Đầm",
+    code: "MẪU 14 - NHÀ SÀN MÓNG CỪ TRÀM",
+    summary: "Thiết kế nhà sàn sinh thái móng cọc cừ tràm kết hợp sàn nổi thông thoáng chống sụt lún và hàn khí trọc thủy.",
+    problem_analysis: "Đất bùn ao đầm lầy có sức chịu tải yếu, hàn khí ẩm thấp bốc lên gây bệnh thấp khớp và sụt lún nứt móng.",
+    svg_diagram: `
+      <svg viewBox="0 0 800 420" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" style="background:#090D16; border-radius:10px;">
+        <rect x="0" y="280" width="800" height="140" fill="#334155" opacity="0.8"/>
+        <text x="120" y="320" fill="#94A3B8" font-size="11" font-weight="700">TẦNG BÙN ĐẤT YẾU</text>
+        <g transform="translate(240, 80)">
+          <line x1="40" y1="200" x2="40" y2="330" stroke="#F59E0B" stroke-width="6"/>
+          <line x1="280" y1="200" x2="280" y2="330" stroke="#F59E0B" stroke-width="6"/>
+          <text x="160" y="300" fill="#FBBF24" font-size="10" font-weight="700" text-anchor="middle">Cọc Cừ Tràm / Bê Tông 25 cọc/m2</text>
+          <rect x="20" y="50" width="280" height="150" fill="#0F172A" stroke="#38BDF8" stroke-width="2"/>
+          <text x="160" y="130" fill="#FEF3C7" font-size="13" font-weight="700" text-anchor="middle">SÀN NỔI CÁCH ĐẤT 1.2m</text>
+        </g>
+      </svg>
+    `,
+    tree_guidelines: {
+      title: "Quy Chuẩn Cây Thủy Sinh Hút Hàn Khí",
+      species: "Cây Tràm Gió, Cây Liễu Rũ, Thủy Trúc.",
+      distance: "Trồng quanh bờ đầm và chân móng.",
+      structure: "Rễ cây hút ẩm làm khô ráo nền đất xung quanh.",
+      benefit: "Thanh lọc hàn khí và giữ vững đất móng bùn."
+    },
+    architecture_guidelines: {
+      title: "Quy Chuẩn Sàn Nâng Cách Ẩm 1.2m",
+      shape: "Sàn nhà nâng cao 1.0m - 1.5m so với mặt nước bùn; gầm sàn thông gió tự nhiên.",
+      position: "Cột nhà bằng bê tông chống thấm hoặc gỗ xử lý ngâm bùn chống mối mọt.",
+      structure: "Móng cọc cừ tràm mật độ 25 cọc/m2 dưới đầu cọc ngập nước.",
+      benefit: "Triệt tiêu 100% hàn khí trọc thủy, công trình bền vững trăm năm."
+    }
+  },
+  {
+    id: "nha_sat_vach_nui_da",
+    name: "Sát Vách Núi",
+    code: "MẪU 15 - RÃNH HỨNG ĐÁ LĂN CHỮ U",
+    summary: "Hóa giải Thạch Sát và nguy cơ đá lăn sạt trượt từ vách núi dựng đứng phía sau nhà.",
+    problem_analysis: "Vách núi đá dốc đứng phía sau tích tụ áp lực địa chất lớn, mưa bão làm nứt vỡ đá lăn đè sập công trình.",
+    svg_diagram: `
+      <svg viewBox="0 0 800 420" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" style="background:#090D16; border-radius:10px;">
+        <polygon points="0,0 200,0 200,340 0,340" fill="#475569"/>
+        <text x="100" y="170" fill="#FEF3C7" font-size="12" font-weight="800" text-anchor="middle">VÁCH NÚI ĐÁ</text>
+        <path d="M210,340 L250,340 L250,280 L290,280" fill="none" stroke="#F59E0B" stroke-width="4"/>
+        <text x="250" y="260" fill="#FBBF24" font-size="9" font-weight="700">Rãnh Chữ U Hứng Đá Lăn</text>
+        <g transform="translate(320, 120)">
+          <rect x="0" y="0" width="380" height="220" fill="#0F172A" stroke="#38BDF8" stroke-width="2"/>
+          <text x="190" y="110" fill="#FEF3C7" font-size="13" font-weight="700" text-anchor="middle">NHÀ Ở CÁCH LY AN TOÀN 6m</text>
+        </g>
+      </svg>
+    `,
+    tree_guidelines: {
+      title: "Quy Chuẩn Rừng Cây Cản Đá Lăn",
+      species: "Tre Bát Độ, Keo Dậu, Thông Đất Dốc.",
+      distance: "Trồng thành dải rậm rạp giữa vách núi và rãnh hứng đá.",
+      structure: "Bụi tre dày hấp thụ động năng và chặn giữ đá lăn từ sườn núi.",
+      benefit: "Ngăn chặn 90% nguy cơ đá rơi trúng công trình."
+    },
+    architecture_guidelines: {
+      title: "Quy Chuẩn Hành Lang Cách Ly & Rãnh Chữ U",
+      shape: "Xây tường bê tông chắn đá dày 30cm kết hợp rãnh hứng chữ U sâu 1.5m phía sau nhà.",
+      position: "Công trình lùi cách chân vách núi tối thiểu 6.0m.",
+      structure: "Tường lưng nhà đổ bê tông cốt thép toàn khối kiên cố.",
+      benefit: "Bảo vệ an toàn tuyệt đối cho người và tài sản."
+    }
+  },
+  {
+    id: "nha_chu_l_khuyet_goc",
+    name: "Nhà Chữ L Khuyết",
+    code: "MẪU 16 - LẤP GÓC KHUYẾT BẰNG THỦY MỘC",
+    summary: "Hóa giải Lưỡi Búa Sát (thế dao phay chém) của nhà chữ L bằng tiểu cảnh hồ nước và mái hiên vòm cân bằng trường khí.",
+    problem_analysis: "Nhà chữ L thiếu hẳn một góc cung bát quái, tạo thành mũi dao nhọn chém vào phòng ngủ gây bất hòa và suy sụp tài vận.",
+    svg_diagram: `
+      <svg viewBox="0 0 800 420" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" style="background:#090D16; border-radius:10px;">
+        <polygon points="120,60 480,60 480,180 300,180 300,340 120,340" fill="#0F172A" stroke="#38BDF8" stroke-width="2"/>
+        <text x="210" y="200" fill="#FEF3C7" font-size="12" font-weight="700">KHỐI NHÀ CHỮ L</text>
+        <rect x="300" y="180" width="180" height="160" fill="#1E293B" stroke="#10B981" stroke-dasharray="4,2"/>
+        <circle cx="390" cy="260" r="45" fill="#0284C7" opacity="0.7"/>
+        <text x="390" y="265" fill="#FEF3C7" font-size="10" font-weight="700" text-anchor="middle">Hồ Nước & Vườn Cây</text>
+        <text x="390" y="280" fill="#E0F2FE" font-size="9" text-anchor="middle">(Lấp Đầy Góc Khuyết)</text>
+      </svg>
+    `,
+    tree_guidelines: {
+      title: "Quy Chuẩn Cây Xanh Lấp Góc Khuyết",
+      species: "Cây Lộc Vừng, Tùng La Hán, Cây Mai Vàng.",
+      distance: "Bố trí tại góc khuyết sân trong của chữ L.",
+      structure: "Cây dáng tròn đầy tạo điểm cân bằng thị giác và bổ sung năng lượng.",
+      benefit: "Bổ khuyết trọn vẹn cung bát quái bị thiếu hụt."
+    },
+    architecture_guidelines: {
+      title: "Quy Chuẩn Mái Hiên Vòm & Tiểu Cảnh Thủy",
+      shape: "Lắp mái hiên vòm kính hoặc lam che kết nối 2 cánh chữ L tạo hình chữ nhật hoàn chỉnh.",
+      position: "Bố trí hồ cá Koi hoặc đài phun nước tròn tại tâm góc khuyết.",
+      structure: "Đèn chiếu sáng hướng thẳng đứng lên góc mái vào ban đêm.",
+      benefit: "Hóa giải hoàn toàn thế Lưỡi Búa Sát, gia đạo hòa thuận thịnh vượng."
+    }
+  },
+  {
+    id: "nha_doi_dien_cot_dien",
+    name: "Đối Diện Cột Điện",
+    code: "MẪU 17 - BÌNH PHONG TÁN XẠ ĐIỆN TỪ",
+    summary: "Hóa giải Hỏa Sát / Xung Thiên Sát từ cột điện cao thế và biến áp ngay trước cổng nhà.",
+    problem_analysis: "Cột điện và máy biến áp phát ra bức xạ điện từ trường cực lớn làm nhiễu loạn sóng não, gây mất ngủ và căng thẳng.",
+    svg_diagram: `
+      <svg viewBox="0 0 800 420" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" style="background:#090D16; border-radius:10px;">
+        <line x1="120" y1="60" x2="120" y2="340" stroke="#EF4444" stroke-width="6"/>
+        <line x1="80" y1="100" x2="160" y2="100" stroke="#EF4444" stroke-width="4"/>
+        <text x="120" y="45" fill="#EF4444" font-size="11" font-weight="800" text-anchor="middle">CỘT ĐIỆN HỎA SÁT</text>
+        <g transform="translate(240, 100)">
+          <rect x="0" y="20" width="12" height="180" fill="#F59E0B" stroke="#FEF3C7"/>
+          <text x="6" y="15" fill="#FBBF24" font-size="9" font-weight="700" text-anchor="middle">Bình Phong</text>
+          <rect x="40" y="0" width="460" height="220" fill="#0F172A" stroke="#38BDF8" stroke-width="2"/>
+          <text x="270" y="110" fill="#FEF3C7" font-size="13" font-weight="700" text-anchor="middle">TRƯỜNG KHÍ ĐƯỢC BẢO VỆ</text>
+        </g>
+      </svg>
+    `,
+    tree_guidelines: {
+      title: "Quy Chuẩn Cây Xanh Hấp Thụ Điện Từ",
+      species: "Cây Chuối Cảnh, Cây Lưỡi Hổ, Cây Cau Nga Mi.",
+      distance: "Trồng thành hàng rào xanh sát tường rào đối diện cột điện.",
+      structure: "Lá cây bản rộng chứa nhiều nước hoạt động như màn chắn sóng điện từ.",
+      benefit: "Giảm 70% cường độ bức xạ điện từ trường thâm nhập."
+    },
+    architecture_guidelines: {
+      title: "Quy Chuẩn Tường Rào Tán Xạ & Gương Bát Quái",
+      shape: "Xây bình phong đặc cao 2.2m chắn thẳng tầm nhìn từ cửa chính ra cột điện.",
+      position: "Cửa chính mở lệch sang một bên cung sinh khí.",
+      structure: "Treo Gương Bát Quái Lồi trên mí cửa chính để tán xạ xung lực Hỏa Sát.",
+      benefit: "Bảo vệ giấc ngủ sâu và sức khỏe tinh thần cho cả gia đình."
+    }
+  },
+  {
+    id: "nha_gan_nghia_trang_benh_vien",
+    name: "Gần Nghĩa Trang",
+    code: "MẪU 18 - VÀNH ĐAI TÙNG BÁCH DƯƠNG TÍNH",
+    summary: "Hóa giải Âm Khí Sát và u uất từ bệnh viện, nghĩa trang hoặc nhà tang lễ lân cận.",
+    problem_analysis: "Môi trường xung quanh có trường năng lượng âm tính cao làm giảm dương khí của người sống, gây u ám và trầm cảm.",
+    svg_diagram: `
+      <svg viewBox="0 0 800 420" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" style="background:#090D16; border-radius:10px;">
+        <rect x="40" y="100" width="180" height="200" fill="#334155"/>
+        <text x="130" y="200" fill="#94A3B8" font-size="12" font-weight="700" text-anchor="middle">NGHĨA TRANG / ÂM KHÍ</text>
+        <g transform="translate(260, 80)">
+          <rect x="0" y="0" width="20" height="240" fill="#10B981"/>
+          <text x="10" y="120" fill="#FEF3C7" font-size="9" font-weight="700" transform="rotate(-90 10 120)" text-anchor="middle">Vành Đai Tùng Bách</text>
+          <rect x="40" y="20" width="440" height="200" fill="#0F172A" stroke="#F59E0B" stroke-width="2"/>
+          <text x="260" y="120" fill="#FEF3C7" font-size="13" font-weight="700" text-anchor="middle">GIA TRẠCH THUẦN DƯƠNG QUANG MINH</text>
+        </g>
+      </svg>
+    `,
+    tree_guidelines: {
+      title: "Quy Chuẩn Cây Dương Tính Cường Thịnh",
+      species: "Cây Tùng La Hán, Cây Bách Xanh, Cây Hoa Đào, Cây Ngải Cứu.",
+      distance: "Trồng thành hàng rào dày đặc bao bọc phía tiếp giáp khu âm khí.",
+      structure: "Lá kim chứa nhiều tinh dầu thơm tự nhiên tăng cường trường sinh khí Dương tính.",
+      benefit: "Đẩy lùi hoàn toàn tà khí và năng lượng âm u ám."
+    },
+    architecture_guidelines: {
+      title: "Quy Chuẩn Ánh Sáng Quang Phổ Vàng & Cửa Hướng Nam",
+      shape: "Tường rào xây cao 2.2m - 2.5m; mở rộng cửa sổ đón nắng hướng Nam và Đông Nam.",
+      position: "Phòng thờ và phòng ngủ đặt tại vị trí cung Dương quang đãng nhất.",
+      structure: "Hệ thống chiếu sáng đèn vàng ấm 3000K bật liên tục ở sân trước ban đêm.",
+      benefit: "Duy trì trường khí gia trạch luôn ấm cúng, an lành và vượng phát."
+    }
+  },
+  {
+    id: "nha_day_thung_lung_suong_mu",
+    name: "Đáy Thung Lũng",
+    code: "MẪU 19 - CỐT NỀN NÂNG & THÔNG KHÍ CƯỠNG BỨC",
+    summary: "Hóa giải khí tù đọng sương mù axit và độ ẩm cao quanh năm ở đáy thung lũng, lòng chảo đồi núi.",
+    problem_analysis: "Đáy thung lũng tích tụ khí nặng và sương mù độc hại không lưu thông, gây ẩm mốc và bệnh đường hô hấp.",
+    svg_diagram: `
+      <svg viewBox="0 0 800 420" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" style="background:#090D16; border-radius:10px;">
+        <path d="M0,80 Q400,340 800,80 L800,420 L0,420 Z" fill="#1E293B"/>
+        <text x="400" y="320" fill="#94A3B8" font-size="11" font-weight="700" text-anchor="middle">LÒNG CHẢO THUNG LŨNG (KHÍ TÙ ĐỌNG)</text>
+        <g transform="translate(280, 140)">
+          <rect x="0" y="40" width="240" height="120" fill="#0F172A" stroke="#38BDF8" stroke-width="2"/>
+          <text x="120" y="100" fill="#FEF3C7" font-size="12" font-weight="700" text-anchor="middle">CỐT NỀN NÂNG CAO 1.5m</text>
+          <line x1="120" y1="40" x2="120" y2="-20" stroke="#F59E0B" stroke-width="4"/>
+          <text x="120" y="-30" fill="#FBBF24" font-size="10" font-weight="700" text-anchor="middle">Ống Khói Hút Khí Nóc</text>
+        </g>
+      </svg>
+    `,
+    tree_guidelines: {
+      title: "Quy Chuẩn Cây Xanh Hút Ẩm Thung Lũng",
+      species: "Cây Bạch Đàn, Cây Thông, Cây Tràm Gió.",
+      distance: "Trồng thưa thoáng quanh nhà để không cản trở gió lưu thông.",
+      structure: "Tán cây thoáng giúp ánh nắng chiếu rọi xuống sưởi ấm sân.",
+      benefit: "Làm khô ráo không khí và xua tan sương mù độc hại."
+    },
+    architecture_guidelines: {
+      title: "Quy Chuẩn Nâng Nền & Quạt Hút Nóc",
+      shape: "Cốt nền tầng 1 nâng cao 1.2m - 1.5m so với mặt đất lòng chảo.",
+      position: "Mở cửa lớn ở hướng đón gió thông thung lũng.",
+      structure: "Lắp đặt quạt thông gió cưỡng bức trên nóc mái hút khí ẩm ra ngoài liên tục.",
+      benefit: "Đảm bảo không khí trong nhà luôn khô ráo và thoáng đãng."
+    }
+  },
+  {
+    id: "nha_ven_bien_song_gio",
+    name: "Ven Biển Sóng Lớn",
+    code: "MẪU 20 - TƯỜNG CHẮN SÓNG 30° & BÊ TÔNG BỀN SUNFAT",
+    summary: "Thiết kế tường chắn sóng nghiêng 30° triệt tiêu năng lượng sóng biển và chống ăn mòn muối biển cho nhà sát mép nước.",
+    problem_analysis: "Sóng biển đánh trực diện vào chân móng gây xói lở dữ dội, hơi muối biển ăn mòn phá hủy cốt thép bê tông nhanh gấp 5 lần.",
+    svg_diagram: `
+      <svg viewBox="0 0 800 420" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" style="background:#090D16; border-radius:10px;">
+        <path d="M0,280 Q200,240 400,280 L400,420 L0,420 Z" fill="#0284C7" opacity="0.8"/>
+        <text x="120" y="340" fill="#FEF3C7" font-size="12" font-weight="800">SÓNG BIỂN VA ĐẬP</text>
+        <polygon points="300,360 400,200 440,200 440,360" fill="#475569" stroke="#FEF3C7"/>
+        <text x="360" y="300" fill="#FBBF24" font-size="9" font-weight="700" transform="rotate(-55 360 300)">Tường Kè Nghiêng 30°</text>
+        <g transform="translate(480, 100)">
+          <rect x="0" y="0" width="280" height="220" fill="#0F172A" stroke="#38BDF8" stroke-width="2"/>
+          <text x="140" y="110" fill="#FEF3C7" font-size="13" font-weight="700" text-anchor="middle">BIỆT THỰ BIỂN BỀN VỮNG</text>
+        </g>
+      </svg>
+    `,
+    tree_guidelines: {
+      title: "Quy Chuẩn Cây Chịu Mặn Ven Biển",
+      species: "Cây Phi Lao, Cây Mù U, Cây Dừa Biển, Cây Bàng Vuông.",
+      distance: "Trồng thành rừng phòng hộ dày 10m - 15m phía trước mép sóng.",
+      structure: "Rễ bám sâu vào cát, tán dẻo chịu đựng bão biển cấp 12.",
+      benefit: "Tiêu tán 80% năng lượng sóng thần và gió muối biển."
+    },
+    architecture_guidelines: {
+      title: "Quy Chuẩn Bê Tông Bền Sunfat & Sơn Phủ Kỵ Nước",
+      shape: "Tường chắn sóng dốc nghiêng 30° khiến sóng trượt lên và tự triệt tiêu năng lượng.",
+      position: "Công trình lùi sâu sau hàng rào rừng phòng hộ.",
+      structure: "Sử dụng xi măng bền sunfat PCSR, lớp bê tông bảo vệ cốt thép dày >= 50mm.",
+      benefit: "Công trình trơ vững trước sóng gió và hơi muối biển qua nhiều thập kỷ."
     }
   }
 ];
