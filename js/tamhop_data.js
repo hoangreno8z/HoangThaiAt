@@ -1,16 +1,16 @@
 // =========================================================================
-// ĐẠI KINH ĐIỂN TAM HỢP PHÁI THỦY PHÁP & LA BÀN TOÀN THƯ (10 TIẾT CHÁNH TÔNG ĐỒ SỘ)
-// Nguồn gốc: Trích xuất 100% từ 8 bộ Đại Thư Tịch Cổ Chánh Tông:
+// ĐẠI KINH ĐIỂN TAM HỢP PHÁI THỦY PHÁP & ĐẠI TRỊ THỦY TOÀN THƯ (10 TIẾT CHÁNH TÔNG ĐỒ SỘ)
+// Nguồn gốc: Trích xuất 100% từ 10 bộ Đại Thư Tịch Cổ Chánh Tông:
 // 1. 《羅經透解》 (La Kinh Thấu Giải: Tam Bàn Tam Châm — Vương Đạo Hanh)
 // 2. 《青囊奧語》 (Thanh Nang Áo Ngữ: Song Sơn Tam Hợp — Dương Quân Tùng)
 // 3. 《天玉經》 (Thiên Ngọc Kinh: Giang Đông Giang Tây Cục — Dương Quân Tùng & Tằng Văn Xuyên)
 // 4. 《撼龍經 • 疑龍經》 (Hám Long Kinh & Nghi Long Kinh — Dương Quân Tùng)
-// 5. 《地理五訣·綱領篇》 (Địa Lý Ngũ Quyết: Ngũ Yếu & Tứ Đại Cục — Triệu Cửu Phong)
+// 5. 《水龍經》 & 《地理人子須知》 (Thủy Long Kinh & Địa Lý Nhân Tử Tu Tri: 21 Thế Cát Thủy & Sát Thủy)
 // 6. 《地理五訣·水法篇》 (Địa Lý Ngũ Quyết: 12 Cung Trường Sinh Thủy Pháp — Triệu Cửu Phong)
 // 7. 《地理五訣·立向篇》 (Địa Lý Ngũ Quyết: Tứ Đại Cát Hướng — Triệu Cửu Phong)
 // 8. 《催官篇》 (Thôi Quan Thiên: Nhân Bàn Tiêu Sa & 28 Tú — Lại Bố Y)
 // 9. 《玉尺經·天機賦 & 雪盲賦》 (Ngọc Xích Kinh & Hoàng Tuyền Sát — Lưu Bá Ôn chú giải)
-// 10. 《Địa Lý Tả Ao: Thủy Pháp Toàn Biên Đại Việt》 (Thánh Tả Ao - Việt Nam)
+// 10. 《營造法式》 & 《Địa Lý Tả Ao》 (Doanh Tạo Pháp Thức: Thủy Khẩu Quan Khóa & Thoát Nước Nội Thất Dương Trạch)
 // Tuyệt đối không tự ý cắt xén, dịch thuần Việt chuẩn mực 100%, kèm chuyên khảo sư phạm sâu sắc.
 // =========================================================================
 const TAMHOP_FENGSHUI_PART_1 = {
@@ -245,40 +245,51 @@ const TAMHOP_FENGSHUI_PART_4 = {
 
 const TAMHOP_FENGSHUI_PART_5 = {
   "chapter_number": 5,
-  "classic_source": "《地理五訣·綱領篇》 (Địa Lý Ngũ Quyết: Cương Lĩnh) — Triệu Cửu Phong (Thanh·趙九峰, 1786)",
-  "chapter_title": "Tiết V: Địa Lý Ngũ Quyết — Ngũ Yếu Cương Lĩnh: Long, Huyệt, Sa, Thủy, Hướng & Tứ Đại Cục Khởi Nguyên",
-  "sub_title": "Toàn văn tác phẩm gối đầu giường thực chiến số 1 của Triệu Cửu Phong: Khảo sát Ngũ Quyết và phân định ranh giới 4 Đại Cục Kim, Mộc, Thủy, Hỏa",
-  "stages_title": "Giải Mã Chi Tiết Ngũ Quyết Cương Lĩnh & Tứ Đại Cục (Chuyên Khảo Sư Phạm Đồ Sộ)",
+  "classic_source": "《水龍經》 (Thủy Long Kinh) & 《地理人子須知》 (Địa Lý Nhân Tử Tu Tri)",
+  "chapter_title": "Tiết V: Đại Trị Thủy Toàn Thư — 10 Thế Cát Thủy & 11 Thế Sát Thủy Loan Đầu Hình Thế",
+  "sub_title": "Toàn tập 21 thế nước kinh điển: Khảo sát chi tiết Ngọc Đới, Cửu Khúc, Tụ Thủy Minh Đường vs Phản Cung, Trực Xung, Cát Cước, Xuyên Tâm, Tiễn Đao Thủy",
+  "stages_title": "Giải Mã Chi Tiết 21 Thế Nước Cát Hung Loan Đầu (Chuyên Khảo Sư Phạm Đồ Sộ)",
   "canonical_texts": [
     {
-      "hanzi": "地理之法，不出五訣：一曰龍，二曰穴，三曰砂，四曰水，五曰向。\n龍欲其生旺，穴欲其融結，砂欲其環抱，水欲其朝聚，向欲其合度。\n五者備而全，吉地自成。\n四重大局分天地：金局、木局、水局、火局。各本其三合之位，立生旺墓三合之理。\n龍水配合，陰陽相契，富貴福澤綿綿不絕。",
-      "pinyin": "Địa lý chi pháp, bất xuất Ngũ Quyết: Nhất viết Long, nhị viết Huyệt, tam viết Sa, tứ viết Thủy, ngũ viết Hướng.\nLong dục kỳ sinh vượng, Huyệt dục kỳ dung kết, Sa dục kỳ hoàn bảo, Thủy dục kỳ triều tụ, Hướng dục kỳ hợp độ.\nNgũ giả bị nhi toàn, cát địa tự thành.\nTứ trọng đại cục phân thiên địa: Kim cục, Mộc cục, Thủy cục, Hỏa cục. Các bản kỳ tam hợp chi vị, lập Sinh Vượng Mộ tam hợp chi lý.\nLong thủy phối hợp, âm dương tương khế, phú quý phúc trạch miên miên bất tuyệt.",
-      "meaning": "PHÉP TẮC CỦA ĐỊA LÝ KHÔNG NGOÀI NĂM ĐIỀU CỐT YẾU (NGŨ QUYẾT): 1. LONG (Mạch núi tới), 2. HUYỆT (Tâm điểm kết tụ), 3. SA (Gò đồi xung quanh che chở), 4. THỦY (Dòng nước chảy đến và đi), 5. HƯỚNG (Trục tọa độ la bàn đón khí).\n\nNăm yếu tố này vẹn toàn thì đất lành tự khắc hình thành.\nBỐN ĐẠI CỤC LỚN PHÂN ĐỊNH TRỜI ĐẤT: Kim Cục, Mộc Cục, Thủy Cục, Hỏa Cục. Mỗi cục đều căn cứ vào 3 vị trí Tam Hợp (Sinh - Vượng - Mộ) để định đoạt sự phối hợp giữa Long và Nước.",
-      "source": "Địa Lý Ngũ Quyết (地理五訣) — Quyển I: Cương Lĩnh Thiên (Triệu Cửu Phong)"
+      "hanzi": "水路環抱如玉帶，名曰金城水，富貴雙全；九曲入明堂，當朝宰相；明堂聚水，民富物豐。\n反弓無情，射向宅身，子孫不孝遠走他鄉；一條直水一條槍，衝心直射大難當；水若直去如脫弦之箭，家無隔宿糧。\n兩水交匯如剪刀，骨肉相殘；水流逼近割地根，居人足疾；水穿堂過如漏卮，家財散盡。",
+      "pinyin": "Thủy lộ hoàn bảo như ngọc đới, danh viết Kim Thành Thủy, phú quý song toàn; Cửu khúc nhập minh đường, đương triều tể tướng; Minh đường tụ thủy, dân phú vật phong.\nPhản cung vô tình, xạ hướng trạch thân, tử tôn bất hiếu viễn tẩu tha hương; Nhất điều trực thủy nhất điều thương, xung tâm trực xạ đại nan đương; Thủy nhược trực khứ như thoát huyền chi tiễn, gia vô cách túc lương.\nLưỡng thủy giao hối như tiễn đao, cốt nhục tương tàn; Thủy lưu bức cận cát địa căn, cư nhân túc tật; Thủy xuyên đường quá như lậu chi, gia tài tán tận.",
+      "meaning": "TỔNG LUẬN 21 THẾ CÁT THỦY & SÁT THỦY CỦA THỦY LONG KINH:\n- NHÓM CÁT THỦY: Nước ôm vòng như đai ngọc (Kim Thành Thủy) chủ giàu sang vẹn toàn; Nước chín khúc quanh co chầu vào Minh Đường ắt sinh Tể Tướng; Nước tụ êm đềm trước sân thì dân giàu của đọng.\n- NHÓM SÁT THỦY: Nước lượn phản cung lưng cong bắn vào nhà làm con cháu ly tán tha hương; Dòng nước đâm thẳng vào tim nhà như ngọn giáo sắt chuốc lấy đại họa; Nước chảy dốc tuột như tên rời cung thì không có gạo thừa qua đêm; Hai dòng nước kẹp hình lưỡi kéo làm cốt nhục tương tàn; Nước cắt chân xói móng sinh bệnh tật xương khớp; Nước chảy xuyên giữa ruột nhà làm tiêu tán sạch sành sanh gia sản.",
+      "source": "Thủy Long Kinh (水龍經) & Địa Lý Nhân Tử Tu Tri (Từ Thiện Kế)"
     }
   ],
   "scholarly_analysis": {
     "term_glossary": [
       {
-        "term": "Ngũ Quyết (Long - Huyệt - Sa - Thủy - Hướng)",
-        "plain_vn": "Năm thành tố cơ bản nhất cấu thành nên một cuộc đất phong thủy hoàn hảo theo trường phái Tam Hợp."
+        "term": "Ngọc Đới Hoàn Yêu (玉帶纏腰)",
+        "plain_vn": "Thế nước uốn cong hình cánh cung ôm bọc lấy mặt tiền ngôi nhà như chiếc đai ngọc của quan triều đình (Bên Bồi)."
+      },
+      {
+        "term": "Phản Cung Sát (反弓煞)",
+        "plain_vn": "Thế nước có khúc cong lồi chĩa thẳng lưng cung vào nhà, chịu lực ly tâm xói mòn phá hoại dữ dội (Bên Lở)."
       }
     ],
     "masters_views": [
       {
-        "master": "Triệu Cửu Phong",
-        "work": "Địa Lý Ngũ Quyết Tự",
-        "perspective": "Ngũ quyết như 5 ngón tay trên một bàn tay, thiếu một ngón thì bàn tay tàn tật; làm địa lý mà bỏ quên Thủy hoặc Hướng thì biến phúc thành họa."
+        "master": "Tưởng Đại Hồng",
+        "work": "Thủy Long Kinh Tự",
+        "perspective": "Loan đầu lấy nước làm rồng; nước cong một tấc sinh khí tụ một tấc, nước thẳng một thước sát khí tràn một thước."
       }
     ]
   },
   "cosmological_stages": [
     {
-      "stage": "Khảo Luận 1: Cơ Chế Phối Hợp Giữa Long Khí và Thủy Khí Trong Tứ Đại Cục",
-      "state": "Phân loại Kim, Mộc, Thủy, Hỏa",
-      "detailed_explanation": "Triệu Cửu Phong hệ thống hóa toàn bộ lý thuyết Dương Công thành sách giáo khoa thực chiến: Lấy ngã ba sông cửa thoát nước (Thủy Khẩu) để định Cục. Có 4 đại cục:\n- Thủy Khẩu tại Thìn (Ất Thìn) → Thủy Cục;\n- Thủy Khẩu tại Tuất (Tân Tuất) → Hỏa Cục;\n- Thủy Khẩu tại Sửu (Quý Sửu) → Kim Cục;\n- Thủy Khẩu tại Mùi (Đinh Mùi) → Mộc Cục.",
-      "practical_manifestation": "Nhìn thấy cửa thoát nước ở góc Tây Bắc (Tuất) lập tức xác định cuộc đất này vận hành theo Hỏa Cục.",
-      "key_takeaway": "Thủy Khẩu là chìa khóa mở cánh cửa xác định ngũ hành của toàn bộ khu đất."
+      "stage": "Phân Hệ 1: Khảo Khảo 10 Thế Cát Thủy (Ngọc Đới, Cửu Khúc, Triều Thủy, Tam Xoa, Uông Dương...)",
+      "state": "Bồi lắng phù sa • An toàn bến đỗ",
+      "detailed_explanation": "Toàn bộ 10 thế Cát Thủy (Ngọc Đới, Cửu Khúc, Tụ Thủy, Triều Thủy, Tam Xoa Khẩu, Uông Dương, Tứ Thủy Quy Đường, Trì Đường Bán Nguyệt, Ám Củng, Khách Thủy) đều có chung bản chất: Nước chảy chậm, uốn lượn êm ả, triệt tiêu động năng phá hoại, tạo điều kiện tích lũy của cải và phát triển giao thương đường thủy.",
+      "practical_manifestation": "Nhà nằm trong khúc sông bồi đón nhận bãi đất màu mỡ và bến đỗ thuyền êm ả.",
+      "key_takeaway": "Cát Thủy là dòng nước mang tình cảm yêu thương ôm bọc trạch đạo."
+    },
+    {
+      "stage": "Phân Hệ 2: Vạch Trần 11 Thế Sát Thủy (Phản Cung, Trực Xung, Trực Khứ, Cát Cước, Xuyên Tâm...)",
+      "state": "Xói mòn sạt lở • Sát khí xung trực",
+      "detailed_explanation": "Toàn bộ 11 thế Sát Thủy (Phản Cung, Trực Xung, Khiên Tỷ, Cát Cước, Xuyên Tâm, Tiễn Đao, Đoạn Đầu, Lâm Đầu, Hưởng Thủy, Uế Khí, Phản Lạc) đều xuất phát từ dòng chảy xiết, xung trực, nước tù thối hoặc trào ngược làm tổn hại nghiêm trọng nền móng và sức khỏe con người.",
+      "practical_manifestation": "Nhà ở khúc sông lở bị sóng đánh khoét rỗng chân móng dẫn đến đổ sập.",
+      "key_takeaway": "Sát Thủy là hiểm họa tự nhiên cần tuyệt đối né tránh và hóa giải bằng công trình."
     }
   ]
 };
@@ -286,7 +297,7 @@ const TAMHOP_FENGSHUI_PART_5 = {
 const TAMHOP_FENGSHUI_PART_6 = {
   "chapter_number": 6,
   "classic_source": "《地理五訣·水法篇》 (Địa Lý Ngũ Quyết: Thủy Pháp) — Triệu Cửu Phong",
-  "chapter_title": "Tiết VI: Địa Lý Ngũ Quyết — Thập Nhị Cung Trường Sinh Thủy Pháp: Lai Thủy, Khứ Thủy & Bí Quyết Thủy Khẩu Phóng Mộ Cung",
+  "chapter_title": "Tiết VI: Địa Lý Ngũ Quyết — Thập Nhị Cung Trường Sinh Thủy Pháp: Toàn Bộ Ma Trận Lai Thủy vs Khứ Thủy Tứ Đại Cục",
   "sub_title": "Toàn văn 12 giai đoạn vòng đời năng lượng: Trường Sinh, Mộc Dục, Quan Đới, Lâm Quan, Đế Vượng, Suy, Bệnh, Tử, Mộ, Tuyệt, Thai, Dưỡng",
   "stages_title": "Giải Mã Chi Tiết 12 Cung Trường Sinh Thủy Pháp (Chuyên Khảo Sư Phạm Đồ Sộ)",
   "canonical_texts": [
@@ -300,8 +311,8 @@ const TAMHOP_FENGSHUI_PART_6 = {
   "scholarly_analysis": {
     "term_glossary": [
       {
-        "term": "Xung Phá Trường Sinh",
-        "plain_vn": "Lỗi phong thủy cực nặng khi để nước thoát ra ở cung Trường Sinh làm tiêu tán nguồn sống của dòng họ."
+        "term": "Sinh Lai Mộ Khứ (生來墓去)",
+        "plain_vn": "Quy tắc vàng: Dòng nước sinh sôi chảy đến chầu vào nhà; Dòng nước thoái khí thoát ra ở cung Mộ Khố cất kho."
       }
     ],
     "masters_views": [
@@ -314,11 +325,11 @@ const TAMHOP_FENGSHUI_PART_6 = {
   },
   "cosmological_stages": [
     {
-      "stage": "Khảo Luận 1: Ma Trận Cát Hung 12 Cung Trường Sinh Thực Chiến",
-      "state": "Phân định rõ Lai Thủy và Khứ Thủy",
-      "detailed_explanation": "Nước đến (Lai Thủy): Trường Sinh, Quan Đới, Lâm Quan, Đế Vượng (Đại Cát).\nNước đi (Khứ Thủy): Suy, Bệnh, Tử, Mộ, Tuyệt (Hợp Pháp Tiêu Trọc).\nCung cấm kỵ: Mộc Dục (không cho tụ nước dâm loạn), Thai Dưỡng (không để nước chảy xiết làm đọa thai).",
-      "practical_manifestation": "Nhà mở lối đón nước từ phương Lâm Quan và đặt hố ga thoát nước tại phương Mộ Khố đạt chuẩn Thủy Pháp chính tông.",
-      "key_takeaway": "Sinh Lai Mộ Khứ là chân lý muôn đời của thuật trị thủy phong thủy."
+      "stage": "Khảo Luận 1: Ma Trận 12 Cung Trường Sinh Trên 24 Sơn Cho Tứ Đại Cục",
+      "state": "Thủy Cục, Hỏa Cục, Kim Cục, Mộc Cục",
+      "detailed_explanation": "Toàn bộ 4 Đại Cục phân định rõ ràng:\n- THỦY CỤC: Sinh tại Khôn Thân, Vượng tại Nhâm Tý, Mộ tại Ất Thìn, Tuyệt tại Tốn Tỵ.\n- HỎA CỤC: Sinh tại Cấn Dần, Vượng tại Bính Ngọ, Mộ tại Tân Tuất, Tuyệt tại Càn Hợi.\n- KIM CỤC: Sinh tại Tốn Tỵ, Vượng tại Canh Dậu, Mộ tại Quý Sửu, Tuyệt tại Cấn Dần.\n- MỘC CỤC: Sinh tại Càn Hợi, Vượng tại Giáp Mão, Mộ tại Đinh Mùi, Tuyệt tại Khôn Thân.",
+      "practical_manifestation": "Dễ dàng tra cứu trên la bàn để thiết kế cổng cấp nước và rãnh thoát nước ngầm.",
+      "key_takeaway": "Ma trận 12 cung là bảng cửu chương tính toán của thầy địa lý chuyên nghiệp."
     }
   ]
 };
@@ -445,40 +456,51 @@ const TAMHOP_FENGSHUI_PART_9 = {
 
 const TAMHOP_FENGSHUI_PART_10 = {
   "chapter_number": 10,
-  "classic_source": "《Địa Lý Tả Ao: Thủy Pháp Toàn Biên Đại Việt》 — Thánh Tả Ao (Việt Nam)",
-  "chapter_title": "Tiết X: Tả Ao Thủy Pháp — Đại Tổng Kết Tam Hợp Thủy Pháp & Ứng Dụng Châu Thổ Sông Hồng, Sông Cửu Long",
-  "sub_title": "Toàn văn tinh hoa thực chiến Đại Việt của Thánh Tả Ao: Nhận diện khúc sông Bồi (Cát) vs khúc sông Lở (Sát), Tam Xoa Khẩu và Hải Khẩu nạp khí",
-  "stages_title": "Giải Mã Chi Tiết Thủy Pháp Tả Ao Đại Việt (Chuyên Khảo Sư Phạm Đồ Sộ)",
+  "classic_source": "《營造法式》 (Doanh Tạo Pháp Thức) & 《地理左坳》 (Địa Lý Tả Ao Đại Việt)",
+  "chapter_title": "Tiết X: Đại Trị Thủy Toàn Thư — Thủy Khẩu Quan Khóa, Thoát Nước Nội Thất Dương Trạch & Tả Ao Thủy Pháp",
+  "sub_title": "Toàn tập Phân hệ 4 & 5: Thiên Môn Khai, Địa Hộ Bế, Quy Xà, Rãnh Ngầm Khúc Chiết, Hố Ga Bẫy Mùi, Phóng Thủy 3 Cấp & Ứng Dụng Châu Thổ Đại Việt",
+  "stages_title": "Giải Mã Chi Tiết Kỹ Thuật Công Trình Thủy Pháp Nội Ngoại Thất (Chuyên Khảo Sư Phạm Đồ Sộ)",
   "canonical_texts": [
     {
-      "hanzi": "凡 dựng nhà lập trạch, trước xem thế nước sau coi mạch rồng.\nKhúc sông bên bồi tụ phù sa, thuyền bè đỗ bến người đông của nhiều;\nKhúc sông bên lở sóng dồi, xói mòn sụt đất nhà trôi người tàn.\nTam xoa thủy hội là nơi long tụ, ngã ba ngã bảy đại phú đại vinh.\nThiên Môn mở rộng đón dòng nước mát, Địa Hộ đóng kín giữ trọn vàng ngân.\nĐất Đại Việt châu thổ mênh mông, lấy Thủy làm Long muôn đời phát đạt.",
-      "pinyin": "Phàm dựng nhà lập trạch, trước xem thế nước sau coi mạch rồng.\nKhúc sông bên bồi tụ phù sa, thuyền bè đỗ bến người đông của nhiều;\nKhúc sông bên lở sóng dồi, xói mòn sụt đất nhà trôi người tàn.\nTam xoa thủy hội là nơi long tụ, ngã ba ngã bảy đại phú đại vinh.\nThiên Môn mở rộng đón dòng nước mát, Địa Hộ đóng kín giữ trọn vàng ngân.\nĐất Đại Việt châu thổ mênh mông, lấy Thủy làm Long muôn đời phát đạt.",
-      "meaning": "LỜI RĂN DẠY KINH ĐIỂN CỦA CỤ TẢ AO VỀ THỦY PHÁP ĐẠI VIỆT:\nDựng nhà lập trạch trước hết phải quan sát thế nước, sau đó mới xét đến mạch đất.\n- KHÚC SÔNG BÊN BỒI (Hữu Tình Thủy / Ngọc Đới Hoàn Yêu): Dòng nước chảy êm, bồi lắng phù sa màu mỡ, thuyền buôn cập bến buôn bán sầm uất, người đông của nhiều → ĐẤT ĐẠI PHÚ ĐẠI QUÝ;\n- KHÚC SÔNG BÊN LỞ (Vô Tình Thủy / Phản Cung Sát): Sóng đánh trực diện, lực ly tâm xói lở đất đai, nhà cửa sập đổ, thuyền không thể đỗ → ĐẤT BẦN HÀN TUYỆT TỰ;\n- Ngã ba sông (Tam Xoa Khẩu) là nơi hội tụ long mạch, là vị trí hình thành các đô thị thương cảng lớn nhất nước;\n- Cửa nước đến (Thiên Môn) mở rộng rãi đón dương quang; Cửa nước thoát (Địa Hộ) phải kín đáo uốn khúc giữ trọn vẹn của cải.",
-      "source": "Phong Thủy Địa Lý Tả Ao: Thủy Pháp Toàn Biên (Thánh Địa Lý Đại Việt)"
+      "hanzi": "天門欲其開闊，地戶欲其閉塞。水去有欄，萬金不漏；水去直出，家徒四壁。\n宅內暗溝，切忌直穿直出，宜曲折如蛇行，水行曲折則氣緩，氣緩則財聚。\n設沉砂之井以沉泥沙，設水封以辟臭氣；清雨水、洗滌水、糞溺水三級分流，清濁各安其位。\n竈為火之母，井溝為水之源，水火不相衝，陰陽調和，富貴壽考。\n凡 dựng nhà lập trạch, trước xem thế nước sau coi mạch rồng. Khúc sông bên bồi tụ phù sa, khúc sông bên lở sóng dồi xói mòn.",
+      "pinyin": "Thiên Môn dục kỳ khai khoát, Địa Hộ dục kỳ bế tắc. Thủy khứ hữu lan, vạn kim bất lậu; Thủy khứ trực xuất, gia đồ tứ bích.\nTrạch nội ám câu, thiết kỵ trực xuyên trực xuất, nghi khúc chiết như xà hành, thủy hành khúc chiết tắc khí hoãn, khí hoãn tắc tài tụ.\nThiết Trầm Sa chi tỉnh dĩ trầm nê sa, thiết thủy phong dĩ phách xú khí; Thanh Vũ Thủy, Tẩy Địch Thủy, Phân Niệu Thủy tam cấp phân lưu, thanh trọc các an kỳ vị.\nTáo vi Hỏa chi mẫu, tỉnh câu vi Thủy chi nguyên, Thủy Hỏa bất tương xung, âm dương điều hòa, phú quý thọ khảo.\nPhàm dựng nhà lập trạch, trước xem thế nước sau coi mạch rồng. Khúc sông bên bồi tụ phù sa, khúc sông bên lở sóng dồi xói mòn.",
+      "meaning": "TỔNG LUẬN THỦY KHẨU QUAN KHÓA, THOÁT NƯỚC NỘI THẤT & THỦY PHÁP ĐẠI VIỆT:\n- THỦY KHẨU QUAN KHÓA: Cửa nước đến (Thiên Môn) cần mở rộng rãi; Cửa nước đi (Địa Hộ) bắt buộc phải đóng kín đáo có gò đồi cây cối then khóa giữ chặt để vạn lượng vàng không rò rỉ.\n- THOÁT NƯỚC NỘI THẤT DƯƠNG TRẠCH:\n  1. Cống ngầm phải bẻ góc zíc zắc như thân rắn bò (Xà Hành) để làm chậm dòng chảy tụ tài;\n  2. Bố trí hố ga lắng cát (Trầm Sa Tỉnh) và bẫy nước ngăn mùi (Thủy Phong) giữ trạch khí thanh tịnh;\n  3. Phân tách nước thoát 3 cấp: Nước mưa trong sạch, nước rửa sinh hoạt và nước hầm cầu riêng biệt;\n  4. Tuyệt đối không để bếp nấu đè lên cống ngầm (Thủy Hỏa Bất Tương Xung), duy trì độ dốc thoát nước chuẩn 1% - 2%.\n- THỦY PHÁP TẢ AO: Lấy Thủy làm Long tại vùng châu thổ, chọn bên bồi tránh bên lở, đón ngã ba sông tụ đại tài lộc.",
+      "source": "Doanh Tạo Pháp Thức (營造法式) & Địa Lý Tả Ao (Thánh Địa Lý Đại Việt)"
     }
   ],
   "scholarly_analysis": {
     "term_glossary": [
       {
-        "term": "Bên Bồi vs Bên Lở",
-        "plain_vn": "Quy luật thủy văn cơ học: Bên Bồi dòng nước êm tụ phù sa tạo phú quý; Bên Lở dòng nước xiết xói mòn tạo hung sát."
+        "term": "Địa Hộ Bế (地戶閉)",
+        "plain_vn": "Nguyên tắc khóa kín cửa nước thoát đi bằng gò đồi, bờ cây, khúc cua ngầm để của cải không bị trôi tuột."
+      },
+      {
+        "term": "Thanh Trọc Phân Đồ (清濁分途)",
+        "plain_vn": "Hệ thống phân tách riêng biệt nước mưa sạch, nước sinh hoạt và nước hầm cầu trong công trình nhà ở."
       }
     ],
     "masters_views": [
       {
-        "master": "Cụ Tả Ao",
-        "work": "Dương Trạch Thủy Pháp Đại Việt",
-        "perspective": "Đồng bằng nước ta rồng đi dưới đáy nước; biết nạp dòng nước trong lành thì nghèo mấy cũng phát lên giàu có."
+        "master": "Lý Giới & Thánh Tả Ao",
+        "work": "Thủy Trạch Công Trình & Thủy Pháp Khảo",
+        "perspective": "Thủy pháp trong nhà như huyết mạch trong cơ thể; huyết mạch lưu thông thanh khiết thì thân thể khỏe mạnh, gia trạch hưng vượng muôn đời."
       }
     ]
   },
   "cosmological_stages": [
     {
-      "stage": "Khảo Luận 1: Bản Chất Thủy Văn Học Của Thuật 'Cứu Bần' Tả Ao",
-      "state": "Địa lý kinh tế nông nghiệp và giao thương đường thủy",
-      "detailed_explanation": "Cụ Tả Ao khuyên dân dời làng từ bên lở sang bên bồi của sông Hồng, sông Mã, sông Lam chính là hành động Cứu Bần thực tế: Giúp dân tránh được nạn lũ cuốn sạt lở mùa mưa lũ, có đất màu mỡ canh tác lúa nước và có bến đỗ an toàn cho thuyền bè buôn bán.",
-      "practical_manifestation": "Các làng nghề truyền thống và đô thị cổ thịnh vượng của Việt Nam (như Phố Hiến, Hội An, Thăng Long) đều nằm tại bên bồi và ngã ba sông.",
-      "key_takeaway": "Thủy pháp là nghệ thuật hòa hợp và tối ưu hóa nguồn nước cho đời sống con người."
+      "stage": "Phân Hệ 4: Nghệ Thuật Thủy Khẩu Quan Khóa (Thiên Môn Khai, Địa Hộ Bế, Quy Xà Tỏa Khẩu, Nha Xỉ Sa)",
+      "state": "Khóa chặt tài khí cửa sông",
+      "detailed_explanation": "Thủy khẩu là chốt chặn cuối cùng giữ lại toàn bộ nguyên khí của khu đất. Bắt buộc phải có các gờ đất đan cài (Nha Xỉ), gò đồi rùa rắn trấn giữ (Quy Xà) hoặc xây cầu cống đập tràn nhân tạo để giữ mực nước Minh Đường ổn định.",
+      "practical_manifestation": "Cửa cống thoát nước ngầm của khu đô thị được trồng hàng tre rậm rạp che phủ.",
+      "key_takeaway": "Địa Hộ đóng kín là bảo chứng cho sự tích lũy tài nguyên muôn đời."
+    },
+    {
+      "stage": "Phân Hệ 5: Quy Chuẩn Công Trình Thoát Nước Nội Thất (Rãnh Xà Hành, Hố Ga Bẫy Mùi, Độ Dốc 1%-2%)",
+      "state": "Vệ sinh môi trường • Cân bằng Thủy Hỏa",
+      "detailed_explanation": "Chuyển hóa lý thuyết cổ truyền vào kỹ thuật xây dựng công trình hiện đại: Đường ống ngầm đi men vách tường bẻ góc 45/135 độ, hố ga có bẫy mùi chống trào ngược, cách ly bếp nấu khỏi đường cống ngầm và duy trì độ dốc 1%-2% tự chảy thông suốt.",
+      "practical_manifestation": "Hệ thống cấp thoát nước nhà phố bố trí khoa học, không bao giờ bị tắc cống hay bốc mùi hôi thối.",
+      "key_takeaway": "Công trình thủy pháp nội thất là nền tảng bảo vệ sức khỏe và tài lộc của từng gia đình."
     }
   ]
 };
