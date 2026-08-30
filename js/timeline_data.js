@@ -34,7 +34,7 @@ COSMIC_DATA.timeline = [
     period: "Khoảng 2200 TCN",
     title: "Lạc Thư & Ma Trận Cửu Cung (Động Lực Học Thời Gian)",
     category: "Số Học Vũ Trụ",
-    desc: "Thần Quy nổi trên sông Lạc mang ma trận 9 cung số học bậc 3 (tổng mọi trục bằng 15). Chuyển hóa từ thế cân bằng tĩnh của Hà Đồ sang thế luân chuyển biến dịch 8 phương vị của Lạc Thư.",
+    desc: "Thần Quy nổi trên sông Lạc mang Kinh Vĩ Lục 9 cung số học bậc 3 (tổng mọi trục bằng 15). Chuyển hóa từ thế cân bằng tĩnh của Hà Đồ sang thế luân chuyển biến dịch 8 phương vị của Lạc Thư.",
     tag: "Lạc Thư"
   },
   {
@@ -74,7 +74,7 @@ COSMIC_DATA.timeline = [
     period: "Thế kỷ 20 - Nay",
     title: "Việt Lý Tố Nguyên & Đối Chiếu Vật Lý Trường Khí",
     category: "Hiện Đại Hóa",
-    desc: "Triết gia Kim Định khẳng định Dịch lý là linh hồn văn hóa Bách Việt. Khoa học hiện đại đối chiếu Bát Quái với mã di truyền 64 bộ ba DNA, ma trận nhị phân máy tính và cơ học cộng hưởng trường lực.",
+    desc: "Triết gia Kim Định khẳng định Dịch lý là linh hồn văn hóa Bách Việt. Khoa học hiện đại đối chiếu Bát Quái với mã di truyền 64 bộ ba DNA, Kinh Vĩ Lục nhị phân máy tính và cơ học cộng hưởng trường lực.",
     tag: "Hiện Đại"
   }
 ];

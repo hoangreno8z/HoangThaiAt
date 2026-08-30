@@ -15,7 +15,7 @@ class MasterRuleEngine {
       9: { name: 'Ly', element: 'Hỏa', group: 'Đông Tứ Mệnh', trigram: '☲', direction: 'Nam' }
     };
 
-    // Ma trận Du Niên Bát Trạch: [Mệnh Quái][Hướng Nhà] => Tên Sao Cát Hung
+    // Kinh Vĩ Lục Du Niên Bát Trạch: [Mệnh Quái][Hướng Nhà] => Tên Sao Cát Hung
     this.duNienMatrix = {
       1: { 'Bắc': 'Phục Vị (Tốt)', 'Nam': 'Diên Niên (Tốt)', 'Đông': 'Thiên Y (Tốt)', 'Đông Nam': 'Sinh Khí (Tốt)', 'Tây Bắc': 'Lục Sát (Xấu)', 'Tây': 'Họa Hại (Xấu)', 'Đông Bắc': 'Ngũ Quỷ (Xấu)', 'Tây Nam': 'Tuyệt Mệnh (Xấu)' },
       2: { 'Bắc': 'Tuyệt Mệnh (Xấu)', 'Nam': 'Lục Sát (Xấu)', 'Đông': 'Họa Hại (Xấu)', 'Đông Nam': 'Ngũ Quỷ (Xấu)', 'Tây Bắc': 'Diên Niên (Tốt)', 'Tây': 'Thiên Y (Tốt)', 'Đông Bắc': 'Sinh Khí (Tốt)', 'Tây Nam': 'Phục Vị (Tốt)' },

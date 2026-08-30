@@ -46,7 +46,7 @@ const COSMIC_DATA = {
       famous_quote: "Càn Khôn đại phụ mẫu, Cửu khí phối Cửu tinh. Nhất bạch nhị hắc tam bích tứ lục ngũ hoàng lục bạch thất xích bát bạch cửu tử.",
       quote_trans: "Càn Khôn là cha mẹ lớn của vạn vật, 9 luồng khí phối hợp cùng 9 ngôi sao trên bầu trời. Gồm: 1 Nhất Bạch, 2 Nhị Hắc, 3 Tam Bích, 4 Tứ Lục, 5 Ngũ Hoàng, 6 Lục Bạch, 7 Thất Xích, 8 Bát Bạch, 9 Cửu Tử.",
       core_principles: [
-        "ĐỘNG LỰC HỌC CỬU TINH: Giải thích cách 9 ngôi sao Bắc Đẩu (Bắc Đẩu Thất Tinh + Tả Phụ Hữu Bật) di chuyển luân chuyển theo thời gian trong ma trận 9 cung Lạc Thư, làm thay đổi toàn bộ trường năng lượng và cát hung của một trạch nhà.",
+        "ĐỘNG LỰC HỌC CỬU TINH: Giải thích cách 9 ngôi sao Bắc Đẩu (Bắc Đẩu Thất Tinh + Tả Phụ Hữu Bật) di chuyển luân chuyển theo thời gian trong Kinh Vĩ Lục 9 cung Lạc Thư, làm thay đổi toàn bộ trường năng lượng và cát hung của một trạch nhà.",
         "TAM NGUYÊN CỬU VẬN: Phân chia thời gian vũ trụ thành 3 Nguyên (Thượng, Trung, Hạ), mỗi Nguyên gồm 3 Vận, mỗi Vận 20 năm, tạo thành một đại chu kỳ 180 năm luân chuyển năng lượng hoàn hảo.",
         "KHÁI NIỆM ĐẮC THỜI & THẤT THỜI: Một phương vị có thể là Đại Cát ở Vận này (khi đắc vượng tinh) nhưng lại trở thành Đại Hung ở Vận khác (khi suy tử tinh thoái khí)."
       ]
@@ -88,7 +88,7 @@ const COSMIC_DATA = {
   // 1. Dữ liệu Bát Trạch (Eight Mansions Algorithm)
   bat_trach: {
     title: "Thuật Toán Bát Trạch Minh Kính (Eight Mansions)",
-    desc: "Tính toán Mệnh Quái (Quái số) theo Năm sinh và Giới tính, phân định Đông Tứ Mệnh và Tây Tứ Mệnh cùng ma trận 8 phương vị Cát - Hung.",
+    desc: "Tính toán Mệnh Quái (Quái số) theo Năm sinh và Giới tính, phân định Đông Tứ Mệnh và Tây Tứ Mệnh cùng Kinh Vĩ Lục 8 phương vị Cát - Hung.",
     gua_names: ["Khảm", "Khôn", "Chấn", "Tốn", "Trung Cung", "Càn", "Đoài", "Cấn", "Ly"],
     stars: {
       sinh_khi: { name: "Sinh Khí", type: "cat", score: 100, element: "Mộc", desc: "Thượng cát: Tăng trưởng tài lộc, danh vọng, sinh khí vươn tỏa dồi dào." },
@@ -100,7 +100,7 @@ const COSMIC_DATA = {
       ngu_quy: { name: "Ngũ Quỷ", type: "hung", score: 15, element: "Hỏa", desc: "Đại hung: Tai họa bất ngờ, hỏa hoạn, mất mát của cải, bất an nội bộ." },
       tuyet_menh: { name: "Tuyệt Mệnh", type: "hung", score: 0, element: "Kim", desc: "Cực hung: Tổn hại sinh mạng, bệnh tật hiểm nghèo, phá sản tiêu điều." }
     },
-    // Ma trận phối 8 Quẻ: [Càn, Đoài, Ly, Chấn, Tốn, Khảm, Cấn, Khôn]
+    // Kinh Vĩ Lục phối 8 Quẻ: [Càn, Đoài, Ly, Chấn, Tốn, Khảm, Cấn, Khôn]
     // 8 hướng tương ứng: Bắc, Đông Bắc, Đông, Đông Nam, Nam, Tây Nam, Tây, Tây Bắc
     directions: [
       { id: "N", name: "Chính Bắc (Khảm)", angle: 0 },
@@ -117,7 +117,7 @@ const COSMIC_DATA = {
   // 2. Dữ liệu Huyền Không Phi Tinh (Xuan Kong Huyền Không Phi Tinh)
   huyen_khong: {
     title: "Thuật Toán Ma Trận Cửu Cung Huyền Không Phi Tinh (Phi Tinh)",
-    desc: "Tính toán Tinh Bàn 3 tầng (Vận Tinh - Tọa Tinh - Hướng Tinh) phi thuận/nghịch trên ma trận Lạc Thư cho 24 Sơn Hướng trong 9 Vận.",
+    desc: "Tính toán Tinh Bàn 3 tầng (Vận Tinh - Tọa Tinh - Hướng Tinh) phi thuận/nghịch trên Kinh Vĩ Lục Lạc Thư cho 24 Sơn Hướng trong 9 Vận.",
     periods: [
       { period: 1, years: "1864 - 1883", star: "Nhất Bạch Khảm Thủy" },
       { period: 2, years: "1884 - 1903", star: "Nhị Hắc Khôn Thổ" },
@@ -182,7 +182,7 @@ const COSMIC_DATA = {
       { id: "Lý Khí Phái", group: "school", radius: 30, cat: "Trường Phái", desc: "Phái tính toán: Dùng La bàn, Cửu Cung Lạc Thư, Can Chi và thời gian để xác định cát hung phương vị.", quote: "Lý khí định thời không biến dịch." },
 
       { id: "Bát Trạch Minh Kính", group: "algo", radius: 28, cat: "Thuật Toán Số Hóa", desc: "Thuật toán tính Mệnh Quái, chia Đông Tứ Mệnh và Tây Tứ Mệnh, định 4 Cát Tinh và 4 Hung Tinh.", quote: "Đông Tây phối trạch, biến hóa âm dương." },
-      { id: "Huyền Không Phi Tinh", group: "algo", radius: 34, cat: "Thuật Toán Số Hóa", desc: "Ma trận 9 cung phi thuận/nghịch của Tọa Tinh và Hướng Tinh theo 9 Vận 180 năm.", quote: "Cửu tinh phi bố, trạch vận lưu chuyển." },
+      { id: "Huyền Không Phi Tinh", group: "algo", radius: 34, cat: "Thuật Toán Số Hóa", desc: "Kinh Vĩ Lục 9 cung phi thuận/nghịch của Tọa Tinh và Hướng Tinh theo 9 Vận 180 năm.", quote: "Cửu tinh phi bố, trạch vận lưu chuyển." },
       { id: "Tam Nguyên Cửu Vận", group: "algo", radius: 26, cat: "Thời Không", desc: "Đại chu kỳ 180 năm: Thượng Nguyên (Vận 1-3), Trung Nguyên (Vận 4-6), Hạ Nguyên (Vận 7-9). Đang ở Vận 9 (2024-2043).", quote: "Vận 9 Cửu Tử Ly Hỏa đương quyền." },
       
       { id: "24 Sơn Hướng", group: "compass", radius: 28, cat: "La Bàn Địa Lý", desc: "Hệ thống 24 phương vị chia theo Bát Quái: 8 Can, 12 Chi, 4 Càn Khôn Cấn Tốn, phân Tam Nguyên Long.", quote: "Địa - Thiên - Nhân Nguyên Long." },

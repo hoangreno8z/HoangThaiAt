@@ -13,7 +13,7 @@ class HuyenKhongEngine {
     // Thứ tự 9 cung theo ma phương Lạc Thư: Trung Cung(5), Càn(6), Đoài(7), Cấn(8), Ly(9), Khảm(1), Khôn(2), Chấn(3), Tốn(4)
     this.flyPath = [5, 6, 7, 8, 9, 1, 2, 3, 4];
     
-    // Ma trận hiển thị 3x3 trực quan: [ [Tốn(4), Ly(9), Khôn(2)], [Chấn(3), Trung(5), Đoài(7)], [Cấn(8), Khảm(1), Càn(6)] ]
+    // Kinh Vĩ Lục hiển thị 3x3 trực quan: [ [Tốn(4), Ly(9), Khôn(2)], [Chấn(3), Trung(5), Đoài(7)], [Cấn(8), Khảm(1), Càn(6)] ]
     this.gridDisplayOrder = [
       [4, 9, 2],
       [3, 5, 7],

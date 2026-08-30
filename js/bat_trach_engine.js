@@ -1,6 +1,6 @@
 /**
  * BỘ TÍNH TOÁN BÁT TRẠCH MINH KÍNH (EIGHT MANSIONS ALGORITHM)
- * Xử lý thuật toán Mệnh Quái, Đông Tây Tứ Mệnh và ma trận 8 phương vị Cát - Hung.
+ * Xử lý thuật toán Mệnh Quái, Đông Tây Tứ Mệnh và Kinh Vĩ Lục 8 phương vị Cát - Hung.
  */
 
 class BatTrachEngine {

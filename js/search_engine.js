@@ -76,7 +76,7 @@ class ScholarlySearchEngine {
       { id: 'SRC-002', title: 'Thanh Nang Kinh (青囊經)', subtitle: 'Hoàng Thạch Công • Hạng A', category: 'source', categoryLabel: 'Thư Tịch Cổ', school: 'Bản Thể Luận', desc: 'Thiên tôn địa ti, Càn Khôn định hĩ.', link: '#/library/thanh-nang-kinh/1' },
       { id: 'SRC-004', title: 'Bát Trạch Minh Kính (八宅明鏡)', subtitle: 'Dương Quân Tùng • Hạng B', category: 'source', categoryLabel: 'Thư Tịch Cổ', school: 'Bát Trạch Phái', desc: 'Đông tứ mệnh nghi cư đông tứ trạch, tây tứ mệnh nghi cư tây tứ trạch.', link: '#/library/bat-trach-minh-kinh/1' },
       { id: 'SRC-005', title: 'Thẩm Thị Huyền Không Học (沈氏玄空學)', subtitle: 'Thẩm Trúc Nhưng • Hạng B', category: 'source', categoryLabel: 'Thư Tịch Cổ', school: 'Huyền Không Phái', desc: 'Huyền Không chi pháp, dĩ thời vi bản. Tam nguyên cửu vận.', link: '#/library/tham-thi-huyen-khong/1' },
-      { id: 'TOOL-001', title: 'Lập Quẻ Bát Trạch Minh Kính', subtitle: 'Công cụ tính Cung Mệnh Quái', category: 'tool', categoryLabel: 'Công Cụ', school: 'Bát Trạch Phái', desc: 'Tính toán Cung Phi, Đông Tây Tứ Mệnh và ma trận 8 phương vị cát hung.', link: '#/tools' },
+      { id: 'TOOL-001', title: 'Lập Quẻ Bát Trạch Minh Kính', subtitle: 'Công cụ tính Cung Mệnh Quái', category: 'tool', categoryLabel: 'Công Cụ', school: 'Bát Trạch Phái', desc: 'Tính toán Cung Phi, Đông Tây Tứ Mệnh và Kinh Vĩ Lục 8 phương vị cát hung.', link: '#/tools' },
       { id: 'TOOL-002', title: 'Tinh Bàn Huyền Không Phi Tinh 9 Vận', subtitle: 'Công cụ lập Tinh Bàn 24 Sơn', category: 'tool', categoryLabel: 'Công Cụ', school: 'Huyền Không Phái', desc: 'Phi tinh Cửu Cung 3 tầng (Vận - Tọa - Hướng) cho 24 Sơn Hướng.', link: '#/tools' }
     ];
 

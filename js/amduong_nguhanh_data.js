@@ -187,7 +187,7 @@ const AMDUONG_NGUHANH_PART_3 = {
   "chapter_number": 3,
   "classic_source": "《周易·繫辭上/下篇》 (Chu Dịch: Hệ Từ) & 《說卦傳》 (Thuyết Quái Truyện) — Khổng Tử (孔子)",
   "chapter_title": "Tiết III: Chu Dịch Bản Thể Luận — Thái Cực Sinh Lưỡng Nghi, Tứ Tượng, Bát Quái & Vạn Vật Loại Tượng",
-  "sub_title": "Khảo cứu toàn văn thiên cổ danh tác Hệ Từ Thượng: Định luật phân nhánh nhị phân 2^N và ma trận phân loại Bát Quái",
+  "sub_title": "Khảo cứu toàn văn thiên cổ danh tác Hệ Từ Thượng: Định luật phân nhánh nhị phân 2^N và Kinh Vĩ Lục phân loại Bát Quái",
   "stages_title": "Giải Mã Chi Tiết Ma Trận Tiến Hóa Bát Quái & Bát Quái Loại Tượng (Chuyên Khảo Sư Phạm)",
   "canonical_texts": [
     {
@@ -618,13 +618,13 @@ const AMDUONG_NGUHANH_PART_9 = {
   "chapter_number": 9,
   "classic_source": "《黃帝內經·素問·陰陽應象大論》 (Hoàng Đế Nội Kinh: Tố Vấn) — Kỳ Bá & Hoàng Đế",
   "chapter_title": "Tiết IX: Hoàng Đế Nội Kinh — Đại Ma Trận Ngũ Tạng, Ngũ Quan, Ngũ Âm & Khí Hóa Nhân Thể",
-  "sub_title": "Toàn văn kinh điển y học cổ đại: Âm Dương giả thiên địa chi đạo dã, ma trận ngũ phương sinh ngũ khí nuôi ngũ tạng",
+  "sub_title": "Toàn văn kinh điển y học cổ đại: Âm Dương giả thiên địa chi đạo dã, Kinh Vĩ Lục ngũ phương sinh ngũ khí nuôi ngũ tạng",
   "stages_title": "Giải Mã Chi Tiết Đại Ma Trận Sinh Học & Y Học Cổ Truyền Ngũ Tạng (Chuyên Khảo Sư Phạm)",
   "canonical_texts": [
     {
       "hanzi": "黃帝問曰：陰陽者，天地之道也，萬物之綱紀，變化之父母，生殺之本始，神明之府也。治病必求於本。\n東方生風，風生木，木生酸，酸生肝，肝生筋，筋生心，肝主目。其在天為玄，在人為道，在地為化。化生五味，道生智，玄生神。\n南方生熱，熱生火，火生苦，苦生心，心生血，血生脾，心主舌。\n中央生濕，濕生土，土生甘，甘生脾，脾生肉，肉生肺，脾主口。\n西方生燥，燥生金，金生辛，辛生肺，肺生皮毛，皮毛生腎，肺主鼻。\n北方生寒，寒生水，水生鹹，鹹生腎，腎生骨髓，髓生肝，腎主耳。",
       "pinyin": "Hoàng Đế vấn viết: Âm Dương giả, thiên địa chi đạo dã, vạn vật chi cương kỷ, biến hóa chi phụ mẫu, sinh sát chi bản thủy, thần minh chi phủ dã. Trị bệnh tất cầu ư bản.\nĐông phương sinh Phong, phong sinh Mộc, mộc sinh Toan, toan sinh Can, can sinh Cân, cân sinh Tâm, can chủ Mục. Kỳ tại thiên vi Huyền, tại nhân vi Đạo, tại địa vi Hóa. Hóa sinh ngũ vị, đạo sinh trí, huyền sinh thần.\nNam phương sinh Nhiệt, nhiệt sinh Hỏa, hỏa sinh Khổ, khổ sinh Tâm, tâm sinh Huyết, huyết sinh Tỳ, tâm chủ Thiệt.\nTrung ương sinh Thấp, thấp sinh Thổ, thổ sinh Cam, cam sinh Tỳ, tỳ sinh Nhục, nhục sinh Phế, tỳ chủ Khẩu.\nTây phương sinh Táo, táo sinh Kim, kim sinh Tân, tân sinh Phế, phế sinh Bì mao, bì mao sinh Thận, phế chủ Tỵ.\nBắc phương sinh Hàn, hàn sinh Thủy, thủy sinh Hàm, hàm sinh Thận, thận sinh Cốt tủy, tủy sinh Can, thận chủ Nhĩ.",
-      "meaning": "HOÀNG ĐẾ HỎI KỲ BÁ VỀ ĐẠO ÂM DƯƠNG:\n'Âm Dương chính là Đạo của Trời Đất, là kỷ cương giường mối của muôn loài vạn vật, là cha mẹ sinh ra mọi sự biến hóa, là gốc rễ của sự sống và cái chết, là cung điện của thần minh linh diệu. Người thầy thuốc chữa bệnh nhất định phải tìm về cội gốc Âm Dương ấy.'\n\nĐẠI MA TRẬN KHÍ HÓA NĂM PHƯƠNG NUÔI NĂM TẠNG:\n1. PHƯƠNG ĐÔNG: Sinh ra gió (Phong)  →  Gió sinh ra Mộc  →  Mộc sinh ra vị Chua (Toan)  →  Vị chua nuôi dưỡng tạng CAN (Gan)  →  Can nuôi dưỡng Gân cốt (Cân)  →  Can khai khiếu ra MẮT (Mục).\n2. PHƯƠNG NAM: Sinh ra nhiệt nóng (Nhiệt)  →  Nhiệt sinh ra Hỏa  →  Hỏa sinh ra vị ĐẮNG (Khổ)  →  Vị đắng nuôi dưỡng tạng TÂM (Tim)  →  Tâm sinh ra Máu huyết (Huyết)  →  Tâm khai khiếu ra LƯỠI (Thiệt).\n3. TRUNG ƯƠNG: Sinh ra độ ẩm (Thấp)  →  Thấp sinh ra Thổ  →  Thổ sinh ra vị NGỌT (Cam)  →  Vị ngọt nuôi dưỡng tạng TỲ (Lá lách, dạ dày)  →  Tỳ sinh ra Cơ bắp thịt nạc (Nhục)  →  Tỳ khai khiếu ra MIỆNG & MÔI (Khẩu).\n4. PHƯƠNG TÂY: Sinh ra khí khô ráo (Táo)  →  Táo sinh ra Kim  →  Kim sinh ra vị CAY (Tân)  →  Vị cay nuôi dưỡng tạng PHẾ (Phổi)  →  Phế nuôi dưỡng Da lông (Bì mao)  →  Phế khai khiếu ra MŨI (Tỵ).\n5. PHƯƠNG BẮC: Sinh ra khí lạnh giá (Hàn)  →  Hàn sinh ra Thủy  →  Thủy sinh ra vị MẶN (Hàm)  →  Vị mặn nuôi dưỡng tạng THẬN  →  Thận sinh ra Xương tủy (Cốt tủy)  →  Thận khai khiếu ra TAI (Nhĩ).",
+      "meaning": "HOÀNG ĐẾ HỎI KỲ BÁ VỀ ĐẠO ÂM DƯƠNG:\n'Âm Dương chính là Đạo của Trời Đất, là kỷ cương giường mối của muôn loài vạn vật, là cha mẹ sinh ra mọi sự biến hóa, là gốc rễ của sự sống và cái chết, là cung điện của thần minh linh diệu. Người thầy thuốc chữa bệnh nhất định phải tìm về cội gốc Âm Dương ấy.'\n\nĐẠI KINH VĨ LỤC KHÍ HÓA NĂM PHƯƠNG NUÔI NĂM TẠNG:\n1. PHƯƠNG ĐÔNG: Sinh ra gió (Phong)  →  Gió sinh ra Mộc  →  Mộc sinh ra vị Chua (Toan)  →  Vị chua nuôi dưỡng tạng CAN (Gan)  →  Can nuôi dưỡng Gân cốt (Cân)  →  Can khai khiếu ra MẮT (Mục).\n2. PHƯƠNG NAM: Sinh ra nhiệt nóng (Nhiệt)  →  Nhiệt sinh ra Hỏa  →  Hỏa sinh ra vị ĐẮNG (Khổ)  →  Vị đắng nuôi dưỡng tạng TÂM (Tim)  →  Tâm sinh ra Máu huyết (Huyết)  →  Tâm khai khiếu ra LƯỠI (Thiệt).\n3. TRUNG ƯƠNG: Sinh ra độ ẩm (Thấp)  →  Thấp sinh ra Thổ  →  Thổ sinh ra vị NGỌT (Cam)  →  Vị ngọt nuôi dưỡng tạng TỲ (Lá lách, dạ dày)  →  Tỳ sinh ra Cơ bắp thịt nạc (Nhục)  →  Tỳ khai khiếu ra MIỆNG & MÔI (Khẩu).\n4. PHƯƠNG TÂY: Sinh ra khí khô ráo (Táo)  →  Táo sinh ra Kim  →  Kim sinh ra vị CAY (Tân)  →  Vị cay nuôi dưỡng tạng PHẾ (Phổi)  →  Phế nuôi dưỡng Da lông (Bì mao)  →  Phế khai khiếu ra MŨI (Tỵ).\n5. PHƯƠNG BẮC: Sinh ra khí lạnh giá (Hàn)  →  Hàn sinh ra Thủy  →  Thủy sinh ra vị MẶN (Hàm)  →  Vị mặn nuôi dưỡng tạng THẬN  →  Thận sinh ra Xương tủy (Cốt tủy)  →  Thận khai khiếu ra TAI (Nhĩ).",
       "source": "Hoàng Đế Nội Kinh (黃帝內經) — Tố Vấn: Âm Dương Ứng Tượng Đại Luận (Thiên thứ 5)"
     }
   ],
@@ -729,28 +729,28 @@ const AMDUONG_NGUHANH_PART_10 = {
   },
   "cosmological_stages": [
     {
-      "stage": "Định Luật Nhóm 1: Mẫu Từ Diệt Tử (Sinh Quá Đa Hóa Khắc)",
+      "stage": "Chương Pháp Đệ Nhất: Mẫu Từ Diệt Tử (Sinh Quá Đa Hóa Khắc)",
       "state": "Thổ đa Kim mai • Thủy đa Mộc phiêu • Mộc đa Hỏa tắc",
       "detailed_explanation": "Cổ nhân đúc kết bài học muôn đời: Tương Sinh là tốt, nhưng nếu sinh quá nhiều không kiểm soát sẽ biến thành đại họa diệt vong. Trong giáo dục gia đình, cha mẹ lo lót sẵn sàng mọi thứ từ A-Z, không cho con cái cọ xát thử thách (Thổ đa Kim mai) thì đứa con lớn lên sẽ ỷ lại, nhu nhược vô dụng. Trong dinh dưỡng, bổ sung quá nhiều vitamin và đạm sẽ làm gan thận suy kiệt nhiễm độc.",
       "practical_manifestation": "Tưới nước quá nhiều làm úng chết cây cảnh trong chậu (Thủy đa Mộc phiêu); nhồi quá nhiều củi vào bếp làm tắt ngấm khói mù mịt (Mộc đa Hỏa tắc).",
       "key_takeaway": "Yêu thương phải có trí tuệ và chừng mực; sinh dưỡng đúng lúc mới giúp con người trưởng thành."
     },
     {
-      "stage": "Định Luật Nhóm 2: Tử Đa Tiết Mẫu (Con Rút Kiệt Sinh Lực Mẹ)",
+      "stage": "Chương Pháp Đệ Nhị: Tử Đa Tiết Mẫu (Con Rút Kiệt Sinh Lực Mẹ)",
       "state": "Thủy đa Kim trầm • Hỏa đa Mộc phần • Mộc đa Thủy súc",
       "detailed_explanation": "Khi Hành Con phát triển quá mạnh mẽ vượt bậc, nó sẽ đòi hỏi nguồn năng lượng khổng lồ từ Hành Mẹ, khiến Mẹ bị suy kiệt khánh kiệt hoàn toàn. Ví dụ: Ngọn lửa bùng cháy dữ dội như bão lửa (Hỏa đa) sẽ thiêu rụi sạch toàn bộ cánh rừng gỗ (Mộc phần) không còn một cành lá sót lại.",
       "practical_manifestation": "Người mẹ sinh con liên tục không nghỉ ngơi tẩm bổ sẽ bị loãng xương suy kiệt khí huyết.",
       "key_takeaway": "Phải biết lượng sức mình, không nên gánh vác quá nhiều dự án cùng lúc làm kiệt quệ tài chính và sức khỏe."
     },
     {
-      "stage": "Định Luật Nhóm 3: Phản Khắc Vũ Mẫu (Vật Cực Tất Phản)",
+      "stage": "Chương Pháp Đệ Tam: Phản Khắc Vũ Mẫu (Vật Cực Tất Phản)",
       "state": "Mộc kiên Kim khuyết • Thủy đa Thổ lưu • Kim đa Hỏa tức",
       "detailed_explanation": "Theo nguyên lý thông thường Kim khắc được Mộc, nhưng nếu một khúc gỗ lim già nghìn năm đanh như thép (Mộc kiên) mà người thợ lại dùng một chiếc dao găm nhỏ mỏng manh (Kim nhược) để chém vào, thì lưỡi dao sẽ lập tức bị mẻ gãy văng ra (Kim khuyết). Đây là định luật cảnh báo kẻ yếu chớ kiêu ngạo đối đầu trực diện với thế lực quá hùng mạnh.",
       "practical_manifestation": "Dùng thìa nhôm cạy tảng băng cứng làm cong gãy thìa; bờ đê đất mỏng bị vỡ toang khi lũ quét đổ về.",
       "key_takeaway": "Biết người biết ta trăm trận trăm thắng; không lấy trứng chọi đá, không lấy yếu chống mạnh trực diện."
     },
     {
-      "stage": "Định Luật Nhóm 4: Đắc Tiết Vi Quý (Bí Quyết Xả Bớt Để Thành Đại Khí)",
+      "stage": "Chương Pháp Đệ Tứ: Đắc Tiết Vi Quý (Bí Quyết Xả Bớt Để Thành Đại Khí)",
       "state": "Cường Kim đắc Thủy • Cường Thủy đắc Mộc • Cường Hỏa đắc Thổ",
       "detailed_explanation": "Khi một hành quá vượng mạnh mẽ hung hãn (như Kim quá bén, Thủy quá cuộn trào), cách hóa giải đỉnh cao nhất trong phong thủy và nhân sinh KHÔNG PHẢI là dùng hành khác đến đè bẹp đánh nhau (Khắc), mà là DÙNG HÀNH ĐƯỢC NÓ SINH RA ĐỂ XẢ BỚT NĂNG LƯỢNG (Tiết khí). Nước lũ mạnh thì trồng rừng dẫn dòng (Thủy sinh Mộc); lửa cháy to thì đổ đất cát hấp thu nhiệt (Hỏa sinh Thổ).",
       "practical_manifestation": "Người có quá nhiều năng lượng nhiệt huyết (Hỏa vượng) nên tham gia các hoạt động thiện nguyện chia sẻ cho xã hội (sinh Thổ) để tâm hồn thanh thản.",

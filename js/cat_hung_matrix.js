@@ -1,5 +1,5 @@
 /**
- * MA TRẬN CỘNG HƯỞNG TRƯỜNG KHÍ & CƠ CHẾ KHOA HỌC SINH CÁT HUNG
+ * KINH VĨ LỤC CỘNG HƯỞNG TRƯỜNG KHÍ & CƠ CHẾ KHOA HỌC SINH CÁT HUNG
  * Giải mã cơ học lượng tử cổ đại, tương tác 3 tầng: Thiên (Thời) - Địa (Không) - Nhân (Tâm thể).
  */
 

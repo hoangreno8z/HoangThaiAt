@@ -83,8 +83,8 @@ const BATTRACH_FENGSHUI_PART_1 = {
     },
     {
       "stage": "Chương 3: Nhị Thập Tứ Lộ Khí Hóa (24 Phương Vị Càn Khôn)",
-      "state": "Ma trận nạp khí 24 Sơn Hướng",
-      "detailed_explanation": "Trạch Kinh xây dựng ma trận 24 Lộ dựa trên sự phối hợp giữa Bát Quái (8 hướng cơ bản) và 24 Sơn Hướng (12 Địa Chi: Tý, Sửu, Dần, Mão, Thìn, Tỵ, Ngọ, Mùi, Thân, Dậu, Tuất, Hợi; 8 Thiên Can: Giáp, Ất, Bính, Đinh, Canh, Tân, Nhâm, Quý; 4 Quẻ góc: Càn, Khôn, Cấn, Tốn).\n\nMỗi phương vị trong 24 Lộ đều mang một tần số dao động năng lượng riêng biệt. Khi mở cổng chính, trổ cửa sổ, đặt giếng nước hay xây bếp lò, người thầy phong thủy phải tính toán dòng chảy của Khí theo đồ hình 24 Lộ để đón nhận luồng khí Cát lành (Sinh khí) và đóng kín các phương vị mang luồng sát khí độc hại.",
+      "state": "Kinh Vĩ Lục nạp khí 24 Sơn Hướng",
+      "detailed_explanation": "Trạch Kinh xây dựng Kinh Vĩ Lục 24 Lộ dựa trên sự phối hợp giữa Bát Quái (8 hướng cơ bản) và 24 Sơn Hướng (12 Địa Chi: Tý, Sửu, Dần, Mão, Thìn, Tỵ, Ngọ, Mùi, Thân, Dậu, Tuất, Hợi; 8 Thiên Can: Giáp, Ất, Bính, Đinh, Canh, Tân, Nhâm, Quý; 4 Quẻ góc: Càn, Khôn, Cấn, Tốn).\n\nMỗi phương vị trong 24 Lộ đều mang một tần số dao động năng lượng riêng biệt. Khi mở cổng chính, trổ cửa sổ, đặt giếng nước hay xây bếp lò, người thầy phong thủy phải tính toán dòng chảy của Khí theo đồ hình 24 Lộ để đón nhận luồng khí Cát lành (Sinh khí) và đóng kín các phương vị mang luồng sát khí độc hại.",
       "practical_manifestation": "Mở cửa chính tại cung phương vị đắc Cát tinh giúp căn nhà luôn đón được làn gió mát trong lành mùa hè và tránh được gió bấc căm căm mùa đông.",
       "key_takeaway": "24 Lộ là công cụ định vị tọa độ vi mô chuẩn xác để khai mở cung tài lộc cho ngôi nhà."
     },
@@ -362,7 +362,7 @@ const BATTRACH_FENGSHUI_PART_5 = {
       "state": "Trung Thượng biến Ngũ Quỷ • Sơ Trung biến Thiên Y • Sơ Thượng biến Lục Sát",
       "detailed_explanation": "Khi có HAI HÀO cùng biến đổi tính chất đồng thời:\n- BIẾN HÀO TRUNG + THƯỢNG (Hào 2 và Hào 3 cùng đổi): Tạo ra sao NGŨ QUỶ (Liêm Trinh Hỏa). Ví dụ: Quẻ Càn ☰ biến hào 2 và 3  →  Ra Quẻ Chấn ☳  →  Càn gặp Chấn là Ngũ Quỷ.\n- BIẾN HÀO SƠ + TRUNG (Hào 1 và Hào 2 cùng đổi): Tạo ra sao THIÊN Y (Cự Môn Thổ). Ví dụ: Quẻ Càn ☰ biến hào 1 và 2  →  Ra Quẻ Cấn ☶  →  Càn gặp Cấn là Thiên Y.\n- BIẾN HÀO SƠ + THƯỢNG (Hào 1 và Hào 3 cùng đổi): Tạo ra sao LỤC SÁT (Văn Khúc Thủy). Ví dụ: Quẻ Càn ☰ biến hào 1 và 3  →  Ra Quẻ Khảm ☵  →  Càn gặp Khảm là Lục Sát.",
       "practical_manifestation": "Xác định chính xác cung Thiên Y chữa bệnh và cung Ngũ Quỷ hỏa hoạn để bố trí phòng ốc.",
-      "key_takeaway": "Nắm vững quy tắc song hào biến để giải mã chính xác ma trận 64 quẻ Dương Trạch."
+      "key_takeaway": "Nắm vững quy tắc song hào biến để giải mã chính xác Kinh Vĩ Lục 64 quẻ Dương Trạch."
     },
     {
       "stage": "Quy Luật 3: Toàn Hào Biến & Toàn Hào Bất Biến",

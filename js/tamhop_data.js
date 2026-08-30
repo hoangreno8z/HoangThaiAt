@@ -371,7 +371,7 @@ const TAMHOP_FENGSHUI_PART_7 = {
   "chapter_number": 7,
   "classic_source": "《地理五訣》 & 《玉尺經·黃泉篇》 — Triệu Cửu Phong & Lưu Bá Ôn",
   "chapter_title": "Tiết VII: Đại Trị Thủy Toàn Thư — Phân Hệ 3: Toàn Tập 11 Pháp Lý Khí Lai - Khứ Thủy & Bát Lộ Hoàng Tuyền",
-  "sub_title": "Toàn bộ ma trận 12 Cung Trường Sinh Tứ Đại Cục: Trường Sinh, Vượng, Quan Đới, Lâm Quan Lai Thủy vs Mộ, Tuyệt, Suy, Thai Khứ Thủy, Sát Nhân vs Cứu Bần Hoàng Tuyền",
+  "sub_title": "Toàn bộ Kinh Vĩ Lục 12 Cung Trường Sinh Tứ Đại Cục: Trường Sinh, Vượng, Quan Đới, Lâm Quan Lai Thủy vs Mộ, Tuyệt, Suy, Thai Khứ Thủy, Sát Nhân vs Cứu Bần Hoàng Tuyền",
   "stages_title": "Giải Mã Chi Tiết Ma Trận Lý Khí Thủy Pháp 24 Sơn (Chuyên Khảo Sư Phạm Đồ Sộ)",
   "canonical_texts": [
     {

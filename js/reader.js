@@ -475,13 +475,13 @@ class ScholarlyReader {
 
                 ${cs.practical_manifestation ? `
                   <div style="background:rgba(255,255,255,0.02); border-radius:4px; padding:0.5rem 0.8rem; margin-top:0.4rem; font-size:0.8rem; color:#A7F3D0; line-height:1.5;">
-                    <strong style="color:#34D399;">• Biểu hiện thực tế & Nhận biết:</strong> ${cs.practical_manifestation}
+                    <strong style="color:#34D399;">• Thực Địa:</strong> ${cs.practical_manifestation}
                   </div>
                 ` : ''}
 
                 ${cs.key_takeaway ? `
                   <div style="font-size:0.78rem; color:var(--text-muted); margin-top:0.35rem; line-height:1.45;">
-                    <strong style="color:#FDE68A;">• Bí quyết cốt lõi:</strong> ${cs.key_takeaway}
+                    <strong style="color:#FDE68A;">• Yếu Quyết:</strong> ${cs.key_takeaway}
                   </div>
                 ` : ''}
               </div>
@@ -583,7 +583,7 @@ class ScholarlyReader {
       `;
     }
 
-    // 6. BẢNG TRA MA TRẬN 8 QUÁI (Bát Trạch Matrix - Part 1)
+    // 6. BẢNG TRA KINH VĨ LỤC 8 QUÁI (Bát Trạch Matrix - Part 1)
     if (Array.isArray(lesson.battrach_worship_matrix)) {
       contentHtml += `
         <div style="margin-bottom:1.5rem; border-top:1px solid rgba(255,255,255,0.06); padding-top:1rem;">

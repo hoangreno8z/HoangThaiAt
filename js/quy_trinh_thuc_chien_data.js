@@ -164,7 +164,7 @@ const QUY_TRINH_THUC_CHIEN_PART_3 = {
       "stage": "Bảng Ma Trận Phối Hướng Cho Người Đông Tứ & Tây Tứ Mệnh Trong Vận 9",
       "state": "Hướng dẫn tra cứu nhanh và chính xác nhất",
       "detailed_explanation": "A. CHO NGƯỜI ĐÔNG TỨ MỆNH (Cung Khảm, Ly, Chấn, Tốn):\n- Hướng ưu tiên số 1: HƯỚNG CHÍNH NAM (Tọa Bắc Hướng Nam - Vận 9 đắc Cửu Tử đương lệnh, đón gió nồm mát, hợp quẻ Ly/Khảm);\n- Hướng ưu tiên số 2: HƯỚNG ĐÔNG NAM (Tọa Tây Bắc Hướng Đông Nam - đắc Tốn Mộc sinh Ly Hỏa, đón sinh khí);\n- Hướng ưu tiên số 3: HƯỚNG CHÍNH ĐÔNG (Tọa Tây Hướng Đông - đắc Nhất Bạch tiến khí).\n\nB. CHO NGƯỜI TÂY TỨ MỆNH (Cung Càn, Khôn, Cấn, Đoài):\n- Hướng ưu tiên số 1: HƯỚNG TÂY NAM (Tọa Đông Bắc Hướng Tây Nam - Khôn Thổ tương sinh Càn Đoài Kim);\n- Hướng ưu tiên số 2: HƯỚNG ĐÔNG BẮC (Tọa Tây Nam Hướng Đông Bắc - Cấn Thổ đắc khí vững chãi);\n- Hướng ưu tiên số 3: HƯỚNG CHÍNH TÂY hoặc TÂY BẮC (cần bố trí mái hiên rộng 2.0 mét và lam chắn nắng để cản nhiệt buổi chiều).",
-      "practical_manifestation": "Tra cứu đúng ma trận phối hướng giúp gia chủ chọn đúng hướng nhà đại cát ngay từ bước đầu tiên.",
+      "practical_manifestation": "Tra cứu đúng Kinh Vĩ Lục phối hướng giúp gia chủ chọn đúng hướng nhà đại cát ngay từ bước đầu tiên.",
       "key_takeaway": "Người Đông Tứ chọn hướng Đông Tứ, người Tây Tứ chọn hướng Tây Tứ là quy tắc bất biến."
     }
   ]
