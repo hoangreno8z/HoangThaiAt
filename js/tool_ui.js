@@ -120,9 +120,18 @@ class ToolUI {
       hasXuyenDuongPhong: this.state.hasXuyenDuongPhong,
       hasLamDauPhong: this.state.hasLamDauPhong,
       hasCatCuocPhong: this.state.hasCatCuocPhong,
-      roofType: this.state.roofType || 'cu_gia_phi_diem',
+      roofType: this.state.roofType || 'mai_bon_mai',
       hasWindbreakTre: this.state.hasRearBacking,
       hasWestSouthPond: this.state.hasFrontWater
+    }) : null;
+
+    const aeroProfile = engine.evaluateBuildingAerodynamics ? engine.evaluateBuildingAerodynamics({
+      windTopology: this.state.windTopology || 'dat_trong',
+      roofType: this.state.roofType || 'mai_bon_mai',
+      hasBufferTrees: this.state.hasBufferTrees !== undefined ? this.state.hasBufferTrees : this.state.hasRearBacking,
+      hasDeflectionScreen: this.state.hasDeflectionScreen,
+      hasRecessedEntry: this.state.hasRecessedEntry,
+      wallCornerType: this.state.wallCornerType || 'vuong_goc'
     }) : null;
     const evaluation = engine.evaluateSiteIntelligence({
       activeHazards: this.state.activeHazards,
@@ -211,38 +220,60 @@ class ToolUI {
           </div>
 
           
-          <!-- KHẢO SÁT TỨ ÁC PHONG & CÔNG TRÌNH PHÒNG BÃO -->
-          <div style="background:rgba(56,189,248,0.06); border:1px solid rgba(56,189,248,0.2); border-radius:10px; padding:1rem; margin-bottom:1.4rem;">
+          <!-- KHẢO SÁT KHÍ ĐỘNG HỌC & CÔNG TRÌNH TRỊ BÃO -->
+          <div style="background:rgba(56,189,248,0.06); border:1px solid rgba(56,189,248,0.25); border-radius:10px; padding:1.1rem; margin-bottom:1.4rem;">
             <div style="font-size:0.85rem; font-weight:800; color:#38BDF8; text-transform:uppercase; margin-bottom:0.4rem; letter-spacing:0.04em;">
-              2. Khảo Sát Tứ Ác Phong & Trị Gió Bão Cổ Điển (《Táng Thư》)
+              2. Khí Động Học & Địa Hình Gió Bão Thực Tế
             </div>
             <div style="font-size:0.75rem; color:var(--text-muted); margin-bottom:0.6rem;">
-              Kiểm tra các luồng gió sát hại sinh khí và kết cấu công trình:
+              Khảo sát hình thế khu đất và các tòa nhà lân cận:
             </div>
-            <label style="display:flex; align-items:center; gap:0.5rem; font-size:0.8rem; color:#FEF3C7; margin-bottom:0.35rem; cursor:pointer;">
-              <input type="checkbox" ${this.state.hasAoPhong ? 'checked' : ''} onchange="window.toolUI.updateState('hasAoPhong', this.checked)">
-              Ao Phong (Đối diện hẻm hút gió giữa 2 tòa nhà cao / khe núi)
+
+            <div style="margin-bottom:0.8rem;">
+              <label style="display:block; font-size:0.8rem; color:#FEF3C7; font-weight:700; margin-bottom:0.25rem;">Thế Đất Khí Động Học:</label>
+              <select onchange="window.toolUI.updateState('windTopology', this.value)" style="width:100%; background:#0D111A; border:1px solid rgba(56,189,248,0.3); color:#38BDF8; padding:0.5rem; border-radius:6px; font-size:0.85rem; font-weight:700;">
+                <option value="dat_trong" ${(this.state.windTopology || 'dat_trong') === 'dat_trong' ? 'selected' : ''}>1. Đất Trống Trơ Trọi (Chịu 100% Gió Bão Trực Diện)</option>
+                <option value="kep_hai_toa_cao" ${this.state.windTopology === 'kep_hai_toa_cao' ? 'selected' : ''}>2. Kẹp Giữa 2 Tòa Nhà Cao Tầng (Phễu Gió Hút & Gió Cuộn Thác Đổ)</option>
+                <option value="dau_hem_ngaba" ${this.state.windTopology === 'dau_hem_ngaba' ? 'selected' : ''}>3. Đầu Hẻm / Đối Diện Ngã Ba Hút Gió (Thương Phong Sát)</option>
+                <option value="dinh_doi_suon_doc" ${this.state.windTopology === 'dinh_doi_suon_doc' ? 'selected' : ''}>4. Đỉnh Đồi / Mép Sườn Dốc (Gió Nén Gia Tốc Cực Đại)</option>
+                <option value="ven_bien_mat_nuoc" ${this.state.windTopology === 'ven_bien_mat_nuoc' ? 'selected' : ''}>5. Ven Biển / Ven Mặt Nước Lớn Mênh Mông (Hơi Muối & Triều Cường)</option>
+              </select>
+            </div>
+
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.6rem; margin-bottom:0.8rem;">
+              <div>
+                <label style="display:block; font-size:0.75rem; color:var(--text-muted); margin-bottom:0.2rem;">Kết Cấu Mái Nhà:</label>
+                <select onchange="window.toolUI.updateState('roofType', this.value)" style="width:100%; background:#0D111A; border:1px solid rgba(255,255,255,0.15); color:#FEF3C7; padding:0.45rem; border-radius:6px; font-size:0.8rem;">
+                  <option value="mai_bon_mai" ${(this.state.roofType || 'mai_bon_mai') === 'mai_bon_mai' ? 'selected' : ''}>Mái Bốn Mái Dốc 30°-35° (Tối ưu xẻ gió)</option>
+                  <option value="mai_bang" ${this.state.roofType === 'mai_bang' ? 'selected' : ''}>Mái Bằng Bê Tông Cốt Thép</option>
+                  <option value="mai_hai_mai_doc" ${this.state.roofType === 'mai_hai_mai_doc' ? 'selected' : ''}>Mái Hai Mái Dốc Đầu Hồi</option>
+                  <option value="mai_ton_doc" ${this.state.roofType === 'mai_ton_doc' ? 'selected' : ''}>Mái Tôn Dốc Đơn (Dễ bốc mái)</option>
+                </select>
+              </div>
+              <div>
+                <label style="display:block; font-size:0.75rem; color:var(--text-muted); margin-bottom:0.2rem;">Hình Dáng Góc Tường:</label>
+                <select onchange="window.toolUI.updateState('wallCornerType', this.value)" style="width:100%; background:#0D111A; border:1px solid rgba(255,255,255,0.15); color:#FEF3C7; padding:0.45rem; border-radius:6px; font-size:0.8rem;">
+                  <option value="vat_goc_bo_tron" ${this.state.wallCornerType === 'vat_goc_bo_tron' ? 'selected' : ''}>Vát Góc / Bo Tròn (Giảm 30% lực cản)</option>
+                  <option value="vuong_goc" ${(this.state.wallCornerType || 'vuong_goc') === 'vuong_goc' ? 'selected' : ''}>Góc Vuông Truyền Thống 90°</option>
+                </select>
+              </div>
+            </div>
+
+            <div style="font-size:0.78rem; font-weight:700; color:#FBBF24; margin-bottom:0.4rem;">Giải Pháp Kỹ Thuật Bảo Vệ:</div>
+            <label style="display:flex; align-items:center; gap:0.5rem; font-size:0.78rem; color:#FEF3C7; margin-bottom:0.3rem; cursor:pointer;">
+              <input type="checkbox" ${this.state.hasBufferTrees ? 'checked' : ''} onchange="window.toolUI.updateState('hasBufferTrees', this.checked)">
+              Đai Cây Xanh Phân Tầng Chắn Gió (Cách nhà 10 - 15m)
             </label>
-            <label style="display:flex; align-items:center; gap:0.5rem; font-size:0.8rem; color:#FEF3C7; margin-bottom:0.35rem; cursor:pointer;">
-              <input type="checkbox" ${this.state.hasXuyenDuongPhong ? 'checked' : ''} onchange="window.toolUI.updateState('hasXuyenDuongPhong', this.checked)">
-              Xuyên Đường Phong (Cửa trước thông thẳng tắp ra cửa sau)
+            <label style="display:flex; align-items:center; gap:0.5rem; font-size:0.78rem; color:#FEF3C7; margin-bottom:0.3rem; cursor:pointer;">
+              <input type="checkbox" ${this.state.hasDeflectionScreen ? 'checked' : ''} onchange="window.toolUI.updateState('hasDeflectionScreen', this.checked)">
+              Bình Phong / Mái Đón Sảnh Tán Khí (Chống gió cuộn Downwash)
             </label>
-            <label style="display:flex; align-items:center; gap:0.5rem; font-size:0.8rem; color:#FEF3C7; margin-bottom:0.35rem; cursor:pointer;">
-              <input type="checkbox" ${this.state.hasLamDauPhong ? 'checked' : ''} onchange="window.toolUI.updateState('hasLamDauPhong', this.checked)">
-              Lâm Đầu Phong (Tựa sát vách núi cao / tháp cao dội gió xuống nóc)
+            <label style="display:flex; align-items:center; gap:0.5rem; font-size:0.78rem; color:#FEF3C7; cursor:pointer;">
+              <input type="checkbox" ${this.state.hasRecessedEntry ? 'checked' : ''} onchange="window.toolUI.updateState('hasRecessedEntry', this.checked)">
+              Tiền Sảnh Thụt Lùi (Tạo đệm khí tĩnh chống áp lực cửa)
             </label>
-            <label style="display:flex; align-items:center; gap:0.5rem; font-size:0.8rem; color:#FEF3C7; margin-bottom:0.6rem; cursor:pointer;">
-              <input type="checkbox" ${this.state.hasCatCuocPhong ? 'checked' : ''} onchange="window.toolUI.updateState('hasCatCuocPhong', this.checked)">
-              Cát Cước Phong (Mặt đất trơ trọi, gió quét sát chân móng nứt nẻ)
-            </label>
-            <div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:0.3rem;">Kết Cấu Mái Ngăn Bão:</div>
-            <select onchange="window.toolUI.updateState('roofType', this.value)" style="width:100%; background:#0D111A; border:1px solid rgba(255,255,255,0.15); color:#FEF3C7; padding:0.45rem; border-radius:6px; font-size:0.85rem;">
-              <option value="cu_gia_phi_diem" ${(this.state.roofType || 'cu_gia_phi_diem') === 'cu_gia_phi_diem' ? 'selected' : ''}>Mái Ngói Cử Giá Phi Diêm (《Doanh Tạo Pháp Thức》 - Triệt tiêu lực nâng bão)</option>
-              <option value="mai_bang" ${this.state.roofType === 'mai_bang' ? 'selected' : ''}>Mái Bằng Bê Tông Cốt Thép</option>
-              <option value="mai_ton_doc" ${this.state.roofType === 'mai_ton_doc' ? 'selected' : ''}>Mái Tôn Dốc Đơn (Dễ bị bão giật tốc mái)</option>
-            </select>
           </div>
-  <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.8rem;">
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.8rem;">
             <div>
               <label style="display:block; font-size:0.8rem; color:var(--text-muted); margin-bottom:0.3rem;">Số Người Ở:</label>
               <input type="number" value="${this.state.occupantCount}" onchange="window.toolUI.updateState('occupantCount', this.value)" style="width:100%; background:#0D111A; border:1px solid rgba(255,255,255,0.15); color:#FEF3C7; padding:0.55rem; border-radius:8px; font-size:0.9rem; box-sizing:border-box;">
