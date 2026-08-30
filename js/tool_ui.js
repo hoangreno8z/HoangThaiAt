@@ -985,30 +985,6 @@ ${reportText}
       return '<div style="padding:2rem; text-align:center; color:var(--text-muted);">Đang nạp cơ sở dữ liệu Kho Thư Tịch Hóa Giải Cổ...</div>';
     }
 
-    const shortNames = [
-      "01. Bát Sát Hoàng Tuyền (Thủy Pháp)",
-      "02. Xuyên Cung Cửu Tinh (Chọn Tầng)",
-      "03. Động Thổ Tu Tạo (Thần Sát)",
-      "04. Thủy Khẩu Khóa Khí (Thủy Long)",
-      "05. Thích Cơ Đầm Vôi (Tả Ao)",
-      "06. Văn Xương Khoa Cử (Nhất Tứ)",
-      "07. Tụ Tài Khố (Ngũ Thực)",
-      "08. Sức Khỏe Dưỡng Thọ (Thiên Y)",
-      "09. Hoành Lương Áp Đỉnh (Dầm Xà)",
-      "10. Thê Đới Trực Xung (Cầu Thang)",
-      "11. Thủy Pháp Minh Đường (Bể Cá)",
-      "12. Giếng Trời Thiên Tỉnh (Tứ Thủy)",
-      "13. Trấn Thạch Thạch Cảm Đương",
-      "14. Gương Đồng Chiếu Yêu (Bát Quái)",
-      "15. Đào Mộc & Cây Chắn Gió",
-      "16. Táo Vị Hỏa Lộ (Bếp Nấu)",
-      "17. Khai Môn Đối Môn (Lỗ Ban)",
-      "18. Bình Phong Ảnh Bích (Tàng Phong)",
-      "19. Phản Cung Sát & Cầu Vượt",
-      "20. Kim Khí Tiền Ngũ Đế (Ngũ Hoàng)",
-      "21. Phù Lục Trấn Trạch Nghi Lễ"
-    ];
-
     const currentId = this.selectedHoaGiaiId || corpus[0].ma_dinh_danh;
     let currentItem = corpus.find(item => item.ma_dinh_danh === currentId) || corpus[0];
     const currentIndex = corpus.findIndex(item => item.ma_dinh_danh === currentItem.ma_dinh_danh);
@@ -1046,7 +1022,7 @@ ${reportText}
           >
             ${corpus.map((item, idx) => `
               <option value="${item.ma_dinh_danh}" ${item.ma_dinh_danh === currentItem.ma_dinh_danh ? 'selected' : ''}>
-                ${shortNames[idx] || (idx + 1) + '. ' + item.ten_thuan_viet}
+                ${String(idx + 1).padStart(2, '0')}. ${item.ten_ngan || item.ten_thuan_viet}
               </option>
             `).join('')}
           </select>
