@@ -2021,12 +2021,12 @@ ${reportText}
             <span style="font-size:0.82rem; color:var(--text-muted);">Khí Động Học & Cổ Thư</span>
           </div>
 
-          <!-- 1 MENU CHỌN MẪU DUY NHẤT TINH GỌN (8 BẢN VẼ MẪU) -->
+          <!-- 1 MENU CHỌN MẪU DUY NHẤT TINH GỌN (20 BẢN VẼ MẪU) -->
           <div style="display:flex; align-items:center; gap:0.4rem;">
             <span style="font-size:0.78rem; color:var(--text-muted);">Mẫu bản vẽ:</span>
-            <select onchange="window.toolUI.selectDesignBlueprint(this.value)" style="background:#0F172A; color:#FEF3C7; border:1px solid rgba(56,189,248,0.4); padding:0.28rem 0.6rem; border-radius:6px; font-size:0.8rem; font-weight:700; outline:none; cursor:pointer;">
+            <select onchange="window.toolUI.selectDesignBlueprint(this.value)" style="background:#0F172A; color:#FEF3C7; border:1px solid rgba(56,189,248,0.4); padding:0.32rem 0.65rem; border-radius:6px; font-size:0.82rem; font-weight:700; outline:none; cursor:pointer;">
               ${blueprints.map((bp, idx) => `
-                <option value="${bp.id}" ${bp.id === activeBp.id ? 'selected' : ''}>Mẫu 0${idx + 1}: ${bp.name}</option>
+                <option value="${bp.id}" ${bp.id === activeBp.id ? 'selected' : ''}>Mẫu ${String(idx + 1).padStart(2, '0')}: ${bp.name}</option>
               `).join('')}
             </select>
           </div>
@@ -2061,7 +2061,7 @@ ${reportText}
             </div>
 
             <!-- BẢN VẼ SƠ ĐỒ KHÍ ĐỘNG HỌC VECTOR (SVG) -->
-            <div style="margin-bottom:1.2rem; width:100%; height:auto; max-height:420px; overflow:hidden; border-radius:6px; border:1px solid rgba(255,255,255,0.08);">
+            <div style="margin-bottom:1.2rem; width:100%; aspect-ratio:850/440; max-height:460px; overflow:hidden; border-radius:8px; border:1px solid rgba(56,189,248,0.2); background:#080C14;">
               ${activeBp.svg_diagram || ''}
             </div>
 
