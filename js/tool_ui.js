@@ -1312,6 +1312,89 @@ ${reportText}
           </div>
         </div>
 
+        <!-- BẢN ĐỒ THẾ ĐẤT & THỦY HỆ BARE-EARTH VECTOR CAD -->
+        <div style="margin-bottom:1.8rem;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.6rem;">
+            <div style="font-size:0.85rem; font-weight:800; color:#FBBF24; letter-spacing:0.04em;">
+              BẢN ĐỒ THẾ ĐẤT & THỦY HỆ BARE-EARTH (LỌC BỎ CÔNG TRÌNH):
+            </div>
+            <span style="font-size:0.75rem; color:#38BDF8; font-family:monospace;">${currentProvince.coordinates || ''}</span>
+          </div>
+          <div style="width:100%; aspect-ratio:850/440; max-height:460px; overflow:hidden; border-radius:8px; border:1px solid rgba(56,189,248,0.25); background:#080C14; box-shadow:0 8px 24px rgba(0,0,0,0.5);">
+            ${currentProvince.topographic_bare_earth_svg || ''}
+          </div>
+        </div>
+
+        <!-- BẢNG 1: THÔNG SỐ KỸ THUẬT MẠNG LƯỚI SÔNG NGÒI (RỘNG, SÂU, LƯU LƯỢNG, HƯỚNG DÒNG) -->
+        <div style="background:#0D111A; border:1px solid rgba(56,189,248,0.25); border-radius:10px; padding:1.2rem; margin-bottom:1.8rem;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.8rem; border-bottom:1px solid rgba(255,255,255,0.06); padding-bottom:0.5rem; flex-wrap:wrap; gap:0.5rem;">
+            <h3 style="font-size:1rem; color:#38BDF8; margin:0; font-weight:800;">
+              Mạng Lưới Thủy Hệ & Thông Số Dòng Chảy (${currentProvince.name})
+            </h3>
+            <span style="font-size:0.75rem; color:#34D399; font-weight:700; background:rgba(52,211,153,0.12); padding:0.2rem 0.5rem; border-radius:4px;">
+              THỦY VĂN HỌC THỰC NGHIỆM
+            </span>
+          </div>
+
+          <div style="overflow-x:auto;">
+            <table style="width:100%; border-collapse:collapse; font-size:0.82rem; text-align:left;">
+              <thead>
+                <tr style="background:rgba(255,255,255,0.04); color:#FEF3C7; border-bottom:1px solid rgba(255,255,255,0.1);">
+                  <th style="padding:0.6rem 0.8rem;">Tên Dòng Sông</th>
+                  <th style="padding:0.6rem 0.8rem;">Bề Rộng Lòng Sông</th>
+                  <th style="padding:0.6rem 0.8rem;">Độ Sâu Luồng</th>
+                  <th style="padding:0.6rem 0.8rem;">Chiều Dài Qua Tỉnh</th>
+                  <th style="padding:0.6rem 0.8rem;">Lưu Lượng (Q_avg)</th>
+                  <th style="padding:0.6rem 0.8rem;">Hướng Dòng Chảy</th>
+                  <th style="padding:0.6rem 0.8rem;">Thế Đất Loan Đầu</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${(currentProvince.river_hydrography || []).map((r, rIdx) => `
+                  <tr style="border-bottom:1px solid rgba(255,255,255,0.04); color:var(--text-primary);">
+                    <td style="padding:0.6rem 0.8rem; font-weight:700; color:#FEF3C7;">${r.river_name}</td>
+                    <td style="padding:0.6rem 0.8rem; color:#38BDF8; font-weight:700;">${r.width_m}</td>
+                    <td style="padding:0.6rem 0.8rem; color:#93C5FD;">${r.depth_m}</td>
+                    <td style="padding:0.6rem 0.8rem; color:#CBD5E1;">${r.length_in_province_km}</td>
+                    <td style="padding:0.6rem 0.8rem; color:#F59E0B; font-weight:700;">${r.average_discharge_m3s}</td>
+                    <td style="padding:0.6rem 0.8rem; color:#A7F3D0;">${r.flow_vector}</td>
+                    <td style="padding:0.6rem 0.8rem; color:#FDE68A;">${r.loan_dau_classification}</td>
+                  </tr>
+                `).join('')}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- BẢNG 2: PHÂN TẦNG CAO ĐỘ TIỂU VÙNG (SỐ MÉT CAO ĐỘ THỰC TẾ & CHẤT ĐẤT) -->
+        <div style="background:#0D111A; border:1px solid rgba(245,158,11,0.25); border-radius:10px; padding:1.2rem; margin-bottom:1.8rem;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.8rem; border-bottom:1px solid rgba(255,255,255,0.06); padding-bottom:0.5rem; flex-wrap:wrap; gap:0.5rem;">
+            <h3 style="font-size:1rem; color:#FBBF24; margin:0; font-weight:800;">
+              Bảng Phân Tầng Cao Độ Tiểu Vùng & Sức Chịu Tải Móng
+            </h3>
+            <span style="font-size:0.75rem; color:#FEF3C7; font-weight:700; background:rgba(245,158,11,0.12); padding:0.2rem 0.5rem; border-radius:4px;">
+              MỐC HÒN DẤU ±0.000
+            </span>
+          </div>
+
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:0.9rem;">
+            ${(currentProvince.elevation_zones || []).map((z, zIdx) => `
+              <div style="background:#121722; border:1px solid rgba(255,255,255,0.06); border-top:3px solid ${zIdx === 0 ? '#F59E0B' : (zIdx === 1 ? '#10B981' : '#38BDF8')}; padding:0.9rem; border-radius:6px;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.4rem;">
+                  <span style="font-size:0.82rem; font-weight:800; color:#FEF3C7;">${z.zone_name}</span>
+                  <span style="font-size:0.85rem; font-weight:800; color:${zIdx === 0 ? '#FDE68A' : (zIdx === 1 ? '#6EE7B7' : '#7DD3FC')}; font-family:monospace;">${z.elevation_range}</span>
+                </div>
+                <div style="font-size:0.78rem; color:var(--text-muted); line-height:1.45; margin-bottom:0.4rem;">
+                  <strong style="color:#CBD5E1;">• Địa chất & Móng:</strong> ${z.soil_stability}
+                </div>
+                <div style="font-size:0.76rem; color:#93C5FD; line-height:1.4; background:rgba(255,255,255,0.02); padding:0.35rem 0.5rem; border-radius:4px;">
+                  <strong style="color:#38BDF8;">• Phong thủy địa khí:</strong> ${z.fengshui_role}
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
         <!-- Lưới 4 Cột: Địa Hình - Địa Chất - Thủy Văn - Khí Hậu -->
         <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:1rem; margin-bottom:1.8rem;">
           
