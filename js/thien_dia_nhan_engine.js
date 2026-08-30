@@ -173,6 +173,89 @@ class ThienDiaNhanEngine {
 
     return report;
   }
+
+  evaluateWindAndStormProfile(inputs) {
+    const orientation = inputs.orientation || 'Nam';
+    const hasAoPhong = !!inputs.hasAoPhong;
+    const hasXuyenDuongPhong = !!inputs.hasXuyenDuongPhong;
+    const hasLamDauPhong = !!inputs.hasLamDauPhong;
+    const hasCatCuocPhong = !!inputs.hasCatCuocPhong;
+    const roofType = inputs.roofType || 'cu_gia_phi_diem'; // 'cu_gia_phi_diem', 'mai_bang', 'mai_ton_doc'
+    const hasWindbreakTre = !!inputs.hasWindbreakTre;
+    const hasWestSouthPond = !!inputs.hasWestSouthPond;
+
+    const batPhongProfile = {
+      'Đông': { name: 'Minh Thứ Phong (Gió Đông)', quẻ: 'Chấn', nature: 'Ấm áp mùa xuân, sinh sôi', status: 'auspicious', desc: 'Đón nhận sinh khí mùa xuân đâm chồi nảy lộc.' },
+      'Đông Nam': { name: 'Thanh Minh Phong (Gió Đông Nam / Nồm Mát)', quẻ: 'Tốn', nature: 'Mát lành, dưỡng sinh, thuần dương', status: 'great_auspicious', desc: 'Hướng đại cát đón trọn gió nồm mát mẻ mùa hè, khí trường sảng khoái.' },
+      'Nam': { name: 'Huân Phong / Cảnh Phong (Gió Nam)', quẻ: 'Ly', nature: 'Nắng ấm, sinh trưởng vạn vật', status: 'great_auspicious', desc: 'Đắc cách Tọa Bắc Triều Nam, đón dương quang ấm áp mùa đông và gió mát mùa hè.' },
+      'Tây Nam': { name: 'Thê Phong (Gió Tây Nam / Gió Phơn Khô Nóng)', quẻ: 'Khôn', nature: 'Khô nóng rát, tiêu hao tân dịch', status: 'caution', desc: 'Cần ao hồ Minh Đường chắn góc Tây Nam để hạ nhiệt 3°C - 5°C.' },
+      'Tây': { name: 'Cương Phong (Gió Tây / Sát Khí Mùa Thu)', quẻ: 'Đoài', nature: 'Khô hanh, nắng quái chiều gắt', status: 'danger', desc: 'Bức xạ Hỏa Táo gay gắt, cần lam chắn nắng và cây xanh cách nhiệt.' },
+      'Tây Bắc': { name: 'Chiết Phong / Lệ Phong (Gió Tây Bắc)', quẻ: 'Càn', nature: 'Lạnh buốt hanh hao đầu đông', status: 'caution', desc: 'Cần tường dày chắn hậu không mở cửa sổ lớn.' },
+      'Bắc': { name: 'Quảng Mạc Phong (Gió Bắc / Gió Bấc Đại Hàn)', quẻ: 'Khảm', nature: 'Băng giá cực hàn mùa đông', status: 'danger', desc: 'Cấm mở cửa chính trực diện hướng Bắc, cần lũy tre phong đai chắn bấc.' },
+      'Đông Bắc': { name: 'Điều Phong (Gió Đông Bắc / Gió Độc Chuyển Mùa)', quẻ: 'Cấn', nature: 'Ẩm buốt ngưng trệ, sinh dịch bệnh', status: 'danger', desc: 'Cần bịt kín cửa sau, trồng hàng cây rào chắn gió độc.' }
+    };
+
+    const currentPhong = batPhongProfile[orientation] || batPhongProfile['Nam'];
+
+    // Đánh giá Tứ Ác Phong
+    const acPhongAlerts = [];
+    if (hasAoPhong) {
+      acPhongAlerts.push({ name: 'Ao Phong Sát (Gió Hút Khe Núi / Hẻm Nhà)', severity: 'danger', source: '《Táng Thư》 (Quách Phác)', desc: 'Hiệu ứng Venturi tăng vận tốc gió xé sườn nhà, gây bệnh đường hô hấp, liệt thần kinh.' });
+    }
+    if (hasXuyenDuongPhong) {
+      acPhongAlerts.push({ name: 'Xuyên Đường Phong (Gió Lùa Xuyên Tim)', severity: 'danger', source: '《Táng Thư》 (Quách Phác)', desc: 'Cửa trước thông thẳng cửa sau cướp mất nhiệt năng và sinh khí nội thất, hao tài tốn của.' });
+    }
+    if (hasLamDauPhong) {
+      acPhongAlerts.push({ name: 'Lâm Đầu Phong (Gió Dội Trên Nóc)', severity: 'danger', source: '《Táng Thư》 (Quách Phác)', desc: 'Gió dội từ vách núi cao hoặc tòa tháp cao phía sau xuống nóc nhà, gây đau đầu đột quỵ não.' });
+    }
+    if (hasCatCuocPhong) {
+      acPhongAlerts.push({ name: 'Cát Cước Phong (Gió Quét Chân Móng)', severity: 'danger', source: '《Táng Thư》 (Quách Phác)', desc: 'Gió ràn rạt sát mặt đất làm khô nứt rỗng chân móng, gây tê bì chân tay.' });
+    }
+
+    // Đánh giá Công Trình Trị Bão
+    let stormScore = 75;
+    const engineeringNotes = [];
+
+    if (roofType === 'cu_gia_phi_diem') {
+      stormScore += 15;
+      engineeringNotes.push('Đắc Khí Động Học Cử Giá Phi Diêm (《Doanh Tạo Pháp Thức》): Độ dốc mái biến thiên 45° -> 25° triệt tiêu lực nâng Bernoulli, ghìm mái ngói xuống móng chống tốc mái.');
+    } else if (roofType === 'mai_ton_doc') {
+      stormScore -= 20;
+      engineeringNotes.push('Cảnh báo Mái Tôn Dốc Đơn: Dễ bị áp suất âm hút bay khi cuồng phong cấp 12 đổ bộ, cần gia cố xà gồ và đai kẹp chống bão.');
+    } else if (roofType === 'mai_bang') {
+      stormScore += 5;
+      engineeringNotes.push('Mái Bằng Bê Tông: Chịu tải gió tốt nhưng cần lớp đệm cách nhiệt chống bức xạ mặt trời.');
+    }
+
+    if (['Bắc', 'Đông Bắc', 'Tây Bắc'].includes(orientation)) {
+      if (hasWindbreakTre) {
+        stormScore += 10;
+        engineeringNotes.push('Đắc Lũy Tre Phong Đai (《Địa Lý Tả Ao》): Khóm tre dày giảm 80% vận tốc gió bấc rét buốt.');
+      } else {
+        stormScore -= 15;
+        engineeringNotes.push('Cảnh báo: Nhà hướng Bắc/Đông Bắc thiếu lũy tre chắn gió bấc mùa đông.');
+      }
+    }
+
+    if (['Tây', 'Tây Nam'].includes(orientation)) {
+      if (hasWestSouthPond) {
+        stormScore += 10;
+        engineeringNotes.push('Đắc Minh Đường Trì Góc Tây Nam (《Tả Ao Trạch Thư》): Hồ nước bốc hơi hạ nhiệt gió phơn 3°C - 5°C.');
+      } else {
+        stormScore -= 10;
+        engineeringNotes.push('Cảnh báo: Nhà hướng Tây/Tây Nam chưa có hồ nước hay rèm cây hạ nhiệt gió phơn nóng rát.');
+      }
+    }
+
+    return {
+      orientation,
+      currentPhong,
+      acPhongAlerts,
+      stormScore: Math.max(0, Math.min(100, stormScore)),
+      engineeringNotes
+    };
+  }
+
 }
 
 if (typeof window !== 'undefined') {

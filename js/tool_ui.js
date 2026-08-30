@@ -114,6 +114,16 @@ class ToolUI {
     if (!engine) return '<div>Đang nạp động cơ Thiên Địa Nhân...</div>';
 
     const solarProfile = engine.calculateSolarProfile(this.state.latitude);
+    const windProfile = engine.evaluateWindAndStormProfile ? engine.evaluateWindAndStormProfile({
+      orientation: this.state.houseDirection,
+      hasAoPhong: this.state.hasAoPhong,
+      hasXuyenDuongPhong: this.state.hasXuyenDuongPhong,
+      hasLamDauPhong: this.state.hasLamDauPhong,
+      hasCatCuocPhong: this.state.hasCatCuocPhong,
+      roofType: this.state.roofType || 'cu_gia_phi_diem',
+      hasWindbreakTre: this.state.hasRearBacking,
+      hasWestSouthPond: this.state.hasFrontWater
+    }) : null;
     const evaluation = engine.evaluateSiteIntelligence({
       activeHazards: this.state.activeHazards,
       orientation: this.state.houseDirection,
@@ -200,7 +210,39 @@ class ToolUI {
             </label>
           </div>
 
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.8rem;">
+          
+          <!-- KHẢO SÁT TỨ ÁC PHONG & CÔNG TRÌNH PHÒNG BÃO -->
+          <div style="background:rgba(56,189,248,0.06); border:1px solid rgba(56,189,248,0.2); border-radius:10px; padding:1rem; margin-bottom:1.4rem;">
+            <div style="font-size:0.85rem; font-weight:800; color:#38BDF8; text-transform:uppercase; margin-bottom:0.4rem; letter-spacing:0.04em;">
+              2. Khảo Sát Tứ Ác Phong & Trị Gió Bão Cổ Điển (《Táng Thư》)
+            </div>
+            <div style="font-size:0.75rem; color:var(--text-muted); margin-bottom:0.6rem;">
+              Kiểm tra các luồng gió sát hại sinh khí và kết cấu công trình:
+            </div>
+            <label style="display:flex; align-items:center; gap:0.5rem; font-size:0.8rem; color:#FEF3C7; margin-bottom:0.35rem; cursor:pointer;">
+              <input type="checkbox" ${this.state.hasAoPhong ? 'checked' : ''} onchange="window.toolUI.updateState('hasAoPhong', this.checked)">
+              Ao Phong (Đối diện hẻm hút gió giữa 2 tòa nhà cao / khe núi)
+            </label>
+            <label style="display:flex; align-items:center; gap:0.5rem; font-size:0.8rem; color:#FEF3C7; margin-bottom:0.35rem; cursor:pointer;">
+              <input type="checkbox" ${this.state.hasXuyenDuongPhong ? 'checked' : ''} onchange="window.toolUI.updateState('hasXuyenDuongPhong', this.checked)">
+              Xuyên Đường Phong (Cửa trước thông thẳng tắp ra cửa sau)
+            </label>
+            <label style="display:flex; align-items:center; gap:0.5rem; font-size:0.8rem; color:#FEF3C7; margin-bottom:0.35rem; cursor:pointer;">
+              <input type="checkbox" ${this.state.hasLamDauPhong ? 'checked' : ''} onchange="window.toolUI.updateState('hasLamDauPhong', this.checked)">
+              Lâm Đầu Phong (Tựa sát vách núi cao / tháp cao dội gió xuống nóc)
+            </label>
+            <label style="display:flex; align-items:center; gap:0.5rem; font-size:0.8rem; color:#FEF3C7; margin-bottom:0.6rem; cursor:pointer;">
+              <input type="checkbox" ${this.state.hasCatCuocPhong ? 'checked' : ''} onchange="window.toolUI.updateState('hasCatCuocPhong', this.checked)">
+              Cát Cước Phong (Mặt đất trơ trọi, gió quét sát chân móng nứt nẻ)
+            </label>
+            <div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:0.3rem;">Kết Cấu Mái Ngăn Bão:</div>
+            <select onchange="window.toolUI.updateState('roofType', this.value)" style="width:100%; background:#0D111A; border:1px solid rgba(255,255,255,0.15); color:#FEF3C7; padding:0.45rem; border-radius:6px; font-size:0.85rem;">
+              <option value="cu_gia_phi_diem" ${(this.state.roofType || 'cu_gia_phi_diem') === 'cu_gia_phi_diem' ? 'selected' : ''}>Mái Ngói Cử Giá Phi Diêm (《Doanh Tạo Pháp Thức》 - Triệt tiêu lực nâng bão)</option>
+              <option value="mai_bang" ${this.state.roofType === 'mai_bang' ? 'selected' : ''}>Mái Bằng Bê Tông Cốt Thép</option>
+              <option value="mai_ton_doc" ${this.state.roofType === 'mai_ton_doc' ? 'selected' : ''}>Mái Tôn Dốc Đơn (Dễ bị bão giật tốc mái)</option>
+            </select>
+          </div>
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.8rem;">
             <div>
               <label style="display:block; font-size:0.8rem; color:var(--text-muted); margin-bottom:0.3rem;">Số Người Ở:</label>
               <input type="number" value="${this.state.occupantCount}" onchange="window.toolUI.updateState('occupantCount', this.value)" style="width:100%; background:#0D111A; border:1px solid rgba(255,255,255,0.15); color:#FEF3C7; padding:0.55rem; border-radius:8px; font-size:0.9rem; box-sizing:border-box;">
