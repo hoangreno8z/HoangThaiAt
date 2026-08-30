@@ -94,6 +94,10 @@ class ToolUI {
         </div>
       </div>
     `;
+
+    if (this.currentToolTab === 'diachat64') {
+      setTimeout(() => this.initDiaChatGisMap(this.selectedDiaChatId || 'HN_PRE2008'), 60);
+    }
   }
 
   getToolContent(tab) {
@@ -1312,16 +1316,31 @@ ${reportText}
           </div>
         </div>
 
-        <!-- BẢN ĐỒ THẾ ĐẤT & THỦY HỆ BARE-EARTH VECTOR CAD -->
+        <!-- BẢN ĐỒ KHÔNG GIAN ĐỊA HÌNH & THỦY HỆ GIS THỰC TẾ (LEAFLET TOPOGRAPHIC & SATELLITE ENGINE) -->
         <div style="margin-bottom:1.8rem;">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.6rem;">
-            <div style="font-size:0.85rem; font-weight:800; color:#FBBF24; letter-spacing:0.04em;">
-              BẢN ĐỒ THẾ ĐẤT & THỦY HỆ BARE-EARTH (LỌC BỎ CÔNG TRÌNH):
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.6rem; flex-wrap:wrap; gap:0.5rem;">
+            <div style="display:flex; align-items:center; gap:0.5rem;">
+              <span style="font-size:0.85rem; font-weight:800; color:#FBBF24; letter-spacing:0.04em;">
+                BẢN ĐỒ ĐỊA HÌNH & MẠNG LƯỚI SÔNG NGÒI THỰC ĐỊA:
+              </span>
+              <span style="font-size:0.75rem; color:#34D399; font-weight:700; background:rgba(52,211,153,0.12); padding:0.15rem 0.5rem; border-radius:4px;">
+                OPENTOPOMAP + ESRI 3 LỚP
+              </span>
             </div>
-            <span style="font-size:0.75rem; color:#38BDF8; font-family:monospace;">${currentProvince.coordinates || ''}</span>
+            <div style="display:flex; align-items:center; gap:0.6rem;">
+              <span style="font-size:0.75rem; color:#38BDF8; font-family:monospace;">${currentProvince.coordinates || ''}</span>
+              <button type="button" onclick="window.toolUI.initDiaChatGisMap('${currentProvince.historical_id}')" style="background:#0F172A; border:1px solid #38BDF8; color:#38BDF8; padding:0.2rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; cursor:pointer;">
+                🔄 Định vị lại
+              </button>
+            </div>
           </div>
-          <div style="width:100%; aspect-ratio:850/440; max-height:460px; overflow:hidden; border-radius:8px; border:1px solid rgba(56,189,248,0.25); background:#080C14; box-shadow:0 8px 24px rgba(0,0,0,0.5);">
-            ${currentProvince.topographic_bare_earth_svg || ''}
+
+          <!-- Khung chứa bản đồ Leaflet tương tác thực tế -->
+          <div id="diachat-gis-map" style="width:100%; height:480px; border-radius:8px; border:1px solid rgba(56,189,248,0.3); background:#080C14; box-shadow:0 8px 24px rgba(0,0,0,0.6); position:relative; z-index:1;"></div>
+          
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-top:0.5rem; font-size:0.74rem; color:var(--text-muted); flex-wrap:wrap; gap:0.4rem;">
+            <span>💡 <strong>Hướng dẫn:</strong> Cuộn chuột để phóng to/thu nhỏ xem rõ từng ngọn núi, đường đẳng cao, sông suối, quận huyện. Chọn góc trên bên phải để đổi giữa <em>Địa Hình Đẳng Cao</em>, <em>Ảnh Vệ Tinh</em> và <em>Địa Danh Hành Chính</em>.</span>
+            <span style="color:#FEF3C7;">Mốc cao độ: Mét so với mực nước biển (Hòn Dấu)</span>
           </div>
         </div>
 
@@ -1708,13 +1727,139 @@ ${reportText}
     }
   }
 
-  renderDiaChatSelection(provinceId) {
+  selectDiaChatProvince(provinceId) {
     this.selectedDiaChatId = provinceId;
+    const input = document.getElementById('diachat-search-input');
+    const corpus = (typeof DIA_LY_64_TINH_THANH_CORPUS !== 'undefined') ? DIA_LY_64_TINH_THANH_CORPUS : [];
+    const p = corpus.find(item => item.historical_id === provinceId);
+    if (input && p) {
+      input.value = `${p.name} (${p.region.split('(')[0].trim()})`;
+    }
+    const list = document.getElementById('diachat-dropdown-list');
+    if (list) list.style.display = 'none';
+
     const activeArea = document.getElementById('tool-active-area');
     if (activeArea) {
       activeArea.innerHTML = this.renderDiaChat64Tab(provinceId);
+      setTimeout(() => this.initDiaChatGisMap(provinceId), 60);
     }
   }
+
+  renderDiaChatSelection(provinceId) {
+    this.selectDiaChatProvince(provinceId);
+  }
+
+  // =========================================================================
+  // KHỞI TẠO BẢN ĐỒ GIS ĐỊA HÌNH & VỆ TINH LEAFLET (OPENTOPOMAP + ESRI)
+  // =========================================================================
+  initDiaChatGisMap(provinceId, retryCount = 0) {
+    const mapContainer = document.getElementById('diachat-gis-map');
+    if (!mapContainer) return;
+
+    if (typeof L === 'undefined' || !L.map) {
+      if (retryCount < 5) {
+        setTimeout(() => this.initDiaChatGisMap(provinceId, retryCount + 1), 300);
+      }
+      return;
+    }
+
+    const corpus = (typeof DIA_LY_64_TINH_THANH_CORPUS !== 'undefined') ? DIA_LY_64_TINH_THANH_CORPUS : [];
+    const p = corpus.find(item => item.historical_id === provinceId) || corpus[0];
+    if (!p) return;
+
+    // Remove existing map instance cleanly
+    if (this._gisMapInstance) {
+      try {
+        this._gisMapInstance.remove();
+      } catch (e) {
+        console.error('Error removing map instance', e);
+      }
+      this._gisMapInstance = null;
+    }
+
+    const lat = p.geo_lat || 16.0544;
+    const lng = p.geo_lng || 108.2022;
+    const zoom = p.geo_zoom || 10;
+
+    // Create Leaflet Map
+    const map = L.map('diachat-gis-map', {
+      center: [lat, lng],
+      zoom: zoom,
+      zoomControl: true,
+      attributionControl: true
+    });
+    this._gisMapInstance = map;
+
+    // Layer 1: OpenTopoMap (Đường đẳng cao địa hình & núi đồi thực tế)
+    const topoLayer = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+      maxZoom: 17,
+      subdomains: 'abc',
+      attribution: '© OpenTopoMap, © OpenStreetMap'
+    });
+
+    // Layer 2: Esri World Imagery (Ảnh chụp vệ tinh quang học bề mặt thật)
+    const satelliteLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: '© Esri, Maxar, Earthstar Geographics'
+    });
+
+    // Layer 3: Esri World Topo Map (Địa hình + Tên Quận Huyện, Thị Xã, Thành Phố)
+    const esriTopoLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: '© Esri, HERE, Garmin, USGS'
+    });
+
+    // Default layer: OpenTopoMap
+    topoLayer.addTo(map);
+
+    // Layer Control Switcher
+    const baseLayers = {
+      "⛰️ Địa Hình & Đường Đẳng Cao (OpenTopoMap)": topoLayer,
+      "🗺️ Địa Danh Hành Chính & Thủy Hệ (Esri Topo)": esriTopoLayer,
+      "🛰️ Ảnh Vệ Tinh Quang Học (Esri Satellite)": satelliteLayer
+    };
+    L.control.layers(baseLayers, null, { position: 'topright', collapsed: false }).addTo(map);
+
+    // Scale Bar in km
+    L.control.scale({ imperial: false, position: 'bottomleft' }).addTo(map);
+
+    // Add Landmark Markers
+    if (p.key_landmarks && p.key_landmarks.length > 0) {
+      p.key_landmarks.forEach(lm => {
+        const isMt = lm.type === 'mountain';
+        const isWater = lm.type === 'water';
+        const badgeColor = isMt ? '#F59E0B' : (isWater ? '#38BDF8' : '#34D399');
+        const iconSvg = isMt ? '⛰️' : (isWater ? '🌊' : '🏛️');
+
+        const customIcon = L.divIcon({
+          className: 'custom-gis-marker',
+          html: `
+            <div style="background:#0F172A; color:#FEF3C7; border:2px solid ${badgeColor}; border-radius:20px; padding:3px 10px; font-size:11px; font-weight:800; white-space:nowrap; box-shadow:0 4px 12px rgba(0,0,0,0.7); display:flex; align-items:center; gap:5px; transform:translate(-50%, -50%); cursor:pointer;">
+              <span>${iconSvg}</span>
+              <span>${lm.name.split('(')[0].trim()}</span>
+              <span style="background:${badgeColor}; color:#0F172A; border-radius:10px; padding:1px 6px; font-size:10px;">${lm.elev}</span>
+            </div>
+          `,
+          iconSize: [0, 0],
+          iconAnchor: [0, 0]
+        });
+
+        const marker = L.marker([lm.lat, lm.lng], { icon: customIcon }).addTo(map);
+        marker.bindPopup(`
+          <div style="background:#0F172A; color:#FEF3C7; font-family:'Segoe UI', sans-serif; padding:6px; min-width:200px;">
+            <div style="font-size:12px; font-weight:800; color:${badgeColor}; margin-bottom:4px;">${lm.name}</div>
+            <div style="font-size:11px; color:#38BDF8; margin-bottom:4px;"><strong>Cao độ:</strong> ${lm.elev} • <strong>Tọa độ:</strong> ${lm.lat.toFixed(4)}°N, ${lm.lng.toFixed(4)}°E</div>
+            <div style="font-size:11px; color:#CBD5E1; line-height:1.4;">${lm.desc}</div>
+          </div>
+        `);
+      });
+    }
+
+    setTimeout(() => {
+      map.invalidateSize();
+    }, 150);
+  }
+
 
 
   setThuyPhapState(key, value) {

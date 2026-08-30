@@ -2545,3 +2545,73 @@ select, input, textarea, button {
     display: flex !important;
   }
 }
+
+/* =========================================================================
+   LEAFLET GIS MAP DARK THEME & INTERACTIVE TOOLTIP STYLES
+   ========================================================================= */
+.leaflet-container {
+  font-family: inherit;
+  background: #080C14 !important;
+}
+
+.leaflet-control-layers {
+  background: rgba(15, 23, 42, 0.95) !important;
+  border: 1px solid rgba(56, 189, 248, 0.4) !important;
+  border-radius: 8px !important;
+  color: #FEF3C7 !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8) !important;
+  padding: 8px 12px !important;
+  backdrop-filter: blur(8px) !important;
+}
+
+.leaflet-control-layers-base label {
+  color: #FEF3C7 !important;
+  font-size: 11.5px !important;
+  font-weight: 600 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  margin-bottom: 5px !important;
+  cursor: pointer !important;
+}
+
+.leaflet-popup-content-wrapper {
+  background: #0F172A !important;
+  border: 1px solid rgba(56, 189, 248, 0.4) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9) !important;
+  color: #FEF3C7 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+
+.leaflet-popup-content {
+  margin: 8px 12px !important;
+  line-height: 1.4 !important;
+}
+
+.leaflet-popup-tip {
+  background: #0F172A !important;
+  border: 1px solid rgba(56, 189, 248, 0.4) !important;
+}
+
+.leaflet-control-scale-line {
+  background: rgba(15, 23, 42, 0.85) !important;
+  border: 2px solid #FEF3C7 !important;
+  border-top: none !important;
+  color: #FEF3C7 !important;
+  font-size: 10px !important;
+  font-weight: 700 !important;
+}
+
+.leaflet-bar a {
+  background-color: #0F172A !important;
+  border-color: rgba(56, 189, 248, 0.3) !important;
+  color: #FEF3C7 !important;
+}
+
+.leaflet-bar a:hover {
+  background-color: #1E293B !important;
+  color: #38BDF8 !important;
+}
+
