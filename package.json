@@ -1,0 +1,32 @@
+{
+  "name": "thai_at_app",
+  "version": "1.0.0",
+  "description": "> **Tái hiện cội nguồn bản thể luận vũ trụ học cổ đại, văn hóa lúa nước Lạc Việt, Trống Đồng Đông Sơn, Hà Đồ - Lạc Thư, Bát Quái, Ngũ Hành và Đồ thị Tri thức Không Trọng Lực.**",
+  "main": "test_rule_engine.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hoangreno8z/HoangThaiAt.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/hoangreno8z/HoangThaiAt/issues"
+  },
+  "homepage": "https://github.com/hoangreno8z/HoangThaiAt#readme",
+  "dependencies": {
+    "@turf/turf": "^7.4.0",
+    "earcut": "^3.2.3",
+    "katex": "^0.18.4",
+    "polygon-clipping": "^0.15.7",
+    "suncalc": "^2.0.1",
+    "three": "^0.185.1"
+  }
+}
