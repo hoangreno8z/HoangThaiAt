@@ -28,7 +28,11 @@ class ToolUI {
       lobanAltarWidthCm: 107,
       lobanAltarDepthCm: 61,
       lobanAltarHeightCm: 127,
-      thienVanSon: 'Tý'
+      thienVanSon: 'Tý',
+      thuyPhapHuongNha: 'Bính',
+      thuyPhapThuyKhau: 'Tân',
+      thuyPhapLaiThuy: 'Cấn',
+      thuyPhapLoanDau: 'ngoc_doi'
     };
   }
 
@@ -67,6 +71,9 @@ class ToolUI {
           <button onclick="window.toolUI.render('diachat64')" style="background:${this.currentToolTab === 'diachat64' ? 'rgba(56,189,248,0.25)' : 'rgba(255,255,255,0.04)'}; border:1px solid ${this.currentToolTab === 'diachat64' ? '#38BDF8' : 'rgba(255,255,255,0.1)'}; color:#38BDF8; padding:0.65rem 1.3rem; border-radius:8px; font-weight:700; font-size:0.88rem; cursor:pointer;">
             Địa Chất 64 Tỉnh
           </button>
+          <button onclick="window.toolUI.render('thuyphap')" style="background:${this.currentToolTab === 'thuyphap' ? 'rgba(52,211,153,0.25)' : 'rgba(255,255,255,0.04)'}; border:1px solid ${this.currentToolTab === 'thuyphap' ? '#34D399' : 'rgba(255,255,255,0.1)'}; color:#34D399; padding:0.65rem 1.3rem; border-radius:8px; font-weight:700; font-size:0.88rem; cursor:pointer;">
+            Thủy Pháp Dương Công
+          </button>
           <button onclick="window.toolUI.render('report')" style="background:${this.currentToolTab === 'report' ? 'rgba(245,158,11,0.25)' : 'rgba(255,255,255,0.04)'}; border:1px solid ${this.currentToolTab === 'report' ? '#FBBF24' : 'rgba(255,255,255,0.1)'}; color:#FEF3C7; padding:0.65rem 1.3rem; border-radius:8px; font-weight:700; font-size:0.88rem; cursor:pointer;">
             Báo Cáo Tổng Hợp
           </button>
@@ -94,6 +101,8 @@ class ToolUI {
       return this.renderBatTrachTool();
     } else if (tab === 'huyenkhong') {
       return this.renderHuyenKhongTool();
+    } else if (tab === 'thuyphap') {
+      return this.renderThuyPhapTool();
     } else if (tab === 'report') {
       return this.renderReportTool();
     }
@@ -1537,6 +1546,369 @@ ${reportText}
     if (activeArea) {
       activeArea.innerHTML = this.renderDiaChat64Tab(provinceId);
     }
+  }
+
+
+  setThuyPhapState(key, value) {
+    this.state[key] = value;
+    const activeArea = document.getElementById('tool-active-area');
+    if (activeArea && this.currentToolTab === 'thuyphap') {
+      activeArea.innerHTML = this.renderThuyPhapTool();
+    }
+  }
+
+  calculateThuyPhap(huongNha, thuyKhau, laiThuy, loanDau) {
+    // 24 Sơn to Song Sơn mapping
+    const songSonMap = {
+      'Nhâm': 'Nhâm-Tý', 'Tý': 'Nhâm-Tý',
+      'Quý': 'Quý-Sửu', 'Sửu': 'Quý-Sửu',
+      'Cấn': 'Cấn-Dần', 'Dần': 'Cấn-Dần',
+      'Giáp': 'Giáp-Mão', 'Mão': 'Giáp-Mão',
+      'Ất': 'Ất-Thìn', 'Thìn': 'Ất-Thìn',
+      'Tốn': 'Tốn-Tỵ', 'Tỵ': 'Tốn-Tỵ',
+      'Bính': 'Bính-Ngọ', 'Ngọ': 'Bính-Ngọ',
+      'Đinh': 'Đinh-Mùi', 'Mùi': 'Đinh-Mùi',
+      'Khôn': 'Khôn-Thân', 'Thân': 'Khôn-Thân',
+      'Canh': 'Canh-Dậu', 'Dậu': 'Canh-Dậu',
+      'Tân': 'Tân-Tuất', 'Tuất': 'Tân-Tuất',
+      'Càn': 'Càn-Hợi', 'Hợi': 'Càn-Hợi'
+    };
+
+    const ssHuong = songSonMap[huongNha] || 'Bính-Ngọ';
+    const ssKhau = songSonMap[thuyKhau] || 'Tân-Tuất';
+    const ssLai = songSonMap[laiThuy] || 'Cấn-Dần';
+
+    // Xác định Cục dựa vào Thủy Khẩu
+    let cucName = 'HỎA CỤC (Dần - Ngọ - Tuất)';
+    let cucKey = 'hoa';
+    let cucElement = 'Hỏa';
+    let classicSource = 'Cấn Bính Tân vị vị thị Liêm Trinh (Thanh Nang Áo Ngữ)';
+
+    if (ssKhau === 'Ất-Thìn' || ssKhau === 'Tốn-Tỵ' || thuyKhau === 'Ất' || thuyKhau === 'Thìn') {
+      cucName = 'THỦY CỤC (Thân - Tý - Thìn)';
+      cucKey = 'thuy';
+      cucElement = 'Thủy';
+      classicSource = 'Khôn Nhâm Ất Cự Môn tòng đầu xuất (Thanh Nang Áo Ngữ)';
+    } else if (ssKhau === 'Quý-Sửu' || ssKhau === 'Cấn-Dần' || thuyKhau === 'Quý' || thuyKhau === 'Sửu') {
+      cucName = 'KIM CỤC (Tỵ - Dậu - Sửu)';
+      cucKey = 'kim';
+      cucElement = 'Kim';
+      classicSource = 'Tốn Canh Quý vị vị thị Vũ Khúc (Thanh Nang Áo Ngữ)';
+    } else if (ssKhau === 'Đinh-Mùi' || ssKhau === 'Khôn-Thân' || thuyKhau === 'Đinh' || thuyKhau === 'Mùi') {
+      cucName = 'MỘC CỤC (Hợi - Mão - Mùi)';
+      cucKey = 'moc';
+      cucElement = 'Mộc';
+      classicSource = 'Càn Giáp Đinh Tham Lang nhất lộ hành (Thanh Nang Áo Ngữ)';
+    }
+
+    // 12 Cung Trường Sinh sequences
+    const stagesSeq = ['Trường Sinh', 'Mộc Dục', 'Quan Đới', 'Lâm Quan', 'Đế Vượng', 'Suy', 'Bệnh', 'Tử', 'Mộ Khố', 'Tuyệt', 'Thai', 'Dưỡng'];
+
+    const cucTables = {
+      hoa: ['Cấn-Dần', 'Giáp-Mão', 'Ất-Thìn', 'Tốn-Tỵ', 'Bính-Ngọ', 'Đinh-Mùi', 'Khôn-Thân', 'Canh-Dậu', 'Tân-Tuất', 'Càn-Hợi', 'Nhâm-Tý', 'Quý-Sửu'],
+      thuy: ['Khôn-Thân', 'Canh-Dậu', 'Tân-Tuất', 'Càn-Hợi', 'Nhâm-Tý', 'Quý-Sửu', 'Cấn-Dần', 'Giáp-Mão', 'Ất-Thìn', 'Tốn-Tỵ', 'Bính-Ngọ', 'Đinh-Mùi'],
+      kim: ['Tốn-Tỵ', 'Bính-Ngọ', 'Đinh-Mùi', 'Khôn-Thân', 'Canh-Dậu', 'Tân-Tuất', 'Càn-Hợi', 'Nhâm-Tý', 'Quý-Sửu', 'Cấn-Dần', 'Giáp-Mão', 'Ất-Thìn'],
+      moc: ['Càn-Hợi', 'Nhâm-Tý', 'Quý-Sửu', 'Cấn-Dần', 'Giáp-Mão', 'Ất-Thìn', 'Tốn-Tỵ', 'Bính-Ngọ', 'Đinh-Mùi', 'Khôn-Thân', 'Canh-Dậu', 'Tân-Tuất']
+    };
+
+    const curTable = cucTables[cucKey];
+    const huongStageIdx = curTable.indexOf(ssHuong);
+    const khauStageIdx = curTable.indexOf(ssKhau);
+    const laiStageIdx = curTable.indexOf(ssLai);
+
+    const huongStage = huongStageIdx >= 0 ? stagesSeq[huongStageIdx] : 'Chưa định';
+    const khauStage = khauStageIdx >= 0 ? stagesSeq[khauStageIdx] : 'Chưa định';
+    const laiStage = laiStageIdx >= 0 ? stagesSeq[laiStageIdx] : 'Chưa định';
+
+    // Thẩm định Cát Hung Cách Cục
+    let patternResult = 'BÌNH THƯỜNG / CẦN ĐIỀU CHỈNH';
+    let patternStatus = 'neutral';
+    let patternDescription = '';
+
+    if (khauStage === 'Mộ Khố' && huongStage === 'Đế Vượng') {
+      patternResult = 'CHÍNH VƯỢNG HƯỚNG (ĐẠI CÁT VƯỢNG TÀI)';
+      patternStatus = 'auspicious';
+      patternDescription = 'Thủy xuất Mộ Khố, lập hướng Đế Vượng (Vượng Hướng Vượng Sơn Khẩu). Minh Đường tụ tài vạn lượng vàng, phú quý song toàn bậc nhất!';
+    } else if (khauStage === 'Mộ Khố' && huongStage === 'Trường Sinh') {
+      patternResult = 'CHÍNH SINH HƯỚNG (ĐẠI CÁT VƯỢNG ĐINH)';
+      patternStatus = 'auspicious';
+      patternDescription = 'Thủy xuất Mộ Khố, lập hướng Trường Sinh (Sinh Hướng Sinh Sơn Khẩu). Nhân đinh đại thịnh, con cháu đông đúc hiền tài trường thọ!';
+    } else if (khauStage === 'Suy' && huongStage === 'Đế Vượng') {
+      patternResult = 'TỰ VƯỢNG HƯỚNG (PHÁT PHÚC DU CỬU)';
+      patternStatus = 'auspicious';
+      patternDescription = 'Nước thoát ra ở cung Suy không làm tổn hại khí vượng, tài lộc chảy về êm ả bền bỉ muôn đời.';
+    } else if (khauStage === 'Tuyệt' && huongStage === 'Trường Sinh') {
+      patternResult = 'TỰ SINH HƯỚNG (LỘC TỒN LƯU TẬN)';
+      patternStatus = 'auspicious';
+      patternDescription = 'Nước xả sạch ở Tuyệt vị tống xuất hung sát, giữ trọn sinh khí cho cung Trường Sinh, biến nguy thành đại phúc!';
+    } else if (khauStage === 'Trường Sinh' || khauStage === 'Đế Vượng') {
+      patternResult = 'XUNG PHÁ SINH VƯỢNG (ĐẠI HUNG PHÁ SẢN)';
+      patternStatus = 'danger';
+      patternDescription = 'Kiêng kỵ tuyệt đối: Phóng nước tại cung Sinh/Vượng làm tiêu tán nguyên khí gốc rễ, nhân đinh tổn hại, tiền của làm ra trôi sạch sành sanh!';
+    } else if (khauStage === 'Lâm Quan') {
+      patternResult = 'LƯU PHÁ LÂM QUAN (PHẠM HOÀNG TUYỀN SÁT)';
+      patternStatus = 'danger';
+      patternDescription = 'Để nước thoát ra tại cung Lâm Quan làm tổn hại quan chức bổng lộc, người trẻ gãy xương tàn tật đoản mệnh!';
+    }
+
+    // Kiểm tra Bát Lộ Hoàng Tuyền
+    let hoangTuyenAlert = null;
+    const htRules = [
+      { huong: ['Canh', 'Đinh'], htSơn: 'Khôn', ss: 'Khôn-Thân' },
+      { huong: ['Ất', 'Bính'], htSơn: 'Tốn', ss: 'Tốn-Tỵ' },
+      { huong: ['Giáp', 'Quý'], htSơn: 'Cấn', ss: 'Cấn-Dần' },
+      { huong: ['Tân', 'Nhâm'], htSơn: 'Càn', ss: 'Càn-Hợi' }
+    ];
+
+    htRules.forEach(r => {
+      if (r.huong.includes(huongNha)) {
+        if (thuyKhau === r.htSơn || ssKhau === r.ss) {
+          hoangTuyenAlert = {
+            type: 'danger',
+            title: 'PHẠM SÁT NHÂN HOÀNG TUYỀN SÁT (ĐẠI HUNG)',
+            text: `Nhà hướng ${huongNha} tuyệt đối cấm xả nước thoát ra phương ${r.htSơn} (${r.ss}). Phạm vào ắt chủ tán tài bại quan, người nhà đoản mệnh tai ương!`
+          };
+        } else if (laiThuy === r.htSơn || ssLai === r.ss) {
+          hoangTuyenAlert = {
+            type: 'auspicious',
+            title: 'ĐẮC CỨU BẦN HOÀNG TUYỀN THỦY PHÁP (ĐẠI CÁT)',
+            text: `Nhà hướng ${huongNha} đón dòng nước chảy tới từ phương ${r.htSơn} (${r.ss}) là Cứu Bần Hoàng Tuyền, chủ về phát tài lộc cực nhanh, biến nghèo thành cự phú!`
+          };
+        }
+      }
+    });
+
+    // Loan đầu đánh giá
+    const loanDauScores = {
+      ngoc_doi: { name: 'Ngọc Đới Hoàn Yêu (Bên Bồi)', score: 98, type: 'Cát', desc: 'Dòng nước ôm bọc êm ả, bồi đắp phù sa và tụ sinh khí, bảo đảm an toàn lũ lụt.' },
+      cuu_khuc: { name: 'Cửu Khúc Thủy (Chín Khúc)', score: 96, type: 'Cát', desc: 'Dòng nước uốn lượn nhiều đoạn làm giảm vận tốc dòng chảy, tụ đại tài lộc.' },
+      tu_thuy: { name: 'Tụ Thủy Minh Đường (Ao Hồ Bán Nguyệt)', score: 95, type: 'Cát', desc: 'Mặt nước phẳng lặng trước nhà điều hòa vi khí hậu, giữ của cải không trôi.' },
+      trieu_thuy: { name: 'Triều Đường Thủy (Chầu Về)', score: 92, type: 'Cát', desc: 'Dòng nước từ xa chảy chầm chậm đón chào mặt tiền, sinh phú quý.' },
+      tam_xoa: { name: 'Tam Xoa Hợp Lưu (Ngã Ba Sông)', score: 94, type: 'Cát', desc: 'Nơi hợp lưu các dòng nước lớn tạo thành đầu mối thương mại sầm uất.' },
+      phan_cung: { name: 'Phản Cung Thủy (Bên Lở)', score: 15, type: 'Hung Sát', desc: 'Chịu lực ly tâm xói lở móng, sóng đánh trực diện, cực kỳ nguy hiểm.' },
+      truc_xung: { name: 'Trực Xung Thủy (Thương Sát)', score: 20, type: 'Hung Sát', desc: 'Dòng nước đâm thẳng vào tim nhà như mũi giáo, tai họa huyết quang.' },
+      khien_ty: { name: 'Khiên Tỷ Thủy (Trực Khứ)', score: 25, type: 'Hung Sát', desc: 'Nước chảy dốc tuột ra ngoài làm hao tán tài sản, không tích lũy được.' },
+      cat_cuoc: { name: 'Cát Cước Thủy (Cắt Móng)', score: 22, type: 'Hung Sát', desc: 'Nước chảy sát chân tường làm xói rỗng móng, bất an trồi sụt.' },
+      xuyen_tam: { name: 'Xuyên Tâm Thủy (Xuyên Đường)', score: 18, type: 'Hung Sát', desc: 'Nước chảy xuyên qua giữa ruột nhà từ trước ra sau, rò rỉ cạn kiệt tài lộc.' },
+      tien_dao: { name: 'Tiễn Đao Thủy (Hình Kéo)', score: 12, type: 'Hung Sát', desc: 'Hai nhánh giao nhau hình lưỡi kéo kẹp chặt, tranh chấp đao binh.' }
+    };
+
+    const loanDauInfo = loanDauScores[loanDau] || loanDauScores.ngoc_doi;
+
+    return {
+      cucName,
+      cucElement,
+      classicSource,
+      ssHuong,
+      ssKhau,
+      ssLai,
+      huongStage,
+      khauStage,
+      laiStage,
+      curTable,
+      stagesSeq,
+      patternResult,
+      patternStatus,
+      patternDescription,
+      hoangTuyenAlert,
+      loanDauInfo
+    };
+  }
+
+  renderThuyPhapTool() {
+    const huongNha = this.state.thuyPhapHuongNha || 'Bính';
+    const thuyKhau = this.state.thuyPhapThuyKhau || 'Tân';
+    const laiThuy = this.state.thuyPhapLaiThuy || 'Cấn';
+    const loanDau = this.state.thuyPhapLoanDau || 'ngoc_doi';
+
+    const result = this.calculateThuyPhap(huongNha, thuyKhau, laiThuy, loanDau);
+
+    const sonList = ['Nhâm', 'Tý', 'Quý', 'Sửu', 'Cấn', 'Dần', 'Giáp', 'Mão', 'Ất', 'Thìn', 'Tốn', 'Tỵ', 'Bính', 'Ngọ', 'Đinh', 'Mùi', 'Khôn', 'Thân', 'Canh', 'Dậu', 'Tân', 'Tuất', 'Càn', 'Hợi'];
+
+    return `
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(360px, 1fr)); gap:2rem;">
+        <!-- CỘT 1: BẢNG ĐIỀU KHIỂN ĐẦU VÀO -->
+        <div style="background:#121722; border:1px solid rgba(255,255,255,0.08); border-radius:14px; padding:1.8rem;">
+          <div style="display:inline-block; padding:0.2rem 0.6rem; background:rgba(52,211,153,0.15); border:1px solid rgba(52,211,153,0.3); border-radius:12px; font-size:0.75rem; font-weight:700; color:#34D399; margin-bottom:0.8rem;">
+            THỦY PHÁP DƯƠNG QUÂN TÙNG
+          </div>
+          <h3 style="font-family:var(--font-title); font-size:1.3rem; color:#FEF3C7; margin:0 0 1.2rem 0;">
+            Bàn Tính 12 Cung Trường Sinh
+          </h3>
+
+          <div style="display:flex; flex-direction:column; gap:1.2rem;">
+            <div>
+              <label style="display:block; font-size:0.85rem; font-weight:700; color:#FEF3C7; margin-bottom:0.4rem;">
+                1. Hướng Mặt Tiền Nhà (Địa Bàn Chính Châm 0°):
+              </label>
+              <select onchange="window.toolUI.setThuyPhapState('thuyPhapHuongNha', this.value)" style="width:100%; background:#0B0F17; border:1px solid rgba(255,255,255,0.15); border-radius:8px; padding:0.6rem; color:#FEF3C7; font-size:0.9rem; font-weight:600;">
+                ${sonList.map(s => `<option value="${s}" ${s === huongNha ? 'selected' : ''}>Sơn ${s} (Song Sơn ${result.ssHuong})</option>`).join('')}
+              </select>
+            </div>
+
+            <div>
+              <label style="display:block; font-size:0.85rem; font-weight:700; color:#FEF3C7; margin-bottom:0.4rem;">
+                2. Cửa Nước Thoát / Thủy Khẩu (Thiên Bàn Phùng Châm +7.5°):
+              </label>
+              <select onchange="window.toolUI.setThuyPhapState('thuyPhapThuyKhau', this.value)" style="width:100%; background:#0B0F17; border:1px solid rgba(52,211,153,0.4); border-radius:8px; padding:0.6rem; color:#34D399; font-size:0.9rem; font-weight:700;">
+                ${sonList.map(s => `<option value="${s}" ${s === thuyKhau ? 'selected' : ''}>Cửa Thoát Sơn ${s}</option>`).join('')}
+              </select>
+              <div style="font-size:0.75rem; color:var(--text-muted); margin-top:0.3rem;">
+                (Thủy Khẩu dùng để định Tứ Đại Cục: Kim, Mộc, Thủy, Hỏa)
+              </div>
+            </div>
+
+            <div>
+              <label style="display:block; font-size:0.85rem; font-weight:700; color:#FEF3C7; margin-bottom:0.4rem;">
+                3. Nguồn Nước Đến / Lai Thủy (Thiên Bàn Phùng Châm +7.5°):
+              </label>
+              <select onchange="window.toolUI.setThuyPhapState('thuyPhapLaiThuy', this.value)" style="width:100%; background:#0B0F17; border:1px solid rgba(56,189,248,0.4); border-radius:8px; padding:0.6rem; color:#38BDF8; font-size:0.9rem; font-weight:700;">
+                ${sonList.map(s => `<option value="${s}" ${s === laiThuy ? 'selected' : ''}>Nguồn Nước Đến Sơn ${s}</option>`).join('')}
+              </select>
+            </div>
+
+            <div>
+              <label style="display:block; font-size:0.85rem; font-weight:700; color:#FEF3C7; margin-bottom:0.4rem;">
+                4. Hình Thế Dòng Nước Loan Đầu:
+              </label>
+              <select onchange="window.toolUI.setThuyPhapState('thuyPhapLoanDau', this.value)" style="width:100%; background:#0B0F17; border:1px solid rgba(255,255,255,0.15); border-radius:8px; padding:0.6rem; color:#FEF3C7; font-size:0.9rem;">
+                <option value="ngoc_doi" ${loanDau === 'ngoc_doi' ? 'selected' : ''}>Ngọc Đới Hoàn Yêu (Bên Bồi / Đai Ngọc)</option>
+                <option value="cuu_khuc" ${loanDau === 'cuu_khuc' ? 'selected' : ''}>Cửu Khúc Thủy (Chín Khúc Quanh Co)</option>
+                <option value="tu_thuy" ${loanDau === 'tu_thuy' ? 'selected' : ''}>Tụ Thủy Minh Đường (Ao Hồ Bán Nguyệt)</option>
+                <option value="trieu_thuy" ${loanDau === 'trieu_thuy' ? 'selected' : ''}>Triều Đường Thủy (Nước Chầu Về Sân)</option>
+                <option value="tam_xoa" ${loanDau === 'tam_xoa' ? 'selected' : ''}>Tam Xoa Hợp Lưu (Ngã Ba Sông)</option>
+                <option value="phan_cung" ${loanDau === 'phan_cung' ? 'selected' : ''}>Phản Cung Thủy (Bên Lở / Lưng Cong Chĩa Vào)</option>
+                <option value="truc_xung" ${loanDau === 'truc_xung' ? 'selected' : ''}>Trực Xung Thủy (Nước Đâm Thẳng Cửa)</option>
+                <option value="khien_ty" ${loanDau === 'khien_ty' ? 'selected' : ''}>Khiên Tỷ Thủy (Chảy Dốc Tuột Ra Ngoài)</option>
+                <option value="cat_cuoc" ${loanDau === 'cat_cuoc' ? 'selected' : ''}>Cát Cước Thủy (Nước Xói Chân Móng)</option>
+                <option value="xuyen_tam" ${loanDau === 'xuyen_tam' ? 'selected' : ''}>Xuyên Tâm Thủy (Chảy Xuyên Ruột Nhà)</option>
+                <option value="tien_dao" ${loanDau === 'tien_dao' ? 'selected' : ''}>Tiễn Đao Thủy (Hai Dòng Cắt Chéo Như Kéo)</option>
+              </select>
+            </div>
+          </div>
+
+          <div style="margin-top:1.6rem; padding:1rem; background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.06); border-radius:10px;">
+            <div style="font-size:0.8rem; font-weight:700; color:#FBBF24; margin-bottom:0.4rem;">
+              QUY CHUẨN CỔ THƯ DƯƠNG CÔNG:
+            </div>
+            <div style="font-size:0.78rem; color:var(--text-muted); line-height:1.5;">
+              • <strong>Địa Bàn Chính Châm (0°)</strong>: Khảo Long lập Hướng nhà.<br/>
+              • <strong>Thiên Bàn Phùng Châm (+7.5°)</strong>: Nạp Thủy và Phóng Thủy.<br/>
+              • <strong>Nguyên tắc vàng</strong>: Sinh Lai Mộ Khứ — Nước sinh chảy lại, nước thoái cất kho.
+            </div>
+          </div>
+        </div>
+
+        <!-- CỘT 2: KẾT QUẢ PHÂN TÍCH & MA TRẬN 12 CUNG -->
+        <div style="display:flex; flex-direction:column; gap:1.4rem;">
+          <!-- CARD 1: KẾT QUẢ ĐỊNH CỤC & TỔNG QUAN -->
+          <div style="background:#121722; border:1px solid rgba(255,255,255,0.08); border-radius:14px; padding:1.8rem;">
+            <div style="font-size:0.85rem; font-weight:700; color:var(--text-muted); margin-bottom:0.4rem;">
+              CỤC NGŨ HÀNH XÁC ĐỊNH:
+            </div>
+            <div style="font-size:1.4rem; font-weight:800; color:#34D399; margin-bottom:0.4rem;">
+              ${result.cucName}
+            </div>
+            <div style="font-size:0.82rem; color:#FBBF24; font-style:italic; margin-bottom:1rem;">
+              《${result.classicSource}》
+            </div>
+
+            <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:0.8rem; background:#0B0F17; border:1px solid rgba(255,255,255,0.06); border-radius:10px; padding:1rem; text-align:center;">
+              <div>
+                <div style="font-size:0.75rem; color:var(--text-muted);">HƯỚNG NHÀ</div>
+                <div style="font-size:1rem; font-weight:800; color:#FEF3C7; margin:0.2rem 0;">${huongNha} (${result.ssHuong})</div>
+                <div style="font-size:0.8rem; font-weight:700; color:#FBBF24;">${result.huongStage}</div>
+              </div>
+              <div>
+                <div style="font-size:0.75rem; color:var(--text-muted);">LAI THỦY (NƯỚC ĐẾN)</div>
+                <div style="font-size:1rem; font-weight:800; color:#38BDF8; margin:0.2rem 0;">${laiThuy} (${result.ssLai})</div>
+                <div style="font-size:0.8rem; font-weight:700; color:#38BDF8;">${result.laiStage}</div>
+              </div>
+              <div>
+                <div style="font-size:0.75rem; color:var(--text-muted);">THỦY KHẨU (THOÁT)</div>
+                <div style="font-size:1rem; font-weight:800; color:#34D399; margin:0.2rem 0;">${thuyKhau} (${result.ssKhau})</div>
+                <div style="font-size:0.8rem; font-weight:700; color:#34D399;">${result.khauStage}</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CARD 2: ĐÁNH GIÁ CÁCH CỤC & HOÀNG TUYỀN -->
+          <div style="background:#121722; border:1px solid ${result.patternStatus === 'danger' ? 'rgba(239,68,68,0.4)' : (result.patternStatus === 'auspicious' ? 'rgba(52,211,153,0.4)' : 'rgba(255,255,255,0.1)')}; border-radius:14px; padding:1.8rem;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.8rem;">
+              <span style="font-size:0.85rem; font-weight:700; color:var(--text-muted);">THẨM ĐỊNH CÁCH CỤC LẬP HƯỚNG:</span>
+              <span style="padding:0.25rem 0.8rem; border-radius:12px; font-size:0.75rem; font-weight:800; background:${result.patternStatus === 'danger' ? 'rgba(239,68,68,0.15)' : (result.patternStatus === 'auspicious' ? 'rgba(52,211,153,0.15)' : 'rgba(255,255,255,0.06)')}; color:${result.patternStatus === 'danger' ? '#F87171' : (result.patternStatus === 'auspicious' ? '#34D399' : '#FEF3C7')};">
+                ${result.patternStatus === 'danger' ? 'ĐẠI HUNG' : (result.patternStatus === 'auspicious' ? 'ĐẠI CÁT' : 'TRUNG TÍNH')}
+              </span>
+            </div>
+            <div style="font-size:1.15rem; font-weight:800; color:#FEF3C7; margin-bottom:0.6rem;">
+              ${result.patternResult}
+            </div>
+            <p style="font-size:0.88rem; color:var(--text-muted); line-height:1.6; margin:0 0 1rem 0;">
+              ${result.patternDescription}
+            </p>
+
+            ${result.hoangTuyenAlert ? `
+              <div style="background:${result.hoangTuyenAlert.type === 'danger' ? 'rgba(239,68,68,0.1)' : 'rgba(52,211,153,0.1)'}; border:1px solid ${result.hoangTuyenAlert.type === 'danger' ? 'rgba(239,68,68,0.3)' : 'rgba(52,211,153,0.3)'}; border-radius:8px; padding:0.9rem; margin-top:0.8rem;">
+                <div style="font-size:0.85rem; font-weight:800; color:${result.hoangTuyenAlert.type === 'danger' ? '#F87171' : '#34D399'}; margin-bottom:0.3rem;">
+                  ${result.hoangTuyenAlert.title}
+                </div>
+                <div style="font-size:0.82rem; color:#FEF3C7; line-height:1.5;">
+                  ${result.hoangTuyenAlert.text}
+                </div>
+              </div>
+            ` : ''}
+
+            <!-- LOAN ĐẦU ĐÁNH GIÁ -->
+            <div style="margin-top:1.2rem; padding-top:1rem; border-top:1px solid rgba(255,255,255,0.06); display:flex; justify-content:space-between; align-items:center;">
+              <div>
+                <div style="font-size:0.75rem; color:var(--text-muted);">HÌNH THẾ LOAN ĐẦU</div>
+                <div style="font-size:0.95rem; font-weight:700; color:#FEF3C7;">${result.loanDauInfo.name}</div>
+                <div style="font-size:0.78rem; color:var(--text-muted); margin-top:0.2rem;">${result.loanDauInfo.desc}</div>
+              </div>
+              <div style="text-align:right;">
+                <div style="font-size:1.3rem; font-weight:800; color:${result.loanDauInfo.score >= 80 ? '#34D399' : '#EF4444'};">${result.loanDauInfo.score}/100</div>
+                <div style="font-size:0.72rem; color:var(--text-muted);">Điểm An Toàn</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CARD 3: MA TRẬN CHI TIẾT 12 CUNG TRƯỜNG SINH CỦA CỤC -->
+          <div style="background:#121722; border:1px solid rgba(255,255,255,0.08); border-radius:14px; padding:1.8rem;">
+            <h4 style="font-size:0.95rem; font-weight:800; color:#FEF3C7; margin:0 0 1rem 0;">
+              Bảng Phân Định 12 Cung Trường Sinh Của ${result.cucName}:
+            </h4>
+            <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(130px, 1fr)); gap:0.6rem;">
+              ${result.stagesSeq.map((stg, i) => {
+                const pair = result.curTable[i];
+                const isHuong = pair === result.ssHuong;
+                const isKhau = pair === result.ssKhau;
+                const isLai = pair === result.ssLai;
+                const isCatLai = ['Trường Sinh', 'Quan Đới', 'Lâm Quan', 'Đế Vượng'].includes(stg);
+                const isKhuThuy = ['Suy', 'Bệnh', 'Tử', 'Mộ Khố', 'Tuyệt', 'Thai'].includes(stg);
+
+                let borderColor = 'rgba(255,255,255,0.08)';
+                let bgBadge = 'transparent';
+                if (isHuong) { borderColor = '#FBBF24'; bgBadge = 'rgba(245,158,11,0.15)'; }
+                if (isKhau) { borderColor = '#34D399'; bgBadge = 'rgba(52,211,153,0.15)'; }
+                if (isLai) { borderColor = '#38BDF8'; bgBadge = 'rgba(56,189,248,0.15)'; }
+
+                return `
+                  <div style="background:${bgBadge}; border:1px solid ${borderColor}; border-radius:8px; padding:0.6rem; text-align:center;">
+                    <div style="font-size:0.72rem; font-weight:700; color:${isCatLai ? '#38BDF8' : (stg === 'Mộc Dục' ? '#F87171' : '#34D399')};">${stg}</div>
+                    <div style="font-size:0.85rem; font-weight:800; color:#FEF3C7; margin:0.2rem 0;">${pair}</div>
+                    <div style="font-size:0.65rem; color:var(--text-muted);">
+                      ${isHuong ? '<span style="color:#FBBF24;">[HƯỚNG]</span> ' : ''}
+                      ${isLai ? '<span style="color:#38BDF8;">[LAI]</span> ' : ''}
+                      ${isKhau ? '<span style="color:#34D399;">[KHẨU]</span>' : ''}
+                    </div>
+                  </div>
+                `;
+              }).join('')}
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
   }
 
 }
