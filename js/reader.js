@@ -332,7 +332,8 @@ class ScholarlyReader {
       const itemsHtml = validParts.map((p, idx) => {
         const lNum = idx + 1;
         const isActive = isTrackActive && lNum === activeLessonIndex;
-        let title = p.chapter_title ? p.chapter_title.replace(/^Tiết\s+[IVXLCDM]+:\s*/i, '') : `Tiết ${lNum}`;
+        let rawTitle = p.chapter_title ? p.chapter_title.replace(/^Tiết\s+[IVXLCDM]+:\s*/i, '') : `Tiết ${lNum}`;
+        let title = rawTitle.includes('—') ? rawTitle.split('—')[0].trim() : rawTitle;
         const isCompleted = this.isCompleted(tKey, lNum);
 
         return `

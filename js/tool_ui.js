@@ -74,6 +74,12 @@ class ToolUI {
           <button onclick="window.toolUI.render('thuyphap')" style="background:${this.currentToolTab === 'thuyphap' ? 'rgba(52,211,153,0.25)' : 'rgba(255,255,255,0.04)'}; border:1px solid ${this.currentToolTab === 'thuyphap' ? '#34D399' : 'rgba(255,255,255,0.1)'}; color:#34D399; padding:0.65rem 1.3rem; border-radius:8px; font-weight:700; font-size:0.88rem; cursor:pointer;">
             Thủy Pháp Dương Công
           </button>
+          <button onclick="window.toolUI.render('loban')" style="background:${this.currentToolTab === 'loban' ? 'rgba(245,158,11,0.25)' : 'rgba(255,255,255,0.04)'}; border:1px solid ${this.currentToolTab === 'loban' ? '#FBBF24' : 'rgba(255,255,255,0.1)'}; color:#FEF3C7; padding:0.65rem 1.3rem; border-radius:8px; font-weight:700; font-size:0.88rem; cursor:pointer;">
+            Thước Lỗ Ban
+          </button>
+          <button onclick="window.toolUI.render('thienvankymon')" style="background:${this.currentToolTab === 'thienvankymon' ? 'rgba(168,85,247,0.25)' : 'rgba(255,255,255,0.04)'}; border:1px solid ${this.currentToolTab === 'thienvankymon' ? '#A855F7' : 'rgba(255,255,255,0.1)'}; color:#C084FC; padding:0.65rem 1.3rem; border-radius:8px; font-weight:700; font-size:0.88rem; cursor:pointer;">
+            Thiên Văn Kỳ Môn
+          </button>
           <button onclick="window.toolUI.render('report')" style="background:${this.currentToolTab === 'report' ? 'rgba(245,158,11,0.25)' : 'rgba(255,255,255,0.04)'}; border:1px solid ${this.currentToolTab === 'report' ? '#FBBF24' : 'rgba(255,255,255,0.1)'}; color:#FEF3C7; padding:0.65rem 1.3rem; border-radius:8px; font-weight:700; font-size:0.88rem; cursor:pointer;">
             Báo Cáo Tổng Hợp
           </button>
