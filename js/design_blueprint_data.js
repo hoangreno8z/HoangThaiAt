@@ -40,7 +40,7 @@ const DESIGN_BLUEPRINT_THEORY = {
 const DESIGN_BLUEPRINTS = [
   {
     id: "nha_bao_mientrung",
-    name: "1. Nhà Vùng Bão Miền Trung & Ven Biển Chống Tốc Mái",
+    name: "Chống Tốc Mái",
     code: "MẪU 01 - MÁI BỐN MÁI 32° & ĐAI TRE PHÂN TẦNG",
     summary: "Thiết kế tối ưu triệt tiêu lực nâng bốc mái Bernoulli và phân tán bão gió cấp 10 - 12 cho khu vực ven biển, đồng bằng trống trải Miền Trung.",
     problem_analysis: "Nhà mái tôn dốc 1 phía hoặc mái ngói dốc 2 phía thông thường bị bão giật xé toạc vì lực nâng Bernoulli mặt trên và áp suất dương đẩy từ bên trong. Tường rào kín khiến bão bị hất ngược đập mạnh vào mái.",
@@ -127,7 +127,7 @@ const DESIGN_BLUEPRINTS = [
   },
   {
     id: "nha_chan_chungcu",
-    name: "2. Nhà Dưới Chân Chung Cư & Kẹp Giữa 2 Tòa Cao Ốc",
+    name: "Nhà Bị Kẹp",
     code: "MẪU 02 - MÁI ĐÓN CHỮ V & GÓC BO TRÒN XÉ GIÓ",
     summary: "Thiết kế hóa giải lực gió cuộn thác đổ (Downwash) và hiệu ứng phễu gió bóp nghẹt (Venturi / Thiên Trảm Sát) cho nhà thấp tầng cạnh cao ốc.",
     problem_analysis: "Gió đập vào mặt đứng chung cư dội thẳng xuống nóc nhà thấp tạo xoáy lốc chân móng; khe hẹp giữa 2 khối nhà gia tốc gió gấp 2.4 lần xé toạc cửa sổ và mái hiên.",
@@ -207,7 +207,7 @@ const DESIGN_BLUEPRINTS = [
   },
   {
     id: "nha_dau_hem_ngaba",
-    name: "3. Nhà Ở Đầu Hẻm & Đối Diện Ngã Ba Hút Gió",
+    name: "Nhà Đầu Hẻm",
     code: "MẪU 03 - BÌNH PHONG KHÚC CHIẾT & TIỀN SẢNH ĐỆM",
     summary: "Hóa giải Thương Phong Sát (luồng khí nén thẳng như mũi giáo từ ngã ba/con hẻm dài đâm vào tim nhà) bằng nguyên lý khúc chiết tụ khí.",
     problem_analysis: "Con hẻm dài như ống nén khí gia tốc luồng gió đâm trực diện vào cửa chính cướp sạch nhiệt năng, gây bệnh đường hô hấp và mang theo bụi bặm ô nhiễm.",
@@ -264,7 +264,7 @@ const DESIGN_BLUEPRINTS = [
   },
   {
     id: "nha_thoat_nhiet_muahe",
-    name: "4. Nhà Vùng Nắng Nóng Thoát Nhiệt & Trị Gió Tây Nam (Gió Lào)",
+    name: "Thoát Nhiệt",
     code: "MẪU 04 - GIẾNG TRỜI THIÊN TÂM & MÁI ĐỆM 2 LỚP",
     summary: "Ứng dụng Hiệu ứng Cột Áp Ống Khói (Stack Effect) và ao hồ bán nguyệt góc Tây Nam hạ nhiệt gió phơn cho miền Trung và miền Nam.",
     problem_analysis: "Nắng gắt hun nóng mái nhà lên 50°C tỏa nhiệt xuống trần; gió Tây Nam thổi khô rát làm không khí trong nhà oi bức ngột ngạt.",
@@ -324,7 +324,7 @@ const DESIGN_BLUEPRINTS = [
   },
   {
     id: "nha_dinh_doi_suon_doc",
-    name: "5. Nhà Trên Đỉnh Đồi & Mép Sườn Dốc Gió Gia Tốc",
+    name: "Nhà Sườn Dốc",
     code: "MẪU 05 - BÁN ÂM NƯƠNG ĐỊA HÌNH & MÁI XUÔI DỐC",
     summary: "Hóa giải hiệu ứng gia tốc gió nén khi leo dốc (Topographic Speed-up) cho nhà biệt thự đồi dốc, vùng cao nguyên.",
     problem_analysis: "Luồng gió gặp sườn dốc bị nén sít lại làm vận tốc tại đỉnh đồi tăng gấp 1.4 - 2.0 lần, kèm theo nguy cơ sạt lở đất móng khi mưa lũ lớn.",

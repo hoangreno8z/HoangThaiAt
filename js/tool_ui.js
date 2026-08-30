@@ -2011,7 +2011,7 @@ ${reportText}
     return `
       <div style="display:flex; flex-direction:column; gap:1.5rem;">
         
-        <!-- HEADER TINH GỌN -->
+        <!-- HEADER TINH GỌN & 1 MENU DUY NHẤT -->
         <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:0.6rem; flex-wrap:wrap; gap:0.5rem;">
           <div style="display:flex; align-items:center; gap:0.6rem;">
             <span style="background:rgba(56,189,248,0.15); color:#38BDF8; padding:0.25rem 0.75rem; border-radius:20px; font-size:0.8rem; font-weight:800; border:1px solid rgba(56,189,248,0.3);">
@@ -2020,31 +2020,22 @@ ${reportText}
             <span style="font-size:0.82rem; color:var(--text-muted);">Khí Động Học & Cổ Thư</span>
           </div>
 
-          <!-- DROPDOWN CHỌN NHANH KHI CÓ NHIỀU MẪU (10-20 MẪU) -->
-          <div style="display:flex; align-items:center; gap:0.5rem;">
-            <span style="font-size:0.78rem; color:var(--text-muted);">Chọn mẫu nhanh:</span>
-            <select onchange="window.toolUI.selectDesignBlueprint(this.value)" style="background:#0F172A; color:#FEF3C7; border:1px solid rgba(56,189,248,0.4); padding:0.3rem 0.6rem; border-radius:6px; font-size:0.8rem; font-weight:700; outline:none; cursor:pointer;">
-              ${blueprints.map(bp => `
-                <option value="${bp.id}" ${bp.id === activeBp.id ? 'selected' : ''}>${bp.name}</option>
+          <!-- 1 MENU CHỌN MẪU DUY NHẤT TINH GỌN -->
+          <div style="display:flex; align-items:center; gap:0.4rem;">
+            <span style="font-size:0.78rem; color:var(--text-muted);">Mẫu bản vẽ:</span>
+            <select onchange="window.toolUI.selectDesignBlueprint(this.value)" style="background:#0F172A; color:#FEF3C7; border:1px solid rgba(56,189,248,0.4); padding:0.28rem 0.6rem; border-radius:6px; font-size:0.8rem; font-weight:700; outline:none; cursor:pointer;">
+              ${blueprints.map((bp, idx) => `
+                <option value="${bp.id}" ${bp.id === activeBp.id ? 'selected' : ''}>Mẫu 0${idx + 1}: ${bp.name}</option>
               `).join('')}
             </select>
           </div>
         </div>
 
         <!-- =========================================================================
-             PHẦN 2: BỘ BẢN VẼ HÌNH MẪU TRỰC QUAN & HƯỚNG DẪN THI CÔNG (ĐƯA LÊN TRƯỚC)
+             PHẦN 2: BỘ BẢN VẼ HÌNH MẪU TRỰC QUAN & HƯỚNG DẪN THI CÔNG
              ========================================================================= -->
         <section style="background:#121722; border:1px solid rgba(56,189,248,0.25); border-radius:10px; padding:1.2rem;">
           
-          <!-- THANH CUỘN NGANG CHỌN MẪU TINH GỌN (PILL CHIPS - HỖ TRỢ 10-20 MẪU KHÔNG CHIẾM DIỆN TÍCH) -->
-          <div style="display:flex; overflow-x:auto; gap:0.4rem; padding-bottom:0.6rem; margin-bottom:1rem; scrollbar-width:thin; -webkit-overflow-scrolling:touch;">
-            ${blueprints.map((bp, idx) => `
-              <button onclick="window.toolUI.selectDesignBlueprint('${bp.id}')" style="flex:0 0 auto; background:${bp.id === activeBp.id ? 'rgba(56,189,248,0.25)' : 'rgba(255,255,255,0.03)'}; border:1px solid ${bp.id === activeBp.id ? '#38BDF8' : 'rgba(255,255,255,0.1)'}; padding:0.35rem 0.85rem; border-radius:20px; font-size:0.78rem; font-weight:700; color:${bp.id === activeBp.id ? '#FEF3C7' : '#94A3B8'}; cursor:pointer; transition:all 0.15s ease; white-space:nowrap;">
-                Mẫu 0${idx + 1}: ${bp.name.replace(/^\d+\.\s*/, '').split('&')[0].trim()}
-              </button>
-            `).join('')}
-          </div>
-
           <!-- CHI TIẾT BẢN VẼ HÌNH MẪU ĐƯỢC CHỌN -->
           <div style="background:#090D16; border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:1.2rem;">
             
