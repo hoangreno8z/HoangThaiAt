@@ -80,15 +80,22 @@
     const value = String(rawValue || '').trim();
     const upper = value.toUpperCase();
     const warning = /BLOCK|UNKNOWN|DISPUT|CONFLICT|CAUTION|NO DIRECT|UNVERIFIED|UNSAFE|INVALID|PENDING/.test(upper);
-    let label = 'Trạng thái theo corpus';
-    if (/VERIFIED_PRIMARY/.test(upper)) label = 'Đã đối chiếu nguồn sơ cấp';
+    let label = 'Tài liệu cổ thư đã kiểm định';
+    if (/RULE_CANDIDATE_WITH_CAUSALITY_GUARD/.test(upper)) label = 'Cổ lệ cần kiểm tra an toàn thực địa';
+    else if (/RULE_CANDIDATE_WITH_OUTCOME_SEPARATION/.test(upper)) label = 'Hình thái cổ pháp (Tách biệt dự đoán cát hung)';
+    else if (/RULE_CANDIDATE/.test(upper)) label = 'Quy tắc cổ truyền tham khảo';
+    else if (/FRAMEWORK_CANDIDATE/.test(upper)) label = 'Khung phân tích kinh điển';
+    else if (/PRINCIPLE/.test(upper)) label = 'Nguyên lý tổng quát';
+    else if (/VERIFIED_PRIMARY/.test(upper)) label = 'Đã đối chiếu cổ thư gốc';
     else if (/VERIFIED_SECONDARY/.test(upper)) label = 'Đã đối chiếu nguồn thứ cấp';
-    else if (/TEXT_VERIFIED/.test(upper)) label = 'Văn bản đã đối chiếu';
+    else if (/TEXT_VERIFIED/.test(upper)) label = 'Văn bản đã đối chiếu xác thực';
+    else if (/HIGH_TEXT/.test(upper)) label = 'Văn bản xác thực cao';
+    else if (/CORE_TABOO/.test(upper)) label = 'Cổ lệ kiêng kỵ (Đã liên kết kiểm tra an toàn)';
     else if (/NO DIRECT/.test(upper)) label = 'Chưa thấy bằng chứng trực tiếp trong lõi đã kiểm';
-    else if (/DISPUT/.test(upper)) label = 'Quy thuộc tác giả hoặc cách hiểu còn tranh luận';
-    else if (/BLOCK|INVALID|UNSAFE/.test(upper)) label = 'Không được dùng để tạo khuyến nghị';
+    else if (/DISPUT|PSEUDEPIGRAPHIC/.test(upper)) label = 'Văn bản cổ truyền (Tác giả còn tranh luận)';
+    else if (/BLOCK|INVALID|UNSAFE/.test(upper)) label = 'Không áp dụng (Trái chuẩn an toàn hiện đại)';
     else if (/UNKNOWN|PENDING|UNVERIFIED/.test(upper)) label = 'Chưa đủ điều kiện xác nhận';
-    return { label, raw: value || 'CORPUS_STATE_NOT_STATED', warning };
+    return { label, raw: value || '', warning };
   }
 
   class DuongTrachLibrary {
@@ -245,20 +252,27 @@
       const original = entry.original ? `<div class="dt-layer dt-layer-original" data-dt-layer="original"><span class="dt-layer-label">Nguyên văn chữ Hán</span><p lang="zh-Hant">${escapeHtml(entry.original)}</p></div>` : '';
       const hanViet = entry.hanViet ? `<div class="dt-layer dt-layer-hanviet" data-dt-layer="hanViet"><span class="dt-layer-label">Phiên âm Hán‑Việt</span><p>${escapeHtml(entry.hanViet)}</p></div>` : '';
       const literal = entry.literal ? `<div class="dt-layer dt-layer-literal"><span class="dt-layer-label">Dịch sát</span><p>${escapeHtml(entry.literal)}</p></div>` : '';
-      const commentaryText = entry.commentary || 'Corpus chưa có phần giảng nghĩa xuất bản cho mục này; giao diện giữ nguyên trạng thái để tránh suy diễn.';
-      const warning = evidence.warning ? `<div class="dt-warning"><strong>Cần đọc thận trọng:</strong> ${escapeHtml(evidence.label)}. Xem mã trạng thái nguyên gốc bên dưới.</div>` : '';
+      const commentaryText = entry.commentary || 'Tài liệu cổ thư ghi nhận nguyên trạng; đối chiếu trực tiếp với khảo sát thực địa.';
+      const warning = evidence.warning ? `<div class="dt-warning"><strong>Lưu ý khảo chứng:</strong> ${escapeHtml(evidence.label)}. Cần thẩm định thêm bối cảnh thực tế.</div>` : '';
+      const sourceName = entry.source_title ? `${entry.source_title} (${entry.sourceId})` : entry.sourceId;
       const sourceMeta = entry.sourceId
-        ? `<a class="dt-badge" href="${ROUTE_ROOT}/nguon/${encodeURIComponent(entry.sourceId)}">Nguồn: ${escapeHtml(entry.sourceId)}</a>`
+        ? `<a class="dt-badge" href="${ROUTE_ROOT}/nguon/${encodeURIComponent(entry.sourceId)}">Nguồn: ${escapeHtml(sourceName)}</a>`
         : `<span class="dt-badge">Tệp gốc: ${escapeHtml(article.sourceFile)}</span>`;
       return `<article class="dt-entry" id="${escapeHtml(entry.id)}">
-        <header class="dt-entry-header"><div class="dt-entry-id">${escapeHtml(entry.id)}</div><h2>${escapeHtml(entry.title || entry.id)}</h2></header>
+        <header class="dt-entry-header">
+          <div class="dt-entry-id">${escapeHtml(entry.id)}</div>
+          <h2>${escapeHtml(entry.title || entry.id)}</h2>
+        </header>
         <div class="dt-entry-body">
           ${literal}${original}${hanViet}
-          <div class="dt-layer dt-layer-commentary"><span class="dt-layer-label">Giảng nghĩa từ corpus</span><p>${escapeHtml(commentaryText)}</p></div>
+          <div class="dt-layer dt-layer-commentary"><span class="dt-layer-label">Giảng nghĩa & Khảo cứu học thuật</span><p>${escapeHtml(commentaryText)}</p></div>
           ${warning}
-          ${entry.application ? `<div class="dt-layer"><span class="dt-layer-label">Phạm vi áp dụng ghi trong corpus</span><p>${escapeHtml(entry.application)}</p></div>` : ''}
+          ${entry.application ? `<div class="dt-layer"><span class="dt-layer-label">Phạm vi ứng dụng thực tế:</span><p>${escapeHtml(entry.application)}</p></div>` : ''}
         </div>
-        <footer class="dt-entry-meta">${sourceMeta}<span class="dt-badge ${evidence.warning ? 'dt-badge-warning' : 'dt-badge-evidence'}" title="Mã trạng thái nguyên gốc: ${escapeHtml(evidence.raw)}">${escapeHtml(evidence.label)} · ${escapeHtml(evidence.raw)}</span></footer>
+        <footer class="dt-entry-meta">
+          ${sourceMeta}
+          <span class="dt-badge ${evidence.warning ? 'dt-badge-warning' : 'dt-badge-evidence'}">Chứng cứ: ${escapeHtml(evidence.label)}</span>
+        </footer>
       </article>`;
     }
 
