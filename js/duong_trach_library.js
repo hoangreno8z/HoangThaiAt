@@ -281,7 +281,7 @@
       document.title = `${article.title} — Thư Viện Dương Trạch`;
       const entries = article.entries.length
         ? article.entries.map(entry => this.renderEntry(entry, article)).join('')
-        : `<div class="dt-empty"><strong>Chưa có mục đọc cấu trúc để xuất bản.</strong><br>Chủ đề này có hồ sơ quy trình/hard gate trong kho nghiên cứu, nhưng không có đủ bốn lớp văn bản để tạo bài đọc. Hệ thống không tự bịa phần còn thiếu. <a href="${ROUTE_ROOT}/nghien-cuu">Mở hồ sơ nghiên cứu</a>.</div>`;
+        : `<div class="dt-empty"><strong>Chưa có mục đọc cấu trúc để xuất bản.</strong><br>Chủ đề này có hồ sơ quy trình và tiêu chuẩn kiểm soát trong kho nghiên cứu, nhưng không có đủ bốn lớp văn bản để tạo bài đọc. Hệ thống không tự bịa phần còn thiếu. <a href="${ROUTE_ROOT}/nghien-cuu">Mở hồ sơ nghiên cứu</a>.</div>`;
       const content = `<div class="dt-reader-layout">
         ${this.topicNav(manifest.topics, article.id)}
         <main>

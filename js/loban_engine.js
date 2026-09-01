@@ -219,7 +219,8 @@ class LoBanEngine {
   }
 
   // Phân tích 1 kích thước bất kỳ (tính theo mm)
-  calculate(dimensionMm, rulerType = '522') {
+  // _skipSuggestions: cờ nội bộ chặn đệ quy vô hạn khi tìm gợi ý
+  calculate(dimensionMm, rulerType = '522', _skipSuggestions = false) {
     const mm = Math.max(1, parseFloat(dimensionMm) || 1);
     let ruler = this.ruler522;
     if (rulerType === '429') ruler = this.ruler429;
@@ -241,17 +242,17 @@ class LoBanEngine {
     const minorPalaceName = majorPalace.minorPalaces[minorIndex] || majorPalace.minorPalaces[0];
 
     let suggestedGoodDimensions = [];
-    if (!majorPalace.isGood) {
+    if (!majorPalace.isGood && !_skipSuggestions) {
       for (let offset = 5; offset <= 150; offset += 5) {
         const testPrev = mm - offset;
         const testNext = mm + offset;
         if (testPrev > 0) {
-          const resPrev = this.calculate(testPrev, rulerType);
+          const resPrev = this.calculate(testPrev, rulerType, true);
           if (resPrev.isGood && suggestedGoodDimensions.length < 1) {
             suggestedGoodDimensions.push({ mm: testPrev, cm: (testPrev / 10).toFixed(1), name: resPrev.majorName + ' (' + resPrev.minorName + ')' });
           }
         }
-        const resNext = this.calculate(testNext, rulerType);
+        const resNext = this.calculate(testNext, rulerType, true);
         if (resNext.isGood && suggestedGoodDimensions.length < 2) {
           suggestedGoodDimensions.push({ mm: testNext, cm: (testNext / 10).toFixed(1), name: resNext.majorName + ' (' + resNext.minorName + ')' });
         }
