@@ -1,0 +1,241 @@
+[
+  {
+    "case_id": "CASE08-001",
+    "name": "Cổng và cửa chính thẳng tuyệt đối",
+    "inputs": {
+      "gate_center": [
+        5,
+        0
+      ],
+      "main_door_center": [
+        5,
+        10
+      ],
+      "access_path": [
+        [
+          5,
+          0
+        ],
+        [
+          5,
+          10
+        ]
+      ]
+    },
+    "observables": {
+      "direct_access_axis": true,
+      "angular_offset_deg": 0
+    },
+    "matches": [
+      "DOOR-005"
+    ],
+    "decision": "Tag DIRECT_ACCESS_AXIS. Do not render severe traditional outcome as fact."
+  },
+  {
+    "case_id": "CASE08-002",
+    "name": "Cổng lệch, lối đi bẻ nhẹ",
+    "inputs": {
+      "gate_center": [
+        2,
+        0
+      ],
+      "main_door_center": [
+        6,
+        10
+      ],
+      "access_path": [
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          6,
+          10
+        ]
+      ]
+    },
+    "observables": {
+      "direct_access_axis": false,
+      "path_curved_or_bent": true
+    },
+    "matches": [],
+    "decision": "No direct-axis match. Check accessibility, drainage, practical circulation."
+  },
+  {
+    "case_id": "CASE08-003",
+    "name": "Cổng xe thẳng nhưng cửa người lệch",
+    "inputs": {
+      "vehicle_gate": [
+        5,
+        0
+      ],
+      "pedestrian_gate": [
+        2,
+        0
+      ],
+      "main_door": [
+        2.5,
+        9
+      ]
+    },
+    "observables": {
+      "vehicle_axis_to_building": true,
+      "pedestrian_axis_to_main_door": "near"
+    },
+    "matches": [
+      "DOOR-005"
+    ],
+    "decision": "Analyze each opening by role; do not collapse all gates into one."
+  },
+  {
+    "case_id": "CASE08-004",
+    "name": "Góc nhà phụ hướng vào đại môn",
+    "inputs": {
+      "annex_corner": [
+        7,
+        5
+      ],
+      "gate_center": [
+        3,
+        0
+      ]
+    },
+    "observables": {
+      "corner_ray_to_gate": true
+    },
+    "matches": [
+      "DOOR-006",
+      "DOOR-007"
+    ],
+    "decision": "Candidate classical match; modern check for actual collision/sight/access separately."
+  },
+  {
+    "case_id": "CASE08-005",
+    "name": "Cột/đối tượng nhọn gần trục cửa",
+    "inputs": {
+      "obstacle_type": "pole_or_sharp_object",
+      "door_center": [
+        5,
+        10
+      ]
+    },
+    "observables": {
+      "sharp_object_alignment": "observed"
+    },
+    "matches": [
+      "DOOR-003"
+    ],
+    "decision": "Record geometry. No invented distance/angle cutoff."
+  },
+  {
+    "case_id": "CASE08-006",
+    "name": "Rãnh nước chảy thẳng về cổng",
+    "inputs": {
+      "water_flow_axis": "intersects gate opening",
+      "flood_hazard": "unknown"
+    },
+    "observables": {
+      "water_flow_to_gate": true
+    },
+    "matches": [
+      "DOOR-003",
+      "DOOR-007"
+    ],
+    "decision": "Require drainage/hydrology check before classical interpretation."
+  },
+  {
+    "case_id": "CASE08-007",
+    "name": "Nhà hai sân có tường và cửa ngăn",
+    "inputs": {
+      "courtyard_count": 2,
+      "partition_wall": true,
+      "intermediate_door": true
+    },
+    "observables": {
+      "enclosure_graph": "C1 -> D1 -> C2"
+    },
+    "matches": [
+      "DOOR-009"
+    ],
+    "decision": "Geometry supports separate enclosure nodes; 九星 restart remains school-deferred."
+  },
+  {
+    "case_id": "CASE08-008",
+    "name": "Hai cổng: khách và dịch vụ",
+    "inputs": {
+      "gates": [
+        "visitor",
+        "service"
+      ],
+      "main_door": "visitor route"
+    },
+    "observables": {
+      "multi_gate": true
+    },
+    "matches": [],
+    "decision": "Do not choose a single 'main gate' until role/hierarchy is explicitly defined."
+  },
+  {
+    "case_id": "CASE08-009",
+    "name": "Văn phòng có cổng xe tải và cửa nhân viên",
+    "inputs": {
+      "site_type": "business",
+      "truck_gate": true,
+      "staff_entry": true
+    },
+    "observables": {
+      "role_separation": true
+    },
+    "matches": [],
+    "decision": "Enterprise circulation/safety dominates; classical analysis is per entrance role."
+  },
+  {
+    "case_id": "CASE08-010",
+    "name": "Cửa thoát nạn bị đề xuất dịch để tránh trực xung",
+    "inputs": {
+      "required_egress": true,
+      "feng_shui_proposal": "move_or_block"
+    },
+    "observables": {
+      "safety_conflict": true
+    },
+    "matches": [
+      "DOOR-005"
+    ],
+    "decision": "REJECT Feng Shui modification if it degrades compliant egress."
+  },
+  {
+    "case_id": "CASE08-011",
+    "name": "Kích thước cửa rơi vào nhãn Lỗ Ban internet",
+    "inputs": {
+      "door_width_mm": 810,
+      "internet_ruler_claim": "unknown edition"
+    },
+    "observables": {
+      "historical_ruler_witness": "not_resolved"
+    },
+    "matches": [
+      "DOOR-011",
+      "DOOR-012"
+    ],
+    "decision": "UNKNOWN. Do not alter structural/egress dimension until ruler lineage and current code constraints are resolved."
+  },
+  {
+    "case_id": "CASE08-012",
+    "name": "Cửa mở theo một sơn nhưng chưa chọn trường phái",
+    "inputs": {
+      "door_azimuth_deg": 102.0
+    },
+    "observables": {
+      "azimuth_known": true
+    },
+    "matches": [
+      "DOOR-010"
+    ],
+    "decision": "Store azimuth. Do not output Bát Trạch/Huyền Không verdict in Batch 08."
+  }
+]

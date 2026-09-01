@@ -1,0 +1,64 @@
+{
+  "井": {
+    "hanviet": "tỉnh",
+    "working_sense": "well",
+    "modern_mapping": "WELL only when physical/historical context supports it",
+    "not_equal": [
+      "underground potable tank",
+      "roof tank",
+      "tap-water connection",
+      "septic tank"
+    ]
+  },
+  "泉": {
+    "hanviet": "tuyền",
+    "working_sense": "spring/source of water; context-specific",
+    "modern_mapping": "SPRING_OR_GROUNDWATER_SOURCE_CANDIDATE"
+  },
+  "溝渠": {
+    "hanviet": "câu cừ",
+    "working_sense": "ditch/channel",
+    "modern_mapping": "DITCH_CHANNEL_GENERIC",
+    "not_equal": [
+      "sewer pipe automatically",
+      "storm drain automatically"
+    ]
+  },
+  "水路": {
+    "hanviet": "thủy lộ",
+    "working_sense": "water route/path/channel in historical text",
+    "modern_mapping": "HISTORICAL_WATER_PATH",
+    "guard": "Not a modern plumbing-system synonym."
+  },
+  "放水": {
+    "hanviet": "phóng thủy",
+    "working_sense": "release/discharge water in a directional geomantic method",
+    "modern_mapping": "SCHOOL_DRAIN_OUTLET_METHOD",
+    "guard": "Not wastewater discharge compliance."
+  },
+  "天井積水": {
+    "hanviet": "thiên tỉnh tích thủy",
+    "working_sense": "standing water in traditional courtyard/tianjing",
+    "modern_mapping": "STAGNANT_SURFACE_WATER"
+  },
+  "POTABLE_WATER_TANK": {
+    "working_sense": "modern tank storing domestic/potable water",
+    "historical_mapping": "NONE_AUTOMATIC"
+  },
+  "ROOF_TANK": {
+    "working_sense": "modern elevated water tank",
+    "historical_mapping": "NONE_AUTOMATIC"
+  },
+  "UNDERGROUND_WATER_TANK": {
+    "working_sense": "modern underground clean-water tank",
+    "historical_mapping": "NONE_AUTOMATIC"
+  },
+  "STORMWATER": {
+    "working_sense": "modern rainwater runoff/drainage category",
+    "historical_mapping": "may overlap physically with 溝渠/天井水 but not a one-to-one term mapping"
+  },
+  "WASTEWATER": {
+    "working_sense": "modern wastewater category",
+    "historical_mapping": "NONE_AUTOMATIC"
+  }
+}

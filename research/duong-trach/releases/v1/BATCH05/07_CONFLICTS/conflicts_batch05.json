@@ -1,0 +1,57 @@
+[
+  {
+    "conflict_id": "CONFLICT-001",
+    "type": "INTRA_WORK_TEXT_LAYOUT_CONFLICT",
+    "subject": "front_width_vs_rear_width",
+    "evidence_a": "SRC-GJTS675-P70: 前寬後狹似棺形 (negative)",
+    "evidence_b": "SRC-GJTS675-P71 caption appears to join 後面夾稍前面寬 with a positive judgment",
+    "status": "UNRESOLVED",
+    "likely_causes": [
+      "figure caption layout ordering",
+      "unproofread transcription",
+      "compound geometry may differ"
+    ],
+    "engine_action": "Do not use P71 caption to overturn MOTIF-015 until scan layout is manually verified."
+  },
+  {
+    "conflict_id": "CONFLICT-002",
+    "type": "VARIANT_TRADITIONAL_JUDGMENT",
+    "subject": "east_west_long_or_wide",
+    "evidence_a": "SRC-GJTS675-P69: 東西長，南北狹，初凶後吉",
+    "evidence_b": "SRC-DNBS-V5: 東西闊，不宜人且貧",
+    "status": "CONTESTED",
+    "likely_causes": [
+      "different wording: 長 vs 闊",
+      "textual variant",
+      "different implied proportions/context"
+    ],
+    "engine_action": "Block production rule; defer to orientation/variant collation."
+  },
+  {
+    "conflict_id": "CONFLICT-003",
+    "type": "SEMANTIC_MAPPING_RISK",
+    "subject": "返跳",
+    "evidence_a": "SRC-GJTS675-P69 contains 返跳",
+    "evidence_b": "modern internet often labels road/water curves as 反弓, but no verified equivalence established here",
+    "status": "UNRESOLVED",
+    "engine_action": "Do not map 返跳 = 反弓 automatically."
+  },
+  {
+    "conflict_id": "CONFLICT-004",
+    "type": "CONTEXT_DEPENDENT",
+    "subject": "roads",
+    "evidence_a": "左右有路亦如然 can be positive in general description",
+    "evidence_b": "四面交衝 is negative",
+    "status": "RESOLVABLE_BY_GEOMETRY_NOT_BY_WORD_ROAD",
+    "engine_action": "Presence of roads alone is not a rule; topology/orientation must be modeled."
+  },
+  {
+    "conflict_id": "CONFLICT-005",
+    "type": "SAFETY_OVERRIDE",
+    "subject": "embracing_water",
+    "evidence_a": "前後有水環抱貴",
+    "evidence_b": "official flood/erosion hazard may be HIGH",
+    "status": "NO_TEXTUAL_CONFLICT_DIFFERENT_LAYERS",
+    "engine_action": "Modern safety hard gate overrides recommendation."
+  }
+]

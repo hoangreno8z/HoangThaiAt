@@ -1,0 +1,180 @@
+[
+  {
+    "case_id": "CASE17-001",
+    "name": "Hiên ngắn, mưa xiên hắt ướt tường",
+    "input": {
+      "eave_projection": "small",
+      "driving_rain_wall_wetting": true
+    },
+    "historical_matches": [
+      "ROOF-001"
+    ],
+    "modern_gate": [
+      "rain exposure",
+      "waterproofing",
+      "façade durability"
+    ],
+    "decision": "Historical physical motif aligns; size eave by climate/architecture, not invented ancient centimetres."
+  },
+  {
+    "case_id": "CASE17-002",
+    "name": "Nước từ hai mái phụ xả trực tiếp vào nhau",
+    "input": {
+      "runoff_vectors_intersect": true
+    },
+    "historical_matches": [
+      "ROOF-002",
+      "ROOF-003"
+    ],
+    "modern_gate": [
+      "stormwater hydraulics",
+      "splash/erosion"
+    ],
+    "decision": "Historical runoff motif matches. Traditional fatal outcome remains noncausal."
+  },
+  {
+    "case_id": "CASE17-003",
+    "name": "Hai mái nhọn nhìn chĩa nhau nhưng nước không tương tác",
+    "input": {
+      "roof_point_alignment": true,
+      "runoff_vectors_intersect": false
+    },
+    "historical_matches": [],
+    "modern_gate": [
+      "structure/weather only"
+    ],
+    "decision": "Do not misuse 簷水相射."
+  },
+  {
+    "case_id": "CASE17-004",
+    "name": "Mái dột nhẹ ở khe tiếp giáp",
+    "input": {
+      "roof_leakage": true
+    },
+    "historical_matches": [
+      "ROOF-004"
+    ],
+    "modern_gate": [
+      "TCVN5718 where applicable",
+      "detail inspection"
+    ],
+    "decision": "Repair/diagnose leakage; no fortune interpretation."
+  },
+  {
+    "case_id": "CASE17-005",
+    "name": "Ngói bị xô sau bão",
+    "input": {
+      "tile_displacement": true,
+      "recent_storm": true
+    },
+    "historical_matches": [
+      "ROOF-007"
+    ],
+    "modern_gate": [
+      "fall hazard",
+      "wind attachment",
+      "TCVN2737"
+    ],
+    "decision": "Immediate safety inspection; ancient family outcome ignored."
+  },
+  {
+    "case_id": "CASE17-006",
+    "name": "Đường ridge/khung mái có biến dạng",
+    "input": {
+      "ridge_deformation": true
+    },
+    "historical_matches": [
+      "ROOF-005",
+      "ROOF-006",
+      "ROOF-007"
+    ],
+    "modern_gate": [
+      "structural engineer"
+    ],
+    "decision": "Structural investigation is mandatory."
+  },
+  {
+    "case_id": "CASE17-007",
+    "name": "Mái bằng đọng nước vì outlet tắc",
+    "input": {
+      "ponding": true,
+      "roof_outlet_blocked": true
+    },
+    "historical_matches": [],
+    "modern_gate": [
+      "drainage",
+      "waterproofing",
+      "structural ponding load"
+    ],
+    "decision": "Hard repair/maintenance issue; do not wait for Feng Shui analysis."
+  },
+  {
+    "case_id": "CASE17-008",
+    "name": "Bồn nước mái nằm trên phòng ngủ",
+    "input": {
+      "roof_tank_above_bedroom": true
+    },
+    "historical_matches": [],
+    "modern_gate": [
+      "Batch16 water tank",
+      "structural load",
+      "leakage",
+      "noise"
+    ],
+    "decision": "No direct ancient roof-tank omen in verified core."
+  },
+  {
+    "case_id": "CASE17-009",
+    "name": "Mái kim loại nhẹ ở vùng gió mạnh",
+    "input": {
+      "roof_material": "metal_sheet",
+      "wind_region": "high"
+    },
+    "historical_matches": [],
+    "modern_gate": [
+      "QCVN02 climate data",
+      "TCVN2737 loads"
+    ],
+    "decision": "Attachment/uplift engineering dominates."
+  },
+  {
+    "case_id": "CASE17-010",
+    "name": "Thiết bị mái cao nhưng chưa đánh giá chống sét",
+    "input": {
+      "rooftop_equipment": true,
+      "lightning_assessment": "missing"
+    },
+    "historical_matches": [],
+    "modern_gate": [
+      "TCVN9385 applicability assessment"
+    ],
+    "decision": "Do not choose placement solely by compass aesthetics/Feng Shui."
+  },
+  {
+    "case_id": "CASE17-011",
+    "name": "Sơn phản xạ mặt trời nhưng mái vẫn dột",
+    "input": {
+      "solar_reflective_paint": true,
+      "leakage": true
+    },
+    "historical_matches": [],
+    "modern_gate": [
+      "TCVN13527 function",
+      "waterproofing system"
+    ],
+    "decision": "Solar-reflective coating is not automatically waterproofing; repair envelope."
+  },
+  {
+    "case_id": "CASE17-012",
+    "name": "Muốn bẻ hướng ống đứng để tránh phương xấu",
+    "input": {
+      "proposed_downpipe_detour": true,
+      "hydraulic_penalty": true
+    },
+    "historical_matches": [],
+    "modern_gate": [
+      "stormwater hydraulics"
+    ],
+    "decision": "Reject if it degrades drainage. No generic auspicious downpipe direction established."
+  }
+]

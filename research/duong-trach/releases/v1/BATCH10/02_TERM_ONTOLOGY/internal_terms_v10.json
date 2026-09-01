@@ -1,0 +1,65 @@
+{
+  "堂": {
+    "hanviet": "đường",
+    "working_sense": "main/central hall or principal hall-space in historical domestic compounds, context-dependent",
+    "forbidden_shortcut": "Không tự dịch = phòng khách hiện đại",
+    "engine_role_candidate": "PRIMARY_SHARED_SPACE",
+    "confidence": "MEDIUM; contextual"
+  },
+  "廳": {
+    "hanviet": "sảnh/đình? dùng 'sảnh/đại sảnh' theo văn cảnh",
+    "working_sense": "hall/reception-type space; relation to 堂 varies by period/text",
+    "forbidden_shortcut": "Không tự đồng nhất với living room",
+    "engine_role_candidate": "SHARED_OR_RECEPTION_SPACE",
+    "confidence": "MEDIUM"
+  },
+  "廂": {
+    "hanviet": "sương",
+    "working_sense": "side wing / side chamber / lateral building-space",
+    "forbidden_shortcut": "Không tự dịch = phòng ngủ",
+    "engine_role_candidate": "SIDE_WING",
+    "confidence": "MEDIUM_HIGH"
+  },
+  "廊": {
+    "hanviet": "lang",
+    "working_sense": "corridor/gallery/veranda or corridor-building depending context",
+    "forbidden_shortcut": "Không tự đồng nhất với corridor enclosed hiện đại",
+    "engine_role_candidate": "CIRCULATION_OR_SIDE_STRUCTURE",
+    "confidence": "MEDIUM"
+  },
+  "房": {
+    "hanviet": "phòng",
+    "working_sense": "room/chamber; function unspecified unless text specifies",
+    "forbidden_shortcut": "Không tự gán bedroom",
+    "engine_role_candidate": "ROOM_GENERIC",
+    "confidence": "HIGH_GENERIC_LOW_FUNCTION"
+  },
+  "中堂": {
+    "hanviet": "trung đường",
+    "working_sense": "central/main hall context, not mathematical center",
+    "forbidden_shortcut": "Không đồng nhất = Trung Cung geometry",
+    "engine_role_candidate": "CENTRAL_HALL_CONCEPT",
+    "confidence": "MEDIUM"
+  },
+  "門廊": {
+    "hanviet": "môn lang",
+    "working_sense": "door-front gallery/corridor element; exact architecture context-dependent",
+    "forbidden_shortcut": "Không tự quy thành vestibule hiện đại",
+    "engine_role_candidate": "ENTRY_TRANSITION",
+    "confidence": "LOW_MEDIUM; semantic audit needed"
+  },
+  "天井": {
+    "hanviet": "thiên tỉnh",
+    "working_sense": "historical open court/light-well term already separated in Batch09",
+    "forbidden_shortcut": "Không tự đồng nhất với modern lightwell",
+    "engine_role_candidate": "TRADITIONAL_TIANJING",
+    "confidence": "HIGH_TERM_LOW_MODERN_EQUIVALENCE"
+  },
+  "窖房": {
+    "hanviet": "diếu phòng",
+    "working_sense": "cellar/storage-type room or chamber; exact local meaning needs witness/context",
+    "forbidden_shortcut": "Không tự dịch = kho hiện đại chắc chắn",
+    "engine_role_candidate": "SERVICE_STORAGE_CANDIDATE",
+    "confidence": "LOW_MEDIUM"
+  }
+}

@@ -1,0 +1,56 @@
+[
+  {
+    "source_id": "SRC-GJTS677-INTERNAL",
+    "title_zh": "欽定古今圖書集成·藝術典第677卷·陽宅十書三·論宅內形第八",
+    "title_vi": "Cổ Kim Đồ Thư Tập Thành quyển 677 — Dương Trạch Thập Thư III, Luận nội hình",
+    "url": "https://zh.wikisource.org/wiki/%E6%AC%BD%E5%AE%9A%E5%8F%A4%E4%BB%8A%E5%9C%96%E6%9B%B8%E9%9B%86%E6%88%90/%E5%8D%9A%E7%89%A9%E5%BD%99%E7%B7%A8/%E8%97%9D%E8%A1%93%E5%85%B8/%E7%AC%AC677%E5%8D%B7",
+    "locator": "lines 314-348 in web transcription",
+    "role": "PRIMARY_TEXTUAL_CROSS_WITNESS",
+    "scope": "DIRECT_YANGZHAI",
+    "text_status": "TRANSCRIPTION_STRONG_BUT_PUNCTUATION_COMPLEX",
+    "notes": "Một đoạn dài là văn vần/khối văn; không tự ngắt câu thành rule nếu ngữ pháp chưa rõ."
+  },
+  {
+    "source_id": "SRC-DNBS-V5-ROOM",
+    "title_zh": "多能鄙事·卷之五·住宅諸忌",
+    "title_vi": "Đa Năng Bỉ Sự, quyển 5 — Chư kỵ nhà ở",
+    "url": "https://zh.wikisource.org/wiki/%E5%A4%9A%E8%83%BD%E9%84%99%E4%BA%8B/%E5%8D%B7%E4%B9%8B%E4%BA%94",
+    "locator": "lines 170-191 in web transcription",
+    "role": "CROSS_WITNESS",
+    "scope": "DIRECT_YANGZHAI",
+    "attribution_status": "DISPUTED/PSEUDEPIGRAPHIC_RISK",
+    "witness_independence": "UNKNOWN",
+    "notes": "Không đếm như nguồn độc lập với 陽宅十書 nếu chưa chứng minh quan hệ truyền văn."
+  },
+  {
+    "source_id": "SRC-LBJ-MIRROR-CANDIDATE",
+    "title_zh": "新鐫工師雕斲正式魯班木經匠家鏡",
+    "title_vi": "Tân Tuyển Công Sư Điêu Trác Chính Thức Lỗ Ban Mộc Kinh Tượng Gia Kính",
+    "url": "https://ctext.org/wiki.pl?if=gb&res=677890",
+    "role": "SOURCE_CANDIDATE_ARCHITECTURE",
+    "scope": "POPULAR_BUILDING_TRADITION",
+    "text_status": "OCR_TOO_NOISY_FOR_RULE_EXTRACTION",
+    "publish_state": "REJECT_RULE_EXTRACTION_UNTIL_SCAN_COLLATION",
+    "notes": "CText OCR hiện có nhiều chữ hỏng; chỉ giữ bibliographic/source-candidate, không trích rule."
+  },
+  {
+    "source_id": "MOD-QCVN10-2024",
+    "title_vi": "QCVN 10:2024/BXD — Xây dựng công trình đảm bảo tiếp cận sử dụng",
+    "authority": "Bộ Xây dựng",
+    "issued": "2024-08-01",
+    "effective": "2025-02-01",
+    "status_as_of_2026_09_01": "CURRENT",
+    "url": "https://moc.gov.vn/Images/editor/files/Quy%20Chu%E1%BA%A9n/BXD_06-2024-TT-BXD_01082024.pdf",
+    "role": "ACCESSIBILITY_HARD_GATE",
+    "applicability_note": "Áp dụng cho nhóm công trình nêu trong quy chuẩn: chung cư, trụ sở/văn phòng và nhiều công trình công cộng, thương mại, dịch vụ... Không tự mở rộng sang mọi nhà ở riêng lẻ."
+  },
+  {
+    "source_id": "MOD-QCVN06-2022-SD1-2023",
+    "title_vi": "QCVN 06:2022/BXD + Sửa đổi 1:2023 — An toàn cháy cho nhà và công trình",
+    "authority": "Bộ Xây dựng",
+    "role": "FIRE_EGRESS_HARD_GATE",
+    "status_as_of_2026_09_01": "CURRENT_REFERENCE_WHERE_APPLICABLE",
+    "url": "https://moc.gov.vn/Images/editor/files/Quy%20Chu%E1%BA%A9n/QCVN%2006-2022.pdf",
+    "notes": "Phạm vi/giải pháp cụ thể phụ thuộc loại, công năng, quy mô công trình."
+  }
+]

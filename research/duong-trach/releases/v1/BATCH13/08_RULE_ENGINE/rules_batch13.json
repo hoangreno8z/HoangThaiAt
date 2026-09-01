@@ -1,0 +1,37 @@
+[
+  {
+    "rule_id": "R-STAIR-HIST-001",
+    "source_id": "SRC-YZF-V15-TADAO",
+    "domain": "STAIR_VERTICAL_CIRCULATION",
+    "evidence_class": "HISTORICAL_CONSTRUCTION",
+    "publish_state": "REFERENCE_ONLY",
+    "feng_shui_verdict": null,
+    "engine_threshold": null,
+    "note": "Use for history/term/technical study only."
+  },
+  {
+    "rule_id": "R-STAIR-EVIDENCE-GAP-001",
+    "source_ids": [
+      "SRC-YZSS-STAIR-SEARCH",
+      "SRC-DNBS-STAIR-SEARCH"
+    ],
+    "domain": "STAIR_VERTICAL_CIRCULATION",
+    "evidence_class": "EVIDENCE_GAP",
+    "publish_state": "GOVERNANCE_RULE",
+    "result": "NO_DIRECT_EVIDENCE_IN_VERIFIED_CORE_SEARCH",
+    "engine_threshold": null
+  },
+  {
+    "rule_id": "MOD-STAIR-SAFETY-001",
+    "source_ids": [
+      "MOD-QCVN06-2022-SD1-2023",
+      "MOD-QCVN10-2024"
+    ],
+    "domain": "STAIR_VERTICAL_CIRCULATION",
+    "evidence_class": "MODERN_LAW_STANDARD",
+    "publish_state": "HARD_GATE",
+    "result": "SAFETY_AND_ACCESSIBILITY_OVERRIDE",
+    "engine_threshold": null,
+    "note": "Specific dimensions/requirements resolved by applicable project category, not hard-coded here."
+  }
+]

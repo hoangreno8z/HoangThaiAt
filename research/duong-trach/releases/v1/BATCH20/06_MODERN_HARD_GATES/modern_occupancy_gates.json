@@ -1,0 +1,40 @@
+{
+  "COMPLETION_ACCEPTANCE": {
+    "source_id": "MOD-VBHN-ND06-2025",
+    "status": "CURRENT_CONSOLIDATED_REFERENCE_AS_OF_2026_09_01",
+    "hard_gate": true,
+    "summary": [
+      "completion acceptance is governed by Nghị định 06/2021 as amended by 35/2023 and 175/2024",
+      "certain works are subject to competent construction-authority inspection/acceptance requirements",
+      "handover/operation/maintenance documentation belongs to the completion state"
+    ],
+    "scope_guard": "Exact procedure depends on project/work classification; do not treat every private small house as requiring identical authority acceptance workflow."
+  },
+  "FIRE": {
+    "source_ids": [
+      "MOD-LAW55-2024-FIRE",
+      "MOD-ND105-2025-FIRE",
+      "MOD-TT36-2025-FIRE"
+    ],
+    "status": "CURRENT_FROM_2025_07_01",
+    "hard_gate_if_applicable": true,
+    "summary": "Where fire-design/acceptance obligations apply, operation before required acceptance is not permitted."
+  },
+  "WATER": {
+    "source_id": "MOD-QCVN01-1-2024-BYT",
+    "hard_gate_if_applicable": true,
+    "summary": "Domestic water quality/readiness is independent of ritual date."
+  },
+  "VENTILATION": {
+    "source_id": "MOD-TCVN5687-2024",
+    "technical_gate_by_scope": true,
+    "summary": "Ventilation/HVAC readiness belongs to habitability/function, not 'opening qi'."
+  },
+  "precedence": [
+    "LIFE_SAFETY",
+    "LEGAL_ACCEPTANCE",
+    "SYSTEM_COMMISSIONING",
+    "HABITABILITY",
+    "OPTIONAL_TRADITIONAL_MOVE_IN"
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "$id": "lapque.placement_engine.v0.7",
+  "pipeline": [
+    "VALIDATE_SITE_POLYGON",
+    "APPLY_LEGAL_MASKS",
+    "APPLY_HAZARD_MASKS",
+    "APPLY_EASEMENTS_PROTECTION_CORRIDORS",
+    "DERIVE_BUILDABLE_REGION",
+    "VALIDATE_BUILDING_FOOTPRINT",
+    "COMPUTE_SETBACKS_AND_OPEN_SPACES",
+    "COMPUTE_ACCESS_AXES",
+    "COMPUTE_FRONT_OPENNESS",
+    "COMPUTE_SITE_VS_BUILDING_CENTER_RELATION",
+    "CLASSICAL_FORM_MATCH",
+    "SCHOOL_ENGINES_LATER"
+  ],
+  "input": {
+    "site_polygon": "Polygon",
+    "building_footprints": "Polygon[]",
+    "front_reference_azimuth": "number",
+    "legal_exclusion_polygons": "Polygon[]",
+    "hazard_exclusion_polygons": "Polygon[]",
+    "access_points": "Point[]",
+    "gate_segments": "LineString[]",
+    "surrounding_obstacles": "Polygon[]"
+  },
+  "outputs": {
+    "buildable_region": "Polygon|MultiPolygon",
+    "footprint_legal_fit": "PASS|FAIL|UNKNOWN",
+    "site_coverage_ratio": "number",
+    "front_open_area": "number",
+    "front_open_depth": "number|null",
+    "setbacks": {
+      "front": "number|null",
+      "rear": "number|null",
+      "left": "number|null",
+      "right": "number|null"
+    },
+    "site_centroid": "Point",
+    "building_centroid": "Point",
+    "center_offset_vector": "Vector",
+    "access_axis_intersections": "array",
+    "courtyard_open_space": "array"
+  },
+  "guardrails": [
+    "Center offset is descriptive, not automatically auspicious.",
+    "A large front yard is not automatically a Ming Tang until source/context matching.",
+    "Multiple building blocks are preserved; do not dissolve into one bounding rectangle.",
+    "Courtyard and exterior front court are separate geometries.",
+    "No recommendation if footprint_legal_fit=FAIL."
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "$id": "lapque.structure_condition_engine.v0.18",
+  "entities": {
+    "STRUCTURAL_MEMBER": {
+      "geometry": "3D member",
+      "role": "COLUMN|BEAM|SLAB|WALL|TRUSS|RAFTER|RIDGE|FOUNDATION|OTHER|UNKNOWN",
+      "material": "TIMBER|RC|STEEL|MASONRY|OTHER|UNKNOWN",
+      "load_bearing": "TRUE|FALSE|UNKNOWN"
+    },
+    "DEFECT": {
+      "type": "CRACK|TILT|SETTLEMENT|CORROSION|SPALLING|TERMITE|BORER|ROT|MOULD|LEAK|SECTION_LOSS|LOOSE_CONNECTION|OTHER",
+      "geometry": "point/line/polygon",
+      "severity": "UNASSESSED"
+    },
+    "REPAIR_ACTION": {
+      "type": "MONITOR|MAINTAIN|TREAT|REPAIR|REINFORCE|REPLACE|TEMP_SHORE|EVACUATE|DEMOLISH|SPECIALIST_ASSESSMENT"
+    }
+  },
+  "observables": [
+    "member_tilt_angle",
+    "crack_width_observed",
+    "crack_length",
+    "crack_pattern",
+    "settlement_marker_change",
+    "corrosion_evidence",
+    "spalling_area",
+    "timber_section_loss",
+    "borer_or_termite_evidence",
+    "moisture_content_if_tested",
+    "connection_looseness",
+    "roof_or_floor_deformation",
+    "load_path_uncertainty"
+  ],
+  "decision_pipeline": [
+    "IDENTIFY_COMPONENT",
+    "IDENTIFY_MATERIAL",
+    "OBSERVE_DEFECT",
+    "DETERMINE_IF_LOAD_BEARING_OR_UNKNOWN",
+    "APPLY_MODERN_DANGER_SCREEN",
+    "IF DANGER/UNKNOWN_HIGH_CONSEQUENCE -> SPECIALIST",
+    "SELECT REPAIR STRATEGY",
+    "ONLY THEN ADD HISTORICAL/TRADITIONAL COMMENTARY"
+  ],
+  "guards": [
+    "No crack width threshold is invented in corpus; use applicable standard/specialist.",
+    "No column/beam may be removed because a Feng Shui rule dislikes its position.",
+    "No structural member may be retained because it is 'auspicious' if dangerous.",
+    "Reclaimed timber is not automatically equivalent to 死樹.",
+    "Historic component names must map to actual structural roles before rules execute."
+  ]
+}

@@ -1,0 +1,134 @@
+[
+  {
+    "rule_id": "R-KIT-001",
+    "claim_id": "KIT-001",
+    "source_id": "SRC-DNBS-V5-STOVE",
+    "domain": "KITCHEN_FIRE_WATER",
+    "publish_state": "PARTIAL_ONLY",
+    "modern_causality": "NONE_INFERRED",
+    "ancient_numeric_claim": false,
+    "engine_threshold": null,
+    "hard_gate_required": true
+  },
+  {
+    "rule_id": "R-KIT-002",
+    "claim_id": "KIT-002",
+    "source_id": "SRC-DNBS-V5-STOVE",
+    "domain": "KITCHEN_FIRE_WATER",
+    "publish_state": "CANDIDATE",
+    "modern_causality": "NONE_INFERRED",
+    "ancient_numeric_claim": false,
+    "engine_threshold": null,
+    "hard_gate_required": true
+  },
+  {
+    "rule_id": "R-KIT-003",
+    "claim_id": "KIT-003",
+    "source_id": "SRC-DNBS-V5-STOVE",
+    "domain": "KITCHEN_FIRE_WATER",
+    "publish_state": "BLOCKED",
+    "modern_causality": "NONE_INFERRED",
+    "ancient_numeric_claim": true,
+    "engine_threshold": null,
+    "hard_gate_required": true
+  },
+  {
+    "rule_id": "R-KIT-004",
+    "claim_id": "KIT-004",
+    "source_id": "SRC-DNBS-V5-STOVE",
+    "domain": "KITCHEN_FIRE_WATER",
+    "publish_state": "BLOCKED",
+    "modern_causality": "NONE_INFERRED",
+    "ancient_numeric_claim": false,
+    "engine_threshold": null,
+    "hard_gate_required": true
+  },
+  {
+    "rule_id": "R-KIT-005",
+    "claim_id": "KIT-005",
+    "source_id": "SRC-DNBS-V5-STOVE",
+    "domain": "KITCHEN_FIRE_WATER",
+    "publish_state": "CANDIDATE",
+    "modern_causality": "NONE_INFERRED",
+    "ancient_numeric_claim": false,
+    "engine_threshold": null,
+    "hard_gate_required": true
+  },
+  {
+    "rule_id": "R-KIT-006",
+    "claim_id": "KIT-006",
+    "source_id": "SRC-GJTS677-FIREAN",
+    "domain": "KITCHEN_FIRE_WATER",
+    "publish_state": "BLOCKED",
+    "modern_causality": "NONE_INFERRED",
+    "ancient_numeric_claim": false,
+    "engine_threshold": null,
+    "hard_gate_required": true
+  },
+  {
+    "rule_id": "R-KIT-007",
+    "claim_id": "KIT-007",
+    "source_id": "SRC-GJTS677-FIREAN",
+    "domain": "KITCHEN_FIRE_WATER",
+    "publish_state": "CANDIDATE",
+    "modern_causality": "NONE_INFERRED",
+    "ancient_numeric_claim": false,
+    "engine_threshold": null,
+    "hard_gate_required": true
+  },
+  {
+    "rule_id": "R-KIT-008",
+    "claim_id": "KIT-008",
+    "source_id": "SRC-GJTS677-FIREAN",
+    "domain": "KITCHEN_FIRE_WATER",
+    "publish_state": "BLOCKED",
+    "modern_causality": "NONE_INFERRED",
+    "ancient_numeric_claim": false,
+    "engine_threshold": null,
+    "hard_gate_required": true
+  },
+  {
+    "rule_id": "R-KIT-009",
+    "claim_id": "KIT-009",
+    "source_id": "SRC-GJTS677-INTERNAL-KITCHEN",
+    "domain": "KITCHEN_FIRE_WATER",
+    "publish_state": "PARTIAL_ONLY",
+    "modern_causality": "NONE_INFERRED",
+    "ancient_numeric_claim": false,
+    "engine_threshold": null,
+    "hard_gate_required": true
+  },
+  {
+    "rule_id": "R-KIT-010",
+    "claim_id": "KIT-010",
+    "source_id": "SRC-DNBS-V5-STOVE",
+    "domain": "KITCHEN_FIRE_WATER",
+    "publish_state": "BLOCKED",
+    "modern_causality": "NONE_INFERRED",
+    "ancient_numeric_claim": false,
+    "engine_threshold": null,
+    "hard_gate_required": true
+  },
+  {
+    "rule_id": "R-KIT-011",
+    "claim_id": "KIT-011",
+    "source_id": "SRC-DNBS-V5-STOVE",
+    "domain": "KITCHEN_FIRE_WATER",
+    "publish_state": "BLOCKED",
+    "modern_causality": "NONE_INFERRED",
+    "ancient_numeric_claim": false,
+    "engine_threshold": null,
+    "hard_gate_required": true
+  },
+  {
+    "rule_id": "R-KIT-012",
+    "claim_id": "KIT-012",
+    "source_id": "SRC-DNBS-V5-STOVE",
+    "domain": "KITCHEN_FIRE_WATER",
+    "publish_state": "INVALID_FOR_APPLICATION",
+    "modern_causality": "NONE_INFERRED",
+    "ancient_numeric_claim": false,
+    "engine_threshold": null,
+    "hard_gate_required": true
+  }
+]

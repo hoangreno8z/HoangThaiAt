@@ -1,0 +1,73 @@
+{
+  "checkpoint": "QA_CHECKPOINT_G",
+  "date": "2026-09-01",
+  "scope": "BATCH01_TO_BATCH19_PLUS_EVENT_ONTOLOGY_AND_TRACH_NHAT_GOVERNANCE",
+  "metrics": {
+    "json_documents_scanned": 193,
+    "parse_errors": 0,
+    "unique_source_ids": 112,
+    "claims_motifs_evidence_scanned": 195,
+    "rules_scanned": 207,
+    "claim_missing_source_refs": 0,
+    "rule_missing_source_refs": 0,
+    "duplicate_claim_ids": 0,
+    "duplicate_rule_ids": 0,
+    "numeric_thresholds_needing_review": 0,
+    "school_leakage": 0,
+    "authority_violations": 0,
+    "date_output_violations": 0
+  },
+  "hard_results": {
+    "JSON_PARSE": "PASS",
+    "CLAIM_SOURCE_INTEGRITY": "PASS",
+    "RULE_SOURCE_INTEGRITY": "PASS",
+    "CLAIM_ID_UNIQUENESS": "PASS",
+    "RULE_ID_UNIQUENESS": "PASS",
+    "NO_NUMERIC_THRESHOLD_HALLUCINATION": "PASS",
+    "SCHOOL_ISOLATION": "PASS",
+    "DISPUTED_SOURCE_NOT_HIGH_AUTHORITY": "PASS",
+    "EVENT_ONTOLOGY_SEPARATION": "PASS",
+    "DOMAIN_SEPARATION_TECHNICAL_VS_RITUAL": "PASS",
+    "MODERN_CONSTRUCTION_SAFETY_OVERRIDE": "PASS",
+    "NO_UNVALIDATED_LUCKY_DATE_OUTPUT": "PASS"
+  },
+  "event_checks": {
+    "EVENT_FIRST": true,
+    "DONGTU_NOT_SHANGLIANG": true,
+    "DONGTU_NOT_POTU": true,
+    "MOVE_NOT_BED": true,
+    "DEMOLITION_SEPARATE": true,
+    "ANMEN_NOT_INVENTED": true,
+    "RUZHAI_MAPPING_GUARD": true,
+    "DATE_ENGINE_DISABLED": true
+  },
+  "domain_checks": {
+    "YINGZAO_TECHNICAL": true,
+    "ZHAIJING_PSEUDEPIGRAPHIC": true,
+    "OFFICIAL_NOT_EMPIRICAL": true
+  },
+  "safety_checks": {
+    "QCVN18_CURRENT": true,
+    "DEMOLITION_READINESS": true,
+    "TEMP_SUPPORT": true,
+    "SAFETY_OVERRIDES": true
+  },
+  "issues": {
+    "parse_errors": [],
+    "claim_missing": [],
+    "rule_missing": [],
+    "duplicate_claims": {},
+    "duplicate_rules": {},
+    "numeric_thresholds": [],
+    "school_leak": [],
+    "authority_violations": [],
+    "date_output_violations": []
+  },
+  "new_invariants": [
+    "EVENT_CLASSIFICATION_PRECEDES_DATE_SELECTION",
+    "CONSTRUCTION_DONGTU_IS_NOT_FUNERARY_POTU",
+    "TECHNICAL_READINESS_PRECEDES_RITUAL_PREFERENCE",
+    "OFFICIAL_TRADITIONAL_AUTHORITY_IS_NOT_EMPIRICAL_CAUSAL_PROOF",
+    "NO_DATE_GENERATION_UNTIL_CALENDAR_ENGINE_IS_VERIFIED"
+  ]
+}

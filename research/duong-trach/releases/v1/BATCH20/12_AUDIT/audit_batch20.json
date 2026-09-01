@@ -1,0 +1,42 @@
+{
+  "batch": "20",
+  "date": "2026-09-01",
+  "scope": "COMPLETION_ACCEPTANCE_MOVE_IN_OCCUPANCY",
+  "counts": {
+    "sources": 9,
+    "claims": 8,
+    "rules": 11,
+    "cases": 14,
+    "conflicts": 5,
+    "folklore_redteam": 10,
+    "event_terms": 6
+  },
+  "passed": [
+    "移徙_direct_v11_event",
+    "入宅_historical_attestation_found_in_v34_35",
+    "v11_vs_v34_35_source_layers_preserved",
+    "掃舍宇_not_ritual_recipe",
+    "安牀_event_separate",
+    "安門_spatial_not_calendar",
+    "Zhaijing_attribution_warning_preserved",
+    "completion_acceptance_current_consolidated_reference",
+    "current_2025_fire_law_stack",
+    "occupancy_ready_before_traditional_overlay",
+    "no_lucky_date_generation"
+  ],
+  "important_findings": [
+    "入宅 is not merely a modern label: it is attested in the embedded 事類總集 material preserved in XJBF volumes 34–35.",
+    "That discovery does not make 入宅 identical to the v11 official event label 移徙.",
+    "The embedded source explicitly describes work completion before selecting a later entry/return-fire time, but this traditional sequence is not a substitute for modern legal acceptance.",
+    "宅經 supplies genuine 安門 spatial terminology, while its Huangdi attribution remains pseudepigraphic according to Siku."
+  ],
+  "blocked": [
+    "production 入宅 date generation",
+    "universal 歸火 ritual",
+    "XJBF-v11 independent 安門 event",
+    "rice/salt/water mandatory ritual",
+    "sleep-first-night mandatory rule",
+    "exact textual identity 移徙=入宅"
+  ],
+  "next": "BATCH21_EXISTING_HOUSE_RENOVATION_DIAGNOSIS"
+}

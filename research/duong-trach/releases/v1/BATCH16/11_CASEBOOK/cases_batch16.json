@@ -1,0 +1,218 @@
+[
+  {
+    "case_id": "CASE16-001",
+    "name": "Giếng cũ bỏ hoang trong lô đất",
+    "input": {
+      "entity": "WELL",
+      "status": "ABANDONED"
+    },
+    "classical_matches": [
+      "WAT-001"
+    ],
+    "modern_gate": [
+      "fall/collapse",
+      "groundwater contamination",
+      "geotechnical closure"
+    ],
+    "decision": "Do not preserve solely because old text says not to fill it; engineer safe closure or rehabilitation."
+  },
+  {
+    "case_id": "CASE16-002",
+    "name": "Bể nước ngầm nằm giữa footprint nhà",
+    "input": {
+      "entity": "UNDERGROUND_WATER_TANK",
+      "center_overlap": "high"
+    },
+    "classical_matches": [],
+    "modern_gate": [
+      "structure",
+      "waterproofing",
+      "maintenance",
+      "water quality"
+    ],
+    "decision": "No direct ancient Trung Cung tank rule in verified core. Do not run WELL rules."
+  },
+  {
+    "case_id": "CASE16-003",
+    "name": "Bể mái nằm trên phòng ngủ",
+    "input": {
+      "entity": "ROOF_TANK",
+      "vertical_relation": "above_bedroom"
+    },
+    "classical_matches": [],
+    "modern_gate": [
+      "structural load",
+      "leakage",
+      "noise",
+      "maintenance"
+    ],
+    "decision": "NO_DIRECT_EVIDENCE in core search for ancient omen."
+  },
+  {
+    "case_id": "CASE16-004",
+    "name": "Giếng thật nằm sát khu bếp",
+    "input": {
+      "entity": "WELL",
+      "well_stove_adjacency": true
+    },
+    "classical_matches": [
+      "WAT-003",
+      "WAT-008"
+    ],
+    "modern_gate": [
+      "water contamination",
+      "sanitary protection",
+      "fuel/fire separation"
+    ],
+    "decision": "Historical motif exists; report separately from modern health engineering."
+  },
+  {
+    "case_id": "CASE16-005",
+    "name": "Chậu rửa nằm sát bếp từ",
+    "input": {
+      "entity": "SINK",
+      "cooktop": "INDUCTION",
+      "distance_m": 0.15
+    },
+    "classical_matches": [],
+    "modern_gate": [
+      "electrical/splash/ergonomics/manufacturer"
+    ],
+    "decision": "Do not transform well-stove ancient rules into sink-cooktop Feng Shui."
+  },
+  {
+    "case_id": "CASE16-006",
+    "name": "Sân trong đọng nước sau mưa",
+    "input": {
+      "standing_water": true,
+      "duration": "persistent"
+    },
+    "classical_matches": [
+      "WAT-005"
+    ],
+    "modern_gate": [
+      "stormwater drainage",
+      "mosquito/sanitation",
+      "waterproofing"
+    ],
+    "decision": "Drainage repair first; ancient disease outcome remains noncausal."
+  },
+  {
+    "case_id": "CASE16-007",
+    "name": "Mương quanh nhà bị tắc và bốc mùi",
+    "input": {
+      "ditch_blocked": true,
+      "odour": true
+    },
+    "classical_matches": [
+      "WAT-006"
+    ],
+    "modern_gate": [
+      "sanitation",
+      "drain maintenance",
+      "wastewater cross-connection"
+    ],
+    "decision": "Historical sanitation alignment exists; modern remediation based on engineering/health."
+  },
+  {
+    "case_id": "CASE16-008",
+    "name": "Ống thoát thẳng ngắn nhất và đúng thủy lực",
+    "input": {
+      "drain_path": "straight",
+      "hydraulic_design": "PASS"
+    },
+    "classical_matches": [
+      "WAT-009"
+    ],
+    "modern_gate": [
+      "TCVN4474/QCVN07-2 as applicable"
+    ],
+    "decision": "Do NOT bend it merely to satisfy school phrase 水不宜直流."
+  },
+  {
+    "case_id": "CASE16-009",
+    "name": "Mạng thoát nước có nhiều nhánh hợp lý",
+    "input": {
+      "branching_topology": true,
+      "engineering": "PASS"
+    },
+    "classical_matches": [
+      "WAT-010"
+    ],
+    "modern_gate": [
+      "internal/external drainage standards"
+    ],
+    "decision": "Do not apply 忌分流 to modern network topology."
+  },
+  {
+    "case_id": "CASE16-010",
+    "name": "Giếng gần biển, nước nhìn trong",
+    "input": {
+      "well_near_sea": true,
+      "visual_clarity": "clear",
+      "taste": "acceptable"
+    },
+    "classical_matches": [
+      "WAT-012"
+    ],
+    "modern_gate": [
+      "QCVN01-1:2024/BYT testing",
+      "hydrogeology/salinity"
+    ],
+    "decision": "Appearance/taste is insufficient; test water quality."
+  },
+  {
+    "case_id": "CASE16-011",
+    "name": "Hộ gia đình tự khai thác giếng tại vùng nguy cơ",
+    "input": {
+      "self_extracted_water": true,
+      "risk_area": true
+    },
+    "classical_matches": [],
+    "modern_gate": [
+      "QCVN01-1:2024/BYT / TT52 monitoring context"
+    ],
+    "decision": "Modern quality surveillance applies according to current health regulation."
+  },
+  {
+    "case_id": "CASE16-012",
+    "name": "Bỏ chì vào giếng theo sách cổ",
+    "input": {
+      "lead_to_well": true
+    },
+    "classical_matches": [
+      "WAT-011"
+    ],
+    "modern_gate": [
+      "HARD_FAIL"
+    ],
+    "decision": "PROHIBIT APPLICATION. Preserve only as historical evidence."
+  },
+  {
+    "case_id": "CASE16-013",
+    "name": "Khu nhà mới thiếu giải pháp nước mưa khi mưa cực đoan",
+    "input": {
+      "stormwater_capacity": "insufficient",
+      "climate_change": "relevant"
+    },
+    "classical_matches": [],
+    "modern_gate": [
+      "QCVN07-2:2023/BXD",
+      "TCVN7957:2023"
+    ],
+    "decision": "Redesign stormwater system; classical water-shape analysis cannot compensate."
+  },
+  {
+    "case_id": "CASE16-014",
+    "name": "Bể nước sạch bị nối chéo với nước kỹ thuật",
+    "input": {
+      "cross_connection_risk": true
+    },
+    "classical_matches": [],
+    "modern_gate": [
+      "potable water safety",
+      "internal supply engineering"
+    ],
+    "decision": "HARD FAIL/REPAIR regardless of Feng Shui sector."
+  }
+]

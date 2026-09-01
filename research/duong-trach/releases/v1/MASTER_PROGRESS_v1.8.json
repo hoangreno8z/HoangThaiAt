@@ -1,0 +1,33 @@
+{
+  "date": "2026-09-01",
+  "completed_batches": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+  ],
+  "qa_checkpoint_A": "COMPLETE",
+  "qa_checkpoint_B": "COMPLETE",
+  "qa_hard_results": {
+    "JSON_PARSE": "PASS",
+    "CLAIM_SOURCE_INTEGRITY": "PASS",
+    "RULE_SOURCE_INTEGRITY": "PASS",
+    "ID_UNIQUENESS_CLAIMS": "PASS",
+    "ID_UNIQUENESS_RULES": "PASS",
+    "NO_UNREVIEWED_THRESHOLDS": "PASS",
+    "SCHOOL_ISOLATION": "PASS",
+    "CANONICAL_SOURCE_REGISTRY": "CREATED_V1.0",
+    "EVIDENCE_STATE_MACHINE": "CREATED_V1.0"
+  },
+  "authoritative_normalization": "QA_CHECKPOINT_B/CANONICAL_SOURCE_REGISTRY_v1.0.json",
+  "evidence_state_machine": "QA_CHECKPOINT_B/EVIDENCE_STATE_MACHINE_v1.0.json",
+  "next": "BATCH13_STAIRS_VERTICAL_CIRCULATION"
+}

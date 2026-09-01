@@ -1,0 +1,36 @@
+{
+  "batch": "10",
+  "date": "2026-09-01",
+  "scope": "ROOM_ZONING_INTERNAL_CIRCULATION",
+  "counts": {
+    "sources": 5,
+    "terms": 9,
+    "claims": 12,
+    "rules": 12,
+    "cases": 12
+  },
+  "passed": [
+    "historical_terms_not_forced_to_modern_room_functions",
+    "room_graph_separated_from_school_rules",
+    "QCVN10_applicability_not_overgeneralized",
+    "fire_egress_hard_gate_present",
+    "semantic_unresolved_blocks_rule",
+    "kitchen_deferred",
+    "no_fake_ancient_numeric_threshold",
+    "traditional_outcomes_noncausal",
+    "LuBan_noisy_OCR_rejected_for_rule_extraction"
+  ],
+  "blocked": [
+    "廳若欺堂 exact quantitative meaning",
+    "窖房 modern functional equivalence",
+    "堂前門廊不可空 semantic meaning",
+    "中堂不可架直屋 geometry",
+    "compound verse cát/hung interpretation"
+  ],
+  "important_findings": [
+    "堂/廳/廂/廊 are historical spatial terms, not one-to-one modern room labels.",
+    "The corpus now supports room/door/circulation graphs without forcing a Feng Shui verdict.",
+    "QCVN 10:2024/BXD is current from 2025-02-01, but applies to specified building categories; detached private houses must not be automatically included."
+  ],
+  "next": "BATCH11_KITCHEN_FIRE_WATER_RELATIONS"
+}

@@ -1,0 +1,38 @@
+[
+  {
+    "conflict_id": "ROOF-CONFLICT-001",
+    "type": "SEMANTIC_OVERGENERALIZATION",
+    "subject": "簷水相射",
+    "wrong_mapping": "roof ridge/corner points at another roof or door",
+    "correct_scope": "runoff/eave-water relation unless another direct source is found",
+    "status": "BLOCK_WRONG_MAPPING"
+  },
+  {
+    "conflict_id": "ROOF-CONFLICT-002",
+    "type": "HISTORICAL_FORM_VS_MODERN_HYDRAULICS",
+    "subject": "roof runoff direction",
+    "status": "MODERN_ENGINEERING_OVERRIDE",
+    "resolution": "Do not reroute gutters/downpipes into unsafe hydraulic layouts for symbolic preference."
+  },
+  {
+    "conflict_id": "ROOF-CONFLICT-003",
+    "type": "HISTORICAL_DEFECT_VS_CAUSAL_OMEN",
+    "subject": "瓦移棟摧 / 屋勢傾斜",
+    "status": "DEFECT_REAL_OUTCOME_NONCAUSAL",
+    "resolution": "Physical damage is actionable; family/fortune outcomes are not causal."
+  },
+  {
+    "conflict_id": "ROOF-CONFLICT-004",
+    "type": "HISTORICAL_CONSTRUCTION_VS_MODERN_SYSTEM",
+    "subject": "Yingzao Fashi tile construction",
+    "status": "REFERENCE_ONLY",
+    "resolution": "Do not copy Song-era dimensions/details into modern roof assemblies without engineering basis."
+  },
+  {
+    "conflict_id": "ROOF-CONFLICT-005",
+    "type": "MATERIAL_FUNCTION_CONFUSION",
+    "subject": "solar reflective paint vs waterproofing",
+    "status": "SEPARATE_FUNCTIONS",
+    "resolution": "TCVN 13527 roof solar-reflectance coating is not automatically the waterproofing layer."
+  }
+]

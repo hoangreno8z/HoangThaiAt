@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
   <title>Huyền Học Mụ — Đại Thư Viện Số Địa Lý & Dịch Học Cổ Điển</title>
+  <meta name="theme-color" content="#080d14">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   
   <!-- Fonts: Google Fonts for Classical & Modern Vietnamese Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,6 +16,7 @@
   <link rel="stylesheet" href="css/leaflet.css" />
   
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/duong-trach.css">
 </head>
 <body class="theme-dark">
 
@@ -36,6 +39,9 @@
         </a>
         <a href="#/learn" class="nav-gate-link" data-gate="learn">
           <span>Giáo Trình</span>
+        </a>
+        <a href="#/thu-vien/duong-trach" class="nav-gate-link" data-gate="thu-vien">
+          <span>Thư Viện Dương Trạch</span>
         </a>
         <a href="#/tools" class="nav-gate-link" data-gate="tools">
           <span>Bàn Tính & Công Cụ</span>
@@ -71,6 +77,15 @@
 
       </section>
 
+    <section class="dt-lobby-entry" aria-labelledby="dt-lobby-title">
+      <div>
+        <span class="dt-eyebrow">CORPUS LAPQUE • QA-H</span>
+        <h2 id="dt-lobby-title">Thư Viện Dương Trạch Có Nguồn</h2>
+        <p>20 chủ đề từ chọn đất đến nhập trạch, tách rõ nguyên văn, Hán–Việt, dịch sát, giảng nghĩa, trạng thái bằng chứng và an toàn hiện đại.</p>
+      </div>
+      <a href="#/thu-vien/duong-trach" class="dt-primary-link">Mở Thư Viện Dương Trạch →</a>
+    </section>
+
         <!-- 4 ĐẠI PHÂN HỆ CÔNG CỤ & BÀN TÍNH CỔ ĐIỂN -->
     <section style="max-width:1100px; margin:2rem auto 0 auto; padding:0 1rem;">
       <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:1rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:0.6rem;">
@@ -80,7 +95,7 @@
             5 Phân Hệ Công Cụ Cổ Truyền
           </h2>
         </div>
-        <span style="font-size:0.82rem; color:var(--text-muted);">Tra cứu tức thì • Độ chính xác tuyệt đối</span>
+        <span style="font-size:0.82rem; color:var(--text-muted);">Tra cứu có nguồn • Hiển thị mức độ bằng chứng • Tách trường phái</span>
       </div>
 
       <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:1rem;">
@@ -341,6 +356,10 @@
        ========================================================================= -->
   <section id="gate-tools" class="app-gate-view" style="display:none; padding:2rem 1.5rem; max-width:1200px; margin:0 auto;"></section>
 
+  <section id="gate-duong-trach" class="app-gate-view" style="display:none;">
+    <main id="duong-trach-app" class="dt-app" aria-live="polite"></main>
+  </section>
+
     <!-- =========================================================================
        MOBILE BOTTOM BAR (CỐ ĐỊNH ĐÁY MÀN HÌNH DI ĐỘNG)
        ========================================================================= -->
@@ -352,6 +371,10 @@
     <a href="#/learn" class="mobile-bar-btn" style="text-decoration:none;">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
       <span>Giáo Trình</span>
+    </a>
+    <a href="#/thu-vien/duong-trach" class="mobile-bar-btn" style="text-decoration:none;">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      <span>Dương Trạch</span>
     </a>
     <a href="#/tools" class="mobile-bar-btn" style="text-decoration:none;">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/></svg>
@@ -422,6 +445,12 @@
       </a>
 
       <!-- CÁC PHÂN HỆ NGHIÊN CỨU & TRA CỨU -->
+      <div class="drawer-section-title" style="margin-top:1.2rem;">THƯ VIỆN NGHIÊN CỨU</div>
+      <a href="#/thu-vien/duong-trach" class="drawer-nav-item book-shelf-item" style="border-left-color:#14B8A6; background:rgba(20,184,166,0.08); margin-bottom:0.6rem;">
+        <div style="font-weight:700; color:#FEF3C7; font-size:0.92rem;">Dương Trạch Có Nguồn</div>
+        <div style="font-size:0.75rem; color:#5EEAD4;">20 Chủ Đề • Nguyên Văn • Hán–Việt • QA-H</div>
+      </a>
+
       <div class="drawer-section-title" style="margin-top:1.2rem;">5 PHÂN HỆ CÔNG CỤ CỔ TRUYỀN</div>
       <a href="#/tools/goiythietke" class="drawer-nav-item book-shelf-item" style="border-left-color:#10B981; background:rgba(16,185,129,0.08); margin-bottom:0.6rem;">
         <div style="font-weight:700; color:#FEF3C7; font-size:0.92rem;">Gợi Ý Thiết Kế Khí Động Học</div>
@@ -455,7 +484,7 @@
     <div class="reader-sheet-container">
       <div class="reader-sheet-header">
         <h3 id="reader-sheet-title" class="reader-sheet-title">Mục Lục</h3>
-        <button id="reader-sheet-close" class="reader-sheet-close">✕</button>
+        <button id="reader-sheet-close" class="reader-sheet-close" type="button" aria-label="Đóng mục lục">✕</button>
       </div>
       <div id="reader-sheet-body" class="reader-sheet-body"></div>
     </div>
@@ -495,6 +524,7 @@
   <script src="js/library_ui.js"></script>
   <script src="js/research_ui.js"></script>
   <script src="js/evidence_graph_ui.js"></script>
+  <script src="js/duong_trach_library.js"></script>
   <script src="js/tool_ui.js"></script>
   <script src="js/reader.js"></script>
   <script src="js/router.js"></script>

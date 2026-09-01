@@ -1,0 +1,42 @@
+{
+  "batch": "12",
+  "date": "2026-09-01",
+  "scope": "BEDROOM_BED_SLEEP",
+  "counts": {
+    "sources": 8,
+    "terms": 7,
+    "claims": 12,
+    "rules": 12,
+    "cases": 12,
+    "conflicts": 4,
+    "folklore_redteam_items": 5
+  },
+  "passed": [
+    "房_not_auto_bedroom",
+    "historical_health_separated_from_fengshui",
+    "modern_sleep_health_separated",
+    "head_direction_conflict_preserved",
+    "school_rules_not_generalized",
+    "mirror_bed_not_invented",
+    "beam_bed_not_invented",
+    "bed_foot_door_not_invented",
+    "wall_contact_not_made_universal",
+    "medical_causality_guard",
+    "egress_override"
+  ],
+  "important_findings": [
+    "A 1773 domestic-health text itself records several incompatible sleeping-head directions and critiques seasonal reorientation, so no single 'ancient correct direction' should be claimed.",
+    "The same text explicitly criticizes mystical fortune predictions from bedroom-door dimensional theories.",
+    "The same text discusses both wall-adjacent beds and moving a bed to the room center in hot weather, refuting a universal wall-contact rule.",
+    "Popular mirror/beam/bed-foot-to-door taboos were not located in the verified core ancient sources searched for this batch; they remain evidence gaps, not disproven claims."
+  ],
+  "blocked": [
+    "general universal bed direction",
+    "An Ju Jin Jing bed rules until scan collation",
+    "beam-over-bed ancient verdict",
+    "mirror-facing-bed ancient verdict",
+    "bed-foot-facing-door severe omen",
+    "bedroom-door lucky dimensions without source lineage"
+  ],
+  "next": "BATCH13_STAIRS_VERTICAL_CIRCULATION"
+}

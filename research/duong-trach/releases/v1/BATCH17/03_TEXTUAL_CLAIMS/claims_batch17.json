@@ -1,0 +1,154 @@
+[
+  {
+    "claim_id": "ROOF-001",
+    "source_id": "SRC-DNBS-V5-ROOF",
+    "original": "凡屋外簷勿短促，斜雨潑壁。",
+    "hanviet": "Phàm ốc ngoại diêm vật đoản xúc, tà vũ bát bích.",
+    "literal_vi": "Hiên ngoài nhà không nên quá ngắn/gấp; văn bản liên hệ với mưa xiên hắt vào tường.",
+    "classification": "HISTORICAL_BUILDING_WEATHER_MOTIF",
+    "observable": [
+      "eave_projection",
+      "wall_rain_exposure",
+      "wind_driven_rain"
+    ],
+    "traditional_outcome": "家多痢疾 (source continuation)",
+    "editorial": "Phần bệnh tật không causal. Không bịa chiều dài hiên tối thiểu cổ.",
+    "state": "CANDIDATE_PHYSICAL_MOTIF_NO_THRESHOLD"
+  },
+  {
+    "claim_id": "ROOF-002",
+    "source_id": "SRC-JJBY-YUAN-ROOF",
+    "original": "水簷頭相射。",
+    "hanviet": "Thủy diêm đầu tương xạ.",
+    "literal_vi": "Đầu/luồng nước ở diềm mái được mô tả là 'tương xạ'.",
+    "classification": "HISTORICAL_ROOF_RUNOFF_FORM",
+    "observable": [
+      "roof_runoff_vector",
+      "eave_edge",
+      "runoff_intersection"
+    ],
+    "traditional_outcome": "主殺傷",
+    "editorial": "Không biến thành 'hai mái nhọn chĩa nhau'. Đối tượng chính trong câu có chữ 水.",
+    "state": "CANDIDATE_RUNOFF_GEOMETRY"
+  },
+  {
+    "claim_id": "ROOF-003",
+    "source_id": "SRC-DNBS-V5-ROOF",
+    "original": "簷水相射，主殺傷。",
+    "hanviet": "Diêm thủy tương xạ, chủ sát thương.",
+    "literal_vi": "Bản Đa Năng Bỉ Sự cũng lưu motif nước mái/diềm mái tương xạ và gắn phán truyền thống.",
+    "classification": "TEXTUAL_CROSS_WITNESS",
+    "observable": [
+      "roof_runoff_vector",
+      "runoff_target"
+    ],
+    "traditional_outcome": "主殺傷",
+    "editorial": "Không coi hai witness là độc lập nếu chưa chứng minh truyền bản.",
+    "state": "CROSS_WITNESS_NOT_INDEPENDENCE_PROVEN"
+  },
+  {
+    "claim_id": "ROOF-004",
+    "source_id": "SRC-JJBY-YUAN-ROOF",
+    "original": "廨屋漏漿。",
+    "hanviet": "Giải ốc lậu tương.",
+    "literal_vi": "Văn bản ghi một tình trạng nhà/mái bị 'lậu tương'; có yếu tố rò/dột nhưng nghĩa chính xác của 廨屋/漿 trong cụm cần thận trọng.",
+    "classification": "HISTORICAL_DEFECT_MOTIF",
+    "observable": [
+      "roof_leakage",
+      "water_ingress"
+    ],
+    "traditional_outcome": "新婦無良",
+    "editorial": "Chỉ giữ observable dột/rò; không dùng hậu quả gia đình. Semantic phrase remains partial.",
+    "state": "SEMANTIC_PARTIAL"
+  },
+  {
+    "claim_id": "ROOF-005",
+    "source_id": "SRC-DNBS-V5-ROOF",
+    "original": "棟梁偏欹。",
+    "hanviet": "Đống lương thiên y.",
+    "literal_vi": "Đống/lương bị lệch nghiêng.",
+    "classification": "HISTORICAL_STRUCTURAL_DEFECT",
+    "observable": [
+      "ridge_or_beam_tilt",
+      "structural_deformation"
+    ],
+    "traditional_outcome": "多生是非",
+    "editorial": "Hiện đại coi biến dạng kết cấu là vấn đề kỹ thuật; không dùng phán thị phi.",
+    "state": "CORE_STRUCTURAL_DEFECT_MOTIF"
+  },
+  {
+    "claim_id": "ROOF-006",
+    "source_id": "SRC-DNBS-V5-ROOF",
+    "original": "屋勢傾斜。",
+    "hanviet": "Ốc thế khuynh tà.",
+    "literal_vi": "Thế/khối nhà bị nghiêng.",
+    "classification": "HISTORICAL_STRUCTURAL_DEFECT",
+    "observable": [
+      "building_tilt",
+      "roof_plane_tilt_anomaly"
+    ],
+    "traditional_outcome": "賭博貪花",
+    "editorial": "Không causal. Structural investigation overrides.",
+    "state": "CORE_STRUCTURAL_DEFECT_MOTIF"
+  },
+  {
+    "claim_id": "ROOF-007",
+    "source_id": "SRC-JJBY-YUAN-ROOF",
+    "original": "瓦移棟摧。",
+    "hanviet": "Ngõa di đống tồi.",
+    "literal_vi": "Ngói bị dịch chuyển và phần đống/ridge bị hư hại/suy sập.",
+    "classification": "HISTORICAL_ROOF_DAMAGE",
+    "observable": [
+      "tile_displacement",
+      "ridge_damage",
+      "roof_component_failure"
+    ],
+    "traditional_outcome": "子孫貧羸",
+    "editorial": "Đây là condition survey input, không phải dấu hiệu vận mệnh.",
+    "state": "CORE_DAMAGE_MOTIF"
+  },
+  {
+    "claim_id": "ROOF-008",
+    "source_id": "SRC-YZF-V2-ROOF",
+    "original": "上宇下棟，以待風雨。",
+    "hanviet": "Thượng vũ hạ đống, dĩ đãi phong vũ.",
+    "literal_vi": "Trong phần giải thích thuật ngữ mái, văn bản dẫn ý công trình có mái/đống để che đỡ gió mưa.",
+    "classification": "HISTORICAL_CONSTRUCTION_PRINCIPLE",
+    "observable": [
+      "weather_protection"
+    ],
+    "traditional_outcome": null,
+    "editorial": "Không phải Feng Shui rule; dùng để hiểu chức năng lịch sử của mái/diềm.",
+    "state": "REFERENCE_ONLY_TECHNICAL"
+  },
+  {
+    "claim_id": "ROOF-009",
+    "source_id": "SRC-YZF-V13-ROOF",
+    "original": "其結𤬦之法……修斫口縫令密。",
+    "hanviet": "Kỳ kết ngõa chi pháp... tu trác khẩu phùng lệnh mật.",
+    "literal_vi": "Phép lợp ngói yêu cầu xử lý mối/khe cho kín theo kỹ thuật của văn bản.",
+    "classification": "HISTORICAL_CONSTRUCTION_TECHNIQUE",
+    "observable": [
+      "tile_joint_condition",
+      "roofing_tightness"
+    ],
+    "traditional_outcome": null,
+    "editorial": "Không sao chép cấu tạo Tống sang mái hiện đại; chỉ lưu nguyên tắc lịch sử về mối lợp.",
+    "state": "REFERENCE_ONLY_TECHNICAL"
+  },
+  {
+    "claim_id": "ROOF-010",
+    "source_id": "SRC-YZF-V13-ROOF",
+    "original": "然後壘脊。",
+    "hanviet": "Nhiên hậu lũy tích.",
+    "literal_vi": "Sau các bước lợp/định hàng ngói, văn bản mới nói đến dựng/làm ridge.",
+    "classification": "HISTORICAL_CONSTRUCTION_SEQUENCE",
+    "observable": [
+      "roofing_sequence",
+      "ridge_construction"
+    ],
+    "traditional_outcome": null,
+    "editorial": "Không dùng như construction sequencing bắt buộc cho vật liệu hiện đại.",
+    "state": "REFERENCE_ONLY_TECHNICAL"
+  }
+]

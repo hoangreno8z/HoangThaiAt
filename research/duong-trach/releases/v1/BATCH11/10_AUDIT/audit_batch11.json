@@ -1,0 +1,37 @@
+{
+  "batch": "11",
+  "date": "2026-09-01",
+  "scope": "KITCHEN_FIRE_WATER_SMOKE",
+  "counts": {
+    "sources": 4,
+    "concepts": 6,
+    "claims": 12,
+    "rules": 12,
+    "cases": 12,
+    "conflicts": 4
+  },
+  "passed": [
+    "school_specific_firean_not_generalized",
+    "single_witness_stove_direction_not_generalized",
+    "historical_dimensions_not_converted_to_mm",
+    "source_self_identified_error_preserved",
+    "lead_in_well_marked_modern_invalid",
+    "sink_stove_common_claim_not_invented",
+    "kitchen_below_bedroom_claim_not_invented",
+    "fuel_technology_mapping_explicit",
+    "modern_fire_smoke_water_hard_gates"
+  ],
+  "important_findings": [
+    "The source itself warns of a likely transmission error in 火路吉凶歌; the corpus therefore blocks automated calculation rather than harmonizing it.",
+    "An ancient source can be historically valuable yet operationally prohibited (lead in a well).",
+    "Current corpus does not yet justify several popular internet kitchen rules; they remain NO_DIRECT_EVIDENCE_YET."
+  ],
+  "blocked": [
+    "production 火唵 directions",
+    "historical stove dimensions",
+    "井北灶南 generalization",
+    "灶面 SW/NE generalization",
+    "generic sink-stove Feng Shui spacing"
+  ],
+  "next": "BATCH12_BED_SLEEPING_ROOM"
+}

@@ -1,0 +1,15 @@
+{
+  "master_plan_gate": "GATE_1_2_IN_PROGRESS",
+  "batch_01": "COMPLETE_FOUNDATION",
+  "batch_02": "COMPLETE_FIRST_SITE_SELECTION_EXTRACTION",
+  "claims_extracted": 11,
+  "rule_candidates": 9,
+  "sources_in_batch": 6,
+  "scope": "PRE_PURCHASE_SITE_SELECTION",
+  "next": [
+    "verify noisy YZSS against scan/page image",
+    "expand same motifs across independent witnesses",
+    "ingest modern Vietnam hazard data",
+    "formalize geometry inputs without inventing ancient thresholds"
+  ]
+}

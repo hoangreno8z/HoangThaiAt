@@ -1,0 +1,14 @@
+{
+  "release": "BATCH19",
+  "date": "2026-09-01",
+  "counts": {
+    "sources": 7,
+    "claims": 13,
+    "rules": 16,
+    "cases": 14,
+    "conflicts": 7,
+    "folklore_redteam": 10,
+    "historical_event_classes": 6
+  },
+  "next": "BATCH20"
+}

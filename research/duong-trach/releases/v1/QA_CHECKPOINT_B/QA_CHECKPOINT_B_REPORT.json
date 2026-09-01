@@ -1,0 +1,57 @@
+{
+  "checkpoint": "QA_CHECKPOINT_B",
+  "date": "2026-09-01",
+  "scope": "BATCH01_TO_BATCH12",
+  "metrics": {
+    "json_files_scanned": 97,
+    "json_parse_errors": 0,
+    "unique_source_ids": 49,
+    "source_records_total": 98,
+    "claims_motifs_scanned": 126,
+    "rules_scanned": 122,
+    "claim_missing_source_refs": 0,
+    "rule_missing_source_refs": 0,
+    "duplicate_claim_ids": 0,
+    "duplicate_rule_ids": 0,
+    "non_null_threshold_fields": 0,
+    "ancient_numeric_claim_flags": 2,
+    "potential_school_leakage": 0,
+    "historical_danger_claims_flagged": 1,
+    "folklore_evidence_gap_items": 5
+  },
+  "hard_results": {
+    "JSON_PARSE": "PASS",
+    "CLAIM_SOURCE_INTEGRITY": "PASS",
+    "RULE_SOURCE_INTEGRITY": "PASS",
+    "ID_UNIQUENESS_CLAIMS": "PASS",
+    "ID_UNIQUENESS_RULES": "PASS",
+    "NO_UNREVIEWED_THRESHOLDS": "PASS",
+    "SCHOOL_ISOLATION": "PASS",
+    "CANONICAL_SOURCE_REGISTRY": "CREATED_V1.0",
+    "EVIDENCE_STATE_MACHINE": "CREATED_V1.0"
+  },
+  "issues": {
+    "parse_errors": [],
+    "claim_missing_source_refs": [],
+    "rule_missing_source_refs": [],
+    "duplicate_claim_ids": {},
+    "duplicate_rule_ids": {},
+    "non_null_thresholds": [],
+    "potential_school_leakage": [],
+    "danger_flags": [
+      {
+        "file": "BATCH11/03_TEXTUAL_CLAIMS/claims_batch11.json",
+        "claim_id": "KIT-012",
+        "state": "MODERN_SAFETY_INVALID",
+        "expected": "MODERN_SAFETY_INVALID or equivalent"
+      }
+    ]
+  },
+  "method_changes": [
+    "Canonical source registry v1.0 is now the authoritative normalization layer; old batch registries remain immutable provenance.",
+    "Evidence status is dimensioned, not a single VERIFIED flag.",
+    "Folklore evidence gaps are explicitly tracked.",
+    "School-specific execution requires school_id.",
+    "Historical unsafe practices may be preserved in text while INVALID_FOR_APPLICATION."
+  ]
+}

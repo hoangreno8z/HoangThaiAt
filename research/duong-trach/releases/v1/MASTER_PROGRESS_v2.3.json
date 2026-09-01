@@ -1,0 +1,36 @@
+{
+  "date": "2026-09-01",
+  "completed_batches": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17
+  ],
+  "qa_checkpoint_E": "COMPLETE_PASS_AFTER_TEST_FALSE_NEGATIVE_FIX",
+  "qa_hard_results": {
+    "JSON_PARSE": "PASS",
+    "CLAIM_SOURCE_INTEGRITY": "PASS",
+    "RULE_SOURCE_INTEGRITY": "PASS",
+    "CLAIM_ID_UNIQUENESS": "PASS",
+    "RULE_ID_UNIQUENESS": "PASS",
+    "NO_NUMERIC_THRESHOLD_HALLUCINATION": "PASS",
+    "SCHOOL_ISOLATION": "PASS",
+    "ROOF_OBJECT_TYPE_GUARDS": "PASS",
+    "ROOF_STANDARD_VERSION_LOCKS": "PASS"
+  },
+  "next": "BATCH18_MATERIALS_STRUCTURE_REPAIR_MAINTENANCE",
+  "new_core_invariant": "SEMANTIC_OBJECT_ROLE_COMPATIBILITY: water-runoff terms cannot be mapped to sharp-roof geometry without direct evidence."
+}

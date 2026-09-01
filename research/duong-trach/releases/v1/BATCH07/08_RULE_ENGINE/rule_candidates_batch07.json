@@ -1,0 +1,182 @@
+[
+  {
+    "rule_id": "R-PLAC-001",
+    "claim_id": "PLAC-001",
+    "source_id": "SRC-GJTS675-OUTER",
+    "domain": "BUILDING_PLACEMENT",
+    "publish_state": "CANDIDATE",
+    "ancient_numeric_claim": false,
+    "engine_threshold": null,
+    "modern_causality": "NONE_INFERRED",
+    "prerequisites": [
+      "LEGAL_GATE_PASS",
+      "MODERN_SAFETY_GATE_PASS"
+    ],
+    "state_note": "CORE_PLANNING_SEQUENCE"
+  },
+  {
+    "rule_id": "R-PLAC-002",
+    "claim_id": "PLAC-002",
+    "source_id": "SRC-GJTS677-INNER",
+    "domain": "BUILDING_PLACEMENT",
+    "publish_state": "CANDIDATE",
+    "ancient_numeric_claim": false,
+    "engine_threshold": null,
+    "modern_causality": "NONE_INFERRED",
+    "prerequisites": [
+      "LEGAL_GATE_PASS",
+      "MODERN_SAFETY_GATE_PASS"
+    ],
+    "state_note": "CORE_FRONT_OPENNESS_MOTIF"
+  },
+  {
+    "rule_id": "R-PLAC-003",
+    "claim_id": "PLAC-003",
+    "source_id": "SRC-GJTS677-INNER",
+    "domain": "BUILDING_PLACEMENT",
+    "publish_state": "CANDIDATE",
+    "ancient_numeric_claim": false,
+    "engine_threshold": null,
+    "modern_causality": "NONE_INFERRED",
+    "prerequisites": [
+      "LEGAL_GATE_PASS",
+      "MODERN_SAFETY_GATE_PASS"
+    ],
+    "state_note": "CORE_SEQUENCE_MOTIF"
+  },
+  {
+    "rule_id": "R-PLAC-004",
+    "claim_id": "PLAC-004",
+    "source_id": "SRC-GJTS677-INNER",
+    "domain": "BUILDING_PLACEMENT",
+    "publish_state": "CANDIDATE",
+    "ancient_numeric_claim": false,
+    "engine_threshold": null,
+    "modern_causality": "NONE_INFERRED",
+    "prerequisites": [
+      "LEGAL_GATE_PASS",
+      "MODERN_SAFETY_GATE_PASS"
+    ],
+    "state_note": "SEQUENCE_MOTIF_OUTCOME_SEPARATED"
+  },
+  {
+    "rule_id": "R-PLAC-005",
+    "claim_id": "PLAC-005",
+    "source_id": "SRC-GJTS677-INNER",
+    "domain": "BUILDING_PLACEMENT",
+    "publish_state": "CANDIDATE",
+    "ancient_numeric_claim": false,
+    "engine_threshold": null,
+    "modern_causality": "NONE_INFERRED",
+    "prerequisites": [
+      "LEGAL_GATE_PASS",
+      "MODERN_SAFETY_GATE_PASS"
+    ],
+    "state_note": "CORE_INTERNAL_OPEN_SPACE_MOTIF"
+  },
+  {
+    "rule_id": "R-PLAC-006",
+    "claim_id": "PLAC-006",
+    "source_id": "SRC-GJTS677-INNER",
+    "domain": "BUILDING_PLACEMENT",
+    "publish_state": "BLOCKED",
+    "ancient_numeric_claim": true,
+    "engine_threshold": null,
+    "modern_causality": "NONE_INFERRED",
+    "prerequisites": [
+      "LEGAL_GATE_PASS",
+      "MODERN_SAFETY_GATE_PASS"
+    ],
+    "state_note": "HISTORICAL_NUMERIC_CLAIM_SCAN_CHECK_REQUIRED"
+  },
+  {
+    "rule_id": "R-PLAC-007",
+    "claim_id": "PLAC-007",
+    "source_id": "SRC-GJTS677-INNER",
+    "domain": "BUILDING_PLACEMENT",
+    "publish_state": "BLOCKED",
+    "ancient_numeric_claim": false,
+    "engine_threshold": null,
+    "modern_causality": "NONE_INFERRED",
+    "prerequisites": [
+      "LEGAL_GATE_PASS",
+      "MODERN_SAFETY_GATE_PASS"
+    ],
+    "state_note": "SEMANTIC_UNRESOLVED"
+  },
+  {
+    "rule_id": "R-PLAC-008",
+    "claim_id": "PLAC-008",
+    "source_id": "SRC-GJTS677-INNER",
+    "domain": "BUILDING_PLACEMENT",
+    "publish_state": "CANDIDATE",
+    "ancient_numeric_claim": false,
+    "engine_threshold": null,
+    "modern_causality": "NONE_INFERRED",
+    "prerequisites": [
+      "LEGAL_GATE_PASS",
+      "MODERN_SAFETY_GATE_PASS"
+    ],
+    "state_note": "CORE_DRAINAGE_MOTIF"
+  },
+  {
+    "rule_id": "R-PLAC-009",
+    "claim_id": "PLAC-009",
+    "source_id": "SRC-GJTS677-INNER",
+    "domain": "BUILDING_PLACEMENT",
+    "publish_state": "CANDIDATE",
+    "ancient_numeric_claim": false,
+    "engine_threshold": null,
+    "modern_causality": "NONE_INFERRED",
+    "prerequisites": [
+      "LEGAL_GATE_PASS",
+      "MODERN_SAFETY_GATE_PASS"
+    ],
+    "state_note": "GEOMETRY_CANDIDATE"
+  },
+  {
+    "rule_id": "R-PLAC-010",
+    "claim_id": "PLAC-010",
+    "source_id": "SRC-GJTS677-INNER",
+    "domain": "BUILDING_PLACEMENT",
+    "publish_state": "CANDIDATE",
+    "ancient_numeric_claim": false,
+    "engine_threshold": null,
+    "modern_causality": "NONE_INFERRED",
+    "prerequisites": [
+      "LEGAL_GATE_PASS",
+      "MODERN_SAFETY_GATE_PASS"
+    ],
+    "state_note": "ACCESS_AXIS_CANDIDATE"
+  },
+  {
+    "rule_id": "R-PLAC-011",
+    "claim_id": "PLAC-011",
+    "source_id": "SRC-GJTS677-INNER",
+    "domain": "BUILDING_PLACEMENT",
+    "publish_state": "BLOCKED",
+    "ancient_numeric_claim": false,
+    "engine_threshold": null,
+    "modern_causality": "NONE_INFERRED",
+    "prerequisites": [
+      "LEGAL_GATE_PASS",
+      "MODERN_SAFETY_GATE_PASS"
+    ],
+    "state_note": "LEGAL_PARALLEL_SEMANTIC_CHECK"
+  },
+  {
+    "rule_id": "R-PLAC-012",
+    "claim_id": "PLAC-012",
+    "source_id": "SRC-GJTS677-INNER",
+    "domain": "BUILDING_PLACEMENT",
+    "publish_state": "BLOCKED",
+    "ancient_numeric_claim": false,
+    "engine_threshold": null,
+    "modern_causality": "NONE_INFERRED",
+    "prerequisites": [
+      "LEGAL_GATE_PASS",
+      "MODERN_SAFETY_GATE_PASS"
+    ],
+    "state_note": "TRADITIONAL_SEQUENCE_ONLY"
+  }
+]

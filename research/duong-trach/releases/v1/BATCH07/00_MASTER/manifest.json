@@ -1,0 +1,11 @@
+{
+  "release": "BATCH07",
+  "date": "2026-09-01",
+  "counts": {
+    "sources": 4,
+    "claims": 12,
+    "rules": 13,
+    "cases": 12
+  },
+  "next": "BATCH08_GATE_MAIN_DOOR_ACCESS"
+}

@@ -1,0 +1,44 @@
+{
+  "checks": [
+    {
+      "id": "RG-01",
+      "name": "ROOM_WITHOUT_POLYGON",
+      "severity": "ERROR"
+    },
+    {
+      "id": "RG-02",
+      "name": "DOOR_CONNECTS_UNKNOWN_SPACE",
+      "severity": "ERROR"
+    },
+    {
+      "id": "RG-03",
+      "name": "NON_EGRESS_SPACE_BLOCKS_REQUIRED_EGRESS",
+      "severity": "HARD_GATE_IF_APPLICABLE"
+    },
+    {
+      "id": "RG-04",
+      "name": "ACCESSIBLE_ROUTE_BROKEN",
+      "severity": "HARD_GATE_IF_QCVN10_APPLIES"
+    },
+    {
+      "id": "RG-05",
+      "name": "HISTORICAL_TERM_INFERRED_FROM_MODERN_FUNCTION",
+      "severity": "ERROR"
+    },
+    {
+      "id": "RG-06",
+      "name": "CLASSICAL_RULE_APPLIED_WITH_SEMANTIC_UNRESOLVED",
+      "severity": "ERROR"
+    },
+    {
+      "id": "RG-07",
+      "name": "KITCHEN_RULE_EXECUTED_IN_BATCH10",
+      "severity": "ERROR"
+    },
+    {
+      "id": "RG-08",
+      "name": "SCHOOL_RULE_EXECUTED_WITHOUT_SCHOOL_ID",
+      "severity": "ERROR"
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "$id": "lapque.kitchen_engine.v0.11",
+  "entities": {
+    "COOKING_SOURCE": {
+      "type": "GAS|ELECTRIC|INDUCTION|SOLID_FUEL|OTHER|UNKNOWN",
+      "geometry": "point/polygon",
+      "facing_azimuth": "number|null"
+    },
+    "KITCHEN_ROOM": {
+      "geometry": "polygon",
+      "floor_index": "integer"
+    },
+    "SINK_WATER_POINT": {
+      "geometry": "point",
+      "note": "modern element; not automatically ancient 井"
+    },
+    "WELL": {
+      "geometry": "point/polygon",
+      "water_source": "GROUNDWATER"
+    },
+    "EXHAUST": {
+      "geometry": "line/shaft",
+      "type": "HOOD|CHIMNEY|NATURAL|UNKNOWN"
+    },
+    "FUEL_SOURCE": {
+      "type": "GAS|ELECTRIC|SOLID_FUEL|OTHER",
+      "location": "geometry"
+    },
+    "SHARP_TOOL_STORAGE": {
+      "geometry": "point/polygon"
+    },
+    "ADJACENT_SPACE": {
+      "room_id": "string",
+      "relation": "ABOVE|BELOW|LEFT|RIGHT|SAME_FLOOR"
+    }
+  },
+  "observables": [
+    "stove_facing_azimuth",
+    "kitchen_sector",
+    "kitchen_relative_side_to_facing",
+    "well_stove_relative_azimuth",
+    "stove_to_sink_distance",
+    "stove_to_sink_axis",
+    "kitchen_vertical_adjacencies",
+    "sharp_storage_above_cooking_zone",
+    "exhaust_path",
+    "combustion_air_path"
+  ],
+  "critical_note": "stove_to_sink metrics are collected for modern design, but no ancient cát/hung rule is created in this batch without direct evidence.",
+  "historical_dimensions": {
+    "enabled_for_display": true,
+    "enabled_for_modern_design": false,
+    "reason": "historic 尺/寸 lineage and component meanings unresolved"
+  },
+  "school_direction_execution": "DISABLED"
+}

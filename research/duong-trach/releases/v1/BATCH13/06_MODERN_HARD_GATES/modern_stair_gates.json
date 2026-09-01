@@ -1,0 +1,36 @@
+{
+  "FIRE_EGRESS": {
+    "source_id": "MOD-QCVN06-2022-SD1-2023",
+    "hard_gate": true,
+    "topics": [
+      "escape stair classification",
+      "stair/landing conditions",
+      "smoke/fire protection where applicable",
+      "fall protection where applicable",
+      "egress continuity"
+    ],
+    "note": "Exact requirements depend on building group/height/occupancy; no universal shortcut."
+  },
+  "ACCESSIBILITY": {
+    "source_id": "MOD-QCVN10-2024",
+    "hard_gate_if_applicable": true,
+    "topics": [
+      "accessible routes",
+      "lifts where required/applicable",
+      "safe refuge/egress relation where applicable"
+    ],
+    "note": "Do not assume stairs alone satisfy accessibility."
+  },
+  "GENERAL_SAFETY": {
+    "topics": [
+      "fall prevention",
+      "handrails",
+      "guards",
+      "lighting",
+      "slip resistance",
+      "child/elder use"
+    ],
+    "classification": "MODERN_DESIGN_SAFETY",
+    "rule": "Safety cannot be traded for lucky step count."
+  }
+}

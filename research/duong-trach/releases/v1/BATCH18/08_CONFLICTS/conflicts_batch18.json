@@ -1,0 +1,44 @@
+[
+  {
+    "conflict_id": "STR-CONFLICT-001",
+    "type": "AUTHORITY_DOMAIN_CONFLICT",
+    "subject": "營造法式",
+    "status": "HIGH_AUTHORITY_TECHNICAL_NOT_FENGSHUI",
+    "resolution": "Prestige/authenticity does not authorize cát-hung inference."
+  },
+  {
+    "conflict_id": "STR-CONFLICT-002",
+    "type": "ATTRIBUTION_CONFLICT",
+    "subject": "多能鄙事",
+    "status": "ATTRIBUTION_DISPUTED",
+    "resolution": "Never say 'Lưu Cơ dạy...' as fact; label traditional attribution if mentioned."
+  },
+  {
+    "conflict_id": "STR-CONFLICT-003",
+    "type": "OBJECT_EQUIVALENCE",
+    "subject": "死樹 vs reclaimed timber",
+    "status": "NOT_EQUIVALENT",
+    "resolution": "Modern reused timber can only be accepted/rejected via actual condition/properties and design, not historic wording alone."
+  },
+  {
+    "conflict_id": "STR-CONFLICT-004",
+    "type": "SEMANTIC_UNRESOLVED",
+    "subject": "倒木作柱",
+    "status": "BLOCKED",
+    "resolution": "No rule until the construction sense of 倒木 is resolved from witnesses/commentaries."
+  },
+  {
+    "conflict_id": "STR-CONFLICT-005",
+    "type": "DEFECT_VS_OMEN",
+    "subject": "梁棟偏欹 / 空蛀",
+    "status": "PHYSICAL_DEFECT_REAL_TRADITIONAL_OUTCOME_NONCAUSAL",
+    "resolution": "Inspect/repair defect; do not predict family/health outcomes."
+  },
+  {
+    "conflict_id": "STR-CONFLICT-006",
+    "type": "HISTORICAL_NUMERIC_VS_MODERN_DESIGN",
+    "subject": "Yingzao Fashi beam/material ratios",
+    "status": "REFERENCE_ONLY",
+    "resolution": "No modern member sizing from Song modules without engineering recalculation."
+  }
+]

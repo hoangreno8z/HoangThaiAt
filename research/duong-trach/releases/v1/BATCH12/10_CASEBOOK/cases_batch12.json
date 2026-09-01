@@ -1,0 +1,171 @@
+[
+  {
+    "case_id": "CASE12-001",
+    "name": "Đầu giường sát tường bị ẩm/mốc",
+    "inputs": {
+      "bed_to_wall_m": 0.0,
+      "wall_state": "DAMP_MOULD_EVIDENCE"
+    },
+    "historical_matches": [
+      "BED-005"
+    ],
+    "modern_layer": [
+      "WHO_HOUSING_DAMPNESS"
+    ],
+    "decision": "Moisture remediation first. Do not prescribe cedar board as universal modern treatment."
+  },
+  {
+    "case_id": "CASE12-002",
+    "name": "Giường đặt giữa phòng vào mùa nóng",
+    "inputs": {
+      "bed_centered": true,
+      "season": "hot",
+      "ventilation": "available"
+    },
+    "historical_matches": [
+      "BED-006"
+    ],
+    "modern_layer": [
+      "thermal_comfort",
+      "ventilation"
+    ],
+    "decision": "Historical source itself allows this contextually; reject universal 'bed must touch wall' rule."
+  },
+  {
+    "case_id": "CASE12-003",
+    "name": "Người dùng hỏi hướng đầu giường tốt nhất",
+    "inputs": {
+      "request": "single universal compass direction"
+    },
+    "historical_matches": [
+      "BED-007",
+      "BED-008",
+      "BED-009"
+    ],
+    "modern_layer": [],
+    "decision": "NO UNIVERSAL ANSWER. Historical sources conflict and school rules differ."
+  },
+  {
+    "case_id": "CASE12-004",
+    "name": "Phòng ngủ có ánh đèn đường chiếu mạnh ban đêm",
+    "inputs": {
+      "night_light": "high"
+    },
+    "historical_matches": [
+      "BED-003",
+      "BED-004"
+    ],
+    "modern_layer": [
+      "NHLBI dark sleep environment"
+    ],
+    "decision": "Mitigate disruptive night light; do not claim ancient qi mechanism is scientifically proven."
+  },
+  {
+    "case_id": "CASE12-005",
+    "name": "Phòng ngủ yên tĩnh nhưng tối cả ngày",
+    "inputs": {
+      "daylight": "very_low",
+      "night_dark": "good"
+    },
+    "historical_matches": [
+      "BED-003"
+    ],
+    "modern_layer": [
+      "housing health/day use"
+    ],
+    "decision": "Separate day and sleep conditions. Historical text itself notes darkness is not ideal for daytime occupation."
+  },
+  {
+    "case_id": "CASE12-006",
+    "name": "Xà ngang đi qua vùng giường",
+    "inputs": {
+      "beam_over_bed_overlap": 0.65
+    },
+    "historical_matches": [],
+    "modern_layer": [
+      "structural clearance/psychological perception if relevant"
+    ],
+    "decision": "NO_DIRECT_EVIDENCE_IN_VERIFIED_CORE_SEARCH for ancient 'beam oppression' rule. Do not fabricate."
+  },
+  {
+    "case_id": "CASE12-007",
+    "name": "Gương lớn đối diện giường",
+    "inputs": {
+      "mirror_reflects_bed": true
+    },
+    "historical_matches": [],
+    "modern_layer": [
+      "night glare/privacy"
+    ],
+    "decision": "No verified ancient core rule yet. Evaluate reflected light/privacy; folklore remains separate."
+  },
+  {
+    "case_id": "CASE12-008",
+    "name": "Chân giường cùng trục với cửa phòng",
+    "inputs": {
+      "door_axis_intersects_bed": true,
+      "intersection_region": "foot"
+    },
+    "historical_matches": [],
+    "modern_layer": [
+      "privacy",
+      "light",
+      "noise",
+      "egress"
+    ],
+    "decision": "NO_DIRECT_EVIDENCE_IN_VERIFIED_CORE_SEARCH for the popular severe omen."
+  },
+  {
+    "case_id": "CASE12-009",
+    "name": "Phòng ngủ nằm ở phương cát theo một hệ Du Tinh",
+    "inputs": {
+      "school": "RU_DI_YAN_YOUXING",
+      "sector": "three_auspicious"
+    },
+    "historical_matches": [
+      "BED-009"
+    ],
+    "modern_layer": [],
+    "decision": "Valid only inside selected school module; report alongside other schools, not as universal."
+  },
+  {
+    "case_id": "CASE12-010",
+    "name": "Cửa phòng ngủ được xét theo Dương Trạch Xiển Yếu",
+    "inputs": {
+      "school": "YANG_ZHAI_CHAN_YAO",
+      "door_azimuth_known": true
+    },
+    "historical_matches": [
+      "BED-010",
+      "BED-011"
+    ],
+    "modern_layer": [],
+    "decision": "Use that school's own period/gua logic only; do not import 入地眼 rules."
+  },
+  {
+    "case_id": "CASE12-011",
+    "name": "Phòng ngủ có đường thoát bị màn bình phong phong thủy chặn",
+    "inputs": {
+      "screen_blocks_egress": true
+    },
+    "historical_matches": [],
+    "modern_layer": [
+      "QCVN06 where applicable"
+    ],
+    "decision": "REJECT modification if it compromises required egress."
+  },
+  {
+    "case_id": "CASE12-012",
+    "name": "Phòng ngủ quá ồn do đường giao thông",
+    "inputs": {
+      "noise_source": "road",
+      "night_noise": "high"
+    },
+    "historical_matches": [],
+    "modern_layer": [
+      "NHLBI quiet sleep environment",
+      "WHO noise/housing health"
+    ],
+    "decision": "Modern acoustic/sleep layer applies; do not invent a Feng Shui 'road noise star' rule."
+  }
+]

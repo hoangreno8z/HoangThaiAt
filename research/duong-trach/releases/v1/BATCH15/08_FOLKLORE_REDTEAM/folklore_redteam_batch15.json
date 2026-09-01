@@ -1,0 +1,40 @@
+[
+  {
+    "claim": "Hai cửa sổ đối nhau làm khí vào rồi thoát hết",
+    "state": "NO_DIRECT_EVIDENCE_IN_VERIFIED_CORE_SEARCH",
+    "engine_action": "Store airflow topology; evaluate ventilation/comfort, no ancient verdict."
+  },
+  {
+    "claim": "Cửa sổ sau đầu giường = đại hung",
+    "state": "NO_DIRECT_EVIDENCE_IN_VERIFIED_CORE_SEARCH",
+    "engine_action": "Evaluate draft, light, noise, fall/security/rain exposure; no fabricated cổ rule."
+  },
+  {
+    "claim": "Số cửa sổ phải chẵn",
+    "state": "SECONDARY_QUOTATION_ONLY",
+    "evidence_note": "養生隨筆 quotes 青田秘記 for bedroom window even-number idea; original source chain not verified.",
+    "engine_action": "REFERENCE_ONLY."
+  },
+  {
+    "claim": "Nhà càng kín gió càng tốt",
+    "state": "CONTRADICTED_BY_CONTEXTUAL_HISTORICAL_EVIDENCE",
+    "evidence_note": "Different historical contexts distinguish draft avoidance and intentional summer ventilation.",
+    "engine_action": "Do not encode."
+  },
+  {
+    "claim": "Ánh sáng càng mạnh càng nhiều dương khí",
+    "state": "SCIENTIZATION_RISK",
+    "engine_action": "Do not map 陽氣 to lux or solar radiation."
+  },
+  {
+    "claim": "Cửa sổ hướng Bắc luôn xấu",
+    "state": "CONTEXT_DEPENDENT_NOT_GENERAL",
+    "evidence_note": "養生隨筆 explicitly says a north opening can suit summer but not winter.",
+    "engine_action": "Climate/season/location-specific."
+  },
+  {
+    "claim": "Mở cửa sổ luôn tốt cho thông gió",
+    "state": "MODERN_OVERGENERALIZATION",
+    "engine_action": "Noise, pollution, heat, humidity, rain, smoke/fire and mechanical ventilation may change the decision."
+  }
+]

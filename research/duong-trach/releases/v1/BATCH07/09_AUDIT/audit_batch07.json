@@ -1,0 +1,33 @@
+{
+  "batch": "07",
+  "date": "2026-09-01",
+  "scope": "BUILDING_PLACEMENT_ON_SITE",
+  "counts": {
+    "sources": 4,
+    "claims": 12,
+    "rules": 13,
+    "cases": 12
+  },
+  "passed": [
+    "legal_gate_before_feng_shui",
+    "legal_version_date_lock",
+    "site_center_not_equal_building_center",
+    "site_shape_separate_from_building_shape",
+    "multi_block_preserved",
+    "traditional_outcome_noncausal",
+    "historical_numeric_claim_not_converted_without_scan_check",
+    "courtyard_as_geometry_not_automatic_mingtang"
+  ],
+  "important_findings": [
+    "Ancient text itself contains planning-order motifs; this can support a practical sequence without inventing a modern master-plan doctrine.",
+    "The inner-form section explicitly says an open space inside the gate can be regarded as 明堂, useful for dense urban residential contexts.",
+    "QCVN 01:2026/BXD is issued but not effective until 2027-01-01, so legal corpus requires time versioning."
+  ],
+  "blocked": [
+    "天井 historical ratio production rule pending scan/punctuation verification",
+    "堂前門廊不可空 semantic mapping",
+    "exact geometry of 衝/穿心 for production",
+    "school-specific interpretation of 明堂"
+  ],
+  "next": "BATCH08_GATE_MAIN_DOOR_ACCESS"
+}

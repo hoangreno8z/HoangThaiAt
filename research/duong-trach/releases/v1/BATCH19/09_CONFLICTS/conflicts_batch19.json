@@ -1,0 +1,51 @@
+[
+  {
+    "conflict_id": "TIM-CONFLICT-001",
+    "type": "EVENT_COLLAPSE",
+    "subject": "all construction = 動土",
+    "status": "INVALID",
+    "resolution": "XJBF v11 explicitly distinguishes multiple construction/occupancy events."
+  },
+  {
+    "conflict_id": "TIM-CONFLICT-002",
+    "type": "YANGZHAI_VS_YINZHAI_TERM",
+    "subject": "動土 vs 破土",
+    "status": "MUST_SEPARATE",
+    "resolution": "In XJBF民用 list, 修造動土 and 破土 are distinct; 破土 sits with burial events."
+  },
+  {
+    "conflict_id": "TIM-CONFLICT-003",
+    "type": "MODERN_TERM_BACKPROJECTION",
+    "subject": "入宅",
+    "status": "EDITORIAL_MAPPING_REQUIRED",
+    "resolution": "Use source terms 移徙/般移 in evidence layer; show 入宅 only as modern UI concept if mapping is declared."
+  },
+  {
+    "conflict_id": "TIM-CONFLICT-004",
+    "type": "SOURCE_ABSENCE_OVERCLAIM",
+    "subject": "安門 in XJBF",
+    "status": "NO_SEPARATE_EVENT_IN_VERIFIED_V11_LIST",
+    "resolution": "Do not cite XJBF v11 as direct independent 安門 rule."
+  },
+  {
+    "conflict_id": "TIM-CONFLICT-005",
+    "type": "TECHNICAL_VS_RITUAL_SEQUENCE",
+    "subject": "Yingzao Fashi 次序 vs auspicious date",
+    "status": "SEPARATE_DOMAINS",
+    "resolution": "Technical craft sequence is not calendrical selection."
+  },
+  {
+    "conflict_id": "TIM-CONFLICT-006",
+    "type": "SOURCE_INTERNAL_CRITIQUE",
+    "subject": "traditional selection contradictions",
+    "status": "PRESERVE_CONFLICT",
+    "resolution": "XJBF itself was compiled partly to correct contradictory/erroneous selection traditions; do not reconstruct a falsely unanimous tradition."
+  },
+  {
+    "conflict_id": "TIM-CONFLICT-007",
+    "type": "ATTRIBUTION",
+    "subject": "宅經 as Huangdi",
+    "status": "PSEUDEPIGRAPHIC",
+    "resolution": "May cite text; may not cite Huangdi as historical author."
+  }
+]

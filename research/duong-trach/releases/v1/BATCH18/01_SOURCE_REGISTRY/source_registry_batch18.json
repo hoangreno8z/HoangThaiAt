@@ -1,0 +1,158 @@
+[
+  {
+    "source_id": "SRC-YZF-LIJIE-1100-MATERIAL",
+    "title_zh": "營造法式·卷四·大木作制度一",
+    "title_vi": "Doanh Tạo Pháp Thức, quyển 4 — Đại mộc tác chế độ I",
+    "author": "李誡 / Lý Giới",
+    "dynasty": "北宋",
+    "completed": "1100",
+    "promulgated": "1103",
+    "url": "https://ctext.org/wiki.pl?chapter=335152&if=gb",
+    "work_url": "https://ctext.org/wiki.pl?if=gb&res=819803",
+    "base_edition": "欽定四庫全書本",
+    "authority_tier": "A1_AUTHENTICATED_OFFICIAL_CLASSIC",
+    "evidence_class": "HISTORICAL_CONSTRUCTION",
+    "text_status": "OCR_LINKED_TO_BASE_TEXT",
+    "attribution_status": "ATTRIBUTION_VERIFIED",
+    "semantic_status": "TECHNICAL_STRONG",
+    "can_support_master_doctrine": false,
+    "why_not_master_doctrine": "It is an official construction manual, not a Feng Shui doctrine source."
+  },
+  {
+    "source_id": "SRC-YZF-LIJIE-1100-BEAM",
+    "title_zh": "營造法式·卷五·大木作制度二",
+    "title_vi": "Doanh Tạo Pháp Thức, quyển 5 — Đại mộc tác chế độ II",
+    "author": "李誡 / Lý Giới",
+    "dynasty": "北宋",
+    "url": "https://ctext.org/wiki.pl?chapter=74858&if=gb",
+    "authority_tier": "A1_AUTHENTICATED_OFFICIAL_CLASSIC",
+    "evidence_class": "HISTORICAL_CONSTRUCTION",
+    "text_status": "OCR_LINKED_TO_BASE_TEXT",
+    "attribution_status": "ATTRIBUTION_VERIFIED",
+    "semantic_status": "TECHNICAL_STRONG",
+    "can_support_master_doctrine": false
+  },
+  {
+    "source_id": "SRC-JJBY-YUAN-STRUCT",
+    "title_zh": "居家必用事類全集·丁集·住宅",
+    "title_vi": "Cư Gia Tất Dụng Sự Loại Toàn Tập — Đinh tập, nhà ở",
+    "author": "佚名 / khuyết danh",
+    "dynasty": "元",
+    "url": "https://ctext.org/wiki.pl?chapter=516702&if=gb",
+    "work_url": "https://ctext.org/wiki.pl?if=gb&res=482245",
+    "scan_library": "https://ctext.org/library.pl?if=gb&res=3558",
+    "scan_source": "北京大學圖書館 / Peking University Library; CADAL scan",
+    "authority_tier": "B1_EARLY_ANONYMOUS_WITNESS",
+    "evidence_class": "HISTORICAL_DOMESTIC_COMPENDIUM",
+    "text_status": "SCAN_LINKED_TRANSCRIPTION",
+    "attribution_status": "AUTHOR_UNKNOWN",
+    "semantic_status": "MIXED",
+    "can_support_master_doctrine": false,
+    "notes": "Use as Yuan textual witness; never invent a named master."
+  },
+  {
+    "source_id": "SRC-DNBS-V5-STRUCT",
+    "title_zh": "多能鄙事·卷之五",
+    "title_vi": "Đa Năng Bỉ Sự quyển 5",
+    "traditional_attribution": "劉基 / Lưu Cơ",
+    "url": "https://zh.wikisource.org/zh-hant/%E5%A4%9A%E8%83%BD%E9%84%99%E4%BA%8B/%E5%8D%B7%E4%B9%8B%E4%BA%94",
+    "ctext_work": "https://ctext.org/wiki.pl?if=gb&res=8236083",
+    "authority_tier": "C1_ATTRIBUTION_DISPUTED",
+    "evidence_class": "CROSS_WITNESS_ONLY",
+    "text_status": "TRANSCRIPTION_AVAILABLE",
+    "attribution_status": "ATTRIBUTION_DISPUTED_POSSIBLY_PSEUDEPIGRAPHIC",
+    "semantic_status": "MIXED",
+    "can_support_master_doctrine": false,
+    "notes": "Old editions attribute to Liu Ji; bibliographic note warns work may be later pseudonymous."
+  },
+  {
+    "source_id": "MOD-TCVN9381-2012",
+    "title_vi": "TCVN 9381:2012 — Hướng dẫn đánh giá mức độ nguy hiểm của kết cấu nhà",
+    "authority": "VSQI / tiêu chuẩn quốc gia",
+    "url": "https://tieuchuan.vsqi.gov.vn/tieuchuan/view?sohieu=TCVN+9381%3A2012",
+    "authority_tier": "MODERN_OFFICIAL_STANDARD",
+    "text_status": "ACTIVE_AS_OF_2026_09_01",
+    "scope": "Assessment of dangerous levels of building structures for repair, renovation or dismantling."
+  },
+  {
+    "source_id": "MOD-TCVN9343-2012",
+    "title_vi": "TCVN 9343:2012 — Kết cấu bê tông và bê tông cốt thép — Hướng dẫn công tác bảo trì",
+    "authority": "VSQI / tiêu chuẩn quốc gia",
+    "url": "https://tieuchuan.vsqi.gov.vn/tieuchuan/view?sohieu=TCVN+9343%3A2012",
+    "authority_tier": "MODERN_OFFICIAL_STANDARD",
+    "text_status": "ACTIVE_AS_OF_2026_09_01",
+    "scope": "Maintenance of concrete and reinforced concrete structures."
+  },
+  {
+    "source_id": "MOD-TCVN9348-2012",
+    "title_vi": "TCVN 9348:2012 — Bê tông cốt thép — Kiểm tra khả năng cốt thép bị ăn mòn — Phương pháp điện thế",
+    "authority": "VSQI / tiêu chuẩn quốc gia",
+    "url": "https://tieuchuan.vsqi.gov.vn/tieuchuan/view?sohieu=TCVN+9348%3A2012",
+    "authority_tier": "MODERN_OFFICIAL_STANDARD",
+    "text_status": "ACTIVE_AS_OF_2026_09_01",
+    "scope": "Potential-method assessment of reinforcement corrosion activity."
+  },
+  {
+    "source_id": "MOD-TCVN9345-2012",
+    "title_vi": "TCVN 9345:2012 — Kết cấu bê tông và bê tông cốt thép — Phòng chống nứt dưới tác động khí hậu nóng ẩm",
+    "authority": "VSQI / tiêu chuẩn quốc gia",
+    "url": "https://tieuchuan.vsqi.gov.vn/tieuchuan/view?sohieu=TCVN+9345%3A2012",
+    "authority_tier": "MODERN_OFFICIAL_STANDARD",
+    "text_status": "ACTIVE_AS_OF_2026_09_01",
+    "scope": "Crack-prevention guidance under hot-humid climate; not a universal diagnosis of every existing crack."
+  },
+  {
+    "source_id": "MOD-TCVN12251-2020",
+    "title_vi": "TCVN 12251:2020 — Bảo vệ chống ăn mòn cho kết cấu xây dựng",
+    "authority": "VSQI / tiêu chuẩn quốc gia",
+    "url": "https://tieuchuan.vsqi.gov.vn/tieuchuan/view?sohieu=TCVN+12251%3A2020",
+    "authority_tier": "MODERN_OFFICIAL_STANDARD",
+    "text_status": "ACTIVE_AS_OF_2026_09_01",
+    "scope": "Corrosion protection for concrete, RC, steel, aluminium, timber, masonry and asbestos cement in new/repair work within scope."
+  },
+  {
+    "source_id": "MOD-TCVN8268-2017",
+    "title_vi": "TCVN 8268:2017 — Bảo vệ công trình xây dựng — Phòng chống mối cho công trình đang sử dụng",
+    "authority": "VSQI / tiêu chuẩn quốc gia",
+    "url": "https://tieuchuan.vsqi.gov.vn/tieuchuan/view?sohieu=TCVN+8268%3A2017",
+    "authority_tier": "MODERN_OFFICIAL_STANDARD",
+    "text_status": "ACTIVE_AS_OF_2026_09_01",
+    "scope": "Termite treatment/prevention in existing buildings."
+  },
+  {
+    "source_id": "MOD-TCVN7958-2017",
+    "title_vi": "TCVN 7958:2017 — Bảo vệ công trình xây dựng — Phòng chống mối cho công trình xây dựng mới",
+    "authority": "VSQI / tiêu chuẩn quốc gia",
+    "url": "https://tieuchuan.vsqi.gov.vn/tieuchuan/view?sohieu=TCVN+7958%3A2017",
+    "authority_tier": "MODERN_OFFICIAL_STANDARD",
+    "text_status": "ACTIVE_AS_OF_2026_09_01",
+    "scope": "Termite prevention for new buildings using vulnerable materials."
+  },
+  {
+    "source_id": "MOD-TCVN5574-2018",
+    "title_vi": "TCVN 5574:2018 — Thiết kế kết cấu bê tông và bê tông cốt thép",
+    "authority": "VSQI / tiêu chuẩn quốc gia",
+    "url": "https://tieuchuan.vsqi.gov.vn/tieuchuan/view?sohieu=TCVN+5574%3A2018",
+    "authority_tier": "MODERN_OFFICIAL_STANDARD",
+    "text_status": "ACTIVE_AS_OF_2026_09_01",
+    "scope": "Design of concrete and reinforced concrete structures within stated scope."
+  },
+  {
+    "source_id": "MOD-TCVN5575-2024",
+    "title_vi": "TCVN 5575:2024 — Thiết kế kết cấu thép",
+    "authority": "VSQI / tiêu chuẩn quốc gia",
+    "url": "https://tieuchuan.vsqi.gov.vn/tieuchuan/view?sohieu=TCVN+5575%3A2024",
+    "authority_tier": "MODERN_OFFICIAL_STANDARD",
+    "text_status": "ACTIVE_AS_OF_2026_09_01",
+    "scope": "Design/calculation of steel structures within stated scope; replaces 2012 edition."
+  },
+  {
+    "source_id": "MOD-TCVN8164-2015",
+    "title_vi": "TCVN 8164:2015 — Kết cấu gỗ — Gỗ phân hạng theo độ bền — Phương pháp thử",
+    "authority": "VSQI / tiêu chuẩn quốc gia",
+    "url": "https://tieuchuan.vsqi.gov.vn/tieuchuan/view?sohieu=TCVN+8164%3A2015",
+    "authority_tier": "MODERN_OFFICIAL_STANDARD",
+    "text_status": "ACTIVE_AS_OF_2026_09_01",
+    "scope": "Test methods for strength-graded structural timber."
+  }
+]

@@ -1,0 +1,120 @@
+[
+  {
+    "source_id":"SRC-YZSS-001",
+    "title_zh":"陽宅十書",
+    "title_vi":"Dương Trạch Thập Thư",
+    "attributed_author_zh":"王君榮",
+    "author_vi":"Vương Quân Vinh",
+    "work_period":"Minh",
+    "work_identity_note":"Minh sử ghi 王君榮《陽宅十書》四卷; bản in/OCR khác có thể thể hiện số quyển khác.",
+    "witness":"掃葉山房重刊本",
+    "witness_date":1882,
+    "holding":"Harvard-Yenching Library",
+    "digitizer":"Google Books / Chinese Text Project",
+    "scope":["dương trạch","ngoại hình","phúc nguyên","cửa","nước","bố trí"],
+    "status":"VERIFIED_PRIMARY_WITH_OCR_CAUTION"
+  },
+  {
+    "source_id":"SRC-HLJ-001",
+    "title_zh":"撼龍經",
+    "title_vi":"Hám Long Kinh",
+    "attributed_author_zh":"楊筠松",
+    "author_vi":"truyền là Dương Quân Tùng",
+    "work_period":"truyền là Đường",
+    "work_identity_note":"Tứ Khố ghi cựu bản đề Dương Quân Tùng nhưng nêu nghi vấn thư mục học về quy tác giả.",
+    "witness":"欽定四庫全書本",
+    "holding":"Zhejiang University Library",
+    "digitizer":"CADAL / Chinese Text Project; Wikisource transcription",
+    "scope":["loan đầu","long mạch","sơn thế","cửu tinh hình thế"],
+    "status":"ATTRIBUTION_DISPUTED_TEXT_TRADITION_STRONG"
+  },
+  {
+    "source_id":"SRC-YLJ-001",
+    "title_zh":"疑龍經",
+    "title_vi":"Nghi Long Kinh",
+    "attributed_author_zh":"楊筠松",
+    "author_vi":"truyền là Dương Quân Tùng",
+    "work_period":"truyền là Đường",
+    "work_identity_note":"Tứ Khố ghi thư mục đời Tống từng chép 《疑龍經》 không nêu tác giả; truyền bản sau quy cho Dương Quân Tùng.",
+    "witness":"欽定四庫全書本",
+    "holding":"Zhejiang University Library",
+    "digitizer":"CADAL / Chinese Text Project; Wikisource transcription",
+    "scope":["tìm long","thủy khẩu","kết huyệt","dương trạch đại thế"],
+    "status":"ATTRIBUTION_DISPUTED_TEXT_TRADITION_STRONG"
+  },
+  {
+    "source_id":"SRC-QNA-001",
+    "title_zh":"青囊奧語",
+    "title_vi":"Thanh Nang Áo Ngữ",
+    "attributed_author_zh":"楊筠松",
+    "author_vi":"cựu bản đề Dương Quân Tùng",
+    "work_period":"truyền là Đường; xuất hiện trong truyền thống muộn hơn",
+    "work_identity_note":"Tứ Khố ghi cựu bản đề Dương Quân Tùng và phê bình nhiều chú giải/sửa văn đời sau.",
+    "scope":["lý khí","âm dương thuận nghịch","sơn thủy"],
+    "status":"ATTRIBUTION_DISPUTED"
+  },
+  {
+    "source_id":"SRC-TYJ-001",
+    "title_zh":"天玉經",
+    "title_vi":"Thiên Ngọc Kinh",
+    "attributed_author_zh":"楊筠松",
+    "author_vi":"cựu bản đề Dương Quân Tùng",
+    "work_period":"truyền là Đường; Tứ Khố cho biết đến Tống mới thấy lưu hành",
+    "scope":["lý khí","tam ban quái","sơn hướng","tứ kinh ngũ hành"],
+    "status":"ATTRIBUTION_DISPUTED"
+  },
+  {
+    "source_id":"SRC-ZJ-001",
+    "title_zh":"宅經 / 黃帝宅經",
+    "title_vi":"Trạch Kinh / Hoàng Đế Trạch Kinh",
+    "attributed_author_zh":"舊本題黃帝",
+    "author_vi":"cựu bản đề Hoàng Đế; Tứ Khố xem là y thác",
+    "work_period":"không xác định chắc",
+    "witness":"四庫全書本 / Wikisource",
+    "scope":["dương trạch","24 lộ","âm dương trạch","tu trạch"],
+    "status":"ATTRIBUTION_PSEUDEPIGRAPHIC_TEXT_IMPORTANT"
+  },
+  {
+    "source_id":"SRC-YZFS-001",
+    "title_zh":"營造法式",
+    "title_vi":"Doanh Tạo Pháp Thức",
+    "author_zh":"李誡",
+    "author_vi":"Lý Giới",
+    "work_period":"Bắc Tống",
+    "promulgation":1103,
+    "witness":"影宋朱絲欄鈔本 / 四庫本 / các bản công khai",
+    "holding":"National Central Library Taiwan và các thư viện khác",
+    "scope":["kiến trúc","kết cấu","vật liệu","định mức","công pháp"],
+    "status":"VERIFIED_PRIMARY"
+  },
+  {
+    "source_id":"SRC-QNX-001",
+    "title_zh":"青囊序",
+    "title_vi":"Thanh Nang Tự",
+    "attributed_author_zh":"曾文辿",
+    "author_vi":"truyền là Tăng Văn Địch",
+    "scope":["long","thủy","âm dương","lý khí"],
+    "status":"ATTRIBUTION_TRADITIONAL"
+  },
+  {
+    "source_id":"SRC-RZXZ-001",
+    "title_zh":"人子須知",
+    "title_vi":"Nhân Tử Tu Tri",
+    "scope":["địa lý hình thế","minh đường","tàng phong","thủy"],
+    "status":"DISCOVERY_VERIFIED_TEXT_PENDING_EDITION_AUDIT"
+  },
+  {
+    "source_id":"SRC-RDYS-001",
+    "title_zh":"入地眼全書",
+    "title_vi":"Nhập Địa Nhãn Toàn Thư",
+    "scope":["dương trạch","môn lộ táo","bát trạch","sơn thủy"],
+    "status":"DISCOVERY_VERIFIED_TEXT_PENDING_EDITION_AUDIT"
+  },
+  {
+    "source_id":"SRC-XJBF-001",
+    "title_zh":"欽定協紀辨方書",
+    "title_vi":"Khâm Định Hiệp Kỷ Biện Phương Thư",
+    "scope":["trạch nhật","tạo mệnh","động thổ","tu tạo"],
+    "status":"DISCOVERY_VERIFIED_TEXT_PENDING_SCOPE_FILTER"
+  }
+]

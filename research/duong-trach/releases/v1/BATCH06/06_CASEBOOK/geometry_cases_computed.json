@@ -1,0 +1,369 @@
+[
+  {
+    "case_id": "CASE06-001_L_SHAPE",
+    "polygon": [
+      [
+        0,
+        0
+      ],
+      [
+        10,
+        0
+      ],
+      [
+        10,
+        4
+      ],
+      [
+        5,
+        4
+      ],
+      [
+        5,
+        10
+      ],
+      [
+        0,
+        10
+      ]
+    ],
+    "valid": true,
+    "area": 70.0,
+    "convex_hull_area": 85.0,
+    "solidity": 0.8235,
+    "area_centroid": [
+      3.9286,
+      4.1429
+    ],
+    "centroid_inside": true,
+    "bbox_center": [
+      5.0,
+      5.0
+    ],
+    "mrr_center": [
+      5.0,
+      5.0
+    ],
+    "polylabel": [
+      2.6758,
+      2.6758
+    ],
+    "lesson": "Different center candidates serve different purposes; no automatic Trung Cung assignment."
+  },
+  {
+    "case_id": "CASE06-002_U_SHAPE",
+    "polygon": [
+      [
+        0,
+        0
+      ],
+      [
+        12,
+        0
+      ],
+      [
+        12,
+        10
+      ],
+      [
+        8,
+        10
+      ],
+      [
+        8,
+        4
+      ],
+      [
+        4,
+        4
+      ],
+      [
+        4,
+        10
+      ],
+      [
+        0,
+        10
+      ]
+    ],
+    "valid": true,
+    "area": 96.0,
+    "convex_hull_area": 120.0,
+    "solidity": 0.8,
+    "area_centroid": [
+      6.0,
+      4.5
+    ],
+    "centroid_inside": false,
+    "bbox_center": [
+      6.0,
+      5.0
+    ],
+    "mrr_center": [
+      6.0,
+      5.0
+    ],
+    "polylabel": [
+      9.6621,
+      2.3457
+    ],
+    "lesson": "Different center candidates serve different purposes; no automatic Trung Cung assignment."
+  },
+  {
+    "case_id": "CASE06-003_TRIANGLE",
+    "polygon": [
+      [
+        0,
+        0
+      ],
+      [
+        12,
+        0
+      ],
+      [
+        3,
+        10
+      ]
+    ],
+    "valid": true,
+    "area": 60.0,
+    "convex_hull_area": 60.0,
+    "solidity": 1.0,
+    "area_centroid": [
+      5.0,
+      3.3333
+    ],
+    "centroid_inside": true,
+    "bbox_center": [
+      6.0,
+      5.0
+    ],
+    "mrr_center": [
+      7.0046,
+      3.3486
+    ],
+    "polylabel": [
+      4.4941,
+      3.3418
+    ],
+    "lesson": "Different center candidates serve different purposes; no automatic Trung Cung assignment."
+  },
+  {
+    "case_id": "CASE06-004_CONCAVE_NOTCH",
+    "polygon": [
+      [
+        0,
+        0
+      ],
+      [
+        10,
+        0
+      ],
+      [
+        10,
+        10
+      ],
+      [
+        6,
+        10
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        4,
+        7
+      ],
+      [
+        4,
+        10
+      ],
+      [
+        0,
+        10
+      ]
+    ],
+    "valid": true,
+    "area": 94.0,
+    "convex_hull_area": 100.0,
+    "solidity": 0.94,
+    "area_centroid": [
+      5.0,
+      4.7766
+    ],
+    "centroid_inside": true,
+    "bbox_center": [
+      5.0,
+      5.0
+    ],
+    "mrr_center": [
+      5.0,
+      5.0
+    ],
+    "polylabel": [
+      3.5156,
+      3.5156
+    ],
+    "lesson": "Different center candidates serve different purposes; no automatic Trung Cung assignment."
+  },
+  {
+    "case_id": "CASE06-005_TRAPEZOID",
+    "polygon": [
+      [
+        0,
+        0
+      ],
+      [
+        8,
+        0
+      ],
+      [
+        10,
+        20
+      ],
+      [
+        -2,
+        20
+      ]
+    ],
+    "valid": true,
+    "area": 200.0,
+    "convex_hull_area": 200.0,
+    "solidity": 1.0,
+    "area_centroid": [
+      4.0,
+      10.6667
+    ],
+    "centroid_inside": true,
+    "bbox_center": [
+      4.0,
+      10.0
+    ],
+    "mrr_center": [
+      4.0,
+      10.0
+    ],
+    "polylabel": [
+      3.9951,
+      14.5752
+    ],
+    "lesson": "Different center candidates serve different purposes; no automatic Trung Cung assignment."
+  },
+  {
+    "case_id": "CASE06-006_TINY_NOTCH",
+    "polygon": [
+      [
+        0,
+        0
+      ],
+      [
+        10,
+        0
+      ],
+      [
+        10,
+        10
+      ],
+      [
+        9.8,
+        10
+      ],
+      [
+        9.8,
+        9.8
+      ],
+      [
+        0,
+        9.8
+      ]
+    ],
+    "valid": true,
+    "area": 98.04,
+    "convex_hull_area": 99.02,
+    "solidity": 0.9901,
+    "area_centroid": [
+      5.002,
+      4.902
+    ],
+    "centroid_inside": true,
+    "bbox_center": [
+      5.0,
+      5.0
+    ],
+    "mrr_center": [
+      5.0,
+      5.0
+    ],
+    "polylabel": [
+      5.0,
+      4.9
+    ],
+    "lesson": "Different center candidates serve different purposes; no automatic Trung Cung assignment."
+  },
+  {
+    "case_id": "CASE06-007_COURTYARD_HOLE",
+    "polygon": {
+      "outer": [
+        [
+          0,
+          0
+        ],
+        [
+          12,
+          0
+        ],
+        [
+          12,
+          12
+        ],
+        [
+          0,
+          12
+        ]
+      ],
+      "holes": [
+        [
+          [
+            4,
+            4
+          ],
+          [
+            8,
+            4
+          ],
+          [
+            8,
+            8
+          ],
+          [
+            4,
+            8
+          ]
+        ]
+      ]
+    },
+    "valid": true,
+    "area": 128.0,
+    "convex_hull_area": 144.0,
+    "solidity": 0.8889,
+    "area_centroid": [
+      6.0,
+      6.0
+    ],
+    "centroid_inside": false,
+    "bbox_center": [
+      6.0,
+      6.0
+    ],
+    "mrr_center": [
+      6.0,
+      6.0
+    ],
+    "polylabel": [
+      2.3438,
+      2.3438
+    ],
+    "lesson": "Courtyard hole is internal void; must not be automatically treated as missing external sector."
+  }
+]

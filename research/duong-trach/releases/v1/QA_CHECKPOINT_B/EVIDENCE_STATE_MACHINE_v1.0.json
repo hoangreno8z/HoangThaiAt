@@ -1,0 +1,53 @@
+{
+  "$id": "lapque.evidence_state_machine.v1.0",
+  "dimensions": {
+    "TEXT_STATUS": [
+      "TEXT_VERIFIED_AGAINST_SCAN",
+      "TRANSCRIPTION_OR_PUBLICATION_STRONG",
+      "SCAN_CHECK_REQUIRED",
+      "OCR_UNVERIFIED_OR_CAUTION",
+      "TEXT_LAYOUT_CONFLICT",
+      "TEXTUAL_VARIANT",
+      "TEXT_UNKNOWN"
+    ],
+    "ATTRIBUTION_STATUS": [
+      "ATTRIBUTION_VERIFIED",
+      "ATTRIBUTION_TRADITIONAL",
+      "ATTRIBUTION_DISPUTED_OR_TRADITIONAL",
+      "PSEUDEPIGRAPHIC_OR_PSEUDEPIGRAPHIC_RISK",
+      "AUTHOR_UNKNOWN",
+      "INSTITUTIONAL_AUTHORITY",
+      "NOT_APPLICABLE"
+    ],
+    "SEMANTIC_STATUS": [
+      "SEMANTIC_STRONG",
+      "SEMANTIC_PARTIAL",
+      "SEMANTIC_UNRESOLVED"
+    ],
+    "RULE_STATE": [
+      "GOVERNANCE_RULE",
+      "CANDIDATE",
+      "PARTIAL_ONLY",
+      "SCHOOL_ONLY",
+      "REFERENCE_ONLY",
+      "BLOCKED",
+      "INVALID_FOR_APPLICATION"
+    ]
+  },
+  "promotion_rules": [
+    "OCR_UNVERIFIED cannot promote directly to publishable rule.",
+    "SEMANTIC_UNRESOLVED forces BLOCKED.",
+    "TEXT_LAYOUT_CONFLICT forces BLOCKED until collation.",
+    "ATTRIBUTION_DISPUTED does not invalidate text, but attribution must remain visibly disputed.",
+    "SCHOOL_ONLY requires school_id at execution time.",
+    "Historical text may be INVALID_FOR_APPLICATION under modern safety.",
+    "NO_DIRECT_EVIDENCE is a valid terminal answer for the current search state."
+  ],
+  "forbidden": [
+    "single VERIFIED boolean",
+    "silent conflict resolution",
+    "invented numeric threshold",
+    "modern health mechanism back-projected into ancient text",
+    "internet folklore promoted to ancient rule without witness"
+  ]
+}

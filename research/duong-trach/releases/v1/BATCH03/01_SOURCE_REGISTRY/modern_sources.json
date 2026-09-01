@@ -1,0 +1,76 @@
+[
+  {
+    "source_id": "MOD-QCVN02-2022",
+    "name": "QCVN 02:2022/BXD — Số liệu điều kiện tự nhiên dùng trong xây dựng",
+    "authority": "Bộ Xây dựng",
+    "url": "https://moc.gov.vn/",
+    "role": [
+      "climate",
+      "adverse_weather",
+      "flood",
+      "flash_flood",
+      "lightning",
+      "wind",
+      "earthquake",
+      "marine_hydrology"
+    ],
+    "status_2026_09_01": "CURRENT_BASE_TEXT_WITH_2026_AMENDMENT_DRAFT_FOUND; FINAL_AMENDMENT_NOT_CONFIRMED_IN_SEARCH",
+    "notes": "Bộ Xây dựng đã lấy ý kiến lần 2 cho Sửa đổi 01:2026 từ 12/05/2026 đến 12/07/2026. Corpus phải version-lock theo ngày truy xuất."
+  },
+  {
+    "source_id": "MOD-VNMHA",
+    "name": "Cục Khí tượng Thủy văn",
+    "authority": "Bộ Nông nghiệp và Môi trường",
+    "url": "https://vnmha.mae.gov.vn/",
+    "role": [
+      "weather",
+      "hydrology",
+      "forecast",
+      "warning",
+      "station_network"
+    ],
+    "status_2026_09_01": "ACTIVE_OFFICIAL",
+    "notes": "Nguồn chính thức cho dự báo/cảnh báo KTTV và mạng lưới quan trắc; không cache dự báo như dữ liệu tĩnh."
+  },
+  {
+    "source_id": "MOD-DMC",
+    "name": "Trung tâm Chính sách và Kỹ thuật phòng, chống thiên tai / VNDMS",
+    "authority": "Cục Quản lý đê điều và PCTT, Bộ Nông nghiệp và Môi trường",
+    "url": "https://dmc.gov.vn/",
+    "role": [
+      "disaster_monitoring",
+      "spatial_database",
+      "riverbank_erosion",
+      "coastal_erosion",
+      "damage_database",
+      "remote_sensing"
+    ],
+    "status_2026_09_01": "ACTIVE_OFFICIAL",
+    "notes": "Có CSDL không gian, bản đồ sạt lở bờ sông/xói lở bờ biển và giám sát thiên tai."
+  },
+  {
+    "source_id": "MOD-GEO-97-2025",
+    "name": "Thông tư 97/2025/TT-BNNMT",
+    "authority": "Bộ Nông nghiệp và Môi trường / Cục Địa chất và Khoáng sản Việt Nam",
+    "url": "https://dcks.mae.gov.vn/Pages/chitietvanban.aspx?ItemID=123",
+    "role": [
+      "landslide",
+      "flash_flood",
+      "hazard_mapping_method"
+    ],
+    "status_2026_09_01": "EFFECTIVE_FROM_2026-02-15",
+    "notes": "Quy định kỹ thuật điều tra, thành lập bản đồ hiện trạng, phân vùng nguy cơ và rủi ro sạt lở đất/lũ quét tỷ lệ 1:10.000 và 1:2.000."
+  },
+  {
+    "source_id": "MOD-GEO-DATA-87-2025",
+    "name": "Thông tư 87/2025/TT-BNNMT",
+    "authority": "Bộ Nông nghiệp và Môi trường / Cục Địa chất và Khoáng sản Việt Nam",
+    "url": "https://dcks.mae.gov.vn/van-ban-phap-luat.htm",
+    "role": [
+      "geology_data_access",
+      "geological_information"
+    ],
+    "status_2026_09_01": "EFFECTIVE_FROM_2026-02-16",
+    "notes": "Quy định trình tự giao nộp, thu nhận, cung cấp thông tin, dữ liệu địa chất và khoáng sản; dùng để thiết kế đường lấy dữ liệu đúng pháp lý."
+  }
+]

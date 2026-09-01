@@ -1,0 +1,163 @@
+[
+  {
+    "case_id": "CASE20-001",
+    "name": "Nhà mới chưa nghiệm thu nhưng đã chọn được ngày nhập trạch",
+    "input": {
+      "acceptance": "NOT_READY",
+      "traditional_date": "favorable"
+    },
+    "historical_matches": [
+      "OCC-004/OCC-005 context"
+    ],
+    "decision": "DO NOT OCCUPY if legally/technically not ready."
+  },
+  {
+    "case_id": "CASE20-002",
+    "name": "Nhà hoàn thành kỹ thuật, người dùng muốn chọn ngày chuyển đồ",
+    "input": {
+      "occupancy_ready": true,
+      "event": "MOVE_RESIDENCE"
+    },
+    "historical_matches": [
+      "OCC-001"
+    ],
+    "decision": "Event classified as 移徙; date engine still disabled pending validation."
+  },
+  {
+    "case_id": "CASE20-003",
+    "name": "Người dùng chọn nút Nhập trạch",
+    "input": {
+      "ui_event": "入宅",
+      "occupancy_ready": true
+    },
+    "historical_matches": [
+      "OCC-004",
+      "OCC-005",
+      "OCC-006"
+    ],
+    "decision": "Historical term attested in embedded source; do not pretend it is v11's event label."
+  },
+  {
+    "case_id": "CASE20-004",
+    "name": "Dọn vệ sinh nhà trước khi chuyển vào",
+    "input": {
+      "event": "CLEAN_HOUSE"
+    },
+    "historical_matches": [
+      "OCC-002"
+    ],
+    "decision": "Can map to 掃舍宇; do not invent salt/fire/incense ritual."
+  },
+  {
+    "case_id": "CASE20-005",
+    "name": "Lắp giường sau khi chuyển nhà",
+    "input": {
+      "events": [
+        "MOVE_RESIDENCE",
+        "INSTALL_BED"
+      ]
+    },
+    "historical_matches": [
+      "OCC-001",
+      "OCC-003"
+    ],
+    "decision": "Two historical event classes."
+  },
+  {
+    "case_id": "CASE20-006",
+    "name": "Lắp cửa chính yêu cầu ngày An Môn Hiệp Kỷ",
+    "input": {
+      "event": "INSTALL_DOOR",
+      "requested_source": "XJBF v11"
+    },
+    "historical_matches": [],
+    "decision": "BLOCK. No independent v11 An-Men event locked."
+  },
+  {
+    "case_id": "CASE20-007",
+    "name": "Dẫn Trạch Kinh cho vị trí An Môn",
+    "input": {
+      "source": "宅經",
+      "purpose": "SPATIAL_DOOR_PLACEMENT"
+    },
+    "historical_matches": [
+      "OCC-007",
+      "OCC-008"
+    ],
+    "decision": "May display textual rule with attribution warning; not calendar timing."
+  },
+  {
+    "case_id": "CASE20-008",
+    "name": "Nhà có nước nhưng chưa kiểm chất lượng nguồn tự khai thác",
+    "input": {
+      "occupancy_ready_other": true,
+      "water_quality": "UNKNOWN"
+    },
+    "historical_matches": [],
+    "decision": "Water hard gate remains unresolved; ritual date irrelevant."
+  },
+  {
+    "case_id": "CASE20-009",
+    "name": "Công trình thuộc diện PCCC nhưng chưa đủ thủ tục/nghiệm thu áp dụng",
+    "input": {
+      "fire_scope": "APPLICABLE",
+      "fire_ready": false
+    },
+    "historical_matches": [],
+    "decision": "NO OCCUPANCY/OPERATION as applicable under current fire law."
+  },
+  {
+    "case_id": "CASE20-010",
+    "name": "Nhà đã nghiệm thu nhưng còn mùi, ẩm và thông gió kém",
+    "input": {
+      "legal_acceptance": "PASS",
+      "habitability": "POOR"
+    },
+    "historical_matches": [],
+    "decision": "Technical/legal acceptance and practical habitability are separate; fix indoor environment."
+  },
+  {
+    "case_id": "CASE20-011",
+    "name": "Chủ nhà muốn 'quy hỏa' bắt buộc",
+    "input": {
+      "ritual": "歸火",
+      "belief": "universal_required"
+    },
+    "historical_matches": [
+      "OCC-004",
+      "OCC-006"
+    ],
+    "decision": "Historical source-specific ritual term; not universal requirement."
+  },
+  {
+    "case_id": "CASE20-012",
+    "name": "AI tạo nghi thức mang gạo muối nước rồi nói là Hiệp Kỷ",
+    "input": {
+      "ritual_recipe": "rice_salt_water",
+      "source_claim": "XJBF"
+    },
+    "historical_matches": [],
+    "decision": "REJECT unsupported source attribution."
+  },
+  {
+    "case_id": "CASE20-013",
+    "name": "AI dùng chữ 入宅 trong sách muộn để nói quyển 11 có mục 入宅",
+    "input": {
+      "source_layer_confused": true
+    },
+    "historical_matches": [
+      "OCC-005"
+    ],
+    "decision": "REJECT. Preserve v11 taxonomy vs v34-35 embedded source layer."
+  },
+  {
+    "case_id": "CASE20-014",
+    "name": "Nhà riêng nhỏ không thuộc cùng quy trình nghiệm thu cơ quan như dự án lớn",
+    "input": {
+      "building_scope": "SMALL_PRIVATE_HOUSE",
+      "regulatory_scope": "NEEDS_RESOLUTION"
+    },
+    "historical_matches": [],
+    "decision": "Do not overapply project-level acceptance workflow; resolve applicable law by project class."
+  }
+]

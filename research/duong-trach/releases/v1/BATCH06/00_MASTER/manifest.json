@@ -1,0 +1,11 @@
+{
+  "release": "BATCH06",
+  "date": "2026-09-01",
+  "counts": {
+    "sources": 4,
+    "classical_claims": 7,
+    "computed_geometry_cases": 7,
+    "rule_candidates": 3
+  },
+  "next": "BATCH07_BUILDING_PLACEMENT_ON_SITE"
+}

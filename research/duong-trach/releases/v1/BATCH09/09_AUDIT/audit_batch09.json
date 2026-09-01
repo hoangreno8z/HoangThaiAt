@@ -1,0 +1,30 @@
+{
+  "batch": "09",
+  "date": "2026-09-01",
+  "scope": "MINGTANG_TIANJING_LIGHTWELL",
+  "counts": {
+    "sources": 4,
+    "concepts": 4,
+    "claims": 8,
+    "rules": 8,
+    "cases": 12
+  },
+  "passed": [
+    "external_mingtang_separated",
+    "internal_front_court_separated",
+    "traditional_tianjing_separated",
+    "modern_lightwell_atrium_separated",
+    "stagnant_water_safety_priority",
+    "historical_numeric_ratio_not_production",
+    "directional_tianjing_rule_deferred",
+    "fire_smoke_layer_present"
+  ],
+  "important_finding": "The same source explicitly allows an internal space inside the gate to be called 明堂 while also using 天井 as a distinct term; therefore the corpus must not flatten all open spaces into one label.",
+  "blocked": [
+    "一字天井 geometry",
+    "historical 天井 ratio production use",
+    "direction-specific 天井 water rules",
+    "automatic modern lightwell ↔ 天井 equivalence"
+  ],
+  "next": "BATCH10_ROOM_ZONING_AND_INTERNAL_CIRCULATION"
+}

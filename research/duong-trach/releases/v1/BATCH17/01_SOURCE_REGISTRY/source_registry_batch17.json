@@ -1,0 +1,115 @@
+[
+  {
+    "source_id": "SRC-JJBY-YUAN-ROOF",
+    "title_zh": "居家必用事類全集·丁集·住宅",
+    "title_vi": "Cư Gia Tất Dụng Sự Loại Toàn Tập — Đinh tập, nhà ở",
+    "dynasty": "元",
+    "author": "佚名 / vô danh theo CText",
+    "url": "https://ctext.org/wiki.pl?chapter=516702&if=gb",
+    "evidence_class": "HISTORICAL_DOMESTIC_COMPENDIUM",
+    "text_status": "SCAN_LINKED_TRANSCRIPTION",
+    "attribution_status": "AUTHOR_UNKNOWN",
+    "semantic_status": "SEMANTIC_STRONG_FOR_EAVES_RAIN_DAMAGE; PARTIAL_FOR_漏漿",
+    "scope": "ROOF_EAVES_DOMESTIC"
+  },
+  {
+    "source_id": "SRC-DNBS-V5-ROOF",
+    "title_zh": "多能鄙事·卷之五",
+    "title_vi": "Đa Năng Bỉ Sự quyển 5",
+    "url": "https://zh.wikisource.org/zh-hant/%E5%A4%9A%E8%83%BD%E9%84%99%E4%BA%8B/%E5%8D%B7%E4%B9%8B%E4%BA%94",
+    "evidence_class": "HISTORICAL_DOMESTIC_TRADITION",
+    "text_status": "TRANSCRIPTION_AVAILABLE",
+    "attribution_status": "ATTRIBUTION_DISPUTED",
+    "semantic_status": "SEMANTIC_STRONG_CORE_ROOF_SENTENCES",
+    "scope": "ROOF_EAVES_DOMESTIC"
+  },
+  {
+    "source_id": "SRC-YZF-V2-ROOF",
+    "title_zh": "營造法式·卷二·總釋下",
+    "title_vi": "Doanh Tạo Pháp Thức quyển 2 — Tổng thích hạ",
+    "author": "李誡 / Lý Giới",
+    "dynasty": "北宋",
+    "url": "https://ctext.org/wiki.pl?chapter=441451&if=gb",
+    "evidence_class": "HISTORICAL_CONSTRUCTION",
+    "text_status": "TRANSCRIPTION_LINKED_TO_BASE_TEXT",
+    "attribution_status": "ATTRIBUTION_VERIFIED",
+    "semantic_status": "TECHNICAL_TERMINOLOGY",
+    "scope": "ROOF_RIDGE_EAVES_TERMS"
+  },
+  {
+    "source_id": "SRC-YZF-V13-ROOF",
+    "title_zh": "營造法式·卷十三·瓦作制度",
+    "title_vi": "Doanh Tạo Pháp Thức quyển 13 — chế độ công tác ngói",
+    "author": "李誡 / Lý Giới",
+    "dynasty": "北宋",
+    "url": "https://ctext.org/wiki.pl?chapter=592872&if=gb",
+    "evidence_class": "HISTORICAL_CONSTRUCTION",
+    "text_status": "TRANSCRIPTION_LINKED_TO_BASE_TEXT",
+    "attribution_status": "ATTRIBUTION_VERIFIED",
+    "semantic_status": "TECHNICAL_ROOFING",
+    "scope": "TILE_ROOF_RIDGE_EAVES"
+  },
+  {
+    "source_id": "MOD-TCVN5718-1993",
+    "title_vi": "TCVN 5718:1993 — Mái và sàn bê tông cốt thép trong công trình xây dựng — Yêu cầu kỹ thuật chống thấm nước",
+    "url": "https://tieuchuan.vsqi.gov.vn/tieuchuan/view?sohieu=TCVN+5718%3A1993",
+    "evidence_class": "MODERN_TECHNICAL_STANDARD",
+    "text_status": "ACTIVE_AS_OF_2026_09_01",
+    "attribution_status": "INSTITUTIONAL_STANDARD",
+    "semantic_status": "SEMANTIC_STRONG",
+    "scope": "RC_ROOF_WATERTIGHTNESS"
+  },
+  {
+    "source_id": "MOD-TCVN2737-2023",
+    "title_vi": "TCVN 2737:2023 — Tải trọng và tác động",
+    "url": "https://tieuchuan.vsqi.gov.vn/tieuchuan/view?sohieu=TCVN+2737%3A2023",
+    "evidence_class": "MODERN_TECHNICAL_STANDARD",
+    "text_status": "ACTIVE",
+    "attribution_status": "INSTITUTIONAL_STANDARD",
+    "semantic_status": "STRUCTURAL_LOADS",
+    "scope": "LOADS_ACTIONS_INCLUDING_WIND_DESIGN_CONTEXT"
+  },
+  {
+    "source_id": "MOD-QCVN02-2022-CLIMATE",
+    "title_vi": "QCVN 02:2022/BXD — Số liệu điều kiện tự nhiên dùng trong xây dựng",
+    "authority": "Bộ Xây dựng",
+    "url": "https://moc.gov.vn/Images/editor/files/Quy%20Chu%E1%BA%A9n/BXD_02-2022-TT-BXD_26092022.pdf",
+    "evidence_class": "MODERN_LAW_STANDARD",
+    "text_status": "CURRENT_BASE_TEXT_AS_OF_2026_09_01",
+    "attribution_status": "INSTITUTIONAL_AUTHORITY",
+    "semantic_status": "CLIMATE_DATA",
+    "scope": "WIND_RAIN_CLIMATE_CONSTRUCTION_DATA",
+    "notes": "Do not assume later draft/amendment effective without official promulgation evidence."
+  },
+  {
+    "source_id": "MOD-TCVN9385-2012",
+    "title_vi": "TCVN 9385:2012 — Chống sét cho công trình xây dựng",
+    "url": "https://tieuchuan.vsqi.gov.vn/tieuchuan/view?sohieu=TCVN+9385%3A2012",
+    "evidence_class": "MODERN_TECHNICAL_STANDARD",
+    "text_status": "ACTIVE",
+    "attribution_status": "INSTITUTIONAL_STANDARD",
+    "semantic_status": "LIGHTNING_PROTECTION",
+    "scope": "LIGHTNING_PROTECTION"
+  },
+  {
+    "source_id": "MOD-TCVN13527-2023",
+    "title_vi": "TCVN 13527:2023 — Sơn phản xạ ánh sáng mặt trời dùng cho mái nhà",
+    "url": "https://tieuchuan.vsqi.gov.vn/tieuchuan/view?sohieu=TCVN+13527%3A2023",
+    "evidence_class": "MODERN_TECHNICAL_STANDARD",
+    "text_status": "ACTIVE",
+    "attribution_status": "INSTITUTIONAL_STANDARD",
+    "semantic_status": "ROOF_SOLAR_REFLECTIVE_COATING",
+    "scope": "ROOF_SOLAR_REFLECTANCE",
+    "notes": "Not a universal waterproofing coating standard."
+  },
+  {
+    "source_id": "MOD-TCVN7957-2023-ROOF",
+    "title_vi": "TCVN 7957:2023 — Thoát nước, mạng lưới và công trình bên ngoài — Yêu cầu thiết kế",
+    "url": "https://tieuchuan.vsqi.gov.vn/tieuchuan/view?sohieu=TCVN+7957%3A2023",
+    "evidence_class": "MODERN_TECHNICAL_STANDARD",
+    "text_status": "ACTIVE",
+    "attribution_status": "INSTITUTIONAL_STANDARD",
+    "semantic_status": "STORMWATER_NETWORK",
+    "scope": "DOWNSTREAM_STORMWATER_NETWORK"
+  }
+]

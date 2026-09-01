@@ -1,0 +1,63 @@
+[
+  {
+    "source_id": "SRC-YZSS-EXT-001",
+    "title_zh": "陽宅十書·論宅外形第一",
+    "title_vi": "Dương Trạch Thập Thư — Luận ngoại hình nhà ở, thiên thứ nhất",
+    "work": "陽宅十書",
+    "attribution": "王君榮纂輯 / Vương Quân Vinh biên tập theo truyền bản",
+    "witness": "《古今圖書集成》藝術典卷675 chép lại đoạn văn tương đối sạch; đối chiếu CText OCR",
+    "url_primary": "https://zh.wikisource.org/wiki/%E6%AC%BD%E5%AE%9A%E5%8F%A4%E4%BB%8A%E5%9C%96%E6%9B%B8%E9%9B%86%E6%88%90/%E5%8D%9A%E7%89%A9%E5%BD%99%E7%B7%A8/%E8%97%9D%E8%A1%93%E5%85%B8/%E7%AC%AC675%E5%8D%B7",
+    "url_crosscheck": "https://ctext.org/wiki.pl?chapter=412426&if=en",
+    "scope": "DIRECT_YANGZHAI",
+    "attribution_status": "EDITION/COMPILATION_REQUIRES_BIBLIOGRAPHIC_CARE",
+    "text_status": "CROSS_WITNESS_STRONG"
+  },
+  {
+    "source_id": "SRC-YLJ-DZ-002",
+    "title_zh": "疑龍經·疑龍十問",
+    "title_vi": "Nghi Long Kinh — Nghi Long Thập Vấn",
+    "work": "疑龍經",
+    "attribution": "舊本題唐楊筠松 / cựu bản đề Dương Quân Tùng",
+    "witness": "Wikisource bản Tứ Khố và bản phân thiên",
+    "url_primary": "https://zh.wikisource.org/wiki/%E6%92%BC%E9%BE%8D%E7%B6%93/%E7%96%91%E9%BE%8D%E7%B6%93/%E7%96%91%E9%BE%8D%E5%8D%81%E5%95%8F",
+    "scope": "DIRECT_YANGZHAI_PASSAGES + FORM_SCHOOL",
+    "attribution_status": "DISPUTED",
+    "text_status": "STRONG_TRANSCRIPTION"
+  },
+  {
+    "source_id": "SRC-YLJ-MT-003",
+    "title_zh": "疑龍經·上篇",
+    "title_vi": "Nghi Long Kinh — Thượng thiên",
+    "work": "疑龍經",
+    "attribution": "舊本題唐楊筠松",
+    "witness": "Wikisource",
+    "url_primary": "https://zh.wikisource.org/wiki/%E6%92%BC%E9%BE%8D%E7%B6%93/%E7%96%91%E9%BE%8D%E7%B6%93/%E4%B8%8A%E7%AF%87",
+    "scope": "FORM_SCHOOL; MANY PASSAGES ORIGINATE IN BURIAL CONTEXT",
+    "attribution_status": "DISPUTED",
+    "text_status": "STRONG_TRANSCRIPTION"
+  },
+  {
+    "source_id": "SRC-ZJ-SYS-004",
+    "title_zh": "宅經·卷上",
+    "title_vi": "Trạch Kinh — Quyển thượng",
+    "work": "宅經",
+    "attribution": "舊本題黃帝; 四庫認為依託",
+    "witness": "Wikisource Tứ Khố",
+    "url_primary": "https://zh.wikisource.org/zh-hant/%E5%AE%85%E7%B6%93_%28%E5%9B%9B%E5%BA%AB%E5%85%A8%E6%9B%B8%E6%9C%AC%29/%E5%8D%B7%E4%B8%8A",
+    "scope": "DIRECT_YANGZHAI",
+    "attribution_status": "PSEUDEPIGRAPHIC",
+    "text_status": "STRONG_TRANSCRIPTION"
+  },
+  {
+    "source_id": "SRC-ZANG-005",
+    "title_zh": "葬書·內篇",
+    "title_vi": "Táng Thư — Nội thiên",
+    "work": "葬書",
+    "attribution": "傳晉郭璞; 四庫認為必出郭璞無可徵信",
+    "witness": "Wikisource; bản có lịch sử biên tập/phân thiên phức tạp",
+    "url_primary": "https://zh.wikisource.org/zh-hant/%E8%91%AC%E6%9B%B8/%E5%85%A7%E7%AF%87",
+    "scope": "YINZHAI_ORIGIN; CONCEPTUAL_REFERENCE_ONLY",
+    "attribution_status": "DISPUTED",
+    "text_status": "TEXTUAL_TRADITION_STRONG_SCOPE_WARNING"
+  }
+]

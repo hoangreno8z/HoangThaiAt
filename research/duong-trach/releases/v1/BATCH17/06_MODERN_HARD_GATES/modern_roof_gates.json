@@ -1,0 +1,39 @@
+{
+  "WATERTIGHTNESS": {
+    "source_id": "MOD-TCVN5718-1993",
+    "status": "ACTIVE",
+    "scope": "reinforced concrete roofs/floors within standard scope",
+    "hard_gate": "Leakage/watertightness defects require engineering remediation."
+  },
+  "STRUCTURAL_LOADS": {
+    "source_id": "MOD-TCVN2737-2023",
+    "status": "ACTIVE",
+    "hard_gate": "Roof structure and cladding/attachments must be designed for applicable loads/actions, including wind design context."
+  },
+  "CLIMATE_DATA": {
+    "source_id": "MOD-QCVN02-2022-CLIMATE",
+    "status": "CURRENT_BASE_TEXT_AS_OF_2026_09_01",
+    "topics": [
+      "wind",
+      "rain",
+      "solar/climatic data"
+    ],
+    "hard_gate": "Use local/climatic data for design; do not infer from traditional qi terms."
+  },
+  "LIGHTNING": {
+    "source_id": "MOD-TCVN9385-2012",
+    "status": "ACTIVE",
+    "hard_gate": "Lightning protection assessment/design where applicable overrides visual/Feng Shui preferences."
+  },
+  "SOLAR_REFLECTIVE_COATING": {
+    "source_id": "MOD-TCVN13527-2023",
+    "status": "ACTIVE",
+    "note": "Standard applies to high-solar-reflectance roof paint; it is not a substitute for the waterproofing system."
+  },
+  "DOWNSTREAM_STORMWATER": {
+    "source_id": "MOD-TCVN7957-2023-ROOF",
+    "status": "ACTIVE",
+    "rule": "Roof runoff must ultimately connect to a safe/lawful stormwater strategy."
+  },
+  "priority": "STRUCTURAL/WEATHER/RAIN/LIGHTNING SAFETY > FUNCTION > CLASSICAL FORM"
+}

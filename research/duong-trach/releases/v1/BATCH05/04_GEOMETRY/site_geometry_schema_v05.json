@@ -1,0 +1,73 @@
+{
+  "$id": "lapque.site_geometry.v0.5",
+  "principles": [
+    "Geometry records observations only; it does not manufacture ancient auspiciousness.",
+    "Front/back must be explicitly defined per case; never assume South=front.",
+    "No fixed ancient percentage threshold unless a source explicitly provides one.",
+    "Measurement uncertainty is allowed; it is not an ancient threshold."
+  ],
+  "front_reference": {
+    "mode": "MAIN_FACING|MAIN_ACCESS|USER_DEFINED|UNKNOWN",
+    "azimuth_deg": "number|null",
+    "evidence": "string"
+  },
+  "parcel": {
+    "polygon": "GeoJSON Polygon or local-coordinate polygon",
+    "front_width_m": "number|null",
+    "rear_width_m": "number|null",
+    "left_side_length_m": "number|null",
+    "right_side_length_m": "number|null",
+    "measurement_uncertainty_m": "number|null",
+    "shape_class": "RECTANGULAR|TRAPEZOID_FRONT_NARROW|TRAPEZOID_FRONT_WIDE|IRREGULAR|CONCAVE|UNKNOWN"
+  },
+  "terrain": {
+    "front_elevation_m": "number|null",
+    "rear_elevation_m": "number|null",
+    "center_elevation_m": "number|null",
+    "perimeter_elevation_samples": "array",
+    "slope_mean_deg": "number|null",
+    "slope_direction_deg": "number|null",
+    "sink_detected": "boolean|null"
+  },
+  "roads": {
+    "features": [
+      {
+        "id": "string",
+        "centerline": "polyline",
+        "relative_side": "FRONT|REAR|LEFT|RIGHT|MULTI|UNKNOWN",
+        "approach_axis_to_site": "number|null",
+        "curvature_side_relative_to_site": "CONCAVE|CONVEX|STRAIGHT|UNKNOWN",
+        "traffic_data_ref": "string|null"
+      }
+    ]
+  },
+  "water": {
+    "features": [
+      {
+        "id": "string",
+        "type": "RIVER|STREAM|CANAL|DITCH|POND|LAKE|DRAIN|UNKNOWN",
+        "geometry": "line/polygon",
+        "flow_direction_deg": "number|null",
+        "relative_side": "FRONT|REAR|LEFT|RIGHT|MULTI|UNKNOWN",
+        "curvature_relative_to_site": "EMBRACING|TURNING_AWAY|STRAIGHT|UNKNOWN",
+        "confluence": "boolean|null",
+        "outlet": "boolean|null",
+        "official_hazard_ref": "string|null"
+      }
+    ]
+  },
+  "classifiers": {
+    "front_vs_rear_width": {
+      "rule": "Compare measured widths only if difference exceeds combined measurement uncertainty; else INDETERMINATE.",
+      "note": "This is metrology, not a Feng Shui threshold."
+    },
+    "fan_tiao": {
+      "status": "DISABLED",
+      "reason": "返跳 geometry not yet source-resolved."
+    },
+    "four_side_crossing": {
+      "status": "OBSERVE_ONLY",
+      "reason": "四面交衝 may refer to topology/axes, not merely a parcel bordered by four roads."
+    }
+  }
+}

@@ -9,6 +9,8 @@ class LibraryRouter {
       '': () => this.renderLobby(),
       'lobby': () => this.renderLobby(),
       'learn': (params) => this.renderLearn(params),
+      'thu-vien': (params) => this.renderDuongTrach(params),
+      'duong-trach': (params) => this.renderDuongTrach({ ...params, segments: ['duong-trach', ...(params.segments || [])] }),
       'tools': (params) => this.renderTools(params),
       'loban': (params) => this.renderTools({ segments: ['loban'] }),
       'thuoc-lo-ban': (params) => this.renderTools({ segments: ['loban'] }),
@@ -120,6 +122,14 @@ class LibraryRouter {
     const tab = (params && params.segments && params.segments[0]) ? params.segments[0] : 'loban';
     if (window.toolUI && typeof window.toolUI.render === 'function') {
       window.toolUI.render(tab);
+    }
+  }
+
+  renderDuongTrach(params) {
+    this.showGate('gate-duong-trach');
+    document.title = "Thư Viện Dương Trạch Có Nguồn — Huyền Học Mụ";
+    if (window.duongTrachLibrary && typeof window.duongTrachLibrary.render === 'function') {
+      window.duongTrachLibrary.render(params || { segments: ['duong-trach'], query: new URLSearchParams() });
     }
   }
 }

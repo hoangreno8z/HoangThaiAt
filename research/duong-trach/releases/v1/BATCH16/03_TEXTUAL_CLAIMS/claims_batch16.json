@@ -1,0 +1,184 @@
+[
+  {
+    "claim_id": "WAT-001",
+    "source_id": "SRC-JJBY-YUAN-WATER",
+    "original": "勿塞故井。",
+    "hanviet": "Vật tắc cố tỉnh.",
+    "literal_vi": "Không nên lấp giếng cũ theo truyền bản.",
+    "classification": "HISTORICAL_WELL_TABOO",
+    "observable": [
+      "existing_old_well",
+      "closure_or_fill"
+    ],
+    "traditional_outcome": "耳聾目盲 (in source context)",
+    "editorial": "Không phải lệnh bảo tồn giếng hiện đại. Giếng bỏ hoang nguy hiểm phải xử lý theo địa kỹ thuật, an toàn và môi trường.",
+    "state": "REFERENCE_ONLY_NONCAUSAL"
+  },
+  {
+    "claim_id": "WAT-002",
+    "source_id": "SRC-JJBY-YUAN-WATER",
+    "original": "凡堂前不可穿井。",
+    "hanviet": "Phàm đường tiền bất khả xuyên tỉnh.",
+    "literal_vi": "Truyền bản phản đối đào giếng phía trước 'đường' chính.",
+    "classification": "HISTORICAL_DOMESTIC_FORM_TABOO",
+    "observable": [
+      "well_relative_to_principal_hall",
+      "front_reference"
+    ],
+    "traditional_outcome": null,
+    "editorial": "`堂` không mặc định = phòng khách. Không áp cho bể nước ngầm.",
+    "state": "CANDIDATE_FORM_RELATION"
+  },
+  {
+    "claim_id": "WAT-003",
+    "source_id": "SRC-JJBY-YUAN-WATER",
+    "original": "井於竈邊，虛耗年年。",
+    "hanviet": "Tỉnh ư táo biên, hư hao niên niên.",
+    "literal_vi": "Giếng ở sát/bên bếp được truyền bản gắn với phán hao tổn.",
+    "classification": "HISTORICAL_WELL_STOVE_RELATION",
+    "observable": [
+      "well_to_stove_distance",
+      "well_stove_adjacency"
+    ],
+    "traditional_outcome": "虛耗年年",
+    "editorial": "Không chuyển thành sink-cooktop rule, water tank-kitchen rule hay medical claim.",
+    "state": "CANDIDATE_FORM_RELATION"
+  },
+  {
+    "claim_id": "WAT-004",
+    "source_id": "SRC-JJBY-YUAN-WATER",
+    "original": "廚內房前難鑿井，主人堂後莫開泉。",
+    "hanviet": "Trù nội phòng tiền nan tạc tỉnh, chủ nhân đường hậu mạc khai tuyền.",
+    "literal_vi": "Đoạn văn phản đối đào giếng trong khu bếp/phía trước phòng và mở nguồn nước sau đường chính theo cách diễn đạt của truyền bản.",
+    "classification": "HISTORICAL_DOMESTIC_FORM_TABOO",
+    "observable": [
+      "well_in_kitchen_zone",
+      "well_in_front_of_room",
+      "spring_or_well_behind_principal_hall"
+    ],
+    "traditional_outcome": null,
+    "editorial": "Các danh từ không gian cổ cần context; không dùng cho tank/plumbing.",
+    "state": "SEMANTIC_PARTIAL"
+  },
+  {
+    "claim_id": "WAT-005",
+    "source_id": "SRC-JJBY-YUAN-WATER",
+    "original": "廳前天井停水不出。",
+    "hanviet": "Sảnh tiền thiên tỉnh đình thủy bất xuất.",
+    "literal_vi": "Thiên tỉnh trước sảnh có nước đọng không thoát được bị truyền bản coi là bất lợi.",
+    "classification": "HISTORICAL_DRAINAGE_MOTIF",
+    "observable": [
+      "courtyard_standing_water",
+      "drainage_outflow_blocked"
+    ],
+    "traditional_outcome": "病患等 (source attaches health/family outcomes)",
+    "editorial": "Phần phán bệnh cổ không causal; hiện đại xử lý bằng drainage/moisture/sanitation.",
+    "state": "CORE_DRAINAGE_MOTIF"
+  },
+  {
+    "claim_id": "WAT-006",
+    "source_id": "SRC-JJBY-YUAN-WATER",
+    "original": "溝清溝渠通浚，屋宇潔浄，無穢氣。",
+    "hanviet": "Câu thanh, câu cừ thông tuấn, ốc vũ khiết tịnh, vô uế khí.",
+    "literal_vi": "Truyền bản đề cao mương/rãnh thông thoát, nhà cửa sạch và tránh uế khí.",
+    "classification": "HISTORICAL_SANITATION_DRAINAGE",
+    "observable": [
+      "ditch_blockage",
+      "drainage_maintenance",
+      "surface_cleanliness",
+      "odour"
+    ],
+    "traditional_outcome": "不生瘟疫病 (in source)",
+    "editorial": "Không dùng câu cổ để chứng minh cơ chế dịch tễ; chỉ giữ historical sanitation motif.",
+    "state": "CORE_HISTORICAL_SANITATION_MOTIF"
+  },
+  {
+    "claim_id": "WAT-007",
+    "source_id": "SRC-YZCY-1810-WELL",
+    "original": "凡井于來龍生氣旺方開之，則人聰明長壽；若在來龍絕氣方開之，夭而愚頑。",
+    "hanviet": "Phàm tỉnh ư lai long sinh khí vượng phương khai chi, tắc nhân thông minh trường thọ; nhược tại lai long tuyệt khí phương khai chi, yểu nhi ngu ngoan.",
+    "literal_vi": "Trong hệ của Dương Trạch Toát Yếu, giếng được đặt theo các khái niệm 'lai long', sinh khí vượng phương và tuyệt khí phương.",
+    "classification": "FENG_SHUI_SCHOOL_RULE",
+    "observable": [
+      "well_position",
+      "dragon_path_by_school",
+      "school_qi_state"
+    ],
+    "traditional_outcome": "聰明長壽 / 夭而愚頑",
+    "editorial": "Không dùng phán trí tuệ/tuổi thọ như causal fact. Không chạy nếu lai long/sinh-tuyệt chưa được đúng school engine xác lập.",
+    "state": "SCHOOL_SPECIFIC"
+  },
+  {
+    "claim_id": "WAT-008",
+    "source_id": "SRC-YZCY-1810-WELL",
+    "original": "井不宜在竈邊。",
+    "hanviet": "Tỉnh bất nghi tại táo biên.",
+    "literal_vi": "Truyền bản này cũng tránh đặt giếng cạnh bếp.",
+    "classification": "TRADITIONAL_FENG_SHUI_FORM",
+    "observable": [
+      "well_to_stove_distance",
+      "well_stove_adjacency"
+    ],
+    "traditional_outcome": "耗財而淫 (source context)",
+    "editorial": "Có motif tương tự nguồn gia dụng, nhưng witness independence và borrowing chưa được chứng minh.",
+    "state": "CROSS_TRADITION_MOTIF_NOT_INDEPENDENCE_PROVEN"
+  },
+  {
+    "claim_id": "WAT-009",
+    "source_id": "SRC-YZCY-1810-DRAIN",
+    "original": "水不宜直流。",
+    "hanviet": "Thủy bất nghi trực lưu.",
+    "literal_vi": "Trong phép phóng thủy của truyền bản, dòng thoát nước không được ưa dạng chảy thẳng.",
+    "classification": "FENG_SHUI_SCHOOL_DRAINAGE_FORM",
+    "observable": [
+      "drain_path_straightness",
+      "outlet_path_geometry"
+    ],
+    "traditional_outcome": null,
+    "editorial": "Không được làm ống thoát ngoằn ngoèo trái kỹ thuật chỉ để bắt chước cổ văn. Modern hydraulic performance overrides.",
+    "state": "SCHOOL_FORM_CANDIDATE_HARD_GATE"
+  },
+  {
+    "claim_id": "WAT-010",
+    "source_id": "SRC-YZCY-1810-DRAIN",
+    "original": "忌分流。",
+    "hanviet": "Kỵ phân lưu.",
+    "literal_vi": "Trong đúng hệ phóng thủy đang nói, văn bản phản đối một dạng phân dòng.",
+    "classification": "FENG_SHUI_SCHOOL_DRAINAGE_FORM",
+    "observable": [
+      "drainage_branching_topology"
+    ],
+    "traditional_outcome": null,
+    "editorial": "Không được hiểu là hệ thống thoát nước hiện đại không được chia nhánh; đó sẽ là sai kỹ thuật nghiêm trọng.",
+    "state": "SCHOOL_SPECIFIC_SEMANTIC_CONTEXT_REQUIRED"
+  },
+  {
+    "claim_id": "WAT-011",
+    "source_id": "SRC-JJBY-YUAN-WATER",
+    "original": "以鉛十餘斤寘之井中，水清而甘。",
+    "hanviet": "Dĩ duyên thập dư cân trí chi tỉnh trung, thủy thanh nhi cam.",
+    "literal_vi": "Truyền bản ghi thực hành bỏ hơn mười cân chì vào giếng để nước được cho là trong/ngọt.",
+    "classification": "HISTORICAL_UNSAFE_PRACTICE",
+    "observable": [
+      "lead_introduced_to_water_source"
+    ],
+    "traditional_outcome": "水清而甘",
+    "editorial": "Lưu để nghiên cứu lịch sử; CẤM ứng dụng hiện đại.",
+    "state": "INVALID_FOR_MODERN_APPLICATION"
+  },
+  {
+    "claim_id": "WAT-012",
+    "source_id": "SRC-JJBY-YUAN-WATER",
+    "original": "凡開井近江近海處……有西南風則鑿之。",
+    "hanviet": "Phàm khai tỉnh cận giang cận hải xứ... hữu Tây Nam phong tắc tạc chi.",
+    "literal_vi": "Truyền bản đưa ra một thực hành chọn ngày/hướng gió khi đào giếng gần sông/biển, với giả thiết gió có thể ảnh hưởng vị nước mạch.",
+    "classification": "HISTORICAL_NATURAL_PHILOSOPHY_BELIEF",
+    "observable": [
+      "well_near_river_or_sea",
+      "wind_direction_at_digging"
+    ],
+    "traditional_outcome": "泉脈甘/鹹",
+    "editorial": "Không có quyền dùng như thủy văn hiện đại. Nguồn nước ngầm phải được khảo sát hydrogeology và xét nghiệm.",
+    "state": "REFERENCE_ONLY_NOT_MODERN_HYDROGEOLOGY"
+  }
+]

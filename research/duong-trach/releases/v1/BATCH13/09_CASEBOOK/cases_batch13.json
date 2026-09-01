@@ -1,0 +1,116 @@
+[
+  {
+    "case_id": "CASE13-001",
+    "name": "Cầu thang 17 bậc an toàn",
+    "input": {
+      "step_count": 17,
+      "safety": "PASS"
+    },
+    "classical_match": null,
+    "decision": "Do not label auspicious from 4n+1 without source."
+  },
+  {
+    "case_id": "CASE13-002",
+    "name": "Cầu thang 18 bậc nhưng hình học an toàn",
+    "input": {
+      "step_count": 18,
+      "safety": "PASS"
+    },
+    "classical_match": null,
+    "decision": "No penalty from Sinh-Lão-Bệnh-Tử in verified corpus."
+  },
+  {
+    "case_id": "CASE13-003",
+    "name": "21 bậc nhưng mặt bậc/trình tự thoát nạn không đạt",
+    "input": {
+      "step_count": 21,
+      "safety": "FAIL"
+    },
+    "classical_match": null,
+    "decision": "HARD FAIL/REDESIGN regardless of lucky-number folklore."
+  },
+  {
+    "case_id": "CASE13-004",
+    "name": "Cửa chính nhìn thấy cầu thang",
+    "input": {
+      "door_to_stair_visibility": true
+    },
+    "classical_match": null,
+    "decision": "Collect sightline/circulation. NO_DIRECT_EVIDENCE in current core search."
+  },
+  {
+    "case_id": "CASE13-005",
+    "name": "Cửa mở thẳng tới mép thang",
+    "input": {
+      "door_to_first_step_distance": "small",
+      "collision_risk": true
+    },
+    "classical_match": null,
+    "decision": "Modern safety/function issue first; no need for a mystical rule."
+  },
+  {
+    "case_id": "CASE13-006",
+    "name": "Cầu thang cắt qua area centroid nhà chữ L",
+    "input": {
+      "stair_over_area_centroid": true
+    },
+    "classical_match": null,
+    "decision": "Store geometry only. Do not call 'Trung Cung đại hung' until school/source method exists."
+  },
+  {
+    "case_id": "CASE13-007",
+    "name": "Cầu thang không ở centroid nhưng nằm ở functional center",
+    "input": {
+      "area_centroid_overlap": false,
+      "functional_center_overlap": true
+    },
+    "classical_match": null,
+    "decision": "Demonstrates why 'center' must be defined before any claim."
+  },
+  {
+    "case_id": "CASE13-008",
+    "name": "Cầu thang xoắn ốc nhà riêng",
+    "input": {
+      "stair_type": "spiral"
+    },
+    "classical_match": null,
+    "decision": "No ancient verdict. Check geometry, fall safety, code applicability and usability."
+  },
+  {
+    "case_id": "CASE13-009",
+    "name": "Văn phòng chỉ có thang nhưng route tiếp cận yêu cầu thang máy",
+    "input": {
+      "building_type": "office",
+      "accessible_vertical_route": "missing"
+    },
+    "classical_match": null,
+    "decision": "QCVN10 applicability check; if required -> REDESIGN."
+  },
+  {
+    "case_id": "CASE13-010",
+    "name": "Cầu thang thoát nạn bị bịt để tránh 'khí thoát'",
+    "input": {
+      "feng_shui_proposal": "block_or_narrow_egress"
+    },
+    "classical_match": null,
+    "decision": "REJECT. Fire egress hard gate."
+  },
+  {
+    "case_id": "CASE13-011",
+    "name": "Bậc cong/rẻ quạt trong công trình thuộc QCVN06",
+    "input": {
+      "winder_steps": true
+    },
+    "classical_match": null,
+    "decision": "Evaluate under applicable fire-code provisions; no numerology."
+  },
+  {
+    "case_id": "CASE13-012",
+    "name": "Muốn đổi 20 bậc thành 21 chỉ vì phong thủy",
+    "input": {
+      "design_change": "change_geometry_for_lucky_count"
+    },
+    "classical_match": null,
+    "decision": "Do not change unless architecture/safety/function supports it; current cổ evidence insufficient."
+  }
+]

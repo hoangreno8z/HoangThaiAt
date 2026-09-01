@@ -1,0 +1,24 @@
+{
+  "recorded_on": "2026-09-01",
+  "source_policy": "User-supplied artifacts are the publication authority. The ZIP provides the structured QA-H corpus; DOCX and PDF are consolidated reference editions and are not reinterpreted by the build.",
+  "artifacts": [
+    {
+      "name": "LAPQUE_HUYENHOC_MU_CODEX_WEB_INTEGRATION_v1.zip",
+      "role": "STRUCTURED_CORPUS_SOURCE",
+      "bytes": 371087,
+      "sha256": "5181abafda15c138381e4015bfb62c13551c8e62db3584e58e5a897ac193d377"
+    },
+    {
+      "name": "LAPQUE_DUONG_TRACH_20_BATCH_BAN_HOP_NHAT.docx",
+      "role": "CONSOLIDATED_REFERENCE_EDITION",
+      "bytes": 313982,
+      "sha256": "c459edba98489d4f052f42dfc390c4ff2c0f26357a7b12c94828e0805650fc03"
+    },
+    {
+      "name": "LAPQUE_DUONG_TRACH_20_BATCH_BAN_HOP_NHAT.pdf",
+      "role": "CONSOLIDATED_VISUAL_REFERENCE_EDITION",
+      "bytes": 7147339,
+      "sha256": "da8dfb888afcd66ef4fe10486e8281824c7128a8c4f9a47ac716854aea042c51"
+    }
+  ]
+}

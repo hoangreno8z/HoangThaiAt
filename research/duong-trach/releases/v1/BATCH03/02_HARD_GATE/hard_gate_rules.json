@@ -1,0 +1,96 @@
+[
+  {
+    "gate_id": "HG-01",
+    "name": "Sạt lở / địa hình mất ổn định",
+    "inputs": [
+      "landslide_hazard_zone",
+      "slope",
+      "geomorphology",
+      "field_geotechnical_assessment"
+    ],
+    "decision": "If official hazard/field assessment indicates unacceptable risk -> REJECT_OR_ENGINEERING_ESCALATION",
+    "ancient_parallel": "疑龍經: 破碎斜傾非吉地",
+    "causality_rule": "Modern result is independent; ancient phrase is contextual parallel only."
+  },
+  {
+    "gate_id": "HG-02",
+    "name": "Lũ / lũ quét / dòng chảy xung",
+    "inputs": [
+      "flood_hazard",
+      "flash_flood_hazard",
+      "river_channel",
+      "drainage",
+      "historical_events"
+    ],
+    "decision": "High/unmitigable flood or flash-flood risk -> REJECT_OR_ENGINEERING_ESCALATION",
+    "ancient_parallel": "住宅諸忌: 勿居正當水流處",
+    "causality_rule": "Hydrology determines safety; cổ thư không thay thế mô hình thủy lực."
+  },
+  {
+    "gate_id": "HG-03",
+    "name": "Gió bão",
+    "inputs": [
+      "design_wind",
+      "storm_exposure",
+      "terrain_roughness",
+      "coastal_exposure"
+    ],
+    "decision": "Use applicable design data; do not infer from compass auspiciousness.",
+    "ancient_parallel": "Thiên/địa layer only",
+    "causality_rule": "No Feng Shui override."
+  },
+  {
+    "gate_id": "HG-04",
+    "name": "Động đất",
+    "inputs": [
+      "reference_ground_acceleration",
+      "fault_proximity",
+      "soil_class",
+      "structural_system"
+    ],
+    "decision": "Escalate to structural/seismic design requirements.",
+    "ancient_parallel": null,
+    "causality_rule": "Pure modern safety layer."
+  },
+  {
+    "gate_id": "HG-05",
+    "name": "Ven biển / nước dâng / sóng / ăn mòn muối",
+    "inputs": [
+      "storm_surge",
+      "tide",
+      "wave",
+      "atmospheric_salinity",
+      "distance_to_coast"
+    ],
+    "decision": "Require coastal exposure design and material durability checks.",
+    "ancient_parallel": "Thủy pháp may describe form; not a corrosion or surge model.",
+    "causality_rule": "Pure engineering decision dominates."
+  },
+  {
+    "gate_id": "HG-06",
+    "name": "Sét",
+    "inputs": [
+      "lightning_density",
+      "building_height",
+      "exposure",
+      "protection_system"
+    ],
+    "decision": "Electrical/lightning protection design gate.",
+    "ancient_parallel": null,
+    "causality_rule": "Pure modern safety layer."
+  },
+  {
+    "gate_id": "HG-07",
+    "name": "Vi khí hậu",
+    "inputs": [
+      "solar_exposure",
+      "temperature",
+      "humidity",
+      "wind",
+      "ventilation_potential"
+    ],
+    "decision": "Feeds orientation/opening design; not automatic rejection unless health/safety threshold is exceeded.",
+    "ancient_parallel": "宅經/多能鄙事 có ngôn ngữ '滋潤光澤/陽氣' nhưng không đồng nhất đại lượng.",
+    "causality_rule": "Keep variables separate from traditional terminology."
+  }
+]

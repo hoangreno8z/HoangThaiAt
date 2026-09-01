@@ -1,0 +1,38 @@
+[
+  {
+    "claim": "WC ở Trung Cung chắc chắn đại hung",
+    "search_state": "Modern Feng Shui pages found; no direct verified core sentence locked in Batch14 establishing a universal rule.",
+    "state": "NO_DIRECT_EVIDENCE_IN_VERIFIED_CORE_SEARCH",
+    "engine_action": "Measure toilet-center overlap; no universal classical verdict."
+  },
+  {
+    "claim": "WC nằm trên bếp chắc chắn gây bệnh/tán tài",
+    "search_state": "No direct verified core ancient witness locked in Batch14.",
+    "state": "NO_DIRECT_EVIDENCE_IN_VERIFIED_CORE_SEARCH",
+    "engine_action": "Evaluate plumbing leak, waterproofing, fire, hygiene and vertical shafts; no invented ancient outcome."
+  },
+  {
+    "claim": "Cửa WC đối cửa chính = phá tài",
+    "search_state": "Direct old witness found for 糞屋對門, not for generic interior flush-toilet-door facing the main door.",
+    "state": "SEMANTIC_OVERGENERALIZATION_RISK",
+    "engine_action": "Do not reuse 糞屋對門 as a modern interior-door rule."
+  },
+  {
+    "claim": "WC đối giường gây bệnh",
+    "search_state": "Modern webpages found; no direct verified ancient core witness locked in Batch14.",
+    "state": "NO_DIRECT_EVIDENCE_IN_VERIFIED_CORE_SEARCH",
+    "engine_action": "Evaluate privacy, noise, odour, moisture; no medical Feng Shui causality."
+  },
+  {
+    "claim": "WC phải nằm ở 'hung phương'",
+    "search_state": "Direct evidence exists in several later school texts, but the definition of bad sector is school-specific.",
+    "state": "EVIDENCE_EXISTS_BUT_SCHOOL_SPECIFIC",
+    "engine_action": "Require school_id; never use generic compass direction."
+  },
+  {
+    "claim": "Bể phốt chính là 糞屋 cổ",
+    "search_state": "No valid one-to-one historical equivalence established.",
+    "state": "FALSE_EQUIVALENCE_RISK",
+    "engine_action": "Store SEPTIC_TANK as modern infrastructure entity."
+  }
+]

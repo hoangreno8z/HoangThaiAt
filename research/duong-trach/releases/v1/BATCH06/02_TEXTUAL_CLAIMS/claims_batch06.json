@@ -1,0 +1,81 @@
+[
+  {
+    "claim_id": "DEF-001",
+    "source_id": "SRC-GJTS675-P69",
+    "original": "凡宅地形，卯酉不足，居之自如。",
+    "hanviet": "Phàm trạch địa hình, Mão Dậu bất túc, cư chi tự như.",
+    "literal_vi": "Về địa hình nhà ở, nếu phương Mão–Dậu bị bất túc thì văn bản phán rằng vẫn có thể cư ở như thường.",
+    "term_notes": {
+      "不足": "thiếu/bất túc; chưa mặc định = khuyết góc polygon"
+    },
+    "direction_model": "卯=Đông; 酉=Tây",
+    "traditional_outcome": "自如",
+    "status": "DIRECT_TEXT"
+  },
+  {
+    "claim_id": "DEF-002",
+    "source_id": "SRC-GJTS675-P69",
+    "original": "子午不足，居之大凶。",
+    "hanviet": "Tý Ngọ bất túc, cư chi đại hung.",
+    "literal_vi": "Nếu phương Tý–Ngọ bị bất túc thì văn bản phán đại hung.",
+    "term_notes": {
+      "不足": "chưa có ngưỡng hình học"
+    },
+    "direction_model": "子=Bắc; 午=Nam",
+    "traditional_outcome": "大凶",
+    "status": "DIRECT_TEXT"
+  },
+  {
+    "claim_id": "DEF-003",
+    "source_id": "SRC-GJTS675-P69",
+    "original": "子丑不足，居之口舌。",
+    "hanviet": "Tý Sửu bất túc, cư chi khẩu thiệt.",
+    "literal_vi": "Nếu vùng Tý–Sửu bị bất túc thì văn bản gắn với 'khẩu thiệt' theo truyền thống.",
+    "term_notes": {
+      "口舌": "traditional outcome; không suy thành nguyên nhân tranh chấp hiện đại"
+    },
+    "traditional_outcome": "口舌",
+    "status": "DIRECT_TEXT"
+  },
+  {
+    "claim_id": "DEF-004",
+    "source_id": "SRC-DNBS-V5",
+    "original": "卯不足，令人貧；酉不足，富貴；卯酉俱不足，自如。",
+    "hanviet": "Mão bất túc, lệnh nhân bần; Dậu bất túc, phú quý; Mão Dậu câu bất túc, tự như.",
+    "literal_vi": "Truyền bản phân biệt thiếu phía Mão, thiếu phía Dậu và thiếu cả Mão–Dậu, với các phán khác nhau.",
+    "traditional_outcome": "VARIES_BY_DIRECTION",
+    "status": "DIRECT_TEXT_ATTRIBUTION_DISPUTED"
+  },
+  {
+    "claim_id": "DEF-005",
+    "source_id": "SRC-DNBS-V5",
+    "original": "未申不足，吉；戍亥不足，吉；辰巳不足，士不遷；丑寅不足，自如。",
+    "hanviet": "Mùi Thân bất túc, cát; Tuất Hợi bất túc, cát; Thìn Tỵ bất túc, sĩ bất thiên; Sửu Dần bất túc, tự như.",
+    "literal_vi": "Văn bản liệt kê các vùng phương vị bất túc khác nhau và gán phán khác nhau.",
+    "traditional_outcome": "DIRECTION_SPECIFIC",
+    "status": "DIRECT_TEXT_ATTRIBUTION_DISPUTED"
+  },
+  {
+    "claim_id": "DEF-006",
+    "source_id": "SRC-DNBS-V5",
+    "original": "四維不足，大凶；四正不足，大富。",
+    "hanviet": "Tứ duy bất túc, đại hung; tứ chính bất túc, đại phú.",
+    "literal_vi": "Văn bản phán 'bất túc bốn duy' là đại hung, còn 'bất túc bốn chính' là đại phú.",
+    "term_notes": {
+      "四維": "thường chỉ bốn góc phương vị: Càn, Khôn, Cấn, Tốn",
+      "四正": "bốn chính phương: Tý, Ngọ, Mão, Dậu",
+      "warning": "Không tự chuyển thành 'khuyết cả 4 góc' hay 'khuyết 4 cạnh' nếu chưa formalize đúng hình học."
+    },
+    "traditional_outcome": "CONTRASTED",
+    "status": "DIRECT_TEXT_NEEDS_SEMANTIC_FORMALIZATION"
+  },
+  {
+    "claim_id": "DEF-007",
+    "source_id": "SRC-DNBS-V5",
+    "original": "實東空西，家無老妻；有西無東，家無老翁。",
+    "hanviet": "Thực Đông không Tây, gia vô lão thê; hữu Tây vô Đông, gia vô lão ông.",
+    "literal_vi": "Văn bản có motif một bên có/đầy và một bên trống, kèm phán truyền thống về nhân khẩu gia đình.",
+    "traditional_outcome": "FAMILY_TRADITIONAL",
+    "status": "DIRECT_TEXT_BUT_SEMANTICS_NEED_CONTEXT"
+  }
+]

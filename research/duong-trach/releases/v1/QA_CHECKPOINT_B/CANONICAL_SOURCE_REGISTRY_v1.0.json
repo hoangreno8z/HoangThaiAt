@@ -1,0 +1,1046 @@
+[
+  {
+    "source_id": "MOD-NHLBI-SLEEP",
+    "canonical_title_zh": null,
+    "canonical_title_vi": null,
+    "author_or_authority": "US National Heart, Lung, and Blood Institute (NIH)",
+    "date_or_dynasty": null,
+    "urls": [
+      "https://www.nhlbi.nih.gov/health/sleep-deprivation/healthy-sleep-habits"
+    ],
+    "roles_or_evidence_classes": [
+      "MODERN_HEALTH_GUIDANCE"
+    ],
+    "text_status": "TRANSCRIPTION_OR_PUBLICATION_STRONG",
+    "attribution_status": "INSTITUTIONAL_AUTHORITY",
+    "semantic_status": "SEMANTIC_STRONG",
+    "occurrence_count": 1,
+    "registry_provenance": [
+      "BATCH12/01_SOURCE_REGISTRY/source_registry_batch12.json"
+    ],
+    "canonical_state": "ACTIVE"
+  },
+  {
+    "source_id": "MOD-QCVN01-2021",
+    "canonical_title_zh": null,
+    "canonical_title_vi": "QCVN 01:2021/BXD — Quy chuẩn kỹ thuật quốc gia về Quy hoạch xây dựng",
+    "author_or_authority": "Bộ Xây dựng",
+    "date_or_dynasty": null,
+    "urls": [
+      "https://thuvienphapluat.vn/van-ban/Xay-dung-Do-thi/Thong-tu-01-2021-TT-BXD-QCVN-01-2021-BXD-Quy-chuan-ky-thuat-quoc-gia-ve-Quy-hoach-xay-dung-474747.aspx"
+    ],
+    "roles_or_evidence_classes": [
+      "CURRENT_LEGAL_PLANNING_BASE"
+    ],
+    "text_status": "TEXT_STATUS_REVIEW",
+    "attribution_status": "ATTRIBUTION_UNRESOLVED_OR_NOT_APPLICABLE",
+    "semantic_status": "SEMANTIC_REVIEW",
+    "occurrence_count": 2,
+    "registry_provenance": [
+      "QA_CHECKPOINT_A/canonical_source_registry_DRAFT.json",
+      "BATCH07/01_SOURCE_REGISTRY/source_registry_batch07.json"
+    ],
+    "canonical_state": "ACTIVE_WITH_REVIEW"
+  },
+  {
+    "source_id": "MOD-QCVN01-2026",
+    "canonical_title_zh": null,
+    "canonical_title_vi": "QCVN 01:2026/BXD — Quy chuẩn kỹ thuật quốc gia về quy hoạch đô thị và nông thôn",
+    "author_or_authority": "Bộ Xây dựng",
+    "date_or_dynasty": null,
+    "urls": [
+      "https://www.moc.gov.vn/vn/tin-tuc/1196/95350/thong-tu-ban-hanh-quy-chuan-ky-thuat-quoc-gia-ve-quy-hoach-do-thi-va-nong-thon.aspx"
+    ],
+    "roles_or_evidence_classes": [
+      "FUTURE_LEGAL_VERSION"
+    ],
+    "text_status": "TEXT_STATUS_REVIEW",
+    "attribution_status": "ATTRIBUTION_UNRESOLVED_OR_NOT_APPLICABLE",
+    "semantic_status": "SEMANTIC_REVIEW",
+    "occurrence_count": 2,
+    "registry_provenance": [
+      "QA_CHECKPOINT_A/canonical_source_registry_DRAFT.json",
+      "BATCH07/01_SOURCE_REGISTRY/source_registry_batch07.json"
+    ],
+    "canonical_state": "ACTIVE_WITH_REVIEW"
+  },
+  {
+    "source_id": "MOD-QCVN06-2022-SD1-2023",
+    "canonical_title_zh": null,
+    "canonical_title_vi": "QCVN 06:2022/BXD + Sửa đổi 1:2023",
+    "author_or_authority": "Bộ Xây dựng",
+    "date_or_dynasty": null,
+    "urls": [
+      "https://moc.gov.vn/Images/editor/files/Quy%20Chu%E1%BA%A9n/QCVN%2006-2022.pdf"
+    ],
+    "roles_or_evidence_classes": [
+      "FIRE_EGRESS_HARD_GATE",
+      "FIRE_SAFETY_HARD_GATE",
+      "MODERN_FIRE_SAFETY",
+      "MODERN_LAW_STANDARD"
+    ],
+    "text_status": "TEXT_STATUS_REVIEW",
+    "attribution_status": "INSTITUTIONAL_AUTHORITY",
+    "semantic_status": "SEMANTIC_REVIEW",
+    "occurrence_count": 6,
+    "registry_provenance": [
+      "QA_CHECKPOINT_A/canonical_source_registry_DRAFT.json",
+      "BATCH12/01_SOURCE_REGISTRY/source_registry_batch12.json",
+      "BATCH10/01_SOURCE_REGISTRY/source_registry_batch10.json",
+      "BATCH09/01_SOURCE_REGISTRY/source_registry_batch09.json",
+      "BATCH11/01_SOURCE_REGISTRY/source_registry_batch11.json",
+      "BATCH08/01_SOURCE_REGISTRY/source_registry_batch08.json"
+    ],
+    "canonical_state": "ACTIVE_WITH_REVIEW"
+  },
+  {
+    "source_id": "MOD-QCVN10-2024",
+    "canonical_title_zh": null,
+    "canonical_title_vi": "QCVN 10:2024/BXD — Xây dựng công trình đảm bảo tiếp cận sử dụng",
+    "author_or_authority": "Bộ Xây dựng",
+    "date_or_dynasty": null,
+    "urls": [
+      "https://moc.gov.vn/Images/editor/files/Quy%20Chu%E1%BA%A9n/BXD_06-2024-TT-BXD_01082024.pdf"
+    ],
+    "roles_or_evidence_classes": [
+      "ACCESSIBILITY_HARD_GATE"
+    ],
+    "text_status": "TEXT_STATUS_REVIEW",
+    "attribution_status": "ATTRIBUTION_UNRESOLVED_OR_NOT_APPLICABLE",
+    "semantic_status": "SEMANTIC_REVIEW",
+    "occurrence_count": 2,
+    "registry_provenance": [
+      "QA_CHECKPOINT_A/canonical_source_registry_DRAFT.json",
+      "BATCH10/01_SOURCE_REGISTRY/source_registry_batch10.json"
+    ],
+    "canonical_state": "ACTIVE_WITH_REVIEW"
+  },
+  {
+    "source_id": "MOD-WHO-HOUSING-2018",
+    "canonical_title_zh": null,
+    "canonical_title_vi": null,
+    "author_or_authority": "World Health Organization",
+    "date_or_dynasty": "2018",
+    "urls": [
+      "https://www.who.int/publications/i/item/9789241550376"
+    ],
+    "roles_or_evidence_classes": [
+      "MODERN_HEALTH_GUIDELINE"
+    ],
+    "text_status": "TRANSCRIPTION_OR_PUBLICATION_STRONG",
+    "attribution_status": "INSTITUTIONAL_AUTHORITY",
+    "semantic_status": "SEMANTIC_STRONG",
+    "occurrence_count": 1,
+    "registry_provenance": [
+      "BATCH12/01_SOURCE_REGISTRY/source_registry_batch12.json"
+    ],
+    "canonical_state": "ACTIVE"
+  },
+  {
+    "source_id": "SCH-HAN1987",
+    "canonical_title_zh": "風水宅法中禁忌的研究",
+    "canonical_title_vi": null,
+    "author_or_authority": "漢寶德 / Pao-Teh Han",
+    "date_or_dynasty": null,
+    "urls": [
+      "https://bp.ntu.edu.tw/001/Upload/1352/ckfile/09c7cd46-303f-407a-bde5-c1f09df02b1d.pdf"
+    ],
+    "roles_or_evidence_classes": [
+      "MODERN_HISTORIOGRAPHY"
+    ],
+    "text_status": "TEXT_STATUS_REVIEW",
+    "attribution_status": "ATTRIBUTION_UNRESOLVED_OR_NOT_APPLICABLE",
+    "semantic_status": "SEMANTIC_REVIEW",
+    "occurrence_count": 2,
+    "registry_provenance": [
+      "QA_CHECKPOINT_A/canonical_source_registry_DRAFT.json",
+      "BATCH06/01_SOURCE_REGISTRY/source_registry_batch06.json"
+    ],
+    "canonical_state": "ACTIVE_WITH_REVIEW"
+  },
+  {
+    "source_id": "SRC-AJJJ-QING-BED-CANDIDATE",
+    "canonical_title_zh": "安居金鏡·開門安床法",
+    "canonical_title_vi": "An Cư Kim Kính — Pháp mở cửa an giường",
+    "author_or_authority": "周南呂臨 (as catalogued by CText)",
+    "date_or_dynasty": "清",
+    "urls": [
+      "https://ctext.org/wiki.pl?chapter=701138&if=gb"
+    ],
+    "roles_or_evidence_classes": [
+      "SOURCE_CANDIDATE"
+    ],
+    "text_status": "OCR_UNVERIFIED_OR_CAUTION",
+    "attribution_status": "ATTRIBUTION_UNRESOLVED_OR_NOT_APPLICABLE",
+    "semantic_status": "SEMANTIC_UNRESOLVED",
+    "occurrence_count": 1,
+    "registry_provenance": [
+      "BATCH12/01_SOURCE_REGISTRY/source_registry_batch12.json"
+    ],
+    "canonical_state": "ACTIVE"
+  },
+  {
+    "source_id": "SRC-CTEXT-DNBS-V5",
+    "canonical_title_zh": "多能鄙事·卷之五·CText OCR",
+    "canonical_title_vi": null,
+    "author_or_authority": null,
+    "date_or_dynasty": null,
+    "urls": [
+      "https://ctext.org/wiki.pl?chapter=993811&if=gb"
+    ],
+    "roles_or_evidence_classes": [
+      "SCAN_LINKED_OCR_CROSSCHECK"
+    ],
+    "text_status": "OCR_UNVERIFIED_OR_CAUTION",
+    "attribution_status": "ATTRIBUTION_UNRESOLVED_OR_NOT_APPLICABLE",
+    "semantic_status": "SEMANTIC_REVIEW",
+    "occurrence_count": 2,
+    "registry_provenance": [
+      "QA_CHECKPOINT_A/canonical_source_registry_DRAFT.json",
+      "BATCH06/01_SOURCE_REGISTRY/source_registry_batch06.json"
+    ],
+    "canonical_state": "ACTIVE_WITH_REVIEW"
+  },
+  {
+    "source_id": "SRC-CTEXT-YZSS",
+    "canonical_title_zh": "陽宅十書",
+    "canonical_title_vi": "Dương Trạch Thập Thư — CText OCR",
+    "author_or_authority": null,
+    "date_or_dynasty": null,
+    "urls": [
+      "https://ctext.org/wiki.pl?chapter=412426&if=en"
+    ],
+    "roles_or_evidence_classes": [
+      "OCR_INDEX_AND_DISCOVERY"
+    ],
+    "text_status": "OCR_UNVERIFIED_OR_CAUTION",
+    "attribution_status": "ATTRIBUTION_UNRESOLVED_OR_NOT_APPLICABLE",
+    "semantic_status": "SEMANTIC_REVIEW",
+    "occurrence_count": 2,
+    "registry_provenance": [
+      "QA_CHECKPOINT_A/canonical_source_registry_DRAFT.json",
+      "BATCH05/01_SOURCE_REGISTRY/source_registry_batch05.json"
+    ],
+    "canonical_state": "ACTIVE_WITH_REVIEW"
+  },
+  {
+    "source_id": "SRC-DNBS-001",
+    "canonical_title_zh": "多能鄙事·卷之五·住宅諸忌",
+    "canonical_title_vi": "Đa Năng Bỉ Sự, quyển 5, Chư kỵ về nhà ở",
+    "author_or_authority": "舊本題明劉基撰 / cựu bản đề Lưu Cơ",
+    "date_or_dynasty": null,
+    "urls": [
+      "https://zh.wikisource.org/wiki/%E5%A4%9A%E8%83%BD%E9%84%99%E4%BA%8B/%E5%8D%B7%E4%B9%8B%E4%BA%94"
+    ],
+    "roles_or_evidence_classes": [
+      "CROSS_WITNESS"
+    ],
+    "text_status": "TEXT_STATUS_REVIEW",
+    "attribution_status": "ATTRIBUTION_DISPUTED_OR_TRADITIONAL",
+    "semantic_status": "SEMANTIC_REVIEW",
+    "occurrence_count": 2,
+    "registry_provenance": [
+      "QA_CHECKPOINT_A/canonical_source_registry_DRAFT.json",
+      "BATCH02/01_SOURCE_AUDIT/source_registry_batch02.json"
+    ],
+    "canonical_state": "ACTIVE_WITH_REVIEW"
+  },
+  {
+    "source_id": "SRC-DNBS-V5",
+    "canonical_title_zh": "多能鄙事·卷之五·住宅諸忌",
+    "canonical_title_vi": "Đa Năng Bỉ Sự, quyển 5 — Chư kỵ về nhà ở",
+    "author_or_authority": "舊本題劉基 / cựu bản đề Lưu Cơ",
+    "date_or_dynasty": null,
+    "urls": [
+      "https://zh.wikisource.org/wiki/%E5%A4%9A%E8%83%BD%E9%84%99%E4%BA%8B/%E5%8D%B7%E4%B9%8B%E4%BA%94"
+    ],
+    "roles_or_evidence_classes": [
+      "CROSS_WITNESS"
+    ],
+    "text_status": "TEXT_STATUS_REVIEW",
+    "attribution_status": "PSEUDEPIGRAPHIC_OR_PSEUDEPIGRAPHIC_RISK",
+    "semantic_status": "SEMANTIC_REVIEW",
+    "occurrence_count": 3,
+    "registry_provenance": [
+      "QA_CHECKPOINT_A/canonical_source_registry_DRAFT.json",
+      "BATCH05/01_SOURCE_REGISTRY/source_registry_batch05.json",
+      "BATCH06/01_SOURCE_REGISTRY/source_registry_batch06.json"
+    ],
+    "canonical_state": "ACTIVE_WITH_REVIEW"
+  },
+  {
+    "source_id": "SRC-DNBS-V5-ROOM",
+    "canonical_title_zh": "多能鄙事·卷之五·住宅諸忌",
+    "canonical_title_vi": "Đa Năng Bỉ Sự, quyển 5 — Chư kỵ nhà ở",
+    "author_or_authority": null,
+    "date_or_dynasty": null,
+    "urls": [
+      "https://zh.wikisource.org/wiki/%E5%A4%9A%E8%83%BD%E9%84%99%E4%BA%8B/%E5%8D%B7%E4%B9%8B%E4%BA%94"
+    ],
+    "roles_or_evidence_classes": [
+      "CROSS_WITNESS"
+    ],
+    "text_status": "TEXT_STATUS_REVIEW",
+    "attribution_status": "PSEUDEPIGRAPHIC_OR_PSEUDEPIGRAPHIC_RISK",
+    "semantic_status": "SEMANTIC_REVIEW",
+    "occurrence_count": 2,
+    "registry_provenance": [
+      "QA_CHECKPOINT_A/canonical_source_registry_DRAFT.json",
+      "BATCH10/01_SOURCE_REGISTRY/source_registry_batch10.json"
+    ],
+    "canonical_state": "ACTIVE_WITH_REVIEW"
+  },
+  {
+    "source_id": "SRC-DNBS-V5-STOVE",
+    "canonical_title_zh": "多能鄙事·卷之五·井竈宜忌",
+    "canonical_title_vi": "Đa Năng Bỉ Sự, quyển 5 — Kỵ nghi về giếng và bếp",
+    "author_or_authority": null,
+    "date_or_dynasty": null,
+    "urls": [
+      "https://zh.wikisource.org/wiki/%E5%A4%9A%E8%83%BD%E9%84%99%E4%BA%8B/%E5%8D%B7%E4%B9%8B%E4%BA%94"
+    ],
+    "roles_or_evidence_classes": [
+      "PRIMARY_TRADITION_WITNESS_FOR_STOVE_SECTION"
+    ],
+    "text_status": "TEXT_STATUS_REVIEW",
+    "attribution_status": "ATTRIBUTION_DISPUTED_OR_TRADITIONAL",
+    "semantic_status": "SEMANTIC_REVIEW",
+    "occurrence_count": 1,
+    "registry_provenance": [
+      "BATCH11/01_SOURCE_REGISTRY/source_registry_batch11.json"
+    ],
+    "canonical_state": "ACTIVE"
+  },
+  {
+    "source_id": "SRC-GJTS675-MINGTANG",
+    "canonical_title_zh": "欽定古今圖書集成·第675卷·陽宅十書一·論宅外形第一",
+    "canonical_title_vi": null,
+    "author_or_authority": null,
+    "date_or_dynasty": null,
+    "urls": [
+      "https://zh.wikisource.org/wiki/%E6%AC%BD%E5%AE%9A%E5%8F%A4%E4%BB%8A%E5%9C%96%E6%9B%B8%E9%9B%86%E6%88%90/%E5%8D%9A%E7%89%A9%E5%BD%99%E7%B7%A8/%E8%97%9D%E8%A1%93%E5%85%B8/%E7%AC%AC675%E5%8D%B7"
+    ],
+    "roles_or_evidence_classes": [
+      "EXTERNAL_MINGTANG_TEXT"
+    ],
+    "text_status": "TEXT_STATUS_REVIEW",
+    "attribution_status": "ATTRIBUTION_UNRESOLVED_OR_NOT_APPLICABLE",
+    "semantic_status": "SEMANTIC_REVIEW",
+    "occurrence_count": 2,
+    "registry_provenance": [
+      "QA_CHECKPOINT_A/canonical_source_registry_DRAFT.json",
+      "BATCH09/01_SOURCE_REGISTRY/source_registry_batch09.json"
+    ],
+    "canonical_state": "ACTIVE_WITH_REVIEW"
+  },
+  {
+    "source_id": "SRC-GJTS675-OUTER",
+    "canonical_title_zh": "欽定古今圖書集成·藝術典第675卷·陽宅十書一·論宅外形第一",
+    "canonical_title_vi": "Cổ Kim Đồ Thư Tập Thành quyển 675 — Dương Trạch Thập Thư I, Luận ngoại hình",
+    "author_or_authority": null,
+    "date_or_dynasty": null,
+    "urls": [
+      "https://zh.wikisource.org/wiki/%E6%AC%BD%E5%AE%9A%E5%8F%A4%E4%BB%8A%E5%9C%96%E6%9B%B8%E9%9B%86%E6%88%90/%E5%8D%9A%E7%89%A9%E5%BD%99%E7%B7%A8/%E8%97%9D%E8%A1%93%E5%85%B8/%E7%AC%AC675%E5%8D%B7"
+    ],
+    "roles_or_evidence_classes": [
+      "PRIMARY_TEXTUAL_CROSS_WITNESS"
+    ],
+    "text_status": "TEXT_STATUS_REVIEW",
+    "attribution_status": "ATTRIBUTION_UNRESOLVED_OR_NOT_APPLICABLE",
+    "semantic_status": "SEMANTIC_REVIEW",
+    "occurrence_count": 2,
+    "registry_provenance": [
+      "QA_CHECKPOINT_A/canonical_source_registry_DRAFT.json",
+      "BATCH07/01_SOURCE_REGISTRY/source_registry_batch07.json"
+    ],
+    "canonical_state": "ACTIVE_WITH_REVIEW"
+  },
+  {
+    "source_id": "SRC-GJTS675-P69",
+    "canonical_title_zh": "欽定古今圖書集成·藝術典·第675卷·陽宅十書一",
+    "canonical_title_vi": "Cổ Kim Đồ Thư Tập Thành, Nghệ Thuật Điển quyển 675 — chép Dương Trạch Thập Thư",
+    "author_or_authority": null,
+    "date_or_dynasty": null,
+    "urls": [
+      "https://zh.wikisource.org/wiki/Page:Gujin_Tushu_Jicheng,_Volume_476_(1700-1725).djvu/69"
+    ],
+    "roles_or_evidence_classes": [
+      "TEXTUAL_CROSS_WITNESS"
+    ],
+    "text_status": "TEXT_STATUS_REVIEW",
+    "attribution_status": "ATTRIBUTION_UNRESOLVED_OR_NOT_APPLICABLE",
+    "semantic_status": "SEMANTIC_REVIEW",
+    "occurrence_count": 3,
+    "registry_provenance": [
+      "QA_CHECKPOINT_A/canonical_source_registry_DRAFT.json",
+      "BATCH05/01_SOURCE_REGISTRY/source_registry_batch05.json",
+      "BATCH06/01_SOURCE_REGISTRY/source_registry_batch06.json"
+    ],
+    "canonical_state": "ACTIVE_WITH_REVIEW"
+  },
+  {
+    "source_id": "SRC-GJTS675-P70",
+    "canonical_title_zh": "欽定古今圖書集成·藝術典·第六百七十五卷·陽宅外形吉凶圖說",
+    "canonical_title_vi": "Cổ Kim Đồ Thư Tập Thành — Đồ thuyết cát hung ngoại hình Dương Trạch",
+    "author_or_authority": null,
+    "date_or_dynasty": null,
+    "urls": [
+      "https://zh.wikisource.org/wiki/Page:Gujin_Tushu_Jicheng,_Volume_476_(1700-1725).djvu/70"
+    ],
+    "roles_or_evidence_classes": [
+      "FIGURE_TEXT_WITNESS"
+    ],
+    "text_status": "TEXT_STATUS_REVIEW",
+    "attribution_status": "ATTRIBUTION_UNRESOLVED_OR_NOT_APPLICABLE",
+    "semantic_status": "SEMANTIC_REVIEW",
+    "occurrence_count": 2,
+    "registry_provenance": [
+      "QA_CHECKPOINT_A/canonical_source_registry_DRAFT.json",
+      "BATCH05/01_SOURCE_REGISTRY/source_registry_batch05.json"
+    ],
+    "canonical_state": "ACTIVE_WITH_REVIEW"
+  },
+  {
+    "source_id": "SRC-GJTS675-P71",
+    "canonical_title_zh": "欽定古今圖書集成·藝術典·第六百七十五卷·陽宅外形吉凶圖說",
+    "canonical_title_vi": "Cổ Kim Đồ Thư Tập Thành — Đồ thuyết cát hung ngoại hình Dương Trạch, trang tiếp",
+    "author_or_authority": null,
+    "date_or_dynasty": null,
+    "urls": [
+      "https://zh.wikisource.org/wiki/Page:Gujin_Tushu_Jicheng,_Volume_476_(1700-1725).djvu/71"
+    ],
+    "roles_or_evidence_classes": [
+      "FIGURE_TEXT_WITNESS"
+    ],
+    "text_status": "TEXT_STATUS_REVIEW",
+    "attribution_status": "ATTRIBUTION_UNRESOLVED_OR_NOT_APPLICABLE",
+    "semantic_status": "SEMANTIC_REVIEW",
+    "occurrence_count": 2,
+    "registry_provenance": [
+      "QA_CHECKPOINT_A/canonical_source_registry_DRAFT.json",
+      "BATCH05/01_SOURCE_REGISTRY/source_registry_batch05.json"
+    ],
+    "canonical_state": "ACTIVE_WITH_REVIEW"
+  },
+  {
+    "source_id": "SRC-GJTS676-DOOR",
+    "canonical_title_zh": "欽定古今圖書集成·藝術典第676卷·陽宅十書二·論開門修造門第六",
+    "canonical_title_vi": null,
+    "author_or_authority": null,
+    "date_or_dynasty": null,
+    "urls": [
+      "https://zh.wikisource.org/wiki/%E6%AC%BD%E5%AE%9A%E5%8F%A4%E4%BB%8A%E5%9C%96%E6%9B%B8%E9%9B%86%E6%88%90/%E5%8D%9A%E7%89%A9%E5%BD%99%E7%B7%A8/%E8%97%9D%E8%A1%93%E5%85%B8/%E7%AC%AC676%E5%8D%B7"
+    ],
+    "roles_or_evidence_classes": [
+      "PRIMARY_TEXTUAL_CROSS_WITNESS"
+    ],
+    "text_status": "TEXT_STATUS_REVIEW",
+    "attribution_status": "ATTRIBUTION_UNRESOLVED_OR_NOT_APPLICABLE",
+    "semantic_status": "SEMANTIC_REVIEW",
+    "occurrence_count": 2,
+    "registry_provenance": [
+      "QA_CHECKPOINT_A/canonical_source_registry_DRAFT.json",
+      "BATCH08/01_SOURCE_REGISTRY/source_registry_batch08.json"
+    ],
+    "canonical_state": "ACTIVE_WITH_REVIEW"
+  },
+  {
+    "source_id": "SRC-GJTS677-DOOR",
+    "canonical_title_zh": "欽定古今圖書集成·藝術典第677卷·陽宅十書三·內形篇",
+    "canonical_title_vi": null,
+    "author_or_authority": null,
+    "date_or_dynasty": null,
+    "urls": [
+      "https://zh.wikisource.org/wiki/%E6%AC%BD%E5%AE%9A%E5%8F%A4%E4%BB%8A%E5%9C%96%E6%9B%B8%E9%9B%86%E6%88%90/%E5%8D%9A%E7%89%A9%E5%BD%99%E7%B7%A8/%E8%97%9D%E8%A1%93%E5%85%B8/%E7%AC%AC677%E5%8D%B7"
+    ],
+    "roles_or_evidence_classes": [
+      "PRIMARY_TEXTUAL_CROSS_WITNESS"
+    ],
+    "text_status": "TEXT_STATUS_REVIEW",
+    "attribution_status": "ATTRIBUTION_UNRESOLVED_OR_NOT_APPLICABLE",
+    "semantic_status": "SEMANTIC_REVIEW",
+    "occurrence_count": 2,
+    "registry_provenance": [
+      "QA_CHECKPOINT_A/canonical_source_registry_DRAFT.json",
+      "BATCH08/01_SOURCE_REGISTRY/source_registry_batch08.json"
+    ],
+    "canonical_state": "ACTIVE_WITH_REVIEW"
+  },
+  {
+    "source_id": "SRC-GJTS677-FIREAN",
+    "canonical_title_zh": "欽定古今圖書集成·第677卷·陽宅十書三·火唵說/火唵歌/火路吉凶歌",
+    "canonical_title_vi": "Cổ Kim Đồ Thư Tập Thành quyển 677 — Hỏa Am thuyết/ca",
+    "author_or_authority": null,
+    "date_or_dynasty": null,
+    "urls": [
+      "https://zh.wikisource.org/wiki/%E6%AC%BD%E5%AE%9A%E5%8F%A4%E4%BB%8A%E5%9C%96%E6%9B%B8%E9%9B%86%E6%88%90/%E5%8D%9A%E7%89%A9%E5%BD%99%E7%B7%A8/%E8%97%9D%E8%A1%93%E5%85%B8/%E7%AC%AC677%E5%8D%B7"
+    ],
+    "roles_or_evidence_classes": [
+      "SCHOOL_SPECIFIC_STOVE_DIRECTION_TRADITION"
+    ],
+    "text_status": "TRANSCRIPTION_OR_PUBLICATION_STRONG",
+    "attribution_status": "ATTRIBUTION_UNRESOLVED_OR_NOT_APPLICABLE",
+    "semantic_status": "SEMANTIC_REVIEW",
+    "occurrence_count": 1,
+    "registry_provenance": [
+      "BATCH11/01_SOURCE_REGISTRY/source_registry_batch11.json"
+    ],
+    "canonical_state": "ACTIVE"
+  },
+  {
+    "source_id": "SRC-GJTS677-INNER",
+    "canonical_title_zh": "欽定古今圖書集成·藝術典第677卷·陽宅十書三·論宅內形第八",
+    "canonical_title_vi": "Cổ Kim Đồ Thư Tập Thành quyển 677 — Dương Trạch Thập Thư III, Luận nội hình",
+    "author_or_authority": null,
+    "date_or_dynasty": null,
+    "urls": [
+      "https://zh.wikisource.org/wiki/%E6%AC%BD%E5%AE%9A%E5%8F%A4%E4%BB%8A%E5%9C%96%E6%9B%B8%E9%9B%86%E6%88%90/%E5%8D%9A%E7%89%A9%E5%BD%99%E7%B7%A8/%E8%97%9D%E8%A1%93%E5%85%B8/%E7%AC%AC677%E5%8D%B7"
+    ],
+    "roles_or_evidence_classes": [
+      "PRIMARY_TEXTUAL_CROSS_WITNESS"
+    ],
+    "text_status": "TEXT_STATUS_REVIEW",
+    "attribution_status": "ATTRIBUTION_UNRESOLVED_OR_NOT_APPLICABLE",
+    "semantic_status": "SEMANTIC_REVIEW",
+    "occurrence_count": 2,
+    "registry_provenance": [
+      "QA_CHECKPOINT_A/canonical_source_registry_DRAFT.json",
+      "BATCH07/01_SOURCE_REGISTRY/source_registry_batch07.json"
+    ],
+    "canonical_state": "ACTIVE_WITH_REVIEW"
+  },
+  {
+    "source_id": "SRC-GJTS677-INTERNAL",
+    "canonical_title_zh": "欽定古今圖書集成·藝術典第677卷·陽宅十書三·論宅內形第八",
+    "canonical_title_vi": "Cổ Kim Đồ Thư Tập Thành quyển 677 — Dương Trạch Thập Thư III, Luận nội hình",
+    "author_or_authority": null,
+    "date_or_dynasty": null,
+    "urls": [
+      "https://zh.wikisource.org/wiki/%E6%AC%BD%E5%AE%9A%E5%8F%A4%E4%BB%8A%E5%9C%96%E6%9B%B8%E9%9B%86%E6%88%90/%E5%8D%9A%E7%89%A9%E5%BD%99%E7%B7%A8/%E8%97%9D%E8%A1%93%E5%85%B8/%E7%AC%AC677%E5%8D%B7"
+    ],
+    "roles_or_evidence_classes": [
+      "PRIMARY_TEXTUAL_CROSS_WITNESS"
+    ],
+    "text_status": "TRANSCRIPTION_OR_PUBLICATION_STRONG",
+    "attribution_status": "ATTRIBUTION_UNRESOLVED_OR_NOT_APPLICABLE",
+    "semantic_status": "SEMANTIC_REVIEW",
+    "occurrence_count": 2,
+    "registry_provenance": [
+      "QA_CHECKPOINT_A/canonical_source_registry_DRAFT.json",
+      "BATCH10/01_SOURCE_REGISTRY/source_registry_batch10.json"
+    ],
+    "canonical_state": "ACTIVE_WITH_REVIEW"
+  },
+  {
+    "source_id": "SRC-GJTS677-INTERNAL-KITCHEN",
+    "canonical_title_zh": "欽定古今圖書集成·第677卷·論宅內形第八",
+    "canonical_title_vi": "Cổ Kim Đồ Thư Tập Thành quyển 677 — Luận nội hình, đoạn bếp",
+    "author_or_authority": null,
+    "date_or_dynasty": null,
+    "urls": [
+      "https://zh.wikisource.org/wiki/%E6%AC%BD%E5%AE%9A%E5%8F%A4%E4%BB%8A%E5%9C%96%E6%9B%B8%E9%9B%86%E6%88%90/%E5%8D%9A%E7%89%A9%E5%BD%99%E7%B7%A8/%E8%97%9D%E8%A1%93%E5%85%B8/%E7%AC%AC677%E5%8D%B7"
+    ],
+    "roles_or_evidence_classes": [
+      "INTERNAL_FORM_STOVE_PLACEMENT"
+    ],
+    "text_status": "TEXT_STATUS_REVIEW",
+    "attribution_status": "ATTRIBUTION_UNRESOLVED_OR_NOT_APPLICABLE",
+    "semantic_status": "SEMANTIC_PARTIAL",
+    "occurrence_count": 1,
+    "registry_provenance": [
+      "BATCH11/01_SOURCE_REGISTRY/source_registry_batch11.json"
+    ],
+    "canonical_state": "ACTIVE"
+  },
+  {
+    "source_id": "SRC-GJTS677-TIANJING",
+    "canonical_title_zh": "欽定古今圖書集成·第677卷·陽宅十書三·內形篇",
+    "canonical_title_vi": null,
+    "author_or_authority": null,
+    "date_or_dynasty": null,
+    "urls": [
+      "https://zh.wikisource.org/wiki/%E6%AC%BD%E5%AE%9A%E5%8F%A4%E4%BB%8A%E5%9C%96%E6%9B%B8%E9%9B%86%E6%88%90/%E5%8D%9A%E7%89%A9%E5%BD%99%E7%B7%A8/%E8%97%9D%E8%A1%93%E5%85%B8/%E7%AC%AC677%E5%8D%B7"
+    ],
+    "roles_or_evidence_classes": [
+      "INTERNAL_COURT_TIANJING_TEXT"
+    ],
+    "text_status": "TEXT_STATUS_REVIEW",
+    "attribution_status": "ATTRIBUTION_UNRESOLVED_OR_NOT_APPLICABLE",
+    "semantic_status": "SEMANTIC_REVIEW",
+    "occurrence_count": 2,
+    "registry_provenance": [
+      "QA_CHECKPOINT_A/canonical_source_registry_DRAFT.json",
+      "BATCH09/01_SOURCE_REGISTRY/source_registry_batch09.json"
+    ],
+    "canonical_state": "ACTIVE_WITH_REVIEW"
+  },
+  {
+    "source_id": "SRC-GJTS677-WATER",
+    "canonical_title_zh": "欽定古今圖書集成·第677卷·二十四山放水定局",
+    "canonical_title_vi": null,
+    "author_or_authority": null,
+    "date_or_dynasty": null,
+    "urls": [
+      "https://zh.wikisource.org/wiki/%E6%AC%BD%E5%AE%9A%E5%8F%A4%E4%BB%8A%E5%9C%96%E6%9B%B8%E9%9B%86%E6%88%90/%E5%8D%9A%E7%89%A9%E5%BD%99%E7%B7%A8/%E8%97%9D%E8%A1%93%E5%85%B8/%E7%AC%AC677%E5%8D%B7"
+    ],
+    "roles_or_evidence_classes": [
+      "SCHOOL_SPECIFIC_TIANJING_WATER"
+    ],
+    "text_status": "TEXT_STATUS_REVIEW",
+    "attribution_status": "ATTRIBUTION_UNRESOLVED_OR_NOT_APPLICABLE",
+    "semantic_status": "SEMANTIC_REVIEW",
+    "occurrence_count": 2,
+    "registry_provenance": [
+      "QA_CHECKPOINT_A/canonical_source_registry_DRAFT.json",
+      "BATCH09/01_SOURCE_REGISTRY/source_registry_batch09.json"
+    ],
+    "canonical_state": "ACTIVE_WITH_REVIEW"
+  },
+  {
+    "source_id": "SRC-HLJ-001",
+    "canonical_title_zh": "撼龍經",
+    "canonical_title_vi": "Hám Long Kinh",
+    "author_or_authority": null,
+    "date_or_dynasty": null,
+    "urls": [
+      "https://zh.wikisource.org/wiki/%E6%92%BC%E9%BE%8D%E7%B6%93_(%E5%9B%9B%E5%BA%AB%E5%85%A8%E6%9B%B8%E6%9C%AC)"
+    ],
+    "roles_or_evidence_classes": [
+      "RELATED_FORM_SCHOOL"
+    ],
+    "text_status": "TRANSCRIPTION_OR_PUBLICATION_STRONG",
+    "attribution_status": "ATTRIBUTION_DISPUTED_OR_TRADITIONAL",
+    "semantic_status": "SEMANTIC_REVIEW",
+    "occurrence_count": 3,
+    "registry_provenance": [
+      "QA_CHECKPOINT_A/canonical_source_registry_DRAFT.json",
+      "BATCH02/01_SOURCE_AUDIT/source_registry_batch02.json",
+      "BATCH01/01_SOURCE_REGISTRY/source_registry.json"
+    ],
+    "canonical_state": "ACTIVE_WITH_REVIEW"
+  },
+  {
+    "source_id": "SRC-LBJ-MIRROR-CANDIDATE",
+    "canonical_title_zh": "新鐫工師雕斲正式魯班木經匠家鏡",
+    "canonical_title_vi": "Tân Tuyển Công Sư Điêu Trác Chính Thức Lỗ Ban Mộc Kinh Tượng Gia Kính",
+    "author_or_authority": null,
+    "date_or_dynasty": null,
+    "urls": [
+      "https://ctext.org/wiki.pl?if=gb&res=677890"
+    ],
+    "roles_or_evidence_classes": [
+      "SOURCE_CANDIDATE_ARCHITECTURE"
+    ],
+    "text_status": "TEXT_STATUS_REVIEW",
+    "attribution_status": "ATTRIBUTION_UNRESOLVED_OR_NOT_APPLICABLE",
+    "semantic_status": "SEMANTIC_REVIEW",
+    "occurrence_count": 2,
+    "registry_provenance": [
+      "QA_CHECKPOINT_A/canonical_source_registry_DRAFT.json",
+      "BATCH10/01_SOURCE_REGISTRY/source_registry_batch10.json"
+    ],
+    "canonical_state": "ACTIVE_WITH_REVIEW"
+  },
+  {
+    "source_id": "SRC-QNA-001",
+    "canonical_title_zh": "青囊奧語",
+    "canonical_title_vi": "Thanh Nang Áo Ngữ",
+    "author_or_authority": null,
+    "date_or_dynasty": null,
+    "urls": [],
+    "roles_or_evidence_classes": [],
+    "text_status": "TEXT_STATUS_REVIEW",
+    "attribution_status": "ATTRIBUTION_DISPUTED_OR_TRADITIONAL",
+    "semantic_status": "SEMANTIC_REVIEW",
+    "occurrence_count": 2,
+    "registry_provenance": [
+      "QA_CHECKPOINT_A/canonical_source_registry_DRAFT.json",
+      "BATCH01/01_SOURCE_REGISTRY/source_registry.json"
+    ],
+    "canonical_state": "ACTIVE_WITH_REVIEW"
+  },
+  {
+    "source_id": "SRC-QNX-001",
+    "canonical_title_zh": "青囊序",
+    "canonical_title_vi": "Thanh Nang Tự",
+    "author_or_authority": null,
+    "date_or_dynasty": null,
+    "urls": [],
+    "roles_or_evidence_classes": [],
+    "text_status": "TEXT_STATUS_REVIEW",
+    "attribution_status": "ATTRIBUTION_UNRESOLVED_OR_NOT_APPLICABLE",
+    "semantic_status": "SEMANTIC_REVIEW",
+    "occurrence_count": 2,
+    "registry_provenance": [
+      "QA_CHECKPOINT_A/canonical_source_registry_DRAFT.json",
+      "BATCH01/01_SOURCE_REGISTRY/source_registry.json"
+    ],
+    "canonical_state": "ACTIVE_WITH_REVIEW"
+  },
+  {
+    "source_id": "SRC-RDY-Q10-BED",
+    "canonical_title_zh": "入地眼全書·陽宅卷十",
+    "canonical_title_vi": "Nhập Địa Nhãn Toàn Thư — Dương Trạch quyển 10",
+    "author_or_authority": "傳統題靜道 / truyền thống đề Tĩnh Đạo",
+    "date_or_dynasty": "traditional attribution: 宋; extant textual history not locked here",
+    "urls": [
+      "https://zh.wikisource.org/zh-hant/%E5%85%A5%E5%9C%B0%E7%9C%BC%E5%85%A8%E6%9B%B8"
+    ],
+    "roles_or_evidence_classes": [
+      "TRADITIONAL_FENG_SHUI_TEXT"
+    ],
+    "text_status": "TEXT_STATUS_REVIEW",
+    "attribution_status": "ATTRIBUTION_DISPUTED_OR_TRADITIONAL",
+    "semantic_status": "SEMANTIC_STRONG",
+    "occurrence_count": 1,
+    "registry_provenance": [
+      "BATCH12/01_SOURCE_REGISTRY/source_registry_batch12.json"
+    ],
+    "canonical_state": "ACTIVE"
+  },
+  {
+    "source_id": "SRC-RDYS-001",
+    "canonical_title_zh": "入地眼全書",
+    "canonical_title_vi": "Nhập Địa Nhãn Toàn Thư",
+    "author_or_authority": null,
+    "date_or_dynasty": null,
+    "urls": [],
+    "roles_or_evidence_classes": [],
+    "text_status": "TEXT_STATUS_REVIEW",
+    "attribution_status": "ATTRIBUTION_UNRESOLVED_OR_NOT_APPLICABLE",
+    "semantic_status": "SEMANTIC_REVIEW",
+    "occurrence_count": 2,
+    "registry_provenance": [
+      "QA_CHECKPOINT_A/canonical_source_registry_DRAFT.json",
+      "BATCH01/01_SOURCE_REGISTRY/source_registry.json"
+    ],
+    "canonical_state": "ACTIVE_WITH_REVIEW"
+  },
+  {
+    "source_id": "SRC-RZXZ-001",
+    "canonical_title_zh": "人子須知",
+    "canonical_title_vi": "Nhân Tử Tu Tri",
+    "author_or_authority": null,
+    "date_or_dynasty": null,
+    "urls": [],
+    "roles_or_evidence_classes": [],
+    "text_status": "TEXT_STATUS_REVIEW",
+    "attribution_status": "ATTRIBUTION_UNRESOLVED_OR_NOT_APPLICABLE",
+    "semantic_status": "SEMANTIC_REVIEW",
+    "occurrence_count": 2,
+    "registry_provenance": [
+      "QA_CHECKPOINT_A/canonical_source_registry_DRAFT.json",
+      "BATCH01/01_SOURCE_REGISTRY/source_registry.json"
+    ],
+    "canonical_state": "ACTIVE_WITH_REVIEW"
+  },
+  {
+    "source_id": "SRC-SKTY-109",
+    "canonical_title_zh": "四庫全書總目提要·卷109",
+    "canonical_title_vi": "Tứ Khố Toàn Thư Tổng Mục Đề Yếu, quyển 109",
+    "author_or_authority": "四庫館臣",
+    "date_or_dynasty": null,
+    "urls": [
+      "https://zh.wikisource.org/wiki/%E5%9B%9B%E5%BA%AB%E5%85%A8%E6%9B%B8%E7%B8%BD%E7%9B%AE%E6%8F%90%E8%A6%81/%E5%8D%B7109"
+    ],
+    "roles_or_evidence_classes": [
+      "BIBLIOGRAPHIC_AUDIT"
+    ],
+    "text_status": "TRANSCRIPTION_OR_PUBLICATION_STRONG",
+    "attribution_status": "ATTRIBUTION_UNRESOLVED_OR_NOT_APPLICABLE",
+    "semantic_status": "SEMANTIC_REVIEW",
+    "occurrence_count": 2,
+    "registry_provenance": [
+      "QA_CHECKPOINT_A/canonical_source_registry_DRAFT.json",
+      "BATCH02/01_SOURCE_AUDIT/source_registry_batch02.json"
+    ],
+    "canonical_state": "ACTIVE_WITH_REVIEW"
+  },
+  {
+    "source_id": "SRC-TYJ-001",
+    "canonical_title_zh": "天玉經",
+    "canonical_title_vi": "Thiên Ngọc Kinh",
+    "author_or_authority": null,
+    "date_or_dynasty": null,
+    "urls": [],
+    "roles_or_evidence_classes": [],
+    "text_status": "TEXT_STATUS_REVIEW",
+    "attribution_status": "ATTRIBUTION_DISPUTED_OR_TRADITIONAL",
+    "semantic_status": "SEMANTIC_REVIEW",
+    "occurrence_count": 2,
+    "registry_provenance": [
+      "QA_CHECKPOINT_A/canonical_source_registry_DRAFT.json",
+      "BATCH01/01_SOURCE_REGISTRY/source_registry.json"
+    ],
+    "canonical_state": "ACTIVE_WITH_REVIEW"
+  },
+  {
+    "source_id": "SRC-XJBF-001",
+    "canonical_title_zh": "欽定協紀辨方書",
+    "canonical_title_vi": "Khâm Định Hiệp Kỷ Biện Phương Thư",
+    "author_or_authority": null,
+    "date_or_dynasty": null,
+    "urls": [],
+    "roles_or_evidence_classes": [],
+    "text_status": "TEXT_STATUS_REVIEW",
+    "attribution_status": "ATTRIBUTION_UNRESOLVED_OR_NOT_APPLICABLE",
+    "semantic_status": "SEMANTIC_REVIEW",
+    "occurrence_count": 2,
+    "registry_provenance": [
+      "QA_CHECKPOINT_A/canonical_source_registry_DRAFT.json",
+      "BATCH01/01_SOURCE_REGISTRY/source_registry.json"
+    ],
+    "canonical_state": "ACTIVE_WITH_REVIEW"
+  },
+  {
+    "source_id": "SRC-YLJ-001",
+    "canonical_title_zh": "疑龍經",
+    "canonical_title_vi": "Nghi Long Kinh",
+    "author_or_authority": null,
+    "date_or_dynasty": null,
+    "urls": [
+      "https://zh.wikisource.org/wiki/%E6%92%BC%E9%BE%8D%E7%B6%93_(%E5%9B%9B%E5%BA%AB%E5%85%A8%E6%9B%B8%E6%9C%AC)"
+    ],
+    "roles_or_evidence_classes": [
+      "PRIMARY_TRADITION_TEXT_WITH_ATTRIBUTION_DISPUTE"
+    ],
+    "text_status": "TRANSCRIPTION_OR_PUBLICATION_STRONG",
+    "attribution_status": "ATTRIBUTION_DISPUTED_OR_TRADITIONAL",
+    "semantic_status": "SEMANTIC_REVIEW",
+    "occurrence_count": 3,
+    "registry_provenance": [
+      "QA_CHECKPOINT_A/canonical_source_registry_DRAFT.json",
+      "BATCH02/01_SOURCE_AUDIT/source_registry_batch02.json",
+      "BATCH01/01_SOURCE_REGISTRY/source_registry.json"
+    ],
+    "canonical_state": "ACTIVE_WITH_REVIEW"
+  },
+  {
+    "source_id": "SRC-YLJ-DZ-002",
+    "canonical_title_zh": "疑龍經·疑龍十問",
+    "canonical_title_vi": "Nghi Long Kinh — Nghi Long Thập Vấn",
+    "author_or_authority": "舊本題唐楊筠松 / cựu bản đề Dương Quân Tùng",
+    "date_or_dynasty": null,
+    "urls": [
+      "https://zh.wikisource.org/wiki/%E6%92%BC%E9%BE%8D%E7%B6%93/%E7%96%91%E9%BE%8D%E7%B6%93/%E7%96%91%E9%BE%8D%E5%8D%81%E5%95%8F"
+    ],
+    "roles_or_evidence_classes": [],
+    "text_status": "TEXT_STATUS_REVIEW",
+    "attribution_status": "ATTRIBUTION_DISPUTED_OR_TRADITIONAL",
+    "semantic_status": "SEMANTIC_REVIEW",
+    "occurrence_count": 2,
+    "registry_provenance": [
+      "QA_CHECKPOINT_A/canonical_source_registry_DRAFT.json",
+      "BATCH04/01_SOURCE_REGISTRY/source_registry_batch04.json"
+    ],
+    "canonical_state": "ACTIVE_WITH_REVIEW"
+  },
+  {
+    "source_id": "SRC-YLJ-MT-003",
+    "canonical_title_zh": "疑龍經·上篇",
+    "canonical_title_vi": "Nghi Long Kinh — Thượng thiên",
+    "author_or_authority": "舊本題唐楊筠松",
+    "date_or_dynasty": null,
+    "urls": [
+      "https://zh.wikisource.org/wiki/%E6%92%BC%E9%BE%8D%E7%B6%93/%E7%96%91%E9%BE%8D%E7%B6%93/%E4%B8%8A%E7%AF%87"
+    ],
+    "roles_or_evidence_classes": [],
+    "text_status": "TEXT_STATUS_REVIEW",
+    "attribution_status": "ATTRIBUTION_DISPUTED_OR_TRADITIONAL",
+    "semantic_status": "SEMANTIC_REVIEW",
+    "occurrence_count": 2,
+    "registry_provenance": [
+      "QA_CHECKPOINT_A/canonical_source_registry_DRAFT.json",
+      "BATCH04/01_SOURCE_REGISTRY/source_registry_batch04.json"
+    ],
+    "canonical_state": "ACTIVE_WITH_REVIEW"
+  },
+  {
+    "source_id": "SRC-YSSB-1773-V1",
+    "canonical_title_zh": "養生隨筆（又名老老恆言）·卷一·安寢",
+    "canonical_title_vi": "Dưỡng Sinh Tùy Bút (Lão Lão Hằng Ngôn), quyển 1 — An tẩm",
+    "author_or_authority": "曹庭棟 / Tào Đình Đống",
+    "date_or_dynasty": "1773",
+    "urls": [
+      "https://zh.wikisource.org/wiki/%E9%A4%8A%E7%94%9F%E9%9A%A8%E7%AD%86/%E5%8D%B7%E4%B8%80"
+    ],
+    "roles_or_evidence_classes": [
+      "HISTORICAL_DOMESTIC_HEALTH"
+    ],
+    "text_status": "TRANSCRIPTION_OR_PUBLICATION_STRONG",
+    "attribution_status": "ATTRIBUTION_VERIFIED",
+    "semantic_status": "SEMANTIC_STRONG",
+    "occurrence_count": 1,
+    "registry_provenance": [
+      "BATCH12/01_SOURCE_REGISTRY/source_registry_batch12.json"
+    ],
+    "canonical_state": "ACTIVE"
+  },
+  {
+    "source_id": "SRC-YSSB-1773-V4",
+    "canonical_title_zh": "養生隨筆·卷四·臥房／床",
+    "canonical_title_vi": "Dưỡng Sinh Tùy Bút, quyển 4 — Phòng ngủ / Giường",
+    "author_or_authority": "曹庭棟 / Tào Đình Đống",
+    "date_or_dynasty": "1773",
+    "urls": [
+      "https://zh.wikisource.org/wiki/%E9%A4%8A%E7%94%9F%E9%9A%A8%E7%AD%86/%E5%8D%B7%E5%9B%9B"
+    ],
+    "roles_or_evidence_classes": [
+      "HISTORICAL_DOMESTIC_HEALTH"
+    ],
+    "text_status": "TRANSCRIPTION_OR_PUBLICATION_STRONG",
+    "attribution_status": "ATTRIBUTION_VERIFIED",
+    "semantic_status": "SEMANTIC_STRONG",
+    "occurrence_count": 1,
+    "registry_provenance": [
+      "BATCH12/01_SOURCE_REGISTRY/source_registry_batch12.json"
+    ],
+    "canonical_state": "ACTIVE"
+  },
+  {
+    "source_id": "SRC-YZCY-QING-BED",
+    "canonical_title_zh": "陽宅闡要",
+    "canonical_title_vi": "Dương Trạch Xiển Yếu",
+    "author_or_authority": "溫自晉 / Ôn Tự Tấn",
+    "date_or_dynasty": "清",
+    "urls": [
+      "https://zh.wikisource.org/wiki/%E9%99%BD%E5%AE%85%E9%97%A1%E8%A6%81"
+    ],
+    "roles_or_evidence_classes": [
+      "TRADITIONAL_FENG_SHUI_TEXT"
+    ],
+    "text_status": "TEXT_STATUS_REVIEW",
+    "attribution_status": "ATTRIBUTION_VERIFIED",
+    "semantic_status": "SEMANTIC_STRONG",
+    "occurrence_count": 1,
+    "registry_provenance": [
+      "BATCH12/01_SOURCE_REGISTRY/source_registry_batch12.json"
+    ],
+    "canonical_state": "ACTIVE"
+  },
+  {
+    "source_id": "SRC-YZFS-001",
+    "canonical_title_zh": "營造法式",
+    "canonical_title_vi": "Doanh Tạo Pháp Thức",
+    "author_or_authority": null,
+    "date_or_dynasty": null,
+    "urls": [],
+    "roles_or_evidence_classes": [],
+    "text_status": "TEXT_STATUS_REVIEW",
+    "attribution_status": "ATTRIBUTION_UNRESOLVED_OR_NOT_APPLICABLE",
+    "semantic_status": "SEMANTIC_REVIEW",
+    "occurrence_count": 2,
+    "registry_provenance": [
+      "QA_CHECKPOINT_A/canonical_source_registry_DRAFT.json",
+      "BATCH01/01_SOURCE_REGISTRY/source_registry.json"
+    ],
+    "canonical_state": "ACTIVE_WITH_REVIEW"
+  },
+  {
+    "source_id": "SRC-YZSS-001",
+    "canonical_title_zh": "陽宅十書",
+    "canonical_title_vi": "Dương Trạch Thập Thư",
+    "author_or_authority": null,
+    "date_or_dynasty": null,
+    "urls": [
+      "https://ctext.org/wiki.pl?chapter=412426&if=en"
+    ],
+    "roles_or_evidence_classes": [
+      "PRIMARY_TRADITION_TEXT"
+    ],
+    "text_status": "OCR_UNVERIFIED_OR_CAUTION",
+    "attribution_status": "ATTRIBUTION_UNRESOLVED_OR_NOT_APPLICABLE",
+    "semantic_status": "SEMANTIC_REVIEW",
+    "occurrence_count": 3,
+    "registry_provenance": [
+      "QA_CHECKPOINT_A/canonical_source_registry_DRAFT.json",
+      "BATCH02/01_SOURCE_AUDIT/source_registry_batch02.json",
+      "BATCH01/01_SOURCE_REGISTRY/source_registry.json"
+    ],
+    "canonical_state": "ACTIVE_WITH_REVIEW"
+  },
+  {
+    "source_id": "SRC-YZSS-EXT-001",
+    "canonical_title_zh": "陽宅十書·論宅外形第一",
+    "canonical_title_vi": "Dương Trạch Thập Thư — Luận ngoại hình nhà ở, thiên thứ nhất",
+    "author_or_authority": "王君榮纂輯 / Vương Quân Vinh biên tập theo truyền bản",
+    "date_or_dynasty": null,
+    "urls": [
+      "https://ctext.org/wiki.pl?chapter=412426&if=en",
+      "https://zh.wikisource.org/wiki/%E6%AC%BD%E5%AE%9A%E5%8F%A4%E4%BB%8A%E5%9C%96%E6%9B%B8%E9%9B%86%E6%88%90/%E5%8D%9A%E7%89%A9%E5%BD%99%E7%B7%A8/%E8%97%9D%E8%A1%93%E5%85%B8/%E7%AC%AC675%E5%8D%B7"
+    ],
+    "roles_or_evidence_classes": [],
+    "text_status": "TEXT_STATUS_REVIEW",
+    "attribution_status": "ATTRIBUTION_UNRESOLVED_OR_NOT_APPLICABLE",
+    "semantic_status": "SEMANTIC_REVIEW",
+    "occurrence_count": 2,
+    "registry_provenance": [
+      "QA_CHECKPOINT_A/canonical_source_registry_DRAFT.json",
+      "BATCH04/01_SOURCE_REGISTRY/source_registry_batch04.json"
+    ],
+    "canonical_state": "ACTIVE_WITH_REVIEW"
+  },
+  {
+    "source_id": "SRC-ZANG-005",
+    "canonical_title_zh": "葬書·內篇",
+    "canonical_title_vi": "Táng Thư — Nội thiên",
+    "author_or_authority": "傳晉郭璞; 四庫認為必出郭璞無可徵信",
+    "date_or_dynasty": null,
+    "urls": [
+      "https://zh.wikisource.org/zh-hant/%E8%91%AC%E6%9B%B8/%E5%85%A7%E7%AF%87"
+    ],
+    "roles_or_evidence_classes": [],
+    "text_status": "TEXT_STATUS_REVIEW",
+    "attribution_status": "ATTRIBUTION_DISPUTED_OR_TRADITIONAL",
+    "semantic_status": "SEMANTIC_REVIEW",
+    "occurrence_count": 2,
+    "registry_provenance": [
+      "QA_CHECKPOINT_A/canonical_source_registry_DRAFT.json",
+      "BATCH04/01_SOURCE_REGISTRY/source_registry_batch04.json"
+    ],
+    "canonical_state": "ACTIVE_WITH_REVIEW"
+  },
+  {
+    "source_id": "SRC-ZJ-001",
+    "canonical_title_zh": "宅經",
+    "canonical_title_vi": "Trạch Kinh",
+    "author_or_authority": "舊本題黃帝; 四庫判為依託",
+    "date_or_dynasty": null,
+    "urls": [
+      "https://zh.wikisource.org/wiki/%E5%AE%85%E7%B6%93_(%E5%9B%9B%E5%BA%AB%E5%85%A8%E6%9B%B8%E6%9C%AC)/%E5%85%A8%E8%A6%BD"
+    ],
+    "roles_or_evidence_classes": [
+      "PRIMARY_TRADITION_TEXT_PSEUDEPIGRAPHIC"
+    ],
+    "text_status": "TRANSCRIPTION_OR_PUBLICATION_STRONG",
+    "attribution_status": "PSEUDEPIGRAPHIC_OR_PSEUDEPIGRAPHIC_RISK",
+    "semantic_status": "SEMANTIC_REVIEW",
+    "occurrence_count": 3,
+    "registry_provenance": [
+      "QA_CHECKPOINT_A/canonical_source_registry_DRAFT.json",
+      "BATCH02/01_SOURCE_AUDIT/source_registry_batch02.json",
+      "BATCH01/01_SOURCE_REGISTRY/source_registry.json"
+    ],
+    "canonical_state": "ACTIVE_WITH_REVIEW"
+  },
+  {
+    "source_id": "SRC-ZJ-SYS-004",
+    "canonical_title_zh": "宅經·卷上",
+    "canonical_title_vi": "Trạch Kinh — Quyển thượng",
+    "author_or_authority": "舊本題黃帝; 四庫認為依託",
+    "date_or_dynasty": null,
+    "urls": [
+      "https://zh.wikisource.org/zh-hant/%E5%AE%85%E7%B6%93_%28%E5%9B%9B%E5%BA%AB%E5%85%A8%E6%9B%B8%E6%9C%AC%29/%E5%8D%B7%E4%B8%8A"
+    ],
+    "roles_or_evidence_classes": [],
+    "text_status": "TEXT_STATUS_REVIEW",
+    "attribution_status": "PSEUDEPIGRAPHIC_OR_PSEUDEPIGRAPHIC_RISK",
+    "semantic_status": "SEMANTIC_REVIEW",
+    "occurrence_count": 2,
+    "registry_provenance": [
+      "QA_CHECKPOINT_A/canonical_source_registry_DRAFT.json",
+      "BATCH04/01_SOURCE_REGISTRY/source_registry_batch04.json"
+    ],
+    "canonical_state": "ACTIVE_WITH_REVIEW"
+  }
+]

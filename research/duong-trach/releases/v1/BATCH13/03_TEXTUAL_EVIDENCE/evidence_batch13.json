@@ -1,0 +1,38 @@
+[
+  {
+    "evidence_id": "STAIR-EV-001",
+    "source_id": "SRC-YZF-1100-STAIR",
+    "original": "《營造法式》卷目及制度中明列「階」等建築構件。",
+    "hanviet": "Doanh Tạo Pháp Thức quyển mục cập chế độ trung minh liệt 'giai' đẳng kiến trúc cấu kiện.",
+    "literal_vi": "Doanh Tạo Pháp Thức liệt kê 'giai' như một cấu kiện/hạng mục kiến trúc.",
+    "classification": "HISTORICAL_CONSTRUCTION",
+    "state": "TECHNICAL_NOT_FENG_SHUI"
+  },
+  {
+    "evidence_id": "STAIR-EV-002",
+    "source_id": "SRC-YZF-V15-TADAO",
+    "original": "卷十五列「踏道、慢道」。",
+    "hanviet": "Quyển thập ngũ liệt 'đạp đạo, mạn đạo'.",
+    "literal_vi": "Quyển 15 có các mục Đạp Đạo và Mạn Đạo.",
+    "classification": "HISTORICAL_CONSTRUCTION",
+    "state": "TERM_EXISTS_GEOMETRY_REQUIRES_SCAN_DETAIL"
+  },
+  {
+    "evidence_id": "STAIR-EV-003",
+    "source_id": "SRC-YZSS-STAIR-SEARCH",
+    "original": null,
+    "hanviet": null,
+    "literal_vi": "Trong rà soát lõi Batch13, chưa khóa được câu trực tiếp của Dương Trạch Thập Thư về số bậc cầu thang hay Sinh-Lão-Bệnh-Tử.",
+    "classification": "EVIDENCE_GAP",
+    "state": "NO_DIRECT_EVIDENCE_IN_VERIFIED_CORE_SEARCH"
+  },
+  {
+    "evidence_id": "STAIR-EV-004",
+    "source_id": "SRC-DNBS-STAIR-SEARCH",
+    "original": null,
+    "hanviet": null,
+    "literal_vi": "Trong phần Chư kỵ nhà ở đã rà, chưa khóa được rule trực tiếp về số bậc cầu thang.",
+    "classification": "EVIDENCE_GAP",
+    "state": "NO_DIRECT_EVIDENCE_IN_VERIFIED_CORE_SEARCH"
+  }
+]

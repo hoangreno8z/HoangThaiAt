@@ -1,0 +1,231 @@
+[
+  {
+    "rule_id": "R-STR-001",
+    "claim_id": "STR-001",
+    "source_id": "SRC-YZF-LIJIE-1100-MATERIAL",
+    "domain": "MATERIAL_STRUCTURE_REPAIR",
+    "authority_tier": "A1_AUTHENTICATED_OFFICIAL_CLASSIC",
+    "publish_state": "REFERENCE_ONLY",
+    "master_doctrine": false,
+    "engine_threshold": null,
+    "ancient_numeric_threshold": null,
+    "traditional_outcome_causal": false,
+    "modern_hard_gate_required": true,
+    "observable": [
+      "building_scale",
+      "historical_material_grade_or_module"
+    ]
+  },
+  {
+    "rule_id": "R-STR-002",
+    "claim_id": "STR-002",
+    "source_id": "SRC-YZF-LIJIE-1100-BEAM",
+    "domain": "MATERIAL_STRUCTURE_REPAIR",
+    "authority_tier": "A1_AUTHENTICATED_OFFICIAL_CLASSIC",
+    "publish_state": "REFERENCE_ONLY",
+    "master_doctrine": false,
+    "engine_threshold": null,
+    "ancient_numeric_threshold": null,
+    "traditional_outcome_causal": false,
+    "modern_hard_gate_required": true,
+    "observable": [
+      "historical_beam_width",
+      "historical_beam_thickness"
+    ]
+  },
+  {
+    "rule_id": "R-STR-003",
+    "claim_id": "STR-003",
+    "source_id": "SRC-YZF-LIJIE-1100-BEAM",
+    "domain": "MATERIAL_STRUCTURE_REPAIR",
+    "authority_tier": "A1_AUTHENTICATED_OFFICIAL_CLASSIC",
+    "publish_state": "REFERENCE_ONLY",
+    "master_doctrine": false,
+    "engine_threshold": null,
+    "ancient_numeric_threshold": null,
+    "traditional_outcome_causal": false,
+    "modern_hard_gate_required": true,
+    "observable": [
+      "historical_beam_reinforcement_detail",
+      "beam_surface_cutting"
+    ]
+  },
+  {
+    "rule_id": "R-STR-004",
+    "claim_id": "STR-004",
+    "source_id": "SRC-JJBY-YUAN-STRUCT",
+    "domain": "MATERIAL_STRUCTURE_REPAIR",
+    "authority_tier": "B1_EARLY_ANONYMOUS_WITNESS",
+    "publish_state": "CANDIDATE",
+    "master_doctrine": false,
+    "engine_threshold": null,
+    "ancient_numeric_threshold": null,
+    "traditional_outcome_causal": false,
+    "modern_hard_gate_required": true,
+    "observable": [
+      "timber_species",
+      "source_tree_condition"
+    ]
+  },
+  {
+    "rule_id": "R-STR-005",
+    "claim_id": "STR-005",
+    "source_id": "SRC-JJBY-YUAN-STRUCT",
+    "domain": "MATERIAL_STRUCTURE_REPAIR",
+    "authority_tier": "B1_EARLY_ANONYMOUS_WITNESS",
+    "publish_state": "BLOCKED",
+    "master_doctrine": false,
+    "engine_threshold": null,
+    "ancient_numeric_threshold": null,
+    "traditional_outcome_causal": false,
+    "modern_hard_gate_required": true,
+    "observable": []
+  },
+  {
+    "rule_id": "R-STR-006",
+    "claim_id": "STR-006",
+    "source_id": "SRC-JJBY-YUAN-STRUCT",
+    "domain": "MATERIAL_STRUCTURE_REPAIR",
+    "authority_tier": "B1_EARLY_ANONYMOUS_WITNESS",
+    "publish_state": "CANDIDATE",
+    "master_doctrine": false,
+    "engine_threshold": null,
+    "ancient_numeric_threshold": null,
+    "traditional_outcome_causal": false,
+    "modern_hard_gate_required": true,
+    "observable": [
+      "member_tilt",
+      "ridge_or_beam_deformation"
+    ]
+  },
+  {
+    "rule_id": "R-STR-007",
+    "claim_id": "STR-007",
+    "source_id": "SRC-JJBY-YUAN-STRUCT",
+    "domain": "MATERIAL_STRUCTURE_REPAIR",
+    "authority_tier": "B1_EARLY_ANONYMOUS_WITNESS",
+    "publish_state": "CANDIDATE",
+    "master_doctrine": false,
+    "engine_threshold": null,
+    "ancient_numeric_threshold": null,
+    "traditional_outcome_causal": false,
+    "modern_hard_gate_required": true,
+    "observable": [
+      "insect_void_damage",
+      "member_section_loss"
+    ]
+  },
+  {
+    "rule_id": "R-STR-008",
+    "claim_id": "STR-008",
+    "source_id": "SRC-JJBY-YUAN-STRUCT",
+    "domain": "MATERIAL_STRUCTURE_REPAIR",
+    "authority_tier": "B1_EARLY_ANONYMOUS_WITNESS",
+    "publish_state": "CANDIDATE",
+    "master_doctrine": false,
+    "engine_threshold": null,
+    "ancient_numeric_threshold": null,
+    "traditional_outcome_causal": false,
+    "modern_hard_gate_required": true,
+    "observable": [
+      "structural_member_borer_damage",
+      "section_loss"
+    ]
+  },
+  {
+    "rule_id": "R-STR-009",
+    "claim_id": "STR-009",
+    "source_id": "SRC-JJBY-YUAN-STRUCT",
+    "domain": "MATERIAL_STRUCTURE_REPAIR",
+    "authority_tier": "B1_EARLY_ANONYMOUS_WITNESS",
+    "publish_state": "PARTIAL_ONLY",
+    "master_doctrine": false,
+    "engine_threshold": null,
+    "ancient_numeric_threshold": null,
+    "traditional_outcome_causal": false,
+    "modern_hard_gate_required": true,
+    "observable": [
+      "rafter_beam_column_joint_topology"
+    ]
+  },
+  {
+    "rule_id": "R-STR-010",
+    "claim_id": "STR-010",
+    "source_id": "SRC-DNBS-V5-STRUCT",
+    "domain": "MATERIAL_STRUCTURE_REPAIR",
+    "authority_tier": "C1_ATTRIBUTION_DISPUTED",
+    "publish_state": "REFERENCE_ONLY",
+    "master_doctrine": false,
+    "engine_threshold": null,
+    "ancient_numeric_threshold": null,
+    "traditional_outcome_causal": false,
+    "modern_hard_gate_required": true,
+    "observable": [
+      "structural_member_borer_damage",
+      "section_loss"
+    ]
+  },
+  {
+    "rule_id": "R-STR-011",
+    "claim_id": "STR-011",
+    "source_id": "SRC-DNBS-V5-STRUCT",
+    "domain": "MATERIAL_STRUCTURE_REPAIR",
+    "authority_tier": "C1_ATTRIBUTION_DISPUTED",
+    "publish_state": "REFERENCE_ONLY",
+    "master_doctrine": false,
+    "engine_threshold": null,
+    "ancient_numeric_threshold": null,
+    "traditional_outcome_causal": false,
+    "modern_hard_gate_required": true,
+    "observable": [
+      "timber_species",
+      "source_tree_condition"
+    ]
+  },
+  {
+    "rule_id": "R-STR-012",
+    "claim_id": "STR-012",
+    "source_id": "SRC-JJBY-YUAN-STRUCT",
+    "domain": "MATERIAL_STRUCTURE_REPAIR",
+    "authority_tier": "B1_EARLY_ANONYMOUS_WITNESS",
+    "publish_state": "REFERENCE_ONLY",
+    "master_doctrine": false,
+    "engine_threshold": null,
+    "ancient_numeric_threshold": null,
+    "traditional_outcome_causal": false,
+    "modern_hard_gate_required": true,
+    "observable": [
+      "material_renewal_state"
+    ]
+  },
+  {
+    "rule_id": "MOD-STR-DANGER-001",
+    "source_id": "MOD-TCVN9381-2012",
+    "domain": "MATERIAL_STRUCTURE_REPAIR",
+    "publish_state": "HARD_GATE",
+    "result": "DANGER_ASSESSMENT_BEFORE_FENGSHUI_REPAIR_DECISION",
+    "engine_threshold": "STANDARD_LOOKUP_NOT_HARDCODED"
+  },
+  {
+    "rule_id": "MOD-STR-TERMITE-001",
+    "source_ids": [
+      "MOD-TCVN8268-2017",
+      "MOD-TCVN7958-2017"
+    ],
+    "domain": "MATERIAL_STRUCTURE_REPAIR",
+    "publish_state": "MODERN_GATE_BY_EXISTING_OR_NEW",
+    "result": "TERMITE_TREATMENT_OR_PREVENTION",
+    "engine_threshold": "STANDARD_LOOKUP_NOT_HARDCODED"
+  },
+  {
+    "rule_id": "MOD-STR-CORROSION-001",
+    "source_ids": [
+      "MOD-TCVN9348-2012",
+      "MOD-TCVN12251-2020"
+    ],
+    "domain": "MATERIAL_STRUCTURE_REPAIR",
+    "publish_state": "MODERN_TECHNICAL_GATE",
+    "result": "CORROSION_ASSESSMENT_AND_PROTECTION",
+    "engine_threshold": "STANDARD_LOOKUP_NOT_HARDCODED"
+  }
+]

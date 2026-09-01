@@ -1,0 +1,40 @@
+{
+  "batch": "14",
+  "date": "2026-09-01",
+  "scope": "WC_SANITATION_WASTEWATER",
+  "counts": {
+    "sources": 9,
+    "terms": 8,
+    "claims": 8,
+    "rules": 10,
+    "cases": 12,
+    "folklore_redteam": 6
+  },
+  "passed": [
+    "糞屋_not_auto_modern_wc",
+    "凶方_and_衰方_not_merged",
+    "school_id_required_for_directional_wc_rules",
+    "wc_center_rule_not_invented",
+    "wc_above_kitchen_rule_not_invented",
+    "wc_to_bed_medical_claim_not_invented",
+    "main_door_rule_semantic_overgeneralization_blocked",
+    "wastewater_hard_gate_current_2025_standard",
+    "QCVN07_2025_amendment_versioned",
+    "accessible_toilet_hard_gate",
+    "traditional_health_outcomes_noncausal"
+  ],
+  "important_findings": [
+    "Direct historical evidence exists for toilet/latrine placement in unfavorable sectors, but across distinct later systems.",
+    "The old '糞屋對門' motif predates some later Feng Shui compilations and cannot be safely rephrased as a generic flush-toilet door rule.",
+    "QCVN 07:2023/BXD has Sửa đổi 1:2025 effective 2026-01-23; the corpus must use the amended current version where applicable.",
+    "QCVN 14:2025/BTNMT took effect 2025-09-01 and replaced QCVN 14:2008/BTNMT, subject to transition/project applicability."
+  ],
+  "blocked": [
+    "complete 廁 direction verse in 陽宅撮要 until scan collation",
+    "generic WC center taboo",
+    "generic WC over kitchen taboo",
+    "generic WC-facing-bed ancient causal claim",
+    "generic modern interior WC-door-facing-main-door rule derived from 糞屋"
+  ],
+  "next": "BATCH15_WINDOWS_DAYLIGHT_VENTILATION"
+}

@@ -1,0 +1,175 @@
+[
+  {
+    "case_id": "CASE05-001",
+    "name": "Lô trước hẹp sau rộng",
+    "input": {
+      "front_width_m": 5.0,
+      "rear_width_m": 7.0,
+      "depth_m": 20.0,
+      "measurement_uncertainty_m": 0.03
+    },
+    "geometry_result": "FRONT_NARROWER_THAN_REAR",
+    "classical_matches": [
+      "MOTIF-014"
+    ],
+    "modern_hard_gate": "PASS_ASSUMED_FOR_DEMO_ONLY",
+    "report": "Truyền bản coi dạng này thuận. Không được viết 'sẽ giàu'. Kiến trúc có thể dùng phần sau rộng cho không gian sinh hoạt/sân; cần kiểm thông gió, thoát nước và pháp lý riêng."
+  },
+  {
+    "case_id": "CASE05-002",
+    "name": "Lô trước rộng sau hẹp",
+    "input": {
+      "front_width_m": 7.0,
+      "rear_width_m": 5.0,
+      "depth_m": 20.0,
+      "measurement_uncertainty_m": 0.03
+    },
+    "geometry_result": "FRONT_WIDER_THAN_REAR",
+    "classical_matches": [
+      "MOTIF-015"
+    ],
+    "modern_hard_gate": "PASS_ASSUMED_FOR_DEMO_ONLY",
+    "report": "Truyền bản có phán bất lợi, nhưng không phải lý do kỹ thuật tự động loại đất. Có thể thiết kế footprint tương đối quy chỉnh; giữ conflict text chưa giải ở nguồn hình."
+  },
+  {
+    "case_id": "CASE05-003",
+    "name": "Bồn trũng giữa khu đất",
+    "input": {
+      "perimeter_elevation_m": 3.0,
+      "center_elevation_m": 2.2,
+      "drainage": "poor"
+    },
+    "geometry_result": "CENTER_SINK",
+    "classical_matches": [
+      "MOTIF-013"
+    ],
+    "modern_hard_gate": "ESCALATE_DRAINAGE_FLOOD",
+    "report": "Đây là nơi cổ pháp và kỹ thuật có thể cùng cảnh báo nhưng vì lý do khác nhau. Kỹ thuật kiểm thoát nước/ngập có quyền phủ quyết."
+  },
+  {
+    "case_id": "CASE05-004",
+    "name": "Trước thấp sau cao nhẹ",
+    "input": {
+      "front_elevation_m": 10.0,
+      "rear_elevation_m": 11.2,
+      "depth_m": 30.0
+    },
+    "geometry_result": "FRONT_LOWER_REAR_HIGHER",
+    "classical_matches": [
+      "MOTIF-011"
+    ],
+    "modern_hard_gate": "REQUIRES_SLOPE_DRAINAGE_CHECK",
+    "report": "Truyền bản phán tốt; thực tế phải kiểm nước chảy về đâu, độ dốc, nền móng, tiếp cận và cao độ đường."
+  },
+  {
+    "case_id": "CASE05-005",
+    "name": "Trước cao sau thấp",
+    "input": {
+      "front_elevation_m": 12.0,
+      "rear_elevation_m": 10.5,
+      "depth_m": 25.0
+    },
+    "geometry_result": "FRONT_HIGHER_REAR_LOWER",
+    "classical_matches": [
+      "MOTIF-012"
+    ],
+    "modern_hard_gate": "CHECK_REAR_DRAINAGE",
+    "report": "Cổ pháp phán bất lợi. Hiện đại kiểm nguy cơ nước dồn phía sau; không dùng phán cổ để chẩn đoán 'hôn mê' hay bệnh."
+  },
+  {
+    "case_id": "CASE05-006",
+    "name": "Đường giao xung nhiều phía",
+    "input": {
+      "road_approach_axes": 4,
+      "traffic_volume": "unknown"
+    },
+    "geometry_result": "MULTI_APPROACH_NETWORK",
+    "classical_matches": [
+      "MOTIF-010",
+      "MOTIF-023"
+    ],
+    "modern_hard_gate": "CHECK_TRAFFIC_NOISE_SAFETY",
+    "report": "Không đồng nhất 'bốn mặt có đường' với '四面交衝'. Cần xem trục tiếp cận thực sự, giao lộ, tốc độ và khoảng lùi."
+  },
+  {
+    "case_id": "CASE05-007",
+    "name": "Dòng suối chảy trực diện vào ranh đất",
+    "input": {
+      "channel_axis_intersects_site": true,
+      "official_flash_flood_hazard": "HIGH"
+    },
+    "geometry_result": "DIRECT_FLOW_IMPACT",
+    "classical_matches": [
+      "MOTIF-007"
+    ],
+    "modern_hard_gate": "FAIL_OR_ENGINEERING_ESCALATION",
+    "report": "Hard Gate thủy văn đứng trước mọi phán phong thủy. Nếu nguy cơ lũ quét/xói lở không chấp nhận được thì loại hoặc yêu cầu chuyên gia."
+  },
+  {
+    "case_id": "CASE05-008",
+    "name": "Nước uốn ôm nhưng vùng ngập cao",
+    "input": {
+      "water_curvature": "EMBRACING",
+      "official_flood_hazard": "HIGH"
+    },
+    "geometry_result": "EMBRACING_WATER",
+    "classical_matches": [
+      "MOTIF-003"
+    ],
+    "modern_hard_gate": "FAIL_OR_ENGINEERING_ESCALATION",
+    "report": "Ví dụ điển hình: cổ hình thế có thể đánh giá thuận nhưng an toàn hiện đại phủ quyết."
+  },
+  {
+    "case_id": "CASE05-009",
+    "name": "Đường cong bị nghi là '返跳'",
+    "input": {
+      "road_curvature": "CONVEX_RELATIVE_TO_SITE"
+    },
+    "geometry_result": "CURVE_OBSERVED",
+    "classical_matches": [
+      "MOTIF-004"
+    ],
+    "modern_hard_gate": "PASS_ASSUMED_FOR_DEMO_ONLY",
+    "report": "Không kết luận. `返跳` chưa được chứng minh đồng nghĩa 'phản cung'. Output bắt buộc UNKNOWN."
+  },
+  {
+    "case_id": "CASE05-010",
+    "name": "Mương trước nhà tách hai nhánh hình chữ V",
+    "input": {
+      "channel_split": "V_SHAPE_FRONT"
+    },
+    "geometry_result": "CHANNEL_SPLIT",
+    "classical_matches": [
+      "MOTIF-020"
+    ],
+    "modern_hard_gate": "CHECK_DRAINAGE_EASEMENT",
+    "report": "Ghi nhận motif chữ Bát theo nguồn. Hiện đại kiểm quyền thoát nước, xói lở, mùi, vệ sinh và ngập."
+  },
+  {
+    "case_id": "CASE05-011",
+    "name": "Có đồi phía sau nhưng nguy cơ sạt lở cao",
+    "input": {
+      "rear_landform": "HILL",
+      "official_landslide_hazard": "HIGH"
+    },
+    "geometry_result": "REAR_MASS_PRESENT",
+    "classical_matches": [
+      "MOTIF-022"
+    ],
+    "modern_hard_gate": "FAIL_OR_ENGINEERING_ESCALATION",
+    "report": "Không được dùng khái niệm 'Huyền Vũ có tựa' để bỏ qua nguy cơ sạt lở."
+  },
+  {
+    "case_id": "CASE05-012",
+    "name": "Lô bị đo gần như bằng trước/sau",
+    "input": {
+      "front_width_m": 6.0,
+      "rear_width_m": 6.02,
+      "measurement_uncertainty_m": 0.03
+    },
+    "geometry_result": "INDETERMINATE_WITHIN_MEASUREMENT_UNCERTAINTY",
+    "classical_matches": [],
+    "modern_hard_gate": "PASS_ASSUMED_FOR_DEMO_ONLY",
+    "report": "Không ép hệ thống gắn 'nở hậu' chỉ vì chênh 2 cm nằm trong sai số đo."
+  }
+]

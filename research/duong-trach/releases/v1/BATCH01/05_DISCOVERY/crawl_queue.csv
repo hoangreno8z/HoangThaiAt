@@ -1,0 +1,16 @@
+priority,title_zh,title_vi,module,action
+P0,陽宅十書,Dương Trạch Thập Thư,Dương trạch,verify witness + segment + translate
+P0,宅經,Trạch Kinh,Dương trạch,full text map + attribution audit
+P0,撼龍經,Hám Long Kinh,Loan đầu,segment only parts usable for civil site selection
+P0,疑龍經,Nghi Long Kinh,Loan đầu,extract yangzhai/site-selection passages
+P0,青囊序,Thanh Nang Tự,Lý khí,source map + commentary separation
+P0,青囊奧語,Thanh Nang Áo Ngữ,Lý khí,source map + textual variants
+P0,天玉經,Thiên Ngọc Kinh,Lý khí,school-separated extraction
+P0,營造法式,Doanh Tạo Pháp Thức,Kiến trúc,extract civil-relevant construction principles
+P1,人子須知,Nhân Tử Tu Tri,Hình thế,extract minh đường/tàng phong/site criteria
+P1,入地眼全書,Nhập Địa Nhãn Toàn Thư,Dương trạch,extract door-road-stove/water passages
+P1,欽定協紀辨方書,Khâm Định Hiệp Kỷ Biện Phương Thư,Trạch nhật,scope filter to construction/repair/move-in
+P1,陽宅大全,Dương Trạch Đại Toàn,Dương trạch,edition audit first
+P1,陽宅集成,Dương Trạch Tập Thành,Dương trạch,edition discovery
+P1,陽宅真傳,Dương Trạch Chân Truyền,Dương trạch,edition discovery
+P2,工程做法則例,Công Trình Tác Pháp Tắc Lệ,Kiến trúc,public-domain edition discovery

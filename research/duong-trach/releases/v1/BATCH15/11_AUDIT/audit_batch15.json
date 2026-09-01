@@ -1,0 +1,40 @@
+{
+  "batch": "15",
+  "date": "2026-09-01",
+  "scope": "WINDOW_DAYLIGHT_VENTILATION_MICROCLIMATE",
+  "counts": {
+    "sources": 8,
+    "terms": 7,
+    "claims": 10,
+    "rules": 13,
+    "cases": 12,
+    "conflicts": 5,
+    "folklore_redteam": 7
+  },
+  "passed": [
+    "draft_vs_ventilation_separated",
+    "traditional_qi_not_scientized",
+    "day_night_light_separated",
+    "window_count_secondary_quote_not_promoted",
+    "opposite_windows_qi_loss_not_invented",
+    "window_behind_bed_rule_not_invented",
+    "QCVN09_scope_guard_2500m2",
+    "QCVN04_3_future_effective_date_lock",
+    "QCVN04_1_draft_not_law",
+    "TCVN5687_2024_current_version"
+  ],
+  "important_findings": [
+    "Historical sources distinguish uncontrolled draft from intentional seasonal ventilation; a binary 'wind good/bad' model is invalid.",
+    "A reported historical even-window/odd-door idea exists through a secondary quotation, but its original textual chain is not yet verified.",
+    "Vietnam's energy-code migration is time-sensitive: QCVN 09:2017/BXD remains current on 2026-09-01, while QCVN 04-3:2026/BXD takes effect 2027-02-01.",
+    "A general civil-building QCVN 04-1 draft is currently under consultation and must not be treated as law."
+  ],
+  "blocked": [
+    "universal window-count numerology",
+    "two-opposite-windows qi-loss rule",
+    "window-behind-bed severe omen",
+    "ancient numeric opening ratio",
+    "direct mapping 光澤陽氣 to modern light metrics"
+  ],
+  "next": "BATCH16_WATER_SUPPLY_DRAINAGE_WELLS_TANKS"
+}

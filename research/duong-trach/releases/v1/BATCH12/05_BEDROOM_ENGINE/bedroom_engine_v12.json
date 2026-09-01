@@ -1,0 +1,70 @@
+{
+  "$id": "lapque.bedroom_engine.v0.12",
+  "entities": {
+    "BEDROOM": {
+      "geometry": "Polygon",
+      "function": "SLEEP",
+      "floor_index": "integer"
+    },
+    "BED": {
+      "geometry": "oriented rectangle",
+      "head_edge": "segment",
+      "head_azimuth_deg": "number|null"
+    },
+    "BEDROOM_DOOR": {
+      "geometry": "segment",
+      "door_normal": "vector"
+    },
+    "WINDOW": {
+      "geometry": "segment",
+      "sill_height": "number|null"
+    },
+    "WALL": {
+      "geometry": "segment",
+      "moisture_state": "UNKNOWN|DRY|DAMP|MOULD_EVIDENCE"
+    },
+    "LIGHT_SOURCE": {
+      "position": "point",
+      "type": "ARTIFICIAL|EXTERIOR|UNKNOWN"
+    },
+    "NOISE_SOURCE": {
+      "position": "point/line",
+      "type": "ROAD|MEP|NEIGHBOR|INTERNAL|UNKNOWN"
+    },
+    "BEAM": {
+      "geometry": "polygon/line",
+      "height": "number|null"
+    },
+    "MIRROR": {
+      "geometry": "segment",
+      "reflective_normal": "vector"
+    }
+  },
+  "continuous_observables": [
+    "bed_head_azimuth",
+    "bed_to_wall_distance",
+    "bed_to_door_distance",
+    "door_axis_intersects_bed",
+    "bed_visible_from_door_fraction",
+    "window_to_bed_distance",
+    "night_light_exposure_proxy",
+    "noise_exposure",
+    "wall_dampness",
+    "room_area",
+    "room_aspect_ratio",
+    "bed_clearance_sides",
+    "egress_path_from_bed"
+  ],
+  "collection_without_fengshui_rule": [
+    "beam_over_bed_overlap",
+    "mirror_reflection_to_bed",
+    "bed_foot_to_door_axis"
+  ],
+  "critical_note": "These three observables are collected because users ask about them, but Batch12 does NOT assign ancient cát/hung without verified direct witnesses.",
+  "direction_policy": {
+    "general_direction_rule": "DISABLED",
+    "school_direction_rule": "requires SCHOOL_ID + SOURCE_ID",
+    "historical_conflict": "preserved"
+  },
+  "center_policy": "Bedroom center and house center are distinct objects."
+}

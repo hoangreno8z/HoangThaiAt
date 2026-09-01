@@ -1,0 +1,32 @@
+[
+  {
+    "claim": "梁壓床 / xà ngang đè giường gây hung",
+    "search_result": "Modern webpages found; no direct witness located in the verified core sources searched for Batch12.",
+    "state": "NO_DIRECT_EVIDENCE_IN_VERIFIED_CORE_SEARCH",
+    "engine_action": "Collect beam overlap geometry only; no ancient verdict."
+  },
+  {
+    "claim": "鏡對床 / gương đối giường gây hung",
+    "search_result": "Modern webpages/modern spiritual books found; no direct ancient witness located in verified core search.",
+    "state": "NO_DIRECT_EVIDENCE_IN_VERIFIED_CORE_SEARCH",
+    "engine_action": "Collect reflection/light/glare/privacy observable only."
+  },
+  {
+    "claim": "床尾對門 / chân giường đối cửa = đại hung",
+    "search_result": "Modern Feng Shui webpages found; no direct witness located in selected ancient core sources.",
+    "state": "NO_DIRECT_EVIDENCE_IN_VERIFIED_CORE_SEARCH",
+    "engine_action": "Collect door-axis, privacy, light/noise, egress; no ancient outcome."
+  },
+  {
+    "claim": "床頭必須靠實牆 / đầu giường bắt buộc luôn tựa tường",
+    "search_result": "Historical health text discusses wall placement but also seasonal movement to room center.",
+    "state": "POPULAR_GENERALIZATION_NOT_SUPPORTED_AS_UNIVERSAL",
+    "engine_action": "Contextual only."
+  },
+  {
+    "claim": "床頭不能靠窗 / đầu giường tuyệt đối không gần cửa sổ",
+    "search_result": "No direct verified core Feng Shui sentence locked in Batch12.",
+    "state": "NO_DIRECT_EVIDENCE_IN_VERIFIED_CORE_SEARCH",
+    "engine_action": "Evaluate draft, light, noise, fall/safety context separately."
+  }
+]

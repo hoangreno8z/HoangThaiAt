@@ -1,0 +1,52 @@
+{
+  "$id": "lapque.occupancy_readiness_engine.v0.20",
+  "readiness": {
+    "CONSTRUCTION_COMPLETE": {
+      "required": true
+    },
+    "ACCEPTANCE_COMPLETE": {
+      "required": "BY_APPLICABLE_LAW"
+    },
+    "STRUCTURAL_SAFE": {
+      "required": true
+    },
+    "FIRE_READY": {
+      "required": "BY_BUILDING_SCOPE"
+    },
+    "WATER_READY": {
+      "required": "BY_USE/SUPPLY_SCOPE"
+    },
+    "SANITATION_READY": {
+      "required": true
+    },
+    "VENTILATION_READY": {
+      "required": "BY_DESIGN/SCOPE"
+    },
+    "OPEN_DEFECTS": {
+      "allowed": "ONLY_IF_SAFE_AND_LEGALLY_ACCEPTABLE"
+    },
+    "MAINTENANCE_DOCUMENTS": {
+      "required": "BY_PROJECT_SCOPE"
+    }
+  },
+  "composite_state": {
+    "OCCUPANCY_READY": "all mandatory applicable gates pass",
+    "NOT_READY": "one or more mandatory gate fails/unknown"
+  },
+  "traditional_overlay": {
+    "enabled_only_if": "OCCUPANCY_READY",
+    "event_options": [
+      "移徙",
+      "入宅",
+      "掃舍宇",
+      "安牀"
+    ],
+    "date_output": "DISABLED_UNTIL_CALENDAR_ENGINE_VALIDATED"
+  },
+  "semantic_guards": [
+    "移徙 and 入宅 may be related in practice but are not textually identical labels.",
+    "掃舍宇 is not automatically a spiritual cleansing ritual.",
+    "歸火 remains source-specific ritual terminology.",
+    "安門 spatial evidence does not create an An-Men calendar calculator."
+  ]
+}

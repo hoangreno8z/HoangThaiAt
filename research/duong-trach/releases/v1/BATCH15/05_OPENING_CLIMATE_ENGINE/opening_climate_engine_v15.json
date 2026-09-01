@@ -1,0 +1,92 @@
+{
+  "$id": "lapque.opening_climate_engine.v0.15",
+  "coordinate_and_time": {
+    "window_azimuth": "clockwise from True North",
+    "time_basis": "local solar/civil time explicitly labelled",
+    "weather_data": "timestamped/source-versioned"
+  },
+  "entities": {
+    "WINDOW": {
+      "geometry": "Segment/Polygon",
+      "azimuth": "number",
+      "openable_area": "number|null",
+      "glazing_area": "number|null",
+      "sill_height": "number|null",
+      "head_height": "number|null",
+      "operable": "boolean|null"
+    },
+    "EXTERIOR_OBSTRUCTION": {
+      "geometry": "3D mass/polygon",
+      "height": "number|null"
+    },
+    "VENT_OPENING": {
+      "geometry": "Segment/Polygon",
+      "type": "WINDOW|LOUVER|VENT|DOOR|OTHER"
+    },
+    "LEAKAGE_PATH": {
+      "geometry": "optional",
+      "type": "UNCONTROLLED_CRACK_GAP"
+    },
+    "OCCUPANT_ZONE": {
+      "geometry": "Polygon",
+      "function": "SLEEP|WORK|LIVING|OTHER"
+    },
+    "SHADING": {
+      "geometry": "3D",
+      "type": "EAVE|LOUVER|SCREEN|VEGETATION|OTHER"
+    }
+  },
+  "observables": {
+    "DAYLIGHT": [
+      "window_area",
+      "sky_view",
+      "obstruction_angle",
+      "orientation",
+      "room_depth"
+    ],
+    "SOLAR": [
+      "solar_exposure",
+      "shading",
+      "glazing_area",
+      "orientation"
+    ],
+    "VENTILATION": [
+      "effective_openable_area",
+      "inlet_outlet_topology",
+      "cross_ventilation_path",
+      "stack_height",
+      "wind_exposure"
+    ],
+    "DRAFT": [
+      "uncontrolled_leakage",
+      "air_path_to_occupant",
+      "season"
+    ],
+    "THERMAL": [
+      "indoor_temp",
+      "outdoor_temp",
+      "humidity",
+      "air_speed"
+    ],
+    "NOISE": [
+      "external_noise_source",
+      "open_window_noise_tradeoff"
+    ],
+    "RAIN": [
+      "driving_rain_exposure",
+      "water_ingress_risk"
+    ]
+  },
+  "graph": {
+    "AIRFLOW_TOPOLOGY": "nodes=rooms/outside, edges=openings",
+    "DAYLIGHT_PATH": "source/opening -> room zones",
+    "CROSS_VENTILATION": "requires distinct inlet/outlet topology; not assumed from two windows alone"
+  },
+  "guardrails": [
+    "Two opposite windows do not automatically imply auspicious or inauspicious qi.",
+    "No window-count numerology without a verified direct source.",
+    "No ancient lux, W/m², ACH or m/s threshold unless source explicitly has an equivalent measurable quantity.",
+    "Historical seasonal advice is contextual, not climate-universal.",
+    "Mechanical ventilation can satisfy modern design even when natural-window logic is absent."
+  ]
+}

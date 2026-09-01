@@ -1,0 +1,58 @@
+{
+  "site_id": "string",
+  "coordinates": {
+    "lat": "number",
+    "lon": "number"
+  },
+  "administrative": {
+    "province": "string",
+    "commune": "string",
+    "admin_version_date": "YYYY-MM-DD"
+  },
+  "hazards": {
+    "flood": {
+      "class": "UNKNOWN|LOW|MEDIUM|HIGH|CRITICAL",
+      "source_id": "string",
+      "date": "YYYY-MM-DD",
+      "geometry_ref": "optional"
+    },
+    "flash_flood": {
+      "class": "UNKNOWN|LOW|MEDIUM|HIGH|CRITICAL",
+      "source_id": "string"
+    },
+    "landslide": {
+      "class": "UNKNOWN|LOW|MEDIUM|HIGH|CRITICAL",
+      "source_id": "string"
+    },
+    "earthquake": {
+      "reference_metric": "optional",
+      "source_id": "string"
+    },
+    "wind": {
+      "design_metric": "optional",
+      "source_id": "string"
+    },
+    "lightning": {
+      "density_metric": "optional",
+      "source_id": "string"
+    },
+    "coastal": {
+      "storm_surge": "optional",
+      "salinity": "optional",
+      "source_id": "string"
+    }
+  },
+  "site_physical": {
+    "slope_deg": "number|null",
+    "elevation_m": "number|null",
+    "drainage_notes": "string|null",
+    "soil_geotech_status": "UNKNOWN|DESKTOP_ONLY|FIELD_SURVEYED"
+  },
+  "decision": {
+    "hard_gate": "PASS|FAIL|ESCALATE|UNKNOWN",
+    "reasons": [
+      "string"
+    ],
+    "feng_shui_allowed_after_gate": "boolean"
+  }
+}

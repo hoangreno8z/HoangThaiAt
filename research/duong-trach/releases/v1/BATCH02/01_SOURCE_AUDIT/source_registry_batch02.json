@@ -1,0 +1,68 @@
+[
+  {
+    "source_id": "SRC-YZSS-001",
+    "title_zh": "陽宅十書",
+    "title_vi": "Dương Trạch Thập Thư",
+    "attribution": "王君榮纂輯 / Vương Quân Vinh biên tập theo truyền bản",
+    "witness_note": "Bản điện tử CText dựa trên bản in; OCR có nhiều chỗ nhiễu, phải đối chiếu scan trước khi khóa chữ.",
+    "url": "https://ctext.org/wiki.pl?chapter=412426&if=en",
+    "source_role": "PRIMARY_TRADITION_TEXT",
+    "attribution_status": "WORK_IDENTITY_ACCEPTED_EDITION_DETAILS_REQUIRE_CARE",
+    "text_status": "OCR_CAUTION"
+  },
+  {
+    "source_id": "SRC-YLJ-001",
+    "title_zh": "疑龍經",
+    "title_vi": "Nghi Long Kinh",
+    "attribution": "舊本題唐楊筠松 / cựu bản đề Dương Quân Tùng",
+    "witness_note": "Bản Tứ Khố. Tứ Khố nêu rằng thư mục đời Tống từng ghi 《疑龍經》 không đề tác giả.",
+    "url": "https://zh.wikisource.org/wiki/%E6%92%BC%E9%BE%8D%E7%B6%93_(%E5%9B%9B%E5%BA%AB%E5%85%A8%E6%9B%B8%E6%9C%AC)",
+    "source_role": "PRIMARY_TRADITION_TEXT_WITH_ATTRIBUTION_DISPUTE",
+    "attribution_status": "DISPUTED",
+    "text_status": "TRANSCRIPTION_STRONG"
+  },
+  {
+    "source_id": "SRC-HLJ-001",
+    "title_zh": "撼龍經",
+    "title_vi": "Hám Long Kinh",
+    "attribution": "舊本題唐楊筠松 / cựu bản đề Dương Quân Tùng",
+    "witness_note": "Tứ Khố đánh giá truyền thuyết tiểu sử thiếu căn cứ; văn bản vẫn có truyền thống lưu hành mạnh.",
+    "url": "https://zh.wikisource.org/wiki/%E6%92%BC%E9%BE%8D%E7%B6%93_(%E5%9B%9B%E5%BA%AB%E5%85%A8%E6%9B%B8%E6%9C%AC)",
+    "source_role": "RELATED_FORM_SCHOOL",
+    "attribution_status": "DISPUTED",
+    "text_status": "TRANSCRIPTION_STRONG"
+  },
+  {
+    "source_id": "SRC-ZJ-001",
+    "title_zh": "宅經",
+    "title_vi": "Trạch Kinh",
+    "attribution": "舊本題黃帝; 四庫判為依託",
+    "witness_note": "Tứ Khố xác định việc gán Hoàng Đế là y thác; bản văn được xem là tương đối cổ trong nhóm thuật số trạch pháp.",
+    "url": "https://zh.wikisource.org/wiki/%E5%AE%85%E7%B6%93_(%E5%9B%9B%E5%BA%AB%E5%85%A8%E6%9B%B8%E6%9C%AC)/%E5%85%A8%E8%A6%BD",
+    "source_role": "PRIMARY_TRADITION_TEXT_PSEUDEPIGRAPHIC",
+    "attribution_status": "PSEUDEPIGRAPHIC",
+    "text_status": "TRANSCRIPTION_STRONG"
+  },
+  {
+    "source_id": "SRC-SKTY-109",
+    "title_zh": "四庫全書總目提要·卷109",
+    "title_vi": "Tứ Khố Toàn Thư Tổng Mục Đề Yếu, quyển 109",
+    "attribution": "四庫館臣",
+    "witness_note": "Nguồn thư mục học dùng để kiểm quy tác giả, số quyển và lịch sử truyền bản.",
+    "url": "https://zh.wikisource.org/wiki/%E5%9B%9B%E5%BA%AB%E5%85%A8%E6%9B%B8%E7%B8%BD%E7%9B%AE%E6%8F%90%E8%A6%81/%E5%8D%B7109",
+    "source_role": "BIBLIOGRAPHIC_AUDIT",
+    "attribution_status": "VERIFIED",
+    "text_status": "TRANSCRIPTION_STRONG"
+  },
+  {
+    "source_id": "SRC-DNBS-001",
+    "title_zh": "多能鄙事·卷之五·住宅諸忌",
+    "title_vi": "Đa Năng Bỉ Sự, quyển 5, Chư kỵ về nhà ở",
+    "attribution": "舊本題明劉基撰 / cựu bản đề Lưu Cơ",
+    "witness_note": "Có scan từ Bắc Kinh Đại học/CADAL; CText lưu ý tác phẩm có thể là hậu nhân thác danh Lưu Cơ.",
+    "url": "https://zh.wikisource.org/wiki/%E5%A4%9A%E8%83%BD%E9%84%99%E4%BA%8B/%E5%8D%B7%E4%B9%8B%E4%BA%94",
+    "source_role": "CROSS_WITNESS",
+    "attribution_status": "DISPUTED",
+    "text_status": "TRANSCRIPTION_GOOD_WITH_EDITION_AUDIT_PENDING"
+  }
+]

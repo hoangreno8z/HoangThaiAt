@@ -1,0 +1,57 @@
+{
+  "材": {
+    "hanviet": "tài",
+    "working_sense": "modular timber/material unit in Yingzao Fashi, depending context",
+    "modern_mapping": "HISTORICAL_MODULAR_SYSTEM",
+    "guard": "Not modern lumber grade or millimetre size automatically."
+  },
+  "梁": {
+    "hanviet": "lương",
+    "working_sense": "beam; historical types vary",
+    "modern_mapping": "BEAM_CANDIDATE",
+    "guard": "Load-bearing role must be determined from actual structure."
+  },
+  "柱": {
+    "hanviet": "trụ",
+    "working_sense": "column/post",
+    "modern_mapping": "COLUMN_POST_CANDIDATE"
+  },
+  "棟": {
+    "hanviet": "đống",
+    "working_sense": "ridge/main roof member depending context",
+    "modern_mapping": "RIDGE_OR_PRIMARY_ROOF_MEMBER_CONTEXTUAL"
+  },
+  "椽": {
+    "hanviet": "duyên",
+    "working_sense": "rafter",
+    "modern_mapping": "RAFTER_CANDIDATE"
+  },
+  "枋": {
+    "hanviet": "phương",
+    "working_sense": "horizontal timber/member in historical framing",
+    "modern_mapping": "HISTORICAL_HORIZONTAL_MEMBER_CONTEXTUAL"
+  },
+  "空蛀": {
+    "hanviet": "không chú",
+    "working_sense": "hollowed by insects/borers in context",
+    "modern_mapping": "BIODETERIORATION_VOID_DAMAGE_CANDIDATE",
+    "guard": "Cause/species not determined from text alone."
+  },
+  "偏欹": {
+    "hanviet": "thiên y",
+    "working_sense": "leaning/tilted/off-plumb",
+    "modern_mapping": "GEOMETRIC_DEFORMATION"
+  },
+  "死樹": {
+    "hanviet": "tử thụ",
+    "working_sense": "dead tree in historical taboo",
+    "modern_mapping": "NOT_EQUAL_RECLAIMED_STRUCTURAL_TIMBER",
+    "guard": "A historic ban on dead tree material is not a modern ban on all reused timber."
+  },
+  "倒木作柱": {
+    "hanviet": "đảo mộc tác trụ",
+    "working_sense": "phrase concerning use/orientation of timber as a column; exact technical meaning unresolved",
+    "modern_mapping": "SEMANTIC_UNRESOLVED",
+    "guard": "Do not translate confidently as fallen tree, upside-down wood, or reversed grain without witness/context."
+  }
+}

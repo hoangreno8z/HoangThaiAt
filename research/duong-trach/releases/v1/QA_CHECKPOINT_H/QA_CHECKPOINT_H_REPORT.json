@@ -1,0 +1,62 @@
+{
+  "checkpoint": "QA_CHECKPOINT_H",
+  "date": "2026-09-01",
+  "scope": "BATCH01_TO_BATCH20_COMPLETION_AND_OCCUPANCY",
+  "metrics": {
+    "json_documents_scanned": 207,
+    "parse_errors": 0,
+    "unique_source_ids": 119,
+    "claims_motifs_evidence_scanned": 203,
+    "rules_scanned": 218,
+    "claim_missing_source_refs": 0,
+    "rule_missing_source_refs": 0,
+    "duplicate_claim_ids": 0,
+    "duplicate_rule_ids": 0,
+    "numeric_thresholds_needing_review": 0,
+    "school_leakage": 0,
+    "date_output_violations": 0
+  },
+  "hard_results": {
+    "JSON_PARSE": "PASS",
+    "CLAIM_SOURCE_INTEGRITY": "PASS",
+    "RULE_SOURCE_INTEGRITY": "PASS",
+    "CLAIM_ID_UNIQUENESS": "PASS",
+    "RULE_ID_UNIQUENESS": "PASS",
+    "NO_NUMERIC_THRESHOLD_HALLUCINATION": "PASS",
+    "SCHOOL_ISOLATION": "PASS",
+    "OCCUPANCY_SEMANTIC_LAYERING": "PASS",
+    "CURRENT_OCCUPANCY_LEGAL_GATES": "PASS",
+    "NO_UNVALIDATED_DATE_OUTPUT": "PASS"
+  },
+  "semantic_checks": {
+    "RUZHAI_ATTESTED": true,
+    "RUZHAI_NOT_V11_IDENTITY": true,
+    "V11_V34_LAYER_SEPARATION": true,
+    "ANMEN_TIMING_BLOCKED": true,
+    "SWEEP_NOT_PURIFICATION": true,
+    "OCCUPANCY_BEFORE_RITUAL": true
+  },
+  "legal_checks": {
+    "ND06_CONSOLIDATED_2025": true,
+    "FIRE_LAW_CURRENT": true,
+    "ND105_CURRENT": true,
+    "TT36_CURRENT": true,
+    "WATER_STANDARD_CURRENT": true,
+    "VENT_STANDARD_ACTIVE": true
+  },
+  "issues": {
+    "parse_errors": [],
+    "claim_missing": [],
+    "rule_missing": [],
+    "duplicate_claims": {},
+    "duplicate_rules": {},
+    "numeric_thresholds": [],
+    "school_leak": []
+  },
+  "new_invariants": [
+    "HISTORICAL_TERM_PRESENCE_DOES_NOT_IMPLY_EVENT_TAXONOMY_IDENTITY",
+    "OCCUPANCY_READY_PRECEDES_RITUAL_MOVE_IN",
+    "SPATIAL_ANMEN_DOES_NOT_CREATE_CALENDAR_ANMEN",
+    "EMBEDDED_SOURCE_IN_OFFICIAL_COMPILATION_RETAINS_ITS_OWN_EVIDENCE_LAYER"
+  ]
+}

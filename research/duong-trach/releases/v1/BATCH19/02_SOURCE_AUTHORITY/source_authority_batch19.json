@@ -1,0 +1,28 @@
+{
+  "SRC-XJBF-QING-OFFICIAL": {
+    "authority_tier": "A1_AUTHENTICATED_OFFICIAL_CLASSIC",
+    "can_label": "official Qing imperial compilation",
+    "cannot_label": [
+      "scientifically proven auspicious calendar",
+      "single-master doctrine",
+      "causal proof of fortune"
+    ],
+    "production_use": "EVENT_TAXONOMY_AND_SOURCE_SPECIFIC_TRADITIONAL_SELECTION"
+  },
+  "SRC-YZF-V3-SEQUENCE": {
+    "authority_tier": "A1_AUTHENTICATED_OFFICIAL_CLASSIC",
+    "production_use": "HISTORICAL_TECHNICAL_SEQUENCE_REFERENCE",
+    "cannot_label": [
+      "Feng Shui auspiciousness"
+    ]
+  },
+  "SRC-ZJ-TIMING-CROSS": {
+    "authority_tier": "C1_ATTRIBUTION_DISPUTED",
+    "production_use": "CROSS_WITNESS_ONLY",
+    "cannot_label": [
+      "Huangdi's verified teaching",
+      "master doctrine"
+    ]
+  },
+  "global_rule": "High bibliographic authority does not convert ritual belief into empirical causality; domain remains explicit."
+}

@@ -1,0 +1,18 @@
+{
+  "as_of": "2026-09-01",
+  "source_id": "MOD-QCVN06-2022-SD1-2023",
+  "hard_gate_topics": [
+    "means_of_escape",
+    "firefighter_access",
+    "fire_engine access where applicable",
+    "smoke/fire compartmentation impacts of doors",
+    "occupancy/function specific requirements"
+  ],
+  "priority": "FIRE_SAFETY > CLASSICAL_DOOR_RULE",
+  "rules": [
+    "Never move/block a required exit to satisfy Feng Shui.",
+    "Never narrow required access/egress because of Lu Ban ruler labels.",
+    "Never obstruct fire vehicle/personnel access to avoid an ancient direct-axis motif.",
+    "Applicable detailed requirements depend on building use, scale and regulation scope; do not use one universal door width."
+  ]
+}

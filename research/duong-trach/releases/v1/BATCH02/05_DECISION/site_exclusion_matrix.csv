@@ -1,0 +1,7 @@
+﻿id,feature,class,source,guardrail
+EX-001,old_battlefield_or_military_camp,TRADITIONAL_TABOO,多能鄙事,"Không suy ra vận tù tội/tai họa; kiểm lịch sử sử dụng đất, ô nhiễm, vật nổ còn sót nếu có dữ liệu thực tế."
+EX-002,direct_water_flow_impact,TRADITIONAL_TABOO + MODERN_HYDROLOGY_CHECK,多能鄙事,"Kiểm ngập, xói lở, hành lang thoát lũ và thoát nước."
+EX-003,major_city_gate_or_high_traffic_portal,TRADITIONAL_TABOO,多能鄙事,"Hiện đại kiểm tiếng ồn, giao thông, an toàn người đi bộ, ô nhiễm."
+EX-004,opposite_prison_gate,TRADITIONAL_TABOO_ONLY,多能鄙事,Tuyệt đối không diễn giải thành 'gây tù tội'.
+EX-005,multi_stream_confluence_or_outlet,TRADITIONAL_TABOO + MODERN_HYDROLOGY_CHECK,多能鄙事,"Kiểm dòng chảy, lũ, xói lở, mực nước."
+EX-006,abrupt_broken_oblique_slope,TRADITIONAL_FORM_WARNING + MODERN_GEOTECH_CHECK,疑龍經,Kiểm địa kỹ thuật/sạt lở; không dựa vào cát-hung để kết luận an toàn.

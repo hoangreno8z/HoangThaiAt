@@ -1,0 +1,191 @@
+[
+  {
+    "rule_id": "R-BED-001",
+    "claim_id": "BED-001",
+    "source_id": "SRC-YSSB-1773-V4",
+    "domain": "BEDROOM_BED_SLEEP",
+    "evidence_class": "HISTORICAL_DOMESTIC_HEALTH",
+    "publish_state": "CANDIDATE",
+    "engine_threshold": null,
+    "ancient_numeric_threshold": null,
+    "medical_causality": "NONE_INFERRED",
+    "school_id_required": false,
+    "observable": [
+      "privacy",
+      "enclosure",
+      "uncontrolled_draft"
+    ]
+  },
+  {
+    "rule_id": "R-BED-002",
+    "claim_id": "BED-002",
+    "source_id": "SRC-YSSB-1773-V4",
+    "domain": "BEDROOM_BED_SLEEP",
+    "evidence_class": "HISTORICAL_CRITICAL_COMMENTARY",
+    "publish_state": "GOVERNANCE_RULE",
+    "engine_threshold": null,
+    "ancient_numeric_threshold": null,
+    "medical_causality": "NONE_INFERRED",
+    "school_id_required": false,
+    "observable": []
+  },
+  {
+    "rule_id": "R-BED-003",
+    "claim_id": "BED-003",
+    "source_id": "SRC-YSSB-1773-V4",
+    "domain": "BEDROOM_BED_SLEEP",
+    "evidence_class": "HISTORICAL_REPORTED_BELIEF",
+    "publish_state": "CANDIDATE",
+    "engine_threshold": null,
+    "ancient_numeric_threshold": null,
+    "medical_causality": "NONE_INFERRED",
+    "school_id_required": false,
+    "observable": [
+      "night_light_level"
+    ]
+  },
+  {
+    "rule_id": "R-BED-004",
+    "claim_id": "BED-004",
+    "source_id": "SRC-YSSB-1773-V1",
+    "domain": "BEDROOM_BED_SLEEP",
+    "evidence_class": "HISTORICAL_SLEEP_HEALTH",
+    "publish_state": "CANDIDATE",
+    "engine_threshold": null,
+    "ancient_numeric_threshold": null,
+    "medical_causality": "NONE_INFERRED",
+    "school_id_required": false,
+    "observable": [
+      "sleep_light_exposure"
+    ]
+  },
+  {
+    "rule_id": "R-BED-005",
+    "claim_id": "BED-005",
+    "source_id": "SRC-YSSB-1773-V4",
+    "domain": "BEDROOM_BED_SLEEP",
+    "evidence_class": "HISTORICAL_DOMESTIC_HEALTH",
+    "publish_state": "CANDIDATE",
+    "engine_threshold": null,
+    "ancient_numeric_threshold": null,
+    "medical_causality": "NONE_INFERRED",
+    "school_id_required": false,
+    "observable": [
+      "bed_to_wall_distance",
+      "wall_dampness",
+      "mould_visible_or_odour"
+    ]
+  },
+  {
+    "rule_id": "R-BED-006",
+    "claim_id": "BED-006",
+    "source_id": "SRC-YSSB-1773-V4",
+    "domain": "BEDROOM_BED_SLEEP",
+    "evidence_class": "HISTORICAL_SEASONAL_ENVIRONMENT",
+    "publish_state": "BLOCKED_GENERAL",
+    "engine_threshold": null,
+    "ancient_numeric_threshold": null,
+    "medical_causality": "NONE_INFERRED",
+    "school_id_required": false,
+    "observable": [
+      "bed_wall_clearance",
+      "window_opening",
+      "air_movement",
+      "season"
+    ]
+  },
+  {
+    "rule_id": "R-BED-007",
+    "claim_id": "BED-007",
+    "source_id": "SRC-YSSB-1773-V1",
+    "domain": "BEDROOM_BED_SLEEP",
+    "evidence_class": "HISTORICAL_DIRECTION_CONFLICT",
+    "publish_state": "BLOCKED_GENERAL",
+    "engine_threshold": null,
+    "ancient_numeric_threshold": null,
+    "medical_causality": "NONE_INFERRED",
+    "school_id_required": false,
+    "observable": [
+      "bed_head_azimuth"
+    ]
+  },
+  {
+    "rule_id": "R-BED-008",
+    "claim_id": "BED-008",
+    "source_id": "SRC-YSSB-1773-V1",
+    "domain": "BEDROOM_BED_SLEEP",
+    "evidence_class": "AUTHORIAL_CRITIQUE",
+    "publish_state": "CANDIDATE",
+    "engine_threshold": null,
+    "ancient_numeric_threshold": null,
+    "medical_causality": "NONE_INFERRED",
+    "school_id_required": false,
+    "observable": [
+      "bed_reorientation_frequency"
+    ]
+  },
+  {
+    "rule_id": "R-BED-009",
+    "claim_id": "BED-009",
+    "source_id": "SRC-RDY-Q10-BED",
+    "domain": "BEDROOM_BED_SLEEP",
+    "evidence_class": "FENG_SHUI_SCHOOL_RULE",
+    "publish_state": "SCHOOL_ONLY",
+    "engine_threshold": null,
+    "ancient_numeric_threshold": null,
+    "medical_causality": "NONE_INFERRED",
+    "school_id_required": true,
+    "observable": [
+      "school_house_type",
+      "sector_classification",
+      "bed_sector"
+    ]
+  },
+  {
+    "rule_id": "R-BED-010",
+    "claim_id": "BED-010",
+    "source_id": "SRC-YZCY-QING-BED",
+    "domain": "BEDROOM_BED_SLEEP",
+    "evidence_class": "FENG_SHUI_SCHOOL_RULE",
+    "publish_state": "SCHOOL_ONLY",
+    "engine_threshold": null,
+    "ancient_numeric_threshold": null,
+    "medical_causality": "NONE_INFERRED",
+    "school_id_required": true,
+    "observable": [
+      "bedroom_door_azimuth",
+      "school_period_or_gua_state"
+    ]
+  },
+  {
+    "rule_id": "R-BED-011",
+    "claim_id": "BED-011",
+    "source_id": "SRC-YZCY-QING-BED",
+    "domain": "BEDROOM_BED_SLEEP",
+    "evidence_class": "FENG_SHUI_SCHOOL_INTERPRETATION",
+    "publish_state": "SCHOOL_ONLY",
+    "engine_threshold": null,
+    "ancient_numeric_threshold": null,
+    "medical_causality": "NONE_INFERRED",
+    "school_id_required": true,
+    "observable": [
+      "door_graph",
+      "school_sector_states"
+    ]
+  },
+  {
+    "rule_id": "R-BED-012",
+    "claim_id": "BED-012",
+    "source_id": "SRC-YSSB-1773-V4",
+    "domain": "BEDROOM_BED_SLEEP",
+    "evidence_class": "HISTORICAL_DOMESTIC_PREFERENCE",
+    "publish_state": "CANDIDATE",
+    "engine_threshold": null,
+    "ancient_numeric_threshold": null,
+    "medical_causality": "NONE_INFERRED",
+    "school_id_required": false,
+    "observable": [
+      "bedroom_area"
+    ]
+  }
+]

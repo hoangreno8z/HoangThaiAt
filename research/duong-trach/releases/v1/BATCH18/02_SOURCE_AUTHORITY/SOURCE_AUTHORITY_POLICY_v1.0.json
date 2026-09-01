@@ -1,0 +1,42 @@
+{
+  "$id": "lapque.source_authority_policy.v1.0",
+  "tiers": {
+    "A1_AUTHENTICATED_OFFICIAL_CLASSIC": {
+      "definition": "Named author/work with strong bibliographic history and official/technical transmission.",
+      "example": "李誡《營造法式》",
+      "can_name_author": true,
+      "can_create_master_doctrine": "Only if the work is actually doctrinal in that domain; technical manual cannot create Feng Shui doctrine."
+    },
+    "A2_VERIFIED_AUTHOR_CLASSIC": {
+      "definition": "Named classical author/work with verified attribution but not necessarily official manual.",
+      "can_name_author": true
+    },
+    "B1_EARLY_ANONYMOUS_WITNESS": {
+      "definition": "Old witness is valuable and datable but author is unknown.",
+      "can_name_author": false,
+      "allowed_label": "EARLY_TEXTUAL_WITNESS"
+    },
+    "B2_VERIFIED_LATER_SCHOOL_TEXT": {
+      "definition": "Later school text with reasonably verified author/work.",
+      "can_name_author": true,
+      "execution": "SCHOOL_SPECIFIC"
+    },
+    "C1_ATTRIBUTION_DISPUTED": {
+      "definition": "Attribution disputed/pseudonymous risk.",
+      "can_name_author_as_fact": false,
+      "can_create_master_doctrine": false,
+      "allowed_role": "CROSS_WITNESS"
+    },
+    "C2_OCR_OR_SOURCE_CHAIN_INCOMPLETE": {
+      "definition": "OCR-only, uncollated, or quotation whose original witness is not verified.",
+      "can_create_rule": false
+    }
+  },
+  "promotion_gate": [
+    "MASTER_DOCTRINE requires direct text + compatible domain + attribution not disputed + semantic meaning resolved.",
+    "A technical classic remains technical evidence; reputation cannot change domain.",
+    "B1 anonymous sources may establish existence of a motif, not a named-master doctrine.",
+    "C1/C2 can support search/cross-witness but cannot independently create a production rule.",
+    "If sources disagree, preserve conflict; do not vote by prestige."
+  ]
+}

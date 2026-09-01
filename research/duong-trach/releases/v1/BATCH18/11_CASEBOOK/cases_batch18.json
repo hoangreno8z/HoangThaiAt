@@ -1,0 +1,223 @@
+[
+  {
+    "case_id": "CASE18-001",
+    "name": "Dầm bê tông xuất hiện vết nứt mới",
+    "input": {
+      "material": "RC",
+      "defect": "CRACK",
+      "change": "NEW"
+    },
+    "historical_matches": [],
+    "modern_gate": [
+      "TCVN9381 danger screen",
+      "RC specialist/maintenance"
+    ],
+    "decision": "Do not predict vận. Determine crack type, activity and structural significance."
+  },
+  {
+    "case_id": "CASE18-002",
+    "name": "Cột nhà nghiêng thấy rõ bằng mắt",
+    "input": {
+      "member": "COLUMN",
+      "defect": "TILT",
+      "load_bearing": "UNKNOWN"
+    },
+    "historical_matches": [
+      "STR-006"
+    ],
+    "modern_gate": [
+      "TCVN9381"
+    ],
+    "decision": "Treat as potentially high-consequence until assessed; traditional social outcome ignored."
+  },
+  {
+    "case_id": "CASE18-003",
+    "name": "Xà gỗ bị mọt rỗng",
+    "input": {
+      "material": "TIMBER",
+      "member": "BEAM",
+      "defect": "BORER_SECTION_LOSS"
+    },
+    "historical_matches": [
+      "STR-008",
+      "STR-010"
+    ],
+    "modern_gate": [
+      "TCVN8268 if termite",
+      "timber condition/strength assessment"
+    ],
+    "decision": "Inspect species/cause/remaining section/load path. Cross-witness does not add causal omen."
+  },
+  {
+    "case_id": "CASE18-004",
+    "name": "Gỗ tái sử dụng còn tốt muốn làm cấu kiện",
+    "input": {
+      "material": "RECLAIMED_TIMBER",
+      "condition": "UNKNOWN"
+    },
+    "historical_matches": [],
+    "modern_gate": [
+      "timber grading/testing/design"
+    ],
+    "decision": "Do not reject as 死樹. Require actual material evidence."
+  },
+  {
+    "case_id": "CASE18-005",
+    "name": "Cây chết mới hạ muốn dùng làm dầm chính",
+    "input": {
+      "source_tree_condition": "DEAD_TREE",
+      "intended_role": "PRIMARY_BEAM"
+    },
+    "historical_matches": [
+      "STR-004",
+      "STR-011"
+    ],
+    "modern_gate": [
+      "timber suitability/grading",
+      "decay/insect/moisture checks"
+    ],
+    "decision": "Historical taboo exists in Yuan witness; modern acceptance still depends on material engineering."
+  },
+  {
+    "case_id": "CASE18-006",
+    "name": "Muốn khoét dầm để tránh xà ngang đè giường",
+    "input": {
+      "proposal": "CUT_LOAD_BEARING_BEAM",
+      "reason": "FENG_SHUI"
+    },
+    "historical_matches": [],
+    "modern_gate": [
+      "STRUCTURAL_HARD_FAIL"
+    ],
+    "decision": "REJECT unless engineered modification proves safety."
+  },
+  {
+    "case_id": "CASE18-007",
+    "name": "Cốt thép lộ và có rỉ",
+    "input": {
+      "material": "RC",
+      "defect": [
+        "SPALLING",
+        "CORROSION_EVIDENCE"
+      ]
+    },
+    "historical_matches": [],
+    "modern_gate": [
+      "TCVN9348",
+      "TCVN12251",
+      "TCVN9343"
+    ],
+    "decision": "Technical corrosion assessment/repair; no 'metal element weakened' metaphysics."
+  },
+  {
+    "case_id": "CASE18-008",
+    "name": "Nhà thép cũ sửa mở rộng",
+    "input": {
+      "material": "STEEL",
+      "action": "RENOVATION_EXTENSION"
+    },
+    "historical_matches": [],
+    "modern_gate": [
+      "TCVN5575:2024",
+      "TCVN12251:2020"
+    ],
+    "decision": "Use current structural/corrosion standards; old 2012 steel standard not treated as current."
+  },
+  {
+    "case_id": "CASE18-009",
+    "name": "Nhà bê tông nứt do môi trường nóng ẩm nghi ngờ",
+    "input": {
+      "material": "RC",
+      "defect": "CRACK",
+      "climate": "HOT_HUMID"
+    },
+    "historical_matches": [],
+    "modern_gate": [
+      "TCVN9345 context",
+      "TCVN9381 if danger"
+    ],
+    "decision": "Do not assume climate is the cause; investigate before diagnosis."
+  },
+  {
+    "case_id": "CASE18-010",
+    "name": "Thợ nói cột gỗ đã đặt 'ngược' nên phải phá",
+    "input": {
+      "claim": "倒木作柱",
+      "construction_meaning": "UNRESOLVED"
+    },
+    "historical_matches": [
+      "STR-005"
+    ],
+    "modern_gate": [
+      "condition/load assessment"
+    ],
+    "decision": "BLOCK. Phrase semantics unresolved; no demolition from philological uncertainty."
+  },
+  {
+    "case_id": "CASE18-011",
+    "name": "Muốn lấy tỷ lệ dầm đời Tống để thiết kế dầm mới",
+    "input": {
+      "source": "營造法式",
+      "modern_member": "RC_BEAM"
+    },
+    "historical_matches": [
+      "STR-002"
+    ],
+    "modern_gate": [
+      "TCVN5574:2018"
+    ],
+    "decision": "CATEGORY ERROR. Historical system is reference, not modern sizing."
+  },
+  {
+    "case_id": "CASE18-012",
+    "name": "Nhà cũ có nhiều defect nhưng chủ muốn chỉ hóa giải phong thủy",
+    "input": {
+      "defects": [
+        "TILT",
+        "TERMITE",
+        "LEAK",
+        "CORROSION"
+      ],
+      "repair_requested": false
+    },
+    "historical_matches": [
+      "STR-006",
+      "STR-008"
+    ],
+    "modern_gate": [
+      "TCVN9381",
+      "TCVN8268",
+      "TCVN9343/12251 as applicable"
+    ],
+    "decision": "Escalate engineering/maintenance. Feng Shui commentary only after safety."
+  },
+  {
+    "case_id": "CASE18-013",
+    "name": "Nguồn ghi Lưu Cơ nhưng thư mục học nghi ngờ",
+    "input": {
+      "source": "多能鄙事",
+      "requested_label": "Lưu Cơ chân truyền"
+    },
+    "historical_matches": [
+      "STR-010",
+      "STR-011"
+    ],
+    "modern_gate": [],
+    "decision": "REJECT attribution as fact. Display 'old editions attribute to Liu Ji; attribution disputed'."
+  },
+  {
+    "case_id": "CASE18-014",
+    "name": "Lý Giới quy định kỹ thuật cấu kiện",
+    "input": {
+      "source": "營造法式",
+      "requested_use": "FENG_SHUI_AUSPICIOUSNESS"
+    },
+    "historical_matches": [
+      "STR-001",
+      "STR-002",
+      "STR-003"
+    ],
+    "modern_gate": [],
+    "decision": "REJECT domain leap. High authority technical source remains technical."
+  }
+]

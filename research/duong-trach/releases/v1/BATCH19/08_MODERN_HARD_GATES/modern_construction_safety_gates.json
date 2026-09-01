@@ -1,0 +1,37 @@
+{
+  "QCVN18_CURRENT": {
+    "source_id": "MOD-QCVN18-2021",
+    "status": "CURRENT_AS_OF_2026_09_01",
+    "effective": "2022-06-20",
+    "priority": "HARD_GATE"
+  },
+  "DEMOLITION": {
+    "source_id": "MOD-QCVN18-2021",
+    "verified_requirements_summary": [
+      "survey and collect structural/connection/existing-condition information",
+      "demolition design/method and process",
+      "safety measures",
+      "demolition execution",
+      "waste and hazardous-waste handling within applicable law"
+    ],
+    "rule": "No ritual date may authorize demolition before these requirements/readiness are satisfied."
+  },
+  "TEMPORARY_SUPPORT": {
+    "source_id": "MOD-QCVN18-2021",
+    "rule": "Temporary supporting structures require design/installation/checking/use/dismantling safety as applicable."
+  },
+  "SEQUENCING_SAFETY": {
+    "source_id": "MOD-QCVN18-2021",
+    "rule": "Construction sequence must maintain stability and worker/public safety; ceremonial sequence cannot alter a safe technical sequence."
+  },
+  "WEATHER_AND_SITE": {
+    "rule": "If weather/site conditions make work unsafe, traditional date result becomes NO_WORK_TECHNICAL_HOLD."
+  },
+  "output_precedence": [
+    "STOP_WORK_DANGER",
+    "LEGAL_OR_TECHNICAL_NOT_READY",
+    "READY_WITH_CONSTRAINTS",
+    "READY",
+    "OPTIONAL_TRADITIONAL_DATE_PREFERENCE"
+  ]
+}

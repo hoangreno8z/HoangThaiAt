@@ -1,0 +1,50 @@
+{
+  "checkpoint": "QA_CHECKPOINT_C",
+  "date": "2026-09-01",
+  "scope": "BATCH01_TO_BATCH15",
+  "metrics": {
+    "json_documents_scanned": 135,
+    "parse_errors": 0,
+    "unique_source_ids": 70,
+    "source_records_total": 170,
+    "claims_motifs_evidence_scanned": 148,
+    "rules_scanned": 148,
+    "missing_claim_source_refs": 0,
+    "missing_rule_source_refs": 0,
+    "duplicate_claim_ids": 0,
+    "duplicate_rule_ids": 0,
+    "unreviewed_threshold_fields": 0,
+    "school_leakage": 0,
+    "draft_treated_as_law": 0,
+    "future_standard_activated_early": 0,
+    "tracked_no_direct_evidence_items": 14
+  },
+  "hard_results": {
+    "JSON_PARSE": "PASS",
+    "CLAIM_SOURCE_INTEGRITY": "PASS",
+    "RULE_SOURCE_INTEGRITY": "PASS",
+    "CLAIM_ID_UNIQUENESS": "PASS",
+    "RULE_ID_UNIQUENESS": "PASS",
+    "NO_UNREVIEWED_THRESHOLDS": "PASS",
+    "SCHOOL_ISOLATION": "PASS",
+    "DRAFT_NOT_PROMOTED_TO_LAW": "PASS",
+    "FUTURE_STANDARD_NOT_ACTIVATED_EARLY": "PASS"
+  },
+  "issues": {
+    "parse_errors": [],
+    "claim_missing": [],
+    "rule_missing": [],
+    "duplicate_claims": {},
+    "duplicate_rules": {},
+    "thresholds": [],
+    "school_leak": [],
+    "draft_as_law": [],
+    "future_as_current": []
+  },
+  "new_governance_checks": [
+    "draft regulation must never execute as law",
+    "future effective regulation must remain disabled until effective date",
+    "evidence gap state means 'not located in verified search', not 'does not exist anywhere'",
+    "uncontrolled draft and designed ventilation are separate observables"
+  ]
+}

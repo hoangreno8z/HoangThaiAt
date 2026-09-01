@@ -1,0 +1,65 @@
+{
+  "EXTERNAL_MINGTANG": {
+    "definition_working": "Open/form space in front of site/building in the classical external-form context.",
+    "source_basis": [
+      "SRC-GJTS675-MINGTANG"
+    ],
+    "geometry": [
+      "front_open_polygon",
+      "front_open_depth",
+      "front_open_angle",
+      "front_obstruction_profile"
+    ],
+    "not_equal": [
+      "street automatically",
+      "front setback automatically",
+      "any plaza automatically"
+    ]
+  },
+  "INTERNAL_FRONT_COURT": {
+    "definition_working": "Open space inside the entrance/gate and before the main building.",
+    "source_basis": [
+      "SRC-GJTS677-TIANJING"
+    ],
+    "geometry": [
+      "courtyard_polygon",
+      "gate_to_main_building_relation"
+    ],
+    "possible_classical_relation": "May be called/treated as 明堂 in a specific text.",
+    "not_equal": [
+      "external Ming Tang by default"
+    ]
+  },
+  "TRADITIONAL_TIANJING": {
+    "definition_working": "天井 as used in the source text; internal open/drainage-related architectural element.",
+    "source_basis": [
+      "SRC-GJTS677-TIANJING",
+      "SRC-GJTS677-WATER"
+    ],
+    "geometry": [
+      "open_to_sky_polygon",
+      "width",
+      "length",
+      "drainage_points"
+    ],
+    "not_equal": [
+      "modern lightwell automatically",
+      "atrium automatically"
+    ]
+  },
+  "MODERN_LIGHTWELL_ATRIUM": {
+    "definition_working": "Modern design element for light/ventilation/spatial organization, possibly multi-storey.",
+    "source_basis": [
+      "MOD-QCVN06-2022-SD1-2023 and applicable modern standards"
+    ],
+    "geometry": [
+      "void_polygon",
+      "height",
+      "open_or_covered",
+      "connected_storeys"
+    ],
+    "not_equal": [
+      "天井 historical term automatically"
+    ]
+  }
+}

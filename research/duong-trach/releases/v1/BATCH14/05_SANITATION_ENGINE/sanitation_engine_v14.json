@@ -1,0 +1,73 @@
+{
+  "$id": "lapque.sanitation_engine.v0.14",
+  "entities": {
+    "TOILET_ROOM": {
+      "geometry": "Polygon",
+      "floor_index": "integer",
+      "fixtures": [
+        "WC",
+        "URINAL",
+        "BASIN",
+        "SHOWER",
+        "OTHER"
+      ],
+      "modern_type": "FLUSH_TOILET|DRY_TOILET|OTHER|UNKNOWN",
+      "historical_term_tags": [
+        "廁",
+        "溷廁",
+        "糞屋",
+        "NONE"
+      ]
+    },
+    "TOILET_DOOR": {
+      "geometry": "Segment",
+      "connects": [
+        "TOILET_ROOM",
+        "ADJACENT_SPACE"
+      ]
+    },
+    "SEPTIC_TANK": {
+      "geometry": "Polygon",
+      "technology": "SEPTIC|ONSITE_TREATMENT|UNKNOWN"
+    },
+    "SOIL_STACK": {
+      "geometry": "3D line"
+    },
+    "WASTE_PIPE": {
+      "geometry": "3D polyline"
+    },
+    "VENT_PIPE": {
+      "geometry": "3D polyline"
+    },
+    "FLOOR_DRAIN": {
+      "geometry": "Point"
+    },
+    "POTABLE_WATER_POINT": {
+      "geometry": "Point/line"
+    },
+    "EXHAUST_OPENING": {
+      "geometry": "Segment/Point"
+    }
+  },
+  "continuous_observables": [
+    "toilet_sector_by_selected_reference",
+    "toilet_center_overlap_with_house_center",
+    "toilet_door_to_main_gate_axis",
+    "toilet_door_to_bed_axis",
+    "toilet_vertical_relation_to_kitchen",
+    "toilet_vertical_relation_to_bedroom",
+    "wet_area_overlap",
+    "distance_to_potable_water_source",
+    "wastewater_route",
+    "ventilation_path",
+    "floor_drain_low_point",
+    "accessible_clear_space"
+  ],
+  "key_policy": [
+    "Observables may exist without an ancient rule.",
+    "Historical labels never auto-derived from modern fixture type.",
+    "Vertical adjacency does not create a Feng Shui verdict without direct evidence.",
+    "House-center overlap is measured but has no universal Batch14 verdict.",
+    "School sector execution requires explicit school_id."
+  ]
+}

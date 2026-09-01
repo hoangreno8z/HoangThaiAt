@@ -1,0 +1,52 @@
+[
+  {
+    "claim": "Chọn được một ngày đại cát rồi dùng ngày đó cho động thổ, dựng cột, đổ mái, an cửa, nhập trạch",
+    "state": "INVALID_EVENT_COLLAPSE",
+    "engine_action": "Classify each event separately."
+  },
+  {
+    "claim": "破土 và 動土 là hai cách gọi giống nhau",
+    "state": "FALSE",
+    "engine_action": "Separate construction vs funerary event domain."
+  },
+  {
+    "claim": "Hiệp Kỷ Biện Phương Thư có sẵn mục An Môn nên cứ tính theo đó",
+    "state": "NOT_SUPPORTED_BY_VERIFIED_V11_EVENT_LIST",
+    "engine_action": "Require another direct source before enabling."
+  },
+  {
+    "claim": "移徙 chính xác 100% bằng nghi lễ nhập trạch hiện đại",
+    "state": "SEMANTIC_OVERCLAIM",
+    "engine_action": "Use editorial mapping label, not textual identity."
+  },
+  {
+    "claim": "Ngày tốt có thể cho phá nhà dù chưa có biện pháp phá dỡ",
+    "state": "DANGEROUS",
+    "engine_action": "QCVN18 HARD FAIL."
+  },
+  {
+    "claim": "Ngày tốt quan trọng hơn thời tiết mưa bão",
+    "state": "DANGEROUS",
+    "engine_action": "Weather/safety hold overrides."
+  },
+  {
+    "claim": "Thượng lương cổ = đổ mái bê tông hiện đại",
+    "state": "FALSE_EQUIVALENCE_RISK",
+    "engine_action": "Require structural/event mapping."
+  },
+  {
+    "claim": "營造法式 có trình tự thi công nên cũng là sách xem ngày",
+    "state": "DOMAIN_ERROR",
+    "engine_action": "Technical evidence only."
+  },
+  {
+    "claim": "宅經 là Hoàng Đế viết nên có thể gọi mọi rule là Hoàng Đế chân truyền",
+    "state": "BIBLIOGRAPHICALLY_FALSE",
+    "engine_action": "Display Siku pseudepigraphic warning."
+  },
+  {
+    "claim": "Hiệp Kỷ là sách triều đình nên mọi cát hung trong đó đã được khoa học chứng minh",
+    "state": "EPISTEMIC_OVERCLAIM",
+    "engine_action": "Official textual authority != empirical causal validation."
+  }
+]

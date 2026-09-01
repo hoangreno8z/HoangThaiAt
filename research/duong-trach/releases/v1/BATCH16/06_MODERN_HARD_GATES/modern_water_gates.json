@@ -1,0 +1,41 @@
+{
+  "DOMESTIC_WATER_QUALITY": {
+    "source_id": "MOD-QCVN01-1-2024-BYT",
+    "effective": "2025-07-01",
+    "status": "CURRENT",
+    "hard_gate": true,
+    "rule": "Water used for domestic purposes must satisfy applicable current quality requirements; historical taste/clarity claims never substitute for testing.",
+    "scope_note": "Not drinking-water-at-tap regulation; use the QCVN's stated scope."
+  },
+  "INTERNAL_WATER_SUPPLY": {
+    "source_id": "MOD-TCVN4513-1988",
+    "status": "ACTIVE",
+    "rule": "Use for internal water-supply design within its scope; do not replace engineering tank/pump sizing with Feng Shui."
+  },
+  "INTERNAL_DRAINAGE": {
+    "source_id": "MOD-TCVN4474-1987",
+    "status": "ACTIVE",
+    "rule": "Internal drainage design must follow applicable technical requirements; no ancient 'straight/branching' taboo can override hydraulic/sanitary design."
+  },
+  "EXTERNAL_WATER_SUPPLY": {
+    "source_ids": [
+      "MOD-QCVN07-1-2023-SD1-2025",
+      "MOD-TCVN13606-2023"
+    ],
+    "status": "CURRENT",
+    "rule": "Source protection, treatment, distribution and storage belong to modern infrastructure engineering.",
+    "version_note": "QCVN 07-1 has Sửa đổi 1:2025 effective 2026-01-23."
+  },
+  "EXTERNAL_DRAINAGE": {
+    "source_ids": [
+      "MOD-QCVN07-2-2023",
+      "MOD-TCVN7957-2023"
+    ],
+    "status": "CURRENT",
+    "rule": "Stormwater/wastewater networks, flood resilience, treatment and lawful outlet take precedence.",
+    "climate_note": "Current drainage design explicitly considers climate-change/flooding context."
+  },
+  "HAZARDOUS_HISTORICAL_PRACTICE": {
+    "rule": "Any introduction of lead or other toxic material to a drinking-water source is INVALID_FOR_APPLICATION regardless of historical source."
+  }
+}

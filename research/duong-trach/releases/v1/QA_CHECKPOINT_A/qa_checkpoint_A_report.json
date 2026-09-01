@@ -1,0 +1,204 @@
+{
+  "checkpoint": "QA_CHECKPOINT_A",
+  "date": "2026-09-01",
+  "scope": "BATCH01_TO_BATCH10",
+  "metrics": {
+    "json_files_scanned": 71,
+    "json_parse_errors": 0,
+    "unique_source_ids": 39,
+    "source_records_total": 47,
+    "duplicate_source_ids": 7,
+    "rules_scanned": 99,
+    "claims_motifs_scanned": 102,
+    "rule_missing_source_refs": 0,
+    "claim_missing_source_refs": 0,
+    "non_null_threshold_fields_in_rules": 0,
+    "ancient_numeric_claim_flags": 1
+  },
+  "hard_results": {
+    "JSON_PARSE": "PASS",
+    "RULE_SOURCE_REFERENTIAL_INTEGRITY": "PASS",
+    "CLAIM_SOURCE_REFERENTIAL_INTEGRITY": "PASS",
+    "NO_UNREVIEWED_ENGINE_THRESHOLDS": "PASS",
+    "SOURCE_REGISTRY_NORMALIZATION": "REQUIRED"
+  },
+  "findings": {
+    "parse_errors": [],
+    "missing_source_refs": [],
+    "claim_missing_source_refs": [],
+    "non_null_thresholds": [],
+    "ancient_numeric_claims": [
+      {
+        "file": "BATCH07/08_RULE_ENGINE/rule_candidates_batch07.json",
+        "rule_id": "R-PLAC-006"
+      }
+    ],
+    "duplicate_source_ids": [
+      {
+        "source_id": "SRC-YZSS-001",
+        "occurrences": 2,
+        "files": [
+          "BATCH02/01_SOURCE_AUDIT/source_registry_batch02.json",
+          "BATCH01/01_SOURCE_REGISTRY/source_registry.json"
+        ],
+        "urls": [
+          "https://ctext.org/wiki.pl?chapter=412426&if=en"
+        ],
+        "titles": [
+          "Dương Trạch Thập Thư",
+          "陽宅十書"
+        ],
+        "status_variants": [
+          "attribution_status=WORK_IDENTITY_ACCEPTED_EDITION_DETAILS_REQUIRE_CARE",
+          "status=VERIFIED_PRIMARY_WITH_OCR_CAUTION",
+          "text_status=OCR_CAUTION"
+        ],
+        "classification": "INTENTIONAL_REPEAT_METADATA_DRIFT_REQUIRES_CANONICAL_REGISTRY"
+      },
+      {
+        "source_id": "SRC-YLJ-001",
+        "occurrences": 2,
+        "files": [
+          "BATCH02/01_SOURCE_AUDIT/source_registry_batch02.json",
+          "BATCH01/01_SOURCE_REGISTRY/source_registry.json"
+        ],
+        "urls": [
+          "https://zh.wikisource.org/wiki/%E6%92%BC%E9%BE%8D%E7%B6%93_(%E5%9B%9B%E5%BA%AB%E5%85%A8%E6%9B%B8%E6%9C%AC)"
+        ],
+        "titles": [
+          "Nghi Long Kinh",
+          "疑龍經"
+        ],
+        "status_variants": [
+          "attribution_status=DISPUTED",
+          "status=ATTRIBUTION_DISPUTED_TEXT_TRADITION_STRONG",
+          "text_status=TRANSCRIPTION_STRONG"
+        ],
+        "classification": "INTENTIONAL_REPEAT_METADATA_DRIFT_REQUIRES_CANONICAL_REGISTRY"
+      },
+      {
+        "source_id": "SRC-HLJ-001",
+        "occurrences": 2,
+        "files": [
+          "BATCH02/01_SOURCE_AUDIT/source_registry_batch02.json",
+          "BATCH01/01_SOURCE_REGISTRY/source_registry.json"
+        ],
+        "urls": [
+          "https://zh.wikisource.org/wiki/%E6%92%BC%E9%BE%8D%E7%B6%93_(%E5%9B%9B%E5%BA%AB%E5%85%A8%E6%9B%B8%E6%9C%AC)"
+        ],
+        "titles": [
+          "Hám Long Kinh",
+          "撼龍經"
+        ],
+        "status_variants": [
+          "attribution_status=DISPUTED",
+          "status=ATTRIBUTION_DISPUTED_TEXT_TRADITION_STRONG",
+          "text_status=TRANSCRIPTION_STRONG"
+        ],
+        "classification": "INTENTIONAL_REPEAT_METADATA_DRIFT_REQUIRES_CANONICAL_REGISTRY"
+      },
+      {
+        "source_id": "SRC-ZJ-001",
+        "occurrences": 2,
+        "files": [
+          "BATCH02/01_SOURCE_AUDIT/source_registry_batch02.json",
+          "BATCH01/01_SOURCE_REGISTRY/source_registry.json"
+        ],
+        "urls": [
+          "https://zh.wikisource.org/wiki/%E5%AE%85%E7%B6%93_(%E5%9B%9B%E5%BA%AB%E5%85%A8%E6%9B%B8%E6%9C%AC)/%E5%85%A8%E8%A6%BD"
+        ],
+        "titles": [
+          "Trạch Kinh",
+          "Trạch Kinh / Hoàng Đế Trạch Kinh",
+          "宅經",
+          "宅經 / 黃帝宅經"
+        ],
+        "status_variants": [
+          "attribution_status=PSEUDEPIGRAPHIC",
+          "status=ATTRIBUTION_PSEUDEPIGRAPHIC_TEXT_IMPORTANT",
+          "text_status=TRANSCRIPTION_STRONG"
+        ],
+        "classification": "INTENTIONAL_REPEAT_METADATA_DRIFT_REQUIRES_CANONICAL_REGISTRY"
+      },
+      {
+        "source_id": "MOD-QCVN06-2022-SD1-2023",
+        "occurrences": 3,
+        "files": [
+          "BATCH10/01_SOURCE_REGISTRY/source_registry_batch10.json",
+          "BATCH09/01_SOURCE_REGISTRY/source_registry_batch09.json",
+          "BATCH08/01_SOURCE_REGISTRY/source_registry_batch08.json"
+        ],
+        "urls": [
+          "https://moc.gov.vn/Images/editor/files/Quy%20Chu%E1%BA%A9n/QCVN%2006-2022.pdf"
+        ],
+        "titles": [
+          "QCVN 06:2022/BXD + Sửa đổi 1:2023",
+          "QCVN 06:2022/BXD + Sửa đổi 1:2023 — An toàn cháy cho nhà và công trình"
+        ],
+        "status_variants": [
+          "status=CURRENT_REFERENCE_AS_OF_2026-09-01_FOR_APPLICABLE_BUILDINGS"
+        ],
+        "classification": "INTENTIONAL_REPEAT_METADATA_DRIFT_REQUIRES_CANONICAL_REGISTRY"
+      },
+      {
+        "source_id": "SRC-GJTS675-P69",
+        "occurrences": 2,
+        "files": [
+          "BATCH05/01_SOURCE_REGISTRY/source_registry_batch05.json",
+          "BATCH06/01_SOURCE_REGISTRY/source_registry_batch06.json"
+        ],
+        "urls": [
+          "https://zh.wikisource.org/wiki/Page:Gujin_Tushu_Jicheng,_Volume_476_(1700-1725).djvu/69"
+        ],
+        "titles": [
+          "Cổ Kim Đồ Thư Tập Thành, Nghệ Thuật Điển quyển 675 — chép Dương Trạch Thập Thư",
+          "欽定古今圖書集成·藝術典·第675卷·陽宅十書一",
+          "欽定古今圖書集成·藝術典·第六百七十五卷·陽宅十書一"
+        ],
+        "status_variants": [
+          "proofread_status=WIKISOURCE_PAGE_UNPROOFREAD",
+          "status=UNPROOFREAD_PAGE_WITH_SCAN"
+        ],
+        "classification": "INTENTIONAL_REPEAT_METADATA_DRIFT_REQUIRES_CANONICAL_REGISTRY"
+      },
+      {
+        "source_id": "SRC-DNBS-V5",
+        "occurrences": 2,
+        "files": [
+          "BATCH05/01_SOURCE_REGISTRY/source_registry_batch05.json",
+          "BATCH06/01_SOURCE_REGISTRY/source_registry_batch06.json"
+        ],
+        "urls": [
+          "https://zh.wikisource.org/wiki/%E5%A4%9A%E8%83%BD%E9%84%99%E4%BA%8B/%E5%8D%B7%E4%B9%8B%E4%BA%94"
+        ],
+        "titles": [
+          "Đa Năng Bỉ Sự, quyển 5 — Chư kỵ về nhà ở",
+          "多能鄙事·卷之五·住宅諸忌"
+        ],
+        "status_variants": [
+          "attribution_status=DISPUTED/PSEUDEPIGRAPHIC_RISK",
+          "proofread_status=TRANSCRIPTION_AVAILABLE_SCAN_LINKED",
+          "status=TRANSCRIPTION_AVAILABLE; ATTRIBUTION_DISPUTED"
+        ],
+        "classification": "INTENTIONAL_REPEAT_METADATA_DRIFT_REQUIRES_CANONICAL_REGISTRY"
+      }
+    ],
+    "source_semantic_flags": [],
+    "rule_state_counter": {
+      "CANDIDATE_NOT_FINAL": 9,
+      "UNSPECIFIED": 3,
+      "CANDIDATE": 57,
+      "PARTIAL_ONLY": 1,
+      "BLOCKED": 24,
+      "REFERENCE_ONLY": 1,
+      "BLOCKED_FOR_PRODUCTION": 3,
+      "SCHOOL_ONLY": 1
+    }
+  },
+  "professional_assessment": [
+    "No orphan rule/source reference found if PASS above.",
+    "Duplicate source IDs across batches are not data loss, but metadata schemas drifted; a canonical central registry is now mandatory.",
+    "VERIFIED must be split by dimension: text verification, attribution verification, semantic verification, rule verification.",
+    "No old batch should be silently rewritten; normalization must be additive and auditable."
+  ]
+}

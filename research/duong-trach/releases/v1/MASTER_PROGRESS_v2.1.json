@@ -1,0 +1,39 @@
+{
+  "date": "2026-09-01",
+  "completed_batches": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ],
+  "qa_checkpoint_C": "COMPLETE",
+  "qa_hard_results": {
+    "JSON_PARSE": "PASS",
+    "CLAIM_SOURCE_INTEGRITY": "PASS",
+    "RULE_SOURCE_INTEGRITY": "PASS",
+    "CLAIM_ID_UNIQUENESS": "PASS",
+    "RULE_ID_UNIQUENESS": "PASS",
+    "NO_UNREVIEWED_THRESHOLDS": "PASS",
+    "SCHOOL_ISOLATION": "PASS",
+    "DRAFT_NOT_PROMOTED_TO_LAW": "PASS",
+    "FUTURE_STANDARD_NOT_ACTIVATED_EARLY": "PASS"
+  },
+  "next": "BATCH16_WATER_SUPPLY_DRAINAGE_WELLS_TANKS",
+  "legal_version_locks": [
+    "QCVN 04:2021/BXD current for apartment scope on 2026-09-01",
+    "QCVN 09:2017/BXD current energy rule where applicable on 2026-09-01",
+    "QCVN 04-3:2026/BXD effective 2027-02-01 only",
+    "QCVN 04-1:202x/BXD is still consultation draft"
+  ]
+}

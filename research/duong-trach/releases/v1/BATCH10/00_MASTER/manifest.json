@@ -1,0 +1,12 @@
+{
+  "release": "BATCH10",
+  "date": "2026-09-01",
+  "counts": {
+    "sources": 5,
+    "terms": 9,
+    "claims": 12,
+    "rules": 12,
+    "cases": 12
+  },
+  "next": "BATCH11"
+}

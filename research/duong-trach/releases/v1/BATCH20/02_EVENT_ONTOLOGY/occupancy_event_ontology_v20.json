@@ -1,0 +1,47 @@
+{
+  "$id": "lapque.occupancy_event_ontology.v0.20",
+  "events": {
+    "MOVE_RESIDENCE": {
+      "historical_term": "移徙",
+      "source": "XJBF v11",
+      "confidence": "DIRECT_EVENT_TAXONOMY"
+    },
+    "ENTER_HOUSE": {
+      "historical_term": "入宅",
+      "source": "XJBF v34-35 embedded 事類總集",
+      "confidence": "HISTORICALLY_ATTESTED_EMBEDDED_SECONDARY",
+      "not_equal": "MOVE_RESIDENCE text identity"
+    },
+    "RETURN_FIRE": {
+      "historical_term": "歸火",
+      "source": "XJBF v34-35 embedded 事類總集",
+      "confidence": "SOURCE_SPECIFIC_RITUAL_TERM"
+    },
+    "SWEEP_HOUSE": {
+      "historical_term": "掃舍宇",
+      "source": "XJBF v11",
+      "confidence": "DIRECT_EVENT_TAXONOMY",
+      "not_equal": "automatic spiritual purification"
+    },
+    "INSTALL_BED_TIMING": {
+      "historical_term": "安牀",
+      "source": "XJBF v11",
+      "confidence": "DIRECT_EVENT_TAXONOMY"
+    },
+    "INSTALL_DOOR": {
+      "historical_term": "安門",
+      "source": "宅經 for spatial placement",
+      "confidence": "SPATIAL_ATTESTATION_ONLY_FOR_CURRENT_CORE",
+      "calendar_event_state": "BLOCKED_NO_A1_EVENT_TAXONOMY"
+    }
+  },
+  "modern_states": {
+    "CONSTRUCTION_COMPLETE": "technical/project state",
+    "ACCEPTANCE_COMPLETE": "legal/quality state",
+    "FIRE_READY": "where applicable",
+    "WATER_READY": "where applicable",
+    "VENTILATION_READY": "where applicable",
+    "OCCUPANCY_READY": "composite state",
+    "RITUAL_MOVE_IN_READY": "only after OCCUPANCY_READY"
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "batch": "16",
+  "date": "2026-09-01",
+  "scope": "WATER_WELL_TANK_STORMWATER_DRAINAGE",
+  "counts": {
+    "sources": 11,
+    "terms": 11,
+    "claims": 12,
+    "rules": 15,
+    "cases": 14,
+    "conflicts": 6,
+    "folklore_redteam": 8
+  },
+  "passed": [
+    "well_not_equal_water_tank",
+    "well_not_equal_tap_water",
+    "historical_water_path_not_equal_modern_plumbing",
+    "water_quality_qcvn_2024_current_version",
+    "TCVN4513_active_verified",
+    "TCVN4474_active_verified",
+    "TCVN13606_2023_active_verified",
+    "TCVN7957_2023_active_verified",
+    "QCVN07_1_amendment_2025_versioned",
+    "QCVN07_2_current_base_preserved",
+    "lead_in_well_invalid_for_application",
+    "well_stove_not_reused_as_sink_stove",
+    "no_center_tank_rule_invented",
+    "no_roof_tank_bedroom_rule_invented",
+    "school_water_shape_does_not_override_hydraulics"
+  ],
+  "important_findings": [
+    "The Yuan domestic compendium contains explicit well, courtyard-standing-water and ditch-maintenance material; this is broader than later pure directional Feng Shui.",
+    "Yang Zhai Cuo Yao has a direct well-direction method tied to its own dragon/qi logic, so it must remain school-specific.",
+    "The same later source has water-path statements such as 水不宜直流 and 忌分流; applying these literally to modern plumbing would be a category error.",
+    "QCVN 01-1:2024/BYT is current from 2025-07-01 and replaced the 2018 domestic-water-quality regulation.",
+    "VSQI currently marks TCVN 4513:1988 and TCVN 4474:1987 active, while newer TCVN 13606:2023 and TCVN 7957:2023 cover external networks/facilities."
+  ],
+  "blocked": [
+    "complete Yang Zhai Cuo Yao well direction table without full scan collation",
+    "complete 24-direction courtyard-water table",
+    "universal well direction",
+    "water tank center Feng Shui verdict",
+    "roof tank over bedroom ancient verdict",
+    "water tank below kitchen ancient verdict"
+  ],
+  "next": "BATCH17_ROOF_EAVES_RAIN_PROTECTION"
+}

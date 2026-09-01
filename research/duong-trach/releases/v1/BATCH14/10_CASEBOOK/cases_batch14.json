@@ -1,0 +1,179 @@
+[
+  {
+    "case_id": "CASE14-001",
+    "name": "WC nằm gần tâm nhà phố",
+    "input": {
+      "toilet_center_overlap": "high",
+      "school": "none"
+    },
+    "classical_matches": [],
+    "modern_gate": [
+      "ventilation",
+      "waterproofing",
+      "drainage"
+    ],
+    "decision": "No universal Trung Cung verdict. Geometry stored; wait for explicit school/source."
+  },
+  {
+    "case_id": "CASE14-002",
+    "name": "WC tầng 2 nằm trên bếp",
+    "input": {
+      "toilet_above_kitchen": true
+    },
+    "classical_matches": [],
+    "modern_gate": [
+      "leak risk",
+      "waterproofing",
+      "soil stack",
+      "fire/electrical separation"
+    ],
+    "decision": "NO_DIRECT_EVIDENCE in verified Batch14 core. Engineering review only."
+  },
+  {
+    "case_id": "CASE14-003",
+    "name": "Cửa WC trong nhà nhìn thẳng cửa chính",
+    "input": {
+      "wc_door_axis_to_main_door": true
+    },
+    "classical_matches": [],
+    "modern_gate": [
+      "privacy",
+      "odour",
+      "ventilation"
+    ],
+    "decision": "Do not map 糞屋對門 automatically to this modern interior condition."
+  },
+  {
+    "case_id": "CASE14-004",
+    "name": "Nhà xí/khối vệ sinh ngoài sân đối cổng",
+    "input": {
+      "external_waste_structure_to_gate_axis": true
+    },
+    "classical_matches": [
+      "SAN-001",
+      "SAN-002"
+    ],
+    "modern_gate": [
+      "sanitation",
+      "odour",
+      "drainage"
+    ],
+    "decision": "Historical form match exists; traditional health omen remains noncausal."
+  },
+  {
+    "case_id": "CASE14-005",
+    "name": "WC đặt ở hung phương theo Du Nghệ Lục",
+    "input": {
+      "school": "YOU_YI_LU_XIANG_ZHAI",
+      "life_group": "resolved",
+      "toilet_sector": "bad"
+    },
+    "classical_matches": [
+      "SAN-006"
+    ],
+    "modern_gate": [
+      "safe sanitation"
+    ],
+    "decision": "Valid only as that school's result; not a general recommendation."
+  },
+  {
+    "case_id": "CASE14-006",
+    "name": "WC ở 'suy phương' theo Dương Trạch Chính Tông",
+    "input": {
+      "school": "YANG_ZHAI_ZHENG_ZONG",
+      "declining_sector": "resolved"
+    },
+    "classical_matches": [
+      "SAN-005"
+    ],
+    "modern_gate": [
+      "safe sanitation"
+    ],
+    "decision": "School-only. Do not substitute Bát Trạch bad sectors."
+  },
+  {
+    "case_id": "CASE14-007",
+    "name": "Muốn dùng bảng phương vị 廁 của Dương Trạch Toát Yếu",
+    "input": {
+      "school": "YANG_ZHAI_CUO_YAO",
+      "ocr_direction_table": "not_collated"
+    },
+    "classical_matches": [
+      "SAN-003",
+      "SAN-004"
+    ],
+    "modern_gate": [],
+    "decision": "BLOCK detailed directional automation until scan collation."
+  },
+  {
+    "case_id": "CASE14-008",
+    "name": "Nhà hàng có WC đạt phong thủy nhưng hệ thoát nước không đạt",
+    "input": {
+      "building_type": "business",
+      "classical_sector": "favorable_by_selected_school",
+      "wastewater_system": "fail"
+    },
+    "classical_matches": [],
+    "modern_gate": [
+      "QCVN07/project infrastructure",
+      "QCVN14 if discharge scope applies"
+    ],
+    "decision": "HARD FAIL/REDESIGN. Classical sector cannot override sanitation."
+  },
+  {
+    "case_id": "CASE14-009",
+    "name": "Văn phòng công cộng thiếu WC tiếp cận",
+    "input": {
+      "building_type": "public_or_in_scope",
+      "accessible_toilet": "missing"
+    },
+    "classical_matches": [],
+    "modern_gate": [
+      "QCVN10:2024/BXD"
+    ],
+    "decision": "If QCVN10 applies -> REDESIGN regardless of preferred Feng Shui sector."
+  },
+  {
+    "case_id": "CASE14-010",
+    "name": "Bể tự hoại đặt gần nguồn nước sạch",
+    "input": {
+      "septic_tank_near_potable_source": true
+    },
+    "classical_matches": [],
+    "modern_gate": [
+      "sanitation risk assessment",
+      "project/environmental requirements"
+    ],
+    "decision": "Modern health/environmental protection first; no need to invent a 'Thủy sát'."
+  },
+  {
+    "case_id": "CASE14-011",
+    "name": "WC đối giường ngủ",
+    "input": {
+      "wc_door_axis_to_bed": true
+    },
+    "classical_matches": [],
+    "modern_gate": [
+      "privacy",
+      "noise",
+      "odour",
+      "humidity"
+    ],
+    "decision": "NO_DIRECT_EVIDENCE_IN_VERIFIED_CORE_SEARCH for severe ancient medical omen."
+  },
+  {
+    "case_id": "CASE14-012",
+    "name": "WC sạch, thông gió tốt nhưng nằm phương không hợp một school",
+    "input": {
+      "modern_sanitation": "PASS",
+      "school_result": "unfavorable"
+    },
+    "classical_matches": [
+      "school-dependent"
+    ],
+    "modern_gate": [
+      "PASS"
+    ],
+    "decision": "Report two layers separately; do not convert school result into health hazard."
+  }
+]

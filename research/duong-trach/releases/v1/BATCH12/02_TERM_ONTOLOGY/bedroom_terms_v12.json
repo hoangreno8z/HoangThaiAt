@@ -1,0 +1,44 @@
+{
+  "臥房": {
+    "hanviet": "ngọa phòng",
+    "sense": "sleeping room/bedroom context explicit",
+    "modern_mapping": "BEDROOM_CANDIDATE_STRONG",
+    "confidence": "HIGH"
+  },
+  "寢": {
+    "hanviet": "tẩm",
+    "sense": "sleep/rest; context dependent",
+    "modern_mapping": "SLEEP_CONTEXT",
+    "confidence": "HIGH"
+  },
+  "臥": {
+    "hanviet": "ngọa",
+    "sense": "lie down/sleeping posture",
+    "modern_mapping": "SLEEP_POSTURE",
+    "confidence": "HIGH"
+  },
+  "床": {
+    "hanviet": "sàng",
+    "sense": "bed/couch depending period/context; in these source sections explicitly sleeping bed",
+    "modern_mapping": "BED",
+    "confidence": "HIGH_IN_SELECTED_SOURCES"
+  },
+  "房": {
+    "hanviet": "phòng",
+    "sense": "generic room/chamber",
+    "modern_mapping": "NOT_AUTOMATICALLY_BEDROOM",
+    "confidence": "HIGH_GENERIC"
+  },
+  "床頭": {
+    "hanviet": "sàng đầu",
+    "sense": "head region/end of bed when explicit",
+    "modern_mapping": "BED_HEAD",
+    "confidence": "HIGH"
+  },
+  "向生": {
+    "hanviet": "hướng sinh",
+    "sense": "school-specific bed-facing concept in later geomantic texts",
+    "modern_mapping": "FENG_SHUI_SCHOOL_TERM",
+    "confidence": "SCHOOL_SPECIFIC"
+  }
+}

@@ -1,0 +1,240 @@
+[
+  {
+    "rule_id": "R-WAT-001",
+    "claim_id": "WAT-001",
+    "source_id": "SRC-JJBY-YUAN-WATER",
+    "domain": "WATER_WELL_TANK_DRAINAGE",
+    "publish_state": "REFERENCE_ONLY",
+    "school_id_required": false,
+    "engine_threshold": null,
+    "ancient_numeric_threshold": null,
+    "modern_causality": "NONE_INFERRED",
+    "object_type_guard": true,
+    "modern_hard_gate_required": true,
+    "observable": [
+      "existing_old_well",
+      "closure_or_fill"
+    ]
+  },
+  {
+    "rule_id": "R-WAT-002",
+    "claim_id": "WAT-002",
+    "source_id": "SRC-JJBY-YUAN-WATER",
+    "domain": "WATER_WELL_TANK_DRAINAGE",
+    "publish_state": "CANDIDATE",
+    "school_id_required": false,
+    "engine_threshold": null,
+    "ancient_numeric_threshold": null,
+    "modern_causality": "NONE_INFERRED",
+    "object_type_guard": true,
+    "modern_hard_gate_required": true,
+    "observable": [
+      "well_relative_to_principal_hall",
+      "front_reference"
+    ]
+  },
+  {
+    "rule_id": "R-WAT-003",
+    "claim_id": "WAT-003",
+    "source_id": "SRC-JJBY-YUAN-WATER",
+    "domain": "WATER_WELL_TANK_DRAINAGE",
+    "publish_state": "CANDIDATE",
+    "school_id_required": false,
+    "engine_threshold": null,
+    "ancient_numeric_threshold": null,
+    "modern_causality": "NONE_INFERRED",
+    "object_type_guard": true,
+    "modern_hard_gate_required": true,
+    "observable": [
+      "well_to_stove_distance",
+      "well_stove_adjacency"
+    ]
+  },
+  {
+    "rule_id": "R-WAT-004",
+    "claim_id": "WAT-004",
+    "source_id": "SRC-JJBY-YUAN-WATER",
+    "domain": "WATER_WELL_TANK_DRAINAGE",
+    "publish_state": "PARTIAL_ONLY",
+    "school_id_required": false,
+    "engine_threshold": null,
+    "ancient_numeric_threshold": null,
+    "modern_causality": "NONE_INFERRED",
+    "object_type_guard": true,
+    "modern_hard_gate_required": true,
+    "observable": [
+      "well_in_kitchen_zone",
+      "well_in_front_of_room",
+      "spring_or_well_behind_principal_hall"
+    ]
+  },
+  {
+    "rule_id": "R-WAT-005",
+    "claim_id": "WAT-005",
+    "source_id": "SRC-JJBY-YUAN-WATER",
+    "domain": "WATER_WELL_TANK_DRAINAGE",
+    "publish_state": "CANDIDATE",
+    "school_id_required": false,
+    "engine_threshold": null,
+    "ancient_numeric_threshold": null,
+    "modern_causality": "NONE_INFERRED",
+    "object_type_guard": true,
+    "modern_hard_gate_required": true,
+    "observable": [
+      "courtyard_standing_water",
+      "drainage_outflow_blocked"
+    ]
+  },
+  {
+    "rule_id": "R-WAT-006",
+    "claim_id": "WAT-006",
+    "source_id": "SRC-JJBY-YUAN-WATER",
+    "domain": "WATER_WELL_TANK_DRAINAGE",
+    "publish_state": "CANDIDATE",
+    "school_id_required": false,
+    "engine_threshold": null,
+    "ancient_numeric_threshold": null,
+    "modern_causality": "NONE_INFERRED",
+    "object_type_guard": true,
+    "modern_hard_gate_required": true,
+    "observable": [
+      "ditch_blockage",
+      "drainage_maintenance",
+      "surface_cleanliness",
+      "odour"
+    ]
+  },
+  {
+    "rule_id": "R-WAT-007",
+    "claim_id": "WAT-007",
+    "source_id": "SRC-YZCY-1810-WELL",
+    "domain": "WATER_WELL_TANK_DRAINAGE",
+    "publish_state": "SCHOOL_ONLY",
+    "school_id_required": true,
+    "engine_threshold": null,
+    "ancient_numeric_threshold": null,
+    "modern_causality": "NONE_INFERRED",
+    "object_type_guard": true,
+    "modern_hard_gate_required": true,
+    "observable": [
+      "well_position",
+      "dragon_path_by_school",
+      "school_qi_state"
+    ]
+  },
+  {
+    "rule_id": "R-WAT-008",
+    "claim_id": "WAT-008",
+    "source_id": "SRC-YZCY-1810-WELL",
+    "domain": "WATER_WELL_TANK_DRAINAGE",
+    "publish_state": "REFERENCE_ONLY",
+    "school_id_required": false,
+    "engine_threshold": null,
+    "ancient_numeric_threshold": null,
+    "modern_causality": "NONE_INFERRED",
+    "object_type_guard": true,
+    "modern_hard_gate_required": true,
+    "observable": [
+      "well_to_stove_distance",
+      "well_stove_adjacency"
+    ]
+  },
+  {
+    "rule_id": "R-WAT-009",
+    "claim_id": "WAT-009",
+    "source_id": "SRC-YZCY-1810-DRAIN",
+    "domain": "WATER_WELL_TANK_DRAINAGE",
+    "publish_state": "SCHOOL_ONLY",
+    "school_id_required": true,
+    "engine_threshold": null,
+    "ancient_numeric_threshold": null,
+    "modern_causality": "NONE_INFERRED",
+    "object_type_guard": true,
+    "modern_hard_gate_required": true,
+    "observable": [
+      "drain_path_straightness",
+      "outlet_path_geometry"
+    ]
+  },
+  {
+    "rule_id": "R-WAT-010",
+    "claim_id": "WAT-010",
+    "source_id": "SRC-YZCY-1810-DRAIN",
+    "domain": "WATER_WELL_TANK_DRAINAGE",
+    "publish_state": "SCHOOL_ONLY",
+    "school_id_required": true,
+    "engine_threshold": null,
+    "ancient_numeric_threshold": null,
+    "modern_causality": "NONE_INFERRED",
+    "object_type_guard": true,
+    "modern_hard_gate_required": true,
+    "observable": [
+      "drainage_branching_topology"
+    ]
+  },
+  {
+    "rule_id": "R-WAT-011",
+    "claim_id": "WAT-011",
+    "source_id": "SRC-JJBY-YUAN-WATER",
+    "domain": "WATER_WELL_TANK_DRAINAGE",
+    "publish_state": "INVALID_FOR_APPLICATION",
+    "school_id_required": false,
+    "engine_threshold": null,
+    "ancient_numeric_threshold": null,
+    "modern_causality": "NONE_INFERRED",
+    "object_type_guard": true,
+    "modern_hard_gate_required": true,
+    "observable": [
+      "lead_introduced_to_water_source"
+    ]
+  },
+  {
+    "rule_id": "R-WAT-012",
+    "claim_id": "WAT-012",
+    "source_id": "SRC-JJBY-YUAN-WATER",
+    "domain": "WATER_WELL_TANK_DRAINAGE",
+    "publish_state": "REFERENCE_ONLY",
+    "school_id_required": false,
+    "engine_threshold": null,
+    "ancient_numeric_threshold": null,
+    "modern_causality": "NONE_INFERRED",
+    "object_type_guard": true,
+    "modern_hard_gate_required": true,
+    "observable": [
+      "well_near_river_or_sea",
+      "wind_direction_at_digging"
+    ]
+  },
+  {
+    "rule_id": "MOD-WATER-QUALITY-001",
+    "source_id": "MOD-QCVN01-1-2024-BYT",
+    "domain": "WATER_WELL_TANK_DRAINAGE",
+    "publish_state": "HARD_GATE",
+    "result": "DOMESTIC_WATER_QUALITY_REQUIRED",
+    "engine_threshold": "EXTERNAL_STANDARD_LOOKUP_ONLY"
+  },
+  {
+    "rule_id": "MOD-WATER-INTERNAL-001",
+    "source_ids": [
+      "MOD-TCVN4513-1988",
+      "MOD-TCVN4474-1987"
+    ],
+    "domain": "WATER_WELL_TANK_DRAINAGE",
+    "publish_state": "MODERN_DESIGN_GATE",
+    "result": "INTERNAL_SUPPLY_AND_DRAINAGE_ENGINEERING",
+    "engine_threshold": "STANDARD_LOOKUP_NOT_HARDCODED"
+  },
+  {
+    "rule_id": "MOD-WATER-INFRA-001",
+    "source_ids": [
+      "MOD-QCVN07-1-2023-SD1-2025",
+      "MOD-QCVN07-2-2023",
+      "MOD-TCVN13606-2023",
+      "MOD-TCVN7957-2023"
+    ],
+    "domain": "WATER_WELL_TANK_DRAINAGE",
+    "publish_state": "MODERN_GATE_BY_SCOPE",
+    "result": "INFRASTRUCTURE_AND_DRAINAGE_REQUIREMENTS",
+    "engine_threshold": "STANDARD_LOOKUP_NOT_HARDCODED"
+  }
+]

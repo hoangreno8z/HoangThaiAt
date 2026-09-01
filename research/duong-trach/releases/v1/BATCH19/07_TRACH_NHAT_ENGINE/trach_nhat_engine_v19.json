@@ -1,0 +1,42 @@
+{
+  "$id": "lapque.trach_nhat_engine.v0.19",
+  "status": "EVENT_CLASSIFIER_READY_DATE_CALCULATOR_DISABLED",
+  "reason": "Batch19 establishes authoritative event taxonomy and source governance; it does not yet validate the full calendrical computation tables.",
+  "supported_event_classes": [
+    "BUILD_OR_RENOVATE_GROUNDBREAKING",
+    "ERECT_COLUMNS_RAISE_BEAM",
+    "MOVE_RESIDENCE",
+    "INSTALL_BED_TIMING",
+    "DEMOLISH_HOUSE_OR_WALL"
+  ],
+  "blocked_event_classes": [
+    {
+      "event": "DOOR_INSTALLATION_ANMEN",
+      "state": "NO_SEPARATE_ANMEN_EVENT_LOCKED_IN_XJBF_V11",
+      "note": "Other sources may discuss 安門, but no XJBF v11 independent event is claimed here."
+    },
+    {
+      "event": "RUTRACH_GENERIC_INTO_HOUSE",
+      "state": "TERM_MAPPING_UNRESOLVED",
+      "note": "Do not replace source terms 移徙/般移 with modern 入宅 silently."
+    }
+  ],
+  "date_output": {
+    "enabled": false,
+    "future_requirements": [
+      "calendar epoch and sexagenary-day computation verified",
+      "solar-term computation verified",
+      "source table collation",
+      "神煞 definitions provenance",
+      "conflict-resolution rules from 協紀辨方書",
+      "timezone/local-date rules",
+      "regression cases against historical tables"
+    ]
+  },
+  "anti_hallucination": [
+    "No generated lucky date before calculator validation.",
+    "No combining internet Huangdao scoring systems with XJBF.",
+    "No adding user Bazi unless a source-specific rule explicitly requires it.",
+    "No universal auspicious day."
+  ]
+}

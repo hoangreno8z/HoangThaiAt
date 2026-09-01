@@ -1,0 +1,176 @@
+[
+  {
+    "case_id": "CASE15-001",
+    "name": "Phòng có khe cửa gió lùa vào giường mùa lạnh",
+    "input": {
+      "uncontrolled_draft": true,
+      "season": "cool",
+      "intentional_ventilation": false
+    },
+    "historical_matches": [
+      "WIN-003",
+      "WIN-004"
+    ],
+    "modern_layer": [
+      "draft/thermal comfort"
+    ],
+    "decision": "Seal uncontrolled leakage as appropriate; do not eliminate required ventilation."
+  },
+  {
+    "case_id": "CASE15-002",
+    "name": "Hai cửa sổ đối diện tạo thông gió chéo tốt",
+    "input": {
+      "opposite_windows": true,
+      "cross_ventilation_path": true
+    },
+    "historical_matches": [],
+    "modern_layer": [
+      "TCVN5687 design evaluation"
+    ],
+    "decision": "No 'qi loss' rule in verified core. Evaluate airflow/comfort/noise/weather."
+  },
+  {
+    "case_id": "CASE15-003",
+    "name": "Hai cửa sổ đối nhau nhưng bên ngoài ô nhiễm/ồn",
+    "input": {
+      "cross_ventilation_path": true,
+      "outdoor_air_quality": "poor",
+      "noise": "high"
+    },
+    "historical_matches": [],
+    "modern_layer": [
+      "IAQ/noise/HVAC"
+    ],
+    "decision": "Natural opening may be undesirable at times; mechanical strategy may be preferable."
+  },
+  {
+    "case_id": "CASE15-004",
+    "name": "Cửa sổ hướng Bắc ở khí hậu nóng",
+    "input": {
+      "window_azimuth_deg": 0,
+      "season": "hot",
+      "location_specific_climate": "required"
+    },
+    "historical_matches": [
+      "WIN-005"
+    ],
+    "modern_layer": [
+      "solar/wind/climate"
+    ],
+    "decision": "Historical source is seasonal/contextual; no universal North-good/North-bad verdict."
+  },
+  {
+    "case_id": "CASE15-005",
+    "name": "Phòng ngủ tối về đêm nhưng sáng vừa đủ ban ngày",
+    "input": {
+      "night_light": "low",
+      "daylight": "adequate"
+    },
+    "historical_matches": [
+      "WIN-008",
+      "WIN-009"
+    ],
+    "modern_layer": [
+      "sleep/day habitability"
+    ],
+    "decision": "Keep day/night variables separate."
+  },
+  {
+    "case_id": "CASE15-006",
+    "name": "Phòng ngủ tối cả ngày",
+    "input": {
+      "night_light": "low",
+      "daylight": "very_low"
+    },
+    "historical_matches": [
+      "WIN-008",
+      "WIN-009"
+    ],
+    "modern_layer": [
+      "daylight/habitability"
+    ],
+    "decision": "Do not use 'tụ khí' to justify poor daytime environment."
+  },
+  {
+    "case_id": "CASE15-007",
+    "name": "Đầu giường sát cửa sổ",
+    "input": {
+      "window_behind_bed_head": true
+    },
+    "historical_matches": [],
+    "modern_layer": [
+      "draft",
+      "noise",
+      "rain",
+      "light",
+      "security"
+    ],
+    "decision": "NO_DIRECT_EVIDENCE in core ancient search for severe omen; evaluate actual exposures."
+  },
+  {
+    "case_id": "CASE15-008",
+    "name": "Nhà có 4 cửa sổ phòng ngủ",
+    "input": {
+      "window_count": 4
+    },
+    "historical_matches": [
+      "WIN-010"
+    ],
+    "modern_layer": [],
+    "decision": "Only secondary quotation supports even-count idea; original source chain incomplete -> no production verdict."
+  },
+  {
+    "case_id": "CASE15-009",
+    "name": "Nhà phố nhỏ dưới 2500 m²",
+    "input": {
+      "building_type": "private_house",
+      "floor_area_m2": 180
+    },
+    "historical_matches": [],
+    "modern_layer": [
+      "TCVN5687 may guide design; QCVN09 scope not met"
+    ],
+    "decision": "Do not apply QCVN09 >=2500m² energy provisions as if mandatory for this case."
+  },
+  {
+    "case_id": "CASE15-010",
+    "name": "Văn phòng 5000 m² năm 2026",
+    "input": {
+      "building_type": "office",
+      "floor_area_m2": 5000,
+      "date": "2026-09-01"
+    },
+    "historical_matches": [],
+    "modern_layer": [
+      "QCVN09:2017/BXD current"
+    ],
+    "decision": "Use current 2017 energy code where applicable; do not activate QCVN04-3:2026 early."
+  },
+  {
+    "case_id": "CASE15-011",
+    "name": "Văn phòng 5000 m² sau 01/02/2027",
+    "input": {
+      "building_type": "office",
+      "floor_area_m2": 5000,
+      "date": "2027-02-01"
+    },
+    "historical_matches": [],
+    "modern_layer": [
+      "QCVN04-3:2026/BXD migration target"
+    ],
+    "decision": "Version switch required according to legal effect/transition provisions."
+  },
+  {
+    "case_id": "CASE15-012",
+    "name": "Agent lấy dự thảo QCVN04-1 năm 2026 làm luật hiện hành",
+    "input": {
+      "source": "draft",
+      "proposed_state": "HARD_GATE"
+    },
+    "historical_matches": [],
+    "modern_layer": [
+      "legal governance"
+    ],
+    "decision": "REJECT. Draft under consultation is not law."
+  }
+]

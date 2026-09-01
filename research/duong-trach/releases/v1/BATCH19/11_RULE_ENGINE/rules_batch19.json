@@ -1,0 +1,182 @@
+[
+  {
+    "rule_id": "R-TIM-001",
+    "claim_id": "TIM-001",
+    "source_id": "SRC-XJBF-PREFACE-META",
+    "domain": "CONSTRUCTION_SEQUENCE_TRACH_NHAT",
+    "authority_tier": "A1_AUTHENTICATED_OFFICIAL_CLASSIC",
+    "publish_state": "GOVERNANCE_RULE",
+    "master_doctrine": false,
+    "date_calculation_enabled": false,
+    "engine_threshold": null,
+    "empirical_causality": false
+  },
+  {
+    "rule_id": "R-TIM-002",
+    "claim_id": "TIM-002",
+    "source_id": "SRC-XJBF-PREFACE-META",
+    "domain": "CONSTRUCTION_SEQUENCE_TRACH_NHAT",
+    "authority_tier": "A1_AUTHENTICATED_OFFICIAL_CLASSIC",
+    "publish_state": "GOVERNANCE_RULE",
+    "master_doctrine": false,
+    "date_calculation_enabled": false,
+    "engine_threshold": null,
+    "empirical_causality": false
+  },
+  {
+    "rule_id": "R-TIM-003",
+    "claim_id": "TIM-003",
+    "source_id": "SRC-XJBF-V11-USAGE",
+    "domain": "CONSTRUCTION_SEQUENCE_TRACH_NHAT",
+    "authority_tier": "A1_AUTHENTICATED_OFFICIAL_CLASSIC",
+    "publish_state": "CANDIDATE",
+    "master_doctrine": false,
+    "date_calculation_enabled": false,
+    "engine_threshold": null,
+    "empirical_causality": false
+  },
+  {
+    "rule_id": "R-TIM-004",
+    "claim_id": "TIM-004",
+    "source_id": "SRC-XJBF-V11-USAGE",
+    "domain": "CONSTRUCTION_SEQUENCE_TRACH_NHAT",
+    "authority_tier": "A1_AUTHENTICATED_OFFICIAL_CLASSIC",
+    "publish_state": "CANDIDATE",
+    "master_doctrine": false,
+    "date_calculation_enabled": false,
+    "engine_threshold": null,
+    "empirical_causality": false
+  },
+  {
+    "rule_id": "R-TIM-005",
+    "claim_id": "TIM-005",
+    "source_id": "SRC-XJBF-V11-USAGE",
+    "domain": "CONSTRUCTION_SEQUENCE_TRACH_NHAT",
+    "authority_tier": "A1_AUTHENTICATED_OFFICIAL_CLASSIC",
+    "publish_state": "CANDIDATE",
+    "master_doctrine": false,
+    "date_calculation_enabled": false,
+    "engine_threshold": null,
+    "empirical_causality": false
+  },
+  {
+    "rule_id": "R-TIM-006",
+    "claim_id": "TIM-006",
+    "source_id": "SRC-XJBF-V11-USAGE",
+    "domain": "CONSTRUCTION_SEQUENCE_TRACH_NHAT",
+    "authority_tier": "A1_AUTHENTICATED_OFFICIAL_CLASSIC",
+    "publish_state": "CANDIDATE",
+    "master_doctrine": false,
+    "date_calculation_enabled": false,
+    "engine_threshold": null,
+    "empirical_causality": false
+  },
+  {
+    "rule_id": "R-TIM-007",
+    "claim_id": "TIM-007",
+    "source_id": "SRC-XJBF-V11-USAGE",
+    "domain": "CONSTRUCTION_SEQUENCE_TRACH_NHAT",
+    "authority_tier": "A1_AUTHENTICATED_OFFICIAL_CLASSIC",
+    "publish_state": "CANDIDATE",
+    "master_doctrine": false,
+    "date_calculation_enabled": false,
+    "engine_threshold": null,
+    "empirical_causality": false
+  },
+  {
+    "rule_id": "R-TIM-008",
+    "claim_id": "TIM-008",
+    "source_id": "SRC-XJBF-V11-USAGE",
+    "domain": "CONSTRUCTION_SEQUENCE_TRACH_NHAT",
+    "authority_tier": "A1_AUTHENTICATED_OFFICIAL_CLASSIC",
+    "publish_state": "CANDIDATE",
+    "master_doctrine": false,
+    "date_calculation_enabled": false,
+    "engine_threshold": null,
+    "empirical_causality": false
+  },
+  {
+    "rule_id": "R-TIM-009",
+    "claim_id": "TIM-009",
+    "source_id": "SRC-XJBF-V11-USAGE",
+    "domain": "CONSTRUCTION_SEQUENCE_TRACH_NHAT",
+    "authority_tier": "A1_AUTHENTICATED_OFFICIAL_CLASSIC",
+    "publish_state": "CANDIDATE",
+    "master_doctrine": false,
+    "date_calculation_enabled": false,
+    "engine_threshold": null,
+    "empirical_causality": false
+  },
+  {
+    "rule_id": "R-TIM-010",
+    "claim_id": "TIM-010",
+    "source_id": "SRC-YZF-V3-SEQUENCE",
+    "domain": "CONSTRUCTION_SEQUENCE_TRACH_NHAT",
+    "authority_tier": "A1_AUTHENTICATED_OFFICIAL_CLASSIC",
+    "publish_state": "REFERENCE_ONLY",
+    "master_doctrine": false,
+    "date_calculation_enabled": false,
+    "engine_threshold": null,
+    "empirical_causality": false
+  },
+  {
+    "rule_id": "R-TIM-011",
+    "claim_id": "TIM-011",
+    "source_id": "SRC-YZF-V3-SEQUENCE",
+    "domain": "CONSTRUCTION_SEQUENCE_TRACH_NHAT",
+    "authority_tier": "A1_AUTHENTICATED_OFFICIAL_CLASSIC",
+    "publish_state": "REFERENCE_ONLY",
+    "master_doctrine": false,
+    "date_calculation_enabled": false,
+    "engine_threshold": null,
+    "empirical_causality": false
+  },
+  {
+    "rule_id": "R-TIM-012",
+    "claim_id": "TIM-012",
+    "source_id": "SRC-YZF-V4-SEQUENCE",
+    "domain": "CONSTRUCTION_SEQUENCE_TRACH_NHAT",
+    "authority_tier": "A1_AUTHENTICATED_OFFICIAL_CLASSIC",
+    "publish_state": "REFERENCE_ONLY",
+    "master_doctrine": false,
+    "date_calculation_enabled": false,
+    "engine_threshold": null,
+    "empirical_causality": false
+  },
+  {
+    "rule_id": "R-TIM-013",
+    "claim_id": "TIM-013",
+    "source_id": "SRC-ZJ-TIMING-CROSS",
+    "domain": "CONSTRUCTION_SEQUENCE_TRACH_NHAT",
+    "authority_tier": "C1_ATTRIBUTION_DISPUTED",
+    "publish_state": "REFERENCE_ONLY",
+    "master_doctrine": false,
+    "date_calculation_enabled": false,
+    "engine_threshold": null,
+    "empirical_causality": false
+  },
+  {
+    "rule_id": "MOD-TIM-SAFETY-001",
+    "source_id": "MOD-QCVN18-2021",
+    "domain": "CONSTRUCTION_SEQUENCE_TRACH_NHAT",
+    "publish_state": "HARD_GATE",
+    "result": "SAFETY_READINESS_OVERRIDES_TRADITIONAL_DATE",
+    "engine_threshold": "REGULATION_LOOKUP_NOT_HARDCODED"
+  },
+  {
+    "rule_id": "GOV-TIM-EVENT-FIRST-001",
+    "source_id": "SRC-XJBF-V11-USAGE",
+    "domain": "CONSTRUCTION_SEQUENCE_TRACH_NHAT",
+    "publish_state": "GOVERNANCE_RULE",
+    "result": "CLASSIFY_EVENT_BEFORE_DATE_SELECTION",
+    "engine_threshold": null
+  },
+  {
+    "rule_id": "GOV-TIM-NO-DATE-YET-001",
+    "source_id": "SRC-XJBF-QING-OFFICIAL",
+    "domain": "CONSTRUCTION_SEQUENCE_TRACH_NHAT",
+    "publish_state": "BLOCK_DATE_OUTPUT",
+    "result": "NO_LUCKY_DATE_GENERATION_UNTIL_CALENDAR_ENGINE_VALIDATED",
+    "engine_threshold": null
+  }
+]

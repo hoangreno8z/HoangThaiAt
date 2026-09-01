@@ -1,0 +1,30 @@
+{
+  "$id": "lapque.open_space_engine.v0.9",
+  "entities": {
+    "EXTERNAL_FRONT_OPEN_SPACE": "polygon or sector",
+    "INTERNAL_COURTYARD": "polygon",
+    "TIANJING_CANDIDATE": "polygon + historical classification tag",
+    "MODERN_LIGHTWELL": "polygon + height + cover state",
+    "OBSTRUCTION": "polygon/height",
+    "DRAIN": "point/line"
+  },
+  "metrics": [
+    "open_area",
+    "minimum_width",
+    "maximum_width",
+    "depth",
+    "width_depth_ratio",
+    "sky_view_proxy",
+    "front_open_angle",
+    "obstruction_distance",
+    "drainage_low_points",
+    "connected_roof_catchment_area",
+    "courtyard_to_building_area_ratio"
+  ],
+  "classification_policy": [
+    "Metrics are continuous.",
+    "No ancient threshold unless verified.",
+    "Historical ratio claims get separate fields from engineering design ratios.",
+    "One physical courtyard may receive multiple conceptual labels, each with source/school context."
+  ]
+}

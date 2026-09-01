@@ -1,0 +1,44 @@
+[
+  {
+    "claim": "Hai mái nhọn chĩa nhau = 簷水相射 / đại sát",
+    "state": "SEMANTIC_OVERGENERALIZATION_RISK",
+    "evidence_note": "Verified old phrase explicitly includes 水; current evidence supports runoff-water relation, not generic roof-point geometry.",
+    "engine_action": "No verdict from roof-point alignment."
+  },
+  {
+    "claim": "Mái nhọn chĩa thẳng cửa chính = đại hung",
+    "state": "NO_DIRECT_EVIDENCE_IN_VERIFIED_CORE_SEARCH",
+    "engine_action": "Collect roof-edge sightline only; no ancient verdict until direct witness."
+  },
+  {
+    "claim": "Hiên phải dài đúng X cm/m mới tốt",
+    "state": "NO_ANCIENT_NUMERIC_THRESHOLD",
+    "evidence_note": "Old text says 勿短促 qualitatively.",
+    "engine_action": "Use climate/rain/shading/structure to size modern eaves."
+  },
+  {
+    "claim": "Máng xối phải thoát về một phương cát cố định",
+    "state": "NO_DIRECT_GENERAL_RULE",
+    "engine_action": "Hydraulic/safe outlet first; school-specific evidence required for any traditional overlay."
+  },
+  {
+    "claim": "Bồn nước mái = thủy tụ trên đầu, chắc chắn xấu",
+    "state": "NO_DIRECT_EVIDENCE_IN_VERIFIED_CORE_SEARCH",
+    "engine_action": "Use Batch16 roof-tank + structural/load/waterproofing model."
+  },
+  {
+    "claim": "Mái càng cao càng nhiều dương khí",
+    "state": "SCIENTIZATION_AND_GENERALIZATION_RISK",
+    "engine_action": "No mapping height -> qi. Analyze planning, structure, wind, thermal and daylight separately."
+  },
+  {
+    "claim": "Mái dột là dấu hiệu vận xấu nên chỉ cần hóa giải phong thủy",
+    "state": "DANGEROUS",
+    "engine_action": "Reject. Water ingress requires technical repair."
+  },
+  {
+    "claim": "Ngói xô lệch chỉ là phong thủy xấu",
+    "state": "DANGEROUS",
+    "engine_action": "Treat as roof-component/attachment condition and wind/fall hazard."
+  }
+]

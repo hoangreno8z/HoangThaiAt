@@ -1,0 +1,41 @@
+{
+  "GENERAL_HISTORICAL_DOMESTIC": {
+    "claims": [
+      "WAT-001",
+      "WAT-002",
+      "WAT-003",
+      "WAT-004",
+      "WAT-005",
+      "WAT-006",
+      "WAT-011",
+      "WAT-012"
+    ],
+    "execution": "REFERENCE_OR_QUALITATIVE",
+    "warning": "Not all are Feng Shui; some are domestic-health/custom/natural-philosophy claims."
+  },
+  "YANG_ZHAI_CUO_YAO_WELL": {
+    "claims": [
+      "WAT-007",
+      "WAT-008"
+    ],
+    "requires": [
+      "school_id",
+      "house/site reference",
+      "source-defined dragon/qi calculation"
+    ],
+    "execution": "SCHOOL_ONLY"
+  },
+  "YANG_ZHAI_CUO_YAO_DRAIN": {
+    "claims": [
+      "WAT-009",
+      "WAT-010"
+    ],
+    "requires": [
+      "school_id",
+      "source-specific outlet reference",
+      "scan collation for complex table"
+    ],
+    "execution": "SCHOOL_ONLY_PARTIAL"
+  },
+  "cross_school_rule": "Do not merge 生氣旺方/絕氣方 with Bát Trạch 生氣/絕命 or other identically named labels without explicit provenance mapping."
+}

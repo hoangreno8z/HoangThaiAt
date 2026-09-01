@@ -1,0 +1,167 @@
+[
+  {
+    "claim_id": "BED-001",
+    "source_id": "SRC-YSSB-1773-V4",
+    "original": "臥房為退藏之地，不可不密。",
+    "hanviet": "Ngọa phòng vi thoái tàng chi địa, bất khả bất mật.",
+    "literal_vi": "Phòng ngủ được xem là nơi lui về nghỉ/nghỉ kín, nên cần tính kín đáo.",
+    "classification": "HISTORICAL_DOMESTIC_HEALTH",
+    "observable": [
+      "privacy",
+      "enclosure",
+      "uncontrolled_draft"
+    ],
+    "editorial": "Không biến 'mật' thành phòng kín tuyệt đối thiếu thông gió.",
+    "state": "CANDIDATE_HISTORICAL_DESIGN"
+  },
+  {
+    "claim_id": "BED-002",
+    "source_id": "SRC-YSSB-1773-V4",
+    "original": "妄斷禍福，此假陰陽而神其說，可勿泥。",
+    "hanviet": "Vọng đoạn họa phúc, thử giả âm dương nhi thần kỳ thuyết, khả vật nê.",
+    "literal_vi": "Tác giả phê phán việc vọng đoán họa phúc, mượn âm dương để thần bí hóa lời nói và cho rằng không nên câu nệ.",
+    "classification": "HISTORICAL_CRITICAL_COMMENTARY",
+    "observable": [],
+    "editorial": "Dùng làm guardrail chống tuyệt đối hóa kích thước cửa/phòng bằng lời phán mê tín.",
+    "state": "CORE_META_GUARDRAIL"
+  },
+  {
+    "claim_id": "BED-003",
+    "source_id": "SRC-YSSB-1773-V4",
+    "original": "臥房暗則能斂神聚氣，此亦陰陽家之說。",
+    "hanviet": "Ngọa phòng ám tắc năng liễm thần tụ khí, thử diệc âm dương gia chi thuyết.",
+    "literal_vi": "Tác giả ghi nhận quan niệm âm dương gia rằng phòng ngủ tối giúp 'liễm thần tụ khí'.",
+    "classification": "HISTORICAL_REPORTED_BELIEF",
+    "observable": [
+      "night_light_level"
+    ],
+    "editorial": "Chính tác giả sau đó cân nhắc nhu cầu sáng sủa ban ngày; không đọc thành 'phòng càng tối càng tốt 24/7'.",
+    "state": "CONTEXTUAL_NOT_ABSOLUTE"
+  },
+  {
+    "claim_id": "BED-004",
+    "source_id": "SRC-YSSB-1773-V1",
+    "original": "就寢即滅燈，目不外眩，則神守其舍。",
+    "hanviet": "Tựu tẩm tức diệt đăng, mục bất ngoại huyễn, tắc thần thủ kỳ xá.",
+    "literal_vi": "Khi đi ngủ thì tắt đèn để mắt không bị ánh sáng bên ngoài làm chói/dao động.",
+    "classification": "HISTORICAL_SLEEP_HEALTH",
+    "observable": [
+      "sleep_light_exposure"
+    ],
+    "editorial": "Có thể đặt cạnh khuyến nghị ngủ trong môi trường tối của y học hiện đại, nhưng không nói cơ chế cổ = cơ chế sinh học hiện đại.",
+    "state": "CANDIDATE_HISTORICAL_HEALTH"
+  },
+  {
+    "claim_id": "BED-005",
+    "source_id": "SRC-YSSB-1773-V4",
+    "original": "安床著壁，須杉木板隔之……頭臥處近壁，亦須板隔，否則壁土濕蒸，驗之有黴氣。",
+    "hanviet": "An sàng trước bích, tu sam mộc bản cách chi... đầu ngọa xứ cận bích, diệc tu bản cách, phủ tắc bích thổ thấp chưng, nghiệm chi hữu môi khí.",
+    "literal_vi": "Khi đặt giường sát tường, tác giả khuyên có lớp cách; đặc biệt vùng đầu gần tường được lưu ý về hơi ẩm/mùi mốc.",
+    "classification": "HISTORICAL_DOMESTIC_HEALTH",
+    "observable": [
+      "bed_to_wall_distance",
+      "wall_dampness",
+      "mould_visible_or_odour"
+    ],
+    "editorial": "Không bắt buộc dùng gỗ sam; modern moisture/mould control là lớp riêng.",
+    "state": "CANDIDATE_DAMPNESS_MOTIF"
+  },
+  {
+    "claim_id": "BED-006",
+    "source_id": "SRC-YSSB-1773-V4",
+    "original": "盛夏暫移床於室中央，四面空虛，即散煩熱……窗牖不可少開，便微風得入臥所。",
+    "hanviet": "Thịnh hạ tạm di sàng ư thất trung ương, tứ diện không hư, tức tán phiền nhiệt... song dũ bất khả thiểu khai, tiện vi phong đắc nhập ngọa sở.",
+    "literal_vi": "Mùa hè nóng, tác giả đề nghị có thể tạm đưa giường ra giữa phòng cho thoáng và mở cửa sổ để có gió nhẹ.",
+    "classification": "HISTORICAL_SEASONAL_ENVIRONMENT",
+    "observable": [
+      "bed_wall_clearance",
+      "window_opening",
+      "air_movement",
+      "season"
+    ],
+    "editorial": "Cho thấy chính nguồn không tuyệt đối hóa 'giường luôn phải áp tường'.",
+    "state": "CORE_INTERNAL_CONFLICT_TO_POPULAR_FOLKLORE"
+  },
+  {
+    "claim_id": "BED-007",
+    "source_id": "SRC-YSSB-1773-V1",
+    "original": "《記·玉藻》曰：『寢恒東首。』……《雲笈七籤》曰：『冬臥宜向北。』……則凡東西設床者，臥以南首為當。",
+    "hanviet": "Ký Ngọc Tảo viết: tẩm hằng Đông thủ... Vân Cấp Thất Thiêm viết: đông ngọa nghi hướng Bắc... tắc phàm Đông Tây thiết sàng giả, ngọa dĩ Nam thủ vi đương.",
+    "literal_vi": "Tác giả dẫn nhiều truyền thống về hướng đầu khi ngủ: có nguồn nói thường quay đầu Đông, nguồn khác nói mùa đông hướng Bắc, rồi tự đưa ra nhận định khác theo bố trí.",
+    "classification": "HISTORICAL_DIRECTION_CONFLICT",
+    "observable": [
+      "bed_head_azimuth"
+    ],
+    "editorial": "Bằng chứng trực tiếp rằng 'hướng đầu giường cổ' không phải một quy tắc duy nhất.",
+    "state": "CONFLICTED_NO_GENERAL_RULE"
+  },
+  {
+    "claim_id": "BED-008",
+    "source_id": "SRC-YSSB-1773-V1",
+    "original": "愚謂寢處必安其常……四時更變，反致不安。",
+    "hanviet": "Ngu vị tẩm xứ tất an kỳ thường... tứ thời canh biến, phản trí bất an.",
+    "literal_vi": "Tác giả cho rằng chỗ ngủ nên ổn định, đổi hướng theo bốn mùa trái lại có thể làm bất an.",
+    "classification": "AUTHORIAL_CRITIQUE",
+    "observable": [
+      "bed_reorientation_frequency"
+    ],
+    "editorial": "Giữ như ý kiến Tào Đình Đống, không biến thành cổ pháp phổ quát.",
+    "state": "SOURCE_AUTHOR_OPINION"
+  },
+  {
+    "claim_id": "BED-009",
+    "source_id": "SRC-RDY-Q10-BED",
+    "original": "三吉之方宜開門、放灶、擇房、安床，而大門尤重。",
+    "hanviet": "Tam cát chi phương nghi khai môn, phóng táo, trạch phòng, an sàng, nhi đại môn vưu trọng.",
+    "literal_vi": "Trong hệ Du Tinh của văn bản này, ba phương cát được dùng để mở cửa, đặt bếp, chọn phòng và an giường.",
+    "classification": "FENG_SHUI_SCHOOL_RULE",
+    "observable": [
+      "school_house_type",
+      "sector_classification",
+      "bed_sector"
+    ],
+    "editorial": "Chỉ được chạy khi module trường phái tương ứng được load; không nhập general-form engine.",
+    "state": "SCHOOL_SPECIFIC"
+  },
+  {
+    "claim_id": "BED-010",
+    "source_id": "SRC-YZCY-QING-BED",
+    "original": "無論正門、旁門、前門、後門、臥房門，俱宜正卦裝成。",
+    "hanviet": "Vô luận chính môn, bàng môn, tiền môn, hậu môn, ngọa phòng môn, câu nghi chính quái trang thành.",
+    "literal_vi": "Trong hệ của 《陽宅闡要》, kể cả cửa phòng ngủ cũng được xét bằng phép chính quái.",
+    "classification": "FENG_SHUI_SCHOOL_RULE",
+    "observable": [
+      "bedroom_door_azimuth",
+      "school_period_or_gua_state"
+    ],
+    "editorial": "Không biến thành rule hình học phổ quát về cửa phòng ngủ.",
+    "state": "SCHOOL_SPECIFIC"
+  },
+  {
+    "claim_id": "BED-011",
+    "source_id": "SRC-YZCY-QING-BED",
+    "original": "以臥房為主，而生旺之氣必層層從門引入房內為佳。",
+    "hanviet": "Dĩ ngọa phòng vi chủ, nhi sinh vượng chi khí tất tầng tầng tòng môn dẫn nhập phòng nội vi giai.",
+    "literal_vi": "Chú giải của văn bản này coi phòng ngủ quan trọng và cho rằng khí sinh-vượng nên được dẫn qua các lớp cửa vào phòng.",
+    "classification": "FENG_SHUI_SCHOOL_INTERPRETATION",
+    "observable": [
+      "door_graph",
+      "school_sector_states"
+    ],
+    "editorial": "Room/door graph có thể hỗ trợ, nhưng sinh-vượng là dữ liệu trường phái.",
+    "state": "SCHOOL_SPECIFIC_GRAPH_READY"
+  },
+  {
+    "claim_id": "BED-012",
+    "source_id": "SRC-YSSB-1773-V4",
+    "original": "臥所一斗室足矣。",
+    "hanviet": "Ngọa sở nhất đẩu thất túc hĩ.",
+    "literal_vi": "Tác giả cho rằng nơi ngủ không cần quá lớn.",
+    "classification": "HISTORICAL_DOMESTIC_PREFERENCE",
+    "observable": [
+      "bedroom_area"
+    ],
+    "editorial": "Không chuyển thành diện tích tối đa/tối thiểu; modern space standards và nhu cầu người dùng độc lập.",
+    "state": "QUALITATIVE_ONLY"
+  }
+]

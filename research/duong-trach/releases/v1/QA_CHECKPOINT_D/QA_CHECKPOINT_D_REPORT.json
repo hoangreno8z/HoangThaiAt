@@ -1,0 +1,62 @@
+{
+  "checkpoint": "QA_CHECKPOINT_D",
+  "date": "2026-09-01",
+  "scope": "BATCH01_TO_BATCH16_WITH_WATER_INTEGRATION",
+  "metrics": {
+    "json_documents_scanned": 149,
+    "parse_errors": 0,
+    "unique_source_ids": 81,
+    "claims_motifs_evidence_scanned": 160,
+    "rules_scanned": 163,
+    "claim_missing_source_refs": 0,
+    "rule_missing_source_refs": 0,
+    "duplicate_claim_ids": 0,
+    "duplicate_rule_ids": 0,
+    "numeric_thresholds_needing_review": 0,
+    "school_leakage": 0,
+    "batch16_object_type_guard_failures": 0,
+    "dangerous_historical_practice_leaks": 0
+  },
+  "hard_results": {
+    "JSON_PARSE": "PASS",
+    "CLAIM_SOURCE_INTEGRITY": "PASS",
+    "RULE_SOURCE_INTEGRITY": "PASS",
+    "CLAIM_ID_UNIQUENESS": "PASS",
+    "RULE_ID_UNIQUENESS": "PASS",
+    "NO_NUMERIC_THRESHOLD_HALLUCINATION": "PASS",
+    "SCHOOL_ISOLATION": "PASS",
+    "WATER_OBJECT_TYPE_GUARDS": "PASS",
+    "HISTORICAL_DANGER_CONTAINMENT": "PASS",
+    "LEGAL_VERSION_LOCKS": "PASS"
+  },
+  "guard_presence": {
+    "井 != POTABLE_WATER_TANK": true,
+    "井 != ROOF_TANK": true,
+    "井 != TAP_WATER_SOURCE": true
+  },
+  "legal_checks": {
+    "QCVN01_1_2024_EFFECTIVE_2025_07_01": true,
+    "QCVN07_1_AMENDMENT_EFFECTIVE_2026_01_23": true,
+    "TCVN4513_ACTIVE_RECORDED": true,
+    "TCVN4474_ACTIVE_RECORDED": true,
+    "TCVN7957_2023_REPLACES_2008": true
+  },
+  "issues": {
+    "parse_errors": [],
+    "claim_missing": [],
+    "rule_missing": [],
+    "duplicate_claims": {},
+    "duplicate_rules": {},
+    "threshold_review": [],
+    "school_leak": [],
+    "object_type_guard_fail": [],
+    "dangerous_modernization": []
+  },
+  "governance_additions": [
+    "Ancient object type must match modern entity before rule execution.",
+    "Water safety/quality is a hard gate independent of Feng Shui.",
+    "Historical hazardous practices are preserved but cannot be actionable.",
+    "School-specific water-path geometry cannot override hydraulic engineering.",
+    "Well rules never execute on tanks or piped-water sources."
+  ]
+}

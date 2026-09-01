@@ -1,0 +1,162 @@
+[
+  {
+    "case_id": "CASE19-001",
+    "name": "Lễ động thổ tượng trưng nhưng chưa đào móng",
+    "input": {
+      "action": "CEREMONIAL_GROUNDBREAKING",
+      "physical_excavation": false
+    },
+    "historical_match": "BUILD_OR_RENOVATE_GROUNDBREAKING? requires editorial mapping",
+    "safety": "No physical work can begin until ready",
+    "decision": "Keep ceremony and first physical excavation as separate timestamps/events."
+  },
+  {
+    "case_id": "CASE19-002",
+    "name": "Đào móng thật nhưng hồ sơ/an toàn chưa sẵn sàng",
+    "input": {
+      "action": "FIRST_EXCAVATION",
+      "technical_ready": false,
+      "ritual_date": "favorable"
+    },
+    "historical_match": "possible 修造動土",
+    "safety": "FAIL",
+    "decision": "NO WORK. Traditional date cannot override readiness."
+  },
+  {
+    "case_id": "CASE19-003",
+    "name": "Muốn dùng ngày động thổ cho lễ thượng lương",
+    "input": {
+      "source_event_selected": "修造動土",
+      "actual_event": "豎柱上梁"
+    },
+    "historical_match": "wrong event",
+    "safety": "N/A",
+    "decision": "RECLASSIFY. XJBF treats them separately."
+  },
+  {
+    "case_id": "CASE19-004",
+    "name": "Phá tường nhà cũ để cải tạo",
+    "input": {
+      "actual_event": "DEMOLITION",
+      "structure_info": "incomplete"
+    },
+    "historical_match": "破屋壞垣 candidate",
+    "safety": "QCVN18 demolition survey/design required",
+    "decision": "Technical demolition readiness first."
+  },
+  {
+    "case_id": "CASE19-005",
+    "name": "Người dùng nhập 'phá thổ' nhưng muốn đào móng nhà",
+    "input": {
+      "user_term": "破土",
+      "intention": "HOUSE_FOUNDATION"
+    },
+    "historical_match": "DOMAIN CONFLICT",
+    "safety": "N/A",
+    "decision": "Do not accept term silently; XJBF separates burial 破土 from construction 動土."
+  },
+  {
+    "case_id": "CASE19-006",
+    "name": "Chuyển đồ vào nhà mới",
+    "input": {
+      "action": "MOVE_IN",
+      "ritual_label": "入宅"
+    },
+    "historical_match": "移徙 candidate",
+    "safety": "occupancy readiness required",
+    "decision": "UI may say Nhập trạch, evidence layer must show mapping to 移徙 is editorial."
+  },
+  {
+    "case_id": "CASE19-007",
+    "name": "Lắp giường cùng ngày chuyển nhà",
+    "input": {
+      "events": [
+        "MOVE_RESIDENCE",
+        "INSTALL_BED_TIMING"
+      ]
+    },
+    "historical_match": [
+      "移徙",
+      "安牀"
+    ],
+    "safety": "PASS assumed",
+    "decision": "Two event classes; do not collapse."
+  },
+  {
+    "case_id": "CASE19-008",
+    "name": "Lắp cửa chính và yêu cầu 'ngày An Môn theo Hiệp Kỷ'",
+    "input": {
+      "event": "DOOR_INSTALLATION",
+      "requested_source": "XJBF"
+    },
+    "historical_match": "NO_SEPARATE_ANMEN_EVENT_LOCKED_IN_V11",
+    "safety": "door/fire/egress requirements still apply",
+    "decision": "BLOCK source claim until direct witness found."
+  },
+  {
+    "case_id": "CASE19-009",
+    "name": "Nhà thép lắp dầm chính, gọi là thượng lương",
+    "input": {
+      "modern_event": "STEEL_BEAM_INSTALL",
+      "ritual_label": "上梁"
+    },
+    "historical_match": "mapping uncertain",
+    "safety": "steel erection safety",
+    "decision": "Do not assert exact equivalence; allow ceremonial label separately from engineering event."
+  },
+  {
+    "case_id": "CASE19-010",
+    "name": "Ngày được coi là tốt nhưng có bão lớn",
+    "input": {
+      "traditional_result": "favorable",
+      "weather": "unsafe"
+    },
+    "historical_match": "N/A",
+    "safety": "FAIL",
+    "decision": "NO WORK / RESCHEDULE."
+  },
+  {
+    "case_id": "CASE19-011",
+    "name": "AI tự tạo bảng ngày tốt 2026 từ vài câu quyển 11",
+    "input": {
+      "calendar_engine_validated": false,
+      "request": "generate dates"
+    },
+    "historical_match": "insufficient",
+    "safety": "N/A",
+    "decision": "BLOCK. Event taxonomy is verified; calendar mathematics/tables are not yet production-validated."
+  },
+  {
+    "case_id": "CASE19-012",
+    "name": "Dẫn Trạch Kinh là lời Hoàng Đế về sửa nhà",
+    "input": {
+      "source": "宅經",
+      "attribution": "黃帝"
+    },
+    "historical_match": "text exists, attribution disputed",
+    "safety": "N/A",
+    "decision": "Use text with pseudepigraphic warning; reject Huangdi authorship as fact."
+  },
+  {
+    "case_id": "CASE19-013",
+    "name": "Doanh Tạo Pháp Thức có 'thứ tự', nên dùng để chọn ngày",
+    "input": {
+      "source": "營造法式",
+      "requested_domain": "CALENDAR_SELECTION"
+    },
+    "historical_match": "technical sequence only",
+    "safety": "N/A",
+    "decision": "REJECT domain leap."
+  },
+  {
+    "case_id": "CASE19-014",
+    "name": "Công trình đang chống đỡ tạm nhưng chủ muốn tháo để đúng giờ đẹp",
+    "input": {
+      "temporary_support": "required",
+      "ritual_time_pressure": true
+    },
+    "historical_match": "N/A",
+    "safety": "QCVN18 HARD FAIL if unsafe",
+    "decision": "Never remove temporary support for ritual timing."
+  }
+]

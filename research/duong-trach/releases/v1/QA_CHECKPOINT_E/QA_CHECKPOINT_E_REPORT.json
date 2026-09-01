@@ -1,0 +1,66 @@
+{
+  "checkpoint": "QA_CHECKPOINT_E",
+  "date": "2026-09-01",
+  "scope": "BATCH01_TO_BATCH17_WITH_ROOF_INTEGRATION",
+  "metrics": {
+    "json_documents_scanned": 162,
+    "parse_errors": 0,
+    "unique_source_ids": 91,
+    "claims_motifs_evidence_scanned": 170,
+    "rules_scanned": 176,
+    "claim_missing_source_refs": 0,
+    "rule_missing_source_refs": 0,
+    "duplicate_claim_ids": 0,
+    "duplicate_rule_ids": 0,
+    "numeric_thresholds_needing_review": 0,
+    "school_leakage": 0,
+    "batch17_object_guard_failures": 0
+  },
+  "hard_results": {
+    "JSON_PARSE": "PASS",
+    "CLAIM_SOURCE_INTEGRITY": "PASS",
+    "RULE_SOURCE_INTEGRITY": "PASS",
+    "CLAIM_ID_UNIQUENESS": "PASS",
+    "RULE_ID_UNIQUENESS": "PASS",
+    "NO_NUMERIC_THRESHOLD_HALLUCINATION": "PASS",
+    "SCHOOL_ISOLATION": "PASS",
+    "ROOF_OBJECT_TYPE_GUARDS": "PASS",
+    "ROOF_STANDARD_VERSION_LOCKS": "PASS"
+  },
+  "semantic_checks": {
+    "RUNOFF_NOT_ROOF_POINT": true,
+    "NO_EAVE_NUMERIC_THRESHOLD": true,
+    "YINGZAO_TECH_NOT_FENGSHUI": true,
+    "ROOF_TANK_LINK_BATCH16": true,
+    "SOLAR_PAINT_NOT_WATERPROOFING": true
+  },
+  "legal_checks": {
+    "TCVN5718_ACTIVE": true,
+    "TCVN2737_2023_ACTIVE": true,
+    "TCVN9385_ACTIVE": true,
+    "QCVN02_CURRENT_BASE_LOCK": true
+  },
+  "issues": {
+    "parse_errors": [],
+    "claim_missing": [],
+    "rule_missing": [],
+    "duplicate_claims": {},
+    "duplicate_rules": {},
+    "numeric_thresholds": [],
+    "school_leak": [],
+    "object_guard_fail": []
+  },
+  "governance_additions": [
+    "Water-bearing term in ancient roof phrase must remain water/runoff semantic unless a second source proves a roof-point meaning.",
+    "Historical construction manuals do not become Feng Shui evidence merely because they concern buildings.",
+    "Physical roof defect creates a safety/maintenance action without any omen inference.",
+    "Material/product standard scope must remain separate: solar-reflective coating is not a waterproofing system.",
+    "Roof tank retains Batch16 modern-water ontology."
+  ],
+  "qa_patch": {
+    "date": "2026-09-01",
+    "reason": "Original string-based test produced a false negative for the Yingzao Fashi classification.",
+    "fix": "Added structured machine-readable invariants and reran the semantic guard.",
+    "data_changed": "No source claim or rule meaning changed; only invariant representation/test robustness improved."
+  }
+}

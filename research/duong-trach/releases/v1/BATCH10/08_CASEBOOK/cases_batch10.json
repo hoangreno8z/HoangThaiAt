@@ -1,0 +1,171 @@
+[
+  {
+    "case_id": "CASE10-001",
+    "name": "Nhà phố hiện đại: khách–ăn liên thông",
+    "input": {
+      "rooms": [
+        "living",
+        "dining",
+        "kitchen"
+      ],
+      "open_plan": true
+    },
+    "historical_term_mapping": "NONE_AUTO",
+    "graph": "entry -> living/dining -> kitchen",
+    "matches": [],
+    "decision": "Không gắn living room = 堂. Chờ bếp Batch11; chỉ kiểm circulation hiện đại."
+  },
+  {
+    "case_id": "CASE10-002",
+    "name": "Nhà ba gian mô phỏng không gian chính + hai cánh",
+    "input": {
+      "primary_space_area": 35,
+      "left_side_area": 18,
+      "right_side_area": 18
+    },
+    "historical_term_mapping": "PRIMARY_HALL_CANDIDATE + SIDE_WINGS",
+    "graph": "side-left <-> primary <-> side-right",
+    "matches": [
+      "ROOM-001",
+      "ROOM-002",
+      "ROOM-004"
+    ],
+    "decision": "Có thể so motif hierarchy; không dùng kết quả gia đình cổ như dự báo."
+  },
+  {
+    "case_id": "CASE10-003",
+    "name": "Hai cánh lớn hơn không gian chính",
+    "input": {
+      "primary_space_area": 24,
+      "side_halls_area": [
+        40,
+        38
+      ]
+    },
+    "historical_term_mapping": "CANDIDATE_ONLY",
+    "graph": "two side spaces dominate primary",
+    "matches": [
+      "ROOM-003"
+    ],
+    "decision": "Ghi relative-scale ratio; rule phán bị PARTIAL vì '廳若欺堂' chưa có ngưỡng."
+  },
+  {
+    "case_id": "CASE10-004",
+    "name": "Cửa phòng chính đối sân trong hở trời",
+    "input": {
+      "room_door_axis_intersects_tianjing": true
+    },
+    "historical_term_mapping": "房門 + TRADITIONAL_TIANJING candidate",
+    "graph": "room -> door -> tianjing",
+    "matches": [
+      "ROOM-005"
+    ],
+    "decision": "Candidate classical match. Không bịa độ lệch 5°/10° để hóa giải."
+  },
+  {
+    "case_id": "CASE10-005",
+    "name": "Cửa kho đối thẳng cửa phòng",
+    "input": {
+      "service_storage_candidate": true,
+      "door_to_door_axis": true
+    },
+    "historical_term_mapping": "窖房 uncertain",
+    "graph": "storage? <-> corridor <-> room",
+    "matches": [
+      "ROOM-006"
+    ],
+    "decision": "UNKNOWN vì 窖房 chưa khóa nghĩa. Không tự gọi kho hiện đại là 窖房."
+  },
+  {
+    "case_id": "CASE10-006",
+    "name": "Compound ba hộ dùng chung một cổng",
+    "input": {
+      "units": 3,
+      "shared_gate": 1,
+      "shared_path": 1
+    },
+    "historical_term_mapping": "compound topology",
+    "graph": "gate -> shared path -> U1/U2/U3",
+    "matches": [
+      "ROOM-008",
+      "ROOM-009"
+    ],
+    "decision": "Text chỉ hỗ trợ mô hình topology. PCCC/accessibility/ownership circulation đánh giá riêng."
+  },
+  {
+    "case_id": "CASE10-007",
+    "name": "Văn phòng có một hành lang cụt dài",
+    "input": {
+      "building_type": "office",
+      "dead_end_corridor": true
+    },
+    "historical_term_mapping": "NONE",
+    "graph": "egress graph contains dead-end",
+    "matches": [],
+    "decision": "QCVN06/applicable fire design first. Không dùng phong thủy để hợp thức hóa egress yếu."
+  },
+  {
+    "case_id": "CASE10-008",
+    "name": "Showroom có tuyến khách dùng bậc duy nhất, không có route tiếp cận",
+    "input": {
+      "building_type": "commercial_service",
+      "accessible_route_broken": true
+    },
+    "historical_term_mapping": "NONE",
+    "graph": "public entry route inaccessible",
+    "matches": [],
+    "decision": "Nếu thuộc phạm vi QCVN10:2024/BXD -> HARD GATE FAIL/REDESIGN."
+  },
+  {
+    "case_id": "CASE10-009",
+    "name": "Nhà riêng có hành lang hẹp nhưng không thuộc QCVN10 bắt buộc theo loại này",
+    "input": {
+      "building_type": "detached_private_house",
+      "narrow_corridor": true
+    },
+    "historical_term_mapping": "NONE",
+    "graph": "functional route constrained",
+    "matches": [],
+    "decision": "Không giả vờ QCVN10 tự động áp dụng; đánh giá công năng/an toàn theo hồ sơ pháp lý cụ thể."
+  },
+  {
+    "case_id": "CASE10-010",
+    "name": "Phòng bị gió lùa từ khe cửa đối diện",
+    "input": {
+      "uncontrolled_draft": true,
+      "mechanical_or_natural_ventilation": "unknown"
+    },
+    "historical_term_mapping": "室",
+    "graph": "draft path observed",
+    "matches": [
+      "ROOM-010"
+    ],
+    "decision": "Ghi motif tránh gió lùa. Không suy 'bịt kín phòng'; IAQ/ventilation cần thiết kế độc lập."
+  },
+  {
+    "case_id": "CASE10-011",
+    "name": "Bếp nằm ngay dưới không gian tiếp khách tầng trên",
+    "input": {
+      "kitchen_below_hall": true
+    },
+    "historical_term_mapping": "possible 廳屋 relation",
+    "graph": "vertical adjacency",
+    "matches": [
+      "ROOM-011"
+    ],
+    "decision": "DEFER TO BATCH11. Không phán ở Batch10."
+  },
+  {
+    "case_id": "CASE10-012",
+    "name": "Agent cố diễn '中堂不可架直屋' thành hành lang xuyên tâm",
+    "input": {
+      "proposed_mapping": "central corridor through house"
+    },
+    "historical_term_mapping": "架直屋 unresolved",
+    "graph": "n/a",
+    "matches": [
+      "ROOM-012"
+    ],
+    "decision": "REJECT HALLUCINATED MAPPING. State remains SEMANTIC_UNRESOLVED."
+  }
+]

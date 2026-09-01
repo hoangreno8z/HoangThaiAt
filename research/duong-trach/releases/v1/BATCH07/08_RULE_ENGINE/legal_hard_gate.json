@@ -1,0 +1,12 @@
+{
+  "rule_id": "MOD-LEGAL-PLACEMENT-001",
+  "type": "HARD_GATE",
+  "condition": "building footprint is not fully inside legally and safely buildable region",
+  "result": "FAIL_OR_REDESIGN",
+  "override": "ALL_CLASSICAL_RECOMMENDATIONS",
+  "source_versioning": [
+    "MOD-QCVN01-2021 current at 2026-09-01",
+    "MOD-QCVN01-2026 effective 2027-01-01"
+  ],
+  "note": "Actual project must resolve detailed plan/local rules/transition provisions."
+}

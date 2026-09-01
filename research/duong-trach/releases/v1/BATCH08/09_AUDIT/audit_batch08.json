@@ -1,0 +1,34 @@
+{
+  "batch": "08",
+  "date": "2026-09-01",
+  "scope": "GATE_MAIN_DOOR_ACCESS",
+  "counts": {
+    "sources": 3,
+    "claims": 12,
+    "rules": 12,
+    "cases": 12
+  },
+  "passed": [
+    "general_form_separated_from_bazhai",
+    "xuan_kong_zhuang_gua_deferred",
+    "door_timing_deferred",
+    "lu_ban_ruler_variant_warning",
+    "no_cm_conversion_without_lineage",
+    "fire_safety_override",
+    "multi_gate_role_model",
+    "compound_enclosure_graph",
+    "direct_axis_continuous_geometry_no_fake_angle"
+  ],
+  "important_findings": [
+    "The text itself says multiple door-ruler traditions circulated, so a single internet Lu Ban ruler cannot be treated as the sole ancient standard.",
+    "截路分房 provides a textual basis for modeling nested courtyards/enclosures as separate nodes, but its star calculation remains school-specific.",
+    "Door geometry and door-direction school rules can now be cleanly separated in the data model."
+  ],
+  "blocked": [
+    "production Lu Ban ruler dimensions",
+    "24 mountain -> school verdict",
+    "door repair timing",
+    "numeric angle/distance threshold for direct impact"
+  ],
+  "next": "BATCH09_COURTYARD_MINGTANG_INTERNAL_OPEN_SPACE"
+}

@@ -1,0 +1,19 @@
+{
+  "batch": "02",
+  "passed_checks": [
+    "scope_firewall",
+    "source_id_required",
+    "attribution_separation",
+    "traditional_vs_modern_causality",
+    "no_invented_numeric_thresholds",
+    "rule_candidate_not_final"
+  ],
+  "open_issues": [
+    "YZSS OCR passages require page-image verification before final quotation lock",
+    "DNBS authorship attribution requires bibliographic note in final corpus",
+    "HLJ/YLJ attribution remains disputed",
+    "No geometry thresholds have been formalized yet",
+    "Modern Vietnam hazard datasets are not yet ingested in Batch 02"
+  ],
+  "next_batch": "03: complete SITE SELECTION with scan cross-check + modern hazard source layer (flood, landslide, geology, climate) before moving to house placement."
+}

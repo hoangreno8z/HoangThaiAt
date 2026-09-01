@@ -1,0 +1,26 @@
+[
+  {
+    "rule_id": "R-DEF-001",
+    "claim_id": "DEF-001",
+    "input": "directional_deficiency[卯/酉]",
+    "threshold": null,
+    "state": "BLOCKED_FOR_PRODUCTION",
+    "reason": "不足 lacks quantitative geometric definition."
+  },
+  {
+    "rule_id": "R-DEF-002",
+    "claim_id": "DEF-002",
+    "input": "directional_deficiency[子/午]",
+    "threshold": null,
+    "state": "BLOCKED_FOR_PRODUCTION",
+    "reason": "Traditional judgment retained; deficiency threshold undefined."
+  },
+  {
+    "rule_id": "R-DEF-006",
+    "claim_id": "DEF-006",
+    "input": "directional_deficiency[四維/四正]",
+    "threshold": null,
+    "state": "BLOCKED_FOR_PRODUCTION",
+    "reason": "四維/四正 semantics can be mapped directionally, but '不足' magnitude not defined."
+  }
+]

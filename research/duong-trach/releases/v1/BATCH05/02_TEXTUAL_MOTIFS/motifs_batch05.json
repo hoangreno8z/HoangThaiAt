@@ -1,0 +1,546 @@
+[
+  {
+    "motif_id": "MOTIF-001",
+    "topic": "Đại thế ưu tiên trước nội cục",
+    "witnesses": [
+      {
+        "source_id": "SRC-GJTS675-P69",
+        "original": "人之居處，宜以大地山河為主。",
+        "hanviet": "Nhân chi cư xứ, nghi dĩ đại địa sơn hà vi chủ."
+      }
+    ],
+    "literal_vi": "Nơi người ở nên lấy đại thế đất đai, núi sông làm chủ.",
+    "observable": [
+      "site_context",
+      "terrain",
+      "water",
+      "roads",
+      "surrounding_mass"
+    ],
+    "traditional_outcome": null,
+    "publish_state": "CORE_PRINCIPLE"
+  },
+  {
+    "motif_id": "MOTIF-002",
+    "topic": "Đất rộng, tương đối bằng",
+    "witnesses": [
+      {
+        "source_id": "SRC-GJTS675-P69",
+        "original": "居處須用寬平勢。",
+        "hanviet": "Cư xứ tu dụng khoan bình thế."
+      },
+      {
+        "source_id": "SRC-DNBS-V5",
+        "original": "宅地平坦，吉。",
+        "hanviet": "Trạch địa bình thản, cát."
+      }
+    ],
+    "literal_vi": "Nơi cư trú được ưu tiên thế đất rộng và tương đối bằng; Đa Năng Bỉ Sự cũng coi đất nhà bằng là tốt.",
+    "observable": [
+      "usable_area",
+      "slope_surface",
+      "grade_breaks"
+    ],
+    "traditional_outcome": "吉",
+    "publish_state": "CORE_FORM_MOTIF",
+    "witness_independence": "UNKNOWN"
+  },
+  {
+    "motif_id": "MOTIF-003",
+    "topic": "Nước bao vòng",
+    "witnesses": [
+      {
+        "source_id": "SRC-GJTS675-P69",
+        "original": "前後有水環抱貴。",
+        "hanviet": "Tiền hậu hữu thủy hoàn bão quý."
+      }
+    ],
+    "literal_vi": "Trước sau có nước uốn bao được truyền thống xem là quý.",
+    "observable": [
+      "water_curvature_relative_to_site",
+      "flow_direction",
+      "distance_to_water"
+    ],
+    "traditional_outcome": "貴",
+    "publish_state": "FORM_MOTIF_WITH_HYDROLOGY_HARD_GATE"
+  },
+  {
+    "motif_id": "MOTIF-004",
+    "topic": "Đường hai bên và thuật ngữ 返跳",
+    "witnesses": [
+      {
+        "source_id": "SRC-GJTS675-P69",
+        "original": "左右有路亦如然，但遇返跳必須忌。",
+        "hanviet": "Tả hữu hữu lộ diệc như nhiên, đãn ngộ phản khiêu tất tu kỵ."
+      }
+    ],
+    "literal_vi": "Hai bên có đường cũng được xét tương tự, nhưng gặp thế gọi là 'phản khiêu' thì phải kỵ.",
+    "observable": [
+      "road_geometry_left",
+      "road_geometry_right",
+      "road_curvature"
+    ],
+    "traditional_outcome": "忌",
+    "term_status": {
+      "返跳": "UNRESOLVED_GEOMETRIC_MEANING"
+    },
+    "publish_state": "UNKNOWN_UNTIL_TERM_RESOLVED"
+  },
+  {
+    "motif_id": "MOTIF-005",
+    "topic": "Thủy khẩu: có thu giữ nhưng không quá bức",
+    "witnesses": [
+      {
+        "source_id": "SRC-GJTS675-P69",
+        "original": "更須水口收拾緊，不宜太迫成小器。",
+        "hanviet": "Cánh tu thủy khẩu thu thập khẩn, bất nghi thái bách thành tiểu khí."
+      }
+    ],
+    "literal_vi": "Thủy khẩu được yêu cầu có tính thu giữ, nhưng không nên quá bức ép/chật hẹp.",
+    "observable": [
+      "water_outlet_geometry",
+      "closure",
+      "constriction"
+    ],
+    "traditional_outcome": null,
+    "publish_state": "CORE_MOTIF_NO_NUMERIC_THRESHOLD"
+  },
+  {
+    "motif_id": "MOTIF-006",
+    "topic": "Tứ tượng dưới dạng ngoại cảnh cụ thể",
+    "witnesses": [
+      {
+        "source_id": "SRC-GJTS675-P69",
+        "original": "左有流水謂之青龍；右有長道謂之白虎；前有汙池謂之朱雀；後有丘陵謂之元武。",
+        "hanviet": "Tả hữu lưu thủy vị chi Thanh Long; hữu hữu trường đạo vị chi Bạch Hổ; tiền hữu ô trì vị chi Chu Tước; hậu hữu khâu lăng vị chi Huyền Vũ."
+      },
+      {
+        "source_id": "SRC-DNBS-V5",
+        "original": "欲左有流水，右有長道，前有池塘，後有丘陵佳。",
+        "hanviet": "Dục tả hữu lưu thủy, hữu hữu trường đạo, tiền hữu trì đường, hậu hữu khâu lăng giai."
+      }
+    ],
+    "literal_vi": "Một truyền bản gán dòng nước bên trái là Thanh Long, đường dài bên phải là Bạch Hổ, ao phía trước là Chu Tước và gò đồi phía sau là Huyền Vũ.",
+    "observable": [
+      "left_water",
+      "right_road",
+      "front_waterbody",
+      "rear_landform"
+    ],
+    "traditional_outcome": "佳/最貴",
+    "publish_state": "TEXT_SPECIFIC_MAPPING_NOT_UNIVERSAL",
+    "witness_independence": "UNKNOWN"
+  },
+  {
+    "motif_id": "MOTIF-007",
+    "topic": "Không ở đúng chỗ dòng nước xông/chảy trực tiếp",
+    "witnesses": [
+      {
+        "source_id": "SRC-GJTS675-P69",
+        "original": "不居正當水流處。",
+        "hanviet": "Bất cư chính đương thủy lưu xứ."
+      },
+      {
+        "source_id": "SRC-DNBS-V5",
+        "original": "勿居正當水流處。",
+        "hanviet": "Vật cư chính đương thủy lưu xứ."
+      }
+    ],
+    "literal_vi": "Không nên chọn nơi nằm đúng vào hướng/dòng nước chảy xông tới.",
+    "observable": [
+      "flow_vector",
+      "channel_axis",
+      "parcel_intersection",
+      "erosion_zone"
+    ],
+    "traditional_outcome": null,
+    "publish_state": "CORE_TABOO_WITH_MODERN_HYDROLOGY_GATE",
+    "witness_independence": "UNKNOWN"
+  },
+  {
+    "motif_id": "MOTIF-008",
+    "topic": "Không ở nơi bị sống núi xung",
+    "witnesses": [
+      {
+        "source_id": "SRC-GJTS675-P69",
+        "original": "不居山脊衝處。",
+        "hanviet": "Bất cư sơn tích xung xứ."
+      },
+      {
+        "source_id": "SRC-DNBS-V5",
+        "original": "勿居山脊衝處。",
+        "hanviet": "Vật cư sơn tích xung xứ."
+      }
+    ],
+    "literal_vi": "Không nên ở nơi mà thế sống núi hướng xung trực tiếp.",
+    "observable": [
+      "ridge_axis",
+      "site_axis",
+      "slope",
+      "landslide_hazard"
+    ],
+    "traditional_outcome": null,
+    "publish_state": "FORM_TABOO_WITH_GEOTECH_HARD_GATE",
+    "witness_independence": "UNKNOWN"
+  },
+  {
+    "motif_id": "MOTIF-009",
+    "topic": "Không ở nơi 'bách xuyên khẩu'",
+    "witnesses": [
+      {
+        "source_id": "SRC-GJTS675-P69",
+        "original": "不居百川口處。",
+        "hanviet": "Bất cư bách xuyên khẩu xứ."
+      },
+      {
+        "source_id": "SRC-DNBS-V5",
+        "original": "勿居……百川口。",
+        "hanviet": "Vật cư... bách xuyên khẩu."
+      }
+    ],
+    "literal_vi": "Không nên ở tại nơi được văn bản gọi là cửa/họng hội của nhiều dòng nước.",
+    "observable": [
+      "confluence",
+      "outlet",
+      "channel_count",
+      "floodplain"
+    ],
+    "traditional_outcome": null,
+    "publish_state": "TERM_CONTEXT_REQUIRES_HYDROLOGY_MAPPING",
+    "witness_independence": "UNKNOWN"
+  },
+  {
+    "motif_id": "MOTIF-010",
+    "topic": "Đường/nước/cầu giao xung bốn phía",
+    "witnesses": [
+      {
+        "source_id": "SRC-GJTS675-P69",
+        "original": "凡宅或水路橋梁四面交衝者，使子孫怯弱，主不吉利。",
+        "hanviet": "Phàm trạch hoặc thủy lộ kiều lương tứ diện giao xung giả, sử tử tôn khiếp nhược, chủ bất cát lợi."
+      },
+      {
+        "source_id": "SRC-DNBS-V5",
+        "original": "凡宅，四面交衝，使子孫怯弱。",
+        "hanviet": "Phàm trạch, tứ diện giao xung, sử tử tôn khiếp nhược."
+      }
+    ],
+    "literal_vi": "Nhà bị đường nước/cầu lối giao xung từ nhiều phía được truyền thống coi là không tốt.",
+    "observable": [
+      "approach_axes",
+      "road_network",
+      "bridge_axes",
+      "water_axes"
+    ],
+    "traditional_outcome": "子孫怯弱/不吉利",
+    "publish_state": "CORE_NETWORK_MOTIF_OUTCOME_SEPARATED",
+    "witness_independence": "UNKNOWN"
+  },
+  {
+    "motif_id": "MOTIF-011",
+    "topic": "Trước thấp sau cao",
+    "witnesses": [
+      {
+        "source_id": "SRC-GJTS675-P69",
+        "original": "凡宅前低後高，世出英豪。",
+        "hanviet": "Phàm trạch tiền đê hậu cao, thế xuất anh hào."
+      },
+      {
+        "source_id": "SRC-DNBS-V5",
+        "original": "凡宅，前低後高，世出英豪。",
+        "hanviet": "Phàm trạch, tiền đê hậu cao, thế xuất anh hào."
+      }
+    ],
+    "literal_vi": "Nhà/đất có phía trước thấp hơn phía sau được truyền thống phán là tốt.",
+    "observable": [
+      "front_elevation",
+      "rear_elevation",
+      "grade_direction"
+    ],
+    "traditional_outcome": "世出英豪",
+    "publish_state": "FORM_MOTIF_OUTCOME_NOT_CAUSAL",
+    "witness_independence": "UNKNOWN"
+  },
+  {
+    "motif_id": "MOTIF-012",
+    "topic": "Trước cao sau thấp",
+    "witnesses": [
+      {
+        "source_id": "SRC-GJTS675-P69",
+        "original": "前高後低，長幼昏迷。",
+        "hanviet": "Tiền cao hậu đê, trưởng ấu hôn mê."
+      },
+      {
+        "source_id": "SRC-DNBS-V5",
+        "original": "前高後低，長幼昏迷。",
+        "hanviet": "Tiền cao hậu đê, trưởng ấu hôn mê."
+      }
+    ],
+    "literal_vi": "Phía trước cao hơn phía sau bị truyền thống coi là bất lợi.",
+    "observable": [
+      "front_elevation",
+      "rear_elevation",
+      "grade_direction"
+    ],
+    "traditional_outcome": "長幼昏迷",
+    "publish_state": "FORM_MOTIF_OUTCOME_NOT_CAUSAL",
+    "witness_independence": "UNKNOWN"
+  },
+  {
+    "motif_id": "MOTIF-013",
+    "topic": "Bốn phía cao, giữa thấp",
+    "witnesses": [
+      {
+        "source_id": "SRC-DNBS-V5",
+        "original": "四面高、中央下，先富後貧。",
+        "hanviet": "Tứ diện cao, trung ương hạ, tiên phú hậu bần."
+      }
+    ],
+    "literal_vi": "Thế đất bốn phía cao, trung tâm thấp bị truyền thống coi là bất lợi về lâu dài.",
+    "observable": [
+      "perimeter_elevation_profile",
+      "center_elevation",
+      "drainage_sink"
+    ],
+    "traditional_outcome": "先富後貧",
+    "publish_state": "CORE_BASIN_MOTIF_WITH_DRAINAGE_GATE"
+  },
+  {
+    "motif_id": "MOTIF-014",
+    "topic": "Trước hẹp sau rộng",
+    "witnesses": [
+      {
+        "source_id": "SRC-DNBS-V5",
+        "original": "前狹後闊，安吉。",
+        "hanviet": "Tiền hiệp hậu khoát, an cát."
+      },
+      {
+        "source_id": "SRC-GJTS675-P70",
+        "original": "前狹後寬，居之穩。",
+        "hanviet": "Tiền hiệp hậu khoan, cư chi ổn."
+      }
+    ],
+    "literal_vi": "Lô/thế trước hẹp sau rộng được các witness này phán theo hướng tốt.",
+    "observable": [
+      "front_width",
+      "rear_width",
+      "width_profile"
+    ],
+    "traditional_outcome": "安吉/居之穩",
+    "publish_state": "CORE_SHAPE_MOTIF",
+    "witness_independence": "UNKNOWN"
+  },
+  {
+    "motif_id": "MOTIF-015",
+    "topic": "Trước rộng sau hẹp",
+    "witnesses": [
+      {
+        "source_id": "SRC-DNBS-V5",
+        "original": "前闊後狹，主人貧乏。",
+        "hanviet": "Tiền khoát hậu hiệp, chủ nhân bần phạp."
+      },
+      {
+        "source_id": "SRC-GJTS675-P70",
+        "original": "前寬後狹似棺形。",
+        "hanviet": "Tiền khoan hậu hiệp tự quan hình."
+      }
+    ],
+    "literal_vi": "Lô/thế trước rộng sau hẹp bị các witness này phán theo hướng xấu.",
+    "observable": [
+      "front_width",
+      "rear_width",
+      "width_profile"
+    ],
+    "traditional_outcome": "貧乏/不安寧等",
+    "publish_state": "CORE_SHAPE_MOTIF_WITH_CONFLICT_FLAG",
+    "witness_independence": "UNKNOWN",
+    "conflict_ref": "CONFLICT-001"
+  },
+  {
+    "motif_id": "MOTIF-016",
+    "topic": "Trái ngắn phải dài",
+    "witnesses": [
+      {
+        "source_id": "SRC-DNBS-V5",
+        "original": "左短右長，居之吉昌。",
+        "hanviet": "Tả đoản hữu trường, cư chi cát xương."
+      }
+    ],
+    "literal_vi": "Thế trái ngắn, phải dài được truyền bản này coi là tốt.",
+    "observable": [
+      "left_depth_or_side_length",
+      "right_depth_or_side_length"
+    ],
+    "traditional_outcome": "吉昌",
+    "publish_state": "SHAPE_MOTIF_NEEDS_FRONT_REFERENCE"
+  },
+  {
+    "motif_id": "MOTIF-017",
+    "topic": "Trái dài phải ngắn",
+    "witnesses": [
+      {
+        "source_id": "SRC-DNBS-V5",
+        "original": "左長右短，先富後貧。",
+        "hanviet": "Tả trường hữu đoản, tiên phú hậu bần."
+      }
+    ],
+    "literal_vi": "Thế trái dài, phải ngắn bị truyền bản này coi là bất lợi về sau.",
+    "observable": [
+      "left_depth_or_side_length",
+      "right_depth_or_side_length"
+    ],
+    "traditional_outcome": "先富後貧",
+    "publish_state": "SHAPE_MOTIF_NEEDS_FRONT_REFERENCE"
+  },
+  {
+    "motif_id": "MOTIF-018",
+    "topic": "Nam–Bắc dài, Đông–Tây hẹp",
+    "witnesses": [
+      {
+        "source_id": "SRC-GJTS675-P69",
+        "original": "南北長，東西狹吉。",
+        "hanviet": "Nam Bắc trường, Đông Tây hiệp cát."
+      },
+      {
+        "source_id": "SRC-DNBS-V5",
+        "original": "南北長，子孫昌。",
+        "hanviet": "Nam Bắc trường, tử tôn xương."
+      }
+    ],
+    "literal_vi": "Truyền bản coi trục Nam–Bắc dài là thuận lợi.",
+    "observable": [
+      "cardinal_length_ns",
+      "cardinal_length_ew"
+    ],
+    "traditional_outcome": "吉/子孫昌",
+    "publish_state": "DIRECTIONAL_RULE_DEFER_TO_ORIENTATION_MODULE",
+    "witness_independence": "UNKNOWN"
+  },
+  {
+    "motif_id": "MOTIF-019",
+    "topic": "Đông–Tây dài/rộng",
+    "witnesses": [
+      {
+        "source_id": "SRC-GJTS675-P69",
+        "original": "東西長，南北狹，初凶後吉。",
+        "hanviet": "Đông Tây trường, Nam Bắc hiệp, sơ hung hậu cát."
+      },
+      {
+        "source_id": "SRC-DNBS-V5",
+        "original": "東西闊，不宜人且貧。",
+        "hanviet": "Đông Tây khoát, bất nghi nhân thả bần."
+      }
+    ],
+    "literal_vi": "Các truyền bản có phán khác nhau về thế kéo dài/rộng theo Đông–Tây.",
+    "observable": [
+      "cardinal_length_ns",
+      "cardinal_length_ew"
+    ],
+    "traditional_outcome": "VARIANT/CONTESTED",
+    "publish_state": "CONFLICTED_DIRECTIONAL",
+    "conflict_ref": "CONFLICT-002",
+    "witness_independence": "UNKNOWN"
+  },
+  {
+    "motif_id": "MOTIF-020",
+    "topic": "Mương/rãnh nước phân hình chữ Bát",
+    "witnesses": [
+      {
+        "source_id": "SRC-GJTS675-P69",
+        "original": "凡宅門前屋後溝渠水，不可分八字，及前後水出。",
+        "hanviet": "Phàm trạch môn tiền ốc hậu câu cừ thủy, bất khả phân bát tự, cập tiền hậu thủy xuất."
+      }
+    ],
+    "literal_vi": "Mương/rãnh nước trước hoặc sau nhà không nên phân tách thành dạng được gọi là 'chữ Bát', cũng không chuộng nước thoát cả trước lẫn sau.",
+    "observable": [
+      "channel_split_geometry",
+      "front_outflow",
+      "rear_outflow"
+    ],
+    "traditional_outcome": "絕嗣敗財 (tách riêng, không causal)",
+    "publish_state": "WATER_GEOMETRY_CANDIDATE"
+  },
+  {
+    "motif_id": "MOTIF-021",
+    "topic": "Đất bốn phía tương đối bằng/tròn",
+    "witnesses": [
+      {
+        "source_id": "SRC-GJTS675-P71",
+        "original": "此宅方圓，四面平……家豪富貴旺人丁。",
+        "hanviet": "Thử trạch phương viên, tứ diện bình... gia hào phú quý vượng nhân đinh."
+      }
+    ],
+    "literal_vi": "Một caption đồ hình mô tả nền nhà vuông/tròn, bốn phía bằng là tốt.",
+    "observable": [
+      "parcel_compactness",
+      "perimeter_levelness"
+    ],
+    "traditional_outcome": "富貴旺人丁",
+    "publish_state": "FIGURE_CAPTION_UNPROOFREAD_REFERENCE_ONLY"
+  },
+  {
+    "motif_id": "MOTIF-022",
+    "topic": "Núi phía sau / núi phía trước",
+    "witnesses": [
+      {
+        "source_id": "SRC-GJTS675-P71",
+        "original": "後邊有山可安莊。",
+        "hanviet": "Hậu biên hữu sơn khả an trang."
+      },
+      {
+        "source_id": "SRC-GJTS675-P71",
+        "original": "前有大山，不可安莊。",
+        "hanviet": "Tiền hữu đại sơn, bất khả an trang."
+      }
+    ],
+    "literal_vi": "Caption đồ hình ưu tiên thế có núi phía sau và phản đối một số trường hợp núi lớn phía trước.",
+    "observable": [
+      "rear_mass_distance",
+      "front_mass_distance",
+      "front_sky_view",
+      "slope_hazard"
+    ],
+    "traditional_outcome": "TRADITIONAL_GOOD/BAD",
+    "publish_state": "CONTEXT_DISTANCE_UNKNOWN_FIGURE_LAYOUT_UNPROOFREAD"
+  },
+  {
+    "motif_id": "MOTIF-023",
+    "topic": "Bốn phía có đường giao",
+    "witnesses": [
+      {
+        "source_id": "SRC-GJTS675-P71",
+        "original": "四面交道，主凶殃。",
+        "hanviet": "Tứ diện giao đạo, chủ hung ương."
+      }
+    ],
+    "literal_vi": "Một caption đồ hình coi thế đường giao từ bốn phía là bất lợi.",
+    "observable": [
+      "road_approach_count",
+      "intersection_topology",
+      "traffic_volume"
+    ],
+    "traditional_outcome": "凶殃等",
+    "publish_state": "SUPPORTING_WITNESS_FOR_MOTIF-010_LAYOUT_UNPROOFREAD"
+  },
+  {
+    "motif_id": "MOTIF-024",
+    "topic": "Đất ở '涯水頭'",
+    "witnesses": [
+      {
+        "source_id": "SRC-GJTS675-P70",
+        "original": "此宅修在涯水頭……地不堪修。",
+        "hanviet": "Thử trạch tu tại nhai thủy đầu... địa bất kham tu."
+      }
+    ],
+    "literal_vi": "Caption cảnh báo một dạng vị trí gọi là 'nhai thủy đầu'.",
+    "observable": [
+      "water_edge",
+      "bank_geometry",
+      "head_of_water_feature"
+    ],
+    "traditional_outcome": "不堪修",
+    "publish_state": "TERM_UNRESOLVED_REFERENCE_ONLY",
+    "term_status": {
+      "涯水頭": "UNRESOLVED"
+    }
+  }
+]

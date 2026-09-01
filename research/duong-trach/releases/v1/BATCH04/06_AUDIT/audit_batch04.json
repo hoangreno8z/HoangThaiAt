@@ -1,0 +1,23 @@
+{
+  "batch": "04",
+  "date": "2026-09-01",
+  "scope": "DIA_THE_THUC_CHIEN",
+  "source_count": 5,
+  "claim_count": 16,
+  "rule_candidate_count": 16,
+  "passed": [
+    "direct_yangzhai_sources_prioritized",
+    "yinzhai_scope_warning_enforced",
+    "no_numeric_threshold_invention",
+    "traditional_qi_not_scientized",
+    "water_hydrology_hard_gate_preserved",
+    "attribution_uncertainty_preserved"
+  ],
+  "open": [
+    "formal definition of 返跳 requires diagram/textual comparison",
+    "formal definition of 水口 closure requires multi-source collation",
+    "明堂 geometric observables need case-based calibration, not invented ancient thresholds",
+    "source scans should be image-checked before final critical edition release"
+  ],
+  "next_batch": "05_HINH_DAT_ROADS_WATER_CASEBOOK"
+}

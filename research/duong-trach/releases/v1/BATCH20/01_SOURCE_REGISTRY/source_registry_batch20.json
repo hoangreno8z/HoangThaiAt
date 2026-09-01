@@ -1,0 +1,100 @@
+[
+  {
+    "source_id": "SRC-XJBF-V11-OCC",
+    "title_zh": "欽定協紀辨方書·卷十一·用事",
+    "title_vi": "Hiệp Kỷ Biện Phương Thư quyển 11 — Dụng sự",
+    "dynasty": "清",
+    "compilation": "official imperial compilation",
+    "url": "https://www.kanripo.org/ed/KR3g0051/WYG/011",
+    "cross_witness": "https://ctext.org/wiki.pl?chapter=926489&if=gb",
+    "authority_tier": "A1_AUTHENTICATED_OFFICIAL_CLASSIC",
+    "evidence_class": "OFFICIAL_EVENT_TAXONOMY",
+    "text_status": "WYG_IMAGE_ALIGNED_TEXT",
+    "semantic_status": "STRONG_FOR_EVENT_NAMES"
+  },
+  {
+    "source_id": "SRC-XJBF-V34-35-RUZHAI",
+    "title_zh": "欽定協紀辨方書·卷三十四至三十五·事類總集",
+    "title_vi": "Hiệp Kỷ Biện Phương Thư quyển 34–35 — Sự Loại Tổng Tập",
+    "url": "https://ctext.org/wiki.pl?chapter=601233&if=gb",
+    "cross_witness": "https://www.shidianguji.com/zh/book/SK1619/chapter/1l9lm1lgellwj",
+    "authority_tier": "A1_OFFICIAL_CONTAINER_WITH_EMBEDDED_SECONDARY_TRADITION",
+    "evidence_class": "EMBEDDED_SECONDARY_CALENDAR_TRADITION",
+    "text_status": "OCR_WITH_CLEANER_CROSS_WITNESS",
+    "semantic_status": "STRONG_FOR_PRESENCE_OF_入宅_歸火; DETAILS_REQUIRE_CAUTION",
+    "notes": "The Qing official compilation preserves this material, but the embedded 事類總集 is not treated as identical to the editors' own event taxonomy."
+  },
+  {
+    "source_id": "SRC-ZJ-ANMEN-CROSS",
+    "title_zh": "宅經（四庫全書本）·卷下",
+    "title_vi": "Trạch Kinh bản Tứ Khố, quyển hạ",
+    "traditional_attribution": "黃帝",
+    "url": "https://zh.wikisource.org/wiki/%E5%AE%85%E7%B6%93_%28%E5%9B%9B%E5%BA%AB%E5%85%A8%E6%9B%B8%E6%9C%AC%29/%E5%8D%B7%E4%B8%8B",
+    "bibliographic_note": "https://zh.wikisource.org/wiki/%E5%AE%85%E7%B6%93_%28%E5%9B%9B%E5%BA%AB%E5%85%A8%E6%9B%B8%E6%9C%AC%29/%E5%85%A8%E8%A6%BD",
+    "authority_tier": "C1_ATTRIBUTION_DISPUTED",
+    "evidence_class": "EARLY_TRADITIONAL_YANGZHAI_CROSS_WITNESS",
+    "text_status": "Siku text available",
+    "attribution_status": "PSEUDEPIGRAPHIC_ACCORDING_TO_SIKU",
+    "semantic_status": "STRONG_FOR_SPATIAL_安門_NOT_CALENDAR_EVENT",
+    "can_support_master_doctrine": false
+  },
+  {
+    "source_id": "MOD-VBHN-ND06-2025",
+    "title_vi": "Văn bản hợp nhất Nghị định 06/2021/NĐ-CP, gồm sửa đổi 35/2023 và 175/2024",
+    "authority": "Bộ Xây dựng / CSDL quốc gia VBPL",
+    "verified_consolidation_date": "2025-02",
+    "url": "https://vbpl.vn/TW/Pages/vbpq-thuoctinh-hopnhat.aspx?ItemID=176758",
+    "authority_tier": "MODERN_OFFICIAL_CONSOLIDATED_LAW",
+    "evidence_class": "COMPLETION_ACCEPTANCE_MAINTENANCE",
+    "status_as_of_2026_09_01": "CURRENT_CONSOLIDATED_REFERENCE"
+  },
+  {
+    "source_id": "MOD-LAW55-2024-FIRE",
+    "title_vi": "Luật 55/2024/QH15 — Phòng cháy, chữa cháy và cứu nạn, cứu hộ",
+    "authority": "Quốc hội",
+    "effective": "2025-07-01",
+    "url": "https://vanban.chinhphu.vn/?classid=1&docid=212483&orggroupid=1&pageid=27160",
+    "authority_tier": "MODERN_OFFICIAL_LAW",
+    "evidence_class": "FIRE_OCCUPANCY_GATE",
+    "status_as_of_2026_09_01": "CURRENT"
+  },
+  {
+    "source_id": "MOD-ND105-2025-FIRE",
+    "title_vi": "Nghị định 105/2025/NĐ-CP — chi tiết Luật PCCC & CNCH",
+    "authority": "Chính phủ",
+    "effective": "2025-07-01",
+    "url": "https://vanban.chinhphu.vn/?classid=1&docid=213702&pageid=27160&typegroupid=4",
+    "authority_tier": "MODERN_OFFICIAL_REGULATION",
+    "evidence_class": "FIRE_OCCUPANCY_GATE",
+    "status_as_of_2026_09_01": "CURRENT"
+  },
+  {
+    "source_id": "MOD-TT36-2025-FIRE",
+    "title_vi": "Thông tư 36/2025/TT-BCA",
+    "authority": "Bộ Công an",
+    "effective": "2025-07-01",
+    "url": "https://vbpl.vn/bocongan/Pages/vbpq-toanvan.aspx?ItemID=177834",
+    "authority_tier": "MODERN_OFFICIAL_CIRCULAR",
+    "evidence_class": "FIRE_IMPLEMENTATION",
+    "status_as_of_2026_09_01": "CURRENT"
+  },
+  {
+    "source_id": "MOD-QCVN01-1-2024-BYT",
+    "title_vi": "QCVN 01-1:2024/BYT — Chất lượng nước sạch dùng cho sinh hoạt",
+    "authority": "Bộ Y tế",
+    "effective": "2025-07-01",
+    "authority_tier": "MODERN_OFFICIAL_STANDARD",
+    "evidence_class": "WATER_OCCUPANCY_GATE",
+    "status_as_of_2026_09_01": "CURRENT",
+    "notes": "Canonical source details already stored in Batch16."
+  },
+  {
+    "source_id": "MOD-TCVN5687-2024",
+    "title_vi": "TCVN 5687:2024 — Thông gió và điều hòa không khí — Yêu cầu thiết kế",
+    "authority": "Tiêu chuẩn quốc gia",
+    "authority_tier": "MODERN_TECHNICAL_STANDARD",
+    "evidence_class": "VENTILATION_OCCUPANCY_GATE",
+    "status_as_of_2026_09_01": "ACTIVE",
+    "notes": "Canonical source details already stored in Batch15."
+  }
+]

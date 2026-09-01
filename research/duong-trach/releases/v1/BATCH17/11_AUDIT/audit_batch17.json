@@ -1,0 +1,40 @@
+{
+  "batch": "17",
+  "date": "2026-09-01",
+  "scope": "ROOF_EAVES_RAIN_PROTECTION",
+  "counts": {
+    "sources": 10,
+    "terms": 8,
+    "claims": 10,
+    "rules": 13,
+    "cases": 12,
+    "conflicts": 5,
+    "folklore_redteam": 8
+  },
+  "passed": [
+    "eave_water_not_roof_point",
+    "no_ancient_eave_length_threshold",
+    "YingzaoFashi_not_mislabeled_fengshui",
+    "roof_leak_is_technical_defect",
+    "tile_displacement_is_safety_condition",
+    "roof_tank_remains_modern_water_entity",
+    "structural_load_hard_gate",
+    "wind_climate_hard_gate",
+    "lightning_layer_present",
+    "solar_reflective_paint_not_waterproofing"
+  ],
+  "important_findings": [
+    "A premodern domestic tradition explicitly links short eaves with oblique rain striking walls; this is a real physical-form motif but not a numeric ancient design standard.",
+    "The phrase 簷水相射 / 水簷頭相射 contains a water/runoff object and cannot responsibly be generalized into every roof-pointing taboo.",
+    "Yingzao Fashi provides rich historical roof terminology and construction technique, but it is technical architectural evidence rather than auspiciousness evidence.",
+    "VSQI currently marks TCVN 5718:1993, TCVN 2737:2023 and TCVN 9385:2012 active."
+  ],
+  "blocked": [
+    "universal roof-point sha",
+    "numeric ancient eave projection",
+    "generic auspicious gutter direction",
+    "roof tank fortune verdict",
+    "semantic certainty of 廨屋漏漿"
+  ],
+  "next": "BATCH18_MATERIALS_STRUCTURE_REPAIR_MAINTENANCE"
+}

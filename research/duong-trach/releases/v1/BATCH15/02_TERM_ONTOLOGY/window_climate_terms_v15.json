@@ -1,0 +1,42 @@
+{
+  "窗": {
+    "hanviet": "song",
+    "working_sense": "window/opening; form varies historically",
+    "modern_mapping": "WINDOW_CANDIDATE",
+    "guard": "No automatic glazing/openable-area assumptions."
+  },
+  "牖": {
+    "hanviet": "dũ",
+    "working_sense": "window/opening, often wall opening; historical context dependent",
+    "modern_mapping": "WINDOW_OR_VENT_OPENING_CANDIDATE"
+  },
+  "窗櫺": {
+    "hanviet": "song linh",
+    "working_sense": "window lattice/frame components",
+    "modern_mapping": "WINDOW_COMPONENT_NOT_COMPLETE_MODERN_WINDOW"
+  },
+  "隙": {
+    "hanviet": "khích",
+    "working_sense": "gap/crack",
+    "modern_mapping": "UNCONTROLLED_LEAKAGE_PATH",
+    "guard": "Not equivalent to intentional ventilation opening."
+  },
+  "風": {
+    "hanviet": "phong",
+    "working_sense": "wind/air movement in literal context; symbolic meanings possible elsewhere",
+    "modern_mapping": "AIR_MOVEMENT_ONLY_WHEN_CONTEXT_LITERAL",
+    "guard": "Never automatically convert to m/s."
+  },
+  "光澤陽氣": {
+    "hanviet": "quang trạch dương khí",
+    "working_sense": "traditional qualitative description of dwelling state",
+    "modern_mapping": "NO_DIRECT_PHYSICAL_UNIT",
+    "guard": "Not lux, solar radiation, UV, EM field or energy."
+  },
+  "塏爽": {
+    "hanviet": "khải sảng",
+    "working_sense": "dry/open/bright/pleasant environmental quality in context",
+    "modern_mapping": "QUALITATIVE_ENVIRONMENT",
+    "guard": "No automatic numeric daylight threshold."
+  }
+}

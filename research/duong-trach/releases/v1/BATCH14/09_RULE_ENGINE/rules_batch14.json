@@ -1,0 +1,149 @@
+[
+  {
+    "rule_id": "R-SAN-001",
+    "claim_id": "SAN-001",
+    "source_id": "SRC-JJBY-YUAN-SAN",
+    "domain": "SANITATION_WC_WASTEWATER",
+    "publish_state": "CANDIDATE",
+    "school_id_required": false,
+    "engine_threshold": null,
+    "ancient_numeric_threshold": null,
+    "medical_causality": "NONE_INFERRED",
+    "modern_hard_gate_required": true,
+    "observable": [
+      "waste_structure_to_gate_axis",
+      "distance",
+      "external_vs_internal"
+    ]
+  },
+  {
+    "rule_id": "R-SAN-002",
+    "claim_id": "SAN-002",
+    "source_id": "SRC-YZSS-GJTS675-SAN",
+    "domain": "SANITATION_WC_WASTEWATER",
+    "publish_state": "REFERENCE_ONLY",
+    "school_id_required": false,
+    "engine_threshold": null,
+    "ancient_numeric_threshold": null,
+    "medical_causality": "NONE_INFERRED",
+    "modern_hard_gate_required": true,
+    "observable": [
+      "waste_structure_to_gate_axis"
+    ]
+  },
+  {
+    "rule_id": "R-SAN-003",
+    "claim_id": "SAN-003",
+    "source_id": "SRC-YZCY-1810-SAN",
+    "domain": "SANITATION_WC_WASTEWATER",
+    "publish_state": "SCHOOL_ONLY",
+    "school_id_required": true,
+    "engine_threshold": null,
+    "ancient_numeric_threshold": null,
+    "medical_causality": "NONE_INFERRED",
+    "modern_hard_gate_required": true,
+    "observable": [
+      "toilet_sector",
+      "life_gua_or_school_person_state"
+    ]
+  },
+  {
+    "rule_id": "R-SAN-004",
+    "claim_id": "SAN-004",
+    "source_id": "SRC-YZCY-1810-SAN",
+    "domain": "SANITATION_WC_WASTEWATER",
+    "publish_state": "BLOCKED",
+    "school_id_required": false,
+    "engine_threshold": null,
+    "ancient_numeric_threshold": null,
+    "medical_causality": "NONE_INFERRED",
+    "modern_hard_gate_required": true,
+    "observable": [
+      "pit_or_toilet_sector"
+    ]
+  },
+  {
+    "rule_id": "R-SAN-005",
+    "claim_id": "SAN-005",
+    "source_id": "SRC-YZZZ-1849-SAN",
+    "domain": "SANITATION_WC_WASTEWATER",
+    "publish_state": "SCHOOL_ONLY",
+    "school_id_required": true,
+    "engine_threshold": null,
+    "ancient_numeric_threshold": null,
+    "medical_causality": "NONE_INFERRED",
+    "modern_hard_gate_required": true,
+    "observable": [
+      "toilet_sector",
+      "school_strength_state"
+    ]
+  },
+  {
+    "rule_id": "R-SAN-006",
+    "claim_id": "SAN-006",
+    "source_id": "SRC-YYL-QING-SAN",
+    "domain": "SANITATION_WC_WASTEWATER",
+    "publish_state": "SCHOOL_ONLY",
+    "school_id_required": true,
+    "engine_threshold": null,
+    "ancient_numeric_threshold": null,
+    "medical_causality": "NONE_INFERRED",
+    "modern_hard_gate_required": true,
+    "observable": [
+      "toilet_sector",
+      "east_west_life_group"
+    ]
+  },
+  {
+    "rule_id": "R-SAN-007",
+    "claim_id": "SAN-007",
+    "source_id": "SRC-YZCY-1810-SAN",
+    "domain": "SANITATION_WC_WASTEWATER",
+    "publish_state": "SCHOOL_ONLY",
+    "school_id_required": true,
+    "engine_threshold": null,
+    "ancient_numeric_threshold": null,
+    "medical_causality": "NONE_INFERRED",
+    "modern_hard_gate_required": true,
+    "observable": [
+      "pit_location_relative_to_source_defined_dragon_path"
+    ]
+  },
+  {
+    "rule_id": "R-SAN-008",
+    "claim_id": "SAN-008",
+    "source_id": "SRC-YZCY-1810-SAN",
+    "domain": "SANITATION_WC_WASTEWATER",
+    "publish_state": "SCHOOL_ONLY",
+    "school_id_required": true,
+    "engine_threshold": null,
+    "ancient_numeric_threshold": null,
+    "medical_causality": "NONE_INFERRED",
+    "modern_hard_gate_required": true,
+    "observable": [
+      "toilet_sector",
+      "stove_base_sector",
+      "chimney_sector"
+    ]
+  },
+  {
+    "rule_id": "MOD-SAN-HARD-001",
+    "source_ids": [
+      "MOD-QCVN07-2023-SD1-2025",
+      "MOD-QCVN14-2025-BTNMT",
+      "MOD-WHO-SAN-2018"
+    ],
+    "domain": "SANITATION_WC_WASTEWATER",
+    "publish_state": "HARD_GATE",
+    "result": "SAFE_SANITATION_AND_WASTEWATER_OVERRIDE",
+    "engine_threshold": null
+  },
+  {
+    "rule_id": "MOD-SAN-ACCESS-001",
+    "source_id": "MOD-QCVN10-2024-WC",
+    "domain": "SANITATION_WC_WASTEWATER",
+    "publish_state": "HARD_GATE_IF_APPLICABLE",
+    "result": "ACCESSIBLE_TOILET_REQUIREMENTS_OVERRIDE",
+    "engine_threshold": null
+  }
+]

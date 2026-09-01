@@ -1,0 +1,82 @@
+[
+  {
+    "claim_id": "OPEN-001",
+    "source_id": "SRC-GJTS675-MINGTANG",
+    "original": "明堂須當容萬馬。",
+    "hanviet": "Minh đường tu đương dung vạn mã.",
+    "literal_vi": "Minh đường được mô tả bằng hình ảnh phải đủ rộng để 'dung vạn mã'.",
+    "editorial": "Hình ảnh chỉ sự khoáng đạt; không chuyển thành m².",
+    "concept": "EXTERNAL_MINGTANG",
+    "state": "QUALITATIVE_OPENNESS"
+  },
+  {
+    "claim_id": "OPEN-002",
+    "source_id": "SRC-GJTS675-MINGTANG",
+    "original": "星辰近案明堂寬，案近明堂非窄勢。",
+    "hanviet": "Tinh thần cận án minh đường khoan, án cận minh đường phi trách thế.",
+    "literal_vi": "Vật/án phía trước có thể ở gần nhưng minh đường vẫn được nhấn mạnh là rộng, không thành thế chật.",
+    "editorial": "Đo cả distance và angular/open width; khoảng cách đơn lẻ không đủ.",
+    "concept": "EXTERNAL_MINGTANG",
+    "state": "GEOMETRY_CANDIDATE"
+  },
+  {
+    "claim_id": "OPEN-003",
+    "source_id": "SRC-GJTS677-TIANJING",
+    "original": "莫道明堂外自有，不知門內是明堂。",
+    "hanviet": "Mạc đạo minh đường ngoại tự hữu, bất tri môn nội thị minh đường.",
+    "literal_vi": "Văn bản nói không chỉ bên ngoài mới có minh đường; bên trong cửa cũng được gọi là minh đường.",
+    "editorial": "Tạo relation `INTERNAL_FRONT_COURT may_classify_as MINGTANG_IN_THIS_TEXT` thay vì global synonym.",
+    "concept": "INTERNAL_FRONT_COURT",
+    "state": "TEXT_SPECIFIC_CLASSIFICATION"
+  },
+  {
+    "claim_id": "OPEN-004",
+    "source_id": "SRC-GJTS677-TIANJING",
+    "original": "天井不可作一字。",
+    "hanviet": "Thiên tỉnh bất khả tác nhất tự.",
+    "literal_vi": "Văn bản phản đối một dạng thiên tỉnh được gọi là 'nhất tự'.",
+    "editorial": "Hình học '一字' chưa được production-lock chỉ từ từ ngữ.",
+    "concept": "TRADITIONAL_TIANJING",
+    "state": "SHAPE_TERM_UNRESOLVED"
+  },
+  {
+    "claim_id": "OPEN-005",
+    "source_id": "SRC-GJTS677-TIANJING",
+    "original": "一丈必須五尺闊，長短折半隨所至。",
+    "hanviet": "Nhất trượng tất tu ngũ xích khoát, trường đoản chiết bán tùy sở chí.",
+    "literal_vi": "Đoạn này nêu một tỷ lệ bằng trượng và xích, thể hiện quan hệ độ dài–rộng trong thiên tỉnh.",
+    "editorial": "Ancient numeric claim exists, nhưng phải kiểm scan/punctuation và unit lineage trước khi đưa vào engine.",
+    "concept": "TRADITIONAL_TIANJING",
+    "state": "HISTORICAL_NUMERIC_SCAN_REQUIRED"
+  },
+  {
+    "claim_id": "OPEN-006",
+    "source_id": "SRC-GJTS677-TIANJING",
+    "original": "凡宅，天井中不可積屋水。",
+    "hanviet": "Phàm trạch, thiên tỉnh trung bất khả tích ốc thủy.",
+    "literal_vi": "Thiên tỉnh không nên tích đọng nước từ mái/nhà.",
+    "editorial": "Đây là motif rất phù hợp với drainage engineering; phần phán bệnh cổ bị tách.",
+    "concept": "TRADITIONAL_TIANJING",
+    "state": "CORE_DRAINAGE_MOTIF"
+  },
+  {
+    "claim_id": "OPEN-007",
+    "source_id": "SRC-GJTS677-WATER",
+    "original": "天井宜寬深吉／宜平坦吉／宜深聚吉。",
+    "hanviet": "Thiên tỉnh nghi khoan thâm cát / nghi bình thản cát / nghi thâm tụ cát.",
+    "literal_vi": "Trong phần phương vị thủy pháp, thiên tỉnh được mô tả bằng nhiều dạng như rộng-sâu, bằng, sâu-tụ tùy sơn.",
+    "editorial": "Không hợp nhất thành một rule chung vì ngay trong nguồn mô tả thay đổi theo sơn/hướng.",
+    "concept": "TRADITIONAL_TIANJING",
+    "state": "SCHOOL_DIRECTIONAL_DEFERRED"
+  },
+  {
+    "claim_id": "OPEN-008",
+    "source_id": "SRC-GJTS677-TIANJING",
+    "original": "門外不須更架屋，蔽卻好山壞明堂。",
+    "hanviet": "Môn ngoại bất tu cánh giá ốc, tế khước hảo sơn hoại minh đường.",
+    "literal_vi": "Không nên dựng vật kiến trúc ngoài cửa làm che phía trước và phá trạng thái minh đường theo văn bản.",
+    "editorial": "Modern outputs: obstruction angle, daylight/sky view, access; traditional classification riêng.",
+    "concept": "EXTERNAL_MINGTANG",
+    "state": "FRONT_OBSTRUCTION_MOTIF"
+  }
+]

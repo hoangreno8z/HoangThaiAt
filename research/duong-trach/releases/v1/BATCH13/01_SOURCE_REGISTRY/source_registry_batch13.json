@@ -1,0 +1,73 @@
+[
+  {
+    "source_id": "SRC-YZF-1100-STAIR",
+    "title_zh": "營造法式",
+    "title_vi": "Doanh Tạo Pháp Thức",
+    "author": "李誡 / Lý Giới",
+    "date": "completed 1100; promulgated 1103",
+    "dynasty": "北宋",
+    "url": "https://ctext.org/wiki.pl?if=gb&res=819803",
+    "evidence_class": "HISTORICAL_CONSTRUCTION",
+    "text_status": "OCR_LINKED_TO_BASE_TEXT",
+    "attribution_status": "ATTRIBUTION_VERIFIED",
+    "semantic_status": "TECHNICAL_ARCHITECTURE",
+    "scope": "BUILDING_METHODS_NOT_FENG_SHUI"
+  },
+  {
+    "source_id": "SRC-YZF-V15-TADAO",
+    "title_zh": "營造法式·卷十五·塼作制度·踏道／慢道",
+    "title_vi": "Doanh Tạo Pháp Thức, quyển 15 — chế độ gạch, đạp đạo/mạn đạo",
+    "author": "李誡",
+    "dynasty": "北宋",
+    "url": "https://ctext.org/wiki.pl?chapter=352709&if=gb&remap=gb",
+    "evidence_class": "HISTORICAL_CONSTRUCTION",
+    "text_status": "OCR_LINKED_TO_BASE_TEXT",
+    "attribution_status": "ATTRIBUTION_VERIFIED",
+    "semantic_status": "TERM_TECHNICAL_BUT_NOT_MODERN_STAIR_EQUIVALENT",
+    "scope": "STEPS_RAMPS_PLATFORM_ACCESS"
+  },
+  {
+    "source_id": "SRC-YZSS-STAIR-SEARCH",
+    "title_zh": "陽宅十書 core-search result for stair-specific terms",
+    "title_vi": "Kết quả rà lõi Dương Trạch Thập Thư về cầu thang",
+    "evidence_class": "EVIDENCE_GAP_RECORD",
+    "text_status": "SEARCH_RECORD",
+    "attribution_status": "NOT_APPLICABLE",
+    "semantic_status": "NO_DIRECT_STAIR_RULE_LOCKED",
+    "scope": "FENG_SHUI_STAIR",
+    "notes": "No direct stair-specific cát/hung rule was locked from the core text in this batch."
+  },
+  {
+    "source_id": "SRC-DNBS-STAIR-SEARCH",
+    "title_zh": "多能鄙事·住宅諸忌 core-search result for stair-specific terms",
+    "title_vi": "Kết quả rà Đa Năng Bỉ Sự về cầu thang",
+    "evidence_class": "EVIDENCE_GAP_RECORD",
+    "text_status": "SEARCH_RECORD",
+    "attribution_status": "ATTRIBUTION_DISPUTED",
+    "semantic_status": "NO_DIRECT_STAIR_RULE_LOCKED",
+    "scope": "FENG_SHUI_STAIR"
+  },
+  {
+    "source_id": "MOD-QCVN06-2022-SD1-2023",
+    "title_vi": "QCVN 06:2022/BXD + Sửa đổi 1:2023",
+    "authority": "Bộ Xây dựng",
+    "evidence_class": "MODERN_LAW_STANDARD",
+    "text_status": "CURRENT_REFERENCE_WHERE_APPLICABLE",
+    "attribution_status": "INSTITUTIONAL_AUTHORITY",
+    "semantic_status": "PROJECT_APPLICABILITY_REQUIRED",
+    "scope": "FIRE_ESCAPE_STAIRS",
+    "url": "https://moc.gov.vn/Images/editor/files/Quy%20Chu%E1%BA%A9n/QCVN%2006-2022.pdf"
+  },
+  {
+    "source_id": "MOD-QCVN10-2024",
+    "title_vi": "QCVN 10:2024/BXD",
+    "authority": "Bộ Xây dựng",
+    "date": "effective 2025-02-01",
+    "evidence_class": "MODERN_LAW_STANDARD",
+    "text_status": "CURRENT",
+    "attribution_status": "INSTITUTIONAL_AUTHORITY",
+    "semantic_status": "PROJECT_APPLICABILITY_REQUIRED",
+    "scope": "ACCESSIBILITY_VERTICAL_CIRCULATION",
+    "url": "https://moc.gov.vn/Images/editor/files/Quy%20Chu%E1%BA%A9n/BXD_06-2024-TT-BXD_01082024.pdf"
+  }
+]

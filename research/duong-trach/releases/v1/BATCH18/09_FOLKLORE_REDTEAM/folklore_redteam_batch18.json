@@ -1,0 +1,47 @@
+[
+  {
+    "claim": "Xà/dầm nứt là dấu hiệu vận nhà suy",
+    "state": "NO_CAUSAL_EVIDENCE",
+    "engine_action": "Classify crack and structural significance; no fortune inference."
+  },
+  {
+    "claim": "Cột nghiêng báo gia đạo bất hòa",
+    "state": "TRADITIONAL_OUTCOME_NONCAUSAL",
+    "engine_action": "Tilt/deformation inspection first."
+  },
+  {
+    "claim": "Gỗ cũ có âm khí nên phải bỏ",
+    "state": "NO_DIRECT_RELIABLE_CLASSIC_RULE_FOR_MODERN_RECLAIMED_TIMBER",
+    "engine_action": "Assess species, decay, insect damage, moisture, strength/grade and connections."
+  },
+  {
+    "claim": "死樹 trong cổ thư = mọi gỗ tái sử dụng",
+    "state": "FALSE_EQUIVALENCE",
+    "engine_action": "Reject mapping."
+  },
+  {
+    "claim": "Không được thay xà/cột vì động long mạch",
+    "state": "DANGEROUS_IF_STRUCTURE_UNSAFE",
+    "engine_action": "Structural safety/temporary shoring/repair design overrides."
+  },
+  {
+    "claim": "Mối mọt là do khí xấu, chỉ cần hóa giải",
+    "state": "DANGEROUS",
+    "engine_action": "Termite/borer inspection and treatment."
+  },
+  {
+    "claim": "Có thể khoét dầm/cột để né phong thủy",
+    "state": "DANGEROUS",
+    "engine_action": "Reject without structural design approval."
+  },
+  {
+    "claim": "Lấy tỷ lệ dầm trong 營造法式 áp cho dầm bê tông hiện đại",
+    "state": "CATEGORY_ERROR",
+    "engine_action": "Historical reference only."
+  },
+  {
+    "claim": "Đa Năng Bỉ Sự là chắc chắn do Lưu Cơ viết nên mọi câu đều là danh sư chân truyền",
+    "state": "BIBLIOGRAPHICALLY_UNSAFE",
+    "engine_action": "Attribution disputed; cannot be master authority."
+  }
+]

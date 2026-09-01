@@ -1,0 +1,43 @@
+{
+  "$id": "huyenhoc-mu.publishable-corpus-record.v1",
+  "required": [
+    "id",
+    "record_type",
+    "publish_state",
+    "provenance"
+  ],
+  "record_types": [
+    "SOURCE",
+    "CLAIM",
+    "RULE",
+    "CASE",
+    "TERM"
+  ],
+  "provenance": {
+    "required": [
+      "source_id"
+    ],
+    "optional": [
+      "claim_id",
+      "witness",
+      "edition",
+      "url"
+    ]
+  },
+  "public_states": [
+    "VERIFIED",
+    "PARTIAL",
+    "CONTESTED",
+    "UNKNOWN",
+    "NO_DIRECT_EVIDENCE",
+    "REFERENCE_ONLY",
+    "SCHOOL_ONLY"
+  ],
+  "forbidden_public_transformations": [
+    "UNKNOWN -> VERIFIED without evidence",
+    "ATTRIBUTION_DISPUTED -> named author fact",
+    "HISTORICAL_CONSTRUCTION -> FENG_SHUI_DOCTRINE",
+    "TRADITIONAL_OUTCOME -> MEDICAL/PHYSICAL_CAUSALITY",
+    "ANCIENT_QUALITATIVE -> invented numeric threshold"
+  ]
+}

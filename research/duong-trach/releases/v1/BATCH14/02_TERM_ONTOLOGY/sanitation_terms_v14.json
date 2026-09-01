@@ -1,0 +1,50 @@
+{
+  "廁/厠": {
+    "hanviet": "xí",
+    "working_sense": "toilet/latrine context; technology varies by period",
+    "modern_mapping": "TOILET_LATRINE_GENERIC_NOT_EXACT",
+    "guard": "Do not assume flush toilet, bathroom, shower or septic tank."
+  },
+  "溷廁": {
+    "hanviet": "hỗn xí",
+    "working_sense": "latrine/toilet; often associated with waste/unclean area in historical context",
+    "modern_mapping": "LATRINE_TOILET_CANDIDATE",
+    "guard": "School-specific sentence still needs its own directional system."
+  },
+  "糞屋": {
+    "hanviet": "phẩn ốc",
+    "working_sense": "manure/feces house, latrine/waste structure depending context",
+    "modern_mapping": "NOT_AUTOMATIC_INTERNAL_WC",
+    "guard": "Do not convert 糞屋對門 into any interior bathroom-door rule."
+  },
+  "坑": {
+    "hanviet": "khanh",
+    "working_sense": "pit/depression; in 廁 section may refer to toilet pit but context matters",
+    "modern_mapping": "PIT_CONTEXTUAL",
+    "guard": "Not every 坑 = toilet."
+  },
+  "凶方": {
+    "hanviet": "hung phương",
+    "working_sense": "unfavorable sector computed by a particular school/system",
+    "modern_mapping": "SCHOOL_OUTPUT",
+    "guard": "No universal compass angle."
+  },
+  "衰方": {
+    "hanviet": "suy phương",
+    "working_sense": "declining/weak sector in a particular textual method",
+    "modern_mapping": "SCHOOL_OUTPUT",
+    "guard": "Must not be equated automatically with Bát Trạch four bad directions."
+  },
+  "中宮": {
+    "hanviet": "trung cung",
+    "working_sense": "central palace/sector in relevant systems",
+    "modern_mapping": "SCHOOL_GEOMETRIC_CONCEPT",
+    "guard": "Batch14 found no direct core-source rule that WC in geometric center = universal disaster."
+  },
+  "化糞池": {
+    "hanviet": "hóa phẩn trì",
+    "working_sense": "modern septic tank term",
+    "modern_mapping": "SEPTIC_TANK",
+    "guard": "Do not back-project this modern system into ancient 糞屋/廁坑."
+  }
+}

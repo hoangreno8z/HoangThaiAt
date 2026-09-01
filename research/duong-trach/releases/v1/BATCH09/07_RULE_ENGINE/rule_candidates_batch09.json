@@ -1,0 +1,74 @@
+[
+  {
+    "rule_id": "R-OPEN-001",
+    "claim_id": "OPEN-001",
+    "concept": "EXTERNAL_MINGTANG",
+    "publish_state": "CANDIDATE",
+    "engine_threshold": null,
+    "traditional_outcome_causal": false,
+    "modern_hard_gate_required": true
+  },
+  {
+    "rule_id": "R-OPEN-002",
+    "claim_id": "OPEN-002",
+    "concept": "EXTERNAL_MINGTANG",
+    "publish_state": "CANDIDATE",
+    "engine_threshold": null,
+    "traditional_outcome_causal": false,
+    "modern_hard_gate_required": true
+  },
+  {
+    "rule_id": "R-OPEN-003",
+    "claim_id": "OPEN-003",
+    "concept": "INTERNAL_FRONT_COURT",
+    "publish_state": "CANDIDATE",
+    "engine_threshold": null,
+    "traditional_outcome_causal": false,
+    "modern_hard_gate_required": true
+  },
+  {
+    "rule_id": "R-OPEN-004",
+    "claim_id": "OPEN-004",
+    "concept": "TRADITIONAL_TIANJING",
+    "publish_state": "BLOCKED",
+    "engine_threshold": null,
+    "traditional_outcome_causal": false,
+    "modern_hard_gate_required": true
+  },
+  {
+    "rule_id": "R-OPEN-005",
+    "claim_id": "OPEN-005",
+    "concept": "TRADITIONAL_TIANJING",
+    "publish_state": "BLOCKED",
+    "engine_threshold": null,
+    "traditional_outcome_causal": false,
+    "modern_hard_gate_required": true
+  },
+  {
+    "rule_id": "R-OPEN-006",
+    "claim_id": "OPEN-006",
+    "concept": "TRADITIONAL_TIANJING",
+    "publish_state": "CANDIDATE",
+    "engine_threshold": null,
+    "traditional_outcome_causal": false,
+    "modern_hard_gate_required": true
+  },
+  {
+    "rule_id": "R-OPEN-007",
+    "claim_id": "OPEN-007",
+    "concept": "TRADITIONAL_TIANJING",
+    "publish_state": "BLOCKED",
+    "engine_threshold": null,
+    "traditional_outcome_causal": false,
+    "modern_hard_gate_required": true
+  },
+  {
+    "rule_id": "R-OPEN-008",
+    "claim_id": "OPEN-008",
+    "concept": "EXTERNAL_MINGTANG",
+    "publish_state": "CANDIDATE",
+    "engine_threshold": null,
+    "traditional_outcome_causal": false,
+    "modern_hard_gate_required": true
+  }
+]

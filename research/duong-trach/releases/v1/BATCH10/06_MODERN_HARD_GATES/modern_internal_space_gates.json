@@ -1,0 +1,31 @@
+{
+  "as_of": "2026-09-01",
+  "ACCESSIBILITY": {
+    "source_id": "MOD-QCVN10-2024",
+    "effective": "2025-02-01",
+    "applicability": [
+      "apartment buildings",
+      "offices/workplaces in scope",
+      "public buildings",
+      "commercial/service buildings in scope"
+    ],
+    "not_auto_applicable": "every detached private house",
+    "engine_rule": "If applicable, accessibility route continuity and required accessible elements are HARD GATEs; classical spatial preference cannot break them."
+  },
+  "FIRE_EGRESS": {
+    "source_id": "MOD-QCVN06-2022-SD1-2023",
+    "engine_rule": "Where applicable, required exits, protected routes, separation and fire-service access override classical room/door preferences."
+  },
+  "BUILDING_SCIENCE": {
+    "topics": [
+      "daylight",
+      "controlled ventilation",
+      "indoor air quality",
+      "privacy",
+      "noise",
+      "sanitation"
+    ],
+    "classification": "MODERN_DESIGN_LAYER",
+    "note": "Do not confuse ancient 風/氣 language with ventilation rate or IAQ."
+  }
+}

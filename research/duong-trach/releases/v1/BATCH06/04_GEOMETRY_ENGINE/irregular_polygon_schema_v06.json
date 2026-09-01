@@ -1,0 +1,44 @@
+{
+  "$id": "lapque.irregular_polygon.v0.6",
+  "coordinate_system": {
+    "world": "X East, Y North recommended for GIS layer; if existing LapQue uses X East/Y South, adapter required.",
+    "azimuth": "clockwise from True North",
+    "warning": "Do not silently mix screen coordinates with world coordinates."
+  },
+  "polygon_validation": [
+    "closed ring",
+    "non-self-intersecting",
+    "positive nonzero area",
+    "holes explicitly represented",
+    "repair invalid polygon only with logged operation"
+  ],
+  "shape_metrics": {
+    "area": "shoelace / robust geometry library",
+    "perimeter": "sum edge length",
+    "convex_hull_area": "number",
+    "solidity": "area / convex_hull_area",
+    "minimum_rotated_rectangle": "geometry",
+    "axis_aligned_bbox": "geometry",
+    "concavity_area": "convex_hull_area - area",
+    "principal_axis": "optional"
+  },
+  "directional_measurement": {
+    "requires_center_candidate": true,
+    "sector_model": "continuous azimuth sectors; traditional sector boundaries configured separately",
+    "outputs": [
+      "occupied_area_by_sector",
+      "reference_area_by_sector",
+      "occupancy_ratio_by_sector",
+      "radial_extent_by_sector",
+      "missing_area_geometry_by_sector"
+    ],
+    "classification": "CONTINUOUS_ONLY",
+    "ancient_label_rule": "DISABLED until text/school supplies defensible classification semantics"
+  },
+  "key_guardrails": [
+    "A tiny notch must not automatically become 'khuyết cung'.",
+    "A courtyard hole must not automatically equal an external missing sector.",
+    "An L-shape may produce multiple center candidates.",
+    "Reference envelope choice must be explicit and auditable."
+  ]
+}

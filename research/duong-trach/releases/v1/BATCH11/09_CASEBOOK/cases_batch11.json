@@ -1,0 +1,145 @@
+[
+  {
+    "case_id": "CASE11-001",
+    "name": "Bếp dưới không gian sảnh tầng trên",
+    "input": {
+      "kitchen_below_hall": true
+    },
+    "matches": [
+      "KIT-001"
+    ],
+    "modern_gate": "CHECK_FIRE_STRUCTURE_EXHAUST",
+    "decision": "Classical match is PARTIAL because 廳屋下 semantics not fully locked; no absolute verdict."
+  },
+  {
+    "case_id": "CASE11-002",
+    "name": "Giếng Bắc, bếp Nam",
+    "input": {
+      "well_sector": "N",
+      "stove_sector": "S"
+    },
+    "matches": [
+      "KIT-002"
+    ],
+    "modern_gate": "WELL_WATER_SAFETY",
+    "decision": "Report source-specific traditional judgment only; no family-behavior causality."
+  },
+  {
+    "case_id": "CASE11-003",
+    "name": "Áp kích thước cổ bảy thước chín tấc vào bếp hiện đại",
+    "input": {
+      "request": "convert historical dimension to mm"
+    },
+    "matches": [
+      "KIT-003"
+    ],
+    "modern_gate": "ERGONOMICS_FIRE_APPLIANCE",
+    "decision": "BLOCK conversion until metrology/witness/component identity is verified."
+  },
+  {
+    "case_id": "CASE11-004",
+    "name": "Mặt bếp hướng Tây Nam",
+    "input": {
+      "stove_facing_deg": 225
+    },
+    "matches": [
+      "KIT-004"
+    ],
+    "modern_gate": "PASS_ASSUMED",
+    "decision": "Source-specific statement only; not universal Feng Shui rule."
+  },
+  {
+    "case_id": "CASE11-005",
+    "name": "Dao treo ngay trên vùng nấu",
+    "input": {
+      "sharp_tool_storage_above_cooktop": true
+    },
+    "matches": [
+      "KIT-005"
+    ],
+    "modern_gate": "PRACTICAL_SAFETY_CHECK",
+    "decision": "Traditional housekeeping match; practical safety can be evaluated independently."
+  },
+  {
+    "case_id": "CASE11-006",
+    "name": "Đặt bếp vào 'hung phương' theo Hỏa Am",
+    "input": {
+      "school_sector_classification": "not_loaded"
+    },
+    "matches": [
+      "KIT-006"
+    ],
+    "modern_gate": "PASS_ASSUMED",
+    "decision": "BLOCK. School engine not loaded; cannot guess hung/cát sector."
+  },
+  {
+    "case_id": "CASE11-007",
+    "name": "Bếp gas không có giải pháp thoát khí/khói phù hợp",
+    "input": {
+      "fuel": "gas",
+      "exhaust": "insufficient"
+    },
+    "matches": [
+      "KIT-007"
+    ],
+    "modern_gate": "FAIL_OR_REDESIGN",
+    "decision": "Modern safety/ventilation dominates. Ancient smoke statement is contextual only."
+  },
+  {
+    "case_id": "CASE11-008",
+    "name": "Thuật toán dùng câu 火路吉凶歌 bị chính nguồn nghi sai",
+    "input": {
+      "directional_formula": "uses disputed 離修乙"
+    },
+    "matches": [
+      "KIT-008"
+    ],
+    "modern_gate": "N/A",
+    "decision": "REJECT automatic calculation. TEXTUAL_CONFLICT."
+  },
+  {
+    "case_id": "CASE11-009",
+    "name": "Bếp nằm bên trái mặt nhà",
+    "input": {
+      "house_facing_deg": 180,
+      "kitchen_side": "left"
+    },
+    "matches": [
+      "KIT-009"
+    ],
+    "modern_gate": "PASS_ASSUMED",
+    "decision": "Only a form-tradition candidate; left/right reference must be explicit."
+  },
+  {
+    "case_id": "CASE11-010",
+    "name": "Bỏ chì vào giếng theo cổ thư",
+    "input": {
+      "lead_added_to_well": true
+    },
+    "matches": [
+      "KIT-012"
+    ],
+    "modern_gate": "HARD_FAIL",
+    "decision": "PROHIBIT APPLICATION. Historical record preserved; modern safety invalidates it."
+  },
+  {
+    "case_id": "CASE11-011",
+    "name": "Bếp gas sát chậu rửa 20 cm",
+    "input": {
+      "stove_sink_distance_m": 0.2
+    },
+    "matches": [],
+    "modern_gate": "CHECK_APPLIANCE_ELECTRICAL_GAS_SPLASH_ERGONOMICS",
+    "decision": "NO_DIRECT_EVIDENCE_YET in current verified ancient corpus for a universal 'Thủy-Hỏa distance' rule. Do not fabricate."
+  },
+  {
+    "case_id": "CASE11-012",
+    "name": "Bếp nằm ngay dưới phòng ngủ tầng trên",
+    "input": {
+      "kitchen_below_bedroom": true
+    },
+    "matches": [],
+    "modern_gate": "CHECK_FIRE_NOISE_HEAT_EXHAUST",
+    "decision": "NO_DIRECT_EVIDENCE_YET in Batch11. Do not recycle ROOM-011 or internet folklore into a fake ancient rule."
+  }
+]

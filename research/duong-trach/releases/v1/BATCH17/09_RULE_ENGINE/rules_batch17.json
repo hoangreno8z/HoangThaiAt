@@ -1,0 +1,191 @@
+[
+  {
+    "rule_id": "R-ROOF-001",
+    "claim_id": "ROOF-001",
+    "source_id": "SRC-DNBS-V5-ROOF",
+    "domain": "ROOF_EAVES_RAIN",
+    "publish_state": "CANDIDATE",
+    "engine_threshold": null,
+    "ancient_numeric_threshold": null,
+    "modern_causality": "NONE_INFERRED",
+    "object_type_guard": true,
+    "modern_hard_gate_required": true,
+    "observable": [
+      "eave_projection",
+      "wall_rain_exposure",
+      "wind_driven_rain"
+    ]
+  },
+  {
+    "rule_id": "R-ROOF-002",
+    "claim_id": "ROOF-002",
+    "source_id": "SRC-JJBY-YUAN-ROOF",
+    "domain": "ROOF_EAVES_RAIN",
+    "publish_state": "CANDIDATE",
+    "engine_threshold": null,
+    "ancient_numeric_threshold": null,
+    "modern_causality": "NONE_INFERRED",
+    "object_type_guard": true,
+    "modern_hard_gate_required": true,
+    "observable": [
+      "roof_runoff_vector",
+      "eave_edge",
+      "runoff_intersection"
+    ]
+  },
+  {
+    "rule_id": "R-ROOF-003",
+    "claim_id": "ROOF-003",
+    "source_id": "SRC-DNBS-V5-ROOF",
+    "domain": "ROOF_EAVES_RAIN",
+    "publish_state": "REFERENCE_ONLY",
+    "engine_threshold": null,
+    "ancient_numeric_threshold": null,
+    "modern_causality": "NONE_INFERRED",
+    "object_type_guard": true,
+    "modern_hard_gate_required": true,
+    "observable": [
+      "roof_runoff_vector",
+      "runoff_target"
+    ]
+  },
+  {
+    "rule_id": "R-ROOF-004",
+    "claim_id": "ROOF-004",
+    "source_id": "SRC-JJBY-YUAN-ROOF",
+    "domain": "ROOF_EAVES_RAIN",
+    "publish_state": "PARTIAL_ONLY",
+    "engine_threshold": null,
+    "ancient_numeric_threshold": null,
+    "modern_causality": "NONE_INFERRED",
+    "object_type_guard": true,
+    "modern_hard_gate_required": true,
+    "observable": [
+      "roof_leakage",
+      "water_ingress"
+    ]
+  },
+  {
+    "rule_id": "R-ROOF-005",
+    "claim_id": "ROOF-005",
+    "source_id": "SRC-DNBS-V5-ROOF",
+    "domain": "ROOF_EAVES_RAIN",
+    "publish_state": "CANDIDATE",
+    "engine_threshold": null,
+    "ancient_numeric_threshold": null,
+    "modern_causality": "NONE_INFERRED",
+    "object_type_guard": true,
+    "modern_hard_gate_required": true,
+    "observable": [
+      "ridge_or_beam_tilt",
+      "structural_deformation"
+    ]
+  },
+  {
+    "rule_id": "R-ROOF-006",
+    "claim_id": "ROOF-006",
+    "source_id": "SRC-DNBS-V5-ROOF",
+    "domain": "ROOF_EAVES_RAIN",
+    "publish_state": "CANDIDATE",
+    "engine_threshold": null,
+    "ancient_numeric_threshold": null,
+    "modern_causality": "NONE_INFERRED",
+    "object_type_guard": true,
+    "modern_hard_gate_required": true,
+    "observable": [
+      "building_tilt",
+      "roof_plane_tilt_anomaly"
+    ]
+  },
+  {
+    "rule_id": "R-ROOF-007",
+    "claim_id": "ROOF-007",
+    "source_id": "SRC-JJBY-YUAN-ROOF",
+    "domain": "ROOF_EAVES_RAIN",
+    "publish_state": "CANDIDATE",
+    "engine_threshold": null,
+    "ancient_numeric_threshold": null,
+    "modern_causality": "NONE_INFERRED",
+    "object_type_guard": true,
+    "modern_hard_gate_required": true,
+    "observable": [
+      "tile_displacement",
+      "ridge_damage",
+      "roof_component_failure"
+    ]
+  },
+  {
+    "rule_id": "R-ROOF-008",
+    "claim_id": "ROOF-008",
+    "source_id": "SRC-YZF-V2-ROOF",
+    "domain": "ROOF_EAVES_RAIN",
+    "publish_state": "REFERENCE_ONLY",
+    "engine_threshold": null,
+    "ancient_numeric_threshold": null,
+    "modern_causality": "NONE_INFERRED",
+    "object_type_guard": true,
+    "modern_hard_gate_required": true,
+    "observable": [
+      "weather_protection"
+    ]
+  },
+  {
+    "rule_id": "R-ROOF-009",
+    "claim_id": "ROOF-009",
+    "source_id": "SRC-YZF-V13-ROOF",
+    "domain": "ROOF_EAVES_RAIN",
+    "publish_state": "REFERENCE_ONLY",
+    "engine_threshold": null,
+    "ancient_numeric_threshold": null,
+    "modern_causality": "NONE_INFERRED",
+    "object_type_guard": true,
+    "modern_hard_gate_required": true,
+    "observable": [
+      "tile_joint_condition",
+      "roofing_tightness"
+    ]
+  },
+  {
+    "rule_id": "R-ROOF-010",
+    "claim_id": "ROOF-010",
+    "source_id": "SRC-YZF-V13-ROOF",
+    "domain": "ROOF_EAVES_RAIN",
+    "publish_state": "REFERENCE_ONLY",
+    "engine_threshold": null,
+    "ancient_numeric_threshold": null,
+    "modern_causality": "NONE_INFERRED",
+    "object_type_guard": true,
+    "modern_hard_gate_required": true,
+    "observable": [
+      "roofing_sequence",
+      "ridge_construction"
+    ]
+  },
+  {
+    "rule_id": "MOD-ROOF-WATERPROOF-001",
+    "source_id": "MOD-TCVN5718-1993",
+    "domain": "ROOF_EAVES_RAIN",
+    "publish_state": "MODERN_GATE_BY_SCOPE",
+    "result": "WATERTIGHTNESS_REQUIRED",
+    "engine_threshold": "STANDARD_LOOKUP_NOT_HARDCODED"
+  },
+  {
+    "rule_id": "MOD-ROOF-STRUCT-001",
+    "source_ids": [
+      "MOD-TCVN2737-2023",
+      "MOD-QCVN02-2022-CLIMATE"
+    ],
+    "domain": "ROOF_EAVES_RAIN",
+    "publish_state": "HARD_GATE",
+    "result": "LOAD_AND_CLIMATE_DESIGN_OVERRIDE",
+    "engine_threshold": "STANDARD_LOOKUP_NOT_HARDCODED"
+  },
+  {
+    "rule_id": "MOD-ROOF-LIGHTNING-001",
+    "source_id": "MOD-TCVN9385-2012",
+    "domain": "ROOF_EAVES_RAIN",
+    "publish_state": "MODERN_GATE_BY_APPLICABILITY",
+    "result": "LIGHTNING_PROTECTION",
+    "engine_threshold": "STANDARD_LOOKUP_NOT_HARDCODED"
+  }
+]

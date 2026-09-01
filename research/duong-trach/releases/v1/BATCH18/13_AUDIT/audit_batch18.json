@@ -1,0 +1,42 @@
+{
+  "batch": "18",
+  "date": "2026-09-01",
+  "scope": "MATERIAL_STRUCTURE_DEFECT_REPAIR",
+  "counts": {
+    "sources": 14,
+    "claims": 12,
+    "rules": 15,
+    "cases": 14,
+    "conflicts": 6,
+    "folklore_redteam": 9,
+    "terms": 10
+  },
+  "passed": [
+    "source_authority_tiers_added",
+    "LiJie_YingzaoFashi_authenticated_but_technical_only",
+    "anonymous_Yuan_witness_not_named_master",
+    "DuoNengBiShi_disputed_attribution_not_master_authority",
+    "dead_tree_not_equal_reclaimed_timber",
+    "倒木作柱_semantic_unresolved_blocked",
+    "physical_defects_noncausal",
+    "danger_assessment_hard_gate",
+    "termite_existing_new_standards_separated",
+    "steel_standard_2024_version_locked",
+    "no_numeric_crack_threshold_invented",
+    "no_structural_cutting_for_fengshui"
+  ],
+  "important_findings": [
+    "The most reliable named classical source in this batch is Li Jie's Yingzao Fashi, but its authority is architectural/technical, not Feng Shui.",
+    "A Yuan anonymous domestic compendium preserves several material/defect motifs and is bibliographically earlier than later popular compilations; it must still be described as anonymous witness.",
+    "Duo Neng Bi Shi repeats some motifs but attribution to Liu Ji is disputed, so it cannot be promoted to named-master doctrine.",
+    "Modern Vietnamese standards provide explicit pathways for dangerous-structure assessment, RC maintenance/corrosion, termite treatment, and current steel design."
+  ],
+  "blocked": [
+    "meaning of 倒木作柱",
+    "modern material ban derived from 死樹",
+    "Song dimensional ratios used in modern design",
+    "fortune predictions from structural defects",
+    "named-master attribution for anonymous/disputed texts"
+  ],
+  "next": "BATCH19_CONSTRUCTION_SEQUENCE_RENOVATION_TIMING"
+}

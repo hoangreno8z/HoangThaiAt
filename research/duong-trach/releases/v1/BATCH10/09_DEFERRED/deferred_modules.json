@@ -1,0 +1,25 @@
+{
+  "KITCHEN": {
+    "claims": [
+      "ROOM-011"
+    ],
+    "next_batch": "BATCH11",
+    "execution": "DISABLED"
+  },
+  "BEDROOM": {
+    "execution": "DISABLED",
+    "reason": "No bedroom-specific mapping from 房 without explicit source."
+  },
+  "STAIR": {
+    "execution": "DISABLED",
+    "reason": "Separate circulation/vertical module later."
+  },
+  "WC": {
+    "execution": "DISABLED",
+    "reason": "Separate sanitation/service module later."
+  },
+  "BA_ZHAI_HOUSE_ROOM_DIRECTION": {
+    "execution": "DISABLED",
+    "reason": "School-specific; do not contaminate general internal-form graph."
+  }
+}

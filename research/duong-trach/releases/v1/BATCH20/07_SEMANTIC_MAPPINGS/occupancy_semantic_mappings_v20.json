@@ -1,0 +1,33 @@
+{
+  "移徙": {
+    "display_vi": "Chuyển cư / chuyển chỗ ở",
+    "source_layer": "XJBF v11 official event taxonomy",
+    "mapping_to_ui_nhap_trach": "RELATED_NOT_IDENTICAL"
+  },
+  "入宅": {
+    "display_vi": "Nhập trạch / vào nhà",
+    "source_layer": "XJBF v34-35 embedded 事類總集",
+    "mapping_status": "HISTORICALLY_ATTESTED",
+    "warning": "not an independent v11 民用三十七事 item"
+  },
+  "歸火": {
+    "display_vi": "Quy hỏa",
+    "mapping_status": "SOURCE_SPECIFIC_RITUAL_TERM",
+    "warning": "do not universalize"
+  },
+  "掃舍宇": {
+    "display_vi": "Quét/dọn nhà",
+    "mapping_status": "DIRECT_V11_EVENT",
+    "warning": "not automatically 'tẩy uế'"
+  },
+  "安牀": {
+    "display_vi": "An giường",
+    "mapping_status": "DIRECT_V11_EVENT",
+    "warning": "timing event separate from bed geometry"
+  },
+  "安門": {
+    "display_vi": "An môn / đặt cửa",
+    "mapping_status": "SPATIAL_ATTESTATION_IN_DISPUTED_ZHAIJING",
+    "calendar_status": "BLOCKED"
+  }
+}

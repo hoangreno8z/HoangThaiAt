@@ -1,0 +1,45 @@
+[
+  {
+    "conflict_id": "WAT-CONFLICT-001",
+    "type": "ANCIENT_OBJECT_VS_MODERN_OBJECT",
+    "subject": "井_vs_water_tank",
+    "status": "NOT_EQUIVALENT",
+    "resolution": "Never run well rules on underground/roof water tanks."
+  },
+  {
+    "conflict_id": "WAT-CONFLICT-002",
+    "type": "TRADITION_VS_MODERN_SAFETY",
+    "subject": "lead_in_well",
+    "evidence": "Historic source recommends lead in well.",
+    "status": "MODERN_INVALID",
+    "resolution": "Preserve as text; prohibit application."
+  },
+  {
+    "conflict_id": "WAT-CONFLICT-003",
+    "type": "SCHOOL_VS_HYDRAULICS",
+    "subject": "water_should_not_flow_straight",
+    "status": "LAYER_CONFLICT",
+    "resolution": "Modern hydraulic/sanitary performance overrides any demand to bend a pipe/channel."
+  },
+  {
+    "conflict_id": "WAT-CONFLICT-004",
+    "type": "SCHOOL_VS_NETWORK_TOPOLOGY",
+    "subject": "忌分流",
+    "status": "SEMANTIC_AND_SCOPE_CONFLICT",
+    "resolution": "Do not apply to modern branched plumbing/sewer networks."
+  },
+  {
+    "conflict_id": "WAT-CONFLICT-005",
+    "type": "HISTORICAL_BELIEF_VS_HYDROGEOLOGY",
+    "subject": "wind_when_digging_well_changes_water_taste",
+    "status": "NO_MODERN_CAUSAL_BRIDGE",
+    "resolution": "Hydrogeology and water testing only for modern decisions."
+  },
+  {
+    "conflict_id": "WAT-CONFLICT-006",
+    "type": "VERSIONING",
+    "subject": "domestic_water_quality",
+    "status": "RESOLVED_BY_DATE",
+    "resolution": "Use QCVN 01-1:2024/BYT from 2025-07-01; do not keep 2018 version as current."
+  }
+]

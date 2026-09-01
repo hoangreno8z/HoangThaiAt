@@ -1,0 +1,39 @@
+{
+  "INFRASTRUCTURE_DRAINAGE": {
+    "source_id": "MOD-QCVN07-2023-SD1-2025",
+    "status": "CURRENT_AS_OF_2026_09_01",
+    "rule": "Connection/discharge/drainage infrastructure must follow applicable technical-infrastructure requirements and the 2025 amendment where relevant."
+  },
+  "WASTEWATER_DISCHARGE": {
+    "source_id": "MOD-QCVN14-2025-BTNMT",
+    "effective": "2025-09-01",
+    "rule": "Where QCVN 14:2025/BTNMT applies, discharge limits and project/environmental-license context override Feng Shui.",
+    "scope_guard": "The QCVN itself excludes subjects permitted to use onsite treatment under environmental law; never overgeneralize."
+  },
+  "ACCESSIBLE_TOILET": {
+    "source_id": "MOD-QCVN10-2024-WC",
+    "hard_gate_if_applicable": true,
+    "verified_examples": [
+      "public buildings: accessible toilet provision requirements",
+      "clear wheelchair space requirement",
+      "door clear-width and opening constraints"
+    ],
+    "rule": "Do not shrink/move an accessible toilet to satisfy an auspicious sector if accessibility requirements apply."
+  },
+  "HEALTH_SANITATION": {
+    "source_id": "MOD-WHO-SAN-2018",
+    "rule": "Sanitation must safely contain/manage excreta and health risks; traditional auspiciousness cannot justify unsafe sanitation."
+  },
+  "BUILDING_PHYSICS": {
+    "topics": [
+      "waterproofing",
+      "leak detection",
+      "odour control",
+      "ventilation",
+      "condensation",
+      "cleanability"
+    ],
+    "classification": "MODERN_DESIGN_LAYER",
+    "rule": "No mystical claim substitutes for moisture and sanitation design."
+  }
+}

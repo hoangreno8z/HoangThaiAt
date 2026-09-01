@@ -1,0 +1,238 @@
+[
+  {
+    "claim_id": "FORM-001",
+    "source_id": "SRC-YZSS-EXT-001",
+    "topic": "Đại thế trước nội cục",
+    "original": "人之居處，宜以大地山河為主。",
+    "hanviet": "Nhân chi cư xứ, nghi dĩ đại địa sơn hà vi chủ.",
+    "literal_vi": "Nơi người ở nên lấy đại thế đất đai, núi sông làm chủ.",
+    "practical": "Khi khảo sát đất, phải ghi nhận địa hình, nước, đường và không gian xung quanh trước khi bàn bố trí phòng.",
+    "tag": [
+      "SITE_FIRST",
+      "DIRECT_YANGZHAI"
+    ],
+    "confidence": "HIGH_TEXT"
+  },
+  {
+    "claim_id": "FORM-002",
+    "source_id": "SRC-YZSS-EXT-001",
+    "topic": "Đất cư trú rộng và bằng",
+    "original": "居處須用寬平勢。",
+    "hanviet": "Cư xứ tu dụng khoan bình thế.",
+    "literal_vi": "Nơi cư trú cần thế đất rộng và tương đối bằng.",
+    "practical": "Ghi width/depth/slope/usable_area. Không tự đặt ngưỡng cổ pháp; ngưỡng kỹ thuật thuộc MODERN_ENGINE.",
+    "tag": [
+      "WIDTH",
+      "SLOPE"
+    ],
+    "confidence": "HIGH_TEXT"
+  },
+  {
+    "claim_id": "FORM-003",
+    "source_id": "SRC-YZSS-EXT-001",
+    "topic": "Minh đường rộng",
+    "original": "明堂須當容萬馬。",
+    "hanviet": "Minh đường tu đương dung vạn mã.",
+    "literal_vi": "Minh đường được mô tả là nên đủ rộng để dung nạp rất nhiều ngựa.",
+    "practical": "Hiểu là hình ảnh cường điệu chỉ độ khoáng đạt; tuyệt đối không chuyển 'vạn mã' thành diện tích mét vuông.",
+    "tag": [
+      "MINGTANG",
+      "NO_NUMERIC_INVENTION"
+    ],
+    "confidence": "HIGH_TEXT"
+  },
+  {
+    "claim_id": "FORM-004",
+    "source_id": "SRC-YZSS-EXT-001",
+    "topic": "Nước bao trước sau",
+    "original": "前後有水環抱貴。",
+    "hanviet": "Tiền hậu hữu thủy hoàn bão quý.",
+    "literal_vi": "Trước sau có nước ôm vòng được truyền thống xem là quý.",
+    "practical": "Geometry chỉ ghi dạng cong/bao, khoảng cách và hướng dòng. An toàn thủy văn vẫn qua Hard Gate.",
+    "tag": [
+      "WATER",
+      "ENCLOSURE"
+    ],
+    "confidence": "HIGH_TEXT"
+  },
+  {
+    "claim_id": "FORM-005",
+    "source_id": "SRC-YZSS-EXT-001",
+    "topic": "Đường hai bên và thế phản",
+    "original": "左右有路亦如然，但遇返跳必須忌。",
+    "hanviet": "Tả hữu hữu lộ diệc như nhiên, đãn ngộ phản khiêu tất tu kỵ.",
+    "literal_vi": "Hai bên có đường cũng được xét tương tự, nhưng gặp thế phản khiêu thì sách dặn phải tránh.",
+    "practical": "Không tự dịch 'phản khiêu' thành một góc số học cố định. Cần corpus hình minh họa + định nghĩa trường phái trước khi formalize.",
+    "tag": [
+      "ROAD",
+      "FAN_TIAO",
+      "NEEDS_GEOMETRIC_DEFINITION"
+    ],
+    "confidence": "HIGH_TEXT"
+  },
+  {
+    "claim_id": "FORM-006",
+    "source_id": "SRC-YZSS-EXT-001",
+    "topic": "Thủy khẩu",
+    "original": "更須水口收拾緊，不宜太迫成小器。",
+    "hanviet": "Cánh tu thủy khẩu thu thập khẩn, bất nghi thái bách thành tiểu khí.",
+    "literal_vi": "Thủy khẩu còn cần được thu giữ tương đối kín, nhưng không nên bức ép quá mức.",
+    "practical": "Tách hai biến: containment/closure và constriction. Chưa có ngưỡng số cổ văn.",
+    "tag": [
+      "WATER_MOUTH",
+      "CONTAINMENT",
+      "CONSTRICTION"
+    ],
+    "confidence": "HIGH_TEXT"
+  },
+  {
+    "claim_id": "FORM-007",
+    "source_id": "SRC-YZSS-EXT-001",
+    "topic": "Án gần nhưng minh đường không hẹp",
+    "original": "星辰近案明堂寬，案近明堂非窄勢。",
+    "hanviet": "Tinh thần cận án minh đường khoan, án cận minh đường phi trách thế.",
+    "literal_vi": "Án có thể ở gần nhưng minh đường vẫn phải rộng, không thành thế chật hẹp.",
+    "practical": "Khi dựng mô hình site, khoảng cách vật thể phía trước phải được đánh giá cùng độ mở ngang, không chỉ khoảng cách đơn lẻ.",
+    "tag": [
+      "MINGTANG",
+      "FRONT_OBJECT",
+      "OPENNESS"
+    ],
+    "confidence": "MEDIUM_HIGH_TEXT_SEMANTIC_REVIEW"
+  },
+  {
+    "claim_id": "FORM-008",
+    "source_id": "SRC-YZSS-EXT-001",
+    "topic": "Tứ tượng dưới dạng ngoại cảnh",
+    "original": "左有流水謂之青龍；右有長道謂之白虎；前有汙池謂之朱雀；後有丘陵謂之元武。",
+    "hanviet": "Tả hữu lưu thủy vị chi Thanh Long; hữu hữu trường đạo vị chi Bạch Hổ; tiền hữu ô trì vị chi Chu Tước; hậu hữu khâu lăng vị chi Huyền Vũ.",
+    "literal_vi": "Bên trái có dòng nước gọi là Thanh Long; bên phải có đường dài gọi là Bạch Hổ; trước có ao gọi Chu Tước; sau có gò đồi gọi Huyền Vũ.",
+    "practical": "Đây là phép gán hình tượng của văn bản; không biến thành định nghĩa duy nhất của Tứ Tượng ở mọi trường phái.",
+    "tag": [
+      "FOUR_SYMBOLS",
+      "SITE_FEATURE_MAPPING"
+    ],
+    "confidence": "HIGH_TEXT"
+  },
+  {
+    "claim_id": "FORM-009",
+    "source_id": "SRC-YLJ-DZ-002",
+    "topic": "Quy mô đất dương trạch",
+    "original": "大凡陽宅要穴大，寬闊連綿又平伏。",
+    "hanviet": "Đại phàm dương trạch yếu huyệt đại, khoan khoát liên miên hựu bình phục.",
+    "literal_vi": "Dương trạch nhìn chung cần chỗ đủ lớn, khoáng đạt, liên tục và tương đối bằng.",
+    "practical": "Hợp nhất với FORM-002 ở mức semantic motif; không coi hai nguồn là độc lập hoàn toàn cho tới khi kiểm lịch sử truyền văn.",
+    "tag": [
+      "DIRECT_YANGZHAI",
+      "WIDTH",
+      "CONTINUITY",
+      "SLOPE"
+    ],
+    "confidence": "HIGH_TEXT_ATTRIBUTION_DISPUTED"
+  },
+  {
+    "claim_id": "FORM-010",
+    "source_id": "SRC-YLJ-DZ-002",
+    "topic": "Thế là điều cốt yếu",
+    "original": "要知居止只要勢。",
+    "hanviet": "Yếu tri cư chỉ chỉ yếu thế.",
+    "literal_vi": "Muốn xét nơi cư trú, điều cốt yếu là thế.",
+    "practical": "Tạo trường `site_form_summary` bắt buộc trước các school-engine khác.",
+    "tag": [
+      "FORM_FIRST",
+      "DIRECT_YANGZHAI"
+    ],
+    "confidence": "HIGH_TEXT_ATTRIBUTION_DISPUTED"
+  },
+  {
+    "claim_id": "FORM-011",
+    "source_id": "SRC-YLJ-DZ-002",
+    "topic": "Nước ôm, núi chầu",
+    "original": "水抱山朝必有氣。",
+    "hanviet": "Thủy bão sơn triều tất hữu khí.",
+    "literal_vi": "Nước ôm và núi chầu thì theo ngôn ngữ truyền thống được gọi là có khí.",
+    "practical": "`氣` giữ nguyên là traditional concept; không ánh xạ sang trường điện từ hay năng lượng đo được.",
+    "tag": [
+      "WATER",
+      "MOUNTAIN",
+      "TRADITIONAL_QI"
+    ],
+    "confidence": "HIGH_TEXT_ATTRIBUTION_DISPUTED"
+  },
+  {
+    "claim_id": "FORM-012",
+    "source_id": "SRC-YLJ-DZ-002",
+    "topic": "Thế dốc gãy nghiêng",
+    "original": "破碎斜傾非吉地。",
+    "hanviet": "Phá toái tà khuynh phi cát địa.",
+    "literal_vi": "Địa hình vỡ vụn, xiên nghiêng không được xem là đất tốt.",
+    "practical": "Song song với kiểm tra địa kỹ thuật nhưng không thay thế nó.",
+    "tag": [
+      "BROKEN_TERRAIN",
+      "SLOPE",
+      "HARD_GATE_PARALLEL"
+    ],
+    "confidence": "HIGH_TEXT_ATTRIBUTION_DISPUTED"
+  },
+  {
+    "claim_id": "FORM-013",
+    "source_id": "SRC-YLJ-MT-003",
+    "topic": "Minh đường và vòng bao",
+    "original": "問君如何辯明堂，外山抱裏內平洋。",
+    "hanviet": "Vấn quân như hà biện minh đường, ngoại sơn bão lý nội bình dương.",
+    "literal_vi": "Hỏi cách phân biệt minh đường: núi phía ngoài ôm vào, phía trong là khoảng tương đối bằng rộng.",
+    "practical": "Nguồn nằm trong hệ hình thế có bối cảnh âm trạch mạnh; chỉ dùng để định nghĩa motif hình học, gắn `SCOPE_WARNING`.",
+    "tag": [
+      "MINGTANG",
+      "ENCLOSURE",
+      "FLAT_OPEN_AREA",
+      "SCOPE_WARNING"
+    ],
+    "confidence": "HIGH_TEXT_SCOPE_LIMITED"
+  },
+  {
+    "claim_id": "FORM-014",
+    "source_id": "SRC-YLJ-MT-003",
+    "topic": "Minh đường - nước - tránh gió",
+    "original": "明堂惜水如惜血，穴裏避風如避賊。",
+    "hanviet": "Minh đường tích thủy như tích huyết, huyệt lý tị phong như tị tặc.",
+    "literal_vi": "Minh đường coi trọng việc giữ nước như giữ máu; chỗ huyệt tránh gió như tránh giặc.",
+    "practical": "Chỉ là ngôn ngữ cổ Hình thế. Không dùng để kết luận thông gió nhà càng ít càng tốt; vi khí hậu hiện đại được đánh giá độc lập.",
+    "tag": [
+      "MINGTANG",
+      "WATER",
+      "WIND",
+      "SCOPE_WARNING"
+    ],
+    "confidence": "HIGH_TEXT_SCOPE_LIMITED"
+  },
+  {
+    "claim_id": "FORM-015",
+    "source_id": "SRC-ZJ-SYS-004",
+    "topic": "Mô hình hệ thống ngoại cảnh",
+    "original": "宅以形勢為身體，以泉水為血脈，以土地為皮肉，以草木為毛髮。",
+    "hanviet": "Trạch dĩ hình thế vi thân thể, dĩ tuyền thủy vi huyết mạch, dĩ thổ địa vi bì nhục, dĩ thảo mộc vi mao phát.",
+    "literal_vi": "Nhà lấy hình thế làm thân thể, suối nước làm huyết mạch, đất làm da thịt, cây cỏ làm lông tóc.",
+    "practical": "Dùng làm thứ tự checklist khảo sát, không coi ẩn dụ là cơ chế vật lý.",
+    "tag": [
+      "SITE_AUDIT_MODEL",
+      "METAPHOR_GUARD"
+    ],
+    "confidence": "HIGH_TEXT_PSEUDEPIGRAPHIC_AUTHOR"
+  },
+  {
+    "claim_id": "FORM-016",
+    "source_id": "SRC-ZANG-005",
+    "topic": "Tàng phong - giới thủy",
+    "original": "氣乘風則散，界水則止。",
+    "hanviet": "Khí thừa phong tắc tán, giới thủy tắc chỉ.",
+    "literal_vi": "Theo văn bản, khí gặp gió thì tán, gặp giới hạn nước thì dừng.",
+    "practical": "Nguồn gốc thuộc Táng thư/âm trạch; chỉ lưu để theo dõi lịch sử thuật ngữ. Không dùng trực tiếp thành rule nhà ở nếu chưa có nguồn Dương trạch tiếp nhận.",
+    "tag": [
+      "CONCEPT_HISTORY",
+      "YINZHAI",
+      "REFERENCE_ONLY"
+    ],
+    "confidence": "TEXT_STRONG_ATTRIBUTION_AND_SCOPE_DISPUTED"
+  }
+]

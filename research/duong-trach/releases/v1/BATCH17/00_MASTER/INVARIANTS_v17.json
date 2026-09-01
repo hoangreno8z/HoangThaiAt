@@ -1,0 +1,35 @@
+{
+  "ROOF-INV-001": {
+    "statement": "HISTORICAL_CONSTRUCTION_IS_NOT_FENG_SHUI_EVIDENCE",
+    "applies_to": [
+      "SRC-YZF-V2-ROOF",
+      "SRC-YZF-V13-ROOF"
+    ],
+    "rule": "Technical building evidence cannot create auspicious/inauspicious verdicts without a separate direct Feng Shui source."
+  },
+  "ROOF-INV-002": {
+    "statement": "ROOF_RUNOFF_VECTOR_IS_NOT_ROOF_POINTING_VECTOR",
+    "applies_to": [
+      "ROOF-002",
+      "ROOF-003"
+    ],
+    "rule": "簷水相射 must match runoff/eave-water semantics unless another direct source proves a roof-pointing meaning."
+  },
+  "ROOF-INV-003": {
+    "statement": "NO_ANCIENT_EAVE_NUMERIC_THRESHOLD",
+    "applies_to": [
+      "ROOF-001"
+    ],
+    "rule": "勿短促 is qualitative and cannot generate a centimetre/metre threshold."
+  },
+  "ROOF-INV-004": {
+    "statement": "ROOF_TANK_RETAINS_BATCH16_MODERN_WATER_ONTOLOGY",
+    "rule": "Roof tank cannot inherit ancient well rules."
+  },
+  "ROOF-INV-005": {
+    "statement": "SOLAR_REFLECTIVE_COATING_IS_NOT_WATERPROOFING_SYSTEM",
+    "applies_to": [
+      "MOD-TCVN13527-2023"
+    ]
+  }
+}

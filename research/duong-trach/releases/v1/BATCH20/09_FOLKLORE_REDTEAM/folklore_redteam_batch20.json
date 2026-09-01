@@ -1,0 +1,52 @@
+[
+  {
+    "claim": "Nhập trạch được thì có thể vào ở dù công trình chưa nghiệm thu/không an toàn",
+    "state": "DANGEROUS_FALSE",
+    "engine_action": "OCCUPANCY_READY hard gate first."
+  },
+  {
+    "claim": "移徙 chính là 入宅, hai chữ hoàn toàn đồng nghĩa trong Hiệp Kỷ",
+    "state": "SEMANTIC_OVERCLAIM",
+    "engine_action": "Keep distinct evidence records."
+  },
+  {
+    "claim": "掃舍宇 nghĩa là tẩy uế bằng muối, lửa, trầm hương",
+    "state": "NO_DIRECT_EVIDENCE_FOR_THOSE_RITUAL_DETAILS",
+    "engine_action": "Do not invent ritual recipe."
+  },
+  {
+    "claim": "Quy hỏa là nghi thức bắt buộc cho mọi nhà hiện đại",
+    "state": "SOURCE_SPECIFIC_NOT_UNIVERSAL",
+    "engine_action": "Optional historical commentary only."
+  },
+  {
+    "claim": "Phải ngủ lại ngay đêm nhập trạch nếu không sẽ mất lộc",
+    "state": "NO_DIRECT_EVIDENCE_IN_VERIFIED_CORE_SEARCH",
+    "engine_action": "No rule."
+  },
+  {
+    "claim": "Người đầu tiên vào nhà bắt buộc phải mang gạo, muối, nước",
+    "state": "NO_DIRECT_A1_SOURCE_LOCKED",
+    "engine_action": "No master-doctrine claim."
+  },
+  {
+    "claim": "Đun nước, bật toàn bộ đèn/quạt đúng giờ là phép Hiệp Kỷ",
+    "state": "NO_DIRECT_A1_SOURCE_LOCKED",
+    "engine_action": "No rule."
+  },
+  {
+    "claim": "An Môn là mục ngày độc lập trong quyển 11 Hiệp Kỷ",
+    "state": "NOT_SUPPORTED_BY_VERIFIED_V11_LIST",
+    "engine_action": "Keep blocked."
+  },
+  {
+    "claim": "Trạch Kinh là Hoàng Đế viết nên phép An Môn là Hoàng Đế chân truyền",
+    "state": "BIBLIOGRAPHICALLY_FALSE",
+    "engine_action": "Display Siku pseudepigraphic warning."
+  },
+  {
+    "claim": "Cứ chọn ngày nhập trạch tốt là bỏ qua nước, PCCC, thông gió, lỗi tồn đọng",
+    "state": "DANGEROUS",
+    "engine_action": "Technical readiness overrides."
+  }
+]

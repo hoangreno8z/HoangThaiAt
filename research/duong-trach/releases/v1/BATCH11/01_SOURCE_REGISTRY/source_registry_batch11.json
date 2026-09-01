@@ -1,0 +1,45 @@
+[
+  {
+    "source_id": "SRC-DNBS-V5-STOVE",
+    "title_zh": "多能鄙事·卷之五·井竈宜忌",
+    "title_vi": "Đa Năng Bỉ Sự, quyển 5 — Kỵ nghi về giếng và bếp",
+    "url": "https://zh.wikisource.org/wiki/%E5%A4%9A%E8%83%BD%E9%84%99%E4%BA%8B/%E5%8D%B7%E4%B9%8B%E4%BA%94",
+    "locator": "lines 200-220 in current web transcription",
+    "role": "PRIMARY_TRADITION_WITNESS_FOR_STOVE_SECTION",
+    "scope": "DIRECT_DOMESTIC",
+    "attribution_status": "ATTRIBUTION_DISPUTED",
+    "text_status": "TRANSCRIPTION_AVAILABLE",
+    "semantic_status": "MIXED_CLEAR_AND_RITUAL_SYMBOLIC"
+  },
+  {
+    "source_id": "SRC-GJTS677-FIREAN",
+    "title_zh": "欽定古今圖書集成·第677卷·陽宅十書三·火唵說/火唵歌/火路吉凶歌",
+    "title_vi": "Cổ Kim Đồ Thư Tập Thành quyển 677 — Hỏa Am thuyết/ca",
+    "url": "https://zh.wikisource.org/wiki/%E6%AC%BD%E5%AE%9A%E5%8F%A4%E4%BB%8A%E5%9C%96%E6%9B%B8%E9%9B%86%E6%88%90/%E5%8D%9A%E7%89%A9%E5%BD%99%E7%B7%A8/%E8%97%9D%E8%A1%93%E5%85%B8/%E7%AC%AC677%E5%8D%B7",
+    "locator": "lines 349-369 in current web transcription",
+    "role": "SCHOOL_SPECIFIC_STOVE_DIRECTION_TRADITION",
+    "scope": "DIRECT_YANGZHAI_BUT_SCHOOL_SPECIFIC",
+    "attribution_status": "WORK_TRANSMISSION",
+    "text_status": "TRANSCRIPTION_STRONG_WITH_INTERNAL_VARIANT_WARNING",
+    "semantic_status": "DIRECTIONAL_METHOD"
+  },
+  {
+    "source_id": "SRC-GJTS677-INTERNAL-KITCHEN",
+    "title_zh": "欽定古今圖書集成·第677卷·論宅內形第八",
+    "title_vi": "Cổ Kim Đồ Thư Tập Thành quyển 677 — Luận nội hình, đoạn bếp",
+    "url": "https://zh.wikisource.org/wiki/%E6%AC%BD%E5%AE%9A%E5%8F%A4%E4%BB%8A%E5%9C%96%E6%9B%B8%E9%9B%86%E6%88%90/%E5%8D%9A%E7%89%A9%E5%BD%99%E7%B7%A8/%E8%97%9D%E8%A1%93%E5%85%B8/%E7%AC%AC677%E5%8D%B7",
+    "locator": "line 314 block in current web transcription",
+    "role": "INTERNAL_FORM_STOVE_PLACEMENT",
+    "scope": "DIRECT_YANGZHAI",
+    "text_status": "PUNCTUATION_COMPLEX",
+    "semantic_status": "PARTIAL"
+  },
+  {
+    "source_id": "MOD-QCVN06-2022-SD1-2023",
+    "title_vi": "QCVN 06:2022/BXD + Sửa đổi 1:2023",
+    "authority": "Bộ Xây dựng",
+    "role": "FIRE_SAFETY_HARD_GATE",
+    "status_as_of_2026_09_01": "CURRENT_REFERENCE_WHERE_APPLICABLE",
+    "url": "https://moc.gov.vn/Images/editor/files/Quy%20Chu%E1%BA%A9n/QCVN%2006-2022.pdf"
+  }
+]

@@ -1,0 +1,18 @@
+{
+  "rule": "Traditional outcomes are indexed but never converted to medical/legal/financial causality.",
+  "examples": {
+    "貧乏": "TRADITIONAL_OUTCOME_FINANCE",
+    "官訟": "TRADITIONAL_OUTCOME_LEGAL",
+    "眼疾": "TRADITIONAL_OUTCOME_HEALTH",
+    "忤逆": "TRADITIONAL_OUTCOME_RELATIONSHIP",
+    "淫亂": "TRADITIONAL_OUTCOME_MORAL_SOCIAL",
+    "死亡/絕嗣": "TRADITIONAL_OUTCOME_SEVERE"
+  },
+  "prohibited_transformations": [
+    "shape X causes prison",
+    "road X causes disease",
+    "water X causes infertility",
+    "direction X causes crime"
+  ],
+  "allowed_rendering": "The source traditionally associates feature X with outcome Y; no modern causal inference is made."
+}

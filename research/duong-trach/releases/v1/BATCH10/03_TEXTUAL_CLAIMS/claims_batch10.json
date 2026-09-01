@@ -1,0 +1,205 @@
+[
+  {
+    "claim_id": "ROOM-001",
+    "source_id": "SRC-GJTS677-INTERNAL",
+    "original": "造屋從來有次第，先內及外起自堂。",
+    "hanviet": "Tạo ốc tòng lai hữu thứ đệ, tiên nội cập ngoại khởi tự đường.",
+    "literal_vi": "Việc dựng/bố trí nhà theo văn bản có thứ tự; bắt đầu từ phần chính bên trong, lấy 'đường' làm điểm khởi.",
+    "term_resolution": {
+      "堂": "historical principal hall; NOT modern living room"
+    },
+    "observable": [
+      "space_hierarchy",
+      "primary_space",
+      "build_sequence"
+    ],
+    "editorial": "Có thể dùng làm planning hierarchy truyền thống, không phải quy trình kết cấu bắt buộc.",
+    "state": "CANDIDATE_HIERARCHY"
+  },
+  {
+    "claim_id": "ROOM-002",
+    "source_id": "SRC-GJTS677-INTERNAL",
+    "original": "先造兩廊不造堂。",
+    "hanviet": "Tiên tạo lưỡng lang bất tạo đường.",
+    "literal_vi": "Văn bản phản đối việc làm hai 'lang'/cánh trước khi hình thành 'đường' chính.",
+    "term_resolution": {
+      "廊": "corridor/gallery/side structure context-dependent",
+      "堂": "principal hall"
+    },
+    "observable": [
+      "side_structure_exists",
+      "primary_hall_exists",
+      "sequence"
+    ],
+    "editorial": "Hậu quả gia đình trong nguyên văn được tách bỏ khỏi causal engine.",
+    "state": "CANDIDATE_SEQUENCE"
+  },
+  {
+    "claim_id": "ROOM-003",
+    "source_id": "SRC-GJTS677-INTERNAL",
+    "original": "後堂前堂仍可安，廳若欺堂大相壓，更有廊屋可次安。",
+    "hanviet": "Hậu đường tiền đường nhưng khả an, sảnh nhược khi đường đại tương áp, cánh hữu lang ốc khả thứ an.",
+    "literal_vi": "Đoạn văn cho phép bố trí tiền/hậu đường theo một trật tự và cảnh báo trường hợp 'sảnh' lấn/áp 'đường'; sau đó mới xét lang ốc.",
+    "term_resolution": {
+      "廳若欺堂": "semantic sense likely relative hierarchy/scale; exact technical criterion unresolved"
+    },
+    "observable": [
+      "front_hall",
+      "rear_hall",
+      "hall_area_ratio",
+      "side_structure"
+    ],
+    "editorial": "Chỉ lưu hierarchy/relative-scale observable; chưa có ngưỡng diện tích cổ.",
+    "state": "SEMANTIC_PARTIAL_BLOCK_THRESHOLD"
+  },
+  {
+    "claim_id": "ROOM-004",
+    "source_id": "SRC-DNBS-V5-ROOM",
+    "original": "凡造宅三重並無廳廂名，三絕凶。有廳無堂，主孤寡。",
+    "hanviet": "Phàm tạo trạch tam trùng tịnh vô sảnh sương danh, tam tuyệt hung. Hữu sảnh vô đường, chủ cô quả.",
+    "literal_vi": "Truyền bản xem cấu trúc nhiều lớp nhưng thiếu các thành phần gọi là sảnh/sương, hoặc có sảnh mà không có đường, là bất lợi.",
+    "term_resolution": {
+      "廳": "hall",
+      "廂": "side wing",
+      "堂": "principal hall"
+    },
+    "observable": [
+      "layer_count",
+      "hall_exists",
+      "side_wing_exists",
+      "principal_hall_exists"
+    ],
+    "editorial": "Chỉ chứng minh rằng văn bản coi hierarchy/function naming quan trọng; không dùng phán 'cô quả' như causality.",
+    "state": "CANDIDATE_FUNCTIONAL_HIERARCHY"
+  },
+  {
+    "claim_id": "ROOM-005",
+    "source_id": "SRC-DNBS-V5-ROOM",
+    "original": "凡房門，不得正對天井。",
+    "hanviet": "Phàm phòng môn, bất đắc chính đối thiên tỉnh.",
+    "literal_vi": "Cửa phòng không nên chính đối thiên tỉnh theo truyền bản.",
+    "term_resolution": {
+      "房門": "room door generic",
+      "天井": "traditional Tianjing"
+    },
+    "observable": [
+      "room_door_segment",
+      "tianjing_polygon",
+      "door_normal_ray",
+      "direct_visibility_or_axis"
+    ],
+    "editorial": "Không đặt góc sai số cổ; lưu alignment liên tục và trạng thái direct/intersect.",
+    "state": "CANDIDATE_DOOR_COURTYARD_RELATION"
+  },
+  {
+    "claim_id": "ROOM-006",
+    "source_id": "SRC-DNBS-V5-ROOM",
+    "original": "窖房門不可正對房門。",
+    "hanviet": "Diếu phòng môn bất khả chính đối phòng môn.",
+    "literal_vi": "Cửa của 'diếu phòng' không nên chính đối cửa phòng theo truyền bản.",
+    "term_resolution": {
+      "窖房": "cellar/storage-type chamber candidate; exact function not fully locked"
+    },
+    "observable": [
+      "door_to_door_axis",
+      "room_type_candidate"
+    ],
+    "editorial": "Vì nghĩa 窖房 chưa khóa đủ, rule production bị block.",
+    "state": "SEMANTIC_UNRESOLVED_BLOCKED"
+  },
+  {
+    "claim_id": "ROOM-007",
+    "source_id": "SRC-GJTS677-INTERNAL",
+    "original": "堂前門廊不可空，窗櫺樑槅須分布。",
+    "hanviet": "Đường tiền môn lang bất khả không, song linh lương cách tu phân bố.",
+    "literal_vi": "Đoạn văn đề cập môn-lang trước đường và việc phân bố cửa sổ/cấu kiện.",
+    "term_resolution": {
+      "空": "meaning in this construction sentence unresolved",
+      "門廊": "entry gallery/corridor candidate"
+    },
+    "observable": [
+      "entry_transition",
+      "window_distribution"
+    ],
+    "editorial": "Không được biến thành rule 'hành lang không được rỗng' hay một tỷ lệ cửa sổ khi chưa hiểu nghĩa kỹ thuật.",
+    "state": "SEMANTIC_UNRESOLVED_BLOCKED"
+  },
+  {
+    "claim_id": "ROOM-008",
+    "source_id": "SRC-GJTS677-INTERNAL",
+    "original": "十家八家同一聚，同出同門同一處。",
+    "hanviet": "Thập gia bát gia đồng nhất tụ, đồng xuất đồng môn đồng nhất xứ.",
+    "literal_vi": "Đoạn văn mô tả nhiều hộ/nhà tụ thành một cụm, cùng đi ra qua một cửa/nơi.",
+    "term_resolution": {
+      "context": "compound circulation; surrounding verse is punctuation-complex"
+    },
+    "observable": [
+      "unit_count",
+      "shared_exit_node",
+      "shared_access_graph"
+    ],
+    "editorial": "Chỉ lưu compound topology. Không suy 'chung một cổng là tốt/xấu'.",
+    "state": "TEXT_COMPLEX_TOPOLOGY_ONLY"
+  },
+  {
+    "claim_id": "ROOM-009",
+    "source_id": "SRC-GJTS677-INTERNAL",
+    "original": "門路各家不為巷。",
+    "hanviet": "Môn lộ các gia bất vi hạng.",
+    "literal_vi": "Một câu trong khối văn phân biệt đường/cửa của từng nhà với 'hạng' (ngõ/hẻm) theo cách của nguồn.",
+    "term_resolution": {
+      "巷": "lane/alley; grammar requires context"
+    },
+    "observable": [
+      "private_access",
+      "shared_lane",
+      "circulation_graph"
+    ],
+    "editorial": "Không sinh rule cát/hung; giữ làm evidence rằng topology circulation được phân biệt.",
+    "state": "REFERENCE_TOPOLOGY_ONLY"
+  },
+  {
+    "claim_id": "ROOM-010",
+    "source_id": "SRC-DNBS-V5-ROOM",
+    "original": "凡人居止之室，須周密，勿有細隙，使風入。",
+    "hanviet": "Phàm nhân cư chỉ chi thất, tu chu mật, vật hữu tế khích, sử phong nhập.",
+    "literal_vi": "Phòng/nơi ở được khuyên nên kín khít, tránh khe nhỏ làm gió lùa vào.",
+    "term_resolution": {
+      "風": "literal draft/wind in context; not general ventilation doctrine"
+    },
+    "observable": [
+      "uncontrolled_draft_paths",
+      "enclosure_leakage"
+    ],
+    "editorial": "Không được biến thành 'nhà càng kín càng tốt'. Modern ventilation/IAQ là lớp độc lập.",
+    "state": "TRADITIONAL_DRAFT_MOTIF_MODERN_GUARD"
+  },
+  {
+    "claim_id": "ROOM-011",
+    "source_id": "SRC-DNBS-V5-ROOM",
+    "original": "凡於廳屋下安竈者，有殃。",
+    "hanviet": "Phàm ư sảnh ốc hạ an táo giả, hữu ương.",
+    "literal_vi": "Truyền bản phản đối đặt bếp dưới/ở phần được gọi là sảnh ốc.",
+    "term_resolution": {
+      "廳屋下": "vertical/under-hall relation ambiguous for modern multi-storey mapping"
+    },
+    "observable": [
+      "kitchen_vertical_relation_to_hall"
+    ],
+    "editorial": "Không xử lý trong Batch10; chuyển Batch11 Bếp.",
+    "state": "DEFER_KITCHEN"
+  },
+  {
+    "claim_id": "ROOM-012",
+    "source_id": "SRC-GJTS677-INTERNAL",
+    "original": "中堂不可架直屋。",
+    "hanviet": "Trung đường bất khả giá trực ốc.",
+    "literal_vi": "Đoạn văn nói trung đường không nên 'giá trực ốc'; nghĩa hình học/chế thức cụ thể chưa đủ chắc.",
+    "term_resolution": {
+      "架直屋": "UNRESOLVED"
+    },
+    "observable": [],
+    "editorial": "Không tự bịa thành 'không để hành lang xuyên tâm' hoặc 'không có phòng trên trung cung'.",
+    "state": "SEMANTIC_UNRESOLVED_BLOCKED"
+  }
+]

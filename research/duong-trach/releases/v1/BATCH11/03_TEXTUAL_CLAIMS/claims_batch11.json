@@ -1,0 +1,160 @@
+[
+  {
+    "claim_id": "KIT-001",
+    "source_id": "SRC-DNBS-V5-STOVE",
+    "original": "凡於廳屋下安竈者，有殃。",
+    "hanviet": "Phàm ư sảnh ốc hạ an táo giả, hữu ương.",
+    "literal_vi": "Truyền bản coi việc đặt bếp ở 'dưới/thuộc dưới' sảnh ốc là bất lợi.",
+    "semantic_note": "廳屋下 may indicate under-hall vertical relation or under/within hall structure; exact modern mapping needs architectural context.",
+    "observable": [
+      "stove_room_vertical_relation_to_hall",
+      "same_floor_relation"
+    ],
+    "traditional_outcome": "有殃",
+    "state": "SEMANTIC_PARTIAL"
+  },
+  {
+    "claim_id": "KIT-002",
+    "source_id": "SRC-DNBS-V5-STOVE",
+    "original": "井北竈南，家忤逆。",
+    "hanviet": "Tỉnh Bắc táo Nam, gia ngỗ nghịch.",
+    "literal_vi": "Truyền bản nêu một cấu hình giếng ở Bắc, bếp ở Nam và gán phán truyền thống bất lợi.",
+    "semantic_note": "This is a directional relation between well and stove, not sink-vs-cooktop.",
+    "observable": [
+      "well_azimuth_relative_to_house",
+      "stove_azimuth_relative_to_house"
+    ],
+    "traditional_outcome": "家忤逆",
+    "state": "DIRECTIONAL_TRADITION_CANDIDATE"
+  },
+  {
+    "claim_id": "KIT-003",
+    "source_id": "SRC-DNBS-V5-STOVE",
+    "original": "凡作竈法，長七尺九寸……廣四尺……高三尺……口闊一尺二寸……突大八寸。",
+    "hanviet": "Phàm tác táo pháp, trường thất xích cửu thốn... quảng tứ xích... cao tam xích... khẩu khoát nhất xích nhị thốn... đột đại bát thốn.",
+    "literal_vi": "Văn bản đưa một bộ kích thước bếp bằng xích/thốn và gắn mỗi con số với biểu tượng vũ trụ.",
+    "semantic_note": "True historical numeric claim, but metrology and object components are not yet locked.",
+    "observable": [
+      "historical_length_units",
+      "stove_component_dimensions"
+    ],
+    "traditional_outcome": "SYMBOLIC_COSMOLOGY",
+    "state": "HISTORICAL_NUMERIC_BLOCKED_PRODUCTION"
+  },
+  {
+    "claim_id": "KIT-004",
+    "source_id": "SRC-DNBS-V5-STOVE",
+    "original": "凡竈面向西南吉，向東北凶。",
+    "hanviet": "Phàm táo diện hướng Tây Nam cát, hướng Đông Bắc hung.",
+    "literal_vi": "Truyền bản này phán mặt bếp hướng Tây Nam tốt, Đông Bắc xấu.",
+    "semantic_note": "Single-witness directional statement; attribution disputed; not universal.",
+    "observable": [
+      "stove_facing_azimuth"
+    ],
+    "traditional_outcome": "吉/凶",
+    "state": "DIRECTIONAL_SINGLE_WITNESS_BLOCK_GENERALIZATION"
+  },
+  {
+    "claim_id": "KIT-005",
+    "source_id": "SRC-DNBS-V5-STOVE",
+    "original": "凡刀斧不宜安竈上。",
+    "hanviet": "Phàm đao phủ bất nghi an táo thượng.",
+    "literal_vi": "Dao/rìu không nên đặt phía trên bếp theo truyền bản.",
+    "semantic_note": "A housekeeping/spatial taboo; no need to create supernatural causality.",
+    "observable": [
+      "sharp_tool_storage_above_cooking_zone"
+    ],
+    "traditional_outcome": null,
+    "state": "CANDIDATE_HOUSEKEEPING"
+  },
+  {
+    "claim_id": "KIT-006",
+    "source_id": "SRC-GJTS677-FIREAN",
+    "original": "火唵即是廚房廚竈，止宜在宅凶方，不宜在吉方。",
+    "hanviet": "Hỏa am tức thị trù phòng trù táo, chỉ nghi tại trạch hung phương, bất nghi tại cát phương.",
+    "literal_vi": "Trong truyền bản này, Hỏa Am được giải là bếp/phòng bếp và được đặt ở 'hung phương' của trạch thay vì 'cát phương'.",
+    "semantic_note": "School-specific directional doctrine; requires its own house-direction calculation.",
+    "observable": [
+      "kitchen_sector",
+      "school_house_sector_classification"
+    ],
+    "traditional_outcome": null,
+    "state": "SCHOOL_SPECIFIC_BLOCK_GENERAL_ENGINE"
+  },
+  {
+    "claim_id": "KIT-007",
+    "source_id": "SRC-GJTS677-FIREAN",
+    "original": "古人極言煙火之害。",
+    "hanviet": "Cổ nhân cực ngôn yên hỏa chi hại.",
+    "literal_vi": "Đoạn văn nhấn mạnh cái hại của khói/lửa.",
+    "semantic_note": "This is historical rationale inside the text; not a modern smoke toxicology model.",
+    "observable": [
+      "combustion",
+      "smoke_source"
+    ],
+    "traditional_outcome": null,
+    "state": "HISTORICAL_RATIONALE"
+  },
+  {
+    "claim_id": "KIT-008",
+    "source_id": "SRC-GJTS677-FIREAN",
+    "original": "此歌與前互相發，但「離修乙」三字不合……或傳流之誤。",
+    "hanviet": "Thử ca dữ tiền hỗ tương phát, đãn 'Ly tu Ất' tam tự bất hợp... hoặc truyền lưu chi ngộ.",
+    "literal_vi": "Chính văn bản nhận xét ba chữ 'Ly tu Ất' không phù hợp với hệ trước và có thể là sai lầm trong quá trình truyền chép.",
+    "semantic_note": "Self-identified textual conflict; never silently harmonize.",
+    "observable": [],
+    "traditional_outcome": null,
+    "state": "TEXTUAL_CONFLICT_EXPLICIT"
+  },
+  {
+    "claim_id": "KIT-009",
+    "source_id": "SRC-GJTS677-INTERNAL-KITCHEN",
+    "original": "廚竈必須居左位，不宜安在白虎方。",
+    "hanviet": "Trù táo tất tu cư tả vị, bất nghi an tại Bạch Hổ phương.",
+    "literal_vi": "Trong đoạn nội hình này, bếp được đặt phía trái và tránh phía được gọi là Bạch Hổ.",
+    "semantic_note": "Reference frame left/right must be resolved from house facing/context; not universal screen-left.",
+    "observable": [
+      "kitchen_relative_side",
+      "house_facing_reference"
+    ],
+    "traditional_outcome": null,
+    "state": "FORM_DIRECTIONAL_PARTIAL"
+  },
+  {
+    "claim_id": "KIT-010",
+    "source_id": "SRC-DNBS-V5-STOVE",
+    "original": "井畔栽花，物業荒。",
+    "hanviet": "Tỉnh bạn tài hoa, vật nghiệp hoang.",
+    "literal_vi": "Truyền bản phản đối trồng hoa sát bên giếng và gán hậu quả truyền thống.",
+    "semantic_note": "Not a kitchen rule; retained only as well-environment motif.",
+    "observable": [
+      "vegetation_near_well"
+    ],
+    "traditional_outcome": "物業荒",
+    "state": "REFERENCE_WELL_ENVIRONMENT"
+  },
+  {
+    "claim_id": "KIT-011",
+    "source_id": "SRC-DNBS-V5-STOVE",
+    "original": "卯不穿井，水不香。",
+    "hanviet": "Mão bất xuyên tỉnh, thủy bất hương.",
+    "literal_vi": "Truyền bản có cấm kỵ đào giếng theo phương/thời? liên quan chữ Mão; ngữ nghĩa áp dụng cần bối cảnh.",
+    "semantic_note": "Do not infer whether 卯 means direction, time/day or combined rule without source context.",
+    "observable": [],
+    "traditional_outcome": "水不香",
+    "state": "SEMANTIC_UNRESOLVED_BLOCKED"
+  },
+  {
+    "claim_id": "KIT-012",
+    "source_id": "SRC-DNBS-V5-STOVE",
+    "original": "以鉛十餘斤實井中，水清而甘。",
+    "hanviet": "Dĩ duyên thập dư cân thực tỉnh trung, thủy thanh nhi cam.",
+    "literal_vi": "Văn bản khuyên bỏ hơn mười cân chì vào giếng để nước trong/ngọt.",
+    "semantic_note": "This is a historically transmitted practice that is unsafe by modern toxicology; must be explicitly invalidated for modern application.",
+    "observable": [
+      "lead_added_to_well"
+    ],
+    "traditional_outcome": "水清而甘",
+    "state": "MODERN_SAFETY_INVALID"
+  }
+]

@@ -1,0 +1,97 @@
+# CASEBOOK BATCH 07 — ĐẶT NHÀ TRÊN ĐẤT
+
+## CASE07-001 — Nhà đặt gần giữa lô chữ nhật
+**Input:** site 10x20; footprint 6x12  
+**Metrics:** `{"site_area": 200.0, "building_area": 72.0, "coverage_ratio": 0.36, "buildable_area": 200.0, "footprint_legal_fit": "PASS", "site_centroid": [5.0, 10.0], "building_centroid": [5.0, 10.0], "center_offset": [0.0, 0.0]}`  
+**Classical refs:** `PLAC-001`  
+**Decision:** PASS_GEOMETRY; no auspicious inference from centeredness.
+
+---
+
+## CASE07-002 — Lùi nhà về sau để tạo sân trước
+**Input:** front reference y=0  
+**Metrics:** `{"site_area": 200.0, "building_area": 77.0, "coverage_ratio": 0.385, "buildable_area": 200.0, "footprint_legal_fit": "PASS", "site_centroid": [5.0, 10.0], "building_centroid": [5.0, 13.5], "center_offset": [0.0, 3.5]}`  
+**Classical refs:** `PLAC-002, PLAC-005`  
+**Decision:** Candidate front open court; must also satisfy climate, access, planning.
+
+---
+
+## CASE07-003 — Nhà sát phía trước, sân sau lớn
+**Input:** front reference y=0  
+**Metrics:** `{"site_area": 200.0, "building_area": 104.0, "coverage_ratio": 0.52, "buildable_area": 200.0, "footprint_legal_fit": "PASS", "site_centroid": [5.0, 10.0], "building_centroid": [5.0, 7.5], "center_offset": [0.0, -2.5]}`  
+**Classical refs:** `PLAC-002, PLAC-005`  
+**Decision:** Front openness reduced; not automatically bad without context.
+
+---
+
+## CASE07-004 — Nhà lệch trái để dành lối xe bên phải
+**Input:** side access corridor  
+**Metrics:** `{"site_area": 240.0, "building_area": 84.0, "coverage_ratio": 0.35, "buildable_area": 240.0, "footprint_legal_fit": "PASS", "site_centroid": [6.0, 10.0], "building_centroid": [4.3, 11.0], "center_offset": [-1.7, 1.0]}`  
+**Classical refs:** `NONE`  
+**Decision:** Center offset is functional geometry only; no ancient good/bad rule assigned.
+
+---
+
+## CASE07-005 — Đất hình thang, footprint nhà vuông vức
+**Input:** irregular site + rectangular building  
+**Metrics:** `{"site_area": 200.0, "building_area": 72.0, "coverage_ratio": 0.36, "buildable_area": 200.0, "footprint_legal_fit": "PASS", "site_centroid": [4.0, 10.667], "building_centroid": [4.0, 11.0], "center_offset": [0.0, 0.333]}`  
+**Classical refs:** `NONE`  
+**Decision:** Do not transfer parcel taper directly to building shape; analyze SITE and BUILDING separately.
+
+---
+
+## CASE07-006 — Đất chữ L, nhà chữ nhật trong vùng chính
+**Input:** L-shaped parcel  
+**Metrics:** `{"site_area": 192.0, "building_area": 72.0, "coverage_ratio": 0.375, "buildable_area": 192.0, "footprint_legal_fit": "PASS", "site_centroid": [5.0, 9.0], "building_centroid": [4.0, 11.0], "center_offset": [-1.0, 2.0]}`  
+**Classical refs:** `NONE`  
+**Decision:** Site deficiency and building footprint remain separate layers.
+
+---
+
+## CASE07-007 — Nhà chính + khối phụ
+**Input:** two footprints  
+**Metrics:** `{"site_area": 384.0, "building_area": 132.0, "coverage_ratio": 0.3438, "buildable_area": 384.0, "footprint_legal_fit": "PASS", "site_centroid": [8.0, 12.0], "building_centroid": [7.485, 14.712], "center_offset": [-0.515, 2.712]}`  
+**Classical refs:** `PLAC-004, PLAC-009`  
+**Decision:** Do not merge blocks into one rectangle; test axes between side block and main gate.
+
+---
+
+## CASE07-008 — Footprint vi phạm vùng cấm pháp lý minh họa
+**Input:** illustrative legal masks, not universal setbacks  
+**Metrics:** `{"site_area": 200.0, "building_area": 112.0, "coverage_ratio": 0.56, "buildable_area": 150.0, "footprint_legal_fit": "FAIL", "site_centroid": [5.0, 10.0], "building_centroid": [5.0, 8.0], "center_offset": [0.0, -2.0]}`  
+**Classical refs:** `NONE`  
+**Decision:** FAIL. Classical analysis blocked until footprint moved into buildable region.
+
+---
+
+## CASE07-009 — Phần sau đất nằm trong hazard mask
+**Input:** rear hazard exclusion  
+**Metrics:** `{"site_area": 288.0, "building_area": 96.0, "coverage_ratio": 0.3333, "buildable_area": 216.0, "footprint_legal_fit": "FAIL", "site_centroid": [6.0, 12.0], "building_centroid": [6.0, 16.0], "center_offset": [0.0, 4.0]}`  
+**Classical refs:** `NONE`  
+**Decision:** FAIL/ESCALATE. Rear-support symbolism cannot override hazard.
+
+---
+
+## CASE07-010 — Ba khối tạo sân trong mở phía trước
+**Input:** U-like multi-block layout  
+**Metrics:** `{"site_area": 432.0, "building_area": 136.0, "coverage_ratio": 0.3148, "buildable_area": 432.0, "footprint_legal_fit": "PASS", "site_centroid": [9.0, 12.0], "building_centroid": [9.0, 14.882], "center_offset": [0.0, 2.882]}`  
+**Classical refs:** `PLAC-005`  
+**Decision:** Courtyard is explicit open-space geometry; later school layer may classify it.
+
+---
+
+## CASE07-011 — Cổng và lối xe thẳng trục vào khối nhà
+**Input:** gate center aligned with building center  
+**Metrics:** `{"site_area": 264.0, "building_area": 96.0, "coverage_ratio": 0.3636, "buildable_area": 264.0, "footprint_legal_fit": "PASS", "site_centroid": [6.0, 11.0], "building_centroid": [6.0, 14.0], "center_offset": [0.0, 3.0]}`  
+**Classical refs:** `PLAC-010`  
+**Decision:** Tag DIRECT_ACCESS_AXIS; no severe traditional outcome carried into modern causality.
+
+---
+
+## CASE07-012 — Công trình phụ chắn gần hết khoảng mở phía trước
+**Input:** front obstruction object  
+**Metrics:** `{"site_area": 288.0, "building_area": 96.0, "coverage_ratio": 0.3333, "buildable_area": 288.0, "footprint_legal_fit": "PASS", "site_centroid": [6.0, 12.0], "building_centroid": [6.0, 15.0], "center_offset": [0.0, 3.0]}`  
+**Classical refs:** `PLAC-002`  
+**Decision:** Tag FRONT_OBSTRUCTION; evaluate daylight, access, ventilation and classical openness separately.
+
+---

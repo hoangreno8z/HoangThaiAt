@@ -1,0 +1,35 @@
+{
+  "SLEEP_ENVIRONMENT": {
+    "source_id": "MOD-NHLBI-SLEEP",
+    "guidance_summary": [
+      "quiet",
+      "cool/comfortable",
+      "dark during sleep",
+      "reduce disruptive light/electronic sources"
+    ],
+    "classification": "MODERN_HEALTH_GUIDANCE",
+    "note": "Not a building code and not ancient Feng Shui."
+  },
+  "HOUSING_HEALTH": {
+    "source_id": "MOD-WHO-HOUSING-2018",
+    "topics": [
+      "dampness/moisture",
+      "indoor temperature",
+      "noise",
+      "air quality",
+      "injury hazards",
+      "accessibility"
+    ],
+    "classification": "MODERN_HEALTH_GUIDELINE"
+  },
+  "FIRE_EGRESS": {
+    "source_id": "MOD-QCVN06-2022-SD1-2023",
+    "classification": "HARD_GATE_WHERE_APPLICABLE",
+    "rule": "No bed/partition/Feng Shui screen may compromise required egress or fire safety."
+  },
+  "causality_guard": [
+    "Ancient 'damp wall' observations do not prove the same mechanism as modern mould science.",
+    "Dark/quiet bedroom advice may align across historical and modern sources, but alignment is not proof of shared theory.",
+    "No medical diagnosis from bed direction, beam, mirror or door geometry."
+  ]
+}

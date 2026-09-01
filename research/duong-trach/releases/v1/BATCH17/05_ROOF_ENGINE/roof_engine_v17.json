@@ -1,0 +1,76 @@
+{
+  "$id": "lapque.roof_engine.v0.17",
+  "entities": {
+    "ROOF_PLANE": {
+      "geometry": "3D polygon",
+      "slope": "number|null",
+      "material": "TILE|METAL|RC|MEMBRANE|OTHER|UNKNOWN"
+    },
+    "EAVE": {
+      "geometry": "3D polyline",
+      "projection": "number|null"
+    },
+    "RIDGE": {
+      "geometry": "3D polyline",
+      "structural_role": "RIDGE_MEMBER|RIDGE_CAP|UNKNOWN"
+    },
+    "GUTTER": {
+      "geometry": "3D polyline",
+      "system": "STORMWATER"
+    },
+    "DOWNPIPE": {
+      "geometry": "3D polyline",
+      "system": "STORMWATER"
+    },
+    "ROOF_DRAIN": {
+      "geometry": "Point",
+      "system": "STORMWATER"
+    },
+    "OVERFLOW": {
+      "geometry": "Point/Segment",
+      "system": "EMERGENCY_STORMWATER"
+    },
+    "ROOF_TILE_OR_SHEET": {
+      "geometry": "surface/component",
+      "attachment_state": "UNKNOWN|OK|LOOSE|DAMAGED"
+    },
+    "ROOF_TANK": {
+      "geometry": "3D volume",
+      "ontology_link": "BATCH16.POTABLE_WATER_TANK"
+    },
+    "LIGHTNING_PROTECTION_COMPONENT": {
+      "geometry": "3D line/point"
+    }
+  },
+  "observables": [
+    "eave_projection",
+    "wall_driving_rain_exposure",
+    "roof_runoff_vector",
+    "runoff_target_intersection",
+    "gutter_catchment_area",
+    "roof_drain_catchment_area",
+    "overflow_path",
+    "ponding_risk",
+    "roof_leakage",
+    "tile_or_sheet_displacement",
+    "roof_ridge_damage",
+    "roof_plane_deformation",
+    "wind_uplift_design_state",
+    "lightning_protection_state",
+    "solar_exposure",
+    "roof_tank_structural_load"
+  ],
+  "graphs": {
+    "ROOF_STORMWATER_GRAPH": "roof planes -> gutters/drains -> downpipes -> downstream stormwater graph",
+    "ROOF_LOAD_PATH": "roof surface/components -> structural system",
+    "LIGHTNING_PATH": "air termination -> conductors -> earth termination"
+  },
+  "critical_guards": [
+    "ROOF_RUNOFF_VECTOR is not ROOF_POINTING_VECTOR.",
+    "Historical 水簷/簷水 rules only match runoff-water entities.",
+    "Roof tank rules remain in water/structural layer, not ancient well layer.",
+    "No ancient eave projection threshold.",
+    "No Feng Shui recommendation can retain a leaking/unstable roof.",
+    "Stormwater capacity and overflow design override symbolic direction."
+  ]
+}

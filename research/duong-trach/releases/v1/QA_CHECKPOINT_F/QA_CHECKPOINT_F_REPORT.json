@@ -1,0 +1,63 @@
+{
+  "checkpoint": "QA_CHECKPOINT_F",
+  "date": "2026-09-01",
+  "scope": "BATCH01_TO_BATCH18_PLUS_SOURCE_AUTHORITY_GOVERNANCE",
+  "metrics": {
+    "json_documents_scanned": 177,
+    "parse_errors": 0,
+    "unique_source_ids": 105,
+    "claims_motifs_evidence_scanned": 182,
+    "rules_scanned": 191,
+    "claim_missing_source_refs": 0,
+    "rule_missing_source_refs": 0,
+    "duplicate_claim_ids": 0,
+    "duplicate_rule_ids": 0,
+    "numeric_thresholds_needing_review": 0,
+    "school_leakage": 0,
+    "authority_violations": 0,
+    "technical_to_fengshui_leaps": 0,
+    "master_doctrine_rules_in_batch18": 0
+  },
+  "hard_results": {
+    "JSON_PARSE": "PASS",
+    "CLAIM_SOURCE_INTEGRITY": "PASS",
+    "RULE_SOURCE_INTEGRITY": "PASS",
+    "CLAIM_ID_UNIQUENESS": "PASS",
+    "RULE_ID_UNIQUENESS": "PASS",
+    "NO_NUMERIC_THRESHOLD_HALLUCINATION": "PASS",
+    "SCHOOL_ISOLATION": "PASS",
+    "DISPUTED_SOURCE_NOT_MASTER_AUTHORITY": "PASS",
+    "AUTHENTIC_TECHNICAL_SOURCE_NOT_FENGSHUI_LEAP": "PASS",
+    "BATCH18_NO_UNJUSTIFIED_MASTER_DOCTRINE": "PASS",
+    "STRUCTURE_SEMANTIC_GUARDS": "PASS",
+    "MODERN_STANDARD_VERSION_LOCKS": "PASS"
+  },
+  "semantic_checks": {
+    "DEAD_TREE_NOT_RECLAIMED_TIMBER": true,
+    "DAO_MU_BLOCKED": true,
+    "YINGZAO_TECHNICAL_ONLY": true,
+    "STRUCTURAL_SAFETY_OVERRIDE": true,
+    "DISPUTED_NOT_MASTER": true
+  },
+  "standard_checks": {
+    "TCVN9381_ACTIVE": true,
+    "TCVN9343_ACTIVE": true,
+    "TCVN8268_2017_ACTIVE": true,
+    "TCVN7958_2017_ACTIVE": true,
+    "TCVN12251_2020_ACTIVE": true,
+    "TCVN5575_2024_LOCK": true
+  },
+  "issues": {
+    "parse_errors": [],
+    "claim_missing": [],
+    "rule_missing": [],
+    "duplicate_claims": {},
+    "duplicate_rules": {},
+    "numeric_thresholds": [],
+    "school_leak": [],
+    "authority_violations": [],
+    "technical_leaps": [],
+    "master_doctrine_violations": []
+  },
+  "new_invariant": "SOURCE_AUTHORITY_DOES_NOT_OVERRIDE_DOMAIN_OR_SEMANTIC_COMPATIBILITY"
+}

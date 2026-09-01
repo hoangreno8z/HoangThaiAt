@@ -1,0 +1,29 @@
+{
+  "batch": "13",
+  "date": "2026-09-01",
+  "scope": "STAIR_VERTICAL_CIRCULATION",
+  "counts": {
+    "sources": 6,
+    "terms": 5,
+    "evidence_records": 4,
+    "rules": 3,
+    "cases": 12,
+    "folklore_redteam": 5
+  },
+  "passed": [
+    "historical_construction_not_mislabeled_fengshui",
+    "sheng_lao_bing_si_not_backprojected",
+    "no_lucky_step_count",
+    "center_stair_rule_not_invented",
+    "door_stair_rule_not_invented",
+    "modern_fire_egress_override",
+    "accessibility_layer_present",
+    "geometry_collected_despite_evidence_gap"
+  ],
+  "important_findings": [
+    "The technical ancient architecture corpus has real step/access terminology, but that is not evidence for stair-number divination.",
+    "Current verified core search did not establish the popular Sinh-Lão-Bệnh-Tử stair-count rule.",
+    "A rigorous corpus may legitimately have a batch whose main result is an evidence gap; this is preferable to fabricated completeness."
+  ],
+  "next": "BATCH14_WC_SANITATION_SERVICE_SPACES"
+}

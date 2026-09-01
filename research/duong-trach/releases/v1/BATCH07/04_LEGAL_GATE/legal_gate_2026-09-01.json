@@ -1,0 +1,34 @@
+{
+  "as_of": "2026-09-01",
+  "current_base": {
+    "source_id": "MOD-QCVN01-2021",
+    "status": "CURRENT",
+    "notes": "QCVN 01:2021/BXD remains current until replacement takes effect, subject to applicable project/local/transition rules."
+  },
+  "future_base": {
+    "source_id": "MOD-QCVN01-2026",
+    "status": "ISSUED_NOT_YET_EFFECTIVE",
+    "effective": "2027-01-01"
+  },
+  "mandatory_inputs_before_placement": [
+    "parcel_legal_boundary",
+    "red_line_boundary",
+    "construction_line",
+    "approved_detailed_plan_if_any",
+    "local_architectural_management_rules",
+    "maximum_building_density",
+    "floor_area_ratio_if_applicable",
+    "height_limit",
+    "setback_rules",
+    "fire_access_and_separation",
+    "environmental_safety_distance",
+    "utility/easement/protection_corridors",
+    "hazard_exclusion_masks"
+  ],
+  "engine_policy": [
+    "Never infer legal buildable area from cadastral parcel alone.",
+    "Local approved detailed planning may be more specific than national generic tables.",
+    "Version legal rules by effective date and project context.",
+    "Feng Shui recommendation cannot place footprint outside legal buildable region."
+  ]
+}

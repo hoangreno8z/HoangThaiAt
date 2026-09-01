@@ -1,0 +1,32 @@
+[
+  {
+    "claim": "Bậc cầu thang phải đếm Sinh–Lão–Bệnh–Tử",
+    "search_state": "Modern Feng Shui pages found; no direct ancient stair-count witness locked in Batch13.",
+    "state": "NO_DIRECT_EVIDENCE_IN_VERIFIED_CORE_SEARCH",
+    "action": "Do not execute."
+  },
+  {
+    "claim": "Số bậc phải là 4n+1 như 17/21/25",
+    "search_state": "Derived from modern Sinh-Lão-Bệnh-Tử rule; ancient source not locked.",
+    "state": "NO_DIRECT_EVIDENCE_IN_VERIFIED_CORE_SEARCH",
+    "action": "Do not recommend as cổ pháp."
+  },
+  {
+    "claim": "Cầu thang giữa nhà/trung cung chắc chắn đại hung",
+    "search_state": "No direct verified core witness locked in this batch.",
+    "state": "NO_DIRECT_EVIDENCE_IN_VERIFIED_CORE_SEARCH",
+    "action": "Collect center overlap geometry; no ancient verdict."
+  },
+  {
+    "claim": "Cửa chính đối cầu thang là đại hung",
+    "search_state": "No direct verified core witness locked in the selected sources.",
+    "state": "NO_DIRECT_EVIDENCE_IN_VERIFIED_CORE_SEARCH",
+    "action": "Analyze circulation, privacy, fall/access/egress; no fabricated cổ rule."
+  },
+  {
+    "claim": "Cầu thang xoắn ốc = khoan tim nhà / hung",
+    "search_state": "No direct verified core ancient witness locked.",
+    "state": "NO_DIRECT_EVIDENCE_IN_VERIFIED_CORE_SEARCH",
+    "action": "Evaluate structure, use, fall risk, egress applicability."
+  }
+]

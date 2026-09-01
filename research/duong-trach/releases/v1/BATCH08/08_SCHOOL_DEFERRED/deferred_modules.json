@@ -1,0 +1,38 @@
+{
+  "DA_YOU_NIAN_BA_ZHAI": {
+    "source": "GJTS676 lines 143-231 and 780-782",
+    "reason": "directional/school-specific; must have its own school module",
+    "data_preserved": [
+      "door_azimuth",
+      "24_mountain_label",
+      "8_trigram_group"
+    ],
+    "execution": "DISABLED"
+  },
+  "XUAN_KONG_ZHUANG_GUA": {
+    "source": "GJTS676 lines 621-684",
+    "reason": "separate method; do not mix with general door-form geometry",
+    "data_preserved": [
+      "enclosure_graph",
+      "door hierarchy"
+    ],
+    "execution": "DISABLED"
+  },
+  "ZE_RI_DOOR_TIMING": {
+    "source": "GJTS676 lines 698-750",
+    "reason": "timing module later",
+    "data_preserved": [
+      "event type build/repair/install door"
+    ],
+    "execution": "DISABLED"
+  },
+  "LU_BAN_RULER": {
+    "source": "GJTS676 lines 783-789",
+    "reason": "multiple ruler traditions explicitly acknowledged; physical unit lineage unresolved",
+    "data_preserved": [
+      "raw labels",
+      "witness edition"
+    ],
+    "execution": "DISABLED"
+  }
+}

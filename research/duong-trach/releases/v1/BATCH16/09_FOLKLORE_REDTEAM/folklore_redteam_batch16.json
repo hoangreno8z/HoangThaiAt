@@ -1,0 +1,42 @@
+[
+  {
+    "claim": "Bể nước ngầm ở Trung Cung = đại hung",
+    "state": "NO_DIRECT_EVIDENCE_IN_VERIFIED_CORE_SEARCH",
+    "engine_action": "Measure tank-center overlap for structure/maintenance only; no ancient verdict."
+  },
+  {
+    "claim": "Bể nước mái trên phòng ngủ gây bệnh",
+    "state": "NO_DIRECT_EVIDENCE_IN_VERIFIED_CORE_SEARCH",
+    "engine_action": "Evaluate structural load, leakage, waterproofing, noise and maintenance."
+  },
+  {
+    "claim": "Bể nước dưới bếp = Thủy Hỏa xung, phá tài",
+    "state": "NO_DIRECT_EVIDENCE_IN_VERIFIED_CORE_SEARCH",
+    "engine_action": "Do not borrow 井於竈邊 and apply it to a sealed tank below a modern kitchen."
+  },
+  {
+    "claim": "Nước máy trong nhà được coi như giếng để tính phương vị",
+    "state": "FALSE_EQUIVALENCE_RISK",
+    "engine_action": "No. Tap/piped water source is a modern network entity."
+  },
+  {
+    "claim": "Ống thoát nước không được đi thẳng vì cổ thư nói 水不宜直流",
+    "state": "DANGEROUS_OVERGENERALIZATION",
+    "engine_action": "Modern hydraulics wins; source statement stays school-specific."
+  },
+  {
+    "claim": "Hệ thống thoát nước không được phân nhánh vì cổ thư nói 忌分流",
+    "state": "DANGEROUS_OVERGENERALIZATION",
+    "engine_action": "Reject. Modern sanitary networks require engineered topology."
+  },
+  {
+    "claim": "Giếng hướng nào tốt có thể áp cho mọi nhà",
+    "state": "SCHOOL_SPECIFIC_NOT_GENERAL",
+    "engine_action": "Require source/school/site reference."
+  },
+  {
+    "claim": "Nước giếng nhìn trong, vị ngọt thì tự động an toàn",
+    "state": "MODERN_HEALTH_FALSE",
+    "engine_action": "Water quality testing/QCVN required; appearance/taste insufficient."
+  }
+]

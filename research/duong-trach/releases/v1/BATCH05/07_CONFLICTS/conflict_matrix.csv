@@ -1,0 +1,6 @@
+﻿conflict_id,type,subject,status,engine_action
+CONFLICT-001,INTRA_WORK_TEXT_LAYOUT_CONFLICT,front_width_vs_rear_width,UNRESOLVED,Do not use P71 caption to overturn MOTIF-015 until scan layout is manually verified.
+CONFLICT-002,VARIANT_TRADITIONAL_JUDGMENT,east_west_long_or_wide,CONTESTED,Block production rule; defer to orientation/variant collation.
+CONFLICT-003,SEMANTIC_MAPPING_RISK,返跳,UNRESOLVED,Do not map 返跳 = 反弓 automatically.
+CONFLICT-004,CONTEXT_DEPENDENT,roads,RESOLVABLE_BY_GEOMETRY_NOT_BY_WORD_ROAD,Presence of roads alone is not a rule; topology/orientation must be modeled.
+CONFLICT-005,SAFETY_OVERRIDE,embracing_water,NO_TEXTUAL_CONFLICT_DIFFERENT_LAYERS,Modern safety hard gate overrides recommendation.

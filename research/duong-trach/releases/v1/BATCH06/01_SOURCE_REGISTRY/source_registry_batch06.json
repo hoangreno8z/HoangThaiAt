@@ -1,0 +1,38 @@
+[
+  {
+    "source_id": "SRC-GJTS675-P69",
+    "title_zh": "欽定古今圖書集成·藝術典·第675卷·陽宅十書一",
+    "url": "https://zh.wikisource.org/wiki/Page:Gujin_Tushu_Jicheng,_Volume_476_(1700-1725).djvu/69",
+    "role": "TEXTUAL_CROSS_WITNESS",
+    "status": "UNPROOFREAD_PAGE_WITH_SCAN",
+    "scope": "DIRECT_YANGZHAI"
+  },
+  {
+    "source_id": "SRC-DNBS-V5",
+    "title_zh": "多能鄙事·卷之五·住宅諸忌",
+    "url": "https://zh.wikisource.org/wiki/%E5%A4%9A%E8%83%BD%E9%84%99%E4%BA%8B/%E5%8D%B7%E4%B9%8B%E4%BA%94",
+    "role": "CROSS_WITNESS",
+    "status": "TRANSCRIPTION_AVAILABLE; ATTRIBUTION_DISPUTED",
+    "scope": "DIRECT_YANGZHAI"
+  },
+  {
+    "source_id": "SRC-CTEXT-DNBS-V5",
+    "title_zh": "多能鄙事·卷之五·CText OCR",
+    "url": "https://ctext.org/wiki.pl?chapter=993811&if=gb",
+    "role": "SCAN_LINKED_OCR_CROSSCHECK",
+    "status": "OCR_DRAFT",
+    "scope": "DIRECT_YANGZHAI"
+  },
+  {
+    "source_id": "SCH-HAN1987",
+    "title_zh": "風水宅法中禁忌的研究",
+    "title_en": "A Study of Taboos in Feng-Shuei Practice of Home Building",
+    "author": "漢寶德 / Pao-Teh Han",
+    "year": 1987,
+    "doi": "10.6154/JBP.1987.3.001",
+    "url": "https://bp.ntu.edu.tw/001/Upload/1352/ckfile/09c7cd46-303f-407a-bde5-c1f09df02b1d.pdf",
+    "role": "MODERN_HISTORIOGRAPHY",
+    "status": "ACADEMIC_SECONDARY_SOURCE",
+    "scope": "HISTORICAL_INTERPRETATION_ONLY"
+  }
+]

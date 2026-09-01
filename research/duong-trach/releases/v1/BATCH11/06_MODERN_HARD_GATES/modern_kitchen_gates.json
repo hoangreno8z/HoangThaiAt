@@ -1,0 +1,31 @@
+{
+  "FIRE_COMBUSTION": {
+    "source_id": "MOD-QCVN06-2022-SD1-2023",
+    "priority": "HARD_GATE_WHERE_APPLICABLE",
+    "rules": [
+      "Do not preserve a classical placement if it creates an unsafe fire/egress condition.",
+      "Fuel-specific installation requirements must come from applicable standards/manufacturer/project design.",
+      "Commercial kitchen requires its own fire/exhaust profile; no universal residential shortcut."
+    ]
+  },
+  "SMOKE_VENTILATION": {
+    "priority": "HARD_OR_DESIGN_GATE",
+    "rules": [
+      "Combustion products and cooking effluent require safe exhaust/ventilation design.",
+      "Ancient 煙火之害 is not used as quantitative evidence.",
+      "Do not block necessary ventilation merely to satisfy old 'avoid wind' language."
+    ]
+  },
+  "WATER_SANITATION": {
+    "priority": "HARD_GATE",
+    "rules": [
+      "Potable water safety overrides historical well practices.",
+      "Adding lead to a well is MODERN_SAFETY_INVALID.",
+      "Well protection/contamination assessment is an environmental/health engineering matter."
+    ]
+  },
+  "COMMERCIAL_FOOD_SERVICE": {
+    "state": "REQUIRES_SEPARATE_REGULATORY_PROFILE",
+    "note": "Restaurant/industrial kitchen hygiene and exhaust/fire rules vary by project and are not fully encoded in Batch11."
+  }
+}

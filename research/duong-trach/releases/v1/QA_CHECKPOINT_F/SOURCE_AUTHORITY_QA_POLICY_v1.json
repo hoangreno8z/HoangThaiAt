@@ -1,0 +1,11 @@
+{
+  "$id": "lapque.qa_source_authority_f.v1",
+  "rules": [
+    "ATTRIBUTION_DISPUTED/PSEUDEPIGRAPHIC may not be A1/A2.",
+    "C1 source may not independently create production/master doctrine.",
+    "A1 technical source may not create Feng Shui cát/hung without direct doctrinal evidence.",
+    "Anonymous witness must not be assigned a named author.",
+    "Semantic unresolved phrase is fail-closed.",
+    "A real physical defect is actionable independent of traditional omen."
+  ]
+}

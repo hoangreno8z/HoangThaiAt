@@ -1,0 +1,49 @@
+{
+  "$id": "lapque.door_gate_geometry.v0.8",
+  "entities": {
+    "GATE": {
+      "geometry": "segment",
+      "opening_width": "number|null",
+      "role": "PEDESTRIAN|VEHICLE|SERVICE|MIXED"
+    },
+    "MAIN_DOOR": {
+      "geometry": "segment",
+      "opening_width": "number|null",
+      "swing": "optional"
+    },
+    "ACCESS_PATH": {
+      "geometry": "polyline",
+      "role": "PEDESTRIAN|VEHICLE"
+    },
+    "PARTITION_WALL": {
+      "geometry": "polyline"
+    },
+    "COURTYARD": {
+      "geometry": "polygon"
+    },
+    "OBSTACLE": {
+      "geometry": "polygon/point",
+      "type": "BUILDING_CORNER|POLE|TREE|ROCK|OTHER"
+    },
+    "WATER_FLOW": {
+      "geometry": "polyline",
+      "flow_vector": "vector|null"
+    }
+  },
+  "observables": {
+    "gate_to_main_door_axis": "line",
+    "direct_access_axis": "boolean + continuous angular_offset",
+    "path_curvature": "continuous",
+    "corner_ray_intersection_with_opening": "boolean",
+    "water_flow_axis_intersection_with_opening": "boolean",
+    "front_obstacle_solid_angle": "continuous",
+    "gate_door_offset_distance": "number",
+    "enclosure_graph": "graph of courtyard/wall/opening"
+  },
+  "threshold_policy": {
+    "ancient_thresholds": "NONE unless explicit verified source",
+    "engineering_tolerances": "may exist but must be labelled MODERN_ENGINE_THRESHOLD",
+    "direct_axis": "store angular/distance values first; do not fake ancient degree cutoff"
+  },
+  "school_policy": "24 mountain / 8 trigram / stars mapping stored separately"
+}

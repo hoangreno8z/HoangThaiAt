@@ -1,0 +1,123 @@
+[
+  {
+    "claim_id": "LAND-001",
+    "source_id": "SRC-YZSS-001",
+    "original": "人之居處宜以大地山河為主……若大形不善，縱內形得法，終不全吉。",
+    "hanviet": "Nhân chi cư xứ nghi dĩ đại địa sơn hà vi chủ… nhược đại hình bất thiện, túng nội hình đắc pháp, chung bất toàn cát.",
+    "literal_vi": "Nơi con người cư trú nên lấy đại thế đất đai, núi sông làm chủ yếu… nếu đại hình không tốt thì dù nội hình có đúng phép, cuối cùng cũng không thể hoàn toàn tốt.",
+    "editorial": "Đặt khảo sát site và môi trường lớn trước bố trí nội bộ. Đây là nguyên tắc ưu tiên trong truyền thống, không phải chứng minh khoa học.",
+    "application": "PRE_PURCHASE_SITE_SCREENING",
+    "status": "TEXT_CLEAR_IN_OCR; SCAN_CHECK_REQUIRED_FOR_PUNCTUATION",
+    "rule_status": "RULE_CANDIDATE"
+  },
+  {
+    "claim_id": "LAND-002",
+    "source_id": "SRC-YLJ-001",
+    "original": "大凡陽宅要穴大，寬闊連綿又平伏。",
+    "hanviet": "Đại phàm dương trạch yếu huyệt đại, khoan khoát liên miên hựu bình phục.",
+    "literal_vi": "Nói chung, chỗ dùng cho dương trạch cần rộng; thế đất nên khoáng đạt, liên tục và tương đối bằng phẳng.",
+    "editorial": "Không biến chữ “đại/rộng” thành số mét hoặc tỷ lệ nếu nguyên tác không cho ngưỡng.",
+    "application": "SITE_CAPACITY_AND_TERRAIN",
+    "status": "TEXT_VERIFIED; ATTRIBUTION_DISPUTED",
+    "rule_status": "RULE_CANDIDATE"
+  },
+  {
+    "claim_id": "LAND-003",
+    "source_id": "SRC-YLJ-001",
+    "original": "要知居止只要勢，水抱山朝必有氣。",
+    "hanviet": "Yếu tri cư chỉ chỉ yếu thế, thủy bão sơn triều tất hữu khí.",
+    "literal_vi": "Muốn xét nơi cư trú, điều cốt yếu là thế; nước ôm, núi chầu thì theo ngôn ngữ của sách là có khí.",
+    "editorial": "`有氣` được giữ là khái niệm truyền thống. Không dịch thành “năng lượng vật lý đã đo được”.",
+    "application": "FORM_SCHOOL_SITE_PATTERN",
+    "status": "TEXT_VERIFIED; TRADITIONAL_CONCEPT",
+    "rule_status": "RULE_CANDIDATE"
+  },
+  {
+    "claim_id": "LAND-004",
+    "source_id": "SRC-YLJ-001",
+    "original": "忽然陡瀉朝對傾，破碎斜傾非吉地。",
+    "hanviet": "Hốt nhiên đẩu tả triều đối khuynh, phá toái tà khuynh phi cát địa.",
+    "literal_vi": "Nếu địa thế đột ngột đổ dốc, thế đối diện nghiêng lệch, địa hình vỡ vụn xiên nghiêng thì không được xem là đất tốt.",
+    "editorial": "Ứng dụng hiện đại chỉ dùng câu này như bộ lọc hình thế truyền thống; rủi ro sạt lở/nền đất phải được đánh giá bằng dữ liệu kỹ thuật riêng.",
+    "application": "SLOPE_IRREGULARITY_SCREEN",
+    "status": "TEXT_VERIFIED",
+    "rule_status": "RULE_CANDIDATE"
+  },
+  {
+    "claim_id": "LAND-005",
+    "source_id": "SRC-ZJ-001",
+    "original": "宅以形勢為身體，以泉水為血脈，以土地為皮肉，以草木為毛髮，以舍屋為衣服，以門戶為冠帶。",
+    "hanviet": "Trạch dĩ hình thế vi thân thể, dĩ tuyền thủy vi huyết mạch, dĩ thổ địa vi bì nhục, dĩ thảo mộc vi mao phát, dĩ xá ốc vi y phục, dĩ môn hộ vi quan đới.",
+    "literal_vi": "Nhà lấy hình thế làm thân thể, lấy suối nước làm huyết mạch, lấy đất làm da thịt, lấy cây cỏ làm lông tóc, lấy nhà cửa làm y phục, lấy cửa ngõ làm mũ đai.",
+    "editorial": "Đây là mô hình ẩn dụ hệ thống của cổ thư. Có thể dùng để tổ chức thứ tự khảo sát: hình thế → nước → đất → thảm thực vật → công trình → cửa, nhưng không được biến phép ví thành cơ chế sinh học.",
+    "application": "SITE_AUDIT_MODEL",
+    "status": "TEXT_VERIFIED; AUTHOR_ATTRIBUTION_PSEUDEPIGRAPHIC",
+    "rule_status": "FRAMEWORK_CANDIDATE"
+  },
+  {
+    "claim_id": "LAND-006",
+    "source_id": "SRC-ZJ-001",
+    "original": "故人之居宅，大須慎擇。",
+    "hanviet": "Cố nhân chi cư trạch, đại tu thận trạch.",
+    "literal_vi": "Bởi vậy, nơi nhà ở của con người rất cần được lựa chọn thận trọng.",
+    "editorial": "Dùng làm nguyên tắc mở đầu cho quy trình chọn đất, không phải rule cát-hung cụ thể.",
+    "application": "PRE_PURCHASE_PRINCIPLE",
+    "status": "TEXT_VERIFIED",
+    "rule_status": "PRINCIPLE"
+  },
+  {
+    "claim_id": "LAND-007",
+    "source_id": "SRC-DNBS-001",
+    "original": "宅地平坦，吉；四面高、中央下，先富後貧。",
+    "hanviet": "Trạch địa bình thản, cát; tứ diện cao, trung ương hạ, tiên phú hậu bần.",
+    "literal_vi": "Đất nhà bằng phẳng được coi là tốt; bốn phía cao mà giữa thấp thì truyền thống phán trước giàu sau nghèo.",
+    "editorial": "Chỉ phần hình thái “bốn phía cao, giữa thấp” được dùng làm input hình học. Kết quả “trước giàu sau nghèo” phải lưu riêng là `TRADITIONAL_OUTCOME`, không coi là dự báo thực nghiệm.",
+    "application": "BASIN_LIKE_SITE_SHAPE",
+    "status": "TEXT_VERIFIED_IN_WIKISOURCE; ATTRIBUTION_DISPUTED",
+    "rule_status": "RULE_CANDIDATE_WITH_OUTCOME_SEPARATION"
+  },
+  {
+    "claim_id": "LAND-008",
+    "source_id": "SRC-DNBS-001",
+    "original": "前闊後狹，主人貧乏；前狹後闊，安吉。",
+    "hanviet": "Tiền khoát hậu hiệp, chủ nhân bần phạp; tiền hiệp hậu khoát, an cát.",
+    "literal_vi": "Trước rộng sau hẹp thì theo sách chủ về nghèo thiếu; trước hẹp sau rộng thì được coi là yên tốt.",
+    "editorial": "Đây là nguồn đối chứng cho motif “tóp hậu/nở hậu”. Chưa được đặt ngưỡng %; geometry engine chỉ đo tỉ lệ và lưu số đo, còn rule cổ chỉ là phân loại định tính cho tới khi tìm thấy nguồn có định lượng.",
+    "application": "LOT_TAPER_CLASSIFICATION",
+    "status": "TEXT_VERIFIED_IN_CROSS_WITNESS; ATTRIBUTION_DISPUTED",
+    "rule_status": "RULE_CANDIDATE"
+  },
+  {
+    "claim_id": "LAND-009",
+    "source_id": "SRC-DNBS-001",
+    "original": "勿居古軍營、戰場地，勿居正當水流處，勿居大城門口及對獄門并百川口。",
+    "hanviet": "Vật cư cổ quân doanh, chiến trường địa; vật cư chính đương thủy lưu xứ; vật cư đại thành môn khẩu cập đối ngục môn tịnh bách xuyên khẩu.",
+    "literal_vi": "Không nên ở tại quân doanh cũ hoặc chiến trường; không ở đúng nơi dòng nước xông tới; không ở ngay cửa thành lớn, đối diện cửa ngục, hoặc nơi nhiều dòng nước hội/xuất.",
+    "editorial": "Các vị trí này chỉ được lưu là `TRADITIONAL_SITE_TABOO`. Không suy ra rằng ở đối diện nhà tù sẽ gây tù tội. Với hiện đại, từng vị trí phải đánh giá độc lập về giao thông, ngập, an ninh, tiếng ồn, ô nhiễm, lịch sử sử dụng đất.",
+    "application": "SITE_EXCLUSION_TRADITIONAL",
+    "status": "TEXT_VERIFIED_IN_WIKISOURCE; CROSS_WITNESS_FOR_YZSS_OCR",
+    "rule_status": "RULE_CANDIDATE_WITH_CAUSALITY_GUARD"
+  },
+  {
+    "claim_id": "LAND-010",
+    "source_id": "SRC-DNBS-001",
+    "original": "凡人家，屋居滋潤，光澤陽氣者吉，乾燥無滋潤者凶。",
+    "hanviet": "Phàm nhân gia, ốc cư tư nhuận, quang trạch dương khí giả cát; can táo vô tư nhuận giả hung.",
+    "literal_vi": "Nhà ở của người ta, nếu có vẻ nhuận, sáng sủa và có dương khí thì được coi là tốt; khô khan không có vẻ nhuận thì bị coi là xấu.",
+    "editorial": "Không đồng nhất “dương khí” với một đại lượng vật lý. Có thể tạo lớp modern-check riêng về chiếu sáng, độ ẩm, nhiệt, thông gió, cây xanh và chất lượng không khí.",
+    "application": "ENVIRONMENTAL_QUALITATIVE_SCREEN",
+    "status": "TEXT_VERIFIED_IN_WIKISOURCE; TRADITIONAL_TERMINOLOGY",
+    "rule_status": "FRAMEWORK_CANDIDATE"
+  },
+  {
+    "claim_id": "LAND-011",
+    "source_id": "SRC-HLJ-001",
+    "original": "到處君須看水勢……只要兩源相夾出，交鎖外結重重圍。",
+    "hanviet": "Đáo xứ quân tu khán thủy thế… chỉ yếu lưỡng nguyên tương giáp xuất, giao tỏa ngoại kết trùng trùng vi.",
+    "literal_vi": "Đến nơi nào cũng cần xem thế nước… chú ý nơi hai nguồn nước kẹp hai bên và đi ra, bên ngoài giao khóa thành nhiều lớp bao quanh.",
+    "editorial": "Đây là ngôn ngữ Hình thế/Long pháp. Vì 《撼龍經》 có phạm vi âm-dương trạch lẫn nhau và nhiều đoạn thiên về long mạch lớn, claim này chỉ giữ ở lớp `RELATED_FORM_RULE`, không áp máy móc cho mọi lô đất đô thị.",
+    "application": "WATER_FORM_REFERENCE",
+    "status": "TEXT_VERIFIED; SCOPE_WARNING; ATTRIBUTION_DISPUTED",
+    "rule_status": "REFERENCE_ONLY_UNTIL_SITE_MAPPING_DEFINED"
+  }
+]

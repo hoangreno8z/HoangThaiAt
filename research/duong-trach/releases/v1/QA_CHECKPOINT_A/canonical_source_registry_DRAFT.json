@@ -1,0 +1,710 @@
+[
+  {
+    "source_id": "MOD-QCVN01-2021",
+    "title_vi": "QCVN 01:2021/BXD — Quy chuẩn kỹ thuật quốc gia về Quy hoạch xây dựng",
+    "authority": "Bộ Xây dựng",
+    "role": "CURRENT_LEGAL_PLANNING_BASE",
+    "effective_until": "2026-12-31 subject to transition/specific legal context",
+    "url": "https://thuvienphapluat.vn/van-ban/Xay-dung-Do-thi/Thong-tu-01-2021-TT-BXD-QCVN-01-2021-BXD-Quy-chuan-ky-thuat-quoc-gia-ve-Quy-hoach-xay-dung-474747.aspx",
+    "notes": "Tại ngày 2026-09-01 vẫn là base hiện hành; phải kết hợp quy hoạch chi tiết/thiết kế đô thị và văn bản địa phương.",
+    "registry_provenance": [
+      "BATCH07/01_SOURCE_REGISTRY/source_registry_batch07.json"
+    ],
+    "normalization_state": "CANONICAL_SINGLE_SOURCE_RECORD",
+    "canonical_attribution_status": "ATTRIBUTION_UNKNOWN_OR_NOT_APPLICABLE",
+    "canonical_text_status": "TEXT_STATUS_REVIEW"
+  },
+  {
+    "source_id": "MOD-QCVN01-2026",
+    "title_vi": "QCVN 01:2026/BXD — Quy chuẩn kỹ thuật quốc gia về quy hoạch đô thị và nông thôn",
+    "authority": "Bộ Xây dựng",
+    "issued": "2026-06-30",
+    "effective": "2027-01-01",
+    "role": "FUTURE_LEGAL_VERSION",
+    "url": "https://www.moc.gov.vn/vn/tin-tuc/1196/95350/thong-tu-ban-hanh-quy-chuan-ky-thuat-quoc-gia-ve-quy-hoach-do-thi-va-nong-thon.aspx",
+    "notes": "Không áp sớm trước ngày hiệu lực. Engine phải version-lock theo ngày pháp lý.",
+    "registry_provenance": [
+      "BATCH07/01_SOURCE_REGISTRY/source_registry_batch07.json"
+    ],
+    "normalization_state": "CANONICAL_SINGLE_SOURCE_RECORD",
+    "canonical_attribution_status": "ATTRIBUTION_UNKNOWN_OR_NOT_APPLICABLE",
+    "canonical_text_status": "TEXT_STATUS_REVIEW"
+  },
+  {
+    "source_id": "MOD-QCVN06-2022-SD1-2023",
+    "title_vi": "QCVN 06:2022/BXD + Sửa đổi 1:2023 — An toàn cháy cho nhà và công trình",
+    "authority": "Bộ Xây dựng",
+    "role": "FIRE_EGRESS_HARD_GATE",
+    "status_as_of_2026_09_01": "CURRENT_REFERENCE_WHERE_APPLICABLE",
+    "url": "https://moc.gov.vn/Images/editor/files/Quy%20Chu%E1%BA%A9n/QCVN%2006-2022.pdf",
+    "notes": "Phạm vi/giải pháp cụ thể phụ thuộc loại, công năng, quy mô công trình.",
+    "registry_provenance": [
+      "BATCH10/01_SOURCE_REGISTRY/source_registry_batch10.json",
+      "BATCH09/01_SOURCE_REGISTRY/source_registry_batch09.json",
+      "BATCH08/01_SOURCE_REGISTRY/source_registry_batch08.json"
+    ],
+    "normalization_state": "CANONICAL_DRAFT_NEEDS_HUMAN_REVIEW",
+    "canonical_attribution_status": "ATTRIBUTION_UNKNOWN_OR_NOT_APPLICABLE",
+    "canonical_text_status": "TEXT_STATUS_REVIEW"
+  },
+  {
+    "source_id": "MOD-QCVN10-2024",
+    "title_vi": "QCVN 10:2024/BXD — Xây dựng công trình đảm bảo tiếp cận sử dụng",
+    "authority": "Bộ Xây dựng",
+    "issued": "2024-08-01",
+    "effective": "2025-02-01",
+    "status_as_of_2026_09_01": "CURRENT",
+    "url": "https://moc.gov.vn/Images/editor/files/Quy%20Chu%E1%BA%A9n/BXD_06-2024-TT-BXD_01082024.pdf",
+    "role": "ACCESSIBILITY_HARD_GATE",
+    "applicability_note": "Áp dụng cho nhóm công trình nêu trong quy chuẩn: chung cư, trụ sở/văn phòng và nhiều công trình công cộng, thương mại, dịch vụ... Không tự mở rộng sang mọi nhà ở riêng lẻ.",
+    "registry_provenance": [
+      "BATCH10/01_SOURCE_REGISTRY/source_registry_batch10.json"
+    ],
+    "normalization_state": "CANONICAL_SINGLE_SOURCE_RECORD",
+    "canonical_attribution_status": "ATTRIBUTION_UNKNOWN_OR_NOT_APPLICABLE",
+    "canonical_text_status": "TEXT_STATUS_REVIEW"
+  },
+  {
+    "source_id": "SCH-HAN1987",
+    "title_zh": "風水宅法中禁忌的研究",
+    "title_en": "A Study of Taboos in Feng-Shuei Practice of Home Building",
+    "author": "漢寶德 / Pao-Teh Han",
+    "year": 1987,
+    "doi": "10.6154/JBP.1987.3.001",
+    "url": "https://bp.ntu.edu.tw/001/Upload/1352/ckfile/09c7cd46-303f-407a-bde5-c1f09df02b1d.pdf",
+    "role": "MODERN_HISTORIOGRAPHY",
+    "status": "ACADEMIC_SECONDARY_SOURCE",
+    "scope": "HISTORICAL_INTERPRETATION_ONLY",
+    "registry_provenance": [
+      "BATCH06/01_SOURCE_REGISTRY/source_registry_batch06.json"
+    ],
+    "normalization_state": "CANONICAL_SINGLE_SOURCE_RECORD",
+    "canonical_attribution_status": "ATTRIBUTION_UNKNOWN_OR_NOT_APPLICABLE",
+    "canonical_text_status": "TEXT_STATUS_REVIEW"
+  },
+  {
+    "source_id": "SRC-CTEXT-DNBS-V5",
+    "title_zh": "多能鄙事·卷之五·CText OCR",
+    "url": "https://ctext.org/wiki.pl?chapter=993811&if=gb",
+    "role": "SCAN_LINKED_OCR_CROSSCHECK",
+    "status": "OCR_DRAFT",
+    "scope": "DIRECT_YANGZHAI",
+    "registry_provenance": [
+      "BATCH06/01_SOURCE_REGISTRY/source_registry_batch06.json"
+    ],
+    "normalization_state": "CANONICAL_SINGLE_SOURCE_RECORD",
+    "canonical_attribution_status": "ATTRIBUTION_UNKNOWN_OR_NOT_APPLICABLE",
+    "canonical_text_status": "OCR_UNVERIFIED_OR_CAUTION"
+  },
+  {
+    "source_id": "SRC-CTEXT-YZSS",
+    "title_zh": "陽宅十書",
+    "title_vi": "Dương Trạch Thập Thư — CText OCR",
+    "url": "https://ctext.org/wiki.pl?chapter=412426&if=en",
+    "role": "OCR_INDEX_AND_DISCOVERY",
+    "proofread_status": "OCR_NOISY",
+    "scope": "DIRECT_YANGZHAI",
+    "notes": "Dùng tìm vị trí và đối chiếu, không khóa quotation nếu chưa có witness sạch hơn.",
+    "registry_provenance": [
+      "BATCH05/01_SOURCE_REGISTRY/source_registry_batch05.json"
+    ],
+    "normalization_state": "CANONICAL_SINGLE_SOURCE_RECORD",
+    "canonical_attribution_status": "ATTRIBUTION_UNKNOWN_OR_NOT_APPLICABLE",
+    "canonical_text_status": "OCR_UNVERIFIED_OR_CAUTION"
+  },
+  {
+    "source_id": "SRC-DNBS-001",
+    "title_zh": "多能鄙事·卷之五·住宅諸忌",
+    "title_vi": "Đa Năng Bỉ Sự, quyển 5, Chư kỵ về nhà ở",
+    "attribution": "舊本題明劉基撰 / cựu bản đề Lưu Cơ",
+    "witness_note": "Có scan từ Bắc Kinh Đại học/CADAL; CText lưu ý tác phẩm có thể là hậu nhân thác danh Lưu Cơ.",
+    "url": "https://zh.wikisource.org/wiki/%E5%A4%9A%E8%83%BD%E9%84%99%E4%BA%8B/%E5%8D%B7%E4%B9%8B%E4%BA%94",
+    "source_role": "CROSS_WITNESS",
+    "attribution_status": "DISPUTED",
+    "text_status": "TRANSCRIPTION_GOOD_WITH_EDITION_AUDIT_PENDING",
+    "registry_provenance": [
+      "BATCH02/01_SOURCE_AUDIT/source_registry_batch02.json"
+    ],
+    "normalization_state": "CANONICAL_SINGLE_SOURCE_RECORD",
+    "canonical_attribution_status": "ATTRIBUTION_DISPUTED",
+    "canonical_text_status": "TEXT_STATUS_REVIEW"
+  },
+  {
+    "source_id": "SRC-DNBS-V5",
+    "title_zh": "多能鄙事·卷之五·住宅諸忌",
+    "title_vi": "Đa Năng Bỉ Sự, quyển 5 — Chư kỵ về nhà ở",
+    "page": "住宅諸忌",
+    "url": "https://zh.wikisource.org/wiki/%E5%A4%9A%E8%83%BD%E9%84%99%E4%BA%8B/%E5%8D%B7%E4%B9%8B%E4%BA%94",
+    "role": "CROSS_WITNESS",
+    "proofread_status": "TRANSCRIPTION_AVAILABLE_SCAN_LINKED",
+    "scope": "DIRECT_YANGZHAI",
+    "attribution": "舊本題劉基 / cựu bản đề Lưu Cơ",
+    "attribution_status": "DISPUTED/PSEUDEPIGRAPHIC_RISK",
+    "witness_independence": "UNKNOWN",
+    "notes": "Không được coi là 'xác nhận độc lập' cho 陽宅十書 nếu chưa chứng minh lịch sử truyền văn.",
+    "registry_provenance": [
+      "BATCH05/01_SOURCE_REGISTRY/source_registry_batch05.json",
+      "BATCH06/01_SOURCE_REGISTRY/source_registry_batch06.json"
+    ],
+    "normalization_state": "CANONICAL_DRAFT_NEEDS_HUMAN_REVIEW",
+    "canonical_attribution_status": "PSEUDEPIGRAPHIC",
+    "canonical_text_status": "TEXT_STATUS_REVIEW"
+  },
+  {
+    "source_id": "SRC-DNBS-V5-ROOM",
+    "title_zh": "多能鄙事·卷之五·住宅諸忌",
+    "title_vi": "Đa Năng Bỉ Sự, quyển 5 — Chư kỵ nhà ở",
+    "url": "https://zh.wikisource.org/wiki/%E5%A4%9A%E8%83%BD%E9%84%99%E4%BA%8B/%E5%8D%B7%E4%B9%8B%E4%BA%94",
+    "locator": "lines 170-191 in web transcription",
+    "role": "CROSS_WITNESS",
+    "scope": "DIRECT_YANGZHAI",
+    "attribution_status": "DISPUTED/PSEUDEPIGRAPHIC_RISK",
+    "witness_independence": "UNKNOWN",
+    "notes": "Không đếm như nguồn độc lập với 陽宅十書 nếu chưa chứng minh quan hệ truyền văn.",
+    "registry_provenance": [
+      "BATCH10/01_SOURCE_REGISTRY/source_registry_batch10.json"
+    ],
+    "normalization_state": "CANONICAL_SINGLE_SOURCE_RECORD",
+    "canonical_attribution_status": "PSEUDEPIGRAPHIC",
+    "canonical_text_status": "TEXT_STATUS_REVIEW"
+  },
+  {
+    "source_id": "SRC-GJTS675-MINGTANG",
+    "title_zh": "欽定古今圖書集成·第675卷·陽宅十書一·論宅外形第一",
+    "url": "https://zh.wikisource.org/wiki/%E6%AC%BD%E5%AE%9A%E5%8F%A4%E4%BB%8A%E5%9C%96%E6%9B%B8%E9%9B%86%E6%88%90/%E5%8D%9A%E7%89%A9%E5%BD%99%E7%B7%A8/%E8%97%9D%E8%A1%93%E5%85%B8/%E7%AC%AC675%E5%8D%B7",
+    "lines": "144-146",
+    "role": "EXTERNAL_MINGTANG_TEXT",
+    "scope": "DIRECT_YANGZHAI",
+    "registry_provenance": [
+      "BATCH09/01_SOURCE_REGISTRY/source_registry_batch09.json"
+    ],
+    "normalization_state": "CANONICAL_SINGLE_SOURCE_RECORD",
+    "canonical_attribution_status": "ATTRIBUTION_UNKNOWN_OR_NOT_APPLICABLE",
+    "canonical_text_status": "TEXT_STATUS_REVIEW"
+  },
+  {
+    "source_id": "SRC-GJTS675-OUTER",
+    "title_zh": "欽定古今圖書集成·藝術典第675卷·陽宅十書一·論宅外形第一",
+    "title_vi": "Cổ Kim Đồ Thư Tập Thành quyển 675 — Dương Trạch Thập Thư I, Luận ngoại hình",
+    "url": "https://zh.wikisource.org/wiki/%E6%AC%BD%E5%AE%9A%E5%8F%A4%E4%BB%8A%E5%9C%96%E6%9B%B8%E9%9B%86%E6%88%90/%E5%8D%9A%E7%89%A9%E5%BD%99%E7%B7%A8/%E8%97%9D%E8%A1%93%E5%85%B8/%E7%AC%AC675%E5%8D%B7",
+    "lines": "144-150",
+    "role": "PRIMARY_TEXTUAL_CROSS_WITNESS",
+    "status": "TRANSCRIPTION_WITH_SCAN_TRADITION",
+    "scope": "DIRECT_YANGZHAI",
+    "registry_provenance": [
+      "BATCH07/01_SOURCE_REGISTRY/source_registry_batch07.json"
+    ],
+    "normalization_state": "CANONICAL_SINGLE_SOURCE_RECORD",
+    "canonical_attribution_status": "ATTRIBUTION_UNKNOWN_OR_NOT_APPLICABLE",
+    "canonical_text_status": "TEXT_STATUS_REVIEW"
+  },
+  {
+    "source_id": "SRC-GJTS675-P69",
+    "title_zh": "欽定古今圖書集成·藝術典·第六百七十五卷·陽宅十書一",
+    "title_vi": "Cổ Kim Đồ Thư Tập Thành, Nghệ Thuật Điển quyển 675 — chép Dương Trạch Thập Thư",
+    "page": "Gujin Tushu Jicheng Vol.476 scan p.69",
+    "url": "https://zh.wikisource.org/wiki/Page:Gujin_Tushu_Jicheng,_Volume_476_(1700-1725).djvu/69",
+    "role": "TEXTUAL_CROSS_WITNESS",
+    "proofread_status": "WIKISOURCE_PAGE_UNPROOFREAD",
+    "scope": "DIRECT_YANGZHAI",
+    "notes": "Có scan page image. Dùng để sửa OCR CText, nhưng chưa coi là critical edition.",
+    "registry_provenance": [
+      "BATCH05/01_SOURCE_REGISTRY/source_registry_batch05.json",
+      "BATCH06/01_SOURCE_REGISTRY/source_registry_batch06.json"
+    ],
+    "normalization_state": "CANONICAL_DRAFT_NEEDS_HUMAN_REVIEW",
+    "canonical_attribution_status": "ATTRIBUTION_UNKNOWN_OR_NOT_APPLICABLE",
+    "canonical_text_status": "TEXT_STATUS_REVIEW"
+  },
+  {
+    "source_id": "SRC-GJTS675-P70",
+    "title_zh": "欽定古今圖書集成·藝術典·第六百七十五卷·陽宅外形吉凶圖說",
+    "title_vi": "Cổ Kim Đồ Thư Tập Thành — Đồ thuyết cát hung ngoại hình Dương Trạch",
+    "page": "Gujin Tushu Jicheng Vol.476 scan p.70",
+    "url": "https://zh.wikisource.org/wiki/Page:Gujin_Tushu_Jicheng,_Volume_476_(1700-1725).djvu/70",
+    "role": "FIGURE_TEXT_WITNESS",
+    "proofread_status": "WIKISOURCE_PAGE_UNPROOFREAD_LAYOUT_COMPLEX",
+    "scope": "DIRECT_YANGZHAI",
+    "notes": "Caption và dòng chữ quanh hình có thể bị đọc sai thứ tự; không tự nối câu khi layout không chắc.",
+    "registry_provenance": [
+      "BATCH05/01_SOURCE_REGISTRY/source_registry_batch05.json"
+    ],
+    "normalization_state": "CANONICAL_SINGLE_SOURCE_RECORD",
+    "canonical_attribution_status": "ATTRIBUTION_UNKNOWN_OR_NOT_APPLICABLE",
+    "canonical_text_status": "TEXT_STATUS_REVIEW"
+  },
+  {
+    "source_id": "SRC-GJTS675-P71",
+    "title_zh": "欽定古今圖書集成·藝術典·第六百七十五卷·陽宅外形吉凶圖說",
+    "title_vi": "Cổ Kim Đồ Thư Tập Thành — Đồ thuyết cát hung ngoại hình Dương Trạch, trang tiếp",
+    "page": "Gujin Tushu Jicheng Vol.476 scan p.71",
+    "url": "https://zh.wikisource.org/wiki/Page:Gujin_Tushu_Jicheng,_Volume_476_(1700-1725).djvu/71",
+    "role": "FIGURE_TEXT_WITNESS",
+    "proofread_status": "WIKISOURCE_PAGE_UNPROOFREAD_LAYOUT_COMPLEX",
+    "scope": "DIRECT_YANGZHAI",
+    "notes": "Có các câu có vẻ xung đột với trang trước; giữ nguyên conflict cho tới khi kiểm hình scan/edition.",
+    "registry_provenance": [
+      "BATCH05/01_SOURCE_REGISTRY/source_registry_batch05.json"
+    ],
+    "normalization_state": "CANONICAL_SINGLE_SOURCE_RECORD",
+    "canonical_attribution_status": "ATTRIBUTION_UNKNOWN_OR_NOT_APPLICABLE",
+    "canonical_text_status": "TEXT_STATUS_REVIEW"
+  },
+  {
+    "source_id": "SRC-GJTS676-DOOR",
+    "title_zh": "欽定古今圖書集成·藝術典第676卷·陽宅十書二·論開門修造門第六",
+    "url": "https://zh.wikisource.org/wiki/%E6%AC%BD%E5%AE%9A%E5%8F%A4%E4%BB%8A%E5%9C%96%E6%9B%B8%E9%9B%86%E6%88%90/%E5%8D%9A%E7%89%A9%E5%BD%99%E7%B7%A8/%E8%97%9D%E8%A1%93%E5%85%B8/%E7%AC%AC676%E5%8D%B7",
+    "lines": "698-789",
+    "role": "PRIMARY_TEXTUAL_CROSS_WITNESS",
+    "status": "TEXT_WITH_AI_INITIAL_PUNCTUATION_NOTED_BY_WIKISOURCE",
+    "scope": "DIRECT_YANGZHAI",
+    "registry_provenance": [
+      "BATCH08/01_SOURCE_REGISTRY/source_registry_batch08.json"
+    ],
+    "normalization_state": "CANONICAL_SINGLE_SOURCE_RECORD",
+    "canonical_attribution_status": "ATTRIBUTION_UNKNOWN_OR_NOT_APPLICABLE",
+    "canonical_text_status": "TEXT_STATUS_REVIEW"
+  },
+  {
+    "source_id": "SRC-GJTS677-DOOR",
+    "title_zh": "欽定古今圖書集成·藝術典第677卷·陽宅十書三·內形篇",
+    "url": "https://zh.wikisource.org/wiki/%E6%AC%BD%E5%AE%9A%E5%8F%A4%E4%BB%8A%E5%9C%96%E6%9B%B8%E9%9B%86%E6%88%90/%E5%8D%9A%E7%89%A9%E5%BD%99%E7%B7%A8/%E8%97%9D%E8%A1%93%E5%85%B8/%E7%AC%AC677%E5%8D%B7",
+    "lines": "314-348",
+    "role": "PRIMARY_TEXTUAL_CROSS_WITNESS",
+    "status": "TEXT; VERSE PUNCTUATION/TERMS MAY REQUIRE SCAN CHECK",
+    "scope": "DIRECT_YANGZHAI",
+    "registry_provenance": [
+      "BATCH08/01_SOURCE_REGISTRY/source_registry_batch08.json"
+    ],
+    "normalization_state": "CANONICAL_SINGLE_SOURCE_RECORD",
+    "canonical_attribution_status": "ATTRIBUTION_UNKNOWN_OR_NOT_APPLICABLE",
+    "canonical_text_status": "TEXT_STATUS_REVIEW"
+  },
+  {
+    "source_id": "SRC-GJTS677-INNER",
+    "title_zh": "欽定古今圖書集成·藝術典第677卷·陽宅十書三·論宅內形第八",
+    "title_vi": "Cổ Kim Đồ Thư Tập Thành quyển 677 — Dương Trạch Thập Thư III, Luận nội hình",
+    "url": "https://zh.wikisource.org/wiki/%E6%AC%BD%E5%AE%9A%E5%8F%A4%E4%BB%8A%E5%9C%96%E6%9B%B8%E9%9B%86%E6%88%90/%E5%8D%9A%E7%89%A9%E5%BD%99%E7%B7%A8/%E8%97%9D%E8%A1%93%E5%85%B8/%E7%AC%AC677%E5%8D%B7",
+    "lines": "306-348",
+    "role": "PRIMARY_TEXTUAL_CROSS_WITNESS",
+    "status": "TRANSCRIPTION; SOME VERSE PUNCTUATION COMPLEX",
+    "scope": "DIRECT_YANGZHAI",
+    "registry_provenance": [
+      "BATCH07/01_SOURCE_REGISTRY/source_registry_batch07.json"
+    ],
+    "normalization_state": "CANONICAL_SINGLE_SOURCE_RECORD",
+    "canonical_attribution_status": "ATTRIBUTION_UNKNOWN_OR_NOT_APPLICABLE",
+    "canonical_text_status": "TEXT_STATUS_REVIEW"
+  },
+  {
+    "source_id": "SRC-GJTS677-INTERNAL",
+    "title_zh": "欽定古今圖書集成·藝術典第677卷·陽宅十書三·論宅內形第八",
+    "title_vi": "Cổ Kim Đồ Thư Tập Thành quyển 677 — Dương Trạch Thập Thư III, Luận nội hình",
+    "url": "https://zh.wikisource.org/wiki/%E6%AC%BD%E5%AE%9A%E5%8F%A4%E4%BB%8A%E5%9C%96%E6%9B%B8%E9%9B%86%E6%88%90/%E5%8D%9A%E7%89%A9%E5%BD%99%E7%B7%A8/%E8%97%9D%E8%A1%93%E5%85%B8/%E7%AC%AC677%E5%8D%B7",
+    "locator": "lines 314-348 in web transcription",
+    "role": "PRIMARY_TEXTUAL_CROSS_WITNESS",
+    "scope": "DIRECT_YANGZHAI",
+    "text_status": "TRANSCRIPTION_STRONG_BUT_PUNCTUATION_COMPLEX",
+    "notes": "Một đoạn dài là văn vần/khối văn; không tự ngắt câu thành rule nếu ngữ pháp chưa rõ.",
+    "registry_provenance": [
+      "BATCH10/01_SOURCE_REGISTRY/source_registry_batch10.json"
+    ],
+    "normalization_state": "CANONICAL_SINGLE_SOURCE_RECORD",
+    "canonical_attribution_status": "ATTRIBUTION_UNKNOWN_OR_NOT_APPLICABLE",
+    "canonical_text_status": "TRANSCRIPTION_STRONG_OR_VERIFIED"
+  },
+  {
+    "source_id": "SRC-GJTS677-TIANJING",
+    "title_zh": "欽定古今圖書集成·第677卷·陽宅十書三·內形篇",
+    "url": "https://zh.wikisource.org/wiki/%E6%AC%BD%E5%AE%9A%E5%8F%A4%E4%BB%8A%E5%9C%96%E6%9B%B8%E9%9B%86%E6%88%90/%E5%8D%9A%E7%89%A9%E5%BD%99%E7%B7%A8/%E8%97%9D%E8%A1%93%E5%85%B8/%E7%AC%AC677%E5%8D%B7",
+    "lines": "314-339",
+    "role": "INTERNAL_COURT_TIANJING_TEXT",
+    "scope": "DIRECT_YANGZHAI",
+    "registry_provenance": [
+      "BATCH09/01_SOURCE_REGISTRY/source_registry_batch09.json"
+    ],
+    "normalization_state": "CANONICAL_SINGLE_SOURCE_RECORD",
+    "canonical_attribution_status": "ATTRIBUTION_UNKNOWN_OR_NOT_APPLICABLE",
+    "canonical_text_status": "TEXT_STATUS_REVIEW"
+  },
+  {
+    "source_id": "SRC-GJTS677-WATER",
+    "title_zh": "欽定古今圖書集成·第677卷·二十四山放水定局",
+    "url": "https://zh.wikisource.org/wiki/%E6%AC%BD%E5%AE%9A%E5%8F%A4%E4%BB%8A%E5%9C%96%E6%9B%B8%E9%9B%86%E6%88%90/%E5%8D%9A%E7%89%A9%E5%BD%99%E7%B7%A8/%E8%97%9D%E8%A1%93%E5%85%B8/%E7%AC%AC677%E5%8D%B7",
+    "lines": "291-297",
+    "role": "SCHOOL_SPECIFIC_TIANJING_WATER",
+    "scope": "DIRECTIONAL_WATER_METHOD",
+    "status": "DEFER_SCHOOL_EXECUTION",
+    "registry_provenance": [
+      "BATCH09/01_SOURCE_REGISTRY/source_registry_batch09.json"
+    ],
+    "normalization_state": "CANONICAL_SINGLE_SOURCE_RECORD",
+    "canonical_attribution_status": "ATTRIBUTION_UNKNOWN_OR_NOT_APPLICABLE",
+    "canonical_text_status": "TEXT_STATUS_REVIEW"
+  },
+  {
+    "source_id": "SRC-HLJ-001",
+    "title_zh": "撼龍經",
+    "title_vi": "Hám Long Kinh",
+    "attributed_author_zh": "楊筠松",
+    "author_vi": "truyền là Dương Quân Tùng",
+    "work_period": "truyền là Đường",
+    "work_identity_note": "Tứ Khố ghi cựu bản đề Dương Quân Tùng nhưng nêu nghi vấn thư mục học về quy tác giả.",
+    "witness": "欽定四庫全書本",
+    "holding": "Zhejiang University Library",
+    "digitizer": "CADAL / Chinese Text Project; Wikisource transcription",
+    "scope": [
+      "loan đầu",
+      "long mạch",
+      "sơn thế",
+      "cửu tinh hình thế"
+    ],
+    "status": "ATTRIBUTION_DISPUTED_TEXT_TRADITION_STRONG",
+    "registry_provenance": [
+      "BATCH02/01_SOURCE_AUDIT/source_registry_batch02.json",
+      "BATCH01/01_SOURCE_REGISTRY/source_registry.json"
+    ],
+    "normalization_state": "CANONICAL_DRAFT_NEEDS_HUMAN_REVIEW",
+    "canonical_attribution_status": "ATTRIBUTION_DISPUTED",
+    "canonical_text_status": "TRANSCRIPTION_STRONG_OR_VERIFIED"
+  },
+  {
+    "source_id": "SRC-LBJ-MIRROR-CANDIDATE",
+    "title_zh": "新鐫工師雕斲正式魯班木經匠家鏡",
+    "title_vi": "Tân Tuyển Công Sư Điêu Trác Chính Thức Lỗ Ban Mộc Kinh Tượng Gia Kính",
+    "url": "https://ctext.org/wiki.pl?if=gb&res=677890",
+    "role": "SOURCE_CANDIDATE_ARCHITECTURE",
+    "scope": "POPULAR_BUILDING_TRADITION",
+    "text_status": "OCR_TOO_NOISY_FOR_RULE_EXTRACTION",
+    "publish_state": "REJECT_RULE_EXTRACTION_UNTIL_SCAN_COLLATION",
+    "notes": "CText OCR hiện có nhiều chữ hỏng; chỉ giữ bibliographic/source-candidate, không trích rule.",
+    "registry_provenance": [
+      "BATCH10/01_SOURCE_REGISTRY/source_registry_batch10.json"
+    ],
+    "normalization_state": "CANONICAL_SINGLE_SOURCE_RECORD",
+    "canonical_attribution_status": "ATTRIBUTION_UNKNOWN_OR_NOT_APPLICABLE",
+    "canonical_text_status": "TEXT_STATUS_REVIEW"
+  },
+  {
+    "source_id": "SRC-QNA-001",
+    "title_zh": "青囊奧語",
+    "title_vi": "Thanh Nang Áo Ngữ",
+    "attributed_author_zh": "楊筠松",
+    "author_vi": "cựu bản đề Dương Quân Tùng",
+    "work_period": "truyền là Đường; xuất hiện trong truyền thống muộn hơn",
+    "work_identity_note": "Tứ Khố ghi cựu bản đề Dương Quân Tùng và phê bình nhiều chú giải/sửa văn đời sau.",
+    "scope": [
+      "lý khí",
+      "âm dương thuận nghịch",
+      "sơn thủy"
+    ],
+    "status": "ATTRIBUTION_DISPUTED",
+    "registry_provenance": [
+      "BATCH01/01_SOURCE_REGISTRY/source_registry.json"
+    ],
+    "normalization_state": "CANONICAL_SINGLE_SOURCE_RECORD",
+    "canonical_attribution_status": "ATTRIBUTION_DISPUTED",
+    "canonical_text_status": "TEXT_STATUS_REVIEW"
+  },
+  {
+    "source_id": "SRC-QNX-001",
+    "title_zh": "青囊序",
+    "title_vi": "Thanh Nang Tự",
+    "attributed_author_zh": "曾文辿",
+    "author_vi": "truyền là Tăng Văn Địch",
+    "scope": [
+      "long",
+      "thủy",
+      "âm dương",
+      "lý khí"
+    ],
+    "status": "ATTRIBUTION_TRADITIONAL",
+    "registry_provenance": [
+      "BATCH01/01_SOURCE_REGISTRY/source_registry.json"
+    ],
+    "normalization_state": "CANONICAL_SINGLE_SOURCE_RECORD",
+    "canonical_attribution_status": "ATTRIBUTION_UNKNOWN_OR_NOT_APPLICABLE",
+    "canonical_text_status": "TEXT_STATUS_REVIEW"
+  },
+  {
+    "source_id": "SRC-RDYS-001",
+    "title_zh": "入地眼全書",
+    "title_vi": "Nhập Địa Nhãn Toàn Thư",
+    "scope": [
+      "dương trạch",
+      "môn lộ táo",
+      "bát trạch",
+      "sơn thủy"
+    ],
+    "status": "DISCOVERY_VERIFIED_TEXT_PENDING_EDITION_AUDIT",
+    "registry_provenance": [
+      "BATCH01/01_SOURCE_REGISTRY/source_registry.json"
+    ],
+    "normalization_state": "CANONICAL_SINGLE_SOURCE_RECORD",
+    "canonical_attribution_status": "ATTRIBUTION_UNKNOWN_OR_NOT_APPLICABLE",
+    "canonical_text_status": "TEXT_STATUS_REVIEW"
+  },
+  {
+    "source_id": "SRC-RZXZ-001",
+    "title_zh": "人子須知",
+    "title_vi": "Nhân Tử Tu Tri",
+    "scope": [
+      "địa lý hình thế",
+      "minh đường",
+      "tàng phong",
+      "thủy"
+    ],
+    "status": "DISCOVERY_VERIFIED_TEXT_PENDING_EDITION_AUDIT",
+    "registry_provenance": [
+      "BATCH01/01_SOURCE_REGISTRY/source_registry.json"
+    ],
+    "normalization_state": "CANONICAL_SINGLE_SOURCE_RECORD",
+    "canonical_attribution_status": "ATTRIBUTION_UNKNOWN_OR_NOT_APPLICABLE",
+    "canonical_text_status": "TEXT_STATUS_REVIEW"
+  },
+  {
+    "source_id": "SRC-SKTY-109",
+    "title_zh": "四庫全書總目提要·卷109",
+    "title_vi": "Tứ Khố Toàn Thư Tổng Mục Đề Yếu, quyển 109",
+    "attribution": "四庫館臣",
+    "witness_note": "Nguồn thư mục học dùng để kiểm quy tác giả, số quyển và lịch sử truyền bản.",
+    "url": "https://zh.wikisource.org/wiki/%E5%9B%9B%E5%BA%AB%E5%85%A8%E6%9B%B8%E7%B8%BD%E7%9B%AE%E6%8F%90%E8%A6%81/%E5%8D%B7109",
+    "source_role": "BIBLIOGRAPHIC_AUDIT",
+    "attribution_status": "VERIFIED",
+    "text_status": "TRANSCRIPTION_STRONG",
+    "registry_provenance": [
+      "BATCH02/01_SOURCE_AUDIT/source_registry_batch02.json"
+    ],
+    "normalization_state": "CANONICAL_SINGLE_SOURCE_RECORD",
+    "canonical_attribution_status": "ATTRIBUTION_UNKNOWN_OR_NOT_APPLICABLE",
+    "canonical_text_status": "TRANSCRIPTION_STRONG_OR_VERIFIED"
+  },
+  {
+    "source_id": "SRC-TYJ-001",
+    "title_zh": "天玉經",
+    "title_vi": "Thiên Ngọc Kinh",
+    "attributed_author_zh": "楊筠松",
+    "author_vi": "cựu bản đề Dương Quân Tùng",
+    "work_period": "truyền là Đường; Tứ Khố cho biết đến Tống mới thấy lưu hành",
+    "scope": [
+      "lý khí",
+      "tam ban quái",
+      "sơn hướng",
+      "tứ kinh ngũ hành"
+    ],
+    "status": "ATTRIBUTION_DISPUTED",
+    "registry_provenance": [
+      "BATCH01/01_SOURCE_REGISTRY/source_registry.json"
+    ],
+    "normalization_state": "CANONICAL_SINGLE_SOURCE_RECORD",
+    "canonical_attribution_status": "ATTRIBUTION_DISPUTED",
+    "canonical_text_status": "TEXT_STATUS_REVIEW"
+  },
+  {
+    "source_id": "SRC-XJBF-001",
+    "title_zh": "欽定協紀辨方書",
+    "title_vi": "Khâm Định Hiệp Kỷ Biện Phương Thư",
+    "scope": [
+      "trạch nhật",
+      "tạo mệnh",
+      "động thổ",
+      "tu tạo"
+    ],
+    "status": "DISCOVERY_VERIFIED_TEXT_PENDING_SCOPE_FILTER",
+    "registry_provenance": [
+      "BATCH01/01_SOURCE_REGISTRY/source_registry.json"
+    ],
+    "normalization_state": "CANONICAL_SINGLE_SOURCE_RECORD",
+    "canonical_attribution_status": "ATTRIBUTION_UNKNOWN_OR_NOT_APPLICABLE",
+    "canonical_text_status": "TEXT_STATUS_REVIEW"
+  },
+  {
+    "source_id": "SRC-YLJ-001",
+    "title_zh": "疑龍經",
+    "title_vi": "Nghi Long Kinh",
+    "attributed_author_zh": "楊筠松",
+    "author_vi": "truyền là Dương Quân Tùng",
+    "work_period": "truyền là Đường",
+    "work_identity_note": "Tứ Khố ghi thư mục đời Tống từng chép 《疑龍經》 không nêu tác giả; truyền bản sau quy cho Dương Quân Tùng.",
+    "witness": "欽定四庫全書本",
+    "holding": "Zhejiang University Library",
+    "digitizer": "CADAL / Chinese Text Project; Wikisource transcription",
+    "scope": [
+      "tìm long",
+      "thủy khẩu",
+      "kết huyệt",
+      "dương trạch đại thế"
+    ],
+    "status": "ATTRIBUTION_DISPUTED_TEXT_TRADITION_STRONG",
+    "registry_provenance": [
+      "BATCH02/01_SOURCE_AUDIT/source_registry_batch02.json",
+      "BATCH01/01_SOURCE_REGISTRY/source_registry.json"
+    ],
+    "normalization_state": "CANONICAL_DRAFT_NEEDS_HUMAN_REVIEW",
+    "canonical_attribution_status": "ATTRIBUTION_DISPUTED",
+    "canonical_text_status": "TRANSCRIPTION_STRONG_OR_VERIFIED"
+  },
+  {
+    "source_id": "SRC-YLJ-DZ-002",
+    "title_zh": "疑龍經·疑龍十問",
+    "title_vi": "Nghi Long Kinh — Nghi Long Thập Vấn",
+    "work": "疑龍經",
+    "attribution": "舊本題唐楊筠松 / cựu bản đề Dương Quân Tùng",
+    "witness": "Wikisource bản Tứ Khố và bản phân thiên",
+    "url_primary": "https://zh.wikisource.org/wiki/%E6%92%BC%E9%BE%8D%E7%B6%93/%E7%96%91%E9%BE%8D%E7%B6%93/%E7%96%91%E9%BE%8D%E5%8D%81%E5%95%8F",
+    "scope": "DIRECT_YANGZHAI_PASSAGES + FORM_SCHOOL",
+    "attribution_status": "DISPUTED",
+    "text_status": "STRONG_TRANSCRIPTION",
+    "registry_provenance": [
+      "BATCH04/01_SOURCE_REGISTRY/source_registry_batch04.json"
+    ],
+    "normalization_state": "CANONICAL_SINGLE_SOURCE_RECORD",
+    "canonical_attribution_status": "ATTRIBUTION_DISPUTED",
+    "canonical_text_status": "TEXT_STATUS_REVIEW"
+  },
+  {
+    "source_id": "SRC-YLJ-MT-003",
+    "title_zh": "疑龍經·上篇",
+    "title_vi": "Nghi Long Kinh — Thượng thiên",
+    "work": "疑龍經",
+    "attribution": "舊本題唐楊筠松",
+    "witness": "Wikisource",
+    "url_primary": "https://zh.wikisource.org/wiki/%E6%92%BC%E9%BE%8D%E7%B6%93/%E7%96%91%E9%BE%8D%E7%B6%93/%E4%B8%8A%E7%AF%87",
+    "scope": "FORM_SCHOOL; MANY PASSAGES ORIGINATE IN BURIAL CONTEXT",
+    "attribution_status": "DISPUTED",
+    "text_status": "STRONG_TRANSCRIPTION",
+    "registry_provenance": [
+      "BATCH04/01_SOURCE_REGISTRY/source_registry_batch04.json"
+    ],
+    "normalization_state": "CANONICAL_SINGLE_SOURCE_RECORD",
+    "canonical_attribution_status": "ATTRIBUTION_DISPUTED",
+    "canonical_text_status": "TEXT_STATUS_REVIEW"
+  },
+  {
+    "source_id": "SRC-YZFS-001",
+    "title_zh": "營造法式",
+    "title_vi": "Doanh Tạo Pháp Thức",
+    "author_zh": "李誡",
+    "author_vi": "Lý Giới",
+    "work_period": "Bắc Tống",
+    "promulgation": 1103,
+    "witness": "影宋朱絲欄鈔本 / 四庫本 / các bản công khai",
+    "holding": "National Central Library Taiwan và các thư viện khác",
+    "scope": [
+      "kiến trúc",
+      "kết cấu",
+      "vật liệu",
+      "định mức",
+      "công pháp"
+    ],
+    "status": "VERIFIED_PRIMARY",
+    "registry_provenance": [
+      "BATCH01/01_SOURCE_REGISTRY/source_registry.json"
+    ],
+    "normalization_state": "CANONICAL_SINGLE_SOURCE_RECORD",
+    "canonical_attribution_status": "ATTRIBUTION_UNKNOWN_OR_NOT_APPLICABLE",
+    "canonical_text_status": "TEXT_STATUS_REVIEW"
+  },
+  {
+    "source_id": "SRC-YZSS-001",
+    "title_zh": "陽宅十書",
+    "title_vi": "Dương Trạch Thập Thư",
+    "attributed_author_zh": "王君榮",
+    "author_vi": "Vương Quân Vinh",
+    "work_period": "Minh",
+    "work_identity_note": "Minh sử ghi 王君榮《陽宅十書》四卷; bản in/OCR khác có thể thể hiện số quyển khác.",
+    "witness": "掃葉山房重刊本",
+    "witness_date": 1882,
+    "holding": "Harvard-Yenching Library",
+    "digitizer": "Google Books / Chinese Text Project",
+    "scope": [
+      "dương trạch",
+      "ngoại hình",
+      "phúc nguyên",
+      "cửa",
+      "nước",
+      "bố trí"
+    ],
+    "status": "VERIFIED_PRIMARY_WITH_OCR_CAUTION",
+    "registry_provenance": [
+      "BATCH02/01_SOURCE_AUDIT/source_registry_batch02.json",
+      "BATCH01/01_SOURCE_REGISTRY/source_registry.json"
+    ],
+    "normalization_state": "CANONICAL_DRAFT_NEEDS_HUMAN_REVIEW",
+    "canonical_attribution_status": "ATTRIBUTION_UNKNOWN_OR_NOT_APPLICABLE",
+    "canonical_text_status": "OCR_UNVERIFIED_OR_CAUTION"
+  },
+  {
+    "source_id": "SRC-YZSS-EXT-001",
+    "title_zh": "陽宅十書·論宅外形第一",
+    "title_vi": "Dương Trạch Thập Thư — Luận ngoại hình nhà ở, thiên thứ nhất",
+    "work": "陽宅十書",
+    "attribution": "王君榮纂輯 / Vương Quân Vinh biên tập theo truyền bản",
+    "witness": "《古今圖書集成》藝術典卷675 chép lại đoạn văn tương đối sạch; đối chiếu CText OCR",
+    "url_primary": "https://zh.wikisource.org/wiki/%E6%AC%BD%E5%AE%9A%E5%8F%A4%E4%BB%8A%E5%9C%96%E6%9B%B8%E9%9B%86%E6%88%90/%E5%8D%9A%E7%89%A9%E5%BD%99%E7%B7%A8/%E8%97%9D%E8%A1%93%E5%85%B8/%E7%AC%AC675%E5%8D%B7",
+    "url_crosscheck": "https://ctext.org/wiki.pl?chapter=412426&if=en",
+    "scope": "DIRECT_YANGZHAI",
+    "attribution_status": "EDITION/COMPILATION_REQUIRES_BIBLIOGRAPHIC_CARE",
+    "text_status": "CROSS_WITNESS_STRONG",
+    "registry_provenance": [
+      "BATCH04/01_SOURCE_REGISTRY/source_registry_batch04.json"
+    ],
+    "normalization_state": "CANONICAL_SINGLE_SOURCE_RECORD",
+    "canonical_attribution_status": "ATTRIBUTION_UNKNOWN_OR_NOT_APPLICABLE",
+    "canonical_text_status": "TEXT_STATUS_REVIEW"
+  },
+  {
+    "source_id": "SRC-ZANG-005",
+    "title_zh": "葬書·內篇",
+    "title_vi": "Táng Thư — Nội thiên",
+    "work": "葬書",
+    "attribution": "傳晉郭璞; 四庫認為必出郭璞無可徵信",
+    "witness": "Wikisource; bản có lịch sử biên tập/phân thiên phức tạp",
+    "url_primary": "https://zh.wikisource.org/zh-hant/%E8%91%AC%E6%9B%B8/%E5%85%A7%E7%AF%87",
+    "scope": "YINZHAI_ORIGIN; CONCEPTUAL_REFERENCE_ONLY",
+    "attribution_status": "DISPUTED",
+    "text_status": "TEXTUAL_TRADITION_STRONG_SCOPE_WARNING",
+    "registry_provenance": [
+      "BATCH04/01_SOURCE_REGISTRY/source_registry_batch04.json"
+    ],
+    "normalization_state": "CANONICAL_SINGLE_SOURCE_RECORD",
+    "canonical_attribution_status": "ATTRIBUTION_DISPUTED",
+    "canonical_text_status": "TEXT_STATUS_REVIEW"
+  },
+  {
+    "source_id": "SRC-ZJ-001",
+    "title_zh": "宅經",
+    "title_vi": "Trạch Kinh",
+    "attribution": "舊本題黃帝; 四庫判為依託",
+    "witness_note": "Tứ Khố xác định việc gán Hoàng Đế là y thác; bản văn được xem là tương đối cổ trong nhóm thuật số trạch pháp.",
+    "url": "https://zh.wikisource.org/wiki/%E5%AE%85%E7%B6%93_(%E5%9B%9B%E5%BA%AB%E5%85%A8%E6%9B%B8%E6%9C%AC)/%E5%85%A8%E8%A6%BD",
+    "source_role": "PRIMARY_TRADITION_TEXT_PSEUDEPIGRAPHIC",
+    "attribution_status": "PSEUDEPIGRAPHIC",
+    "text_status": "TRANSCRIPTION_STRONG",
+    "registry_provenance": [
+      "BATCH02/01_SOURCE_AUDIT/source_registry_batch02.json",
+      "BATCH01/01_SOURCE_REGISTRY/source_registry.json"
+    ],
+    "normalization_state": "CANONICAL_DRAFT_NEEDS_HUMAN_REVIEW",
+    "canonical_attribution_status": "PSEUDEPIGRAPHIC",
+    "canonical_text_status": "TRANSCRIPTION_STRONG_OR_VERIFIED"
+  },
+  {
+    "source_id": "SRC-ZJ-SYS-004",
+    "title_zh": "宅經·卷上",
+    "title_vi": "Trạch Kinh — Quyển thượng",
+    "work": "宅經",
+    "attribution": "舊本題黃帝; 四庫認為依託",
+    "witness": "Wikisource Tứ Khố",
+    "url_primary": "https://zh.wikisource.org/zh-hant/%E5%AE%85%E7%B6%93_%28%E5%9B%9B%E5%BA%AB%E5%85%A8%E6%9B%B8%E6%9C%AC%29/%E5%8D%B7%E4%B8%8A",
+    "scope": "DIRECT_YANGZHAI",
+    "attribution_status": "PSEUDEPIGRAPHIC",
+    "text_status": "STRONG_TRANSCRIPTION",
+    "registry_provenance": [
+      "BATCH04/01_SOURCE_REGISTRY/source_registry_batch04.json"
+    ],
+    "normalization_state": "CANONICAL_SINGLE_SOURCE_RECORD",
+    "canonical_attribution_status": "PSEUDEPIGRAPHIC",
+    "canonical_text_status": "TEXT_STATUS_REVIEW"
+  }
+]

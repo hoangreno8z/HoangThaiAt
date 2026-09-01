@@ -1,0 +1,70 @@
+{
+  "$id": "lapque.room_graph_engine.v0.10",
+  "principles": [
+    "Geometry first; room function labels second; classical interpretation third.",
+    "Historical terms and modern functions are separate namespaces.",
+    "Doors create graph edges; walls do not imply connectivity.",
+    "A room can have multiple openings and multiple circulation roles.",
+    "Do not infer privacy, auspiciousness or hierarchy solely from area."
+  ],
+  "entities": {
+    "ROOM": {
+      "geometry": "Polygon",
+      "modern_function": "LIVING|BEDROOM|KITCHEN|WC|OFFICE|MEETING|STORAGE|SERVICE|OTHER|UNKNOWN",
+      "historical_term_tags": [
+        "堂",
+        "廳",
+        "廂",
+        "房",
+        "廊",
+        "中堂",
+        "UNKNOWN"
+      ],
+      "floor_index": "integer",
+      "area": "number"
+    },
+    "DOOR": {
+      "geometry": "Segment",
+      "connects": [
+        "ROOM_OR_SPACE_A",
+        "ROOM_OR_SPACE_B"
+      ],
+      "role": "MAIN|INTERNAL|SERVICE|EGRESS|ACCESSIBLE_ROUTE|UNKNOWN"
+    },
+    "CIRCULATION_SPACE": {
+      "geometry": "Polygon/Polyline",
+      "type": "CORRIDOR|GALLERY|LOBBY|COURT|STAIR_LANDING|UNKNOWN"
+    },
+    "OPEN_COURT": {
+      "geometry": "Polygon",
+      "concept_links": [
+        "INTERNAL_FRONT_COURT",
+        "TRADITIONAL_TIANJING",
+        "MODERN_LIGHTWELL",
+        "NONE"
+      ]
+    }
+  },
+  "graphs": {
+    "ADJACENCY_GRAPH": "spaces sharing boundary/access",
+    "DOOR_GRAPH": "nodes=spaces, edges=doors",
+    "CIRCULATION_GRAPH": "walkable network; route lengths and dead ends",
+    "ACCESSIBILITY_GRAPH": "only when applicable; continuous accessible route",
+    "EGRESS_GRAPH": "fire-safety layer where applicable"
+  },
+  "metrics": [
+    "room_area",
+    "room_aspect_ratio",
+    "door_count",
+    "door_to_door_alignment_angle",
+    "door_to_court_axis",
+    "distance_to_main_entry",
+    "circulation_depth",
+    "graph_degree",
+    "shared_exit_count",
+    "dead_end_length",
+    "primary_secondary_area_ratio"
+  ],
+  "ancient_threshold_policy": "All metrics continuous; no ancient cutoff unless verified source.",
+  "term_policy": "historical_term_tags never auto-derived from modern_function."
+}

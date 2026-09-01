@@ -1,0 +1,59 @@
+[
+  {
+    "source_id": "SRC-GJTS675-P69",
+    "title_zh": "欽定古今圖書集成·藝術典·第六百七十五卷·陽宅十書一",
+    "title_vi": "Cổ Kim Đồ Thư Tập Thành, Nghệ Thuật Điển quyển 675 — chép Dương Trạch Thập Thư",
+    "page": "Gujin Tushu Jicheng Vol.476 scan p.69",
+    "url": "https://zh.wikisource.org/wiki/Page:Gujin_Tushu_Jicheng,_Volume_476_(1700-1725).djvu/69",
+    "role": "TEXTUAL_CROSS_WITNESS",
+    "proofread_status": "WIKISOURCE_PAGE_UNPROOFREAD",
+    "scope": "DIRECT_YANGZHAI",
+    "notes": "Có scan page image. Dùng để sửa OCR CText, nhưng chưa coi là critical edition."
+  },
+  {
+    "source_id": "SRC-GJTS675-P70",
+    "title_zh": "欽定古今圖書集成·藝術典·第六百七十五卷·陽宅外形吉凶圖說",
+    "title_vi": "Cổ Kim Đồ Thư Tập Thành — Đồ thuyết cát hung ngoại hình Dương Trạch",
+    "page": "Gujin Tushu Jicheng Vol.476 scan p.70",
+    "url": "https://zh.wikisource.org/wiki/Page:Gujin_Tushu_Jicheng,_Volume_476_(1700-1725).djvu/70",
+    "role": "FIGURE_TEXT_WITNESS",
+    "proofread_status": "WIKISOURCE_PAGE_UNPROOFREAD_LAYOUT_COMPLEX",
+    "scope": "DIRECT_YANGZHAI",
+    "notes": "Caption và dòng chữ quanh hình có thể bị đọc sai thứ tự; không tự nối câu khi layout không chắc."
+  },
+  {
+    "source_id": "SRC-GJTS675-P71",
+    "title_zh": "欽定古今圖書集成·藝術典·第六百七十五卷·陽宅外形吉凶圖說",
+    "title_vi": "Cổ Kim Đồ Thư Tập Thành — Đồ thuyết cát hung ngoại hình Dương Trạch, trang tiếp",
+    "page": "Gujin Tushu Jicheng Vol.476 scan p.71",
+    "url": "https://zh.wikisource.org/wiki/Page:Gujin_Tushu_Jicheng,_Volume_476_(1700-1725).djvu/71",
+    "role": "FIGURE_TEXT_WITNESS",
+    "proofread_status": "WIKISOURCE_PAGE_UNPROOFREAD_LAYOUT_COMPLEX",
+    "scope": "DIRECT_YANGZHAI",
+    "notes": "Có các câu có vẻ xung đột với trang trước; giữ nguyên conflict cho tới khi kiểm hình scan/edition."
+  },
+  {
+    "source_id": "SRC-DNBS-V5",
+    "title_zh": "多能鄙事·卷之五·住宅諸忌",
+    "title_vi": "Đa Năng Bỉ Sự, quyển 5 — Chư kỵ về nhà ở",
+    "page": "住宅諸忌",
+    "url": "https://zh.wikisource.org/wiki/%E5%A4%9A%E8%83%BD%E9%84%99%E4%BA%8B/%E5%8D%B7%E4%B9%8B%E4%BA%94",
+    "role": "CROSS_WITNESS",
+    "proofread_status": "TRANSCRIPTION_AVAILABLE_SCAN_LINKED",
+    "scope": "DIRECT_YANGZHAI",
+    "attribution": "舊本題劉基 / cựu bản đề Lưu Cơ",
+    "attribution_status": "DISPUTED/PSEUDEPIGRAPHIC_RISK",
+    "witness_independence": "UNKNOWN",
+    "notes": "Không được coi là 'xác nhận độc lập' cho 陽宅十書 nếu chưa chứng minh lịch sử truyền văn."
+  },
+  {
+    "source_id": "SRC-CTEXT-YZSS",
+    "title_zh": "陽宅十書",
+    "title_vi": "Dương Trạch Thập Thư — CText OCR",
+    "url": "https://ctext.org/wiki.pl?chapter=412426&if=en",
+    "role": "OCR_INDEX_AND_DISCOVERY",
+    "proofread_status": "OCR_NOISY",
+    "scope": "DIRECT_YANGZHAI",
+    "notes": "Dùng tìm vị trí và đối chiếu, không khóa quotation nếu chưa có witness sạch hơn."
+  }
+]

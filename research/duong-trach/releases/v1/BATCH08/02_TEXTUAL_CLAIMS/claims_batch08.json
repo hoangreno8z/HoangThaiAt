@@ -1,0 +1,110 @@
+[
+  {
+    "claim_id": "DOOR-001",
+    "source_id": "SRC-GJTS676-DOOR",
+    "original": "惟是居房屋中，氣因隔別，所以通氣，秖此門戶耳。",
+    "hanviet": "Duy thị cư phòng ốc trung, khí nhân cách biệt, sở dĩ thông khí, chỉ thử môn hộ nhĩ.",
+    "literal_vi": "Theo văn bản, trong nhà các không gian bị ngăn cách, nơi thông 'khí' chính là cửa ngõ.",
+    "editorial": "Khí ở đây là khái niệm truyền thống; không đồng nhất với lưu lượng gió HVAC.",
+    "state": "TRADITIONAL_FRAMEWORK"
+  },
+  {
+    "claim_id": "DOOR-002",
+    "source_id": "SRC-GJTS676-DOOR",
+    "original": "門戶通氣之處，和氣則致祥，乖氣則致戾。",
+    "hanviet": "Môn hộ thông khí chi xứ, hòa khí tắc trí tường, quai khí tắc trí lệ.",
+    "literal_vi": "Cửa là nơi văn bản xem như chỗ thông khí; 'hòa khí' được coi thuận, 'quai khí' bị coi nghịch.",
+    "editorial": "Không sử dụng câu này để khoa học hóa khí. Geometry chỉ mô tả cửa, hướng, vật cản, luồng tiếp cận.",
+    "state": "TRADITIONAL_FRAMEWORK"
+  },
+  {
+    "claim_id": "DOOR-003",
+    "source_id": "SRC-GJTS676-DOOR",
+    "original": "須避直衝尖射、砂水斜割、悲崖險道、惡石山拗、崩破歪峰、枯木神廟之類。",
+    "hanviet": "Tu tị trực xung tiêm xạ, sa thủy tà cát, bi nhai hiểm đạo, ác thạch sơn ảo, băng phá oa phong, khô mộc thần miếu chi loại.",
+    "literal_vi": "Khi xét cửa, văn bản khuyên tránh các thế trực xung, vật nhọn hướng tới, hình thế/nước cắt xiên, đường hiểm và một số ngoại cảnh bất lợi.",
+    "editorial": "Tách các observable hình học khỏi các danh mục mang màu sắc truyền thống. 'Thần miếu' không được chuyển thành nguy cơ vật lý.",
+    "state": "CORE_GEOMETRY_MOTIF"
+  },
+  {
+    "claim_id": "DOOR-004",
+    "source_id": "SRC-GJTS676-DOOR",
+    "original": "宜迎水迎山方吉。",
+    "hanviet": "Nghi nghênh thủy nghênh sơn phương cát.",
+    "literal_vi": "Văn bản cho rằng cửa thuận thế đón nước/đón núi thì tốt.",
+    "editorial": "Chỉ giữ traditional form statement; mọi nguy cơ thủy/sườn dốc đi qua hard gate.",
+    "state": "FORM_MOTIF_HARD_GATE_REQUIRED"
+  },
+  {
+    "claim_id": "DOOR-005",
+    "source_id": "SRC-GJTS677-DOOR",
+    "original": "凡宅開門路及車門，不要直射，謂之穿心殺。",
+    "hanviet": "Phàm trạch khai môn lộ cập xa môn, bất yếu trực xạ, vị chi xuyên tâm sát.",
+    "literal_vi": "Lối vào/cửa xe không nên trực xạ theo văn bản; thế này được gọi 'xuyên tâm sát'.",
+    "editorial": "Geometry tag = DIRECT_ACCESS_AXIS. Không mang theo phán tử vong của cổ văn.",
+    "state": "CORE_ACCESS_GEOMETRY"
+  },
+  {
+    "claim_id": "DOOR-006",
+    "source_id": "SRC-GJTS677-DOOR",
+    "original": "凡宅側屋，不可衝大門。",
+    "hanviet": "Phàm trạch trắc ốc, bất khả xung đại môn.",
+    "literal_vi": "Cánh/nhà phụ bên cạnh không nên xung trực tiếp đại môn.",
+    "editorial": "Cần xác định cạnh/góc/trục công trình phụ hướng vào opening của cổng.",
+    "state": "CORE_OBJECT_AXIS_GEOMETRY"
+  },
+  {
+    "claim_id": "DOOR-007",
+    "source_id": "SRC-GJTS677-DOOR",
+    "original": "凡宅住屋，莫要屋角水射其門。",
+    "hanviet": "Phàm trạch trụ ốc, mạc yếu ốc giác thủy xạ kỳ môn.",
+    "literal_vi": "Văn bản tránh thế góc nhà hoặc dòng nước 'xạ' vào cửa.",
+    "editorial": "Tách `corner_ray_to_door` và `water_flow_to_door` thành hai observables; câu có thể cần punctuation/context check.",
+    "state": "GEOMETRY_CANDIDATE_SCAN_CHECK"
+  },
+  {
+    "claim_id": "DOOR-008",
+    "source_id": "SRC-GJTS676-DOOR",
+    "original": "氣口者門也，門為初爻永不變更。",
+    "hanviet": "Khí khẩu giả môn dã, môn vi sơ hào vĩnh bất biến canh.",
+    "literal_vi": "Trong phép Trang Quái của đoạn này, cửa được gọi là khí khẩu và dùng làm sơ hào cố định.",
+    "editorial": "Đây là SCHOOL-SPECIFIC rule của 元空裝卦 trong truyền bản, không nâng thành định nghĩa chung cho mọi phái.",
+    "state": "SCHOOL_SPECIFIC_DEFERRED"
+  },
+  {
+    "claim_id": "DOOR-009",
+    "source_id": "SRC-GJTS676-DOOR",
+    "original": "凡宅中有牆隔斷，牆間開有門，其九星即當從此處起，與別院并無關涉。",
+    "hanviet": "Phàm trạch trung hữu tường cách đoạn, tường gian khai hữu môn, kỳ cửu tinh tức đương tòng thử xứ khởi, dữ biệt viện tịnh vô quan thiệp.",
+    "literal_vi": "Trong phép '截路分房', nếu trong nhà có tường ngăn và cửa xuyên qua tường, phép tính cửu tinh được khởi lại từ đó, tách với viện khác.",
+    "editorial": "Rất quan trọng cho compound nhiều sân, nhưng là school-specific. Geometry engine chỉ xây enclosure graph; rule cửu tinh deferred.",
+    "state": "SCHOOL_SPECIFIC_ENCLOSURE_GRAPH"
+  },
+  {
+    "claim_id": "DOOR-010",
+    "source_id": "SRC-GJTS676-DOOR",
+    "original": "凡宅雖有二十四山，專以八山主之。",
+    "hanviet": "Phàm trạch tuy hữu nhị thập tứ sơn, chuyên dĩ bát sơn chủ chi.",
+    "literal_vi": "Trong Môn Hộ Ca của truyền bản này, 24 sơn cửa được quy về tám nhóm.",
+    "editorial": "Mapping 24 sơn → 8 quái giữ trong school layer; không kích hoạt ở Batch 08.",
+    "state": "DIRECTION_SCHOOL_DEFERRED"
+  },
+  {
+    "claim_id": "DOOR-011",
+    "source_id": "SRC-GJTS676-DOOR",
+    "original": "海內相傳，門尺數種……後人名為魯班尺。",
+    "hanviet": "Hải nội tương truyền, môn xích sổ chủng... hậu nhân danh vi Lỗ Ban xích.",
+    "literal_vi": "Văn bản thừa nhận lưu truyền nhiều loại thước cửa và gọi loại được trình bày ở đây là Lỗ Ban xích.",
+    "editorial": "Chính câu 'có nhiều loại' là lý do không lấy một kích thước cm trên internet làm chuẩn cổ duy nhất.",
+    "state": "MEASUREMENT_TRADITION_VARIANT_WARNING"
+  },
+  {
+    "claim_id": "DOOR-012",
+    "source_id": "SRC-GJTS676-DOOR",
+    "original": "其尺前面八寸，以財、病、離、義、官劫、害、吉為序。",
+    "hanviet": "Kỳ xích tiền diện bát thốn, dĩ tài, bệnh, ly, nghĩa, quan, kiếp, hại, cát vi tự.",
+    "literal_vi": "Mặt trước thước trong truyền bản chia thành tám phần với các nhãn Tài, Bệnh, Ly, Nghĩa, Quan, Kiếp, Hại, Cát.",
+    "editorial": "Không quy đổi thốn cổ sang mm nếu chưa xác định witness, chuẩn thước và niên đại vật chất.",
+    "state": "HISTORICAL_MEASUREMENT_NOT_PRODUCTION"
+  }
+]

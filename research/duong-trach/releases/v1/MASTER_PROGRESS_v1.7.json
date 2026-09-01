@@ -1,0 +1,19 @@
+{
+  "date": "2026-09-01",
+  "completed_batches": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+  ],
+  "qa_checkpoint_A": "PASS_WITH_SOURCE_REGISTRY_NORMALIZATION_REQUIRED",
+  "next": "BATCH12_BED_SLEEPING_ROOM",
+  "critical_method_change": "NO_DIRECT_EVIDENCE_YET is now an explicit output state for common folklore claims."
+}

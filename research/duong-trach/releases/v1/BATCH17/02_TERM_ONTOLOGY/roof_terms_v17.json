@@ -1,0 +1,45 @@
+{
+  "檐": {
+    "hanviet": "diêm",
+    "working_sense": "eave/roof edge depending historical context",
+    "modern_mapping": "EAVE_CANDIDATE"
+  },
+  "外檐": {
+    "hanviet": "ngoại diêm",
+    "working_sense": "outer eave",
+    "modern_mapping": "EXTERIOR_EAVE"
+  },
+  "水檐": {
+    "hanviet": "thủy diêm",
+    "working_sense": "eave/roof-water edge or runoff-related eave term in context",
+    "modern_mapping": "HISTORICAL_ROOF_RUNOFF_EDGE",
+    "guard": "Not automatically modern gutter."
+  },
+  "屋脊": {
+    "hanviet": "ốc tích",
+    "working_sense": "roof ridge",
+    "modern_mapping": "ROOF_RIDGE"
+  },
+  "棟": {
+    "hanviet": "đống",
+    "working_sense": "ridge/main roof beam depending text",
+    "modern_mapping": "RIDGE_OR_PRIMARY_ROOF_MEMBER_CONTEXTUAL"
+  },
+  "瓦": {
+    "hanviet": "ngõa",
+    "working_sense": "roof tile",
+    "modern_mapping": "ROOF_TILE_GENERIC"
+  },
+  "斜雨潑壁": {
+    "hanviet": "tà vũ bát bích",
+    "working_sense": "oblique/driving rain splashing wall",
+    "modern_mapping": "WIND_DRIVEN_RAIN_EXPOSURE_CANDIDATE",
+    "guard": "No automatic rainfall intensity."
+  },
+  "簷水相射": {
+    "hanviet": "diêm thủy tương xạ",
+    "working_sense": "eave runoff/water trajectories mutually directed/striking in historical phrase",
+    "modern_mapping": "ROOF_RUNOFF_VECTOR_INTERACTION",
+    "guard": "Not equivalent to roof ridge/roof corner pointing."
+  }
+}

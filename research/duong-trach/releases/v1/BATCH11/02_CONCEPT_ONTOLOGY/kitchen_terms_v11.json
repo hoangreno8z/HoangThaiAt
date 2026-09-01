@@ -1,0 +1,39 @@
+{
+  "灶": {
+    "hanviet": "táo",
+    "working_sense": "historical stove/hearth; may include masonry cooking installation",
+    "modern_equivalence": "NOT_EXACT",
+    "modern_candidates": [
+      "gas cooktop",
+      "solid-fuel stove",
+      "electric/induction cooktop"
+    ],
+    "rule": "Mapping must declare fuel/technology."
+  },
+  "廚": {
+    "hanviet": "trù",
+    "working_sense": "kitchen/cooking place in context",
+    "modern_equivalence": "FUNCTIONAL_APPROXIMATION_ALLOWED_WITH_LABEL"
+  },
+  "火唵": {
+    "hanviet": "hỏa am",
+    "working_sense": "source explicitly identifies it with 廚房廚灶 in this textual tradition",
+    "modern_equivalence": "SCHOOL_TERM_NOT_GENERIC_KITCHEN_RULE",
+    "rule": "Direction calculation disabled outside its school module."
+  },
+  "井": {
+    "hanviet": "tỉnh",
+    "working_sense": "well",
+    "modern_equivalence": "groundwater well only, not sink/tap automatically"
+  },
+  "釜": {
+    "hanviet": "phủ",
+    "working_sense": "cauldron/pot",
+    "modern_equivalence": "not a modern appliance category"
+  },
+  "突": {
+    "hanviet": "đột",
+    "working_sense": "stove/chimney-related component in dimension passage; exact object requires philological/scan check",
+    "modern_equivalence": "UNRESOLVED"
+  }
+}

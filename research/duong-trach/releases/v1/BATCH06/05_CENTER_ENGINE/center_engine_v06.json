@@ -1,0 +1,58 @@
+{
+  "$id": "lapque.center_engine.v0.6",
+  "premise": "There is no single center valid for every task.",
+  "center_candidates": {
+    "AREA_CENTROID": {
+      "definition": "Centroid of polygon area, accounting for holes.",
+      "good_for": [
+        "mass-balance geometry",
+        "area partition reference"
+      ],
+      "limitations": [
+        "may lie outside a strongly concave polygon"
+      ]
+    },
+    "BOUNDING_BOX_CENTER": {
+      "definition": "Center of axis-aligned bounding box.",
+      "good_for": [
+        "UI framing"
+      ],
+      "limitations": [
+        "orientation-dependent and weak for irregular sites"
+      ]
+    },
+    "MIN_ROTATED_RECT_CENTER": {
+      "definition": "Center of minimum rotated rectangle.",
+      "good_for": [
+        "reference envelope candidate",
+        "principal footprint frame"
+      ],
+      "limitations": [
+        "can hide meaningful concavities"
+      ]
+    },
+    "POLYLABEL": {
+      "definition": "Pole of inaccessibility / point maximizing distance from polygon boundary.",
+      "good_for": [
+        "label placement",
+        "interior visual anchor"
+      ],
+      "limitations": [
+        "not an ancient 'trung cung' rule"
+      ]
+    },
+    "FUNCTIONAL_CENTER": {
+      "definition": "Human/architect-defined functional circulation center.",
+      "good_for": [
+        "design analysis"
+      ],
+      "limitations": [
+        "subjective; not geometry-only"
+      ]
+    }
+  },
+  "traditional_overlay_policy": {
+    "status": "SCHOOL_SPECIFIC_NOT_YET_LOCKED",
+    "rule": "Do not call any candidate 'Trung Cung' until the relevant school/source defines the method."
+  }
+}

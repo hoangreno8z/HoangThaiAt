@@ -1,0 +1,58 @@
+{
+  "layers": {
+    "DAYLIGHT": {
+      "variables": [
+        "sky_view",
+        "window_area",
+        "obstruction",
+        "orientation"
+      ],
+      "rule": "evaluate by applicable building standards/design methods"
+    },
+    "VENTILATION": {
+      "variables": [
+        "opening_area",
+        "cross_ventilation_path",
+        "wind_exposure",
+        "stack_height"
+      ],
+      "rule": "do not equate traditional 氣 with measured airflow"
+    },
+    "DRAINAGE": {
+      "variables": [
+        "catchment",
+        "drain_capacity",
+        "low_points",
+        "overflow_path"
+      ],
+      "rule": "no stagnant water; hydrology/plumbing dominates"
+    },
+    "HEAT": {
+      "variables": [
+        "solar_gain",
+        "surface_material",
+        "shade",
+        "height_width_ratio"
+      ],
+      "rule": "courtyard can overheat; no universal 'open is good'"
+    },
+    "FIRE_SMOKE": {
+      "variables": [
+        "connected_storeys",
+        "atrium_void",
+        "smoke_spread",
+        "egress"
+      ],
+      "rule": "applicable fire-safety design can override spatial preference"
+    },
+    "PRIVACY_NOISE": {
+      "variables": [
+        "view_lines",
+        "distance",
+        "acoustic_exposure"
+      ],
+      "rule": "human-use layer"
+    }
+  },
+  "hard_rule": "MODERN safety/health failure cannot be repaired by a classical auspicious label."
+}

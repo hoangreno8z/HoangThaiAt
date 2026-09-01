@@ -1,0 +1,474 @@
+[
+  {
+    "rule_id": "R-MOTIF-001",
+    "motif_id": "MOTIF-001",
+    "domain": "SITE_SHAPE_ROAD_WATER",
+    "source_ids": [
+      "SRC-GJTS675-P69"
+    ],
+    "observable": [
+      "site_context",
+      "terrain",
+      "water",
+      "roads",
+      "surrounding_mass"
+    ],
+    "traditional_outcome": null,
+    "modern_causality": "NONE_INFERRED",
+    "ancient_numeric_threshold": null,
+    "engine_threshold": null,
+    "publish_state": "CANDIDATE",
+    "block_reason": null
+  },
+  {
+    "rule_id": "R-MOTIF-002",
+    "motif_id": "MOTIF-002",
+    "domain": "SITE_SHAPE_ROAD_WATER",
+    "source_ids": [
+      "SRC-GJTS675-P69",
+      "SRC-DNBS-V5"
+    ],
+    "observable": [
+      "usable_area",
+      "slope_surface",
+      "grade_breaks"
+    ],
+    "traditional_outcome": "吉",
+    "modern_causality": "NONE_INFERRED",
+    "ancient_numeric_threshold": null,
+    "engine_threshold": null,
+    "publish_state": "CANDIDATE",
+    "block_reason": null
+  },
+  {
+    "rule_id": "R-MOTIF-003",
+    "motif_id": "MOTIF-003",
+    "domain": "SITE_SHAPE_ROAD_WATER",
+    "source_ids": [
+      "SRC-GJTS675-P69"
+    ],
+    "observable": [
+      "water_curvature_relative_to_site",
+      "flow_direction",
+      "distance_to_water"
+    ],
+    "traditional_outcome": "貴",
+    "modern_causality": "NONE_INFERRED",
+    "ancient_numeric_threshold": null,
+    "engine_threshold": null,
+    "publish_state": "CANDIDATE",
+    "block_reason": null
+  },
+  {
+    "rule_id": "R-MOTIF-004",
+    "motif_id": "MOTIF-004",
+    "domain": "SITE_SHAPE_ROAD_WATER",
+    "source_ids": [
+      "SRC-GJTS675-P69"
+    ],
+    "observable": [
+      "road_geometry_left",
+      "road_geometry_right",
+      "road_curvature"
+    ],
+    "traditional_outcome": "忌",
+    "modern_causality": "NONE_INFERRED",
+    "ancient_numeric_threshold": null,
+    "engine_threshold": null,
+    "publish_state": "BLOCKED",
+    "block_reason": "UNKNOWN_UNTIL_TERM_RESOLVED"
+  },
+  {
+    "rule_id": "R-MOTIF-005",
+    "motif_id": "MOTIF-005",
+    "domain": "SITE_SHAPE_ROAD_WATER",
+    "source_ids": [
+      "SRC-GJTS675-P69"
+    ],
+    "observable": [
+      "water_outlet_geometry",
+      "closure",
+      "constriction"
+    ],
+    "traditional_outcome": null,
+    "modern_causality": "NONE_INFERRED",
+    "ancient_numeric_threshold": null,
+    "engine_threshold": null,
+    "publish_state": "CANDIDATE",
+    "block_reason": null
+  },
+  {
+    "rule_id": "R-MOTIF-006",
+    "motif_id": "MOTIF-006",
+    "domain": "SITE_SHAPE_ROAD_WATER",
+    "source_ids": [
+      "SRC-GJTS675-P69",
+      "SRC-DNBS-V5"
+    ],
+    "observable": [
+      "left_water",
+      "right_road",
+      "front_waterbody",
+      "rear_landform"
+    ],
+    "traditional_outcome": "佳/最貴",
+    "modern_causality": "NONE_INFERRED",
+    "ancient_numeric_threshold": null,
+    "engine_threshold": null,
+    "publish_state": "CANDIDATE",
+    "block_reason": null
+  },
+  {
+    "rule_id": "R-MOTIF-007",
+    "motif_id": "MOTIF-007",
+    "domain": "SITE_SHAPE_ROAD_WATER",
+    "source_ids": [
+      "SRC-GJTS675-P69",
+      "SRC-DNBS-V5"
+    ],
+    "observable": [
+      "flow_vector",
+      "channel_axis",
+      "parcel_intersection",
+      "erosion_zone"
+    ],
+    "traditional_outcome": null,
+    "modern_causality": "NONE_INFERRED",
+    "ancient_numeric_threshold": null,
+    "engine_threshold": null,
+    "publish_state": "CANDIDATE",
+    "block_reason": null
+  },
+  {
+    "rule_id": "R-MOTIF-008",
+    "motif_id": "MOTIF-008",
+    "domain": "SITE_SHAPE_ROAD_WATER",
+    "source_ids": [
+      "SRC-GJTS675-P69",
+      "SRC-DNBS-V5"
+    ],
+    "observable": [
+      "ridge_axis",
+      "site_axis",
+      "slope",
+      "landslide_hazard"
+    ],
+    "traditional_outcome": null,
+    "modern_causality": "NONE_INFERRED",
+    "ancient_numeric_threshold": null,
+    "engine_threshold": null,
+    "publish_state": "CANDIDATE",
+    "block_reason": null
+  },
+  {
+    "rule_id": "R-MOTIF-009",
+    "motif_id": "MOTIF-009",
+    "domain": "SITE_SHAPE_ROAD_WATER",
+    "source_ids": [
+      "SRC-GJTS675-P69",
+      "SRC-DNBS-V5"
+    ],
+    "observable": [
+      "confluence",
+      "outlet",
+      "channel_count",
+      "floodplain"
+    ],
+    "traditional_outcome": null,
+    "modern_causality": "NONE_INFERRED",
+    "ancient_numeric_threshold": null,
+    "engine_threshold": null,
+    "publish_state": "CANDIDATE",
+    "block_reason": null
+  },
+  {
+    "rule_id": "R-MOTIF-010",
+    "motif_id": "MOTIF-010",
+    "domain": "SITE_SHAPE_ROAD_WATER",
+    "source_ids": [
+      "SRC-GJTS675-P69",
+      "SRC-DNBS-V5"
+    ],
+    "observable": [
+      "approach_axes",
+      "road_network",
+      "bridge_axes",
+      "water_axes"
+    ],
+    "traditional_outcome": "子孫怯弱/不吉利",
+    "modern_causality": "NONE_INFERRED",
+    "ancient_numeric_threshold": null,
+    "engine_threshold": null,
+    "publish_state": "CANDIDATE",
+    "block_reason": null
+  },
+  {
+    "rule_id": "R-MOTIF-011",
+    "motif_id": "MOTIF-011",
+    "domain": "SITE_SHAPE_ROAD_WATER",
+    "source_ids": [
+      "SRC-GJTS675-P69",
+      "SRC-DNBS-V5"
+    ],
+    "observable": [
+      "front_elevation",
+      "rear_elevation",
+      "grade_direction"
+    ],
+    "traditional_outcome": "世出英豪",
+    "modern_causality": "NONE_INFERRED",
+    "ancient_numeric_threshold": null,
+    "engine_threshold": null,
+    "publish_state": "CANDIDATE",
+    "block_reason": null
+  },
+  {
+    "rule_id": "R-MOTIF-012",
+    "motif_id": "MOTIF-012",
+    "domain": "SITE_SHAPE_ROAD_WATER",
+    "source_ids": [
+      "SRC-GJTS675-P69",
+      "SRC-DNBS-V5"
+    ],
+    "observable": [
+      "front_elevation",
+      "rear_elevation",
+      "grade_direction"
+    ],
+    "traditional_outcome": "長幼昏迷",
+    "modern_causality": "NONE_INFERRED",
+    "ancient_numeric_threshold": null,
+    "engine_threshold": null,
+    "publish_state": "CANDIDATE",
+    "block_reason": null
+  },
+  {
+    "rule_id": "R-MOTIF-013",
+    "motif_id": "MOTIF-013",
+    "domain": "SITE_SHAPE_ROAD_WATER",
+    "source_ids": [
+      "SRC-DNBS-V5"
+    ],
+    "observable": [
+      "perimeter_elevation_profile",
+      "center_elevation",
+      "drainage_sink"
+    ],
+    "traditional_outcome": "先富後貧",
+    "modern_causality": "NONE_INFERRED",
+    "ancient_numeric_threshold": null,
+    "engine_threshold": null,
+    "publish_state": "CANDIDATE",
+    "block_reason": null
+  },
+  {
+    "rule_id": "R-MOTIF-014",
+    "motif_id": "MOTIF-014",
+    "domain": "SITE_SHAPE_ROAD_WATER",
+    "source_ids": [
+      "SRC-DNBS-V5",
+      "SRC-GJTS675-P70"
+    ],
+    "observable": [
+      "front_width",
+      "rear_width",
+      "width_profile"
+    ],
+    "traditional_outcome": "安吉/居之穩",
+    "modern_causality": "NONE_INFERRED",
+    "ancient_numeric_threshold": null,
+    "engine_threshold": null,
+    "publish_state": "CANDIDATE",
+    "block_reason": null
+  },
+  {
+    "rule_id": "R-MOTIF-015",
+    "motif_id": "MOTIF-015",
+    "domain": "SITE_SHAPE_ROAD_WATER",
+    "source_ids": [
+      "SRC-DNBS-V5",
+      "SRC-GJTS675-P70"
+    ],
+    "observable": [
+      "front_width",
+      "rear_width",
+      "width_profile"
+    ],
+    "traditional_outcome": "貧乏/不安寧等",
+    "modern_causality": "NONE_INFERRED",
+    "ancient_numeric_threshold": null,
+    "engine_threshold": null,
+    "publish_state": "CANDIDATE",
+    "block_reason": null
+  },
+  {
+    "rule_id": "R-MOTIF-016",
+    "motif_id": "MOTIF-016",
+    "domain": "SITE_SHAPE_ROAD_WATER",
+    "source_ids": [
+      "SRC-DNBS-V5"
+    ],
+    "observable": [
+      "left_depth_or_side_length",
+      "right_depth_or_side_length"
+    ],
+    "traditional_outcome": "吉昌",
+    "modern_causality": "NONE_INFERRED",
+    "ancient_numeric_threshold": null,
+    "engine_threshold": null,
+    "publish_state": "CANDIDATE",
+    "block_reason": null
+  },
+  {
+    "rule_id": "R-MOTIF-017",
+    "motif_id": "MOTIF-017",
+    "domain": "SITE_SHAPE_ROAD_WATER",
+    "source_ids": [
+      "SRC-DNBS-V5"
+    ],
+    "observable": [
+      "left_depth_or_side_length",
+      "right_depth_or_side_length"
+    ],
+    "traditional_outcome": "先富後貧",
+    "modern_causality": "NONE_INFERRED",
+    "ancient_numeric_threshold": null,
+    "engine_threshold": null,
+    "publish_state": "CANDIDATE",
+    "block_reason": null
+  },
+  {
+    "rule_id": "R-MOTIF-018",
+    "motif_id": "MOTIF-018",
+    "domain": "SITE_SHAPE_ROAD_WATER",
+    "source_ids": [
+      "SRC-GJTS675-P69",
+      "SRC-DNBS-V5"
+    ],
+    "observable": [
+      "cardinal_length_ns",
+      "cardinal_length_ew"
+    ],
+    "traditional_outcome": "吉/子孫昌",
+    "modern_causality": "NONE_INFERRED",
+    "ancient_numeric_threshold": null,
+    "engine_threshold": null,
+    "publish_state": "BLOCKED",
+    "block_reason": "DIRECTIONAL_RULE_DEFER_TO_ORIENTATION_MODULE"
+  },
+  {
+    "rule_id": "R-MOTIF-019",
+    "motif_id": "MOTIF-019",
+    "domain": "SITE_SHAPE_ROAD_WATER",
+    "source_ids": [
+      "SRC-GJTS675-P69",
+      "SRC-DNBS-V5"
+    ],
+    "observable": [
+      "cardinal_length_ns",
+      "cardinal_length_ew"
+    ],
+    "traditional_outcome": "VARIANT/CONTESTED",
+    "modern_causality": "NONE_INFERRED",
+    "ancient_numeric_threshold": null,
+    "engine_threshold": null,
+    "publish_state": "BLOCKED",
+    "block_reason": "CONFLICTED_DIRECTIONAL"
+  },
+  {
+    "rule_id": "R-MOTIF-020",
+    "motif_id": "MOTIF-020",
+    "domain": "SITE_SHAPE_ROAD_WATER",
+    "source_ids": [
+      "SRC-GJTS675-P69"
+    ],
+    "observable": [
+      "channel_split_geometry",
+      "front_outflow",
+      "rear_outflow"
+    ],
+    "traditional_outcome": "絕嗣敗財 (tách riêng, không causal)",
+    "modern_causality": "NONE_INFERRED",
+    "ancient_numeric_threshold": null,
+    "engine_threshold": null,
+    "publish_state": "CANDIDATE",
+    "block_reason": null
+  },
+  {
+    "rule_id": "R-MOTIF-021",
+    "motif_id": "MOTIF-021",
+    "domain": "SITE_SHAPE_ROAD_WATER",
+    "source_ids": [
+      "SRC-GJTS675-P71"
+    ],
+    "observable": [
+      "parcel_compactness",
+      "perimeter_levelness"
+    ],
+    "traditional_outcome": "富貴旺人丁",
+    "modern_causality": "NONE_INFERRED",
+    "ancient_numeric_threshold": null,
+    "engine_threshold": null,
+    "publish_state": "BLOCKED",
+    "block_reason": "FIGURE_CAPTION_UNPROOFREAD_REFERENCE_ONLY"
+  },
+  {
+    "rule_id": "R-MOTIF-022",
+    "motif_id": "MOTIF-022",
+    "domain": "SITE_SHAPE_ROAD_WATER",
+    "source_ids": [
+      "SRC-GJTS675-P71",
+      "SRC-GJTS675-P71"
+    ],
+    "observable": [
+      "rear_mass_distance",
+      "front_mass_distance",
+      "front_sky_view",
+      "slope_hazard"
+    ],
+    "traditional_outcome": "TRADITIONAL_GOOD/BAD",
+    "modern_causality": "NONE_INFERRED",
+    "ancient_numeric_threshold": null,
+    "engine_threshold": null,
+    "publish_state": "BLOCKED",
+    "block_reason": "CONTEXT_DISTANCE_UNKNOWN_FIGURE_LAYOUT_UNPROOFREAD"
+  },
+  {
+    "rule_id": "R-MOTIF-023",
+    "motif_id": "MOTIF-023",
+    "domain": "SITE_SHAPE_ROAD_WATER",
+    "source_ids": [
+      "SRC-GJTS675-P71"
+    ],
+    "observable": [
+      "road_approach_count",
+      "intersection_topology",
+      "traffic_volume"
+    ],
+    "traditional_outcome": "凶殃等",
+    "modern_causality": "NONE_INFERRED",
+    "ancient_numeric_threshold": null,
+    "engine_threshold": null,
+    "publish_state": "CANDIDATE",
+    "block_reason": null
+  },
+  {
+    "rule_id": "R-MOTIF-024",
+    "motif_id": "MOTIF-024",
+    "domain": "SITE_SHAPE_ROAD_WATER",
+    "source_ids": [
+      "SRC-GJTS675-P70"
+    ],
+    "observable": [
+      "water_edge",
+      "bank_geometry",
+      "head_of_water_feature"
+    ],
+    "traditional_outcome": "不堪修",
+    "modern_causality": "NONE_INFERRED",
+    "ancient_numeric_threshold": null,
+    "engine_threshold": null,
+    "publish_state": "BLOCKED",
+    "block_reason": "TERM_UNRESOLVED_REFERENCE_ONLY"
+  }
+]

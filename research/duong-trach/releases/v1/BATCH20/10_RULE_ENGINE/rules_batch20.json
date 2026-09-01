@@ -1,0 +1,110 @@
+[
+  {
+    "rule_id": "R-OCC-001",
+    "claim_id": "OCC-001",
+    "source_id": "SRC-XJBF-V11-OCC",
+    "domain": "COMPLETION_MOVE_IN_OCCUPANCY",
+    "publish_state": "CANDIDATE",
+    "date_calculation_enabled": false,
+    "engine_threshold": null,
+    "empirical_causality": false
+  },
+  {
+    "rule_id": "R-OCC-002",
+    "claim_id": "OCC-002",
+    "source_id": "SRC-XJBF-V11-OCC",
+    "domain": "COMPLETION_MOVE_IN_OCCUPANCY",
+    "publish_state": "CANDIDATE",
+    "date_calculation_enabled": false,
+    "engine_threshold": null,
+    "empirical_causality": false
+  },
+  {
+    "rule_id": "R-OCC-003",
+    "claim_id": "OCC-003",
+    "source_id": "SRC-XJBF-V11-OCC",
+    "domain": "COMPLETION_MOVE_IN_OCCUPANCY",
+    "publish_state": "CANDIDATE",
+    "date_calculation_enabled": false,
+    "engine_threshold": null,
+    "empirical_causality": false
+  },
+  {
+    "rule_id": "R-OCC-004",
+    "claim_id": "OCC-004",
+    "source_id": "SRC-XJBF-V34-35-RUZHAI",
+    "domain": "COMPLETION_MOVE_IN_OCCUPANCY",
+    "publish_state": "CANDIDATE",
+    "date_calculation_enabled": false,
+    "engine_threshold": null,
+    "empirical_causality": false
+  },
+  {
+    "rule_id": "R-OCC-005",
+    "claim_id": "OCC-005",
+    "source_id": "SRC-XJBF-V34-35-RUZHAI",
+    "domain": "COMPLETION_MOVE_IN_OCCUPANCY",
+    "publish_state": "REFERENCE_OR_CONTEXT_RULE",
+    "date_calculation_enabled": false,
+    "engine_threshold": null,
+    "empirical_causality": false
+  },
+  {
+    "rule_id": "R-OCC-006",
+    "claim_id": "OCC-006",
+    "source_id": "SRC-XJBF-V34-35-RUZHAI",
+    "domain": "COMPLETION_MOVE_IN_OCCUPANCY",
+    "publish_state": "REFERENCE_OR_CONTEXT_RULE",
+    "date_calculation_enabled": false,
+    "engine_threshold": null,
+    "empirical_causality": false
+  },
+  {
+    "rule_id": "R-OCC-007",
+    "claim_id": "OCC-007",
+    "source_id": "SRC-ZJ-ANMEN-CROSS",
+    "domain": "COMPLETION_MOVE_IN_OCCUPANCY",
+    "publish_state": "REFERENCE_ONLY",
+    "date_calculation_enabled": false,
+    "engine_threshold": null,
+    "empirical_causality": false
+  },
+  {
+    "rule_id": "R-OCC-008",
+    "claim_id": "OCC-008",
+    "source_id": "SRC-ZJ-ANMEN-CROSS",
+    "domain": "COMPLETION_MOVE_IN_OCCUPANCY",
+    "publish_state": "REFERENCE_ONLY",
+    "date_calculation_enabled": false,
+    "engine_threshold": null,
+    "empirical_causality": false
+  },
+  {
+    "rule_id": "MOD-OCC-READY-001",
+    "source_id": "MOD-VBHN-ND06-2025",
+    "domain": "COMPLETION_MOVE_IN_OCCUPANCY",
+    "publish_state": "HARD_GATE_BY_APPLICABILITY",
+    "result": "COMPLETION_ACCEPTANCE_BEFORE_OCCUPANCY",
+    "engine_threshold": "LAW_LOOKUP_NOT_HARDCODED"
+  },
+  {
+    "rule_id": "MOD-OCC-FIRE-001",
+    "source_ids": [
+      "MOD-LAW55-2024-FIRE",
+      "MOD-ND105-2025-FIRE",
+      "MOD-TT36-2025-FIRE"
+    ],
+    "domain": "COMPLETION_MOVE_IN_OCCUPANCY",
+    "publish_state": "HARD_GATE_IF_APPLICABLE",
+    "result": "FIRE_ACCEPTANCE_AND_READINESS",
+    "engine_threshold": "LAW_LOOKUP_NOT_HARDCODED"
+  },
+  {
+    "rule_id": "GOV-OCC-NO-DATE-001",
+    "source_id": "SRC-XJBF-V11-OCC",
+    "domain": "COMPLETION_MOVE_IN_OCCUPANCY",
+    "publish_state": "BLOCK_DATE_OUTPUT",
+    "result": "EVENT_TERMS_READY_CALENDAR_ENGINE_NOT_VALIDATED",
+    "engine_threshold": null
+  }
+]

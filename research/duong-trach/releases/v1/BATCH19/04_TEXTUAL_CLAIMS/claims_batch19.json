@@ -1,0 +1,145 @@
+[
+  {
+    "claim_id": "TIM-001",
+    "source_id": "SRC-XJBF-PREFACE-META",
+    "original": "彼家云吉，此家云凶。",
+    "hanviet": "Bỉ gia vân cát, thử gia vân hung.",
+    "literal_vi": "Lời tựa nêu tình trạng các nhà thuật số phán cát-hung trái ngược nhau.",
+    "classification": "OFFICIAL_META_CRITIQUE",
+    "authority_tier": "A1_AUTHENTICATED_OFFICIAL_CLASSIC",
+    "editorial": "Chính nguồn chuẩn hóa trạch nhật thừa nhận mâu thuẫn truyền thống; engine không được giả vờ mọi hệ đồng nhất.",
+    "state": "GOVERNANCE_CORE"
+  },
+  {
+    "claim_id": "TIM-002",
+    "source_id": "SRC-XJBF-PREFACE-META",
+    "original": "捏造大言。",
+    "hanviet": "Niết tạo đại ngôn.",
+    "literal_vi": "Tấu nghị phê phán việc bịa dựng/phóng đại lời lẽ trong tranh luận về lựa chọn ngày giờ.",
+    "classification": "OFFICIAL_META_CRITIQUE",
+    "authority_tier": "A1_AUTHENTICATED_OFFICIAL_CLASSIC",
+    "editorial": "Dùng làm anti-hallucination invariant; không phải lời phủ định toàn bộ trạch nhật.",
+    "state": "GOVERNANCE_CORE"
+  },
+  {
+    "claim_id": "TIM-003",
+    "source_id": "SRC-XJBF-V11-USAGE",
+    "original": "選擇由事起也。",
+    "hanviet": "Tuyển trạch do sự khởi dã.",
+    "literal_vi": "Việc lựa chọn ngày giờ bắt đầu từ chính loại sự việc cần làm.",
+    "classification": "TRADITIONAL_CALENDAR_METHOD",
+    "authority_tier": "A1_AUTHENTICATED_OFFICIAL_CLASSIC",
+    "editorial": "Đây là căn cứ trực tiếp cho Event-First engine.",
+    "state": "CORE_EVENT_FIRST"
+  },
+  {
+    "claim_id": "TIM-004",
+    "source_id": "SRC-XJBF-V11-USAGE",
+    "original": "修造動土　豎柱上梁",
+    "hanviet": "Tu tạo động thổ; thụ trụ thượng lương.",
+    "literal_vi": "Quyển Dụng sự liệt kê sửa/xây-động thổ và dựng cột-thượng lương thành các mục riêng.",
+    "classification": "EVENT_TAXONOMY",
+    "authority_tier": "A1_AUTHENTICATED_OFFICIAL_CLASSIC",
+    "editorial": "Không dùng một ngày 'động thổ' cho mọi mốc thi công.",
+    "state": "CORE_EVENT_SEPARATION"
+  },
+  {
+    "claim_id": "TIM-005",
+    "source_id": "SRC-XJBF-V11-USAGE",
+    "original": "興造動土〈修造同〉",
+    "hanviet": "Hưng tạo động thổ (tu tạo đồng).",
+    "literal_vi": "Trong mục này, sách ghi Hưng tạo động thổ và chú rằng Tu tạo cùng loại.",
+    "classification": "SOURCE_DEFINED_EVENT_EQUIVALENCE",
+    "authority_tier": "A1_AUTHENTICATED_OFFICIAL_CLASSIC",
+    "editorial": "Chỉ equivalence trong ontology nguồn này; không mở rộng sang mọi động tác xây dựng.",
+    "state": "CORE_ALIAS"
+  },
+  {
+    "claim_id": "TIM-006",
+    "source_id": "SRC-XJBF-V11-USAGE",
+    "original": "移徙　安牀",
+    "hanviet": "Di tỷ; an sàng.",
+    "literal_vi": "Chuyển chỗ ở và an giường là hai mục riêng trong danh mục dân dụng.",
+    "classification": "EVENT_TAXONOMY",
+    "authority_tier": "A1_AUTHENTICATED_OFFICIAL_CLASSIC",
+    "editorial": "Move-in và bed-installation timing không được gộp.",
+    "state": "CORE_EVENT_SEPARATION"
+  },
+  {
+    "claim_id": "TIM-007",
+    "source_id": "SRC-XJBF-V11-USAGE",
+    "original": "破屋壞垣",
+    "hanviet": "Phá ốc hoại viên.",
+    "literal_vi": "Phá nhà/hủy tường được ghi thành một loại sự việc riêng.",
+    "classification": "EVENT_TAXONOMY",
+    "authority_tier": "A1_AUTHENTICATED_OFFICIAL_CLASSIC",
+    "editorial": "Ritual event class separate from renovation/building; modern demolition additionally requires safety engineering.",
+    "state": "CORE_EVENT_SEPARATION"
+  },
+  {
+    "claim_id": "TIM-008",
+    "source_id": "SRC-XJBF-V11-USAGE",
+    "original": "破土　安葬　啓攢",
+    "hanviet": "Phá thổ; an táng; khải toàn.",
+    "literal_vi": "Trong danh sách dân dụng, Phá thổ nằm cùng nhóm thuật ngữ việc tang/táng.",
+    "classification": "DOMAIN_SEPARATION",
+    "authority_tier": "A1_AUTHENTICATED_OFFICIAL_CLASSIC",
+    "editorial": "Chặn lỗi dịch `破土` thành đồng nghĩa với động thổ xây nhà.",
+    "state": "CORE_YIN_YANG_DOMAIN_GUARD"
+  },
+  {
+    "claim_id": "TIM-009",
+    "source_id": "SRC-XJBF-V11-USAGE",
+    "original": "豎柱上梁",
+    "hanviet": "Thụ trụ thượng lương.",
+    "literal_vi": "Dựng cột/thượng lương có mục 宜忌 riêng, không chỉ là tên khác của động thổ.",
+    "classification": "TRADITIONAL_CALENDAR_EVENT",
+    "authority_tier": "A1_AUTHENTICATED_OFFICIAL_CLASSIC",
+    "editorial": "Không tự đồng nhất với ngày đổ mái, cất nóc RC, lắp dầm thép hoặc hoàn thành roof.",
+    "state": "SOURCE_EVENT_ONLY"
+  },
+  {
+    "claim_id": "TIM-010",
+    "source_id": "SRC-YZF-V3-SEQUENCE",
+    "original": "取正　定平　立基　築基",
+    "hanviet": "Thủ chính; định bình; lập cơ; trúc cơ.",
+    "literal_vi": "Doanh Tạo Pháp Thức quyển 3 phân các hạng mục định hướng/cao độ và nền-móng thành các mục kỹ thuật riêng.",
+    "classification": "AUTHENTICATED_HISTORICAL_CONSTRUCTION",
+    "authority_tier": "A1_AUTHENTICATED_OFFICIAL_CLASSIC",
+    "editorial": "Không khẳng định bốn tiêu đề này tự nó là toàn bộ chronological schedule hiện đại; dùng làm technical taxonomy.",
+    "state": "REFERENCE_TECHNICAL_HIGH_AUTHORITY"
+  },
+  {
+    "claim_id": "TIM-011",
+    "source_id": "SRC-YZF-V3-SEQUENCE",
+    "original": "造石作次序之制有六。",
+    "hanviet": "Tạo thạch tác thứ tự chi chế hữu lục.",
+    "literal_vi": "Sách có một trình tự kỹ thuật sáu bước riêng cho công tác đá.",
+    "classification": "AUTHENTICATED_HISTORICAL_CONSTRUCTION_SEQUENCE",
+    "authority_tier": "A1_AUTHENTICATED_OFFICIAL_CLASSIC",
+    "editorial": "Chứng minh `次序` ở đây là quy trình nghề xây dựng, không phải trạch nhật.",
+    "state": "REFERENCE_TECHNICAL_SEQUENCE"
+  },
+  {
+    "claim_id": "TIM-012",
+    "source_id": "SRC-YZF-V4-SEQUENCE",
+    "original": "總鋪作次序",
+    "hanviet": "Tổng phô tác thứ tự.",
+    "literal_vi": "Quyển 4 có riêng mục 'Tổng phô tác thứ tự' cho hệ cấu kiện phô tác.",
+    "classification": "AUTHENTICATED_HISTORICAL_CONSTRUCTION_SEQUENCE",
+    "authority_tier": "A1_AUTHENTICATED_OFFICIAL_CLASSIC",
+    "editorial": "Không phải bằng chứng cát-hung.",
+    "state": "REFERENCE_TECHNICAL_SEQUENCE"
+  },
+  {
+    "claim_id": "TIM-013",
+    "source_id": "SRC-ZJ-TIMING-CROSS",
+    "original": "凡修築垣牆建造宅宇。",
+    "hanviet": "Phàm tu trúc viên tường kiến tạo trạch vũ.",
+    "literal_vi": "Trạch Kinh có bàn trực tiếp việc tu sửa tường và xây dựng nhà.",
+    "classification": "EARLY_TRADITIONAL_CROSS_WITNESS",
+    "authority_tier": "C1_ATTRIBUTION_DISPUTED",
+    "editorial": "Textual tradition is relevant, nhưng không được viết 'Hoàng Đế dạy' vì Tứ Khố xác định đề Hoàng Đế là 依託.",
+    "state": "REFERENCE_ONLY_ATTRIBUTION_DISPUTED"
+  }
+]

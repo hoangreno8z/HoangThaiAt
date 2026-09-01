@@ -1,0 +1,52 @@
+{
+  "$id": "lapque.construction_sequence_engine.v0.19",
+  "project_events": [
+    "SURVEY_EXISTING",
+    "DESIGN",
+    "PERMITS_AND_APPROVALS",
+    "SITE_PREPARATION",
+    "TEMPORARY_WORKS",
+    "DEMOLITION_IF_ANY",
+    "EXCAVATION",
+    "FOUNDATION",
+    "STRUCTURAL_FRAME",
+    "ENVELOPE_ROOF",
+    "MEP",
+    "INTERIOR",
+    "TESTING_INSPECTION",
+    "COMPLETION",
+    "OCCUPANCY"
+  ],
+  "readiness_dimensions": [
+    "LEGAL_READY",
+    "DESIGN_READY",
+    "STRUCTURAL_READY",
+    "SAFETY_READY",
+    "WEATHER_READY",
+    "SITE_READY",
+    "MATERIAL_READY",
+    "CONTRACTOR_READY"
+  ],
+  "ritual_overlay": {
+    "position": "AFTER_REQUIRED_READINESS_CHECKS",
+    "can_change_technical_sequence": false,
+    "can_override_safety": false,
+    "result": "OPTIONAL_TRADITIONAL_SCHEDULING_WINDOW"
+  },
+  "event_classifier": {
+    "input_required": [
+      "what physical action will happen",
+      "new_build_or_renovation_or_demolition",
+      "ceremonial_only_or_real_work",
+      "structural_component_if relevant"
+    ],
+    "fail_closed": "AMBIGUOUS_EVENT"
+  },
+  "critical_guards": [
+    "Groundbreaking ceremony may be symbolic and is not necessarily first excavation.",
+    "Modern structural-frame work is not automatically historical 豎柱上梁.",
+    "Door installation has no independent XJBF v11 timing rule locked in this batch.",
+    "Move-in mapping to 移徙 is editorial and must be labelled.",
+    "Demolition cannot be scheduled solely by almanac."
+  ]
+}

@@ -7,7 +7,9 @@
     "doc": "docs"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "corpus:build": "node scripts/build_duong_trach_corpus.js",
+    "corpus:audit": "node scripts/audit_duong_trach_corpus.js",
+    "test": "node test_rule_engine.js && node scripts/audit_duong_trach_corpus.js"
   },
   "repository": {
     "type": "git",

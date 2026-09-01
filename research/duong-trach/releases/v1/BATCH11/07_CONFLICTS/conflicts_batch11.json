@@ -1,0 +1,34 @@
+[
+  {
+    "conflict_id": "KIT-CONFLICT-001",
+    "type": "SOURCE_SELF_IDENTIFIED_TEXTUAL_ERROR",
+    "subject": "火路吉凶歌",
+    "evidence": "Source itself states 離修乙 三字不合 and 或傳流之誤.",
+    "status": "CONTESTED_TEXT",
+    "action": "Block automated directional calculation from this verse until critical collation."
+  },
+  {
+    "conflict_id": "KIT-CONFLICT-002",
+    "type": "TRADITION_VS_MODERN_SAFETY",
+    "subject": "lead_in_well",
+    "evidence": "多能鄙事 recommends 鉛 in well.",
+    "status": "MODERN_INVALID",
+    "action": "Preserve historically; prohibit application."
+  },
+  {
+    "conflict_id": "KIT-CONFLICT-003",
+    "type": "SINGLE_WITNESS_GENERALIZATION_RISK",
+    "subject": "stove_facing_SW_NE",
+    "evidence": "多能鄙事: 西南吉 / 東北凶",
+    "status": "NO_GENERAL_RULE",
+    "action": "Store as source-specific directional statement only."
+  },
+  {
+    "conflict_id": "KIT-CONFLICT-004",
+    "type": "COMMON_INTERNET_CLAIM_EVIDENCE_GAP",
+    "subject": "stove_vs_sink_fire_water_clash",
+    "evidence": "No direct verified sentence ingested in Batch11 supporting a generic modern sink-vs-cooktop distance rule.",
+    "status": "NO_DIRECT_EVIDENCE_YET",
+    "action": "Do not invent rule. Continue source search in later corpus."
+  }
+]

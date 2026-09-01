@@ -1,0 +1,45 @@
+{
+  "batch": "19",
+  "date": "2026-09-01",
+  "scope": "CONSTRUCTION_SEQUENCE_RENOVATION_DEMOLITION_TRACH_NHAT",
+  "counts": {
+    "sources": 7,
+    "claims": 13,
+    "rules": 16,
+    "cases": 14,
+    "conflicts": 7,
+    "folklore_redteam": 10,
+    "historical_event_classes": 6
+  },
+  "passed": [
+    "XJBF_official_compilation_verified",
+    "XJBF_self_critique_preserved",
+    "event_first_principle_extracted",
+    "dongtu_vs_shangliang_separated",
+    "dongtu_vs_potu_separated",
+    "move_vs_bed_installation_separated",
+    "demolition_event_separated",
+    "anmen_not_invented_from_XJBF_v11",
+    "ruzhai_not_silently_equated_to_yixi",
+    "Yingzao_sequence_not_fengshui",
+    "Zhaijing_Huangdi_attribution_rejected",
+    "QCVN18_demolition_hard_gate",
+    "date_calculator_disabled_until_validation"
+  ],
+  "important_findings": [
+    "XJBF v11 explicitly states selection starts from the event; this directly justifies an event-first calendrical architecture.",
+    "The official list differentiates construction ground-breaking, column/beam raising, relocation, bed installation, demolition, and funerary breaking-ground.",
+    "The compilation itself contains strong editorial criticism of contradictory and fabricated selection claims; anti-hallucination is historically compatible with the source.",
+    "Yingzao Fashi contains genuine technical sequencing terminology, but its sequencing belongs to construction craft rather than auspicious-date selection.",
+    "QCVN 18:2021/BXD is current and requires structured demolition safety preparation; no ritual schedule can supersede it."
+  ],
+  "blocked": [
+    "production lucky-date generation",
+    "independent XJBF 安門 calendar rule",
+    "exact 入宅=移徙 textual identity",
+    "modern steel/RC 上梁 equivalence",
+    "full 神煞/date table computation",
+    "any claim that official calendar authority equals empirical causal proof"
+  ],
+  "next": "BATCH20_COMPLETION_COMMISSIONING_MOVE_IN_OCCUPANCY"
+}

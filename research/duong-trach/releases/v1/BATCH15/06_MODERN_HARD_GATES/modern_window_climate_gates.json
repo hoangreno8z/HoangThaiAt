@@ -1,0 +1,40 @@
+{
+  "APARTMENT_VENTILATION": {
+    "source_id": "MOD-QCVN04-2021-VENT",
+    "status": "CURRENT_AS_OF_2026_09_01",
+    "verified_scope_notes": [
+      "apartments and common/non-apartment spaces require natural or mechanical ventilation",
+      "local exhaust required for kitchen/bathroom/toilet",
+      "fresh-air requirement exists for apartments"
+    ],
+    "scope_guard": "Do not apply apartment-specific numeric clauses to detached house or office automatically."
+  },
+  "VENTILATION_HVAC_DESIGN": {
+    "source_id": "MOD-TCVN5687-2024",
+    "status": "ACTIVE",
+    "notes": [
+      "replaces TCVN 5687:2010",
+      "covers ventilation and HVAC design for civil-building spaces",
+      "contains indoor comfort/outdoor design and outdoor-air provisions"
+    ],
+    "classification": "TECHNICAL_STANDARD_NOT_FENG_SHUI"
+  },
+  "ENERGY_CURRENT": {
+    "source_id": "MOD-QCVN09-2017",
+    "status": "CURRENT_AS_OF_2026_09_01",
+    "scope_guard": ">=2500m2 and specified building types only",
+    "rule": "Envelope, HVAC and lighting energy requirements override purely symbolic opening preferences where applicable."
+  },
+  "ENERGY_FUTURE": {
+    "source_id": "MOD-QCVN04-3-2026",
+    "status": "ISSUED_NOT_YET_EFFECTIVE",
+    "effective": "2027-02-01",
+    "rule": "Store for migration tests; DO NOT APPLY before effective date."
+  },
+  "GENERAL_CIVIL_BUILDING_DRAFT": {
+    "source_id": "MOD-QCVN04-1-DRAFT-2026",
+    "status": "DRAFT_PUBLIC_CONSULTATION",
+    "rule": "May be monitored for schema preparation; NEVER treated as current law."
+  },
+  "priority": "LEGAL/APPLICABLE_STANDARD > HEALTH/SAFETY > FUNCTION/COMFORT > CLASSICAL_FORM > SCHOOL_PREFERENCE"
+}

@@ -1,0 +1,32 @@
+[
+  {
+    "conflict_id": "OCC-CONFLICT-001",
+    "subject": "移徙 vs 入宅",
+    "status": "RELATED_NOT_TEXTUALLY_IDENTICAL",
+    "resolution": "UI may group them under move-in workflow, but citations and source terms remain separate."
+  },
+  {
+    "conflict_id": "OCC-CONFLICT-002",
+    "subject": "v11 taxonomy vs v34-35 embedded source",
+    "status": "DIFFERENT_EVIDENCE_LAYER",
+    "resolution": "Do not rewrite Batch19 as wrong; deeper search added a second source layer."
+  },
+  {
+    "conflict_id": "OCC-CONFLICT-003",
+    "subject": "traditional completion-before-entry motif vs modern acceptance law",
+    "status": "PARALLEL_NOT_EQUIVALENT",
+    "resolution": "Modern legal/technical completion gate is independently binding where applicable."
+  },
+  {
+    "conflict_id": "OCC-CONFLICT-004",
+    "subject": "安門 spatial vs 安門 timing",
+    "status": "DOMAIN_MISMATCH",
+    "resolution": "Spatial placement evidence cannot create calendar rules."
+  },
+  {
+    "conflict_id": "OCC-CONFLICT-005",
+    "subject": "official compilation containing embedded material",
+    "status": "AUTHORITY_CONTAINER_NOT_SAME_AS_EMBEDDED_AUTHORSHIP",
+    "resolution": "Preservation in an imperial compilation increases witness reliability but does not identify the original author of 事類總集."
+  }
+]

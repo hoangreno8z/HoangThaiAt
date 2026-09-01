@@ -1,0 +1,177 @@
+[
+  {
+    "claim_id": "STR-001",
+    "source_id": "SRC-YZF-LIJIE-1100-MATERIAL",
+    "original": "凡構屋之制，皆以材為主；材有八等，度屋之大小，因而用之。",
+    "hanviet": "Phàm cấu ốc chi chế, giai dĩ tài vi chủ; tài hữu bát đẳng, độ ốc chi đại tiểu, nhân nhi dụng chi.",
+    "literal_vi": "Trong hệ Doanh Tạo Pháp Thức, việc cấu tạo nhà lấy hệ 'tài' làm nền; tài chia tám cấp và dùng theo quy mô công trình.",
+    "classification": "AUTHENTICATED_HISTORICAL_CONSTRUCTION",
+    "authority_tier": "A1_AUTHENTICATED_OFFICIAL_CLASSIC",
+    "observable": [
+      "building_scale",
+      "historical_material_grade_or_module"
+    ],
+    "editorial": "Chứng minh tư duy tương quan quy mô–cấu kiện trong hệ Tống; không chuyển 8 cấp này sang code hiện đại.",
+    "state": "REFERENCE_TECHNICAL_HIGH_AUTHORITY"
+  },
+  {
+    "claim_id": "STR-002",
+    "source_id": "SRC-YZF-LIJIE-1100-BEAM",
+    "original": "凡梁之大小各隨其廣分為三分以二分為厚。",
+    "hanviet": "Phàm lương chi đại tiểu các tùy kỳ quảng phân vi tam phân, dĩ nhị phân vi hậu.",
+    "literal_vi": "Hệ này quy định một quan hệ tỷ lệ lịch sử giữa bề rộng và bề dày của lương.",
+    "classification": "AUTHENTICATED_HISTORICAL_CONSTRUCTION",
+    "authority_tier": "A1_AUTHENTICATED_OFFICIAL_CLASSIC",
+    "observable": [
+      "historical_beam_width",
+      "historical_beam_thickness"
+    ],
+    "editorial": "Historical numeric/proportional claim; không dùng như tỷ lệ dầm bê tông/thép/gỗ hiện đại.",
+    "state": "HISTORICAL_NUMERIC_REFERENCE_ONLY"
+  },
+  {
+    "claim_id": "STR-003",
+    "source_id": "SRC-YZF-LIJIE-1100-BEAM",
+    "original": "若直梁狹即兩面安槫栿版……不得剜刻梁面。",
+    "hanviet": "Nhược trực lương hiệp tức lưỡng diện an đoàn phục bản... bất đắc oan khắc lương diện.",
+    "literal_vi": "Văn bản mô tả một xử lý kỹ thuật cho lương hẹp và cấm một dạng khoét/khắc mặt lương trong hệ cấu tạo của sách.",
+    "classification": "AUTHENTICATED_HISTORICAL_CONSTRUCTION",
+    "authority_tier": "A1_AUTHENTICATED_OFFICIAL_CLASSIC",
+    "observable": [
+      "historical_beam_reinforcement_detail",
+      "beam_surface_cutting"
+    ],
+    "editorial": "Không biến thành phương án gia cường hiện đại; chỉ lưu lịch sử kỹ thuật.",
+    "state": "REFERENCE_TECHNICAL_HIGH_AUTHORITY"
+  },
+  {
+    "claim_id": "STR-004",
+    "source_id": "SRC-JJBY-YUAN-STRUCT",
+    "original": "桑樹不宜作屋木。死樹不宜作棟梁。",
+    "hanviet": "Tang thụ bất nghi tác ốc mộc. Tử thụ bất nghi tác đống lương.",
+    "literal_vi": "Nguồn đời Nguyên phản đối dùng gỗ dâu làm gỗ nhà và dùng cây chết làm đống/lương.",
+    "classification": "EARLY_HISTORICAL_MATERIAL_TABOO",
+    "authority_tier": "B1_EARLY_ANONYMOUS_WITNESS",
+    "observable": [
+      "timber_species",
+      "source_tree_condition"
+    ],
+    "editorial": "Không được gọi là 'Lý Giới/Lưu Cơ dạy'. Không đồng nhất cây chết với mọi gỗ tái sử dụng đã được kiểm định.",
+    "state": "HISTORICAL_MOTIF_NOT_MODERN_MATERIAL_RULE"
+  },
+  {
+    "claim_id": "STR-005",
+    "source_id": "SRC-JJBY-YUAN-STRUCT",
+    "original": "更防有倒木作柱。令人不吉。",
+    "hanviet": "Cánh phòng hữu đảo mộc tác trụ, lệnh nhân bất cát.",
+    "literal_vi": "Nguồn cảnh báo một trường hợp gọi là 'đảo mộc tác trụ'.",
+    "classification": "EARLY_HISTORICAL_CONSTRUCTION_TABOO",
+    "authority_tier": "B1_EARLY_ANONYMOUS_WITNESS",
+    "observable": [],
+    "editorial": "`倒木` chưa khóa nghĩa kỹ thuật. Không tự dịch thành cây đổ, gỗ đặt ngược đầu hay đảo chiều thớ.",
+    "state": "SEMANTIC_UNRESOLVED_BLOCKED"
+  },
+  {
+    "claim_id": "STR-006",
+    "source_id": "SRC-JJBY-YUAN-STRUCT",
+    "original": "梁棟偏欹。",
+    "hanviet": "Lương đống thiên y.",
+    "literal_vi": "Lương/đống bị lệch nghiêng.",
+    "classification": "EARLY_PHYSICAL_DEFECT_MOTIF",
+    "authority_tier": "B1_EARLY_ANONYMOUS_WITNESS",
+    "observable": [
+      "member_tilt",
+      "ridge_or_beam_deformation"
+    ],
+    "editorial": "Defect geometry is real; traditional social outcome is not causal.",
+    "state": "CANDIDATE_CONDITION_OBSERVABLE"
+  },
+  {
+    "claim_id": "STR-007",
+    "source_id": "SRC-JJBY-YUAN-STRUCT",
+    "original": "門面上枋空蛀窟痕。",
+    "hanviet": "Môn diện thượng phương không chú quật ngân.",
+    "literal_vi": "Phần phương phía trên cửa có dấu hốc/rỗng do bị mọt/sâu đục theo mô tả văn bản.",
+    "classification": "EARLY_PHYSICAL_DEFECT_MOTIF",
+    "authority_tier": "B1_EARLY_ANONYMOUS_WITNESS",
+    "observable": [
+      "insect_void_damage",
+      "member_section_loss"
+    ],
+    "editorial": "Không xác định loài côn trùng chỉ từ câu này.",
+    "state": "CANDIDATE_BIODETERIORATION_OBSERVABLE"
+  },
+  {
+    "claim_id": "STR-008",
+    "source_id": "SRC-JJBY-YUAN-STRUCT",
+    "original": "棟柱空蛀。",
+    "hanviet": "Đống trụ không chú.",
+    "literal_vi": "Đống/trụ bị rỗng do côn trùng đục theo truyền bản.",
+    "classification": "EARLY_PHYSICAL_DEFECT_MOTIF",
+    "authority_tier": "B1_EARLY_ANONYMOUS_WITNESS",
+    "observable": [
+      "structural_member_borer_damage",
+      "section_loss"
+    ],
+    "editorial": "Cần kiểm tra kết cấu/mối mọt hiện đại; phán mù/điếc trong nguồn không causal.",
+    "state": "CANDIDATE_BIODETERIORATION_OBSERVABLE"
+  },
+  {
+    "claim_id": "STR-009",
+    "source_id": "SRC-JJBY-YUAN-STRUCT",
+    "original": "凡蓋屋，布椽勿當柱頭梁上著，須是兩邊騎梁著。",
+    "hanviet": "Phàm cái ốc, bố duyên vật đương trụ đầu lương thượng trước, tu thị lưỡng biên kỵ lương trước.",
+    "literal_vi": "Nguồn đưa ra một cách bố trí duyên/rafter đối với đầu trụ và lương.",
+    "classification": "EARLY_HISTORICAL_FRAMING_RULE",
+    "authority_tier": "B1_EARLY_ANONYMOUS_WITNESS",
+    "observable": [
+      "rafter_beam_column_joint_topology"
+    ],
+    "editorial": "Hình học cấu tạo cần reconstruction đúng hệ khung cổ trước khi formalize; chưa dùng cho modern framing.",
+    "state": "SEMANTIC_STRUCTURAL_PARTIAL"
+  },
+  {
+    "claim_id": "STR-010",
+    "source_id": "SRC-DNBS-V5-STRUCT",
+    "original": "棟梁蛀空。",
+    "hanviet": "Đống lương chú không.",
+    "literal_vi": "Bản Đa Năng Bỉ Sự cũng ghi đống/lương bị mọt rỗng.",
+    "classification": "DISPUTED_ATTRIBUTION_CROSS_WITNESS",
+    "authority_tier": "C1_ATTRIBUTION_DISPUTED",
+    "observable": [
+      "structural_member_borer_damage",
+      "section_loss"
+    ],
+    "editorial": "Chỉ làm cross-witness; không gọi là lời Lưu Cơ.",
+    "state": "CROSS_WITNESS_ONLY"
+  },
+  {
+    "claim_id": "STR-011",
+    "source_id": "SRC-DNBS-V5-STRUCT",
+    "original": "凡桑樹不宜作屋木，死樹不宜作棟梁。",
+    "hanviet": "Phàm tang thụ bất nghi tác ốc mộc, tử thụ bất nghi tác đống lương.",
+    "literal_vi": "Bản Đa Năng Bỉ Sự truyền lại cùng motif tránh gỗ dâu/cây chết.",
+    "classification": "DISPUTED_ATTRIBUTION_CROSS_WITNESS",
+    "authority_tier": "C1_ATTRIBUTION_DISPUTED",
+    "observable": [
+      "timber_species",
+      "source_tree_condition"
+    ],
+    "editorial": "Không chứng minh independence; không nâng độ chắc bằng cách đếm hai bản như hai tác giả.",
+    "state": "CROSS_WITNESS_ONLY"
+  },
+  {
+    "claim_id": "STR-012",
+    "source_id": "SRC-JJBY-YUAN-STRUCT",
+    "original": "宅材鼎新。",
+    "hanviet": "Trạch tài đỉnh tân.",
+    "literal_vi": "Nguồn dùng một cụm ca ngợi trạng thái vật liệu nhà mới/được đổi mới trong chuỗi phán truyền thống.",
+    "classification": "EARLY_TEXTUAL_MOTIF",
+    "authority_tier": "B1_EARLY_ANONYMOUS_WITNESS",
+    "observable": [
+      "material_renewal_state"
+    ],
+    "editorial": "Không suy rằng 'cứ thay toàn bộ vật liệu cũ là tốt'; repair/reuse phải dựa condition + heritage + engineering.",
+    "state": "REFERENCE_ONLY"
+  }
+]

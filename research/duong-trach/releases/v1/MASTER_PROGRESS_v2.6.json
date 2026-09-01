@@ -1,0 +1,43 @@
+{
+  "date": "2026-09-01",
+  "completed_batches": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20
+  ],
+  "qa_checkpoint_H": "COMPLETE",
+  "qa_hard_results": {
+    "JSON_PARSE": "PASS",
+    "CLAIM_SOURCE_INTEGRITY": "PASS",
+    "RULE_SOURCE_INTEGRITY": "PASS",
+    "CLAIM_ID_UNIQUENESS": "PASS",
+    "RULE_ID_UNIQUENESS": "PASS",
+    "NO_NUMERIC_THRESHOLD_HALLUCINATION": "PASS",
+    "SCHOOL_ISOLATION": "PASS",
+    "OCCUPANCY_SEMANTIC_LAYERING": "PASS",
+    "CURRENT_OCCUPANCY_LEGAL_GATES": "PASS",
+    "NO_UNVALIDATED_DATE_OUTPUT": "PASS"
+  },
+  "next": "BATCH21_EXISTING_HOUSE_RENOVATION_DIAGNOSIS",
+  "new_core_invariants": [
+    "HISTORICAL_TERM_PRESENCE_DOES_NOT_IMPLY_EVENT_TAXONOMY_IDENTITY",
+    "OCCUPANCY_READY_PRECEDES_RITUAL_MOVE_IN"
+  ]
+}

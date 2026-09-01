@@ -1,0 +1,11 @@
+{
+  "release": "BATCH04",
+  "date": "2026-09-01",
+  "role": "site-form practical corpus + Codex handoff",
+  "counts": {
+    "sources": 5,
+    "claims": 16,
+    "rules": 16
+  },
+  "next": "BATCH05_HINH_DAT_ROADS_WATER_CASEBOOK"
+}

@@ -1,0 +1,40 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "title":"LapQue Ancient Dwelling Rule",
+  "type":"object",
+  "required":["rule_id","source_id","school","claim_type","evidence_status","text","application"],
+  "properties":{
+    "rule_id":{"type":"string"},
+    "source_id":{"type":"string"},
+    "school":{"type":"array","items":{"type":"string"}},
+    "claim_type":{"enum":["TEXTUAL_FACT","TRADITIONAL_INTERPRETATION","EDITORIAL_SYNTHESIS","MODERN_ANALOGY","EMPIRICAL_DATA","MODERN_ENGINE_THRESHOLD"]},
+    "evidence_status":{"enum":["VERIFIED_PRIMARY","VERIFIED_SECONDARY","ATTRIBUTION_DISPUTED","OCR_UNVERIFIED","CONFLICTED","UNKNOWN"]},
+    "text":{
+      "type":"object",
+      "properties":{
+        "original":{"type":"string"},
+        "han_viet":{"type":"string"},
+        "literal_vi":{"type":"string"},
+        "commentary_vi":{"type":"string"}
+      }
+    },
+    "application":{
+      "type":"object",
+      "properties":{
+        "stage":{"type":"array","items":{"type":"string"}},
+        "scope":{"type":"array","items":{"type":"string"}},
+        "decision":{"type":"string"},
+        "exceptions":{"type":"array","items":{"type":"string"}}
+      }
+    },
+    "engine":{
+      "type":"object",
+      "properties":{
+        "inputs":{"type":"object"},
+        "condition":{"type":["string","null"]},
+        "threshold_origin":{"enum":["ANCIENT_EXPLICIT","MODERN_ENGINE","NONE"]}
+      }
+    },
+    "conflicts":{"type":"array","items":{"type":"string"}}
+  }
+}

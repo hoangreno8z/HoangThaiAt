@@ -1,0 +1,78 @@
+[
+  {
+    "claim_id": "OCC-001",
+    "source_id": "SRC-XJBF-V11-OCC",
+    "original": "移徙",
+    "hanviet": "Di tỷ.",
+    "literal_vi": "Chuyển dời/chuyển chỗ ở là một mục sự việc riêng trong danh mục dân dụng.",
+    "classification": "OFFICIAL_EVENT_TAXONOMY",
+    "state": "DIRECT_EVENT"
+  },
+  {
+    "claim_id": "OCC-002",
+    "source_id": "SRC-XJBF-V11-OCC",
+    "original": "掃舍宇",
+    "hanviet": "Tảo xá vũ.",
+    "literal_vi": "Quét/dọn nhà cửa là một mục sự việc riêng.",
+    "classification": "OFFICIAL_EVENT_TAXONOMY",
+    "state": "DIRECT_EVENT"
+  },
+  {
+    "claim_id": "OCC-003",
+    "source_id": "SRC-XJBF-V11-OCC",
+    "original": "安牀",
+    "hanviet": "An sàng.",
+    "literal_vi": "An giường là một event riêng trong hệ tuyển trạch của quyển 11.",
+    "classification": "OFFICIAL_EVENT_TAXONOMY",
+    "state": "DIRECT_EVENT"
+  },
+  {
+    "claim_id": "OCC-004",
+    "source_id": "SRC-XJBF-V34-35-RUZHAI",
+    "original": "俟工作完備，別擇吉年月入宅歸火。",
+    "hanviet": "Sĩ công tác hoàn bị, biệt trạch cát niên nguyệt nhập trạch quy hỏa.",
+    "literal_vi": "Tư liệu được bộ sách tập hợp nói đợi công việc hoàn bị rồi chọn thời điểm khác để vào nhà/quy hỏa.",
+    "classification": "EMBEDDED_SECONDARY_TRADITION",
+    "state": "HISTORICAL_ATTESTATION_NOT_V11_TAXONOMY",
+    "editorial": "Điểm quý giá: chữ 入宅 có thật trong cổ liệu này; nhưng không được nâng thành mục v11."
+  },
+  {
+    "claim_id": "OCC-005",
+    "source_id": "SRC-XJBF-V34-35-RUZHAI",
+    "original": "論入宅法。",
+    "hanviet": "Luận nhập trạch pháp.",
+    "literal_vi": "Tư liệu tập hợp có hẳn tiêu đề/bàn về phép nhập trạch.",
+    "classification": "HISTORICAL_TERM_ATTESTATION",
+    "state": "ATTESTED_TERM_EMBEDDED_SECONDARY"
+  },
+  {
+    "claim_id": "OCC-006",
+    "source_id": "SRC-XJBF-V34-35-RUZHAI",
+    "original": "俟畢工後，再擇吉日……從吉方入宅。",
+    "hanviet": "Sĩ tất công hậu, tái trạch cát nhật... tòng cát phương nhập trạch.",
+    "literal_vi": "Tư liệu phân biệt hoàn công với thời điểm vào nhà sau đó.",
+    "classification": "EMBEDDED_SECONDARY_TRADITION",
+    "state": "SEQUENCE_MOTIF",
+    "editorial": "Không dùng để thay pháp luật nghiệm thu; chỉ là traditional sequence motif."
+  },
+  {
+    "claim_id": "OCC-007",
+    "source_id": "SRC-ZJ-ANMEN-CROSS",
+    "original": "庚宅德，安門。",
+    "hanviet": "Canh trạch đức, an môn.",
+    "literal_vi": "Trạch Kinh có dùng thuật ngữ an môn trong bố trí/phương vị.",
+    "classification": "SPATIAL_YANGZHAI_ATTESTATION",
+    "state": "REFERENCE_ONLY_ATTRIBUTION_DISPUTED",
+    "editorial": "Không phải bằng chứng về lịch An Môn độc lập; không gọi là lời Hoàng Đế."
+  },
+  {
+    "claim_id": "OCC-008",
+    "source_id": "SRC-ZJ-ANMEN-CROSS",
+    "original": "辛金匱，天井宜置門。",
+    "hanviet": "Tân kim quỹ, thiên tỉnh nghi trí môn.",
+    "literal_vi": "Bản văn còn bàn vị trí đặt cửa trong hệ phương vị của sách.",
+    "classification": "SPATIAL_YANGZHAI_ATTESTATION",
+    "state": "REFERENCE_ONLY_ATTRIBUTION_DISPUTED",
+    "editorial": "Spatial placement != timing event."
+  }
+]

@@ -1,0 +1,27 @@
+{
+  "batch": "06",
+  "date": "2026-09-01",
+  "scope": "IRREGULAR_PLOTS_DIRECTIONAL_DEFICIENCY_CENTER",
+  "counts": {
+    "sources": 4,
+    "classical_claims": 7,
+    "computed_geometry_cases": 7,
+    "rule_candidates": 3
+  },
+  "gates": {
+    "bu_zu_not_auto_missing_corner": "PASS",
+    "no_fake_percentage_threshold": "PASS",
+    "multiple_center_candidates": "PASS",
+    "courtyard_hole_separated": "PASS",
+    "traditional_outcomes_noncausal": "PASS",
+    "yin_yang_house_history_not_mixed": "PASS",
+    "screen_world_coordinate_warning": "PASS"
+  },
+  "blocked": [
+    "production classification of directional deficiency",
+    "Trung Cung selection by school",
+    "missing-sector threshold",
+    "L/U ancient label mapping"
+  ],
+  "important_discovery": "Current ancient witnesses show direction-specific 不足 rules, but do not provide a clear modern polygon percentage threshold. Therefore a common internet-style fixed percent must not be back-projected without source."
+}

@@ -1,0 +1,29 @@
+[
+  {
+    "source_id": "SRC-GJTS676-DOOR",
+    "title_zh": "欽定古今圖書集成·藝術典第676卷·陽宅十書二·論開門修造門第六",
+    "url": "https://zh.wikisource.org/wiki/%E6%AC%BD%E5%AE%9A%E5%8F%A4%E4%BB%8A%E5%9C%96%E6%9B%B8%E9%9B%86%E6%88%90/%E5%8D%9A%E7%89%A9%E5%BD%99%E7%B7%A8/%E8%97%9D%E8%A1%93%E5%85%B8/%E7%AC%AC676%E5%8D%B7",
+    "lines": "698-789",
+    "role": "PRIMARY_TEXTUAL_CROSS_WITNESS",
+    "status": "TEXT_WITH_AI_INITIAL_PUNCTUATION_NOTED_BY_WIKISOURCE",
+    "scope": "DIRECT_YANGZHAI"
+  },
+  {
+    "source_id": "SRC-GJTS677-DOOR",
+    "title_zh": "欽定古今圖書集成·藝術典第677卷·陽宅十書三·內形篇",
+    "url": "https://zh.wikisource.org/wiki/%E6%AC%BD%E5%AE%9A%E5%8F%A4%E4%BB%8A%E5%9C%96%E6%9B%B8%E9%9B%86%E6%88%90/%E5%8D%9A%E7%89%A9%E5%BD%99%E7%B7%A8/%E8%97%9D%E8%A1%93%E5%85%B8/%E7%AC%AC677%E5%8D%B7",
+    "lines": "314-348",
+    "role": "PRIMARY_TEXTUAL_CROSS_WITNESS",
+    "status": "TEXT; VERSE PUNCTUATION/TERMS MAY REQUIRE SCAN CHECK",
+    "scope": "DIRECT_YANGZHAI"
+  },
+  {
+    "source_id": "MOD-QCVN06-2022-SD1-2023",
+    "title_vi": "QCVN 06:2022/BXD + Sửa đổi 1:2023 — An toàn cháy cho nhà và công trình",
+    "authority": "Bộ Xây dựng",
+    "url": "https://moc.gov.vn/Images/editor/files/Quy%20Chu%E1%BA%A9n/QCVN%2006-2022.pdf",
+    "role": "FIRE_SAFETY_HARD_GATE",
+    "status": "CURRENT_REFERENCE_AS_OF_2026-09-01_FOR_APPLICABLE_BUILDINGS",
+    "notes": "Phạm vi áp dụng và các quy định cụ thể phải được xác định theo loại/cấp/công năng công trình."
+  }
+]

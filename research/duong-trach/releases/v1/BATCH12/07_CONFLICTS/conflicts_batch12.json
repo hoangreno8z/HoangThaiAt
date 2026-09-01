@@ -1,0 +1,45 @@
+[
+  {
+    "conflict_id": "BED-CONFLICT-001",
+    "type": "INTRA_HISTORICAL_DIRECTION_VARIANTS",
+    "subject": "sleep_head_direction",
+    "evidence": [
+      "養生隨筆 cites 寢恒東首",
+      "cites 春夏東 / 秋冬西",
+      "cites 冬臥宜向北",
+      "author then reasons for a stable arrangement and mentions 南首 for an E-W bed"
+    ],
+    "status": "CONFLICTED",
+    "action": "No universal ancient head-direction rule."
+  },
+  {
+    "conflict_id": "BED-CONFLICT-002",
+    "type": "HISTORICAL_VS_POPULAR_FOLKLORE",
+    "subject": "bed_head_must_always_touch_wall",
+    "evidence": [
+      "養生隨筆 discusses bed at wall with dampness precautions",
+      "same work says in hot summer bed may temporarily move to room center"
+    ],
+    "status": "CONTEXT_DEPENDENT",
+    "action": "Do not encode 'bed must always touch solid wall' as universal ancient rule."
+  },
+  {
+    "conflict_id": "BED-CONFLICT-003",
+    "type": "SCHOOL_SEPARATION",
+    "subject": "bed_sector_direction",
+    "evidence": [
+      "入地眼全書 uses 游星 three-auspicious-sector rule",
+      "陽宅闡要 uses its own 正卦/生旺 door-flow framework"
+    ],
+    "status": "MULTI_SCHOOL",
+    "action": "Run independently; never merge into one verdict."
+  },
+  {
+    "conflict_id": "BED-CONFLICT-004",
+    "type": "HISTORICAL_CRITIQUE_OF_OMEN_DIMENSIONS",
+    "subject": "bedroom_door_dimensions_fortune",
+    "evidence": "曹庭棟 explicitly criticizes 妄斷禍福 through mystified yin-yang dimensional claims.",
+    "status": "EDITORIAL_GUARDRAIL",
+    "action": "Require direct source and lineage for any lucky/unlucky dimension rule."
+  }
+]

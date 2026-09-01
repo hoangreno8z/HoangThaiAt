@@ -1,0 +1,142 @@
+[
+  {
+    "case_id": "CASE09-001",
+    "name": "Nhà phố có sân trước trong cổng",
+    "physical": "internal front court",
+    "labels": [
+      "INTERNAL_FRONT_COURT"
+    ],
+    "classical_matches": [
+      "OPEN-003"
+    ],
+    "decision": "May be treated as internal 明堂 in this textual tradition; not universal."
+  },
+  {
+    "case_id": "CASE09-002",
+    "name": "Nhà phố không sân, mặt tiền giáp vỉa hè",
+    "physical": "no internal front court",
+    "labels": [],
+    "classical_matches": [],
+    "decision": "Do not automatically call public sidewalk/road the home's Ming Tang."
+  },
+  {
+    "case_id": "CASE09-003",
+    "name": "Khoảng mở lớn trước nhà nhưng bị biển/công trình chắn tầm nhìn",
+    "physical": "external front open space + obstruction",
+    "labels": [
+      "EXTERNAL_MINGTANG_CANDIDATE"
+    ],
+    "classical_matches": [
+      "OPEN-001",
+      "OPEN-002",
+      "OPEN-008"
+    ],
+    "decision": "Measure openness and obstruction separately."
+  },
+  {
+    "case_id": "CASE09-004",
+    "name": "Giếng trời 1x3m ba tầng",
+    "physical": "modern lightwell",
+    "labels": [
+      "MODERN_LIGHTWELL"
+    ],
+    "classical_matches": [],
+    "decision": "Do not call 天井 until historical/context mapping is justified; evaluate light/ventilation/fire."
+  },
+  {
+    "case_id": "CASE09-005",
+    "name": "Sân trong hở trời giữa nhà một tầng",
+    "physical": "courtyard open to sky",
+    "labels": [
+      "INTERNAL_COURTYARD",
+      "TIANJING_CANDIDATE"
+    ],
+    "classical_matches": [
+      "OPEN-004",
+      "OPEN-005",
+      "OPEN-006"
+    ],
+    "decision": "Historical term candidate; ratio rule remains blocked pending scan verification."
+  },
+  {
+    "case_id": "CASE09-006",
+    "name": "Sân trong có nước đọng sau mưa",
+    "physical": "courtyard with stagnant water",
+    "labels": [
+      "INTERNAL_COURTYARD"
+    ],
+    "classical_matches": [
+      "OPEN-006"
+    ],
+    "decision": "Drainage FAIL/repair first; no auspicious feature can override."
+  },
+  {
+    "case_id": "CASE09-007",
+    "name": "Atrium kính kín nhiều tầng ở văn phòng",
+    "physical": "covered multi-storey atrium",
+    "labels": [
+      "MODERN_LIGHTWELL_ATRIUM"
+    ],
+    "classical_matches": [],
+    "decision": "Fire/smoke/thermal engineering first; not assumed to be 天井."
+  },
+  {
+    "case_id": "CASE09-008",
+    "name": "Nhà chữ U tạo sân mở phía trước",
+    "physical": "semi-enclosed front court",
+    "labels": [
+      "INTERNAL_FRONT_COURT"
+    ],
+    "classical_matches": [
+      "OPEN-003"
+    ],
+    "decision": "Open-court geometry can be measured; Ming Tang label remains text-context dependent."
+  },
+  {
+    "case_id": "CASE09-009",
+    "name": "Sân cực hẹp dạng khe dài",
+    "physical": "narrow linear void",
+    "labels": [
+      "TIANJING_CANDIDATE"
+    ],
+    "classical_matches": [
+      "OPEN-004"
+    ],
+    "decision": "Potential '一字' motif, but geometry definition unresolved -> UNKNOWN."
+  },
+  {
+    "case_id": "CASE09-010",
+    "name": "Khoảng sân rộng nhưng nhà cao bao kín bốn phía",
+    "physical": "courtyard",
+    "labels": [
+      "INTERNAL_COURTYARD"
+    ],
+    "classical_matches": [],
+    "decision": "Area alone insufficient; height/width, sky view, heat and ventilation matter."
+  },
+  {
+    "case_id": "CASE09-011",
+    "name": "Sân trước lớn nhưng nằm trong hành lang thoát lũ",
+    "physical": "front open space in hazard zone",
+    "labels": [
+      "EXTERNAL_MINGTANG_CANDIDATE"
+    ],
+    "classical_matches": [
+      "OPEN-001"
+    ],
+    "decision": "Hazard HARD FAIL/ESCALATE; classical openness cannot authorize occupation/building."
+  },
+  {
+    "case_id": "CASE09-012",
+    "name": "Hai sân nối tiếp trong compound",
+    "physical": "two courtyards",
+    "labels": [
+      "INTERNAL_FRONT_COURT",
+      "INTERNAL_COURTYARD"
+    ],
+    "classical_matches": [
+      "OPEN-003"
+    ],
+    "decision": "Keep separate enclosure nodes; do not merge all open areas into one Ming Tang."
+  }
+]

@@ -1,0 +1,121 @@
+[
+  {
+    "claim_id": "SAN-001",
+    "source_id": "SRC-JJBY-YUAN-SAN",
+    "original": "糞屋對門，癰癤常存。",
+    "hanviet": "Phẩn ốc đối môn, ung tiết thường tồn.",
+    "literal_vi": "Nhà phân/khu chứa phân đối cửa được truyền bản gắn với phán về ung nhọt.",
+    "classification": "HISTORICAL_DOMESTIC_TABOO",
+    "observable": [
+      "waste_structure_to_gate_axis",
+      "distance",
+      "external_vs_internal"
+    ],
+    "traditional_outcome": "癰癤常存",
+    "editorial": "Không chuyển thành 'cửa WC đối cửa chính gây bệnh'. Vật thể lịch sử và quan hệ không gian khác WC xả nước hiện đại.",
+    "state": "CANDIDATE_FORM_RELATION_OUTCOME_NONCAUSAL"
+  },
+  {
+    "claim_id": "SAN-002",
+    "source_id": "SRC-YZSS-GJTS675-SAN",
+    "original": "糞屋對門，癰癤常存。",
+    "hanviet": "Phẩn ốc đối môn, ung tiết thường tồn.",
+    "literal_vi": "Bản chép Dương Trạch Thập Thư cũng lưu cùng motif 'phẩn ốc đối môn'.",
+    "classification": "TEXTUAL_CROSS_WITNESS",
+    "observable": [
+      "waste_structure_to_gate_axis"
+    ],
+    "traditional_outcome": "癰癤常存",
+    "editorial": "Witness gần giống nguồn gia dụng đời trước; independence chưa chứng minh, không đếm như hai lá phiếu độc lập.",
+    "state": "CROSS_WITNESS_NOT_INDEPENDENT_PROVEN"
+  },
+  {
+    "claim_id": "SAN-003",
+    "source_id": "SRC-YZCY-1810-SAN",
+    "original": "廁宜壓本命之凶方。",
+    "hanviet": "Xí nghi áp bản mệnh chi hung phương.",
+    "literal_vi": "Trong hệ của Dương Trạch Toát Yếu, nhà xí nên đặt ở hung phương của bản mệnh.",
+    "classification": "FENG_SHUI_SCHOOL_RULE",
+    "observable": [
+      "toilet_sector",
+      "life_gua_or_school_person_state"
+    ],
+    "traditional_outcome": null,
+    "editorial": "Chỉ chạy khi chính method tạo 'bản mệnh hung phương' của source/school được định nghĩa.",
+    "state": "SCHOOL_SPECIFIC"
+  },
+  {
+    "claim_id": "SAN-004",
+    "source_id": "SRC-YZCY-1810-SAN",
+    "original": "乾是天門莫作坑。",
+    "hanviet": "Càn thị thiên môn mạc tác khanh.",
+    "literal_vi": "Bài ca trong mục Xí mở đầu bằng việc tránh làm 'khanh' ở Càn.",
+    "classification": "DIRECTIONAL_VERSE",
+    "observable": [
+      "pit_or_toilet_sector"
+    ],
+    "traditional_outcome": null,
+    "editorial": "Danh sách phương vị sau câu này bị OCR nhiễu; không formalize toàn bảng trước scan collation.",
+    "state": "PARTIAL_TEXT_DIRECTION_TABLE_BLOCKED"
+  },
+  {
+    "claim_id": "SAN-005",
+    "source_id": "SRC-YZZZ-1849-SAN",
+    "original": "作厠亦宜在衰方。",
+    "hanviet": "Tác xí diệc nghi tại suy phương.",
+    "literal_vi": "Dương Trạch Chính Tông nói làm nhà xí cũng nên ở suy phương.",
+    "classification": "FENG_SHUI_SCHOOL_RULE",
+    "observable": [
+      "toilet_sector",
+      "school_strength_state"
+    ],
+    "traditional_outcome": null,
+    "editorial": "`衰方` phải do đúng hệ của sách tính; không tự map sang 'hung phương' của hệ khác.",
+    "state": "SCHOOL_SPECIFIC"
+  },
+  {
+    "claim_id": "SAN-006",
+    "source_id": "SRC-YYL-QING-SAN",
+    "original": "溷廁亦然，在本命之凶方。",
+    "hanviet": "Hỗn xí diệc nhiên, tại bản mệnh chi hung phương.",
+    "literal_vi": "Trong Tương Trạch thiên của Du Nghệ Lục, khu xí cũng được đặt ở hung phương của bản mệnh.",
+    "classification": "FENG_SHUI_SCHOOL_RULE",
+    "observable": [
+      "toilet_sector",
+      "east_west_life_group"
+    ],
+    "traditional_outcome": null,
+    "editorial": "Đây là rule của hệ Đông/Tây tứ cung trong chính văn cảnh này; không phải general-form rule.",
+    "state": "SCHOOL_SPECIFIC"
+  },
+  {
+    "claim_id": "SAN-007",
+    "source_id": "SRC-YZCY-1810-SAN",
+    "original": "若于來龍處開坑，大則傷宅主。",
+    "hanviet": "Nhược ư lai long xứ khai khanh, đại tắc thương trạch chủ.",
+    "literal_vi": "Văn bản cảnh báo việc đào hố/khanh ở chỗ gọi là 'lai long'.",
+    "classification": "TRADITIONAL_FORM_DIRECTIONAL",
+    "observable": [
+      "pit_location_relative_to_source_defined_dragon_path"
+    ],
+    "traditional_outcome": "傷宅主",
+    "editorial": "Không dùng như địa kỹ thuật. `來龍` là khái niệm Hình thế, còn đất/nền/nước ngầm phải qua kỹ thuật hiện đại.",
+    "state": "SCHOOL_FORM_CANDIDATE"
+  },
+  {
+    "claim_id": "SAN-008",
+    "source_id": "SRC-YZCY-1810-SAN",
+    "original": "此方與竈座煙囪相同。",
+    "hanviet": "Thử phương dữ táo tọa yên song tương đồng.",
+    "literal_vi": "Văn bản cho rằng phép đặt xí theo phương này tương tự cách đặt tọa bếp/ống khói trong hệ đó.",
+    "classification": "SCHOOL_INTERNAL_RELATION",
+    "observable": [
+      "toilet_sector",
+      "stove_base_sector",
+      "chimney_sector"
+    ],
+    "traditional_outcome": null,
+    "editorial": "Không suy thành 'WC và bếp phải cùng một phương' trong thiết kế hiện đại.",
+    "state": "SCHOOL_SPECIFIC_RELATION"
+  }
+]

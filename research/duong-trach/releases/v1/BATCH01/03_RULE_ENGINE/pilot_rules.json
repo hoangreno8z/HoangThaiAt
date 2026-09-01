@@ -1,0 +1,34 @@
+[
+  {
+    "rule_id":"SITE-HS-001",
+    "source_id":"SRC-YZSS-001",
+    "school":["Dương Trạch Hình Thế"],
+    "claim_type":"TEXTUAL_FACT",
+    "evidence_status":"VERIFIED_PRIMARY",
+    "text":{
+      "original":"人之居處宜以大地山河為主。",
+      "han_viet":"Nhân chi cư xứ nghi dĩ đại địa sơn hà vi chủ.",
+      "literal_vi":"Chỗ con người cư trú nên lấy đại thế đất đai, núi sông làm điều chủ yếu.",
+      "commentary_vi":"Ưu tiên khảo sát bối cảnh địa hình lớn trước các chi tiết nội thất hoặc vật phẩm."
+    },
+    "application":{"stage":["PRE_PURCHASE","SITE_SURVEY"],"scope":["HOUSE","SHOP","OFFICE","SME"],"decision":"Đánh giá macro-site trước micro-layout.","exceptions":[]},
+    "engine":{"inputs":{"terrain_context":"structured_site_data"},"condition":null,"threshold_origin":"NONE"},
+    "conflicts":[]
+  },
+  {
+    "rule_id":"SITE-YL-001",
+    "source_id":"SRC-YLJ-001",
+    "school":["Loan Đầu","Dương Trạch"],
+    "claim_type":"TEXTUAL_FACT",
+    "evidence_status":"ATTRIBUTION_DISPUTED",
+    "text":{
+      "original":"大凡陽宅要穴大，寬闊連綿又平伏。",
+      "han_viet":"Đại phàm dương trạch yếu huyệt đại, khoan khoát liên miên hựu bình phục.",
+      "literal_vi":"Dương trạch cần chỗ rộng, thế khoáng đạt, liên tục và tương đối bằng phẳng.",
+      "commentary_vi":"Không chuyển câu này thành một ngưỡng mét vuông hoặc độ dốc cụ thể nếu cổ văn không nêu."
+    },
+    "application":{"stage":["SITE_SELECTION"],"scope":["HOUSE","BUSINESS"],"decision":"Ưu tiên thế đất đủ rộng và tương đối ổn định cho cư trú.","exceptions":["Đất dốc có thể xử lý bằng thiết kế hiện đại nhưng phải qua đánh giá địa kỹ thuật."]},
+    "engine":{"inputs":{"site_area":"float","slope":"float"},"condition":null,"threshold_origin":"NONE"},
+    "conflicts":[]
+  }
+]

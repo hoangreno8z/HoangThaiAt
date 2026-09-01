@@ -1,0 +1,144 @@
+[
+  {
+    "claim_id": "WIN-001",
+    "source_id": "SRC-GJTS677-WINDOW",
+    "original": "窗櫺樑槅須分布。",
+    "hanviet": "Song linh lương cách tu phân bố.",
+    "literal_vi": "Đoạn nội hình nói các thành phần cửa sổ/cấu kiện như song linh, lương/cách cần được phân bố.",
+    "classification": "HISTORICAL_YANGZHAI_CONSTRUCTION_FORM",
+    "observable": [
+      "window_distribution",
+      "structural_opening_distribution"
+    ],
+    "editorial": "Ngữ nghĩa kỹ thuật của toàn cụm chưa đủ để suy thành tỷ lệ cửa sổ, đối xứng hay số lượng cát/hung.",
+    "state": "SEMANTIC_PARTIAL_NO_NUMERIC_RULE"
+  },
+  {
+    "claim_id": "WIN-002",
+    "source_id": "SRC-DNBS-V5-CLIMATE",
+    "original": "凡人家，屋居滋潤，光澤陽氣者吉，乾燥無滋潤者兇。",
+    "hanviet": "Phàm nhân gia, ốc cư tư nhuận, quang trạch dương khí giả cát, can táo vô tư nhuận giả hung.",
+    "literal_vi": "Truyền bản mô tả nhà ở có trạng thái 'tư nhuận, quang trạch, dương khí' là tốt và trạng thái khô cằn thiếu 'tư nhuận' là xấu.",
+    "classification": "TRADITIONAL_QUALITATIVE_ENVIRONMENT",
+    "observable": [
+      "surface_condition",
+      "daylight_proxy_optional",
+      "vegetation_or_moisture_context"
+    ],
+    "editorial": "Không khoa học hóa 'dương khí'. Cũng không đọc 'tư nhuận' thành khuyến khích ẩm mốc.",
+    "state": "QUALITATIVE_ONLY"
+  },
+  {
+    "claim_id": "WIN-003",
+    "source_id": "SRC-DNBS-V5-CLIMATE",
+    "original": "凡人居止之室，須周密，勿有細隙，使風入。",
+    "hanviet": "Phàm nhân cư chỉ chi thất, tu chu mật, vật hữu tế khích, sử phong nhập.",
+    "literal_vi": "Phòng ở được khuyên nên kín khít, tránh khe nhỏ để gió lọt vào.",
+    "classification": "HISTORICAL_DOMESTIC_DRAFT_AVOIDANCE",
+    "observable": [
+      "uncontrolled_air_leakage",
+      "draft_path"
+    ],
+    "editorial": "Đây là tránh gió lùa qua khe, không phải cấm thông gió chủ động.",
+    "state": "CANDIDATE_DRAFT_MOTIF"
+  },
+  {
+    "claim_id": "WIN-004",
+    "source_id": "SRC-DNBS-V5-CLIMATE",
+    "original": "少覺有風，切須避之。",
+    "hanviet": "Thiểu giác hữu phong, thiết tu tị chi.",
+    "literal_vi": "Nếu cảm thấy gió lùa thì truyền bản khuyên tránh.",
+    "classification": "HISTORICAL_DOMESTIC_HEALTH",
+    "observable": [
+      "draft_at_occupant_zone"
+    ],
+    "editorial": "Không dùng làm tiêu chuẩn vận tốc gió hiện đại.",
+    "state": "QUALITATIVE_DRAFT_MOTIF"
+  },
+  {
+    "claim_id": "WIN-005",
+    "source_id": "SRC-YSSB-1773-CLIMATE",
+    "original": "房開北牖，疏欞作窗，夏為宜，冬則否。",
+    "hanviet": "Phòng khai Bắc dũ, sơ linh tác song, hạ vi nghi, đông tắc phủ.",
+    "literal_vi": "Tác giả cho rằng mở cửa sổ/thông khẩu phía Bắc với song thưa có thể hợp mùa hè nhưng không hợp mùa đông.",
+    "classification": "HISTORICAL_SEASONAL_HEALTH_DESIGN",
+    "observable": [
+      "window_orientation",
+      "season",
+      "openable_state"
+    ],
+    "editorial": "Ý kiến khí hậu của tác giả 1773; không thành quy tắc phong thủy hướng Bắc phổ quát.",
+    "state": "CONTEXTUAL_SEASONAL"
+  },
+  {
+    "claim_id": "WIN-006",
+    "source_id": "SRC-YSSB-1773-CLIMATE",
+    "original": "臥房只宜清晨洞啟窗戶，以散竟夜之郁悶。",
+    "hanviet": "Ngọa phòng chỉ nghi thanh thần động khải song hộ, dĩ tán cánh dạ chi uất muộn.",
+    "literal_vi": "Tác giả đề nghị mùa nóng mở rộng cửa sổ phòng ngủ vào sáng sớm để giải tỏa khí tù đọng qua đêm.",
+    "classification": "HISTORICAL_SEASONAL_HEALTH_DESIGN",
+    "observable": [
+      "morning_purge_ventilation",
+      "season",
+      "window_open_fraction"
+    ],
+    "editorial": "Không dùng giờ cụ thể như rule hiện đại; đây là lịch sử thực hành.",
+    "state": "CONTEXTUAL_SEASONAL"
+  },
+  {
+    "claim_id": "WIN-007",
+    "source_id": "SRC-YSSB-1773-CLIMATE",
+    "original": "窗牖不可少開，便微風得入臥所。",
+    "hanviet": "Song dũ bất khả thiểu khai, tiện vi phong đắc nhập ngọa sở.",
+    "literal_vi": "Ở bối cảnh mùa hè, tác giả cho rằng cửa sổ nên được mở để gió nhẹ đi vào nơi nằm.",
+    "classification": "HISTORICAL_SEASONAL_HEALTH_DESIGN",
+    "observable": [
+      "intentional_ventilation",
+      "air_movement_at_bed",
+      "season"
+    ],
+    "editorial": "Đây là đối chứng trực tiếp với việc tuyệt đối hóa 'phòng phải kín gió'.",
+    "state": "CORE_CONTEXT_CONFLICT"
+  },
+  {
+    "claim_id": "WIN-008",
+    "source_id": "SRC-YSSB-1773-CLIMATE",
+    "original": "臥房暗則能斂神聚氣，此亦陰陽家之說。",
+    "hanviet": "Ngọa phòng ám tắc năng liễm thần tụ khí, thử diệc âm dương gia chi thuyết.",
+    "literal_vi": "Tác giả ghi nhận một quan niệm âm dương gia rằng phòng ngủ tối giúp 'liễm thần tụ khí'.",
+    "classification": "HISTORICAL_REPORTED_BELIEF",
+    "observable": [
+      "night_light",
+      "day_light"
+    ],
+    "editorial": "Tác giả ngay sau đó phân biệt ban ngày và điều kiện sáng sủa; không được biến thành 'phòng tối cả ngày là tốt'.",
+    "state": "REPORTED_BELIEF_CONTEXT_REQUIRED"
+  },
+  {
+    "claim_id": "WIN-009",
+    "source_id": "SRC-YSSB-1773-CLIMATE",
+    "original": "暗則又非白晝所宜。",
+    "hanviet": "Ám tắc hựu phi bạch trú sở nghi.",
+    "literal_vi": "Tác giả nói trạng thái tối lại không thích hợp cho ban ngày.",
+    "classification": "HISTORICAL_DOMESTIC_HEALTH",
+    "observable": [
+      "daylight_condition"
+    ],
+    "editorial": "Khóa tách DAY vs SLEEP/NIGHT; không dùng một biến 'brightness good/bad'.",
+    "state": "CORE_DAY_NIGHT_SEPARATION"
+  },
+  {
+    "claim_id": "WIN-010",
+    "source_id": "SRC-YSSB-1773-CLIMATE",
+    "original": "《青田秘記》曰：『臥房窗取偶，門取奇，合陰陽也。』",
+    "hanviet": "Thanh Điền Bí Ký viết: Ngọa phòng song thủ ngẫu, môn thủ kỳ, hợp âm dương dã.",
+    "literal_vi": "Tào Đình Đống dẫn một sách tên Thanh Điền Bí Ký nói cửa sổ phòng ngủ lấy số chẵn, cửa lấy số lẻ để hợp âm dương.",
+    "classification": "SECONDARY_QUOTATION_OF_ANOTHER_TRADITION",
+    "observable": [
+      "window_count",
+      "door_leaf_or_door_count"
+    ],
+    "editorial": "Chưa có bản Thanh Điền Bí Ký độc lập được khóa trong corpus; không dùng lời dẫn này làm rule production.",
+    "state": "REFERENCE_ONLY_SOURCE_CHAIN_INCOMPLETE"
+  }
+]

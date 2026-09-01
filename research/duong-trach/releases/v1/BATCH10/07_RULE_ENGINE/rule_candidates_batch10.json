@@ -1,0 +1,200 @@
+[
+  {
+    "rule_id": "R-ROOM-001",
+    "claim_id": "ROOM-001",
+    "source_id": "SRC-GJTS677-INTERNAL",
+    "domain": "ROOM_ZONING_INTERNAL_CIRCULATION",
+    "publish_state": "CANDIDATE",
+    "requires_term_resolution": false,
+    "ancient_numeric_threshold": null,
+    "engine_threshold": null,
+    "traditional_outcome_causal": false,
+    "modern_hard_gate_required": true,
+    "observable": [
+      "space_hierarchy",
+      "primary_space",
+      "build_sequence"
+    ]
+  },
+  {
+    "rule_id": "R-ROOM-002",
+    "claim_id": "ROOM-002",
+    "source_id": "SRC-GJTS677-INTERNAL",
+    "domain": "ROOM_ZONING_INTERNAL_CIRCULATION",
+    "publish_state": "CANDIDATE",
+    "requires_term_resolution": false,
+    "ancient_numeric_threshold": null,
+    "engine_threshold": null,
+    "traditional_outcome_causal": false,
+    "modern_hard_gate_required": true,
+    "observable": [
+      "side_structure_exists",
+      "primary_hall_exists",
+      "sequence"
+    ]
+  },
+  {
+    "rule_id": "R-ROOM-003",
+    "claim_id": "ROOM-003",
+    "source_id": "SRC-GJTS677-INTERNAL",
+    "domain": "ROOM_ZONING_INTERNAL_CIRCULATION",
+    "publish_state": "PARTIAL_ONLY",
+    "requires_term_resolution": true,
+    "ancient_numeric_threshold": null,
+    "engine_threshold": null,
+    "traditional_outcome_causal": false,
+    "modern_hard_gate_required": true,
+    "observable": [
+      "front_hall",
+      "rear_hall",
+      "hall_area_ratio",
+      "side_structure"
+    ]
+  },
+  {
+    "rule_id": "R-ROOM-004",
+    "claim_id": "ROOM-004",
+    "source_id": "SRC-DNBS-V5-ROOM",
+    "domain": "ROOM_ZONING_INTERNAL_CIRCULATION",
+    "publish_state": "CANDIDATE",
+    "requires_term_resolution": false,
+    "ancient_numeric_threshold": null,
+    "engine_threshold": null,
+    "traditional_outcome_causal": false,
+    "modern_hard_gate_required": true,
+    "observable": [
+      "layer_count",
+      "hall_exists",
+      "side_wing_exists",
+      "principal_hall_exists"
+    ]
+  },
+  {
+    "rule_id": "R-ROOM-005",
+    "claim_id": "ROOM-005",
+    "source_id": "SRC-DNBS-V5-ROOM",
+    "domain": "ROOM_ZONING_INTERNAL_CIRCULATION",
+    "publish_state": "CANDIDATE",
+    "requires_term_resolution": false,
+    "ancient_numeric_threshold": null,
+    "engine_threshold": null,
+    "traditional_outcome_causal": false,
+    "modern_hard_gate_required": true,
+    "observable": [
+      "room_door_segment",
+      "tianjing_polygon",
+      "door_normal_ray",
+      "direct_visibility_or_axis"
+    ]
+  },
+  {
+    "rule_id": "R-ROOM-006",
+    "claim_id": "ROOM-006",
+    "source_id": "SRC-DNBS-V5-ROOM",
+    "domain": "ROOM_ZONING_INTERNAL_CIRCULATION",
+    "publish_state": "BLOCKED",
+    "requires_term_resolution": true,
+    "ancient_numeric_threshold": null,
+    "engine_threshold": null,
+    "traditional_outcome_causal": false,
+    "modern_hard_gate_required": true,
+    "observable": [
+      "door_to_door_axis",
+      "room_type_candidate"
+    ]
+  },
+  {
+    "rule_id": "R-ROOM-007",
+    "claim_id": "ROOM-007",
+    "source_id": "SRC-GJTS677-INTERNAL",
+    "domain": "ROOM_ZONING_INTERNAL_CIRCULATION",
+    "publish_state": "BLOCKED",
+    "requires_term_resolution": true,
+    "ancient_numeric_threshold": null,
+    "engine_threshold": null,
+    "traditional_outcome_causal": false,
+    "modern_hard_gate_required": true,
+    "observable": [
+      "entry_transition",
+      "window_distribution"
+    ]
+  },
+  {
+    "rule_id": "R-ROOM-008",
+    "claim_id": "ROOM-008",
+    "source_id": "SRC-GJTS677-INTERNAL",
+    "domain": "ROOM_ZONING_INTERNAL_CIRCULATION",
+    "publish_state": "BLOCKED",
+    "requires_term_resolution": false,
+    "ancient_numeric_threshold": null,
+    "engine_threshold": null,
+    "traditional_outcome_causal": false,
+    "modern_hard_gate_required": true,
+    "observable": [
+      "unit_count",
+      "shared_exit_node",
+      "shared_access_graph"
+    ]
+  },
+  {
+    "rule_id": "R-ROOM-009",
+    "claim_id": "ROOM-009",
+    "source_id": "SRC-GJTS677-INTERNAL",
+    "domain": "ROOM_ZONING_INTERNAL_CIRCULATION",
+    "publish_state": "BLOCKED",
+    "requires_term_resolution": false,
+    "ancient_numeric_threshold": null,
+    "engine_threshold": null,
+    "traditional_outcome_causal": false,
+    "modern_hard_gate_required": true,
+    "observable": [
+      "private_access",
+      "shared_lane",
+      "circulation_graph"
+    ]
+  },
+  {
+    "rule_id": "R-ROOM-010",
+    "claim_id": "ROOM-010",
+    "source_id": "SRC-DNBS-V5-ROOM",
+    "domain": "ROOM_ZONING_INTERNAL_CIRCULATION",
+    "publish_state": "CANDIDATE",
+    "requires_term_resolution": false,
+    "ancient_numeric_threshold": null,
+    "engine_threshold": null,
+    "traditional_outcome_causal": false,
+    "modern_hard_gate_required": true,
+    "observable": [
+      "uncontrolled_draft_paths",
+      "enclosure_leakage"
+    ]
+  },
+  {
+    "rule_id": "R-ROOM-011",
+    "claim_id": "ROOM-011",
+    "source_id": "SRC-DNBS-V5-ROOM",
+    "domain": "ROOM_ZONING_INTERNAL_CIRCULATION",
+    "publish_state": "BLOCKED",
+    "requires_term_resolution": false,
+    "ancient_numeric_threshold": null,
+    "engine_threshold": null,
+    "traditional_outcome_causal": false,
+    "modern_hard_gate_required": true,
+    "observable": [
+      "kitchen_vertical_relation_to_hall"
+    ]
+  },
+  {
+    "rule_id": "R-ROOM-012",
+    "claim_id": "ROOM-012",
+    "source_id": "SRC-GJTS677-INTERNAL",
+    "domain": "ROOM_ZONING_INTERNAL_CIRCULATION",
+    "publish_state": "BLOCKED",
+    "requires_term_resolution": true,
+    "ancient_numeric_threshold": null,
+    "engine_threshold": null,
+    "traditional_outcome_causal": false,
+    "modern_hard_gate_required": true,
+    "observable": []
+  }
+]

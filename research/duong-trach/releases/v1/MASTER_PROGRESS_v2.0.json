@@ -1,0 +1,32 @@
+{
+  "date": "2026-09-01",
+  "completed_batches": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14
+  ],
+  "qa_checkpoint_B": "COMPLETE_PASS",
+  "next": "BATCH15_WINDOWS_DAYLIGHT_VENTILATION",
+  "batch14_key_evidence": [
+    "Yuan 居家必用事類全集: 糞屋對門 motif",
+    "Qing 陽宅撮要: 廁 and 本命凶方",
+    "Qing 陽宅正宗: 作厠亦宜在衰方",
+    "Qing 游藝錄: 溷廁 in 本命凶方"
+  ],
+  "current_modern_legal_versions": [
+    "QCVN 07:2023/BXD + Sửa đổi 1:2025 effective 2026-01-23",
+    "QCVN 14:2025/BTNMT effective 2025-09-01",
+    "QCVN 10:2024/BXD effective 2025-02-01"
+  ]
+}

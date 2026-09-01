@@ -1,0 +1,12 @@
+﻿source_id,title_zh,title_vi,author,period,witness,holding,status,scope
+SRC-YZSS-001,陽宅十書,Dương Trạch Thập Thư,Vương Quân Vinh,Minh,掃葉山房重刊本,Harvard-Yenching Library,VERIFIED_PRIMARY_WITH_OCR_CAUTION,dương trạch; ngoại hình; phúc nguyên; cửa; nước; bố trí
+SRC-HLJ-001,撼龍經,Hám Long Kinh,truyền là Dương Quân Tùng,truyền là Đường,欽定四庫全書本,Zhejiang University Library,ATTRIBUTION_DISPUTED_TEXT_TRADITION_STRONG,loan đầu; long mạch; sơn thế; cửu tinh hình thế
+SRC-YLJ-001,疑龍經,Nghi Long Kinh,truyền là Dương Quân Tùng,truyền là Đường,欽定四庫全書本,Zhejiang University Library,ATTRIBUTION_DISPUTED_TEXT_TRADITION_STRONG,tìm long; thủy khẩu; kết huyệt; dương trạch đại thế
+SRC-QNA-001,青囊奧語,Thanh Nang Áo Ngữ,cựu bản đề Dương Quân Tùng,truyền là Đường; xuất hiện trong truyền thống muộn hơn,,,ATTRIBUTION_DISPUTED,lý khí; âm dương thuận nghịch; sơn thủy
+SRC-TYJ-001,天玉經,Thiên Ngọc Kinh,cựu bản đề Dương Quân Tùng,truyền là Đường; Tứ Khố cho biết đến Tống mới thấy lưu hành,,,ATTRIBUTION_DISPUTED,lý khí; tam ban quái; sơn hướng; tứ kinh ngũ hành
+SRC-ZJ-001,宅經 / 黃帝宅經,Trạch Kinh / Hoàng Đế Trạch Kinh,cựu bản đề Hoàng Đế; Tứ Khố xem là y thác,không xác định chắc,四庫全書本 / Wikisource,,ATTRIBUTION_PSEUDEPIGRAPHIC_TEXT_IMPORTANT,dương trạch; 24 lộ; âm dương trạch; tu trạch
+SRC-YZFS-001,營造法式,Doanh Tạo Pháp Thức,Lý Giới,Bắc Tống,影宋朱絲欄鈔本 / 四庫本 / các bản công khai,National Central Library Taiwan và các thư viện khác,VERIFIED_PRIMARY,kiến trúc; kết cấu; vật liệu; định mức; công pháp
+SRC-QNX-001,青囊序,Thanh Nang Tự,truyền là Tăng Văn Địch,,,,ATTRIBUTION_TRADITIONAL,long; thủy; âm dương; lý khí
+SRC-RZXZ-001,人子須知,Nhân Tử Tu Tri,,,,,DISCOVERY_VERIFIED_TEXT_PENDING_EDITION_AUDIT,địa lý hình thế; minh đường; tàng phong; thủy
+SRC-RDYS-001,入地眼全書,Nhập Địa Nhãn Toàn Thư,,,,,DISCOVERY_VERIFIED_TEXT_PENDING_EDITION_AUDIT,dương trạch; môn lộ táo; bát trạch; sơn thủy
+SRC-XJBF-001,欽定協紀辨方書,Khâm Định Hiệp Kỷ Biện Phương Thư,,,,,DISCOVERY_VERIFIED_TEXT_PENDING_SCOPE_FILTER,trạch nhật; tạo mệnh; động thổ; tu tạo

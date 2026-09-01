@@ -1,0 +1,35 @@
+{
+  "batch": "05",
+  "date": "2026-09-01",
+  "scope": "SITE_SHAPE_ROAD_WATER_CASEBOOK",
+  "counts": {
+    "sources": 5,
+    "motifs": 24,
+    "rule_candidates": 24,
+    "cases": 12,
+    "conflicts": 5
+  },
+  "quality_gates": {
+    "source_id_required": "PASS",
+    "witness_independence_not_assumed": "PASS",
+    "traditional_outcomes_separated": "PASS",
+    "no_ancient_numeric_thresholds_invented": "PASS",
+    "front_reference_not_assumed_south": "PASS",
+    "fan_tiao_not_hallucinated": "PASS",
+    "modern_hazard_override": "PASS",
+    "figure_layout_conflict_preserved": "PASS"
+  },
+  "blocked_items": [
+    "返跳 geometric definition",
+    "涯水頭 exact technical mapping",
+    "East-West elongation rule due variant conflict",
+    "P71 complex figure captions until scan layout verification"
+  ],
+  "next_research_priorities": [
+    "manual scan verification of P70-P71 figure captions",
+    "search earlier/parallel witnesses for 返跳 and water-road curvature terminology",
+    "create polygon-shape taxonomy: L, U, triangle, concave, missing corner",
+    "separate historical directional deficiency rules from pure geometry",
+    "begin Batch 06: plot irregularity + missing sectors + center determination + practical geometry"
+  ]
+}

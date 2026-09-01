@@ -1,0 +1,43 @@
+{
+  "GENERAL_FORM": {
+    "allowed_claims": [
+      "SAN-001",
+      "SAN-002"
+    ],
+    "execution": "QUALITATIVE_EXTERNAL_RELATION_ONLY",
+    "warning": "糞屋 historical external/waste-structure motif is not equivalent to modern internal WC."
+  },
+  "YANG_ZHAI_CUO_YAO": {
+    "allowed_claims": [
+      "SAN-003",
+      "SAN-004",
+      "SAN-007",
+      "SAN-008"
+    ],
+    "requires": [
+      "life_or_school_reference",
+      "direction system",
+      "source collation"
+    ],
+    "execution": "BLOCK_DIRECTION_TABLE_UNTIL_SCAN_COLLATION"
+  },
+  "YANG_ZHAI_ZHENG_ZONG": {
+    "allowed_claims": [
+      "SAN-005"
+    ],
+    "requires": [
+      "source-specific definition of 衰方"
+    ],
+    "execution": "SCHOOL_ONLY"
+  },
+  "YOU_YI_LU_XIANG_ZHAI": {
+    "allowed_claims": [
+      "SAN-006"
+    ],
+    "requires": [
+      "east_west_life_group computation"
+    ],
+    "execution": "SCHOOL_ONLY"
+  },
+  "cross_school_rule": "Do not collapse 凶方, 衰方 and other bad-sector labels into one shared enum without a mapping table and provenance."
+}

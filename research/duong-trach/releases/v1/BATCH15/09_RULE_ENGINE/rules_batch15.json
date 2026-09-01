@@ -1,0 +1,171 @@
+[
+  {
+    "rule_id": "R-WIN-001",
+    "claim_id": "WIN-001",
+    "source_id": "SRC-GJTS677-WINDOW",
+    "domain": "WINDOW_DAYLIGHT_VENTILATION_MICROCLIMATE",
+    "publish_state": "PARTIAL_ONLY",
+    "engine_threshold": null,
+    "ancient_numeric_threshold": null,
+    "modern_causality": "NONE_INFERRED",
+    "observable": [
+      "window_distribution",
+      "structural_opening_distribution"
+    ]
+  },
+  {
+    "rule_id": "R-WIN-002",
+    "claim_id": "WIN-002",
+    "source_id": "SRC-DNBS-V5-CLIMATE",
+    "domain": "WINDOW_DAYLIGHT_VENTILATION_MICROCLIMATE",
+    "publish_state": "CANDIDATE",
+    "engine_threshold": null,
+    "ancient_numeric_threshold": null,
+    "modern_causality": "NONE_INFERRED",
+    "observable": [
+      "surface_condition",
+      "daylight_proxy_optional",
+      "vegetation_or_moisture_context"
+    ]
+  },
+  {
+    "rule_id": "R-WIN-003",
+    "claim_id": "WIN-003",
+    "source_id": "SRC-DNBS-V5-CLIMATE",
+    "domain": "WINDOW_DAYLIGHT_VENTILATION_MICROCLIMATE",
+    "publish_state": "CANDIDATE",
+    "engine_threshold": null,
+    "ancient_numeric_threshold": null,
+    "modern_causality": "NONE_INFERRED",
+    "observable": [
+      "uncontrolled_air_leakage",
+      "draft_path"
+    ]
+  },
+  {
+    "rule_id": "R-WIN-004",
+    "claim_id": "WIN-004",
+    "source_id": "SRC-DNBS-V5-CLIMATE",
+    "domain": "WINDOW_DAYLIGHT_VENTILATION_MICROCLIMATE",
+    "publish_state": "CANDIDATE",
+    "engine_threshold": null,
+    "ancient_numeric_threshold": null,
+    "modern_causality": "NONE_INFERRED",
+    "observable": [
+      "draft_at_occupant_zone"
+    ]
+  },
+  {
+    "rule_id": "R-WIN-005",
+    "claim_id": "WIN-005",
+    "source_id": "SRC-YSSB-1773-CLIMATE",
+    "domain": "WINDOW_DAYLIGHT_VENTILATION_MICROCLIMATE",
+    "publish_state": "CANDIDATE",
+    "engine_threshold": null,
+    "ancient_numeric_threshold": null,
+    "modern_causality": "NONE_INFERRED",
+    "observable": [
+      "window_orientation",
+      "season",
+      "openable_state"
+    ]
+  },
+  {
+    "rule_id": "R-WIN-006",
+    "claim_id": "WIN-006",
+    "source_id": "SRC-YSSB-1773-CLIMATE",
+    "domain": "WINDOW_DAYLIGHT_VENTILATION_MICROCLIMATE",
+    "publish_state": "CANDIDATE",
+    "engine_threshold": null,
+    "ancient_numeric_threshold": null,
+    "modern_causality": "NONE_INFERRED",
+    "observable": [
+      "morning_purge_ventilation",
+      "season",
+      "window_open_fraction"
+    ]
+  },
+  {
+    "rule_id": "R-WIN-007",
+    "claim_id": "WIN-007",
+    "source_id": "SRC-YSSB-1773-CLIMATE",
+    "domain": "WINDOW_DAYLIGHT_VENTILATION_MICROCLIMATE",
+    "publish_state": "CONTEXT_RULE",
+    "engine_threshold": null,
+    "ancient_numeric_threshold": null,
+    "modern_causality": "NONE_INFERRED",
+    "observable": [
+      "intentional_ventilation",
+      "air_movement_at_bed",
+      "season"
+    ]
+  },
+  {
+    "rule_id": "R-WIN-008",
+    "claim_id": "WIN-008",
+    "source_id": "SRC-YSSB-1773-CLIMATE",
+    "domain": "WINDOW_DAYLIGHT_VENTILATION_MICROCLIMATE",
+    "publish_state": "REFERENCE_ONLY",
+    "engine_threshold": null,
+    "ancient_numeric_threshold": null,
+    "modern_causality": "NONE_INFERRED",
+    "observable": [
+      "night_light",
+      "day_light"
+    ]
+  },
+  {
+    "rule_id": "R-WIN-009",
+    "claim_id": "WIN-009",
+    "source_id": "SRC-YSSB-1773-CLIMATE",
+    "domain": "WINDOW_DAYLIGHT_VENTILATION_MICROCLIMATE",
+    "publish_state": "CANDIDATE",
+    "engine_threshold": null,
+    "ancient_numeric_threshold": null,
+    "modern_causality": "NONE_INFERRED",
+    "observable": [
+      "daylight_condition"
+    ]
+  },
+  {
+    "rule_id": "R-WIN-010",
+    "claim_id": "WIN-010",
+    "source_id": "SRC-YSSB-1773-CLIMATE",
+    "domain": "WINDOW_DAYLIGHT_VENTILATION_MICROCLIMATE",
+    "publish_state": "REFERENCE_ONLY",
+    "engine_threshold": null,
+    "ancient_numeric_threshold": null,
+    "modern_causality": "NONE_INFERRED",
+    "observable": [
+      "window_count",
+      "door_leaf_or_door_count"
+    ]
+  },
+  {
+    "rule_id": "MOD-WIN-VENT-001",
+    "source_ids": [
+      "MOD-QCVN04-2021-VENT",
+      "MOD-TCVN5687-2024"
+    ],
+    "domain": "WINDOW_DAYLIGHT_VENTILATION_MICROCLIMATE",
+    "publish_state": "MODERN_GATE_BY_APPLICABILITY",
+    "result": "VENTILATION_REQUIREMENTS_OVERRIDE_CLASSICAL_PREFERENCE",
+    "engine_threshold": null
+  },
+  {
+    "rule_id": "MOD-WIN-ENERGY-001",
+    "source_id": "MOD-QCVN09-2017",
+    "domain": "WINDOW_DAYLIGHT_VENTILATION_MICROCLIMATE",
+    "publish_state": "HARD_GATE_IF_APPLICABLE_AND_CURRENT_DATE",
+    "result": "ENERGY_ENVELOPE_REQUIREMENTS",
+    "engine_threshold": null
+  },
+  {
+    "rule_id": "MOD-WIN-ENERGY-FUTURE-001",
+    "source_id": "MOD-QCVN04-3-2026",
+    "domain": "WINDOW_DAYLIGHT_VENTILATION_MICROCLIMATE",
+    "publish_state": "DISABLED_UNTIL_2027_02_01",
+    "result": "FUTURE_MIGRATION_TARGET",
+    "engine_threshold": null
+  }
+]

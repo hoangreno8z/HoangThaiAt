@@ -1,0 +1,70 @@
+{
+  "$id": "lapque.water_engine.v0.16",
+  "entities": {
+    "WELL": {
+      "geometry": "Point/Polygon",
+      "type": "DUG|DRILLED|SPRING_BOX|UNKNOWN",
+      "status": "ACTIVE|ABANDONED|UNKNOWN",
+      "water_use": "DOMESTIC|IRRIGATION|OTHER|UNKNOWN"
+    },
+    "POTABLE_WATER_TANK": {
+      "geometry": "3D volume",
+      "placement": "UNDERGROUND|GROUND|ROOF|INTERMEDIATE",
+      "water_quality_management": "required",
+      "historical_equivalent": "NONE_AUTOMATIC"
+    },
+    "WATER_PIPE": {
+      "geometry": "3D polyline",
+      "system": "POTABLE|NONPOTABLE|FIRE|OTHER"
+    },
+    "STORMWATER_PIPE_OR_CHANNEL": {
+      "geometry": "3D polyline/polygon",
+      "system": "RAINWATER"
+    },
+    "WASTEWATER_PIPE": {
+      "geometry": "3D polyline",
+      "system": "SOIL|WASTE|COMBINED|OTHER"
+    },
+    "COURTYARD_DRAIN": {
+      "geometry": "Point/Line",
+      "catchment": "Polygon"
+    },
+    "DITCH_CHANNEL": {
+      "geometry": "Polyline/Polygon",
+      "type": "OPEN|CLOSED|UNKNOWN"
+    },
+    "OUTLET": {
+      "geometry": "Point",
+      "type": "STORMWATER|WASTEWATER|OVERFLOW|OTHER"
+    }
+  },
+  "graphs": {
+    "POTABLE_GRAPH": "source -> storage -> pump -> fixtures",
+    "STORMWATER_GRAPH": "roof/site catchments -> inlets -> channels/pipes -> lawful outlet/storage/infiltration",
+    "WASTEWATER_GRAPH": "fixtures -> stacks -> treatment/sewer -> lawful discharge",
+    "HISTORICAL_WATER_PATH_GRAPH": "separate graph for old 放水/水路 concepts"
+  },
+  "observables": [
+    "well_to_stove_distance",
+    "well_to_wastewater_distance",
+    "well_to_septic_distance",
+    "well_relative_to_principal_hall",
+    "tank_location_3d",
+    "tank_vertical_relation_to_rooms",
+    "tank_structural_load",
+    "standing_water_depth_duration",
+    "drain_path_straightness",
+    "branching_topology",
+    "outlet_elevation",
+    "overflow_path",
+    "backflow_risk",
+    "cross_connection_risk"
+  ],
+  "critical_guards": [
+    "No well directional rule can execute on WATER_TANK entities.",
+    "No historical drain-shape rule may force a hydraulically unsafe pipe layout.",
+    "Potable, stormwater and wastewater graphs must remain separate unless modern design explicitly allows a controlled connection.",
+    "Stagnant water triggers modern drainage/sanitation review before any classical interpretation.",
+    "Water-quality compliance is independent of Feng Shui sector."
+  ]
+}

@@ -1,0 +1,41 @@
+[
+  {
+    "source_id": "SRC-GJTS675-OUTER",
+    "title_zh": "欽定古今圖書集成·藝術典第675卷·陽宅十書一·論宅外形第一",
+    "title_vi": "Cổ Kim Đồ Thư Tập Thành quyển 675 — Dương Trạch Thập Thư I, Luận ngoại hình",
+    "url": "https://zh.wikisource.org/wiki/%E6%AC%BD%E5%AE%9A%E5%8F%A4%E4%BB%8A%E5%9C%96%E6%9B%B8%E9%9B%86%E6%88%90/%E5%8D%9A%E7%89%A9%E5%BD%99%E7%B7%A8/%E8%97%9D%E8%A1%93%E5%85%B8/%E7%AC%AC675%E5%8D%B7",
+    "lines": "144-150",
+    "role": "PRIMARY_TEXTUAL_CROSS_WITNESS",
+    "status": "TRANSCRIPTION_WITH_SCAN_TRADITION",
+    "scope": "DIRECT_YANGZHAI"
+  },
+  {
+    "source_id": "SRC-GJTS677-INNER",
+    "title_zh": "欽定古今圖書集成·藝術典第677卷·陽宅十書三·論宅內形第八",
+    "title_vi": "Cổ Kim Đồ Thư Tập Thành quyển 677 — Dương Trạch Thập Thư III, Luận nội hình",
+    "url": "https://zh.wikisource.org/wiki/%E6%AC%BD%E5%AE%9A%E5%8F%A4%E4%BB%8A%E5%9C%96%E6%9B%B8%E9%9B%86%E6%88%90/%E5%8D%9A%E7%89%A9%E5%BD%99%E7%B7%A8/%E8%97%9D%E8%A1%93%E5%85%B8/%E7%AC%AC677%E5%8D%B7",
+    "lines": "306-348",
+    "role": "PRIMARY_TEXTUAL_CROSS_WITNESS",
+    "status": "TRANSCRIPTION; SOME VERSE PUNCTUATION COMPLEX",
+    "scope": "DIRECT_YANGZHAI"
+  },
+  {
+    "source_id": "MOD-QCVN01-2021",
+    "title_vi": "QCVN 01:2021/BXD — Quy chuẩn kỹ thuật quốc gia về Quy hoạch xây dựng",
+    "authority": "Bộ Xây dựng",
+    "role": "CURRENT_LEGAL_PLANNING_BASE",
+    "effective_until": "2026-12-31 subject to transition/specific legal context",
+    "url": "https://thuvienphapluat.vn/van-ban/Xay-dung-Do-thi/Thong-tu-01-2021-TT-BXD-QCVN-01-2021-BXD-Quy-chuan-ky-thuat-quoc-gia-ve-Quy-hoach-xay-dung-474747.aspx",
+    "notes": "Tại ngày 2026-09-01 vẫn là base hiện hành; phải kết hợp quy hoạch chi tiết/thiết kế đô thị và văn bản địa phương."
+  },
+  {
+    "source_id": "MOD-QCVN01-2026",
+    "title_vi": "QCVN 01:2026/BXD — Quy chuẩn kỹ thuật quốc gia về quy hoạch đô thị và nông thôn",
+    "authority": "Bộ Xây dựng",
+    "issued": "2026-06-30",
+    "effective": "2027-01-01",
+    "role": "FUTURE_LEGAL_VERSION",
+    "url": "https://www.moc.gov.vn/vn/tin-tuc/1196/95350/thong-tu-ban-hanh-quy-chuan-ky-thuat-quoc-gia-ve-quy-hoach-do-thi-va-nong-thon.aspx",
+    "notes": "Không áp sớm trước ngày hiệu lực. Engine phải version-lock theo ngày pháp lý."
+  }
+]

@@ -1,0 +1,64 @@
+{
+  "DANGEROUS_STRUCTURE_ASSESSMENT": {
+    "source_id": "MOD-TCVN9381-2012",
+    "status": "ACTIVE",
+    "priority": "HARD_GATE",
+    "rule": "Use structural danger assessment to support repair, renovation or dismantling decisions. Feng Shui never substitutes for this assessment."
+  },
+  "RC_MAINTENANCE": {
+    "source_id": "MOD-TCVN9343-2012",
+    "status": "ACTIVE",
+    "priority": "MAINTENANCE_GATE",
+    "rule": "Concrete/RC maintenance follows applicable technical procedures."
+  },
+  "RC_CORROSION": {
+    "source_ids": [
+      "MOD-TCVN9348-2012",
+      "MOD-TCVN12251-2020"
+    ],
+    "status": "ACTIVE",
+    "priority": "TECHNICAL_GATE",
+    "rule": "Corrosion evidence requires technical evaluation/protection; rust is not an omen."
+  },
+  "RC_CRACKING": {
+    "source_id": "MOD-TCVN9345-2012",
+    "status": "ACTIVE",
+    "priority": "CONTEXT_GUIDANCE",
+    "scope_guard": "Hot-humid climate crack-prevention guidance is not a universal cause-classifier for every existing crack."
+  },
+  "TERMITE_EXISTING": {
+    "source_id": "MOD-TCVN8268-2017",
+    "status": "ACTIVE",
+    "priority": "TECHNICAL_GATE",
+    "rule": "Existing-building termite treatment/prevention follows applicable technical practice."
+  },
+  "TERMITE_NEW": {
+    "source_id": "MOD-TCVN7958-2017",
+    "status": "ACTIVE",
+    "priority": "TECHNICAL_GATE",
+    "rule": "New-building termite prevention within scope."
+  },
+  "CORROSION_ALL_MATERIALS": {
+    "source_id": "MOD-TCVN12251-2020",
+    "status": "ACTIVE",
+    "priority": "TECHNICAL_GATE",
+    "scope": "Includes protection for multiple building-structure materials in new or repair work within standard scope."
+  },
+  "RC_DESIGN": {
+    "source_id": "MOD-TCVN5574-2018",
+    "status": "ACTIVE",
+    "priority": "DESIGN_GATE"
+  },
+  "STEEL_DESIGN": {
+    "source_id": "MOD-TCVN5575-2024",
+    "status": "ACTIVE",
+    "priority": "DESIGN_GATE",
+    "version_lock": "2024 edition replaces 2012."
+  },
+  "TIMBER_TESTING": {
+    "source_id": "MOD-TCVN8164-2015",
+    "status": "ACTIVE",
+    "priority": "MATERIAL_EVIDENCE",
+    "rule": "Structural timber properties require testing/grading context; visual age or ritual category is insufficient."
+  }
+}

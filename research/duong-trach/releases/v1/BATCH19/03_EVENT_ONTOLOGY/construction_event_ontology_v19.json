@@ -1,0 +1,99 @@
+{
+  "$id": "lapque.construction_event_ontology.v0.19",
+  "historical_xjbf_events": {
+    "BUILD_OR_RENOVATE_GROUNDBREAKING": {
+      "source_terms": [
+        "興造動土",
+        "修造動土"
+      ],
+      "source_equivalence": "卷十一 explicitly notes 興造動土〈修造同〉",
+      "not_equal": [
+        "all construction activities",
+        "demolition",
+        "burial 破土"
+      ]
+    },
+    "ERECT_COLUMNS_RAISE_BEAM": {
+      "source_terms": [
+        "豎柱上梁"
+      ],
+      "not_equal": [
+        "generic roof completion",
+        "every modern structural frame erection"
+      ]
+    },
+    "MOVE_RESIDENCE": {
+      "source_terms": [
+        "般移",
+        "移徙"
+      ],
+      "modern_label_candidate": "MOVE_IN",
+      "mapping_state": "EDITORIAL_MAPPING_REQUIRED",
+      "not_equal": [
+        "入宅 as guaranteed exact source term"
+      ]
+    },
+    "INSTALL_BED_TIMING": {
+      "source_terms": [
+        "安牀"
+      ],
+      "not_equal": [
+        "bed geometry placement rule"
+      ]
+    },
+    "DEMOLISH_HOUSE_OR_WALL": {
+      "source_terms": [
+        "破屋壞垣"
+      ],
+      "not_equal": [
+        "修造動土",
+        "burial 破土"
+      ]
+    },
+    "BURIAL_BREAK_GROUND": {
+      "source_terms": [
+        "破土"
+      ],
+      "context": "listed with 安葬/啓攢 in 民用事",
+      "domain": "YINZHAI_FUNERARY",
+      "not_equal": [
+        "construction 動土"
+      ]
+    }
+  },
+  "modern_project_events": {
+    "CEREMONIAL_GROUNDBREAKING": {
+      "physical_work_may_be_none_or_symbolic": true,
+      "requires_mapping_to_historical_event": true
+    },
+    "FIRST_EXCAVATION": {
+      "domain": "CONSTRUCTION",
+      "technical_readiness_required": true
+    },
+    "FOUNDATION_WORK": {
+      "domain": "CONSTRUCTION"
+    },
+    "STRUCTURAL_FRAME_WORK": {
+      "domain": "CONSTRUCTION"
+    },
+    "ROOF_WORK": {
+      "domain": "CONSTRUCTION"
+    },
+    "DOOR_INSTALLATION": {
+      "domain": "CONSTRUCTION",
+      "historical_timing_source": "NOT_LOCKED_IN_XJBF_V11"
+    },
+    "DEMOLITION": {
+      "domain": "CONSTRUCTION_SAFETY"
+    },
+    "MOVE_IN": {
+      "domain": "OCCUPANCY",
+      "historical_mapping": "移徙 candidate, not exact automatic equivalence"
+    },
+    "BED_INSTALLATION": {
+      "domain": "OCCUPANCY/RITUAL",
+      "historical_mapping": "安牀"
+    }
+  },
+  "classification_rule": "Never run date selection until physical/ritual event is disambiguated."
+}

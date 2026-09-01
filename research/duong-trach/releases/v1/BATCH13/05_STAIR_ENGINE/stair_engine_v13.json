@@ -1,0 +1,58 @@
+{
+  "$id": "lapque.stair_engine.v0.13",
+  "entities": {
+    "STAIR_FLIGHT": {
+      "geometry": "3D/polyline+polygon",
+      "start_floor": "integer",
+      "end_floor": "integer",
+      "step_count": "integer",
+      "riser_height": "number|null",
+      "tread_depth": "number|null",
+      "width": "number|null"
+    },
+    "LANDING": {
+      "geometry": "polygon",
+      "elevation": "number"
+    },
+    "STAIRWELL": {
+      "geometry": "polygon/void",
+      "connected_storeys": "array"
+    },
+    "HANDRAIL": {
+      "geometry": "line",
+      "height": "number|null"
+    },
+    "GUARD": {
+      "geometry": "line/polygon",
+      "height": "number|null"
+    },
+    "DOOR": {
+      "geometry": "segment"
+    },
+    "ACCESSIBLE_VERTICAL_ROUTE": {
+      "type": "LIFT|RAMP|OTHER|NONE"
+    }
+  },
+  "observables": [
+    "step_count",
+    "flight_count",
+    "rise_total",
+    "riser_height",
+    "tread_depth",
+    "stair_width",
+    "landing_dimensions",
+    "headroom",
+    "door_to_stair_axis",
+    "stair_opening_overlap_with_house_center",
+    "fall_edge_length",
+    "egress_connectivity",
+    "accessible_route_available"
+  ],
+  "feng_shui_status": {
+    "step_count_numerology": "DISABLED_NO_DIRECT_EVIDENCE",
+    "center_stair_rule": "DISABLED_NO_DIRECT_EVIDENCE",
+    "door_facing_stair_rule": "DISABLED_NO_DIRECT_EVIDENCE",
+    "direction_rule": "DISABLED_NO_DIRECT_EVIDENCE"
+  },
+  "critical_policy": "Collect geometry even when Feng Shui rule is absent."
+}

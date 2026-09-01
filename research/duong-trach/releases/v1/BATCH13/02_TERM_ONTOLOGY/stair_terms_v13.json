@@ -1,0 +1,29 @@
+{
+  "階": {
+    "hanviet": "giai",
+    "working_sense": "steps/terrace/stage/approach step depending context",
+    "modern_mapping": "NOT_AUTOMATIC_STAIR_FLIGHT"
+  },
+  "踏道": {
+    "hanviet": "đạp đạo",
+    "working_sense": "stepped approach/access construction in Yingzao Fashi",
+    "modern_mapping": "HISTORICAL_STEPWAY_CANDIDATE"
+  },
+  "慢道": {
+    "hanviet": "mạn đạo",
+    "working_sense": "gentler/sloped access form in Yingzao Fashi context",
+    "modern_mapping": "HISTORICAL_RAMP_ACCESS_CANDIDATE"
+  },
+  "樓梯": {
+    "hanviet": "lâu thê",
+    "working_sense": "modern/general term staircase",
+    "modern_mapping": "STAIR",
+    "note": "Absence of this modern compound in older core text is not proof that stairs did not exist."
+  },
+  "生老病死": {
+    "hanviet": "sinh lão bệnh tử",
+    "working_sense": "Buddhist/general lifecycle phrase in many textual contexts",
+    "modern_mapping": "NOT_STAIR_NUMEROLOGY_BY_DEFAULT",
+    "critical_guard": "Need direct textual linkage to stair counting before any Feng Shui use."
+  }
+}
