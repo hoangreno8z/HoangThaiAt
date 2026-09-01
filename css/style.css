@@ -1908,9 +1908,14 @@ footer {
 
 .tree-item-text {
   flex: 1;
-  white-space: nowrap;
+  min-width: 0;
+  white-space: normal;
+  line-height: 1.35;
   overflow: hidden;
-  text-overflow: ellipsis;
+  overflow-wrap: anywhere;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
 /* Mobile Bottom Bar & Bottom Sheet */
