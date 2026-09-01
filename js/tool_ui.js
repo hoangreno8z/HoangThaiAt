@@ -1336,7 +1336,7 @@ ${reportText}
           </div>
 
           <!-- Khung chứa bản đồ Leaflet tương tác thực tế -->
-          <div id="diachat-gis-map" style="width:100%; height:480px; border-radius:8px; border:1px solid rgba(56,189,248,0.3); background:#080C14; box-shadow:0 8px 24px rgba(0,0,0,0.6); position:relative; z-index:1;"></div>
+          <div id="diachat-gis-map" style="width:100%; height:clamp(350px, 50vh, 480px); min-height:340px; border-radius:8px; border:1px solid rgba(56,189,248,0.3); background:#080C14; box-shadow:0 8px 24px rgba(0,0,0,0.6); position:relative; z-index:1;"></div>
           
           <div style="display:flex; justify-content:space-between; align-items:center; margin-top:0.5rem; font-size:0.74rem; color:var(--text-muted); flex-wrap:wrap; gap:0.4rem;">
             <span>💡 <strong>Hướng dẫn:</strong> Cuộn chuột để phóng to/thu nhỏ xem rõ từng ngọn núi, đường đẳng cao, sông suối, quận huyện. Chọn góc trên bên phải để đổi giữa <em>Địa Hình Đẳng Cao</em>, <em>Ảnh Vệ Tinh</em> và <em>Địa Danh Hành Chính</em>.</span>
@@ -1356,7 +1356,7 @@ ${reportText}
           </div>
 
           <div style="overflow-x:auto;">
-            <table style="width:100%; border-collapse:collapse; font-size:0.82rem; text-align:left;">
+            <table style="width:100%; min-width:640px; border-collapse:collapse; font-size:0.82rem; text-align:left;">
               <thead>
                 <tr style="background:rgba(255,255,255,0.04); color:#FEF3C7; border-bottom:1px solid rgba(255,255,255,0.1);">
                   <th style="padding:0.6rem 0.8rem;">Tên Dòng Sông</th>
@@ -1812,13 +1812,14 @@ ${reportText}
     // Default layer: OpenTopoMap
     topoLayer.addTo(map);
 
-    // Layer Control Switcher
+    // Layer Control Switcher (Tự động thu gọn trên màn hình điện thoại)
+    const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
     const baseLayers = {
-      "⛰️ Địa Hình & Đường Đẳng Cao (OpenTopoMap)": topoLayer,
-      "🗺️ Địa Danh Hành Chính & Thủy Hệ (Esri Topo)": esriTopoLayer,
-      "🛰️ Ảnh Vệ Tinh Quang Học (Esri Satellite)": satelliteLayer
+      "⛰️ Địa Hình & Đẳng Cao (OpenTopoMap)": topoLayer,
+      "🗺️ Hành Chính & Thủy Hệ (Esri Topo)": esriTopoLayer,
+      "🛰️ Ảnh Vệ Tinh (Esri Satellite)": satelliteLayer
     };
-    L.control.layers(baseLayers, null, { position: 'topright', collapsed: false }).addTo(map);
+    L.control.layers(baseLayers, null, { position: 'topright', collapsed: isMobile }).addTo(map);
 
     // Scale Bar in km
     L.control.scale({ imperial: false, position: 'bottomleft' }).addTo(map);
