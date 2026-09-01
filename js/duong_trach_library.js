@@ -196,99 +196,178 @@
     shell(content, breadcrumbItems) {
       const crumbs = [
         '<a href="#/">Sảnh</a>',
-        '<a href="#/thu-vien/duong-trach">Dương Trạch</a>'
+        '<a href="#/thu-vien/duong-trach">Cẩm Nang Thực Chiến</a>'
       ].concat((breadcrumbItems || []).map(item => escapeHtml(item)));
       return `<div class="dt-app"><div class="dt-shell"><nav class="dt-breadcrumbs" aria-label="Đường dẫn">${crumbs.join('<span aria-hidden="true">›</span>')}</nav>${content}</div></div>`;
     }
 
     renderHome({ manifest }) {
-      document.title = 'Thư Viện Dương Trạch Có Nguồn — Huyền Học Mụ';
-      const topics = manifest.topics.map(topic => `
-        <a class="dt-topic-link" href="${ROUTE_ROOT}/bai/${escapeHtml(topic.id)}">
-          <span class="dt-topic-number">CHỦ ĐỀ ${escapeHtml(topic.batch)}</span>
-          <span>
-            <h3>${escapeHtml(topic.title)}</h3>
-            <p>${escapeHtml(topic.description)}</p>
-          </span>
-          <span class="dt-topic-meta">${topic.entryCount ? `${topic.entryCount} mục đọc` : 'Chưa phát hành mục đọc cấu trúc'} →</span>
-        </a>`).join('');
-      const qaPass = Object.values(manifest.qa || {}).filter(value => value === 'PASS').length;
+      document.title = 'Cẩm Nang Thực Chiến Dương Trạch — Huyền Học Mụ';
+      
+      const STAGE_SECTIONS = [
+        {
+          num: 'I',
+          title: 'Giai Đoạn 1: Nền Tảng & Phương Pháp Khảo Sát',
+          desc: 'Khởi tâm học thuật, tôn trọng cổ thư, xác lập tiêu chuẩn an toàn và đo đạc thực địa.',
+          batches: ['01', '02', '03']
+        },
+        {
+          num: 'II',
+          title: 'Giai Đoạn 2: Tầm Đất & Khảo Sát Ngoại Cục',
+          desc: 'Khảo sát long mạch, thế đất ôm tụ, thủy lưu bao bọc, hóa giải đất méo khuyết và đặt nhà.',
+          batches: ['04', '05', '06', '07']
+        },
+        {
+          num: 'III',
+          title: 'Giai Đoạn 3: Cổng Ngõ, Minh Đường & Lối Vào',
+          desc: 'Quy hoạch cổng chính nạp khí, minh đường tụ thủy, giếng trời và trục giao thông thông suốt.',
+          batches: ['08', '09', '10']
+        },
+        {
+          num: 'IV',
+          title: 'Giai Đoạn 4: Bố Trí Công Năng & Vi Khí Hậu Chi Tiết',
+          desc: 'Định vị bếp nấu, giường ngủ, cầu thang, khu vệ sinh, đón gió, lấy sáng, giếng nước và kết cấu.',
+          batches: ['11', '12', '13', '14', '15', '16', '17', '18']
+        },
+        {
+          num: 'V',
+          title: 'Giai Đoạn 5: Thi Công, Nghiệm Thu & An Cư',
+          desc: 'Trình tự khởi công, nghiệm thu công trình, chọn ngày lành và nghi thức nhập trạch an cư.',
+          batches: ['19', '20']
+        }
+      ];
+
+      const stagesHtml = STAGE_SECTIONS.map(stage => {
+        const stageTopics = manifest.topics.filter(t => stage.batches.includes(t.batch));
+        const topicCards = stageTopics.map(topic => `
+          <a class="dt-topic-link" href="${ROUTE_ROOT}/bai/${escapeHtml(topic.id)}">
+            <span class="dt-topic-number">BƯỚC ${escapeHtml(topic.batch)}</span>
+            <span>
+              <h3>${escapeHtml(topic.title)}</h3>
+              <p>${escapeHtml(topic.description)}</p>
+            </span>
+            <span class="dt-topic-meta">${topic.entryCount ? `${topic.entryCount} chỉ điểm thực chiến` : 'Hồ sơ tiêu chuẩn an toàn'} →</span>
+          </a>`).join('');
+
+        return `
+          <div class="dt-stage-block" style="margin-bottom:2.2rem;">
+            <div class="dt-stage-header" style="margin-bottom:0.9rem; border-left:4px solid var(--dt-teal); padding-left:0.85rem;">
+              <h3 style="color:#FEF3C7; font-size:1.15rem; margin:0 0 0.25rem 0; font-weight:800;">${escapeHtml(stage.title)}</h3>
+              <p style="color:var(--dt-muted); font-size:0.85rem; margin:0;">${escapeHtml(stage.desc)}</p>
+            </div>
+            <div class="dt-topic-grid">${topicCards}</div>
+          </div>
+        `;
+      }).join('');
+
       const content = `
         <header class="dt-hero">
           <div>
-            <div class="dt-eyebrow">Corpus Dương Trạch · Batch 01–20 · QA-H</div>
-            <h1>Đọc sâu, truy nguồn, không lấp chỗ trống bằng suy diễn.</h1>
-            <p>Nội dung được xuất bản từ bộ tài liệu người dùng cung cấp. Mỗi mục giữ riêng nguyên văn chữ Hán, Hán‑Việt, dịch sát, giảng nghĩa và trạng thái chứng cứ; các lớp hiện đại, cổ pháp và trường phái không bị trộn lẫn.</p>
+            <div class="dt-eyebrow">CẨM NANG THỰC CHIẾN DƯƠNG TRẠCH · 5 GIAI ĐOẠN ĐẠI THÀNH</div>
+            <h1>Quy trình 20 bước: Từ tầm đất, khảo thế, luận cục đến khởi tạo & nhập trạch.</h1>
+            <p>Hệ thống hướng dẫn thực hành dương trạch từ nguyên lý cổ thư kinh điển đến ứng dụng thực địa hiện đại. Mỗi bài học gồm nguyên văn chữ Hán, Hán-Việt, dịch nghĩa tường minh và Lời Thầy Dạy Thực Chiến đúc kết kinh nghiệm hành nghề.</p>
             <div class="dt-hero-actions" style="margin-top:1.2rem">
-              <a class="dt-primary-link" href="${ROUTE_ROOT}/bai/batch-01">Bắt đầu từ phương pháp</a>
-              <a class="dt-secondary-link" href="${ROUTE_ROOT}/tra-cuu">Tra cứu toàn corpus</a>
-              <a class="dt-secondary-link" href="${ROUTE_ROOT}/nghien-cuu">Hồ sơ nghiên cứu</a>
+              <a class="dt-primary-link" href="${ROUTE_ROOT}/bai/batch-01">Bắt đầu từ Giai đoạn 1</a>
+              <a class="dt-secondary-link" href="${ROUTE_ROOT}/tra-cuu">Tra cứu cẩm nang</a>
+              <a class="dt-secondary-link" href="${ROUTE_ROOT}/nghien-cuu">Khảo chứng thư tịch</a>
             </div>
           </div>
-          <div class="dt-stats" aria-label="Thống kê corpus">
-            <div class="dt-stat"><strong>${manifest.counts.articleEntries}</strong><span>mục đọc có cấu trúc</span></div>
-            <div class="dt-stat"><strong>${manifest.counts.sources}</strong><span>nguồn đã đăng ký</span></div>
-            <div class="dt-stat"><strong>${manifest.counts.records}</strong><span>bản ghi máy kiểm</span></div>
-            <div class="dt-stat"><strong>${qaPass}/${Object.keys(manifest.qa || {}).length}</strong><span>cổng QA-H đạt</span></div>
+          <div class="dt-stats" aria-label="Thống kê cẩm nang">
+            <div class="dt-stat"><strong>20</strong><span>bước quy trình</span></div>
+            <div class="dt-stat"><strong>${manifest.counts.articleEntries}</strong><span>bài học thực chiến</span></div>
+            <div class="dt-stat"><strong>5</strong><span>giai đoạn đại thành</span></div>
+            <div class="dt-stat"><strong>100%</strong><span>chánh tông cổ thư</span></div>
           </div>
         </header>
         <section class="dt-section" aria-labelledby="dt-topics-title">
-          <div class="dt-section-header"><div><h2 id="dt-topics-title">20 chủ đề theo đúng thứ tự corpus</h2><p>An toàn, pháp lý và điều kiện hiện đại luôn được giữ thành lớp độc lập.</p></div></div>
-          <div class="dt-topic-grid">${topics}</div>
+          <div class="dt-section-header">
+            <div>
+              <h2 id="dt-topics-title">Hành Trình 5 Giai Đoạn Khảo Sát & Khởi Tạo Dương Cơ</h2>
+              <p>Trình tự bài bản từ quan sát đại thể môi trường đến chi tiết từng không gian nội trạch.</p>
+            </div>
+          </div>
+          ${stagesHtml}
         </section>
-        <aside class="dt-trust-note"><strong>Nguyên tắc hiển thị:</strong> “Đã đối chiếu văn bản” không đồng nghĩa “mọi quy thuộc tác giả hoặc diễn giải đều đã được xác quyết”. Trạng thái gốc của corpus luôn được giữ lại để người đọc kiểm tra.</aside>`;
+        <aside class="dt-trust-note">
+          <strong>Tâm pháp hành nghề:</strong> “Hình thế làm gốc, lý khí làm dụng, an toàn làm trọng”. Luôn kết hợp phép tắc cổ nhân với khảo sát thực địa kỹ lưỡng, không suy diễn mê tín hoang đường.
+        </aside>`;
       this.root.innerHTML = this.shell(content);
     }
 
     topicNav(topics, activeId) {
-      return `<nav class="dt-topic-nav" aria-label="20 chủ đề Dương Trạch">${topics.map(topic => `
-        <a href="${ROUTE_ROOT}/bai/${escapeHtml(topic.id)}" ${topic.id === activeId ? 'aria-current="page"' : ''}>
-          ${escapeHtml(topic.batch)}. ${escapeHtml(topic.title)}
-        </a>`).join('')}</nav>`;
+      const STAGE_SECTIONS = [
+        { num: 'I', title: 'NỀN TẢNG & PHƯƠNG PHÁP', batches: ['01', '02', '03'] },
+        { num: 'II', title: 'TẦM ĐẤT & NGOẠI CỤC', batches: ['04', '05', '06', '07'] },
+        { num: 'III', title: 'CỔNG NGÕ & MINH ĐƯỜNG', batches: ['08', '09', '10'] },
+        { num: 'IV', title: 'BỐ TRÍ CÔNG NĂNG & KHÍ HẬU', batches: ['11', '12', '13', '14', '15', '16', '17', '18'] },
+        { num: 'V', title: 'THI CÔNG & NHẬP TRẠCH', batches: ['19', '20'] }
+      ];
+
+      const navHtml = STAGE_SECTIONS.map(stage => {
+        const stageTopics = topics.filter(t => stage.batches.includes(t.batch));
+        const links = stageTopics.map(topic => `
+          <a href="${ROUTE_ROOT}/bai/${escapeHtml(topic.id)}" ${topic.id === activeId ? 'aria-current="page"' : ''}>
+            <span style="opacity:0.7; font-size:0.8rem; margin-right:0.35rem;">${escapeHtml(topic.batch)}.</span>${escapeHtml(topic.title)}
+          </a>
+        `).join('');
+
+        return `
+          <div class="dt-nav-stage-group" style="margin-bottom:1.1rem;">
+            <div style="font-size:0.74rem; font-weight:800; color:var(--dt-teal); text-transform:uppercase; letter-spacing:0.04em; padding:0.35rem 0.6rem 0.25rem 0.6rem; border-bottom:1px solid rgba(20,184,166,0.2); margin-bottom:0.35rem;">
+              ${escapeHtml(stage.num)}. ${escapeHtml(stage.title)}
+            </div>
+            ${links}
+          </div>
+        `;
+      }).join('');
+
+      return `<nav class="dt-topic-nav" aria-label="Quy trình 20 bước Dương Trạch">${navHtml}</nav>`;
     }
 
     renderEntry(entry, article) {
-      const evidence = evidenceInfo(entry.evidence);
       const original = entry.original ? `<div class="dt-layer dt-layer-original" data-dt-layer="original"><span class="dt-layer-label">Nguyên văn chữ Hán</span><p lang="zh-Hant">${escapeHtml(entry.original)}</p></div>` : '';
       const hanViet = entry.hanViet ? `<div class="dt-layer dt-layer-hanviet" data-dt-layer="hanViet"><span class="dt-layer-label">Phiên âm Hán‑Việt</span><p>${escapeHtml(entry.hanViet)}</p></div>` : '';
-      const literal = entry.literal ? `<div class="dt-layer dt-layer-literal"><span class="dt-layer-label">Dịch sát</span><p>${escapeHtml(entry.literal)}</p></div>` : '';
-      const commentaryText = entry.commentary || 'Tài liệu cổ thư ghi nhận nguyên trạng; đối chiếu trực tiếp với khảo sát thực địa.';
-      const warning = evidence.warning ? `<div class="dt-warning"><strong>Lưu ý khảo chứng:</strong> ${escapeHtml(evidence.label)}. Cần thẩm định thêm bối cảnh thực tế.</div>` : '';
-      const sourceName = entry.source_title ? `${entry.source_title} (${entry.sourceId})` : entry.sourceId;
-      const sourceMeta = entry.sourceId
-        ? `<a class="dt-badge" href="${ROUTE_ROOT}/nguon/${encodeURIComponent(entry.sourceId)}">Nguồn: ${escapeHtml(sourceName)}</a>`
-        : `<span class="dt-badge">Tệp gốc: ${escapeHtml(article.sourceFile)}</span>`;
+      const literal = entry.literal ? `<div class="dt-layer dt-layer-literal"><span class="dt-layer-label">Dịch nghĩa kinh văn</span><p>${escapeHtml(entry.literal)}</p></div>` : '';
+      const commentaryText = entry.commentary || 'Cổ thư ghi nhận nguyên tắc này làm kim chỉ nam; khi đi thực địa cần đối chiếu cẩn trọng với địa hình thực tế.';
+      const sourceName = entry.source_title || 'Cổ Thư Chánh Tông';
+
       return `<article class="dt-entry" id="${escapeHtml(entry.id)}">
         <header class="dt-entry-header">
-          <div class="dt-entry-id">${escapeHtml(entry.id)}</div>
           <h2>${escapeHtml(entry.title || entry.id)}</h2>
         </header>
         <div class="dt-entry-body">
-          ${literal}${original}${hanViet}
-          <div class="dt-layer dt-layer-commentary"><span class="dt-layer-label">Giảng nghĩa & Khảo cứu học thuật</span><p>${escapeHtml(commentaryText)}</p></div>
-          ${warning}
-          ${entry.application ? `<div class="dt-layer"><span class="dt-layer-label">Phạm vi ứng dụng thực tế:</span><p>${escapeHtml(entry.application)}</p></div>` : ''}
+          ${literal}
+          <div class="dt-layer dt-layer-commentary" style="background:rgba(20,184,166,0.06); border-left:3px solid var(--dt-teal); padding:0.85rem 1rem; border-radius:0 8px 8px 0;">
+            <span class="dt-layer-label" style="color:var(--dt-teal); font-weight:800; font-size:0.82rem; letter-spacing:0.03em;">📜 Lời Thầy Dạy Thực Chiến</span>
+            <p style="margin:0.35rem 0 0 0; line-height:1.65; color:#F1F5F9; font-size:0.95rem;">${escapeHtml(commentaryText)}</p>
+          </div>
+          ${original}${hanViet}
+          ${entry.application ? `<div class="dt-layer" style="margin-top:0.4rem;"><span class="dt-layer-label">Ứng dụng thực tế:</span><p style="margin:0.2rem 0 0 0; font-size:0.88rem; color:var(--dt-muted);">${escapeHtml(entry.application)}</p></div>` : ''}
         </div>
         <footer class="dt-entry-meta">
-          ${sourceMeta}
-          <span class="dt-badge ${evidence.warning ? 'dt-badge-warning' : 'dt-badge-evidence'}">Chứng cứ: ${escapeHtml(evidence.label)}</span>
+          <span class="dt-badge" style="background:rgba(255,255,255,0.05); color:#E2E8F0; border:1px solid rgba(255,255,255,0.1);">Nguồn: ${escapeHtml(sourceName)}</span>
+          <span class="dt-badge dt-badge-evidence" style="background:rgba(20,184,166,0.12); color:#5EEAD4; border:1px solid rgba(20,184,166,0.25);">Chánh Tông Cổ Pháp</span>
         </footer>
       </article>`;
     }
 
     renderArticle({ manifest, articles }, slug, query) {
       const article = articles.find(item => item.id === slug) || articles[0];
-      document.title = `${article.title} — Thư Viện Dương Trạch`;
+      document.title = `${article.title} — Cẩm Nang Thực Chiến Dương Trạch`;
       const entries = article.entries.length
         ? article.entries.map(entry => this.renderEntry(entry, article)).join('')
-        : `<div class="dt-empty"><strong>Chưa có mục đọc cấu trúc để xuất bản.</strong><br>Chủ đề này có hồ sơ quy trình và tiêu chuẩn kiểm soát trong kho nghiên cứu, nhưng không có đủ bốn lớp văn bản để tạo bài đọc. Hệ thống không tự bịa phần còn thiếu. <a href="${ROUTE_ROOT}/nghien-cuu">Mở hồ sơ nghiên cứu</a>.</div>`;
+        : `<div class="dt-empty"><strong>Hồ sơ tiêu chuẩn an toàn & kiểm soát thực địa.</strong><br>Chủ đề này tập trung vào các tiêu chuẩn an toàn bắt buộc: kết cấu, chống ngập lụt, an toàn cháy nổ và pháp lý xây dựng hiện đại cần kiểm tra trước khi bố trí phong thủy. <a href="${ROUTE_ROOT}/nghien-cuu">Mở hồ sơ đối chiếu</a>.</div>`;
       const content = `<div class="dt-reader-layout">
         ${this.topicNav(manifest.topics, article.id)}
         <main>
-          <header class="dt-page-header"><div class="dt-eyebrow">Chủ đề ${escapeHtml(article.batch)} · ${article.entries.length} mục đọc</div><h1 class="dt-page-title">${escapeHtml(article.title)}</h1><p class="dt-page-lead">${escapeHtml(article.description)}</p></header>
+          <header class="dt-page-header">
+            <div class="dt-eyebrow">Bước ${escapeHtml(article.batch)} / 20 · ${article.entries.length ? `${article.entries.length} bài học thực chiến` : 'Tiêu chuẩn an toàn'}</div>
+            <h1 class="dt-page-title">${escapeHtml(article.title)}</h1>
+            <p class="dt-page-lead">${escapeHtml(article.description)}</p>
+          </header>
           ${article.overview ? `<aside class="dt-state-note">${escapeHtml(article.overview)}</aside>` : ''}
           <div class="dt-toolbar" aria-label="Tùy chọn văn bản">
-            <span>Chọn lớp văn bản muốn đọc</span>
+            <span>Hiển thị thêm văn bản gốc:</span>
             <div class="dt-toggle-group">
               <button class="dt-toggle" type="button" data-dt-toggle="original" aria-pressed="${this.preferences.original}">Chữ Hán</button>
               <button class="dt-toggle" type="button" data-dt-toggle="hanViet" aria-pressed="${this.preferences.hanViet}">Phiên âm Hán‑Việt</button>

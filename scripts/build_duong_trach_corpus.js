@@ -8,26 +8,26 @@ const OUTPUT = path.join(ROOT, 'data', 'duong-trach');
 const PROVENANCE_FILE = path.join(ROOT, 'research', 'duong-trach', 'SOURCE_PROVENANCE.json');
 
 const BATCHES = [
-  ['01', 'Nguồn Gốc & Phương Pháp', 'Nền tảng nguồn, lớp văn bản và quy tắc chống suy diễn.', 'BATCH01/02_VIET_HOA/pilot_viet_hoa.md'],
-  ['02', 'Chọn Đất & Đại Thế', 'Khảo sát khu đất và bối cảnh lớn trước khi xét nội cục.', 'BATCH02/03_VIET_HOA/chon_dat_dai_the.md'],
-  ['03', 'An Toàn & Pháp Lý Hiện Đại', 'Tiêu chuẩn an toàn bắt buộc hiện đại phải được xét trước khuyến nghị truyền thống.', 'BATCH03/02_HARD_GATE/pipeline.md'],
-  ['04', 'Địa Thế Thực Chiến', 'Long, thế, minh đường, nước, thủy khẩu và quan hệ bao - xung.', 'BATCH04/03_VIET_HOA/dia_the_thuc_chien.md'],
-  ['05', 'Hình Đất, Đường & Nước', 'Các hình thái hình học được giữ tách biệt với hậu quả truyền thống.', 'BATCH05/03_VIET_HOA/hinh_dat_duong_nuoc.md'],
-  ['06', 'Đất Méo, Khuyết Phương & Tâm Nhà', 'Nhận diện hình đất bất quy tắc mà không tự đặt ngưỡng cổ pháp.', 'BATCH06/03_VIET_HOA/bat_tuc_phuong.md'],
-  ['07', 'Đặt Nhà Trên Khu Đất', 'Quan hệ giữa ranh đất, công trình, pháp lý và điều kiện sử dụng.', 'BATCH07/03_VIET_HOA/dat_nha_tren_dat.md'],
-  ['08', 'Cổng, Cửa Chính & Lối Vào', 'Cấu trúc tiếp cận, hình học cửa và tiêu chuẩn an toàn phòng cháy.', 'BATCH08/03_VIET_HOA/cong_cua_loi_vao.md'],
-  ['09', 'Minh Đường, Sân & Giếng Trời', 'Khoảng mở, sân, thiên tỉnh và lớp khoa học công trình hiện đại.', 'BATCH09/04_VIET_HOA/open_spaces.md'],
-  ['10', 'Phân Khu Phòng & Giao Thông', 'Tổ chức phòng, luồng đi lại và điều kiện tiếp cận.', 'BATCH10/04_VIET_HOA/phan_khu_phong.md'],
-  ['11', 'Bếp, Hỏa, Nước & Khói', 'Cổ lệ về bếp được tách khỏi an toàn cháy, khói và độc chất.', 'BATCH11/04_VIET_HOA/bep_hoa_nuoc_khoi.md'],
-  ['12', 'Phòng Ngủ, Giường & Nghỉ', 'Không gian ngủ, vị trí giường và lớp sức khỏe hiện đại.', 'BATCH12/04_VIET_HOA/phong_ngu_giuong.md'],
-  ['13', 'Cầu Thang & Giao Thông Đứng', 'Quan hệ hình học, lưu thông và tiêu chuẩn an toàn kết cấu — thoát nạn.', 'BATCH13/04_VIET_HOA/cau_thang.md'],
-  ['14', 'WC, Vệ Sinh & Khu Phụ', 'Tách cổ lệ khỏi vệ sinh, nước thải và an toàn sức khỏe.', 'BATCH14/04_VIET_HOA/wc_ve_sinh.md'],
-  ['15', 'Cửa Sổ, Ánh Sáng & Thông Gió', 'Vi khí hậu, ánh sáng và thông gió với hai lớp cổ - hiện đại.', 'BATCH15/04_VIET_HOA/cua_so_anh_sang_thong_gio.md'],
-  ['16', 'Nước Sạch, Giếng, Bể & Thoát Nước', 'Nguồn nước, lưu trữ, nước mưa và tiêu chuẩn an toàn chất lượng nước.', 'BATCH16/04_VIET_HOA/nuoc_gieng_be_thoat.md'],
-  ['17', 'Mái, Hiên & Nước Mưa', 'Hình thức mái, chống hắt và thoát nước mái.', 'BATCH17/04_VIET_HOA/mai_hien_nuoc_mua.md'],
-  ['18', 'Vật Liệu, Kết Cấu & Hư Hỏng', 'Đánh giá hiện trạng, hư hỏng và ưu tiên an toàn kết cấu.', 'BATCH18/05_VIET_HOA/vat_lieu_ket_cau.md'],
-  ['19', 'Trình Tự Xây Dựng & Sửa Chữa', 'Phân biệt trình tự công trình, trạch nhật và các đầu ra đang bị khóa.', 'BATCH19/05_VIET_HOA/trinh_tu_xay_dung_trach_nhat.md'],
-  ['20', 'Hoàn Thành, Nghiệm Thu & Nhập Trạch', 'Sẵn sàng để ở phải đi trước nghi thức chuyển vào nhà.', 'BATCH20/04_VIET_HOA/hoan_thanh_nhap_trach.md']
+  ['01', 'Khởi Tâm & Phương Pháp Luận Cổ Thư', 'Nguyên tắc tiếp cận cổ thư: Đọc sâu nguyên văn, trọng thực chứng, không suy diễn mê tín.', 'BATCH01/02_VIET_HOA/pilot_viet_hoa.md'],
+  ['02', 'Khảo Đại Thế Trước Khi Vào Nội Cục', 'Quan sát núi sông, đại thế khu vực và môi trường xung quanh trước khi xem xét mảnh đất.', 'BATCH02/03_VIET_HOA/chon_dat_dai_the.md'],
+  ['03', 'An Toàn Thực Địa & Chuẩn Mực Xây Dựng', 'Tiêu chuẩn an toàn kết cấu, phòng chống ngập lụt, PCCC và pháp lý phải được xét trước cổ lệ.', 'BATCH03/02_HARD_GATE/pipeline.md'],
+  ['04', 'Long, Thế, Minh Đường & Thủy Khẩu Thực Chiến', 'Nhận diện thế đất ôm tụ sinh khí, minh đường khoáng đạt và dòng chảy bao bọc thực tế.', 'BATCH04/03_VIET_HOA/dia_the_thuc_chien.md'],
+  ['05', 'Hình Thế Đất, Giao Lộ & Thủy Lộ Bao Quanh', 'Nhận diện hình dáng đất (vuông, dài, xiên), thế đường đi và dòng nước chảy xung quanh.', 'BATCH05/03_VIET_HOA/hinh_dat_duong_nuoc.md'],
+  ['06', 'Xử Lý Đất Méo, Khuyết Phương & Định Tâm Nhà', 'Phương pháp hóa giải đất tam giác, thóp hậu, khuyết góc và xác định trọng tâm ngôi nhà.', 'BATCH06/03_VIET_HOA/bat_tuc_phuong.md'],
+  ['07', 'Phương Vị Đặt Nhà & Quy Hoạch Khuôn Viên', 'Định vị khối nhà trên mảnh đất: Khoảng lùi trước sau, sân vườn và tương quan công trình lân cận.', 'BATCH07/03_VIET_HOA/dat_nha_tren_dat.md'],
+  ['08', 'Khảo Sát Cổng Ngõ, Cửa Chính & Lối Tiếp Cận', 'Bố trí cổng chính nạp khí, trục đường dẫn lối vào, tránh thế trực xung và đảm bảo thoát hiểm.', 'BATCH08/03_VIET_HOA/cong_cua_loi_vao.md'],
+  ['09', 'Minh Đường, Sân Vườn, Thiên Tỉnh & Giếng Trời', 'Thiết lập khoảng mở tụ khí, sân trong lấy sáng, giếng trời thông gió và điều hòa vi khí hậu.', 'BATCH09/04_VIET_HOA/open_spaces.md'],
+  ['10', 'Phân Cung Bố Phòng & Giao Thông Nội Trạch', 'Tổ chức thứ bậc gian chính, gian phụ, luồng đi lại thông suốt, kín đáo và tiện nghi sinh hoạt.', 'BATCH10/04_VIET_HOA/phan_khu_phong.md'],
+  ['11', 'Bếp Nấu, Hỏa Khí, Thoát Khói & Thủy Hỏa', 'Nguyên tắc đặt bếp tụ khí, an toàn cháy nổ, thông gió hút mùi và cách ly nguồn nước.', 'BATCH11/04_VIET_HOA/bep_hoa_nuoc_khoi.md'],
+  ['12', 'Phòng Ngủ, Kê Giường & Dưỡng Khí Giấc Ngủ', 'Định vị không gian nghỉ ngơi yên tĩnh, tránh gió lùa, ẩm mốc, xà đè và ánh sáng chói lóa.', 'BATCH12/04_VIET_HOA/phong_ngu_giuong.md'],
+  ['13', 'Cầu Thang, Giao Thông Đứng & An Toàn Thoát Nạn', 'Thiết kế cầu thang êm thuận, bậc bước chuẩn công thái học, kết cấu vững chãi và an toàn thoát hiểm.', 'BATCH13/04_VIET_HOA/cau_thang.md'],
+  ['14', 'Khu Vệ Sinh, Thoát Nước Thải & Phòng Ô Nhiễm', 'Bố trí khu vệ sinh kín đáo, cách ly xú khí, bảo vệ nguồn nước sạch và thông gió độc lập.', 'BATCH14/04_VIET_HOA/wc_ve_sinh.md'],
+  ['15', 'Cửa Sổ, Đón Gió, Lấy Sáng & Điều Hòa Khí Hậu', 'Tỷ lệ mở cửa sổ hài hòa theo hướng nắng gió, lưu thông khí tươi và tránh gió lùa cục bộ.', 'BATCH15/04_VIET_HOA/cua_so_anh_sang_thong_gio.md'],
+  ['16', 'Nước Sạch, Giếng Nước, Bể Chứa & Thoát Nước', 'Bảo tồn nguồn nước ăn uống trong lành, xử lý cống rãnh lưu thông không đọng mùi hôi thối.', 'BATCH16/04_VIET_HOA/nuoc_gieng_be_thoat.md'],
+  ['17', 'Kiểu Dáng Mái, Hiên Che & Thoát Nước Mưa', 'Độ vươn mái hiên cản mưa hắt, bảo vệ diện tường và hướng chảy thoát nước mưa êm thuận.', 'BATCH17/04_VIET_HOA/mai_hien_nuoc_mua.md'],
+  ['18', 'Khảo Sát Vật Liệu, Kết Cấu & Phòng Ngừa Hư Hỏng', 'Đánh giá độ chịu lực dầm xà cột, phát hiện lún nứt mối mọt, ưu tiên an toàn bền vững công trình.', 'BATCH18/05_VIET_HOA/vat_lieu_ket_cau.md'],
+  ['19', 'Trình Tự Khởi Công, Sửa Chữa & Trạch Nhật', 'Thứ tự thi công xây dựng thực tế, an toàn lao động và nguyên tắc chọn ngày giờ khởi sự.', 'BATCH19/05_VIET_HOA/trinh_tu_xay_dung_trach_nhat.md'],
+  ['20', 'Nghiệm Thu Công Trình, An Sàng & Nhập Trạch', 'Đánh giá điều kiện hoàn thiện sẵn sàng ở trước khi làm lễ an cư lạc nghiệp vào nhà mới.', 'BATCH20/04_VIET_HOA/hoan_thanh_nhap_trach.md']
 ];
 
 /* ─── Việt-hóa dictionaries & helpers ──────────────────────────────── */
