@@ -320,31 +320,45 @@
     }
 
     renderEntry(entry, article) {
-      const original = entry.original ? `<div class="dt-layer dt-layer-original" data-dt-layer="original"><span class="dt-layer-label">Nguyên văn chữ Hán</span><p lang="zh-Hant">${escapeHtml(entry.original)}</p></div>` : '';
-      const hanViet = entry.hanViet ? `<div class="dt-layer dt-layer-hanviet" data-dt-layer="hanViet"><span class="dt-layer-label">Phiên âm Hán‑Việt</span><p>${escapeHtml(entry.hanViet)}</p></div>` : '';
-      const literal = entry.literal ? `<div class="dt-layer dt-layer-literal"><span class="dt-layer-label">Dịch nghĩa kinh văn</span><p>${escapeHtml(entry.literal)}</p></div>` : '';
+      const original = entry.original ? `<div class="dt-layer dt-layer-original" data-dt-layer="original"><span class="dt-layer-label">Nguyên văn chữ Hán</span><p lang="zh-Hant" style="font-size:1.05rem; line-height:1.7; color:#FDE68A;">${escapeHtml(entry.original)}</p></div>` : '';
+      const hanViet = entry.hanViet ? `<div class="dt-layer dt-layer-hanviet" data-dt-layer="hanViet"><span class="dt-layer-label">Phiên âm Hán‑Việt</span><p style="font-size:0.95rem; line-height:1.65; color:#BAE6FD; font-style:italic;">${escapeHtml(entry.hanViet)}</p></div>` : '';
+      const literal = entry.literal ? `<div class="dt-layer dt-layer-literal"><span class="dt-layer-label">Dịch nghĩa kinh văn</span><p style="font-size:0.95rem; line-height:1.7; color:#E2E8F0; font-weight:500;">${escapeHtml(entry.literal)}</p></div>` : '';
       
       let commentaryText = entry.commentary || 'Cổ thư ghi nhận nguyên tắc này làm chuẩn mực định hướng; trong thực tế cần đo đạc và đối chiếu cẩn trọng với điều kiện công trình.';
       commentaryText = commentaryText.replace(/^(Thầy dạy|Lời thầy|Thầy bảo|Thầy dặn)\s*[:—–,-]\s*/i, '').trim();
-      if (commentaryText) {
-        commentaryText = commentaryText.charAt(0).toUpperCase() + commentaryText.slice(1);
-      }
+
+      const paras = commentaryText.split(/\n\n+|\r\n\r\n+/).map(para => {
+        para = para.trim();
+        if (!para) return '';
+        if (para.startsWith('【') || para.startsWith('###') || /^[I|V|X|L|C|D|M]+\.\s+/.test(para)) {
+          return `<div class="dt-subheading" style="margin:1rem 0 0.4rem 0; font-weight:800; color:#5EEAD4; font-size:0.98rem; letter-spacing:0.02em; border-left:3px solid #14B8A6; padding-left:0.6rem;">${escapeHtml(para.replace(/^###\s*/, ''))}</div>`;
+        }
+        if (/^\d+\.\s+/.test(para)) {
+          return `<div class="dt-num-point" style="margin:0.65rem 0 0.35rem 0; font-weight:700; color:#FEF3C7; font-size:0.95rem;">${escapeHtml(para)}</div>`;
+        }
+        if (para.startsWith('•') || para.startsWith('-') || para.startsWith('*')) {
+          const lines = para.split(/\n/);
+          const listItems = lines.map(line => `<li style="margin-bottom:0.35rem;">${escapeHtml(line.replace(/^[•\-\*]\s*/, ''))}</li>`).join('');
+          return `<ul style="margin:0.4rem 0 0.6rem 1.2rem; padding:0; color:#CBD5E1; font-size:0.92rem; line-height:1.7;">${listItems}</ul>`;
+        }
+        return `<p style="margin:0.45rem 0 0.65rem 0; line-height:1.8; color:#F1F5F9; font-size:0.94rem; text-align:justify;">${escapeHtml(para)}</p>`;
+      }).filter(Boolean).join('');
 
       const sourceName = entry.source_title || 'Cổ Thư Chánh Tông';
 
-      return `<article class="dt-entry" id="${escapeHtml(entry.id)}">
-        <header class="dt-entry-header">
-          <h2>${escapeHtml(entry.title || entry.id)}</h2>
+      return `<article class="dt-entry" id="${escapeHtml(entry.id)}" style="margin-bottom:1.5rem; border:1px solid rgba(255,255,255,0.08); background:#0F172A; border-radius:10px; overflow:hidden;">
+        <header class="dt-entry-header" style="background:#1E293B; padding:0.9rem 1.15rem; border-bottom:1px solid rgba(255,255,255,0.08);">
+          <h2 style="font-size:1.05rem; font-weight:700; color:#F8FAFC; margin:0;">${escapeHtml(entry.title || entry.id)}</h2>
         </header>
-        <div class="dt-entry-body">
+        <div class="dt-entry-body" style="padding:1.15rem;">
           ${literal}
-          <div class="dt-layer dt-layer-commentary" style="background:rgba(20,184,166,0.06); border-left:3px solid var(--dt-teal); padding:0.85rem 1rem; border-radius:0 8px 8px 0;">
-            <span class="dt-layer-label" style="color:var(--dt-teal); font-weight:800; font-size:0.82rem; letter-spacing:0.03em;">Giải nghĩa</span>
-            <p style="margin:0.35rem 0 0 0; line-height:1.65; color:#F1F5F9; font-size:0.95rem;">${escapeHtml(commentaryText)}</p>
+          <div class="dt-layer dt-layer-commentary" style="background:rgba(20,184,166,0.04); border-left:3px solid var(--dt-teal); padding:1rem 1.15rem; border-radius:0 8px 8px 0; margin-top:0.6rem;">
+            <span class="dt-layer-label" style="color:var(--dt-teal); font-weight:800; font-size:0.82rem; letter-spacing:0.04em;">Giải nghĩa chuyên sâu</span>
+            <div class="dt-commentary-content" style="margin-top:0.4rem;">${paras}</div>
           </div>
           ${original}${hanViet}
         </div>
-        <footer class="dt-entry-meta">
+        <footer class="dt-entry-meta" style="background:#090E17; padding:0.75rem 1.15rem; border-top:1px solid rgba(255,255,255,0.06);">
           <span class="dt-badge" style="background:rgba(255,255,255,0.05); color:#E2E8F0; border:1px solid rgba(255,255,255,0.1);">Nguồn: ${escapeHtml(sourceName)}</span>
           <span class="dt-badge dt-badge-evidence" style="background:rgba(20,184,166,0.12); color:#5EEAD4; border:1px solid rgba(20,184,166,0.25);">Chánh Tông Cổ Pháp</span>
         </footer>
