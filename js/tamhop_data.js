@@ -567,3 +567,33 @@ const TAMHOP_FENGSHUI_PART_10 = {
     }
   ]
 };
+
+
+// Explicit Global Window Exports for Scholarly Reader
+if (typeof window !== 'undefined') {
+  if (typeof TAMHOP_FENGSHUI_PART_1 !== 'undefined') window.TAMHOP_FENGSHUI_PART_1 = TAMHOP_FENGSHUI_PART_1;
+  if (typeof TAMHOP_FENGSHUI_PART_2 !== 'undefined') window.TAMHOP_FENGSHUI_PART_2 = TAMHOP_FENGSHUI_PART_2;
+  if (typeof TAMHOP_FENGSHUI_PART_3 !== 'undefined') window.TAMHOP_FENGSHUI_PART_3 = TAMHOP_FENGSHUI_PART_3;
+  if (typeof TAMHOP_FENGSHUI_PART_4 !== 'undefined') window.TAMHOP_FENGSHUI_PART_4 = TAMHOP_FENGSHUI_PART_4;
+  if (typeof TAMHOP_FENGSHUI_PART_5 !== 'undefined') window.TAMHOP_FENGSHUI_PART_5 = TAMHOP_FENGSHUI_PART_5;
+  if (typeof TAMHOP_FENGSHUI_PART_6 !== 'undefined') window.TAMHOP_FENGSHUI_PART_6 = TAMHOP_FENGSHUI_PART_6;
+  if (typeof TAMHOP_FENGSHUI_PART_7 !== 'undefined') window.TAMHOP_FENGSHUI_PART_7 = TAMHOP_FENGSHUI_PART_7;
+  if (typeof TAMHOP_FENGSHUI_PART_8 !== 'undefined') window.TAMHOP_FENGSHUI_PART_8 = TAMHOP_FENGSHUI_PART_8;
+  if (typeof TAMHOP_FENGSHUI_PART_9 !== 'undefined') window.TAMHOP_FENGSHUI_PART_9 = TAMHOP_FENGSHUI_PART_9;
+  if (typeof TAMHOP_FENGSHUI_PART_10 !== 'undefined') window.TAMHOP_FENGSHUI_PART_10 = TAMHOP_FENGSHUI_PART_10;
+}
+
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = {
+    TAMHOP_FENGSHUI_PART_1: typeof TAMHOP_FENGSHUI_PART_1 !== 'undefined' ? TAMHOP_FENGSHUI_PART_1 : null,
+    TAMHOP_FENGSHUI_PART_2: typeof TAMHOP_FENGSHUI_PART_2 !== 'undefined' ? TAMHOP_FENGSHUI_PART_2 : null,
+    TAMHOP_FENGSHUI_PART_3: typeof TAMHOP_FENGSHUI_PART_3 !== 'undefined' ? TAMHOP_FENGSHUI_PART_3 : null,
+    TAMHOP_FENGSHUI_PART_4: typeof TAMHOP_FENGSHUI_PART_4 !== 'undefined' ? TAMHOP_FENGSHUI_PART_4 : null,
+    TAMHOP_FENGSHUI_PART_5: typeof TAMHOP_FENGSHUI_PART_5 !== 'undefined' ? TAMHOP_FENGSHUI_PART_5 : null,
+    TAMHOP_FENGSHUI_PART_6: typeof TAMHOP_FENGSHUI_PART_6 !== 'undefined' ? TAMHOP_FENGSHUI_PART_6 : null,
+    TAMHOP_FENGSHUI_PART_7: typeof TAMHOP_FENGSHUI_PART_7 !== 'undefined' ? TAMHOP_FENGSHUI_PART_7 : null,
+    TAMHOP_FENGSHUI_PART_8: typeof TAMHOP_FENGSHUI_PART_8 !== 'undefined' ? TAMHOP_FENGSHUI_PART_8 : null,
+    TAMHOP_FENGSHUI_PART_9: typeof TAMHOP_FENGSHUI_PART_9 !== 'undefined' ? TAMHOP_FENGSHUI_PART_9 : null,
+    TAMHOP_FENGSHUI_PART_10: typeof TAMHOP_FENGSHUI_PART_10 !== 'undefined' ? TAMHOP_FENGSHUI_PART_10 : null,
+  };
+}

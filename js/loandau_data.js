@@ -649,3 +649,33 @@ const LOANDAU_PART_10 = {
     }
   ]
 };
+
+
+// Explicit Global Window Exports for Scholarly Reader
+if (typeof window !== 'undefined') {
+  if (typeof LOANDAU_PART_1 !== 'undefined') window.LOANDAU_PART_1 = LOANDAU_PART_1;
+  if (typeof LOANDAU_PART_2 !== 'undefined') window.LOANDAU_PART_2 = LOANDAU_PART_2;
+  if (typeof LOANDAU_PART_3 !== 'undefined') window.LOANDAU_PART_3 = LOANDAU_PART_3;
+  if (typeof LOANDAU_PART_4 !== 'undefined') window.LOANDAU_PART_4 = LOANDAU_PART_4;
+  if (typeof LOANDAU_PART_5 !== 'undefined') window.LOANDAU_PART_5 = LOANDAU_PART_5;
+  if (typeof LOANDAU_PART_6 !== 'undefined') window.LOANDAU_PART_6 = LOANDAU_PART_6;
+  if (typeof LOANDAU_PART_7 !== 'undefined') window.LOANDAU_PART_7 = LOANDAU_PART_7;
+  if (typeof LOANDAU_PART_8 !== 'undefined') window.LOANDAU_PART_8 = LOANDAU_PART_8;
+  if (typeof LOANDAU_PART_9 !== 'undefined') window.LOANDAU_PART_9 = LOANDAU_PART_9;
+  if (typeof LOANDAU_PART_10 !== 'undefined') window.LOANDAU_PART_10 = LOANDAU_PART_10;
+}
+
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = {
+    LOANDAU_PART_1: typeof LOANDAU_PART_1 !== 'undefined' ? LOANDAU_PART_1 : null,
+    LOANDAU_PART_2: typeof LOANDAU_PART_2 !== 'undefined' ? LOANDAU_PART_2 : null,
+    LOANDAU_PART_3: typeof LOANDAU_PART_3 !== 'undefined' ? LOANDAU_PART_3 : null,
+    LOANDAU_PART_4: typeof LOANDAU_PART_4 !== 'undefined' ? LOANDAU_PART_4 : null,
+    LOANDAU_PART_5: typeof LOANDAU_PART_5 !== 'undefined' ? LOANDAU_PART_5 : null,
+    LOANDAU_PART_6: typeof LOANDAU_PART_6 !== 'undefined' ? LOANDAU_PART_6 : null,
+    LOANDAU_PART_7: typeof LOANDAU_PART_7 !== 'undefined' ? LOANDAU_PART_7 : null,
+    LOANDAU_PART_8: typeof LOANDAU_PART_8 !== 'undefined' ? LOANDAU_PART_8 : null,
+    LOANDAU_PART_9: typeof LOANDAU_PART_9 !== 'undefined' ? LOANDAU_PART_9 : null,
+    LOANDAU_PART_10: typeof LOANDAU_PART_10 !== 'undefined' ? LOANDAU_PART_10 : null,
+  };
+}

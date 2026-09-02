@@ -535,3 +535,33 @@ const THIEN_DIA_NHAN_PART_10 = {
     }
   ]
 };
+
+
+// Explicit Global Window Exports for Scholarly Reader
+if (typeof window !== 'undefined') {
+  if (typeof THIEN_DIA_NHAN_PART_1 !== 'undefined') window.THIEN_DIA_NHAN_PART_1 = THIEN_DIA_NHAN_PART_1;
+  if (typeof THIEN_DIA_NHAN_PART_2 !== 'undefined') window.THIEN_DIA_NHAN_PART_2 = THIEN_DIA_NHAN_PART_2;
+  if (typeof THIEN_DIA_NHAN_PART_3 !== 'undefined') window.THIEN_DIA_NHAN_PART_3 = THIEN_DIA_NHAN_PART_3;
+  if (typeof THIEN_DIA_NHAN_PART_4 !== 'undefined') window.THIEN_DIA_NHAN_PART_4 = THIEN_DIA_NHAN_PART_4;
+  if (typeof THIEN_DIA_NHAN_PART_5 !== 'undefined') window.THIEN_DIA_NHAN_PART_5 = THIEN_DIA_NHAN_PART_5;
+  if (typeof THIEN_DIA_NHAN_PART_6 !== 'undefined') window.THIEN_DIA_NHAN_PART_6 = THIEN_DIA_NHAN_PART_6;
+  if (typeof THIEN_DIA_NHAN_PART_7 !== 'undefined') window.THIEN_DIA_NHAN_PART_7 = THIEN_DIA_NHAN_PART_7;
+  if (typeof THIEN_DIA_NHAN_PART_8 !== 'undefined') window.THIEN_DIA_NHAN_PART_8 = THIEN_DIA_NHAN_PART_8;
+  if (typeof THIEN_DIA_NHAN_PART_9 !== 'undefined') window.THIEN_DIA_NHAN_PART_9 = THIEN_DIA_NHAN_PART_9;
+  if (typeof THIEN_DIA_NHAN_PART_10 !== 'undefined') window.THIEN_DIA_NHAN_PART_10 = THIEN_DIA_NHAN_PART_10;
+}
+
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = {
+    THIEN_DIA_NHAN_PART_1: typeof THIEN_DIA_NHAN_PART_1 !== 'undefined' ? THIEN_DIA_NHAN_PART_1 : null,
+    THIEN_DIA_NHAN_PART_2: typeof THIEN_DIA_NHAN_PART_2 !== 'undefined' ? THIEN_DIA_NHAN_PART_2 : null,
+    THIEN_DIA_NHAN_PART_3: typeof THIEN_DIA_NHAN_PART_3 !== 'undefined' ? THIEN_DIA_NHAN_PART_3 : null,
+    THIEN_DIA_NHAN_PART_4: typeof THIEN_DIA_NHAN_PART_4 !== 'undefined' ? THIEN_DIA_NHAN_PART_4 : null,
+    THIEN_DIA_NHAN_PART_5: typeof THIEN_DIA_NHAN_PART_5 !== 'undefined' ? THIEN_DIA_NHAN_PART_5 : null,
+    THIEN_DIA_NHAN_PART_6: typeof THIEN_DIA_NHAN_PART_6 !== 'undefined' ? THIEN_DIA_NHAN_PART_6 : null,
+    THIEN_DIA_NHAN_PART_7: typeof THIEN_DIA_NHAN_PART_7 !== 'undefined' ? THIEN_DIA_NHAN_PART_7 : null,
+    THIEN_DIA_NHAN_PART_8: typeof THIEN_DIA_NHAN_PART_8 !== 'undefined' ? THIEN_DIA_NHAN_PART_8 : null,
+    THIEN_DIA_NHAN_PART_9: typeof THIEN_DIA_NHAN_PART_9 !== 'undefined' ? THIEN_DIA_NHAN_PART_9 : null,
+    THIEN_DIA_NHAN_PART_10: typeof THIEN_DIA_NHAN_PART_10 !== 'undefined' ? THIEN_DIA_NHAN_PART_10 : null,
+  };
+}

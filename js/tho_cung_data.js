@@ -741,3 +741,33 @@ const WORSHIP_CANONICAL_PRAYERS_FULL = {
     ]
   }
 };
+
+
+// Explicit Global Window Exports for Scholarly Reader
+if (typeof window !== 'undefined') {
+  if (typeof WORSHIP_FENGSHUI_PART_1 !== 'undefined') window.WORSHIP_FENGSHUI_PART_1 = WORSHIP_FENGSHUI_PART_1;
+  if (typeof WORSHIP_FENGSHUI_PART_2 !== 'undefined') window.WORSHIP_FENGSHUI_PART_2 = WORSHIP_FENGSHUI_PART_2;
+  if (typeof WORSHIP_FENGSHUI_PART_3 !== 'undefined') window.WORSHIP_FENGSHUI_PART_3 = WORSHIP_FENGSHUI_PART_3;
+  if (typeof WORSHIP_FENGSHUI_PART_4 !== 'undefined') window.WORSHIP_FENGSHUI_PART_4 = WORSHIP_FENGSHUI_PART_4;
+  if (typeof WORSHIP_FENGSHUI_PART_5 !== 'undefined') window.WORSHIP_FENGSHUI_PART_5 = WORSHIP_FENGSHUI_PART_5;
+  if (typeof WORSHIP_FENGSHUI_PART_6 !== 'undefined') window.WORSHIP_FENGSHUI_PART_6 = WORSHIP_FENGSHUI_PART_6;
+  if (typeof WORSHIP_FENGSHUI_PART_7 !== 'undefined') window.WORSHIP_FENGSHUI_PART_7 = WORSHIP_FENGSHUI_PART_7;
+  if (typeof WORSHIP_FENGSHUI_PART_8 !== 'undefined') window.WORSHIP_FENGSHUI_PART_8 = WORSHIP_FENGSHUI_PART_8;
+  if (typeof WORSHIP_FENGSHUI_PART_9 !== 'undefined') window.WORSHIP_FENGSHUI_PART_9 = WORSHIP_FENGSHUI_PART_9;
+  if (typeof WORSHIP_FENGSHUI_PART_10 !== 'undefined') window.WORSHIP_FENGSHUI_PART_10 = WORSHIP_FENGSHUI_PART_10;
+}
+
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = {
+    WORSHIP_FENGSHUI_PART_1: typeof WORSHIP_FENGSHUI_PART_1 !== 'undefined' ? WORSHIP_FENGSHUI_PART_1 : null,
+    WORSHIP_FENGSHUI_PART_2: typeof WORSHIP_FENGSHUI_PART_2 !== 'undefined' ? WORSHIP_FENGSHUI_PART_2 : null,
+    WORSHIP_FENGSHUI_PART_3: typeof WORSHIP_FENGSHUI_PART_3 !== 'undefined' ? WORSHIP_FENGSHUI_PART_3 : null,
+    WORSHIP_FENGSHUI_PART_4: typeof WORSHIP_FENGSHUI_PART_4 !== 'undefined' ? WORSHIP_FENGSHUI_PART_4 : null,
+    WORSHIP_FENGSHUI_PART_5: typeof WORSHIP_FENGSHUI_PART_5 !== 'undefined' ? WORSHIP_FENGSHUI_PART_5 : null,
+    WORSHIP_FENGSHUI_PART_6: typeof WORSHIP_FENGSHUI_PART_6 !== 'undefined' ? WORSHIP_FENGSHUI_PART_6 : null,
+    WORSHIP_FENGSHUI_PART_7: typeof WORSHIP_FENGSHUI_PART_7 !== 'undefined' ? WORSHIP_FENGSHUI_PART_7 : null,
+    WORSHIP_FENGSHUI_PART_8: typeof WORSHIP_FENGSHUI_PART_8 !== 'undefined' ? WORSHIP_FENGSHUI_PART_8 : null,
+    WORSHIP_FENGSHUI_PART_9: typeof WORSHIP_FENGSHUI_PART_9 !== 'undefined' ? WORSHIP_FENGSHUI_PART_9 : null,
+    WORSHIP_FENGSHUI_PART_10: typeof WORSHIP_FENGSHUI_PART_10 !== 'undefined' ? WORSHIP_FENGSHUI_PART_10 : null,
+  };
+}

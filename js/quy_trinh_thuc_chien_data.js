@@ -526,3 +526,33 @@ const QUY_TRINH_THUC_CHIEN_PART_10 = {
     }
   ]
 };
+
+
+// Explicit Global Window Exports for Scholarly Reader
+if (typeof window !== 'undefined') {
+  if (typeof QUY_TRINH_THUC_CHIEN_PART_1 !== 'undefined') window.QUY_TRINH_THUC_CHIEN_PART_1 = QUY_TRINH_THUC_CHIEN_PART_1;
+  if (typeof QUY_TRINH_THUC_CHIEN_PART_2 !== 'undefined') window.QUY_TRINH_THUC_CHIEN_PART_2 = QUY_TRINH_THUC_CHIEN_PART_2;
+  if (typeof QUY_TRINH_THUC_CHIEN_PART_3 !== 'undefined') window.QUY_TRINH_THUC_CHIEN_PART_3 = QUY_TRINH_THUC_CHIEN_PART_3;
+  if (typeof QUY_TRINH_THUC_CHIEN_PART_4 !== 'undefined') window.QUY_TRINH_THUC_CHIEN_PART_4 = QUY_TRINH_THUC_CHIEN_PART_4;
+  if (typeof QUY_TRINH_THUC_CHIEN_PART_5 !== 'undefined') window.QUY_TRINH_THUC_CHIEN_PART_5 = QUY_TRINH_THUC_CHIEN_PART_5;
+  if (typeof QUY_TRINH_THUC_CHIEN_PART_6 !== 'undefined') window.QUY_TRINH_THUC_CHIEN_PART_6 = QUY_TRINH_THUC_CHIEN_PART_6;
+  if (typeof QUY_TRINH_THUC_CHIEN_PART_7 !== 'undefined') window.QUY_TRINH_THUC_CHIEN_PART_7 = QUY_TRINH_THUC_CHIEN_PART_7;
+  if (typeof QUY_TRINH_THUC_CHIEN_PART_8 !== 'undefined') window.QUY_TRINH_THUC_CHIEN_PART_8 = QUY_TRINH_THUC_CHIEN_PART_8;
+  if (typeof QUY_TRINH_THUC_CHIEN_PART_9 !== 'undefined') window.QUY_TRINH_THUC_CHIEN_PART_9 = QUY_TRINH_THUC_CHIEN_PART_9;
+  if (typeof QUY_TRINH_THUC_CHIEN_PART_10 !== 'undefined') window.QUY_TRINH_THUC_CHIEN_PART_10 = QUY_TRINH_THUC_CHIEN_PART_10;
+}
+
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = {
+    QUY_TRINH_THUC_CHIEN_PART_1: typeof QUY_TRINH_THUC_CHIEN_PART_1 !== 'undefined' ? QUY_TRINH_THUC_CHIEN_PART_1 : null,
+    QUY_TRINH_THUC_CHIEN_PART_2: typeof QUY_TRINH_THUC_CHIEN_PART_2 !== 'undefined' ? QUY_TRINH_THUC_CHIEN_PART_2 : null,
+    QUY_TRINH_THUC_CHIEN_PART_3: typeof QUY_TRINH_THUC_CHIEN_PART_3 !== 'undefined' ? QUY_TRINH_THUC_CHIEN_PART_3 : null,
+    QUY_TRINH_THUC_CHIEN_PART_4: typeof QUY_TRINH_THUC_CHIEN_PART_4 !== 'undefined' ? QUY_TRINH_THUC_CHIEN_PART_4 : null,
+    QUY_TRINH_THUC_CHIEN_PART_5: typeof QUY_TRINH_THUC_CHIEN_PART_5 !== 'undefined' ? QUY_TRINH_THUC_CHIEN_PART_5 : null,
+    QUY_TRINH_THUC_CHIEN_PART_6: typeof QUY_TRINH_THUC_CHIEN_PART_6 !== 'undefined' ? QUY_TRINH_THUC_CHIEN_PART_6 : null,
+    QUY_TRINH_THUC_CHIEN_PART_7: typeof QUY_TRINH_THUC_CHIEN_PART_7 !== 'undefined' ? QUY_TRINH_THUC_CHIEN_PART_7 : null,
+    QUY_TRINH_THUC_CHIEN_PART_8: typeof QUY_TRINH_THUC_CHIEN_PART_8 !== 'undefined' ? QUY_TRINH_THUC_CHIEN_PART_8 : null,
+    QUY_TRINH_THUC_CHIEN_PART_9: typeof QUY_TRINH_THUC_CHIEN_PART_9 !== 'undefined' ? QUY_TRINH_THUC_CHIEN_PART_9 : null,
+    QUY_TRINH_THUC_CHIEN_PART_10: typeof QUY_TRINH_THUC_CHIEN_PART_10 !== 'undefined' ? QUY_TRINH_THUC_CHIEN_PART_10 : null,
+  };
+}
