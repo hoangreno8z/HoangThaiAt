@@ -1,21 +1,21 @@
 :root {
-  --dt-bg: #080d14;
-  --dt-surface: #0f1722;
-  --dt-surface-2: #151f2c;
-  --dt-border: rgba(148, 163, 184, 0.2);
-  --dt-text: #f8f1dc;
-  --dt-muted: #a7b2c2;
-  --dt-teal: #2dd4bf;
-  --dt-teal-soft: rgba(45, 212, 191, 0.12);
-  --dt-gold: #f6c453;
-  --dt-danger: #fb7185;
-  --dt-warning: #fbbf24;
+  --dt-bg: #111318;
+  --dt-surface: #181B22;
+  --dt-surface-2: #1E222D;
+  --dt-border: rgba(230, 220, 200, 0.09);
+  --dt-text: #EDE8DE;
+  --dt-muted: #9E998E;
+  --dt-teal: #C5B382;
+  --dt-teal-soft: rgba(197, 179, 130, 0.08);
+  --dt-gold: #D4AF37;
+  --dt-danger: #E06C75;
+  --dt-warning: #E5C07B;
 }
 
 .dt-app {
   min-height: calc(100vh - 76px);
   background:
-    radial-gradient(circle at 15% 0%, rgba(20, 184, 166, 0.08), transparent 28rem),
+    radial-gradient(circle at 15% 0%, rgba(197, 179, 130, 0.04), transparent 28rem),
     var(--dt-bg);
   color: var(--dt-text);
   padding: 1.5rem clamp(1rem, 3vw, 2.5rem) 5rem;

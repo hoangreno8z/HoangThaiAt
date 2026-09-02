@@ -332,14 +332,14 @@
       const mobileNavHtml = `
         <div class="dt-topic-nav-mobile">
           <div class="dt-mobile-nav-bar" style="display:flex; align-items:center; gap:0.5rem; width:100%; margin-bottom:0.6rem;">
-            <select class="dt-mobile-step-select" onchange="if(this.value) window.location.hash = '${ROUTE_ROOT}/bai/' + this.value;" style="flex:1; background:#162032; color:#F5EFEB; border:1px solid rgba(255,255,255,0.15); border-radius:8px; padding:0.65rem 0.8rem; font-size:0.88rem; outline:none; font-family:inherit;">
+            <select class="dt-mobile-step-select" onchange="if(this.value) window.location.hash = '${ROUTE_ROOT}/bai/' + this.value;" style="flex:1; background:#181B22; color:#F5EFEB; border:1px solid rgba(230,220,200,0.14); border-radius:8px; padding:0.65rem 0.8rem; font-size:0.88rem; outline:none; font-family:inherit;">
               ${selectOptions}
             </select>
           </div>
           <div class="dt-mobile-step-controls" style="display:flex; justify-content:space-between; align-items:center; gap:0.5rem; font-size:0.82rem;">
-            ${prevTopic ? `<a href="${ROUTE_ROOT}/bai/${prevTopic.id}" class="dt-step-btn" style="color:#D4CEBD; text-decoration:none; padding:0.35rem 0.65rem; background:rgba(255,255,255,0.05); border-radius:6px; border:1px solid rgba(255,255,255,0.08);">← Bước ${prevTopic.batch}</a>` : '<span style="opacity:0.3; padding:0.35rem 0.65rem;">Đầu trang</span>'}
-            <span style="color:#A8A29E; font-size:0.78rem;">Bước ${escapeHtml(activeTopic.batch)} / ${topics.length}</span>
-            ${nextTopic ? `<a href="${ROUTE_ROOT}/bai/${nextTopic.id}" class="dt-step-btn" style="color:#D4CEBD; text-decoration:none; padding:0.35rem 0.65rem; background:rgba(255,255,255,0.05); border-radius:6px; border:1px solid rgba(255,255,255,0.08);">Bước ${nextTopic.batch} →</a>` : '<span style="opacity:0.3; padding:0.35rem 0.65rem;">Hết bài</span>'}
+            ${prevTopic ? `<a href="${ROUTE_ROOT}/bai/${prevTopic.id}" class="dt-step-btn" style="color:#D4CEBD; text-decoration:none; padding:0.35rem 0.65rem; background:#181B22; border-radius:6px; border:1px solid rgba(230,220,200,0.1);">← Bước ${prevTopic.batch}</a>` : '<span style="opacity:0.3; padding:0.35rem 0.65rem;">Đầu trang</span>'}
+            <span style="color:#9E998E; font-size:0.78rem;">Bước ${escapeHtml(activeTopic.batch)} / ${topics.length}</span>
+            ${nextTopic ? `<a href="${ROUTE_ROOT}/bai/${nextTopic.id}" class="dt-step-btn" style="color:#D4CEBD; text-decoration:none; padding:0.35rem 0.65rem; background:#181B22; border-radius:6px; border:1px solid rgba(230,220,200,0.1);">Bước ${nextTopic.batch} →</a>` : '<span style="opacity:0.3; padding:0.35rem 0.65rem;">Hết bài</span>'}
           </div>
         </div>
       `;
@@ -351,9 +351,9 @@
     }
 
     renderEntry(entry, article) {
-      const original = entry.original ? `<div class="dt-layer dt-layer-original" data-dt-layer="original"><span class="dt-layer-label" style="color:#CFC8B8; font-weight:500; font-size:0.75rem;">Nguyên văn chữ Hán</span><p lang="zh-Hant" style="font-size:1.02rem; line-height:1.75; color:#FDE68A; font-weight:400; margin:0.3rem 0 0 0;">${escapeHtml(entry.original)}</p></div>` : '';
-      const hanViet = entry.hanViet ? `<div class="dt-layer dt-layer-hanviet" data-dt-layer="hanViet"><span class="dt-layer-label" style="color:#CFC8B8; font-weight:500; font-size:0.75rem;">Phiên âm Hán‑Việt</span><p style="font-size:0.92rem; line-height:1.65; color:#BAE6FD; font-style:italic; font-weight:400; margin:0.3rem 0 0 0;">${escapeHtml(entry.hanViet)}</p></div>` : '';
-      const literal = entry.literal ? `<div class="dt-layer dt-layer-literal" style="border-top:1px solid rgba(255,255,255,0.06); padding-top:0.75rem; margin-top:0.75rem;"><span class="dt-layer-label" style="color:#CFC8B8; font-weight:500; font-size:0.75rem; text-transform:uppercase; letter-spacing:0.05em;">Dịch nghĩa kinh văn</span><p style="font-size:0.92rem; line-height:1.75; color:#F1EDE4; font-weight:400; margin:0.3rem 0 0 0;">${escapeHtml(entry.literal)}</p></div>` : '';
+      const original = entry.original ? `<div class="dt-layer dt-layer-original" data-dt-layer="original"><span class="dt-layer-label" style="color:#CFC8B8; font-weight:500; font-size:0.75rem;">Nguyên văn chữ Hán</span><p lang="zh-Hant" style="font-size:1.02rem; line-height:1.75; color:#F3DF9A; font-weight:400; margin:0.3rem 0 0 0;">${escapeHtml(entry.original)}</p></div>` : '';
+      const hanViet = entry.hanViet ? `<div class="dt-layer dt-layer-hanviet" data-dt-layer="hanViet"><span class="dt-layer-label" style="color:#CFC8B8; font-weight:500; font-size:0.75rem;">Phiên âm Hán‑Việt</span><p style="font-size:0.92rem; line-height:1.65; color:#C8D7E6; font-style:italic; font-weight:400; margin:0.3rem 0 0 0;">${escapeHtml(entry.hanViet)}</p></div>` : '';
+      const literal = entry.literal ? `<div class="dt-layer dt-layer-literal" style="border-top:1px solid rgba(230,220,200,0.06); padding-top:0.75rem; margin-top:0.75rem;"><span class="dt-layer-label" style="color:#CFC8B8; font-weight:500; font-size:0.75rem; text-transform:uppercase; letter-spacing:0.05em;">Dịch nghĩa kinh văn</span><p style="font-size:0.92rem; line-height:1.75; color:#F1EDE4; font-weight:400; margin:0.3rem 0 0 0;">${escapeHtml(entry.literal)}</p></div>` : '';
       
       let commentaryText = entry.commentary || 'Cổ thư ghi nhận nguyên tắc này làm chuẩn mực định hướng; trong thực tế cần đo đạc và đối chiếu cẩn trọng với điều kiện công trình.';
       commentaryText = commentaryText.replace(/^(Thầy dạy|Lời thầy|Thầy bảo|Thầy dặn)\s*[:—–,-]\s*/i, '').trim();
@@ -377,8 +377,8 @@
 
       const sourceName = entry.source_title || 'Cổ Thư Chánh Tông';
 
-      return `<article class="dt-entry" id="${escapeHtml(entry.id)}" style="margin-bottom:1.5rem; border:1px solid rgba(255,255,255,0.08); background:#0F172A; border-radius:10px; overflow:hidden;">
-        <header class="dt-entry-header" style="background:#1E293B; padding:0.85rem 1.15rem; border-bottom:1px solid rgba(255,255,255,0.08);">
+      return `<article class="dt-entry" id="${escapeHtml(entry.id)}" style="margin-bottom:1.5rem; border:1px solid rgba(230,220,200,0.08); background:#181B22; border-radius:10px; overflow:hidden;">
+        <header class="dt-entry-header" style="background:#1F232D; padding:0.85rem 1.15rem; border-bottom:1px solid rgba(230,220,200,0.08);">
           <h2 style="font-size:1.02rem; font-weight:600; color:#FDFBF7; margin:0;">${escapeHtml(entry.title || entry.id)}</h2>
         </header>
         <div class="dt-entry-body" style="padding:1.15rem;">
@@ -389,8 +389,8 @@
           </div>
           ${original}${hanViet}
         </div>
-        <footer class="dt-entry-meta" style="background:#090E17; padding:0.7rem 1.15rem; border-top:1px solid rgba(255,255,255,0.06);">
-          <span class="dt-badge" style="background:rgba(255,255,255,0.04); color:#D4CEBD; border:1px solid rgba(255,255,255,0.08); font-weight:400;">Nguồn: ${escapeHtml(sourceName)}</span>
+        <footer class="dt-entry-meta" style="background:#13151B; padding:0.7rem 1.15rem; border-top:1px solid rgba(230,220,200,0.06);">
+          <span class="dt-badge" style="background:rgba(255,255,255,0.04); color:#D4CEBD; border:1px solid rgba(230,220,200,0.09); font-weight:400;">Nguồn: ${escapeHtml(sourceName)}</span>
           <span class="dt-badge dt-badge-evidence" style="background:rgba(212,206,189,0.08); color:#EAE5D9; border:1px solid rgba(212,206,189,0.2); font-weight:400;">Chánh Tông Cổ Pháp</span>
         </footer>
       </article>`;
