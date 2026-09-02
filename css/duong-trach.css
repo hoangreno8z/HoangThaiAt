@@ -89,10 +89,10 @@
 }
 
 .dt-hero h1 {
-  font-size: clamp(2rem, 5vw, 4.5rem);
-  line-height: 1.04;
-  margin: 0.55rem 0 1rem;
-  max-width: 14ch;
+  font-size: clamp(1.2rem, 2.2vw, 1.85rem);
+  line-height: 1.25;
+  margin: 0.4rem 0 0.75rem;
+  max-width: none;
 }
 
 .dt-hero p,
@@ -195,7 +195,7 @@
 .dt-section-header h2 {
   margin: 0;
   color: var(--dt-text);
-  font-size: clamp(1.35rem, 2.5vw, 2rem);
+  font-size: clamp(1.05rem, 1.8vw, 1.35rem);
   text-wrap: balance;
 }
 
@@ -323,9 +323,9 @@
 }
 
 .dt-page-title {
-  margin: 0.45rem 0 0.7rem;
-  font-size: clamp(1.8rem, 4vw, 3.2rem);
-  line-height: 1.12;
+  margin: 0.35rem 0 0.55rem;
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  line-height: 1.25;
 }
 
 .dt-page-lead {
@@ -377,7 +377,7 @@
 }
 
 .dt-entry-header {
-  padding: 1rem 1.1rem 0.85rem;
+  padding: 0.85rem 1rem 0.7rem;
   border-bottom: 1px solid var(--dt-border);
 }
 
@@ -389,9 +389,9 @@
 }
 
 .dt-entry h2 {
-  font-size: 1.16rem;
-  line-height: 1.4;
-  margin: 0.3rem 0 0;
+  font-size: 0.98rem;
+  line-height: 1.35;
+  margin: 0;
   color: var(--dt-text);
   text-wrap: balance;
 }

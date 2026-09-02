@@ -264,8 +264,7 @@
         <header class="dt-hero">
           <div>
             <div class="dt-eyebrow">CẨM NANG THỰC CHIẾN DƯƠNG TRẠCH · 5 GIAI ĐOẠN ĐẠI THÀNH</div>
-            <h1>Quy trình 20 bước: Từ tầm đất, khảo thế, luận cục đến khởi tạo & nhập trạch.</h1>
-            <p>Hệ thống hướng dẫn thực hành dương trạch từ nguyên lý cổ thư kinh điển đến ứng dụng thực địa hiện đại. Mỗi bài học gồm nguyên văn chữ Hán, Hán-Việt, dịch nghĩa tường minh và Lời Thầy Dạy Thực Chiến đúc kết kinh nghiệm hành nghề.</p>
+            <h1>Cẩm Nang Thực Chiến Dương Trạch</h1>
             <div class="dt-hero-actions" style="margin-top:1.2rem">
               <a class="dt-primary-link" href="${ROUTE_ROOT}/bai/batch-01">Bắt đầu từ Giai đoạn 1</a>
               <a class="dt-secondary-link" href="${ROUTE_ROOT}/tra-cuu">Tra cứu cẩm nang</a>
@@ -328,7 +327,13 @@
       const original = entry.original ? `<div class="dt-layer dt-layer-original" data-dt-layer="original"><span class="dt-layer-label">Nguyên văn chữ Hán</span><p lang="zh-Hant">${escapeHtml(entry.original)}</p></div>` : '';
       const hanViet = entry.hanViet ? `<div class="dt-layer dt-layer-hanviet" data-dt-layer="hanViet"><span class="dt-layer-label">Phiên âm Hán‑Việt</span><p>${escapeHtml(entry.hanViet)}</p></div>` : '';
       const literal = entry.literal ? `<div class="dt-layer dt-layer-literal"><span class="dt-layer-label">Dịch nghĩa kinh văn</span><p>${escapeHtml(entry.literal)}</p></div>` : '';
-      const commentaryText = entry.commentary || 'Cổ thư ghi nhận nguyên tắc này làm kim chỉ nam; khi đi thực địa cần đối chiếu cẩn trọng với địa hình thực tế.';
+      
+      let commentaryText = entry.commentary || 'Cổ thư ghi nhận nguyên tắc này làm chuẩn mực định hướng; trong thực tế cần đo đạc và đối chiếu cẩn trọng với điều kiện công trình.';
+      commentaryText = commentaryText.replace(/^(Thầy dạy|Lời thầy|Thầy bảo|Thầy dặn)\s*[:—–,-]\s*/i, '').trim();
+      if (commentaryText) {
+        commentaryText = commentaryText.charAt(0).toUpperCase() + commentaryText.slice(1);
+      }
+
       const sourceName = entry.source_title || 'Cổ Thư Chánh Tông';
 
       return `<article class="dt-entry" id="${escapeHtml(entry.id)}">
@@ -338,11 +343,10 @@
         <div class="dt-entry-body">
           ${literal}
           <div class="dt-layer dt-layer-commentary" style="background:rgba(20,184,166,0.06); border-left:3px solid var(--dt-teal); padding:0.85rem 1rem; border-radius:0 8px 8px 0;">
-            <span class="dt-layer-label" style="color:var(--dt-teal); font-weight:800; font-size:0.82rem; letter-spacing:0.03em;">📜 Lời Thầy Dạy Thực Chiến</span>
+            <span class="dt-layer-label" style="color:var(--dt-teal); font-weight:800; font-size:0.82rem; letter-spacing:0.03em;">Giải nghĩa</span>
             <p style="margin:0.35rem 0 0 0; line-height:1.65; color:#F1F5F9; font-size:0.95rem;">${escapeHtml(commentaryText)}</p>
           </div>
           ${original}${hanViet}
-          ${entry.application ? `<div class="dt-layer" style="margin-top:0.4rem;"><span class="dt-layer-label">Ứng dụng thực tế:</span><p style="margin:0.2rem 0 0 0; font-size:0.88rem; color:var(--dt-muted);">${escapeHtml(entry.application)}</p></div>` : ''}
         </div>
         <footer class="dt-entry-meta">
           <span class="dt-badge" style="background:rgba(255,255,255,0.05); color:#E2E8F0; border:1px solid rgba(255,255,255,0.1);">Nguồn: ${escapeHtml(sourceName)}</span>
