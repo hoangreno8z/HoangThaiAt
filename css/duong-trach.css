@@ -299,6 +299,14 @@
   padding-right: 1rem;
 }
 
+.dt-topic-nav-desktop {
+  display: block;
+}
+
+.dt-topic-nav-mobile {
+  display: none;
+}
+
 .dt-topic-nav a {
   display: block;
   color: var(--dt-muted);
@@ -667,22 +675,20 @@
 
   .dt-topic-nav {
     position: static;
-    display: flex;
-    overflow-x: auto;
+    display: block;
     max-height: none;
     border-right: 0;
     border-bottom: 1px solid var(--dt-border);
-    padding: 0 0 0.65rem;
+    padding: 0.5rem 0 0.85rem;
+    margin-bottom: 1rem;
   }
 
-  .dt-topic-nav a {
-    flex: 0 0 190px;
-    border-left: 0;
-    border-bottom: 2px solid transparent;
+  .dt-topic-nav-desktop {
+    display: none !important;
   }
 
-  .dt-topic-nav a[aria-current="page"] {
-    border-bottom-color: var(--dt-teal);
+  .dt-topic-nav-mobile {
+    display: block !important;
   }
 
   .dt-search-form {
