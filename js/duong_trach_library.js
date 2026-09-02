@@ -177,14 +177,7 @@
       this.root.innerHTML = '<div class="dt-app"><div class="dt-loading" role="status" aria-live="polite">Đang mở corpus đã kiểm định…</div></div>';
       try {
         const base = await this.loadBase();
-        if (token !== this.renderToken) return;
-        const segments = (params && params.segments) || ['duong-trach'];
-        const query = (params && params.query) || new URLSearchParams();
-        const section = segments[0] === 'duong-trach' ? (segments[1] || 'home') : (segments[0] || 'home');
-        const slug = segments[0] === 'duong-trach' ? segments[2] : segments[1];
-
         if (section === 'bai') this.renderArticle(base, slug, query);
-        else if (section === 'tra-cuu') await this.renderSearch(base, query, token);
         else if (section === 'nguon') this.renderSource(base, slug);
         else if (section === 'nghien-cuu') await this.renderResearch(base, query, token);
         else this.renderHome(base);
@@ -460,8 +453,8 @@
         <header class="dt-page-header"><div class="dt-eyebrow">Kho đối chiếu</div><h1 class="dt-page-title">Hồ sơ nghiên cứu & dữ liệu máy kiểm</h1><p class="dt-page-lead">Khu vực này giữ lịch sử nghiên cứu và cấu trúc kiểm định. JSON/Markdown thô được đặt trong khối mở rộng để không lấn át bài đọc dành cho người dùng.</p></header>
         <div class="dt-stats"><div class="dt-stat"><strong>${records.length}</strong><span>bản ghi máy</span></div><div class="dt-stat"><strong>${documents.length}</strong><span>tài liệu Markdown</span></div></div>
         ${selected}
-        <section class="dt-section"><div class="dt-section-header"><div><h2>Bản ghi tiêu biểu</h2><p>Hiển thị 80 mục đầu; dùng trang Tra cứu để tìm đủ ${records.length} bản ghi.</p></div><a class="dt-secondary-link" href="${ROUTE_ROOT}/tra-cuu?loai=rule">Tra cứu quy tắc</a></div>${recordLinks}</section>
-        <section class="dt-section"><div class="dt-section-header"><div><h2>Tài liệu nghiên cứu</h2><p>Hiển thị 40 tài liệu đầu; toàn bộ ${documents.length} tài liệu đều có trong chỉ mục.</p></div><a class="dt-secondary-link" href="${ROUTE_ROOT}/tra-cuu?loai=document">Tra cứu tài liệu</a></div>${documentLinks}</section>
+        <section class="dt-section"><div class="dt-section-header"><div><h2>Bản ghi tiêu biểu</h2><p>Danh sách các bản ghi đối chiếu tiêu chuẩn.</p></div></div>${recordLinks}</section>
+        <section class="dt-section"><div class="dt-section-header"><div><h2>Tài liệu nghiên cứu</h2><p>Toàn bộ tài liệu văn bản đối chiếu.</p></div></div>${documentLinks}</section>
       </main>`;
       this.root.innerHTML = this.shell(content, ['Nghiên cứu']);
     }
