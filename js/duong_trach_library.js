@@ -263,27 +263,15 @@
           <div>
             <div class="dt-eyebrow">CẨM NANG THỰC CHIẾN DƯƠNG TRẠCH · 5 GIAI ĐOẠN ĐẠI THÀNH</div>
             <h1>Cẩm Nang Thực Chiến Dương Trạch</h1>
-            <div class="dt-hero-actions" style="margin-top:1.2rem">
+            <div class="dt-hero-actions" style="margin-top:1rem">
               <a class="dt-primary-link" href="${ROUTE_ROOT}/bai/batch-01">Bắt đầu từ Giai đoạn 1</a>
             </div>
           </div>
-          <div class="dt-stats" aria-label="Thống kê cẩm nang">
-            <div class="dt-stat"><strong>20</strong><span>bước quy trình</span></div>
-            <div class="dt-stat"><strong>${manifest.counts.articleEntries}</strong><span>bài học thực chiến</span></div>
-            <div class="dt-stat"><strong>5</strong><span>giai đoạn đại thành</span></div>
-            <div class="dt-stat"><strong>100%</strong><span>chánh tông cổ thư</span></div>
-          </div>
         </header>
-        <section class="dt-section" aria-labelledby="dt-topics-title">
-          <div class="dt-section-header">
-            <div>
-              <h2 id="dt-topics-title">Hành Trình 5 Giai Đoạn Khảo Sát & Khởi Tạo Dương Cơ</h2>
-              <p>Trình tự bài bản từ quan sát đại thể môi trường đến chi tiết từng không gian nội trạch.</p>
-            </div>
-          </div>
+        <section class="dt-section" style="margin-top:1.5rem;">
           ${stagesHtml}
         </section>
-        <aside class="dt-trust-note">
+        <aside class="dt-trust-note" style="margin-top:1.5rem; background:#181B22; border-left:3px solid #C5B382; padding:0.9rem 1.15rem; color:#EDE8DE;">
           <strong>Tâm pháp hành nghề:</strong> “Hình thế làm gốc, lý khí làm dụng, an toàn làm trọng”. Luôn kết hợp phép tắc cổ nhân với khảo sát thực địa kỹ lưỡng, không suy diễn mê tín hoang đường.
         </aside>`;
       this.root.innerHTML = this.shell(content);
@@ -292,8 +280,6 @@
     topicNav(topics, activeId) {
       const activeTopicIndex = topics.findIndex(t => t.id === activeId);
       const activeTopic = topics[activeTopicIndex] || topics[0];
-      const prevTopic = activeTopicIndex > 0 ? topics[activeTopicIndex - 1] : null;
-      const nextTopic = activeTopicIndex < topics.length - 1 ? topics[activeTopicIndex + 1] : null;
 
       const STAGE_SECTIONS = [
         { num: 'I', title: 'NỀN TẢNG & PHƯƠNG PHÁP', batches: ['01', '02', '03'] },
@@ -314,7 +300,7 @@
 
         return `
           <div class="dt-nav-stage-group" style="margin-bottom:1.1rem;">
-            <div class="dt-nav-stage-title" style="font-size:0.72rem; font-weight:600; color:#D4CEBD; text-transform:uppercase; letter-spacing:0.05em; padding:0.35rem 0.6rem 0.25rem 0.6rem; border-bottom:1px solid rgba(255,255,255,0.08); margin-bottom:0.35rem;">
+            <div class="dt-nav-stage-title" style="font-size:0.72rem; font-weight:600; color:#D4CEBD; text-transform:uppercase; letter-spacing:0.05em; padding:0.35rem 0.6rem 0.25rem 0.6rem; border-bottom:1px solid rgba(230,220,200,0.08); margin-bottom:0.35rem;">
               ${escapeHtml(stage.num)}. ${escapeHtml(stage.title)}
             </div>
             ${links}
@@ -322,7 +308,7 @@
         `;
       }).join('');
 
-      // Mobile Dropdown Selector & Quick Bar
+      // Mobile Dropdown Selector
       const selectOptions = topics.map(t => `
         <option value="${escapeHtml(t.id)}" ${t.id === activeId ? 'selected' : ''}>
           Bước ${escapeHtml(t.batch)}: ${escapeHtml(t.title)}
@@ -330,17 +316,10 @@
       `).join('');
 
       const mobileNavHtml = `
-        <div class="dt-topic-nav-mobile">
-          <div class="dt-mobile-nav-bar" style="display:flex; align-items:center; gap:0.5rem; width:100%; margin-bottom:0.6rem;">
-            <select class="dt-mobile-step-select" onchange="if(this.value) window.location.hash = '${ROUTE_ROOT}/bai/' + this.value;" style="flex:1; background:#181B22; color:#F5EFEB; border:1px solid rgba(230,220,200,0.14); border-radius:8px; padding:0.65rem 0.8rem; font-size:0.88rem; outline:none; font-family:inherit;">
-              ${selectOptions}
-            </select>
-          </div>
-          <div class="dt-mobile-step-controls" style="display:flex; justify-content:space-between; align-items:center; gap:0.5rem; font-size:0.82rem;">
-            ${prevTopic ? `<a href="${ROUTE_ROOT}/bai/${prevTopic.id}" class="dt-step-btn" style="color:#D4CEBD; text-decoration:none; padding:0.35rem 0.65rem; background:#181B22; border-radius:6px; border:1px solid rgba(230,220,200,0.1);">← Bước ${prevTopic.batch}</a>` : '<span style="opacity:0.3; padding:0.35rem 0.65rem;">Đầu trang</span>'}
-            <span style="color:#9E998E; font-size:0.78rem;">Bước ${escapeHtml(activeTopic.batch)} / ${topics.length}</span>
-            ${nextTopic ? `<a href="${ROUTE_ROOT}/bai/${nextTopic.id}" class="dt-step-btn" style="color:#D4CEBD; text-decoration:none; padding:0.35rem 0.65rem; background:#181B22; border-radius:6px; border:1px solid rgba(230,220,200,0.1);">Bước ${nextTopic.batch} →</a>` : '<span style="opacity:0.3; padding:0.35rem 0.65rem;">Hết bài</span>'}
-          </div>
+        <div class="dt-topic-nav-mobile" style="margin-bottom:0.8rem;">
+          <select class="dt-mobile-step-select" onchange="if(this.value) window.location.hash = '${ROUTE_ROOT}/bai/' + this.value;" style="width:100%; background:#181B22; color:#F5EFEB; border:1px solid rgba(230,220,200,0.14); border-radius:8px; padding:0.55rem 0.75rem; font-size:0.85rem; outline:none; font-family:inherit;">
+            ${selectOptions}
+          </select>
         </div>
       `;
 
@@ -397,11 +376,29 @@
     }
 
     renderArticle({ manifest, articles }, slug, query) {
-      const article = articles.find(item => item.id === slug) || articles[0];
+      const articleIndex = articles.findIndex(item => item.id === slug);
+      const article = articleIndex !== -1 ? articles[articleIndex] : articles[0];
+      const prevArticle = articleIndex > 0 ? articles[articleIndex - 1] : null;
+      const nextArticle = articleIndex < articles.length - 1 ? articles[articleIndex + 1] : null;
+
       document.title = `${article.title} — Cẩm Nang Thực Chiến Dương Trạch`;
       const entries = article.entries.length
         ? article.entries.map(entry => this.renderEntry(entry, article)).join('')
-        : `<div class="dt-empty"><strong>Hồ sơ tiêu chuẩn an toàn & kiểm soát thực địa.</strong><br>Chủ đề này tập trung vào các tiêu chuẩn an toàn bắt buộc: kết cấu, chống ngập lụt, an toàn cháy nổ và pháp lý xây dựng hiện đại cần kiểm tra trước khi bố trí phong thủy.</div>`;
+        : `<div class="dt-empty" style="background:#181B22; border-left:3px solid #C5B382; color:#EDE8DE; padding:1rem;"><strong>Hồ sơ tiêu chuẩn an toàn & kiểm soát thực địa.</strong><br>Chủ đề này tập trung vào các tiêu chuẩn an toàn bắt buộc: kết cấu, chống ngập lụt, an toàn cháy nổ và pháp lý xây dựng hiện đại cần kiểm tra trước khi bố trí phong thủy.</div>`;
+      
+      const bottomPagination = `
+        <nav class="dt-bottom-pagination" aria-label="Điều hướng chuyển bước" style="display:flex; justify-content:space-between; align-items:center; gap:0.6rem; margin-top:2.5rem; padding-top:1.5rem; border-top:1px solid rgba(230,220,200,0.12); flex-wrap:wrap;">
+          ${prevArticle ? `
+            <a href="${ROUTE_ROOT}/bai/${prevArticle.id}" class="dt-bottom-nav-btn" style="display:inline-flex; align-items:center; gap:0.4rem; padding:0.55rem 0.9rem; background:#181B22; color:#D4CEBD; text-decoration:none; border:1px solid rgba(230,220,200,0.12); border-radius:7px; font-size:0.86rem;">
+              ← Bước ${prevArticle.batch}: ${escapeHtml(prevArticle.title)}
+            </a>` : '<div style="flex:1"></div>'}
+          ${nextArticle ? `
+            <a href="${ROUTE_ROOT}/bai/${nextArticle.id}" class="dt-bottom-nav-btn" style="display:inline-flex; align-items:center; gap:0.4rem; padding:0.55rem 0.9rem; background:#1F232D; color:#F5EFEB; text-decoration:none; border:1px solid rgba(230,220,200,0.22); border-radius:7px; font-size:0.86rem; font-weight:500;">
+              Bước ${nextArticle.batch}: ${escapeHtml(nextArticle.title)} →
+            </a>` : '<div style="flex:1"></div>'}
+        </nav>
+      `;
+
       const content = `<div class="dt-reader-layout">
         ${this.topicNav(manifest.topics, article.id)}
         <main>
@@ -411,14 +408,15 @@
             <p class="dt-page-lead">${escapeHtml(article.description)}</p>
           </header>
           ${article.overview ? `<aside class="dt-state-note">${escapeHtml(article.overview)}</aside>` : ''}
-          <div class="dt-toolbar" aria-label="Tùy chọn văn bản">
-            <span>Hiển thị thêm văn bản gốc:</span>
-            <div class="dt-toggle-group">
-              <button class="dt-toggle" type="button" data-dt-toggle="original" aria-pressed="${this.preferences.original}">Chữ Hán</button>
-              <button class="dt-toggle" type="button" data-dt-toggle="hanViet" aria-pressed="${this.preferences.hanViet}">Phiên âm Hán‑Việt</button>
+          <div class="dt-toolbar" aria-label="Tùy chọn văn bản" style="display:flex; align-items:center; justify-content:space-between; margin:0.6rem 0 1.1rem; padding:0.3rem 0.6rem; background:#181B22; border:1px solid rgba(230,220,200,0.08); border-radius:6px;">
+            <span style="font-size:0.74rem; color:#9E998E;">Hiển thị nguyên tác:</span>
+            <div class="dt-toggle-group" style="display:flex; gap:0.3rem;">
+              <button class="dt-toggle" type="button" data-dt-toggle="original" aria-pressed="${this.preferences.original}" style="min-height:24px; padding:0.15rem 0.5rem; font-size:0.7rem; border-radius:4px; border:1px solid rgba(230,220,200,0.12); background:#13151B; color:#EDE8DE; cursor:pointer;">Chữ Hán</button>
+              <button class="dt-toggle" type="button" data-dt-toggle="hanViet" aria-pressed="${this.preferences.hanViet}" style="min-height:24px; padding:0.15rem 0.5rem; font-size:0.7rem; border-radius:4px; border:1px solid rgba(230,220,200,0.12); background:#13151B; color:#EDE8DE; cursor:pointer;">Phiên âm Hán‑Việt</button>
             </div>
           </div>
           <div class="dt-entry-list">${entries}</div>
+          ${bottomPagination}
         </main>
       </div>`;
       this.root.innerHTML = this.shell(content, [article.title]);
