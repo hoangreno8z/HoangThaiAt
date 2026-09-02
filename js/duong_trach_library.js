@@ -177,6 +177,12 @@
       this.root.innerHTML = '<div class="dt-app"><div class="dt-loading" role="status" aria-live="polite">Đang mở corpus đã kiểm định…</div></div>';
       try {
         const base = await this.loadBase();
+        if (token !== this.renderToken) return;
+        const segments = (params && params.segments) || ['duong-trach'];
+        const query = (params && params.query) || new URLSearchParams();
+        const section = segments[0] === 'duong-trach' ? (segments[1] || 'home') : (segments[0] || 'home');
+        const slug = segments[0] === 'duong-trach' ? segments[2] : segments[1];
+
         if (section === 'bai') this.renderArticle(base, slug, query);
         else if (section === 'nguon') this.renderSource(base, slug);
         else if (section === 'nghien-cuu') await this.renderResearch(base, query, token);
