@@ -185,7 +185,6 @@
 
         if (section === 'bai') this.renderArticle(base, slug, query);
         else if (section === 'nguon') this.renderSource(base, slug);
-        else if (section === 'nghien-cuu') await this.renderResearch(base, query, token);
         else this.renderHome(base);
       } catch (error) {
         if (token === this.renderToken) this.renderError(error);
@@ -266,8 +265,6 @@
             <h1>Cẩm Nang Thực Chiến Dương Trạch</h1>
             <div class="dt-hero-actions" style="margin-top:1.2rem">
               <a class="dt-primary-link" href="${ROUTE_ROOT}/bai/batch-01">Bắt đầu từ Giai đoạn 1</a>
-              <a class="dt-secondary-link" href="${ROUTE_ROOT}/tra-cuu">Tra cứu cẩm nang</a>
-              <a class="dt-secondary-link" href="${ROUTE_ROOT}/nghien-cuu">Khảo chứng thư tịch</a>
             </div>
           </div>
           <div class="dt-stats" aria-label="Thống kê cẩm nang">
@@ -359,7 +356,7 @@
       document.title = `${article.title} — Cẩm Nang Thực Chiến Dương Trạch`;
       const entries = article.entries.length
         ? article.entries.map(entry => this.renderEntry(entry, article)).join('')
-        : `<div class="dt-empty"><strong>Hồ sơ tiêu chuẩn an toàn & kiểm soát thực địa.</strong><br>Chủ đề này tập trung vào các tiêu chuẩn an toàn bắt buộc: kết cấu, chống ngập lụt, an toàn cháy nổ và pháp lý xây dựng hiện đại cần kiểm tra trước khi bố trí phong thủy. <a href="${ROUTE_ROOT}/nghien-cuu">Mở hồ sơ đối chiếu</a>.</div>`;
+        : `<div class="dt-empty"><strong>Hồ sơ tiêu chuẩn an toàn & kiểm soát thực địa.</strong><br>Chủ đề này tập trung vào các tiêu chuẩn an toàn bắt buộc: kết cấu, chống ngập lụt, an toàn cháy nổ và pháp lý xây dựng hiện đại cần kiểm tra trước khi bố trí phong thủy.</div>`;
       const content = `<div class="dt-reader-layout">
         ${this.topicNav(manifest.topics, article.id)}
         <main>
