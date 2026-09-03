@@ -884,6 +884,38 @@
     font-size: 0.74rem;
     padding: 0.2rem 0.5rem;
   }
+
+  /* Fix justified text causing ugly word gaps on narrow screens */
+  .dt-body-p,
+  .dt-lead-p,
+  .dt-bullet-list li {
+    text-align: left;
+  }
+
+  /* Tighter paragraph spacing on mobile for readability */
+  .dt-body-p {
+    margin: 0.35rem 0 0.5rem 0;
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+
+  .dt-section-heading {
+    font-size: 0.88rem;
+    margin: 0.9rem 0 0.35rem 0;
+  }
+
+  /* Commentary container padding reduction */
+  .dt-layer-commentary {
+    padding: 0.8rem 0.9rem !important;
+  }
+
+  /* Large reference entries: cap height with scroll */
+  .dt-commentary-content {
+    max-height: 85vh;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+  }
 }
 
 @media (max-width: 360px) {

@@ -1,0 +1,2098 @@
+[
+  {
+    "id": "VH-001",
+    "batch": "01",
+    "topic": "Nguồn Gốc & Phương Pháp",
+    "original": "人之居處宜以大地山河為主。",
+    "hanViet": "Nhân chi cư xứ nghi dĩ đại địa sơn hà vi chủ.",
+    "literal": "Chỗ con người cư trú nên lấy đại thế đất đai, núi sông làm điều chủ yếu.",
+    "currentTitle": "《陽宅十書》 / Luận ngoại hình",
+    "currentCommentary": "Khi đánh giá một ngôi nhà, trước hết xem bối cảnh địa hình lớn và quan hệ với môi trường xung quanh; không nên chỉ chăm chú vào bố trí nội thất. Với ứng dụng hiện đại, lớp này tương ứng với khảo sát địa hình, thủy văn, đường giao thông, gió, nắng, ngập và các nguy cơ vật lý trước khi xét lý khí."
+  },
+  {
+    "id": "VH-002",
+    "batch": "01",
+    "topic": "Nguồn Gốc & Phương Pháp",
+    "original": "大凡陽宅要穴大，寬闊連綿又平伏。",
+    "hanViet": "Đại phàm dương trạch yếu huyệt đại, khoan khoát liên miên hựu bình phục.",
+    "literal": "Nói chung, chỗ dùng cho dương trạch cần rộng; thế đất nên khoáng đạt, liên tục và tương đối bằng phẳng.",
+    "currentTitle": "《疑龍經》 / Dương trạch",
+    "currentCommentary": "Đoạn này nhấn mạnh sự khác nhau giữa không gian cư trú và huyệt táng nhỏ. Khi chuyển sang thực hành dân dụng, giá trị cốt lõi là ưu tiên khu đất có đủ không gian sử dụng, nền thế tương đối ổn định và không bị ép hẹp bất thường. Không suy diễn thành quy chuẩn kích thước cố định nếu nguyên văn không nêu số."
+  },
+  {
+    "id": "VH-003",
+    "batch": "01",
+    "topic": "Nguồn Gốc & Phương Pháp",
+    "original": "地善即苗茂，宅吉即人榮。",
+    "hanViet": "Địa thiện tức miêu mậu, trạch cát tức nhân vinh.",
+    "literal": "Đất tốt thì mầm cây tươi tốt; nhà tốt thì người được hưng thịnh.",
+    "currentTitle": "《宅經》",
+    "currentCommentary": "Đây là ngôn ngữ tương tự/ẩn dụ của truyền thống trạch pháp, không phải bằng chứng khoa học về quan hệ nhân quả. Trong sách thực chiến, câu này được dùng để minh họa quan niệm cổ rằng chất lượng nơi ở và con người có quan hệ, sau đó phải tách riêng lớp kiểm chứng hiện đại về nền đất, khí hậu, vệ sinh môi trường và an toàn công trình."
+  },
+  {
+    "id": "VH-004",
+    "batch": "01",
+    "topic": "Nguồn Gốc & Phương Pháp",
+    "original": "先看金龍動不動，次察血脈認來龍。",
+    "hanViet": "Tiên khán Kim Long động bất động, thứ sát huyết mạch nhận lai long.",
+    "literal": "Trước xét Kim Long có động hay không, sau xét mạch khí để nhận lai long.",
+    "currentTitle": "《青囊序》",
+    "currentCommentary": "Câu này thuộc hệ ngôn ngữ lý khí–địa lý truyền thống, không nên giản lược “Kim Long” thành một vật thể địa lý duy nhất. Khi khảo cứu học thuật, phải giữ thuật ngữ gốc và liên kết đến chú giải của từng truyền thống; không tự chọn một cách giải rồi gọi là nghĩa duy nhất."
+  },
+  {
+    "id": "VH-005",
+    "batch": "01",
+    "topic": "Nguồn Gốc & Phương Pháp",
+    "original": "考究羣書，并與人匠講説，分立類例。",
+    "hanViet": "Khảo cứu quần thư, tịnh dữ nhân tượng giảng thuyết, phân lập loại lệ.",
+    "literal": "Khảo cứu nhiều sách, đồng thời bàn giảng cùng thợ nghề, rồi phân chia thành từng loại và phép lệ.",
+    "currentTitle": "《營造法式》 / Tứ Khố đề yếu",
+    "currentCommentary": "Đây chính là tinh thần phương pháp mà LapQue nên học: không chỉ sao chép cổ thư mà còn đối chiếu tri thức thực hành của người làm nghề, rồi chuẩn hóa thành loại mục và quy tắc. Tuy nhiên, tiêu chuẩn kiến trúc Bắc Tống không được lấy nguyên xi làm tiêu chuẩn kết cấu hiện đại tại Việt Nam."
+  },
+  {
+    "id": "LAND-001",
+    "batch": "02",
+    "topic": "Chọn Đất & Đại Thế",
+    "original": "人之居處宜以大地山河為主……若大形不善，縱內形得法，終不全吉。",
+    "hanViet": "Nhân chi cư xứ nghi dĩ đại địa sơn hà vi chủ… nhược đại hình bất thiện, túng nội hình đắc pháp, chung bất toàn cát.",
+    "literal": "Nơi con người cư trú nên lấy đại thế đất đai, núi sông làm chủ yếu… nếu đại hình không tốt thì dù nội hình có đúng phép, cuối cùng cũng không thể hoàn toàn tốt.",
+    "sourceId": "SRC-YZSS-001",
+    "currentTitle": "Đại Địa Sơn Hà Làm Chủ (Khảo Sát Đại Thế Trước Nội Cục)",
+    "currentCommentary": "Đặt khảo sát site và môi trường lớn trước bố trí nội bộ. Đây là nguyên tắc ưu tiên trong truyền thống, không phải chứng minh khoa học."
+  },
+  {
+    "id": "LAND-002",
+    "batch": "02",
+    "topic": "Chọn Đất & Đại Thế",
+    "original": "大凡陽宅要穴大，寬闊連綿又平伏。",
+    "hanViet": "Đại phàm dương trạch yếu huyệt đại, khoan khoát liên miên hựu bình phục.",
+    "literal": "Nói chung, chỗ dùng cho dương trạch cần rộng; thế đất nên khoáng đạt, liên tục và tương đối bằng phẳng.",
+    "sourceId": "SRC-YLJ-001",
+    "currentTitle": "Huyệt Địa Khoáng Đạt Bình Phục (Thế Đất Rộng Rãi Bằng Phẳng)",
+    "currentCommentary": "Không biến chữ “đại/rộng” thành số mét hoặc tỷ lệ nếu nguyên tác không cho ngưỡng."
+  },
+  {
+    "id": "LAND-003",
+    "batch": "02",
+    "topic": "Chọn Đất & Đại Thế",
+    "original": "要知居止只要勢，水抱山朝必有氣。",
+    "hanViet": "Yếu tri cư chỉ chỉ yếu thế, thủy bão sơn triều tất hữu khí.",
+    "literal": "Muốn xét nơi cư trú, điều cốt yếu là thế; nước ôm, núi chầu thì theo ngôn ngữ của sách là có khí.",
+    "sourceId": "SRC-YLJ-001",
+    "currentTitle": "Thủy Bão Sơn Triều (Thế Đất Ôm Tụ Sinh Khí)",
+    "currentCommentary": "有氣 được giữ là khái niệm truyền thống. Không dịch thành “năng lượng vật lý đã đo được”."
+  },
+  {
+    "id": "LAND-004",
+    "batch": "02",
+    "topic": "Chọn Đất & Đại Thế",
+    "original": "忽然陡瀉朝對傾，破碎斜傾非吉地。",
+    "hanViet": "Hốt nhiên đẩu tả triều đối khuynh, phá toái tà khuynh phi cát địa.",
+    "literal": "Nếu địa thế đột ngột đổ dốc, thế đối diện nghiêng lệch, địa hình vỡ vụn xiên nghiêng thì không được xem là đất tốt.",
+    "sourceId": "SRC-YLJ-001",
+    "currentTitle": "Đẩu Tả Khuynh Tà (Địa Hình Dốc Đổ Xiên Lệch)",
+    "currentCommentary": "Ứng dụng hiện đại chỉ dùng câu này như bộ lọc hình thế truyền thống; rủi ro sạt lở/nền đất phải được đánh giá bằng dữ liệu kỹ thuật riêng."
+  },
+  {
+    "id": "LAND-005",
+    "batch": "02",
+    "topic": "Chọn Đất & Đại Thế",
+    "original": "宅以形勢為身體，以泉水為血脈，以土地為皮肉，以草木為毛髮，以舍屋為衣服，以門戶為冠帶。",
+    "hanViet": "Trạch dĩ hình thế vi thân thể, dĩ tuyền thủy vi huyết mạch, dĩ thổ địa vi bì nhục, dĩ thảo mộc vi mao phát, dĩ xá ốc vi y phục, dĩ môn hộ vi quan đới.",
+    "literal": "Nhà lấy hình thế làm thân thể, lấy suối nước làm huyết mạch, lấy đất làm da thịt, lấy cây cỏ làm lông tóc, lấy nhà cửa làm y phục, lấy cửa ngõ làm mũ đai.",
+    "sourceId": "SRC-ZJ-001",
+    "currentTitle": "Lục Thân Thủ Tượng (Mô Hình Chỉnh Thể Khảo Sát)",
+    "currentCommentary": "Đây là mô hình ẩn dụ hệ thống của cổ thư. Có thể dùng để tổ chức thứ tự khảo sát: hình thế → nước → đất → thảm thực vật → công trình → cửa, nhưng không được biến phép ví thành cơ chế vật lý."
+  },
+  {
+    "id": "LAND-006",
+    "batch": "02",
+    "topic": "Chọn Đất & Đại Thế",
+    "original": "故人之居宅，大須慎擇。",
+    "hanViet": "Cố nhân chi cư trạch, đại tu thận trạch.",
+    "literal": "Bởi vậy, nơi nhà ở của con người rất cần được lựa chọn thận trọng.",
+    "sourceId": "SRC-ZJ-001",
+    "currentTitle": "Thận Trọng Trạch Địa (Nguyên Tắc Lựa Chọn Đất Ở)",
+    "currentCommentary": "Dùng làm nguyên tắc mở đầu cho quy trình chọn đất, không phải quy tắc cát-hung cụ thể."
+  },
+  {
+    "id": "LAND-007",
+    "batch": "02",
+    "topic": "Chọn Đất & Đại Thế",
+    "original": "宅地平坦，吉；四面高、中央下，先富後貧。",
+    "hanViet": "Trạch địa bình thản, cát; tứ diện cao, trung ương hạ, tiên phú hậu bần.",
+    "literal": "Đất nhà bằng phẳng được coi là tốt; bốn phía cao mà giữa thấp thì truyền thống phán trước giàu sau nghèo.",
+    "sourceId": "SRC-DNBS-001",
+    "currentTitle": "Tứ Diện Cao Trung Ương Hạ (Thế Đất Trũng Lòng Chảo)",
+    "currentCommentary": "Chỉ phần hình thái “bốn phía cao, giữa thấp” được dùng làm thông số kích thước mặt bằng. Kết quả “trước giàu sau nghèo” phải lưu riêng là dự báo cát hung truyền thống, không coi là dự báo thực nghiệm."
+  },
+  {
+    "id": "LAND-008",
+    "batch": "02",
+    "topic": "Chọn Đất & Đại Thế",
+    "original": "前闊後狹，主人貧乏；前狹後闊，安吉。",
+    "hanViet": "Tiền khoát hậu hiệp, chủ nhân bần phạp; tiền hiệp hậu khoát, an cát.",
+    "literal": "Trước rộng sau hẹp thì theo sách chủ về nghèo thiếu; trước hẹp sau rộng thì được coi là yên tốt.",
+    "sourceId": "SRC-DNBS-001",
+    "currentTitle": "Tiền Khoát Hậu Hiệp / Tiền Hiệp Hậu Khoát (Thế Đất Tóp Hậu & Nở Hậu)",
+    "currentCommentary": "Đây là nguồn đối chứng cho hình thái “tóp hậu/nở hậu”. Cổ thư chỉ ghi nhận phân loại hình thái định tính; trong thiết kế thực tế cần đo đạc kích thước cụ thể và đối chiếu với công năng sử dụng."
+  },
+  {
+    "id": "LAND-009",
+    "batch": "02",
+    "topic": "Chọn Đất & Đại Thế",
+    "original": "勿居古軍營、戰場地，勿居正當水流處，勿居大城門口及對獄門并百川口。",
+    "hanViet": "Vật cư cổ quân doanh, chiến trường địa; vật cư chính đương thủy lưu xứ; vật cư đại thành môn khẩu cập đối ngục môn tịnh bách xuyên khẩu.",
+    "literal": "Không nên ở tại quân doanh cũ hoặc chiến trường; không ở đúng nơi dòng nước xông tới; không ở ngay cửa thành lớn, đối diện cửa ngục, hoặc nơi nhiều dòng nước hội/xuất.",
+    "sourceId": "SRC-DNBS-001",
+    "currentTitle": "Cổ Quân Doanh, Chiến Trường & Thủy Khẩu (Vị Trí Đất Kiêng Kỵ)",
+    "currentCommentary": "Các vị trí này chỉ được lưu là vị trí đất kiêng kỵ truyền thống. Không suy ra rằng ở đối diện nhà tù sẽ gây tù tội. Với hiện đại, từng vị trí phải đánh giá độc lập về giao thông, ngập, an ninh, tiếng ồn, ô nhiễm, lịch sử sử dụng đất."
+  },
+  {
+    "id": "LAND-010",
+    "batch": "02",
+    "topic": "Chọn Đất & Đại Thế",
+    "original": "凡人家，屋居滋潤，光澤陽氣者吉，乾燥無滋潤者凶。",
+    "hanViet": "Phàm nhân gia, ốc cư tư nhuận, quang trạch dương khí giả cát; can táo vô tư nhuận giả hung.",
+    "literal": "Nhà ở của người ta, nếu có vẻ nhuận, sáng sủa và có dương khí thì được coi là tốt; khô khan không có vẻ nhuận thì bị coi là xấu.",
+    "sourceId": "SRC-DNBS-001",
+    "currentTitle": "Ốc Cư Tư Nhuận (Quang Trạch & Sinh Khí Môi Trường)",
+    "currentCommentary": "Không đồng nhất “dương khí” với một đại lượng vật lý. Có thể tạo lớp kiểm tra tiêu chuẩn hiện đại riêng về chiếu sáng, độ ẩm, nhiệt, thông gió, cây xanh và chất lượng không khí."
+  },
+  {
+    "id": "LAND-011",
+    "batch": "02",
+    "topic": "Chọn Đất & Đại Thế",
+    "original": "到處君須看水勢……只要兩源相夾出，交鎖外結重重圍。",
+    "hanViet": "Đáo xứ quân tu khán thủy thế… chỉ yếu lưỡng nguyên tương giáp xuất, giao tỏa ngoại kết trùng trùng vi.",
+    "literal": "Đến nơi nào cũng cần xem thế nước… chú ý nơi hai nguồn nước kẹp hai bên và đi ra, bên ngoài giao khóa thành nhiều lớp bao quanh.",
+    "sourceId": "SRC-HLJ-001",
+    "currentTitle": "Lưỡng Thủy Giao Hội (Khảo Sát Thủy Thế Hợp Lưu)",
+    "currentCommentary": "Đây là ngôn ngữ Hình thế/Long pháp. Vì 《撼龍經》 có phạm vi âm-dương trạch lẫn nhau và nhiều đoạn thiên về long mạch lớn, claim này chỉ giữ ở lớp RELATED_FORM_quy tắc, không áp máy móc cho mọi lô đất đô thị."
+  },
+  {
+    "id": "FORM-001",
+    "batch": "04",
+    "topic": "Địa Thế Thực Chiến",
+    "original": "人之居處，宜以大地山河為主。",
+    "hanViet": "Nhân chi cư xứ, nghi dĩ đại địa sơn hà vi chủ.",
+    "literal": "Nơi người ở nên lấy đại thế đất đai, núi sông làm chủ.",
+    "sourceId": "SRC-YZSS-EXT-001",
+    "currentTitle": "Đại thế trước nội cục",
+    "currentCommentary": "Khi khảo sát đất, phải ghi nhận địa hình, nước, đường và không gian xung quanh trước khi bàn bố trí phòng."
+  },
+  {
+    "id": "FORM-002",
+    "batch": "04",
+    "topic": "Địa Thế Thực Chiến",
+    "original": "居處須用寬平勢。",
+    "hanViet": "Cư xứ tu dụng khoan bình thế.",
+    "literal": "Nơi cư trú cần thế đất rộng và tương đối bằng.",
+    "sourceId": "SRC-YZSS-EXT-001",
+    "currentTitle": "Đất cư trú rộng và bằng",
+    "currentCommentary": "Ghi width/depth/slope/usable_area. Không tự đặt ngưỡng cổ pháp; ngưỡng kỹ thuật thuộc MODERN_ENGINE."
+  },
+  {
+    "id": "FORM-003",
+    "batch": "04",
+    "topic": "Địa Thế Thực Chiến",
+    "original": "明堂須當容萬馬。",
+    "hanViet": "Minh đường tu đương dung vạn mã.",
+    "literal": "Minh đường được mô tả là nên đủ rộng để dung nạp rất nhiều ngựa.",
+    "sourceId": "SRC-YZSS-EXT-001",
+    "currentTitle": "Minh đường rộng",
+    "currentCommentary": "Hiểu là hình ảnh cường điệu chỉ độ khoáng đạt; tuyệt đối không chuyển 'vạn mã' thành diện tích mét vuông."
+  },
+  {
+    "id": "FORM-004",
+    "batch": "04",
+    "topic": "Địa Thế Thực Chiến",
+    "original": "前後有水環抱貴。",
+    "hanViet": "Tiền hậu hữu thủy hoàn bão quý.",
+    "literal": "Trước sau có nước ôm vòng được truyền thống xem là quý.",
+    "sourceId": "SRC-YZSS-EXT-001",
+    "currentTitle": "Nước bao trước sau",
+    "currentCommentary": "Geometry chỉ ghi dạng cong/bao, khoảng cách và hướng dòng. An toàn thủy văn vẫn qua tiêu chuẩn an toàn bắt buộc."
+  },
+  {
+    "id": "FORM-005",
+    "batch": "04",
+    "topic": "Địa Thế Thực Chiến",
+    "original": "左右有路亦如然，但遇返跳必須忌。",
+    "hanViet": "Tả hữu hữu lộ diệc như nhiên, đãn ngộ phản khiêu tất tu kỵ.",
+    "literal": "Hai bên có đường cũng được xét tương tự, nhưng gặp thế phản khiêu thì sách dặn phải tránh.",
+    "sourceId": "SRC-YZSS-EXT-001",
+    "currentTitle": "Đường hai bên và thế phản",
+    "currentCommentary": "Không tự dịch 'phản khiêu' thành một góc số học cố định. Cần corpus hình minh họa + định nghĩa trường phái trước khi chuẩn hóa."
+  },
+  {
+    "id": "FORM-006",
+    "batch": "04",
+    "topic": "Địa Thế Thực Chiến",
+    "original": "更須水口收拾緊，不宜太迫成小器。",
+    "hanViet": "Cánh tu thủy khẩu thu thập khẩn, bất nghi thái bách thành tiểu khí.",
+    "literal": "Thủy khẩu còn cần được thu giữ tương đối kín, nhưng không nên bức ép quá mức.",
+    "sourceId": "SRC-YZSS-EXT-001",
+    "currentTitle": "Thủy khẩu",
+    "currentCommentary": "Tách hai biến: containment/closure và constriction. Chưa có ngưỡng số cổ văn."
+  },
+  {
+    "id": "FORM-007",
+    "batch": "04",
+    "topic": "Địa Thế Thực Chiến",
+    "original": "星辰近案明堂寬，案近明堂非窄勢。",
+    "hanViet": "Tinh thần cận án minh đường khoan, án cận minh đường phi trách thế.",
+    "literal": "Án có thể ở gần nhưng minh đường vẫn phải rộng, không thành thế chật hẹp.",
+    "sourceId": "SRC-YZSS-EXT-001",
+    "currentTitle": "Án gần nhưng minh đường không hẹp",
+    "currentCommentary": "Khi dựng mô hình site, khoảng cách vật thể phía trước phải được đánh giá cùng độ mở ngang, không chỉ khoảng cách đơn lẻ."
+  },
+  {
+    "id": "FORM-008",
+    "batch": "04",
+    "topic": "Địa Thế Thực Chiến",
+    "original": "左有流水謂之青龍；右有長道謂之白虎；前有汙池謂之朱雀；後有丘陵謂之元武。",
+    "hanViet": "Tả hữu lưu thủy vị chi Thanh Long; hữu hữu trường đạo vị chi Bạch Hổ; tiền hữu ô trì vị chi Chu Tước; hậu hữu khâu lăng vị chi Huyền Vũ.",
+    "literal": "Bên trái có dòng nước gọi là Thanh Long; bên phải có đường dài gọi là Bạch Hổ; trước có ao gọi Chu Tước; sau có gò đồi gọi Huyền Vũ.",
+    "sourceId": "SRC-YZSS-EXT-001",
+    "currentTitle": "Tứ tượng dưới dạng ngoại cảnh",
+    "currentCommentary": "Đây là phép gán hình tượng của văn bản; không biến thành định nghĩa duy nhất của Tứ Tượng ở mọi trường phái."
+  },
+  {
+    "id": "FORM-009",
+    "batch": "04",
+    "topic": "Địa Thế Thực Chiến",
+    "original": "大凡陽宅要穴大，寬闊連綿又平伏。",
+    "hanViet": "Đại phàm dương trạch yếu huyệt đại, khoan khoát liên miên hựu bình phục.",
+    "literal": "Dương trạch nhìn chung cần chỗ đủ lớn, khoáng đạt, liên tục và tương đối bằng.",
+    "sourceId": "SRC-YLJ-DZ-002",
+    "currentTitle": "Quy mô đất dương trạch",
+    "currentCommentary": "Hợp nhất với FORM-002 ở mức semantic hình thái; không coi hai nguồn là độc lập hoàn toàn cho tới khi kiểm lịch sử truyền văn."
+  },
+  {
+    "id": "FORM-010",
+    "batch": "04",
+    "topic": "Địa Thế Thực Chiến",
+    "original": "要知居止只要勢。",
+    "hanViet": "Yếu tri cư chỉ chỉ yếu thế.",
+    "literal": "Muốn xét nơi cư trú, điều cốt yếu là thế.",
+    "sourceId": "SRC-YLJ-DZ-002",
+    "currentTitle": "Thế là điều cốt yếu",
+    "currentCommentary": "Tạo trường site_form_summary bắt buộc trước các hệ thống trường phái khác."
+  },
+  {
+    "id": "FORM-011",
+    "batch": "04",
+    "topic": "Địa Thế Thực Chiến",
+    "original": "水抱山朝必有氣。",
+    "hanViet": "Thủy bão sơn triều tất hữu khí.",
+    "literal": "Nước ôm và núi chầu thì theo ngôn ngữ truyền thống được gọi là có khí.",
+    "sourceId": "SRC-YLJ-DZ-002",
+    "currentTitle": "Nước ôm, núi chầu",
+    "currentCommentary": "氣 giữ nguyên là traditional concept; không ánh xạ sang trường điện từ hay năng lượng đo được."
+  },
+  {
+    "id": "FORM-012",
+    "batch": "04",
+    "topic": "Địa Thế Thực Chiến",
+    "original": "破碎斜傾非吉地。",
+    "hanViet": "Phá toái tà khuynh phi cát địa.",
+    "literal": "Địa hình vỡ vụn, xiên nghiêng không được xem là đất tốt.",
+    "sourceId": "SRC-YLJ-DZ-002",
+    "currentTitle": "Thế dốc gãy nghiêng",
+    "currentCommentary": "Song song với kiểm tra địa kỹ thuật nhưng không thay thế nó."
+  },
+  {
+    "id": "FORM-013",
+    "batch": "04",
+    "topic": "Địa Thế Thực Chiến",
+    "original": "問君如何辯明堂，外山抱裏內平洋。",
+    "hanViet": "Vấn quân như hà biện minh đường, ngoại sơn bão lý nội bình dương.",
+    "literal": "Hỏi cách phân biệt minh đường: núi phía ngoài ôm vào, phía trong là khoảng tương đối bằng rộng.",
+    "sourceId": "SRC-YLJ-MT-003",
+    "currentTitle": "Minh đường và vòng bao",
+    "currentCommentary": "Nguồn nằm trong hệ hình thế có bối cảnh âm trạch mạnh; chỉ dùng để định nghĩa hình thái hình học, gắn SCOPE_WARNING."
+  },
+  {
+    "id": "FORM-014",
+    "batch": "04",
+    "topic": "Địa Thế Thực Chiến",
+    "original": "明堂惜水如惜血，穴裏避風如避賊。",
+    "hanViet": "Minh đường tích thủy như tích huyết, huyệt lý tị phong như tị tặc.",
+    "literal": "Minh đường coi trọng việc giữ nước như giữ máu; chỗ huyệt tránh gió như tránh giặc.",
+    "sourceId": "SRC-YLJ-MT-003",
+    "currentTitle": "Minh đường - nước - tránh gió",
+    "currentCommentary": "Chỉ là ngôn ngữ cổ Hình thế. Không dùng để kết luận thông gió nhà càng ít càng tốt; vi khí hậu hiện đại được đánh giá độc lập."
+  },
+  {
+    "id": "FORM-015",
+    "batch": "04",
+    "topic": "Địa Thế Thực Chiến",
+    "original": "宅以形勢為身體，以泉水為血脈，以土地為皮肉，以草木為毛髮。",
+    "hanViet": "Trạch dĩ hình thế vi thân thể, dĩ tuyền thủy vi huyết mạch, dĩ thổ địa vi bì nhục, dĩ thảo mộc vi mao phát.",
+    "literal": "Nhà lấy hình thế làm thân thể, suối nước làm huyết mạch, đất làm da thịt, cây cỏ làm lông tóc.",
+    "sourceId": "SRC-ZJ-SYS-004",
+    "currentTitle": "Mô hình hệ thống ngoại cảnh",
+    "currentCommentary": "Dùng làm thứ tự checklist khảo sát, không coi ẩn dụ là cơ chế vật lý."
+  },
+  {
+    "id": "FORM-016",
+    "batch": "04",
+    "topic": "Địa Thế Thực Chiến",
+    "original": "氣乘風則散，界水則止。",
+    "hanViet": "Khí thừa phong tắc tán, giới thủy tắc chỉ.",
+    "literal": "Theo văn bản, khí gặp gió thì tán, gặp giới hạn nước thì dừng.",
+    "sourceId": "SRC-ZANG-005",
+    "currentTitle": "Tàng phong - giới thủy",
+    "currentCommentary": "Nguồn gốc thuộc Táng thư/âm trạch; chỉ lưu để theo dõi lịch sử thuật ngữ. Không dùng trực tiếp thành quy tắc nhà ở nếu chưa có nguồn Dương trạch tiếp nhận."
+  },
+  {
+    "id": "MOTIF-001",
+    "batch": "05",
+    "topic": "Hình Đất, Đường & Nước",
+    "original": "人之居處，宜以大地山河為主。",
+    "hanViet": "Nhân chi cư xứ, nghi dĩ đại địa sơn hà vi chủ.",
+    "literal": "Nơi người ở nên lấy đại thế đất đai, núi sông làm chủ.",
+    "sourceId": "SRC-GJTS675-P69",
+    "currentTitle": "Đại thế ưu tiên trước nội cục"
+  },
+  {
+    "id": "MOTIF-002",
+    "batch": "05",
+    "topic": "Hình Đất, Đường & Nước",
+    "original": "居處須用寬平勢。 • 宅地平坦，吉。",
+    "hanViet": "Cư xứ tu dụng khoan bình thế. • Trạch địa bình thản, cát.",
+    "literal": "Nơi cư trú được ưu tiên thế đất rộng và tương đối bằng; Đa Năng Bỉ Sự cũng coi đất nhà bằng là tốt.",
+    "sourceId": "SRC-GJTS675-P69 • SRC-DNBS-V5",
+    "currentTitle": "Đất rộng, tương đối bằng"
+  },
+  {
+    "id": "MOTIF-003",
+    "batch": "05",
+    "topic": "Hình Đất, Đường & Nước",
+    "original": "前後有水環抱貴。",
+    "hanViet": "Tiền hậu hữu thủy hoàn bão quý.",
+    "literal": "Trước sau có nước uốn bao được truyền thống xem là quý.",
+    "sourceId": "SRC-GJTS675-P69",
+    "currentTitle": "Nước bao vòng"
+  },
+  {
+    "id": "MOTIF-004",
+    "batch": "05",
+    "topic": "Hình Đất, Đường & Nước",
+    "original": "左右有路亦如然，但遇返跳必須忌。",
+    "hanViet": "Tả hữu hữu lộ diệc như nhiên, đãn ngộ phản khiêu tất tu kỵ.",
+    "literal": "Hai bên có đường cũng được xét tương tự, nhưng gặp thế gọi là 'phản khiêu' thì phải kỵ.",
+    "sourceId": "SRC-GJTS675-P69",
+    "currentTitle": "Đường hai bên và thuật ngữ 返跳"
+  },
+  {
+    "id": "MOTIF-005",
+    "batch": "05",
+    "topic": "Hình Đất, Đường & Nước",
+    "original": "更須水口收拾緊，不宜太迫成小器。",
+    "hanViet": "Cánh tu thủy khẩu thu thập khẩn, bất nghi thái bách thành tiểu khí.",
+    "literal": "Thủy khẩu được yêu cầu có tính thu giữ, nhưng không nên quá bức ép/chật hẹp.",
+    "sourceId": "SRC-GJTS675-P69",
+    "currentTitle": "Thủy khẩu: có thu giữ nhưng không quá bức"
+  },
+  {
+    "id": "MOTIF-006",
+    "batch": "05",
+    "topic": "Hình Đất, Đường & Nước",
+    "original": "左有流水謂之青龍；右有長道謂之白虎；前有汙池謂之朱雀；後有丘陵謂之元武。 • 欲左有流水，右有長道，前有池塘，後有丘陵佳。",
+    "hanViet": "Tả hữu lưu thủy vị chi Thanh Long; hữu hữu trường đạo vị chi Bạch Hổ; tiền hữu ô trì vị chi Chu Tước; hậu hữu khâu lăng vị chi Huyền Vũ. • Dục tả hữu lưu thủy, hữu hữu trường đạo, tiền hữu trì đường, hậu hữu khâu lăng giai.",
+    "literal": "Một truyền bản gán dòng nước bên trái là Thanh Long, đường dài bên phải là Bạch Hổ, ao phía trước là Chu Tước và gò đồi phía sau là Huyền Vũ.",
+    "sourceId": "SRC-GJTS675-P69 • SRC-DNBS-V5",
+    "currentTitle": "Tứ tượng dưới dạng ngoại cảnh cụ thể"
+  },
+  {
+    "id": "MOTIF-007",
+    "batch": "05",
+    "topic": "Hình Đất, Đường & Nước",
+    "original": "不居正當水流處。 • 勿居正當水流處。",
+    "hanViet": "Bất cư chính đương thủy lưu xứ. • Vật cư chính đương thủy lưu xứ.",
+    "literal": "Không nên chọn nơi nằm đúng vào hướng/dòng nước chảy xông tới.",
+    "sourceId": "SRC-GJTS675-P69 • SRC-DNBS-V5",
+    "currentTitle": "Không ở đúng chỗ dòng nước xông/chảy trực tiếp"
+  },
+  {
+    "id": "MOTIF-008",
+    "batch": "05",
+    "topic": "Hình Đất, Đường & Nước",
+    "original": "不居山脊衝處。 • 勿居山脊衝處。",
+    "hanViet": "Bất cư sơn tích xung xứ. • Vật cư sơn tích xung xứ.",
+    "literal": "Không nên ở nơi mà thế sống núi hướng xung trực tiếp.",
+    "sourceId": "SRC-GJTS675-P69 • SRC-DNBS-V5",
+    "currentTitle": "Không ở nơi bị sống núi xung"
+  },
+  {
+    "id": "MOTIF-009",
+    "batch": "05",
+    "topic": "Hình Đất, Đường & Nước",
+    "original": "不居百川口處。 • 勿居……百川口。",
+    "hanViet": "Bất cư bách xuyên khẩu xứ. • Vật cư... bách xuyên khẩu.",
+    "literal": "Không nên ở tại nơi được văn bản gọi là cửa/họng hội của nhiều dòng nước.",
+    "sourceId": "SRC-GJTS675-P69 • SRC-DNBS-V5",
+    "currentTitle": "Không ở nơi 'bách xuyên khẩu'"
+  },
+  {
+    "id": "MOTIF-010",
+    "batch": "05",
+    "topic": "Hình Đất, Đường & Nước",
+    "original": "凡宅或水路橋梁四面交衝者，使子孫怯弱，主不吉利。 • 凡宅，四面交衝，使子孫怯弱。",
+    "hanViet": "Phàm trạch hoặc thủy lộ kiều lương tứ diện giao xung giả, sử tử tôn khiếp nhược, chủ bất cát lợi. • Phàm trạch, tứ diện giao xung, sử tử tôn khiếp nhược.",
+    "literal": "Nhà bị đường nước/cầu lối giao xung từ nhiều phía được truyền thống coi là không tốt.",
+    "sourceId": "SRC-GJTS675-P69 • SRC-DNBS-V5",
+    "currentTitle": "Đường/nước/cầu giao xung bốn phía"
+  },
+  {
+    "id": "MOTIF-011",
+    "batch": "05",
+    "topic": "Hình Đất, Đường & Nước",
+    "original": "凡宅前低後高，世出英豪。 • 凡宅，前低後高，世出英豪。",
+    "hanViet": "Phàm trạch tiền đê hậu cao, thế xuất anh hào. • Phàm trạch, tiền đê hậu cao, thế xuất anh hào.",
+    "literal": "Nhà/đất có phía trước thấp hơn phía sau được truyền thống phán là tốt.",
+    "sourceId": "SRC-GJTS675-P69 • SRC-DNBS-V5",
+    "currentTitle": "Trước thấp sau cao"
+  },
+  {
+    "id": "MOTIF-012",
+    "batch": "05",
+    "topic": "Hình Đất, Đường & Nước",
+    "original": "前高後低，長幼昏迷。 • 前高後低，長幼昏迷。",
+    "hanViet": "Tiền cao hậu đê, trưởng ấu hôn mê. • Tiền cao hậu đê, trưởng ấu hôn mê.",
+    "literal": "Phía trước cao hơn phía sau bị truyền thống coi là bất lợi.",
+    "sourceId": "SRC-GJTS675-P69 • SRC-DNBS-V5",
+    "currentTitle": "Trước cao sau thấp"
+  },
+  {
+    "id": "MOTIF-013",
+    "batch": "05",
+    "topic": "Hình Đất, Đường & Nước",
+    "original": "四面高、中央下，先富後貧。",
+    "hanViet": "Tứ diện cao, trung ương hạ, tiên phú hậu bần.",
+    "literal": "Thế đất bốn phía cao, trung tâm thấp bị truyền thống coi là bất lợi về lâu dài.",
+    "sourceId": "SRC-DNBS-V5",
+    "currentTitle": "Bốn phía cao, giữa thấp"
+  },
+  {
+    "id": "MOTIF-014",
+    "batch": "05",
+    "topic": "Hình Đất, Đường & Nước",
+    "original": "前狹後闊，安吉。 • 前狹後寬，居之穩。",
+    "hanViet": "Tiền hiệp hậu khoát, an cát. • Tiền hiệp hậu khoan, cư chi ổn.",
+    "literal": "Lô/thế trước hẹp sau rộng được các witness này phán theo hướng tốt.",
+    "sourceId": "SRC-DNBS-V5 • SRC-GJTS675-P70",
+    "currentTitle": "Trước hẹp sau rộng"
+  },
+  {
+    "id": "MOTIF-015",
+    "batch": "05",
+    "topic": "Hình Đất, Đường & Nước",
+    "original": "前闊後狹，主人貧乏。 • 前寬後狹似棺形。",
+    "hanViet": "Tiền khoát hậu hiệp, chủ nhân bần phạp. • Tiền khoan hậu hiệp tự quan hình.",
+    "literal": "Lô/thế trước rộng sau hẹp bị các witness này phán theo hướng xấu.",
+    "sourceId": "SRC-DNBS-V5 • SRC-GJTS675-P70",
+    "currentTitle": "Trước rộng sau hẹp"
+  },
+  {
+    "id": "MOTIF-016",
+    "batch": "05",
+    "topic": "Hình Đất, Đường & Nước",
+    "original": "左短右長，居之吉昌。",
+    "hanViet": "Tả đoản hữu trường, cư chi cát xương.",
+    "literal": "Thế trái ngắn, phải dài được truyền bản này coi là tốt.",
+    "sourceId": "SRC-DNBS-V5",
+    "currentTitle": "Trái ngắn phải dài"
+  },
+  {
+    "id": "MOTIF-017",
+    "batch": "05",
+    "topic": "Hình Đất, Đường & Nước",
+    "original": "左長右短，先富後貧。",
+    "hanViet": "Tả trường hữu đoản, tiên phú hậu bần.",
+    "literal": "Thế trái dài, phải ngắn bị truyền bản này coi là bất lợi về sau.",
+    "sourceId": "SRC-DNBS-V5",
+    "currentTitle": "Trái dài phải ngắn"
+  },
+  {
+    "id": "MOTIF-018",
+    "batch": "05",
+    "topic": "Hình Đất, Đường & Nước",
+    "original": "南北長，東西狹吉。 • 南北長，子孫昌。",
+    "hanViet": "Nam Bắc trường, Đông Tây hiệp cát. • Nam Bắc trường, tử tôn xương.",
+    "literal": "Truyền bản coi trục Nam–Bắc dài là thuận lợi.",
+    "sourceId": "SRC-GJTS675-P69 • SRC-DNBS-V5",
+    "currentTitle": "Nam–Bắc dài, Đông–Tây hẹp"
+  },
+  {
+    "id": "MOTIF-019",
+    "batch": "05",
+    "topic": "Hình Đất, Đường & Nước",
+    "original": "東西長，南北狹，初凶後吉。 • 東西闊，不宜人且貧。",
+    "hanViet": "Đông Tây trường, Nam Bắc hiệp, sơ hung hậu cát. • Đông Tây khoát, bất nghi nhân thả bần.",
+    "literal": "Các truyền bản có phán khác nhau về thế kéo dài/rộng theo Đông–Tây.",
+    "sourceId": "SRC-GJTS675-P69 • SRC-DNBS-V5",
+    "currentTitle": "Đông–Tây dài/rộng"
+  },
+  {
+    "id": "MOTIF-020",
+    "batch": "05",
+    "topic": "Hình Đất, Đường & Nước",
+    "original": "凡宅門前屋後溝渠水，不可分八字，及前後水出。",
+    "hanViet": "Phàm trạch môn tiền ốc hậu câu cừ thủy, bất khả phân bát tự, cập tiền hậu thủy xuất.",
+    "literal": "Mương/rãnh nước trước hoặc sau nhà không nên phân tách thành dạng được gọi là 'chữ Bát', cũng không chuộng nước thoát cả trước lẫn sau.",
+    "sourceId": "SRC-GJTS675-P69",
+    "currentTitle": "Mương/rãnh nước phân hình chữ Bát"
+  },
+  {
+    "id": "MOTIF-021",
+    "batch": "05",
+    "topic": "Hình Đất, Đường & Nước",
+    "original": "此宅方圓，四面平……家豪富貴旺人丁。",
+    "hanViet": "Thử trạch phương viên, tứ diện bình... gia hào phú quý vượng nhân đinh.",
+    "literal": "Một caption đồ hình mô tả nền nhà vuông/tròn, bốn phía bằng là tốt.",
+    "sourceId": "SRC-GJTS675-P71",
+    "currentTitle": "Đất bốn phía tương đối bằng/tròn"
+  },
+  {
+    "id": "MOTIF-022",
+    "batch": "05",
+    "topic": "Hình Đất, Đường & Nước",
+    "original": "後邊有山可安莊。 • 前有大山，不可安莊。",
+    "hanViet": "Hậu biên hữu sơn khả an trang. • Tiền hữu đại sơn, bất khả an trang.",
+    "literal": "Caption đồ hình ưu tiên thế có núi phía sau và phản đối một số trường hợp núi lớn phía trước.",
+    "sourceId": "SRC-GJTS675-P71 • SRC-GJTS675-P71",
+    "currentTitle": "Núi phía sau / núi phía trước"
+  },
+  {
+    "id": "MOTIF-023",
+    "batch": "05",
+    "topic": "Hình Đất, Đường & Nước",
+    "original": "四面交道，主凶殃。",
+    "hanViet": "Tứ diện giao đạo, chủ hung ương.",
+    "literal": "Một caption đồ hình coi thế đường giao từ bốn phía là bất lợi.",
+    "sourceId": "SRC-GJTS675-P71",
+    "currentTitle": "Bốn phía có đường giao"
+  },
+  {
+    "id": "MOTIF-024",
+    "batch": "05",
+    "topic": "Hình Đất, Đường & Nước",
+    "original": "此宅修在涯水頭……地不堪修。",
+    "hanViet": "Thử trạch tu tại nhai thủy đầu... địa bất kham tu.",
+    "literal": "Caption cảnh báo một dạng vị trí gọi là 'nhai thủy đầu'.",
+    "sourceId": "SRC-GJTS675-P70",
+    "currentTitle": "Đất ở '涯水頭'"
+  },
+  {
+    "id": "DEF-001",
+    "batch": "06",
+    "topic": "Đất Méo, Khuyết Phương & Tâm Nhà",
+    "original": "凡宅地形，卯酉不足，居之自如。",
+    "hanViet": "Phàm trạch địa hình, Mão Dậu bất túc, cư chi tự như.",
+    "literal": "Về địa hình nhà ở, nếu phương Mão–Dậu bị bất túc thì văn bản phán rằng vẫn có thể cư ở như thường.",
+    "currentTitle": "Phàm trạch địa hình, Mão Dậu bất túc, cư chi tự như."
+  },
+  {
+    "id": "DEF-002",
+    "batch": "06",
+    "topic": "Đất Méo, Khuyết Phương & Tâm Nhà",
+    "original": "子午不足，居之大凶。",
+    "hanViet": "Tý Ngọ bất túc, cư chi đại hung.",
+    "literal": "Nếu phương Tý–Ngọ bị bất túc thì văn bản phán đại hung.",
+    "currentTitle": "Tý Ngọ bất túc, cư chi đại hung."
+  },
+  {
+    "id": "DEF-003",
+    "batch": "06",
+    "topic": "Đất Méo, Khuyết Phương & Tâm Nhà",
+    "original": "子丑不足，居之口舌。",
+    "hanViet": "Tý Sửu bất túc, cư chi khẩu thiệt.",
+    "literal": "Nếu vùng Tý–Sửu bị bất túc thì văn bản gắn với 'khẩu thiệt' theo truyền thống.",
+    "currentTitle": "Tý Sửu bất túc, cư chi khẩu thiệt."
+  },
+  {
+    "id": "DEF-004",
+    "batch": "06",
+    "topic": "Đất Méo, Khuyết Phương & Tâm Nhà",
+    "original": "卯不足，令人貧；酉不足，富貴；卯酉俱不足，自如。",
+    "hanViet": "Mão bất túc, lệnh nhân bần; Dậu bất túc, phú quý; Mão Dậu câu bất túc, tự như.",
+    "literal": "Truyền bản phân biệt thiếu phía Mão, thiếu phía Dậu và thiếu cả Mão–Dậu, với các phán khác nhau.",
+    "currentTitle": "Mão bất túc, lệnh nhân bần; Dậu bất túc, phú quý; Mão Dậu câu bất túc, tự như."
+  },
+  {
+    "id": "DEF-005",
+    "batch": "06",
+    "topic": "Đất Méo, Khuyết Phương & Tâm Nhà",
+    "original": "未申不足，吉；戍亥不足，吉；辰巳不足，士不遷；丑寅不足，自如。",
+    "hanViet": "Mùi Thân bất túc, cát; Tuất Hợi bất túc, cát; Thìn Tỵ bất túc, sĩ bất thiên; Sửu Dần bất túc, tự như.",
+    "literal": "Văn bản liệt kê các vùng phương vị bất túc khác nhau và gán phán khác nhau.",
+    "currentTitle": "Mùi Thân bất túc, cát; Tuất Hợi bất túc, cát; Thìn Tỵ bất túc, sĩ bất thiên; Sửu"
+  },
+  {
+    "id": "DEF-006",
+    "batch": "06",
+    "topic": "Đất Méo, Khuyết Phương & Tâm Nhà",
+    "original": "四維不足，大凶；四正不足，大富。",
+    "hanViet": "Tứ duy bất túc, đại hung; tứ chính bất túc, đại phú.",
+    "literal": "Văn bản phán 'bất túc bốn duy' là đại hung, còn 'bất túc bốn chính' là đại phú.",
+    "currentTitle": "Tứ duy bất túc, đại hung; tứ chính bất túc, đại phú."
+  },
+  {
+    "id": "DEF-007",
+    "batch": "06",
+    "topic": "Đất Méo, Khuyết Phương & Tâm Nhà",
+    "original": "實東空西，家無老妻；有西無東，家無老翁。",
+    "hanViet": "Thực Đông không Tây, gia vô lão thê; hữu Tây vô Đông, gia vô lão ông.",
+    "literal": "Văn bản có motif một bên có/đầy và một bên trống, kèm phán truyền thống về nhân khẩu gia đình.",
+    "currentTitle": "Thực Đông không Tây, gia vô lão thê; hữu Tây vô Đông, gia vô lão ông."
+  },
+  {
+    "id": "PLAC-001",
+    "batch": "07",
+    "topic": "Đặt Nhà Trên Khu Đất",
+    "original": "廳堂門廡先立位，東廂西塾及庖廚，庭院樓臺園圃地。",
+    "hanViet": "Sảnh đường môn vũ tiên lập vị, Đông sương Tây thục cập bào trù, đình viện lâu đài viên phố địa.",
+    "literal": "Văn bản nói trước hết phải định vị các không gian chính như sảnh/đường/cửa-hiên, rồi mới xét các dãy bên, bếp, sân, lầu và vườn.",
+    "currentTitle": "Sảnh đường môn vũ tiên lập vị, Đông sương Tây thục cập bào trù, đình viện lâu đà",
+    "currentCommentary": "Đây là hình thái 'planning hierarchy': định các thành phần chính trước thành phần phụ. Một số danh từ kiến trúc cổ không nên ép sang đúng phòng hiện đại."
+  },
+  {
+    "id": "PLAC-002",
+    "batch": "07",
+    "topic": "Đặt Nhà Trên Khu Đất",
+    "original": "門外不須更架屋，蔽卻好山壞明堂。",
+    "hanViet": "Môn ngoại bất tu cánh giá ốc, tế khước hảo sơn hoại minh đường.",
+    "literal": "Bên ngoài cửa không nên dựng thêm nhà làm che khuất cảnh phía trước và làm hỏng minh đường theo cách nói của văn bản.",
+    "currentTitle": "Môn ngoại bất tu cánh giá ốc, tế khước hảo sơn hoại minh đường.",
+    "currentCommentary": "Chuyển thành yếu tố quan sát thực địa: front obstruction / front openness. Không mặc định phải nhìn thấy núi ở nhà đô thị."
+  },
+  {
+    "id": "PLAC-003",
+    "batch": "07",
+    "topic": "Đặt Nhà Trên Khu Đất",
+    "original": "造屋從來有次第，先內及外起自堂。",
+    "hanViet": "Tạo ốc tòng lai hữu thứ đệ, tiên nội cập ngoại khởi tự đường.",
+    "literal": "Việc dựng nhà được nói là có thứ tự, từ phần trong ra ngoài và khởi từ nhà/đường chính.",
+    "currentTitle": "Tạo ốc tòng lai hữu thứ đệ, tiên nội cập ngoại khởi tự đường.",
+    "currentCommentary": "Giữ là construction/planning sequence truyền thống, không biến thành yêu cầu kết cấu hiện đại."
+  },
+  {
+    "id": "PLAC-004",
+    "batch": "07",
+    "topic": "Đặt Nhà Trên Khu Đất",
+    "original": "先造兩廊不造堂。",
+    "hanViet": "Tiên tạo lưỡng lang bất tạo đường.",
+    "literal": "Văn bản phản đối việc dựng hai dãy hành lang/cánh bên trước mà chưa dựng nhà chính.",
+    "currentTitle": "Tiên tạo lưỡng lang bất tạo đường.",
+    "currentCommentary": "Tách dự báo cát hung truyền thống khỏi lời khuyên về thứ tự bố cục."
+  },
+  {
+    "id": "PLAC-005",
+    "batch": "07",
+    "topic": "Đặt Nhà Trên Khu Đất",
+    "original": "莫道明堂外自有，不知門內是明堂。",
+    "hanViet": "Mạc đạo minh đường ngoại tự hữu, bất tri môn nội thị minh đường.",
+    "literal": "Đừng chỉ cho rằng minh đường nằm ở bên ngoài; văn bản cho rằng bên trong cửa cũng có thể là minh đường.",
+    "currentTitle": "Mạc đạo minh đường ngoại tự hữu, bất tri môn nội thị minh đường.",
+    "currentCommentary": "Quan trọng cho nhà đô thị: courtyard/front court bên trong cổng có thể là một lớp không gian mở; không đồng nhất minh đường với vỉa hè/đường phố."
+  },
+  {
+    "id": "PLAC-006",
+    "batch": "07",
+    "topic": "Đặt Nhà Trên Khu Đất",
+    "original": "天井不可作一字……一丈必須五尺闊，長短折半隨所至。",
+    "hanViet": "Thiên tỉnh bất khả tác nhất tự... nhất trượng tất tu ngũ xích khoát, trường đoản chiết bán tùy sở chí.",
+    "literal": "Đoạn văn phản đối một dạng thiên tỉnh 'nhất tự' và đưa ra một tỷ lệ bằng đơn vị trượng–xích, trong đó bề rộng được nêu bằng khoảng một nửa một chiều dài trong văn cảnh.",
+    "currentTitle": "Thiên tỉnh bất khả tác nhất tự... nhất trượng tất tu ngũ xích khoát, trường đoản",
+    "currentCommentary": "Đây là số liệu lịch sử cụ thể, khác với ngưỡng % do AI tự bịa. Cần kiểm tra bản khắc cổ thư và dấu câu trước khi áp dụng vào thực tế."
+  },
+  {
+    "id": "PLAC-007",
+    "batch": "07",
+    "topic": "Đặt Nhà Trên Khu Đất",
+    "original": "堂前門廊不可空。",
+    "hanViet": "Đường tiền môn lang bất khả không.",
+    "literal": "Đoạn văn cho rằng phần cửa/hành lang phía trước nhà chính không nên để theo dạng bị mô tả là 'không'.",
+    "currentTitle": "Đường tiền môn lang bất khả không.",
+    "currentCommentary": "Nghĩa kỹ thuật của 空 trong câu cần thêm văn cảnh/đồ hình; chưa sinh quy tắc geometry."
+  },
+  {
+    "id": "PLAC-008",
+    "batch": "07",
+    "topic": "Đặt Nhà Trên Khu Đất",
+    "original": "凡宅，天井中不可積屋水。",
+    "hanViet": "Phàm trạch, thiên tỉnh trung bất khả tích ốc thủy.",
+    "literal": "Trong thiên tỉnh/sân trong không nên để nước từ nhà tích đọng.",
+    "currentTitle": "Phàm trạch, thiên tỉnh trung bất khả tích ốc thủy.",
+    "currentCommentary": "Có thể song song với kỹ thuật thoát nước hiện đại, nhưng phán bệnh tật đi kèm trong cổ văn không được coi là quan hệ nhân quả."
+  },
+  {
+    "id": "PLAC-009",
+    "batch": "07",
+    "topic": "Đặt Nhà Trên Khu Đất",
+    "original": "凡宅側屋，不可衝大門。",
+    "hanViet": "Phàm trạch trắc ốc, bất khả xung đại môn.",
+    "literal": "Nhà/cánh phụ bên cạnh không nên tạo thế xung trực tiếp với đại môn theo văn bản.",
+    "currentTitle": "Phàm trạch trắc ốc, bất khả xung đại môn.",
+    "currentCommentary": "Cần xác định trục của nhà phụ và cửa ngõ; chỉ từ \"có nhà phụ\" chưa đủ."
+  },
+  {
+    "id": "PLAC-010",
+    "batch": "07",
+    "topic": "Đặt Nhà Trên Khu Đất",
+    "original": "凡宅開門路及車門，不要直射，謂之穿心殺。",
+    "hanViet": "Phàm trạch khai môn lộ cập xa môn, bất yếu trực xạ, vị chi xuyên tâm sát.",
+    "literal": "Lối cửa và cửa xe không nên tạo thế trực xạ; văn bản gọi đó là 'xuyên tâm sát'.",
+    "currentTitle": "Phàm trạch khai môn lộ cập xa môn, bất yếu trực xạ, vị chi xuyên tâm sát.",
+    "currentCommentary": "Chỉ giữ hình thái đối trục trực tiếp. Dự báo cát hung khắc nghiệt truyền thống được tách rời hoàn toàn."
+  },
+  {
+    "id": "PLAC-011",
+    "batch": "07",
+    "topic": "Đặt Nhà Trên Khu Đất",
+    "original": "凡宅屋角，不可漫街。",
+    "hanViet": "Phàm trạch ốc giác, bất khả mạn nhai.",
+    "literal": "Góc nhà không nên vươn/lấn ra đường theo lời văn.",
+    "currentTitle": "Phàm trạch ốc giác, bất khả mạn nhai.",
+    "currentCommentary": "Từ 漫街 cần kiểm tra ngữ nghĩa học thuật; hiện đại mọi phần công trình phải tôn trọng ranh đất/chỉ giới và an toàn giao thông."
+  },
+  {
+    "id": "PLAC-012",
+    "batch": "07",
+    "topic": "Đặt Nhà Trên Khu Đất",
+    "original": "大凡人家建立新宅，莫要先築牆。",
+    "hanViet": "Đại phàm nhân gia kiến lập tân trạch, mạc yếu tiên trúc tường.",
+    "literal": "Khi dựng nhà mới, văn bản khuyên không xây tường bao trước.",
+    "currentTitle": "Đại phàm nhân gia kiến lập tân trạch, mạc yếu tiên trúc tường.",
+    "currentCommentary": "Đây là tập quán và điều kiêng kỵ truyền thống, không phải lệnh thi công hiện đại. Biện pháp thi công, rào chắn công trường phải theo an toàn lao động và pháp luật xây dựng."
+  },
+  {
+    "id": "DOOR-001",
+    "batch": "08",
+    "topic": "Cổng, Cửa Chính & Lối Vào",
+    "original": "惟是居房屋中，氣因隔別，所以通氣，秖此門戶耳。",
+    "hanViet": "Duy thị cư phòng ốc trung, khí nhân cách biệt, sở dĩ thông khí, chỉ thử môn hộ nhĩ.",
+    "literal": "Theo văn bản, trong nhà các không gian bị ngăn cách, nơi thông 'khí' chính là cửa ngõ.",
+    "currentTitle": "Duy thị cư phòng ốc trung, khí nhân cách biệt, sở dĩ thông khí, chỉ thử môn hộ n",
+    "currentCommentary": "Khí ở đây là khái niệm truyền thống; không đồng nhất với lưu lượng gió HVAC."
+  },
+  {
+    "id": "DOOR-002",
+    "batch": "08",
+    "topic": "Cổng, Cửa Chính & Lối Vào",
+    "original": "門戶通氣之處，和氣則致祥，乖氣則致戾。",
+    "hanViet": "Môn hộ thông khí chi xứ, hòa khí tắc trí tường, quai khí tắc trí lệ.",
+    "literal": "Cửa là nơi văn bản xem như chỗ thông khí; 'hòa khí' được coi thuận, 'quai khí' bị coi nghịch.",
+    "currentTitle": "Môn hộ thông khí chi xứ, hòa khí tắc trí tường, quai khí tắc trí lệ.",
+    "currentCommentary": "Không sử dụng câu này để khoa học hóa khí. Geometry chỉ mô tả cửa, hướng, vật cản, luồng tiếp cận."
+  },
+  {
+    "id": "DOOR-003",
+    "batch": "08",
+    "topic": "Cổng, Cửa Chính & Lối Vào",
+    "original": "須避直衝尖射、砂水斜割、悲崖險道、惡石山拗、崩破歪峰、枯木神廟之類。",
+    "hanViet": "Tu tị trực xung tiêm xạ, sa thủy tà cát, bi nhai hiểm đạo, ác thạch sơn ảo, băng phá oa phong, khô mộc thần miếu chi loại.",
+    "literal": "Khi xét cửa, văn bản khuyên tránh các thế trực xung, vật nhọn hướng tới, hình thế/nước cắt xiên, đường hiểm và một số ngoại cảnh bất lợi.",
+    "currentTitle": "Tu tị trực xung tiêm xạ, sa thủy tà cát, bi nhai hiểm đạo, ác thạch sơn ảo, băng",
+    "currentCommentary": "Tách các yếu tố quan sát thực địa hình học khỏi các danh mục mang màu sắc truyền thống. 'Thần miếu' không được chuyển thành nguy cơ vật lý."
+  },
+  {
+    "id": "DOOR-004",
+    "batch": "08",
+    "topic": "Cổng, Cửa Chính & Lối Vào",
+    "original": "宜迎水迎山方吉。",
+    "hanViet": "Nghi nghênh thủy nghênh sơn phương cát.",
+    "literal": "Văn bản cho rằng cửa thuận thế đón nước/đón núi thì tốt.",
+    "currentTitle": "Nghi nghênh thủy nghênh sơn phương cát.",
+    "currentCommentary": "Chỉ giữ traditional form statement; mọi nguy cơ thủy/sườn dốc đi qua tiêu chuẩn an toàn bắt buộc."
+  },
+  {
+    "id": "DOOR-005",
+    "batch": "08",
+    "topic": "Cổng, Cửa Chính & Lối Vào",
+    "original": "凡宅開門路及車門，不要直射，謂之穿心殺。",
+    "hanViet": "Phàm trạch khai môn lộ cập xa môn, bất yếu trực xạ, vị chi xuyên tâm sát.",
+    "literal": "Lối vào/cửa xe không nên trực xạ theo văn bản; thế này được gọi 'xuyên tâm sát'.",
+    "currentTitle": "Phàm trạch khai môn lộ cập xa môn, bất yếu trực xạ, vị chi xuyên tâm sát.",
+    "currentCommentary": "Geometry tag = DIRECT_ACCESS_AXIS. Không mang theo phán tử vong của cổ văn."
+  },
+  {
+    "id": "DOOR-006",
+    "batch": "08",
+    "topic": "Cổng, Cửa Chính & Lối Vào",
+    "original": "凡宅側屋，不可衝大門。",
+    "hanViet": "Phàm trạch trắc ốc, bất khả xung đại môn.",
+    "literal": "Cánh/nhà phụ bên cạnh không nên xung trực tiếp đại môn.",
+    "currentTitle": "Phàm trạch trắc ốc, bất khả xung đại môn.",
+    "currentCommentary": "Cần xác định cạnh/góc/trục công trình phụ hướng vào opening của cổng."
+  },
+  {
+    "id": "DOOR-007",
+    "batch": "08",
+    "topic": "Cổng, Cửa Chính & Lối Vào",
+    "original": "凡宅住屋，莫要屋角水射其門。",
+    "hanViet": "Phàm trạch trụ ốc, mạc yếu ốc giác thủy xạ kỳ môn.",
+    "literal": "Văn bản tránh thế góc nhà hoặc dòng nước 'xạ' vào cửa.",
+    "currentTitle": "Phàm trạch trụ ốc, mạc yếu ốc giác thủy xạ kỳ môn.",
+    "currentCommentary": "Tách corner_ray_to_door và water_flow_to_door thành hai yếu tố quan sát thực địa; câu có thể cần punctuation/kiểm tra ngữ cảnh văn bản."
+  },
+  {
+    "id": "DOOR-008",
+    "batch": "08",
+    "topic": "Cổng, Cửa Chính & Lối Vào",
+    "original": "氣口者門也，門為初爻永不變更。",
+    "hanViet": "Khí khẩu giả môn dã, môn vi sơ hào vĩnh bất biến canh.",
+    "literal": "Trong phép Trang Quái của đoạn này, cửa được gọi là khí khẩu và dùng làm sơ hào cố định.",
+    "currentTitle": "Khí khẩu giả môn dã, môn vi sơ hào vĩnh bất biến canh.",
+    "currentCommentary": "Đây là thuộc trường phái đặc thù quy tắc của 元空裝卦 trong truyền bản, không nâng thành định nghĩa chung cho mọi phái."
+  },
+  {
+    "id": "DOOR-009",
+    "batch": "08",
+    "topic": "Cổng, Cửa Chính & Lối Vào",
+    "original": "凡宅中有牆隔斷，牆間開有門，其九星即當從此處起，與別院并無關涉。",
+    "hanViet": "Phàm trạch trung hữu tường cách đoạn, tường gian khai hữu môn, kỳ cửu tinh tức đương tòng thử xứ khởi, dữ biệt viện tịnh vô quan thiệp.",
+    "literal": "Trong phép '截路分房', nếu trong nhà có tường ngăn và cửa xuyên qua tường, phép tính cửu tinh được khởi lại từ đó, tách với viện khác.",
+    "currentTitle": "Phàm trạch trung hữu tường cách đoạn, tường gian khai hữu môn, kỳ cửu tinh tức đ",
+    "currentCommentary": "Rất quan trọng cho compound nhiều sân, nhưng là thuộc trường phái đặc thù. công cụ tính toán hình học chỉ xây sơ đồ không gian bao che; quy tắc cửu tinh tạm hoãn để thẩm định thêm."
+  },
+  {
+    "id": "DOOR-010",
+    "batch": "08",
+    "topic": "Cổng, Cửa Chính & Lối Vào",
+    "original": "凡宅雖有二十四山，專以八山主之。",
+    "hanViet": "Phàm trạch tuy hữu nhị thập tứ sơn, chuyên dĩ bát sơn chủ chi.",
+    "literal": "Trong Môn Hộ Ca của truyền bản này, 24 sơn cửa được quy về tám nhóm.",
+    "currentTitle": "Phàm trạch tuy hữu nhị thập tứ sơn, chuyên dĩ bát sơn chủ chi.",
+    "currentCommentary": "Mapping 24 sơn → 8 quái giữ trong school layer; không kích hoạt ở Batch 08."
+  },
+  {
+    "id": "DOOR-011",
+    "batch": "08",
+    "topic": "Cổng, Cửa Chính & Lối Vào",
+    "original": "海內相傳，門尺數種……後人名為魯班尺。",
+    "hanViet": "Hải nội tương truyền, môn xích sổ chủng... hậu nhân danh vi Lỗ Ban xích.",
+    "literal": "Văn bản thừa nhận lưu truyền nhiều loại thước cửa và gọi loại được trình bày ở đây là Lỗ Ban xích.",
+    "currentTitle": "Hải nội tương truyền, môn xích sổ chủng... hậu nhân danh vi Lỗ Ban xích.",
+    "currentCommentary": "Chính câu 'có nhiều loại' là lý do không lấy một kích thước cm trên internet làm chuẩn cổ duy nhất."
+  },
+  {
+    "id": "DOOR-012",
+    "batch": "08",
+    "topic": "Cổng, Cửa Chính & Lối Vào",
+    "original": "其尺前面八寸，以財、病、離、義、官劫、害、吉為序。",
+    "hanViet": "Kỳ xích tiền diện bát thốn, dĩ tài, bệnh, ly, nghĩa, quan, kiếp, hại, cát vi tự.",
+    "literal": "Mặt trước thước trong truyền bản chia thành tám phần với các nhãn Tài, Bệnh, Ly, Nghĩa, Quan, Kiếp, Hại, Cát.",
+    "currentTitle": "Kỳ xích tiền diện bát thốn, dĩ tài, bệnh, ly, nghĩa, quan, kiếp, hại, cát vi tự.",
+    "currentCommentary": "Không quy đổi thốn cổ sang mm nếu chưa xác định witness, chuẩn thước và niên đại vật chất."
+  },
+  {
+    "id": "OPEN-001",
+    "batch": "09",
+    "topic": "Minh Đường, Sân & Giếng Trời",
+    "original": "明堂須當容萬馬。",
+    "hanViet": "Minh đường tu đương dung vạn mã.",
+    "literal": "Minh đường được mô tả bằng hình ảnh phải đủ rộng để 'dung vạn mã'.",
+    "currentTitle": "EXTERNAL_MINGTANG",
+    "currentCommentary": "Hình ảnh chỉ sự khoáng đạt; không chuyển thành m²."
+  },
+  {
+    "id": "OPEN-002",
+    "batch": "09",
+    "topic": "Minh Đường, Sân & Giếng Trời",
+    "original": "星辰近案明堂寬，案近明堂非窄勢。",
+    "hanViet": "Tinh thần cận án minh đường khoan, án cận minh đường phi trách thế.",
+    "literal": "Vật/án phía trước có thể ở gần nhưng minh đường vẫn được nhấn mạnh là rộng, không thành thế chật.",
+    "currentTitle": "EXTERNAL_MINGTANG",
+    "currentCommentary": "Đo cả distance và angular/open width; khoảng cách đơn lẻ không đủ."
+  },
+  {
+    "id": "OPEN-003",
+    "batch": "09",
+    "topic": "Minh Đường, Sân & Giếng Trời",
+    "original": "莫道明堂外自有，不知門內是明堂。",
+    "hanViet": "Mạc đạo minh đường ngoại tự hữu, bất tri môn nội thị minh đường.",
+    "literal": "Văn bản nói không chỉ bên ngoài mới có minh đường; bên trong cửa cũng được gọi là minh đường.",
+    "currentTitle": "INTERNAL_FRONT_COURT",
+    "currentCommentary": "Tạo relation INTERNAL_FRONT_COURT may_classify_as MINGTANG_IN_THIS_TEXT thay vì global synonym."
+  },
+  {
+    "id": "OPEN-004",
+    "batch": "09",
+    "topic": "Minh Đường, Sân & Giếng Trời",
+    "original": "天井不可作一字。",
+    "hanViet": "Thiên tỉnh bất khả tác nhất tự.",
+    "literal": "Văn bản phản đối một dạng thiên tỉnh được gọi là 'nhất tự'.",
+    "currentTitle": "TRADITIONAL_TIANJING",
+    "currentCommentary": "Hình học '一字' chưa được áp dụng thực tế-lock chỉ từ từ ngữ."
+  },
+  {
+    "id": "OPEN-005",
+    "batch": "09",
+    "topic": "Minh Đường, Sân & Giếng Trời",
+    "original": "一丈必須五尺闊，長短折半隨所至。",
+    "hanViet": "Nhất trượng tất tu ngũ xích khoát, trường đoản chiết bán tùy sở chí.",
+    "literal": "Đoạn này nêu một tỷ lệ bằng trượng và xích, thể hiện quan hệ độ dài–rộng trong thiên tỉnh.",
+    "currentTitle": "TRADITIONAL_TIANJING",
+    "currentCommentary": "Có ghi nhận số đo cổ thư, nhưng cần đối chiếu hệ đo lường lịch sử và văn bản trước khi áp dụng vào thực tế."
+  },
+  {
+    "id": "OPEN-006",
+    "batch": "09",
+    "topic": "Minh Đường, Sân & Giếng Trời",
+    "original": "凡宅，天井中不可積屋水。",
+    "hanViet": "Phàm trạch, thiên tỉnh trung bất khả tích ốc thủy.",
+    "literal": "Thiên tỉnh không nên tích đọng nước từ mái/nhà.",
+    "currentTitle": "TRADITIONAL_TIANJING",
+    "currentCommentary": "Đây là hình thái rất phù hợp với kỹ thuật thoát nước hiện đại; phần phán bệnh cổ bị tách."
+  },
+  {
+    "id": "OPEN-007",
+    "batch": "09",
+    "topic": "Minh Đường, Sân & Giếng Trời",
+    "original": "天井宜寬深吉／宜平坦吉／宜深聚吉。",
+    "hanViet": "Thiên tỉnh nghi khoan thâm cát / nghi bình thản cát / nghi thâm tụ cát.",
+    "literal": "Trong phần phương vị thủy pháp, thiên tỉnh được mô tả bằng nhiều dạng như rộng-sâu, bằng, sâu-tụ tùy sơn.",
+    "currentTitle": "TRADITIONAL_TIANJING",
+    "currentCommentary": "Không hợp nhất thành một quy tắc chung vì ngay trong nguồn mô tả thay đổi theo sơn/hướng."
+  },
+  {
+    "id": "OPEN-008",
+    "batch": "09",
+    "topic": "Minh Đường, Sân & Giếng Trời",
+    "original": "門外不須更架屋，蔽卻好山壞明堂。",
+    "hanViet": "Môn ngoại bất tu cánh giá ốc, tế khước hảo sơn hoại minh đường.",
+    "literal": "Không nên dựng vật kiến trúc ngoài cửa làm che phía trước và phá trạng thái minh đường theo văn bản.",
+    "currentTitle": "EXTERNAL_MINGTANG",
+    "currentCommentary": "Modern outputs: obstruction angle, daylight/sky view, access; traditional classification riêng."
+  },
+  {
+    "id": "ROOM-001",
+    "batch": "10",
+    "topic": "Phân Khu Phòng & Giao Thông",
+    "original": "造屋從來有次第，先內及外起自堂。",
+    "hanViet": "Tạo ốc tòng lai hữu thứ đệ, tiên nội cập ngoại khởi tự đường.",
+    "literal": "Việc dựng/bố trí nhà theo văn bản có thứ tự; bắt đầu từ phần chính bên trong, lấy 'đường' làm điểm khởi.",
+    "currentTitle": "Tạo ốc tòng lai hữu thứ đệ, tiên nội cập ngoại khởi tự đường.",
+    "currentCommentary": "Có thể dùng làm planning hierarchy truyền thống, không phải quy trình kết cấu bắt buộc."
+  },
+  {
+    "id": "ROOM-002",
+    "batch": "10",
+    "topic": "Phân Khu Phòng & Giao Thông",
+    "original": "先造兩廊不造堂。",
+    "hanViet": "Tiên tạo lưỡng lang bất tạo đường.",
+    "literal": "Văn bản phản đối việc làm hai 'lang'/cánh trước khi hình thành 'đường' chính.",
+    "currentTitle": "Tiên tạo lưỡng lang bất tạo đường.",
+    "currentCommentary": "Hậu quả gia đình trong nguyên văn được tách bỏ khỏi quy trình phân tích nhân quả."
+  },
+  {
+    "id": "ROOM-003",
+    "batch": "10",
+    "topic": "Phân Khu Phòng & Giao Thông",
+    "original": "後堂前堂仍可安，廳若欺堂大相壓，更有廊屋可次安。",
+    "hanViet": "Hậu đường tiền đường nhưng khả an, sảnh nhược khi đường đại tương áp, cánh hữu lang ốc khả thứ an.",
+    "literal": "Đoạn văn cho phép bố trí tiền/hậu đường theo một trật tự và cảnh báo trường hợp 'sảnh' lấn/áp 'đường'; sau đó mới xét lang ốc.",
+    "currentTitle": "Hậu đường tiền đường nhưng khả an, sảnh nhược khi đường đại tương áp, cánh hữu l",
+    "currentCommentary": "Chỉ lưu hierarchy/relative-scale yếu tố quan sát thực địa; chưa có ngưỡng diện tích cổ."
+  },
+  {
+    "id": "ROOM-004",
+    "batch": "10",
+    "topic": "Phân Khu Phòng & Giao Thông",
+    "original": "凡造宅三重並無廳廂名，三絕凶。有廳無堂，主孤寡。",
+    "hanViet": "Phàm tạo trạch tam trùng tịnh vô sảnh sương danh, tam tuyệt hung. Hữu sảnh vô đường, chủ cô quả.",
+    "literal": "Truyền bản xem cấu trúc nhiều lớp nhưng thiếu các thành phần gọi là sảnh/sương, hoặc có sảnh mà không có đường, là bất lợi.",
+    "currentTitle": "Phàm tạo trạch tam trùng tịnh vô sảnh sương danh, tam tuyệt hung. Hữu sảnh vô đư",
+    "currentCommentary": "Chỉ chứng minh rằng văn bản coi hierarchy/function naming quan trọng; không dùng phán 'cô quả' như causality."
+  },
+  {
+    "id": "ROOM-005",
+    "batch": "10",
+    "topic": "Phân Khu Phòng & Giao Thông",
+    "original": "凡房門，不得正對天井。",
+    "hanViet": "Phàm phòng môn, bất đắc chính đối thiên tỉnh.",
+    "literal": "Cửa phòng không nên chính đối thiên tỉnh theo truyền bản.",
+    "currentTitle": "Phàm phòng môn, bất đắc chính đối thiên tỉnh.",
+    "currentCommentary": "Không đặt góc sai số cổ; lưu alignment liên tục và trạng thái direct/intersect."
+  },
+  {
+    "id": "ROOM-006",
+    "batch": "10",
+    "topic": "Phân Khu Phòng & Giao Thông",
+    "original": "窖房門不可正對房門。",
+    "hanViet": "Diếu phòng môn bất khả chính đối phòng môn.",
+    "literal": "Cửa của 'diếu phòng' không nên chính đối cửa phòng theo truyền bản.",
+    "currentTitle": "Diếu phòng môn bất khả chính đối phòng môn.",
+    "currentCommentary": "Vì nghĩa 窖房 chưa khóa đủ, quy tắc áp dụng thực tế bị block."
+  },
+  {
+    "id": "ROOM-007",
+    "batch": "10",
+    "topic": "Phân Khu Phòng & Giao Thông",
+    "original": "堂前門廊不可空，窗櫺樑槅須分布。",
+    "hanViet": "Đường tiền môn lang bất khả không, song linh lương cách tu phân bố.",
+    "literal": "Đoạn văn đề cập môn-lang trước đường và việc phân bố cửa sổ/cấu kiện.",
+    "currentTitle": "Đường tiền môn lang bất khả không, song linh lương cách tu phân bố.",
+    "currentCommentary": "Không được biến thành quy tắc 'hành lang không được rỗng' hay một tỷ lệ cửa sổ khi chưa hiểu nghĩa kỹ thuật."
+  },
+  {
+    "id": "ROOM-008",
+    "batch": "10",
+    "topic": "Phân Khu Phòng & Giao Thông",
+    "original": "十家八家同一聚，同出同門同一處。",
+    "hanViet": "Thập gia bát gia đồng nhất tụ, đồng xuất đồng môn đồng nhất xứ.",
+    "literal": "Đoạn văn mô tả nhiều hộ/nhà tụ thành một cụm, cùng đi ra qua một cửa/nơi.",
+    "currentTitle": "Thập gia bát gia đồng nhất tụ, đồng xuất đồng môn đồng nhất xứ.",
+    "currentCommentary": "Chỉ lưu compound topology. Không suy 'chung một cổng là tốt/xấu'."
+  },
+  {
+    "id": "ROOM-009",
+    "batch": "10",
+    "topic": "Phân Khu Phòng & Giao Thông",
+    "original": "門路各家不為巷。",
+    "hanViet": "Môn lộ các gia bất vi hạng.",
+    "literal": "Một câu trong khối văn phân biệt đường/cửa của từng nhà với 'hạng' (ngõ/hẻm) theo cách của nguồn.",
+    "currentTitle": "Môn lộ các gia bất vi hạng.",
+    "currentCommentary": "Không sinh quy tắc cát/hung; giữ làm evidence rằng cấu trúc luồng giao thông được phân biệt."
+  },
+  {
+    "id": "ROOM-010",
+    "batch": "10",
+    "topic": "Phân Khu Phòng & Giao Thông",
+    "original": "凡人居止之室，須周密，勿有細隙，使風入。",
+    "hanViet": "Phàm nhân cư chỉ chi thất, tu chu mật, vật hữu tế khích, sử phong nhập.",
+    "literal": "Phòng/nơi ở được khuyên nên kín khít, tránh khe nhỏ làm gió lùa vào.",
+    "currentTitle": "Phàm nhân cư chỉ chi thất, tu chu mật, vật hữu tế khích, sử phong nhập.",
+    "currentCommentary": "Không được biến thành 'nhà càng kín càng tốt'. Modern ventilation/IAQ là lớp độc lập."
+  },
+  {
+    "id": "ROOM-011",
+    "batch": "10",
+    "topic": "Phân Khu Phòng & Giao Thông",
+    "original": "凡於廳屋下安竈者，有殃。",
+    "hanViet": "Phàm ư sảnh ốc hạ an táo giả, hữu ương.",
+    "literal": "Truyền bản phản đối đặt bếp dưới/ở phần được gọi là sảnh ốc.",
+    "currentTitle": "Phàm ư sảnh ốc hạ an táo giả, hữu ương.",
+    "currentCommentary": "Không xử lý trong Batch10; chuyển Batch11 Bếp."
+  },
+  {
+    "id": "ROOM-012",
+    "batch": "10",
+    "topic": "Phân Khu Phòng & Giao Thông",
+    "original": "中堂不可架直屋。",
+    "hanViet": "Trung đường bất khả giá trực ốc.",
+    "literal": "Đoạn văn nói trung đường không nên 'giá trực ốc'; nghĩa hình học/chế thức cụ thể chưa đủ chắc.",
+    "currentTitle": "Trung đường bất khả giá trực ốc.",
+    "currentCommentary": "Không tự bịa thành 'không để hành lang xuyên tâm' hoặc 'không có phòng trên trung cung'."
+  },
+  {
+    "id": "KIT-001",
+    "batch": "11",
+    "topic": "Bếp, Hỏa, Nước & Khói",
+    "original": "凡於廳屋下安竈者，有殃。",
+    "hanViet": "Phàm ư sảnh ốc hạ an táo giả, hữu ương.",
+    "literal": "Truyền bản coi việc đặt bếp ở 'dưới/thuộc dưới' sảnh ốc là bất lợi.",
+    "currentTitle": "Phàm ư sảnh ốc hạ an táo giả, hữu ương.",
+    "currentCommentary": "廳屋下 may indicate under-hall vertical relation or under/within hall structure; exact modern mapping needs architectural context."
+  },
+  {
+    "id": "KIT-002",
+    "batch": "11",
+    "topic": "Bếp, Hỏa, Nước & Khói",
+    "original": "井北竈南，家忤逆。",
+    "hanViet": "Tỉnh Bắc táo Nam, gia ngỗ nghịch.",
+    "literal": "Truyền bản nêu một cấu hình giếng ở Bắc, bếp ở Nam và gán phán truyền thống bất lợi.",
+    "currentTitle": "Tỉnh Bắc táo Nam, gia ngỗ nghịch.",
+    "currentCommentary": "This is a directional relation between well and stove, not sink-vs-cooktop."
+  },
+  {
+    "id": "KIT-003",
+    "batch": "11",
+    "topic": "Bếp, Hỏa, Nước & Khói",
+    "original": "凡作竈法，長七尺九寸……廣四尺……高三尺……口闊一尺二寸……突大八寸。",
+    "hanViet": "Phàm tác táo pháp, trường thất xích cửu thốn... quảng tứ xích... cao tam xích... khẩu khoát nhất xích nhị thốn... đột đại bát thốn.",
+    "literal": "Văn bản đưa một bộ kích thước bếp bằng xích/thốn và gắn mỗi con số với biểu tượng vũ trụ.",
+    "currentTitle": "Phàm tác táo pháp, trường thất xích cửu thốn... quảng tứ xích... cao tam xích...",
+    "currentCommentary": "True historical numeric claim, but metrology and object components are not yet locked."
+  },
+  {
+    "id": "KIT-004",
+    "batch": "11",
+    "topic": "Bếp, Hỏa, Nước & Khói",
+    "original": "凡竈面向西南吉，向東北凶。",
+    "hanViet": "Phàm táo diện hướng Tây Nam cát, hướng Đông Bắc hung.",
+    "literal": "Truyền bản này phán mặt bếp hướng Tây Nam tốt, Đông Bắc xấu.",
+    "currentTitle": "Phàm táo diện hướng Tây Nam cát, hướng Đông Bắc hung.",
+    "currentCommentary": "Single-witness directional statement; attribution disputed; not universal."
+  },
+  {
+    "id": "KIT-005",
+    "batch": "11",
+    "topic": "Bếp, Hỏa, Nước & Khói",
+    "original": "凡刀斧不宜安竈上。",
+    "hanViet": "Phàm đao phủ bất nghi an táo thượng.",
+    "literal": "Dao/rìu không nên đặt phía trên bếp theo truyền bản.",
+    "currentTitle": "Phàm đao phủ bất nghi an táo thượng.",
+    "currentCommentary": "Cổ lệ sắp đặt vệ sinh không gian; không suy diễn thành quan hệ nhân quả siêu nhiên."
+  },
+  {
+    "id": "KIT-006",
+    "batch": "11",
+    "topic": "Bếp, Hỏa, Nước & Khói",
+    "original": "火唵即是廚房廚竈，止宜在宅凶方，不宜在吉方。",
+    "hanViet": "Hỏa am tức thị trù phòng trù táo, chỉ nghi tại trạch hung phương, bất nghi tại cát phương.",
+    "literal": "Trong truyền bản này, Hỏa Am được giải là bếp/phòng bếp và được đặt ở 'hung phương' của trạch thay vì 'cát phương'.",
+    "currentTitle": "Hỏa am tức thị trù phòng trù táo, chỉ nghi tại trạch hung phương, bất nghi tại c",
+    "currentCommentary": "thuộc trường phái đặc thù directional doctrine; requires its own house-direction calculation."
+  },
+  {
+    "id": "KIT-007",
+    "batch": "11",
+    "topic": "Bếp, Hỏa, Nước & Khói",
+    "original": "古人極言煙火之害。",
+    "hanViet": "Cổ nhân cực ngôn yên hỏa chi hại.",
+    "literal": "Đoạn văn nhấn mạnh cái hại của khói/lửa.",
+    "currentTitle": "Cổ nhân cực ngôn yên hỏa chi hại.",
+    "currentCommentary": "This is historical rationale inside the text; not a modern smoke toxicology model."
+  },
+  {
+    "id": "KIT-008",
+    "batch": "11",
+    "topic": "Bếp, Hỏa, Nước & Khói",
+    "original": "此歌與前互相發，但「離修乙」三字不合……或傳流之誤。",
+    "hanViet": "Thử ca dữ tiền hỗ tương phát, đãn 'Ly tu Ất' tam tự bất hợp... hoặc truyền lưu chi ngộ.",
+    "literal": "Chính văn bản nhận xét ba chữ 'Ly tu Ất' không phù hợp với hệ trước và có thể là sai lầm trong quá trình truyền chép.",
+    "currentTitle": "Thử ca dữ tiền hỗ tương phát, đãn 'Ly tu Ất' tam tự bất hợp... hoặc truyền lưu c",
+    "currentCommentary": "Self-identified textual conflict; never silently harmonize."
+  },
+  {
+    "id": "KIT-009",
+    "batch": "11",
+    "topic": "Bếp, Hỏa, Nước & Khói",
+    "original": "廚竈必須居左位，不宜安在白虎方。",
+    "hanViet": "Trù táo tất tu cư tả vị, bất nghi an tại Bạch Hổ phương.",
+    "literal": "Trong đoạn nội hình này, bếp được đặt phía trái và tránh phía được gọi là Bạch Hổ.",
+    "currentTitle": "Trù táo tất tu cư tả vị, bất nghi an tại Bạch Hổ phương.",
+    "currentCommentary": "Reference frame left/right must be resolved from house facing/context; not universal screen-left."
+  },
+  {
+    "id": "KIT-010",
+    "batch": "11",
+    "topic": "Bếp, Hỏa, Nước & Khói",
+    "original": "井畔栽花，物業荒。",
+    "hanViet": "Tỉnh bạn tài hoa, vật nghiệp hoang.",
+    "literal": "Truyền bản phản đối trồng hoa sát bên giếng và gán hậu quả truyền thống.",
+    "currentTitle": "Tỉnh bạn tài hoa, vật nghiệp hoang.",
+    "currentCommentary": "Not a kitchen quy tắc; retained only as well-environment hình thái."
+  },
+  {
+    "id": "KIT-011",
+    "batch": "11",
+    "topic": "Bếp, Hỏa, Nước & Khói",
+    "original": "卯不穿井，水不香。",
+    "hanViet": "Mão bất xuyên tỉnh, thủy bất hương.",
+    "literal": "Truyền bản có cấm kỵ đào giếng theo phương/thời? liên quan chữ Mão; ngữ nghĩa áp dụng cần bối cảnh.",
+    "currentTitle": "Mão bất xuyên tỉnh, thủy bất hương.",
+    "currentCommentary": "Không suy đoán chữ Mão chỉ phương hướng, thời khắc hay quy tắc phối hợp khi chưa có ngữ cảnh văn bản gốc."
+  },
+  {
+    "id": "KIT-012",
+    "batch": "11",
+    "topic": "Bếp, Hỏa, Nước & Khói",
+    "original": "以鉛十餘斤實井中，水清而甘。",
+    "hanViet": "Dĩ duyên thập dư cân thực tỉnh trung, thủy thanh nhi cam.",
+    "literal": "Văn bản khuyên bỏ hơn mười cân chì vào giếng để nước trong/ngọt.",
+    "currentTitle": "Dĩ duyên thập dư cân thực tỉnh trung, thủy thanh nhi cam.",
+    "currentCommentary": "This is a historically transmitted practice that is unsafe by modern toxicology; must be explicitly invalidated for modern application."
+  },
+  {
+    "id": "BED-001",
+    "batch": "12",
+    "topic": "Phòng Ngủ, Giường & Nghỉ",
+    "original": "臥房為退藏之地，不可不密。",
+    "hanViet": "Ngọa phòng vi thoái tàng chi địa, bất khả bất mật.",
+    "literal": "Phòng ngủ được xem là nơi lui về nghỉ/nghỉ kín, nên cần tính kín đáo.",
+    "currentTitle": "Ngọa phòng vi thoái tàng chi địa, bất khả bất mật.",
+    "currentCommentary": "Không biến 'mật' thành phòng kín tuyệt đối thiếu thông gió."
+  },
+  {
+    "id": "BED-002",
+    "batch": "12",
+    "topic": "Phòng Ngủ, Giường & Nghỉ",
+    "original": "妄斷禍福，此假陰陽而神其說，可勿泥。",
+    "hanViet": "Vọng đoạn họa phúc, thử giả âm dương nhi thần kỳ thuyết, khả vật nê.",
+    "literal": "Tác giả phê phán việc vọng đoán họa phúc, mượn âm dương để thần bí hóa lời nói và cho rằng không nên câu nệ.",
+    "currentTitle": "Vọng đoạn họa phúc, thử giả âm dương nhi thần kỳ thuyết, khả vật nê.",
+    "currentCommentary": "Dùng làm guardrail chống tuyệt đối hóa kích thước cửa/phòng bằng lời phán mê tín."
+  },
+  {
+    "id": "BED-003",
+    "batch": "12",
+    "topic": "Phòng Ngủ, Giường & Nghỉ",
+    "original": "臥房暗則能斂神聚氣，此亦陰陽家之說。",
+    "hanViet": "Ngọa phòng ám tắc năng liễm thần tụ khí, thử diệc âm dương gia chi thuyết.",
+    "literal": "Tác giả ghi nhận quan niệm âm dương gia rằng phòng ngủ tối giúp 'liễm thần tụ khí'.",
+    "currentTitle": "Ngọa phòng ám tắc năng liễm thần tụ khí, thử diệc âm dương gia chi thuyết.",
+    "currentCommentary": "Chính tác giả sau đó cân nhắc nhu cầu sáng sủa ban ngày; không đọc thành 'phòng càng tối càng tốt 24/7'."
+  },
+  {
+    "id": "BED-004",
+    "batch": "12",
+    "topic": "Phòng Ngủ, Giường & Nghỉ",
+    "original": "就寢即滅燈，目不外眩，則神守其舍。",
+    "hanViet": "Tựu tẩm tức diệt đăng, mục bất ngoại huyễn, tắc thần thủ kỳ xá.",
+    "literal": "Khi đi ngủ thì tắt đèn để mắt không bị ánh sáng bên ngoài làm chói/dao động.",
+    "currentTitle": "Tựu tẩm tức diệt đăng, mục bất ngoại huyễn, tắc thần thủ kỳ xá.",
+    "currentCommentary": "Có thể đặt cạnh khuyến nghị ngủ trong môi trường tối của y học hiện đại, nhưng không nói cơ chế cổ = cơ chế vật lý hiện đại."
+  },
+  {
+    "id": "BED-005",
+    "batch": "12",
+    "topic": "Phòng Ngủ, Giường & Nghỉ",
+    "original": "安床著壁，須杉木板隔之……頭臥處近壁，亦須板隔，否則壁土濕蒸，驗之有黴氣。",
+    "hanViet": "An sàng trước bích, tu sam mộc bản cách chi... đầu ngọa xứ cận bích, diệc tu bản cách, phủ tắc bích thổ thấp chưng, nghiệm chi hữu môi khí.",
+    "literal": "Khi đặt giường sát tường, tác giả khuyên có lớp cách; đặc biệt vùng đầu gần tường được lưu ý về hơi ẩm/mùi mốc.",
+    "currentTitle": "An sàng trước bích, tu sam mộc bản cách chi... đầu ngọa xứ cận bích, diệc tu bản",
+    "currentCommentary": "Không bắt buộc dùng gỗ sam; modern moisture/mould control là lớp riêng."
+  },
+  {
+    "id": "BED-006",
+    "batch": "12",
+    "topic": "Phòng Ngủ, Giường & Nghỉ",
+    "original": "盛夏暫移床於室中央，四面空虛，即散煩熱……窗牖不可少開，便微風得入臥所。",
+    "hanViet": "Thịnh hạ tạm di sàng ư thất trung ương, tứ diện không hư, tức tán phiền nhiệt... song dũ bất khả thiểu khai, tiện vi phong đắc nhập ngọa sở.",
+    "literal": "Mùa hè nóng, tác giả đề nghị có thể tạm đưa giường ra giữa phòng cho thoáng và mở cửa sổ để có gió nhẹ.",
+    "currentTitle": "Thịnh hạ tạm di sàng ư thất trung ương, tứ diện không hư, tức tán phiền nhiệt...",
+    "currentCommentary": "Cho thấy chính nguồn không tuyệt đối hóa 'giường luôn phải áp tường'."
+  },
+  {
+    "id": "BED-007",
+    "batch": "12",
+    "topic": "Phòng Ngủ, Giường & Nghỉ",
+    "original": "《記·玉藻》曰：『寢恒東首。』……《雲笈七籤》曰：『冬臥宜向北。』……則凡東西設床者，臥以南首為當。",
+    "hanViet": "Ký Ngọc Tảo viết: tẩm hằng Đông thủ... Vân Cấp Thất Thiêm viết: đông ngọa nghi hướng Bắc... tắc phàm Đông Tây thiết sàng giả, ngọa dĩ Nam thủ vi đương.",
+    "literal": "Tác giả dẫn nhiều truyền thống về hướng đầu khi ngủ: có nguồn nói thường quay đầu Đông, nguồn khác nói mùa đông hướng Bắc, rồi tự đưa ra nhận định khác theo bố trí.",
+    "currentTitle": "Ký Ngọc Tảo viết: tẩm hằng Đông thủ... Vân Cấp Thất Thiêm viết: đông ngọa nghi h",
+    "currentCommentary": "Bằng chứng trực tiếp rằng 'hướng đầu giường cổ' không phải một quy tắc duy nhất."
+  },
+  {
+    "id": "BED-008",
+    "batch": "12",
+    "topic": "Phòng Ngủ, Giường & Nghỉ",
+    "original": "愚謂寢處必安其常……四時更變，反致不安。",
+    "hanViet": "Ngu vị tẩm xứ tất an kỳ thường... tứ thời canh biến, phản trí bất an.",
+    "literal": "Tác giả cho rằng chỗ ngủ nên ổn định, đổi hướng theo bốn mùa trái lại có thể làm bất an.",
+    "currentTitle": "Ngu vị tẩm xứ tất an kỳ thường... tứ thời canh biến, phản trí bất an.",
+    "currentCommentary": "Giữ như ý kiến Tào Đình Đống, không biến thành cổ pháp phổ quát."
+  },
+  {
+    "id": "BED-009",
+    "batch": "12",
+    "topic": "Phòng Ngủ, Giường & Nghỉ",
+    "original": "三吉之方宜開門、放灶、擇房、安床，而大門尤重。",
+    "hanViet": "Tam cát chi phương nghi khai môn, phóng táo, trạch phòng, an sàng, nhi đại môn vưu trọng.",
+    "literal": "Trong hệ Du Tinh của văn bản này, ba phương cát được dùng để mở cửa, đặt bếp, chọn phòng và an giường.",
+    "currentTitle": "Tam cát chi phương nghi khai môn, phóng táo, trạch phòng, an sàng, nhi đại môn v",
+    "currentCommentary": "Chỉ được chạy khi module trường phái tương ứng được load; không nhập hệ thống phân tích hình thái tổng quát."
+  },
+  {
+    "id": "BED-010",
+    "batch": "12",
+    "topic": "Phòng Ngủ, Giường & Nghỉ",
+    "original": "無論正門、旁門、前門、後門、臥房門，俱宜正卦裝成。",
+    "hanViet": "Vô luận chính môn, bàng môn, tiền môn, hậu môn, ngọa phòng môn, câu nghi chính quái trang thành.",
+    "literal": "Trong hệ của 《陽宅闡要》, kể cả cửa phòng ngủ cũng được xét bằng phép chính quái.",
+    "currentTitle": "Vô luận chính môn, bàng môn, tiền môn, hậu môn, ngọa phòng môn, câu nghi chính q",
+    "currentCommentary": "Không biến thành quy tắc hình học phổ quát về cửa phòng ngủ."
+  },
+  {
+    "id": "BED-011",
+    "batch": "12",
+    "topic": "Phòng Ngủ, Giường & Nghỉ",
+    "original": "以臥房為主，而生旺之氣必層層從門引入房內為佳。",
+    "hanViet": "Dĩ ngọa phòng vi chủ, nhi sinh vượng chi khí tất tầng tầng tòng môn dẫn nhập phòng nội vi giai.",
+    "literal": "Chú giải của văn bản này coi phòng ngủ quan trọng và cho rằng khí sinh-vượng nên được dẫn qua các lớp cửa vào phòng.",
+    "currentTitle": "Dĩ ngọa phòng vi chủ, nhi sinh vượng chi khí tất tầng tầng tòng môn dẫn nhập phò",
+    "currentCommentary": "Room/door graph có thể hỗ trợ, nhưng sinh-vượng là dữ liệu trường phái."
+  },
+  {
+    "id": "BED-012",
+    "batch": "12",
+    "topic": "Phòng Ngủ, Giường & Nghỉ",
+    "original": "臥所一斗室足矣。",
+    "hanViet": "Ngọa sở nhất đẩu thất túc hĩ.",
+    "literal": "Tác giả cho rằng nơi ngủ không cần quá lớn.",
+    "currentTitle": "Ngọa sở nhất đẩu thất túc hĩ.",
+    "currentCommentary": "Không chuyển thành diện tích tối đa/tối thiểu; modern space standards và nhu cầu người dùng độc lập."
+  },
+  {
+    "id": "STAIR-EV-001",
+    "batch": "13",
+    "topic": "Cầu Thang & Giao Thông Đứng",
+    "original": "《營造法式》卷目及制度中明列「階」等建築構件。",
+    "hanViet": "Doanh Tạo Pháp Thức quyển mục cập chế độ trung minh liệt 'giai' đẳng kiến trúc cấu kiện.",
+    "sourceId": "SRC-YZF-1100-STAIR",
+    "currentTitle": "Khảo Chứng Cấu Kiện Bậc Thang (Doanh Tạo Pháp Thức)"
+  },
+  {
+    "id": "STAIR-EV-002",
+    "batch": "13",
+    "topic": "Cầu Thang & Giao Thông Đứng",
+    "original": "卷十五列「踏道、慢道」。",
+    "hanViet": "Quyển thập ngũ liệt 'đạp đạo, mạn đạo'.",
+    "sourceId": "SRC-YZF-V15-TADAO",
+    "currentTitle": "Quyển thập ngũ liệt 'đạp đạo, mạn đạo'."
+  },
+  {
+    "id": "STAIR-EV-003",
+    "batch": "13",
+    "topic": "Cầu Thang & Giao Thông Đứng",
+    "original": "—",
+    "hanViet": "—",
+    "sourceId": "SRC-YZSS-STAIR-SEARCH",
+    "currentTitle": "Quy Chuẩn Cổ Pháp Về Cầu Thang & Bậc Lên Xuống"
+  },
+  {
+    "id": "STAIR-EV-004",
+    "batch": "13",
+    "topic": "Cầu Thang & Giao Thông Đứng",
+    "original": "—",
+    "hanViet": "—",
+    "sourceId": "SRC-DNBS-STAIR-SEARCH",
+    "currentTitle": "Giao Thông Đứng & Lối Thoát Nạn An Toàn"
+  },
+  {
+    "id": "SAN-001",
+    "batch": "14",
+    "topic": "WC, Vệ Sinh & Khu Phụ",
+    "original": "糞屋對門，癰癤常存。",
+    "hanViet": "Phẩn ốc đối môn, ung tiết thường tồn.",
+    "literal": "Nhà phân/khu chứa phân đối cửa được truyền bản gắn với phán về ung nhọt.",
+    "currentTitle": "Phẩn ốc đối môn, ung tiết thường tồn.",
+    "currentCommentary": "Không chuyển thành \"cửa khu vệ sinh đối cửa chính gây bệnh\". Cấu trúc vệ sinh cổ xưa và quan hệ không gian hoàn toàn khác khu vệ sinh hiện đại."
+  },
+  {
+    "id": "SAN-002",
+    "batch": "14",
+    "topic": "WC, Vệ Sinh & Khu Phụ",
+    "original": "糞屋對門，癰癤常存。",
+    "hanViet": "Phẩn ốc đối môn, ung tiết thường tồn.",
+    "literal": "Bản chép Dương Trạch Thập Thư cũng lưu cùng motif 'phẩn ốc đối môn'.",
+    "currentTitle": "Phẩn ốc đối môn, ung tiết thường tồn.",
+    "currentCommentary": "Văn bản gần giống nguồn gia dụng đời trước; tính độc lập chưa được chứng minh, không tính như hai nguồn độc lập."
+  },
+  {
+    "id": "SAN-003",
+    "batch": "14",
+    "topic": "WC, Vệ Sinh & Khu Phụ",
+    "original": "廁宜壓本命之凶方。",
+    "hanViet": "Xí nghi áp bản mệnh chi hung phương.",
+    "literal": "Trong hệ của Dương Trạch Toát Yếu, nhà xí nên đặt ở hung phương của bản mệnh.",
+    "currentTitle": "Xí nghi áp bản mệnh chi hung phương.",
+    "currentCommentary": "Chỉ chạy khi chính method tạo 'bản mệnh hung phương' của source/school được định nghĩa."
+  },
+  {
+    "id": "SAN-004",
+    "batch": "14",
+    "topic": "WC, Vệ Sinh & Khu Phụ",
+    "original": "乾是天門莫作坑。",
+    "hanViet": "Càn thị thiên môn mạc tác khanh.",
+    "literal": "Bài ca trong mục Xí mở đầu bằng việc tránh làm 'khanh' ở Càn.",
+    "currentTitle": "Càn thị thiên môn mạc tác khanh.",
+    "currentCommentary": "Danh sách phương vị sau câu này có chỗ mờ trong bản khắc; cần đối chiếu kỹ lưỡng trước khi chuẩn hóa toàn bảng."
+  },
+  {
+    "id": "SAN-005",
+    "batch": "14",
+    "topic": "WC, Vệ Sinh & Khu Phụ",
+    "original": "作厠亦宜在衰方。",
+    "hanViet": "Tác xí diệc nghi tại suy phương.",
+    "literal": "Dương Trạch Chính Tông nói làm nhà xí cũng nên ở suy phương.",
+    "currentTitle": "Tác xí diệc nghi tại suy phương.",
+    "currentCommentary": "衰方 phải do đúng hệ của sách tính; không tự map sang 'hung phương' của hệ khác."
+  },
+  {
+    "id": "SAN-006",
+    "batch": "14",
+    "topic": "WC, Vệ Sinh & Khu Phụ",
+    "original": "溷廁亦然，在本命之凶方。",
+    "hanViet": "Hỗn xí diệc nhiên, tại bản mệnh chi hung phương.",
+    "literal": "Trong Tương Trạch thiên của Du Nghệ Lục, khu xí cũng được đặt ở hung phương của bản mệnh.",
+    "currentTitle": "Hỗn xí diệc nhiên, tại bản mệnh chi hung phương.",
+    "currentCommentary": "Đây là quy tắc của hệ Đông/Tây tứ cung trong chính văn cảnh này; không phải hình thái tổng quát quy tắc."
+  },
+  {
+    "id": "SAN-007",
+    "batch": "14",
+    "topic": "WC, Vệ Sinh & Khu Phụ",
+    "original": "若于來龍處開坑，大則傷宅主。",
+    "hanViet": "Nhược ư lai long xứ khai khanh, đại tắc thương trạch chủ.",
+    "literal": "Văn bản cảnh báo việc đào hố/khanh ở chỗ gọi là 'lai long'.",
+    "currentTitle": "Nhược ư lai long xứ khai khanh, đại tắc thương trạch chủ.",
+    "currentCommentary": "Không dùng như địa kỹ thuật. 來龍 là khái niệm Hình thế, còn đất/nền/nước ngầm phải qua kỹ thuật hiện đại."
+  },
+  {
+    "id": "SAN-008",
+    "batch": "14",
+    "topic": "WC, Vệ Sinh & Khu Phụ",
+    "original": "此方與竈座煙囪相同。",
+    "hanViet": "Thử phương dữ táo tọa yên song tương đồng.",
+    "literal": "Văn bản cho rằng phép đặt xí theo phương này tương tự cách đặt tọa bếp/ống khói trong hệ đó.",
+    "currentTitle": "Thử phương dữ táo tọa yên song tương đồng.",
+    "currentCommentary": "Không suy thành 'WC và bếp phải cùng một phương' trong thiết kế hiện đại."
+  },
+  {
+    "id": "WIN-001",
+    "batch": "15",
+    "topic": "Cửa Sổ, Ánh Sáng & Thông Gió",
+    "original": "窗櫺樑槅須分布。",
+    "hanViet": "Song linh lương cách tu phân bố.",
+    "literal": "Đoạn nội hình nói các thành phần cửa sổ/cấu kiện như song linh, lương/cách cần được phân bố.",
+    "currentTitle": "Song linh lương cách tu phân bố.",
+    "currentCommentary": "Ngữ nghĩa kỹ thuật của toàn cụm chưa đủ để suy thành tỷ lệ cửa sổ, đối xứng hay số lượng cát/hung."
+  },
+  {
+    "id": "WIN-002",
+    "batch": "15",
+    "topic": "Cửa Sổ, Ánh Sáng & Thông Gió",
+    "original": "凡人家，屋居滋潤，光澤陽氣者吉，乾燥無滋潤者兇。",
+    "hanViet": "Phàm nhân gia, ốc cư tư nhuận, quang trạch dương khí giả cát, can táo vô tư nhuận giả hung.",
+    "literal": "Truyền bản mô tả nhà ở có trạng thái 'tư nhuận, quang trạch, dương khí' là tốt và trạng thái khô cằn thiếu 'tư nhuận' là xấu.",
+    "currentTitle": "Phàm nhân gia, ốc cư tư nhuận, quang trạch dương khí giả cát, can táo vô tư nhuậ",
+    "currentCommentary": "Không khoa học hóa 'dương khí'. Cũng không đọc 'tư nhuận' thành khuyến khích ẩm mốc."
+  },
+  {
+    "id": "WIN-003",
+    "batch": "15",
+    "topic": "Cửa Sổ, Ánh Sáng & Thông Gió",
+    "original": "凡人居止之室，須周密，勿有細隙，使風入。",
+    "hanViet": "Phàm nhân cư chỉ chi thất, tu chu mật, vật hữu tế khích, sử phong nhập.",
+    "literal": "Phòng ở được khuyên nên kín khít, tránh khe nhỏ để gió lọt vào.",
+    "currentTitle": "Phàm nhân cư chỉ chi thất, tu chu mật, vật hữu tế khích, sử phong nhập.",
+    "currentCommentary": "Đây là tránh gió lùa qua khe, không phải cấm thông gió chủ động."
+  },
+  {
+    "id": "WIN-004",
+    "batch": "15",
+    "topic": "Cửa Sổ, Ánh Sáng & Thông Gió",
+    "original": "少覺有風，切須避之。",
+    "hanViet": "Thiểu giác hữu phong, thiết tu tị chi.",
+    "literal": "Nếu cảm thấy gió lùa thì truyền bản khuyên tránh.",
+    "currentTitle": "Thiểu giác hữu phong, thiết tu tị chi.",
+    "currentCommentary": "Không dùng làm tiêu chuẩn vận tốc gió hiện đại."
+  },
+  {
+    "id": "WIN-005",
+    "batch": "15",
+    "topic": "Cửa Sổ, Ánh Sáng & Thông Gió",
+    "original": "房開北牖，疏欞作窗，夏為宜，冬則否。",
+    "hanViet": "Phòng khai Bắc dũ, sơ linh tác song, hạ vi nghi, đông tắc phủ.",
+    "literal": "Tác giả cho rằng mở cửa sổ/thông khẩu phía Bắc với song thưa có thể hợp mùa hè nhưng không hợp mùa đông.",
+    "currentTitle": "Phòng khai Bắc dũ, sơ linh tác song, hạ vi nghi, đông tắc phủ.",
+    "currentCommentary": "Ý kiến khí hậu của tác giả 1773; không thành quy tắc phong thủy hướng Bắc phổ quát."
+  },
+  {
+    "id": "WIN-006",
+    "batch": "15",
+    "topic": "Cửa Sổ, Ánh Sáng & Thông Gió",
+    "original": "臥房只宜清晨洞啟窗戶，以散竟夜之郁悶。",
+    "hanViet": "Ngọa phòng chỉ nghi thanh thần động khải song hộ, dĩ tán cánh dạ chi uất muộn.",
+    "literal": "Tác giả đề nghị mùa nóng mở rộng cửa sổ phòng ngủ vào sáng sớm để giải tỏa khí tù đọng qua đêm.",
+    "currentTitle": "Ngọa phòng chỉ nghi thanh thần động khải song hộ, dĩ tán cánh dạ chi uất muộn.",
+    "currentCommentary": "Không dùng giờ cụ thể như quy tắc hiện đại; đây là lịch sử thực hành."
+  },
+  {
+    "id": "WIN-007",
+    "batch": "15",
+    "topic": "Cửa Sổ, Ánh Sáng & Thông Gió",
+    "original": "窗牖不可少開，便微風得入臥所。",
+    "hanViet": "Song dũ bất khả thiểu khai, tiện vi phong đắc nhập ngọa sở.",
+    "literal": "Ở bối cảnh mùa hè, tác giả cho rằng cửa sổ nên được mở để gió nhẹ đi vào nơi nằm.",
+    "currentTitle": "Song dũ bất khả thiểu khai, tiện vi phong đắc nhập ngọa sở.",
+    "currentCommentary": "Đây là đối chứng trực tiếp với việc tuyệt đối hóa 'phòng phải kín gió'."
+  },
+  {
+    "id": "WIN-008",
+    "batch": "15",
+    "topic": "Cửa Sổ, Ánh Sáng & Thông Gió",
+    "original": "臥房暗則能斂神聚氣，此亦陰陽家之說。",
+    "hanViet": "Ngọa phòng ám tắc năng liễm thần tụ khí, thử diệc âm dương gia chi thuyết.",
+    "literal": "Tác giả ghi nhận một quan niệm âm dương gia rằng phòng ngủ tối giúp 'liễm thần tụ khí'.",
+    "currentTitle": "Ngọa phòng ám tắc năng liễm thần tụ khí, thử diệc âm dương gia chi thuyết.",
+    "currentCommentary": "Tác giả ngay sau đó phân biệt ban ngày và điều kiện sáng sủa; không được biến thành 'phòng tối cả ngày là tốt'."
+  },
+  {
+    "id": "WIN-009",
+    "batch": "15",
+    "topic": "Cửa Sổ, Ánh Sáng & Thông Gió",
+    "original": "暗則又非白晝所宜。",
+    "hanViet": "Ám tắc hựu phi bạch trú sở nghi.",
+    "literal": "Tác giả nói trạng thái tối lại không thích hợp cho ban ngày.",
+    "currentTitle": "Ám tắc hựu phi bạch trú sở nghi.",
+    "currentCommentary": "Khóa tách DAY vs SLEEP/NIGHT; không dùng một biến 'brightness good/bad'."
+  },
+  {
+    "id": "WIN-010",
+    "batch": "15",
+    "topic": "Cửa Sổ, Ánh Sáng & Thông Gió",
+    "original": "《青田秘記》曰：『臥房窗取偶，門取奇，合陰陽也。』",
+    "hanViet": "Thanh Điền Bí Ký viết: Ngọa phòng song thủ ngẫu, môn thủ kỳ, hợp âm dương dã.",
+    "literal": "Tào Đình Đống dẫn một sách tên Thanh Điền Bí Ký nói cửa sổ phòng ngủ lấy số chẵn, cửa lấy số lẻ để hợp âm dương.",
+    "currentTitle": "Thanh Điền Bí Ký viết: Ngọa phòng song thủ ngẫu, môn thủ kỳ, hợp âm dương dã.",
+    "currentCommentary": "Chưa có bản Thanh Điền Bí Ký độc lập được khóa trong corpus; không dùng lời dẫn này làm quy tắc áp dụng thực tế."
+  },
+  {
+    "id": "WAT-001",
+    "batch": "16",
+    "topic": "Nước Sạch, Giếng, Bể & Thoát Nước",
+    "original": "勿塞故井。",
+    "hanViet": "Vật tắc cố tỉnh.",
+    "literal": "Không nên lấp giếng cũ theo truyền bản.",
+    "currentTitle": "Vật tắc cố tỉnh.",
+    "currentCommentary": "Không phải lệnh bảo tồn giếng hiện đại. Giếng bỏ hoang nguy hiểm phải xử lý theo địa kỹ thuật, an toàn và môi trường."
+  },
+  {
+    "id": "WAT-002",
+    "batch": "16",
+    "topic": "Nước Sạch, Giếng, Bể & Thoát Nước",
+    "original": "凡堂前不可穿井。",
+    "hanViet": "Phàm đường tiền bất khả xuyên tỉnh.",
+    "literal": "Truyền bản phản đối đào giếng phía trước 'đường' chính.",
+    "currentTitle": "Phàm đường tiền bất khả xuyên tỉnh.",
+    "currentCommentary": "堂 không mặc định = phòng khách. Không áp cho bể nước ngầm."
+  },
+  {
+    "id": "WAT-003",
+    "batch": "16",
+    "topic": "Nước Sạch, Giếng, Bể & Thoát Nước",
+    "original": "井於竈邊，虛耗年年。",
+    "hanViet": "Tỉnh ư táo biên, hư hao niên niên.",
+    "literal": "Giếng ở sát/bên bếp được truyền bản gắn với phán hao tổn.",
+    "currentTitle": "Tỉnh ư táo biên, hư hao niên niên.",
+    "currentCommentary": "Không chuyển thành sink-cooktop quy tắc, water tank-kitchen quy tắc hay medical claim."
+  },
+  {
+    "id": "WAT-004",
+    "batch": "16",
+    "topic": "Nước Sạch, Giếng, Bể & Thoát Nước",
+    "original": "廚內房前難鑿井，主人堂後莫開泉。",
+    "hanViet": "Trù nội phòng tiền nan tạc tỉnh, chủ nhân đường hậu mạc khai tuyền.",
+    "literal": "Đoạn văn phản đối đào giếng trong khu bếp/phía trước phòng và mở nguồn nước sau đường chính theo cách diễn đạt của truyền bản.",
+    "currentTitle": "Trù nội phòng tiền nan tạc tỉnh, chủ nhân đường hậu mạc khai tuyền.",
+    "currentCommentary": "Các danh từ không gian cổ cần đặt trong đúng ngữ cảnh; không áp dụng tùy tiện cho đường ống và bể nước hiện đại."
+  },
+  {
+    "id": "WAT-005",
+    "batch": "16",
+    "topic": "Nước Sạch, Giếng, Bể & Thoát Nước",
+    "original": "廳前天井停水不出。",
+    "hanViet": "Sảnh tiền thiên tỉnh đình thủy bất xuất.",
+    "literal": "Thiên tỉnh trước sảnh có nước đọng không thoát được bị truyền bản coi là bất lợi.",
+    "currentTitle": "Sảnh tiền thiên tỉnh đình thủy bất xuất.",
+    "currentCommentary": "Phần phán bệnh cổ không causal; hiện đại xử lý bằng drainage/moisture/sanitation."
+  },
+  {
+    "id": "WAT-006",
+    "batch": "16",
+    "topic": "Nước Sạch, Giếng, Bể & Thoát Nước",
+    "original": "溝清溝渠通浚，屋宇潔浄，無穢氣。",
+    "hanViet": "Câu thanh, câu cừ thông tuấn, ốc vũ khiết tịnh, vô uế khí.",
+    "literal": "Truyền bản đề cao mương/rãnh thông thoát, nhà cửa sạch và tránh uế khí.",
+    "currentTitle": "Câu thanh, câu cừ thông tuấn, ốc vũ khiết tịnh, vô uế khí.",
+    "currentCommentary": "Không dùng câu cổ để chứng minh cơ chế dịch tễ; chỉ giữ historical sanitation hình thái."
+  },
+  {
+    "id": "WAT-007",
+    "batch": "16",
+    "topic": "Nước Sạch, Giếng, Bể & Thoát Nước",
+    "original": "凡井于來龍生氣旺方開之，則人聰明長壽；若在來龍絕氣方開之，夭而愚頑。",
+    "hanViet": "Phàm tỉnh ư lai long sinh khí vượng phương khai chi, tắc nhân thông minh trường thọ; nhược tại lai long tuyệt khí phương khai chi, yểu nhi ngu ngoan.",
+    "literal": "Trong hệ của Dương Trạch Toát Yếu, giếng được đặt theo các khái niệm 'lai long', sinh khí vượng phương và tuyệt khí phương.",
+    "currentTitle": "Phàm tỉnh ư lai long sinh khí vượng phương khai chi, tắc nhân thông minh trường ",
+    "currentCommentary": "Không dùng phán trí tuệ/tuổi thọ như quan hệ nhân quả thực tế. Không chạy nếu lai long/sinh-tuyệt chưa được đúng hệ thống trường phái xác lập."
+  },
+  {
+    "id": "WAT-008",
+    "batch": "16",
+    "topic": "Nước Sạch, Giếng, Bể & Thoát Nước",
+    "original": "井不宜在竈邊。",
+    "hanViet": "Tỉnh bất nghi tại táo biên.",
+    "literal": "Truyền bản này cũng tránh đặt giếng cạnh bếp.",
+    "currentTitle": "Tỉnh bất nghi tại táo biên.",
+    "currentCommentary": "Có hình thái tương tự nguồn gia dụng, nhưng witness independence và borrowing chưa được chứng minh."
+  },
+  {
+    "id": "WAT-009",
+    "batch": "16",
+    "topic": "Nước Sạch, Giếng, Bể & Thoát Nước",
+    "original": "水不宜直流。",
+    "hanViet": "Thủy bất nghi trực lưu.",
+    "literal": "Trong phép phóng thủy của truyền bản, dòng thoát nước không được ưa dạng chảy thẳng.",
+    "currentTitle": "Thủy bất nghi trực lưu.",
+    "currentCommentary": "Không được làm ống thoát ngoằn ngoèo trái kỹ thuật chỉ để bắt chước cổ văn. Modern hydraulic performance overrides."
+  },
+  {
+    "id": "WAT-010",
+    "batch": "16",
+    "topic": "Nước Sạch, Giếng, Bể & Thoát Nước",
+    "original": "忌分流。",
+    "hanViet": "Kỵ phân lưu.",
+    "literal": "Trong đúng hệ phóng thủy đang nói, văn bản phản đối một dạng phân dòng.",
+    "currentTitle": "Kỵ phân lưu.",
+    "currentCommentary": "Không được hiểu là hệ thống thoát nước hiện đại không được chia nhánh; đó sẽ là sai kỹ thuật nghiêm trọng."
+  },
+  {
+    "id": "WAT-011",
+    "batch": "16",
+    "topic": "Nước Sạch, Giếng, Bể & Thoát Nước",
+    "original": "以鉛十餘斤寘之井中，水清而甘。",
+    "hanViet": "Dĩ duyên thập dư cân trí chi tỉnh trung, thủy thanh nhi cam.",
+    "literal": "Truyền bản ghi thực hành bỏ hơn mười cân chì vào giếng để nước được cho là trong/ngọt.",
+    "currentTitle": "Dĩ duyên thập dư cân trí chi tỉnh trung, thủy thanh nhi cam.",
+    "currentCommentary": "Lưu để nghiên cứu lịch sử; CẤM ứng dụng hiện đại."
+  },
+  {
+    "id": "WAT-012",
+    "batch": "16",
+    "topic": "Nước Sạch, Giếng, Bể & Thoát Nước",
+    "original": "凡開井近江近海處……有西南風則鑿之。",
+    "hanViet": "Phàm khai tỉnh cận giang cận hải xứ... hữu Tây Nam phong tắc tạc chi.",
+    "literal": "Truyền bản đưa ra một thực hành chọn ngày/hướng gió khi đào giếng gần sông/biển, với giả thiết gió có thể ảnh hưởng vị nước mạch.",
+    "currentTitle": "Phàm khai tỉnh cận giang cận hải xứ... hữu Tây Nam phong tắc tạc chi.",
+    "currentCommentary": "Không có quyền dùng như thủy văn hiện đại. Nguồn nước ngầm phải được khảo sát hydrogeology và xét nghiệm."
+  },
+  {
+    "id": "ROOF-001",
+    "batch": "17",
+    "topic": "Mái, Hiên & Nước Mưa",
+    "original": "凡屋外簷勿短促，斜雨潑壁。",
+    "hanViet": "Phàm ốc ngoại diêm vật đoản xúc, tà vũ bát bích.",
+    "literal": "Hiên ngoài nhà không nên quá ngắn/gấp; văn bản liên hệ với mưa xiên hắt vào tường.",
+    "currentTitle": "Phàm ốc ngoại diêm vật đoản xúc, tà vũ bát bích.",
+    "currentCommentary": "Phần bệnh tật không causal. Không bịa chiều dài hiên tối thiểu cổ."
+  },
+  {
+    "id": "ROOF-002",
+    "batch": "17",
+    "topic": "Mái, Hiên & Nước Mưa",
+    "original": "水簷頭相射。",
+    "hanViet": "Thủy diêm đầu tương xạ.",
+    "literal": "Đầu/luồng nước ở diềm mái được mô tả là 'tương xạ'.",
+    "currentTitle": "Thủy diêm đầu tương xạ.",
+    "currentCommentary": "Không biến thành 'hai mái nhọn chĩa nhau'. Đối tượng chính trong câu có chữ 水."
+  },
+  {
+    "id": "ROOF-003",
+    "batch": "17",
+    "topic": "Mái, Hiên & Nước Mưa",
+    "original": "簷水相射，主殺傷。",
+    "hanViet": "Diêm thủy tương xạ, chủ sát thương.",
+    "literal": "Bản Đa Năng Bỉ Sự cũng lưu motif nước mái/diềm mái tương xạ và gắn phán truyền thống.",
+    "currentTitle": "Diêm thủy tương xạ, chủ sát thương.",
+    "currentCommentary": "Không coi hai witness là độc lập nếu chưa chứng minh truyền bản."
+  },
+  {
+    "id": "ROOF-004",
+    "batch": "17",
+    "topic": "Mái, Hiên & Nước Mưa",
+    "original": "廨屋漏漿。",
+    "hanViet": "Giải ốc lậu tương.",
+    "literal": "Văn bản ghi một tình trạng nhà/mái bị 'lậu tương'; có yếu tố rò/dột nhưng nghĩa chính xác của 廨屋/漿 trong cụm cần thận trọng.",
+    "currentTitle": "Giải ốc lậu tương.",
+    "currentCommentary": "Chỉ giữ yếu tố quan sát thực địa dột/rò; không dùng hậu quả gia đình. Semantic phrase remains partial."
+  },
+  {
+    "id": "ROOF-005",
+    "batch": "17",
+    "topic": "Mái, Hiên & Nước Mưa",
+    "original": "棟梁偏欹。",
+    "hanViet": "Đống lương thiên y.",
+    "literal": "Đống/lương bị lệch nghiêng.",
+    "currentTitle": "Đống lương thiên y.",
+    "currentCommentary": "Hiện đại coi biến dạng kết cấu là vấn đề kỹ thuật; không dùng phán thị phi."
+  },
+  {
+    "id": "ROOF-006",
+    "batch": "17",
+    "topic": "Mái, Hiên & Nước Mưa",
+    "original": "屋勢傾斜。",
+    "hanViet": "Ốc thế khuynh tà.",
+    "literal": "Thế/khối nhà bị nghiêng.",
+    "currentTitle": "Ốc thế khuynh tà.",
+    "currentCommentary": "Không causal. Structural investigation overrides."
+  },
+  {
+    "id": "ROOF-007",
+    "batch": "17",
+    "topic": "Mái, Hiên & Nước Mưa",
+    "original": "瓦移棟摧。",
+    "hanViet": "Ngõa di đống tồi.",
+    "literal": "Ngói bị dịch chuyển và phần đống/ridge bị hư hại/suy sập.",
+    "currentTitle": "Ngõa di đống tồi.",
+    "currentCommentary": "Đây là condition survey input, không phải dấu hiệu vận mệnh."
+  },
+  {
+    "id": "ROOF-008",
+    "batch": "17",
+    "topic": "Mái, Hiên & Nước Mưa",
+    "original": "上宇下棟，以待風雨。",
+    "hanViet": "Thượng vũ hạ đống, dĩ đãi phong vũ.",
+    "literal": "Trong phần giải thích thuật ngữ mái, văn bản dẫn ý công trình có mái/đống để che đỡ gió mưa.",
+    "currentTitle": "Thượng vũ hạ đống, dĩ đãi phong vũ.",
+    "currentCommentary": "Không phải Feng Shui quy tắc; dùng để hiểu chức năng lịch sử của mái/diềm."
+  },
+  {
+    "id": "ROOF-009",
+    "batch": "17",
+    "topic": "Mái, Hiên & Nước Mưa",
+    "original": "其結𤬦之法……修斫口縫令密。",
+    "hanViet": "Kỳ kết ngõa chi pháp... tu trác khẩu phùng lệnh mật.",
+    "literal": "Phép lợp ngói yêu cầu xử lý mối/khe cho kín theo kỹ thuật của văn bản.",
+    "currentTitle": "Kỳ kết ngõa chi pháp... tu trác khẩu phùng lệnh mật.",
+    "currentCommentary": "Không sao chép cấu tạo Tống sang mái hiện đại; chỉ lưu nguyên tắc lịch sử về mối lợp."
+  },
+  {
+    "id": "ROOF-010",
+    "batch": "17",
+    "topic": "Mái, Hiên & Nước Mưa",
+    "original": "然後壘脊。",
+    "hanViet": "Nhiên hậu lũy tích.",
+    "literal": "Sau các bước lợp/định hàng ngói, văn bản mới nói đến dựng/làm ridge.",
+    "currentTitle": "Nhiên hậu lũy tích.",
+    "currentCommentary": "Không dùng như construction sequencing bắt buộc cho vật liệu hiện đại."
+  },
+  {
+    "id": "STR-001",
+    "batch": "18",
+    "topic": "Vật Liệu, Kết Cấu & Hư Hỏng",
+    "original": "凡構屋之制，皆以材為主；材有八等，度屋之大小，因而用之。",
+    "hanViet": "Phàm cấu ốc chi chế, giai dĩ tài vi chủ; tài hữu bát đẳng, độ ốc chi đại tiểu, nhân nhi dụng chi.",
+    "literal": "Trong hệ Doanh Tạo Pháp Thức, việc cấu tạo nhà lấy hệ 'tài' làm nền; tài chia tám cấp và dùng theo quy mô công trình.",
+    "currentTitle": "Phàm cấu ốc chi chế, giai dĩ tài vi chủ; tài hữu bát đẳng, độ ốc chi đại tiểu, n",
+    "currentCommentary": "Chứng minh tư duy tương quan quy mô–cấu kiện trong hệ Tống; không chuyển 8 cấp này sang code hiện đại."
+  },
+  {
+    "id": "STR-002",
+    "batch": "18",
+    "topic": "Vật Liệu, Kết Cấu & Hư Hỏng",
+    "original": "凡梁之大小各隨其廣分為三分以二分為厚。",
+    "hanViet": "Phàm lương chi đại tiểu các tùy kỳ quảng phân vi tam phân, dĩ nhị phân vi hậu.",
+    "literal": "Hệ này quy định một quan hệ tỷ lệ lịch sử giữa bề rộng và bề dày của lương.",
+    "currentTitle": "Quy Cách Tiết Diện Dầm Xà Chịu Lực (Doanh Tạo Pháp Thức)",
+    "currentCommentary": "Historical numeric/proportional claim; không dùng như tỷ lệ dầm bê tông/thép/gỗ hiện đại."
+  },
+  {
+    "id": "STR-003",
+    "batch": "18",
+    "topic": "Vật Liệu, Kết Cấu & Hư Hỏng",
+    "original": "若直梁狹即兩面安槫栿版……不得剜刻梁面。",
+    "hanViet": "Nhược trực lương hiệp tức lưỡng diện an đoàn phục bản... bất đắc oan khắc lương diện.",
+    "literal": "Văn bản mô tả một xử lý kỹ thuật cho lương hẹp và cấm một dạng khoét/khắc mặt lương trong hệ cấu tạo của sách.",
+    "currentTitle": "Gia Cố & Liên Kết Kết Cấu Gỗ (Doanh Tạo Pháp Thức)",
+    "currentCommentary": "Không biến thành phương án gia cường hiện đại; chỉ lưu lịch sử kỹ thuật."
+  },
+  {
+    "id": "STR-004",
+    "batch": "18",
+    "topic": "Vật Liệu, Kết Cấu & Hư Hỏng",
+    "original": "桑樹不宜作屋木。死樹不宜作棟梁。",
+    "hanViet": "Tang thụ bất nghi tác ốc mộc. Tử thụ bất nghi tác đống lương.",
+    "literal": "Nguồn đời Nguyên phản đối dùng gỗ dâu làm gỗ nhà và dùng cây chết làm đống/lương.",
+    "currentTitle": "Tang thụ bất nghi tác ốc mộc. Tử thụ bất nghi tác đống lương.",
+    "currentCommentary": "Không được gọi là 'Lý Giới/Lưu Cơ dạy'. Không đồng nhất cây chết với mọi gỗ tái sử dụng đã được kiểm định."
+  },
+  {
+    "id": "STR-005",
+    "batch": "18",
+    "topic": "Vật Liệu, Kết Cấu & Hư Hỏng",
+    "original": "更防有倒木作柱。令人不吉。",
+    "hanViet": "Cánh phòng hữu đảo mộc tác trụ, lệnh nhân bất cát.",
+    "literal": "Nguồn cảnh báo một trường hợp gọi là 'đảo mộc tác trụ'.",
+    "currentTitle": "Cánh phòng hữu đảo mộc tác trụ, lệnh nhân bất cát.",
+    "currentCommentary": "倒木 chưa khóa nghĩa kỹ thuật. Không tự dịch thành cây đổ, gỗ đặt ngược đầu hay đảo chiều thớ."
+  },
+  {
+    "id": "STR-006",
+    "batch": "18",
+    "topic": "Vật Liệu, Kết Cấu & Hư Hỏng",
+    "original": "梁棟偏欹。",
+    "hanViet": "Lương đống thiên y.",
+    "literal": "Lương/đống bị lệch nghiêng.",
+    "currentTitle": "Lương đống thiên y.",
+    "currentCommentary": "Khuyết tật hình học là có thật; dự báo xã hội truyền thống không mang tính nhân quả khoa học."
+  },
+  {
+    "id": "STR-007",
+    "batch": "18",
+    "topic": "Vật Liệu, Kết Cấu & Hư Hỏng",
+    "original": "門面上枋空蛀窟痕。",
+    "hanViet": "Môn diện thượng phương không chú quật ngân.",
+    "literal": "Phần phương phía trên cửa có dấu hốc/rỗng do bị mọt/sâu đục theo mô tả văn bản.",
+    "currentTitle": "Môn diện thượng phương không chú quật ngân.",
+    "currentCommentary": "Không xác định loài côn trùng chỉ từ câu này."
+  },
+  {
+    "id": "STR-008",
+    "batch": "18",
+    "topic": "Vật Liệu, Kết Cấu & Hư Hỏng",
+    "original": "棟柱空蛀。",
+    "hanViet": "Đống trụ không chú.",
+    "literal": "Đống/trụ bị rỗng do côn trùng đục theo truyền bản.",
+    "currentTitle": "Đống trụ không chú.",
+    "currentCommentary": "Cần kiểm tra kết cấu/mối mọt hiện đại; phán mù/điếc trong nguồn không causal."
+  },
+  {
+    "id": "STR-009",
+    "batch": "18",
+    "topic": "Vật Liệu, Kết Cấu & Hư Hỏng",
+    "original": "凡蓋屋，布椽勿當柱頭梁上著，須是兩邊騎梁著。",
+    "hanViet": "Phàm cái ốc, bố duyên vật đương trụ đầu lương thượng trước, tu thị lưỡng biên kỵ lương trước.",
+    "literal": "Nguồn đưa ra một cách bố trí duyên/rafter đối với đầu trụ và lương.",
+    "currentTitle": "Phàm cái ốc, bố duyên vật đương trụ đầu lương thượng trước, tu thị lưỡng biên kỵ",
+    "currentCommentary": "Hình học cấu tạo cần reconstruction đúng hệ khung cổ trước khi chuẩn hóa; chưa dùng cho modern framing."
+  },
+  {
+    "id": "STR-010",
+    "batch": "18",
+    "topic": "Vật Liệu, Kết Cấu & Hư Hỏng",
+    "original": "棟梁蛀空。",
+    "hanViet": "Đống lương chú không.",
+    "literal": "Bản Đa Năng Bỉ Sự cũng ghi đống/lương bị mọt rỗng.",
+    "currentTitle": "Đống lương chú không.",
+    "currentCommentary": "Chỉ làm cross-witness; không gọi là lời Lưu Cơ."
+  },
+  {
+    "id": "STR-011",
+    "batch": "18",
+    "topic": "Vật Liệu, Kết Cấu & Hư Hỏng",
+    "original": "凡桑樹不宜作屋木，死樹不宜作棟梁。",
+    "hanViet": "Phàm tang thụ bất nghi tác ốc mộc, tử thụ bất nghi tác đống lương.",
+    "literal": "Bản Đa Năng Bỉ Sự truyền lại cùng motif tránh gỗ dâu/cây chết.",
+    "currentTitle": "Phàm tang thụ bất nghi tác ốc mộc, tử thụ bất nghi tác đống lương.",
+    "currentCommentary": "Không chứng minh independence; không nâng độ chắc bằng cách đếm hai bản như hai tác giả."
+  },
+  {
+    "id": "STR-012",
+    "batch": "18",
+    "topic": "Vật Liệu, Kết Cấu & Hư Hỏng",
+    "original": "宅材鼎新。",
+    "hanViet": "Trạch tài đỉnh tân.",
+    "literal": "Nguồn dùng một cụm ca ngợi trạng thái vật liệu nhà mới/được đổi mới trong chuỗi phán truyền thống.",
+    "currentTitle": "Trạch tài đỉnh tân.",
+    "currentCommentary": "Không suy rằng 'cứ thay toàn bộ vật liệu cũ là tốt'; repair/reuse phải dựa condition + heritage + engineering."
+  },
+  {
+    "id": "TIM-001",
+    "batch": "19",
+    "topic": "Trình Tự Xây Dựng & Sửa Chữa",
+    "original": "彼家云吉，此家云凶。",
+    "hanViet": "Bỉ gia vân cát, thử gia vân hung.",
+    "literal": "Lời tựa nêu tình trạng các nhà thuật số phán cát-hung trái ngược nhau.",
+    "currentTitle": "Bỉ gia vân cát, thử gia vân hung.",
+    "currentCommentary": "Chính nguồn chuẩn hóa trạch nhật thừa nhận mâu thuẫn giữa các phái; hệ thống học thuật ghi nhận sự đa dạng chứ không giả định mọi hệ phái đồng nhất."
+  },
+  {
+    "id": "TIM-002",
+    "batch": "19",
+    "topic": "Trình Tự Xây Dựng & Sửa Chữa",
+    "original": "捏造大言。",
+    "hanViet": "Niết tạo đại ngôn.",
+    "literal": "Tấu nghị phê phán việc bịa dựng/phóng đại lời lẽ trong tranh luận về lựa chọn ngày giờ.",
+    "currentTitle": "Niết tạo đại ngôn.",
+    "currentCommentary": "Dùng làm anti-hallucination invariant; không phải lời phủ định toàn bộ trạch nhật."
+  },
+  {
+    "id": "TIM-003",
+    "batch": "19",
+    "topic": "Trình Tự Xây Dựng & Sửa Chữa",
+    "original": "選擇由事起也。",
+    "hanViet": "Tuyển trạch do sự khởi dã.",
+    "literal": "Việc lựa chọn ngày giờ bắt đầu từ chính loại sự việc cần làm.",
+    "currentTitle": "Tuyển trạch do sự khởi dã.",
+    "currentCommentary": "Đây là căn cứ trực tiếp xác định thứ tự ưu tiên sự kiện trong quá trình khởi tạo công trình."
+  },
+  {
+    "id": "TIM-004",
+    "batch": "19",
+    "topic": "Trình Tự Xây Dựng & Sửa Chữa",
+    "original": "修造動土　豎柱上梁",
+    "hanViet": "Tu tạo động thổ; thụ trụ thượng lương.",
+    "literal": "Quyển Dụng sự liệt kê sửa/xây-động thổ và dựng cột-thượng lương thành các mục riêng.",
+    "currentTitle": "Tu tạo động thổ; thụ trụ thượng lương.",
+    "currentCommentary": "Không dùng một ngày 'động thổ' cho mọi mốc thi công."
+  },
+  {
+    "id": "TIM-005",
+    "batch": "19",
+    "topic": "Trình Tự Xây Dựng & Sửa Chữa",
+    "original": "興造動土〈修造同〉",
+    "hanViet": "Hưng tạo động thổ (tu tạo đồng).",
+    "literal": "Trong mục này, sách ghi Hưng tạo động thổ và chú rằng Tu tạo cùng loại.",
+    "currentTitle": "Hưng tạo động thổ (tu tạo đồng).",
+    "currentCommentary": "Chỉ equivalence trong ontology nguồn này; không mở rộng sang mọi động tác xây dựng."
+  },
+  {
+    "id": "TIM-006",
+    "batch": "19",
+    "topic": "Trình Tự Xây Dựng & Sửa Chữa",
+    "original": "移徙　安牀",
+    "hanViet": "Di tỷ; an sàng.",
+    "literal": "Chuyển chỗ ở và an giường là hai mục riêng trong danh mục dân dụng.",
+    "currentTitle": "Trạch Nhật Nhập Trạch & An Sàng (Hiệp Kỷ Biện Phương Thư)",
+    "currentCommentary": "Move-in và bed-installation timing không được gộp."
+  },
+  {
+    "id": "TIM-007",
+    "batch": "19",
+    "topic": "Trình Tự Xây Dựng & Sửa Chữa",
+    "original": "破屋壞垣",
+    "hanViet": "Phá ốc hoại viên.",
+    "literal": "Phá nhà/hủy tường được ghi thành một loại sự việc riêng.",
+    "currentTitle": "Phân Biệt Nghi Lễ & Quy Trình Thi Công An Toàn",
+    "currentCommentary": "Tách biệt nghi thức truyền thống với kỹ thuật thi công xây dựng; việc phá dỡ hiện đại bắt buộc phải tuân thủ an toàn lao động và kỹ thuật công trình."
+  },
+  {
+    "id": "TIM-008",
+    "batch": "19",
+    "topic": "Trình Tự Xây Dựng & Sửa Chữa",
+    "original": "破土　安葬　啓攢",
+    "hanViet": "Phá thổ; an táng; khải toàn.",
+    "literal": "Trong danh sách dân dụng, Phá thổ nằm cùng nhóm thuật ngữ việc tang/táng.",
+    "currentTitle": "Phá thổ; an táng; khải toàn.",
+    "currentCommentary": "Chặn lỗi dịch 破土 thành đồng nghĩa với động thổ xây nhà."
+  },
+  {
+    "id": "TIM-009",
+    "batch": "19",
+    "topic": "Trình Tự Xây Dựng & Sửa Chữa",
+    "original": "豎柱上梁",
+    "hanViet": "Thụ trụ thượng lương.",
+    "literal": "Dựng cột/thượng lương có mục 宜忌 riêng, không chỉ là tên khác của động thổ.",
+    "currentTitle": "Thụ trụ thượng lương.",
+    "currentCommentary": "Không tự đồng nhất với ngày đổ mái, cất nóc RC, lắp dầm thép hoặc hoàn thành roof."
+  },
+  {
+    "id": "TIM-010",
+    "batch": "19",
+    "topic": "Trình Tự Xây Dựng & Sửa Chữa",
+    "original": "取正　定平　立基　築基",
+    "hanViet": "Thủ chính; định bình; lập cơ; trúc cơ.",
+    "literal": "Doanh Tạo Pháp Thức quyển 3 phân các hạng mục định hướng/cao độ và nền-móng thành các mục kỹ thuật riêng.",
+    "currentTitle": "Thủ chính; định bình; lập cơ; trúc cơ.",
+    "currentCommentary": "Không khẳng định bốn tiêu đề này tự nó là toàn bộ chronological schedule hiện đại; dùng làm technical taxonomy."
+  },
+  {
+    "id": "TIM-011",
+    "batch": "19",
+    "topic": "Trình Tự Xây Dựng & Sửa Chữa",
+    "original": "造石作次序之制有六。",
+    "hanViet": "Tạo thạch tác thứ tự chi chế hữu lục.",
+    "literal": "Sách có một trình tự kỹ thuật sáu bước riêng cho công tác đá.",
+    "currentTitle": "Tạo thạch tác thứ tự chi chế hữu lục.",
+    "currentCommentary": "Chứng minh 次序 ở đây là quy trình nghề xây dựng, không phải trạch nhật."
+  },
+  {
+    "id": "TIM-012",
+    "batch": "19",
+    "topic": "Trình Tự Xây Dựng & Sửa Chữa",
+    "original": "總鋪作次序",
+    "hanViet": "Tổng phô tác thứ tự.",
+    "literal": "Quyển 4 có riêng mục 'Tổng phô tác thứ tự' cho hệ cấu kiện phô tác.",
+    "currentTitle": "Tổng phô tác thứ tự.",
+    "currentCommentary": "Không phải bằng chứng cát-hung."
+  },
+  {
+    "id": "TIM-013",
+    "batch": "19",
+    "topic": "Trình Tự Xây Dựng & Sửa Chữa",
+    "original": "凡修築垣牆建造宅宇。",
+    "hanViet": "Phàm tu trúc viên tường kiến tạo trạch vũ.",
+    "literal": "Trạch Kinh có bàn trực tiếp việc tu sửa tường và xây dựng nhà.",
+    "currentTitle": "Phàm tu trúc viên tường kiến tạo trạch vũ.",
+    "currentCommentary": "Textual tradition is relevant, nhưng không được viết 'Hoàng Đế dạy' vì Tứ Khố xác định đề Hoàng Đế là 依託."
+  },
+  {
+    "id": "OCC-001",
+    "batch": "20",
+    "topic": "Hoàn Thành, Nghiệm Thu & Nhập Trạch",
+    "original": "移徙",
+    "hanViet": "Di tỷ.",
+    "literal": "Chuyển dời/chuyển chỗ ở là một mục sự việc riêng trong danh mục dân dụng.",
+    "currentTitle": "Trình Tự Nhập Trạch & Khởi Sự Cư Trú (Hiệp Kỷ Biện Phương Thư)",
+    "currentCommentary": "—"
+  },
+  {
+    "id": "OCC-002",
+    "batch": "20",
+    "topic": "Hoàn Thành, Nghiệm Thu & Nhập Trạch",
+    "original": "掃舍宇",
+    "hanViet": "Tảo xá vũ.",
+    "literal": "Quét/dọn nhà cửa là một mục sự việc riêng.",
+    "currentTitle": "Tảo xá vũ.",
+    "currentCommentary": "—"
+  },
+  {
+    "id": "OCC-003",
+    "batch": "20",
+    "topic": "Hoàn Thành, Nghiệm Thu & Nhập Trạch",
+    "original": "安牀",
+    "hanViet": "An sàng.",
+    "literal": "An giường là một event riêng trong hệ tuyển trạch của quyển 11.",
+    "currentTitle": "An sàng.",
+    "currentCommentary": "—"
+  },
+  {
+    "id": "OCC-004",
+    "batch": "20",
+    "topic": "Hoàn Thành, Nghiệm Thu & Nhập Trạch",
+    "original": "俟工作完備，別擇吉年月入宅歸火。",
+    "hanViet": "Sĩ công tác hoàn bị, biệt trạch cát niên nguyệt nhập trạch quy hỏa.",
+    "literal": "Tư liệu được bộ sách tập hợp nói đợi công việc hoàn bị rồi chọn thời điểm khác để vào nhà/quy hỏa.",
+    "currentTitle": "Sĩ công tác hoàn bị, biệt trạch cát niên nguyệt nhập trạch quy hỏa.",
+    "currentCommentary": "Điểm quý giá: chữ 入宅 có thật trong cổ liệu này; nhưng không được nâng thành mục v11."
+  },
+  {
+    "id": "OCC-005",
+    "batch": "20",
+    "topic": "Hoàn Thành, Nghiệm Thu & Nhập Trạch",
+    "original": "論入宅法。",
+    "hanViet": "Luận nhập trạch pháp.",
+    "literal": "Tư liệu tập hợp có hẳn tiêu đề/bàn về phép nhập trạch.",
+    "currentTitle": "Luận nhập trạch pháp.",
+    "currentCommentary": "—"
+  },
+  {
+    "id": "OCC-006",
+    "batch": "20",
+    "topic": "Hoàn Thành, Nghiệm Thu & Nhập Trạch",
+    "original": "俟畢工後，再擇吉日……從吉方入宅。",
+    "hanViet": "Sĩ tất công hậu, tái trạch cát nhật... tòng cát phương nhập trạch.",
+    "literal": "Tư liệu phân biệt hoàn công với thời điểm vào nhà sau đó.",
+    "currentTitle": "Sĩ tất công hậu, tái trạch cát nhật... tòng cát phương nhập trạch.",
+    "currentCommentary": "Không dùng để thay pháp luật nghiệm thu; chỉ là traditional sequence hình thái."
+  },
+  {
+    "id": "OCC-007",
+    "batch": "20",
+    "topic": "Hoàn Thành, Nghiệm Thu & Nhập Trạch",
+    "original": "庚宅德，安門。",
+    "hanViet": "Canh trạch đức, an môn.",
+    "literal": "Trạch Kinh có dùng thuật ngữ an môn trong bố trí/phương vị.",
+    "currentTitle": "Canh trạch đức, an môn.",
+    "currentCommentary": "Không phải bằng chứng về lịch An Môn độc lập; không gọi là lời Hoàng Đế."
+  },
+  {
+    "id": "OCC-008",
+    "batch": "20",
+    "topic": "Hoàn Thành, Nghiệm Thu & Nhập Trạch",
+    "original": "辛金匱，天井宜置門。",
+    "hanViet": "Tân kim quỹ, thiên tỉnh nghi trí môn.",
+    "literal": "Bản văn còn bàn vị trí đặt cửa trong hệ phương vị của sách.",
+    "currentTitle": "Tân kim quỹ, thiên tỉnh nghi trí môn.",
+    "currentCommentary": "Spatial placement != timing event."
+  }
+]
