@@ -397,18 +397,18 @@
       const sourceName = entry.source_title || 'Cổ Thư Chánh Tông';
 
       return `<article class="dt-entry" id="${escapeHtml(entry.id)}" style="margin-bottom:1.8rem; border:1px solid rgba(255,255,255,0.12); background:#111827; border-radius:12px; overflow:hidden;">
-        <header class="dt-entry-header" style="background:#1E293B; padding:0.9rem 1.25rem; border-bottom:1px solid rgba(255,255,255,0.1);">
+        <header class="dt-entry-header" style="background:#1E293B; border-bottom:1px solid rgba(255,255,255,0.1);">
           <h2 style="font-size:1.05rem; font-weight:700; color:#F8FAFC; margin:0;">${escapeHtml(entry.title || entry.id)}</h2>
         </header>
-        <div class="dt-entry-body" style="padding:1.25rem;">
+        <div class="dt-entry-body">
           ${literal}
-          <div class="dt-layer dt-layer-commentary" style="background:rgba(56,189,248,0.03); border-left:3px solid #38BDF8; padding:1.1rem 1.25rem; border-radius:0 8px 8px 0; margin-top:0.9rem;">
+          <div class="dt-layer dt-layer-commentary" style="background:rgba(56,189,248,0.03); border-left:3px solid #38BDF8; border-radius:0 8px 8px 0; margin-top:0.9rem;">
             <span class="dt-layer-label" style="color:#38BDF8; font-weight:700; font-size:0.76rem; letter-spacing:0.06em; text-transform:uppercase;">Giải nghĩa chuyên sâu</span>
             <div class="dt-commentary-content" style="margin-top:0.4rem;">${parsedCommentary}</div>
           </div>
           ${original}${hanViet}
         </div>
-        <footer class="dt-entry-meta" style="background:#0B0F17; padding:0.75rem 1.25rem; border-top:1px solid rgba(255,255,255,0.08); display:flex; gap:0.5rem; flex-wrap:wrap; align-items:center;">
+        <footer class="dt-entry-meta" style="background:#0B0F17; border-top:1px solid rgba(255,255,255,0.08); display:flex; gap:0.5rem; flex-wrap:wrap; align-items:center;">
           <span class="dt-badge" style="background:rgba(255,255,255,0.06); color:#E2E8F0; border:1px solid rgba(255,255,255,0.12); font-size:0.75rem; padding:0.25rem 0.6rem; border-radius:6px;">Nguồn: ${escapeHtml(sourceName)}</span>
           <span class="dt-badge dt-badge-evidence" style="background:rgba(56,189,248,0.12); color:#38BDF8; border:1px solid rgba(56,189,248,0.25); font-size:0.75rem; padding:0.25rem 0.6rem; border-radius:6px; font-weight:600;">Chánh Tông Cổ Pháp</span>
         </footer>
