@@ -29,7 +29,7 @@
     "sources": 124,
     "records": 693,
     "articles": 20,
-    "articleEntries": 59
+    "articleEntries": 118
   },
   "qa": {
     "JSON_PARSE": "PASS",
@@ -50,7 +50,7 @@
       "title": "Khởi Tâm Cổ Thư",
       "description": "Tâm pháp người làm phong thủy, nguyên tắc tiếp cận cổ thư, phân định chánh tà và gạt bỏ mê tín dị đoan.",
       "sourceFile": "BATCH01/02_VIET_HOA/pilot_viet_hoa.md",
-      "entryCount": 4,
+      "entryCount": 6,
       "stage": 1
     },
     {
@@ -59,7 +59,7 @@
       "title": "Khảo Sát Đại Thế",
       "description": "Quan sát đại thể sơn hà, long mạch khu vực, môi trường sinh thái trước khi đi vào phân tích khuôn viên đất.",
       "sourceFile": "BATCH02/03_VIET_HOA/chon_dat_dai_the.md",
-      "entryCount": 4,
+      "entryCount": 13,
       "stage": 1
     },
     {
@@ -68,7 +68,7 @@
       "title": "An Toàn Thực Địa",
       "description": "Sáu trụ cột an toàn bắt buộc: kết cấu chịu lực, ổn định nền móng, chống ngập lụt, PCCC, quy chuẩn pháp lý và mạng điện.",
       "sourceFile": "BATCH03/02_HARD_GATE/pipeline.md",
-      "entryCount": 4,
+      "entryCount": 9,
       "stage": 1
     },
     {
@@ -77,7 +77,7 @@
       "title": "Long Thế Thủy Khẩu",
       "description": "Nhận diện thế đất tàng phong tụ khí, tứ linh bao bọc, sa pháp đắc cách và thủy khẩu quan lan.",
       "sourceFile": "BATCH04/03_VIET_HOA/dia_the_thuc_chien.md",
-      "entryCount": 4,
+      "entryCount": 12,
       "stage": 2
     },
     {
@@ -86,7 +86,7 @@
       "title": "Hình Đất Đường Nước",
       "description": "Nhận diện hình dáng lô đất vuông, chữ nhật, tam giác, thang; thế đường uốn lượn ôm lưng vs phản cung trực xung.",
       "sourceFile": "BATCH05/03_VIET_HOA/hinh_dat_duong_nuoc.md",
-      "entryCount": 3,
+      "entryCount": 15,
       "stage": 2
     },
     {
@@ -95,7 +95,7 @@
       "title": "Xử Lý Đất Méo",
       "description": "Phương pháp Bát Túc Phương bổ khuyết đất khuyết góc Cấn, Càn, Tốn, Khôn; định tâm nhà đa giác bất quy tắc.",
       "sourceFile": "BATCH06/03_VIET_HOA/bat_tuc_phuong.md",
-      "entryCount": 3,
+      "entryCount": 14,
       "stage": 2
     },
     {
@@ -104,7 +104,7 @@
       "title": "Phương Vị Đặt Nhà",
       "description": "Định vị khối nhà trên khu đất, khoảng lùi sân trước sau, tương quan công trình lân cận và khóa số độ La Kinh.",
       "sourceFile": "BATCH07/03_VIET_HOA/dat_nha_tren_dat.md",
-      "entryCount": 3,
+      "entryCount": 9,
       "stage": 2
     },
     {
@@ -113,7 +113,7 @@
       "title": "Cổng Ngõ Cửa Chính",
       "description": "Khai môn nạp khí khẩu, tỷ lệ cửa theo quy mô nhà, tránh trực xung thông phong, thước Lỗ Ban 52.2cm.",
       "sourceFile": "BATCH08/03_VIET_HOA/cong_cua_loi_vao.md",
-      "entryCount": 4,
+      "entryCount": 7,
       "stage": 3
     },
     {
@@ -194,7 +194,7 @@
       "title": "Mái Hiên Thoát Mưa",
       "description": "Độ vươn hiên cản mưa hắt, độ dốc thoát nước nhanh, kết cấu đòn dông xà gồ và giải pháp chống nóng mái.",
       "sourceFile": "BATCH17/04_VIET_HOA/mai_hien_nuoc_mua.md",
-      "entryCount": 2,
+      "entryCount": 3,
       "stage": 4
     },
     {
@@ -212,7 +212,7 @@
       "title": "Khởi Công Trạch Nhật",
       "description": "Bản chất trạch nhật cổ thư, trình tự động thổ, thượng lương, cất nóc an toàn, tránh phương Thái Tuế Tam Sát.",
       "sourceFile": "BATCH19/05_VIET_HOA/trinh_tu_xay_dung_trach_nhat.md",
-      "entryCount": 2,
+      "entryCount": 3,
       "stage": 5
     },
     {
@@ -221,7 +221,7 @@
       "title": "Nghiệm Thu Nhập Trạch",
       "description": "Tiêu chuẩn sẵn sàng ở, làm sạch thanh tẩy không gian, nghi thức an vị bàn thờ, giữ ấm gia đạo an cư lạc nghiệp.",
       "sourceFile": "BATCH20/04_VIET_HOA/hoan_thanh_nhap_trach.md",
-      "entryCount": 2,
+      "entryCount": 3,
       "stage": 5
     }
   ],
