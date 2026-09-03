@@ -406,25 +406,25 @@ const TAMHOP_FENGSHUI_PART_7 = {
   },
   "cosmological_stages": [
     {
-      "stage": "Pháp 22 - 24: Nhóm Nước Đến (Lai Thủy) — Trường Sinh, Đế Vượng, Quan Đới, Lâm Quan",
-      "state": "Bồi đắp nguồn sống • Đỉnh cao tài lộc • Khoa cử thăng quan",
-      "detailed_explanation": "Nước từ 4 cung Cát tinh (Trường Sinh, Đế Vượng, Quan Đới, Lâm Quan) bắt buộc phải chảy chầm chậm uốn lượn hướng vào trước cửa nhà để bồi tụ nhân đinh, của cải và công danh sự nghiệp.",
-      "practical_manifestation": "Nhà mở cổng hoặc dẫn suối cảnh quan từ phương Sinh Vượng chầu vào sân trước.",
-      "key_takeaway": "Thu nạp dòng nước cát tinh là nguyên tắc khởi sinh sự thịnh vượng."
+      "stage": "Pháp 22 - 24: Nhóm Nước Đến (Lai Thủy) — Trường Sinh, Đế Vượng, Quan Đới, Lâm Quan & Ma Trận 8 Trục Ứng Nghiệm",
+      "state": "Bồi đắp nguồn sống • Đỉnh cao tài lộc • Khoa cử thăng quan • Vượng đinh vượng tài",
+      "detailed_explanation": "Cổ thư 《Địa Lý Ngũ Quyết》 và 《Dương Trạch Thập Thư》 định nghĩa chi tiết hậu quả nhân sự của dòng nước chảy tới (Lai Thủy):\n\n1. TRƯỜNG SINH LAI THỦY:\n• Nhân đinh & Con cái: CHUYÊN CHỦ VỀ CON CÁI VÀ DÒNG DÕI. Đa đinh đa phúc, sinh con quý tử hiền đức, con cháu hiếu đễ kính nhường.\n• Sức khỏe & Thọ yểu: Sống lâu trường thọ (Ấu tử thông minh thọ mệnh trường), ít đau ốm, tinh thần minh mẫn.\n• Tài lộc: Tích tụ điền sản đều đặn, tài vận trong sạch vững chắc.\n• Phân phòng: Phát phúc mạnh nhất cho TRƯỞNG PHÒNG (Con trai cả và các chi 1-4-7).\n\n2. ĐẾ VƯỢNG LAI THỦY:\n• Tài lộc: CHUYÊN CHỦ VỀ ĐỈNH CAO TÀI SẢN VÀ KINH DOANH. Uông dương trừng triệt quy đường hạ, đôi kim tích ngọc mãn đình thâm, kinh thương đại phát, giàu sang cự phú.\n• Công danh: Nắm giữ địa vị xã hội cao, tiếng tăm lừng lẫy.\n• Phân phòng: Phát phúc đồng đều cho cả TRƯỞNG PHÒNG VÀ TRUNG PHÒNG (Chi 1-4-7 và Chi 2-5-8).\n\n3. QUAN ĐỚI & LÂM QUAN LAI THỦY:\n• Công danh & Khoa cử: CHUYÊN CHỦ VỀ HỌC VẤN, THI CỬ VÀ BỔNG LỘC QUAN CHỨC. Tuổi trẻ đỗ đạt khôi khoa (Thiếu niên tảo đăng hoàng kim bảng), thăng quan tiến chức liên tục, được ân phong bổng lộc triều đình.\n• Phân phòng: Phát phúc đặc biệt cho THIẾU PHÒNG (Con trai út và các chi 3-6-9).\n\n4. HÔN NHÂN & GIA ĐẠO:\n• Cung Sinh Vượng triều hội kết hợp minh đường bằng phẳng, nước trong xanh êm đềm: Gia đình êm ấm, phu phụ tề mi, vợ hiền dâu thảo, không có tai tiếng đào hoa ô nhục.",
+      "practical_manifestation": "Nhà hướng Canh đón nước từ phương Khôn (Lâm Quan) chảy vào sảnh minh đường: Gia đình vừa có người đỗ đạt thăng chức vừa kinh doanh tích lũy ngàn vàng.",
+      "key_takeaway": "Nước đến từ Sinh - Vượng - Quan Đới - Lâm Quan là nguồn dưỡng chất toàn diện cho cả Nhân Đinh, Tài Lộc và Công Danh."
     },
     {
-      "stage": "Pháp 25 - 28: Nhóm Nước Đi (Khứ Thủy) — Mộ Khố, Tuyệt Vị, Suy Vị, Thai Vị",
-      "state": "Cất kho kín đáo • Lộc Tồn lưu tận • Tự Vượng bảo toàn • Tự Sinh bình an",
-      "detailed_explanation": "Nước thải và nước mưa gom chảy ngầm rút ra ở cung Mộ Khố (Chính Vị) giúp tích lũy của cải bền vững; xả ở cung Tuyệt giúp tống tiễn sạch sẽ hung sát; xả ở cung Suy/Thai giúp bảo tồn sinh khí.",
-      "practical_manifestation": "Bố trí hố ga ngầm thoát nước đúng cung Mộ Khố theo Cục của la bàn.",
-      "key_takeaway": "Tiêu thoát nước đúng cung vị thoái khí giữ trọn vẹn tài sản cho gia tộc."
+      "stage": "Pháp 25 - 28: Nhóm Nước Đi (Khứ Thủy) — Mộ Khố, Tuyệt Vị, Suy Vị, Thai Vị & Cơ Chế Khóa Kho Của",
+      "state": "Khóa kho kín đáo • Lộc Tồn lưu tận • Tự Vượng bảo toàn • Tự Sinh bình an",
+      "detailed_explanation": "Quy chuẩn tiêu thoát nước thải và nước mưa (Khứ Thủy) ảnh hưởng sống còn đến việc giữ của và bài trừ tà khí:\n\n1. MỘ KHỐ KHỨ THỦY (Chính Vị Tiêu Thủy):\n• Cơ chế: Nước ngầm gom thoát êm đềm ra ở cung Mộ Khố (Thủy Cục xuất Thìn, Hỏa Cục xuất Tuất, Kim Cục xuất Sửu, Mộc Cục xuất Mùi).\n• Hậu quả nhân sự: Đóng kín kho của (Kim khố tỏa bế vạn niên lương), tài sản tích lũy truyền đời, con cháu muôn đời ấm no không bị phá sản thất thoát.\n\n2. TUYỆT VỊ KHỨ THỦY (Lộc Tồn Lưu Tận):\n• Cơ chế: Nước thoát ở cung Tuyệt tống khứ toàn bộ hung thần và khí uế tạp ra khỏi trạch địa.\n• Hậu quả nhân sự: Chuyển họa thành cát (Chuyển họa vi tường), được phong thưởng đai ngọc bội cá vàng (Bội kim ngư), gia đạo chuyển từ khó khăn sang sung túc.\n\n3. SUY VỊ KHỨ THỦY (Tự Vượng):\n• Cơ chế: Nước suy tàn thoát đi không phạm vào cung Sinh Vượng.\n• Hậu quả nhân sự: Phát phúc du trường, gia sản tích lũy bền vững, không sợ suy vong đột ngột.\n\n4. THAI VỊ KHỨ THỦY (Tự Sinh):\n• Nước rút êm đềm ở cung Thai giúp dưỡng sinh khí thanh khiết, cuộc sống an nhiên tự tại.",
+      "practical_manifestation": "Bố trí rãnh thoát nước ngầm của công trình chảy vòng ra phía sau và thoát đúng phương Mùi (Mộc Cục) giúp doanh nghiệp vận hành ổn định không thất thoát vốn.",
+      "key_takeaway": "Nước đi đúng cung thoái khí Mộ Khố chính là chìa khóa khóa chặt kho tàng của cải gia tộc."
     },
     {
-      "stage": "Pháp 29 - 32: Hệ Thống Hoàng Tuyền Sát — Bát Lộ, Bát Sát, Bạch Hổ vs Cứu Bần Hoàng Tuyền",
-      "state": "Phân biệt rạch ròi Khứ Thủy (Sát Nhân) vs Lai Thủy (Cứu Bần)",
-      "detailed_explanation": "Phương vị Lâm Quan mang đại phúc trời ban: Nếu xả nước thoát ra là tự đổ bổng lộc đi (Sát Nhân Hoàng Tuyền); nếu đón nước chảy tới là rước đại tài lộc vào nhà (Cứu Bần Hoàng Tuyền).",
-      "practical_manifestation": "Nhà hướng Canh đón nước từ phương Khôn chảy vào sân đạt cách Cứu Bần Hoàng Tuyền đại phát.",
-      "key_takeaway": "Phân biệt Nước Đến hay Nước Đi là lằn ranh giữa phúc đức và tai họa."
+      "stage": "Pháp 29 - 32: Hung Sát Ứng Nghiệm Nhân Sự — Hoàng Tuyền, Phá Thai Thần & Vượng Khứ Xung Sinh",
+      "state": "Chi tiết hóa tai họa: Tuyệt tự • Phá sản • Quan tụng • Đoản thọ • Bệnh tật",
+      "detailed_explanation": "Khi phạm vào các thế Thủy Sát, tai họa không đến mơ hồ mà giáng xuống cụ thể từng khía cạnh:\n\n1. VƯỢNG KHỨ XUNG SINH (Nước Đế Vượng đâm nát cung Trường Sinh):\n• Nhân đinh: TỔN HẠI TRẦM TRỌNG ĐẾN CON CÁI. Con trai trưởng đoản thọ, sinh con khó nuôi, sẩy thai liên tiếp, nguy cơ tuyệt tự dòng họ.\n• Tài lộc: Tiền vào cửa trước trôi cửa sau, ban đầu có thể kiếm nhiều tiền nhưng về sau sạch túi.\n\n2. PHÁ THAI THẦN (Nước xả tại cung Thai):\n• Hậu quả: Phụ nữ trong nhà sinh nở khó khăn, trụy thai liên tục, tổn hại thai nhi, gia đạo lục đục.\n\n3. SÁT NHÂN HOÀNG TUYỀN (Xả nước tại cung Lâm Quan):\n• Hậu quả: Công danh gãy đổ, quan chức bị giáng truất bãi nhiệm, kiện tụng quan phi liên miên, người nhà mắc bệnh hiểm nghèo hoặc tai nạn bất ngờ qua đời.\n\n4. BẠCH HỔ HOÀNG TUYỀN (Nước bên Hữu xộc sang Tả phá cung Sinh Lộc):\n• Hậu quả: Phụ nữ trong nhà lấn át tác oai tác quái, con trai cả (Trưởng phòng) gặp đại họa thương tật đổ máu, anh em trong nhà cốt nhục tương tàn.",
+      "practical_manifestation": "Công trình có cống thoát nước phạm Hoàng Tuyền cần lập tức chuyển dịch hố ga sang cung Mộ Khố để cắt đứt nguồn sát khí.",
+      "key_takeaway": "Hiểu rõ họa phúc cụ thể của từng thế sát giúp người thầy phong thủy xử lý tận gốc tai ương cho gia chủ."
     }
   ]
 };

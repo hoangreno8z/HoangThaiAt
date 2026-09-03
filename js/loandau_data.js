@@ -137,39 +137,39 @@ const LOANDAU_PART_2 = {
   },
   "cosmological_stages": [
     {
-      "stage": "Tinh Phong 1: Tham Lang Mộc Tinh (貪狼木星) — Búp Măng Vươn Thẳng",
-      "state": "Mộc Khí • Đỉnh nhọn tròn thanh tú",
-      "detailed_explanation": "Tham Lang là ngôi sao đứng đầu Cát Tinh, hình thế núi vươn thẳng đứng hiên ngang như búp măng tre mùa xuân mới nhú, đỉnh hơi tròn thanh tú. Năng lượng của Tham Lang chủ về văn chương, trí tuệ đỉnh cao, khoa bảng hiển hách. Nơi nào có Tham Lang Tinh Phong chầu về, nơi đó con cháu đời đời đỗ đạt trạng nguyên, tiến sĩ, văn nhân thi sĩ lẫy lừng.",
-      "practical_manifestation": "Ngọn núi hình ngòi bút lông (Văn Bút Sơn) sừng sững trước làng, thường thấy ở các vùng đất địa linh nhân kiệt sinh nhiều danh sĩ.",
-      "key_takeaway": "Tham Lang phát văn học khoa bảng, chủ quý hơn chủ phú."
+      "stage": "Cát Tinh 1: Tham Lang Mộc Tinh — Búp Măng Văn Chương & Khoa Cử Hiển Hách",
+      "state": "Mộc Khí • Đỉnh nhọn tròn thanh tú • Chủ Quý & Khoa Bảng",
+      "detailed_explanation": "Cổ thư 《Hám Long Kinh》 và Quyển 2 khảo chứng chi tiết hậu quả nhân sự của Tham Lang:\n\n• Khoa cử & Học vấn: ĐỨNG ĐẦU CÁC SAO VỀ HỌC THUẬT. Con cháu đời đời đỗ đạt thủ khoa, tiến sĩ, văn chương cái thế, làm quan thanh liêm tới bậc đại học sĩ.\n• Nhân đinh & Dòng dõi: Vượng nam đinh, sinh con trai quý tử khôi ngô tuấn tú, tôn ti trật tự, hiếu đễ kính nhường.\n• Phân phòng: Phát phúc mạnh nhất cho TRƯỞNG PHÒNG (Con trai cả).\n• Phản chứng Bệnh hình (Bị nứt toác, trơ đá sắc lởm chởm): Sinh người cô độc, lập dị, thoái lui xuất gia đi tu hoặc phiêu bạt giang hồ, khó thành gia thất.",
+      "practical_manifestation": "Ngọn núi hình ngòi bút lông (Văn Bút Sơn) sừng sững trước minh đường tạo nên các vùng đất địa linh nhân kiệt nhiều trạng nguyên.",
+      "key_takeaway": "Tham Lang chủ về văn học khoa bảng và nhân đinh thuần khiết, chủ Quý hơn chủ Phú."
     },
     {
-      "stage": "Tinh Phong 2: Cự Môn Thổ Tinh (巨門土星) — Quả Chuông Úp Đỉnh Bằng",
-      "state": "Thổ Khí • Vuông vức đôn hậu",
-      "detailed_explanation": "Cự Môn là đại diện của năng lượng Thổ đôn hậu, hình núi vuông vức như chiếc chuông đồng úp hoặc như chiếc hòm vàng đựng của cải. Đỉnh núi bằng phẳng, sườn dốc thoải vững chắc không lở loét. Năng lượng Cự Môn chủ về đại phú quý, ruộng đất ngút ngàn, gia tộc ấm no thịnh vượng nhiều đời.",
-      "practical_manifestation": "Các cao nguyên bằng phẳng đôn hậu, gò đồi hình bao gạo no tròn ở các vùng nông nghiệp trù phú.",
-      "key_takeaway": "Cự Môn phát tài sản ruộng đất, chủ phú quý trường tồn."
+      "stage": "Cát Tinh 2: Cự Môn Thổ Tinh — Bàn Cờ Điền Sản & Đỉnh Cao Phú Quý",
+      "state": "Thổ Khí • Đỉnh bằng vuông vức • Chủ Phú & Trường Thọ",
+      "detailed_explanation": "Cự Môn là đại diện của năng lượng Thổ đôn hậu, hình núi vuông vức như hòm châu báu:\n\n• Tài vận & Sản nghiệp: CHUYÊN CHỦ VỀ ĐIỀN SẢN BẤT ĐỘNG SẢN VÀ KHO TÀNG. Tích lũy ruộng đất ngàn mẫu, vàng bạc đầy rương, buôn bán kinh doanh bền vững đời đời không bị khánh kiệt.\n• Sức khỏe & Tuổi thọ: Người trong nhà sống thọ cao, con cháu đông đúc, tính tình đôn hậu thật thà trọng chữ tín.\n• Phân phòng: Phát phúc cho NHỊ PHÒNG (Con thứ 2, 5, 8).\n• Phản chứng Bệnh hình (Bị sạt mép, méo mó, khuyết góc): Sinh người tham lam bủn xỉn, hay xảy ra tranh chấp ranh giới đất đai kiện tụng, nợ nần dây dưa.",
+      "practical_manifestation": "Các cao nguyên bằng phẳng đôn hậu, gò đồi hình bao gạo no tròn ở vùng đất phát nghiệp kinh thương bền vững.",
+      "key_takeaway": "Cự Môn là biểu tượng của cự phú điền sản và sự trường thọ bền vững ngàn năm."
     },
     {
-      "stage": "Tinh Phong 3: Vũ Khúc Kim Tinh (武曲金星) — Nồi Úp Phúc Phủ",
-      "state": "Kim Khí • Tròn trịa bán cầu",
-      "detailed_explanation": "Vũ Khúc mang năng lượng Kim thanh khiết, hình núi tròn trịa hoàn hảo như chiếc nồi gang úp (Phúc phủ). Không có góc cạnh sắc nhọn, toàn thân mỡ màng phủ đầy cây xanh. Năng lượng Vũ Khúc chủ về võ tướng khai quốc, uy danh lừng lẫy, tài đức vẹn toàn, làm quan đầu triều nắm giữ binh quyền bảo vệ giang sơn.",
-      "practical_manifestation": "Các đồi bát úp hình bán cầu đều đặn ở vùng trung du (như đồi chè Phú Thọ).",
-      "key_takeaway": "Vũ Khúc phát quan quyền và võ nghiệp hiển hách."
+      "stage": "Cát Tinh 3: Vũ Khúc Kim Tinh — Nồi Úp Tròn Trịa & Uy Quyền Võ Nghiệp",
+      "state": "Kim Khí • Tròn trịa bán cầu • Phú Quý Song Toàn",
+      "detailed_explanation": "Vũ Khúc mang năng lượng Kim thanh khiết, hình núi tròn hoàn hảo như quả chuông đồng:\n\n• Quan lộc & Binh quyền: CHUYÊN CHỦ VỀ VÕ TƯỚNG KHAI QUỐC, LÃNH ĐẠO CẤP CAO. Nắm giữ đại quyền sinh sát, quân cơ chính trị, tài đức vẹn toàn.\n• Tài lộc: Vừa có quyền vừa có tài sản khổng lồ (Kim ngân châu báu dồi dào, phú quý song toàn).\n• Phân phòng: Phát phúc đồng đều cho cả các chi phòng.\n• Phản chứng Bệnh hình (Bị khai thác đá nham nhở): Dễ bị tai nạn gãy tay chân, thương tật xương khớp do binh đao khí cụ cơ giới.",
+      "practical_manifestation": "Các đồi bát úp hình bán cầu đều đặn phủ kín cây xanh ở vùng phát sinh nhiều tướng lĩnh chỉ huy quân đội tài ba.",
+      "key_takeaway": "Vũ Khúc phát quan tước và quyền lực lãnh đạo tối cao kết hợp phú quý đủ đầy."
     },
     {
-      "stage": "Tinh Phong 4: Liêm Trinh Hỏa Tinh (廉貞火星) — Núi Lửa Tổ Sơn",
-      "state": "Hỏa Khí • Chọc trời sắc nhọn hiểm trở",
-      "detailed_explanation": "Liêm Trinh là ngọn núi đá hiểm trở bậc nhất, chóp núi sắc nhọn tua tủa như ngọn lửa bùng cháy lên trời xanh. Đá đỏ lởm chởm hung dữ, sát khí ngùn ngụt. Bản thân Liêm Trinh không thể trực tiếp kết huyệt vì quá hung bạo, nhưng nó đóng vai trò tối quan trọng: Làm THỦY TỔ SƠN khởi nguồn phát mạch cho toàn bộ hệ thống long mạch vĩ đại.",
-      "practical_manifestation": "Dãy Hoàng Liên Sơn hùng vĩ với đỉnh Fansipan nhọn hoắt chọc trời chính là Liêm Trinh Tổ Sơn của non sông Đại Việt.",
-      "key_takeaway": "Liêm Trinh làm Tổ Sơn vương triều; phải qua nhiều lần lột xác (Bác hoán) mới kết đại huyệt."
+      "stage": "Hung Tinh Biến Cách: Văn Khúc, Liêm Trinh, Lộc Tồn & Phá Quân",
+      "state": "Giải mã chi tiết Đào Hoa Dâm Sát • Hỏa Tai • Tù Ngục • Phá Tán Tuyệt Đinh",
+      "detailed_explanation": "Cổ thư 《Hám Long Kinh》 và Quyển 2 phân định ranh giới sinh tử của 4 ngôi sao hung hiểm:\n\n1. VĂN KHÚC THỦY TINH (Núi lượn sóng):\n• Đắc vị: Sinh người tài hoa nghệ thuật, thi ca hội họa, ăn nói duyên dáng lôi cuốn.\n• Bệnh hình (Lả lơi, rách nát): PHẠM ĐÀO HOA DÂM LOẠN SÁT. Trai đàng điếm phong lưu trụy lạc, gái lăng loàn trốn chúa lộn chồng, cờ bạc trắng tay, chết đuối nước.\n\n2. LIÊM TRINH HỎA TINH (Núi lửa nhọn hoắt đá đỏ):\n• Tổ Sơn: Rất tốt để phát mạch khởi nguồn.\n• Đóng sát nhà (Hung): Gặp hỏa hoạn cháy nhà, bệnh thổ huyết ung nhọt, vướng án tù ngục, chết do đao kiếm súng đạn.\n\n3. LỘC TỒN THỔ/KIM (Núi đầu trống đuôi cào cào):\n• Chủ về cô quả hiếm muộn, tài sản trồi sụt bấp bênh, con cái khó dạy bảo; chỉ khi có chi cước hộ vệ mới biến thành cự phú.\n\n4. PHÁ QUÂN KIM TINH (Núi vỡ xơ xác như cờ rách):\n• HUNG SÁT TỐI NGUY: Phá sản cực nhanh, gia đình bạo lực cốt nhục tương tàn, đoản thọ, tuyệt đinh tuyệt tự.",
+      "practical_manifestation": "Địa hình có ngọn núi Văn Khúc nhấp nhô lả lơi trước mặt thường sinh ra các gia đình bất hòa ly hôn và con cái nghiện ngập.",
+      "key_takeaway": "Nhận diện bệnh hình của 4 hung tinh giúp kịp thời áp dụng giải pháp che chắn tầm nhìn hóa giải sát khí."
     },
     {
-      "stage": "Tinh Phong 5: Tả Phụ & Hữu Bật (左輔右弼) — Tinh Tú Hộ Vệ Ẩn Tàng",
-      "state": "Ẩn vi dưới đất bằng • Mũ cánh chuồn",
-      "detailed_explanation": "Tả Phụ và Hữu Bật là 2 ngôi sao phụ tá trung thành đi sát hai bên thân rồng chính. Tả Phụ có hình như mũ cánh chuồn của quan viên; Hữu Bật chạy ngầm dưới đất bằng như con rắn lướt trong cỏ. Nhờ có Phụ Bật che chở, long mạch không bị lộ hình, sinh khí được bảo vệ nguyên vẹn dẫn thẳng vào tâm huyệt.",
-      "practical_manifestation": "Các gò đất nhỏ nhấp nhô hai bên mép sườn đồi chính, tạo thế che chở ấm áp.",
-      "key_takeaway": "Phụ Bật chứng minh rồng có tùy tùng hộ vệ, là dấu hiệu chắc chắn của Chân Long."
+      "stage": "Hộ Vệ Tinh: Tả Phụ & Hữu Bật — Thần Minh Hộ Trì & Quý Nhân Tương Trợ",
+      "state": "Ẩn vi dưới đất bằng • Mũ cánh chuồn • Hộ vệ Chân Long",
+      "detailed_explanation": "Tả Phụ và Hữu Bật là 2 thị vệ trung thành hộ tống Long Mạch chính. Tả Phụ có hình như mũ cánh chuồn, Hữu Bật lướt ngầm dưới thảm cỏ như con trăn rẽ nước. Nơi nào có Phụ Bật hộ tống, nơi đó gia chủ luôn có quý nhân quyền quý nâng đỡ, khi gặp hoạn nạn đều tai qua nạn khỏi, con cháu thảo hiền trung nghĩa.",
+      "practical_manifestation": "Các gò đất nhỏ nhấp nhô chạy song song hai bên sườn đồi tạo vùng vi khí hậu ấm áp chắn gió độc.",
+      "key_takeaway": "Phụ Bật là dấu hiệu chắc chắn của thế đất có quý nhân phò trợ và dòng dõi trung lương."
     }
   ]
 };
