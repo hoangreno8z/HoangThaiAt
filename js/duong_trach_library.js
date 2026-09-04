@@ -123,7 +123,10 @@
           this.fetchJson('manifest.json'),
           this.fetchJson('articles.json'),
           this.fetchJson('sources.json')
-        ]).then(([manifest, articles, sources]) => ({ manifest, articles, sources }));
+        ]).then(([manifest, articles, sources]) => {
+          this.base = { manifest, articles, sources };
+          return this.base;
+        });
       }
       return this.basePromise;
     }
@@ -156,6 +159,33 @@
           }
           return;
         }
+        const tab144Btn = event.target.closest('[data-144-lesson-tab]');
+        if (tab144Btn) {
+          const targetIdx = parseInt(tab144Btn.dataset['144LessonTab'], 10);
+          if (!isNaN(targetIdx)) {
+            this.switch144Lesson(targetIdx);
+          }
+          return;
+        }
+        const subNav144Btn = event.target.closest('[data-144-sub-nav]');
+        if (subNav144Btn) {
+          const targetIdx = parseInt(subNav144Btn.dataset['144SubNav'], 10);
+          if (!isNaN(targetIdx)) {
+            this.switch144Lesson(targetIdx);
+          }
+          return;
+        }
+        const jumpGroupBtn = event.target.closest('[data-144-jump-group]');
+        if (jumpGroupBtn) {
+          event.preventDefault();
+          const targetGroup = parseInt(jumpGroupBtn.dataset['144JumpGroup'], 10);
+          if (!isNaN(targetGroup)) {
+            this.switch144Lesson(targetGroup);
+            const container = document.getElementById('dt-144-lesson-container');
+            if (container) container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+          return;
+        }
         const toggle = event.target.closest('[data-dt-toggle]');
         if (!toggle) return;
         const key = toggle.dataset.dtToggle;
@@ -165,11 +195,22 @@
         this.applyLayerVisibility();
       });
       this.root.addEventListener('change', event => {
+        const lessonJumpSelect = event.target.closest('#dt-144-lesson-jump-select');
+        if (lessonJumpSelect) {
+          const targetIdx = parseInt(lessonJumpSelect.value, 10);
+          if (!isNaN(targetIdx)) {
+            this.switch144Lesson(targetIdx);
+          }
+          return;
+        }
         const groupSelect = event.target.closest('#dt-144-group-select');
         if (groupSelect) {
           const groupVal = parseInt(groupSelect.value, 10);
           const firstHsInGroup = groupVal * 12 + 1;
           this.update144Explorer(firstHsInGroup);
+          if (this.currentArticle && this.currentArticle.id === 'batch-21') {
+            this.switch144Lesson(groupVal + 1, false);
+          }
           return;
         }
         const hsSelect = event.target.closest('#dt-144-hs-select');
@@ -198,6 +239,10 @@
           );
           if (found) {
             this.update144Explorer(found.hs_num);
+            if (this.currentArticle && this.currentArticle.id === 'batch-21') {
+              const grp = Math.floor((found.hs_num - 1) / 12) + 1;
+              this.switch144Lesson(grp, false);
+            }
           }
           return;
         }
@@ -778,10 +823,10 @@
       const prevHs = selected.hs_num > 1 ? selected.hs_num - 1 : 144;
       const nextHs = selected.hs_num < 144 ? selected.hs_num + 1 : 1;
 
-      const formatSecContent = (text, prefix) => {
+      const formatSecContent = (text) => {
         if (!text) return '<span style="color:#64748B;">(Chưa có nội dung riêng cho mục này)</span>';
         let s = text.trim();
-        if (s.startsWith(prefix)) s = s.substring(prefix.length).replace(/^[:\.\s—]+/, '');
+        s = s.replace(/^[A-F]\.\s*[^:]*:\s*/i, '');
         return escapeHtml(s).replace(/\n/g, '<br>');
       };
 
@@ -889,62 +934,62 @@
             <div style="padding:1.4rem; display:flex; flex-direction:column; gap:1.2rem;">
               <div style="background:#161D2C; border-left:3px solid #C5B382; border-radius:0 8px 8px 0; padding:0.9rem 1.1rem;">
                 <div style="display:flex; align-items:center; gap:0.4rem; color:#F5D485; font-size:0.82rem; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; margin-bottom:0.4rem;">
-                  <span>📜</span> A. Trích Yếu Cổ Thư (Bản Khắc 1880)
+                  <span>📜</span> A. Cổ Kinh Đồ Phổ
                 </div>
                 <div style="color:#F1F5F9; font-size:0.88rem; line-height:1.6;">
-                  ${formatSecContent(selected.muc_A, 'A. Trích yếu cổ thư')}
+                  ${formatSecContent(selected.muc_A)}
                 </div>
               </div>
 
               <div style="background:#131B2A; border-left:3px solid #38BDF8; border-radius:0 8px 8px 0; padding:0.9rem 1.1rem;">
                 <div style="display:flex; align-items:center; gap:0.4rem; color:#38BDF8; font-size:0.82rem; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; margin-bottom:0.4rem;">
-                  <span>🗣️</span> B. Ý Nghĩa & Khẩu Quyết Thừa Truyền
+                  <span>🗣️</span> B. Khẩu Quyết Bí Chỉ
                 </div>
                 <div style="color:#E2E8F0; font-size:0.88rem; line-height:1.6;">
-                  ${formatSecContent(selected.muc_B, 'B. Dịch nghĩa & Ý nghĩa')}
+                  ${formatSecContent(selected.muc_B)}
                 </div>
               </div>
 
               <div style="background:#131D24; border-left:3px solid #34D399; border-radius:0 8px 8px 0; padding:0.9rem 1.1rem;">
                 <div style="display:flex; align-items:center; gap:0.4rem; color:#34D399; font-size:0.82rem; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; margin-bottom:0.4rem;">
-                  <span>🛠️</span> C. Cầm Tay Chỉ Việc Ngoài Thực Địa (Định Vị La Bàn)
+                  <span>🛠️</span> C. Thực Địa Định Vị
                 </div>
                 <div style="color:#E2E8F0; font-size:0.88rem; line-height:1.6;">
-                  ${formatSecContent(selected.muc_C, 'C. Cầm tay chỉ việc ngoài thực địa')}
+                  ${formatSecContent(selected.muc_C)}
                 </div>
               </div>
 
               <div style="background:#1B1A28; border-left:3px solid #A78BFA; border-radius:0 8px 8px 0; padding:0.9rem 1.1rem;">
                 <div style="display:flex; align-items:center; gap:0.4rem; color:#A78BFA; font-size:0.82rem; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; margin-bottom:0.4rem;">
-                  <span>🌊</span> D. Luận Cục & Cung Vị: Vì Sao Cát / Hung
+                  <span>🌊</span> D. Biện Chứng Cát Hung
                 </div>
                 <div style="color:#E2E8F0; font-size:0.88rem; line-height:1.6;">
-                  ${formatSecContent(selected.muc_D, 'D. Luận Cục & Cung Vị (Vì sao cát/hung)')}
+                  ${formatSecContent(selected.muc_D)}
                 </div>
               </div>
 
               <div style="background:#1C1E24; border-left:3px solid ${phanColor}; border-radius:0 8px 8px 0; padding:0.9rem 1.1rem;">
                 <div style="display:flex; align-items:center; gap:0.4rem; color:${phanColor}; font-size:0.82rem; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; margin-bottom:0.4rem;">
-                  <span>⚡</span> E. Ứng Nghiệm Thực Địa (Họa Phúc Cát Hung)
+                  <span>⚡</span> E. Họa Phúc Ứng Nghiệm
                 </div>
                 <div style="color:#E2E8F0; font-size:0.88rem; line-height:1.6;">
-                  ${formatSecContent(selected.muc_E, 'E. Ứng nghiệm thực địa theo cổ thư')}
+                  ${formatSecContent(selected.muc_E)}
                 </div>
               </div>
 
               <div style="background:#22181C; border-left:3px solid #FB7185; border-radius:0 8px 8px 0; padding:0.9rem 1.1rem;">
                 <div style="display:flex; align-items:center; gap:0.4rem; color:#FB7185; font-size:0.82rem; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; margin-bottom:0.4rem;">
-                  <span>⚠️</span> F. Dấu Hiệu Nhận Biết & Sai Lầm Cần Tránh
+                  <span>⚠️</span> F. Cạm Bẫy Kiêng Kỵ
                 </div>
                 <div style="color:#E2E8F0; font-size:0.88rem; line-height:1.6;">
-                  ${formatSecContent(selected.muc_F, 'F. Dấu hiệu nhận biết & Sai lầm cần tránh')}
+                  ${formatSecContent(selected.muc_F)}
                 </div>
               </div>
             </div>
 
             <div style="background:#0E131F; border-top:1px solid rgba(255,255,255,0.08); padding:0.9rem 1.4rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.8rem;">
-              <a href="#/thu-vien/duong-trach/bai/batch-21?muc=${currentGroupInfo.lesson}" style="display:inline-flex; align-items:center; gap:0.4rem; color:#F5D485; text-decoration:none; font-size:0.86rem; font-weight:600;">
-                📖 Xem toàn văn bài giảng ${escapeHtml(currentGroupInfo.label)} trong giáo trình ↓
+              <a href="#/thu-vien/duong-trach/bai/batch-21?nhom=${currentGroupInfo.idx + 1}" data-144-jump-group="${currentGroupInfo.idx + 1}" style="display:inline-flex; align-items:center; gap:0.4rem; color:#F5D485; text-decoration:none; font-size:0.86rem; font-weight:600;">
+                📖 Xem toàn văn bài giảng ${escapeHtml(currentGroupInfo.label)} trong giáo trình chi tiết ↓
               </a>
               <div style="display:flex; gap:0.5rem;">
                 <button type="button" data-144-hs-target="${prevHs}" style="background:#1E293B; color:#CBD5E1; border:1px solid rgba(255,255,255,0.12); padding:0.35rem 0.7rem; border-radius:6px; font-size:0.78rem; cursor:pointer;">
@@ -967,16 +1012,169 @@
       }
     }
 
+    render144LessonSection(article, activeIdx) {
+      const BATCH_21_TABS = [
+        { idx: 0, shortLabel: "Cương Lĩnh", title: "Cương Lĩnh & Quy Trình Khảo Sát 144 Thủy Khẩu", cuc: "Cốt Lõi", badgeBg: "rgba(197,179,130,0.18)", badgeColor: "#F5D485", border: "rgba(197,179,130,0.4)" },
+        { idx: 1, shortLabel: "01. Nhâm Bính / Tý Ngọ", title: "Nhóm 1: Nhâm Bính / Tý Ngọ", cuc: "Hỏa", badgeBg: "rgba(239,68,68,0.18)", badgeColor: "#F87171", border: "rgba(239,68,68,0.4)" },
+        { idx: 2, shortLabel: "02. Quý Đinh / Sửu Mùi", title: "Nhóm 2: Quý Đinh / Sửu Mùi", cuc: "Kim", badgeBg: "rgba(251,191,36,0.18)", badgeColor: "#FBBF24", border: "rgba(251,191,36,0.4)" },
+        { idx: 3, shortLabel: "03. Cấn Khôn / Dần Thân", title: "Nhóm 3: Cấn Khôn / Dần Thân", cuc: "Thủy", badgeBg: "rgba(56,189,248,0.18)", badgeColor: "#38BDF8", border: "rgba(56,189,248,0.4)" },
+        { idx: 4, shortLabel: "04. Giáp Canh / Mão Dậu", title: "Nhóm 4: Giáp Canh / Mão Dậu", cuc: "Kim", badgeBg: "rgba(251,191,36,0.18)", badgeColor: "#FBBF24", border: "rgba(251,191,36,0.4)" },
+        { idx: 5, shortLabel: "05. Ất Tân / Thìn Tuất", title: "Nhóm 5: Ất Tân / Thìn Tuất", cuc: "Thủy", badgeBg: "rgba(56,189,248,0.18)", badgeColor: "#38BDF8", border: "rgba(56,189,248,0.4)" },
+        { idx: 6, shortLabel: "06. Tốn Càn / Tị Hợi", title: "Nhóm 6: Tốn Càn / Tị Hợi", cuc: "Mộc", badgeBg: "rgba(74,222,128,0.18)", badgeColor: "#4ADE80", border: "rgba(74,222,128,0.4)" },
+        { idx: 7, shortLabel: "07. Bính Nhâm / Ngọ Tý", title: "Nhóm 7: Bính Nhâm / Ngọ Tý", cuc: "Thủy", badgeBg: "rgba(56,189,248,0.18)", badgeColor: "#38BDF8", border: "rgba(56,189,248,0.4)" },
+        { idx: 8, shortLabel: "08. Đinh Quý / Mùi Sửu", title: "Nhóm 8: Đinh Quý / Mùi Sửu", cuc: "Mộc", badgeBg: "rgba(74,222,128,0.18)", badgeColor: "#4ADE80", border: "rgba(74,222,128,0.4)" },
+        { idx: 9, shortLabel: "09. Khôn Cấn / Thân Dần", title: "Nhóm 9: Khôn Cấn / Thân Dần", cuc: "Hỏa", badgeBg: "rgba(239,68,68,0.18)", badgeColor: "#F87171", border: "rgba(239,68,68,0.4)" },
+        { idx: 10, shortLabel: "10. Canh Giáp / Dậu Ất", title: "Nhóm 10: Canh Giáp / Dậu Ất", cuc: "Mộc", badgeBg: "rgba(74,222,128,0.18)", badgeColor: "#4ADE80", border: "rgba(74,222,128,0.4)" },
+        { idx: 11, shortLabel: "11. Tân Ất / Tuất Thìn", title: "Nhóm 11: Tân Ất / Tuất Thìn", cuc: "Hỏa", badgeBg: "rgba(239,68,68,0.18)", badgeColor: "#F87171", border: "rgba(239,68,68,0.4)" },
+        { idx: 12, shortLabel: "12. Càn Tốn / Hợi Tị", title: "Nhóm 12: Càn Tốn / Hợi Tị", cuc: "Kim", badgeBg: "rgba(251,191,36,0.18)", badgeColor: "#FBBF24", border: "rgba(251,191,36,0.4)" }
+      ];
+
+      const currentTab = BATCH_21_TABS[activeIdx] || BATCH_21_TABS[0];
+      const activeEntry = article.entries[activeIdx] || article.entries[0];
+
+      const selectOptions = BATCH_21_TABS.map(tab => 
+        `<option value="${tab.idx}" ${tab.idx === activeIdx ? 'selected' : ''}>${tab.idx === 0 ? '📜 Cương Lĩnh 144 Thủy Khẩu & Quy Trình' : `${tab.shortLabel} (${tab.cuc} Cục)`}</option>`
+      ).join('');
+
+      const tabButtons = BATCH_21_TABS.map(tab => {
+        const isSel = tab.idx === activeIdx;
+        const bg = isSel ? 'linear-gradient(135deg, rgba(197,179,130,0.25) 0%, #1E293B 100%)' : '#111827';
+        const borderCol = isSel ? '#C5B382' : 'rgba(255,255,255,0.1)';
+        const textCol = isSel ? '#FEF3C7' : '#94A3B8';
+        const shadow = isSel ? 'box-shadow:0 0 12px rgba(197,179,130,0.25);' : '';
+        const icon = tab.idx === 0 ? '📜 ' : '';
+        return `
+          <button type="button" class="dt-144-lesson-tab-btn ${isSel ? 'active' : ''}" data-144-lesson-tab="${tab.idx}" style="background:${bg}; border:1px solid ${borderCol}; color:${textCol}; ${shadow} padding:0.45rem 0.8rem; border-radius:8px; font-size:0.8rem; font-weight:${isSel ? '700' : '600'}; cursor:pointer; display:inline-flex; align-items:center; gap:0.45rem; transition:all 0.15s ease; font-family:inherit;">
+            <span>${icon}${escapeHtml(tab.shortLabel)}</span>
+            <span style="background:${tab.badgeBg}; color:${tab.badgeColor}; border:1px solid ${tab.border}; font-size:0.68rem; padding:0.1rem 0.35rem; border-radius:4px; font-weight:700;">${escapeHtml(tab.cuc)}</span>
+          </button>
+        `;
+      }).join('');
+
+      const prevLessonIdx = activeIdx > 0 ? activeIdx - 1 : null;
+      const nextLessonIdx = activeIdx < BATCH_21_TABS.length - 1 ? activeIdx + 1 : null;
+
+      const prevLessonBtn = prevLessonIdx !== null ? `
+        <button type="button" data-144-sub-nav="${prevLessonIdx}" style="display:inline-flex; align-items:center; gap:0.4rem; padding:0.5rem 0.9rem; background:#181B22; color:#D4CEBD; border:1px solid rgba(230,220,200,0.15); border-radius:7px; font-size:0.84rem; cursor:pointer; font-weight:600; font-family:inherit;">
+          ← ${escapeHtml(BATCH_21_TABS[prevLessonIdx].shortLabel)}
+        </button>
+      ` : '<div style="flex:1"></div>';
+
+      const nextLessonBtn = nextLessonIdx !== null ? `
+        <button type="button" data-144-sub-nav="${nextLessonIdx}" style="display:inline-flex; align-items:center; gap:0.4rem; padding:0.5rem 0.9rem; background:#1F232D; color:#F5EFEB; border:1px solid rgba(197,179,130,0.3); border-radius:7px; font-size:0.84rem; cursor:pointer; font-weight:600; font-family:inherit;">
+          ${escapeHtml(BATCH_21_TABS[nextLessonIdx].shortLabel)} →
+        </button>
+      ` : '<div style="flex:1"></div>';
+
+      return `
+        <section id="dt-144-lesson-container" style="margin-top:1.5rem; margin-bottom:2rem;">
+          <div style="background:#0D111A; border:1px solid #C5B382; border-radius:14px; padding:1.2rem; margin-bottom:1.4rem; box-shadow:0 8px 24px rgba(0,0,0,0.45);">
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.8rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:0.9rem; margin-bottom:1rem;">
+              <div>
+                <div style="display:inline-flex; align-items:center; gap:0.4rem; font-size:0.75rem; font-weight:700; color:#F5D485; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:0.25rem;">
+                  <span>📚</span> GIÁO TRÌNH CHUYÊN SÂU 144 THỦY KHẨU (13 BÀI THỰC CHIẾN)
+                </div>
+                <h3 style="margin:0; font-size:1.15rem; color:#FEF3C7; font-weight:700;">
+                  ${activeIdx === 0 ? 'Cương Lĩnh & Quy Trình Khảo Sát Thực Địa' : `Chuyên Khảo: ${escapeHtml(currentTab.title)} (${escapeHtml(currentTab.cuc)} Cục)`}
+                </h3>
+              </div>
+              <div style="display:flex; align-items:center; gap:0.5rem;">
+                <label for="dt-144-lesson-jump-select" style="font-size:0.78rem; color:#94A3B8; font-weight:600;">Chọn nhanh bài:</label>
+                <select id="dt-144-lesson-jump-select" style="background:#1E293B; color:#FEF3C7; border:1px solid rgba(197,179,130,0.3); border-radius:6px; padding:0.4rem 0.65rem; font-size:0.82rem; font-weight:600; outline:none; font-family:inherit;">
+                  ${selectOptions}
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <div style="font-size:0.75rem; color:#94A3B8; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.6rem;">
+                Danh Sách 13 Bài Giảng Phân Nhóm (Chọn để đọc riêng từng bài — Tránh cuộn trang vô tận):
+              </div>
+              <div class="dt-144-tab-bar" style="display:flex; gap:0.45rem; flex-wrap:wrap;">
+                ${tabButtons}
+              </div>
+            </div>
+          </div>
+
+          <div id="dt-144-active-entry-container">
+            ${this.renderEntry(activeEntry, article)}
+          </div>
+
+          <nav class="dt-144-sub-pagination" aria-label="Điều hướng bài giảng 144" style="display:flex; justify-content:space-between; align-items:center; gap:0.6rem; margin-top:1.5rem; padding-top:1.2rem; border-top:1px solid rgba(255,255,255,0.08); flex-wrap:wrap;">
+            ${prevLessonBtn}
+            <div style="font-size:0.85rem; font-weight:700; color:#F5D485; text-align:center;">
+              Bài ${activeIdx === 0 ? 'Cương Lĩnh' : `Nhóm ${activeIdx}`}/12 · ${escapeHtml(currentTab.shortLabel)}
+            </div>
+            ${nextLessonBtn}
+          </nav>
+        </section>
+      `;
+    }
+
+    switch144Lesson(newIdx, syncExplorer = true) {
+      const idx = Number(newIdx);
+      if (isNaN(idx) || idx < 0 || idx > 12) return;
+      this.active144LessonIdx = idx;
+
+      const container = document.getElementById('dt-144-lesson-container');
+      if (container && this.currentArticle && this.currentArticle.id === 'batch-21') {
+        container.outerHTML = this.render144LessonSection(this.currentArticle, idx);
+        this.applyLayerVisibility();
+        const newContainer = document.getElementById('dt-144-lesson-container');
+        if (newContainer) {
+          newContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+
+      try {
+        const [baseHash] = (window.location.hash || '').split('?');
+        history.replaceState(null, '', `${baseHash}?nhom=${idx}`);
+      } catch (_) {}
+
+      if (syncExplorer && idx >= 1 && idx <= 12) {
+        const firstHs = (idx - 1) * 12 + 1;
+        this.update144Explorer(firstHs);
+      }
+    }
+
+
     renderArticle({ manifest, articles }, slug, query) {
       const articleIndex = articles.findIndex(item => item.id === slug);
       const article = articleIndex !== -1 ? articles[articleIndex] : articles[0];
       const prevArticle = articleIndex > 0 ? articles[articleIndex - 1] : null;
       const nextArticle = articleIndex < articles.length - 1 ? articles[articleIndex + 1] : null;
+      this.currentArticle = article;
 
       document.title = `${article.title} — Cẩm Nang Thực Chiến Dương Trạch`;
-      const entries = article.entries.length
-        ? article.entries.map(entry => this.renderEntry(entry, article)).join('')
-        : `<div class="dt-empty" style="background:#181B22; border-left:3px solid #C5B382; color:#EDE8DE; padding:1rem;"><strong>Hồ sơ tiêu chuẩn an toàn & kiểm soát thực địa.</strong><br>Chủ đề này tập trung vào các tiêu chuẩn an toàn bắt buộc: kết cấu, chống ngập lụt, an toàn cháy nổ và pháp lý xây dựng hiện đại cần kiểm tra trước khi bố trí phong thủy.</div>`;
+
+      const isThuyKhauBatch = article.id === 'batch-21';
+      const isBatch04 = article.id === 'batch-04';
+
+      let active144Idx = 0;
+      if (isThuyKhauBatch) {
+        const qNhom = query.get('nhom');
+        const qMuc = query.get('muc');
+        const qHs = query.get('hs');
+        if (qNhom !== null && !isNaN(parseInt(qNhom, 10))) {
+          active144Idx = parseInt(qNhom, 10);
+        } else if (qMuc) {
+          const foundIdx = article.entries.findIndex(e => e.id === qMuc);
+          if (foundIdx !== -1) active144Idx = foundIdx;
+        } else if (qHs && !isNaN(parseInt(qHs, 10))) {
+          const hsNum = parseInt(qHs, 10);
+          active144Idx = Math.floor((hsNum - 1) / 12) + 1;
+        }
+        if (active144Idx < 0 || active144Idx >= article.entries.length) {
+          active144Idx = 0;
+        }
+        this.active144LessonIdx = active144Idx;
+      }
+
+      const entries = isThuyKhauBatch
+        ? this.render144LessonSection(article, active144Idx)
+        : (article.entries.length
+            ? article.entries.map(entry => this.renderEntry(entry, article)).join('')
+            : `<div class="dt-empty" style="background:#181B22; border-left:3px solid #C5B382; color:#EDE8DE; padding:1rem;"><strong>Hồ sơ tiêu chuẩn an toàn & kiểm soát thực địa.</strong><br>Chủ đề này tập trung vào các tiêu chuẩn an toàn bắt buộc: kết cấu, chống ngập lụt, an toàn cháy nổ và pháp lý xây dựng hiện đại cần kiểm tra trước khi bố trí phong thủy.</div>`);
       
       const bottomPagination = `
         <nav class="dt-bottom-pagination" aria-label="Điều hướng chuyển bước" style="display:flex; justify-content:space-between; align-items:center; gap:0.6rem; margin-top:2.5rem; padding-top:1.5rem; border-top:1px solid rgba(230,220,200,0.12); flex-wrap:wrap;">
@@ -991,8 +1189,7 @@
         </nav>
       `;
 
-      const isThuyKhauBatch = article.id === 'batch-21';
-      const isBatch04 = article.id === 'batch-04';
+
 
       let specialHeaderBanner = '';
       if (isBatch04) {
@@ -1019,7 +1216,7 @@
       }
 
       const hsQuery = query.get('hs');
-      const initialHs = hsQuery ? (parseInt(hsQuery, 10) || 1) : 1;
+      const initialHs = hsQuery ? (parseInt(hsQuery, 10) || 1) : (isThuyKhauBatch && active144Idx >= 1 ? (active144Idx - 1) * 12 + 1 : 1);
       const explorerMount = isThuyKhauBatch ? `<div id="dt-144-explorer-mount">${this.render144MatrixWidget(initialHs)}</div>` : '';
 
       const content = `<div class="dt-reader-layout">

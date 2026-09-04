@@ -1154,3 +1154,59 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ── MA TRẬN 144 THỦY KHẨU SUB-TABS & ĐIỀU HƯỚNG PHÂN NHÓM ── */
+.dt-144-tab-bar {
+  display: flex;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+}
+
+.dt-144-lesson-tab-btn {
+  background: #111827;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #94A3B8;
+  padding: 0.45rem 0.75rem;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  transition: all 0.15s ease;
+  font-family: inherit;
+}
+
+.dt-144-lesson-tab-btn:hover {
+  background: #1E293B;
+  border-color: rgba(197, 179, 130, 0.5);
+  color: #FEF3C7;
+}
+
+.dt-144-lesson-tab-btn.active {
+  background: linear-gradient(135deg, rgba(197, 179, 130, 0.22) 0%, #1E293B 100%) !important;
+  border-color: #C5B382 !important;
+  color: #FEF3C7 !important;
+  font-weight: 700 !important;
+  box-shadow: 0 0 12px rgba(197, 179, 130, 0.25) !important;
+}
+
+@media (max-width: 768px) {
+  .dt-144-tab-bar {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.4rem;
+  }
+  .dt-144-lesson-tab-btn {
+    justify-content: space-between;
+    padding: 0.4rem 0.6rem;
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .dt-144-tab-bar {
+    grid-template-columns: 1fr;
+  }
+}
