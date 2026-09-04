@@ -29,7 +29,7 @@
     "sources": 124,
     "records": 693,
     "articles": 20,
-    "articleEntries": 99
+    "articleEntries": 79
   },
   "qa": {
     "JSON_PARSE": "PASS",
@@ -86,7 +86,7 @@
       "title": "Hình Đất Đường Nước",
       "description": "Nhận diện hình dáng lô đất vuông, chữ nhật, tam giác, thang; thế đường uốn lượn ôm lưng vs phản cung trực xung.",
       "sourceFile": "BATCH05/03_VIET_HOA/hinh_dat_duong_nuoc.md",
-      "entryCount": 16,
+      "entryCount": 5,
       "stage": 2
     },
     {
@@ -95,7 +95,7 @@
       "title": "Xử Lý Đất Méo",
       "description": "Phương pháp Bát Túc Phương bổ khuyết đất khuyết góc Cấn, Càn, Tốn, Khôn; định tâm nhà đa giác bất quy tắc.",
       "sourceFile": "BATCH06/03_VIET_HOA/bat_tuc_phuong.md",
-      "entryCount": 14,
+      "entryCount": 5,
       "stage": 2
     },
     {
