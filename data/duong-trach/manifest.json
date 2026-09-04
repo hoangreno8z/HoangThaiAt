@@ -29,7 +29,7 @@
     "sources": 124,
     "records": 693,
     "articles": 20,
-    "articleEntries": 120
+    "articleEntries": 112
   },
   "qa": {
     "JSON_PARSE": "PASS",
@@ -50,7 +50,7 @@
       "title": "Khởi Tâm Cổ Thư",
       "description": "Tâm pháp người làm phong thủy, nguyên tắc tiếp cận cổ thư, phân định chánh tà và gạt bỏ mê tín dị đoan.",
       "sourceFile": "BATCH01/02_VIET_HOA/pilot_viet_hoa.md",
-      "entryCount": 6,
+      "entryCount": 4,
       "stage": 1
     },
     {
@@ -59,7 +59,7 @@
       "title": "Khảo Sát Đại Thế",
       "description": "Quan sát đại thể sơn hà, long mạch khu vực, môi trường sinh thái trước khi đi vào phân tích khuôn viên đất.",
       "sourceFile": "BATCH02/03_VIET_HOA/chon_dat_dai_the.md",
-      "entryCount": 14,
+      "entryCount": 6,
       "stage": 1
     },
     {
@@ -68,7 +68,7 @@
       "title": "An Toàn Thực Địa",
       "description": "Sáu trụ cột an toàn bắt buộc: kết cấu chịu lực, ổn định nền móng, chống ngập lụt, PCCC, quy chuẩn pháp lý và mạng điện.",
       "sourceFile": "BATCH03/02_HARD_GATE/pipeline.md",
-      "entryCount": 9,
+      "entryCount": 10,
       "stage": 1
     },
     {
@@ -86,7 +86,7 @@
       "title": "Hình Đất Đường Nước",
       "description": "Nhận diện hình dáng lô đất vuông, chữ nhật, tam giác, thang; thế đường uốn lượn ôm lưng vs phản cung trực xung.",
       "sourceFile": "BATCH05/03_VIET_HOA/hinh_dat_duong_nuoc.md",
-      "entryCount": 15,
+      "entryCount": 16,
       "stage": 2
     },
     {

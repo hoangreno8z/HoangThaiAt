@@ -406,7 +406,38 @@
             parts.forEach(part => {
               const numMatch = part.match(/^(\d+)[\.\)]\s+(.*)/s);
               if (numMatch) {
-                listItems.push(`<li><strong>${numMatch[1]}.</strong> <span class="dt-bullet-text">${escapeHtml(numMatch[2].trim())}</span></li>`);
+                const num = numMatch[1];
+                const rawItem = numMatch[2].trim();
+                
+                // Check if this numbered item has nested bullets (• or \n- or \n–)
+                if (rawItem.includes('•') || /(?:^|\n)\s*[-–•]\s+/.test(rawItem)) {
+                  const subParts = rawItem.includes('•') 
+                    ? rawItem.split(/\s*•\s*/) 
+                    : rawItem.split(/(?:^|\n)\s*[-–•]\s+/);
+                  const subHead = subParts[0].trim();
+                  const subItems = subParts.slice(1);
+                  
+                  let itemHtml = `<strong>${num}.</strong> <span class="dt-bullet-text">${escapeHtml(subHead)}</span>`;
+                  if (subItems.length) {
+                    const subLis = subItems.map(si => {
+                      si = si.trim();
+                      if (!si) return '';
+                      const colonIdx = si.indexOf(':');
+                      if (colonIdx !== -1 && colonIdx < 45) {
+                        const k = si.slice(0, colonIdx).trim();
+                        const v = si.slice(colonIdx + 1).trim();
+                        return `<li class="dt-sub-bullet-li"><span class="dt-sub-bullet-key">${escapeHtml(k)}:</span> <span class="dt-sub-bullet-val">${escapeHtml(v)}</span></li>`;
+                      }
+                      return `<li class="dt-sub-bullet-li"><span class="dt-sub-bullet-val">${escapeHtml(si)}</span></li>`;
+                    }).filter(Boolean).join('');
+                    itemHtml += `<ul class="dt-sub-bullet-list">${subLis}</ul>`;
+                  }
+                  listItems.push(`<li>${itemHtml}</li>`);
+                } else {
+                  // If contains multiple lines, preserve them
+                  const formattedItem = escapeHtml(rawItem).replace(/\n/g, '<br>');
+                  listItems.push(`<li><strong>${num}.</strong> <span class="dt-bullet-text">${formattedItem}</span></li>`);
+                }
               } else if (listItems.length === 0) {
                 leadHtml += `<p class="dt-lead-p">${escapeHtml(part)}</p>`;
               } else {
