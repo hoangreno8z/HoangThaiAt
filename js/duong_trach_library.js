@@ -858,7 +858,7 @@
                   ${escapeHtml(selected.muc_phan).toUpperCase()}
                 </span>
                 <span class="dt-badge" style="background:rgba(255,255,255,0.06); color:#CBD5E1; border:1px solid rgba(255,255,255,0.12); padding:0.25rem 0.55rem; border-radius:6px; font-size:0.75rem;">
-                  Khảo chứng: ${escapeHtml(selected.muc_hieu_khao)}
+                  Chánh Tông Cổ Thư (1880)
                 </span>
               </div>
             </div>
@@ -889,25 +889,25 @@
             <div style="padding:1.4rem; display:flex; flex-direction:column; gap:1.2rem;">
               <div style="background:#161D2C; border-left:3px solid #C5B382; border-radius:0 8px 8px 0; padding:0.9rem 1.1rem;">
                 <div style="display:flex; align-items:center; gap:0.4rem; color:#F5D485; font-size:0.82rem; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; margin-bottom:0.4rem;">
-                  <span>📜</span> A. Kinh Văn Nguyên Tác & Đồ Hình (Quang Tự Năm Thứ 6 — 1880)
+                  <span>📜</span> A. Trích Yếu Cổ Thư (Bản Khắc 1880)
                 </div>
                 <div style="color:#F1F5F9; font-size:0.88rem; line-height:1.6;">
-                  ${formatSecContent(selected.muc_A, 'A. Văn bản hiệu đính (trích yếu, không giả làm toàn văn)')}
+                  ${formatSecContent(selected.muc_A, 'A. Trích yếu cổ thư')}
                 </div>
               </div>
 
               <div style="background:#131B2A; border-left:3px solid #38BDF8; border-radius:0 8px 8px 0; padding:0.9rem 1.1rem;">
                 <div style="display:flex; align-items:center; gap:0.4rem; color:#38BDF8; font-size:0.82rem; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; margin-bottom:0.4rem;">
-                  <span>🗣️</span> B. Dịch Giải & Thuật Ngữ Cốt Lõi
+                  <span>🗣️</span> B. Ý Nghĩa & Khẩu Quyết Thừa Truyền
                 </div>
                 <div style="color:#E2E8F0; font-size:0.88rem; line-height:1.6;">
-                  ${formatSecContent(selected.muc_B, 'B. Dịch sát và ý nghĩa')}
+                  ${formatSecContent(selected.muc_B, 'B. Dịch nghĩa & Ý nghĩa')}
                 </div>
               </div>
 
               <div style="background:#131D24; border-left:3px solid #34D399; border-radius:0 8px 8px 0; padding:0.9rem 1.1rem;">
                 <div style="display:flex; align-items:center; gap:0.4rem; color:#34D399; font-size:0.82rem; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; margin-bottom:0.4rem;">
-                  <span>🛠️</span> C. Cầm Tay Chỉ Việc Ngoài Thực Địa (Đo Đạc & Định Vị La Bàn)
+                  <span>🛠️</span> C. Cầm Tay Chỉ Việc Ngoài Thực Địa (Định Vị La Bàn)
                 </div>
                 <div style="color:#E2E8F0; font-size:0.88rem; line-height:1.6;">
                   ${formatSecContent(selected.muc_C, 'C. Cầm tay chỉ việc ngoài thực địa')}
@@ -916,39 +916,29 @@
 
               <div style="background:#1B1A28; border-left:3px solid #A78BFA; border-radius:0 8px 8px 0; padding:0.9rem 1.1rem;">
                 <div style="display:flex; align-items:center; gap:0.4rem; color:#A78BFA; font-size:0.82rem; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; margin-bottom:0.4rem;">
-                  <span>🌊</span> D. Giảng Sâu Về Thủy Pháp: Vì Sao Cát / Hung (Luận Cục & Cung Vị)
+                  <span>🌊</span> D. Luận Cục & Cung Vị: Vì Sao Cát / Hung
                 </div>
                 <div style="color:#E2E8F0; font-size:0.88rem; line-height:1.6;">
-                  ${formatSecContent(selected.muc_D, 'D. Vì sao cát/hung')}
+                  ${formatSecContent(selected.muc_D, 'D. Luận Cục & Cung Vị (Vì sao cát/hung)')}
                 </div>
               </div>
 
               <div style="background:#1C1E24; border-left:3px solid ${phanColor}; border-radius:0 8px 8px 0; padding:0.9rem 1.1rem;">
                 <div style="display:flex; align-items:center; gap:0.4rem; color:${phanColor}; font-size:0.82rem; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; margin-bottom:0.4rem;">
-                  <span>⚡</span> E. Ứng Nghiệm Thực Địa (Tài Lộc, Nhân Đinh, Thọ Khang, Gia Đạo)
+                  <span>⚡</span> E. Ứng Nghiệm Thực Địa (Họa Phúc Cát Hung)
                 </div>
                 <div style="color:#E2E8F0; font-size:0.88rem; line-height:1.6;">
-                  ${formatSecContent(selected.muc_E, 'E. Ứng nghiệm theo cổ thư')}
+                  ${formatSecContent(selected.muc_E, 'E. Ứng nghiệm thực địa theo cổ thư')}
                 </div>
               </div>
 
               <div style="background:#22181C; border-left:3px solid #FB7185; border-radius:0 8px 8px 0; padding:0.9rem 1.1rem;">
                 <div style="display:flex; align-items:center; gap:0.4rem; color:#FB7185; font-size:0.82rem; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; margin-bottom:0.4rem;">
-                  <span>⚠️</span> F. Cạm Bẫy, Dấu Hiệu Dễ Nhầm Lẫn & Ngoại Lệ Cần Tránh
+                  <span>⚠️</span> F. Dấu Hiệu Nhận Biết & Sai Lầm Cần Tránh
                 </div>
                 <div style="color:#E2E8F0; font-size:0.88rem; line-height:1.6;">
-                  ${formatSecContent(selected.muc_F, 'F. Dễ nhầm, ngoại lệ và giới hạn')}
+                  ${formatSecContent(selected.muc_F, 'F. Dấu hiệu nhận biết & Sai lầm cần tránh')}
                 </div>
-              </div>
-
-              <div style="background:#161B22; border-left:3px solid #94A3B8; border-radius:0 8px 8px 0; padding:0.9rem 1.1rem;">
-                <div style="display:flex; align-items:center; gap:0.4rem; color:#94A3B8; font-size:0.82rem; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; margin-bottom:0.4rem;">
-                  <span>📚</span> G. Đối Chiếu Cổ Tịch & Phả Hệ Học Thuật
-                </div>
-                <div style="color:#CBD5E1; font-size:0.88rem; line-height:1.6;">
-                  ${formatSecContent(selected.muc_G, 'G. Trạng thái văn bản')}
-                </div>
-                ${selected.source ? `<div style="font-size:0.75rem; color:#64748B; margin-top:0.4rem;">${escapeHtml(selected.source)}</div>` : ''}
               </div>
             </div>
 
