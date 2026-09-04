@@ -29,7 +29,7 @@
     "sources": 124,
     "records": 693,
     "articles": 20,
-    "articleEntries": 96
+    "articleEntries": 100
   },
   "qa": {
     "JSON_PARSE": "PASS",
@@ -212,7 +212,7 @@
       "title": "Khởi Công Trạch Nhật",
       "description": "Bản chất trạch nhật cổ thư, trình tự động thổ, thượng lương, cất nóc an toàn, tránh phương Thái Tuế Tam Sát.",
       "sourceFile": "BATCH19/05_VIET_HOA/trinh_tu_xay_dung_trach_nhat.md",
-      "entryCount": 3,
+      "entryCount": 5,
       "stage": 5
     },
     {
@@ -221,7 +221,7 @@
       "title": "Nghiệm Thu Nhập Trạch",
       "description": "Tiêu chuẩn sẵn sàng ở, làm sạch thanh tẩy không gian, nghi thức an vị bàn thờ, giữ ấm gia đạo an cư lạc nghiệp.",
       "sourceFile": "BATCH20/04_VIET_HOA/hoan_thanh_nhap_trach.md",
-      "entryCount": 3,
+      "entryCount": 5,
       "stage": 5
     }
   ],
