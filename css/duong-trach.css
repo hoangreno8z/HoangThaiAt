@@ -635,6 +635,38 @@
   color: #F1F5F9;
 }
 
+/* ── NUMBERED LIST: PHÂN TÁCH CÁC MỤC ĐÁNH SỐ RÕ RÀNG VÀ CHỮ SỐ VÀNG KIM ── */
+.dt-num-list {
+  margin: 0.45rem 0 0.95rem 0;
+  padding: 0;
+  list-style: none !important;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.dt-num-list li {
+  position: relative;
+  padding-left: 0.2rem !important;
+  color: #E2E8F0;
+  font-size: 0.91rem;
+  line-height: 1.75;
+  text-align: justify;
+}
+
+.dt-num-list li::before {
+  content: none !important;
+}
+
+.dt-num-badge {
+  display: inline-block;
+  color: #FBBF24;
+  font-weight: 800;
+  font-size: 0.95rem;
+  margin-right: 0.35rem;
+  font-family: inherit;
+}
+
 /* ── SUB-BULLET LIST: PHÂN TÁCH CÁC GẠCH ĐẦU DÒNG CON XUỐNG DÒNG RÕ RÀNG ── */
 .dt-sub-bullet-list {
   margin: 0.55rem 0 0.5rem 0.5rem;

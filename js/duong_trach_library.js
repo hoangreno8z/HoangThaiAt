@@ -363,7 +363,7 @@
           if (subItems.length) {
             const subLis = subItems.map(si => {
               const colonIdx = si.indexOf(':');
-              if (colonIdx !== -1 && colonIdx < 35) {
+              if (colonIdx !== -1 && colonIdx < 50) {
                 const k = si.slice(0, colonIdx).trim();
                 const v = si.slice(colonIdx + 1).trim();
                 return `<li class="dt-sub-bullet-li"><span class="dt-sub-bullet-key">${escapeHtml(k)}:</span> <span class="dt-sub-bullet-val">${escapeHtml(v)}</span></li>`;
@@ -373,6 +373,14 @@
             html += `<ul class="dt-sub-bullet-list">${subLis}</ul>`;
           }
           return `<li>${html}</li>`;
+        }
+
+        // Check if single bullet item has Key: Value
+        const colonIdx = raw.indexOf(':');
+        if (colonIdx !== -1 && colonIdx < 50 && !raw.slice(0, colonIdx).includes('\n')) {
+          const k = raw.slice(0, colonIdx).trim();
+          const v = raw.slice(colonIdx + 1).trim();
+          return `<li><span class="dt-sub-bullet-key" style="color:#38BDF8; font-weight:700;">${escapeHtml(k)}:</span> <span class="dt-bullet-text">${escapeHtml(v)}</span></li>`;
         }
 
         // Standard bullet item
@@ -417,13 +425,13 @@
                   const subHead = subParts[0].trim();
                   const subItems = subParts.slice(1);
                   
-                  let itemHtml = `<strong>${num}.</strong> <span class="dt-bullet-text">${escapeHtml(subHead)}</span>`;
+                  let itemHtml = `<span class="dt-num-badge">${num}.</span> <span class="dt-bullet-text">${escapeHtml(subHead)}</span>`;
                   if (subItems.length) {
                     const subLis = subItems.map(si => {
                       si = si.trim();
                       if (!si) return '';
                       const colonIdx = si.indexOf(':');
-                      if (colonIdx !== -1 && colonIdx < 45) {
+                      if (colonIdx !== -1 && colonIdx < 50) {
                         const k = si.slice(0, colonIdx).trim();
                         const v = si.slice(colonIdx + 1).trim();
                         return `<li class="dt-sub-bullet-li"><span class="dt-sub-bullet-key">${escapeHtml(k)}:</span> <span class="dt-sub-bullet-val">${escapeHtml(v)}</span></li>`;
@@ -436,7 +444,7 @@
                 } else {
                   // If contains multiple lines, preserve them
                   const formattedItem = escapeHtml(rawItem).replace(/\n/g, '<br>');
-                  listItems.push(`<li><strong>${num}.</strong> <span class="dt-bullet-text">${formattedItem}</span></li>`);
+                  listItems.push(`<li><span class="dt-num-badge">${num}.</span> <span class="dt-bullet-text">${formattedItem}</span></li>`);
                 }
               } else if (listItems.length === 0) {
                 leadHtml += `<p class="dt-lead-p">${escapeHtml(part)}</p>`;
@@ -447,7 +455,7 @@
             
             let result = leadHtml;
             if (listItems.length) {
-              result += `<ul class="dt-bullet-list dt-num-list" style="list-style:none; padding-left:0.2rem;">${listItems.join('')}</ul>`;
+              result += `<ul class="dt-num-list">${listItems.join('')}</ul>`;
             }
             return result;
           }
