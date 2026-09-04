@@ -2419,6 +2419,17 @@ ${reportText}
           </div>
         </section>
 
+              <!-- BANNER LIÊN KẾT TOÀN THƯ 144 THỦY KHẨU CHƯƠNG 21 -->
+        <div style="margin-top:1.5rem; background:linear-gradient(135deg, #181B22 0%, #0F172A 100%); border:1px solid #C5B382; border-radius:10px; padding:1rem 1.2rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.8rem;">
+          <div>
+            <div style="font-size:0.75rem; font-weight:700; color:#F5D485; text-transform:uppercase; letter-spacing:0.04em;">ĐỐI CHIẾU HỒ SƠ CHUYÊN SÂU CHÁNH TÔNG</div>
+            <div style="font-size:0.95rem; color:#FEF3C7; font-weight:700; margin-top:0.2rem;">Toàn Thư 144 Thủy Khẩu Chánh Tông (1880)</div>
+            <div style="font-size:0.78rem; color:#94A3B8;">Khảo chứng nguyên tác cổ thư Quyển 7 《Địa Lý Ngũ Quyết》 đối chiếu 《Bình Sa Ngọc Xích Kinh》 & Tam Hợp</div>
+          </div>
+          <a href="#/thu-vien/duong-trach/bai/batch-21" style="display:inline-flex; align-items:center; gap:0.4rem; padding:0.55rem 1.1rem; background:#C5B382; color:#0B0F17; text-decoration:none; font-weight:700; font-size:0.84rem; border-radius:6px; white-space:nowrap; box-shadow:0 4px 12px rgba(197,179,130,0.25);">
+            🧭 Mở Bộ Tra Cứu 144 Thủy Khẩu
+          </a>
+        </div>
       </div>
     `;
   }

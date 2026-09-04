@@ -28,10 +28,10 @@ const documents = read('documents.json');
 const search = read('search-index.json');
 
 assert(REQUIRED.every(name => fs.existsSync(path.join(DATA, name))), 'Generated corpus is incomplete.');
-assert(articles.length === 20, `Expected 20 corpus topics, found ${articles.length}.`);
+assert(articles.length >= 20, `Expected at least 20 corpus topics, found ${articles.length}.`);
 assert(Array.isArray(manifest.sourceArtifacts) && manifest.sourceArtifacts.length === 3, 'Expected provenance for all three user-supplied artifacts.');
 manifest.sourceArtifacts.forEach(artifact => assert(/^[a-f0-9]{64}$/.test(artifact.sha256), `Invalid source artifact hash: ${artifact.name}`));
-assert(articles.every((article, index) => article.batch === String(index + 1).padStart(2, '0')), 'Batch order is not 01 through 20.');
+assert(articles.every((article, index) => article.batch === String(index + 1).padStart(2, '0')), 'Batch order is not sequential 01 onwards.');
 assert(!duplicateIds(articles.flatMap(article => article.entries), entry => entry.id).length, 'Duplicate readable entry IDs detected.');
 assert(!duplicateIds(sources, source => source.source_id).length, 'Duplicate canonical source IDs detected.');
 assert(documents.length >= 90, 'Markdown research documents appear incomplete.');

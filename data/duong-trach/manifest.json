@@ -28,8 +28,8 @@
     "markdownDocuments": 95,
     "sources": 124,
     "records": 693,
-    "articles": 20,
-    "articleEntries": 100
+    "articles": 21,
+    "articleEntries": 113
   },
   "qa": {
     "JSON_PARSE": "PASS",
@@ -223,6 +223,15 @@
       "sourceFile": "BATCH20/04_VIET_HOA/hoan_thanh_nhap_trach.md",
       "entryCount": 5,
       "stage": 5
+    },
+    {
+      "id": "batch-21",
+      "batch": "21",
+      "title": "Toàn Thư 144 Thủy Khẩu",
+      "description": "Chuyên khảo đồ sộ 144 cửa nước theo 《Địa Lý Ngũ Quyết》 Quyển 7 《Hướng Hướng Phát Vi》 của Triệu Cửu Phong (Thanh, 1880) đối chiếu 《Bình Sa Ngọc Xích Kinh》 và cổ pháp Tam Hợp.",
+      "sourceFile": "BATCH21/04_VIET_HOA/toan_thu_144_thuy_khau.md",
+      "entryCount": 13,
+      "stage": 6
     }
   ],
   "invariants": [

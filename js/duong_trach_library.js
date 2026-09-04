@@ -148,6 +148,14 @@
       if (!this.root || this.root.dataset.bound === 'true') return;
       this.root.dataset.bound = 'true';
       this.root.addEventListener('click', event => {
+        const nav144Btn = event.target.closest('[data-144-hs-target]');
+        if (nav144Btn) {
+          const targetNum = parseInt(nav144Btn.dataset['144HsTarget'], 10);
+          if (!isNaN(targetNum)) {
+            this.update144Explorer(targetNum);
+          }
+          return;
+        }
         const toggle = event.target.closest('[data-dt-toggle]');
         if (!toggle) return;
         const key = toggle.dataset.dtToggle;
@@ -156,6 +164,59 @@
         savePreference(STORE_KEYS[key], this.preferences[key]);
         this.applyLayerVisibility();
       });
+      this.root.addEventListener('change', event => {
+        const groupSelect = event.target.closest('#dt-144-group-select');
+        if (groupSelect) {
+          const groupVal = parseInt(groupSelect.value, 10);
+          const firstHsInGroup = groupVal * 12 + 1;
+          this.update144Explorer(firstHsInGroup);
+          return;
+        }
+        const hsSelect = event.target.closest('#dt-144-hs-select');
+        if (hsSelect) {
+          const hsNum = parseInt(hsSelect.value, 10);
+          this.update144Explorer(hsNum);
+          return;
+        }
+        const searchInput = event.target.closest('#dt-144-quick-search');
+        if (searchInput) {
+          const val = searchInput.value.trim().toLowerCase();
+          const match = val.match(/hồ sơ #?(\d+)/i) || val.match(/^(\d+)$/);
+          if (match) {
+            const hs = parseInt(match[1], 10);
+            if (hs >= 1 && hs <= 144) {
+              this.update144Explorer(hs);
+              return;
+            }
+          }
+          const matrix = window.THUY_KHAU_144_MATRIX || [];
+          const found = matrix.find(m => 
+            (m.son_huong && m.son_huong.toLowerCase().includes(val)) ||
+            (m.thuy_xuat && m.thuy_xuat.toLowerCase().includes(val)) ||
+            (m.ten_cach && m.ten_cach.toLowerCase().includes(val)) ||
+            (m.muc_phan && m.muc_phan.toLowerCase().includes(val))
+          );
+          if (found) {
+            this.update144Explorer(found.hs_num);
+          }
+          return;
+        }
+      });
+
+      this.root.addEventListener('input', event => {
+        const searchInput = event.target.closest('#dt-144-quick-search');
+        if (searchInput) {
+          const val = searchInput.value.trim();
+          const match = val.match(/hồ sơ #?(\d+)/i) || val.match(/^(\d+)$/i);
+          if (match) {
+            const hs = parseInt(match[1], 10);
+            if (hs >= 1 && hs <= 144) {
+              this.update144Explorer(hs);
+            }
+          }
+        }
+      });
+
       this.root.addEventListener('submit', event => {
         const form = event.target.closest('[data-dt-search-form]');
         if (!form) return;
@@ -232,6 +293,12 @@
           title: 'Giai Đoạn 5: Thi Công, Nghiệm Thu & An Cư',
           desc: 'Trình tự khởi công, nghiệm thu công trình, chọn ngày lành và nghi thức nhập trạch an cư.',
           batches: ['19', '20']
+        },
+        {
+          num: 'VI',
+          title: 'Đại Chuyên Khảo: Toàn Thư 144 Thủy Khẩu Chánh Tông',
+          desc: 'Khảo chứng 144 cửa nước theo 《Địa Lý Ngũ Quyết》 Quyển 7 (1880) đối chiếu 《Bình Sa Ngọc Xích Kinh》.',
+          batches: ['21']
         }
       ];
 
@@ -286,7 +353,8 @@
         { num: 'II', title: 'TẦM ĐẤT & NGOẠI CỤC', batches: ['04', '05', '06', '07'] },
         { num: 'III', title: 'CỔNG NGÕ & MINH ĐƯỜNG', batches: ['08', '09', '10'] },
         { num: 'IV', title: 'BỐ TRÍ CÔNG NĂNG & KHÍ HẬU', batches: ['11', '12', '13', '14', '15', '16', '17', '18'] },
-        { num: 'V', title: 'THI CÔNG & NHẬP TRẠCH', batches: ['19', '20'] }
+        { num: 'V', title: 'THI CÔNG & NHẬP TRẠCH', batches: ['19', '20'] },
+        { num: 'VI', title: 'TOÀN THƯ 144 THỦY KHẨU', batches: ['21'] }
       ];
 
       // Desktop Sidebar Nav
@@ -323,7 +391,7 @@
         </div>
       `;
 
-      return `<nav class="dt-topic-nav" aria-label="Quy trình 20 bước Dương Trạch">
+      return `<nav class="dt-topic-nav" aria-label="Quy trình thực chiến Dương Trạch">
         <div class="dt-topic-nav-desktop">${desktopNavHtml}</div>
         ${mobileNavHtml}
       </nav>`;
@@ -639,6 +707,276 @@
       </article>`;
     }
 
+    render144MatrixWidget(activeHsNum) {
+      const matrix = window.THUY_KHAU_144_MATRIX || [];
+      if (!matrix.length) {
+        return `<div class="dt-state-note" style="padding:1rem; border-left:3px solid #C5B382;">Đang nạp dữ liệu Ma Trận 144 Thủy Khẩu Chánh Tông...</div>`;
+      }
+
+      const hsTarget = Number(activeHsNum) || 1;
+      const selected = matrix.find(item => item.hs_num === hsTarget) || matrix[0];
+      const selectedGroupIdx = Math.floor((selected.hs_num - 1) / 12);
+
+      const SONG_SON_GROUPS_INFO = [
+        { idx: 0, label: "Nhóm 01: Nhâm Bính / Tý Ngọ (Hỏa Cục)", cuc: "Hỏa", lesson: "LESSON-21-01" },
+        { idx: 1, label: "Nhóm 02: Quý Đinh / Sửu Mùi (Kim Cục)", cuc: "Kim", lesson: "LESSON-21-02" },
+        { idx: 2, label: "Nhóm 03: Cấn Khôn / Dần Thân (Thủy Cục)", cuc: "Thủy", lesson: "LESSON-21-03" },
+        { idx: 3, label: "Nhóm 04: Giáp Canh / Mão Dậu (Kim Cục)", cuc: "Kim", lesson: "LESSON-21-04" },
+        { idx: 4, label: "Nhóm 05: Ất Tân / Thìn Tuất (Thủy Cục)", cuc: "Thủy", lesson: "LESSON-21-05" },
+        { idx: 5, label: "Nhóm 06: Tốn Càn / Tị Hợi (Mộc Cục)", cuc: "Mộc", lesson: "LESSON-21-06" },
+        { idx: 6, label: "Nhóm 07: Bính Nhâm / Ngọ Tý (Thủy Cục)", cuc: "Thủy", lesson: "LESSON-21-07" },
+        { idx: 7, label: "Nhóm 08: Đinh Quý / Mùi Sửu (Mộc Cục)", cuc: "Mộc", lesson: "LESSON-21-08" },
+        { idx: 8, label: "Nhóm 09: Khôn Cấn / Thân Dần (Hỏa Cục)", cuc: "Hỏa", lesson: "LESSON-21-09" },
+        { idx: 9, label: "Nhóm 10: Canh Giáp / Dậu Ất (Mộc Cục)", cuc: "Mộc", lesson: "LESSON-21-10" },
+        { idx: 10, label: "Nhóm 11: Tân Ất / Tuất Thìn (Hỏa Cục)", cuc: "Hỏa", lesson: "LESSON-21-11" },
+        { idx: 11, label: "Nhóm 12: Càn Tốn / Hợi Tị (Kim Cục)", cuc: "Kim", lesson: "LESSON-21-12" }
+      ];
+
+      const currentGroupInfo = SONG_SON_GROUPS_INFO[selectedGroupIdx] || SONG_SON_GROUPS_INFO[0];
+      const groupItems = matrix.filter(item => Math.floor((item.hs_num - 1) / 12) === selectedGroupIdx);
+
+      const groupOptions = SONG_SON_GROUPS_INFO.map(g => 
+        `<option value="${g.idx}" ${g.idx === selectedGroupIdx ? 'selected' : ''}>${escapeHtml(g.label)}</option>`
+      ).join('');
+
+      const doorOptions = groupItems.map(item => {
+        const isSel = item.hs_num === selected.hs_num;
+        return `<option value="${item.hs_num}" ${isSel ? 'selected' : ''}>Cửa ${((item.hs_num - 1) % 12) + 1}: Thoát ${escapeHtml(item.thuy_xuat)} — ${escapeHtml(item.ten_cach)} [${escapeHtml(item.muc_phan)}]</option>`;
+      }).join('');
+
+      const datalistOptions = matrix.map(item => 
+        `<option value="Hồ sơ #${item.hs_num}: ${escapeHtml(item.son_huong)} thoát ${escapeHtml(item.thuy_xuat)} — ${escapeHtml(item.ten_cach)} [${escapeHtml(item.muc_phan)}]"></option>`
+      ).join('');
+
+      let cucColor = '#38BDF8';
+      let cucBg = 'rgba(56,189,248,0.12)';
+      let cucBorder = 'rgba(56,189,248,0.3)';
+      if (selected.cuc === 'Hỏa') {
+        cucColor = '#F87171'; cucBg = 'rgba(239,68,68,0.12)'; cucBorder = 'rgba(239,68,68,0.3)';
+      } else if (selected.cuc === 'Thủy') {
+        cucColor = '#38BDF8'; cucBg = 'rgba(56,189,248,0.12)'; cucBorder = 'rgba(56,189,248,0.3)';
+      } else if (selected.cuc === 'Mộc') {
+        cucColor = '#4ADE80'; cucBg = 'rgba(74,222,128,0.12)'; cucBorder = 'rgba(74,222,128,0.3)';
+      } else if (selected.cuc === 'Kim') {
+        cucColor = '#FBBF24'; cucBg = 'rgba(251,191,36,0.12)'; cucBorder = 'rgba(251,191,36,0.3)';
+      }
+
+      const phanLower = (selected.muc_phan || '').toLowerCase();
+      let phanBg = 'rgba(16,185,129,0.15)';
+      let phanColor = '#34D399';
+      let phanBorder = 'rgba(52,211,153,0.3)';
+      if (phanLower.includes('hung') || phanLower.includes('tuyệt') || phanLower.includes('tiêu') || phanLower.includes('bần') || phanLower.includes('đoản') || phanLower.includes('bại')) {
+        phanBg = 'rgba(239,68,68,0.15)';
+        phanColor = '#F87171';
+        phanBorder = 'rgba(239,68,68,0.3)';
+      } else if (!phanLower.includes('cát')) {
+        phanBg = 'rgba(245,158,11,0.15)';
+        phanColor = '#FBBF24';
+        phanBorder = 'rgba(245,158,11,0.3)';
+      }
+
+      const prevHs = selected.hs_num > 1 ? selected.hs_num - 1 : 144;
+      const nextHs = selected.hs_num < 144 ? selected.hs_num + 1 : 1;
+
+      const formatSecContent = (text, prefix) => {
+        if (!text) return '<span style="color:#64748B;">(Chưa có nội dung riêng cho mục này)</span>';
+        let s = text.trim();
+        if (s.startsWith(prefix)) s = s.substring(prefix.length).replace(/^[:\.\s—]+/, '');
+        return escapeHtml(s).replace(/\n/g, '<br>');
+      };
+
+      return `
+        <section class="dt-144-explorer" style="background:#0E131F; border:1px solid #C5B382; border-radius:14px; padding:1.4rem; box-shadow:0 12px 36px rgba(0,0,0,0.55); margin-bottom:2rem;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:0.8rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:1rem; margin-bottom:1.2rem;">
+            <div>
+              <div style="display:inline-flex; align-items:center; gap:0.4rem; padding:0.2rem 0.6rem; background:rgba(197,179,130,0.15); border:1px solid rgba(197,179,130,0.3); border-radius:6px; font-size:0.75rem; font-weight:700; color:#F5D485; margin-bottom:0.4rem;">
+                <span>🧭</span> BỘ TRA CỨU ĐIỆN TỬ TƯƠNG TÁC
+              </div>
+              <h2 style="margin:0 0 0.3rem 0; font-size:1.3rem; color:#FEF3C7; font-weight:800; letter-spacing:0.02em;">
+                Ma Trận 144 Thủy Khẩu Chánh Tông (1880)
+              </h2>
+              <div style="font-size:0.82rem; color:#94A3B8;">
+                Khảo chứng 12 Song Sơn × 12 Cửa Nước theo 《Địa Lý Ngũ Quyết》 Quyển 7 (1880) đối chiếu 《Bình Sa Ngọc Xích Kinh》
+              </div>
+            </div>
+            <div style="display:flex; align-items:center; gap:0.5rem;">
+              <button type="button" data-144-hs-target="${prevHs}" style="background:#1E293B; color:#E2E8F0; border:1px solid rgba(255,255,255,0.15); padding:0.45rem 0.8rem; border-radius:6px; font-size:0.8rem; cursor:pointer; font-weight:600;" title="Hồ sơ #${prevHs}">
+                ← Cửa trước
+              </button>
+              <span style="font-size:0.85rem; font-weight:700; color:#F5D485; padding:0 0.3rem;">
+                #${selected.hs_num} / 144
+              </span>
+              <button type="button" data-144-hs-target="${nextHs}" style="background:#1E293B; color:#E2E8F0; border:1px solid rgba(255,255,255,0.15); padding:0.45rem 0.8rem; border-radius:6px; font-size:0.8rem; cursor:pointer; font-weight:600;" title="Hồ sơ #${nextHs}">
+                Cửa sau →
+              </button>
+            </div>
+          </div>
+
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1rem; margin-bottom:1.4rem; background:#141B2B; padding:1rem; border-radius:10px; border:1px solid rgba(255,255,255,0.06);">
+            <div>
+              <label for="dt-144-group-select" style="display:block; font-size:0.78rem; font-weight:700; color:#E2E8F0; margin-bottom:0.35rem; text-transform:uppercase; letter-spacing:0.04em;">
+                1. Chọn Cụm Song Sơn (12 Cụm)
+              </label>
+              <select id="dt-144-group-select" style="width:100%; background:#0B0F17; color:#FEF3C7; border:1px solid rgba(197,179,130,0.3); border-radius:6px; padding:0.5rem 0.7rem; font-size:0.86rem; font-weight:600; outline:none; font-family:inherit;">
+                ${groupOptions}
+              </select>
+            </div>
+
+            <div>
+              <label for="dt-144-hs-select" style="display:block; font-size:0.78rem; font-weight:700; color:#E2E8F0; margin-bottom:0.35rem; text-transform:uppercase; letter-spacing:0.04em;">
+                2. Chọn Cửa Nước Thoát (12 Cửa)
+              </label>
+              <select id="dt-144-hs-select" style="width:100%; background:#0B0F17; color:#38BDF8; border:1px solid rgba(56,189,248,0.3); border-radius:6px; padding:0.5rem 0.7rem; font-size:0.86rem; font-weight:600; outline:none; font-family:inherit;">
+                ${doorOptions}
+              </select>
+            </div>
+
+            <div style="grid-column: 1 / -1;">
+              <label for="dt-144-quick-search" style="display:block; font-size:0.78rem; font-weight:700; color:#E2E8F0; margin-bottom:0.35rem; text-transform:uppercase; letter-spacing:0.04em;">
+                🔍 Gõ Nhanh Từ Khóa Tìm Kiếm (Gợi Ý Tự Động 144 Hồ Sơ)
+              </label>
+              <input id="dt-144-quick-search" list="dt-144-search-datalist" type="text" placeholder="Ví dụ: gõ 'Bính hướng', 'Ất Thìn', 'Tân Tuất', 'Chính Vượng', 'Hồ sơ #45'..." style="width:100%; background:#0B0F17; color:#F5EFEB; border:1px solid rgba(255,255,255,0.15); border-radius:6px; padding:0.5rem 0.8rem; font-size:0.85rem; outline:none; font-family:inherit; box-sizing:border-box;">
+              <datalist id="dt-144-search-datalist">
+                ${datalistOptions}
+              </datalist>
+            </div>
+          </div>
+
+          <div style="background:#111827; border:1px solid rgba(255,255,255,0.12); border-radius:12px; overflow:hidden;">
+            <div style="background:#1A2234; padding:1rem 1.4rem; border-bottom:1px solid rgba(255,255,255,0.08); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.6rem;">
+              <div>
+                <span style="font-size:0.75rem; font-weight:700; color:#94A3B8; text-transform:uppercase; letter-spacing:0.05em;">Hồ sơ khảo chứng số #${selected.hs_num}</span>
+                <h3 style="margin:0.2rem 0 0 0; font-size:1.2rem; color:#F8FAFC; font-weight:800;">
+                  ${escapeHtml(selected.header)}
+                </h3>
+              </div>
+              <div style="display:flex; gap:0.5rem; flex-wrap:wrap; align-items:center;">
+                <span class="dt-badge" style="background:${cucBg}; color:${cucColor}; border:1px solid ${cucBorder}; font-weight:700; padding:0.25rem 0.65rem; border-radius:6px; font-size:0.8rem;">
+                  ${escapeHtml(selected.cuc)} Cục
+                </span>
+                <span class="dt-badge" style="background:${phanBg}; color:${phanColor}; border:1px solid ${phanBorder}; font-weight:800; padding:0.25rem 0.65rem; border-radius:6px; font-size:0.8rem;">
+                  ${escapeHtml(selected.muc_phan).toUpperCase()}
+                </span>
+                <span class="dt-badge" style="background:rgba(255,255,255,0.06); color:#CBD5E1; border:1px solid rgba(255,255,255,0.12); padding:0.25rem 0.55rem; border-radius:6px; font-size:0.75rem;">
+                  Khảo chứng: ${escapeHtml(selected.muc_hieu_khao)}
+                </span>
+              </div>
+            </div>
+
+            <div style="background:#0F141E; padding:0.75rem 1.4rem; border-bottom:1px solid rgba(255,255,255,0.06); display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:0.8rem; font-size:0.82rem;">
+              <div>
+                <span style="color:#64748B; display:block; font-size:0.72rem; text-transform:uppercase;">Tọa Sơn / Hướng</span>
+                <strong style="color:#F1F5F9;">${escapeHtml(selected.son_huong)}</strong>
+              </div>
+              <div>
+                <span style="color:#64748B; display:block; font-size:0.72rem; text-transform:uppercase;">Cửa Nước Thoát</span>
+                <strong style="color:#38BDF8;">${escapeHtml(selected.thuy_xuat)}</strong>
+              </div>
+              <div>
+                <span style="color:#64748B; display:block; font-size:0.72rem; text-transform:uppercase;">Cung / Pha Trường Sinh</span>
+                <strong style="color:#CBD5E1;">${escapeHtml(selected.song_son_cung)}</strong>
+              </div>
+              <div>
+                <span style="color:#64748B; display:block; font-size:0.72rem; text-transform:uppercase;">Dòng Chảy</span>
+                <strong style="color:#CBD5E1;">${escapeHtml(selected.chieu_nuoc)}</strong>
+              </div>
+              <div>
+                <span style="color:#64748B; display:block; font-size:0.72rem; text-transform:uppercase;">Tên Thế Cách</span>
+                <strong style="color:#F5D485;">${escapeHtml(selected.ten_cach)}</strong>
+              </div>
+            </div>
+
+            <div style="padding:1.4rem; display:flex; flex-direction:column; gap:1.2rem;">
+              <div style="background:#161D2C; border-left:3px solid #C5B382; border-radius:0 8px 8px 0; padding:0.9rem 1.1rem;">
+                <div style="display:flex; align-items:center; gap:0.4rem; color:#F5D485; font-size:0.82rem; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; margin-bottom:0.4rem;">
+                  <span>📜</span> A. Kinh Văn Nguyên Tác & Đồ Hình (Quang Tự Năm Thứ 6 — 1880)
+                </div>
+                <div style="color:#F1F5F9; font-size:0.88rem; line-height:1.6;">
+                  ${formatSecContent(selected.muc_A, 'A. Văn bản hiệu đính (trích yếu, không giả làm toàn văn)')}
+                </div>
+              </div>
+
+              <div style="background:#131B2A; border-left:3px solid #38BDF8; border-radius:0 8px 8px 0; padding:0.9rem 1.1rem;">
+                <div style="display:flex; align-items:center; gap:0.4rem; color:#38BDF8; font-size:0.82rem; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; margin-bottom:0.4rem;">
+                  <span>🗣️</span> B. Dịch Giải & Thuật Ngữ Cốt Lõi
+                </div>
+                <div style="color:#E2E8F0; font-size:0.88rem; line-height:1.6;">
+                  ${formatSecContent(selected.muc_B, 'B. Dịch sát và ý nghĩa')}
+                </div>
+              </div>
+
+              <div style="background:#131D24; border-left:3px solid #34D399; border-radius:0 8px 8px 0; padding:0.9rem 1.1rem;">
+                <div style="display:flex; align-items:center; gap:0.4rem; color:#34D399; font-size:0.82rem; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; margin-bottom:0.4rem;">
+                  <span>🛠️</span> C. Cầm Tay Chỉ Việc Ngoài Thực Địa (Đo Đạc & Định Vị La Bàn)
+                </div>
+                <div style="color:#E2E8F0; font-size:0.88rem; line-height:1.6;">
+                  ${formatSecContent(selected.muc_C, 'C. Cầm tay chỉ việc ngoài thực địa')}
+                </div>
+              </div>
+
+              <div style="background:#1B1A28; border-left:3px solid #A78BFA; border-radius:0 8px 8px 0; padding:0.9rem 1.1rem;">
+                <div style="display:flex; align-items:center; gap:0.4rem; color:#A78BFA; font-size:0.82rem; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; margin-bottom:0.4rem;">
+                  <span>🌊</span> D. Giảng Sâu Về Thủy Pháp: Vì Sao Cát / Hung (Luận Cục & Cung Vị)
+                </div>
+                <div style="color:#E2E8F0; font-size:0.88rem; line-height:1.6;">
+                  ${formatSecContent(selected.muc_D, 'D. Vì sao cát/hung')}
+                </div>
+              </div>
+
+              <div style="background:#1C1E24; border-left:3px solid ${phanColor}; border-radius:0 8px 8px 0; padding:0.9rem 1.1rem;">
+                <div style="display:flex; align-items:center; gap:0.4rem; color:${phanColor}; font-size:0.82rem; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; margin-bottom:0.4rem;">
+                  <span>⚡</span> E. Ứng Nghiệm Thực Địa (Tài Lộc, Nhân Đinh, Thọ Khang, Gia Đạo)
+                </div>
+                <div style="color:#E2E8F0; font-size:0.88rem; line-height:1.6;">
+                  ${formatSecContent(selected.muc_E, 'E. Ứng nghiệm theo cổ thư')}
+                </div>
+              </div>
+
+              <div style="background:#22181C; border-left:3px solid #FB7185; border-radius:0 8px 8px 0; padding:0.9rem 1.1rem;">
+                <div style="display:flex; align-items:center; gap:0.4rem; color:#FB7185; font-size:0.82rem; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; margin-bottom:0.4rem;">
+                  <span>⚠️</span> F. Cạm Bẫy, Dấu Hiệu Dễ Nhầm Lẫn & Ngoại Lệ Cần Tránh
+                </div>
+                <div style="color:#E2E8F0; font-size:0.88rem; line-height:1.6;">
+                  ${formatSecContent(selected.muc_F, 'F. Dễ nhầm, ngoại lệ và giới hạn')}
+                </div>
+              </div>
+
+              <div style="background:#161B22; border-left:3px solid #94A3B8; border-radius:0 8px 8px 0; padding:0.9rem 1.1rem;">
+                <div style="display:flex; align-items:center; gap:0.4rem; color:#94A3B8; font-size:0.82rem; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; margin-bottom:0.4rem;">
+                  <span>📚</span> G. Đối Chiếu Cổ Tịch & Phả Hệ Học Thuật
+                </div>
+                <div style="color:#CBD5E1; font-size:0.88rem; line-height:1.6;">
+                  ${formatSecContent(selected.muc_G, 'G. Trạng thái văn bản')}
+                </div>
+                ${selected.source ? `<div style="font-size:0.75rem; color:#64748B; margin-top:0.4rem;">${escapeHtml(selected.source)}</div>` : ''}
+              </div>
+            </div>
+
+            <div style="background:#0E131F; border-top:1px solid rgba(255,255,255,0.08); padding:0.9rem 1.4rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.8rem;">
+              <a href="#/thu-vien/duong-trach/bai/batch-21?muc=${currentGroupInfo.lesson}" style="display:inline-flex; align-items:center; gap:0.4rem; color:#F5D485; text-decoration:none; font-size:0.86rem; font-weight:600;">
+                📖 Xem toàn văn bài giảng ${escapeHtml(currentGroupInfo.label)} trong giáo trình ↓
+              </a>
+              <div style="display:flex; gap:0.5rem;">
+                <button type="button" data-144-hs-target="${prevHs}" style="background:#1E293B; color:#CBD5E1; border:1px solid rgba(255,255,255,0.12); padding:0.35rem 0.7rem; border-radius:6px; font-size:0.78rem; cursor:pointer;">
+                  ← #${prevHs}
+                </button>
+                <button type="button" data-144-hs-target="${nextHs}" style="background:#1E293B; color:#CBD5E1; border:1px solid rgba(255,255,255,0.12); padding:0.35rem 0.7rem; border-radius:6px; font-size:0.78rem; cursor:pointer;">
+                  #${nextHs} →
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+      `;
+    }
+
+    update144Explorer(activeHsNum) {
+      const mount = document.getElementById('dt-144-explorer-mount');
+      if (mount) {
+        mount.innerHTML = this.render144MatrixWidget(activeHsNum);
+      }
+    }
+
     renderArticle({ manifest, articles }, slug, query) {
       const articleIndex = articles.findIndex(item => item.id === slug);
       const article = articleIndex !== -1 ? articles[articleIndex] : articles[0];
@@ -663,14 +1001,47 @@
         </nav>
       `;
 
+      const isThuyKhauBatch = article.id === 'batch-21';
+      const isBatch04 = article.id === 'batch-04';
+
+      let specialHeaderBanner = '';
+      if (isBatch04) {
+        specialHeaderBanner = `
+          <div style="background:linear-gradient(135deg, #1E1B18 0%, #121722 100%); border:1px solid #C5B382; border-radius:12px; padding:1.2rem 1.4rem; margin-bottom:1.8rem; box-shadow:0 8px 24px rgba(0,0,0,0.35);">
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+              <div>
+                <div style="display:inline-block; padding:0.2rem 0.5rem; background:rgba(197,179,130,0.18); border:1px solid rgba(197,179,130,0.35); border-radius:6px; font-size:0.75rem; font-weight:700; color:#F5D485; margin-bottom:0.4rem;">
+                  ĐẠI CHUYÊN KHẢO CHÁNH TÔNG
+                </div>
+                <h3 style="margin:0 0 0.3rem 0; font-size:1.15rem; color:#FEF3C7; font-weight:700;">
+                  Toàn Thư 144 Thủy Khẩu Đã Được Tách Thành Chương 21 Riêng Biệt
+                </h3>
+                <p style="margin:0; font-size:0.85rem; color:#CBD5E1; line-height:1.5; max-width:760px;">
+                  Khảo chứng 144 cửa nước theo 《Địa Lý Ngũ Quyết》 Quyển 7 (1880) đối chiếu 《Bình Sa Ngọc Xích Kinh》. Đầy đủ 144 hồ sơ A–G và Bộ Tra Cứu Điện Tử Tương Tác tại Chương 21.
+                </p>
+              </div>
+              <a href="${ROUTE_ROOT}/bai/batch-21" style="display:inline-flex; align-items:center; gap:0.5rem; padding:0.6rem 1.1rem; background:#C5B382; color:#0B0F17; text-decoration:none; font-weight:700; font-size:0.86rem; border-radius:8px; box-shadow:0 4px 12px rgba(197,179,130,0.25); white-space:nowrap;">
+                👉 Mở Toàn Thư Chương 21
+              </a>
+            </div>
+          </div>
+        `;
+      }
+
+      const hsQuery = query.get('hs');
+      const initialHs = hsQuery ? (parseInt(hsQuery, 10) || 1) : 1;
+      const explorerMount = isThuyKhauBatch ? `<div id="dt-144-explorer-mount">${this.render144MatrixWidget(initialHs)}</div>` : '';
+
       const content = `<div class="dt-reader-layout">
         ${this.topicNav(manifest.topics, article.id)}
         <main>
           <header class="dt-page-header">
-            <div class="dt-eyebrow">Bước ${escapeHtml(article.batch)} / 20 · ${article.entries.length ? `${article.entries.length} bài học thực chiến` : 'Tiêu chuẩn an toàn'}</div>
+            <div class="dt-eyebrow">Chương ${escapeHtml(article.batch)} / ${manifest.topics.length} · ${article.entries.length ? `${article.entries.length} bài học thực chiến` : 'Tiêu chuẩn an toàn'}</div>
             <h1 class="dt-page-title">${escapeHtml(article.title)}</h1>
             <p class="dt-page-lead">${escapeHtml(article.description)}</p>
           </header>
+          ${specialHeaderBanner}
+          ${explorerMount}
           ${article.overview ? `<aside class="dt-state-note">${escapeHtml(article.overview)}</aside>` : ''}
           <div class="dt-toolbar" aria-label="Tùy chọn văn bản" style="display:flex; align-items:center; justify-content:space-between; margin:0.6rem 0 1.1rem; padding:0.3rem 0.6rem; background:#181B22; border:1px solid rgba(230,220,200,0.08); border-radius:6px;">
             <span style="font-size:0.74rem; color:#9E998E;">Hiển thị nguyên tác:</span>
