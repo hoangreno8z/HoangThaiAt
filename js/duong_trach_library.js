@@ -361,6 +361,58 @@
         const rawParas = handbookText.split(/\n\n+|\r\n\r\n+/);
         const parsedHandbookParts = [];
 
+        const formatContentBlock = (content) => {
+          if (!content) return '';
+          
+          // Kiểm tra danh sách đánh số: 1. ... 2. ... hoặc \n1. ... \n2. ...
+          const hasNumberedList = /(?:^|\n)\s*\d+[\.\)]\s+/.test(content) || /\s+\d+[\.\)]\s+/.test(content);
+          if (hasNumberedList) {
+            // Tách theo mẫu số thứ tự: 1. 2. 3...
+            const parts = content.split(/(?=(?:^|\n|\s)\d+[\.\)]\s+)/).map(p => p.trim()).filter(Boolean);
+            let leadHtml = '';
+            let listItems = [];
+            
+            parts.forEach(part => {
+              const numMatch = part.match(/^(\d+)[\.\)]\s+(.*)/s);
+              if (numMatch) {
+                listItems.push(`<li><strong>${numMatch[1]}.</strong> <span class="dt-bullet-text">${escapeHtml(numMatch[2].trim())}</span></li>`);
+              } else if (listItems.length === 0) {
+                leadHtml += `<p class="dt-lead-p">${escapeHtml(part)}</p>`;
+              } else {
+                leadHtml += `<p class="dt-body-p">${escapeHtml(part)}</p>`;
+              }
+            });
+            
+            let result = leadHtml;
+            if (listItems.length) {
+              result += `<ul class="dt-bullet-list dt-num-list" style="list-style:none; padding-left:0.2rem;">${listItems.join('')}</ul>`;
+            }
+            return result;
+          }
+
+          // Kiểm tra gạch đầu dòng bullet: • hoặc \n-
+          if (content.includes('•') || /(?:^|\n)\s*-\s+/.test(content)) {
+            const rawItems = content.includes('•') ? content.split(/\s*•\s*/) : content.split(/(?:^|\n)\s*-\s+/);
+            const leadText = rawItems[0].trim();
+            const bulletItems = rawItems.slice(1);
+            let result = '';
+
+            if (leadText) result += `<p class="dt-lead-p">${escapeHtml(leadText)}</p>`;
+            if (bulletItems.length) {
+              const itemsHtml = bulletItems
+                .map(b => b.trim())
+                .filter(Boolean)
+                .map(b => `<li><span class="dt-bullet-text">${escapeHtml(b)}</span></li>`)
+                .join('');
+              result += `<ul class="dt-bullet-list">${itemsHtml}</ul>`;
+            }
+            return result;
+          }
+
+          // Đoạn văn thông thường
+          return `<p class="dt-body-p">${escapeHtml(content)}</p>`;
+        };
+
         rawParas.forEach(para => {
           para = para.trim();
           if (!para) return;
@@ -371,42 +423,11 @@
             const restContent = headerMatch[2].trim();
 
             parsedHandbookParts.push(`<div class="dt-section-heading dt-master-heading">${escapeHtml(headingTitle)}</div>`);
-
             if (restContent) {
-              if (restContent.includes('•') || restContent.includes('\n-')) {
-                const leadAndBullets = restContent.split(/\s*•\s*/);
-                const leadText = leadAndBullets[0].trim();
-                const bulletItems = leadAndBullets.slice(1);
-
-                if (leadText) parsedHandbookParts.push(`<p class="dt-lead-p">${escapeHtml(leadText)}</p>`);
-                if (bulletItems.length) {
-                  const itemsHtml = bulletItems
-                    .map(b => b.trim())
-                    .filter(Boolean)
-                    .map(b => `<li><span class="dt-bullet-text">${escapeHtml(b)}</span></li>`)
-                    .join('');
-                  parsedHandbookParts.push(`<ul class="dt-bullet-list">${itemsHtml}</ul>`);
-                }
-              } else {
-                parsedHandbookParts.push(`<p class="dt-body-p">${escapeHtml(restContent)}</p>`);
-              }
-            }
-          } else if (para.includes('•')) {
-            const leadAndBullets = para.split(/\s*•\s*/);
-            const leadText = leadAndBullets[0].trim();
-            const bulletItems = leadAndBullets.slice(1);
-
-            if (leadText) parsedHandbookParts.push(`<p class="dt-body-p">${escapeHtml(leadText)}</p>`);
-            if (bulletItems.length) {
-              const itemsHtml = bulletItems
-                .map(b => b.trim())
-                .filter(Boolean)
-                .map(b => `<li><span class="dt-bullet-text">${escapeHtml(b)}</span></li>`)
-                .join('');
-              parsedHandbookParts.push(`<ul class="dt-bullet-list">${itemsHtml}</ul>`);
+              parsedHandbookParts.push(formatContentBlock(restContent));
             }
           } else {
-            parsedHandbookParts.push(`<p class="dt-body-p">${escapeHtml(para)}</p>`);
+            parsedHandbookParts.push(formatContentBlock(para));
           }
         });
 
