@@ -348,6 +348,37 @@
 
       const sourceName = entry.source_title || 'Cổ Thư Chánh Tông';
 
+      // ── HELPER: Render a bullet item, parsing any nested sub-bullets (\n - ... or \n • ...) ──
+      const renderBulletItem = (raw) => {
+        raw = (raw || '').trim();
+        if (!raw) return '';
+
+        // Check if raw contains sub-bullets starting with - or •
+        if (/\n\s*[-–•]\s+/.test(raw)) {
+          const lines = raw.split(/\n\s*[-–•]\s+/);
+          const head = lines[0].trim();
+          const subItems = lines.slice(1);
+
+          let html = `<span class="dt-bullet-title"><strong>${escapeHtml(head)}</strong></span>`;
+          if (subItems.length) {
+            const subLis = subItems.map(si => {
+              const colonIdx = si.indexOf(':');
+              if (colonIdx !== -1 && colonIdx < 35) {
+                const k = si.slice(0, colonIdx).trim();
+                const v = si.slice(colonIdx + 1).trim();
+                return `<li class="dt-sub-bullet-li"><span class="dt-sub-bullet-key">${escapeHtml(k)}:</span> <span class="dt-sub-bullet-val">${escapeHtml(v)}</span></li>`;
+              }
+              return `<li class="dt-sub-bullet-li"><span class="dt-sub-bullet-val">${escapeHtml(si.trim())}</span></li>`;
+            }).join('');
+            html += `<ul class="dt-sub-bullet-list">${subLis}</ul>`;
+          }
+          return `<li>${html}</li>`;
+        }
+
+        // Standard bullet item
+        return `<li><span class="dt-bullet-text">${escapeHtml(raw)}</span></li>`;
+      };
+
       // ── TRƯỜNG HỢP 1: BÀI GIẢNG ĐẠI DANH SƯ (3 LỚP NỘI DUNG CHUẨN) ──
       if (entry.is_master_lesson || entry.layer_quick) {
         const quickHtml = entry.layer_quick ? `
@@ -400,9 +431,8 @@
             if (leadText) result += `<p class="dt-lead-p">${escapeHtml(leadText)}</p>`;
             if (bulletItems.length) {
               const itemsHtml = bulletItems
-                .map(b => b.trim())
+                .map(b => renderBulletItem(b))
                 .filter(Boolean)
-                .map(b => `<li><span class="dt-bullet-text">${escapeHtml(b)}</span></li>`)
                 .join('');
               result += `<ul class="dt-bullet-list">${itemsHtml}</ul>`;
             }
@@ -522,9 +552,8 @@
               if (leadText) parsedHtmlParts.push(`<p class="dt-lead-p">${escapeHtml(leadText)}</p>`);
               if (bulletItems.length) {
                 const itemsHtml = bulletItems
-                  .map(b => b.trim())
+                  .map(b => renderBulletItem(b))
                   .filter(Boolean)
-                  .map(b => `<li><span class="dt-bullet-text">${escapeHtml(b)}</span></li>`)
                   .join('');
                 parsedHtmlParts.push(`<ul class="dt-bullet-list">${itemsHtml}</ul>`);
               }
@@ -540,9 +569,8 @@
           if (leadText) parsedHtmlParts.push(`<p class="dt-body-p">${escapeHtml(leadText)}</p>`);
           if (bulletItems.length) {
             const itemsHtml = bulletItems
-              .map(b => b.trim())
+              .map(b => renderBulletItem(b))
               .filter(Boolean)
-              .map(b => `<li><span class="dt-bullet-text">${escapeHtml(b)}</span></li>`)
               .join('');
             parsedHtmlParts.push(`<ul class="dt-bullet-list">${itemsHtml}</ul>`);
           }

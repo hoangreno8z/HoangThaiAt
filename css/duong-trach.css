@@ -635,6 +635,45 @@
   color: #F1F5F9;
 }
 
+/* ── SUB-BULLET LIST: PHÂN TÁCH CÁC GẠCH ĐẦU DÒNG CON XUỐNG DÒNG RÕ RÀNG ── */
+.dt-sub-bullet-list {
+  margin: 0.55rem 0 0.5rem 0.5rem;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.dt-sub-bullet-li {
+  position: relative;
+  padding-left: 1.25rem !important;
+  color: #CBD5E1;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  text-align: left !important;
+}
+
+.dt-sub-bullet-li::before {
+  content: "–" !important;
+  position: absolute;
+  left: 0.15rem;
+  top: 0;
+  color: #FBBF24 !important;
+  font-weight: bold;
+  font-size: 0.95rem;
+}
+
+.dt-sub-bullet-key {
+  color: #38BDF8;
+  font-weight: 700;
+  margin-right: 0.25rem;
+}
+
+.dt-sub-bullet-val {
+  color: #F8FAFC;
+}
+
 .dt-entry-meta {
   display: flex;
   flex-wrap: wrap;
