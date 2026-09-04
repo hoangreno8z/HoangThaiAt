@@ -117,7 +117,32 @@ class LibraryUI {
       return str.split('\n')
         .map(line => line.trim())
         .filter(line => line.length > 0)
-        .map(line => `<p style="margin:0 0 0.6rem 0; line-height:1.65;">${line}</p>`)
+        .map(line => {
+          if (line.startsWith('- ') || line.startsWith('• ')) {
+            const bText = line.replace(/^[-•]\s*/, '').trim();
+            const colonIdx = bText.indexOf(':');
+            let bHtml = bText;
+            if (colonIdx !== -1 && colonIdx < 50) {
+              const k = bText.slice(0, colonIdx).trim();
+              const v = bText.slice(colonIdx + 1).trim();
+              bHtml = `<strong style="color:#38BDF8;">${k}:</strong> <span>${v}</span>`;
+            }
+            return `<div style="margin:0 0 0.4rem 0.5rem; padding-left:1.1rem; position:relative; line-height:1.7; color:var(--text-pure); font-size:0.88rem;"><span style="color:#FBBF24; position:absolute; left:0.2rem; font-weight:700;">•</span>${bHtml}</div>`;
+          }
+          const numMatch = line.match(/^(\d+[\.\)])\s*(.*)$/);
+          if (numMatch) {
+            const rawContent = numMatch[2].trim();
+            const colonIdx = rawContent.indexOf(':');
+            let bodyHtml = rawContent;
+            if (colonIdx !== -1 && colonIdx < 50) {
+              const k = rawContent.slice(0, colonIdx).trim();
+              const v = rawContent.slice(colonIdx + 1).trim();
+              bodyHtml = `<strong style="color:#38BDF8;">${k}:</strong> <span>${v}</span>`;
+            }
+            return `<div style="margin:0 0 0.5rem 0.2rem; display:flex; gap:0.45rem; align-items:baseline; line-height:1.75; font-size:0.88rem;"><span style="color:#FBBF24; font-weight:800;">${numMatch[1]}</span><div style="color:var(--text-pure); flex:1;">${bodyHtml}</div></div>`;
+          }
+          return `<p style="margin:0 0 0.65rem 0; line-height:1.75; font-size:0.88rem; text-align:justify; color:var(--text-pure);">${line}</p>`;
+        })
         .join('');
     };
 

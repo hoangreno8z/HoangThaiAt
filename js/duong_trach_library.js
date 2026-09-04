@@ -403,11 +403,11 @@
         const formatContentBlock = (content) => {
           if (!content) return '';
           
-          // Kiểm tra danh sách đánh số: 1. ... 2. ... hoặc \n1. ... \n2. ...
-          const hasNumberedList = /(?:^|\n)\s*\d+[\.\)]\s+/.test(content) || /\s+\d+[\.\)]\s+/.test(content);
+          // Kiểm tra danh sách đánh số: 1. ... 2. ... hoặc \n1. ... \n2. ... ở đầu dòng
+          const hasNumberedList = /(?:^|\n)\s*\d+[\.\)]\s+/.test(content);
           if (hasNumberedList) {
-            // Tách theo mẫu số thứ tự: 1. 2. 3...
-            const parts = content.split(/(?=(?:^|\n|\s)\d+[\.\)]\s+)/).map(p => p.trim()).filter(Boolean);
+            // Tách theo mẫu số thứ tự: 1. 2. 3... ở đầu dòng
+            const parts = content.split(/(?=(?:^|\n)\s*\d+[\.\)]\s+)/).map(p => p.trim()).filter(Boolean);
             let leadHtml = '';
             let listItems = [];
             
