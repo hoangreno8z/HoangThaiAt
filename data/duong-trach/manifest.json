@@ -29,7 +29,7 @@
     "sources": 124,
     "records": 693,
     "articles": 20,
-    "articleEntries": 91
+    "articleEntries": 96
   },
   "qa": {
     "JSON_PARSE": "PASS",
@@ -194,7 +194,7 @@
       "title": "Mái Hiên Thoát Mưa",
       "description": "Độ vươn hiên cản mưa hắt, độ dốc thoát nước nhanh, kết cấu đòn dông xà gồ và giải pháp chống nóng mái.",
       "sourceFile": "BATCH17/04_VIET_HOA/mai_hien_nuoc_mua.md",
-      "entryCount": 3,
+      "entryCount": 5,
       "stage": 4
     },
     {
@@ -203,7 +203,7 @@
       "title": "Vật Liệu Kết Cấu",
       "description": "Khảo sát dầm cột chịu lực, phòng ngừa nứt lún mối mọt, sử dụng vật liệu thân thiện bền vững.",
       "sourceFile": "BATCH18/05_VIET_HOA/vat_lieu_ket_cau.md",
-      "entryCount": 2,
+      "entryCount": 5,
       "stage": 4
     },
     {
