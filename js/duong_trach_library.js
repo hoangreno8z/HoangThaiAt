@@ -330,11 +330,152 @@
     }
 
     renderEntry(entry, article) {
-      const original = entry.original ? `<div class="dt-layer dt-layer-original" data-dt-layer="original"><span class="dt-layer-label" style="color:#94A3B8; font-weight:600; font-size:0.75rem; letter-spacing:0.06em;">Nguyên văn chữ Hán</span><p lang="zh-Hant" style="font-size:1.05rem; line-height:1.75; color:#FDE047; font-family:'Noto Serif SC',serif; margin:0.35rem 0 0 0;">${escapeHtml(entry.original)}</p></div>` : '';
-      const hanViet = entry.hanViet ? `<div class="dt-layer dt-layer-hanviet" data-dt-layer="hanViet"><span class="dt-layer-label" style="color:#94A3B8; font-weight:600; font-size:0.75rem; letter-spacing:0.06em;">Phiên âm Hán‑Việt</span><p style="font-size:0.95rem; line-height:1.65; color:#7DD3FC; font-style:italic; margin:0.35rem 0 0 0;">${escapeHtml(entry.hanViet)}</p></div>` : '';
-      const literal = entry.literal ? `<div class="dt-layer dt-layer-literal" style="border-top:1px solid rgba(255,255,255,0.08); padding-top:0.85rem; margin-top:0.85rem;"><span class="dt-layer-label" style="color:#94A3B8; font-weight:600; font-size:0.75rem; text-transform:uppercase; letter-spacing:0.06em;">Dịch nghĩa kinh văn</span><p style="font-size:0.95rem; line-height:1.8; color:#F8FAFC; margin:0.35rem 0 0 0;">${escapeHtml(entry.literal)}</p></div>` : '';
+      // ── SANITIZER: Chặn triệt để metadata nội bộ không cho hiển thị ra UI độc giả ──
+      const sanitizeText = (txt) => {
+        if (!txt) return '';
+        return txt
+          .replace(/SỔ KHÓA[^\n]*/gi, '')
+          .replace(/Chưa khóa\s*—\s*cố ý để trống[^\n]*/gi, '')
+          .replace(/Đã khóa[^\n]*/gi, '')
+          .replace(/Bảy\.\s*Câu bị cấm[^\n]*/gi, '')
+          .replace(/đối chiếu sổ\s*Q[0-9]\-[0-9]+[^\n]*/gi, '')
+          .replace(/Kinh văn cổ thư xác lập chuẩn tắc khảo xét về SỔ KHÓA[^\n]*/gi, '')
+          .replace(/Kinh văn cổ thư xác lập chuẩn tắc khảo xét về CỔNG ĐỌC CỬU TINH[^\n]*/gi, '')
+          .replace(/Nguồn và giới hạn:\s*《[^》]+》[^\n]*/gi, '')
+          .replace(/\n{3,}/g, '\n\n')
+          .trim();
+      };
+
+      const sourceName = entry.source_title || 'Cổ Thư Chánh Tông';
+
+      // ── TRƯỜNG HỢP 1: BÀI GIẢNG ĐẠI DANH SƯ (3 LỚP NỘI DUNG CHUẨN) ──
+      if (entry.is_master_lesson || entry.layer_quick) {
+        const quickHtml = entry.layer_quick ? `
+          <div class="dt-layer-quick-card">
+            <div class="dt-layer-quick-badge">✦ LỚP 1: HIỂU NHANH CỐT LÕI (DÀNH CHO NGƯỜI MỚI)</div>
+            <p class="dt-quick-text">${escapeHtml(entry.layer_quick)}</p>
+          </div>` : '';
+
+        // Xử lý Lớp B: Cầm tay chỉ việc
+        const handbookText = sanitizeText(entry.layer_handbook || entry.commentary || '');
+        const rawParas = handbookText.split(/\n\n+|\r\n\r\n+/);
+        const parsedHandbookParts = [];
+
+        rawParas.forEach(para => {
+          para = para.trim();
+          if (!para) return;
+
+          const headerMatch = para.match(/^(【[^】]+】|###\s*[^\n]+|\d+\.\s+[^\n:]+:?)\s*(.*)/s);
+          if (headerMatch) {
+            const headingTitle = headerMatch[1].replace(/^###\s*/, '').trim();
+            const restContent = headerMatch[2].trim();
+
+            parsedHandbookParts.push(`<div class="dt-section-heading dt-master-heading">${escapeHtml(headingTitle)}</div>`);
+
+            if (restContent) {
+              if (restContent.includes('•') || restContent.includes('\n-')) {
+                const leadAndBullets = restContent.split(/\s*•\s*/);
+                const leadText = leadAndBullets[0].trim();
+                const bulletItems = leadAndBullets.slice(1);
+
+                if (leadText) parsedHandbookParts.push(`<p class="dt-lead-p">${escapeHtml(leadText)}</p>`);
+                if (bulletItems.length) {
+                  const itemsHtml = bulletItems
+                    .map(b => b.trim())
+                    .filter(Boolean)
+                    .map(b => `<li><span class="dt-bullet-text">${escapeHtml(b)}</span></li>`)
+                    .join('');
+                  parsedHandbookParts.push(`<ul class="dt-bullet-list">${itemsHtml}</ul>`);
+                }
+              } else {
+                parsedHandbookParts.push(`<p class="dt-body-p">${escapeHtml(restContent)}</p>`);
+              }
+            }
+          } else if (para.includes('•')) {
+            const leadAndBullets = para.split(/\s*•\s*/);
+            const leadText = leadAndBullets[0].trim();
+            const bulletItems = leadAndBullets.slice(1);
+
+            if (leadText) parsedHandbookParts.push(`<p class="dt-body-p">${escapeHtml(leadText)}</p>`);
+            if (bulletItems.length) {
+              const itemsHtml = bulletItems
+                .map(b => b.trim())
+                .filter(Boolean)
+                .map(b => `<li><span class="dt-bullet-text">${escapeHtml(b)}</span></li>`)
+                .join('');
+              parsedHandbookParts.push(`<ul class="dt-bullet-list">${itemsHtml}</ul>`);
+            }
+          } else {
+            parsedHandbookParts.push(`<p class="dt-body-p">${escapeHtml(para)}</p>`);
+          }
+        });
+
+        // Xử lý Lớp C: Cổ thư và đối chiếu (dạng drawer mở rộng)
+        const originalText = sanitizeText(entry.original || '');
+        const hanVietText = sanitizeText(entry.hanViet || '');
+        const literalText = sanitizeText(entry.literal || '');
+        const dibanText = sanitizeText(entry.diban || '');
+
+        const hasClassics = originalText || hanVietText || literalText;
+        const classicsDrawer = hasClassics ? `
+          <details class="dt-classics-drawer">
+            <summary class="dt-classics-drawer-toggle">
+              <span style="display:inline-flex; align-items:center; gap:0.5rem;">
+                <span style="color:#FBBF24;">📜</span>
+                <strong>LỚP 3: CỔ THƯ & ĐỐI CHIẾU CHỨNG CỨ GỐC</strong>
+              </span>
+              <span class="dt-drawer-hint">(Nhấp để mở kinh văn chữ Hán, phiên âm & xuất xứ)</span>
+            </summary>
+            <div class="dt-classics-drawer-body">
+              ${literalText ? `
+                <div class="dt-layer dt-layer-literal" style="border-top:none; padding-top:0;">
+                  <span class="dt-layer-label" style="color:#94A3B8; font-weight:700; font-size:0.75rem; text-transform:uppercase; letter-spacing:0.06em;">Dịch nghĩa sát văn bản cổ</span>
+                  <p style="font-size:0.95rem; line-height:1.8; color:#F8FAFC; margin:0.35rem 0 0 0;">${escapeHtml(literalText)}</p>
+                </div>` : ''}
+              ${originalText ? `
+                <div class="dt-layer dt-layer-original" style="border-top:1px solid rgba(255,255,255,0.08); padding-top:0.75rem;">
+                  <span class="dt-layer-label" style="color:#94A3B8; font-weight:700; font-size:0.75rem; letter-spacing:0.06em;">Nguyên văn chữ Hán</span>
+                  <p lang="zh-Hant" style="font-size:1.05rem; line-height:1.75; color:#FDE047; font-family:'Noto Serif SC',serif; margin:0.35rem 0 0 0; white-space:pre-line;">${escapeHtml(originalText)}</p>
+                </div>` : ''}
+              ${hanVietText ? `
+                <div class="dt-layer dt-layer-hanviet" style="border-top:1px solid rgba(255,255,255,0.08); padding-top:0.75rem;">
+                  <span class="dt-layer-label" style="color:#94A3B8; font-weight:700; font-size:0.75rem; letter-spacing:0.06em;">Phiên âm Hán‑Việt</span>
+                  <p style="font-size:0.95rem; line-height:1.65; color:#7DD3FC; font-style:italic; margin:0.35rem 0 0 0; white-space:pre-line;">${escapeHtml(hanVietText)}</p>
+                </div>` : ''}
+              ${dibanText ? `
+                <div class="dt-layer dt-layer-diban" style="border-top:1px solid rgba(255,255,255,0.08); padding-top:0.75rem;">
+                  <span class="dt-layer-label" style="color:#F87171; font-weight:700; font-size:0.75rem; letter-spacing:0.06em;">Khảo chứng dị bản & Giới hạn cổ thư</span>
+                  <p style="font-size:0.9rem; line-height:1.7; color:#CBD5E1; margin:0.35rem 0 0 0;">${escapeHtml(dibanText)}</p>
+                </div>` : ''}
+            </div>
+          </details>` : '';
+
+        return `<article class="dt-entry dt-master-lesson-entry" id="${escapeHtml(entry.id)}" style="margin-bottom:2.2rem; border:1px solid rgba(56,189,248,0.3); background:#111827; border-radius:12px; overflow:hidden; box-shadow:0 8px 24px rgba(0,0,0,0.35);">
+          <header class="dt-entry-header" style="background:linear-gradient(90deg, #1E293B 0%, #0F172A 100%); border-bottom:1px solid rgba(56,189,248,0.25); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem;">
+            <h2 style="font-size:1.15rem; font-weight:800; color:#F8FAFC; margin:0;">${escapeHtml(entry.title || entry.id)}</h2>
+            <span class="dt-badge" style="background:rgba(16,185,129,0.15); color:#34D399; border:1px solid rgba(52,211,153,0.3); font-size:0.75rem; font-weight:700; padding:0.25rem 0.65rem; border-radius:999px;">Giáo Trình Cầm Tay Chỉ Việc</span>
+          </header>
+          <div class="dt-entry-body">
+            ${quickHtml}
+            <div class="dt-layer-handbook-card">
+              <div class="dt-layer-handbook-badge">🛠 LỚP 2: CẦM TAY CHỈ VIỆC NGOÀI THỰC ĐỊA (ĐẠI DANH SƯ CHỈ DẪN)</div>
+              <div class="dt-commentary-content">${parsedHandbookParts.join('\n')}</div>
+            </div>
+            ${classicsDrawer}
+          </div>
+          <footer class="dt-entry-meta" style="background:#0B0F17; border-top:1px solid rgba(255,255,255,0.08); display:flex; gap:0.5rem; flex-wrap:wrap; align-items:center;">
+            <span class="dt-badge" style="background:rgba(255,255,255,0.06); color:#E2E8F0; border:1px solid rgba(255,255,255,0.12); font-size:0.75rem; padding:0.25rem 0.6rem; border-radius:6px;">Nguồn: ${escapeHtml(sourceName)}</span>
+            <span class="dt-badge dt-badge-evidence" style="background:rgba(56,189,248,0.12); color:#38BDF8; border:1px solid rgba(56,189,248,0.25); font-size:0.75rem; padding:0.25rem 0.6rem; border-radius:6px; font-weight:600;">Chánh Tông Cổ Pháp</span>
+          </footer>
+        </article>`;
+      }
+
+      // ── TRƯỜNG HỢP 2: DÀNH CHO CÁC BÀI THAM KHẢO TIÊU CHUẨN ──
+      const original = entry.original ? `<div class="dt-layer dt-layer-original" data-dt-layer="original"><span class="dt-layer-label" style="color:#94A3B8; font-weight:600; font-size:0.75rem; letter-spacing:0.06em;">Nguyên văn chữ Hán</span><p lang="zh-Hant" style="font-size:1.05rem; line-height:1.75; color:#FDE047; font-family:'Noto Serif SC',serif; margin:0.35rem 0 0 0;">${escapeHtml(sanitizeText(entry.original))}</p></div>` : '';
+      const hanViet = entry.hanViet ? `<div class="dt-layer dt-layer-hanviet" data-dt-layer="hanViet"><span class="dt-layer-label" style="color:#94A3B8; font-weight:600; font-size:0.75rem; letter-spacing:0.06em;">Phiên âm Hán‑Việt</span><p style="font-size:0.95rem; line-height:1.65; color:#7DD3FC; font-style:italic; margin:0.35rem 0 0 0;">${escapeHtml(sanitizeText(entry.hanViet))}</p></div>` : '';
+      const literal = entry.literal ? `<div class="dt-layer dt-layer-literal" style="border-top:1px solid rgba(255,255,255,0.08); padding-top:0.85rem; margin-top:0.85rem;"><span class="dt-layer-label" style="color:#94A3B8; font-weight:600; font-size:0.75rem; text-transform:uppercase; letter-spacing:0.06em;">Dịch nghĩa kinh văn</span><p style="font-size:0.95rem; line-height:1.8; color:#F8FAFC; margin:0.35rem 0 0 0;">${escapeHtml(sanitizeText(entry.literal))}</p></div>` : '';
       
-      let commentaryText = entry.commentary || 'Cổ thư ghi nhận nguyên tắc này làm chuẩn mực định hướng; trong thực tế cần đo đạc và đối chiếu cẩn trọng với điều kiện công trình.';
+      let commentaryText = sanitizeText(entry.commentary || 'Cổ thư ghi nhận nguyên tắc này làm chuẩn mực định hướng; trong thực tế cần đo đạc và đối chiếu cẩn trọng với điều kiện công trình.');
       commentaryText = commentaryText.replace(/^(Thầy dạy|Lời thầy|Thầy bảo|Thầy dặn)\s*[:—–,-]\s*/i, '').trim();
 
       const rawParas = commentaryText.split(/\n\n+|\r\n\r\n+/);
@@ -357,9 +498,7 @@
               const leadText = leadAndBullets[0].trim();
               const bulletItems = leadAndBullets.slice(1);
 
-              if (leadText) {
-                parsedHtmlParts.push(`<p class="dt-lead-p">${escapeHtml(leadText)}</p>`);
-              }
+              if (leadText) parsedHtmlParts.push(`<p class="dt-lead-p">${escapeHtml(leadText)}</p>`);
               if (bulletItems.length) {
                 const itemsHtml = bulletItems
                   .map(b => b.trim())
@@ -377,9 +516,7 @@
           const leadText = leadAndBullets[0].trim();
           const bulletItems = leadAndBullets.slice(1);
 
-          if (leadText) {
-            parsedHtmlParts.push(`<p class="dt-body-p">${escapeHtml(leadText)}</p>`);
-          }
+          if (leadText) parsedHtmlParts.push(`<p class="dt-body-p">${escapeHtml(leadText)}</p>`);
           if (bulletItems.length) {
             const itemsHtml = bulletItems
               .map(b => b.trim())
@@ -394,7 +531,6 @@
       });
 
       const parsedCommentary = parsedHtmlParts.join('\n');
-      const sourceName = entry.source_title || 'Cổ Thư Chánh Tông';
 
       return `<article class="dt-entry" id="${escapeHtml(entry.id)}" style="margin-bottom:1.8rem; border:1px solid rgba(255,255,255,0.12); background:#111827; border-radius:12px; overflow:hidden;">
         <header class="dt-entry-header" style="background:#1E293B; border-bottom:1px solid rgba(255,255,255,0.1);">

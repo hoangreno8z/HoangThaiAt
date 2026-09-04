@@ -457,6 +457,123 @@
   border-top: 1px solid var(--dt-border);
 }
 
+/* ── KIẾN TRÚC 3 TẦNG: LỚP A (HIỂU NHANH CỐT LÕI) ── */
+.dt-layer-quick-card {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.08) 0%, rgba(6, 78, 59, 0.16) 100%);
+  border: 1px solid rgba(52, 211, 153, 0.35);
+  border-left: 4px solid #10B981;
+  border-radius: 10px;
+  padding: 1.1rem 1.35rem;
+  margin-bottom: 0.5rem;
+}
+
+.dt-layer-quick-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #34D399;
+  font-weight: 800;
+  font-size: 0.76rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.55rem;
+}
+
+.dt-quick-text {
+  color: #F0FDF4;
+  font-size: 0.96rem;
+  line-height: 1.8;
+  margin: 0;
+  text-align: justify;
+}
+
+/* ── KIẾN TRÚC 3 TẦNG: LỚP B (CẦM TAY CHỈ VIỆC) ── */
+.dt-layer-handbook-card {
+  background: rgba(56, 189, 248, 0.03);
+  border-left: 3px solid #38BDF8;
+  border-radius: 0 10px 10px 0;
+  padding: 1.25rem 1.35rem;
+  margin-top: 0.3rem;
+}
+
+.dt-layer-handbook-badge {
+  color: #38BDF8;
+  font-weight: 800;
+  font-size: 0.78rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  margin-bottom: 0.85rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid rgba(56, 189, 248, 0.15);
+}
+
+.dt-master-heading {
+  color: #38BDF8;
+  font-size: 0.98rem;
+  font-weight: 750;
+  letter-spacing: 0.02em;
+  margin: 1.5rem 0 0.55rem 0;
+  padding-left: 0.65rem;
+  border-left: 3px solid #38BDF8;
+}
+
+/* ── KIẾN TRÚC 3 TẦNG: LỚP C (CỔ THƯ & ĐỐI CHIẾU MỞ RỘNG) ── */
+.dt-classics-drawer {
+  border: 1px solid rgba(251, 191, 36, 0.28);
+  background: rgba(17, 24, 39, 0.8);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 1rem;
+}
+
+.dt-classics-drawer-toggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.85rem 1.25rem;
+  background: rgba(251, 191, 36, 0.06);
+  cursor: pointer;
+  color: #FBBF24;
+  font-size: 0.88rem;
+  user-select: none;
+  list-style: none;
+  transition: background 0.15s ease;
+}
+
+.dt-classics-drawer-toggle:hover {
+  background: rgba(251, 191, 36, 0.12);
+}
+
+.dt-classics-drawer-toggle::-webkit-details-marker {
+  display: none;
+}
+
+.dt-classics-drawer-toggle::after {
+  content: "▼";
+  font-size: 0.72rem;
+  color: #FBBF24;
+  transition: transform 0.2s ease;
+  margin-left: 0.5rem;
+}
+
+.dt-classics-drawer[open] .dt-classics-drawer-toggle::after {
+  transform: rotate(180deg);
+}
+
+.dt-drawer-hint {
+  color: #94A3B8;
+  font-size: 0.78rem;
+  font-weight: 400;
+  margin-left: 0.5rem;
+}
+
+.dt-classics-drawer-body {
+  padding: 1.1rem 1.25rem;
+  border-top: 1px solid rgba(251, 191, 36, 0.15);
+  display: grid;
+  gap: 0.85rem;
+}
+
 .dt-section-heading {
   color: #38BDF8;
   font-size: 0.95rem;
@@ -902,6 +1019,31 @@
   .dt-section-heading {
     font-size: 0.88rem;
     margin: 0.9rem 0 0.35rem 0;
+  }
+
+  /* 3 Tầng nội dung trên mobile */
+  .dt-layer-quick-card {
+    padding: 0.85rem 0.85rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .dt-quick-text {
+    font-size: 0.91rem;
+    line-height: 1.7;
+    text-align: left;
+  }
+
+  .dt-layer-handbook-card {
+    padding: 0.85rem 0.85rem !important;
+  }
+
+  .dt-classics-drawer-toggle {
+    padding: 0.75rem 0.85rem;
+    font-size: 0.84rem;
+  }
+
+  .dt-classics-drawer-body {
+    padding: 0.85rem 0.85rem;
   }
 
   /* Commentary container: reduce left border and padding */

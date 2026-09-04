@@ -29,7 +29,7 @@
     "sources": 124,
     "records": 693,
     "articles": 20,
-    "articleEntries": 118
+    "articleEntries": 120
   },
   "qa": {
     "JSON_PARSE": "PASS",
@@ -59,7 +59,7 @@
       "title": "Khảo Sát Đại Thế",
       "description": "Quan sát đại thể sơn hà, long mạch khu vực, môi trường sinh thái trước khi đi vào phân tích khuôn viên đất.",
       "sourceFile": "BATCH02/03_VIET_HOA/chon_dat_dai_the.md",
-      "entryCount": 13,
+      "entryCount": 14,
       "stage": 1
     },
     {
@@ -77,7 +77,7 @@
       "title": "Long Thế Thủy Khẩu",
       "description": "Nhận diện thế đất tàng phong tụ khí, tứ linh bao bọc, sa pháp đắc cách và thủy khẩu quan lan.",
       "sourceFile": "BATCH04/03_VIET_HOA/dia_the_thuc_chien.md",
-      "entryCount": 12,
+      "entryCount": 13,
       "stage": 2
     },
     {
