@@ -29,7 +29,7 @@
     "sources": 124,
     "records": 693,
     "articles": 20,
-    "articleEntries": 85
+    "articleEntries": 91
   },
   "qa": {
     "JSON_PARSE": "PASS",
@@ -176,7 +176,7 @@
       "title": "Cửa Sổ Lấy Sáng",
       "description": "Tỷ lệ mở cửa theo hướng nắng gió, đón gió mát Nam Đông Nam, chắn gió mùa Đông Bắc và nắng Tây gắt.",
       "sourceFile": "BATCH15/04_VIET_HOA/cua_so_anh_sang_thong_gio.md",
-      "entryCount": 2,
+      "entryCount": 5,
       "stage": 4
     },
     {
@@ -185,7 +185,7 @@
       "title": "Nước Sạch Giếng Khơi",
       "description": "Bảo tồn nguồn nước ăn uống, bể ngầm bể mái vững chắc, tách rời nước mưa và nước thải sinh hoạt.",
       "sourceFile": "BATCH16/04_VIET_HOA/nuoc_gieng_be_thoat.md",
-      "entryCount": 2,
+      "entryCount": 5,
       "stage": 4
     },
     {
