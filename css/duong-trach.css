@@ -1244,3 +1244,37 @@
   user-select: none !important;
   -webkit-user-select: none !important;
 }
+
+/* ── BỘ TRA CỨU ĐIỆN TỬ 144 THỦY KHẨU (TỐI ƯU MOBILE KHÔNG TRÀN KHUNG) ── */
+.dt-144-explorer {
+  box-sizing: border-box !important;
+  max-width: 100% !important;
+  overflow: hidden !important;
+}
+
+.dt-144-controls-grid {
+  box-sizing: border-box !important;
+  max-width: 100% !important;
+}
+
+.dt-144-controls-grid > div {
+  min-width: 0 !important;
+}
+
+.dt-144-controls-grid select,
+.dt-144-controls-grid input {
+  box-sizing: border-box !important;
+  max-width: 100% !important;
+}
+
+@media (max-width: 640px) {
+  .dt-144-explorer {
+    padding: 0.85rem !important;
+    border-radius: 10px !important;
+  }
+  .dt-144-controls-grid {
+    grid-template-columns: 1fr !important;
+    padding: 0.7rem !important;
+    gap: 0.6rem !important;
+  }
+}

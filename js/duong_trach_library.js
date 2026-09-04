@@ -222,7 +222,7 @@
         const searchInput = event.target.closest('#dt-144-quick-search');
         if (searchInput) {
           const val = searchInput.value.trim().toLowerCase();
-          const match = val.match(/hồ sơ #?(\d+)/i) || val.match(/^(\d+)$/);
+          const match = val.match(/(?:hồ sơ|khẩu) #?(\d+)/i) || val.match(/^(\d+)$/);
           if (match) {
             const hs = parseInt(match[1], 10);
             if (hs >= 1 && hs <= 144) {
@@ -252,7 +252,7 @@
         const searchInput = event.target.closest('#dt-144-quick-search');
         if (searchInput) {
           const val = searchInput.value.trim();
-          const match = val.match(/hồ sơ #?(\d+)/i) || val.match(/^(\d+)$/i);
+          const match = val.match(/(?:hồ sơ|khẩu) #?(\d+)/i) || val.match(/^(\d+)$/i);
           if (match) {
             const hs = parseInt(match[1], 10);
             if (hs >= 1 && hs <= 144) {
@@ -501,12 +501,7 @@
       };
 
       // ── TRƯỜNG HỢP 1: BÀI GIẢNG ĐẠI DANH SƯ (3 LỚP NỘI DUNG CHUẨN) ──
-      if (entry.is_master_lesson || entry.layer_quick) {
-        const quickHtml = entry.layer_quick ? `
-          <div class="dt-layer-quick-card">
-            <div class="dt-layer-quick-badge">✦ LỚP 1: HIỂU NHANH CỐT LÕI (DÀNH CHO NGƯỜI MỚI)</div>
-            <p class="dt-quick-text">${escapeHtml(entry.layer_quick)}</p>
-          </div>` : '';
+      if (entry.is_master_lesson || entry.layer_quick || entry.layer_handbook) {
 
         // Xử lý Lớp B: Cầm tay chỉ việc
         const handbookText = sanitizeText(entry.layer_handbook || entry.commentary || '');
@@ -625,9 +620,9 @@
             <summary class="dt-classics-drawer-toggle">
               <span style="display:inline-flex; align-items:center; gap:0.5rem;">
                 <span style="color:#FBBF24;">📜</span>
-                <strong>LỚP 3: CỔ THƯ & ĐỐI CHIẾU CHỨNG CỨ GỐC</strong>
+                <strong>📜 KINH VĂN CỔ THƯ & ĐỐI CHIẾU XUẤT XỨ</strong>
               </span>
-              <span class="dt-drawer-hint">(Nhấp để mở kinh văn chữ Hán, phiên âm & xuất xứ)</span>
+              <span class="dt-drawer-hint">(Nhấp để xem nguyên văn chữ Hán, phiên âm & xuất xứ)</span>
             </summary>
             <div class="dt-classics-drawer-body">
               ${literalText ? `
@@ -660,9 +655,8 @@
             <span class="dt-badge" style="background:rgba(16,185,129,0.15); color:#34D399; border:1px solid rgba(52,211,153,0.3); font-size:0.75rem; font-weight:700; padding:0.25rem 0.65rem; border-radius:999px;">Giáo Trình Cầm Tay Chỉ Việc</span>
           </header>
           <div class="dt-entry-body">
-            ${quickHtml}
             <div class="dt-layer-handbook-card">
-              <div class="dt-layer-handbook-badge">🛠 LỚP 2: CẦM TAY CHỈ VIỆC NGOÀI THỰC ĐỊA (ĐẠI DANH SƯ CHỈ DẪN)</div>
+              <div class="dt-layer-handbook-badge">🛠 CẨM NANG THỰC ĐỊA (HƯỚNG DẪN CHI TIẾT)</div>
               <div class="dt-commentary-content">${parsedHandbookParts.join('\n')}</div>
             </div>
             ${classicsDrawer}
@@ -792,7 +786,7 @@
       }).join('');
 
       const datalistOptions = matrix.map(item => 
-        `<option value="Hồ sơ #${item.hs_num}: ${escapeHtml(item.son_huong)} thoát ${escapeHtml(item.thuy_xuat)} — ${escapeHtml(item.ten_cach)} [${escapeHtml(item.muc_phan)}]"></option>`
+        `<option value="Khẩu #${item.hs_num}: ${escapeHtml(item.son_huong)} thoát ${escapeHtml(item.thuy_xuat)} — ${escapeHtml(item.ten_cach)} [${escapeHtml(item.muc_phan)}]"></option>`
       ).join('');
 
       let cucColor = '#38BDF8';
@@ -829,11 +823,32 @@
         if (!text) return '<span style="color:#64748B;">(Chưa có nội dung riêng cho mục này)</span>';
         let s = text.trim();
         s = s.replace(/^[A-F]\.\s*[^:]*:\s*/i, '');
+        if (s.includes('•')) {
+          const parts = s.split(/(?:^|\n)\s*•\s*/).map(p => p.trim()).filter(Boolean);
+          if (parts.length > 1) {
+            const head = parts[0];
+            const items = parts.slice(1);
+            let html = head ? `<p style="margin:0 0 0.55rem 0; font-weight:600; color:#F1F5F9; line-height:1.5;">${escapeHtml(head)}</p>` : '';
+            html += `<ul style="margin:0; padding-left:1.15rem; display:flex; flex-direction:column; gap:0.4rem; list-style-type:disc;">`;
+            items.forEach(item => {
+              const colonIdx = item.indexOf(':');
+              if (colonIdx !== -1 && colonIdx < 40) {
+                const k = item.slice(0, colonIdx).trim();
+                const v = item.slice(colonIdx + 1).trim();
+                html += `<li style="line-height:1.55;"><strong style="color:#38BDF8;">${escapeHtml(k)}:</strong> <span style="color:#CBD5E1;">${escapeHtml(v)}</span></li>`;
+              } else {
+                html += `<li style="color:#CBD5E1; line-height:1.55;">${escapeHtml(item)}</li>`;
+              }
+            });
+            html += `</ul>`;
+            return html;
+          }
+        }
         return escapeHtml(s).replace(/\n/g, '<br>');
       };
 
       return `
-        <section class="dt-144-explorer" style="background:#0E131F; border:1px solid #C5B382; border-radius:14px; padding:1.4rem; box-shadow:0 12px 36px rgba(0,0,0,0.55); margin-bottom:2rem;">
+        <section class="dt-144-explorer" style="background:#0E131F; border:1px solid #C5B382; border-radius:14px; padding:1.25rem; box-shadow:0 12px 36px rgba(0,0,0,0.55); margin-bottom:2rem; box-sizing:border-box; max-width:100%;">
           <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:0.8rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:1rem; margin-bottom:1.2rem;">
             <div>
               <div style="display:inline-flex; align-items:center; gap:0.4rem; padding:0.2rem 0.6rem; background:rgba(197,179,130,0.15); border:1px solid rgba(197,179,130,0.3); border-radius:6px; font-size:0.75rem; font-weight:700; color:#F5D485; margin-bottom:0.4rem;">
@@ -847,42 +862,42 @@
               </div>
             </div>
             <div style="display:flex; align-items:center; gap:0.5rem;">
-              <button type="button" data-144-hs-target="${prevHs}" style="background:#1E293B; color:#E2E8F0; border:1px solid rgba(255,255,255,0.15); padding:0.45rem 0.8rem; border-radius:6px; font-size:0.8rem; cursor:pointer; font-weight:600;" title="Hồ sơ #${prevHs}">
-                ← Cửa trước
+              <button type="button" data-144-hs-target="${prevHs}" style="background:#1E293B; color:#E2E8F0; border:1px solid rgba(255,255,255,0.15); padding:0.45rem 0.8rem; border-radius:6px; font-size:0.8rem; cursor:pointer; font-weight:600;" title="Khẩu #${prevHs}">
+                ← Khẩu trước
               </button>
               <span style="font-size:0.85rem; font-weight:700; color:#F5D485; padding:0 0.3rem;">
-                #${selected.hs_num} / 144
+                Khẩu #${selected.hs_num} / 144
               </span>
-              <button type="button" data-144-hs-target="${nextHs}" style="background:#1E293B; color:#E2E8F0; border:1px solid rgba(255,255,255,0.15); padding:0.45rem 0.8rem; border-radius:6px; font-size:0.8rem; cursor:pointer; font-weight:600;" title="Hồ sơ #${nextHs}">
-                Cửa sau →
+              <button type="button" data-144-hs-target="${nextHs}" style="background:#1E293B; color:#E2E8F0; border:1px solid rgba(255,255,255,0.15); padding:0.45rem 0.8rem; border-radius:6px; font-size:0.8rem; cursor:pointer; font-weight:600;" title="Khẩu #${nextHs}">
+                Khẩu sau →
               </button>
             </div>
           </div>
 
-          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1rem; margin-bottom:1.4rem; background:#141B2B; padding:1rem; border-radius:10px; border:1px solid rgba(255,255,255,0.06);">
-            <div>
-              <label for="dt-144-group-select" style="display:block; font-size:0.78rem; font-weight:700; color:#E2E8F0; margin-bottom:0.35rem; text-transform:uppercase; letter-spacing:0.04em;">
-                1. Chọn Cụm Song Sơn (12 Cụm)
+          <div class="dt-144-controls-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:0.75rem; margin-bottom:1.2rem; background:#141B2B; padding:0.85rem; border-radius:10px; border:1px solid rgba(255,255,255,0.08); box-sizing:border-box; max-width:100%;">
+            <div style="min-width:0;">
+              <label for="dt-144-group-select" style="display:block; font-size:0.75rem; font-weight:700; color:#E2E8F0; margin-bottom:0.3rem; text-transform:uppercase; letter-spacing:0.04em;">
+                Chọn Cụm
               </label>
-              <select id="dt-144-group-select" style="width:100%; background:#0B0F17; color:#FEF3C7; border:1px solid rgba(197,179,130,0.3); border-radius:6px; padding:0.5rem 0.7rem; font-size:0.86rem; font-weight:600; outline:none; font-family:inherit;">
+              <select id="dt-144-group-select" style="width:100%; max-width:100%; box-sizing:border-box; background:#0B0F17; color:#FEF3C7; border:1px solid rgba(197,179,130,0.3); border-radius:6px; padding:0.45rem 0.6rem; font-size:0.82rem; font-weight:600; outline:none; font-family:inherit;">
                 ${groupOptions}
               </select>
             </div>
 
-            <div>
-              <label for="dt-144-hs-select" style="display:block; font-size:0.78rem; font-weight:700; color:#E2E8F0; margin-bottom:0.35rem; text-transform:uppercase; letter-spacing:0.04em;">
-                2. Chọn Cửa Nước Thoát (12 Cửa)
+            <div style="min-width:0;">
+              <label for="dt-144-hs-select" style="display:block; font-size:0.75rem; font-weight:700; color:#E2E8F0; margin-bottom:0.3rem; text-transform:uppercase; letter-spacing:0.04em;">
+                Chọn Cửa
               </label>
-              <select id="dt-144-hs-select" style="width:100%; background:#0B0F17; color:#38BDF8; border:1px solid rgba(56,189,248,0.3); border-radius:6px; padding:0.5rem 0.7rem; font-size:0.86rem; font-weight:600; outline:none; font-family:inherit;">
+              <select id="dt-144-hs-select" style="width:100%; max-width:100%; box-sizing:border-box; background:#0B0F17; color:#38BDF8; border:1px solid rgba(56,189,248,0.3); border-radius:6px; padding:0.45rem 0.6rem; font-size:0.82rem; font-weight:600; outline:none; font-family:inherit;">
                 ${doorOptions}
               </select>
             </div>
 
-            <div style="grid-column: 1 / -1;">
-              <label for="dt-144-quick-search" style="display:block; font-size:0.78rem; font-weight:700; color:#E2E8F0; margin-bottom:0.35rem; text-transform:uppercase; letter-spacing:0.04em;">
-                🔍 Gõ Nhanh Từ Khóa Tìm Kiếm (Gợi Ý Tự Động 144 Hồ Sơ)
+            <div style="grid-column: 1 / -1; min-width:0;">
+              <label for="dt-144-quick-search" style="display:block; font-size:0.75rem; font-weight:700; color:#E2E8F0; margin-bottom:0.3rem; text-transform:uppercase; letter-spacing:0.04em;">
+                🔍 Tìm Nhanh
               </label>
-              <input id="dt-144-quick-search" list="dt-144-search-datalist" type="text" placeholder="Ví dụ: gõ 'Bính hướng', 'Ất Thìn', 'Tân Tuất', 'Chính Vượng', 'Hồ sơ #45'..." style="width:100%; background:#0B0F17; color:#F5EFEB; border:1px solid rgba(255,255,255,0.15); border-radius:6px; padding:0.5rem 0.8rem; font-size:0.85rem; outline:none; font-family:inherit; box-sizing:border-box;">
+              <input id="dt-144-quick-search" list="dt-144-search-datalist" type="text" placeholder="Gõ hướng, cửa thoát, thế cách (ví dụ: Bính hướng, Tân Tuất, Khẩu #45)..." style="width:100%; max-width:100%; box-sizing:border-box; background:#0B0F17; color:#F5EFEB; border:1px solid rgba(255,255,255,0.15); border-radius:6px; padding:0.45rem 0.7rem; font-size:0.82rem; outline:none; font-family:inherit;">
               <datalist id="dt-144-search-datalist">
                 ${datalistOptions}
               </datalist>
@@ -892,7 +907,7 @@
           <div style="background:#111827; border:1px solid rgba(255,255,255,0.12); border-radius:12px; overflow:hidden;">
             <div style="background:#1A2234; padding:1rem 1.4rem; border-bottom:1px solid rgba(255,255,255,0.08); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.6rem;">
               <div>
-                <span style="font-size:0.75rem; font-weight:700; color:#94A3B8; text-transform:uppercase; letter-spacing:0.05em;">Hồ sơ khảo chứng số #${selected.hs_num}</span>
+                <span style="font-size:0.75rem; font-weight:700; color:#94A3B8; text-transform:uppercase; letter-spacing:0.05em;">Khẩu khảo chứng số #${selected.hs_num}</span>
                 <h3 style="margin:0.2rem 0 0 0; font-size:1.2rem; color:#F8FAFC; font-weight:800;">
                   ${escapeHtml(selected.header)}
                 </h3>
@@ -995,10 +1010,10 @@
               </a>
               <div style="display:flex; gap:0.5rem;">
                 <button type="button" data-144-hs-target="${prevHs}" style="background:#1E293B; color:#CBD5E1; border:1px solid rgba(255,255,255,0.12); padding:0.35rem 0.7rem; border-radius:6px; font-size:0.78rem; cursor:pointer;">
-                  ← #${prevHs}
+                  ← Khẩu #${prevHs}
                 </button>
                 <button type="button" data-144-hs-target="${nextHs}" style="background:#1E293B; color:#CBD5E1; border:1px solid rgba(255,255,255,0.12); padding:0.35rem 0.7rem; border-radius:6px; font-size:0.78rem; cursor:pointer;">
-                  #${nextHs} →
+                  Khẩu #${nextHs} →
                 </button>
               </div>
             </div>
@@ -1038,20 +1053,6 @@
         `<option value="${tab.idx}" ${tab.idx === activeIdx ? 'selected' : ''}>${tab.idx === 0 ? '📜 Cương Lĩnh 144 Thủy Khẩu & Quy Trình' : `${tab.shortLabel} (${tab.cuc} Cục)`}</option>`
       ).join('');
 
-      const tabButtons = BATCH_21_TABS.map(tab => {
-        const isSel = tab.idx === activeIdx;
-        const bg = isSel ? 'linear-gradient(135deg, rgba(197,179,130,0.25) 0%, #1E293B 100%)' : '#111827';
-        const borderCol = isSel ? '#C5B382' : 'rgba(255,255,255,0.1)';
-        const textCol = isSel ? '#FEF3C7' : '#94A3B8';
-        const shadow = isSel ? 'box-shadow:0 0 12px rgba(197,179,130,0.25);' : '';
-        const icon = tab.idx === 0 ? '📜 ' : '';
-        return `
-          <button type="button" class="dt-144-lesson-tab-btn ${isSel ? 'active' : ''}" data-144-lesson-tab="${tab.idx}" style="background:${bg}; border:1px solid ${borderCol}; color:${textCol}; ${shadow} padding:0.45rem 0.8rem; border-radius:8px; font-size:0.8rem; font-weight:${isSel ? '700' : '600'}; cursor:pointer; display:inline-flex; align-items:center; gap:0.45rem; transition:all 0.15s ease; font-family:inherit;">
-            <span>${icon}${escapeHtml(tab.shortLabel)}</span>
-            <span style="background:${tab.badgeBg}; color:${tab.badgeColor}; border:1px solid ${tab.border}; font-size:0.68rem; padding:0.1rem 0.35rem; border-radius:4px; font-weight:700;">${escapeHtml(tab.cuc)}</span>
-          </button>
-        `;
-      }).join('');
 
       const prevLessonIdx = activeIdx > 0 ? activeIdx - 1 : null;
       const nextLessonIdx = activeIdx < BATCH_21_TABS.length - 1 ? activeIdx + 1 : null;
@@ -1071,7 +1072,7 @@
       return `
         <section id="dt-144-lesson-container" style="margin-top:1.5rem; margin-bottom:2rem;">
           <div style="background:#0D111A; border:1px solid #C5B382; border-radius:14px; padding:1.2rem; margin-bottom:1.4rem; box-shadow:0 8px 24px rgba(0,0,0,0.45);">
-            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.8rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:0.9rem; margin-bottom:1rem;">
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.8rem;">
               <div>
                 <div style="display:inline-flex; align-items:center; gap:0.4rem; font-size:0.75rem; font-weight:700; color:#F5D485; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:0.25rem;">
                   <span>📚</span> GIÁO TRÌNH CHUYÊN SÂU 144 THỦY KHẨU (13 BÀI THỰC CHIẾN)
@@ -1081,21 +1082,14 @@
                 </h3>
               </div>
               <div style="display:flex; align-items:center; gap:0.5rem;">
-                <label for="dt-144-lesson-jump-select" style="font-size:0.78rem; color:#94A3B8; font-weight:600;">Chọn nhanh bài:</label>
+                <label for="dt-144-lesson-jump-select" style="font-size:0.78rem; color:#94A3B8; font-weight:600;">Chọn bài giảng:</label>
                 <select id="dt-144-lesson-jump-select" style="background:#1E293B; color:#FEF3C7; border:1px solid rgba(197,179,130,0.3); border-radius:6px; padding:0.4rem 0.65rem; font-size:0.82rem; font-weight:600; outline:none; font-family:inherit;">
                   ${selectOptions}
                 </select>
               </div>
             </div>
 
-            <div>
-              <div style="font-size:0.75rem; color:#94A3B8; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.6rem;">
-                Danh Sách 13 Bài Giảng Phân Nhóm (Chọn để đọc riêng từng bài — Tránh cuộn trang vô tận):
-              </div>
-              <div class="dt-144-tab-bar" style="display:flex; gap:0.45rem; flex-wrap:wrap;">
-                ${tabButtons}
-              </div>
-            </div>
+
           </div>
 
           <div id="dt-144-active-entry-container">
