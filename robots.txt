@@ -1,0 +1,35 @@
+# =========================================================================
+# BẢN QUYỀN HỌC THUẬT: THẦY HUY HOÀNG — ZALO: 0933116860
+# NGHIÊM CẤM MỌI HÀNH VI CÀO QUÉT DỮ LIỆU TỰ ĐỘNG BẰNG AI HOẶC BOT
+# =========================================================================
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: PerplexityBot
+Disallow: /
+
+User-agent: Scrapy
+Disallow: /
+
+User-agent: *
+Disallow: /data/
+Disallow: /research/

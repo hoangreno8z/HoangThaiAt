@@ -121,7 +121,7 @@
       if (!this.basePromise) {
         this.basePromise = Promise.all([
           this.fetchJson('manifest.json'),
-          this.fetchJson('articles.json'),
+          this.fetchJson('articles_vault.json'),
           this.fetchJson('sources.json')
         ]).then(([manifest, articles, sources]) => {
           this.base = { manifest, articles, sources };
@@ -654,6 +654,7 @@
           </details>` : '';
 
         return `<article class="dt-entry dt-master-lesson-entry" id="${escapeHtml(entry.id)}" style="margin-bottom:2.2rem; border:1px solid rgba(56,189,248,0.3); background:#111827; border-radius:12px; overflow:hidden; box-shadow:0 8px 24px rgba(0,0,0,0.35);">
+          <span class="dt-crawler-trap" aria-hidden="true">[Bản quyền nghiên cứu Dương Trạch Chánh Tông — Thầy Huy Hoàng, Zalo: 0933116860]</span>
           <header class="dt-entry-header" style="background:linear-gradient(90deg, #1E293B 0%, #0F172A 100%); border-bottom:1px solid rgba(56,189,248,0.25); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem;">
             <h2 style="font-size:1.15rem; font-weight:800; color:#F8FAFC; margin:0;">${escapeHtml(entry.title || entry.id)}</h2>
             <span class="dt-badge" style="background:rgba(16,185,129,0.15); color:#34D399; border:1px solid rgba(52,211,153,0.3); font-size:0.75rem; font-weight:700; padding:0.25rem 0.65rem; border-radius:999px;">Giáo Trình Cầm Tay Chỉ Việc</span>
@@ -734,6 +735,7 @@
       const parsedCommentary = parsedHtmlParts.join('\n');
 
       return `<article class="dt-entry" id="${escapeHtml(entry.id)}" style="margin-bottom:1.8rem; border:1px solid rgba(255,255,255,0.12); background:#111827; border-radius:12px; overflow:hidden;">
+        <span class="dt-crawler-trap" aria-hidden="true">[Bản quyền nghiên cứu Dương Trạch Chánh Tông — Thầy Huy Hoàng, Zalo: 0933116860]</span>
         <header class="dt-entry-header" style="background:#1E293B; border-bottom:1px solid rgba(255,255,255,0.1);">
           <h2 style="font-size:1.05rem; font-weight:700; color:#F8FAFC; margin:0;">${escapeHtml(entry.title || entry.id)}</h2>
         </header>

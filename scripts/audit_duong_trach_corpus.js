@@ -6,7 +6,8 @@ const DATA = path.join(ROOT, 'data', 'duong-trach');
 const REQUIRED = ['manifest.json', 'articles.json', 'sources.json', 'records.json', 'documents.json', 'search-index.json'];
 
 function read(name) {
-  const file = path.join(DATA, name);
+  const altName = (name === 'articles.json' && fs.existsSync(path.join(DATA, 'articles_vault.json'))) ? 'articles_vault.json' : name;
+  const file = path.join(DATA, altName);
   if (!fs.existsSync(file)) throw new Error(`Missing generated file: ${name}. Run npm run corpus:build.`);
   return JSON.parse(fs.readFileSync(file, 'utf8'));
 }

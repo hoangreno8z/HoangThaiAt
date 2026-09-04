@@ -1210,3 +1210,37 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* ── BẢN QUYỀN CHÌM CHỐNG CHỤP MÀN HÌNH (WATERMARK OVERLAY) ── */
+.dt-watermark-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+  overflow: hidden;
+  opacity: 0.035;
+  background-repeat: repeat;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='360' height='220' viewBox='0 0 360 220'><text x='15' y='95' fill='%23FBBF24' font-size='15' font-family='sans-serif' font-weight='bold' transform='rotate(-22 180 110)' letter-spacing='1'>Hoàng — Zalo: 0933116860</text><text x='30' y='122' fill='%23FBBF24' font-size='11' font-family='sans-serif' font-weight='600' transform='rotate(-22 180 110)' letter-spacing='0.5'>Dương Trạch Chánh Tông</text></svg>");
+}
+
+@media print {
+  .dt-watermark-overlay {
+    opacity: 0.22 !important;
+  }
+}
+
+/* ── BẪY ĐẦU ĐỘC BOT / AI CÀO DỮ LIỆU TỰ ĐỘNG ── */
+.dt-crawler-trap {
+  position: absolute !important;
+  left: -9999px !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+}
