@@ -29,7 +29,7 @@
     "sources": 124,
     "records": 693,
     "articles": 20,
-    "articleEntries": 79
+    "articleEntries": 73
   },
   "qa": {
     "JSON_PARSE": "PASS",
@@ -104,7 +104,7 @@
       "title": "Phương Vị Đặt Nhà",
       "description": "Định vị khối nhà trên khu đất, khoảng lùi sân trước sau, tương quan công trình lân cận và khóa số độ La Kinh.",
       "sourceFile": "BATCH07/03_VIET_HOA/dat_nha_tren_dat.md",
-      "entryCount": 9,
+      "entryCount": 5,
       "stage": 2
     },
     {
@@ -113,7 +113,7 @@
       "title": "Cổng Ngõ Cửa Chính",
       "description": "Khai môn nạp khí khẩu, tỷ lệ cửa theo quy mô nhà, tránh trực xung thông phong, thước Lỗ Ban 52.2cm.",
       "sourceFile": "BATCH08/03_VIET_HOA/cong_cua_loi_vao.md",
-      "entryCount": 7,
+      "entryCount": 5,
       "stage": 3
     },
     {
