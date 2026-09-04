@@ -29,7 +29,7 @@
     "sources": 124,
     "records": 693,
     "articles": 20,
-    "articleEntries": 79
+    "articleEntries": 85
   },
   "qa": {
     "JSON_PARSE": "PASS",
@@ -158,7 +158,7 @@
       "title": "Cầu Thang Thoát Nạn",
       "description": "Giao thông đứng uốn khúc dẫn khí, bậc bước chuẩn công thái học, kết cấu vững chãi và an toàn thoát hiểm.",
       "sourceFile": "BATCH13/04_VIET_HOA/cau_thang.md",
-      "entryCount": 2,
+      "entryCount": 5,
       "stage": 4
     },
     {
@@ -167,7 +167,7 @@
       "title": "Vệ Sinh Thoát Nước",
       "description": "Tọa hung cách khí, phân ly xú khí nấm mốc, thông gió cưỡng bức độc lập và bảo vệ nguồn nước sạch.",
       "sourceFile": "BATCH14/04_VIET_HOA/wc_ve_sinh.md",
-      "entryCount": 2,
+      "entryCount": 5,
       "stage": 4
     },
     {
