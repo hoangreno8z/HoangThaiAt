@@ -29,7 +29,7 @@
     "sources": 124,
     "records": 693,
     "articles": 20,
-    "articleEntries": 76
+    "articleEntries": 79
   },
   "qa": {
     "JSON_PARSE": "PASS",
@@ -140,7 +140,7 @@
       "title": "Bếp Nấu Hỏa Khí",
       "description": "Tọa hung hướng cát bếp nấu, thủy hỏa bất tương dung, lưng bếp tựa tường vững chắc, thông gió hút mùi và PCCC.",
       "sourceFile": "BATCH11/04_VIET_HOA/bep_hoa_nuoc_khoi.md",
-      "entryCount": 4,
+      "entryCount": 5,
       "stage": 4
     },
     {
@@ -149,7 +149,7 @@
       "title": "Phòng Ngủ Kê Giường",
       "description": "Đầu giường tựa tường Huyền Vũ vững chắc, tránh xà ngang gương chiếu, cách ly sóng điện từ và vi khí hậu giấc ngủ.",
       "sourceFile": "BATCH12/04_VIET_HOA/phong_ngu_giuong.md",
-      "entryCount": 3,
+      "entryCount": 5,
       "stage": 4
     },
     {
