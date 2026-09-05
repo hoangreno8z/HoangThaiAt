@@ -117,6 +117,129 @@
     ].join(' ');
   }
 
+  function calculateBendAngle(pPrev, pCurr, pNext) {
+    if (!pPrev || !pCurr || !pNext) return { deflection: 0, absDeflection: 0, turn: 'Thẳng' };
+    const b1 = calculateLineBearing(pPrev, pCurr);
+    const b2 = calculateLineBearing(pCurr, pNext);
+    const deflection = bearingDifference(b1, b2);
+    return {
+      b1,
+      b2,
+      deflection,
+      absDeflection: Math.abs(deflection),
+      turn: deflection > 0 ? 'Phải' : (deflection < 0 ? 'Trái' : 'Thẳng')
+    };
+  }
+
+  function circleFrom3Points(p1, p2, p3) {
+    const x1 = p1.x, y1 = p1.y;
+    const x2 = p2.x, y2 = p2.y;
+    const x3 = p3.x, y3 = p3.y;
+    const d = 2 * (x1 * (y2 - y3) + x2 * (y3 - y1) + x3 * (y1 - y2));
+    if (Math.abs(d) < 1e-4) return null;
+    const ux = ((x1**2 + y1**2)*(y2 - y3) + (x2**2 + y2**2)*(y3 - y1) + (x3**2 + y3**2)*(y1 - y2)) / d;
+    const uy = ((x1**2 + y1**2)*(x3 - x2) + (x2**2 + y2**2)*(x1 - x3) + (x3**2 + y3**2)*(x2 - x1)) / d;
+    const r = Math.hypot(x1 - ux, y1 - uy);
+    return { center: {x: ux, y: uy}, r };
+  }
+
+  function calculateCurveWrap(polyline, houseCenter) {
+    if (!polyline || polyline.length < 3 || !houseCenter) {
+      return { type: 'khong_du_diem', label: 'Tuyến thẳng / chưa đủ khúc uốn', rating: 'Bình', color: '#94A3B8' };
+    }
+    const pStart = polyline[0];
+    const pMid = polyline[Math.floor(polyline.length / 2)];
+    const pEnd = polyline[polyline.length - 1];
+
+    const circle = circleFrom3Points(pStart, pMid, pEnd);
+    if (!circle) {
+      return { type: 'tuyen_thang', label: 'Tuyến thẳng (Mộc Thành)', rating: 'Bình', color: '#94A3B8' };
+    }
+
+    const distHouseToCenter = Math.hypot(houseCenter.x - circle.center.x, houseCenter.y - circle.center.y);
+    if (distHouseToCenter < circle.r) {
+      return {
+        type: 'hoan_bao',
+        label: 'Kim Thành Hoàn Bão (Ngọc Đái Triền Yêu)',
+        nature: 'Lòng cung lõm ôm trọn minh đường trước nhà',
+        rating: 'Đại Cát Tụ Tài',
+        color: '#10B981',
+        source: '《Dương Trạch Thập Thư》: Tiền hậu hữu thủy hoàn bão quý'
+      };
+    } else {
+      return {
+        type: 'phan_cung',
+        label: 'Phản Cung Thủy (Phản Khiêu / Phản Thân Sát)',
+        nature: 'Lưng cánh cung lồi chĩa thẳng vào mặt tiền',
+        rating: 'Đại Hung Sát',
+        color: '#EF4444',
+        source: '《Dương Trạch Thập Thư》: Đãn ngộ phản khiêu tất tu kỵ'
+      };
+    }
+  }
+
+  function calculateFlowRelation(fromPoint, toPoint, houseCenter, facingBearing) {
+    if (!fromPoint || !toPoint || !houseCenter) {
+      return { type: 'chua_xac_dinh', label: 'Chưa xác định', chieuNuoc: 'Không rõ', rating: 'Bình', color: '#94A3B8' };
+    }
+    const fromBearing = calculateLineBearing(houseCenter, fromPoint);
+    const toBearing = calculateLineBearing(houseCenter, toPoint);
+    const segBearing = calculateLineBearing(fromPoint, toPoint);
+
+    const relFrom = Calib && Calib.computeRelativeBearing
+      ? Calib.computeRelativeBearing(facingBearing, fromBearing)
+      : bearingDifference(facingBearing, fromBearing);
+    const relTo = Calib && Calib.computeRelativeBearing
+      ? Calib.computeRelativeBearing(facingBearing, toBearing)
+      : bearingDifference(facingBearing, toBearing);
+
+    // Kiểm tra Trực Xung (đâm thẳng mặt tiền)
+    const bearingToHouse = calculateLineBearing(fromPoint, houseCenter);
+    const diffHeading = Math.abs(bearingDifference(segBearing, bearingToHouse));
+    const distFrom = Math.hypot(fromPoint.x - houseCenter.x, fromPoint.y - houseCenter.y);
+    const distTo = Math.hypot(toPoint.x - houseCenter.x, toPoint.y - houseCenter.y);
+
+    if (diffHeading < 25 && distTo < distFrom && Math.abs(relTo) < 55) {
+      return {
+        type: 'truc_xung',
+        label: 'Trực Xung (Đâm thẳng mặt tiền · Thương Sát)',
+        chieuNuoc: 'Đâm thẳng',
+        rating: 'Đại Hung Sát',
+        color: '#EF4444'
+      };
+    }
+
+    // Kiểm tra Củng Bối (vòng sau lưng)
+    if (Math.abs(relFrom) > 120 && Math.abs(relTo) > 120) {
+      return {
+        type: 'xuyen_boi',
+        label: 'Củng Bối (Chảy vòng sau lưng nhà)',
+        chieuNuoc: 'Sau lưng',
+        rating: 'Bình Cát',
+        color: '#34D399'
+      };
+    }
+
+    // Chảy ngang qua trước mặt tiền
+    if (relTo >= relFrom) {
+      return {
+        type: 'ta_dao_huu',
+        label: 'Tả Thủy đảo Hữu (Thanh Long ➔ Bạch Hổ)',
+        chieuNuoc: 'Trái → phải',
+        rating: 'Thuận Cục',
+        color: '#38BDF8'
+      };
+    } else {
+      return {
+        type: 'huu_dao_ta',
+        label: 'Hữu Thủy đảo Tả (Bạch Hổ ➔ Thanh Long)',
+        chieuNuoc: 'Phải → trái',
+        rating: 'Nghịch Cục',
+        color: '#F59E0B'
+      };
+    }
+  }
+
   return {
     normalizeBearing,
     bearingDifference,
@@ -128,6 +251,10 @@
     calibrateBearing,
     calculateLocalTangent,
     distancePointToSegment,
-    createAnnularSectorPath
+    createAnnularSectorPath,
+    calculateBendAngle,
+    circleFrom3Points,
+    calculateCurveWrap,
+    calculateFlowRelation
   };
 }));

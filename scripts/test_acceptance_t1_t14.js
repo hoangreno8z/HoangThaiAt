@@ -457,6 +457,133 @@ test('T19: Tự động tính 12 Cung Trường Sinh và Tổng Luận Tam Hợp
   assert.equal(thuyAnalysis.khu.truongSinh.name, 'Mộ', 'Ất Thìn is Mộ in Thủy Cục');
 });
 
+// T20: Sơ đồ phân đoạn dòng chảy Lai -> Khứ và chạm chọn phân đoạn
+test('T20: Sơ đồ phân đoạn dòng chảy (Lai ➔ Khứ), vector bearing & tương quan mặt tiền', () => {
+  const { tool } = createTestEnvironment();
+  tool.centerPoint = { x: 400, y: 400 };
+  tool.rawFacingBearing = 180; // Hướng Nam
+  tool.waterPolyline = [
+    { x: 200, y: 550, role: 'lai' },
+    { x: 350, y: 520, role: 'normal' },
+    { x: 500, y: 530, role: 'normal' },
+    { x: 650, y: 570, role: 'khu' }
+  ];
+  tool.laiNodeIndex = 0;
+  tool.khuNodeIndex = 3;
+
+  const segs = tool.getWaterSegments();
+  assert.equal(segs.length, 3, 'Must have 3 segments for 4 nodes');
+
+  // Kiểm tra thuộc tính giàu có của phân đoạn
+  const seg0 = segs[0];
+  assert.equal(seg0.fromIndex, 0);
+  assert.equal(seg0.toIndex, 1);
+  assert.ok(seg0.segmentMountain, 'Segment must have mountain identification');
+  assert.ok(seg0.fromMountain && seg0.toMountain, 'Must have from/to mountain');
+  assert.ok(seg0.flowRelation, 'Must have flow relation with house');
+  assert.equal(seg0.flowRelation.chieuNuoc, 'Phải → trái', 'Từ Tây sang Đông khi nhà hướng Nam là Hữu Thủy đảo Tả (Phải → trái)');
+
+  // Chọn phân đoạn 1 (P2 -> P3)
+  tool.selectedSegmentIndex = 1;
+  const html = tool.renderResultPanels();
+  assert.ok(html.includes('SƠ ĐỒ DÒNG CHẢY (LAI ➔ KHỨ)'), 'Must render segment flow track header');
+  assert.ok(html.includes('Đoạn 2: P2 ➔ P3'), 'Must render segment card');
+
+  // Kiểm tra SVG rendering chứa mũi tên dòng chảy và huy hiệu nổi
+  const mockSvg = { style: {}, innerHTML: '' };
+  tool.container = { querySelector: sel => sel === '#dt-drawing-svg' ? mockSvg : null };
+  tool.constructor.prototype.renderDrawingElements.call(tool);
+  assert.ok(mockSvg.innerHTML.includes('P2 ➔ P3'), 'SVG must render floating badge for selected segment');
+});
+
+// T21: Nhận diện Cửu Khúc Thủy & Kim Thành Hoàn Bão vs Phản Cung Sát
+test('T21: Nhận diện địa cuộc Cửu Khúc Thủy & Kim Thành Hoàn Bão vs Phản Cung Sát', () => {
+  const { tool } = createTestEnvironment();
+  tool.centerPoint = { x: 400, y: 400 };
+  tool.rawFacingBearing = 180; // Hướng Nam
+
+  // 1. Trường hợp Kim Thành Hoàn Bão (cung đường cong ôm trọn minh đường)
+  tool.waterPolyline = [
+    { x: 150, y: 550 },
+    { x: 400, y: 620 },
+    { x: 650, y: 550 }
+  ];
+  const hoanBaoAnalysis = tool.getAnalysis();
+  assert.equal(hoanBaoAnalysis.topo.curveWrap.type, 'hoan_bao', 'Must detect Kim Thành Hoàn Bão');
+  const featHoanBao = hoanBaoAnalysis.topo.features.find(f => f.id === 'hoan_bao_thuy');
+  assert.ok(featHoanBao, 'Must include feature hoan_bao_thuy');
+  assert.equal(featHoanBao.rating, 'Đại Cát Vượng Tài');
+  assert.ok(featHoanBao.source.includes('Dương Trạch Thập Thư'));
+
+  // 2. Trường hợp Phản Cung Thủy (lưng cánh cung chĩa thẳng vào nhà)
+  tool.waterPolyline = [
+    { x: 150, y: 600 },
+    { x: 400, y: 480 },
+    { x: 650, y: 600 }
+  ];
+  const phanCungAnalysis = tool.getAnalysis();
+  assert.equal(phanCungAnalysis.topo.curveWrap.type, 'phan_cung', 'Must detect Phản Cung Thủy');
+  const featPhanCung = phanCungAnalysis.topo.features.find(f => f.id === 'phan_cung_thuy');
+  assert.ok(featPhanCung, 'Must include feature phan_cung_thuy');
+  assert.equal(featPhanCung.rating, 'Đại Hung Sát');
+  assert.ok(featPhanCung.remedy, 'Must provide traditional remedy');
+
+  // 3. Trường hợp Cửu Khúc Thủy (uốn lượn nhiều nhịp hòa hoãn)
+  tool.waterPolyline = [
+    { x: 100, y: 700 },
+    { x: 250, y: 620 },
+    { x: 380, y: 670 },
+    { x: 500, y: 600 },
+    { x: 650, y: 680 }
+  ];
+  const cuuKhucAnalysis = tool.getAnalysis();
+  const featCuuKhuc = cuuKhucAnalysis.topo.features.find(f => f.id === 'meandering_cuu_khuc');
+  assert.ok(featCuuKhuc, 'Must detect Cửu Khúc Thủy (Ngự Nhai Thủy)');
+  assert.equal(featCuuKhuc.rating, 'Đại Cát Tụ Khí');
+  assert.ok(featCuuKhuc.source.includes('Nhân Tử Tu Tri'));
+});
+
+// T22: Nhận diện Ngã 3 (Tam Xoa Hợp Lưu vs Đinh Tự Lộ) và Hẻm Cụt
+test('T22: Nhận diện Ngã 3 (Tam Xoa Hợp Lưu vs Đinh Tự Lộ) và Hẻm Cụt (Bế Khí vs Tụ Khí)', () => {
+  const { tool } = createTestEnvironment();
+  tool.centerPoint = { x: 400, y: 400 };
+  tool.rawFacingBearing = 180; // Hướng Nam
+
+  // 1. Đinh Tự Lộ (Đoạn đường đâm thẳng trực diện vào mặt tiền)
+  tool.waterPolyline = [
+    { x: 400, y: 700 },
+    { x: 400, y: 460 },
+    { x: 550, y: 460 }
+  ];
+  const dinhTuAnalysis = tool.getAnalysis();
+  const featDinhTu = dinhTuAnalysis.topo.features.find(f => f.id === 'dinh_tu_lo_xung_tam');
+  assert.ok(featDinhTu, 'Must detect Đinh Tự Lộ (Xung Tâm Sát)');
+  assert.equal(featDinhTu.rating, 'Đại Hung Sát');
+  assert.ok(featDinhTu.remedy.includes('Thái Sơn Thạch Cảm Đương') || featDinhTu.remedy.includes('huyền quan'), 'Remedy mentions stone shield or entry hall');
+
+  // 2. Tam Xoa Hợp Lưu (Có node giao hội ngã ba)
+  tool.waterPolyline = [
+    { x: 200, y: 600, role: 'normal' },
+    { x: 400, y: 600, role: 'junction' },
+    { x: 600, y: 600, role: 'normal' }
+  ];
+  const tamXoaAnalysis = tool.getAnalysis();
+  const featTamXoa = tamXoaAnalysis.topo.features.find(f => f.id === 'tam_xoa_hop_luu');
+  assert.ok(featTamXoa, 'Must detect Tam Xoa Hợp Lưu');
+  assert.equal(featTamXoa.rating, 'Cát Lợi Tụ Khí');
+
+  // 3. Hẻm Cụt (Bế Khí / Tử Khí Thủy)
+  tool.waterPathType = 'deadEnd';
+  tool.waterPolyline = [
+    { x: 400, y: 550 },
+    { x: 400, y: 440 }
+  ];
+  const deadEndAnalysis = tool.getAnalysis();
+  const featDeadEnd = deadEndAnalysis.topo.features.find(f => f.id === 'be_khi_tu_khi');
+  assert.ok(featDeadEnd, 'Must detect Bế Khí / Tử Khí Thủy');
+  assert.equal(featDeadEnd.rating, 'Thứ Hung (Bế Khí)');
+});
+
 console.log('\n================================================================');
 console.log(`KẾT QUẢ KIỂM ĐỊNH: ${passed} PASS, ${failed} FAIL`);
 console.log('================================================================');

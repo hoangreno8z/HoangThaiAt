@@ -194,6 +194,12 @@ class LuopanMapTool {
   getWaterSegments() {
     const segments = [];
     if (!this.waterPolyline || this.waterPolyline.length < 2) return segments;
+
+    const facing = this.getEffectiveFacingBearing();
+    const facingMountain = this.data.getMountain(facing).mountain;
+    const matchedGroup = this.data.SONG_SON_GROUPS.find(g => g.huongSon.includes(facingMountain.name)) || this.data.SONG_SON_GROUPS[0];
+    const cuc = matchedGroup.cuc;
+
     for (let i = 0; i < this.waterPolyline.length - 1; i++) {
       const from = this.waterPolyline[i];
       const to = this.waterPolyline[i + 1];
@@ -201,11 +207,42 @@ class LuopanMapTool {
       const effectiveBearing = this.isCalibrationLocked
         ? this.calibEngine.calibrate(rawBearing, this.calibrationOffset)
         : rawBearing;
+
+      const fromRadialRaw = this.geometry.calculateLineBearing(this.centerPoint, from);
+      const fromRadialEff = this.isCalibrationLocked
+        ? this.calibEngine.calibrate(fromRadialRaw, this.calibrationOffset)
+        : fromRadialRaw;
+      const toRadialRaw = this.geometry.calculateLineBearing(this.centerPoint, to);
+      const toRadialEff = this.isCalibrationLocked
+        ? this.calibEngine.calibrate(toRadialRaw, this.calibrationOffset)
+        : toRadialRaw;
+
+      const fromMountain = this.data.getMountain(fromRadialEff).mountain;
+      const toMountain = this.data.getMountain(toRadialEff).mountain;
+      const fromTruongSinh = this.data.getTruongSinh(fromMountain.name, cuc);
+      const toTruongSinh = this.data.getTruongSinh(toMountain.name, cuc);
+
+      const segmentMountain = this.data.getMountain(effectiveBearing).mountain;
+      const segmentTruongSinh = this.data.getTruongSinh(segmentMountain.name, cuc);
+
+      const lengthPx = Math.hypot(to.x - from.x, to.y - from.y);
+      const flowRelation = this.geometry.calculateFlowRelation(from, to, this.centerPoint, facing);
+
       segments.push({
         fromIndex: i,
         toIndex: i + 1,
+        from,
+        to,
         rawBearing,
-        effectiveBearing
+        effectiveBearing,
+        fromMountain,
+        toMountain,
+        fromTruongSinh,
+        toTruongSinh,
+        segmentMountain,
+        segmentTruongSinh,
+        lengthPx,
+        flowRelation
       });
     }
     return segments;
@@ -219,14 +256,7 @@ class LuopanMapTool {
     const relLai = lai !== null ? this.calibEngine.computeRelativeBearing(facing, lai) : null;
     const relKhu = khu !== null ? this.calibEngine.computeRelativeBearing(facing, khu) : null;
 
-    const analysis = this.classifier.classify({
-      facingBearing: facing,
-      laiBearing: lai,
-      khuBearing: khu,
-      offset: this.calibrationOffset,
-      isLocked: this.isCalibrationLocked,
-      tolerance: this.measurementTolerance
-    });
+    const analysis = this.getAnalysis();
 
     const luopanSvgHtml = this.renderer.render({
       cx: this.centerPoint.x,
@@ -718,21 +748,36 @@ class LuopanMapTool {
       const segments = this.getWaterSegments();
       const seg = segments[this.selectedSegmentIndex];
       if (seg) {
-        const m = this.data.getMountain(seg.effectiveBearing).mountain;
+        const m = seg.segmentMountain || this.data.getMountain(seg.effectiveBearing).mountain;
+        const fromTsStr = seg.fromTruongSinh ? ` [${seg.fromTruongSinh.name}]` : '';
+        const toTsStr = seg.toTruongSinh ? ` [${seg.toTruongSinh.name}]` : '';
+        const segTsStr = seg.segmentTruongSinh ? ` · ${seg.segmentTruongSinh.name} Cung` : '';
+        const relLabel = seg.flowRelation ? seg.flowRelation.label : '';
+        const relColor = seg.flowRelation ? seg.flowRelation.color : '#38BDF8';
+
         bar.style.display = 'flex';
         bar.innerHTML = `
-          <div style="display:flex; align-items:center; justify-content:space-between; width:100%; gap:0.4rem; flex-wrap:wrap; background:rgba(15,23,42,0.94); border:1px solid rgba(56,189,248,0.4); border-radius:8px; padding:0.35rem 0.6rem; backdrop-filter:blur(10px); box-shadow:0 8px 24px rgba(0,0,0,0.6);">
-            <div style="display:flex; align-items:center; gap:0.4rem; font-size:0.75rem;">
-              <strong style="color:#38BDF8;">Đoạn P${seg.fromIndex + 1} → P${seg.toIndex + 1}:</strong>
-              <span style="color:#FEF3C7; font-weight:700;">Hướng tuyến: ${seg.effectiveBearing.toFixed(2)}° (${m.name} Sơn · ${m.trigram} Quái)</span>
+          <div style="display:flex; flex-direction:column; width:100%; gap:0.3rem; background:rgba(15,23,42,0.96); border:1.5px solid #F59E0B; border-radius:8px; padding:0.4rem 0.65rem; backdrop-filter:blur(10px); box-shadow:0 8px 24px rgba(0,0,0,0.7);">
+            <div style="display:flex; align-items:center; justify-content:space-between; width:100%; gap:0.4rem; flex-wrap:wrap;">
+              <div style="display:flex; align-items:center; gap:0.4rem; font-size:0.78rem;">
+                <span style="background:#F59E0B; color:#0F172A; font-weight:800; padding:0.1rem 0.35rem; border-radius:4px; font-size:0.7rem;">ĐOẠN ${seg.fromIndex + 1}</span>
+                <strong style="color:#FEF3C7;">P${seg.fromIndex + 1}${fromTsStr} ➔ P${seg.toIndex + 1}${toTsStr}</strong>
+                <span style="color:#38BDF8; font-weight:700;">${seg.effectiveBearing.toFixed(1)}° (${m.name} Sơn · ${m.trigram} Quái${segTsStr})</span>
+              </div>
+              <div style="display:flex; gap:0.3rem; align-items:center;">
+                <button type="button" id="btn-seg-insert-node" class="dt-touch-btn" style="min-height:22px; padding:0.15rem 0.45rem; font-size:0.68rem; background:#047857; color:#FFF; border:1px solid #34D399;" title="Chèn thêm 1 điểm vào giữa đoạn này để uốn khúc hẻm">
+                  Chèn Điểm Giữa
+                </button>
+                <button type="button" id="btn-seg-close" style="background:transparent; border:none; color:#94A3B8; cursor:pointer; font-size:0.95rem; padding:0 0.25rem;" title="Đóng bảng chi tiết">
+                  ✕
+                </button>
+              </div>
             </div>
-            <div style="display:flex; gap:0.25rem; align-items:center;">
-              <button type="button" id="btn-seg-insert-node" class="dt-touch-btn" style="min-height:22px; padding:0.15rem 0.45rem; font-size:0.68rem; background:#047857; color:#FFF; border:1px solid #34D399;" title="Chèn thêm 1 điểm vào giữa đoạn này để uốn khúc hẻm">
-                Chèn Điểm Giữa
-              </button>
-              <button type="button" id="btn-seg-close" style="background:transparent; border:none; color:#94A3B8; cursor:pointer; font-size:0.9rem; padding:0 0.25rem;">
-                ✕
-              </button>
+            <div style="display:flex; align-items:center; gap:0.5rem; font-size:0.72rem; border-top:1px solid rgba(255,255,255,0.08); padding-top:0.25rem;">
+              <span style="color:#94A3B8;">Dòng khí:</span>
+              <strong style="color:${relColor};">${relLabel}</strong>
+              <span style="color:#64748B;">|</span>
+              <span style="color:#CBD5E1;">Từ <strong>${seg.fromMountain ? seg.fromMountain.name : ''} Sơn</strong> chảy dồn về <strong>${seg.toMountain ? seg.toMountain.name : ''} Sơn</strong></span>
             </div>
           </div>
         `;
@@ -913,7 +958,7 @@ class LuopanMapTool {
   }
 
   renderDrawingElements() {
-    const svg = document.getElementById('dt-drawing-svg');
+    const svg = (this.container && this.container.querySelector ? this.container.querySelector('#dt-drawing-svg') : null) || (typeof document !== 'undefined' && document.getElementById ? document.getElementById('dt-drawing-svg') : null);
     if (!svg) return;
 
     const isDrawing = this.activeDrawTool === 'drawWater';
@@ -943,15 +988,50 @@ class LuopanMapTool {
 
     // 2. Tuyến nước
     const segmentElements = [];
+    const segments = this.getWaterSegments();
+    const hasSelectedSeg = this.selectedSegmentIndex !== null;
+
     if (this.waterPolyline.length >= 2) {
       for (let i = 0; i < this.waterPolyline.length - 1; i++) {
         const from = this.waterPolyline[i];
         const to = this.waterPolyline[i + 1];
         const isSelected = this.selectedSegmentIndex === i;
+        const seg = segments[i];
+
+        const midX = (from.x + to.x) / 2;
+        const midY = (from.y + to.y) / 2;
+        const angleRad = Math.atan2(to.y - from.y, to.x - from.x);
+        const angleDeg = angleRad * (180 / Math.PI);
+
+        const baseOpacity = isSelected ? 1.0 : (hasSelectedSeg ? 0.38 : 0.85);
+        const strokeColor = isSelected ? '#F59E0B' : '#38BDF8';
+        const strokeW = isSelected ? 7 : 4;
+
         segmentElements.push(`
-          <line x1="${from.x}" y1="${from.y}" x2="${to.x}" y2="${to.y}" stroke="transparent" stroke-width="26" data-segment-index="${i}" style="cursor:${isDrawing ? 'pointer' : 'default'}; touch-action:none; pointer-events:${isDrawing ? 'all' : 'none'};" />
-          <line x1="${from.x}" y1="${from.y}" x2="${to.x}" y2="${to.y}" stroke="${isSelected ? '#FBBF24' : '#38BDF8'}" stroke-width="${isSelected ? 6 : 4}" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="${isSelected ? 1.0 : 0.85}" pointer-events="none" />
-          ${isSelected ? `<line x1="${from.x}" y1="${from.y}" x2="${to.x}" y2="${to.y}" stroke="#FFF" stroke-width="1.8" stroke-dasharray="5,4" pointer-events="none" />` : ''}
+          <!-- Vùng đệm 28px bắt sự kiện chạm đoạn trên SVG (luôn hoạt động) -->
+          <line x1="${from.x}" y1="${from.y}" x2="${to.x}" y2="${to.y}" stroke="transparent" stroke-width="28" data-segment-index="${i}" style="cursor:pointer; touch-action:none; pointer-events:all;" />
+          
+          <!-- Đường tuyến chính -->
+          <line x1="${from.x}" y1="${from.y}" x2="${to.x}" y2="${to.y}" stroke="${strokeColor}" stroke-width="${strokeW}" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="${baseOpacity}" pointer-events="none" />
+          
+          ${isSelected ? `
+            <!-- Đường nét đứt màu trắng chạy ở giữa nổi bật -->
+            <line x1="${from.x}" y1="${from.y}" x2="${to.x}" y2="${to.y}" stroke="#FFF" stroke-width="2.5" stroke-dasharray="6,4" pointer-events="none" />
+            
+            <!-- Mũi tên hướng dòng chảy lớn -->
+            <polygon points="-10,-7 14,0 -10,7 -4,0" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2" transform="translate(${midX}, ${midY}) rotate(${angleDeg})" pointer-events="none" />
+            
+            <!-- Huy hiệu nổi chỉ hướng từ P[i] đến P[i+1] -->
+            <g transform="translate(${midX}, ${midY - 22})" pointer-events="none">
+              <rect x="-65" y="-12" width="130" height="24" rx="12" fill="rgba(15,23,42,0.94)" stroke="#F59E0B" stroke-width="1.6" />
+              <text x="0" y="4" fill="#FEF3C7" font-size="11" font-weight="700" font-family="system-ui" text-anchor="middle">
+                P${i + 1} ➔ P${i + 2} · ${seg ? seg.effectiveBearing.toFixed(1) : ''}° (${seg && seg.segmentMountain ? seg.segmentMountain.name : ''})
+              </text>
+            </g>
+          ` : `
+            <!-- Mũi tên hướng dòng chảy thông thường -->
+            <polygon points="-5,-4 6,0 -5,4 -2,0" fill="#38BDF8" opacity="${baseOpacity}" transform="translate(${midX}, ${midY}) rotate(${angleDeg})" pointer-events="none" />
+          `}
         `);
       }
     }
@@ -1052,7 +1132,14 @@ class LuopanMapTool {
       khuBearing: this.getEffectiveKhuBearing(),
       offset: this.isCalibrationLocked ? this.calibrationOffset : 0,
       isLocked: this.isCalibrationLocked,
-      tolerance: this.measurementTolerance
+      tolerance: this.measurementTolerance,
+      polyline: this.waterPolyline,
+      waterSegments: this.getWaterSegments(),
+      houseCenter: this.centerPoint,
+      frontageLine: this.frontageLine,
+      waterPathType: this.waterPathType,
+      laiNodeIndex: this.laiNodeIndex,
+      khuNodeIndex: this.khuNodeIndex
     });
   }
 
@@ -1073,7 +1160,7 @@ class LuopanMapTool {
             <!-- TẦNG 1: PHÉP ĐO (MEASUREMENTS) -->
             <div class="dt-panel-section">
               <div class="dt-panel-title" style="color:#FEF3C7;">
-                <span>📐</span> 1. PHÉP ĐO
+                1. PHÉP ĐO & ĐỊNH HƯỚNG
               </div>
 
               <div style="display:flex; flex-direction:column; gap:0.4rem; font-size:0.78rem;">
@@ -1202,6 +1289,46 @@ class LuopanMapTool {
                   }).join('')}
                 </div>
 
+                <!-- SƠ ĐỒ PHÂN ĐOẠN DÒNG CHẢY (CHẠM VÀO ĐOẠN ĐỂ NỔI BẬT HƯỚNG TỪ LAI ĐẾN KHỨ) -->
+                ${(() => {
+                  const segments = this.getWaterSegments();
+                  if (segments.length === 0) return '';
+                  return `
+                    <div style="margin-top:0.45rem;">
+                      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.25rem;">
+                        <span style="font-size:0.72rem; font-weight:700; color:#38BDF8;">SƠ ĐỒ DÒNG CHẢY (LAI ➔ KHỨ):</span>
+                        <span style="font-size:0.65rem; color:#94A3B8;">Chạm đoạn để xem</span>
+                      </div>
+                      <div class="dt-segment-flow-track" style="display:flex; flex-direction:column; gap:0.3rem;">
+                        ${segments.map((seg, i) => {
+                          const isSel = this.selectedSegmentIndex === i;
+                          const m = seg.segmentMountain;
+                          const ts = seg.segmentTruongSinh;
+                          const rel = seg.flowRelation;
+                          return `
+                            <div class="dt-segment-card" data-segment-idx="${i}" style="cursor:pointer; padding:0.35rem 0.5rem; background:${isSel ? 'rgba(245,158,11,0.2)' : '#141B2B'}; border:${isSel ? '1.5px solid #F59E0B' : '1px solid rgba(255,255,255,0.08)'}; border-radius:6px; transition:all 0.15s ease;">
+                              <div style="display:flex; justify-content:space-between; align-items:center;">
+                                <span style="font-weight:700; font-size:0.75rem; color:${isSel ? '#FEF3C7' : '#E2E8F0'};">
+                                  Đoạn ${i + 1}: P${seg.fromIndex + 1} ➔ P${seg.toIndex + 1}
+                                </span>
+                                <span style="font-size:0.68rem; font-weight:700; color:#38BDF8; background:rgba(56,189,248,0.12); padding:0.08rem 0.3rem; border-radius:4px;">
+                                  ${seg.effectiveBearing.toFixed(1)}° (${m ? m.name : ''} Sơn)
+                                </span>
+                              </div>
+                              <div style="display:flex; justify-content:space-between; margin-top:0.15rem; font-size:0.68rem; color:#CBD5E1;">
+                                <span>Từ <strong>${seg.fromMountain ? seg.fromMountain.name : ''}</strong> [${seg.fromTruongSinh ? seg.fromTruongSinh.name : ''}] ➔ <strong>${seg.toMountain ? seg.toMountain.name : ''}</strong> [${seg.toTruongSinh ? seg.toTruongSinh.name : ''}]</span>
+                              </div>
+                              <div style="margin-top:0.12rem; font-size:0.66rem; color:${rel ? rel.color : '#94A3B8'}; font-weight:600;">
+                                ${rel ? rel.label : ''}
+                              </div>
+                            </div>
+                          `;
+                        }).join('')}
+                      </div>
+                    </div>
+                  `;
+                })()}
+
                 ${(() => {
                   if (this.selectedSegmentIndex !== null) {
                     const segments = this.getWaterSegments();
@@ -1272,7 +1399,7 @@ class LuopanMapTool {
 
                 ${analysis.status.isSensitive ? `
                   <div style="background:#450A0A; border:1px solid #EF4444; border-radius:6px; padding:0.45rem 0.6rem; color:#FECACA; font-size:0.73rem; margin-top:0.3rem; line-height:1.4;">
-                    ⚠️ <strong>KẾT QUẢ NHẠY VỚI SAI SỐ:</strong> Phương vị nằm rất gần vách ngăn phân kim (≤ 0.30°). Khi sai số dao động có thể chuyển sang Sơn lân cận: [${[...new Set([...analysis.facing.possibleMountains, ...(analysis.khu ? analysis.khu.possibleMountains : [])])].join(' / ')}]. Cần đo lại cẩn thận tại hiện trường.
+                    <strong>CHÚ Ý - KẾT QUẢ NHẠY VỚI SAI SỐ:</strong> Phương vị nằm rất gần vách ngăn phân kim (≤ 0.30°). Khi sai số dao động có thể chuyển sang Sơn lân cận: [${[...new Set([...analysis.facing.possibleMountains, ...(analysis.khu ? analysis.khu.possibleMountains : [])])].join(' / ')}]. Cần đo lại cẩn thận tại hiện trường.
                   </div>
                 ` : ''}
               </div>
@@ -1286,7 +1413,7 @@ class LuopanMapTool {
 
               ${!this.isCalibrationLocked ? `
                 <div style="text-align:center; padding:0.8rem; color:#94A3B8; font-size:0.76rem; line-height:1.5;">
-                  🔒 <em>Vui lòng nhập số đo La Kinh và nhấn <strong>Khóa Chuẩn</strong> để kích hoạt động cơ đối chiếu 144 Thủy Khẩu Chánh Tông.</em>
+                  <em>Vui lòng nhập số đo La Kinh và nhấn <strong>Khóa Chuẩn</strong> để kích hoạt động cơ đối chiếu 144 Thủy Khẩu Chánh Tông.</em>
                 </div>
               ` : (analysis.thuyKhau ? `
                 <div style="background:#181F30; border-radius:8px; padding:0.75rem; border-left:3px solid #F59E0B; margin-bottom:0.6rem;">
@@ -1341,6 +1468,61 @@ class LuopanMapTool {
                   ${analysis.matchTrace.map(t => `<div>• ${t}</div>`).join('')}
                 </div>
               `)}
+            </div>
+
+            <!-- TẦNG 5: ĐỊA CUỘC TOPO CỔ PHÁP (NGOẰN NGOÈO · NGÃ BA · HẺM CỤT) -->
+            <div class="dt-panel-section">
+              <div class="dt-panel-title" style="color:#A78BFA; display:flex; justify-content:space-between; align-items:center;">
+                <span>5. ĐỊA CUỘC TOPO CỔ PHÁP</span>
+                ${analysis.topo ? `
+                  <span style="font-size:0.7rem; padding:0.1rem 0.45rem; border-radius:4px; font-weight:700; background:${analysis.topo.overallColor}22; color:${analysis.topo.overallColor}; border:1px solid ${analysis.topo.overallColor}55;">
+                    ${analysis.topo.overallRating}
+                  </span>
+                ` : ''}
+              </div>
+
+              ${analysis.topo ? `
+                <div style="display:flex; flex-direction:column; gap:0.45rem; font-size:0.76rem;">
+                  <div style="padding:0.4rem 0.6rem; background:#1E293B; border-radius:6px; border-left:3px solid ${analysis.topo.overallColor}; line-height:1.45; color:#E2E8F0;">
+                    ${analysis.topo.overallSummary}
+                  </div>
+
+                  ${analysis.topo.features.length > 0 ? analysis.topo.features.map(f => `
+                    <div style="background:#181F30; border-radius:6px; padding:0.55rem 0.65rem; border:1px solid rgba(255,255,255,0.08);">
+                      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.25rem;">
+                        <strong style="color:${f.color}; font-size:0.78rem;">${f.name}</strong>
+                        <span style="font-size:0.68rem; color:#94A3B8;">${f.source}</span>
+                      </div>
+                      ${f.quoteOriginal ? `
+                        <div style="font-size:0.7rem; color:#FBBF24; font-family:serif; margin-bottom:0.2rem;">
+                          ${f.quoteOriginal}
+                        </div>
+                      ` : ''}
+                      ${f.quoteHanViet ? `
+                        <div style="font-size:0.68rem; color:#CBD5E1; font-style:italic; margin-bottom:0.25rem;">
+                          Hán-Việt: ${f.quoteHanViet}
+                        </div>
+                      ` : ''}
+                      <div style="font-size:0.72rem; color:#E2E8F0; line-height:1.4;">
+                        ${f.quoteMeaning}
+                      </div>
+                      ${f.remedy ? `
+                        <div style="margin-top:0.35rem; padding:0.35rem 0.5rem; background:rgba(239,68,68,0.12); border-left:2px solid #EF4444; border-radius:4px; font-size:0.7rem; color:#FECACA; line-height:1.4;">
+                          <strong style="color:#F87171;">Phép Hóa Giải Cổ Truyền:</strong> ${f.remedy}
+                        </div>
+                      ` : ''}
+                    </div>
+                  `).join('') : `
+                    <div style="padding:0.4rem; color:#94A3B8; font-size:0.72rem; font-style:italic; text-align:center;">
+                      Tuyến đường thông thoáng, chưa phát hiện thế phản cung hoặc xung tâm sát.
+                    </div>
+                  `}
+                </div>
+              ` : `
+                <div style="padding:0.5rem; color:#94A3B8; font-size:0.74rem;">
+                  Chưa có dữ liệu topo tuyến hẻm.
+                </div>
+              `}
             </div>
 
     `;
@@ -1419,10 +1601,34 @@ class LuopanMapTool {
     }
   }
 
+  bindSegmentCardEvents(root) {
+    if (!root) return;
+    const cards = root.querySelectorAll('.dt-segment-card');
+    cards.forEach(card => {
+      card.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const idx = Number(card.dataset.segmentIdx);
+        if (this.selectedSegmentIndex === idx) {
+          this.selectedSegmentIndex = null;
+        } else {
+          this.selectedSegmentIndex = idx;
+        }
+        this.selectedNodeIndex = null;
+        this.renderDrawingElements();
+        this.updateSvgView();
+        this.updateNodeActionBar();
+        this.updateMeasurementsDisplay();
+      });
+    });
+  }
+
   updateMeasurementsDisplay() {
     const analysis = this.getAnalysis();
     const panel = (this.container && this.container.querySelector ? this.container.querySelector('#dt-result-panels') : null) || (typeof document !== 'undefined' && document.getElementById ? document.getElementById('dt-result-panels') : null);
-    if (panel) panel.innerHTML = this.renderResultPanels(analysis);
+    if (panel) {
+      panel.innerHTML = this.renderResultPanels(analysis);
+      this.bindSegmentCardEvents(panel);
+    }
     this.updateCalibrationUI(analysis);
   }
 
@@ -1433,14 +1639,7 @@ class LuopanMapTool {
     const lai = this.getEffectiveLaiBearing();
     const khu = this.getEffectiveKhuBearing();
 
-    const analysis = this.classifier.classify({
-      facingBearing: facing,
-      laiBearing: lai,
-      khuBearing: khu,
-      offset: this.calibrationOffset,
-      isLocked: this.isCalibrationLocked,
-      tolerance: this.measurementTolerance
-    });
+    const analysis = this.getAnalysis();
 
     this.updateViewTransform();
     mount.innerHTML = this.renderer.render({
@@ -1458,6 +1657,7 @@ class LuopanMapTool {
   }
 
   bindEvents() {
+    this.bindSegmentCardEvents(this.container);
     const btnImg = document.getElementById('btn-mode-image');
     const btnMap = document.getElementById('btn-mode-map');
     if (btnImg) btnImg.addEventListener('click', () => this.switchMode('image'));
