@@ -32,13 +32,18 @@ class LuopanMapTool {
       frontSide: 'right'
     };
     this.waterPolyline = [
-      { x: 190, y: 220 },
-      { x: 400, y: 270 },
-      { x: 610, y: 580 }
+      { x: 190, y: 220, role: 'normal' },
+      { x: 400, y: 270, role: 'normal' },
+      { x: 610, y: 580, role: 'normal' }
     ];
     this.flowDirection = 'forward'; // 'forward' hoặc 'reverse'
     this.waterPathType = 'through'; // 'through' (hẻm thông) hoặc 'deadEnd' (hẻm cụt)
     this.isDrawingWater = false;
+    this.pendingNewWaterPath = false;
+    this.laiNodeIndex = null;
+    this.khuNodeIndex = null;
+    this.selectedNodeIndex = null;
+    this.selectedSegmentIndex = null;
 
     // Leaflet GIS Map
     this.mapInstance = null;
@@ -93,12 +98,16 @@ class LuopanMapTool {
   }
 
   recalculateRawBearings() {
+    this.syncCalibrationFromGeometry();
+  }
+
+  syncCalibrationFromGeometry() {
     this.rawFacingBearing = this.geometry.calculateHouseFacingBearing(
       this.frontageLine.pA,
       this.frontageLine.pB,
       this.frontageLine.frontSide
     );
-    // Nếu đã khóa số La Kinh thực địa, offset phải chạy theo hình học mới
+    // Khi đã khóa mốc đo thực địa, offset phải tự động cập nhật theo hình học mới của Map
     if (this.isCalibrationLocked && Number.isFinite(this.measuredBearing)) {
       this.calibrationOffset = this.calibEngine.computeOffset(
         this.rawFacingBearing,
@@ -107,24 +116,40 @@ class LuopanMapTool {
     }
   }
 
-  syncCalibrationFromGeometry() {
-    this.recalculateRawBearings();
-  }
-
   getWaterPoints() {
     if (!this.waterPolyline || this.waterPolyline.length < 1) {
       return { pLai: null, pKhu: null, pDeadEnd: null };
     }
-    const first = this.waterPolyline[0];
-    const last = this.waterPolyline[this.waterPolyline.length - 1];
-    if (this.waterPathType === 'deadEnd') {
-      return this.flowDirection === 'forward'
-        ? { pLai: first, pKhu: null, pDeadEnd: last }
-        : { pLai: last, pKhu: null, pDeadEnd: first };
+    let pLai = null;
+    let pKhu = null;
+    let pDeadEnd = null;
+
+    // 1. Xác định Lai Thủy (Ưu tiên node được người dùng chỉ định role)
+    if (Number.isInteger(this.laiNodeIndex) && this.waterPolyline[this.laiNodeIndex]) {
+      pLai = this.waterPolyline[this.laiNodeIndex];
+    } else {
+      pLai = this.flowDirection === 'forward'
+        ? this.waterPolyline[0]
+        : this.waterPolyline[this.waterPolyline.length - 1];
     }
-    return this.flowDirection === 'forward'
-      ? { pLai: first, pKhu: last, pDeadEnd: null }
-      : { pLai: last, pKhu: first, pDeadEnd: null };
+
+    // 2. Xác định Khứ Thủy hoặc Điểm cụt
+    if (this.waterPathType === 'deadEnd') {
+      pKhu = null;
+      pDeadEnd = this.flowDirection === 'forward'
+        ? this.waterPolyline[this.waterPolyline.length - 1]
+        : this.waterPolyline[0];
+    } else {
+      if (Number.isInteger(this.khuNodeIndex) && this.waterPolyline[this.khuNodeIndex]) {
+        pKhu = this.waterPolyline[this.khuNodeIndex];
+      } else {
+        pKhu = this.flowDirection === 'forward'
+          ? this.waterPolyline[this.waterPolyline.length - 1]
+          : this.waterPolyline[0];
+      }
+    }
+
+    return { pLai: pLai || null, pKhu: pKhu || null, pDeadEnd: pDeadEnd || null };
   }
 
   getRawLaiBearing() {
@@ -134,12 +159,14 @@ class LuopanMapTool {
   }
 
   getRawKhuBearing() {
+    if (this.waterPathType === 'deadEnd') return null;
     const { pKhu } = this.getWaterPoints();
     if (!pKhu) return null;
     return this.geometry.calculateLineBearing(this.centerPoint, pKhu);
   }
 
   getEffectiveFacingBearing() {
+    // Khi đã khóa, hướng thực đo là mốc bất biến tuyệt đối
     if (this.isCalibrationLocked && Number.isFinite(this.measuredBearing)) {
       return this.calibEngine.normalize360(this.measuredBearing);
     }
@@ -155,11 +182,32 @@ class LuopanMapTool {
   }
 
   getEffectiveKhuBearing() {
+    if (this.waterPathType === 'deadEnd') return null;
     const rawKhu = this.getRawKhuBearing();
     if (rawKhu === null) return null;
     return this.isCalibrationLocked
       ? this.calibEngine.calibrate(rawKhu, this.calibrationOffset)
       : rawKhu;
+  }
+
+  getWaterSegments() {
+    const segments = [];
+    if (!this.waterPolyline || this.waterPolyline.length < 2) return segments;
+    for (let i = 0; i < this.waterPolyline.length - 1; i++) {
+      const from = this.waterPolyline[i];
+      const to = this.waterPolyline[i + 1];
+      const rawBearing = this.geometry.calculateLineBearing(from, to);
+      const effectiveBearing = this.isCalibrationLocked
+        ? this.calibEngine.calibrate(rawBearing, this.calibrationOffset)
+        : rawBearing;
+      segments.push({
+        fromIndex: i,
+        toIndex: i + 1,
+        rawBearing,
+        effectiveBearing
+      });
+    }
+    return segments;
   }
 
   renderLayout() {
@@ -404,6 +452,9 @@ class LuopanMapTool {
             <!-- LAYER 2: INTERACTIVE CAD DRAWING OVERLAY -->
             <svg id="dt-drawing-svg" viewBox="0 0 ${this.STAGE_SIZE} ${this.STAGE_SIZE}" preserveAspectRatio="xMidYMid meet" style="position:absolute; inset:0; width:100%; height:100%; z-index:15; pointer-events:auto; touch-action:none;"></svg>
 
+            <!-- FLOATING NODE & SEGMENT INSPECTOR BAR -->
+            <div id="dt-node-action-bar" style="position:absolute; top:8px; left:8px; right:8px; z-index:35; display:none;"></div>
+
             </div>
           </div>
             <!-- View controls stay outside the observation area. -->
@@ -491,6 +542,140 @@ class LuopanMapTool {
     `;
   }
 
+  updateNodeActionBar() {
+    const bar = document.getElementById('dt-node-action-bar');
+    if (!bar) return;
+    if (this.selectedNodeIndex !== null && this.waterPolyline[this.selectedNodeIndex]) {
+      const idx = this.selectedNodeIndex;
+      const p = this.waterPolyline[idx];
+      const isLai = this.laiNodeIndex === idx;
+      const isKhu = this.khuNodeIndex === idx;
+      const isJunction = p.role === 'junction';
+      const radialRaw = this.geometry.calculateLineBearing(this.centerPoint, p);
+      const radialEffective = this.isCalibrationLocked
+        ? this.calibEngine.calibrate(radialRaw, this.calibrationOffset)
+        : radialRaw;
+      const m = this.data.getMountain(radialEffective).mountain;
+
+      bar.style.display = 'flex';
+      bar.innerHTML = `
+        <div style="display:flex; align-items:center; justify-content:space-between; width:100%; gap:0.4rem; flex-wrap:wrap; background:rgba(15,23,42,0.94); border:1px solid rgba(255,255,255,0.18); border-radius:8px; padding:0.35rem 0.6rem; backdrop-filter:blur(10px); box-shadow:0 8px 24px rgba(0,0,0,0.6);">
+          <div style="display:flex; align-items:center; gap:0.35rem; font-size:0.75rem;">
+            <strong style="color:#FEF3C7;">Node P${idx + 1}:</strong>
+            <span style="color:#94A3B8;">${radialEffective.toFixed(2)}° (${m.name} Sơn)</span>
+          </div>
+          <div style="display:flex; gap:0.3rem; align-items:center; flex-wrap:wrap;">
+            <button type="button" id="btn-node-set-lai" class="dt-touch-btn" style="min-height:28px; padding:0.2rem 0.5rem; font-size:0.72rem; background:${isLai ? '#059669' : '#1E293B'}; color:${isLai ? '#FFF' : '#34D399'}; border:1px solid #34D399;">
+              ${isLai ? '✓ Là Lai' : '📍 Đặt Lai'}
+            </button>
+            <button type="button" id="btn-node-set-khu" class="dt-touch-btn" style="min-height:28px; padding:0.2rem 0.5rem; font-size:0.72rem; background:${isKhu ? '#0284C7' : '#1E293B'}; color:${isKhu ? '#FFF' : '#38BDF8'}; border:1px solid #38BDF8;" ${this.waterPathType === 'deadEnd' ? 'disabled' : ''}>
+              ${isKhu ? '✓ Là Khứ' : '🎯 Đặt Khứ'}
+            </button>
+            <button type="button" id="btn-node-set-junction" class="dt-touch-btn" style="min-height:28px; padding:0.2rem 0.5rem; font-size:0.72rem; background:${isJunction ? '#D97706' : '#1E293B'}; color:${isJunction ? '#FFF' : '#F59E0B'}; border:1px solid #F59E0B;">
+              ${isJunction ? '✓ Ngã 3' : '🔀 Ngã 3'}
+            </button>
+            <button type="button" id="btn-node-clear-role" class="dt-touch-btn" style="min-height:28px; padding:0.2rem 0.4rem; font-size:0.72rem; background:#1E293B; color:#CBD5E1; border:1px solid rgba(255,255,255,0.12);">
+              ⚪ Thường
+            </button>
+            <button type="button" id="btn-node-close" style="background:transparent; border:none; color:#94A3B8; cursor:pointer; font-size:1rem; padding:0 0.3rem;">
+              ✕
+            </button>
+          </div>
+        </div>
+      `;
+
+      bar.querySelector('#btn-node-set-lai')?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        this.laiNodeIndex = idx;
+        if (this.khuNodeIndex === idx) this.khuNodeIndex = null;
+        this.waterPolyline.forEach((node, i) => {
+          if (node.role === 'lai' && i !== idx) node.role = 'normal';
+        });
+        p.role = 'lai';
+        this.renderDrawingElements();
+        this.updateSvgView();
+        this.updateMeasurementsDisplay();
+        this.updateNodeActionBar();
+      });
+
+      bar.querySelector('#btn-node-set-khu')?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (this.waterPathType === 'deadEnd') return;
+        this.khuNodeIndex = idx;
+        if (this.laiNodeIndex === idx) this.laiNodeIndex = null;
+        this.waterPolyline.forEach((node, i) => {
+          if (node.role === 'khu' && i !== idx) node.role = 'normal';
+        });
+        p.role = 'khu';
+        this.renderDrawingElements();
+        this.updateSvgView();
+        this.updateMeasurementsDisplay();
+        this.updateNodeActionBar();
+      });
+
+      bar.querySelector('#btn-node-set-junction')?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (this.laiNodeIndex === idx) this.laiNodeIndex = null;
+        if (this.khuNodeIndex === idx) this.khuNodeIndex = null;
+        p.role = p.role === 'junction' ? 'normal' : 'junction';
+        this.renderDrawingElements();
+        this.updateSvgView();
+        this.updateMeasurementsDisplay();
+        this.updateNodeActionBar();
+      });
+
+      bar.querySelector('#btn-node-clear-role')?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (this.laiNodeIndex === idx) this.laiNodeIndex = null;
+        if (this.khuNodeIndex === idx) this.khuNodeIndex = null;
+        p.role = 'normal';
+        this.renderDrawingElements();
+        this.updateSvgView();
+        this.updateMeasurementsDisplay();
+        this.updateNodeActionBar();
+      });
+
+      bar.querySelector('#btn-node-close')?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        this.selectedNodeIndex = null;
+        this.renderDrawingElements();
+        this.updateNodeActionBar();
+      });
+      return;
+    }
+
+    if (this.selectedSegmentIndex !== null) {
+      const segments = this.getWaterSegments();
+      const seg = segments[this.selectedSegmentIndex];
+      if (seg) {
+        const m = this.data.getMountain(seg.effectiveBearing).mountain;
+        bar.style.display = 'flex';
+        bar.innerHTML = `
+          <div style="display:flex; align-items:center; justify-content:space-between; width:100%; gap:0.4rem; flex-wrap:wrap; background:rgba(15,23,42,0.94); border:1px solid rgba(56,189,248,0.4); border-radius:8px; padding:0.35rem 0.6rem; backdrop-filter:blur(10px); box-shadow:0 8px 24px rgba(0,0,0,0.6);">
+            <div style="display:flex; align-items:center; gap:0.4rem; font-size:0.75rem;">
+              <strong style="color:#38BDF8;">Đoạn P${seg.fromIndex + 1} → P${seg.toIndex + 1}:</strong>
+              <span style="color:#FEF3C7; font-weight:700;">Hướng tuyến: ${seg.effectiveBearing.toFixed(2)}° (${m.name} Sơn · ${m.trigram} Quái)</span>
+            </div>
+            <button type="button" id="btn-seg-close" style="background:transparent; border:none; color:#94A3B8; cursor:pointer; font-size:1rem; padding:0 0.3rem;">
+              ✕
+            </button>
+          </div>
+        `;
+        bar.querySelector('#btn-seg-close')?.addEventListener('click', (e) => {
+          e.stopPropagation();
+          this.selectedSegmentIndex = null;
+          this.renderDrawingElements();
+          this.updateNodeActionBar();
+          this.updateMeasurementsDisplay();
+        });
+        return;
+      }
+    }
+
+    bar.style.display = 'none';
+    bar.innerHTML = '';
+  }
+
   initInteractiveCanvas() {
     const svg = this.container.querySelector('#dt-drawing-svg');
     if (!svg) return;
@@ -517,39 +702,92 @@ class LuopanMapTool {
     svg.addEventListener('pointerdown', event => {
       if (!event.isPrimary || event.button !== 0) return;
       const handle = event.target.closest('[data-drag-handle]');
+      const segTarget = event.target.closest('[data-segment-index]');
+
       if (this.activeDrawTool === 'setCenter' && !handle) {
         this.centerPoint = getPosition(event);
         refresh();
+        this.updateNodeActionBar();
         event.preventDefault();
         event.stopPropagation();
         return;
       }
       if (this.activeDrawTool === 'drawWater' && !handle) {
         const pos = getPosition(event);
-        this.waterPolyline.push(pos);
+        if (this.pendingNewWaterPath) {
+          this.waterPolyline = [{ x: pos.x, y: pos.y, role: 'normal' }];
+          this.laiNodeIndex = null;
+          this.khuNodeIndex = null;
+          this.selectedNodeIndex = 0;
+          this.selectedSegmentIndex = null;
+          this.pendingNewWaterPath = false;
+        } else {
+          this.waterPolyline.push({ x: pos.x, y: pos.y, role: 'normal' });
+          this.selectedNodeIndex = this.waterPolyline.length - 1;
+        }
         refresh();
+        this.updateNodeActionBar();
         event.preventDefault();
         event.stopPropagation();
         return;
       }
-      if (!handle) return;
-      dragTarget = handle.dataset.dragHandle;
-      pointerId = event.pointerId;
-      svg.setPointerCapture(pointerId);
-      event.preventDefault();
-      event.stopPropagation();
+      if (handle) {
+        dragTarget = handle.dataset.dragHandle;
+        pointerId = event.pointerId;
+        svg.setPointerCapture(pointerId);
+        if (dragTarget.startsWith('water_')) {
+          this.selectedNodeIndex = Number(dragTarget.slice(6));
+          this.selectedSegmentIndex = null;
+          this.updateNodeActionBar();
+          this.updateMeasurementsDisplay();
+          this.renderDrawingElements();
+        }
+        event.preventDefault();
+        event.stopPropagation();
+        return;
+      }
+      if (segTarget && this.activeDrawTool === 'select') {
+        this.selectedSegmentIndex = Number(segTarget.dataset.segmentIndex);
+        this.selectedNodeIndex = null;
+        this.updateNodeActionBar();
+        this.updateMeasurementsDisplay();
+        this.renderDrawingElements();
+        event.preventDefault();
+        event.stopPropagation();
+        return;
+      }
+      // Click nền trống ở mode select: bỏ chọn node / segment
+      if (this.activeDrawTool === 'select') {
+        if (this.selectedNodeIndex !== null || this.selectedSegmentIndex !== null) {
+          this.selectedNodeIndex = null;
+          this.selectedSegmentIndex = null;
+          this.updateNodeActionBar();
+          this.updateMeasurementsDisplay();
+          this.renderDrawingElements();
+        }
+      }
     }, options);
     svg.addEventListener('pointermove', event => {
       if (!dragTarget || event.pointerId !== pointerId) return;
       const position = getPosition(event);
       if (dragTarget === 'center') this.centerPoint = position;
-      else if (dragTarget === 'frontA') this.frontageLine.pA = position;
-      else if (dragTarget === 'frontB') this.frontageLine.pB = position;
+      else if (dragTarget === 'frontA') {
+        this.frontageLine.pA = position;
+        this.syncCalibrationFromGeometry();
+      }
+      else if (dragTarget === 'frontB') {
+        this.frontageLine.pB = position;
+        this.syncCalibrationFromGeometry();
+      }
       else if (dragTarget.startsWith('water_')) {
         const index = Number(dragTarget.slice(6));
-        if (this.waterPolyline[index]) this.waterPolyline[index] = position;
+        if (this.waterPolyline[index]) {
+          this.waterPolyline[index].x = position.x;
+          this.waterPolyline[index].y = position.y;
+        }
       }
       refresh();
+      this.updateNodeActionBar();
       event.preventDefault();
     }, options);
     const finish = event => {
@@ -557,6 +795,7 @@ class LuopanMapTool {
       dragTarget = null;
       if (svg.hasPointerCapture(pointerId)) svg.releasePointerCapture(pointerId);
       pointerId = null;
+      this.updateNodeActionBar();
     };
     svg.addEventListener('pointerup', finish, options);
     svg.addEventListener('pointercancel', finish, options);
@@ -587,50 +826,72 @@ class LuopanMapTool {
     const normalEndY = midFrontY + arrowLen * Math.sin(facingRad);
 
     // 2. Tuyến nước
-    const polylinePoints = this.waterPolyline.map(p => `${p.x},${p.y}`).join(' ');
+    const segmentElements = [];
+    if (this.waterPolyline.length >= 2) {
+      for (let i = 0; i < this.waterPolyline.length - 1; i++) {
+        const from = this.waterPolyline[i];
+        const to = this.waterPolyline[i + 1];
+        const isSelected = this.selectedSegmentIndex === i;
+        segmentElements.push(`
+          <line x1="${from.x}" y1="${from.y}" x2="${to.x}" y2="${to.y}" stroke="transparent" stroke-width="26" data-segment-index="${i}" style="cursor:pointer; touch-action:none; pointer-events:all;" />
+          <line x1="${from.x}" y1="${from.y}" x2="${to.x}" y2="${to.y}" stroke="${isSelected ? '#FBBF24' : '#38BDF8'}" stroke-width="${isSelected ? 6 : 4}" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="${isSelected ? 1.0 : 0.85}" pointer-events="none" />
+          ${isSelected ? `<line x1="${from.x}" y1="${from.y}" x2="${to.x}" y2="${to.y}" stroke="#FFF" stroke-width="1.8" stroke-dasharray="5,4" pointer-events="none" />` : ''}
+        `);
+      }
+    }
 
+    const waterPointsInfo = this.getWaterPoints();
     const waterHandles = this.waterPolyline.map((p, idx) => {
-      const isFirst = idx === 0;
-      const isLast = idx === this.waterPolyline.length - 1;
+      const isLai = (waterPointsInfo.pLai === p);
+      const isKhu = (waterPointsInfo.pKhu === p);
+      const isDeadEnd = (this.waterPathType === 'deadEnd' && waterPointsInfo.pDeadEnd === p);
+      const isJunction = (p.role === 'junction');
+      const isSelected = (this.selectedNodeIndex === idx);
 
-      let isLai = false;
-      let isKhu = false;
-      let isDeadEnd = false;
-      if (this.waterPathType === 'deadEnd') {
-        if (this.flowDirection === 'forward') {
-          isLai = isFirst;
-          isDeadEnd = isLast;
-        } else {
-          isLai = isLast;
-          isDeadEnd = isFirst;
-        }
-      } else {
-        if (this.flowDirection === 'forward') {
-          isLai = isFirst;
-          isKhu = isLast;
-        } else {
-          isLai = isLast;
-          isKhu = isFirst;
-        }
+      let color = '#94A3B8';
+      let label = '';
+      let badge = String(idx + 1);
+
+      if (isLai) {
+        color = '#34D399';
+        label = 'LAI';
+        badge = 'L';
+      } else if (isDeadEnd) {
+        color = '#F43F5E';
+        label = 'CỤT';
+        badge = 'C';
+      } else if (isKhu) {
+        color = '#38BDF8';
+        label = 'KHỨ';
+        badge = 'K';
+      } else if (isJunction) {
+        color = '#F59E0B';
+        label = 'NGÃ 3';
+        badge = 'N';
+      } else if (isSelected) {
+        color = '#FEF3C7';
+        label = `P${idx + 1}`;
+        badge = String(idx + 1);
       }
 
-      const color = isLai ? '#34D399' : (isDeadEnd ? '#F43F5E' : (isKhu ? '#38BDF8' : '#CBD5E1'));
-      const label = isLai ? 'LAI' : (isDeadEnd ? 'CỤT' : (isKhu ? 'KHỨ' : String(idx)));
+      const rCircle = (isLai || isKhu || isDeadEnd || isJunction || isSelected) ? 12 : 7;
+
       return `
         <g transform="translate(${p.x}, ${p.y})">
-          <circle r="24" fill="transparent" data-drag-handle="water_${idx}" style="cursor:grab; touch-action:none; pointer-events:all;" />
-          <circle r="11" fill="${color}" stroke="#000" stroke-width="2.5" pointer-events="none" />
-          <text y="4" font-size="9" font-weight="900" fill="#000" text-anchor="middle" pointer-events="none">${label[0]}</text>
-          <text y="-16" font-size="12" font-weight="800" text-anchor="middle" fill="none" stroke="rgba(0,0,0,0.95)" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" class="luopan-text-halo" pointer-events="none">${label}</text>
-          <text y="-16" font-size="12" font-weight="800" fill="${color}" stroke="rgba(0,0,0,0.35)" stroke-width="0.35" style="paint-order:stroke fill;" text-anchor="middle" class="luopan-text-main" pointer-events="none">${label}</text>
+          <circle r="26" fill="transparent" data-drag-handle="water_${idx}" style="cursor:grab; touch-action:none; pointer-events:all;" />
+          <circle r="${rCircle}" fill="${color}" stroke="#000" stroke-width="${isSelected ? 3 : 2}" pointer-events="none" ${isSelected ? 'filter="drop-shadow(0 0 6px #FBBF24)"' : ''} />
+          ${rCircle >= 11 ? `<text y="4" font-size="9" font-weight="900" fill="#000" text-anchor="middle" pointer-events="none">${badge}</text>` : ''}
+          ${label ? `
+            <text y="-16" font-size="12" font-weight="800" text-anchor="middle" fill="none" stroke="rgba(0,0,0,0.95)" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" class="luopan-text-halo" pointer-events="none">${label}</text>
+            <text y="-16" font-size="12" font-weight="800" fill="${color}" stroke="rgba(0,0,0,0.35)" stroke-width="0.35" style="paint-order:stroke fill;" text-anchor="middle" class="luopan-text-main" pointer-events="none">${label}</text>
+          ` : ''}
         </g>
       `;
     }).join('');
 
     svg.innerHTML = `
-      <!-- Tuyến nước -->
-      <polyline points="${polylinePoints}" stroke="#38BDF8" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.8" />
-      <polyline points="${polylinePoints}" stroke="#0284C7" stroke-width="1.5" stroke-dasharray="6,4" fill="none" />
+      <!-- Các đoạn tuyến nước đa điểm -->
+      ${segmentElements.join('')}
       ${waterHandles}
 
       <!-- Mặt tiền căn nhà (Đoạn A -> B) -->
@@ -765,10 +1026,43 @@ class LuopanMapTool {
                   <strong style="color:#38BDF8;">${analysis.khu ? `${analysis.khu.mountain.name} Sơn` : (this.waterPathType === 'deadEnd' ? 'Hẻm cụt (không có Khứ)' : 'Chưa đo')}</strong>
                 </div>
 
-                <div style="display:flex; justify-content:space-between; padding:0.3rem 0.5rem; background:#141B2B; border-radius:6px;">
+                <div style="display:flex; justify-content:space-between; padding:0.3rem 0.5rem; background:#1E293B; border-radius:6px;">
                   <span>Cụm Song Sơn:</span>
                   <strong style="color:#FEF3C7;">${analysis.group.label} (${analysis.group.cuc} Cục)</strong>
                 </div>
+
+                ${(() => {
+                  if (this.selectedSegmentIndex !== null) {
+                    const segments = this.getWaterSegments();
+                    const seg = segments[this.selectedSegmentIndex];
+                    if (seg) {
+                      const m = this.data.getMountain(seg.effectiveBearing).mountain;
+                      return `
+                        <div style="margin-top:0.35rem; padding:0.4rem 0.55rem; background:#141B2B; border-radius:6px; border-left:3px solid #38BDF8; font-size:0.75rem;">
+                          <div style="color:#38BDF8; font-weight:700;">Đoạn chọn: P${seg.fromIndex + 1} → P${seg.toIndex + 1}</div>
+                          <div style="color:#FEF3C7; margin-top:0.15rem;">Hướng tuyến: <strong>${seg.effectiveBearing.toFixed(2)}° (${m.name} Sơn · ${m.trigram} Quái)</strong></div>
+                        </div>
+                      `;
+                    }
+                  }
+                  if (this.selectedNodeIndex !== null && this.waterPolyline[this.selectedNodeIndex]) {
+                    const idx = this.selectedNodeIndex;
+                    const p = this.waterPolyline[idx];
+                    const radialRaw = this.geometry.calculateLineBearing(this.centerPoint, p);
+                    const radialEffective = this.isCalibrationLocked
+                      ? this.calibEngine.calibrate(radialRaw, this.calibrationOffset)
+                      : radialRaw;
+                    const m = this.data.getMountain(radialEffective).mountain;
+                    const roleLabel = this.laiNodeIndex === idx ? 'Lai Thủy' : (this.khuNodeIndex === idx ? 'Khứ Thủy' : (p.role === 'junction' ? 'Ngã 3' : 'Node thường'));
+                    return `
+                      <div style="margin-top:0.35rem; padding:0.4rem 0.55rem; background:#141B2B; border-radius:6px; border-left:3px solid #F59E0B; font-size:0.75rem;">
+                        <div style="color:#F59E0B; font-weight:700;">Node chọn: P${idx + 1} (${roleLabel})</div>
+                        <div style="color:#FEF3C7; margin-top:0.15rem;">Phương vị đối với Nhà: <strong>${radialEffective.toFixed(2)}° (${m.name} Sơn)</strong></div>
+                      </div>
+                    `;
+                  }
+                  return '';
+                })()}
               </div>
             </div>
 
@@ -854,32 +1148,48 @@ class LuopanMapTool {
   }
 
   updateCalibrationUI(analysis = this.getAnalysis()) {
-    const find = id => this.container.querySelector(`#${id}`);
+    const find = id => (this.container && this.container.querySelector ? this.container.querySelector(`#${id}`) : null) || (typeof document !== 'undefined' && document.getElementById ? document.getElementById(id) : null);
     const locked = this.isCalibrationLocked;
     const color = locked ? '#10B981' : '#F59E0B';
-    find('dt-calibration-panel').style.borderColor = color;
+    const calibPanel = find('dt-calibration-panel');
+    if (calibPanel && calibPanel.style) calibPanel.style.borderColor = color;
     const badge = find('dt-lock-status');
-    badge.textContent = locked ? 'ĐÃ KHÓA' : 'CHƯA KHÓA';
-    badge.style.color = color;
-    badge.style.background = `${color}22`;
+    if (badge) {
+      badge.textContent = locked ? 'ĐÃ KHÓA' : 'CHƯA KHÓA';
+      if (badge.style) {
+        badge.style.color = color;
+        badge.style.background = `${color}22`;
+      }
+    }
     const input = find('input-measured-bearing');
-    input.disabled = locked;
-    if (locked) input.value = this.measuredBearing.toFixed(1);
+    if (input) {
+      input.disabled = locked;
+      if (locked && Number.isFinite(this.measuredBearing)) input.value = this.measuredBearing.toFixed(1);
+    }
     const button = find('btn-lock-calibration');
-    button.textContent = locked ? 'Mở Khóa' : 'Khóa Chuẩn';
-    button.style.background = locked ? '#EF4444' : '#10B981';
-    find('dt-raw-facing').textContent = `${this.rawFacingBearing.toFixed(2)}°`;
-    find('dt-offset').textContent = this.calibEngine.formatOffset(locked ? this.calibrationOffset : 0);
+    if (button) {
+      button.textContent = locked ? 'Mở Khóa' : 'Khóa Chuẩn';
+      if (button.style) button.style.background = locked ? '#EF4444' : '#10B981';
+    }
+    const rawFacing = find('dt-raw-facing');
+    if (rawFacing) rawFacing.textContent = `${this.rawFacingBearing.toFixed(2)}°`;
+    const offsetEl = find('dt-offset');
+    if (offsetEl) offsetEl.textContent = this.calibEngine.formatOffset(locked ? this.calibrationOffset : 0);
     const status = find('dt-calibration-status');
-    status.textContent = analysis.status.label;
-    status.style.color = analysis.status.color;
-    status.style.background = `${analysis.status.color}22`;
-    status.style.borderColor = `${analysis.status.color}55`;
+    if (status && analysis && analysis.status) {
+      status.textContent = analysis.status.label;
+      if (status.style) {
+        status.style.color = analysis.status.color;
+        status.style.background = `${analysis.status.color}22`;
+        status.style.borderColor = `${analysis.status.color}55`;
+      }
+    }
   }
 
   updateMeasurementsDisplay() {
     const analysis = this.getAnalysis();
-    this.container.querySelector('#dt-result-panels').innerHTML = this.renderResultPanels(analysis);
+    const panel = (this.container && this.container.querySelector ? this.container.querySelector('#dt-result-panels') : null) || (typeof document !== 'undefined' && document.getElementById ? document.getElementById('dt-result-panels') : null);
+    if (panel) panel.innerHTML = this.renderResultPanels(analysis);
     this.updateCalibrationUI(analysis);
   }
 
@@ -952,21 +1262,32 @@ class LuopanMapTool {
       this.renderDrawingElements();
     };
 
-    if (step1) step1.addEventListener('click', () => { this.activeDrawTool = 'setCenter'; updateStepBadges(step1); });
-    if (step2) step2.addEventListener('click', () => { this.activeDrawTool = 'drawFrontage'; updateStepBadges(step2); });
+    if (step1) step1.addEventListener('click', () => {
+      this.activeDrawTool = 'setCenter';
+      updateStepBadges(step1);
+      this.updateNodeActionBar();
+    });
+    if (step2) step2.addEventListener('click', () => {
+      this.activeDrawTool = 'drawFrontage';
+      updateStepBadges(step2);
+      this.updateNodeActionBar();
+    });
     if (step3) step3.addEventListener('click', () => {
       this.activeDrawTool = 'drawWater';
       this.isDrawingWater = true;
-      this.waterPolyline = [];
+      this.pendingNewWaterPath = true;
       updateStepBadges(step3);
       this.renderDrawingElements();
       this.updateMeasurementsDisplay();
+      this.updateNodeActionBar();
     });
     if (stepSelect) stepSelect.addEventListener('click', () => {
       this.activeDrawTool = 'select';
       this.isDrawingWater = false;
+      this.pendingNewWaterPath = false;
       updateStepBadges(stepSelect);
       this.renderDrawingElements();
+      this.updateNodeActionBar();
     });
 
     // Đảo phía hướng nhà
@@ -996,15 +1317,23 @@ class LuopanMapTool {
       });
     }
 
-    // Đảo chiều nước
+    // Đảo chiều nước (hoán đổi role/flowDirection, TUYỆT ĐỐI không đảo ngược array geometry)
     const btnReverseWater = document.getElementById('btn-reverse-water');
     if (btnReverseWater) {
       btnReverseWater.addEventListener('click', () => {
         this.flowDirection = this.flowDirection === 'forward' ? 'reverse' : 'forward';
         btnReverseWater.textContent = `4 Chiều ${this.flowDirection === 'forward' ? '→' : '←'}`;
+        if (Number.isInteger(this.laiNodeIndex) && Number.isInteger(this.khuNodeIndex)) {
+          const temp = this.laiNodeIndex;
+          this.laiNodeIndex = this.khuNodeIndex;
+          this.khuNodeIndex = temp;
+          if (this.waterPolyline[this.laiNodeIndex]) this.waterPolyline[this.laiNodeIndex].role = 'lai';
+          if (this.waterPolyline[this.khuNodeIndex]) this.waterPolyline[this.khuNodeIndex].role = 'khu';
+        }
         this.renderDrawingElements();
         this.updateSvgView();
         this.updateMeasurementsDisplay();
+        this.updateNodeActionBar();
       });
     }
 
