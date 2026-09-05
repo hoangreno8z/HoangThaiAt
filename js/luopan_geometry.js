@@ -1,21 +1,23 @@
 /**
- * BỘ ĐỘNG CƠ HÌNH HỌC TÍNH TOÁN & HIỆU CHUẨN LA KINH (LUOPAN GEOMETRY & CALIBRATION ENGINE)
- * Thiết kế độc lập với giao diện, DOM, SVG và Leaflet/Google Maps.
- * Tuân thủ nghiêm ngặt hệ tọa độ địa lý và góc La Kinh (0° = Bắc, quay theo chiều kim đồng hồ).
+ * BỘ ĐỘNG CƠ HÌNH HỌC TÍNH TOÁN LA KINH (LUOPAN GEOMETRY ENGINE)
+ * Phối hợp cùng CalibrationEngine độc lập.
  */
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    define([], factory);
+    define(['./luopan_calibration_engine'], factory);
   } else if (typeof module === 'object' && module.exports) {
-    module.exports = factory();
+    module.exports = factory(require('./luopan_calibration_engine'));
   } else {
-    root.LuopanGeometry = factory();
+    root.LuopanGeometry = factory(root.CalibrationEngine);
   }
-}(typeof self !== 'undefined' ? self : this, function() {
+}(typeof self !== 'undefined' ? self : this, function(Calibration) {
   'use strict';
 
+  const Calib = Calibration || (typeof window !== 'undefined' ? window.CalibrationEngine : null);
+
   function normalizeBearing(deg) {
+    if (Calib && Calib.normalize360) return Calib.normalize360(deg);
     if (typeof deg !== 'number' || isNaN(deg)) return 0;
     let b = deg % 360;
     if (b < 0) b += 360;
@@ -23,6 +25,7 @@
   }
 
   function bearingDifference(b1, b2) {
+    if (Calib && Calib.computeOffset) return Calib.computeOffset(b1, b2);
     let diff = normalizeBearing(b2) - normalizeBearing(b1);
     if (diff > 180) diff -= 360;
     if (diff < -180) diff += 360;
@@ -55,10 +58,12 @@
   }
 
   function computeCalibrationOffset(rawHouseBearing, measuredBearing) {
+    if (Calib && Calib.computeOffset) return Calib.computeOffset(rawHouseBearing, measuredBearing);
     return bearingDifference(rawHouseBearing, measuredBearing);
   }
 
   function calibrateBearing(rawBearing, offset) {
+    if (Calib && Calib.calibrate) return Calib.calibrate(rawBearing, offset);
     return normalizeBearing(rawBearing + offset);
   }
 

@@ -1,8 +1,10 @@
 /**
- * BỘ SINH LA KINH VECTOR SVG TOÁN HỌC (PARAMETRIC VECTOR LUOPAN SVG RENDERER)
- * Tự động tính toán tọa độ cực, sinh các tầng đồng tâm và hỗ trợ bật/tắt Layer.
- * Hỗ trợ tâm động (cx, cy) và bán kính động (radius) để đồng bộ tâm nhà với thiên trì.
- * Không phụ thuộc thư viện ngoài; phóng to thu nhỏ không vỡ hạt.
+ * BỘ SINH LA KINH VECTOR SVG TOÁN HỌC TRONG SUỐT (TECHNICAL TRANSPARENT OVERLAY)
+ * Đặc điểm kỹ thuật:
+ * 1. Nền trong suốt hoàn toàn, nét mảnh sắc sảo, không dùng mảng màu đặc che khuất ảnh vệ tinh.
+ * 2. Chỉ highlight nhẹ tại 4 Sector trọng điểm: Hướng nhà, Tọa, Lai Thủy, Khứ Thủy.
+ * 3. Thiên Trì (Tâm La Kinh) có khoảng rỗng lớn hoàn toàn trong suốt để nhìn thấy mái nhà và sân.
+ * 4. Cơ chế LOD (Level of Detail): 144 vạch chia độ kỹ thuật thanh mảnh, không nhồi nhét 144 số.
  */
 
 (function(root, factory) {
@@ -23,15 +25,13 @@
       this.defaultCy = this.size / 2;
       this.defaultRadius = this.size / 2 - 16;
 
-      // Cấu hình hiển thị các tầng (Layers)
       this.layers = Object.assign({
-        centerPin: true,      // Kim chỉ nam & Thập đạo hồng tuyến
+        centerPin: true,      // Chữ thập chỉ thị & tâm thiên trì rỗng
         trigrams: true,       // Bát Quái hậu thiên (8 quẻ)
         mountains24: true,    // 24 Sơn chánh vị
-        tuCuc: true,          // Tứ Cục Tam Hợp
-        waterMouth144: true,  // 144 Phân vị Thủy Khẩu
+        waterMouth144: true,  // 144 Phân vị kỹ thuật
         degrees360: true,     // Chu thiên 360 độ
-        pointers: true        // Các kim chỉ tiêu (Hướng nhà, Tọa, Lai, Khứ)
+        pointers: true        // 4 Kim chỉ tiêu (Hướng, Tọa, Lai, Khứ)
       }, config.layers || {});
     }
 
@@ -41,19 +41,6 @@
       }
     }
 
-    /**
-     * Sinh toàn bộ mã SVG La Kinh
-     * @param {Object} state Trạng thái đo đạc hiện tại
-     *   - cx, cy: Tâm La Kinh (mặc định tại tâm size/2)
-     *   - radius: Bán kính ngoài cùng
-     *   - rotation: Góc xoay camera hiển thị (0 = Bắc lên trên, hoặc -facing)
-     *   - houseFacing: Hướng nhà đã hiệu chuẩn
-     *   - houseSitting: Tọa nhà
-     *   - laiBearing: Phương vị Lai Thủy
-     *   - khuBearing: Phương vị Khứ Thủy
-     *   - activeHsNum: Số thứ tự khẩu đang chọn (1-144)
-     *   - opacity: Độ mờ của SVG
-     */
     render(state = {}) {
       const {
         cx = this.defaultCx,
@@ -65,22 +52,31 @@
         laiBearing = null,
         khuBearing = null,
         activeHsNum = null,
-        opacity = 0.95
+        opacity = 0.85
       } = state;
 
       const r = radius;
-      // Định nghĩa bán kính các tầng đồng tâm từ ngoài vào trong:
+      // Bán kính các tầng đồng tâm (từ ngoài vào trong)
       const rOuter360 = r;
       const rInner360 = r - 26;
 
       const rOuter144 = rInner360;
-      const rInner144 = rOuter144 - 38;
+      const rInner144 = rOuter144 - 36;
 
       const rOuter24 = rInner144;
-      const rInner24 = rOuter24 - 44;
+      const rInner24 = rOuter24 - 48;
 
       const rOuterTrigram = rInner24;
-      const rInnerTrigram = rOuterTrigram - 38;
+      const rInnerTrigram = rOuterTrigram - 42;
+
+      // Tâm Thiên Trì có bán kính rỗng lớn để nhìn thấy mái nhà/sân
+      const rCenterHole = rInnerTrigram;
+
+      // Xác định các Sơn được highlight
+      const facingMountain = houseFacing !== null ? Data.getMountain(houseFacing).mountain.name : null;
+      const sittingMountain = houseSitting !== null ? Data.getMountain(houseSitting).mountain.name : null;
+      const laiMountain = laiBearing !== null ? Data.getMountain(laiBearing).mountain.name : null;
+      const khuMountain = khuBearing !== null ? Data.getMountain(khuBearing).mountain.name : null;
 
       // ── TẦNG 1: CHU THIÊN 360 ĐỘ ──
       let svg360 = '';
@@ -89,29 +85,28 @@
         for (let deg = 0; deg < 360; deg++) {
           const isMajor = deg % 10 === 0;
           const isMedium = deg % 5 === 0;
-          const tickLen = isMajor ? 12 : (isMedium ? 7 : 4);
+          const tickLen = isMajor ? 11 : (isMedium ? 6 : 3.5);
           const p1 = Geometry.polarToSvgCartesian(cx, cy, rOuter360, deg);
           const p2 = Geometry.polarToSvgCartesian(cx, cy, rOuter360 - tickLen, deg);
           const stroke = isMajor ? '#FEF3C7' : (isMedium ? '#94A3B8' : '#475569');
-          ticks.push(`<line x1="${p1.x.toFixed(2)}" y1="${p1.y.toFixed(2)}" x2="${p2.x.toFixed(2)}" y2="${p2.y.toFixed(2)}" stroke="${stroke}" stroke-width="${isMajor ? 1.5 : 0.8}" />`);
+          ticks.push(`<line x1="${p1.x.toFixed(2)}" y1="${p1.y.toFixed(2)}" x2="${p2.x.toFixed(2)}" y2="${p2.y.toFixed(2)}" stroke="${stroke}" stroke-width="${isMajor ? 1.4 : 0.8}" />`);
 
           if (isMajor) {
-            const pText = Geometry.polarToSvgCartesian(cx, cy, rOuter360 - 18, deg);
+            const pText = Geometry.polarToSvgCartesian(cx, cy, rOuter360 - 17, deg);
             ticks.push(`<text x="${pText.x.toFixed(2)}" y="${pText.y.toFixed(2)}" font-size="7.5" font-family="'Be Vietnam Pro', sans-serif" fill="#FDE047" font-weight="700" text-anchor="middle" dominant-baseline="central" transform="rotate(${deg}, ${pText.x.toFixed(2)}, ${pText.y.toFixed(2)})">${deg}°</text>`);
           }
         }
         svg360 = `
           <g id="layer-360" class="dt-luopan-layer">
-            <circle cx="${cx}" cy="${cy}" r="${rOuter360}" fill="#0A0E17" stroke="#C5B382" stroke-width="2" />
-            <circle cx="${cx}" cy="${cy}" r="${rInner360}" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1" />
+            <circle cx="${cx}" cy="${cy}" r="${rOuter360}" fill="none" stroke="#C5B382" stroke-width="1.8" />
+            <circle cx="${cx}" cy="${cy}" r="${rInner360}" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1" />
             ${ticks.join('')}
           </g>`;
       }
 
-      // ── TẦNG 2: 144 THỦY KHẨU PHÂN VỊ ──
+      // ── TẦNG 2: 144 PHÂN VỊ KỸ THUẬT (LOD: VẠCH THANH MẢNH, CHỈ HIGHLIGHT SECTOR ĐANG XÉT) ──
       let svg144 = '';
       if (this.layers.waterMouth144) {
-        const matrix = (typeof window !== 'undefined' && window.THUY_KHAU_144_MATRIX) || [];
         const step = 360 / 144; // 2.5 độ mỗi phân vị
         const sectors144 = [];
 
@@ -119,18 +114,27 @@
           const startDeg = i * step;
           const endDeg = (i + 1) * step;
           const centerDeg = startDeg + step / 2;
-          const hsNum = i + 1;
-          const isSelected = activeHsNum === hsNum;
+
+          // Kiểm tra xem sector có chứa Hướng nhà, Lai hoặc Khứ hay không
+          let isHighlight = false;
+          let highlightColor = 'transparent';
+
+          if (houseFacing !== null && Math.abs(Geometry.normalizeBearing(houseFacing - centerDeg)) <= 1.25) {
+            isHighlight = true;
+            highlightColor = 'rgba(239, 68, 68, 0.35)'; // Đỏ Hướng nhà
+          } else if (laiBearing !== null && Math.abs(Geometry.normalizeBearing(laiBearing - centerDeg)) <= 1.25) {
+            isHighlight = true;
+            highlightColor = 'rgba(52, 211, 153, 0.35)'; // Xanh Lai Thủy
+          } else if (khuBearing !== null && Math.abs(Geometry.normalizeBearing(khuBearing - centerDeg)) <= 1.25) {
+            isHighlight = true;
+            highlightColor = 'rgba(56, 189, 248, 0.35)'; // Lam Khứ Thủy
+          }
 
           const pathD = Geometry.createAnnularSectorPath(cx, cy, rInner144, rOuter144, startDeg, endDeg);
-          const fill = isSelected ? 'rgba(245,158,11,0.5)' : (i % 2 === 0 ? '#111827' : '#0B0F19');
-          const stroke = isSelected ? '#FBBF24' : 'rgba(255,255,255,0.06)';
-
-          const pText = Geometry.polarToSvgCartesian(cx, cy, (rInner144 + rOuter144) / 2, centerDeg);
+          const stroke = isHighlight ? '#FEF3C7' : 'rgba(255,255,255,0.08)';
 
           sectors144.push(`
-            <path d="${pathD}" fill="${fill}" stroke="${stroke}" stroke-width="0.5" data-hs="${hsNum}" class="dt-144-sector" />
-            <text x="${pText.x.toFixed(2)}" y="${pText.y.toFixed(2)}" font-size="6.5" font-family="'Be Vietnam Pro', sans-serif" fill="${isSelected ? '#FEF3C7' : '#94A3B8'}" font-weight="${isSelected ? '800' : '500'}" text-anchor="middle" dominant-baseline="central" transform="rotate(${centerDeg}, ${pText.x.toFixed(2)}, ${pText.y.toFixed(2)})">${hsNum}</text>
+            <path d="${pathD}" fill="${highlightColor}" stroke="${stroke}" stroke-width="${isHighlight ? 1.2 : 0.5}" />
           `);
         }
 
@@ -141,7 +145,7 @@
           </g>`;
       }
 
-      // ── TẦNG 3: NHỊ THẬP TỨ SƠN (24 SƠN) ──
+      // ── TẦNG 3: NHỊ THẬP TỨ SƠN (24 SƠN NỀN TRONG SUỐT KỸ THUẬT) ──
       let svg24 = '';
       if (this.layers.mountains24) {
         const sectors24 = [];
@@ -149,28 +153,44 @@
           const pathD = Geometry.createAnnularSectorPath(cx, cy, rInner24, rOuter24, m.start, m.end);
           const pText = Geometry.polarToSvgCartesian(cx, cy, (rInner24 + rOuter24) / 2, m.center);
           
-          let bg = '#161F30';
-          if (m.element === 'Hỏa') bg = 'rgba(239,68,68,0.18)';
-          else if (m.element === 'Thủy') bg = 'rgba(56,189,248,0.18)';
-          else if (m.element === 'Mộc') bg = 'rgba(74,222,128,0.18)';
-          else if (m.element === 'Kim') bg = 'rgba(251,191,36,0.18)';
-          else if (m.element === 'Thổ') bg = 'rgba(217,119,6,0.18)';
+          // Nền mặc định HOÀN TOÀN TRONG SUỐT, chỉ highlight nhẹ khi trùng mốc đo
+          let fill = 'none';
+          let strokeWidth = 0.8;
+          let strokeColor = 'rgba(255,255,255,0.15)';
+
+          if (m.name === facingMountain) {
+            fill = 'rgba(239, 68, 68, 0.22)';
+            strokeColor = '#EF4444';
+            strokeWidth = 1.5;
+          } else if (m.name === sittingMountain) {
+            fill = 'rgba(251, 191, 36, 0.18)';
+            strokeColor = '#FBBF24';
+            strokeWidth = 1.2;
+          } else if (m.name === laiMountain) {
+            fill = 'rgba(52, 211, 153, 0.22)';
+            strokeColor = '#34D399';
+            strokeWidth = 1.5;
+          } else if (m.name === khuMountain) {
+            fill = 'rgba(56, 189, 248, 0.22)';
+            strokeColor = '#38BDF8';
+            strokeWidth = 1.5;
+          }
 
           sectors24.push(`
-            <path d="${pathD}" fill="${bg}" stroke="rgba(255,255,255,0.12)" stroke-width="0.8" />
-            <text x="${pText.x.toFixed(2)}" y="${pText.y.toFixed(2) - 4}" font-size="11" font-family="'Noto Serif SC', serif" fill="${m.color}" font-weight="900" text-anchor="middle" dominant-baseline="central" transform="rotate(${m.center}, ${pText.x.toFixed(2)}, ${pText.y.toFixed(2)})">${m.hanzi}</text>
-            <text x="${pText.x.toFixed(2)}" y="${pText.y.toFixed(2) + 8}" font-size="7" font-family="'Be Vietnam Pro', sans-serif" fill="#FEF3C7" font-weight="700" text-anchor="middle" dominant-baseline="central" transform="rotate(${m.center}, ${pText.x.toFixed(2)}, ${pText.y.toFixed(2)})">${m.name}</text>
+            <path d="${pathD}" fill="${fill}" stroke="${strokeColor}" stroke-width="${strokeWidth}" />
+            <text x="${pText.x.toFixed(2)}" y="${(pText.y - 4).toFixed(2)}" font-size="12" font-family="'Noto Serif SC', serif" fill="${m.color}" font-weight="900" text-anchor="middle" dominant-baseline="central" transform="rotate(${m.center}, ${pText.x.toFixed(2)}, ${pText.y.toFixed(2)})">${m.hanzi}</text>
+            <text x="${pText.x.toFixed(2)}" y="${(pText.y + 8).toFixed(2)}" font-size="7.5" font-family="'Be Vietnam Pro', sans-serif" fill="#FEF3C7" font-weight="800" text-anchor="middle" dominant-baseline="central" transform="rotate(${m.center}, ${pText.x.toFixed(2)}, ${pText.y.toFixed(2)})">${m.name}</text>
           `);
         });
 
         svg24 = `
           <g id="layer-24" class="dt-luopan-layer">
-            <circle cx="${cx}" cy="${cy}" r="${rInner24}" fill="none" stroke="#C5B382" stroke-width="1.2" />
+            <circle cx="${cx}" cy="${cy}" r="${rInner24}" fill="none" stroke="#C5B382" stroke-width="1.4" />
             ${sectors24.join('')}
           </g>`;
       }
 
-      // ── TẦNG 4: BÁT QUÁI HẬU THIÊN (8 CUNG QUÁI) ──
+      // ── TẦNG 4: BÁT QUÁI HẬU THIÊN (8 CUNG TRONG SUỐT) ──
       let svgTrigrams = '';
       if (this.layers.trigrams) {
         const trigramSectors = [];
@@ -179,42 +199,50 @@
           const pText = Geometry.polarToSvgCartesian(cx, cy, (rInnerTrigram + rOuterTrigram) / 2, t.center);
 
           trigramSectors.push(`
-            <path d="${pathD}" fill="#111827" stroke="rgba(197,179,130,0.3)" stroke-width="1" />
-            <text x="${pText.x.toFixed(2)}" y="${pText.y.toFixed(2) - 5}" font-size="14" fill="#F5D485" font-weight="700" text-anchor="middle" dominant-baseline="central" transform="rotate(${t.center}, ${pText.x.toFixed(2)}, ${pText.y.toFixed(2)})">${t.symbol}</text>
-            <text x="${pText.x.toFixed(2)}" y="${pText.y.toFixed(2) + 8}" font-size="8.5" font-family="'Be Vietnam Pro', sans-serif" fill="#CBD5E1" font-weight="700" text-anchor="middle" dominant-baseline="central" transform="rotate(${t.center}, ${pText.x.toFixed(2)}, ${pText.y.toFixed(2)})">${t.name}</text>
+            <path d="${pathD}" fill="none" stroke="rgba(197,179,130,0.3)" stroke-width="1" />
+            <text x="${pText.x.toFixed(2)}" y="${(pText.y - 5).toFixed(2)}" font-size="14" fill="#F5D485" font-weight="700" text-anchor="middle" dominant-baseline="central" transform="rotate(${t.center}, ${pText.x.toFixed(2)}, ${pText.y.toFixed(2)})">${t.symbol}</text>
+            <text x="${pText.x.toFixed(2)}" y="${(pText.y + 8).toFixed(2)}" font-size="9" font-family="'Be Vietnam Pro', sans-serif" fill="#CBD5E1" font-weight="700" text-anchor="middle" dominant-baseline="central" transform="rotate(${t.center}, ${pText.x.toFixed(2)}, ${pText.y.toFixed(2)})">${t.name}</text>
           `);
         });
 
         svgTrigrams = `
           <g id="layer-trigrams" class="dt-luopan-layer">
-            <circle cx="${cx}" cy="${cy}" r="${rInnerTrigram}" fill="none" stroke="#C5B382" stroke-width="1.5" />
+            <circle cx="${cx}" cy="${cy}" r="${rInnerTrigram}" fill="none" stroke="#C5B382" stroke-width="1.6" />
             ${trigramSectors.join('')}
           </g>`;
       }
 
-      // ── TẦNG 5: THIÊN TRÌ (TÂM LA KINH & HẢI ĐẢO KIM CHÂM) ──
+      // ── TẦNG 5: THIÊN TRÌ TRONG SUỐT (TÂM RỖNG LỚN NHÌN RÕ MÁI NHÀ VÀ SÂN) ──
       let svgCenter = '';
       if (this.layers.centerPin) {
         svgCenter = `
           <g id="layer-center" class="dt-luopan-layer">
-            <circle cx="${cx}" cy="${cy}" r="${rInnerTrigram}" fill="#080C14" stroke="#C5B382" stroke-width="2" />
-            <circle cx="${cx}" cy="${cy}" r="${rInnerTrigram * 0.45}" fill="#131B2A" stroke="rgba(56,189,248,0.4)" stroke-width="1" />
+            <!-- Vòng tròn Thiên Trì rỗng hoàn toàn, không che khuất bản đồ/mái nhà -->
+            <circle cx="${cx}" cy="${cy}" r="${rCenterHole}" fill="none" stroke="rgba(197,179,130,0.5)" stroke-width="1.5" />
+            <circle cx="${cx}" cy="${cy}" r="${rCenterHole * 0.4}" fill="none" stroke="rgba(56,189,248,0.3)" stroke-width="1" stroke-dasharray="4,4" />
             
-            <!-- Thập đạo hồng tuyến (Chữ thập chỉ thị) -->
-            <line x1="${cx}" y1="${cy - rInnerTrigram}" x2="${cx}" y2="${cy + rInnerTrigram}" stroke="#EF4444" stroke-width="1.2" stroke-dasharray="3,3" />
-            <line x1="${cx - rInnerTrigram}" y1="${cy}" x2="${cx + rInnerTrigram}" y2="${cy}" stroke="#EF4444" stroke-width="1.2" stroke-dasharray="3,3" />
+            <!-- Thập đạo hồng tuyến nét đứt đỏ mảnh -->
+            <line x1="${cx}" y1="${cy - rCenterHole}" x2="${cx}" y2="${cy + rCenterHole}" stroke="#EF4444" stroke-width="1.2" stroke-dasharray="4,3" />
+            <line x1="${cx - rCenterHole}" y1="${cy}" x2="${cx + rCenterHole}" y2="${cy}" stroke="#EF4444" stroke-width="1.2" stroke-dasharray="4,3" />
 
-            <!-- Điểm tâm thiên trì -->
-            <circle cx="${cx}" cy="${cy}" r="6" fill="#EF4444" stroke="#FEF3C7" stroke-width="1.5" />
+            <!-- Điểm tâm trung tâm -->
+            <circle cx="${cx}" cy="${cy}" r="4" fill="#EF4444" stroke="#FFF" stroke-width="1.2" />
           </g>`;
       }
 
-      // ── TẦNG 6: CÁC KIM CHỈ THỊ (POINTERS: HƯỚNG NHÀ, TỌA, LAI, KHỨ) ──
+      // ── TẦNG 6: 4 ĐƯỜNG CHỈ TIÊU (BẮC NÉT ĐỨT, HƯỚNG NÉT LIỀN, LAI MŨI TÊN VÀO, KHỨ MŨI TÊN RA) ──
       let svgPointers = '';
       if (this.layers.pointers) {
         const pointerLines = [];
 
-        // 1. Kim Hướng Nhà (Màu Đỏ Rực #EF4444)
+        // 1. Đường Bắc Chuẩn (Nét đứt, chỉ hướng 0 độ)
+        const pNorth = Geometry.polarToSvgCartesian(cx, cy, rOuter360 + 12, 0);
+        pointerLines.push(`
+          <line x1="${cx}" y1="${cy}" x2="${pNorth.x.toFixed(2)}" y2="${pNorth.y.toFixed(2)}" stroke="#CBD5E1" stroke-width="1.8" stroke-dasharray="6,4" />
+          <text x="${pNorth.x.toFixed(2)}" y="${(pNorth.y - 8).toFixed(2)}" font-size="10" font-weight="900" fill="#CBD5E1" text-anchor="middle">BẮC</text>
+        `);
+
+        // 2. Kim Hướng Nhà (Nét Liền Màu Đỏ #EF4444)
         if (houseFacing !== null) {
           const pFacing = Geometry.polarToSvgCartesian(cx, cy, rOuter360 + 10, houseFacing);
           pointerLines.push(`
@@ -223,7 +251,7 @@
           `);
         }
 
-        // 2. Kim Tọa Nhà (Màu Vàng Ánh Kim #FBBF24)
+        // 3. Kim Tọa Nhà (Màu Vàng #FBBF24)
         if (houseSitting !== null) {
           const pSitting = Geometry.polarToSvgCartesian(cx, cy, rOuter360 - 5, houseSitting);
           pointerLines.push(`
@@ -231,18 +259,18 @@
           `);
         }
 
-        // 3. Kim Lai Thủy (Xanh Lá Cây #34D399)
+        // 4. Kim Lai Thủy (Xanh Lục #34D399, Mũi Tên Hướng Vào Tâm)
         if (laiBearing !== null) {
-          const pLai = Geometry.polarToSvgCartesian(cx, cy, rOuter360 + 6, laiBearing);
+          const pLai = Geometry.polarToSvgCartesian(cx, cy, rOuter360 + 8, laiBearing);
           pointerLines.push(`
             <line x1="${cx}" y1="${cy}" x2="${pLai.x.toFixed(2)}" y2="${pLai.y.toFixed(2)}" stroke="#34D399" stroke-width="2.5" />
             <polygon points="${pLai.x},${pLai.y} ${pLai.x-5},${pLai.y+9} ${pLai.x+5},${pLai.y+9}" fill="#34D399" transform="rotate(${laiBearing + 180}, ${pLai.x}, ${pLai.y})" />
           `);
         }
 
-        // 4. Kim Khứ Thủy (Xanh Lam Biển #38BDF8)
+        // 5. Kim Khứ Thủy (Xanh Lam #38BDF8, Mũi Tên Hướng Ra Ngoài)
         if (khuBearing !== null) {
-          const pKhu = Geometry.polarToSvgCartesian(cx, cy, rOuter360 + 6, khuBearing);
+          const pKhu = Geometry.polarToSvgCartesian(cx, cy, rOuter360 + 8, khuBearing);
           pointerLines.push(`
             <line x1="${cx}" y1="${cy}" x2="${pKhu.x.toFixed(2)}" y2="${pKhu.y.toFixed(2)}" stroke="#38BDF8" stroke-width="2.5" />
             <polygon points="${pKhu.x},${pKhu.y} ${pKhu.x-5},${pKhu.y-9} ${pKhu.x+5},${pKhu.y-9}" fill="#38BDF8" transform="rotate(${khuBearing}, ${pKhu.x}, ${pKhu.y})" />
@@ -252,9 +280,8 @@
         svgPointers = `<g id="layer-pointers" class="dt-luopan-layer">${pointerLines.join('')}</g>`;
       }
 
-      // Toàn bộ SVG bọc trong transform rotate(-rotation, cx, cy) để hỗ trợ "Hướng nhà lên trên"
       return `
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${this.size} ${this.size}" preserveAspectRatio="xMidYMid meet" width="100%" height="100%" style="opacity:${opacity}; filter:drop-shadow(0 12px 28px rgba(0,0,0,0.65));">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${this.size} ${this.size}" preserveAspectRatio="xMidYMid meet" width="100%" height="100%" style="opacity:${opacity}; filter:drop-shadow(0 8px 24px rgba(0,0,0,0.5));">
           <g transform="rotate(${-rotation}, ${cx}, ${cy})">
             ${svg360}
             ${svg144}
