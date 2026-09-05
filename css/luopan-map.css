@@ -156,21 +156,21 @@
 
   .tool-page--lakinh .dt-touch-btn,
   .tool-page--lakinh .dt-step-badge {
-    min-height: 34px !important;
-    padding: 4px 7px !important;
-    gap: 4px !important;
-    font-size: 12px !important;
+    min-height: 24px !important;
+    padding: 2px 6px !important;
+    gap: 3px !important;
+    font-size: 11px !important;
     line-height: 1.2 !important;
-    font-weight: 600 !important;
+    font-weight: 700 !important;
     white-space: nowrap;
-    border-radius: 6px !important;
+    border-radius: 4px !important;
     touch-action: manipulation;
   }
 
   .tool-page--lakinh .dt-workflow-toolbar {
-    padding: 6px !important;
-    gap: 5px !important;
-    border-radius: 8px !important;
+    padding: 4px 6px !important;
+    gap: 4px !important;
+    border-radius: 6px !important;
   }
 
   .tool-page--lakinh .dt-workflow-steps {

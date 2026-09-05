@@ -263,45 +263,51 @@ class LuopanMapTool {
           .dt-workspace-grid { grid-template-columns: 1fr !important; }
         }
         .dt-touch-btn {
-          min-height: 38px;
+          min-height: 24px;
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          gap: 0.35rem;
-          padding: 0.4rem 0.75rem;
-          border-radius: 8px;
+          gap: 0.2rem;
+          padding: 0.2rem 0.45rem;
+          border-radius: 4px;
           font-weight: 700;
-          font-size: 0.8rem;
+          font-size: 0.7rem;
           cursor: pointer;
           touch-action: manipulation;
           transition: background 0.15s ease, transform 0.1s ease;
           user-select: none;
           -webkit-user-select: none;
+          white-space: nowrap;
+          line-height: 1.2;
         }
         .dt-touch-btn:active { transform: scale(0.97); }
         .dt-workflow-steps {
           display: flex;
           align-items: center;
-          gap: 0.4rem;
+          gap: 0.25rem;
           flex-wrap: wrap;
         }
         .dt-step-badge {
           display: inline-flex;
           align-items: center;
-          gap: 0.35rem;
-          padding: 0.35rem 0.65rem;
-          border-radius: 6px;
-          font-size: 0.78rem;
+          gap: 0.2rem;
+          padding: 0.2rem 0.45rem;
+          min-height: 24px;
+          border-radius: 4px;
+          font-size: 0.68rem;
           font-weight: 700;
           cursor: pointer;
-          border: 1px solid rgba(255,255,255,0.12);
+          border: 1px solid rgba(255,255,255,0.14);
           background: #1E293B;
           color: #CBD5E1;
+          white-space: nowrap;
+          line-height: 1.2;
         }
         .dt-step-badge.active {
           background: #F59E0B;
           color: #000;
           border-color: #FBBF24;
+          box-shadow: 0 0 8px rgba(245, 158, 11, 0.4);
         }
         .dt-floating-bottom-bar {
           position: absolute;
@@ -358,71 +364,63 @@ class LuopanMapTool {
         <!-- 1. TOP HEADER & STATUS BAR -->
         <header class="dt-tool-header" style="background:#0D111A; border:1px solid #C5B382; border-radius:12px; padding:0.85rem 1.2rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.6rem; box-shadow:0 8px 24px rgba(0,0,0,0.4);">
           <div>
-            <div class="dt-tool-kicker" style="display:inline-flex; align-items:center; gap:0.4rem; padding:0.15rem 0.5rem; background:rgba(197,179,130,0.15); border:1px solid rgba(197,179,130,0.3); border-radius:6px; font-size:0.72rem; font-weight:700; color:#F5D485; margin-bottom:0.2rem;">
-              <span>🧭</span> LA KINH BẢN ĐỒ CÓ HIỆU CHUẨN THỰC ĐỊA
+            <div class="dt-tool-kicker" style="display:inline-flex; align-items:center; gap:0.3rem; padding:0.12rem 0.45rem; background:rgba(197,179,130,0.15); border:1px solid rgba(197,179,130,0.3); border-radius:4px; font-size:0.68rem; font-weight:700; color:#F5D485; margin-bottom:0.2rem;">
+              LA KINH BẢN ĐỒ CÓ HIỆU CHUẨN THỰC ĐỊA
             </div>
-            <h2 class="dt-tool-title" style="margin:0; font-size:1.18rem; color:#FEF3C7; font-weight:800;">
+            <h2 class="dt-tool-title" style="margin:0; font-size:1.1rem; color:#FEF3C7; font-weight:800;">
               La Kinh Bản Đồ · 144 Thủy Khẩu
             </h2>
           </div>
 
-          <div style="display:flex; align-items:center; gap:0.6rem; flex-wrap:wrap;">
-            <div id="dt-calibration-status" role="status" style="background:${analysis.status.color}22; color:${analysis.status.color}; border:1px solid ${analysis.status.color}55; font-size:0.78rem; font-weight:700; padding:0.35rem 0.75rem; border-radius:8px;">
+          <div style="display:flex; align-items:center; gap:0.4rem; flex-wrap:wrap;">
+            <div id="dt-calibration-status" role="status" style="background:${analysis.status.color}22; color:${analysis.status.color}; border:1px solid ${analysis.status.color}55; font-size:0.7rem; font-weight:700; padding:0.2rem 0.5rem; border-radius:4px;">
               ${analysis.status.label}
             </div>
 
-            <div style="display:flex; gap:0.25rem; background:#1E293B; padding:0.2rem; border-radius:8px; border:1px solid rgba(255,255,255,0.1);">
-              <button type="button" id="btn-mode-image" class="dt-touch-btn" style="background:${this.mode === 'image' ? '#FBBF24' : 'transparent'}; color:${this.mode === 'image' ? '#000' : '#CBD5E1'}; border:none; min-height:34px; padding:0.25rem 0.65rem;">
-                📷 Tải Ảnh / CAD
+            <div style="display:flex; gap:0.2rem; background:#1E293B; padding:0.15rem; border-radius:6px; border:1px solid rgba(255,255,255,0.1);">
+              <button type="button" id="btn-mode-image" class="dt-touch-btn" style="background:${this.mode === 'image' ? '#FBBF24' : 'transparent'}; color:${this.mode === 'image' ? '#000' : '#CBD5E1'}; border:none; min-height:24px; padding:0.18rem 0.45rem;">
+                Ảnh CAD
               </button>
-              <button type="button" id="btn-mode-map" class="dt-touch-btn" style="background:${this.mode === 'map' ? '#38BDF8' : 'transparent'}; color:${this.mode === 'map' ? '#000' : '#CBD5E1'}; border:none; min-height:34px; padding:0.25rem 0.65rem;">
-                🗺️ Bản Đồ Vệ Tinh
+              <button type="button" id="btn-mode-map" class="dt-touch-btn" style="background:${this.mode === 'map' ? '#38BDF8' : 'transparent'}; color:${this.mode === 'map' ? '#000' : '#CBD5E1'}; border:none; min-height:24px; padding:0.18rem 0.45rem;">
+                Bản Đồ Vệ Tinh
               </button>
             </div>
           </div>
         </header>
 
-        <!-- 2. WORKFLOW 5 BƯỚC THAO TÁC THỰC CHIẾN -->
-        <nav class="dt-workflow-toolbar" aria-label="Thao tác khảo sát" style="background:#141B2B; border:1px solid rgba(255,255,255,0.1); border-radius:10px; padding:0.65rem 0.9rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.6rem;">
+        <!-- 2. WORKFLOW CÁC THAO TÁC THỰC CHIẾN -->
+        <nav class="dt-workflow-toolbar" aria-label="Thao tác khảo sát" style="background:#141B2B; border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:0.3rem 0.55rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.35rem;">
 
           <div class="dt-workflow-steps">
-            <span style="font-size:0.72rem; color:#94A3B8; font-weight:700; text-transform:uppercase; margin-right:0.2rem;">Quy trình:</span>
+            <span style="font-size:0.68rem; color:#94A3B8; font-weight:700; text-transform:uppercase; margin-right:0.15rem;">Thao tác:</span>
 
-            <button type="button" id="step-btn-1" class="dt-step-badge ${this.activeDrawTool === 'setCenter' ? 'active' : ''}">
-              1. Tâm Nhà
+            <button type="button" id="step-btn-1" class="dt-step-badge ${this.activeDrawTool === 'setCenter' ? 'active' : ''}" title="Bấm để bật/tắt sửa vị trí tâm nhà">
+              ${this.activeDrawTool === 'setCenter' ? 'Sửa Tâm' : 'Tâm Nhà'}
             </button>
 
-            <button type="button" id="step-btn-2" class="dt-step-badge ${this.activeDrawTool === 'drawFrontage' ? 'active' : ''}">
-              2. Mặt Tiền
+            <button type="button" id="step-btn-2" class="dt-step-badge ${this.activeDrawTool === 'drawFrontage' ? 'active' : ''}" title="Bấm để bật/tắt sửa mép mặt tiền">
+              ${this.activeDrawTool === 'drawFrontage' ? 'Sửa Mặt Tiền' : 'Mặt Tiền'}
             </button>
 
-            <button type="button" id="step-btn-3" class="dt-step-badge ${this.activeDrawTool === 'drawWater' && this.pendingNewWaterPath ? 'active' : ''}" title="Bấm để vẽ lại tuyến mới từ đầu (chấm liên tục N điểm)">
-              3. Vẽ Mới (N điểm)
+            <button type="button" id="step-btn-3" class="dt-step-badge ${this.activeDrawTool === 'drawWater' ? 'active' : ''}" title="Bấm để bật/tắt vẽ và sửa tuyến nước">
+              ${this.activeDrawTool === 'drawWater' ? 'Sửa Tuyến' : 'Tuyến Nước'}
             </button>
 
-            <button type="button" id="btn-append-water" class="dt-step-badge ${this.activeDrawTool === 'drawWater' && !this.pendingNewWaterPath ? 'active' : ''}" style="color:#A7F3D0; border-color:rgba(52,211,153,0.35);" title="Bấm để chấm thêm các khúc cua vào cuối tuyến hiện có">
-              ➕ Nối Thêm
+            <button type="button" id="btn-reverse-water" class="dt-step-badge" style="color:#38BDF8; border-color:rgba(56,189,248,0.3);" title="Đổi chiều dòng chảy">
+              Chiều: ${this.flowDirection === 'forward' ? 'Xuôi' : 'Ngược'}
             </button>
 
-            <button type="button" id="btn-reverse-water" class="dt-step-badge" style="color:#38BDF8; border-color:rgba(56,189,248,0.3);">
-              4. Chiều ${this.flowDirection === 'forward' ? '→' : '←'}
-            </button>
-
-            <button type="button" id="btn-toggle-deadend" class="dt-step-badge" style="color:${this.waterPathType === 'deadEnd' ? '#F43F5E' : '#94A3B8'}; border-color:${this.waterPathType === 'deadEnd' ? '#F43F5E' : 'rgba(255,255,255,0.12)'};">
-              ${this.waterPathType === 'deadEnd' ? '🛑 Hẻm cụt' : '↔️ Hẻm thông'}
-            </button>
-
-            <button type="button" id="step-btn-select" class="dt-step-badge ${this.activeDrawTool === 'select' ? 'active' : ''}">
-              Chọn/Kéo
+            <button type="button" id="btn-toggle-deadend" class="dt-step-badge" style="color:${this.waterPathType === 'deadEnd' ? '#F43F5E' : '#94A3B8'}; border-color:${this.waterPathType === 'deadEnd' ? '#F43F5E' : 'rgba(255,255,255,0.12)'};" title="Chuyển đổi loại tuyến">
+              ${this.waterPathType === 'deadEnd' ? 'Hẻm Cụt' : 'Hẻm Thông'}
             </button>
           </div>
 
-          <div class="dt-secondary-actions" style="display:flex; align-items:center; gap:0.4rem; flex-wrap:wrap;">
-            <button type="button" id="btn-flip-frontside" class="dt-touch-btn" style="background:#1E293B; color:#FEF3C7; border:1px solid rgba(197,179,130,0.35);">
-              ⇄ Đảo mặt tiền
+          <div class="dt-secondary-actions" style="display:flex; align-items:center; gap:0.25rem; flex-wrap:wrap;">
+            <button type="button" id="btn-flip-frontside" class="dt-touch-btn" style="background:#1E293B; color:#FEF3C7; border:1px solid rgba(197,179,130,0.35);" title="Đảo hướng nhìn mặt tiền 180 độ">
+              Đảo Mặt Tiền
             </button>
-            <button type="button" id="btn-export-survey" class="dt-touch-btn" style="background:#059669; color:#FFF; border:none;">
-              📥 Xuất phiếu
+            <button type="button" id="btn-export-survey" class="dt-touch-btn" style="background:#059669; color:#FFF; border:none;" title="Mở phiếu khảo sát">
+              Xuất Phiếu
             </button>
           </div>
         </nav>
@@ -442,7 +440,7 @@ class LuopanMapTool {
               <div id="dt-image-empty" style="text-align:center; color:#94A3B8; padding:1rem; z-index:20;">
                 <p style="font-size:0.85rem; color:#FEF3C7;">Chọn ảnh nền hoặc Bản Đồ Vệ Tinh để bắt đầu.</p>
                 <label class="dt-touch-btn" style="background:#1E293B; color:#FEF3C7; border:1px solid #C5B382;">
-                  📁 Chọn ảnh / CAD
+                  Chọn Ảnh / CAD
                   <input type="file" id="input-upload-image" accept="image/*" style="display:none;" />
                 </label>
               </div>
@@ -489,7 +487,7 @@ class LuopanMapTool {
             <div id="dt-calibration-panel" class="dt-panel-section" style="border-color:${this.isCalibrationLocked ? '#10B981' : '#F59E0B'};">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.6rem;">
                 <div class="dt-panel-title" style="color:#FEF3C7; margin-bottom:0;">
-                  <span>⚖️</span> HIỆU CHUẨN LA KINH
+                  HIỆU CHUẨN LA KINH
                 </div>
                 <span id="dt-lock-status" style="font-size:0.72rem; padding:0.15rem 0.5rem; border-radius:6px; font-weight:700; background:${this.isCalibrationLocked ? '#10B98122' : '#F59E0B22'}; color:${this.isCalibrationLocked ? '#10B981' : '#F59E0B'};">
                   ${this.isCalibrationLocked ? 'ĐÃ KHÓA' : 'CHƯA KHÓA'}
@@ -523,17 +521,17 @@ class LuopanMapTool {
           <div style="background:#0F172A; border:1px solid #C5B382; border-radius:14px; width:100%; max-width:640px; max-height:85vh; overflow-y:auto; -webkit-overflow-scrolling:touch; padding:1.3rem; box-shadow:0 20px 50px rgba(0,0,0,0.8);">
 
             <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(255,255,255,0.12); padding-bottom:0.8rem; margin-bottom:1rem;">
-              <h3 style="margin:0; font-size:1.15rem; color:#FEF3C7; font-weight:800; display:flex; align-items:center; gap:0.5rem;">
-                <span>📋</span> PHIẾU KHẢO SÁT PHONG THỦY THỰC ĐỊA
+              <h3 style="margin:0; font-size:1.05rem; color:#FEF3C7; font-weight:800; display:flex; align-items:center; gap:0.4rem;">
+                PHIẾU KHẢO SÁT PHONG THỦY THỰC ĐỊA
               </h3>
-              <button type="button" id="btn-close-survey-x" style="background:transparent; border:none; color:#94A3B8; font-size:1.4rem; cursor:pointer; padding:0.2rem 0.5rem;">✕</button>
+              <button type="button" id="btn-close-survey-x" style="background:transparent; border:none; color:#94A3B8; font-size:1.2rem; cursor:pointer; padding:0.15rem 0.4rem;">✕</button>
             </div>
 
-            <div id="survey-export-content" style="font-size:0.84rem; color:#E2E8F0; line-height:1.7; margin-bottom:1.2rem;"></div>
+            <div id="survey-export-content" style="font-size:0.82rem; color:#E2E8F0; line-height:1.6; margin-bottom:1rem;"></div>
 
-            <div style="display:flex; justify-content:flex-end; gap:0.6rem; flex-wrap:wrap;">
-              <button type="button" id="btn-copy-survey" class="dt-touch-btn" style="background:#1E293B; color:#FEF3C7; border:1px solid #C5B382; padding:0.5rem 1.1rem;">
-                📋 Sao Chép Báo Cáo
+            <div style="display:flex; justify-content:flex-end; gap:0.4rem; flex-wrap:wrap;">
+              <button type="button" id="btn-copy-survey" class="dt-touch-btn" style="background:#1E293B; color:#FEF3C7; border:1px solid #C5B382; padding:0.3rem 0.7rem;">
+                Sao Chép
               </button>
               <button type="button" id="btn-close-survey" class="dt-touch-btn" style="background:#EF4444; color:#FFF; border:none; padding:0.5rem 1.1rem;">
                 Đóng
@@ -568,25 +566,25 @@ class LuopanMapTool {
             <strong style="color:#FEF3C7;">Node P${idx + 1}:</strong>
             <span style="color:#94A3B8;">${radialEffective.toFixed(2)}° (${m.name} Sơn)</span>
           </div>
-          <div style="display:flex; gap:0.3rem; align-items:center; flex-wrap:wrap;">
-            <button type="button" id="btn-node-set-lai" class="dt-touch-btn" style="min-height:28px; padding:0.2rem 0.5rem; font-size:0.72rem; background:${isLai ? '#059669' : '#1E293B'}; color:${isLai ? '#FFF' : '#34D399'}; border:1px solid #34D399;">
-              ${isLai ? '✓ Là Lai' : '📍 Đặt Lai'}
+          <div style="display:flex; gap:0.2rem; align-items:center; flex-wrap:wrap;">
+            <button type="button" id="btn-node-set-lai" class="dt-touch-btn" style="min-height:22px; padding:0.15rem 0.4rem; font-size:0.68rem; background:${isLai ? '#059669' : '#1E293B'}; color:${isLai ? '#FFF' : '#34D399'}; border:1px solid #34D399;">
+              ${isLai ? 'Là Lai' : 'Đặt Lai'}
             </button>
-            <button type="button" id="btn-node-set-khu" class="dt-touch-btn" style="min-height:28px; padding:0.2rem 0.5rem; font-size:0.72rem; background:${isKhu ? '#0284C7' : '#1E293B'}; color:${isKhu ? '#FFF' : '#38BDF8'}; border:1px solid #38BDF8;" ${this.waterPathType === 'deadEnd' ? 'disabled' : ''}>
-              ${isKhu ? '✓ Là Khứ' : '🎯 Đặt Khứ'}
+            <button type="button" id="btn-node-set-khu" class="dt-touch-btn" style="min-height:22px; padding:0.15rem 0.4rem; font-size:0.68rem; background:${isKhu ? '#0284C7' : '#1E293B'}; color:${isKhu ? '#FFF' : '#38BDF8'}; border:1px solid #38BDF8;" ${this.waterPathType === 'deadEnd' ? 'disabled' : ''}>
+              ${isKhu ? 'Là Khứ' : 'Đặt Khứ'}
             </button>
-            <button type="button" id="btn-node-set-junction" class="dt-touch-btn" style="min-height:28px; padding:0.2rem 0.5rem; font-size:0.72rem; background:${isJunction ? '#D97706' : '#1E293B'}; color:${isJunction ? '#FFF' : '#F59E0B'}; border:1px solid #F59E0B;">
-              ${isJunction ? '✓ Ngã 3' : '🔀 Ngã 3'}
+            <button type="button" id="btn-node-set-junction" class="dt-touch-btn" style="min-height:22px; padding:0.15rem 0.4rem; font-size:0.68rem; background:${isJunction ? '#D97706' : '#1E293B'}; color:${isJunction ? '#FFF' : '#F59E0B'}; border:1px solid #F59E0B;">
+              ${isJunction ? 'Là Ngã 3' : 'Ngã 3'}
             </button>
-            <button type="button" id="btn-node-clear-role" class="dt-touch-btn" style="min-height:28px; padding:0.2rem 0.4rem; font-size:0.72rem; background:#1E293B; color:#CBD5E1; border:1px solid rgba(255,255,255,0.12);">
-              ⚪ Thường
+            <button type="button" id="btn-node-clear-role" class="dt-touch-btn" style="min-height:22px; padding:0.15rem 0.35rem; font-size:0.68rem; background:#1E293B; color:#CBD5E1; border:1px solid rgba(255,255,255,0.12);">
+              Thường
             </button>
             ${this.waterPolyline.length > 2 ? `
-              <button type="button" id="btn-node-delete" class="dt-touch-btn" style="min-height:28px; padding:0.2rem 0.45rem; font-size:0.72rem; background:#450A0A; color:#FCA5A5; border:1px solid #EF4444;" title="Xóa node này khỏi tuyến">
-                🗑️ Xóa
+              <button type="button" id="btn-node-delete" class="dt-touch-btn" style="min-height:22px; padding:0.15rem 0.4rem; font-size:0.68rem; background:#450A0A; color:#FCA5A5; border:1px solid #EF4444;" title="Xóa node này khỏi tuyến">
+                Xóa Node
               </button>
             ` : ''}
-            <button type="button" id="btn-node-close" style="background:transparent; border:none; color:#94A3B8; cursor:pointer; font-size:1rem; padding:0 0.3rem;">
+            <button type="button" id="btn-node-close" style="background:transparent; border:none; color:#94A3B8; cursor:pointer; font-size:0.9rem; padding:0 0.25rem;">
               ✕
             </button>
           </div>
@@ -680,11 +678,11 @@ class LuopanMapTool {
               <strong style="color:#38BDF8;">Đoạn P${seg.fromIndex + 1} → P${seg.toIndex + 1}:</strong>
               <span style="color:#FEF3C7; font-weight:700;">Hướng tuyến: ${seg.effectiveBearing.toFixed(2)}° (${m.name} Sơn · ${m.trigram} Quái)</span>
             </div>
-            <div style="display:flex; gap:0.3rem; align-items:center;">
-              <button type="button" id="btn-seg-insert-node" class="dt-touch-btn" style="min-height:28px; padding:0.2rem 0.6rem; font-size:0.72rem; background:#047857; color:#FFF; border:1px solid #34D399;" title="Chèn thêm 1 điểm vào giữa đoạn này để uốn khúc hẻm">
-                ➕ Chèn Điểm Giữa
+            <div style="display:flex; gap:0.25rem; align-items:center;">
+              <button type="button" id="btn-seg-insert-node" class="dt-touch-btn" style="min-height:22px; padding:0.15rem 0.45rem; font-size:0.68rem; background:#047857; color:#FFF; border:1px solid #34D399;" title="Chèn thêm 1 điểm vào giữa đoạn này để uốn khúc hẻm">
+                Chèn Điểm Giữa
               </button>
-              <button type="button" id="btn-seg-close" style="background:transparent; border:none; color:#94A3B8; cursor:pointer; font-size:1rem; padding:0 0.3rem;">
+              <button type="button" id="btn-seg-close" style="background:transparent; border:none; color:#94A3B8; cursor:pointer; font-size:0.9rem; padding:0 0.25rem;">
                 ✕
               </button>
             </div>
@@ -855,7 +853,12 @@ class LuopanMapTool {
     const svg = document.getElementById('dt-drawing-svg');
     if (!svg) return;
 
-    svg.style.pointerEvents = (this.activeDrawTool === 'setCenter' || this.activeDrawTool === 'drawWater') && this.showDrawingOverlay ? 'auto' : 'none';
+    const isDrawing = this.activeDrawTool === 'drawWater';
+    const isEditingCenter = this.activeDrawTool === 'setCenter';
+    const isEditingFrontage = this.activeDrawTool === 'drawFrontage';
+    const hasActiveTool = isDrawing || isEditingCenter || isEditingFrontage;
+
+    svg.style.pointerEvents = hasActiveTool && this.showDrawingOverlay ? 'auto' : 'none';
     if (!this.showDrawingOverlay) {
       svg.innerHTML = '';
       return;
@@ -881,7 +884,7 @@ class LuopanMapTool {
         const to = this.waterPolyline[i + 1];
         const isSelected = this.selectedSegmentIndex === i;
         segmentElements.push(`
-          <line x1="${from.x}" y1="${from.y}" x2="${to.x}" y2="${to.y}" stroke="transparent" stroke-width="26" data-segment-index="${i}" style="cursor:pointer; touch-action:none; pointer-events:all;" />
+          <line x1="${from.x}" y1="${from.y}" x2="${to.x}" y2="${to.y}" stroke="transparent" stroke-width="26" data-segment-index="${i}" style="cursor:${isDrawing ? 'pointer' : 'default'}; touch-action:none; pointer-events:${isDrawing ? 'all' : 'none'};" />
           <line x1="${from.x}" y1="${from.y}" x2="${to.x}" y2="${to.y}" stroke="${isSelected ? '#FBBF24' : '#38BDF8'}" stroke-width="${isSelected ? 6 : 4}" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="${isSelected ? 1.0 : 0.85}" pointer-events="none" />
           ${isSelected ? `<line x1="${from.x}" y1="${from.y}" x2="${to.x}" y2="${to.y}" stroke="#FFF" stroke-width="1.8" stroke-dasharray="5,4" pointer-events="none" />` : ''}
         `);
@@ -926,7 +929,7 @@ class LuopanMapTool {
 
       return `
         <g transform="translate(${p.x}, ${p.y})">
-          <circle r="26" fill="transparent" data-drag-handle="water_${idx}" style="cursor:grab; touch-action:none; pointer-events:all;" />
+          <circle r="26" fill="transparent" data-drag-handle="water_${idx}" style="cursor:${isDrawing ? 'grab' : 'default'}; touch-action:none; pointer-events:${isDrawing ? 'all' : 'none'};" />
           <circle r="${rCircle}" fill="${color}" stroke="#000" stroke-width="${isSelected ? 3 : 2}" pointer-events="none" ${isSelected ? 'filter="drop-shadow(0 0 6px #FBBF24)"' : ''} />
           ${rCircle >= 11 ? `<text y="4" font-size="9" font-weight="900" fill="#000" text-anchor="middle" pointer-events="none">${badge}</text>` : ''}
           ${label ? `
@@ -954,13 +957,13 @@ class LuopanMapTool {
 
       <!-- Điểm A và Điểm B -->
       <g transform="translate(${pA.x}, ${pA.y})">
-        <circle r="24" fill="transparent" data-drag-handle="frontA" style="cursor:grab; touch-action:none; pointer-events:all;" />
+        <circle r="24" fill="transparent" data-drag-handle="frontA" style="cursor:${isEditingFrontage ? 'grab' : 'default'}; touch-action:none; pointer-events:${isEditingFrontage ? 'all' : 'none'};" />
         <circle r="10" fill="#F59E0B" stroke="#FFF" stroke-width="2.5" pointer-events="none" />
         <text y="-15" font-size="12" font-weight="800" text-anchor="middle" fill="none" stroke="rgba(0,0,0,0.95)" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round" class="luopan-text-halo" pointer-events="none">Mép A</text>
         <text y="-15" font-size="12" font-weight="800" fill="#FDE047" stroke="rgba(0,0,0,0.35)" stroke-width="0.35" style="paint-order:stroke fill;" text-anchor="middle" class="luopan-text-main" pointer-events="none">Mép A</text>
       </g>
       <g transform="translate(${pB.x}, ${pB.y})">
-        <circle r="24" fill="transparent" data-drag-handle="frontB" style="cursor:grab; touch-action:none; pointer-events:all;" />
+        <circle r="24" fill="transparent" data-drag-handle="frontB" style="cursor:${isEditingFrontage ? 'grab' : 'default'}; touch-action:none; pointer-events:${isEditingFrontage ? 'all' : 'none'};" />
         <circle r="10" fill="#F59E0B" stroke="#FFF" stroke-width="2.5" pointer-events="none" />
         <text y="-15" font-size="12" font-weight="800" text-anchor="middle" fill="none" stroke="rgba(0,0,0,0.95)" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round" class="luopan-text-halo" pointer-events="none">Mép B</text>
         <text y="-15" font-size="12" font-weight="800" fill="#FDE047" stroke="rgba(0,0,0,0.35)" stroke-width="0.35" style="paint-order:stroke fill;" text-anchor="middle" class="luopan-text-main" pointer-events="none">Mép B</text>
@@ -968,7 +971,7 @@ class LuopanMapTool {
 
       <!-- Điểm Tâm Nhà -->
       <g transform="translate(${center.x}, ${center.y})">
-        <circle r="24" fill="transparent" data-drag-handle="center" style="cursor:grab; touch-action:none; pointer-events:all;" />
+        <circle r="24" fill="transparent" data-drag-handle="center" style="cursor:${isEditingCenter ? 'grab' : 'default'}; touch-action:none; pointer-events:${isEditingCenter ? 'all' : 'none'};" />
         <circle r="12" fill="#EF4444" stroke="#FFF" stroke-width="3" pointer-events="none" />
         <circle r="4" fill="#FFF" pointer-events="none" />
         <text y="-18" font-size="13" font-weight="900" text-anchor="middle" fill="none" stroke="rgba(0,0,0,0.95)" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round" class="luopan-text-halo" pointer-events="none">TÂM NHÀ</text>
@@ -1050,7 +1053,7 @@ class LuopanMapTool {
             <!-- TẦNG 2: LA KINH (LUOPAN ATTRIBUTES) -->
             <div class="dt-panel-section">
               <div class="dt-panel-title" style="color:#F5D485;">
-                <span>🧭</span> 2. LA KINH CHÁNH TÔNG
+                2. LA KINH CHÁNH TÔNG
               </div>
 
               <div style="display:flex; flex-direction:column; gap:0.4rem; font-size:0.78rem;">
@@ -1122,7 +1125,7 @@ class LuopanMapTool {
             <!-- TẦNG 3: ĐỘ TIN CẬY & CẬN BIÊN (UNCERTAINTY & BOUNDARY) -->
             <div class="dt-panel-section">
               <div class="dt-panel-title" style="color:#CBD5E1;">
-                <span>🔍</span> 3. ĐỘ TIN CẬY & RANH PHÂN KIM
+                3. ĐỘ TIN CẬY & RANH PHÂN KIM
               </div>
 
               <div style="display:flex; flex-direction:column; gap:0.35rem; font-size:0.75rem;">
@@ -1307,50 +1310,69 @@ class LuopanMapTool {
     const step3 = document.getElementById('step-btn-3');
     const stepSelect = document.getElementById('step-btn-select');
 
-    const updateStepBadges = (activeBtn) => {
-      [step1, step2, step3, stepSelect].forEach(btn => {
-        if (btn) btn.classList.remove('active');
-      });
-      if (activeBtn) activeBtn.classList.add('active');
+    const updateStepBadges = () => {
+      if (step1) {
+        step1.classList.toggle('active', this.activeDrawTool === 'setCenter');
+        step1.textContent = this.activeDrawTool === 'setCenter' ? 'Sửa Tâm' : 'Tâm Nhà';
+      }
+      if (step2) {
+        step2.classList.toggle('active', this.activeDrawTool === 'drawFrontage');
+        step2.textContent = this.activeDrawTool === 'drawFrontage' ? 'Sửa Mặt Tiền' : 'Mặt Tiền';
+      }
+      if (step3) {
+        step3.classList.toggle('active', this.activeDrawTool === 'drawWater');
+        step3.textContent = this.activeDrawTool === 'drawWater' ? 'Sửa Tuyến' : 'Tuyến Nước';
+      }
+      if (stepSelect) {
+        stepSelect.classList.toggle('active', this.activeDrawTool === 'select');
+      }
       this.renderDrawingElements();
+      this.updateNodeActionBar();
+      this.updateMeasurementsDisplay();
     };
 
     if (step1) step1.addEventListener('click', () => {
-      this.activeDrawTool = 'setCenter';
-      updateStepBadges(step1);
-      this.updateNodeActionBar();
+      this.activeDrawTool = (this.activeDrawTool === 'setCenter') ? 'select' : 'setCenter';
+      this.selectedNodeIndex = null;
+      this.selectedSegmentIndex = null;
+      updateStepBadges();
     });
+
     if (step2) step2.addEventListener('click', () => {
-      this.activeDrawTool = 'drawFrontage';
-      updateStepBadges(step2);
-      this.updateNodeActionBar();
+      this.activeDrawTool = (this.activeDrawTool === 'drawFrontage') ? 'select' : 'drawFrontage';
+      this.selectedNodeIndex = null;
+      this.selectedSegmentIndex = null;
+      updateStepBadges();
     });
+
     if (step3) step3.addEventListener('click', () => {
-      this.activeDrawTool = 'drawWater';
-      this.isDrawingWater = true;
-      this.pendingNewWaterPath = true;
-      updateStepBadges(step3);
-      this.renderDrawingElements();
-      this.updateMeasurementsDisplay();
-      this.updateNodeActionBar();
+      if (this.activeDrawTool === 'drawWater') {
+        this.activeDrawTool = 'select';
+        this.isDrawingWater = false;
+        this.selectedNodeIndex = null;
+        this.selectedSegmentIndex = null;
+      } else {
+        this.activeDrawTool = 'drawWater';
+        this.isDrawingWater = true;
+        this.pendingNewWaterPath = false;
+      }
+      updateStepBadges();
     });
+
     const btnAppendWater = document.getElementById('btn-append-water');
     if (btnAppendWater) btnAppendWater.addEventListener('click', () => {
       this.activeDrawTool = 'drawWater';
       this.isDrawingWater = true;
       this.pendingNewWaterPath = false;
-      updateStepBadges(btnAppendWater);
-      this.renderDrawingElements();
-      this.updateMeasurementsDisplay();
-      this.updateNodeActionBar();
+      updateStepBadges();
     });
+
     if (stepSelect) stepSelect.addEventListener('click', () => {
       this.activeDrawTool = 'select';
       this.isDrawingWater = false;
-      this.pendingNewWaterPath = false;
-      updateStepBadges(stepSelect);
-      this.renderDrawingElements();
-      this.updateNodeActionBar();
+      this.selectedNodeIndex = null;
+      this.selectedSegmentIndex = null;
+      updateStepBadges();
     });
 
     // Đảo phía hướng nhà
@@ -1371,7 +1393,7 @@ class LuopanMapTool {
     if (btnDeadEnd) {
       btnDeadEnd.addEventListener('click', () => {
         this.waterPathType = this.waterPathType === 'deadEnd' ? 'through' : 'deadEnd';
-        btnDeadEnd.textContent = this.waterPathType === 'deadEnd' ? '🛑 Hẻm cụt' : '↔️ Hẻm thông';
+        btnDeadEnd.textContent = this.waterPathType === 'deadEnd' ? 'Hẻm Cụt' : 'Hẻm Thông';
         btnDeadEnd.style.color = this.waterPathType === 'deadEnd' ? '#F43F5E' : '#94A3B8';
         btnDeadEnd.style.borderColor = this.waterPathType === 'deadEnd' ? '#F43F5E' : 'rgba(255,255,255,0.12)';
         this.renderDrawingElements();
@@ -1385,7 +1407,7 @@ class LuopanMapTool {
     if (btnReverseWater) {
       btnReverseWater.addEventListener('click', () => {
         this.flowDirection = this.flowDirection === 'forward' ? 'reverse' : 'forward';
-        btnReverseWater.textContent = `4. Chiều ${this.flowDirection === 'forward' ? '→' : '←'}`;
+        btnReverseWater.textContent = `Chiều: ${this.flowDirection === 'forward' ? 'Xuôi' : 'Ngược'}`;
         if (Number.isInteger(this.laiNodeIndex) && Number.isInteger(this.khuNodeIndex)) {
           const temp = this.laiNodeIndex;
           this.laiNodeIndex = this.khuNodeIndex;
@@ -1534,8 +1556,8 @@ class LuopanMapTool {
       btnCopyExport.addEventListener('click', () => {
         const text = exportContent.innerText;
         navigator.clipboard.writeText(text).then(() => {
-          btnCopyExport.textContent = '✓ Đã Sao Chép!';
-          setTimeout(() => { btnCopyExport.textContent = '📋 Sao Chép Báo Cáo'; }, 2000);
+          btnCopyExport.textContent = 'Đã Sao Chép!';
+          setTimeout(() => { btnCopyExport.textContent = 'Sao Chép'; }, 2000);
         });
       });
     }
@@ -1598,7 +1620,7 @@ class LuopanMapTool {
     const btnMap = this.container ? this.container.querySelector('#btn-mode-map') : null;
     const originalText = btnMap ? btnMap.innerHTML : '';
     if (btnMap) {
-      btnMap.innerHTML = '🛰️ Đang lấy GPS...';
+      btnMap.innerHTML = 'Đang lấy GPS...';
       btnMap.style.opacity = '0.85';
     }
 
@@ -1811,12 +1833,12 @@ class LuopanMapTool {
           onAdd: () => {
             const container = L.DomUtil.create('div', 'leaflet-bar leaflet-control');
             const btn = L.DomUtil.create('a', 'leaflet-control-gps-btn', container);
-            btn.innerHTML = '📍';
+            btn.innerHTML = 'GPS';
             btn.href = '#';
             btn.title = 'Định vị GPS vị trí của tôi (Độ chính xác cao)';
             btn.setAttribute('role', 'button');
             btn.setAttribute('aria-label', 'Vị trí hiện tại');
-            btn.style.cssText = 'display:flex;align-items:center;justify-content:center;width:30px;height:30px;font-size:16px;background:#1E293B;color:#38BDF8;text-decoration:none;cursor:pointer;line-height:30px;';
+            btn.style.cssText = 'display:flex;align-items:center;justify-content:center;width:32px;height:24px;font-size:11px;font-weight:700;background:#1E293B;color:#38BDF8;text-decoration:none;cursor:pointer;border-radius:4px;border:1px solid rgba(255,255,255,0.15);';
             L.DomEvent.disableClickPropagation(btn);
             L.DomEvent.on(btn, 'click', (e) => {
               L.DomEvent.stop(e);
