@@ -40,6 +40,7 @@ class LuopanMapTool {
     this.waterPathType = 'through'; // 'through' (hẻm thông) hoặc 'deadEnd' (hẻm cụt)
     this.isDrawingWater = false;
     this.pendingNewWaterPath = false;
+    this.isArmingAddPoint = false;
     this.laiNodeIndex = null;
     this.khuNodeIndex = null;
     this.selectedNodeIndex = null;
@@ -402,8 +403,12 @@ class LuopanMapTool {
               ${this.activeDrawTool === 'drawFrontage' ? 'Sửa Mặt Tiền' : 'Mặt Tiền'}
             </button>
 
-            <button type="button" id="step-btn-3" class="dt-step-badge ${this.activeDrawTool === 'drawWater' ? 'active' : ''}" title="Bấm để bật/tắt vẽ và sửa tuyến nước">
+            <button type="button" id="step-btn-3" class="dt-step-badge ${this.activeDrawTool === 'drawWater' ? 'active' : ''}" title="Bấm để bật/tắt sửa vị trí các điểm tuyến nước">
               ${this.activeDrawTool === 'drawWater' ? 'Sửa Tuyến' : 'Tuyến Nước'}
+            </button>
+
+            <button type="button" id="btn-append-water" class="dt-step-badge ${this.isArmingAddPoint ? 'active' : ''}" style="color:#34D399; border-color:${this.isArmingAddPoint ? '#34D399' : 'rgba(52,211,153,0.35)'}; background:${this.isArmingAddPoint ? 'rgba(5,150,105,0.3)' : 'transparent'}; font-weight:700;" title="Bấm để chấm thêm điểm mới vào cuối tuyến nước">
+              ${this.isArmingAddPoint ? 'Đang Thêm...' : '+ Thêm Điểm'}
             </button>
 
             <button type="button" id="btn-reverse-water" class="dt-step-badge" style="color:#38BDF8; border-color:rgba(56,189,248,0.3);" title="Đổi chiều dòng chảy">
@@ -547,6 +552,30 @@ class LuopanMapTool {
   updateNodeActionBar() {
     const bar = document.getElementById('dt-node-action-bar');
     if (!bar) return;
+
+    if (this.isArmingAddPoint) {
+      bar.style.display = 'flex';
+      bar.innerHTML = `
+        <div style="display:flex; align-items:center; justify-content:space-between; width:100%; gap:0.4rem; flex-wrap:wrap; background:rgba(15,23,42,0.95); border:1px solid #34D399; border-radius:8px; padding:0.35rem 0.6rem; backdrop-filter:blur(10px); box-shadow:0 8px 24px rgba(0,0,0,0.6);">
+          <div style="display:flex; align-items:center; gap:0.4rem; font-size:0.75rem;">
+            <strong style="color:#34D399;">Thêm điểm P${this.waterPolyline.length + 1}:</strong>
+            <span style="color:#FEF3C7;">Chạm vào bản đồ tại vị trí khúc rẽ để đặt điểm mới</span>
+          </div>
+          <button type="button" id="btn-cancel-arm-point" class="dt-touch-btn" style="min-height:22px; padding:0.15rem 0.5rem; font-size:0.68rem; background:#450A0A; color:#FCA5A5; border:1px solid #EF4444;">
+            Hủy
+          </button>
+        </div>
+      `;
+      bar.querySelector('#btn-cancel-arm-point')?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        this.isArmingAddPoint = false;
+        this.renderDrawingElements();
+        this.updateStepBadges();
+        this.updateNodeActionBar();
+      });
+      return;
+    }
+
     if (this.selectedNodeIndex !== null && this.waterPolyline[this.selectedNodeIndex]) {
       const idx = this.selectedNodeIndex;
       const p = this.waterPolyline[idx];
@@ -578,6 +607,9 @@ class LuopanMapTool {
             </button>
             <button type="button" id="btn-node-clear-role" class="dt-touch-btn" style="min-height:22px; padding:0.15rem 0.35rem; font-size:0.68rem; background:#1E293B; color:#CBD5E1; border:1px solid rgba(255,255,255,0.12);">
               Thường
+            </button>
+            <button type="button" id="btn-node-append" class="dt-touch-btn" style="min-height:22px; padding:0.15rem 0.4rem; font-size:0.68rem; background:#065F46; color:#6EE7B7; border:1px solid #10B981;" title="Chấm thêm điểm nối tiếp vào cuối tuyến">
+              + Thêm Điểm
             </button>
             ${this.waterPolyline.length > 2 ? `
               <button type="button" id="btn-node-delete" class="dt-touch-btn" style="min-height:22px; padding:0.15rem 0.4rem; font-size:0.68rem; background:#450A0A; color:#FCA5A5; border:1px solid #EF4444;" title="Xóa node này khỏi tuyến">
@@ -657,11 +689,27 @@ class LuopanMapTool {
         this.updateNodeActionBar();
       });
 
+      bar.querySelector('#btn-node-append')?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        this.activeDrawTool = 'drawWater';
+        this.isDrawingWater = true;
+        this.isArmingAddPoint = true;
+        this.renderDrawingElements();
+        this.updateStepBadges();
+        this.updateNodeActionBar();
+      });
+
       bar.querySelector('#btn-node-close')?.addEventListener('click', (e) => {
         e.stopPropagation();
         this.selectedNodeIndex = null;
+        this.selectedSegmentIndex = null;
+        this.isArmingAddPoint = false;
+        this.activeDrawTool = 'select';
+        this.isDrawingWater = false;
         this.renderDrawingElements();
+        this.updateStepBadges();
         this.updateNodeActionBar();
+        this.updateMeasurementsDisplay();
       });
       return;
     }
@@ -710,7 +758,12 @@ class LuopanMapTool {
         bar.querySelector('#btn-seg-close')?.addEventListener('click', (e) => {
           e.stopPropagation();
           this.selectedSegmentIndex = null;
+          this.selectedNodeIndex = null;
+          this.isArmingAddPoint = false;
+          this.activeDrawTool = 'select';
+          this.isDrawingWater = false;
           this.renderDrawingElements();
+          this.updateStepBadges();
           this.updateNodeActionBar();
           this.updateMeasurementsDisplay();
         });
@@ -750,15 +803,20 @@ class LuopanMapTool {
       const handle = event.target.closest('[data-drag-handle]');
       const segTarget = event.target.closest('[data-segment-index]');
 
+      // 1. Sửa tâm: Chạm bản đồ di chuyển tâm và tự động khóa ngay
       if (this.activeDrawTool === 'setCenter' && !handle) {
         this.centerPoint = getPosition(event);
+        this.activeDrawTool = 'select';
         refresh();
+        this.updateStepBadges();
         this.updateNodeActionBar();
         event.preventDefault();
         event.stopPropagation();
         return;
       }
-      if (this.activeDrawTool === 'drawWater' && !handle) {
+
+      // 2. Chấm thêm điểm: CHỈ KHI isArmingAddPoint === true (người dùng chủ ý bấm "+ Thêm Điểm")
+      if (this.isArmingAddPoint && !handle && !segTarget) {
         const pos = getPosition(event);
         if (this.pendingNewWaterPath) {
           this.waterPolyline = [{ x: pos.x, y: pos.y, role: 'normal' }];
@@ -771,12 +829,16 @@ class LuopanMapTool {
           this.waterPolyline.push({ x: pos.x, y: pos.y, role: 'normal' });
           this.selectedNodeIndex = this.waterPolyline.length - 1;
         }
+        this.isArmingAddPoint = false; // Khóa ngay lập tức sau 1 lần chấm để không bị chấm thừa!
         refresh();
+        this.updateStepBadges();
         this.updateNodeActionBar();
         event.preventDefault();
         event.stopPropagation();
         return;
       }
+
+      // 3. Kéo thả handle (node nước, mép mặt tiền, tâm)
       if (handle) {
         dragTarget = handle.dataset.dragHandle;
         pointerId = event.pointerId;
@@ -792,7 +854,9 @@ class LuopanMapTool {
         event.stopPropagation();
         return;
       }
-      if (segTarget && this.activeDrawTool === 'select') {
+
+      // 4. Chọn đoạn thẳng (segment) để xem hướng và chèn điểm giữa
+      if (segTarget) {
         this.selectedSegmentIndex = Number(segTarget.dataset.segmentIndex);
         this.selectedNodeIndex = null;
         this.updateNodeActionBar();
@@ -802,15 +866,14 @@ class LuopanMapTool {
         event.stopPropagation();
         return;
       }
-      // Click nền trống ở mode select: bỏ chọn node / segment
-      if (this.activeDrawTool === 'select') {
-        if (this.selectedNodeIndex !== null || this.selectedSegmentIndex !== null) {
-          this.selectedNodeIndex = null;
-          this.selectedSegmentIndex = null;
-          this.updateNodeActionBar();
-          this.updateMeasurementsDisplay();
-          this.renderDrawingElements();
-        }
+
+      // 5. Chạm nền trống: bỏ chọn node / segment hiện hành
+      if (this.selectedNodeIndex !== null || this.selectedSegmentIndex !== null) {
+        this.selectedNodeIndex = null;
+        this.selectedSegmentIndex = null;
+        this.updateNodeActionBar();
+        this.updateMeasurementsDisplay();
+        this.renderDrawingElements();
       }
     }, options);
     svg.addEventListener('pointermove', event => {
@@ -858,7 +921,9 @@ class LuopanMapTool {
     const isEditingFrontage = this.activeDrawTool === 'drawFrontage';
     const hasActiveTool = isDrawing || isEditingCenter || isEditingFrontage;
 
-    svg.style.pointerEvents = hasActiveTool && this.showDrawingOverlay ? 'auto' : 'none';
+    // Nền SVG chỉ nhận sự kiện khi đang ở trạng thái chủ động chờ chấm điểm (isArmingAddPoint) hoặc Sửa Tâm (setCenter).
+    // Ở mọi trạng thái khác, nền SVG là 'none' để chạm rơi xuống Leaflet map giúp pan/zoom mượt mà.
+    svg.style.pointerEvents = (this.isArmingAddPoint || isEditingCenter) && this.showDrawingOverlay ? 'auto' : 'none';
     if (!this.showDrawingOverlay) {
       svg.innerHTML = '';
       return;
@@ -1242,6 +1307,40 @@ class LuopanMapTool {
     }
   }
 
+  updateStepBadges() {
+    const find = id => (this.container && this.container.querySelector ? this.container.querySelector(`#${id}`) : null) || (typeof document !== 'undefined' && document.getElementById ? document.getElementById(id) : null);
+    const step1 = find('step-btn-1');
+    const step2 = find('step-btn-2');
+    const step3 = find('step-btn-3');
+    const stepSelect = find('step-btn-select');
+    const btnAppend = find('btn-append-water');
+
+    if (step1) {
+      step1.classList.toggle('active', this.activeDrawTool === 'setCenter');
+      step1.textContent = this.activeDrawTool === 'setCenter' ? 'Sửa Tâm' : 'Tâm Nhà';
+    }
+    if (step2) {
+      step2.classList.toggle('active', this.activeDrawTool === 'drawFrontage');
+      step2.textContent = this.activeDrawTool === 'drawFrontage' ? 'Sửa Mặt Tiền' : 'Mặt Tiền';
+    }
+    if (step3) {
+      step3.classList.toggle('active', this.activeDrawTool === 'drawWater');
+      step3.textContent = this.activeDrawTool === 'drawWater' ? 'Sửa Tuyến' : 'Tuyến Nước';
+    }
+    if (stepSelect) {
+      stepSelect.classList.toggle('active', this.activeDrawTool === 'select');
+    }
+    if (btnAppend) {
+      btnAppend.classList.toggle('active', !!this.isArmingAddPoint);
+      if (btnAppend.style) {
+        btnAppend.style.background = this.isArmingAddPoint ? 'rgba(5,150,105,0.3)' : 'transparent';
+        btnAppend.style.borderColor = this.isArmingAddPoint ? '#34D399' : 'rgba(52,211,153,0.35)';
+        btnAppend.style.color = this.isArmingAddPoint ? '#FFF' : '#34D399';
+      }
+      btnAppend.textContent = this.isArmingAddPoint ? 'Đang Thêm...' : '+ Thêm Điểm';
+    }
+  }
+
   updateMeasurementsDisplay() {
     const analysis = this.getAnalysis();
     const panel = (this.container && this.container.querySelector ? this.container.querySelector('#dt-result-panels') : null) || (typeof document !== 'undefined' && document.getElementById ? document.getElementById('dt-result-panels') : null);
@@ -1309,70 +1408,70 @@ class LuopanMapTool {
     const step2 = document.getElementById('step-btn-2');
     const step3 = document.getElementById('step-btn-3');
     const stepSelect = document.getElementById('step-btn-select');
-
-    const updateStepBadges = () => {
-      if (step1) {
-        step1.classList.toggle('active', this.activeDrawTool === 'setCenter');
-        step1.textContent = this.activeDrawTool === 'setCenter' ? 'Sửa Tâm' : 'Tâm Nhà';
-      }
-      if (step2) {
-        step2.classList.toggle('active', this.activeDrawTool === 'drawFrontage');
-        step2.textContent = this.activeDrawTool === 'drawFrontage' ? 'Sửa Mặt Tiền' : 'Mặt Tiền';
-      }
-      if (step3) {
-        step3.classList.toggle('active', this.activeDrawTool === 'drawWater');
-        step3.textContent = this.activeDrawTool === 'drawWater' ? 'Sửa Tuyến' : 'Tuyến Nước';
-      }
-      if (stepSelect) {
-        stepSelect.classList.toggle('active', this.activeDrawTool === 'select');
-      }
-      this.renderDrawingElements();
-      this.updateNodeActionBar();
-      this.updateMeasurementsDisplay();
-    };
+    const btnAppendWater = document.getElementById('btn-append-water');
 
     if (step1) step1.addEventListener('click', () => {
       this.activeDrawTool = (this.activeDrawTool === 'setCenter') ? 'select' : 'setCenter';
+      this.isArmingAddPoint = false;
       this.selectedNodeIndex = null;
       this.selectedSegmentIndex = null;
-      updateStepBadges();
+      this.updateStepBadges();
+      this.renderDrawingElements();
+      this.updateNodeActionBar();
+      this.updateMeasurementsDisplay();
     });
 
     if (step2) step2.addEventListener('click', () => {
       this.activeDrawTool = (this.activeDrawTool === 'drawFrontage') ? 'select' : 'drawFrontage';
+      this.isArmingAddPoint = false;
       this.selectedNodeIndex = null;
       this.selectedSegmentIndex = null;
-      updateStepBadges();
+      this.updateStepBadges();
+      this.renderDrawingElements();
+      this.updateNodeActionBar();
+      this.updateMeasurementsDisplay();
     });
 
     if (step3) step3.addEventListener('click', () => {
       if (this.activeDrawTool === 'drawWater') {
         this.activeDrawTool = 'select';
         this.isDrawingWater = false;
+        this.isArmingAddPoint = false;
         this.selectedNodeIndex = null;
         this.selectedSegmentIndex = null;
       } else {
         this.activeDrawTool = 'drawWater';
         this.isDrawingWater = true;
+        this.isArmingAddPoint = false; // Không tự động bật chấm điểm, chỉ cho phép kéo/sửa node
         this.pendingNewWaterPath = false;
       }
-      updateStepBadges();
+      this.updateStepBadges();
+      this.renderDrawingElements();
+      this.updateNodeActionBar();
+      this.updateMeasurementsDisplay();
     });
 
-    const btnAppendWater = document.getElementById('btn-append-water');
     if (btnAppendWater) btnAppendWater.addEventListener('click', () => {
       this.activeDrawTool = 'drawWater';
       this.isDrawingWater = true;
       this.pendingNewWaterPath = false;
-      updateStepBadges();
+      this.isArmingAddPoint = !this.isArmingAddPoint;
+      this.updateStepBadges();
+      this.renderDrawingElements();
+      this.updateNodeActionBar();
+      this.updateMeasurementsDisplay();
     });
 
     if (stepSelect) stepSelect.addEventListener('click', () => {
       this.activeDrawTool = 'select';
       this.isDrawingWater = false;
+      this.isArmingAddPoint = false;
       this.selectedNodeIndex = null;
       this.selectedSegmentIndex = null;
-      updateStepBadges();
+      this.updateStepBadges();
+      this.renderDrawingElements();
+      this.updateNodeActionBar();
+      this.updateMeasurementsDisplay();
     });
 
     // Đảo phía hướng nhà

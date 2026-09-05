@@ -395,6 +395,34 @@ test('T17: Nối thêm điểm (btn-append-water) giữ nguyên tuyến cũ', ()
   assert.equal(tool.waterPolyline.length, 2, 'Existing polyline preserved');
 });
 
+// T18: Đóng Action Bar (✕) thoát hoàn toàn mode vẽ, trở về 'select'
+test('T18: Đóng Action Bar (✕) thoát hoàn toàn mode vẽ, trở về "select"', () => {
+  const { tool, elements } = createTestEnvironment();
+  tool.waterPolyline = [
+    { x: 100, y: 100, role: 'normal' },
+    { x: 200, y: 200, role: 'normal' }
+  ];
+  tool.activeDrawTool = 'drawWater';
+  tool.selectedNodeIndex = 1;
+  let bar = { style: {}, innerHTML: '', querySelector(sel) { return this[sel] || null; } };
+  const mockBtnClose = {
+    addEventListener(evt, h) { this.handler = h; },
+    click() { this.handler({ stopPropagation() {} }); }
+  };
+  bar['#btn-node-close'] = mockBtnClose;
+  elements['dt-node-action-bar'] = bar;
+
+  tool.updateNodeActionBar();
+  assert.equal(tool.activeDrawTool, 'drawWater');
+  mockBtnClose.click();
+
+  assert.equal(tool.activeDrawTool, 'select', 'activeDrawTool must revert to select on close');
+  assert.equal(tool.isDrawingWater, false, 'isDrawingWater must be false');
+  assert.equal(tool.isArmingAddPoint, false, 'isArmingAddPoint must be false');
+  assert.equal(tool.selectedNodeIndex, null, 'selectedNodeIndex must be cleared');
+  assert.equal(tool.waterPolyline.length, 2, 'No node added');
+});
+
 console.log('\n================================================================');
 console.log(`KẾT QUẢ KIỂM ĐỊNH: ${passed} PASS, ${failed} FAIL`);
 console.log('================================================================');
@@ -402,3 +430,4 @@ console.log('================================================================');
 if (failed > 0) {
   process.exit(1);
 }
+
