@@ -21,7 +21,11 @@ class LibraryRouter {
       'diachat64': (params) => this.renderTools({ segments: ['diachat64'] }),
       'dia-chat': (params) => this.renderTools({ segments: ['diachat64'] }),
       'goiythietke': (params) => this.renderTools({ segments: ['goiythietke'] }),
-      'goi-y-thiet-ke': (params) => this.renderTools({ segments: ['goiythietke'] })
+      'goi-y-thiet-ke': (params) => this.renderTools({ segments: ['goiythietke'] }),
+'lakinh': (params) => this.renderTools({ segments: ['lakinhbando'] }),
+      'la-kinh': (params) => this.renderTools({ segments: ['lakinhbando'] }),
+      'lakinhbando': (params) => this.renderTools({ segments: ['lakinhbando'] }),
+      'la-kinh-ban-do': (params) => this.renderTools({ segments: ['lakinhbando'] }),
     };
     
     this.init();

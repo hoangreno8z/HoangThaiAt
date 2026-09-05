@@ -57,6 +57,9 @@ class ToolUI {
         </header>
 
         <div style="display:flex; justify-content:center; gap:0.4rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:0.8rem; margin-bottom:1.5rem; flex-wrap:wrap;">
+                    <button onclick="window.toolUI.render('lakinhbando')" style="background:${this.currentToolTab === 'lakinhbando' ? 'rgba(245,158,11,0.35)' : 'rgba(245,158,11,0.1)'}; border:1px solid ${this.currentToolTab === 'lakinhbando' ? '#FBBF24' : 'rgba(245,158,11,0.3)'}; color:#FEF3C7; padding:0.35rem 0.85rem; border-radius:20px; font-weight:800; font-size:0.8rem; cursor:pointer; transition:all 0.15s ease;">
+            🧭 La Kinh Bản Đồ (144 Khẩu)
+          </button>
           <button onclick="window.toolUI.render('thiendianhan')" style="background:${this.currentToolTab === 'thiendianhan' ? 'rgba(245,158,11,0.25)' : 'rgba(255,255,255,0.04)'}; border:1px solid ${this.currentToolTab === 'thiendianhan' ? '#FBBF24' : 'rgba(255,255,255,0.1)'}; color:#FEF3C7; padding:0.35rem 0.75rem; border-radius:20px; font-weight:700; font-size:0.78rem; cursor:pointer; transition:all 0.15s ease;">
             Thiên Địa Nhân
           </button>
@@ -95,12 +98,23 @@ class ToolUI {
       </div>
     `;
 
+    if (this.currentToolTab === 'lakinhbando') {
+      setTimeout(() => {
+        if (window.LuopanMapTool) {
+          window.currentLuopanTool = new window.LuopanMapTool();
+          window.currentLuopanTool.init('dt-luopan-map-mount');
+        }
+      }, 50);
+    }
     if (this.currentToolTab === 'diachat64') {
       setTimeout(() => this.initDiaChatGisMap(this.selectedDiaChatId || 'HN_PRE2008'), 60);
     }
   }
 
   getToolContent(tab) {
+    if (tab === 'lakinhbando') {
+      return '<div id="dt-luopan-map-mount"></div>';
+    }
     if (tab === 'goiythietke') {
       return this.renderGoiYThietKeTool();
     } else if (tab === 'loban') {
