@@ -1115,31 +1115,38 @@ class LuopanMapTool {
               </div>
             </div>
 
-            <!-- TẦNG 2: LA KINH (LUOPAN ATTRIBUTES) -->
+            <!-- TẦNG 2: LA KINH (LUOPAN ATTRIBUTES & 12 TRƯỜNG SINH) -->
             <div class="dt-panel-section">
-              <div class="dt-panel-title" style="color:#F5D485;">
-                2. LA KINH CHÁNH TÔNG
+              <div class="dt-panel-title" style="color:#F5D485; display:flex; justify-content:space-between; align-items:center;">
+                <span>2. LA KINH CHÁNH TÔNG & TRƯỜNG SINH</span>
+                <span style="font-size:0.7rem; padding:0.1rem 0.45rem; border-radius:4px; background:rgba(245,212,133,0.15); color:#F5D485; font-weight:700;">
+                  ${analysis.group.cuc} Cục
+                </span>
               </div>
 
               <div style="display:flex; flex-direction:column; gap:0.4rem; font-size:0.78rem;">
                 <div style="display:flex; justify-content:space-between; padding:0.3rem 0.5rem; background:#1E293B; border-radius:6px;">
                   <span>Hướng Sơn:</span>
-                  <strong style="color:#FEF3C7;">${analysis.facing.mountain.name} Sơn (${analysis.facing.mountain.element}) / ${this.data.getTrigram(facing).trigram.name} Quái</strong>
+                  <strong style="color:#FEF3C7;">${analysis.facing.mountain.name} Sơn (${analysis.facing.mountain.element}) · ${analysis.facing.truongSinh ? `${analysis.facing.truongSinh.name} Cung` : ''}</strong>
                 </div>
 
                 <div style="display:flex; justify-content:space-between; padding:0.3rem 0.5rem; background:#1E293B; border-radius:6px;">
                   <span>Tọa Sơn:</span>
-                  <strong style="color:#FEF3C7;">${analysis.sitting.mountain.name} Sơn</strong>
+                  <strong style="color:#FEF3C7;">${analysis.sitting.mountain.name} Sơn · ${analysis.sitting.truongSinh ? `${analysis.sitting.truongSinh.name} Cung` : ''}</strong>
                 </div>
 
                 <div style="display:flex; justify-content:space-between; padding:0.3rem 0.5rem; background:#1E293B; border-radius:6px;">
                   <span>Lai Sơn:</span>
-                  <strong style="color:#34D399;">${analysis.lai ? `${analysis.lai.mountain.name} Sơn` : 'Chưa đo'}</strong>
+                  <strong style="color:#34D399;">
+                    ${analysis.lai ? `${analysis.lai.mountain.name} Sơn · ${analysis.lai.truongSinh ? `${analysis.lai.truongSinh.name} Cung (${analysis.lai.truongSinh.laiNature})` : ''}` : 'Chưa đo'}
+                  </strong>
                 </div>
 
                 <div style="display:flex; justify-content:space-between; padding:0.3rem 0.5rem; background:#1E293B; border-radius:6px;">
                   <span>Khứ Sơn:</span>
-                  <strong style="color:#38BDF8;">${analysis.khu ? `${analysis.khu.mountain.name} Sơn` : (this.waterPathType === 'deadEnd' ? 'Hẻm cụt (không có Khứ)' : 'Chưa đo')}</strong>
+                  <strong style="color:#38BDF8;">
+                    ${analysis.khu ? `${analysis.khu.mountain.name} Sơn · ${analysis.khu.truongSinh ? `${analysis.khu.truongSinh.name} Cung (${analysis.khu.truongSinh.khuNature})` : ''}` : (this.waterPathType === 'deadEnd' ? 'Hẻm cụt (không có Khứ)' : 'Chưa đo')}
+                  </strong>
                 </div>
 
                 <div style="display:flex; justify-content:space-between; padding:0.3rem 0.5rem; background:#141B2B; border-radius:6px;">
@@ -1147,9 +1154,52 @@ class LuopanMapTool {
                   <strong style="color:#FEF3C7;">${analysis.group.label} (${analysis.group.cuc} Cục)</strong>
                 </div>
 
-                <div style="display:flex; justify-content:space-between; padding:0.3rem 0.5rem; background:#1E293B; border-radius:6px;">
+                <!-- BẢNG TỔNG LUẬN 12 TRƯỜNG SINH TAM HỢP -->
+                <div style="margin-top:0.15rem; padding:0.45rem 0.6rem; background:#0F172A; border:1px solid rgba(245,212,133,0.25); border-radius:6px;">
+                  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.25rem;">
+                    <span style="font-size:0.7rem; color:#94A3B8; font-weight:700; text-transform:uppercase;">Tổng Luận Trường Sinh Thủy Pháp:</span>
+                    <span style="font-size:0.7rem; font-weight:700; color:${analysis.tamHop ? analysis.tamHop.color : '#94A3B8'}; background:${analysis.tamHop ? analysis.tamHop.color : '#94A3B8'}22; padding:0.1rem 0.4rem; border-radius:4px;">
+                      ${analysis.tamHop ? analysis.tamHop.rating : 'Bình'}
+                    </span>
+                  </div>
+                  <div style="font-size:0.82rem; font-weight:800; color:#FEF3C7; margin-bottom:0.3rem;">
+                    ${analysis.tamHop ? analysis.tamHop.aphorism : ''}
+                  </div>
+                  ${analysis.lai && analysis.lai.truongSinh ? `
+                    <div style="font-size:0.72rem; color:#A7F3D0; line-height:1.4; margin-bottom:0.25rem;">
+                      • <strong>Lai Thủy (${analysis.lai.truongSinh.name}):</strong> ${analysis.lai.truongSinh.laiDesc}
+                    </div>
+                  ` : ''}
+                  ${analysis.khu && analysis.khu.truongSinh ? `
+                    <div style="font-size:0.72rem; color:#BAE6FD; line-height:1.4; margin-bottom:0.25rem;">
+                      • <strong>Khứ Thủy (${analysis.khu.truongSinh.name}):</strong> ${analysis.khu.truongSinh.khuDesc}
+                    </div>
+                  ` : ''}
+                </div>
+
+                <!-- CHI TIẾT CÁC NODE / NGÃ BA TRÊN TUYẾN HẺM -->
+                <div style="display:flex; justify-content:space-between; padding:0.3rem 0.5rem; background:#1E293B; border-radius:6px; margin-top:0.1rem;">
                   <span>Tuyến Hẻm:</span>
                   <strong style="color:#38BDF8;">${this.waterPolyline.length} điểm (${Math.max(0, this.waterPolyline.length - 1)} đoạn)</strong>
+                </div>
+
+                <div style="display:flex; flex-wrap:wrap; gap:0.25rem; margin-top:0.05rem;">
+                  ${this.waterPolyline.map((p, i) => {
+                    const radialRaw = this.geometry.calculateLineBearing(this.centerPoint, p);
+                    const radialEff = this.isCalibrationLocked ? this.calibEngine.calibrate(radialRaw, this.calibrationOffset) : radialRaw;
+                    const m = this.data.getMountain(radialEff).mountain;
+                    const ts = this.data.getTruongSinh(m.name, analysis.group.cuc);
+                    const isLai = this.laiNodeIndex === i;
+                    const isKhu = this.khuNodeIndex === i;
+                    const isJunc = p.role === 'junction';
+                    let roleBadge = isLai ? 'Lai' : (isKhu ? 'Khứ' : (isJunc ? 'Ngã 3' : ''));
+                    let badgeColor = isLai ? '#34D399' : (isKhu ? '#38BDF8' : (isJunc ? '#F59E0B' : '#94A3B8'));
+                    return `
+                      <span style="font-size:0.68rem; padding:0.15rem 0.35rem; background:#141B2B; border:1px solid rgba(255,255,255,0.1); border-radius:4px; color:#FEF3C7;" title="Node P${i + 1}: ${m.name} Sơn (${ts ? ts.name : ''})">
+                        <strong>P${i + 1}:</strong> ${m.name} (${ts ? ts.name : ''})${roleBadge ? ` <span style="color:${badgeColor}; font-weight:700;">[${roleBadge}]</span>` : ''}
+                      </span>
+                    `;
+                  }).join('')}
                 </div>
 
                 ${(() => {
@@ -1158,10 +1208,11 @@ class LuopanMapTool {
                     const seg = segments[this.selectedSegmentIndex];
                     if (seg) {
                       const m = this.data.getMountain(seg.effectiveBearing).mountain;
+                      const ts = this.data.getTruongSinh(m.name, analysis.group.cuc);
                       return `
                         <div style="margin-top:0.35rem; padding:0.4rem 0.55rem; background:#141B2B; border-radius:6px; border-left:3px solid #38BDF8; font-size:0.75rem;">
                           <div style="color:#38BDF8; font-weight:700;">Đoạn chọn: P${seg.fromIndex + 1} → P${seg.toIndex + 1}</div>
-                          <div style="color:#FEF3C7; margin-top:0.15rem;">Hướng tuyến: <strong>${seg.effectiveBearing.toFixed(2)}° (${m.name} Sơn · ${m.trigram} Quái)</strong></div>
+                          <div style="color:#FEF3C7; margin-top:0.15rem;">Hướng tuyến: <strong>${seg.effectiveBearing.toFixed(2)}° (${m.name} Sơn · ${ts ? `${ts.name} Cung · ` : ''}${m.trigram} Quái)</strong></div>
                         </div>
                       `;
                     }
@@ -1174,11 +1225,12 @@ class LuopanMapTool {
                       ? this.calibEngine.calibrate(radialRaw, this.calibrationOffset)
                       : radialRaw;
                     const m = this.data.getMountain(radialEffective).mountain;
+                    const ts = this.data.getTruongSinh(m.name, analysis.group.cuc);
                     const roleLabel = this.laiNodeIndex === idx ? 'Lai Thủy' : (this.khuNodeIndex === idx ? 'Khứ Thủy' : (p.role === 'junction' ? 'Ngã 3' : 'Node thường'));
                     return `
                       <div style="margin-top:0.35rem; padding:0.4rem 0.55rem; background:#141B2B; border-radius:6px; border-left:3px solid #F59E0B; font-size:0.75rem;">
                         <div style="color:#F59E0B; font-weight:700;">Node chọn: P${idx + 1} (${roleLabel})</div>
-                        <div style="color:#FEF3C7; margin-top:0.15rem;">Phương vị đối với Nhà: <strong>${radialEffective.toFixed(2)}° (${m.name} Sơn)</strong></div>
+                        <div style="color:#FEF3C7; margin-top:0.15rem;">Phương vị đối với Nhà: <strong>${radialEffective.toFixed(2)}° (${m.name} Sơn · ${ts ? `${ts.name} Cung` : ''})</strong></div>
                       </div>
                     `;
                   }
@@ -1229,7 +1281,7 @@ class LuopanMapTool {
             <!-- TẦNG 4: KHẢO CHỨNG 144 THỦY KHẨU (CHỈ HIỂN THỊ SAU KHI ĐÃ KHÓA HIỆU CHUẨN) -->
             <div class="dt-panel-section">
               <div class="dt-panel-title" style="color:#38BDF8;">
-                <span>📜</span> 4. 144 THỦY KHẨU CHÁNH TÔNG
+                4. 144 THỦY KHẨU CHÁNH TÔNG
               </div>
 
               ${!this.isCalibrationLocked ? `
@@ -1237,26 +1289,52 @@ class LuopanMapTool {
                   🔒 <em>Vui lòng nhập số đo La Kinh và nhấn <strong>Khóa Chuẩn</strong> để kích hoạt động cơ đối chiếu 144 Thủy Khẩu Chánh Tông.</em>
                 </div>
               ` : (analysis.thuyKhau ? `
-                <div style="background:#181F30; border-radius:8px; padding:0.75rem; border-left:3px solid #F59E0B; margin-bottom:0.5rem;">
-                  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.3rem;">
-                    <span style="font-size:0.75rem; color:#94A3B8; font-weight:700;">KHẨU #${analysis.thuyKhau.hs_num} / 144</span>
-                    <span style="font-size:0.72rem; padding:0.15rem 0.45rem; border-radius:4px; font-weight:700; background:#F59E0B22; color:#FBBF24;">
+                <div style="background:#181F30; border-radius:8px; padding:0.75rem; border-left:3px solid #F59E0B; margin-bottom:0.6rem;">
+                  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.35rem; flex-wrap:wrap; gap:0.3rem;">
+                    <span style="font-size:0.75rem; color:#94A3B8; font-weight:700;">KHẨU #${analysis.thuyKhau.hs_num} / 144 · ${analysis.thuyKhau.cuc} Cục</span>
+                    <span style="font-size:0.72rem; padding:0.15rem 0.45rem; border-radius:4px; font-weight:700; background:#F59E0B22; color:#FBBF24; border:1px solid rgba(245,158,11,0.4);">
                       ${analysis.thuyKhau.muc_phan}
                     </span>
                   </div>
-                  <div style="font-size:0.92rem; font-weight:800; color:#FEF3C7; margin-bottom:0.25rem;">
+
+                  <div style="font-size:0.95rem; font-weight:800; color:#FEF3C7; margin-bottom:0.4rem; line-height:1.35;">
                     ${analysis.thuyKhau.ten_cach}
                   </div>
-                  <div style="font-size:0.74rem; color:#CBD5E1; line-height:1.5; margin-bottom:0.4rem;">
-                    ${analysis.thuyKhau.muc_B}
+
+                  <!-- PHÂN MỤC B: KHẨU QUYẾT BÍ CHỈ -->
+                  <div style="font-size:0.75rem; color:#E2E8F0; line-height:1.5; margin-bottom:0.5rem; background:rgba(15,23,42,0.6); padding:0.45rem 0.6rem; border-radius:6px;">
+                    <strong style="color:#FBBF24;">Bí Chỉ Cổ Pháp:</strong> ${analysis.thuyKhau.muc_B}
                   </div>
-                  <div style="font-size:0.7rem; color:#94A3B8; font-style:italic;">
-                    ${analysis.thuyKhau.source}
+
+                  <!-- PHÂN MỤC D: BIỆN CHỨNG CÁT HUNG -->
+                  ${analysis.thuyKhau.muc_D ? `
+                    <div style="font-size:0.74rem; color:#CBD5E1; line-height:1.5; margin-bottom:0.5rem;">
+                      <strong style="color:#38BDF8;">Biện Chứng Học Thuật:</strong> ${analysis.thuyKhau.muc_D}
+                    </div>
+                  ` : ''}
+
+                  <!-- PHÂN MỤC E: HỌA PHÚC ỨNG NGHIỆM -->
+                  ${analysis.thuyKhau.muc_E ? `
+                    <div style="font-size:0.74rem; color:#FDE68A; line-height:1.5; margin-bottom:0.5rem; background:rgba(30,41,59,0.7); padding:0.45rem 0.6rem; border-radius:6px; border-left:2px solid #F59E0B;">
+                      <strong style="color:#F59E0B;">Họa Phúc Ứng Nghiệm:</strong><br/>
+                      ${analysis.thuyKhau.muc_E.replace(/\n/g, '<br/>')}
+                    </div>
+                  ` : ''}
+
+                  <!-- PHÂN MỤC F: CẠM BẪY KIÊNG KỴ -->
+                  ${analysis.thuyKhau.muc_F ? `
+                    <div style="font-size:0.72rem; color:#FECACA; line-height:1.45; margin-bottom:0.4rem; background:rgba(69,10,10,0.4); padding:0.35rem 0.55rem; border-radius:6px; border:1px solid rgba(239,68,68,0.25);">
+                      <strong style="color:#F87171;">Cạm Bẫy Kiêng Kỵ:</strong> ${analysis.thuyKhau.muc_F}
+                    </div>
+                  ` : ''}
+
+                  <div style="font-size:0.68rem; color:#94A3B8; font-style:italic; margin-top:0.3rem;">
+                    Nguồn: ${analysis.thuyKhau.source}
                   </div>
                 </div>
 
-                <a href="#/corpus/topic-21" style="display:inline-flex; align-items:center; justify-content:center; width:100%; padding:0.45rem; background:#1E293B; color:#FEF3C7; border:1px solid #C5B382; border-radius:8px; text-decoration:none; font-size:0.76rem; font-weight:700;">
-                  📖 Đọc Toàn Văn Khảo Chứng Cổ Thư →
+                <a href="#/corpus/topic-21" style="display:inline-flex; align-items:center; justify-content:center; width:100%; padding:0.4rem; background:#1E293B; color:#FEF3C7; border:1px solid #C5B382; border-radius:8px; text-decoration:none; font-size:0.74rem; font-weight:700;">
+                  Đọc Toàn Văn Khảo Chứng Cổ Thư →
                 </a>
               ` : `
                 <div style="padding:0.6rem; color:#CBD5E1; font-size:0.76rem; line-height:1.5; background:#1E293B; border-radius:6px;">

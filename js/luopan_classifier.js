@@ -76,19 +76,66 @@
       const facingName = facingUncertainty.mountain.name;
       let matchedGroup = Data.SONG_SON_GROUPS.find(g => g.huongSon.includes(facingName)) || Data.SONG_SON_GROUPS[0];
 
+      // Gắn Cung Trường Sinh cho Hướng & Tọa
+      facingUncertainty.truongSinh = Data.getTruongSinh(facingName, matchedGroup.cuc);
+      const sittingTruongSinh = Data.getTruongSinh(sittingMountainInfo.mountain.name, matchedGroup.cuc);
+
       // 3. Phân tích Lai Thủy
       const laiUncertainty = laiBearing !== null ? this.evaluateUncertainty(laiBearing, tolerance) : null;
+      if (laiUncertainty) {
+        laiUncertainty.truongSinh = Data.getTruongSinh(laiUncertainty.mountain.name, matchedGroup.cuc);
+      }
 
       // 4. Phân tích Khứ Thủy
       const khuUncertainty = khuBearing !== null ? this.evaluateUncertainty(khuBearing, tolerance) : null;
+      if (khuUncertainty) {
+        khuUncertainty.truongSinh = Data.getTruongSinh(khuUncertainty.mountain.name, matchedGroup.cuc);
+      }
 
-      // 5. Xác định Chiều Nước (Trái -> Phải hay Phải -> Trái) so với Hướng Nhà
+      // 5. Đánh giá Tam Hợp Thủy Pháp Cát Hung theo 12 Cung Trường Sinh
+      const laiTs = laiUncertainty ? laiUncertainty.truongSinh : null;
+      const khuTs = khuUncertainty ? khuUncertainty.truongSinh : null;
+
+      let aphorism = 'Chưa đo đủ Lai/Khứ';
+      let overallRating = 'Bình';
+      let overallColor = '#94A3B8';
+
+      if (laiTs && khuTs) {
+        const isGoodLai = [0, 2, 3, 4].includes(laiTs.stage); // Sinh, Đới, Quan, Vượng
+        const isGoodKhu = [5, 8, 9].includes(khuTs.stage); // Suy, Mộ, Tuyệt
+
+        if (khuTs.stage === 3) {
+          aphorism = 'Xung Phá Lâm Quan / Sát Nhân Hoàng Tuyền Thủy';
+          overallRating = 'Đại Hung Sát';
+          overallColor = '#EF4444';
+        } else if (khuTs.stage === 0 || khuTs.stage === 4) {
+          aphorism = 'Vượng Khứ Xung Sinh / Tán Tài Bại Gia';
+          overallRating = 'Đại Hung';
+          overallColor = '#EF4444';
+        } else if (isGoodLai && khuTs.stage === 8) {
+          aphorism = 'Sinh Lai Hội Vượng · Thủy Quy Mộ Khố';
+          overallRating = 'Đại Cát Tụ Tài';
+          overallColor = '#10B981';
+        } else if (isGoodLai && isGoodKhu) {
+          aphorism = 'Cát Thủy Đáo Đường · Tiêu Thủy Hợp Cục';
+          overallRating = 'Cát Lợi';
+          overallColor = '#34D399';
+        } else {
+          aphorism = `${laiTs.name} Lai Thủy ➔ ${khuTs.name} Khứ Thủy`;
+          overallRating = 'Cần Thận Trọng Xét Thêm';
+          overallColor = '#F59E0B';
+        }
+      } else if (laiTs && !khuTs) {
+        aphorism = `Lai Thủy từ ${laiTs.name} (${laiTs.laiNature})`;
+        overallRating = [0, 3, 4].includes(laiTs.stage) ? 'Cát Khí Đáo Đường' : 'Cần Tiêu Dẫn';
+        overallColor = [0, 3, 4].includes(laiTs.stage) ? '#10B981' : '#F59E0B';
+      }
+
+      // 6. Xác định Chiều Nước (Trái -> Phải hay Phải -> Trái) so với Hướng Nhà
       let flowDirectionLabel = null; // 'Trái → phải' hoặc 'Phải → trái'
       if (laiBearing !== null && khuBearing !== null) {
         const relLai = Calib.computeRelativeBearing(normFacing, laiBearing);
         const relKhu = Calib.computeRelativeBearing(normFacing, khuBearing);
-        // Lai ở bên trái (âm) đến Khứ ở bên phải (dương): Trái -> Phải
-        // Ngược lại: Phải -> Trái
         flowDirectionLabel = (relKhu >= relLai) ? 'Trái → phải' : 'Phải → trái';
       }
 
@@ -151,11 +198,18 @@
         facing: facingUncertainty,
         sitting: {
           bearing: sittingBearing,
-          mountain: sittingMountainInfo.mountain
+          mountain: sittingMountainInfo.mountain,
+          truongSinh: sittingTruongSinh
         },
         group: matchedGroup,
         lai: laiUncertainty,
         khu: khuUncertainty,
+        tamHop: {
+          cuc: matchedGroup.cuc,
+          aphorism,
+          rating: overallRating,
+          color: overallColor
+        },
         flowDirection: flowDirectionLabel,
         thuyKhau: matchedThuyKhau,
         matchTrace,

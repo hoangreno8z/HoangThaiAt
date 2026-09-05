@@ -423,6 +423,40 @@ test('T18: Đóng Action Bar (✕) thoát hoàn toàn mode vẽ, trở về "sel
   assert.equal(tool.waterPolyline.length, 2, 'No node added');
 });
 
+// T19: Tự động tính 12 Cung Trường Sinh và Tổng Luận Tam Hợp Thủy Pháp
+test('T19: Tự động tính 12 Cung Trường Sinh và Tổng Luận Tam Hợp Thủy Pháp', () => {
+  const { tool } = createTestEnvironment();
+  // Giả lập Hướng 165° (Bính sơn - Hỏa cục), Lai 60° (Dần), Khứ 300° (Tuất)
+  const analysis = tool.classifier.classify({
+    facingBearing: 165,
+    laiBearing: 60,
+    khuBearing: 300,
+    isLocked: true
+  });
+
+  assert.equal(analysis.group.cuc, 'Hỏa', 'Must identify Hỏa Cục');
+  assert.equal(analysis.facing.truongSinh.name, 'Đế Vượng', 'Bính Ngọ is Đế Vượng in Hỏa Cục');
+  assert.equal(analysis.sitting.truongSinh.name, 'Thai', 'Nhâm Tý is Thai in Hỏa Cục');
+  assert.equal(analysis.lai.truongSinh.name, 'Trường Sinh', 'Cấn Dần is Trường Sinh in Hỏa Cục');
+  assert.equal(analysis.lai.truongSinh.laiNature, 'Đại Cát', 'Trường Sinh Lai Thủy is Đại Cát');
+  assert.equal(analysis.khu.truongSinh.name, 'Mộ', 'Tân Tuất is Mộ in Hỏa Cục');
+  assert.equal(analysis.khu.truongSinh.khuNature, 'Đại Cát Tụ Bảo', 'Mộ Khứ Thủy is Đại Cát Tụ Bảo');
+  assert.equal(analysis.tamHop.rating, 'Đại Cát Tụ Tài', 'Tam Hợp evaluation is Đại Cát Tụ Tài');
+  assert.ok(analysis.tamHop.aphorism.includes('Sinh Lai Hội Vượng'), 'Aphorism contains Sinh Lai Hội Vượng');
+
+  // Thủy Cục: Hướng Nhâm (0°), Lai Thân (240°), Khứ Thìn (120°)
+  const thuyAnalysis = tool.classifier.classify({
+    facingBearing: 0,
+    laiBearing: 240,
+    khuBearing: 120,
+    isLocked: true
+  });
+  assert.equal(thuyAnalysis.group.cuc, 'Thủy', 'Must identify Thủy Cục');
+  assert.equal(thuyAnalysis.facing.truongSinh.name, 'Đế Vượng', 'Nhâm Tý is Đế Vượng in Thủy Cục');
+  assert.equal(thuyAnalysis.lai.truongSinh.name, 'Trường Sinh', 'Khôn Thân is Trường Sinh in Thủy Cục');
+  assert.equal(thuyAnalysis.khu.truongSinh.name, 'Mộ', 'Ất Thìn is Mộ in Thủy Cục');
+});
+
 console.log('\n================================================================');
 console.log(`KẾT QUẢ KIỂM ĐỊNH: ${passed} PASS, ${failed} FAIL`);
 console.log('================================================================');

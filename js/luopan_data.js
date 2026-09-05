@@ -118,11 +118,103 @@
     return { trigram: TRIGRAMS_8[0], distanceToBoundary: 0 };
   }
 
+  // ── 4. THẬP NHỊ TRƯỜNG SINH (12 CUNG TRƯỜNG SINH CHÁNH TÔNG TAM HỢP) ──
+  const TRUONG_SINH_12 = [
+    { id: 'truong_sinh', name: 'Trường Sinh', stage: 0, laiNature: 'Đại Cát', khuNature: 'Đại Hung', laiDesc: 'Nhân đinh hưng vượng, con cái hiền tài, đa đinh đa phúc, phát phúc trường cửu.', khuDesc: 'Sinh khứ phá gia, tuyệt tự tổn đinh, phụ nữ sẩy thai hại mẹ.' },
+    { id: 'moc_duc', name: 'Mộc Dục', stage: 1, laiNature: 'Đào Hoa / Hung', khuNature: 'Cát có điều kiện', laiDesc: 'Đào hoa dâm loạn, tiêu hao tài sản, phiêu bạt tha hương, gia đạo bất hòa.', khuDesc: 'Lộc Tồn lưu tận bội kim ngư, tống xuất dâm tà, phát văn chương đỗ đạt (khi xuất đúng Thiên Can).' },
+    { id: 'quan_doi', name: 'Quan Đới', stage: 2, laiNature: 'Cát', khuNature: 'Hung', laiDesc: 'Thiếu niên đỗ đạt khôi khoa, thông minh sáng dạ, bổng lộc hanh thông.', khuDesc: 'Xung phá Quan Đới, tổn hại người trẻ tuổi, học hành thi cử dở dang, đoản thọ thần đồng.' },
+    { id: 'lam_quan', name: 'Lâm Quan', stage: 3, laiNature: 'Đại Cát', khuNature: 'Đại Hung Sát', laiDesc: 'Lâm Quan Lộc Thủy, thăng quan tiến chức, bổng lộc triều đình dồi dào, phát tài thần tốc.', khuDesc: 'Xung phá Lâm Quan / Sát Nhân Hoàng Tuyền, quan phi tù tội, bại nghiệp mất chức, tổn người thành tài.' },
+    { id: 'de_vuong', name: 'Đế Vượng', stage: 4, laiNature: 'Đại Cát Cực Thịnh', khuNature: 'Đại Hung Cực Hại', laiDesc: 'Đỉnh cao tài lộc, kinh thương cự phú, vinh hoa phú quý muôn đời, gia môn rạng rỡ.', khuDesc: 'Vượng khứ xung Sinh / Xung phá Vượng vị, tán gia bại sản trong chớp mắt, con cái tương tàn.' },
+    { id: 'suy', name: 'Suy', stage: 5, laiNature: 'Bình / Tiểu Cát', khuNature: 'Cát', laiDesc: 'Khí suy êm đềm, giữ yên cơ nghiệp tổ tiên, không tranh giành sóng gió.', khuDesc: 'Duy hữu Suy phương khả khứ lai, Tự Vượng tiêu thủy bền lâu, tài vận vững vàng.' },
+    { id: 'benh', name: 'Bệnh', stage: 6, laiNature: 'Hung', khuNature: 'Cát', laiDesc: 'Ốm đau triền miên, bệnh tật nan y, gia đạo bất an, tinh thần suy nhược.', khuDesc: 'Tiêu tán mầm bệnh tật, thanh lọc cơ thể, hóa hung thành an.' },
+    { id: 'tu', name: 'Tử', stage: 7, laiNature: 'Đại Hung', khuNature: 'Cát', laiDesc: 'Tai nạn bất ngờ, mất người mất của, tang sự liên miên, gia đạo lụi bại.', khuDesc: 'Xả sạch tử khí, tống tiễn tai ương, biến họa thành phúc.' },
+    { id: 'mo', name: 'Mộ', stage: 8, laiNature: 'Đại Kỵ', khuNature: 'Đại Cát Tụ Bảo', laiDesc: 'Mộ thủy xung Sinh, bít tắc khí mạch, bần hàn khốn khó, tổn thương con cháu.', khuDesc: 'Thủy quy Mộ Khố (Chánh Vị Tiêu Thủy), tiền của cất vào kho ngầm, muôn đời giàu sang không vơi cạn.' },
+    { id: 'tuyet', name: 'Tuyệt', stage: 9, laiNature: 'Đại Tuyệt Sát', khuNature: 'Cát', laiDesc: 'Tuyệt thủy xung Sinh nhân đinh tuyệt, tuyệt tự, tha hương cầu thực.', khuDesc: 'Tuyệt vị khứ thủy / Lộc Tồn lưu tận, tuyệt đường hung sát, sinh cơ phục khởi.' },
+    { id: 'thai', name: 'Thai', stage: 10, laiNature: 'Cát', khuNature: 'Hung', laiDesc: 'Nuôi dưỡng mầm sống mới, sinh quý tử, nhân từ phúc đức, con cái thảo hiền.', khuDesc: 'Phá Thai Thần, phụ nữ khó sinh nở, trụy thai liên tiếp, tổn hại thai nhi.' },
+    { id: 'duong', name: 'Dưỡng', stage: 11, laiNature: 'Cát', khuNature: 'Bình', laiDesc: 'Dưỡng dục sinh khí, con cháu hiếu thảo, gia đạo ấm êm, phúc lộc tích lũy.', khuDesc: 'Cần cẩn trọng tránh làm tiêu hao sinh lực ban đầu của gia trạch.' }
+  ];
+
+  // 12 CẶP SONG SƠN TỰ NHIÊN THEO CHIỀU KIM ĐỒNG HỒ TỪ CHÍNH BẮC (NHÂM TÝ)
+  const SONG_SON_PAIRS = [
+    { index: 0, pair: 'Nhâm Tý', mountains: ['Nhâm', 'Tý'], element: 'Thủy' },
+    { index: 1, pair: 'Quý Sửu', mountains: ['Quý', 'Sửu'], element: 'Kim (Khố)' },
+    { index: 2, pair: 'Cấn Dần', mountains: ['Cấn', 'Dần'], element: 'Hỏa (Sinh)' },
+    { index: 3, pair: 'Giáp Mão', mountains: ['Giáp', 'Mão'], element: 'Mộc (Vượng)' },
+    { index: 4, pair: 'Ất Thìn', mountains: ['Ất', 'Thìn'], element: 'Thủy (Khố)' },
+    { index: 5, pair: 'Tốn Tị', mountains: ['Tốn', 'Tị'], element: 'Kim (Sinh)' },
+    { index: 6, pair: 'Bính Ngọ', mountains: ['Bính', 'Ngọ'], element: 'Hỏa (Vượng)' },
+    { index: 7, pair: 'Đinh Mùi', mountains: ['Đinh', 'Mùi'], element: 'Mộc (Khố)' },
+    { index: 8, pair: 'Khôn Thân', mountains: ['Khôn', 'Thân'], element: 'Thủy (Sinh)' },
+    { index: 9, pair: 'Canh Dậu', mountains: ['Canh', 'Dậu'], element: 'Kim (Vượng)' },
+    { index: 10, pair: 'Tân Tuất', mountains: ['Tân', 'Tuất'], element: 'Hỏa (Khố)' },
+    { index: 11, pair: 'Càn Hợi', mountains: ['Càn', 'Hợi'], element: 'Mộc (Sinh)' }
+  ];
+
+  const MOUNTAIN_TO_SONG_SON = {
+    'Nhâm': 0, 'Tý': 0,
+    'Quý': 1, 'Sửu': 1,
+    'Cấn': 2, 'Dần': 2,
+    'Giáp': 3, 'Mão': 3,
+    'Ất': 4, 'Thìn': 4,
+    'Tốn': 5, 'Tị': 5,
+    'Bính': 6, 'Ngọ': 6,
+    'Đinh': 7, 'Mùi': 7,
+    'Khôn': 8, 'Thân': 8,
+    'Canh': 9, 'Dậu': 9,
+    'Tân': 10, 'Tuất': 10,
+    'Càn': 11, 'Hợi': 11
+  };
+
+  // CUNG KHỞI TRƯỜNG SINH CỦA TỨ CỤC (DƯƠNG THUẬN TAM HỢP)
+  const CUC_START_INDEX = {
+    'Hỏa': 2,   // Cấn - Dần (Hỏa Cục: Dần Ngọ Tuất)
+    'Thủy': 8,  // Khôn - Thân (Thủy Cục: Thân Tý Thìn)
+    'Kim': 5,   // Tốn - Tị (Kim Cục: Tị Dậu Sửu)
+    'Mộc': 11   // Càn - Hợi (Mộc Cục: Hợi Mão Mùi)
+  };
+
+  function getSongSon(mountainName) {
+    const idx = MOUNTAIN_TO_SONG_SON[mountainName];
+    return idx !== undefined ? SONG_SON_PAIRS[idx] : null;
+  }
+
+  function getTruongSinh(mountainName, cuc = 'Hỏa') {
+    const ssIdx = MOUNTAIN_TO_SONG_SON[mountainName];
+    if (ssIdx === undefined) return null;
+    const startIdx = CUC_START_INDEX[cuc] !== undefined ? CUC_START_INDEX[cuc] : 2;
+    const stageIdx = (ssIdx - startIdx + 12) % 12;
+    const stage = TRUONG_SINH_12[stageIdx];
+    return {
+      ...stage,
+      songSon: SONG_SON_PAIRS[ssIdx].pair,
+      cuc
+    };
+  }
+
+  function get12TruongSinhTable(cuc = 'Hỏa') {
+    const startIdx = CUC_START_INDEX[cuc] !== undefined ? CUC_START_INDEX[cuc] : 2;
+    return TRUONG_SINH_12.map((stage, stageIdx) => {
+      const ssIdx = (startIdx + stageIdx) % 12;
+      return {
+        ...stage,
+        songSon: SONG_SON_PAIRS[ssIdx].pair,
+        mountains: SONG_SON_PAIRS[ssIdx].mountains,
+        cuc
+      };
+    });
+  }
+
   return {
     TRIGRAMS_8,
     MOUNTAINS_24,
     SONG_SON_GROUPS,
+    SONG_SON_PAIRS,
+    TRUONG_SINH_12,
     getMountain,
-    getTrigram
+    getTrigram,
+    getSongSon,
+    getTruongSinh,
+    get12TruongSinhTable
   };
 }));
+
