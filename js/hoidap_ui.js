@@ -1,6 +1,7 @@
 // =========================================================================
 // VẤN ĐÁP CỔ PHÁP — BÁCH CỤC THỦY KHẨU (GIAO DIỆN HỌC THUẬT CỔ BẢN)
 // Tối ưu: Ngữ phong cổ điển, 2-4 chữ, 0 Emoji, 100% Thuần Việt & Hán tự
+// Bổ sung: Bật/Tắt Hán Văn, Căn chỉnh nét chữ Hán thanh mảnh, Bố trí câu mạch lạc
 // =========================================================================
 
 class HoiDapUI {
@@ -8,6 +9,7 @@ class HoiDapUI {
     this.containerId = 'gate-hoidap';
     this.activeChapter = 1; // Mặc định mở Chương 1 (10 điều)
     this.searchQuery = '';
+    this.showHanzi = true; // Mặc định bật Hán văn
     this.expandedItems = new Set([1]); // Mặc định mở điều 1
     this.isInitialized = false;
   }
@@ -22,7 +24,6 @@ class HoiDapUI {
     const container = document.getElementById(this.containerId);
     if (!container) return;
 
-    // Check if params has chapter
     if (params && params.chapter) {
       this.activeChapter = parseInt(params.chapter, 10) || 1;
     }
@@ -67,17 +68,27 @@ class HoiDapUI {
           </p>
         </section>
 
-        <!-- Controls: Search & Chapter Ribbon -->
+        <!-- Controls: Search Row & Chapter Ribbon -->
         <div class="hoidap-controls">
-          <div class="hoidap-search-wrapper">
-            <input 
-              type="text" 
-              class="hoidap-search-input" 
-              id="hoidap-search-input"
-              placeholder="Tra cứu thế đất, cổ kinh, sa thủy, hoàng tuyền..." 
-              value="${this.escapeHtml(this.searchQuery)}"
-              oninput="window.hoidapUI.onSearch(this.value)"
-            />
+          <div class="hoidap-search-row">
+            <div class="hoidap-search-wrapper">
+              <input 
+                type="text" 
+                class="hoidap-search-input" 
+                id="hoidap-search-input"
+                placeholder="Tra cứu thế đất, cổ kinh, sa thủy, hoàng tuyền..." 
+                value="${this.escapeHtml(this.searchQuery)}"
+                oninput="window.hoidapUI.onSearch(this.value)"
+              />
+            </div>
+            <!-- Nút Bật/Tắt Hán Văn -->
+            <button 
+              id="hoidap-toggle-hanzi-btn" 
+              class="hoidap-toggle-hanzi-btn ${this.showHanzi ? '' : 'off'}" 
+              title="Nhấn để ẩn hoặc hiện nguyên văn chữ Hán"
+              onclick="window.hoidapUI.toggleHanzi()">
+              ${this.showHanzi ? 'Tắt Hán Văn' : 'Bật Hán Văn'}
+            </button>
           </div>
 
           <!-- 10 Chapters Selector Ribbon -->
@@ -151,8 +162,8 @@ class HoiDapUI {
                 <div class="hoidap-sec-content">${this.formatContent(item.topo)}</div>
               </div>
 
-              <!-- 2. Kinh Văn Chữ Hán -->
-              <div class="hoidap-sec-block">
+              <!-- 2. Kinh Văn Chữ Hán (Có thể bật/tắt) -->
+              <div class="hoidap-sec-block hoidap-sec-hanzi" style="display: ${this.showHanzi ? 'flex' : 'none'};">
                 <div class="hoidap-sec-heading">Kinh Văn Chữ Hán</div>
                 <div class="hoidap-hanzi-box">${this.escapeHtml(item.hanzi)}</div>
               </div>
@@ -161,7 +172,7 @@ class HoiDapUI {
               <div class="hoidap-sec-block">
                 <div class="hoidap-sec-heading">Phiên Âm Diễn Nghĩa</div>
                 <div class="hoidap-sec-content">${this.formatContent(item.hanviet)}</div>
-                ${item.meaning ? `<div class="hoidap-sec-content" style="margin-top:0.5rem; font-style:italic;">${this.formatContent(item.meaning)}</div>` : ''}
+                ${item.meaning ? `<div class="hoidap-sec-content" style="margin-top:0.6rem; font-style:italic; border-left:2px solid rgba(255,255,255,0.15); padding-left:0.8rem;">${this.formatContent(item.meaning)}</div>` : ''}
               </div>
 
               <!-- 4. Biện Chứng Khí Học -->
@@ -226,6 +237,19 @@ class HoiDapUI {
     container.innerHTML = html;
   }
 
+  toggleHanzi() {
+    this.showHanzi = !this.showHanzi;
+    const hanziBlocks = document.querySelectorAll('.hoidap-sec-hanzi');
+    hanziBlocks.forEach(el => {
+      el.style.display = this.showHanzi ? 'flex' : 'none';
+    });
+    const btn = document.getElementById('hoidap-toggle-hanzi-btn');
+    if (btn) {
+      btn.textContent = this.showHanzi ? 'Tắt Hán Văn' : 'Bật Hán Văn';
+      btn.classList.toggle('off', !this.showHanzi);
+    }
+  }
+
   selectChapter(chNum) {
     this.activeChapter = chNum;
     this.searchQuery = '';
@@ -241,7 +265,6 @@ class HoiDapUI {
   onSearch(query) {
     this.searchQuery = query;
     if (query.trim()) {
-      // Khi tìm kiếm, mở tất cả kết quả
       const allItems = window.HOIDAP_DATA || [];
       const q = query.trim().toLowerCase();
       const matched = allItems.filter(item => 
@@ -281,16 +304,42 @@ class HoiDapUI {
 
   formatContent(text) {
     if (!text) return '';
-    // Convert numbered lists or bullet points
     let formatted = this.escapeHtml(text);
-    // Bold tags: **text**
+
+    // Convert bold: **text**
     formatted = formatted.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
-    // Italic tags: *text*
+    // Convert italic: *text*
     formatted = formatted.replace(/\*([^*]+)\*/g, '<em>$1</em>');
-    // Line breaks
-    formatted = formatted.replace(/\n\n/g, '<br><br>');
-    formatted = formatted.replace(/\n/g, '<br>');
-    return formatted;
+
+    // Tách các khối bằng hai dấu xuống dòng liên tiếp
+    const blocks = formatted.split(/\n\n+/);
+    return blocks.map(block => {
+      block = block.trim();
+      if (!block) return '';
+
+      // Trường hợp khối chứa danh sách gạch đầu dòng
+      if (block.includes('\n- ') || block.startsWith('- ') || block.includes('\n— ') || block.startsWith('— ')) {
+        const lines = block.split(/\n(?=[-—]\s+)/);
+        let listHtml = '<ul class="hoidap-ul">';
+        lines.forEach(l => {
+          const cleanLine = l.replace(/^[-—]\s+/, '').trim();
+          if (cleanLine) {
+            listHtml += `<li>${cleanLine}</li>`;
+          }
+        });
+        listHtml += '</ul>';
+        return listHtml;
+      }
+
+      // Trường hợp khối là điều khoản được đánh số: 1. <strong>...</strong>
+      if (/^\d+\.\s+/.test(block)) {
+        return `<div class="hoidap-point-item">${block.replace(/\n/g, '<br>')}</div>`;
+      }
+
+      // Đoạn văn thông thường với ngắt dòng đơn
+      const lines = block.replace(/\n/g, '<br>');
+      return `<p class="hoidap-p">${lines}</p>`;
+    }).join('');
   }
 
   renderTable(rawText) {
@@ -309,7 +358,7 @@ class HoiDapUI {
 
     lines.forEach(line => {
       const trimmed = line.trim();
-      // Skip separator lines like |---|---|
+      // Bỏ qua dòng ngăn cách bảng |---|---|
       if (/^\|?[\s\-:|]+\|?$/.test(trimmed)) {
         isHeader = false;
         return;

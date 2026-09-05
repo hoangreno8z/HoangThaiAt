@@ -146,4 +146,11 @@ console.log('[PASS] window.hoidapUI.onSearch("Hoàng Tuyền") thực thi thành
 global.window.hoidapUI.selectChapter(0);
 console.log('[PASS] window.hoidapUI.selectChapter(0) [Toàn Bách Cục] thực thi thành công.');
 
-console.log('\n=== TẤT CẢ 7 BÀI TEST ĐẠT KẾT QUẢ PASS TUYỆT ĐỐI (100%) ===');
+// Chạy thử nghiệm bật/tắt Hán văn
+mockDocument.querySelectorAll = () => [];
+global.window.hoidapUI.toggleHanzi();
+console.log('[PASS] window.hoidapUI.toggleHanzi() [Tắt Hán Văn] thực thi thành công.');
+global.window.hoidapUI.toggleHanzi();
+console.log('[PASS] window.hoidapUI.toggleHanzi() [Bật Hán Văn] thực thi thành công.');
+
+console.log('\n=== TẤT CẢ 8 BÀI TEST ĐẠT KẾT QUẢ PASS TUYỆT ĐỐI (100%) ===');
