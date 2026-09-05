@@ -1,0 +1,362 @@
+/* ==========================================================================
+   VẤN ĐÁP CỔ PHÁP — BÁCH CỤC THỦY KHẨU (GIAO DIỆN HỌC THUẬT CỔ BẢN)
+   Thiết kế: Huyền Vi Cổ Điển / Chuẩn Mực Học Thuật / 0 Emoji
+   ========================================================================== */
+
+.hoidap-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 4rem 1rem;
+}
+
+/* Header & Banner */
+.hoidap-hero {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding: 2rem 1rem;
+  background: radial-gradient(circle at center, rgba(212, 175, 55, 0.08) 0%, rgba(13, 17, 26, 0.95) 75%);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hoidap-hero-eyebrow {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--gold-glow);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(251, 191, 36, 0.3);
+  padding-bottom: 0.2rem;
+}
+
+.hoidap-hero-title {
+  font-family: var(--font-title);
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--text-pure);
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.05em;
+}
+
+.hoidap-hero-sub {
+  font-family: 'Ma Shan Zheng', cursive, var(--font-serif);
+  font-size: 1.1rem;
+  color: var(--gold-primary);
+  margin-bottom: 0.8rem;
+  letter-spacing: 0.1em;
+}
+
+.hoidap-hero-desc {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Filter & Search Bar */
+.hoidap-controls {
+  margin-bottom: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.hoidap-search-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.hoidap-search-input {
+  width: 100%;
+  padding: 0.85rem 1.2rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  color: var(--text-pure);
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.hoidap-search-input:focus {
+  border-color: var(--gold-primary);
+  box-shadow: 0 0 15px rgba(229, 192, 123, 0.2);
+}
+
+.hoidap-search-input::placeholder {
+  color: var(--text-dim);
+}
+
+/* Chapter Selector Ribbon */
+.hoidap-chapters-ribbon {
+  display: flex;
+  overflow-x: auto;
+  gap: 0.5rem;
+  padding-bottom: 0.5rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-subtle) transparent;
+}
+
+.hoidap-ch-btn {
+  flex: 0 0 auto;
+  padding: 0.55rem 1rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.hoidap-ch-btn:hover {
+  border-color: var(--gold-primary);
+  color: var(--text-pure);
+}
+
+.hoidap-ch-btn.active {
+  background: rgba(229, 192, 123, 0.15);
+  border-color: var(--gold-glow);
+  color: var(--gold-glow);
+  box-shadow: 0 0 10px rgba(251, 191, 36, 0.15);
+}
+
+/* Stats / Status Bar */
+.hoidap-status-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem 0.2rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 0.85rem;
+  color: var(--text-dim);
+}
+
+.hoidap-status-title {
+  color: var(--gold-primary);
+  font-weight: 700;
+}
+
+/* Accordion Items List */
+.hoidap-items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.hoidap-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hoidap-card:hover {
+  border-color: rgba(212, 175, 55, 0.35);
+}
+
+.hoidap-card.expanded {
+  border-color: var(--gold-primary);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+}
+
+/* Card Header */
+.hoidap-card-header {
+  padding: 1.1rem 1.3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  background: rgba(13, 17, 26, 0.4);
+}
+
+.hoidap-card-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.hoidap-card-number-badge {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--gold-glow);
+  text-transform: uppercase;
+}
+
+.hoidap-card-main-title {
+  font-family: var(--font-title);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-pure);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.hoidap-card-subtitle {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.hoidap-expand-btn {
+  background: transparent;
+  border: 1px solid var(--border-subtle);
+  color: var(--gold-primary);
+  border-radius: 6px;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+
+.hoidap-card.expanded .hoidap-expand-btn {
+  background: rgba(229, 192, 123, 0.15);
+  border-color: var(--gold-glow);
+  color: var(--gold-glow);
+}
+
+/* Card Body (Expanded) */
+.hoidap-card-body {
+  display: none;
+  padding: 1.5rem 1.3rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(10, 14, 22, 0.7);
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.hoidap-card.expanded .hoidap-card-body {
+  display: flex;
+}
+
+/* Section Block Inside Card */
+.hoidap-sec-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.hoidap-sec-heading {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--gold-glow);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.hoidap-sec-heading::before {
+  content: "";
+  display: inline-block;
+  width: 4px;
+  height: 12px;
+  background: var(--gold-primary);
+  border-radius: 2px;
+}
+
+.hoidap-sec-content {
+  font-size: 0.92rem;
+  color: var(--text-primary);
+  line-height: 1.7;
+}
+
+/* Classical Chinese Box */
+.hoidap-hanzi-box {
+  background: rgba(212, 175, 55, 0.05);
+  border-left: 3px solid var(--gold-primary);
+  padding: 1rem 1.2rem;
+  border-radius: 0 8px 8px 0;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 1.05rem;
+  color: #FEF3C7;
+  line-height: 1.8;
+  white-space: pre-line;
+}
+
+/* Table Style in Hoa Phuc */
+.hoidap-table-wrapper {
+  overflow-x: auto;
+  margin-top: 0.4rem;
+}
+
+.hoidap-table-wrapper table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.86rem;
+}
+
+.hoidap-table-wrapper th,
+.hoidap-table-wrapper td {
+  padding: 0.65rem 0.85rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  text-align: left;
+}
+
+.hoidap-table-wrapper th {
+  background: rgba(229, 192, 123, 0.1);
+  color: var(--gold-glow);
+  font-weight: 700;
+}
+
+.hoidap-table-wrapper tr:nth-child(even) {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* Pager Buttons */
+.hoidap-pager {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.hoidap-pager-btn {
+  padding: 0.65rem 1.2rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  color: var(--text-pure);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.hoidap-pager-btn:hover:not(:disabled) {
+  border-color: var(--gold-primary);
+  color: var(--gold-glow);
+  background: rgba(229, 192, 123, 0.1);
+}
+
+.hoidap-pager-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+/* Empty State */
+.hoidap-empty {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--text-dim);
+  font-size: 0.95rem;
+}

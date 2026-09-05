@@ -17,7 +17,8 @@
   
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/duong-trach.css">
-  <link rel="stylesheet" href="css/luopan-map.css?v=20260905_v6">
+  <link rel="stylesheet" href="css/luopan-map.css?v=20260905_v7">
+  <link rel="stylesheet" href="css/hoidap.css?v=20260905_v7">
 </head>
 <body class="theme-dark">
 
@@ -46,6 +47,9 @@
         </a>
         <a href="#/tools" class="nav-gate-link" data-gate="tools">
           <span>Bàn Tính & Công Cụ</span>
+        </a>
+        <a href="#/van-dap" class="nav-gate-link" data-gate="van-dap">
+          <span>Vấn Đáp Cổ Pháp</span>
         </a>
       </nav>
 
@@ -85,6 +89,15 @@
         <p>Hành trình 5 giai đoạn: Từ tầm đất, khảo thế, quy hoạch cổng ngõ, phân phòng nạp khí đến thi công và nhập trạch an cư.</p>
       </div>
       <a href="#/thu-vien/duong-trach" class="dt-primary-link">Mở Cẩm Nang Thực Chiến →</a>
+    </section>
+
+    <section class="dt-lobby-entry" style="margin-top:1rem; border-color:rgba(212,175,55,0.3); background:linear-gradient(135deg, rgba(212,175,55,0.06) 0%, rgba(13,17,26,0.9) 100%);" aria-labelledby="hoidap-lobby-title">
+      <div>
+        <span class="dt-eyebrow" style="color:#FBBF24;">VẤN ĐÁP CỔ PHÁP • BÁCH CỤC THỦY KHẨU</span>
+        <h2 id="hoidap-lobby-title" style="color:#FEF3C7;">Bách Cục Thủy Pháp Chánh Tông</h2>
+        <p>Tổng tập 100 địa cuộc thực chứng: Phân định Lai Khứ, mười hai cung Trường Sinh, 144 thủy khẩu chánh tông và bí quyết tiêu sát nạp cát.</p>
+      </div>
+      <a href="#/van-dap" class="dt-primary-link" style="background:#D97706; color:#080D14; font-weight:700;">Khảo Cứu Bách Cục →</a>
     </section>
 
         <!-- 4 ĐẠI PHÂN HỆ CÔNG CỤ & BÀN TÍNH CỔ ĐIỂN -->
@@ -361,6 +374,11 @@
     <main id="duong-trach-app" class="dt-app" aria-live="polite"></main>
   </section>
 
+  <!-- =========================================================================
+       CỔNG VẤN ĐÁP CỔ PHÁP — BÁCH CỤC THỦY KHẨU CHÁNH TÔNG
+       ========================================================================= -->
+  <main id="gate-hoidap" class="app-gate-view" style="display:none;"></main>
+
     <!-- =========================================================================
        MOBILE BOTTOM BAR (CỐ ĐỊNH ĐÁY MÀN HÌNH DI ĐỘNG)
        ========================================================================= -->
@@ -478,6 +496,10 @@
         <div style="font-weight:700; color:#38BDF8; font-size:0.92rem;">Địa Chất 64 Tỉnh</div>
         <div style="font-size:0.75rem; color:#FEF3C7;">64 Hồ Sơ Địa Lý • Khí Tượng & Ma Trận 8 Hướng</div>
       </a>
+      <a href="#/van-dap" class="drawer-nav-item book-shelf-item" style="border-left-color:#E5C07B; background:rgba(229,192,123,0.08); margin-bottom:0.6rem;">
+        <div style="font-weight:700; color:#FEF3C7; font-size:0.92rem;">Vấn Đáp Cổ Pháp</div>
+        <div style="font-size:0.75rem; color:#E5C07B;">10 Chương • Bách Cục Thủy Khẩu Chánh Tông</div>
+      </a>
       <a href="#/tools" class="drawer-nav-item">Bàn Tính Phong Thủy</a>
       <a href="#/" class="drawer-nav-item" style="opacity:0.8;">Về Sảnh Thư Viện Chính</a>
     </div>
@@ -531,17 +553,19 @@
   <script src="js/research_ui.js"></script>
   <script src="js/evidence_graph_ui.js"></script>
   <script src="js/thuy_khau_144_data.js"></script>
+  <script src="js/hoidap_data.js?v=20260905_v7"></script>
+  <script src="js/hoidap_ui.js?v=20260905_v7"></script>
   <script src="js/duong_trach_library.js"></script>
   <script src="js/tool_ui.js"></script>
   <script src="js/reader.js"></script>
-  <script src="js/router.js"></script>
+  <script src="js/router.js?v=20260905_v7"></script>
     <!-- Scripts: Hệ Thống La Kinh Bản Đồ & Hiệu Chuẩn Thực Địa -->
   <script src="js/luopan_calibration_engine.js"></script>
-  <script src="js/luopan_geometry.js?v=20260905_v6"></script>
-  <script src="js/luopan_data.js?v=20260905_v6"></script>
-  <script src="js/luopan_svg_renderer.js?v=20260905_v6"></script>
-  <script src="js/luopan_classifier.js?v=20260905_v6"></script>
-  <script src="js/luopan_map_tool.js?v=20260905_v6"></script>
+  <script src="js/luopan_geometry.js?v=20260905_v7"></script>
+  <script src="js/luopan_data.js?v=20260905_v7"></script>
+  <script src="js/luopan_svg_renderer.js?v=20260905_v7"></script>
+  <script src="js/luopan_classifier.js?v=20260905_v7"></script>
+  <script src="js/luopan_map_tool.js?v=20260905_v7"></script>
   <script src="js/security_shield.js"></script>
   <script src="js/main.js"></script>
 </body>

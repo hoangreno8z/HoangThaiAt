@@ -22,10 +22,14 @@ class LibraryRouter {
       'dia-chat': (params) => this.renderTools({ segments: ['diachat64'] }),
       'goiythietke': (params) => this.renderTools({ segments: ['goiythietke'] }),
       'goi-y-thiet-ke': (params) => this.renderTools({ segments: ['goiythietke'] }),
-'lakinh': (params) => this.renderTools({ segments: ['lakinhbando'] }),
+      'lakinh': (params) => this.renderTools({ segments: ['lakinhbando'] }),
       'la-kinh': (params) => this.renderTools({ segments: ['lakinhbando'] }),
       'lakinhbando': (params) => this.renderTools({ segments: ['lakinhbando'] }),
       'la-kinh-ban-do': (params) => this.renderTools({ segments: ['lakinhbando'] }),
+      'hoidap': (params) => this.renderHoiDap(params),
+      'hoi-dap': (params) => this.renderHoiDap(params),
+      'van-dap': (params) => this.renderHoiDap(params),
+      'van-dap-co-phap': (params) => this.renderHoiDap(params),
     };
     
     this.init();
@@ -134,6 +138,18 @@ class LibraryRouter {
     document.title = "Thư Viện Dương Trạch Có Nguồn — Huyền Học Mụ";
     if (window.duongTrachLibrary && typeof window.duongTrachLibrary.render === 'function') {
       window.duongTrachLibrary.render(params || { segments: ['duong-trach'], query: new URLSearchParams() });
+    }
+  }
+
+  // GATE 4: VẤN ĐÁP CỔ PHÁP (HOI DAP / BÁCH CỤC THỦY KHẨU)
+  renderHoiDap(params) {
+    this.showGate('gate-hoidap');
+    document.title = "Vấn Đáp Cổ Pháp — Bách Cục Thủy Khẩu Chánh Tông";
+    if (window.hoidapUI && typeof window.hoidapUI.render === 'function') {
+      const ch = (params && params.segments && params.segments[0]) 
+        ? parseInt(params.segments[0], 10) 
+        : (params && params.query && params.query.get('ch') ? parseInt(params.query.get('ch'), 10) : 1);
+      window.hoidapUI.render({ chapter: ch || 1 });
     }
   }
 }
