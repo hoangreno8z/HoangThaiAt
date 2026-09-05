@@ -621,7 +621,8 @@ class LuopanMapTool {
           <circle r="24" fill="transparent" data-drag-handle="water_${idx}" style="cursor:grab; touch-action:none; pointer-events:all;" />
           <circle r="11" fill="${color}" stroke="#000" stroke-width="2.5" pointer-events="none" />
           <text y="4" font-size="9" font-weight="900" fill="#000" text-anchor="middle" pointer-events="none">${label[0]}</text>
-          <text y="-16" font-size="11" font-weight="800" fill="${color}" text-anchor="middle" pointer-events="none">${label}</text>
+          <text y="-16" font-size="12" font-weight="800" text-anchor="middle" fill="none" stroke="rgba(0,0,0,0.95)" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" class="luopan-text-halo" pointer-events="none">${label}</text>
+          <text y="-16" font-size="12" font-weight="800" fill="${color}" stroke="rgba(0,0,0,0.35)" stroke-width="0.35" style="paint-order:stroke fill;" text-anchor="middle" class="luopan-text-main" pointer-events="none">${label}</text>
         </g>
       `;
     }).join('');
@@ -638,19 +639,22 @@ class LuopanMapTool {
 
       <!-- Pháp tuyến hướng nhìn nhà -->
       <line x1="${midFrontX}" y1="${midFrontY}" x2="${normalEndX}" y2="${normalEndY}" stroke="#EF4444" stroke-width="4" stroke-linecap="round" />
-      <polygon points="${normalEndX},${normalEndY} ${normalEndX-6},${normalEndY+12} ${normalEndX+6},${normalEndY+12}" fill="#EF4444" transform="rotate(${this.rawFacingBearing + 90}, ${normalEndX}, ${normalEndY})" />
-      <text x="${normalEndX}" y="${normalEndY - 14}" font-size="12" font-weight="900" fill="#EF4444" text-anchor="middle">HƯỚNG NHÀ</text>
+      <polygon points="${normalEndX},${normalEndY} ${normalEndX-6},${normalEndY+12} ${normalEndX+6},${normalEndY+12}" fill="#EF4444" stroke="#000" stroke-width="1" transform="rotate(${this.rawFacingBearing + 90}, ${normalEndX}, ${normalEndY})" />
+      <text x="${normalEndX}" y="${normalEndY - 14}" font-size="13" font-weight="900" text-anchor="middle" fill="none" stroke="rgba(0,0,0,0.95)" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round" class="luopan-text-halo" pointer-events="none">HƯỚNG NHÀ</text>
+      <text x="${normalEndX}" y="${normalEndY - 14}" font-size="13" font-weight="900" fill="#EF4444" stroke="rgba(255,255,255,0.3)" stroke-width="0.35" style="paint-order:stroke fill;" text-anchor="middle" class="luopan-text-main" pointer-events="none">HƯỚNG NHÀ</text>
 
       <!-- Điểm A và Điểm B -->
       <g transform="translate(${pA.x}, ${pA.y})">
         <circle r="24" fill="transparent" data-drag-handle="frontA" style="cursor:grab; touch-action:none; pointer-events:all;" />
         <circle r="10" fill="#F59E0B" stroke="#FFF" stroke-width="2.5" pointer-events="none" />
-        <text y="-14" font-size="11" font-weight="800" fill="#F5D485" text-anchor="middle" pointer-events="none">Mép A</text>
+        <text y="-15" font-size="12" font-weight="800" text-anchor="middle" fill="none" stroke="rgba(0,0,0,0.95)" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round" class="luopan-text-halo" pointer-events="none">Mép A</text>
+        <text y="-15" font-size="12" font-weight="800" fill="#FDE047" stroke="rgba(0,0,0,0.35)" stroke-width="0.35" style="paint-order:stroke fill;" text-anchor="middle" class="luopan-text-main" pointer-events="none">Mép A</text>
       </g>
       <g transform="translate(${pB.x}, ${pB.y})">
         <circle r="24" fill="transparent" data-drag-handle="frontB" style="cursor:grab; touch-action:none; pointer-events:all;" />
         <circle r="10" fill="#F59E0B" stroke="#FFF" stroke-width="2.5" pointer-events="none" />
-        <text y="-14" font-size="11" font-weight="800" fill="#F5D485" text-anchor="middle" pointer-events="none">Mép B</text>
+        <text y="-15" font-size="12" font-weight="800" text-anchor="middle" fill="none" stroke="rgba(0,0,0,0.95)" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round" class="luopan-text-halo" pointer-events="none">Mép B</text>
+        <text y="-15" font-size="12" font-weight="800" fill="#FDE047" stroke="rgba(0,0,0,0.35)" stroke-width="0.35" style="paint-order:stroke fill;" text-anchor="middle" class="luopan-text-main" pointer-events="none">Mép B</text>
       </g>
 
       <!-- Điểm Tâm Nhà -->
@@ -658,7 +662,8 @@ class LuopanMapTool {
         <circle r="24" fill="transparent" data-drag-handle="center" style="cursor:grab; touch-action:none; pointer-events:all;" />
         <circle r="12" fill="#EF4444" stroke="#FFF" stroke-width="3" pointer-events="none" />
         <circle r="4" fill="#FFF" pointer-events="none" />
-        <text y="-18" font-size="12" font-weight="900" fill="#EF4444" text-anchor="middle" pointer-events="none">TÂM NHÀ</text>
+        <text y="-18" font-size="13" font-weight="900" text-anchor="middle" fill="none" stroke="rgba(0,0,0,0.95)" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round" class="luopan-text-halo" pointer-events="none">TÂM NHÀ</text>
+        <text y="-18" font-size="13" font-weight="900" fill="#EF4444" stroke="rgba(255,255,255,0.3)" stroke-width="0.35" style="paint-order:stroke fill;" text-anchor="middle" class="luopan-text-main" pointer-events="none">TÂM NHÀ</text>
       </g>
     `;
   }
