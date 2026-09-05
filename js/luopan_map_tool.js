@@ -182,7 +182,7 @@ class LuopanMapTool {
     const luopanSvgHtml = this.renderer.render({
       cx: this.centerPoint.x,
       cy: this.centerPoint.y,
-      radius: 350,
+      radius: 365,
       rotation: this.isCalibrationLocked ? this.calibrationOffset : 0,
       houseFacing: facing,
       houseSitting: this.geometry.calculateHouseSittingBearing(facing),
@@ -898,7 +898,7 @@ class LuopanMapTool {
     mount.innerHTML = this.renderer.render({
       cx: this.centerPoint.x,
       cy: this.centerPoint.y,
-      radius: 350,
+      radius: 365,
       rotation: this.isCalibrationLocked ? this.calibrationOffset : 0,
       houseFacing: facing,
       houseSitting: this.geometry.calculateHouseSittingBearing(facing),

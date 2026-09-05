@@ -294,3 +294,64 @@
     min-height: 240px;
   }
 }
+
+/* Luopan SVG High-Contrast Technical Typography & Dual-Pass Halo */
+.tool-page--lakinh .luopan-text-halo {
+  fill: none !important;
+  stroke: rgba(0, 0, 0, 0.95) !important;
+  stroke-linejoin: round !important;
+  stroke-linecap: round !important;
+  pointer-events: none !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+}
+
+.tool-page--lakinh .luopan-text-main {
+  stroke-linejoin: round !important;
+  stroke-linecap: round !important;
+  paint-order: stroke fill !important;
+  pointer-events: none !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+}
+
+.tool-page--lakinh .luopan-degree-text-halo {
+  stroke-width: 2.6px !important;
+}
+
+.tool-page--lakinh .luopan-degree-text-main {
+  stroke: rgba(0, 0, 0, 0.35) !important;
+  stroke-width: 0.35px !important;
+}
+
+.tool-page--lakinh .luopan-mountain-hanzi-halo {
+  stroke-width: 2.8px !important;
+}
+
+.tool-page--lakinh .luopan-mountain-hanzi-main {
+  stroke: rgba(0, 0, 0, 0.4) !important;
+  stroke-width: 0.35px !important;
+}
+
+.tool-page--lakinh .luopan-mountain-name-halo {
+  stroke-width: 2.6px !important;
+}
+
+.tool-page--lakinh .luopan-mountain-name-main {
+  stroke: rgba(0, 0, 0, 0.4) !important;
+  stroke-width: 0.35px !important;
+}
+
+.tool-page--lakinh .luopan-trigram-symbol-halo {
+  stroke-width: 2.4px !important;
+}
+
+.tool-page--lakinh .luopan-trigram-name-halo {
+  stroke-width: 2.2px !important;
+}
+
+.tool-page--lakinh .dt-luopan-svg {
+  shape-rendering: geometricPrecision;
+  text-rendering: geometricPrecision;
+}
+
