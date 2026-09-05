@@ -37,6 +37,8 @@ class LuopanMapTool {
       { x: 610, y: 580 }
     ];
     this.flowDirection = 'forward'; // 'forward' hoặc 'reverse'
+    this.waterPathType = 'through'; // 'through' (hẻm thông) hoặc 'deadEnd' (hẻm cụt)
+    this.isDrawingWater = false;
 
     // Leaflet GIS Map
     this.mapInstance = null;
@@ -74,17 +76,20 @@ class LuopanMapTool {
     this.bindEvents();
     this.initInteractiveCanvas();
     this.updateBackground();
-    this.resizeObserver = new ResizeObserver(() => {
-      const mapCenter = this.mapInstance?.getCenter();
-      this.resizeMapBackground();
-      if (this.mapInstance && this.mode === 'map') {
-        this.mapInstance.invalidateSize({ pan: false });
-        this.mapInstance.setView(mapCenter, this.mapInstance.getZoom(), { animate: false, reset: true });
-        this.projectMapGeometry();
-      }
-      this.updateViewTransform();
-    });
-    this.resizeObserver.observe(this.container.querySelector('#dt-interactive-stage'));
+    if (typeof ResizeObserver !== 'undefined') {
+      this.resizeObserver = new ResizeObserver(() => {
+        const mapCenter = this.mapInstance?.getCenter();
+        this.resizeMapBackground();
+        if (this.mapInstance && this.mode === 'map') {
+          this.mapInstance.invalidateSize({ pan: false });
+          this.mapInstance.setView(mapCenter, this.mapInstance.getZoom(), { animate: false, reset: true });
+          this.projectMapGeometry();
+        }
+        this.updateViewTransform();
+      });
+      const stage = this.container.querySelector('#dt-interactive-stage');
+      if (stage) this.resizeObserver.observe(stage);
+    }
   }
 
   recalculateRawBearings() {
@@ -93,15 +98,33 @@ class LuopanMapTool {
       this.frontageLine.pB,
       this.frontageLine.frontSide
     );
+    // Nếu đã khóa số La Kinh thực địa, offset phải chạy theo hình học mới
+    if (this.isCalibrationLocked && Number.isFinite(this.measuredBearing)) {
+      this.calibrationOffset = this.calibEngine.computeOffset(
+        this.rawFacingBearing,
+        this.measuredBearing
+      );
+    }
+  }
+
+  syncCalibrationFromGeometry() {
+    this.recalculateRawBearings();
   }
 
   getWaterPoints() {
-    if (!this.waterPolyline || this.waterPolyline.length < 1) return { pLai: null, pKhu: null };
-    const pFirst = this.waterPolyline[0];
-    const pLast = this.waterPolyline[this.waterPolyline.length - 1];
+    if (!this.waterPolyline || this.waterPolyline.length < 1) {
+      return { pLai: null, pKhu: null, pDeadEnd: null };
+    }
+    const first = this.waterPolyline[0];
+    const last = this.waterPolyline[this.waterPolyline.length - 1];
+    if (this.waterPathType === 'deadEnd') {
+      return this.flowDirection === 'forward'
+        ? { pLai: first, pKhu: null, pDeadEnd: last }
+        : { pLai: last, pKhu: null, pDeadEnd: first };
+    }
     return this.flowDirection === 'forward'
-      ? { pLai: pFirst, pKhu: pLast }
-      : { pLai: pLast, pKhu: pFirst };
+      ? { pLai: first, pKhu: last, pDeadEnd: null }
+      : { pLai: last, pKhu: first, pDeadEnd: null };
   }
 
   getRawLaiBearing() {
@@ -117,9 +140,10 @@ class LuopanMapTool {
   }
 
   getEffectiveFacingBearing() {
-    return this.isCalibrationLocked
-      ? this.calibEngine.calibrate(this.rawFacingBearing, this.calibrationOffset)
-      : this.rawFacingBearing;
+    if (this.isCalibrationLocked && Number.isFinite(this.measuredBearing)) {
+      return this.calibEngine.normalize360(this.measuredBearing);
+    }
+    return this.rawFacingBearing;
   }
 
   getEffectiveLaiBearing() {
@@ -332,6 +356,10 @@ class LuopanMapTool {
               4 Chiều ${this.flowDirection === 'forward' ? '→' : '←'}
             </button>
 
+            <button type="button" id="btn-toggle-deadend" class="dt-step-badge" style="color:${this.waterPathType === 'deadEnd' ? '#F43F5E' : '#94A3B8'}; border-color:${this.waterPathType === 'deadEnd' ? '#F43F5E' : 'rgba(255,255,255,0.12)'};">
+              ${this.waterPathType === 'deadEnd' ? '🛑 Hẻm cụt' : '↔️ Hẻm thông'}
+            </button>
+
             <button type="button" id="step-btn-select" class="dt-step-badge ${this.activeDrawTool === 'select' ? 'active' : ''}">
               Chọn/Kéo
             </button>
@@ -496,6 +524,14 @@ class LuopanMapTool {
         event.stopPropagation();
         return;
       }
+      if (this.activeDrawTool === 'drawWater' && !handle) {
+        const pos = getPosition(event);
+        this.waterPolyline.push(pos);
+        refresh();
+        event.preventDefault();
+        event.stopPropagation();
+        return;
+      }
       if (!handle) return;
       dragTarget = handle.dataset.dragHandle;
       pointerId = event.pointerId;
@@ -532,7 +568,7 @@ class LuopanMapTool {
     const svg = document.getElementById('dt-drawing-svg');
     if (!svg) return;
 
-    svg.style.pointerEvents = this.activeDrawTool === 'setCenter' && this.showDrawingOverlay ? 'auto' : 'none';
+    svg.style.pointerEvents = (this.activeDrawTool === 'setCenter' || this.activeDrawTool === 'drawWater') && this.showDrawingOverlay ? 'auto' : 'none';
     if (!this.showDrawingOverlay) {
       svg.innerHTML = '';
       return;
@@ -559,16 +595,27 @@ class LuopanMapTool {
 
       let isLai = false;
       let isKhu = false;
-      if (this.flowDirection === 'forward') {
-        isLai = isFirst;
-        isKhu = isLast;
+      let isDeadEnd = false;
+      if (this.waterPathType === 'deadEnd') {
+        if (this.flowDirection === 'forward') {
+          isLai = isFirst;
+          isDeadEnd = isLast;
+        } else {
+          isLai = isLast;
+          isDeadEnd = isFirst;
+        }
       } else {
-        isLai = isLast;
-        isKhu = isFirst;
+        if (this.flowDirection === 'forward') {
+          isLai = isFirst;
+          isKhu = isLast;
+        } else {
+          isLai = isLast;
+          isKhu = isFirst;
+        }
       }
 
-      const color = isLai ? '#34D399' : (isKhu ? '#38BDF8' : '#CBD5E1');
-      const label = isLai ? 'LAI' : (isKhu ? 'KHỨ' : String(idx));
+      const color = isLai ? '#34D399' : (isDeadEnd ? '#F43F5E' : (isKhu ? '#38BDF8' : '#CBD5E1'));
+      const label = isLai ? 'LAI' : (isDeadEnd ? 'CỤT' : (isKhu ? 'KHỨ' : String(idx)));
       return `
         <g transform="translate(${p.x}, ${p.y})">
           <circle r="24" fill="transparent" data-drag-handle="water_${idx}" style="cursor:grab; touch-action:none; pointer-events:all;" />
@@ -674,9 +721,9 @@ class LuopanMapTool {
                 <div style="display:flex; flex-direction:column; gap:0.15rem; padding:0.3rem 0.5rem; background:#1E293B; border-radius:6px;">
                   <div style="display:flex; justify-content:space-between;">
                     <span style="color:#38BDF8; font-weight:700;">Khứ Thủy (Đi):</span>
-                    <strong style="color:#38BDF8;">${khu !== null ? `${khu.toFixed(2)}°` : 'Chưa đo'}</strong>
+                    <strong style="color:#38BDF8;">${khu !== null ? `${khu.toFixed(2)}°` : (this.waterPathType === 'deadEnd' ? 'Không xác lập — Hẻm cụt' : 'Chưa đo')}</strong>
                   </div>
-                  <div class="dt-bearing-label" data-bearing-label="khu">${this.formatMountain(analysis.khu)}</div>
+                  <div class="dt-bearing-label" data-bearing-label="khu">${this.waterPathType === 'deadEnd' ? 'Tuyến tận tại nhà (không có Khứ)' : this.formatMountain(analysis.khu)}</div>
                   ${relKhu !== null ? `
                     <div style="font-size:0.72rem; color:#94A3B8; padding-left:0.3rem;">
                       ↳ So với hướng nhà: <strong style="color:#38BDF8;">${relKhu >= 0 ? '+' : ''}${relKhu.toFixed(2)}° (${relKhu >= 0 ? 'lệch phải' : 'lệch trái'})</strong>
@@ -710,7 +757,7 @@ class LuopanMapTool {
 
                 <div style="display:flex; justify-content:space-between; padding:0.3rem 0.5rem; background:#1E293B; border-radius:6px;">
                   <span>Khứ Sơn:</span>
-                  <strong style="color:#38BDF8;">${analysis.khu ? `${analysis.khu.mountain.name} Sơn` : 'Chưa đo'}</strong>
+                  <strong style="color:#38BDF8;">${analysis.khu ? `${analysis.khu.mountain.name} Sơn` : (this.waterPathType === 'deadEnd' ? 'Hẻm cụt (không có Khứ)' : 'Chưa đo')}</strong>
                 </div>
 
                 <div style="display:flex; justify-content:space-between; padding:0.3rem 0.5rem; background:#141B2B; border-radius:6px;">
@@ -902,15 +949,42 @@ class LuopanMapTool {
 
     if (step1) step1.addEventListener('click', () => { this.activeDrawTool = 'setCenter'; updateStepBadges(step1); });
     if (step2) step2.addEventListener('click', () => { this.activeDrawTool = 'drawFrontage'; updateStepBadges(step2); });
-    if (step3) step3.addEventListener('click', () => { this.activeDrawTool = 'drawWater'; updateStepBadges(step3); });
-    if (stepSelect) stepSelect.addEventListener('click', () => { this.activeDrawTool = 'select'; updateStepBadges(stepSelect); });
+    if (step3) step3.addEventListener('click', () => {
+      this.activeDrawTool = 'drawWater';
+      this.isDrawingWater = true;
+      this.waterPolyline = [];
+      updateStepBadges(step3);
+      this.renderDrawingElements();
+      this.updateMeasurementsDisplay();
+    });
+    if (stepSelect) stepSelect.addEventListener('click', () => {
+      this.activeDrawTool = 'select';
+      this.isDrawingWater = false;
+      updateStepBadges(stepSelect);
+      this.renderDrawingElements();
+    });
 
     // Đảo phía hướng nhà
     const btnFlipFront = document.getElementById('btn-flip-frontside');
     if (btnFlipFront) {
       btnFlipFront.addEventListener('click', () => {
+        if (this.isCalibrationLocked) return;
         this.frontageLine.frontSide = this.frontageLine.frontSide === 'right' ? 'left' : 'right';
         this.recalculateRawBearings();
+        this.renderDrawingElements();
+        this.updateSvgView();
+        this.updateMeasurementsDisplay();
+      });
+    }
+
+    // Chuyển đổi Hẻm thông / Hẻm cụt
+    const btnDeadEnd = document.getElementById('btn-toggle-deadend');
+    if (btnDeadEnd) {
+      btnDeadEnd.addEventListener('click', () => {
+        this.waterPathType = this.waterPathType === 'deadEnd' ? 'through' : 'deadEnd';
+        btnDeadEnd.textContent = this.waterPathType === 'deadEnd' ? '🛑 Hẻm cụt' : '↔️ Hẻm thông';
+        btnDeadEnd.style.color = this.waterPathType === 'deadEnd' ? '#F43F5E' : '#94A3B8';
+        btnDeadEnd.style.borderColor = this.waterPathType === 'deadEnd' ? '#F43F5E' : 'rgba(255,255,255,0.12)';
         this.renderDrawingElements();
         this.updateSvgView();
         this.updateMeasurementsDisplay();
@@ -1020,8 +1094,8 @@ class LuopanMapTool {
             <div>• Tọa nhà: <strong style="color:#FBBF24;">${analysis.sitting.bearing.toFixed(2)}° (${analysis.sitting.mountain.name} Sơn)</strong></div>
             <div>• Cụm Song Sơn: <strong>${analysis.group.label} (${analysis.group.cuc} Cục)</strong></div>
             <div>• Lai Thủy: <strong>${analysis.lai ? `${analysis.lai.bearing.toFixed(2)}° (${analysis.lai.mountain.name})` : 'Chưa đo'}</strong> ${relLai !== null ? `(lệch ${relLai >= 0 ? '+' : ''}${relLai.toFixed(2)}° so với nhà)` : ''}</div>
-            <div>• Khứ Thủy: <strong>${analysis.khu ? `${analysis.khu.bearing.toFixed(2)}° (${analysis.khu.mountain.name})` : 'Chưa đo'}</strong> ${relKhu !== null ? `(lệch ${relKhu >= 0 ? '+' : ''}${relKhu.toFixed(2)}° so với nhà)` : ''}</div>
-            <div>• Chiều nước: <strong>${this.flowDirection === 'forward' ? 'Tả ➔ Hữu' : 'Hữu ➔ Tả'}</strong></div>
+            <div>• Khứ Thủy: <strong>${analysis.khu ? `${analysis.khu.bearing.toFixed(2)}° (${analysis.khu.mountain.name})` : (this.waterPathType === 'deadEnd' ? 'Không xác lập (Hẻm cụt)' : 'Chưa đo')}</strong> ${relKhu !== null ? `(lệch ${relKhu >= 0 ? '+' : ''}${relKhu.toFixed(2)}° so với nhà)` : ''}</div>
+            <div>• Loại tuyến: <strong>${this.waterPathType === 'deadEnd' ? 'Hẻm cụt (điểm tận tại nhà)' : 'Hẻm thông'}</strong> · Chiều nước: <strong>${this.flowDirection === 'forward' ? 'Tả ➔ Hữu' : 'Hữu ➔ Tả'}</strong></div>
           </div>
 
           <div style="background:#1E293B; border-radius:10px; padding:1rem; margin-bottom:1rem; border:1px solid rgba(255,255,255,0.08);">

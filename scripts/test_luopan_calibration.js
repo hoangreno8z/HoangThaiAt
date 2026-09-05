@@ -109,9 +109,15 @@ function createMapTool() {
   const elements = {
     'btn-lock-calibration': button(),
     'input-measured-bearing': button('226'),
+    'step-btn-1': button(),
+    'step-btn-2': button(),
+    'step-btn-3': button(),
     'step-btn-select': button(),
     'btn-north-up': button(),
-    'btn-facing-up': button()
+    'btn-facing-up': button(),
+    'btn-flip-frontside': button(),
+    'btn-toggle-deadend': button(),
+    'btn-reverse-water': button()
   };
   const mapMount = { id: 'dt-map-mount' };
   elements['dt-map-mount'] = mapMount;
@@ -190,7 +196,7 @@ test('TC-01/03: actual lock/unlock handlers retain map, geometry and selection s
   assert.equal(tool.mapInstance.getZoom(), 18);
 });
 
-test('TC-02: editing water/frontage after locking keeps the offset and updates classifications', () => {
+test('TC-02: editing frontage after locking keeps house locked at measured bearing and updates offset', () => {
   const { tool, elements } = createMapTool();
   elements['btn-lock-calibration'].click();
   const originalMap = tool.mapInstance;
@@ -210,8 +216,10 @@ test('TC-02: editing water/frontage after locking keeps the offset and updates c
   assert.equal(result.khu.mountain.type, 'Can');
   tool.frontageLine.pB = { x: 510, y: 470 };
   tool.recalculateRawBearings();
-  near(tool.getEffectiveFacingBearing(), Calibration.calibrate(tool.rawFacingBearing, offset),
-    'Edited frontage uses existing offset');
+  near(tool.getEffectiveFacingBearing(), 226,
+    'Effective facing remains locked at measured bearing 226');
+  near(tool.calibrationOffset, Calibration.computeOffset(tool.rawFacingBearing, 226),
+    'Offset updates dynamically');
   for (const [raw, effective] of [
     [tool.getRawLaiBearing(), tool.getEffectiveLaiBearing()],
     [tool.getRawKhuBearing(), tool.getEffectiveKhuBearing()]
@@ -219,9 +227,15 @@ test('TC-02: editing water/frontage after locking keeps the offset and updates c
     near(Calibration.computeRelativeBearing(tool.getEffectiveFacingBearing(), effective),
       Calibration.computeRelativeBearing(tool.rawFacingBearing, raw), 'Edited relative angle');
   }
-  assert.equal(tool.calibrationOffset, offset);
   assert.equal(tool.isCalibrationLocked, true);
   assert.strictEqual(tool.mapInstance, originalMap);
+
+  // When locked, flipping frontside should be ignored to protect invariant
+  const frontSideBefore = tool.frontageLine.frontSide;
+  elements['btn-flip-frontside'].click();
+  assert.equal(tool.frontageLine.frontSide, frontSideBefore, 'Flip frontage ignored when locked');
+  near(tool.getEffectiveFacingBearing(), 226, 'Facing still strictly locked at 226');
+
   const editedGeometry = snapshotGeometry(tool);
   elements['btn-lock-calibration'].click();
   assert.equal(snapshotGeometry(tool), editedGeometry, 'Unlock retains edited geometry');
@@ -265,6 +279,67 @@ test('An absent water line stays unclassified instead of displaying an invented 
   const result = tool.classifier.classify({ facingBearing: 226, laiBearing: null, khuBearing: null });
   assert.equal(result.lai, null);
   assert.equal(result.khu, null);
+});
+
+test('Multi-vertex water path (8 points) and Dead-End (Hẻm cụt) logic', () => {
+  const { tool, elements } = createMapTool();
+
+  // Test multi-point polyline (8 points)
+  tool.waterPolyline = [
+    { x: 100, y: 100 },
+    { x: 150, y: 120 },
+    { x: 200, y: 180 },
+    { x: 250, y: 220 },
+    { x: 300, y: 300 },
+    { x: 350, y: 320 },
+    { x: 400, y: 400 },
+    { x: 500, y: 450 }
+  ];
+  tool.flowDirection = 'forward';
+  let pts = tool.getWaterPoints();
+  assert.deepEqual(pts.pLai, { x: 100, y: 100 });
+  assert.deepEqual(pts.pKhu, { x: 500, y: 450 });
+  assert.equal(pts.pDeadEnd, null);
+
+  // Reverse flow in through mode
+  tool.flowDirection = 'reverse';
+  pts = tool.getWaterPoints();
+  assert.deepEqual(pts.pLai, { x: 500, y: 450 });
+  assert.deepEqual(pts.pKhu, { x: 100, y: 100 });
+  assert.equal(pts.pDeadEnd, null);
+
+  // Switch to Dead-End (Hẻm cụt)
+  elements['btn-toggle-deadend'].click();
+  assert.equal(tool.waterPathType, 'deadEnd');
+
+  // Reverse flow in deadEnd: Lai is entry (last), deadEnd is house side (first)
+  pts = tool.getWaterPoints();
+  assert.deepEqual(pts.pLai, { x: 500, y: 450 });
+  assert.equal(pts.pKhu, null);
+  assert.deepEqual(pts.pDeadEnd, { x: 100, y: 100 });
+  assert.equal(tool.getRawKhuBearing(), null);
+  assert.equal(tool.getEffectiveKhuBearing(), null);
+
+  // Forward flow in deadEnd: Lai is entry (first), deadEnd is house side (last)
+  tool.flowDirection = 'forward';
+  pts = tool.getWaterPoints();
+  assert.deepEqual(pts.pLai, { x: 100, y: 100 });
+  assert.equal(pts.pKhu, null);
+  assert.deepEqual(pts.pDeadEnd, { x: 500, y: 450 });
+  assert.equal(tool.getRawKhuBearing(), null);
+  assert.equal(tool.getEffectiveKhuBearing(), null);
+
+  // Result panel rendering for deadEnd
+  tool.isCalibrationLocked = true;
+  tool.calibrationOffset = 0;
+  const html = tool.renderResultPanels();
+  assert.ok(html.includes('Không xác lập — Hẻm cụt') || html.includes('Hẻm cụt (không có Khứ)'),
+    'Result panel handles deadEnd gracefully');
+
+  // Toggle back to through
+  elements['btn-toggle-deadend'].click();
+  assert.equal(tool.waterPathType, 'through');
+  assert.notEqual(tool.getRawKhuBearing(), null);
 });
 
 console.log(`\nLa Kinh regressions: ${passed} passed, ${failed} failed.`);
