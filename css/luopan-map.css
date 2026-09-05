@@ -1,0 +1,296 @@
+/* Local layout rules for La Kinh Bản Đồ. Other tools and global navigation
+   keep their existing layout. Specific overrides preserve the older inline UI. */
+.tool-page--lakinh,
+.tool-page--lakinh #tool-active-area,
+.tool-page--lakinh #dt-luopan-map-mount,
+.tool-page--lakinh .dt-workspace-grid,
+.tool-page--lakinh .dt-map-column,
+.tool-page--lakinh .dt-results-column {
+  min-width: 0;
+}
+
+.tool-page--lakinh .dt-map-column {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tool-page--lakinh .dt-floating-bottom-bar {
+  position: static;
+  inset: auto;
+  flex-wrap: nowrap;
+  min-width: 0;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.tool-page--lakinh .dt-floating-bottom-bar > div {
+  flex-wrap: nowrap !important;
+  min-width: 0;
+}
+
+.tool-page--lakinh #dt-result-panels {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+
+.tool-page--lakinh .dt-touch-btn:focus-visible,
+.tool-page--lakinh .dt-step-badge:focus-visible,
+.tool-page--lakinh .tool-page-tabs button:focus-visible,
+.tool-page--lakinh input:focus-visible {
+  outline: 2px solid #FBBF24;
+  outline-offset: 2px;
+}
+
+.tool-page--lakinh #input-measured-bearing {
+  min-width: 0;
+}
+
+.tool-page--lakinh .dt-bearing-label {
+  color: #E2E8F0;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.45;
+  padding-block: 2px;
+}
+
+/* Map controls stay outside the rotating scene and above the drawing layer. */
+.tool-page--lakinh .dt-stage-wrapper > .leaflet-control-container {
+  position: absolute;
+  inset: 0;
+  z-index: 30;
+  pointer-events: none;
+}
+
+.tool-page--lakinh .dt-stage-wrapper .leaflet-control {
+  pointer-events: auto;
+}
+
+.tool-page--lakinh .dt-stage-wrapper .leaflet-control-attribution {
+  margin: 0;
+  padding: 1px 4px;
+  background: rgba(255, 255, 255, 0.85);
+  color: #334155;
+  font: 10px/1.4 Arial, sans-serif;
+  max-width: 100%;
+}
+
+.tool-page--lakinh .dt-stage-wrapper .leaflet-control-attribution a {
+  color: #075985;
+  font: inherit;
+  text-decoration: none;
+}
+
+.tool-page--lakinh .dt-stage-wrapper .leaflet-control-attribution a:hover,
+.tool-page--lakinh .dt-stage-wrapper .leaflet-control-attribution a:focus-visible {
+  text-decoration: underline;
+}
+
+@media (max-width: 992px) {
+  #gate-tools.gate-tools--lakinh {
+    padding: 0.35rem 0.4rem !important;
+  }
+
+  .tool-page--lakinh .tool-page-intro {
+    display: none;
+  }
+
+  .tool-page--lakinh .tool-page-tabs {
+    justify-content: flex-start !important;
+    flex-wrap: nowrap !important;
+    gap: 5px !important;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+    padding: 2px 0 7px !important;
+    margin-bottom: 8px !important;
+    scrollbar-width: none;
+  }
+
+  .tool-page--lakinh .tool-page-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .tool-page--lakinh .tool-page-tabs button {
+    flex: 0 0 auto;
+    min-height: 32px;
+    padding: 4px 9px !important;
+    font-size: 12px !important;
+    white-space: nowrap;
+  }
+
+  .tool-page--lakinh .dt-luopan-tool-root {
+    gap: 8px !important;
+  }
+
+  .tool-page--lakinh .dt-tool-header {
+    padding: 7px 8px !important;
+    gap: 6px !important;
+    border-radius: 8px !important;
+    box-shadow: none !important;
+  }
+
+  .tool-page--lakinh .dt-tool-kicker {
+    display: none !important;
+  }
+
+  .tool-page--lakinh .dt-tool-title {
+    font-size: 15px !important;
+    line-height: 1.3;
+    margin: 0 !important;
+  }
+
+  .tool-page--lakinh .dt-tool-header > div {
+    min-width: 0;
+    gap: 5px !important;
+  }
+
+  .tool-page--lakinh #dt-calibration-status {
+    padding: 3px 6px !important;
+    font-size: 11px !important;
+    line-height: 1.3;
+  }
+
+  .tool-page--lakinh .dt-touch-btn,
+  .tool-page--lakinh .dt-step-badge {
+    min-height: 34px !important;
+    padding: 4px 7px !important;
+    gap: 4px !important;
+    font-size: 12px !important;
+    line-height: 1.2 !important;
+    font-weight: 600 !important;
+    white-space: nowrap;
+    border-radius: 6px !important;
+    touch-action: manipulation;
+  }
+
+  .tool-page--lakinh .dt-workflow-toolbar {
+    padding: 6px !important;
+    gap: 5px !important;
+    border-radius: 8px !important;
+  }
+
+  .tool-page--lakinh .dt-workflow-steps {
+    width: 100%;
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+
+  .tool-page--lakinh .dt-workflow-steps > span {
+    display: none;
+  }
+
+  .tool-page--lakinh .dt-secondary-actions {
+    gap: 5px !important;
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .tool-page--lakinh .dt-secondary-actions .dt-touch-btn {
+    min-height: 32px !important;
+    padding: 3px 6px !important;
+  }
+
+  .tool-page--lakinh .dt-workspace-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 10px;
+  }
+
+  .tool-page--lakinh .dt-stage-wrapper {
+    width: 100%;
+    height: 64vh;
+    height: 64svh;
+    min-height: 320px;
+    max-height: none !important;
+    aspect-ratio: auto !important;
+    border-radius: 8px;
+  }
+
+  .tool-page--lakinh .dt-floating-bottom-bar {
+    gap: 5px;
+    padding: 4px !important;
+    border-radius: 8px;
+    justify-content: flex-start;
+  }
+
+  .tool-page--lakinh .dt-floating-bottom-bar > div:first-child {
+    flex: 0 0 auto;
+    gap: 3px !important;
+  }
+
+  .tool-page--lakinh .dt-floating-bottom-bar > div:last-child {
+    flex: 1 1 auto;
+    gap: 4px !important;
+    font-size: 11px !important;
+    white-space: nowrap;
+  }
+
+  .tool-page--lakinh .dt-floating-bottom-bar .dt-touch-btn {
+    min-height: 32px !important;
+    padding: 4px 5px !important;
+    font-size: 12px !important;
+  }
+
+  .tool-page--lakinh #slider-opacity {
+    width: 100% !important;
+    min-width: 30px;
+    max-width: 84px;
+    height: 32px;
+    margin: 0;
+    flex: 1 1 0;
+  }
+
+  .tool-page--lakinh .dt-panel-section {
+    padding: 10px !important;
+    border-radius: 8px;
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .tool-page--lakinh .dt-panel-title {
+    font-size: 13px;
+    margin-bottom: 8px;
+  }
+
+  .tool-page--lakinh #input-measured-bearing {
+    min-height: 36px;
+    padding: 5px 8px !important;
+    font-size: 16px !important;
+  }
+
+  .tool-page--lakinh #dt-calibration-panel > div {
+    margin-bottom: 8px !important;
+  }
+
+  .tool-page--lakinh #dt-calibration-panel > div:last-child {
+    margin-bottom: 0 !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .tool-page--lakinh .dt-floating-bottom-bar {
+    gap: 4px;
+  }
+
+  .tool-page--lakinh .dt-floating-bottom-bar .dt-touch-btn {
+    padding-inline: 4px !important;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 992px) {
+  .tool-page--lakinh .dt-workflow-steps,
+  .tool-page--lakinh .dt-secondary-actions {
+    width: auto;
+  }
+}
+
+@media (max-width: 992px) and (orientation: landscape) {
+  .tool-page--lakinh .dt-stage-wrapper {
+    height: 64vh;
+    height: 64svh;
+    min-height: 240px;
+  }
+}

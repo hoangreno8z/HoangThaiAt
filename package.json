@@ -9,7 +9,7 @@
   "scripts": {
     "corpus:build": "node scripts/build_duong_trach_corpus.js",
     "corpus:audit": "node scripts/audit_duong_trach_corpus.js",
-    "test": "node test_rule_engine.js && node scripts/audit_duong_trach_corpus.js"
+    "test": "node test_rule_engine.js && node scripts/audit_duong_trach_corpus.js && node scripts/test_luopan_calibration.js"
   },
   "repository": {
     "type": "git",

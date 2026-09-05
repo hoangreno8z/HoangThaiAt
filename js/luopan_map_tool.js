@@ -64,6 +64,18 @@ class LuopanMapTool {
     this.renderLayout();
     this.bindEvents();
     this.initInteractiveCanvas();
+    this.updateBackground();
+    this.resizeObserver = new ResizeObserver(() => {
+      const mapCenter = this.mapInstance?.getCenter();
+      this.resizeMapBackground();
+      if (this.mapInstance && this.mode === 'map') {
+        this.mapInstance.invalidateSize({ pan: false });
+        this.mapInstance.setView(mapCenter, this.mapInstance.getZoom(), { animate: false, reset: true });
+        this.projectMapGeometry();
+      }
+      this.updateViewTransform();
+    });
+    this.resizeObserver.observe(this.container.querySelector('#dt-interactive-stage'));
   }
 
   recalculateRawBearings() {
@@ -138,7 +150,7 @@ class LuopanMapTool {
       cx: this.centerPoint.x,
       cy: this.centerPoint.y,
       radius: 350,
-      rotation: this.viewRotation,
+      rotation: this.isCalibrationLocked ? this.calibrationOffset : 0,
       houseFacing: facing,
       houseSitting: this.geometry.calculateHouseSittingBearing(facing),
       laiBearing: lai,
@@ -261,20 +273,20 @@ class LuopanMapTool {
       </style>
 
       <div class="dt-luopan-tool-root" style="display:flex; flex-direction:column; gap:1rem;">
-        
+
         <!-- 1. TOP HEADER & STATUS BAR -->
-        <header style="background:#0D111A; border:1px solid #C5B382; border-radius:12px; padding:0.85rem 1.2rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.6rem; box-shadow:0 8px 24px rgba(0,0,0,0.4);">
+        <header class="dt-tool-header" style="background:#0D111A; border:1px solid #C5B382; border-radius:12px; padding:0.85rem 1.2rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.6rem; box-shadow:0 8px 24px rgba(0,0,0,0.4);">
           <div>
-            <div style="display:inline-flex; align-items:center; gap:0.4rem; padding:0.15rem 0.5rem; background:rgba(197,179,130,0.15); border:1px solid rgba(197,179,130,0.3); border-radius:6px; font-size:0.72rem; font-weight:700; color:#F5D485; margin-bottom:0.2rem;">
+            <div class="dt-tool-kicker" style="display:inline-flex; align-items:center; gap:0.4rem; padding:0.15rem 0.5rem; background:rgba(197,179,130,0.15); border:1px solid rgba(197,179,130,0.3); border-radius:6px; font-size:0.72rem; font-weight:700; color:#F5D485; margin-bottom:0.2rem;">
               <span>🧭</span> LA KINH BẢN ĐỒ CÓ HIỆU CHUẨN THỰC ĐỊA
             </div>
-            <h2 style="margin:0; font-size:1.18rem; color:#FEF3C7; font-weight:800;">
-              Hệ Thống Đo Đạc Không Gian & Khảo Khẩu
+            <h2 class="dt-tool-title" style="margin:0; font-size:1.18rem; color:#FEF3C7; font-weight:800;">
+              La Kinh Bản Đồ · 144 Thủy Khẩu
             </h2>
           </div>
 
           <div style="display:flex; align-items:center; gap:0.6rem; flex-wrap:wrap;">
-            <div style="background:${analysis.status.color}22; color:${analysis.status.color}; border:1px solid ${analysis.status.color}55; font-size:0.78rem; font-weight:700; padding:0.35rem 0.75rem; border-radius:8px;">
+            <div id="dt-calibration-status" role="status" style="background:${analysis.status.color}22; color:${analysis.status.color}; border:1px solid ${analysis.status.color}55; font-size:0.78rem; font-weight:700; padding:0.35rem 0.75rem; border-radius:8px;">
               ${analysis.status.label}
             </div>
 
@@ -290,66 +302,61 @@ class LuopanMapTool {
         </header>
 
         <!-- 2. WORKFLOW 5 BƯỚC THAO TÁC THỰC CHIẾN -->
-        <nav style="background:#141B2B; border:1px solid rgba(255,255,255,0.1); border-radius:10px; padding:0.65rem 0.9rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.6rem;">
-          
+        <nav class="dt-workflow-toolbar" aria-label="Thao tác khảo sát" style="background:#141B2B; border:1px solid rgba(255,255,255,0.1); border-radius:10px; padding:0.65rem 0.9rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.6rem;">
+
           <div class="dt-workflow-steps">
             <span style="font-size:0.72rem; color:#94A3B8; font-weight:700; text-transform:uppercase; margin-right:0.2rem;">Quy trình:</span>
-            
+
             <button type="button" id="step-btn-1" class="dt-step-badge ${this.activeDrawTool === 'setCenter' ? 'active' : ''}">
-              1. 📍 Tâm Nhà
+              1 Tâm
             </button>
 
             <button type="button" id="step-btn-2" class="dt-step-badge ${this.activeDrawTool === 'drawFrontage' ? 'active' : ''}">
-              2. 📐 Mặt Tiền
+              2 Mặt tiền
             </button>
 
             <button type="button" id="step-btn-3" class="dt-step-badge ${this.activeDrawTool === 'drawWater' ? 'active' : ''}">
-              3. 🌊 Tuyến Nước
+              3 Tuyến
             </button>
 
             <button type="button" id="btn-reverse-water" class="dt-step-badge" style="color:#38BDF8; border-color:rgba(56,189,248,0.3);">
-              4. 🔄 Chiều Nước (${this.flowDirection === 'forward' ? 'Tả ➔ Hữu' : 'Hữu ➔ Tả'})
+              4 Chiều ${this.flowDirection === 'forward' ? '→' : '←'}
             </button>
 
             <button type="button" id="step-btn-select" class="dt-step-badge ${this.activeDrawTool === 'select' ? 'active' : ''}">
-              🖱️ Chọn / Kéo
+              Chọn/Kéo
             </button>
           </div>
 
-          <div style="display:flex; align-items:center; gap:0.4rem; flex-wrap:wrap;">
+          <div class="dt-secondary-actions" style="display:flex; align-items:center; gap:0.4rem; flex-wrap:wrap;">
             <button type="button" id="btn-flip-frontside" class="dt-touch-btn" style="background:#1E293B; color:#FEF3C7; border:1px solid rgba(197,179,130,0.35);">
-              ⇄ Đảo phía hướng nhà
+              ⇄ Đảo mặt tiền
             </button>
             <button type="button" id="btn-export-survey" class="dt-touch-btn" style="background:#059669; color:#FFF; border:none;">
-              📥 Xuất Phiếu Khảo Sát
+              📥 Xuất phiếu
             </button>
           </div>
         </nav>
 
         <!-- 3. MAIN WORKSPACE GRID -->
         <div class="dt-workspace-grid">
-          
+
           <!-- LEFT: INTERACTIVE CAD & LUOPAN CANVAS -->
+          <div class="dt-map-column">
           <div class="dt-stage-wrapper" id="dt-interactive-stage">
-            
+            <div class="dt-scene" id="dt-survey-scene" style="position:absolute; inset:0;">
+
             <!-- LAYER 0: MAP OR IMAGE BACKGROUND -->
-            <div id="dt-workspace-viewport" style="position:absolute; inset:0; overflow:hidden; display:flex; justify-content:center; align-items:center;">
-              ${this.mode === 'image' && this.imageSrc ? `
-                <img id="dt-user-img" src="${this.imageSrc}" style="width:100%; height:100%; object-fit:contain; opacity:0.65; pointer-events:none;" />
-              ` : `
-                <div id="dt-map-mount" style="position:absolute; inset:0; ${this.mode === 'map' ? 'z-index:1;' : 'display:none;'}"></div>
-                ${!this.imageSrc && this.mode === 'image' ? `
-                  <div style="text-align:center; color:#64748B; padding:1.5rem; z-index:2;">
-                    <div style="font-size:2.8rem; margin-bottom:0.4rem;">🛰️</div>
-                    <p style="font-size:0.9rem; margin-bottom:0.6rem; color:#FEF3C7; font-weight:700;">Chưa tải ảnh nền thực địa</p>
-                    <p style="font-size:0.78rem; margin-bottom:1rem; max-width:360px; color:#94A3B8; line-height:1.5;">Tải ảnh vệ tinh Google Maps hoặc bản vẽ CAD mặt bằng để đo đạc góc tương đối.</p>
-                    <label class="dt-touch-btn" style="background:#1E293B; color:#FEF3C7; border:1px solid #C5B382;">
-                      <span>📁</span> Chọn Ảnh Vệ Tinh / CAD
-                      <input type="file" id="input-upload-image" accept="image/*" style="display:none;" />
-                    </label>
-                  </div>
-                ` : ''}
-              `}
+            <div id="dt-workspace-viewport" style="position:absolute; inset:0; display:flex; justify-content:center; align-items:center;">
+              <div id="dt-map-mount" style="position:absolute; inset:0; z-index:1; display:none;"></div>
+              <img id="dt-user-img" alt="Ảnh nền khảo sát" style="width:100%; height:100%; object-fit:contain; opacity:0.65; pointer-events:none; display:none;" />
+              <div id="dt-image-empty" style="text-align:center; color:#94A3B8; padding:1rem; z-index:20;">
+                <p style="font-size:0.85rem; color:#FEF3C7;">Chọn ảnh nền hoặc Bản Đồ Vệ Tinh để bắt đầu.</p>
+                <label class="dt-touch-btn" style="background:#1E293B; color:#FEF3C7; border:1px solid #C5B382;">
+                  📁 Chọn ảnh / CAD
+                  <input type="file" id="input-upload-image" accept="image/*" style="display:none;" />
+                </label>
+              </div>
             </div>
 
             <!-- LAYER 1: TECHNICAL TRANSPARENT LUOPAN SVG (TÂM KHÓA TRÙNG TÂM NHÀ) -->
@@ -360,58 +367,271 @@ class LuopanMapTool {
             <!-- LAYER 2: INTERACTIVE CAD DRAWING OVERLAY -->
             <svg id="dt-drawing-svg" viewBox="0 0 ${this.STAGE_SIZE} ${this.STAGE_SIZE}" preserveAspectRatio="xMidYMid meet" style="position:absolute; inset:0; width:100%; height:100%; z-index:15; pointer-events:auto; touch-action:none;"></svg>
 
-            <!-- FLOATING BOTTOM BAR -->
+            </div>
+          </div>
+            <!-- View controls stay outside the observation area. -->
             <div class="dt-floating-bottom-bar">
               <div style="display:flex; align-items:center; gap:0.4rem; flex-wrap:wrap;">
                 <button type="button" id="btn-north-up" class="dt-touch-btn" style="background:#1E293B; color:#FEF3C7; border:1px solid rgba(255,255,255,0.12);">
-                  🧭 Bắc Lên
+                  Bắc Lên
                 </button>
                 <button type="button" id="btn-facing-up" class="dt-touch-btn" style="background:#1E293B; color:#38BDF8; border:1px solid rgba(56,189,248,0.35);">
-                  🏠 Hướng Lên
+                  Hướng Lên
                 </button>
                 <button type="button" id="btn-toggle-drawing" class="dt-touch-btn" style="background:#1E293B; color:#CBD5E1; border:1px solid rgba(255,255,255,0.12);">
-                  ${this.showDrawingOverlay ? '👁️ Ẩn Nét' : '👁️ Nét Vẽ'}
+                  ${this.showDrawingOverlay ? 'Ẩn Nét' : 'Hiện Nét'}
                 </button>
               </div>
 
               <div style="display:flex; align-items:center; gap:0.4rem; font-size:0.74rem; color:#94A3B8;">
                 <span>Độ mờ:</span>
-                <input type="range" id="slider-opacity" min="0.1" max="1.0" step="0.05" value="${this.luopanOpacity}" style="width:70px; cursor:pointer; accent-color:#F59E0B;" />
+                <input type="range" id="slider-opacity" aria-label="Độ mờ La Kinh" min="0.1" max="1.0" step="0.05" value="${this.luopanOpacity}" style="width:70px; cursor:pointer; accent-color:#F59E0B;" />
               </div>
             </div>
           </div>
 
           <!-- RIGHT: PANEL BỐN TẦNG LOGIC CHUẨN MỰC HỌC THUẬT -->
-          <div style="display:flex; flex-direction:column; gap:0.85rem;">
-            
+          <div class="dt-results-column" style="display:flex; flex-direction:column; gap:0.85rem;">
+
             <!-- TẦNG 0: BẢNG HIỆU CHUẨN THỰC ĐỊA -->
-            <div class="dt-panel-section" style="border-color:${this.isCalibrationLocked ? '#10B981' : '#F59E0B'};">
+            <div id="dt-calibration-panel" class="dt-panel-section" style="border-color:${this.isCalibrationLocked ? '#10B981' : '#F59E0B'};">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.6rem;">
                 <div class="dt-panel-title" style="color:#FEF3C7; margin-bottom:0;">
                   <span>⚖️</span> HIỆU CHUẨN LA KINH
                 </div>
-                <span style="font-size:0.72rem; padding:0.15rem 0.5rem; border-radius:6px; font-weight:700; background:${this.isCalibrationLocked ? '#10B98122' : '#F59E0B22'}; color:${this.isCalibrationLocked ? '#10B981' : '#F59E0B'};">
+                <span id="dt-lock-status" style="font-size:0.72rem; padding:0.15rem 0.5rem; border-radius:6px; font-weight:700; background:${this.isCalibrationLocked ? '#10B98122' : '#F59E0B22'}; color:${this.isCalibrationLocked ? '#10B981' : '#F59E0B'};">
                   ${this.isCalibrationLocked ? 'ĐÃ KHÓA' : 'CHƯA KHÓA'}
                 </span>
               </div>
 
               <div style="font-size:0.78rem; color:#94A3B8; margin-bottom:0.65rem; line-height:1.4;">
-                Nhập số đo Hướng Nhà thực địa của Thầy để khóa mốc chuẩn tuyệt đối.
+                Nhập hướng nhà đo thực địa. Sau khi khóa, vẫn kéo chỉnh được tuyến.
               </div>
 
               <div style="display:flex; gap:0.45rem; margin-bottom:0.65rem;">
-                <input type="number" id="input-measured-bearing" value="${this.measuredBearing.toFixed(1)}" step="0.1" min="0" max="360" ${this.isCalibrationLocked ? 'disabled' : ''} style="flex:1; background:#1E293B; border:1px solid rgba(255,255,255,0.18); border-radius:8px; padding:0.45rem 0.7rem; color:#FEF3C7; font-size:0.9rem; font-weight:700;" placeholder="Độ (0-360)" />
+                <input type="number" id="input-measured-bearing" aria-label="Số đo hướng nhà thực địa" inputmode="decimal" required value="${this.measuredBearing.toFixed(1)}" step="0.1" min="0" max="360" ${this.isCalibrationLocked ? 'disabled' : ''} style="flex:1; background:#1E293B; border:1px solid rgba(255,255,255,0.18); border-radius:8px; padding:0.45rem 0.7rem; color:#FEF3C7; font-size:0.9rem; font-weight:700;" placeholder="Độ (0-360)" />
                 <button type="button" id="btn-lock-calibration" class="dt-touch-btn" style="background:${this.isCalibrationLocked ? '#EF4444' : '#10B981'}; color:#FFF; border:none; padding:0.45rem 0.9rem;">
                   ${this.isCalibrationLocked ? 'Mở Khóa' : 'Khóa Chuẩn'}
                 </button>
               </div>
 
               <div style="background:#0D111A; border-radius:8px; padding:0.55rem 0.75rem; font-size:0.75rem; display:grid; grid-template-columns:1fr 1fr; gap:0.35rem;">
-                <div>Hướng Map: <strong style="color:#FEF3C7;">${this.rawFacingBearing.toFixed(2)}°</strong></div>
-                <div>Hiệu chỉnh: <strong style="color:#10B981;">${offsetFormatted}</strong></div>
+                <div>Hướng Map: <strong id="dt-raw-facing" style="color:#FEF3C7;">${this.rawFacingBearing.toFixed(2)}°</strong></div>
+                <div>Hiệu chỉnh: <strong id="dt-offset" style="color:#10B981;">${offsetFormatted}</strong></div>
               </div>
             </div>
 
+            <div id="dt-result-panels">${this.renderResultPanels(analysis)}</div>
+
+          </div>
+        </div>
+
+        <!-- 4. MODAL XUẤT PHIẾU KHẢO SÁT HIỆN TRƯỜNG -->
+        <div id="modal-survey-export" style="display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.85); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); justify-content:center; align-items:center; padding:1rem;">
+          <div style="background:#0F172A; border:1px solid #C5B382; border-radius:14px; width:100%; max-width:640px; max-height:85vh; overflow-y:auto; -webkit-overflow-scrolling:touch; padding:1.3rem; box-shadow:0 20px 50px rgba(0,0,0,0.8);">
+
+            <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(255,255,255,0.12); padding-bottom:0.8rem; margin-bottom:1rem;">
+              <h3 style="margin:0; font-size:1.15rem; color:#FEF3C7; font-weight:800; display:flex; align-items:center; gap:0.5rem;">
+                <span>📋</span> PHIẾU KHẢO SÁT PHONG THỦY THỰC ĐỊA
+              </h3>
+              <button type="button" id="btn-close-survey-x" style="background:transparent; border:none; color:#94A3B8; font-size:1.4rem; cursor:pointer; padding:0.2rem 0.5rem;">✕</button>
+            </div>
+
+            <div id="survey-export-content" style="font-size:0.84rem; color:#E2E8F0; line-height:1.7; margin-bottom:1.2rem;"></div>
+
+            <div style="display:flex; justify-content:flex-end; gap:0.6rem; flex-wrap:wrap;">
+              <button type="button" id="btn-copy-survey" class="dt-touch-btn" style="background:#1E293B; color:#FEF3C7; border:1px solid #C5B382; padding:0.5rem 1.1rem;">
+                📋 Sao Chép Báo Cáo
+              </button>
+              <button type="button" id="btn-close-survey" class="dt-touch-btn" style="background:#EF4444; color:#FFF; border:none; padding:0.5rem 1.1rem;">
+                Đóng
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    `;
+  }
+
+  initInteractiveCanvas() {
+    const svg = this.container.querySelector('#dt-drawing-svg');
+    if (!svg) return;
+    this.canvasEvents?.abort();
+    this.canvasEvents = new AbortController();
+    const options = { signal: this.canvasEvents.signal };
+    let dragTarget = null;
+    let pointerId = null;
+    const getPosition = event => {
+      const point = svg.createSVGPoint();
+      point.x = event.clientX;
+      point.y = event.clientY;
+      // Includes SVG letterboxing and the shared north/facing view transform.
+      const position = point.matrixTransform(svg.getScreenCTM().inverse());
+      return { x: position.x, y: position.y };
+    };
+    const refresh = () => {
+      this.recalculateRawBearings();
+      this.captureMapGeometry();
+      this.renderDrawingElements();
+      this.updateSvgView();
+      this.updateMeasurementsDisplay();
+    };
+    svg.addEventListener('pointerdown', event => {
+      if (!event.isPrimary || event.button !== 0) return;
+      const handle = event.target.closest('[data-drag-handle]');
+      if (this.activeDrawTool === 'setCenter' && !handle) {
+        this.centerPoint = getPosition(event);
+        refresh();
+        event.preventDefault();
+        event.stopPropagation();
+        return;
+      }
+      if (!handle) return;
+      dragTarget = handle.dataset.dragHandle;
+      pointerId = event.pointerId;
+      svg.setPointerCapture(pointerId);
+      event.preventDefault();
+      event.stopPropagation();
+    }, options);
+    svg.addEventListener('pointermove', event => {
+      if (!dragTarget || event.pointerId !== pointerId) return;
+      const position = getPosition(event);
+      if (dragTarget === 'center') this.centerPoint = position;
+      else if (dragTarget === 'frontA') this.frontageLine.pA = position;
+      else if (dragTarget === 'frontB') this.frontageLine.pB = position;
+      else if (dragTarget.startsWith('water_')) {
+        const index = Number(dragTarget.slice(6));
+        if (this.waterPolyline[index]) this.waterPolyline[index] = position;
+      }
+      refresh();
+      event.preventDefault();
+    }, options);
+    const finish = event => {
+      if (event.pointerId !== pointerId) return;
+      dragTarget = null;
+      if (svg.hasPointerCapture(pointerId)) svg.releasePointerCapture(pointerId);
+      pointerId = null;
+    };
+    svg.addEventListener('pointerup', finish, options);
+    svg.addEventListener('pointercancel', finish, options);
+    svg.addEventListener('lostpointercapture', finish, options);
+    this.renderDrawingElements();
+  }
+
+  renderDrawingElements() {
+    const svg = document.getElementById('dt-drawing-svg');
+    if (!svg) return;
+
+    svg.style.pointerEvents = this.activeDrawTool === 'setCenter' && this.showDrawingOverlay ? 'auto' : 'none';
+    if (!this.showDrawingOverlay) {
+      svg.innerHTML = '';
+      return;
+    }
+
+    const { pA, pB } = this.frontageLine;
+    const center = this.centerPoint;
+
+    // 1. Mặt tiền nhà
+    const midFrontX = (pA.x + pB.x) / 2;
+    const midFrontY = (pA.y + pB.y) / 2;
+
+    const facingRad = (this.rawFacingBearing - 90) * (Math.PI / 180);
+    const arrowLen = 70;
+    const normalEndX = midFrontX + arrowLen * Math.cos(facingRad);
+    const normalEndY = midFrontY + arrowLen * Math.sin(facingRad);
+
+    // 2. Tuyến nước
+    const polylinePoints = this.waterPolyline.map(p => `${p.x},${p.y}`).join(' ');
+
+    const waterHandles = this.waterPolyline.map((p, idx) => {
+      const isFirst = idx === 0;
+      const isLast = idx === this.waterPolyline.length - 1;
+
+      let isLai = false;
+      let isKhu = false;
+      if (this.flowDirection === 'forward') {
+        isLai = isFirst;
+        isKhu = isLast;
+      } else {
+        isLai = isLast;
+        isKhu = isFirst;
+      }
+
+      const color = isLai ? '#34D399' : (isKhu ? '#38BDF8' : '#CBD5E1');
+      const label = isLai ? 'LAI' : (isKhu ? 'KHỨ' : String(idx));
+      return `
+        <g transform="translate(${p.x}, ${p.y})">
+          <circle r="24" fill="transparent" data-drag-handle="water_${idx}" style="cursor:grab; touch-action:none; pointer-events:all;" />
+          <circle r="11" fill="${color}" stroke="#000" stroke-width="2.5" pointer-events="none" />
+          <text y="4" font-size="9" font-weight="900" fill="#000" text-anchor="middle" pointer-events="none">${label[0]}</text>
+          <text y="-16" font-size="11" font-weight="800" fill="${color}" text-anchor="middle" pointer-events="none">${label}</text>
+        </g>
+      `;
+    }).join('');
+
+    svg.innerHTML = `
+      <!-- Tuyến nước -->
+      <polyline points="${polylinePoints}" stroke="#38BDF8" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.8" />
+      <polyline points="${polylinePoints}" stroke="#0284C7" stroke-width="1.5" stroke-dasharray="6,4" fill="none" />
+      ${waterHandles}
+
+      <!-- Mặt tiền căn nhà (Đoạn A -> B) -->
+      <line x1="${pA.x}" y1="${pA.y}" x2="${pB.x}" y2="${pB.y}" stroke="#F59E0B" stroke-width="6" stroke-linecap="round" />
+      <line x1="${pA.x}" y1="${pA.y}" x2="${pB.x}" y2="${pB.y}" stroke="#FEF3C7" stroke-width="1.8" stroke-dasharray="5,4" />
+
+      <!-- Pháp tuyến hướng nhìn nhà -->
+      <line x1="${midFrontX}" y1="${midFrontY}" x2="${normalEndX}" y2="${normalEndY}" stroke="#EF4444" stroke-width="4" stroke-linecap="round" />
+      <polygon points="${normalEndX},${normalEndY} ${normalEndX-6},${normalEndY+12} ${normalEndX+6},${normalEndY+12}" fill="#EF4444" transform="rotate(${this.rawFacingBearing + 90}, ${normalEndX}, ${normalEndY})" />
+      <text x="${normalEndX}" y="${normalEndY - 14}" font-size="12" font-weight="900" fill="#EF4444" text-anchor="middle">HƯỚNG NHÀ</text>
+
+      <!-- Điểm A và Điểm B -->
+      <g transform="translate(${pA.x}, ${pA.y})">
+        <circle r="24" fill="transparent" data-drag-handle="frontA" style="cursor:grab; touch-action:none; pointer-events:all;" />
+        <circle r="10" fill="#F59E0B" stroke="#FFF" stroke-width="2.5" pointer-events="none" />
+        <text y="-14" font-size="11" font-weight="800" fill="#F5D485" text-anchor="middle" pointer-events="none">Mép A</text>
+      </g>
+      <g transform="translate(${pB.x}, ${pB.y})">
+        <circle r="24" fill="transparent" data-drag-handle="frontB" style="cursor:grab; touch-action:none; pointer-events:all;" />
+        <circle r="10" fill="#F59E0B" stroke="#FFF" stroke-width="2.5" pointer-events="none" />
+        <text y="-14" font-size="11" font-weight="800" fill="#F5D485" text-anchor="middle" pointer-events="none">Mép B</text>
+      </g>
+
+      <!-- Điểm Tâm Nhà -->
+      <g transform="translate(${center.x}, ${center.y})">
+        <circle r="24" fill="transparent" data-drag-handle="center" style="cursor:grab; touch-action:none; pointer-events:all;" />
+        <circle r="12" fill="#EF4444" stroke="#FFF" stroke-width="3" pointer-events="none" />
+        <circle r="4" fill="#FFF" pointer-events="none" />
+        <text y="-18" font-size="12" font-weight="900" fill="#EF4444" text-anchor="middle" pointer-events="none">TÂM NHÀ</text>
+      </g>
+    `;
+  }
+
+  getAnalysis() {
+    return this.classifier.classify({
+      facingBearing: this.getEffectiveFacingBearing(),
+      laiBearing: this.getEffectiveLaiBearing(),
+      khuBearing: this.getEffectiveKhuBearing(),
+      offset: this.isCalibrationLocked ? this.calibrationOffset : 0,
+      isLocked: this.isCalibrationLocked,
+      tolerance: this.measurementTolerance
+    });
+  }
+
+  formatMountain(info) {
+    if (!info) return 'Chưa đo';
+    const mountain = info.mountain;
+    const trigram = this.data.getTrigram(info.bearing).trigram;
+    return `${mountain.name} Sơn · ${mountain.type} · ${trigram.name} Quái`;
+  }
+
+  renderResultPanels(analysis = this.getAnalysis()) {
+    const facing = this.getEffectiveFacingBearing();
+    const lai = this.getEffectiveLaiBearing();
+    const khu = this.getEffectiveKhuBearing();
+    const relLai = lai === null ? null : this.calibEngine.computeRelativeBearing(facing, lai);
+    const relKhu = khu === null ? null : this.calibEngine.computeRelativeBearing(facing, khu);
+    return `
             <!-- TẦNG 1: PHÉP ĐO (MEASUREMENTS) -->
             <div class="dt-panel-section">
               <div class="dt-panel-title" style="color:#FEF3C7;">
@@ -421,12 +641,12 @@ class LuopanMapTool {
               <div style="display:flex; flex-direction:column; gap:0.4rem; font-size:0.78rem;">
                 <div style="display:flex; justify-content:space-between; padding:0.3rem 0.5rem; background:#1E293B; border-radius:6px;">
                   <span style="color:#EF4444; font-weight:700;">Hướng Nhà:</span>
-                  <strong style="color:#EF4444;">${facing.toFixed(2)}°</strong>
+                  <strong style="color:#EF4444;">${facing.toFixed(2)}° · ${analysis.facing.mountain.name} Sơn</strong>
                 </div>
 
                 <div style="display:flex; justify-content:space-between; padding:0.3rem 0.5rem; background:#1E293B; border-radius:6px;">
                   <span style="color:#FBBF24; font-weight:700;">Tọa Nhà:</span>
-                  <strong style="color:#FBBF24;">${analysis.sitting.bearing.toFixed(2)}°</strong>
+                  <strong style="color:#FBBF24;">${analysis.sitting.bearing.toFixed(2)}° · ${analysis.sitting.mountain.name} Sơn</strong>
                 </div>
 
                 <div style="display:flex; flex-direction:column; gap:0.15rem; padding:0.3rem 0.5rem; background:#1E293B; border-radius:6px;">
@@ -434,6 +654,7 @@ class LuopanMapTool {
                     <span style="color:#34D399; font-weight:700;">Lai Thủy (Đến):</span>
                     <strong style="color:#34D399;">${lai !== null ? `${lai.toFixed(2)}°` : 'Chưa đo'}</strong>
                   </div>
+                  <div class="dt-bearing-label" data-bearing-label="lai">${this.formatMountain(analysis.lai)}</div>
                   ${relLai !== null ? `
                     <div style="font-size:0.72rem; color:#94A3B8; padding-left:0.3rem;">
                       ↳ So với hướng nhà: <strong style="color:#34D399;">${relLai >= 0 ? '+' : ''}${relLai.toFixed(2)}° (${relLai >= 0 ? 'lệch phải' : 'lệch trái'})</strong>
@@ -446,6 +667,7 @@ class LuopanMapTool {
                     <span style="color:#38BDF8; font-weight:700;">Khứ Thủy (Đi):</span>
                     <strong style="color:#38BDF8;">${khu !== null ? `${khu.toFixed(2)}°` : 'Chưa đo'}</strong>
                   </div>
+                  <div class="dt-bearing-label" data-bearing-label="khu">${this.formatMountain(analysis.khu)}</div>
                   ${relKhu !== null ? `
                     <div style="font-size:0.72rem; color:#94A3B8; padding-left:0.3rem;">
                       ↳ So với hướng nhà: <strong style="color:#38BDF8;">${relKhu >= 0 ? '+' : ''}${relKhu.toFixed(2)}° (${relKhu >= 0 ? 'lệch phải' : 'lệch trái'})</strong>
@@ -567,283 +789,37 @@ class LuopanMapTool {
               `)}
             </div>
 
-          </div>
-        </div>
-
-        <!-- 4. MODAL XUẤT PHIẾU KHẢO SÁT HIỆN TRƯỜNG -->
-        <div id="modal-survey-export" style="display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.85); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); justify-content:center; align-items:center; padding:1rem;">
-          <div style="background:#0F172A; border:1px solid #C5B382; border-radius:14px; width:100%; max-width:640px; max-height:85vh; overflow-y:auto; -webkit-overflow-scrolling:touch; padding:1.3rem; box-shadow:0 20px 50px rgba(0,0,0,0.8);">
-            
-            <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(255,255,255,0.12); padding-bottom:0.8rem; margin-bottom:1rem;">
-              <h3 style="margin:0; font-size:1.15rem; color:#FEF3C7; font-weight:800; display:flex; align-items:center; gap:0.5rem;">
-                <span>📋</span> PHIẾU KHẢO SÁT PHONG THỦY THỰC ĐỊA
-              </h3>
-              <button type="button" id="btn-close-survey-x" style="background:transparent; border:none; color:#94A3B8; font-size:1.4rem; cursor:pointer; padding:0.2rem 0.5rem;">✕</button>
-            </div>
-
-            <div id="survey-export-content" style="font-size:0.84rem; color:#E2E8F0; line-height:1.7; margin-bottom:1.2rem;"></div>
-
-            <div style="display:flex; justify-content:flex-end; gap:0.6rem; flex-wrap:wrap;">
-              <button type="button" id="btn-copy-survey" class="dt-touch-btn" style="background:#1E293B; color:#FEF3C7; border:1px solid #C5B382; padding:0.5rem 1.1rem;">
-                📋 Sao Chép Báo Cáo
-              </button>
-              <button type="button" id="btn-close-survey" class="dt-touch-btn" style="background:#EF4444; color:#FFF; border:none; padding:0.5rem 1.1rem;">
-                Đóng
-              </button>
-            </div>
-          </div>
-        </div>
-
-      </div>
     `;
   }
 
-  initInteractiveCanvas() {
-    const svgOverlay = document.getElementById('dt-drawing-svg');
-    if (!svgOverlay) return;
-
-    this.renderDrawingElements();
-
-    let isPointerDown = false;
-    let dragTarget = null;
-
-    const getSvgCoords = (e) => {
-      const clientX = e.touches && e.touches.length > 0 ? e.touches[0].clientX : e.clientX;
-      const clientY = e.touches && e.touches.length > 0 ? e.touches[0].clientY : e.clientY;
-
-      try {
-        const pt = svgOverlay.createSVGPoint();
-        pt.x = clientX;
-        pt.y = clientY;
-        const ctm = svgOverlay.getScreenCTM();
-        if (ctm) {
-          const transformed = pt.matrixTransform(ctm.inverse());
-          return {
-            x: Math.round(transformed.x),
-            y: Math.round(transformed.y)
-          };
-        }
-      } catch (err) {}
-
-      const rect = svgOverlay.getBoundingClientRect();
-      const scaleX = this.STAGE_SIZE / rect.width;
-      const scaleY = this.STAGE_SIZE / rect.height;
-      return {
-        x: Math.round((clientX - rect.left) * scaleX),
-        y: Math.round((clientY - rect.top) * scaleY)
-      };
-    };
-
-    svgOverlay.addEventListener('mousedown', (e) => {
-      const pos = getSvgCoords(e);
-      if (this.activeDrawTool === 'setCenter') {
-        this.centerPoint = pos;
-        this.renderDrawingElements();
-        this.updateSvgView();
-        return;
-      }
-
-      const target = e.target.closest('[data-drag-handle]');
-      if (target) {
-        isPointerDown = true;
-        dragTarget = target.dataset.dragHandle;
-      }
-    });
-
-    window.addEventListener('mousemove', (e) => {
-      if (!isPointerDown || !dragTarget) return;
-      const pos = getSvgCoords(e);
-
-      if (dragTarget === 'center') {
-        this.centerPoint = pos;
-      } else if (dragTarget === 'frontA') {
-        this.frontageLine.pA = pos;
-        this.recalculateRawBearings();
-      } else if (dragTarget === 'frontB') {
-        this.frontageLine.pB = pos;
-        this.recalculateRawBearings();
-      } else if (dragTarget.startsWith('water_')) {
-        const idx = parseInt(dragTarget.split('_')[1], 10);
-        if (!isNaN(idx) && this.waterPolyline[idx]) {
-          this.waterPolyline[idx] = pos;
-        }
-      }
-
-      this.renderDrawingElements();
-      this.updateMeasurementsDisplay();
-    });
-
-    window.addEventListener('mouseup', () => {
-      if (isPointerDown) {
-        isPointerDown = false;
-        dragTarget = null;
-        this.updateSvgView();
-      }
-    });
-
-    svgOverlay.addEventListener('touchstart', (e) => {
-      const pos = getSvgCoords(e);
-      if (this.activeDrawTool === 'setCenter') {
-        this.centerPoint = pos;
-        this.renderDrawingElements();
-        this.updateSvgView();
-        e.preventDefault();
-        return;
-      }
-
-      const target = e.target.closest('[data-drag-handle]');
-      if (target) {
-        isPointerDown = true;
-        dragTarget = target.dataset.dragHandle;
-        e.preventDefault();
-      }
-    }, { passive: false });
-
-    window.addEventListener('touchmove', (e) => {
-      if (!isPointerDown || !dragTarget) return;
-      const pos = getSvgCoords(e);
-
-      if (dragTarget === 'center') {
-        this.centerPoint = pos;
-      } else if (dragTarget === 'frontA') {
-        this.frontageLine.pA = pos;
-        this.recalculateRawBearings();
-      } else if (dragTarget === 'frontB') {
-        this.frontageLine.pB = pos;
-        this.recalculateRawBearings();
-      } else if (dragTarget.startsWith('water_')) {
-        const idx = parseInt(dragTarget.split('_')[1], 10);
-        if (!isNaN(idx) && this.waterPolyline[idx]) {
-          this.waterPolyline[idx] = pos;
-        }
-      }
-
-      this.renderDrawingElements();
-      this.updateMeasurementsDisplay();
-      e.preventDefault();
-    }, { passive: false });
-
-    window.addEventListener('touchend', () => {
-      if (isPointerDown) {
-        isPointerDown = false;
-        dragTarget = null;
-        this.updateSvgView();
-      }
-    });
-  }
-
-  renderDrawingElements() {
-    const svg = document.getElementById('dt-drawing-svg');
-    if (!svg) return;
-
-    if (!this.showDrawingOverlay) {
-      svg.innerHTML = '';
-      return;
-    }
-
-    const { pA, pB } = this.frontageLine;
-    const center = this.centerPoint;
-
-    // 1. Mặt tiền nhà
-    const midFrontX = (pA.x + pB.x) / 2;
-    const midFrontY = (pA.y + pB.y) / 2;
-
-    const facingRad = (this.rawFacingBearing - 90) * (Math.PI / 180);
-    const arrowLen = 70;
-    const normalEndX = midFrontX + arrowLen * Math.cos(facingRad);
-    const normalEndY = midFrontY + arrowLen * Math.sin(facingRad);
-
-    // 2. Tuyến nước
-    const polylinePoints = this.waterPolyline.map(p => `${p.x},${p.y}`).join(' ');
-
-    const waterHandles = this.waterPolyline.map((p, idx) => {
-      const isFirst = idx === 0;
-      const isLast = idx === this.waterPolyline.length - 1;
-      
-      let isLai = false;
-      let isKhu = false;
-      if (this.flowDirection === 'forward') {
-        isLai = isFirst;
-        isKhu = isLast;
-      } else {
-        isLai = isLast;
-        isKhu = isFirst;
-      }
-
-      const color = isLai ? '#34D399' : (isKhu ? '#38BDF8' : '#CBD5E1');
-      const label = isLai ? 'LAI' : (isKhu ? 'KHỨ' : String(idx));
-      return `
-        <g transform="translate(${p.x}, ${p.y})">
-          <circle r="24" fill="transparent" data-drag-handle="water_${idx}" style="cursor:grab; touch-action:none;" />
-          <circle r="11" fill="${color}" stroke="#000" stroke-width="2.5" pointer-events="none" />
-          <text y="4" font-size="9" font-weight="900" fill="#000" text-anchor="middle" pointer-events="none">${label[0]}</text>
-          <text y="-16" font-size="11" font-weight="800" fill="${color}" text-anchor="middle" pointer-events="none">${label}</text>
-        </g>
-      `;
-    }).join('');
-
-    svg.innerHTML = `
-      <!-- Tuyến nước -->
-      <polyline points="${polylinePoints}" stroke="#38BDF8" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.8" />
-      <polyline points="${polylinePoints}" stroke="#0284C7" stroke-width="1.5" stroke-dasharray="6,4" fill="none" />
-      ${waterHandles}
-
-      <!-- Mặt tiền căn nhà (Đoạn A -> B) -->
-      <line x1="${pA.x}" y1="${pA.y}" x2="${pB.x}" y2="${pB.y}" stroke="#F59E0B" stroke-width="6" stroke-linecap="round" />
-      <line x1="${pA.x}" y1="${pA.y}" x2="${pB.x}" y2="${pB.y}" stroke="#FEF3C7" stroke-width="1.8" stroke-dasharray="5,4" />
-
-      <!-- Pháp tuyến hướng nhìn nhà -->
-      <line x1="${midFrontX}" y1="${midFrontY}" x2="${normalEndX}" y2="${normalEndY}" stroke="#EF4444" stroke-width="4" stroke-linecap="round" />
-      <polygon points="${normalEndX},${normalEndY} ${normalEndX-6},${normalEndY+12} ${normalEndX+6},${normalEndY+12}" fill="#EF4444" transform="rotate(${this.rawFacingBearing + 90}, ${normalEndX}, ${normalEndY})" />
-      <text x="${normalEndX}" y="${normalEndY - 14}" font-size="12" font-weight="900" fill="#EF4444" text-anchor="middle">HƯỚNG NHÀ</text>
-
-      <!-- Điểm A và Điểm B -->
-      <g transform="translate(${pA.x}, ${pA.y})">
-        <circle r="24" fill="transparent" data-drag-handle="frontA" style="cursor:grab; touch-action:none;" />
-        <circle r="10" fill="#F59E0B" stroke="#FFF" stroke-width="2.5" pointer-events="none" />
-        <text y="-14" font-size="11" font-weight="800" fill="#F5D485" text-anchor="middle" pointer-events="none">Mép A</text>
-      </g>
-      <g transform="translate(${pB.x}, ${pB.y})">
-        <circle r="24" fill="transparent" data-drag-handle="frontB" style="cursor:grab; touch-action:none;" />
-        <circle r="10" fill="#F59E0B" stroke="#FFF" stroke-width="2.5" pointer-events="none" />
-        <text y="-14" font-size="11" font-weight="800" fill="#F5D485" text-anchor="middle" pointer-events="none">Mép B</text>
-      </g>
-
-      <!-- Điểm Tâm Nhà -->
-      <g transform="translate(${center.x}, ${center.y})">
-        <circle r="24" fill="transparent" data-drag-handle="center" style="cursor:grab; touch-action:none;" />
-        <circle r="12" fill="#EF4444" stroke="#FFF" stroke-width="3" pointer-events="none" />
-        <circle r="4" fill="#FFF" pointer-events="none" />
-        <text y="-18" font-size="12" font-weight="900" fill="#EF4444" text-anchor="middle" pointer-events="none">TÂM NHÀ</text>
-      </g>
-    `;
+  updateCalibrationUI(analysis = this.getAnalysis()) {
+    const find = id => this.container.querySelector(`#${id}`);
+    const locked = this.isCalibrationLocked;
+    const color = locked ? '#10B981' : '#F59E0B';
+    find('dt-calibration-panel').style.borderColor = color;
+    const badge = find('dt-lock-status');
+    badge.textContent = locked ? 'ĐÃ KHÓA' : 'CHƯA KHÓA';
+    badge.style.color = color;
+    badge.style.background = `${color}22`;
+    const input = find('input-measured-bearing');
+    input.disabled = locked;
+    if (locked) input.value = this.measuredBearing.toFixed(1);
+    const button = find('btn-lock-calibration');
+    button.textContent = locked ? 'Mở Khóa' : 'Khóa Chuẩn';
+    button.style.background = locked ? '#EF4444' : '#10B981';
+    find('dt-raw-facing').textContent = `${this.rawFacingBearing.toFixed(2)}°`;
+    find('dt-offset').textContent = this.calibEngine.formatOffset(locked ? this.calibrationOffset : 0);
+    const status = find('dt-calibration-status');
+    status.textContent = analysis.status.label;
+    status.style.color = analysis.status.color;
+    status.style.background = `${analysis.status.color}22`;
+    status.style.borderColor = `${analysis.status.color}55`;
   }
 
   updateMeasurementsDisplay() {
-    const facing = this.getEffectiveFacingBearing();
-    const lai = this.getEffectiveLaiBearing();
-    const khu = this.getEffectiveKhuBearing();
-
-    const analysis = this.classifier.classify({
-      facingBearing: facing,
-      laiBearing: lai,
-      khuBearing: khu,
-      offset: this.calibrationOffset,
-      isLocked: this.isCalibrationLocked,
-      tolerance: this.measurementTolerance
-    });
-
-    const facingEl = document.querySelector('.dt-luopan-tool-root strong[style*="#EF4444"]');
-    if (facingEl) facingEl.textContent = `${facing.toFixed(2)}°`;
-
-    const sittingEl = document.querySelector('.dt-luopan-tool-root strong[style*="#FBBF24"]');
-    if (sittingEl) sittingEl.textContent = `${analysis.sitting.bearing.toFixed(2)}°`;
-
-    const laiEl = document.querySelector('.dt-luopan-tool-root strong[style*="#34D399"]');
-    if (laiEl && analysis.lai) laiEl.textContent = `${analysis.lai.bearing.toFixed(2)}°`;
-
-    const khuEl = document.querySelector('.dt-luopan-tool-root strong[style*="#38BDF8"]');
-    if (khuEl && analysis.khu) khuEl.textContent = `${analysis.khu.bearing.toFixed(2)}°`;
+    const analysis = this.getAnalysis();
+    this.container.querySelector('#dt-result-panels').innerHTML = this.renderResultPanels(analysis);
+    this.updateCalibrationUI(analysis);
   }
 
   updateSvgView() {
@@ -862,11 +838,12 @@ class LuopanMapTool {
       tolerance: this.measurementTolerance
     });
 
+    this.updateViewTransform();
     mount.innerHTML = this.renderer.render({
       cx: this.centerPoint.x,
       cy: this.centerPoint.y,
       radius: 350,
-      rotation: this.viewRotation,
+      rotation: this.isCalibrationLocked ? this.calibrationOffset : 0,
       houseFacing: facing,
       houseSitting: this.geometry.calculateHouseSittingBearing(facing),
       laiBearing: lai,
@@ -890,9 +867,7 @@ class LuopanMapTool {
           const reader = new FileReader();
           reader.onload = (evt) => {
             this.imageSrc = evt.target.result;
-            this.renderLayout();
-            this.bindEvents();
-            this.initInteractiveCanvas();
+            this.updateBackground();
           };
           reader.readAsDataURL(file);
         }
@@ -910,6 +885,7 @@ class LuopanMapTool {
         if (btn) btn.classList.remove('active');
       });
       if (activeBtn) activeBtn.classList.add('active');
+      this.renderDrawingElements();
     };
 
     if (step1) step1.addEventListener('click', () => { this.activeDrawTool = 'setCenter'; updateStepBadges(step1); });
@@ -934,7 +910,7 @@ class LuopanMapTool {
     if (btnReverseWater) {
       btnReverseWater.addEventListener('click', () => {
         this.flowDirection = this.flowDirection === 'forward' ? 'reverse' : 'forward';
-        btnReverseWater.textContent = `4. 🔄 Chiều Nước (${this.flowDirection === 'forward' ? 'Tả ➔ Hữu' : 'Hữu ➔ Tả'})`;
+        btnReverseWater.textContent = `4 Chiều ${this.flowDirection === 'forward' ? '→' : '←'}`;
         this.renderDrawingElements();
         this.updateSvgView();
         this.updateMeasurementsDisplay();
@@ -945,7 +921,7 @@ class LuopanMapTool {
     if (btnToggleDrawing) {
       btnToggleDrawing.addEventListener('click', () => {
         this.showDrawingOverlay = !this.showDrawingOverlay;
-        btnToggleDrawing.textContent = this.showDrawingOverlay ? '👁️ Ẩn Nét' : '👁️ Nét Vẽ';
+        btnToggleDrawing.textContent = this.showDrawingOverlay ? 'Ẩn Nét' : 'Hiện Nét';
         this.renderDrawingElements();
       });
     }
@@ -962,7 +938,7 @@ class LuopanMapTool {
     const btnFacingUp = document.getElementById('btn-facing-up');
     if (btnFacingUp) {
       btnFacingUp.addEventListener('click', () => {
-        this.viewRotation = this.getEffectiveFacingBearing();
+        this.viewRotation = this.rawFacingBearing;
         this.updateSvgView();
       });
     }
@@ -982,17 +958,18 @@ class LuopanMapTool {
       btnLock.addEventListener('click', () => {
         if (this.isCalibrationLocked) {
           this.isCalibrationLocked = false;
+          this.calibrationOffset = 0;
         } else {
+          if (!inputMeasured.reportValidity()) return;
           const val = parseFloat(inputMeasured.value);
-          if (!isNaN(val)) {
+          if (Number.isFinite(val)) {
             this.measuredBearing = this.calibEngine.normalize360(val);
             this.calibrationOffset = this.calibEngine.computeOffset(this.rawFacingBearing, this.measuredBearing);
             this.isCalibrationLocked = true;
           }
         }
-        this.renderLayout();
-        this.bindEvents();
-        this.initInteractiveCanvas();
+        this.updateMeasurementsDisplay();
+        this.updateSvgView();
       });
     }
 
@@ -1081,48 +1058,210 @@ class LuopanMapTool {
     }
   }
 
-  switchMode(newMode) {
-    if (this.mode === newMode) return;
-    this.mode = newMode;
-    this.renderLayout();
-    this.bindEvents();
-    this.initInteractiveCanvas();
+  updateViewTransform() {
+    const stage = this.container.querySelector('#dt-interactive-stage');
+    const scene = this.container.querySelector('#dt-survey-scene');
+    scene.style.transformOrigin = '50% 50%';
+    scene.style.transform = `rotate(${-this.viewRotation}deg)`;
+    this.container.querySelector('#btn-north-up').setAttribute('aria-pressed', String(this.viewRotation === 0));
+    this.container.querySelector('#btn-facing-up').setAttribute('aria-pressed', String(this.viewRotation !== 0));
+  }
 
+  updateBackground() {
+    const find = id => this.container.querySelector(`#${id}`);
+    find('dt-map-mount').style.display = this.mode === 'map' ? 'block' : 'none';
+    const img = find('dt-user-img');
+    if (this.imageSrc) img.src = this.imageSrc;
+    img.style.display = this.mode === 'image' && this.imageSrc ? 'block' : 'none';
+    find('dt-image-empty').style.display = this.mode === 'image' && !this.imageSrc ? 'block' : 'none';
+    ['image', 'map'].forEach(mode => {
+      const btn = find(`btn-mode-${mode}`);
+      btn.style.background = this.mode === mode ? (mode === 'map' ? '#38BDF8' : '#FBBF24') : 'transparent';
+      btn.style.color = this.mode === mode ? '#000' : '#CBD5E1';
+      btn.setAttribute('aria-pressed', String(this.mode === mode));
+    });
     if (this.mode === 'map') {
-      setTimeout(() => {
-        this.initLeafletMap();
-      }, 100);
+      this.initLeafletMap();
+      this.captureMapGeometry();
     }
+    const controls = this.container.querySelector('.leaflet-control-container');
+    if (controls) controls.style.display = this.mode === 'map' ? 'block' : 'none';
+  }
+
+  switchMode(newMode) {
+    if (this.mapInstance && this.mode === 'map') {
+      const center = this.mapInstance.getCenter();
+      this.surveyCenterLatLng = [center.lat, center.lng];
+      this.zoomLevel = this.mapInstance.getZoom();
+    }
+    this.mode = newMode;
+    this.updateBackground();
+  }
+
+  getMapProjection() {
+    const stage = this.container.querySelector('#dt-interactive-stage');
+    const scale = Math.min(stage.clientWidth, stage.clientHeight) / this.STAGE_SIZE;
+    const mapSize = this.mapInstance.getSize();
+    return { scale, x: (mapSize.x - this.STAGE_SIZE * scale) / 2,
+      y: (mapSize.y - this.STAGE_SIZE * scale) / 2 };
+  }
+
+  captureMapGeometry() {
+    if (!this.mapInstance || this.mode !== 'map') return;
+    const projection = this.getMapProjection();
+    const toLatLng = point => this.mapInstance.containerPointToLatLng([
+      point.x * projection.scale + projection.x, point.y * projection.scale + projection.y
+    ]);
+    this.mapGeometry = {
+      center: toLatLng(this.centerPoint),
+      frontA: toLatLng(this.frontageLine.pA), frontB: toLatLng(this.frontageLine.pB),
+      water: this.waterPolyline.map(toLatLng)
+    };
+  }
+
+  projectMapGeometry() {
+    if (!this.mapGeometry || this.mode !== 'map') return;
+    const projection = this.getMapProjection();
+    const toPoint = latLng => {
+      // Leaflet's latLngToContainerPoint rounds each point independently.
+      // Use continuous projection so pan/zoom cannot change measured angles.
+      const point = this.mapInstance.project(latLng)
+        .subtract(this.mapInstance.project(this.mapInstance.getCenter()))
+        .add(this.mapInstance.getSize().divideBy(2));
+      return { x: (point.x - projection.x) / projection.scale, y: (point.y - projection.y) / projection.scale };
+    };
+    this.centerPoint = toPoint(this.mapGeometry.center);
+    this.frontageLine.pA = toPoint(this.mapGeometry.frontA);
+    this.frontageLine.pB = toPoint(this.mapGeometry.frontB);
+    this.waterPolyline = this.mapGeometry.water.map(toPoint);
+    this.recalculateRawBearings();
+    this.renderDrawingElements();
+    this.updateSvgView();
+    this.updateMeasurementsDisplay();
+  }
+
+  resizeMapBackground() {
+    const stage = this.container.querySelector('#dt-interactive-stage');
+    const mount = this.container.querySelector('#dt-map-mount');
+    // A diagonal-sized tile surface fills the viewport at every view angle.
+    const size = Math.ceil(Math.hypot(stage.clientWidth, stage.clientHeight));
+    Object.assign(mount.style, {
+      inset: 'auto', width: `${size}px`, height: `${size}px`,
+      left: `${(stage.clientWidth - size) / 2}px`, top: `${(stage.clientHeight - size) / 2}px`
+    });
+  }
+
+  bindMapGestures(mount) {
+    const map = this.mapInstance;
+    const pointers = new Map();
+    const options = { signal: this.canvasEvents.signal, passive: false };
+    let gesture = null;
+    const mapPoint = event => {
+      const svg = this.container.querySelector('#dt-drawing-svg');
+      const point = svg.createSVGPoint();
+      point.x = event.clientX;
+      point.y = event.clientY;
+      const raw = point.matrixTransform(svg.getScreenCTM().inverse());
+      const projection = this.getMapProjection();
+      return L.point(raw.x * projection.scale + projection.x, raw.y * projection.scale + projection.y);
+    };
+    const midpoint = () => {
+      const points = [...pointers.values()];
+      return points.length === 1 ? points[0] : points[0].add(points[1]).divideBy(2);
+    };
+    const distance = () => {
+      const points = [...pointers.values()];
+      return points.length < 2 ? 0 : points[0].distanceTo(points[1]);
+    };
+    const rebase = () => {
+      gesture = pointers.size ? {
+        anchor: map.containerPointToLatLng(midpoint()), zoom: map.getZoom(), distance: distance()
+      } : null;
+    };
+    const moveAnchor = (anchor, point, zoom) => {
+      const limitedZoom = Math.max(map.getMinZoom(), Math.min(map.getMaxZoom(), zoom));
+      const center = map.project(anchor, limitedZoom).subtract(point).add(map.getSize().divideBy(2));
+      map.setView(map.unproject(center, limitedZoom), limitedZoom, { animate: false });
+    };
+    // Inverse-transform gestures as well as pixels: dragging and pinching stay
+    // under the finger in Hướng Lên, including non-cardinal view angles.
+    mount.addEventListener('pointerdown', event => {
+      if (event.button !== 0) return;
+      pointers.set(event.pointerId, mapPoint(event));
+      mount.setPointerCapture(event.pointerId);
+      rebase();
+      event.preventDefault();
+    }, options);
+    mount.addEventListener('pointermove', event => {
+      if (!pointers.has(event.pointerId)) return;
+      pointers.set(event.pointerId, mapPoint(event));
+      const zoom = gesture.zoom + (pointers.size > 1 && gesture.distance > 0
+        ? Math.log2(Math.max(1, distance()) / gesture.distance) : 0);
+      moveAnchor(gesture.anchor, midpoint(), zoom);
+      event.preventDefault();
+    }, options);
+    const finish = event => {
+      if (!pointers.has(event.pointerId)) return;
+      pointers.delete(event.pointerId);
+      rebase();
+      if (mount.hasPointerCapture(event.pointerId)) mount.releasePointerCapture(event.pointerId);
+    };
+    mount.addEventListener('pointerup', finish, options);
+    mount.addEventListener('pointercancel', finish, options);
+    mount.addEventListener('lostpointercapture', finish, options);
+    mount.addEventListener('wheel', event => {
+      const point = mapPoint(event);
+      moveAnchor(map.containerPointToLatLng(point), point, map.getZoom() - Math.sign(event.deltaY));
+      event.preventDefault();
+    }, options);
   }
 
   initLeafletMap() {
-    const mount = document.getElementById('dt-map-mount');
+    const mount = this.container.querySelector('#dt-map-mount');
     if (!mount || typeof L === 'undefined') return;
-
+    this.resizeMapBackground();
     if (!this.mapInstance) {
-      this.mapInstance = L.map('dt-map-mount', {
+      this.mapInstance = L.map(mount, {
         center: this.surveyCenterLatLng,
         zoom: this.zoomLevel,
-        zoomControl: false
+        zoomControl: false,
+        trackResize: false,
+        dragging: false,
+        touchZoom: false,
+        scrollWheelZoom: false,
+        doubleClickZoom: false,
+        boxZoom: false,
+        zoomSnap: 0,
+        zoomAnimation: false
       });
-
       L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
         attribution: 'Esri Satellite',
         maxZoom: 21,
         maxNativeZoom: 19
       }).addTo(this.mapInstance);
-
+      // Keep controls outside rotated scene and above drawing handles.
       L.control.zoom({ position: 'topright' }).addTo(this.mapInstance);
-
-      // Đồng bộ vị trí tâm khảo sát khi di chuyển map
-      this.mapInstance.on('move', () => {
+      this.container.querySelector('#dt-interactive-stage').appendChild(this.mapInstance._controlContainer);
+      this.captureMapGeometry();
+      this.bindMapGestures(mount);
+      this.mapInstance.on('move zoom', () => this.projectMapGeometry());
+      this.mapInstance.on('moveend zoomend', () => {
         const center = this.mapInstance.getCenter();
         this.surveyCenterLatLng = [center.lat, center.lng];
+        this.zoomLevel = this.mapInstance.getZoom();
       });
-    } else {
-      setTimeout(() => {
-        this.mapInstance.invalidateSize();
-      }, 150);
+    }
+    this.mapInstance.invalidateSize({ pan: false });
+    this.mapInstance.setView(this.surveyCenterLatLng, this.zoomLevel, { animate: false, reset: true });
+  }
+
+  destroy() {
+    this.resizeObserver?.disconnect();
+    this.canvasEvents?.abort();
+    if (this.mapInstance) {
+      this.mapInstance.remove();
+      this.mapInstance = null;
+      this.mapGeometry = null;
     }
   }
 }

@@ -38,13 +38,19 @@ class ToolUI {
   }
 
   render(tab = 'diachat64') {
-    this.currentToolTab = tab;
     const container = document.getElementById('gate-tools');
     if (!container) return;
 
+    clearTimeout(this.luopanInitTimer);
+    this.luopanInitTimer = null;
+    window.currentLuopanTool?.destroy?.();
+    window.currentLuopanTool = null;
+    this.currentToolTab = tab;
+    container.classList.toggle('gate-tools--lakinh', tab === 'lakinhbando');
+
     container.innerHTML = `
-      <div style="max-width:1200px; margin:0 auto; padding-bottom:3rem;">
-        <header style="margin-bottom:2rem; text-align:center;">
+      <div class="tool-page${tab === 'lakinhbando' ? ' tool-page--lakinh' : ''}" style="max-width:1200px; margin:0 auto; padding-bottom:3rem;">
+        <header class="tool-page-intro" style="margin-bottom:2rem; text-align:center;">
           <div style="display:inline-block; padding:0.25rem 0.8rem; background:rgba(245,158,11,0.12); border:1px solid rgba(245,158,11,0.3); border-radius:20px; font-size:0.8rem; font-weight:700; color:#FBBF24; margin-bottom:0.6rem;">
             BÀN TÍNH TAM TÀI
           </div>
@@ -56,7 +62,7 @@ class ToolUI {
           </p>
         </header>
 
-        <div style="display:flex; justify-content:center; gap:0.4rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:0.8rem; margin-bottom:1.5rem; flex-wrap:wrap;">
+        <div class="tool-page-tabs" aria-label="Các công cụ phong thủy" style="display:flex; justify-content:center; gap:0.4rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:0.8rem; margin-bottom:1.5rem; flex-wrap:wrap;">
                     <button onclick="window.toolUI.render('lakinhbando')" style="background:${this.currentToolTab === 'lakinhbando' ? 'rgba(245,158,11,0.35)' : 'rgba(245,158,11,0.1)'}; border:1px solid ${this.currentToolTab === 'lakinhbando' ? '#FBBF24' : 'rgba(245,158,11,0.3)'}; color:#FEF3C7; padding:0.35rem 0.85rem; border-radius:20px; font-weight:800; font-size:0.8rem; cursor:pointer; transition:all 0.15s ease;">
             🧭 La Kinh Bản Đồ (144 Khẩu)
           </button>
@@ -99,8 +105,9 @@ class ToolUI {
     `;
 
     if (this.currentToolTab === 'lakinhbando') {
-      setTimeout(() => {
-        if (window.LuopanMapTool) {
+      this.luopanInitTimer = setTimeout(() => {
+        this.luopanInitTimer = null;
+        if (this.currentToolTab === 'lakinhbando' && document.getElementById('dt-luopan-map-mount') && window.LuopanMapTool) {
           window.currentLuopanTool = new window.LuopanMapTool();
           window.currentLuopanTool.init('dt-luopan-map-mount');
         }
