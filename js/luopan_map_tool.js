@@ -1,14 +1,12 @@
 /**
- * CÔNG CỤ TƯƠNG TÁC THỰC CHIẾN: LA KINH BẢN ĐỒ – 144 THỦY KHẨU (HOÀN THIỆN 100%)
- * Tích hợp:
- * 1. Chế độ Ảnh / Mặt bằng CAD + Bản đồ vệ tinh Leaflet GIS.
- * 2. Bộ công cụ vẽ & kéo thả trực quan (Interactive CAD Drawing Overlay):
- *    - Chấm tâm nhà
- *    - Vẽ/kéo mặt tiền nhà + Dựng pháp tuyến hướng nhìn
- *    - Vẽ đường sá / sông ngòi (Polyline) + Chỉ định điểm Lai (Đến) / Khứ (Đi)
- * 3. Hiệu chuẩn thực địa (Calibration Engine) tự động tính Offset và bù góc.
- * 4. La Kinh Vector SVG toán học đa tầng, xoay "Hướng nhà lên trên".
- * 5. Xuất phiếu khảo sát phong thủy (Export Survey Session).
+ * CÔNG CỤ TƯƠNG TÁC THỰC CHIẾN: LA KINH BẢN ĐỒ – 144 THỦY KHẨU (HOÀN THIỆN 100% CHO MOBILE & DESKTOP)
+ * Đặc điểm tối ưu hóa di động:
+ * 1. Hệ tọa độ chuẩn hóa ViewBox (0 0 800 800) đồng bộ hoàn toàn giữa SVG vẽ CAD và SVG La Kinh.
+ * 2. Vòng chạm cảm ứng vô hình (Invisible Touch Target r=24 ~ đường kính 48px) đạt chuẩn công thái học di động W3C.
+ * 3. Chuyển đổi tọa độ Touch/Mouse chính xác 100% bằng W3C getScreenCTM().inverse().
+ * 4. Khóa cuộn trang (touch-action: none) khi tương tác vẽ & kéo thả mốc.
+ * 5. Layout Responsive tự động 1 cột trên điện thoại / máy tính bảng; thanh công cụ đáy gom gọn, không bị đè lấn.
+ * 6. Modal xuất phiếu khảo sát hỗ trợ cuộn mượt mà trên iOS và Android (-webkit-overflow-scrolling: touch).
  */
 
 class LuopanMapTool {
@@ -17,47 +15,42 @@ class LuopanMapTool {
     this.activeDrawTool = 'select'; // 'select', 'setCenter', 'drawFrontage', 'drawWater'
     this.container = null;
 
-    // Động cơ
+    // Động cơ tính toán & hiển thị
     this.geometry = window.LuopanGeometry;
     this.data = window.LuopanData;
-    this.renderer = new window.LuopanSvgRenderer({ size: 680 });
+    this.STAGE_SIZE = 800; // Khung tọa độ logic chuẩn hóa 800x800
+    this.renderer = new window.LuopanSvgRenderer({ size: this.STAGE_SIZE });
     this.classifier = new window.LuopanClassifier();
 
-    // Dữ liệu hình học thực địa (Tọa độ phẳng màn hình/ảnh)
-    this.centerPoint = { x: 350, y: 320 };
+    // Dữ liệu hình học thực địa (Tọa độ logic chuẩn hóa 800x800)
+    this.centerPoint = { x: 400, y: 400 };
     this.frontageLine = {
-      pA: { x: 260, y: 320 },
-      pB: { x: 440, y: 320 },
-      frontSide: 'right' // 'right' (hướng xuống/Nam), 'left' (hướng lên/Bắc)
+      pA: { x: 290, y: 400 },
+      pB: { x: 510, y: 400 },
+      frontSide: 'right' // 'right' (nhìn xuống), 'left' (nhìn lên)
     };
     this.waterPolyline = [
-      { x: 140, y: 160 }, // Lai Thủy (Nước đến)
-      { x: 350, y: 210 },
-      { x: 560, y: 460 }  // Khứ Thủy (Nước đi)
+      { x: 190, y: 220 }, // Lai Thủy (Nước đến)
+      { x: 400, y: 270 },
+      { x: 610, y: 580 }  // Khứ Thủy (Nước đi)
     ];
 
-    // Dữ liệu tọa độ địa lý (Leaflet GIS)
-    this.centerLatLng = [21.0285, 105.8542];
-    this.frontageLatLng = null;
-    this.waterLatLngs = [];
+    // Dữ liệu Leaflet GIS
+    this.mapInstance = null;
+    this.centerLatLng = [21.028511, 105.854444];
+    this.zoomLevel = 19;
 
-    // Trạng thái hiệu chuẩn & đo đạc
-    this.rawFacingBearing = 180;
-    this.measuredBearing = 180;
-    this.calibrationOffset = 0;
+    // Dữ liệu hiệu chuẩn (Calibration)
+    this.rawFacingBearing = 180.0;
+    this.measuredBearing = 180.0;
+    this.calibrationOffset = 0.0;
     this.isCalibrationLocked = false;
 
-    // Viewport & Settings
-    this.viewRotation = 0; // 0 = Bắc lên trên
+    // Viewport & Hiển thị
+    this.viewRotation = 0; // 0 = Bắc lên trên, hoặc -facing
     this.luopanOpacity = 0.85;
-    this.luopanScale = 1.0;
     this.showDrawingOverlay = true;
     this.imageSrc = null;
-    this.mapInstance = null;
-
-    // Kéo thả handles
-    this.draggedHandle = null;
-    this.tempWaterPoints = [];
   }
 
   init(containerId) {
@@ -115,6 +108,9 @@ class LuopanMapTool {
     });
 
     const luopanSvgHtml = this.renderer.render({
+      cx: this.centerPoint.x,
+      cy: this.centerPoint.y,
+      radius: 350,
       rotation: this.viewRotation,
       houseFacing: facing,
       houseSitting: this.geometry.calculateHouseSittingBearing(facing),
@@ -125,75 +121,188 @@ class LuopanMapTool {
     });
 
     this.container.innerHTML = `
-      <div class="dt-luopan-tool-root" style="display:flex; flex-direction:column; gap:1.2rem; max-width:1240px; margin:0 auto; font-family:'Be Vietnam Pro', sans-serif;">
+      <style>
+        /* CSS RESPONSIVE & MOBILE TỐI ƯU HÓA HOÀN HẢO */
+        .dt-luopan-tool-root {
+          box-sizing: border-box;
+          width: 100%;
+          max-width: 1240px;
+          margin: 0 auto;
+          font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+          color: #E2E8F0;
+        }
+        .dt-luopan-tool-root * {
+          box-sizing: border-box;
+        }
+        .dt-workspace-grid {
+          display: grid;
+          grid-template-columns: 1fr 360px;
+          gap: 1.2rem;
+          align-items: start;
+        }
+        @media (max-width: 992px) {
+          .dt-workspace-grid {
+            grid-template-columns: 1fr !important;
+          }
+        }
+        .dt-touch-btn {
+          min-height: 40px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.4rem;
+          padding: 0.4rem 0.8rem;
+          border-radius: 8px;
+          font-weight: 700;
+          font-size: 0.82rem;
+          cursor: pointer;
+          touch-action: manipulation;
+          transition: background 0.15s ease, transform 0.1s ease;
+          user-select: none;
+          -webkit-user-select: none;
+        }
+        .dt-touch-btn:active {
+          transform: scale(0.97);
+        }
+        .dt-action-bar-row {
+          display: flex;
+          align-items: center;
+          gap: 0.45rem;
+          flex-wrap: wrap;
+        }
+        @media (max-width: 600px) {
+          .dt-action-bar-row {
+            width: 100%;
+            justify-content: space-between;
+          }
+          .dt-action-bar-row > .dt-touch-btn {
+            flex: 1 1 calc(50% - 0.45rem);
+            font-size: 0.76rem;
+            padding: 0.35rem 0.5rem;
+          }
+        }
+        /* Thanh nổi đáy responsive */
+        .dt-floating-bottom-bar {
+          position: absolute;
+          bottom: 12px;
+          left: 12px;
+          right: 12px;
+          z-index: 25;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          gap: 0.5rem;
+          flex-wrap: wrap;
+          background: rgba(15, 23, 42, 0.9);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          padding: 0.4rem 0.75rem;
+          border-radius: 10px;
+          border: 1px solid rgba(255, 255, 255, 0.15);
+          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+        }
+        @media (max-width: 640px) {
+          .dt-floating-bottom-bar {
+            bottom: 8px;
+            left: 8px;
+            right: 8px;
+            padding: 0.35rem 0.5rem;
+            gap: 0.35rem;
+          }
+          .dt-floating-bottom-bar .dt-touch-btn {
+            font-size: 0.72rem;
+            padding: 0.3rem 0.5rem;
+            min-height: 34px;
+          }
+        }
+        .dt-stage-wrapper {
+          position: relative;
+          width: 100%;
+          aspect-ratio: 1 / 1;
+          max-height: min(85vw, 680px);
+          background: #080C14;
+          border: 1px solid rgba(255, 255, 255, 0.15);
+          border-radius: 14px;
+          overflow: hidden;
+          box-shadow: 0 12px 36px rgba(0,0,0,0.6);
+          touch-action: none; /* Khóa cuộn trang khi chạm vào Stage */
+          user-select: none;
+          -webkit-user-select: none;
+        }
+      </style>
+
+      <div class="dt-luopan-tool-root" style="display:flex; flex-direction:column; gap:1rem;">
         
-        <!-- 1. TOP HEADER & STATUS BAR -->
-        <header style="background:#0D111A; border:1px solid #C5B382; border-radius:14px; padding:1rem 1.4rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.8rem; box-shadow:0 8px 24px rgba(0,0,0,0.4);">
+        <!-- 1. TOP HEADER & STATUS -->
+        <header style="background:#0D111A; border:1px solid #C5B382; border-radius:12px; padding:0.9rem 1.2rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.6rem; box-shadow:0 8px 24px rgba(0,0,0,0.4);">
           <div>
-            <div style="display:inline-flex; align-items:center; gap:0.4rem; padding:0.2rem 0.6rem; background:rgba(197,179,130,0.15); border:1px solid rgba(197,179,130,0.3); border-radius:6px; font-size:0.75rem; font-weight:700; color:#F5D485; margin-bottom:0.3rem;">
-              <span>🧭</span> LA KINH BẢN ĐỒ CÓ HIỆU CHUẨN THỰC ĐỊA (144 THỦY KHẨU)
+            <div style="display:inline-flex; align-items:center; gap:0.4rem; padding:0.15rem 0.5rem; background:rgba(197,179,130,0.15); border:1px solid rgba(197,179,130,0.3); border-radius:6px; font-size:0.72rem; font-weight:700; color:#F5D485; margin-bottom:0.25rem;">
+              <span>🧭</span> LA KINH BẢN ĐỒ CÓ HIỆU CHUẨN THỰC ĐỊA
             </div>
-            <h2 style="margin:0; font-size:1.3rem; color:#FEF3C7; font-weight:800;">
-              Hệ Thống Đo Đạc Không Gian & Khảo Khẩu
+            <h2 style="margin:0; font-size:1.18rem; color:#FEF3C7; font-weight:800;">
+              Hệ Thống Khảo Khẩu & Đo Đạc Không Gian
             </h2>
           </div>
 
-          <div style="display:flex; align-items:center; gap:0.75rem; flex-wrap:wrap;">
-            <div class="dt-badge" style="background:${analysis.status.color}22; color:${analysis.status.color}; border:1px solid ${analysis.status.color}55; font-size:0.82rem; font-weight:700; padding:0.4rem 0.85rem; border-radius:8px;">
+          <div style="display:flex; align-items:center; gap:0.6rem; flex-wrap:wrap;">
+            <div style="background:${analysis.status.color}22; color:${analysis.status.color}; border:1px solid ${analysis.status.color}55; font-size:0.78rem; font-weight:700; padding:0.35rem 0.75rem; border-radius:8px;">
               ${analysis.status.label}
             </div>
 
-            <div style="display:flex; gap:0.3rem; background:#1E293B; padding:0.25rem; border-radius:8px; border:1px solid rgba(255,255,255,0.1);">
-              <button type="button" id="btn-mode-image" style="background:${this.mode === 'image' ? '#FBBF24' : 'transparent'}; color:${this.mode === 'image' ? '#000' : '#CBD5E1'}; border:none; padding:0.4rem 0.8rem; border-radius:6px; font-size:0.8rem; font-weight:700; cursor:pointer;">
+            <div style="display:flex; gap:0.25rem; background:#1E293B; padding:0.2rem; border-radius:8px; border:1px solid rgba(255,255,255,0.1);">
+              <button type="button" id="btn-mode-image" class="dt-touch-btn" style="background:${this.mode === 'image' ? '#FBBF24' : 'transparent'}; color:${this.mode === 'image' ? '#000' : '#CBD5E1'}; border:none; min-height:34px; padding:0.25rem 0.65rem;">
                 📷 Tải Ảnh / CAD
               </button>
-              <button type="button" id="btn-mode-map" style="background:${this.mode === 'map' ? '#38BDF8' : 'transparent'}; color:${this.mode === 'map' ? '#000' : '#CBD5E1'}; border:none; padding:0.4rem 0.8rem; border-radius:6px; font-size:0.8rem; font-weight:700; cursor:pointer;">
+              <button type="button" id="btn-mode-map" class="dt-touch-btn" style="background:${this.mode === 'map' ? '#38BDF8' : 'transparent'}; color:${this.mode === 'map' ? '#000' : '#CBD5E1'}; border:none; min-height:34px; padding:0.25rem 0.65rem;">
                 🗺️ Bản Đồ Vệ Tinh
               </button>
             </div>
           </div>
         </header>
 
-        <!-- 2. CAD DRAWING ACTION BAR (BỘ CÔNG CỤ VẼ & ĐẶT MỐC) -->
-        <nav style="background:#141B2B; border:1px solid rgba(255,255,255,0.1); border-radius:10px; padding:0.6rem 1rem; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:0.6rem;">
-          <div style="display:flex; align-items:center; gap:0.45rem; flex-wrap:wrap;">
-            <span style="font-size:0.75rem; color:#94A3B8; font-weight:700; text-transform:uppercase; margin-right:0.3rem;">Thao tác:</span>
+        <!-- 2. CAD DRAWING ACTION BAR -->
+        <nav style="background:#141B2B; border:1px solid rgba(255,255,255,0.1); border-radius:10px; padding:0.6rem 0.9rem; display:flex; flex-direction:column; gap:0.6rem;">
+          
+          <!-- Hàng 1: Các chế độ chọn và vẽ -->
+          <div class="dt-action-bar-row">
+            <span style="font-size:0.72rem; color:#94A3B8; font-weight:700; text-transform:uppercase;">Đặt mốc:</span>
             
-            <button type="button" id="tool-btn-select" class="dt-tool-mode-btn ${this.activeDrawTool === 'select' ? 'active' : ''}" style="background:${this.activeDrawTool === 'select' ? '#F5D485' : '#1E293B'}; color:${this.activeDrawTool === 'select' ? '#000' : '#E2E8F0'}; border:1px solid rgba(255,255,255,0.15); padding:0.35rem 0.75rem; border-radius:6px; font-size:0.78rem; font-weight:700; cursor:pointer;">
-              🖱️ Chọn / Di Chuyển Điểm
+            <button type="button" id="tool-btn-select" class="dt-touch-btn dt-tool-btn" style="background:${this.activeDrawTool === 'select' ? '#F5D485' : '#1E293B'}; color:${this.activeDrawTool === 'select' ? '#000' : '#E2E8F0'}; border:1px solid rgba(255,255,255,0.15);">
+              🖱️ Chọn / Kéo
             </button>
 
-            <button type="button" id="tool-btn-center" class="dt-tool-mode-btn ${this.activeDrawTool === 'setCenter' ? 'active' : ''}" style="background:${this.activeDrawTool === 'setCenter' ? '#EF4444' : '#1E293B'}; color:${this.activeDrawTool === 'setCenter' ? '#FFF' : '#E2E8F0'}; border:1px solid rgba(255,255,255,0.15); padding:0.35rem 0.75rem; border-radius:6px; font-size:0.78rem; font-weight:700; cursor:pointer;">
-              📍 Chấm Tâm Nhà
+            <button type="button" id="tool-btn-center" class="dt-touch-btn dt-tool-btn" style="background:${this.activeDrawTool === 'setCenter' ? '#EF4444' : '#1E293B'}; color:${this.activeDrawTool === 'setCenter' ? '#FFF' : '#E2E8F0'}; border:1px solid rgba(255,255,255,0.15);">
+              📍 Tâm Nhà
             </button>
 
-            <button type="button" id="tool-btn-frontage" class="dt-tool-mode-btn ${this.activeDrawTool === 'drawFrontage' ? 'active' : ''}" style="background:${this.activeDrawTool === 'drawFrontage' ? '#F59E0B' : '#1E293B'}; color:${this.activeDrawTool === 'drawFrontage' ? '#000' : '#E2E8F0'}; border:1px solid rgba(255,255,255,0.15); padding:0.35rem 0.75rem; border-radius:6px; font-size:0.78rem; font-weight:700; cursor:pointer;">
-              📐 Kéo Mặt Tiền Nhà
+            <button type="button" id="tool-btn-frontage" class="dt-touch-btn dt-tool-btn" style="background:${this.activeDrawTool === 'drawFrontage' ? '#F59E0B' : '#1E293B'}; color:${this.activeDrawTool === 'drawFrontage' ? '#000' : '#E2E8F0'}; border:1px solid rgba(255,255,255,0.15);">
+              📐 Mặt Tiền
             </button>
 
-            <button type="button" id="tool-btn-water" class="dt-tool-mode-btn ${this.activeDrawTool === 'drawWater' ? 'active' : ''}" style="background:${this.activeDrawTool === 'drawWater' ? '#38BDF8' : '#1E293B'}; color:${this.activeDrawTool === 'drawWater' ? '#000' : '#E2E8F0'}; border:1px solid rgba(255,255,255,0.15); padding:0.35rem 0.75rem; border-radius:6px; font-size:0.78rem; font-weight:700; cursor:pointer;">
-              🌊 Vẽ Tuyến Nước / Đường
+            <button type="button" id="tool-btn-water" class="dt-touch-btn dt-tool-btn" style="background:${this.activeDrawTool === 'drawWater' ? '#38BDF8' : '#1E293B'}; color:${this.activeDrawTool === 'drawWater' ? '#000' : '#E2E8F0'}; border:1px solid rgba(255,255,255,0.15);">
+              🌊 Tuyến Nước
             </button>
           </div>
 
-          <div style="display:flex; align-items:center; gap:0.4rem; flex-wrap:wrap;">
-            <button type="button" id="btn-flip-frontside" title="Đổi hướng nhìn phía trước mặt tiền nhà" style="background:#1E293B; color:#FEF3C7; border:1px solid rgba(197,179,130,0.3); padding:0.35rem 0.65rem; border-radius:6px; font-size:0.76rem; font-weight:600; cursor:pointer;">
-              ⇄ Đổi Hướng Nhìn Nhà
+          <!-- Hàng 2: Các nút hành động đảo chiều & xuất phiếu -->
+          <div class="dt-action-bar-row">
+            <button type="button" id="btn-flip-frontside" class="dt-touch-btn" style="background:#1E293B; color:#FEF3C7; border:1px solid rgba(197,179,130,0.35);">
+              ⇄ Đổi Hướng Nhà
             </button>
-            <button type="button" id="btn-reverse-water" title="Đảo chiều nước: Điểm đầu thành Khứ, điểm cuối thành Lai" style="background:#1E293B; color:#38BDF8; border:1px solid rgba(56,189,248,0.3); padding:0.35rem 0.65rem; border-radius:6px; font-size:0.76rem; font-weight:600; cursor:pointer;">
+            <button type="button" id="btn-reverse-water" class="dt-touch-btn" style="background:#1E293B; color:#38BDF8; border:1px solid rgba(56,189,248,0.35);">
               🔄 Đảo Chiều Nước (Lai ⇄ Khứ)
             </button>
-            <button type="button" id="btn-export-survey" title="Xuất phiếu kết quả khảo sát phong thủy" style="background:#059669; color:#FFF; border:none; padding:0.35rem 0.8rem; border-radius:6px; font-size:0.76rem; font-weight:700; cursor:pointer;">
+            <button type="button" id="btn-export-survey" class="dt-touch-btn" style="background:#059669; color:#FFF; border:none; margin-left:auto;">
               📥 Xuất Phiếu Khảo Sát
             </button>
           </div>
         </nav>
 
         <!-- 3. MAIN WORKSPACE GRID -->
-        <div style="display:grid; grid-template-columns: 1fr 350px; gap:1.2rem; align-items:start;">
+        <div class="dt-workspace-grid">
           
-          <!-- LEFT: INTERACTIVE CANVAS CONTAINER -->
-          <div id="dt-interactive-stage" style="background:#080C14; border:1px solid rgba(255,255,255,0.12); border-radius:14px; overflow:hidden; position:relative; min-height:600px; display:flex; justify-content:center; align-items:center; box-shadow:0 12px 36px rgba(0,0,0,0.6); user-select:none;">
+          <!-- LEFT: INTERACTIVE CAD & LUOPAN CANVAS -->
+          <div class="dt-stage-wrapper" id="dt-interactive-stage">
             
             <!-- LAYER 0: MAP OR IMAGE BACKGROUND -->
             <div id="dt-workspace-viewport" style="position:absolute; inset:0; overflow:hidden; display:flex; justify-content:center; align-items:center;">
@@ -202,12 +311,12 @@ class LuopanMapTool {
               ` : `
                 <div id="dt-map-mount" style="position:absolute; inset:0; ${this.mode === 'map' ? 'z-index:1;' : 'display:none;'}"></div>
                 ${!this.imageSrc && this.mode === 'image' ? `
-                  <div style="text-align:center; color:#64748B; padding:2rem; z-index:2;">
-                    <div style="font-size:3rem; margin-bottom:0.5rem;">🛰️</div>
-                    <p style="font-size:0.92rem; margin-bottom:0.8rem; color:#FEF3C7; font-weight:600;">Chưa có ảnh nền thực địa.</p>
-                    <p style="font-size:0.82rem; margin-bottom:1.2rem; max-width:400px; color:#94A3B8;">Tải ảnh chụp vệ tinh Google Maps hoặc bản vẽ CAD mặt bằng khu đất để đo đạc chính xác góc tương đối.</p>
-                    <label style="background:#1E293B; color:#FEF3C7; border:1px solid #C5B382; padding:0.55rem 1.1rem; border-radius:8px; font-size:0.84rem; font-weight:700; cursor:pointer; display:inline-flex; align-items:center; gap:0.45rem;">
-                      <span>📁</span> Chọn Ảnh Vệ Tinh / Mặt Bằng
+                  <div style="text-align:center; color:#64748B; padding:1.5rem; z-index:2;">
+                    <div style="font-size:2.8rem; margin-bottom:0.4rem;">🛰️</div>
+                    <p style="font-size:0.9rem; margin-bottom:0.6rem; color:#FEF3C7; font-weight:700;">Chưa tải ảnh nền thực địa</p>
+                    <p style="font-size:0.78rem; margin-bottom:1rem; max-width:360px; color:#94A3B8; line-height:1.5;">Tải ảnh chụp vệ tinh Google Maps hoặc ảnh bản vẽ CAD mặt bằng để đo đạc chính xác góc tương đối.</p>
+                    <label class="dt-touch-btn" style="background:#1E293B; color:#FEF3C7; border:1px solid #C5B382;">
+                      <span>📁</span> Chọn Ảnh Vệ Tinh / CAD
                       <input type="file" id="input-upload-image" accept="image/*" style="display:none;" />
                     </label>
                   </div>
@@ -215,177 +324,171 @@ class LuopanMapTool {
               `}
             </div>
 
-            <!-- LAYER 1: INTERACTIVE CAD DRAWING SVG OVERLAY -->
-            <svg id="dt-drawing-svg" style="position:absolute; inset:0; width:100%; height:100%; z-index:15; pointer-events:auto;"></svg>
-
-            <!-- LAYER 2: VECTOR LUOPAN SVG OVERLAY -->
-            <div id="dt-luopan-svg-container" style="position:absolute; z-index:10; width:88%; max-width:620px; aspect-ratio:1/1; pointer-events:none; transition:transform 0.15s ease-out;">
+            <!-- LAYER 1: VECTOR LUOPAN SVG OVERLAY (TÂM TRÙNG TÂM NHÀ) -->
+            <div id="dt-luopan-svg-container" style="position:absolute; inset:0; width:100%; height:100%; z-index:10; pointer-events:none; transition:opacity 0.15s ease-out;">
               ${luopanSvgHtml}
             </div>
 
-            <!-- FLOATING VIEWPORT ACTION TOOLBAR -->
-            <div style="position:absolute; bottom:14px; left:14px; z-index:25; display:flex; gap:0.5rem; background:rgba(15,23,42,0.88); backdrop-filter:blur(10px); padding:0.4rem; border-radius:8px; border:1px solid rgba(255,255,255,0.15);">
-              <button type="button" id="btn-north-up" title="Khôi phục hướng Bắc lên trên" style="background:#1E293B; color:#FEF3C7; border:1px solid rgba(255,255,255,0.1); padding:0.35rem 0.65rem; border-radius:6px; font-size:0.75rem; font-weight:700; cursor:pointer;">
-                🧭 Bắc Lên Trên
-              </button>
-              <button type="button" id="btn-facing-up" title="Xoay hướng nhà hướng lên đỉnh màn hình" style="background:#1E293B; color:#38BDF8; border:1px solid rgba(56,189,248,0.3); padding:0.35rem 0.65rem; border-radius:6px; font-size:0.75rem; font-weight:700; cursor:pointer;">
-                🏠 Hướng Nhà Lên Trên
-              </button>
-              <button type="button" id="btn-toggle-drawing" title="Ẩn/Hiện đường vẽ hình học" style="background:#1E293B; color:#CBD5E1; border:1px solid rgba(255,255,255,0.1); padding:0.35rem 0.65rem; border-radius:6px; font-size:0.75rem; cursor:pointer;">
-                ${this.showDrawingOverlay ? '👁️ Ẩn Nét Vẽ' : '👁️ Hiện Nét Vẽ'}
-              </button>
-            </div>
+            <!-- LAYER 2: INTERACTIVE CAD DRAWING SVG OVERLAY (CÙNG VIEWBOX 0 0 800 800) -->
+            <svg id="dt-drawing-svg" viewBox="0 0 ${this.STAGE_SIZE} ${this.STAGE_SIZE}" preserveAspectRatio="xMidYMid meet" style="position:absolute; inset:0; width:100%; height:100%; z-index:15; pointer-events:auto; touch-action:none;"></svg>
 
-            <!-- OPACITY SLIDER (GÓC PHẢI DƯỚI) -->
-            <div style="position:absolute; bottom:14px; right:14px; z-index:25; background:rgba(15,23,42,0.88); backdrop-filter:blur(10px); padding:0.35rem 0.75rem; border-radius:8px; border:1px solid rgba(255,255,255,0.15); display:flex; align-items:center; gap:0.55rem; font-size:0.74rem; color:#94A3B8;">
-              <span>Độ mờ La Kinh:</span>
-              <input type="range" id="slider-opacity" min="0.1" max="1.0" step="0.05" value="${this.luopanOpacity}" style="width:75px; cursor:pointer;" />
+            <!-- FLOATING CONTROL BAR ĐÁY STAGE (RESPONSIVE 1 HÀNG) -->
+            <div class="dt-floating-bottom-bar">
+              <div style="display:flex; align-items:center; gap:0.4rem; flex-wrap:wrap;">
+                <button type="button" id="btn-north-up" class="dt-touch-btn" style="background:#1E293B; color:#FEF3C7; border:1px solid rgba(255,255,255,0.12);">
+                  🧭 Bắc Lên
+                </button>
+                <button type="button" id="btn-facing-up" class="dt-touch-btn" style="background:#1E293B; color:#38BDF8; border:1px solid rgba(56,189,248,0.35);">
+                  🏠 Hướng Lên
+                </button>
+                <button type="button" id="btn-toggle-drawing" class="dt-touch-btn" style="background:#1E293B; color:#CBD5E1; border:1px solid rgba(255,255,255,0.12);">
+                  ${this.showDrawingOverlay ? '👁️ Ẩn Nét' : '👁️ Nét Vẽ'}
+                </button>
+              </div>
+
+              <!-- Opacity slider -->
+              <div style="display:flex; align-items:center; gap:0.4rem; font-size:0.74rem; color:#94A3B8;">
+                <span>Độ mờ:</span>
+                <input type="range" id="slider-opacity" min="0.1" max="1.0" step="0.05" value="${this.luopanOpacity}" style="width:70px; cursor:pointer; accent-color:#F59E0B;" />
+              </div>
             </div>
           </div>
 
           <!-- RIGHT: CALIBRATION & MEASUREMENT SIDEBAR -->
-          <div style="display:flex; flex-direction:column; gap:1rem;">
+          <div style="display:flex; flex-direction:column; gap:0.9rem;">
             
             <!-- 1. BẢNG HIỆU CHUẨN THỰC ĐỊA -->
-            <div style="background:#111827; border:1px solid ${this.isCalibrationLocked ? '#10B981' : '#F59E0B'}; border-radius:12px; padding:1.1rem; box-shadow:0 8px 24px rgba(0,0,0,0.35);">
+            <div style="background:#111827; border:1px solid ${this.isCalibrationLocked ? '#10B981' : '#F59E0B'}; border-radius:12px; padding:1rem; box-shadow:0 8px 24px rgba(0,0,0,0.35);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem;">
-                <span style="font-size:0.76rem; font-weight:800; color:#FEF3C7; text-transform:uppercase; letter-spacing:0.04em;">
-                  1. Hiệu Chuẩn Thực Địa
-                </span>
-                <span style="font-size:0.72rem; font-weight:700; color:${this.isCalibrationLocked ? '#34D399' : '#FBBF24'};">
-                  ${this.isCalibrationLocked ? '🔒 ĐÃ KHÓA' : '🔓 CHƯA KHÓA'}
-                </span>
-              </div>
-
-              <div style="font-size:0.78rem; color:#94A3B8; margin-bottom:0.8rem; line-height:1.5;">
-                Góc ảnh chỉ mang tính tương đối. Nhập góc đo bằng La Kinh hiện trường để khóa mốc chuẩn cho toàn bộ nhà & dòng nước.
-              </div>
-
-              <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.6rem; margin-bottom:0.8rem;">
-                <div style="background:#1A2234; padding:0.5rem 0.7rem; border-radius:8px;">
-                  <span style="font-size:0.7rem; color:#64748B; display:block;">RAW Hình Học</span>
-                  <strong style="font-size:1.05rem; color:#CBD5E1;">${this.rawFacingBearing.toFixed(1)}°</strong>
+                <div style="font-size:0.86rem; font-weight:800; color:#FEF3C7; display:flex; align-items:center; gap:0.4rem;">
+                  <span>⚖️</span> HIỆU CHUẨN LA KINH
                 </div>
-                <div style="background:#1A2234; padding:0.5rem 0.7rem; border-radius:8px;">
-                  <span style="font-size:0.7rem; color:#64748B; display:block;">Độ Bù Offset</span>
-                  <strong style="font-size:1.05rem; color:${this.calibrationOffset >= 0 ? '#34D399' : '#F87171'};">${this.calibrationOffset >= 0 ? '+' : ''}${this.calibrationOffset.toFixed(1)}°</strong>
-                </div>
+                <span style="font-size:0.72rem; padding:0.15rem 0.5rem; border-radius:6px; font-weight:700; background:${this.isCalibrationLocked ? '#10B98122' : '#F59E0B22'}; color:${this.isCalibrationLocked ? '#10B981' : '#F59E0B'};">
+                  ${this.isCalibrationLocked ? 'ĐÃ KHÓA' : 'CHỜ KHÓA'}
+                </span>
               </div>
 
-              <div style="margin-bottom:0.9rem;">
-                <label for="input-measured-bearing" style="display:block; font-size:0.75rem; font-weight:700; color:#E2E8F0; margin-bottom:0.35rem;">
-                  Số Đo La Kinh Thực Tế Tại Nhà (°):
-                </label>
-                <div style="display:flex; gap:0.5rem;">
-                  <input type="number" id="input-measured-bearing" min="0" max="359.9" step="0.1" value="${this.measuredBearing.toFixed(1)}" style="flex:1; background:#0B0F17; color:#FEF3C7; border:1px solid rgba(197,179,130,0.4); border-radius:6px; padding:0.45rem 0.6rem; font-size:0.95rem; font-weight:800; outline:none;" />
-                  <button type="button" id="btn-lock-calibration" style="background:${this.isCalibrationLocked ? '#059669' : '#D97706'}; color:#FFF; border:none; padding:0.45rem 0.85rem; border-radius:6px; font-size:0.8rem; font-weight:700; cursor:pointer;">
-                    ${this.isCalibrationLocked ? 'Mở Khóa' : 'Khóa Chuẩn'}
-                  </button>
+              <div style="font-size:0.8rem; color:#94A3B8; margin-bottom:0.75rem; line-height:1.5;">
+                Nhập số đo Hướng Nhà bằng La Kinh thực địa của Thầy để bù trừ sai số với ảnh vệ tinh/bản vẽ.
+              </div>
+
+              <div style="display:flex; gap:0.5rem; margin-bottom:0.75rem;">
+                <input type="number" id="input-measured-bearing" value="${this.measuredBearing.toFixed(1)}" step="0.1" min="0" max="360" ${this.isCalibrationLocked ? 'disabled' : ''} style="flex:1; background:#1E293B; border:1px solid rgba(255,255,255,0.18); border-radius:8px; padding:0.5rem 0.75rem; color:#FEF3C7; font-size:0.92rem; font-weight:700;" placeholder="Nhập độ (0-360)" />
+                <button type="button" id="btn-lock-calibration" class="dt-touch-btn" style="background:${this.isCalibrationLocked ? '#EF4444' : '#10B981'}; color:#FFF; border:none; padding:0.5rem 1rem;">
+                  ${this.isCalibrationLocked ? 'Mở Khóa' : 'Khóa Chuẩn'}
+                </button>
+              </div>
+
+              <div style="background:#0D111A; border-radius:8px; padding:0.6rem 0.8rem; font-size:0.76rem; display:grid; grid-template-columns:1fr 1fr; gap:0.4rem;">
+                <div>Góc bản vẽ: <strong style="color:#FEF3C7;">${this.rawFacingBearing.toFixed(1)}°</strong></div>
+                <div>Hiệu chuẩn: <strong style="color:#10B981;">${this.calibrationOffset >= 0 ? '+' : ''}${this.calibrationOffset.toFixed(1)}°</strong></div>
+              </div>
+            </div>
+
+            <!-- 2. BẢNG THÔNG SỐ KHẢO SÁT TỨ THỦY -->
+            <div style="background:#111827; border:1px solid rgba(255,255,255,0.1); border-radius:12px; padding:1rem;">
+              <div style="font-size:0.86rem; font-weight:800; color:#FEF3C7; margin-bottom:0.75rem; display:flex; align-items:center; gap:0.4rem;">
+                <span>📐</span> THÔNG SỐ ĐO ĐẠC
+              </div>
+
+              <div style="display:flex; flex-direction:column; gap:0.45rem; font-size:0.8rem;">
+                <div style="display:flex; justify-content:space-between; padding:0.35rem 0.5rem; background:#1E293B; border-radius:6px;">
+                  <span style="color:#EF4444; font-weight:700;">🏠 Hướng Nhà:</span>
+                  <strong style="color:#EF4444;">${analysis.facing.bearing.toFixed(1)}° (${analysis.facing.mountain.name} Sơn)</strong>
+                </div>
+
+                <div style="display:flex; justify-content:space-between; padding:0.35rem 0.5rem; background:#1E293B; border-radius:6px;">
+                  <span style="color:#FBBF24; font-weight:700;">⛰️ Tọa Nhà:</span>
+                  <strong style="color:#FBBF24;">${analysis.sitting.bearing.toFixed(1)}° (${analysis.sitting.mountain.name} Sơn)</strong>
+                </div>
+
+                <div style="display:flex; justify-content:space-between; padding:0.35rem 0.5rem; background:#1E293B; border-radius:6px;">
+                  <span style="color:#34D399; font-weight:700;">🌊 Lai Thủy (Đến):</span>
+                  <strong style="color:#34D399;">${analysis.lai ? `${analysis.lai.bearing.toFixed(1)}° (${analysis.lai.mountain.name})` : 'Chưa đo'}</strong>
+                </div>
+
+                <div style="display:flex; justify-content:space-between; padding:0.35rem 0.5rem; background:#1E293B; border-radius:6px;">
+                  <span style="color:#38BDF8; font-weight:700;">💧 Khứ Thủy (Đi):</span>
+                  <strong style="color:#38BDF8;">${analysis.khu ? `${analysis.khu.bearing.toFixed(1)}° (${analysis.khu.mountain.name})` : 'Chưa đo'}</strong>
+                </div>
+
+                <div style="display:flex; justify-content:space-between; padding:0.35rem 0.5rem; background:#141B2B; border-radius:6px; margin-top:0.2rem;">
+                  <span style="color:#CBD5E1;">Cụm Song Sơn:</span>
+                  <strong style="color:#FEF3C7;">${analysis.group.label} (${analysis.group.cuc} Cục)</strong>
                 </div>
               </div>
             </div>
 
-            <!-- 2. KẾT QUẢ ĐỌC PHƯƠNG VỊ & 144 THỦY KHẨU -->
-            <div style="background:#111827; border:1px solid rgba(255,255,255,0.12); border-radius:12px; padding:1.1rem;">
-              <span style="font-size:0.76rem; font-weight:800; color:#38BDF8; text-transform:uppercase; letter-spacing:0.04em; display:block; margin-bottom:0.8rem;">
-                2. Phân Khảo Cổ Pháp
-              </span>
-
-              <div style="display:flex; flex-direction:column; gap:0.6rem; font-size:0.82rem;">
-                <div style="display:flex; justify-content:space-between; border-bottom:1px solid rgba(255,255,255,0.06); padding-bottom:0.4rem;">
-                  <span style="color:#94A3B8;">Hướng Nhà:</span>
-                  <strong style="color:#EF4444;">${analysis.facing.bearing.toFixed(1)}° (${analysis.facing.mountain.name} Sơn)</strong>
-                </div>
-                <div style="display:flex; justify-content:space-between; border-bottom:1px solid rgba(255,255,255,0.06); padding-bottom:0.4rem;">
-                  <span style="color:#94A3B8;">Tọa Sơn:</span>
-                  <strong style="color:#FBBF24;">${analysis.sitting.bearing.toFixed(1)}° (${analysis.sitting.mountain.name} Sơn)</strong>
-                </div>
-                <div style="display:flex; justify-content:space-between; border-bottom:1px solid rgba(255,255,255,0.06); padding-bottom:0.4rem;">
-                  <span style="color:#94A3B8;">Cụm Song Sơn:</span>
-                  <strong style="color:#CBD5E1;">${analysis.group.label}</strong>
-                </div>
-                <div style="display:flex; justify-content:space-between; border-bottom:1px solid rgba(255,255,255,0.06); padding-bottom:0.4rem;">
-                  <span style="color:#94A3B8;">Lai Thủy (Đến):</span>
-                  <strong style="color:#34D399;">${analysis.lai ? `${analysis.lai.bearing.toFixed(1)}° (${analysis.lai.mountain.name})` : 'Chưa chấm điểm'}</strong>
-                </div>
-                <div style="display:flex; justify-content:space-between; border-bottom:1px solid rgba(255,255,255,0.06); padding-bottom:0.4rem;">
-                  <span style="color:#94A3B8;">Khứ Thủy (Thoát):</span>
-                  <strong style="color:#38BDF8;">${analysis.khu ? `${analysis.khu.bearing.toFixed(1)}° (${analysis.khu.mountain.name})` : 'Chưa chấm điểm'}</strong>
-                </div>
+            <!-- 3. KẾT QUẢ KHẢO CHỨNG 144 THỦY KHẨU -->
+            <div style="background:#111827; border:1px solid rgba(255,255,255,0.1); border-radius:12px; padding:1rem;">
+              <div style="font-size:0.86rem; font-weight:800; color:#38BDF8; margin-bottom:0.6rem; display:flex; align-items:center; gap:0.4rem;">
+                <span>📜</span> 144 THỦY KHẨU CHÁNH TÔNG
               </div>
 
               ${analysis.thuyKhau ? `
-                <div style="margin-top:0.9rem; background:#181F30; border-left:3px solid #F5D485; border-radius:0 8px 8px 0; padding:0.75rem 0.9rem;">
-                  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.25rem;">
-                    <span style="font-size:0.72rem; color:#94A3B8; font-weight:700;">Khẩu #${analysis.thuyKhau.hs_num} / 144</span>
-                    <span class="dt-badge" style="background:rgba(16,185,129,0.15); color:#34D399; font-size:0.7rem; font-weight:800; padding:0.15rem 0.45rem; border-radius:4px;">${analysis.thuyKhau.muc_phan}</span>
+                <div style="background:#181F30; border-radius:8px; padding:0.75rem; border-left:3px solid #F59E0B; margin-bottom:0.6rem;">
+                  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.35rem;">
+                    <span style="font-size:0.75rem; color:#94A3B8; font-weight:700;">KHẨU #${analysis.thuyKhau.hs_num} / 144</span>
+                    <span style="font-size:0.72rem; padding:0.15rem 0.45rem; border-radius:4px; font-weight:700; background:#F59E0B22; color:#FBBF24;">
+                      ${analysis.thuyKhau.muc_phan}
+                    </span>
                   </div>
-                  <div style="font-size:0.88rem; font-weight:800; color:#FEF3C7; margin-bottom:0.3rem;">
+                  <div style="font-size:0.95rem; font-weight:800; color:#FEF3C7; margin-bottom:0.25rem;">
                     ${analysis.thuyKhau.ten_cach}
                   </div>
-                  <div style="font-size:0.78rem; color:#CBD5E1; line-height:1.5; margin-bottom:0.5rem;">
-                    Thoát: <strong style="color:#38BDF8;">${analysis.thuyKhau.thuy_xuat}</strong> · Cung: ${analysis.thuyKhau.song_son_cung}
+                  <div style="font-size:0.76rem; color:#CBD5E1; line-height:1.5;">
+                    ${analysis.thuyKhau.muc_B}
                   </div>
-                  <a href="#/thu-vien/duong-trach/bai/batch-21?nhom=${analysis.group.idx + 1}&hs=${analysis.thuyKhau.hs_num}" style="display:inline-flex; align-items:center; gap:0.3rem; color:#F5D485; font-size:0.78rem; font-weight:700; text-decoration:none;">
-                    📖 Đọc toàn văn khảo chứng Khẩu #${analysis.thuyKhau.hs_num} →
-                  </a>
                 </div>
-              ` : ''}
+
+                <a href="#/corpus/topic-21" style="display:inline-flex; align-items:center; justify-content:center; width:100%; padding:0.5rem; background:#1E293B; color:#FEF3C7; border:1px solid #C5B382; border-radius:8px; text-decoration:none; font-size:0.78rem; font-weight:700;">
+                  📖 Đọc Toàn Văn Khảo Chứng Cổ Thư →
+                </a>
+              ` : `
+                <div style="text-align:center; padding:1rem; color:#64748B; font-size:0.78rem;">
+                  Vui lòng xác định vị trí Khứ Thủy (nước thoát) để đối chiếu 144 Thủy Khẩu.
+                </div>
+              `}
             </div>
 
-            <!-- 3. QUẢN LÝ TẦNG LA KINH -->
-            <div style="background:#111827; border:1px solid rgba(255,255,255,0.12); border-radius:12px; padding:1.1rem;">
-              <span style="font-size:0.76rem; font-weight:800; color:#A78BFA; text-transform:uppercase; letter-spacing:0.04em; display:block; margin-bottom:0.75rem;">
-                3. Bật / Tắt Tầng La Kinh
-              </span>
-
-              <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.5rem; font-size:0.78rem;">
-                <label style="display:flex; align-items:center; gap:0.4rem; color:#CBD5E1; cursor:pointer;">
-                  <input type="checkbox" id="chk-layer-360" ${this.renderer.layers.degrees360 ? 'checked' : ''} /> 360° Chu Thiên
-                </label>
-                <label style="display:flex; align-items:center; gap:0.4rem; color:#CBD5E1; cursor:pointer;">
-                  <input type="checkbox" id="chk-layer-24" ${this.renderer.layers.mountains24 ? 'checked' : ''} /> 24 Sơn Hướng
-                </label>
-                <label style="display:flex; align-items:center; gap:0.4rem; color:#CBD5E1; cursor:pointer;">
-                  <input type="checkbox" id="chk-layer-144" ${this.renderer.layers.waterMouth144 ? 'checked' : ''} /> 144 Thủy Khẩu
-                </label>
-                <label style="display:flex; align-items:center; gap:0.4rem; color:#CBD5E1; cursor:pointer;">
-                  <input type="checkbox" id="chk-layer-trigrams" ${this.renderer.layers.trigrams ? 'checked' : ''} /> Bát Quái
-                </label>
-                <label style="display:flex; align-items:center; gap:0.4rem; color:#CBD5E1; cursor:pointer;">
-                  <input type="checkbox" id="chk-layer-pointers" ${this.renderer.layers.pointers ? 'checked' : ''} /> Kim Chỉ Thị
-                </label>
-                <label style="display:flex; align-items:center; gap:0.4rem; color:#CBD5E1; cursor:pointer;">
-                  <input type="checkbox" id="chk-layer-pin" ${this.renderer.layers.centerPin ? 'checked' : ''} /> Thiên Trì
-                </label>
+            <!-- 4. QUẢN LÝ CÁC TẦNG LA KINH (LAYERS) -->
+            <div style="background:#111827; border:1px solid rgba(255,255,255,0.1); border-radius:12px; padding:0.9rem;">
+              <div style="font-size:0.8rem; font-weight:700; color:#94A3B8; margin-bottom:0.6rem; text-transform:uppercase;">
+                Lớp Hiển Thị La Kinh:
+              </div>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.45rem; font-size:0.76rem;">
+                <label style="display:flex; align-items:center; gap:0.4rem; cursor:pointer;"><input type="checkbox" id="chk-layer-360" checked /> 360 Độ</label>
+                <label style="display:flex; align-items:center; gap:0.4rem; cursor:pointer;"><input type="checkbox" id="chk-layer-24" checked /> 24 Sơn</label>
+                <label style="display:flex; align-items:center; gap:0.4rem; cursor:pointer;"><input type="checkbox" id="chk-layer-144" checked /> 144 Thủy Khẩu</label>
+                <label style="display:flex; align-items:center; gap:0.4rem; cursor:pointer;"><input type="checkbox" id="chk-layer-trigrams" checked /> Bát Quái</label>
+                <label style="display:flex; align-items:center; gap:0.4rem; cursor:pointer;"><input type="checkbox" id="chk-layer-pointers" checked /> Kim Chỉ Tiêu</label>
+                <label style="display:flex; align-items:center; gap:0.4rem; cursor:pointer;"><input type="checkbox" id="chk-layer-pin" checked /> Thiên Trì</label>
               </div>
             </div>
 
           </div>
         </div>
 
-        <!-- MODAL XUẤT PHIẾU KHẢO SÁT PHONG THỦY -->
-        <div id="modal-survey-export" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.8); z-index:9999; backdrop-filter:blur(8px); align-items:center; justify-content:center; padding:1rem;">
-          <div style="background:#0F172A; border:2px solid #C5B382; border-radius:14px; max-width:640px; width:100%; max-height:90vh; overflow-y:auto; padding:1.8rem; box-shadow:0 24px 48px rgba(0,0,0,0.8);">
-            <div style="text-align:center; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:1rem; margin-bottom:1.2rem;">
-              <div style="font-size:0.78rem; font-weight:800; color:#F5D485; letter-spacing:0.06em; text-transform:uppercase;">
-                DƯƠNG TRẠCH CHÁNH TÔNG CỔ PHÁP
-              </div>
-              <h2 style="font-size:1.4rem; color:#FEF3C7; margin:0.3rem 0; font-weight:800;">
-                PHIẾU KHẢO SÁT LA KINH THỰC ĐỊA
-              </h2>
-              <div style="font-size:0.75rem; color:#94A3B8;">Chuyên gia: Thầy Huy Hoàng — Zalo: 0933116860</div>
+        <!-- 4. MODAL XUẤT PHIẾU KHẢO SÁT HIỆN TRƯỜNG -->
+        <div id="modal-survey-export" style="display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.85); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); justify-content:center; align-items:center; padding:1rem;">
+          <div style="background:#0F172A; border:1px solid #C5B382; border-radius:14px; width:100%; max-width:640px; max-height:85vh; overflow-y:auto; -webkit-overflow-scrolling:touch; padding:1.4rem; box-shadow:0 20px 50px rgba(0,0,0,0.8);">
+            
+            <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(255,255,255,0.12); padding-bottom:0.8rem; margin-bottom:1rem;">
+              <h3 style="margin:0; font-size:1.15rem; color:#FEF3C7; font-weight:800; display:flex; align-items:center; gap:0.5rem;">
+                <span>📋</span> PHIẾU KHẢO SÁT PHONG THỦY THỰC ĐỊA
+              </h3>
+              <button type="button" id="btn-close-survey-x" style="background:transparent; border:none; color:#94A3B8; font-size:1.4rem; cursor:pointer; padding:0.2rem 0.5rem;">✕</button>
             </div>
 
-            <div id="survey-export-content" style="font-size:0.85rem; color:#E2E8F0; line-height:1.7; margin-bottom:1.4rem;">
-              <!-- Nội dung phiếu khảo sát sẽ được render động ở đây -->
+            <div id="survey-export-content" style="font-size:0.84rem; color:#E2E8F0; line-height:1.7; margin-bottom:1.2rem;">
+              <!-- Nội dung phiếu khảo sát render động -->
             </div>
 
-            <div style="display:flex; justify-content:flex-end; gap:0.6rem;">
-              <button type="button" id="btn-copy-survey" style="background:#1E293B; color:#FEF3C7; border:1px solid #C5B382; padding:0.5rem 1rem; border-radius:8px; font-weight:700; cursor:pointer;">
-                📋 Sao Chép Kết Quả
+            <div style="display:flex; justify-content:flex-end; gap:0.6rem; flex-wrap:wrap;">
+              <button type="button" id="btn-copy-survey" class="dt-touch-btn" style="background:#1E293B; color:#FEF3C7; border:1px solid #C5B382; padding:0.5rem 1.1rem;">
+                📋 Sao Chép Báo Cáo
               </button>
-              <button type="button" id="btn-close-survey" style="background:#EF4444; color:#FFF; border:none; padding:0.5rem 1rem; border-radius:8px; font-weight:700; cursor:pointer;">
+              <button type="button" id="btn-close-survey" class="dt-touch-btn" style="background:#EF4444; color:#FFF; border:none; padding:0.5rem 1.1rem;">
                 Đóng
               </button>
             </div>
@@ -406,16 +509,39 @@ class LuopanMapTool {
     let isPointerDown = false;
     let dragTarget = null; // 'center', 'frontA', 'frontB', 'water_0', 'water_1', etc.
 
+    /**
+     * Chuyển đổi tọa độ Touch/Mouse sang hệ quy chiếu SVG ViewBox (0 0 800 800) chuẩn W3C
+     */
     const getSvgCoords = (e) => {
+      const clientX = e.touches && e.touches.length > 0 ? e.touches[0].clientX : e.clientX;
+      const clientY = e.touches && e.touches.length > 0 ? e.touches[0].clientY : e.clientY;
+
+      try {
+        const pt = svgOverlay.createSVGPoint();
+        pt.x = clientX;
+        pt.y = clientY;
+        const ctm = svgOverlay.getScreenCTM();
+        if (ctm) {
+          const transformed = pt.matrixTransform(ctm.inverse());
+          return {
+            x: Math.round(transformed.x),
+            y: Math.round(transformed.y)
+          };
+        }
+      } catch (err) {
+        // Fallback
+      }
+
       const rect = svgOverlay.getBoundingClientRect();
-      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-      const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+      const scaleX = this.STAGE_SIZE / rect.width;
+      const scaleY = this.STAGE_SIZE / rect.height;
       return {
-        x: clientX - rect.left,
-        y: clientY - rect.top
+        x: Math.round((clientX - rect.left) * scaleX),
+        y: Math.round((clientY - rect.top) * scaleY)
       };
     };
 
+    // MOUSE EVENTS
     svgOverlay.addEventListener('mousedown', (e) => {
       const pos = getSvgCoords(e);
       if (this.activeDrawTool === 'setCenter') {
@@ -425,7 +551,6 @@ class LuopanMapTool {
         return;
       }
 
-      // Check handle clicked
       const target = e.target.closest('[data-drag-handle]');
       if (target) {
         isPointerDown = true;
@@ -464,26 +589,29 @@ class LuopanMapTool {
       }
     });
 
-    // Touch support for mobile devices
+    // TOUCH EVENTS CHO MOBILE (KHÓA CUỘN KHI THAO TÁC)
     svgOverlay.addEventListener('touchstart', (e) => {
       const pos = getSvgCoords(e);
       if (this.activeDrawTool === 'setCenter') {
         this.centerPoint = pos;
         this.renderDrawingElements();
         this.updateSvgView();
+        e.preventDefault();
         return;
       }
+
       const target = e.target.closest('[data-drag-handle]');
       if (target) {
         isPointerDown = true;
         dragTarget = target.dataset.dragHandle;
-        e.preventDefault();
+        e.preventDefault(); // Ngăn cuộn trang khi chạm trúng handle
       }
     }, { passive: false });
 
     window.addEventListener('touchmove', (e) => {
       if (!isPointerDown || !dragTarget) return;
       const pos = getSvgCoords(e);
+
       if (dragTarget === 'center') {
         this.centerPoint = pos;
       } else if (dragTarget === 'frontA') {
@@ -498,9 +626,10 @@ class LuopanMapTool {
           this.waterPolyline[idx] = pos;
         }
       }
+
       this.renderDrawingElements();
       this.updateMeasurementsDisplay();
-      e.preventDefault();
+      e.preventDefault(); // Khóa cuộn trang mượt mà khi đang kéo
     }, { passive: false });
 
     window.addEventListener('touchend', () => {
@@ -530,13 +659,14 @@ class LuopanMapTool {
 
     // Pháp tuyến mặt tiền (Normal Arrow)
     const facingRad = (this.rawFacingBearing - 90) * (Math.PI / 180);
-    const arrowLen = 60;
+    const arrowLen = 70;
     const normalEndX = midFrontX + arrowLen * Math.cos(facingRad);
     const normalEndY = midFrontY + arrowLen * Math.sin(facingRad);
 
     // 2. Tuyến nước (Water Polyline)
     const polylinePoints = this.waterPolyline.map(p => `${p.x},${p.y}`).join(' ');
 
+    // Handles tuyến nước với TOUCH TARGET 48px VÔ HÌNH
     const waterHandles = this.waterPolyline.map((p, idx) => {
       const isLai = idx === 0;
       const isKhu = idx === this.waterPolyline.length - 1;
@@ -544,9 +674,12 @@ class LuopanMapTool {
       const label = isLai ? 'LAI' : (isKhu ? 'KHỨ' : String(idx));
       return `
         <g transform="translate(${p.x}, ${p.y})">
-          <circle r="9" fill="${color}" stroke="#000" stroke-width="2" data-drag-handle="water_${idx}" style="cursor:grab;" />
-          <text y="3" font-size="8" font-weight="900" fill="#000" text-anchor="middle" pointer-events="none">${label[0]}</text>
-          <text y="-14" font-size="10" font-weight="800" fill="${color}" text-anchor="middle" pointer-events="none">${label}</text>
+          <!-- Vòng chạm cảm ứng vô hình (Touch Target 48px) cho mobile -->
+          <circle r="24" fill="transparent" data-drag-handle="water_${idx}" style="cursor:grab; touch-action:none;" />
+          <!-- Vòng tròn hiển thị trực quan -->
+          <circle r="11" fill="${color}" stroke="#000" stroke-width="2.5" pointer-events="none" />
+          <text y="4" font-size="9" font-weight="900" fill="#000" text-anchor="middle" pointer-events="none">${label[0]}</text>
+          <text y="-16" font-size="11" font-weight="800" fill="${color}" text-anchor="middle" pointer-events="none">${label}</text>
         </g>
       `;
     }).join('');
@@ -558,29 +691,32 @@ class LuopanMapTool {
       ${waterHandles}
 
       <!-- Mặt tiền căn nhà (Đoạn A -> B) -->
-      <line x1="${pA.x}" y1="${pA.y}" x2="${pB.x}" y2="${pB.y}" stroke="#F59E0B" stroke-width="5" stroke-linecap="round" />
-      <line x1="${pA.x}" y1="${pA.y}" x2="${pB.x}" y2="${pB.y}" stroke="#FEF3C7" stroke-width="1.5" stroke-dasharray="4,4" />
+      <line x1="${pA.x}" y1="${pA.y}" x2="${pB.x}" y2="${pB.y}" stroke="#F59E0B" stroke-width="6" stroke-linecap="round" />
+      <line x1="${pA.x}" y1="${pA.y}" x2="${pB.x}" y2="${pB.y}" stroke="#FEF3C7" stroke-width="1.8" stroke-dasharray="5,4" />
 
       <!-- Mũi tên pháp tuyến Hướng nhìn nhà -->
-      <line x1="${midFrontX}" y1="${midFrontY}" x2="${normalEndX}" y2="${normalEndY}" stroke="#EF4444" stroke-width="3.5" stroke-linecap="round" />
-      <polygon points="${normalEndX},${normalEndY} ${normalEndX-5},${normalEndY+10} ${normalEndX+5},${normalEndY+10}" fill="#EF4444" transform="rotate(${this.rawFacingBearing + 90}, ${normalEndX}, ${normalEndY})" />
-      <text x="${normalEndX}" y="${normalEndY - 12}" font-size="11" font-weight="900" fill="#EF4444" text-anchor="middle">HƯỚNG NHÀ</text>
+      <line x1="${midFrontX}" y1="${midFrontY}" x2="${normalEndX}" y2="${normalEndY}" stroke="#EF4444" stroke-width="4" stroke-linecap="round" />
+      <polygon points="${normalEndX},${normalEndY} ${normalEndX-6},${normalEndY+12} ${normalEndX+6},${normalEndY+12}" fill="#EF4444" transform="rotate(${this.rawFacingBearing + 90}, ${normalEndX}, ${normalEndY})" />
+      <text x="${normalEndX}" y="${normalEndY - 14}" font-size="12" font-weight="900" fill="#EF4444" text-anchor="middle">HƯỚNG NHÀ</text>
 
-      <!-- Điểm A và Điểm B mặt tiền -->
+      <!-- Điểm A và Điểm B mặt tiền (Touch Target 48px) -->
       <g transform="translate(${pA.x}, ${pA.y})">
-        <circle r="8" fill="#F59E0B" stroke="#FFF" stroke-width="2" data-drag-handle="frontA" style="cursor:grab;" />
-        <text y="-12" font-size="10" font-weight="800" fill="#F5D485" text-anchor="middle">Mép A</text>
+        <circle r="24" fill="transparent" data-drag-handle="frontA" style="cursor:grab; touch-action:none;" />
+        <circle r="10" fill="#F59E0B" stroke="#FFF" stroke-width="2.5" pointer-events="none" />
+        <text y="-14" font-size="11" font-weight="800" fill="#F5D485" text-anchor="middle" pointer-events="none">Mép A</text>
       </g>
       <g transform="translate(${pB.x}, ${pB.y})">
-        <circle r="8" fill="#F59E0B" stroke="#FFF" stroke-width="2" data-drag-handle="frontB" style="cursor:grab;" />
-        <text y="-12" font-size="10" font-weight="800" fill="#F5D485" text-anchor="middle">Mép B</text>
+        <circle r="24" fill="transparent" data-drag-handle="frontB" style="cursor:grab; touch-action:none;" />
+        <circle r="10" fill="#F59E0B" stroke="#FFF" stroke-width="2.5" pointer-events="none" />
+        <text y="-14" font-size="11" font-weight="800" fill="#F5D485" text-anchor="middle" pointer-events="none">Mép B</text>
       </g>
 
-      <!-- Điểm Tâm Nhà (Center Anchor) -->
+      <!-- Điểm Tâm Nhà (Center Anchor với Touch Target 48px) -->
       <g transform="translate(${center.x}, ${center.y})">
-        <circle r="10" fill="#EF4444" stroke="#FFF" stroke-width="2.5" data-drag-handle="center" style="cursor:grab;" />
-        <circle r="3" fill="#FFF" pointer-events="none" />
-        <text y="-15" font-size="11" font-weight="900" fill="#EF4444" text-anchor="middle">TÂM NHÀ</text>
+        <circle r="24" fill="transparent" data-drag-handle="center" style="cursor:grab; touch-action:none;" />
+        <circle r="12" fill="#EF4444" stroke="#FFF" stroke-width="3" pointer-events="none" />
+        <circle r="4" fill="#FFF" pointer-events="none" />
+        <text y="-18" font-size="12" font-weight="900" fill="#EF4444" text-anchor="middle" pointer-events="none">TÂM NHÀ</text>
       </g>
     `;
   }
@@ -598,7 +734,6 @@ class LuopanMapTool {
       isLocked: this.isCalibrationLocked
     });
 
-    // Cập nhật DOM nhanh mà không render lại toàn bộ trang
     const facingEl = document.querySelector('.dt-luopan-tool-root strong[style*="#EF4444"]');
     if (facingEl) facingEl.textContent = `${analysis.facing.bearing.toFixed(1)}° (${analysis.facing.mountain.name} Sơn)`;
 
@@ -628,6 +763,9 @@ class LuopanMapTool {
     });
 
     mount.innerHTML = this.renderer.render({
+      cx: this.centerPoint.x,
+      cy: this.centerPoint.y,
+      radius: 350,
       rotation: this.viewRotation,
       houseFacing: facing,
       houseSitting: this.geometry.calculateHouseSittingBearing(facing),
@@ -669,18 +807,29 @@ class LuopanMapTool {
     const toolFrontage = document.getElementById('tool-btn-frontage');
     const toolWater = document.getElementById('tool-btn-water');
 
-    const updateToolBtns = (activeId) => {
-      [toolSelect, toolCenter, toolFrontage, toolWater].forEach(btn => {
-        if (btn) btn.classList.remove('active');
+    const updateToolBtns = (activeId, activeBg, activeColor) => {
+      [
+        { el: toolSelect, defaultBg: '#1E293B', defaultColor: '#E2E8F0' },
+        { el: toolCenter, defaultBg: '#1E293B', defaultColor: '#E2E8F0' },
+        { el: toolFrontage, defaultBg: '#1E293B', defaultColor: '#E2E8F0' },
+        { el: toolWater, defaultBg: '#1E293B', defaultColor: '#E2E8F0' }
+      ].forEach(({ el, defaultBg, defaultColor }) => {
+        if (el) {
+          el.style.background = defaultBg;
+          el.style.color = defaultColor;
+        }
       });
       const act = document.getElementById(activeId);
-      if (act) act.classList.add('active');
+      if (act) {
+        act.style.background = activeBg;
+        act.style.color = activeColor;
+      }
     };
 
-    if (toolSelect) toolSelect.addEventListener('click', () => { this.activeDrawTool = 'select'; updateToolBtns('tool-btn-select'); });
-    if (toolCenter) toolCenter.addEventListener('click', () => { this.activeDrawTool = 'setCenter'; updateToolBtns('tool-btn-center'); });
-    if (toolFrontage) toolFrontage.addEventListener('click', () => { this.activeDrawTool = 'drawFrontage'; updateToolBtns('tool-btn-frontage'); });
-    if (toolWater) toolWater.addEventListener('click', () => { this.activeDrawTool = 'drawWater'; updateToolBtns('tool-btn-water'); });
+    if (toolSelect) toolSelect.addEventListener('click', () => { this.activeDrawTool = 'select'; updateToolBtns('tool-btn-select', '#F5D485', '#000'); });
+    if (toolCenter) toolCenter.addEventListener('click', () => { this.activeDrawTool = 'setCenter'; updateToolBtns('tool-btn-center', '#EF4444', '#FFF'); });
+    if (toolFrontage) toolFrontage.addEventListener('click', () => { this.activeDrawTool = 'drawFrontage'; updateToolBtns('tool-btn-frontage', '#F59E0B', '#000'); });
+    if (toolWater) toolWater.addEventListener('click', () => { this.activeDrawTool = 'drawWater'; updateToolBtns('tool-btn-water', '#38BDF8', '#000'); });
 
     // Action buttons
     const btnFlipFront = document.getElementById('btn-flip-frontside');
@@ -708,7 +857,7 @@ class LuopanMapTool {
     if (btnToggleDrawing) {
       btnToggleDrawing.addEventListener('click', () => {
         this.showDrawingOverlay = !this.showDrawingOverlay;
-        btnToggleDrawing.textContent = this.showDrawingOverlay ? '👁️ Ẩn Nét Vẽ' : '👁️ Hiện Nét Vẽ';
+        btnToggleDrawing.textContent = this.showDrawingOverlay ? '👁️ Ẩn Nét' : '👁️ Nét Vẽ';
         this.renderDrawingElements();
       });
     }
@@ -784,6 +933,7 @@ class LuopanMapTool {
     const btnExport = document.getElementById('btn-export-survey');
     const modalExport = document.getElementById('modal-survey-export');
     const btnCloseExport = document.getElementById('btn-close-survey');
+    const btnCloseExportX = document.getElementById('btn-close-survey-x');
     const btnCopyExport = document.getElementById('btn-copy-survey');
     const exportContent = document.getElementById('survey-export-content');
 
@@ -818,7 +968,7 @@ class LuopanMapTool {
               <div>• Khẩu khảo chứng: <strong>Khẩu #${analysis.thuyKhau.hs_num} / 144</strong></div>
               <div>• Tên thế cách: <strong style="color:#FEF3C7; font-size:1.05rem;">${analysis.thuyKhau.ten_cach}</strong> [${analysis.thuyKhau.muc_phan}]</div>
               <div>• Cửa nước thoát: <strong>Thủy xuất ${analysis.thuyKhau.thuy_xuat}</strong> (${analysis.thuyKhau.song_son_cung})</div>
-              <div style="margin-top:0.6rem; color:#CBD5E1; font-size:0.8rem; line-height:1.6;">
+              <div style="margin-top:0.6rem; color:#CBD5E1; font-size:0.82rem; line-height:1.6;">
                 ${analysis.thuyKhau.muc_D}
               </div>
             </div>
@@ -830,18 +980,18 @@ class LuopanMapTool {
       });
     }
 
-    if (btnCloseExport && modalExport) {
-      btnCloseExport.addEventListener('click', () => {
-        modalExport.style.display = 'none';
-      });
-    }
+    const closeModal = () => {
+      if (modalExport) modalExport.style.display = 'none';
+    };
+    if (btnCloseExport) btnCloseExport.addEventListener('click', closeModal);
+    if (btnCloseExportX) btnCloseExportX.addEventListener('click', closeModal);
 
     if (btnCopyExport) {
       btnCopyExport.addEventListener('click', () => {
         const text = exportContent.innerText;
         navigator.clipboard.writeText(text).then(() => {
           btnCopyExport.textContent = '✓ Đã Sao Chép!';
-          setTimeout(() => { btnCopyExport.textContent = '📋 Sao Chép Kết Quả'; }, 2000);
+          setTimeout(() => { btnCopyExport.textContent = '📋 Sao Chép Báo Cáo'; }, 2000);
         });
       });
     }
@@ -855,30 +1005,31 @@ class LuopanMapTool {
     this.initInteractiveCanvas();
 
     if (this.mode === 'map') {
-      this.initLeafletMap();
+      setTimeout(() => {
+        this.initLeafletMap();
+      }, 100);
     }
   }
 
   initLeafletMap() {
-    const mapMount = document.getElementById('dt-map-mount');
-    if (!mapMount || typeof L === 'undefined') return;
+    const mount = document.getElementById('dt-map-mount');
+    if (!mount || typeof L === 'undefined') return;
 
     if (!this.mapInstance) {
       this.mapInstance = L.map('dt-map-mount', {
         center: this.centerLatLng,
-        zoom: 18,
+        zoom: this.zoomLevel,
         zoomControl: false
       });
 
-      // Bản đồ vệ tinh ESRI World Imagery
       L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-        attribution: 'Tiles &copy; Esri',
-        maxZoom: 19
+        attribution: 'Esri Satellite',
+        maxZoom: 21,
+        maxNativeZoom: 19
       }).addTo(this.mapInstance);
 
       L.control.zoom({ position: 'topright' }).addTo(this.mapInstance);
 
-      // Cập nhật tâm khi pan/zoom
       this.mapInstance.on('move', () => {
         const center = this.mapInstance.getCenter();
         this.centerLatLng = [center.lat, center.lng];
