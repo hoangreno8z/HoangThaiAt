@@ -389,19 +389,23 @@ class LuopanMapTool {
             <span style="font-size:0.72rem; color:#94A3B8; font-weight:700; text-transform:uppercase; margin-right:0.2rem;">Quy trình:</span>
 
             <button type="button" id="step-btn-1" class="dt-step-badge ${this.activeDrawTool === 'setCenter' ? 'active' : ''}">
-              1 Tâm
+              1. Tâm Nhà
             </button>
 
             <button type="button" id="step-btn-2" class="dt-step-badge ${this.activeDrawTool === 'drawFrontage' ? 'active' : ''}">
-              2 Mặt tiền
+              2. Mặt Tiền
             </button>
 
-            <button type="button" id="step-btn-3" class="dt-step-badge ${this.activeDrawTool === 'drawWater' ? 'active' : ''}">
-              3 Tuyến
+            <button type="button" id="step-btn-3" class="dt-step-badge ${this.activeDrawTool === 'drawWater' && this.pendingNewWaterPath ? 'active' : ''}" title="Bấm để vẽ lại tuyến mới từ đầu (chấm liên tục N điểm)">
+              3. Vẽ Mới (N điểm)
+            </button>
+
+            <button type="button" id="btn-append-water" class="dt-step-badge ${this.activeDrawTool === 'drawWater' && !this.pendingNewWaterPath ? 'active' : ''}" style="color:#A7F3D0; border-color:rgba(52,211,153,0.35);" title="Bấm để chấm thêm các khúc cua vào cuối tuyến hiện có">
+              ➕ Nối Thêm
             </button>
 
             <button type="button" id="btn-reverse-water" class="dt-step-badge" style="color:#38BDF8; border-color:rgba(56,189,248,0.3);">
-              4 Chiều ${this.flowDirection === 'forward' ? '→' : '←'}
+              4. Chiều ${this.flowDirection === 'forward' ? '→' : '←'}
             </button>
 
             <button type="button" id="btn-toggle-deadend" class="dt-step-badge" style="color:${this.waterPathType === 'deadEnd' ? '#F43F5E' : '#94A3B8'}; border-color:${this.waterPathType === 'deadEnd' ? '#F43F5E' : 'rgba(255,255,255,0.12)'};">
@@ -577,6 +581,11 @@ class LuopanMapTool {
             <button type="button" id="btn-node-clear-role" class="dt-touch-btn" style="min-height:28px; padding:0.2rem 0.4rem; font-size:0.72rem; background:#1E293B; color:#CBD5E1; border:1px solid rgba(255,255,255,0.12);">
               ⚪ Thường
             </button>
+            ${this.waterPolyline.length > 2 ? `
+              <button type="button" id="btn-node-delete" class="dt-touch-btn" style="min-height:28px; padding:0.2rem 0.45rem; font-size:0.72rem; background:#450A0A; color:#FCA5A5; border:1px solid #EF4444;" title="Xóa node này khỏi tuyến">
+                🗑️ Xóa
+              </button>
+            ` : ''}
             <button type="button" id="btn-node-close" style="background:transparent; border:none; color:#94A3B8; cursor:pointer; font-size:1rem; padding:0 0.3rem;">
               ✕
             </button>
@@ -635,6 +644,21 @@ class LuopanMapTool {
         this.updateNodeActionBar();
       });
 
+      bar.querySelector('#btn-node-delete')?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (this.waterPolyline.length <= 2) return;
+        this.waterPolyline.splice(idx, 1);
+        if (this.laiNodeIndex === idx) this.laiNodeIndex = null;
+        else if (this.laiNodeIndex > idx) this.laiNodeIndex--;
+        if (this.khuNodeIndex === idx) this.khuNodeIndex = null;
+        else if (this.khuNodeIndex > idx) this.khuNodeIndex--;
+        this.selectedNodeIndex = null;
+        this.renderDrawingElements();
+        this.updateSvgView();
+        this.updateMeasurementsDisplay();
+        this.updateNodeActionBar();
+      });
+
       bar.querySelector('#btn-node-close')?.addEventListener('click', (e) => {
         e.stopPropagation();
         this.selectedNodeIndex = null;
@@ -656,11 +680,35 @@ class LuopanMapTool {
               <strong style="color:#38BDF8;">Đoạn P${seg.fromIndex + 1} → P${seg.toIndex + 1}:</strong>
               <span style="color:#FEF3C7; font-weight:700;">Hướng tuyến: ${seg.effectiveBearing.toFixed(2)}° (${m.name} Sơn · ${m.trigram} Quái)</span>
             </div>
-            <button type="button" id="btn-seg-close" style="background:transparent; border:none; color:#94A3B8; cursor:pointer; font-size:1rem; padding:0 0.3rem;">
-              ✕
-            </button>
+            <div style="display:flex; gap:0.3rem; align-items:center;">
+              <button type="button" id="btn-seg-insert-node" class="dt-touch-btn" style="min-height:28px; padding:0.2rem 0.6rem; font-size:0.72rem; background:#047857; color:#FFF; border:1px solid #34D399;" title="Chèn thêm 1 điểm vào giữa đoạn này để uốn khúc hẻm">
+                ➕ Chèn Điểm Giữa
+              </button>
+              <button type="button" id="btn-seg-close" style="background:transparent; border:none; color:#94A3B8; cursor:pointer; font-size:1rem; padding:0 0.3rem;">
+                ✕
+              </button>
+            </div>
           </div>
         `;
+        bar.querySelector('#btn-seg-insert-node')?.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const from = this.waterPolyline[seg.fromIndex];
+          const to = this.waterPolyline[seg.toIndex];
+          if (!from || !to) return;
+          const midX = (from.x + to.x) / 2;
+          const midY = (from.y + to.y) / 2;
+          const insertIdx = seg.fromIndex + 1;
+          this.waterPolyline.splice(insertIdx, 0, { x: midX, y: midY, role: 'normal' });
+          if (this.laiNodeIndex >= insertIdx) this.laiNodeIndex++;
+          if (this.khuNodeIndex >= insertIdx) this.khuNodeIndex++;
+          this.selectedSegmentIndex = null;
+          this.selectedNodeIndex = insertIdx;
+          this.renderDrawingElements();
+          this.updateSvgView();
+          this.updateMeasurementsDisplay();
+          this.updateNodeActionBar();
+        });
+
         bar.querySelector('#btn-seg-close')?.addEventListener('click', (e) => {
           e.stopPropagation();
           this.selectedSegmentIndex = null;
@@ -1026,9 +1074,14 @@ class LuopanMapTool {
                   <strong style="color:#38BDF8;">${analysis.khu ? `${analysis.khu.mountain.name} Sơn` : (this.waterPathType === 'deadEnd' ? 'Hẻm cụt (không có Khứ)' : 'Chưa đo')}</strong>
                 </div>
 
-                <div style="display:flex; justify-content:space-between; padding:0.3rem 0.5rem; background:#1E293B; border-radius:6px;">
+                <div style="display:flex; justify-content:space-between; padding:0.3rem 0.5rem; background:#141B2B; border-radius:6px;">
                   <span>Cụm Song Sơn:</span>
                   <strong style="color:#FEF3C7;">${analysis.group.label} (${analysis.group.cuc} Cục)</strong>
+                </div>
+
+                <div style="display:flex; justify-content:space-between; padding:0.3rem 0.5rem; background:#1E293B; border-radius:6px;">
+                  <span>Tuyến Hẻm:</span>
+                  <strong style="color:#38BDF8;">${this.waterPolyline.length} điểm (${Math.max(0, this.waterPolyline.length - 1)} đoạn)</strong>
                 </div>
 
                 ${(() => {
@@ -1281,6 +1334,16 @@ class LuopanMapTool {
       this.updateMeasurementsDisplay();
       this.updateNodeActionBar();
     });
+    const btnAppendWater = document.getElementById('btn-append-water');
+    if (btnAppendWater) btnAppendWater.addEventListener('click', () => {
+      this.activeDrawTool = 'drawWater';
+      this.isDrawingWater = true;
+      this.pendingNewWaterPath = false;
+      updateStepBadges(btnAppendWater);
+      this.renderDrawingElements();
+      this.updateMeasurementsDisplay();
+      this.updateNodeActionBar();
+    });
     if (stepSelect) stepSelect.addEventListener('click', () => {
       this.activeDrawTool = 'select';
       this.isDrawingWater = false;
@@ -1322,7 +1385,7 @@ class LuopanMapTool {
     if (btnReverseWater) {
       btnReverseWater.addEventListener('click', () => {
         this.flowDirection = this.flowDirection === 'forward' ? 'reverse' : 'forward';
-        btnReverseWater.textContent = `4 Chiều ${this.flowDirection === 'forward' ? '→' : '←'}`;
+        btnReverseWater.textContent = `4. Chiều ${this.flowDirection === 'forward' ? '→' : '←'}`;
         if (Number.isInteger(this.laiNodeIndex) && Number.isInteger(this.khuNodeIndex)) {
           const temp = this.laiNodeIndex;
           this.laiNodeIndex = this.khuNodeIndex;

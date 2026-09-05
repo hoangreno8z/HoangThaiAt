@@ -326,6 +326,75 @@ test('T14: Bắc Lên/Hướng Lên => dữ liệu bearing không thay đổi', 
   near(tool.calibrationOffset, offsetBefore, 'Offset identical after North Up');
 });
 
+// T15: Chèn điểm vào giữa đoạn (Insert Node between segments)
+test('T15: Chèn điểm vào giữa đoạn => tách đoạn và tăng số node', () => {
+  const { tool, elements } = createTestEnvironment();
+  tool.waterPolyline = [
+    { x: 100, y: 100, role: 'normal' },
+    { x: 300, y: 300, role: 'normal' },
+    { x: 500, y: 500, role: 'normal' }
+  ];
+  tool.selectedSegmentIndex = 0; // Chọn đoạn 0 (P1 -> P2)
+  let bar = { style: {}, innerHTML: '', listeners: {}, querySelector(sel) { return this[sel] || null; } };
+  const mockBtnInsert = {
+    addEventListener(evt, h) { this.handler = h; },
+    click() { this.handler({ stopPropagation() {} }); }
+  };
+  bar['#btn-seg-insert-node'] = mockBtnInsert;
+  const originalGetElement = tool.container.getElementById;
+  elements['dt-node-action-bar'] = bar;
+
+  tool.updateNodeActionBar();
+  assert.equal(tool.waterPolyline.length, 3);
+  mockBtnInsert.click(); // Thực hiện chèn điểm giữa đoạn 0
+
+  assert.equal(tool.waterPolyline.length, 4, 'Polyline must now have 4 nodes');
+  assert.equal(tool.waterPolyline[1].x, 200, 'Midpoint X is 200');
+  assert.equal(tool.waterPolyline[1].y, 200, 'Midpoint Y is 200');
+  assert.equal(tool.selectedNodeIndex, 1, 'Newly inserted node is selected');
+});
+
+// T16: Xóa điểm khỏi tuyến (Delete Node)
+test('T16: Xóa điểm khỏi tuyến => giảm node và cập nhật liên kết', () => {
+  const { tool, elements } = createTestEnvironment();
+  tool.waterPolyline = [
+    { x: 100, y: 100, role: 'normal' },
+    { x: 200, y: 200, role: 'normal' },
+    { x: 300, y: 300, role: 'normal' },
+    { x: 400, y: 400, role: 'normal' }
+  ];
+  tool.selectedNodeIndex = 1; // Chọn node 1
+  let bar = { style: {}, innerHTML: '', querySelector(sel) { return this[sel] || null; } };
+  const mockBtnDelete = {
+    addEventListener(evt, h) { this.handler = h; },
+    click() { this.handler({ stopPropagation() {} }); }
+  };
+  bar['#btn-node-delete'] = mockBtnDelete;
+  elements['dt-node-action-bar'] = bar;
+
+  tool.updateNodeActionBar();
+  mockBtnDelete.click(); // Xóa node 1
+
+  assert.equal(tool.waterPolyline.length, 3, 'Polyline now has 3 nodes');
+  assert.equal(tool.waterPolyline[1].x, 300, 'Index 1 is now old index 2');
+  assert.equal(tool.selectedNodeIndex, null, 'Selection cleared');
+});
+
+// T17: Nối thêm điểm (Append Water) không bị xóa tuyến cũ
+test('T17: Nối thêm điểm (btn-append-water) giữ nguyên tuyến cũ', () => {
+  const { tool, elements } = createTestEnvironment();
+  elements['btn-append-water'] = button();
+  tool.waterPolyline = [
+    { x: 100, y: 100 }, { x: 200, y: 200 }
+  ];
+  tool.bindEvents();
+  elements['btn-append-water'].click();
+
+  assert.equal(tool.activeDrawTool, 'drawWater');
+  assert.equal(tool.pendingNewWaterPath, false, 'pendingNewWaterPath must be false when appending');
+  assert.equal(tool.waterPolyline.length, 2, 'Existing polyline preserved');
+});
+
 console.log('\n================================================================');
 console.log(`KẾT QUẢ KIỂM ĐỊNH: ${passed} PASS, ${failed} FAIL`);
 console.log('================================================================');
