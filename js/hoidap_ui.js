@@ -184,7 +184,7 @@ class HoiDapUI {
               <!-- 5. Họa Phúc Ngũ Phương -->
               <div class="hoidap-sec-block">
                 <div class="hoidap-sec-heading">Họa Phúc Ngũ Phương</div>
-                <div class="hoidap-sec-content">${this.renderTable(item.hoa_phuc)}</div>
+                <div class="hoidap-sec-content">${this.renderHoaPhuc(item.hoa_phuc)}</div>
               </div>
 
               <!-- 6. Pháp Môn Tiêu Sát -->
@@ -340,6 +340,70 @@ class HoiDapUI {
       const lines = block.replace(/\n/g, '<br>');
       return `<p class="hoidap-p">${lines}</p>`;
     }).join('');
+  }
+
+  renderHoaPhuc(rawText) {
+    if (!rawText) return '';
+
+    // Tách khối Cát Khánh và khối Hung Họa
+    const catMatch = rawText.match(/\*\*Khi Hợp Cách[^\n]*\n([\s\S]*?)(?=\n\s*\*\*Khi Phạm Cách|$)/);
+    const hungMatch = rawText.match(/\*\*Khi Phạm Cách[^\n]*\n([\s\S]*)$/);
+
+    if (!catMatch || !hungMatch) {
+      return this.formatContent(rawText);
+    }
+
+    const parseAspects = (blockText) => {
+      const aspects = [
+        { key: 'Tài lộc', label: 'Tài Lộc' },
+        { key: 'Nhân đinh', label: 'Nhân Đinh' },
+        { key: 'Tật ách', label: 'Tật Ách' },
+        { key: 'Gia đạo', label: 'Gia Đạo' },
+        { key: 'Quan vận', label: 'Quan Vận' }
+      ];
+
+      return aspects.map(asp => {
+        const regex = new RegExp(`-\\s*\\*\\*${asp.key}\\*\\*:\\s*([^\\n\\r]+)`);
+        const m = blockText.match(regex);
+        const content = m ? m[1].trim() : '';
+        return { label: asp.label, content: this.escapeHtml(content) };
+      });
+    };
+
+    const catItems = parseAspects(catMatch[1]);
+    const hungItems = parseAspects(hungMatch[1]);
+
+    const renderCard = (titleBadge, titleSub, items, typeClass) => {
+      let rowsHtml = '';
+      items.forEach(it => {
+        if (!it.content) return;
+        rowsHtml += `
+          <div class="hoidap-hp-row">
+            <span class="hoidap-hp-label">${it.label}:</span>
+            <span class="hoidap-hp-text">${it.content}</span>
+          </div>
+        `;
+      });
+
+      return `
+        <div class="hoidap-hp-card ${typeClass}">
+          <div class="hoidap-hp-header">
+            <span class="hoidap-hp-badge ${typeClass}">${titleBadge}</span>
+            <span class="hoidap-hp-subtitle">${titleSub}</span>
+          </div>
+          <div class="hoidap-hp-body">
+            ${rowsHtml}
+          </div>
+        </div>
+      `;
+    };
+
+    return `
+      <div class="hoidap-hoaphuc-container">
+        ${renderCard('CÁT KHÁNH', 'Khi Hợp Cách • Đắc Thế', catItems, 'cat')}
+        ${renderCard('HUNG HỌA', 'Khi Phạm Cách • Thất Thế', hungItems, 'hung')}
+      </div>
+    `;
   }
 
   renderTable(rawText) {

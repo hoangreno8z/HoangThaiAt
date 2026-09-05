@@ -86,6 +86,34 @@ if (errorCount > 0) {
 }
 console.log(`[PASS] Toàn bộ 100 tiêu đề đạt chuẩn 2-4 chữ cổ phong, 0 emoji, 0 mã máy, đủ 6 phân mục.`);
 
+// 4.5. Kiểm tra Họa Phúc Ngũ Phương: 100% Văn xuôi, 0 ký tự bảng vỡ |, tách bạch tuyệt đối Cát và Hung
+let hoaphucError = 0;
+for (const it of items) {
+  const hp = it.hoa_phuc;
+  if (hp.includes('|')) {
+    console.error(`[FAIL] Điều ${it.index}: Họa Phúc vẫn còn ký tự bảng vỡ |`);
+    hoaphucError++;
+  }
+  if (!hp.includes('**Khi Hợp Cách (Cát Khánh):**') || !hp.includes('**Khi Phạm Cách (Hung Họa):**')) {
+    console.error(`[FAIL] Điều ${it.index}: Họa Phúc thiếu khối Cát Khánh hoặc Hung Họa`);
+    hoaphucError++;
+  }
+  const aspects = ['Tài lộc', 'Nhân đinh', 'Tật ách', 'Gia đạo', 'Quan vận'];
+  for (const asp of aspects) {
+    const regex = new RegExp(`\\*\\*${asp}:?\\*\\*:?`, 'g');
+    if ((hp.match(regex) || []).length < 2) {
+      console.error(`[FAIL] Điều ${it.index}: Họa Phúc thiếu phương diện ${asp} ở 2 vế Cát/Hung`);
+      hoaphucError++;
+    }
+  }
+}
+
+if (hoaphucError > 0) {
+  console.error(`[FAIL] Phát hiện ${hoaphucError} lỗi trong Họa Phúc Ngũ Phương!`);
+  process.exit(1);
+}
+console.log(`[PASS] 100/100 Điều: Họa Phúc Ngũ Phương đạt chuẩn 100% văn xuôi, 0 ký hiệu bảng vỡ, tách bạch tuyệt đối Cát Khánh và Hung Họa.`);
+
 // 5. Kiểm tra HTML tích hợp
 const htmlContent = fs.readFileSync(path.join(rootDir, 'index.html'), 'utf8');
 if (!htmlContent.includes('id="gate-hoidap"')) {

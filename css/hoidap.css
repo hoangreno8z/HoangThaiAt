@@ -372,7 +372,121 @@
   text-rendering: optimizeLegibility;
 }
 
-/* Table Style in Hoa Phuc */
+/* Khối Họa Phúc Ngũ Phương — Tách Bạch Cát & Hung */
+.hoidap-hoaphuc-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin-top: 0.65rem;
+  width: 100%;
+}
+
+@media (max-width: 820px) {
+  .hoidap-hoaphuc-container {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+.hoidap-hp-card {
+  border-radius: 8px;
+  padding: 1.15rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+  transition: all 0.25s ease;
+}
+
+.hoidap-hp-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+/* Thẻ Cát Khánh — Tông Ngọc Lam / Vàng Kim Cổ */
+.hoidap-hp-card.cat {
+  border: 1px solid rgba(45, 212, 191, 0.35);
+  background: linear-gradient(150deg, rgba(16, 36, 32, 0.75) 0%, rgba(10, 22, 20, 0.9) 100%);
+}
+
+/* Thẻ Hung Họa — Tông Chu Sa Trầm */
+.hoidap-hp-card.hung {
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  background: linear-gradient(150deg, rgba(38, 18, 22, 0.75) 0%, rgba(24, 11, 14, 0.9) 100%);
+}
+
+.hoidap-hp-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 0.65rem;
+}
+
+.hoidap-hp-badge {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  padding: 0.25rem 0.65rem;
+  border-radius: 4px;
+  text-transform: uppercase;
+  font-family: var(--font-serif);
+}
+
+.hoidap-hp-badge.cat {
+  background: rgba(52, 211, 153, 0.18);
+  color: #34d399;
+  border: 1px solid rgba(52, 211, 153, 0.4);
+}
+
+.hoidap-hp-badge.hung {
+  background: rgba(239, 68, 68, 0.18);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.4);
+}
+
+.hoidap-hp-subtitle {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-style: italic;
+  letter-spacing: 0.04em;
+}
+
+.hoidap-hp-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.hoidap-hp-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  font-size: 0.91rem;
+  line-height: 1.65;
+}
+
+.hoidap-hp-label {
+  font-weight: 700;
+  font-size: 0.86rem;
+  letter-spacing: 0.05em;
+  font-family: var(--font-title, serif);
+}
+
+.hoidap-hp-card.cat .hoidap-hp-label {
+  color: #6ee7b7;
+}
+
+.hoidap-hp-card.hung .hoidap-hp-label {
+  color: #fca5a5;
+}
+
+.hoidap-hp-text {
+  color: #e2e8f0;
+  text-align: justify;
+}
+
+/* Fallback Table Style */
 .hoidap-table-wrapper {
   overflow-x: auto;
   margin-top: 0.5rem;
