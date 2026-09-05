@@ -302,6 +302,16 @@ class HoiDapUI {
     }
   }
 
+  formatProse(text) {
+    if (!text) return '';
+    let formatted = this.escapeHtml(text);
+    // Convert bold: **text**
+    formatted = formatted.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+    // Convert italic: *text*
+    formatted = formatted.replace(/\*([^*]+)\*/g, '<em>$1</em>');
+    return formatted;
+  }
+
   formatContent(text) {
     if (!text) return '';
     let formatted = this.escapeHtml(text);
@@ -345,9 +355,11 @@ class HoiDapUI {
   renderHoaPhuc(rawText) {
     if (!rawText) return '';
 
+    const normalizedText = rawText.replace(/\r\n/g, '\n');
+
     // Tách khối Cát Khánh và khối Hung Họa
-    const catMatch = rawText.match(/\*\*Khi Hợp Cách[^\n]*\n([\s\S]*?)(?=\n\s*\*\*Khi Phạm Cách|$)/);
-    const hungMatch = rawText.match(/\*\*Khi Phạm Cách[^\n]*\n([\s\S]*)$/);
+    const catMatch = normalizedText.match(/\*\*Khi Hợp Cách[^\n]*\n([\s\S]*?)(?=\n\s*\*\*Khi Phạm Cách|$)/);
+    const hungMatch = normalizedText.match(/\*\*Khi Phạm Cách[^\n]*\n([\s\S]*)$/);
 
     if (!catMatch || !hungMatch) {
       return this.formatContent(rawText);
@@ -363,10 +375,10 @@ class HoiDapUI {
       ];
 
       return aspects.map(asp => {
-        const regex = new RegExp(`-\\s*\\*\\*${asp.key}\\*\\*:\\s*([^\\n\\r]+)`);
+        const regex = new RegExp(`-\\s*\\*\\*${asp.key}[^*]*\\*\\*:?\\s*([^\\n\\r]+)`);
         const m = blockText.match(regex);
         const content = m ? m[1].trim() : '';
-        return { label: asp.label, content: this.escapeHtml(content) };
+        return { label: asp.label, content: this.formatProse(content) };
       });
     };
 

@@ -181,4 +181,21 @@ console.log('[PASS] window.hoidapUI.toggleHanzi() [Tắt Hán Văn] thực thi t
 global.window.hoidapUI.toggleHanzi();
 console.log('[PASS] window.hoidapUI.toggleHanzi() [Bật Hán Văn] thực thi thành công.');
 
-console.log('\n=== TẤT CẢ 8 BÀI TEST ĐẠT KẾT QUẢ PASS TUYỆT ĐỐI (100%) ===');
+// 7.5. Kiểm tra renderHoaPhuc cho toàn bộ 100 điều: bắt buộc phải có văn bản đầy đủ trong 2 khung Cát & Hung
+let renderedHpRows = 0;
+for (const it of items) {
+  const hpOutput = global.window.hoidapUI.renderHoaPhuc(it.hoa_phuc);
+  if (!hpOutput.includes('hoidap-hoaphuc-container') || !hpOutput.includes('hoidap-hp-card cat') || !hpOutput.includes('hoidap-hp-card hung')) {
+    console.error(`[FAIL] Điều ${it.index}: renderHoaPhuc thiếu cấu trúc khung song thẻ!`);
+    process.exit(1);
+  }
+  const rowCount = (hpOutput.split('hoidap-hp-row').length - 1);
+  if (rowCount !== 10) {
+    console.error(`[FAIL] Điều ${it.index}: renderHoaPhuc chỉ sinh ra ${rowCount}/10 dòng văn xuôi!`);
+    process.exit(1);
+  }
+  renderedHpRows += rowCount;
+}
+console.log(`[PASS] 100/100 Điều: renderHoaPhuc sinh ra đúng ${renderedHpRows}/1000 dòng văn bản đầy đủ vào 2 khung Cát Khánh & Hung Họa.`);
+
+console.log('\n=== TẤT CẢ 9 BÀI TEST ĐẠT KẾT QUẢ PASS TUYỆT ĐỐI (100%) ===');
