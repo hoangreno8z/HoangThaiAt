@@ -40,7 +40,16 @@ class LuopanMapTool {
 
     // Leaflet GIS Map
     this.mapInstance = null;
-    this.surveyCenterLatLng = [21.028511, 105.854444]; // Tọa độ căn nhà trên vệ tinh
+    let savedLatLng = null;
+    try {
+      if (typeof localStorage !== 'undefined') {
+        const stored = localStorage.getItem('dt_last_latlng');
+        if (stored) savedLatLng = JSON.parse(stored);
+      }
+    } catch (e) {}
+    this.surveyCenterLatLng = (Array.isArray(savedLatLng) && savedLatLng.length === 2)
+      ? savedLatLng
+      : [21.028511, 105.854444]; // Tọa độ mặc định (Hà Nội, Việt Nam)
     this.zoomLevel = 19;
 
     // 2. CALIBRATION DATA
@@ -857,7 +866,10 @@ class LuopanMapTool {
     const btnImg = document.getElementById('btn-mode-image');
     const btnMap = document.getElementById('btn-mode-map');
     if (btnImg) btnImg.addEventListener('click', () => this.switchMode('image'));
-    if (btnMap) btnMap.addEventListener('click', () => this.switchMode('map'));
+    if (btnMap) btnMap.addEventListener('click', () => {
+      this.switchMode('map');
+      this.requestGPSLocation();
+    });
 
     const inputUpload = document.getElementById('input-upload-image');
     if (inputUpload) {
@@ -1059,32 +1071,40 @@ class LuopanMapTool {
   }
 
   updateViewTransform() {
-    const stage = this.container.querySelector('#dt-interactive-stage');
-    const scene = this.container.querySelector('#dt-survey-scene');
+    const scene = this.container ? this.container.querySelector('#dt-survey-scene') : null;
+    if (!scene) return;
     scene.style.transformOrigin = '50% 50%';
     scene.style.transform = `rotate(${-this.viewRotation}deg)`;
-    this.container.querySelector('#btn-north-up').setAttribute('aria-pressed', String(this.viewRotation === 0));
-    this.container.querySelector('#btn-facing-up').setAttribute('aria-pressed', String(this.viewRotation !== 0));
+    const btnNorth = this.container ? this.container.querySelector('#btn-north-up') : null;
+    if (btnNorth) btnNorth.setAttribute('aria-pressed', String(this.viewRotation === 0));
+    const btnFacing = this.container ? this.container.querySelector('#btn-facing-up') : null;
+    if (btnFacing) btnFacing.setAttribute('aria-pressed', String(this.viewRotation !== 0));
   }
 
   updateBackground() {
-    const find = id => this.container.querySelector(`#${id}`);
-    find('dt-map-mount').style.display = this.mode === 'map' ? 'block' : 'none';
+    const find = id => this.container ? this.container.querySelector(`#${id}`) : null;
+    const mapMount = find('dt-map-mount');
+    if (mapMount) mapMount.style.display = this.mode === 'map' ? 'block' : 'none';
     const img = find('dt-user-img');
-    if (this.imageSrc) img.src = this.imageSrc;
-    img.style.display = this.mode === 'image' && this.imageSrc ? 'block' : 'none';
-    find('dt-image-empty').style.display = this.mode === 'image' && !this.imageSrc ? 'block' : 'none';
+    if (img) {
+      if (this.imageSrc) img.src = this.imageSrc;
+      img.style.display = this.mode === 'image' && this.imageSrc ? 'block' : 'none';
+    }
+    const empty = find('dt-image-empty');
+    if (empty) empty.style.display = this.mode === 'image' && !this.imageSrc ? 'block' : 'none';
     ['image', 'map'].forEach(mode => {
       const btn = find(`btn-mode-${mode}`);
-      btn.style.background = this.mode === mode ? (mode === 'map' ? '#38BDF8' : '#FBBF24') : 'transparent';
-      btn.style.color = this.mode === mode ? '#000' : '#CBD5E1';
-      btn.setAttribute('aria-pressed', String(this.mode === mode));
+      if (btn) {
+        btn.style.background = this.mode === mode ? (mode === 'map' ? '#38BDF8' : '#FBBF24') : 'transparent';
+        btn.style.color = this.mode === mode ? '#000' : '#CBD5E1';
+        btn.setAttribute('aria-pressed', String(this.mode === mode));
+      }
     });
     if (this.mode === 'map') {
       this.initLeafletMap();
       this.captureMapGeometry();
     }
-    const controls = this.container.querySelector('.leaflet-control-container');
+    const controls = this.container ? this.container.querySelector('.leaflet-control-container') : null;
     if (controls) controls.style.display = this.mode === 'map' ? 'block' : 'none';
   }
 
@@ -1096,6 +1116,77 @@ class LuopanMapTool {
     }
     this.mode = newMode;
     this.updateBackground();
+  }
+
+  requestGPSLocation() {
+    if (typeof navigator === 'undefined' || !navigator.geolocation) {
+      console.warn('[GPS] Thiết bị hoặc trình duyệt không hỗ trợ Geolocation.');
+      return;
+    }
+
+    const btnMap = this.container ? this.container.querySelector('#btn-mode-map') : null;
+    const originalText = btnMap ? btnMap.innerHTML : '';
+    if (btnMap) {
+      btnMap.innerHTML = '🛰️ Đang lấy GPS...';
+      btnMap.style.opacity = '0.85';
+    }
+
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        if (btnMap && originalText) {
+          btnMap.innerHTML = originalText;
+          btnMap.style.opacity = '1';
+        }
+        const lat = position.coords.latitude;
+        const lng = position.coords.longitude;
+        const accuracy = position.coords.accuracy ? Math.round(position.coords.accuracy) : 0;
+        console.log(`[GPS] Vị trí chính xác: ${lat}, ${lng} (Độ chính xác: ±${accuracy}m)`);
+
+        try {
+          if (typeof localStorage !== 'undefined') {
+            localStorage.setItem('dt_last_latlng', JSON.stringify([lat, lng]));
+          }
+        } catch (e) {}
+
+        this.surveyCenterLatLng = [lat, lng];
+
+        if (this.mapInstance && this.mode === 'map') {
+          this.zoomLevel = Math.max(this.mapInstance.getZoom() || 19, 19);
+          this.mapInstance.setView([lat, lng], this.zoomLevel, { animate: true });
+
+          // Căn tâm hình học khảo sát vào tâm màn hình (tọa độ GPS thực tế của căn nhà)
+          this.centerPoint = { x: 400, y: 400 };
+          this.frontageLine = {
+            pA: { x: 290, y: 400 },
+            pB: { x: 510, y: 400 },
+            frontSide: (this.frontageLine && this.frontageLine.frontSide) || 'right'
+          };
+          this.waterPolyline = [
+            { x: 190, y: 220 },
+            { x: 400, y: 270 },
+            { x: 610, y: 580 }
+          ];
+
+          this.captureMapGeometry();
+          this.recalculateRawBearings();
+          this.renderDrawingElements();
+          this.updateSvgView();
+          this.updateMeasurementsDisplay();
+        }
+      },
+      (error) => {
+        if (btnMap && originalText) {
+          btnMap.innerHTML = originalText;
+          btnMap.style.opacity = '1';
+        }
+        console.warn(`[GPS] Lỗi lấy vị trí: ${error.message}`);
+      },
+      {
+        enableHighAccuracy: true,
+        timeout: 12000,
+        maximumAge: 0
+      }
+    );
   }
 
   getMapProjection() {
@@ -1234,13 +1325,37 @@ class LuopanMapTool {
         zoomSnap: 0,
         zoomAnimation: false
       });
-      L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-        attribution: 'Esri Satellite',
-        maxZoom: 21,
-        maxNativeZoom: 19
+      L.tileLayer('https://{s}.google.com/vt/lyrs=y&x={x}&y={y}&z={z}&hl=vi', {
+        subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
+        attribution: '© Google Maps',
+        maxZoom: 22,
+        maxNativeZoom: 20
       }).addTo(this.mapInstance);
       // Keep controls outside rotated scene and above drawing handles.
       L.control.zoom({ position: 'topright' }).addTo(this.mapInstance);
+
+      if (L.Control && L.Control.extend) {
+        const GpsControl = L.Control.extend({
+          options: { position: 'topright' },
+          onAdd: () => {
+            const container = L.DomUtil.create('div', 'leaflet-bar leaflet-control');
+            const btn = L.DomUtil.create('a', 'leaflet-control-gps-btn', container);
+            btn.innerHTML = '📍';
+            btn.href = '#';
+            btn.title = 'Định vị GPS vị trí của tôi (Độ chính xác cao)';
+            btn.setAttribute('role', 'button');
+            btn.setAttribute('aria-label', 'Vị trí hiện tại');
+            btn.style.cssText = 'display:flex;align-items:center;justify-content:center;width:30px;height:30px;font-size:16px;background:#1E293B;color:#38BDF8;text-decoration:none;cursor:pointer;line-height:30px;';
+            L.DomEvent.disableClickPropagation(btn);
+            L.DomEvent.on(btn, 'click', (e) => {
+              L.DomEvent.stop(e);
+              this.requestGPSLocation();
+            });
+            return container;
+          }
+        });
+        new GpsControl().addTo(this.mapInstance);
+      }
       this.container.querySelector('#dt-interactive-stage').appendChild(this.mapInstance._controlContainer);
       this.captureMapGeometry();
       this.bindMapGestures(mount);
