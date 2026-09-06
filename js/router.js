@@ -39,13 +39,44 @@ class LibraryRouter {
     window.addEventListener('hashchange', () => this.handleHashChange());
     window.addEventListener('load', () => this.handleHashChange());
 
-    // Bind Quick Nav items
-    document.querySelectorAll('.nav-gate-link').forEach(link => {
+    // Bind Quick Nav items (Desktop & Mobile)
+    document.querySelectorAll('.nav-gate-link, .mobile-bar-btn').forEach(link => {
       link.addEventListener('click', (e) => {
         const href = link.getAttribute('href');
-        if (href && href.startsWith('#')) {
-          this.navigateTo(href.substring(1));
+        if (!href || !href.startsWith('#')) return;
+
+        const cleanPath = href.replace(/^#\/?/, '').split('?')[0];
+        const targetGate = cleanPath.split('/')[0] || 'lobby';
+
+        // Xử lý khi bấm nút "Công Cụ" (Tools):
+        if (targetGate === 'tools') {
+          // Nếu đang ở trong gate tools (bất kể công cụ nào)
+          if (this.currentRoute === 'tools') {
+            e.preventDefault();
+            // Cuộn mượt lên đầu trang
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            const mainContainer = document.querySelector('.main-wrapper');
+            if (mainContainer && mainContainer.scrollTo) {
+              mainContainer.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+            // Nhả / Mở thanh chọn công cụ ở đầu trang
+            if (window.toolUI && typeof window.toolUI.revealToolSelector === 'function') {
+              window.toolUI.revealToolSelector();
+            }
+            return;
+          }
         }
+
+        // Nếu bấm lại cùng route mà không đổi hash
+        if (this.currentRoute === targetGate) {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          const mainContainer = document.querySelector('.main-wrapper');
+          if (mainContainer && mainContainer.scrollTo) {
+            mainContainer.scrollTo({ top: 0, behavior: 'smooth' });
+          }
+        }
+
+        this.navigateTo(href.substring(1));
       });
     });
   }

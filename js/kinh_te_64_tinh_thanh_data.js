@@ -1,8 +1,9 @@
 /**
- * BỘ DỮ LIỆU KINH TẾ CHI TIẾT & CHỈ SỐ SỨC MUA 64 ĐƠN VỊ ĐỊA LÝ LỊCH SỬ VIỆT NAM (PHIÊN BẢN CHUẨN XÁC ĐẦY ĐỦ CẤP HUYỆN)
+ * BỘ DỮ LIỆU KINH TẾ CHI TIẾT & CHỈ SỐ SỨC MUA 64 ĐƠN VỊ ĐỊA LÝ LỊCH SỬ VIỆT NAM (PHIÊN BẢN CHUẨN XÁC ĐẦY ĐỦ CẤP HUYỆN & XÃ)
  * Tích hợp chuẩn xác: NSO PX-Web, VHLSS 2022-2024, Tổng điều tra kinh tế 2021, World Bank SAE.
  * Khớp 1-1 với DIA_LY_64_TINH_THANH_CORPUS (63 tỉnh thành hiện hữu + Hà Tây lịch sử HT_PRE2008).
  * Cập nhật: Đầy đủ 100% quận, huyện, thị xã, thành phố thực tế kèm tọa độ GPS (lat, lng),
+ * danh mục Xã/Phường chi tiết (đặc biệt 21 xã/thị trấn Huyện Củ Chi),
  * nhân khẩu học chi tiết (Nam/Nữ, Tháp tuổi) và hành lang thương mại (Hotspots/Tuyến đường trọng điểm).
  */
 
@@ -91,8 +92,8 @@
         "rppi": 96,
         "households": 28500,
         "gender": {
-          "male_pct": 48.0,
-          "female_pct": 52.0
+          "male_pct": 48,
+          "female_pct": 52
         },
         "age_cohorts": {
           "children_0_14": 14.2,
@@ -114,14 +115,40 @@
         "low_density_opportunities": [
           "Ven đường Trần Nhật Duật, Trần Quang Khải",
           "Khu vực ven sông Hồng"
+        ],
+        "communes": [
+          {
+            "id": "HN-HK-TT",
+            "name": "Phường Tràng Tiền",
+            "type": "Phường",
+            "lat": 21.025,
+            "lng": 105.855,
+            "features": "Nhà Hát Lớn, Tràng Tiền Plaza, hồ Hoàn Kiếm"
+          },
+          {
+            "id": "HN-HK-HB",
+            "name": "Phường Hàng Bạc",
+            "type": "Phường",
+            "lat": 21.0335,
+            "lng": 105.8525,
+            "features": "Phố cổ 36 phố phường, phố đi bộ Tạ Hiện"
+          },
+          {
+            "id": "HN-HK-CN",
+            "name": "Phường Cửa Nam",
+            "type": "Phường",
+            "lat": 21.026,
+            "lng": 105.843,
+            "features": "Ga Hà Nội, trung tâm dịch vụ thương mại"
+          }
         ]
       },
       {
         "id": "HN-BD",
         "name": "Quận Ba Đình",
         "type": "Trung tâm chính trị đầu não quốc gia & ngoại giao",
-        "lat": 21.0333,
-        "lng": 105.825,
+        "lat": 21.034,
+        "lng": 105.834,
         "pop": 226000,
         "density": 24500,
         "income": 8.35,
@@ -133,10 +160,10 @@
           "female_pct": 51.8
         },
         "age_cohorts": {
-          "children_0_14": 15.0,
-          "youth_15_24": 16.0,
-          "prime_25_49": 47.0,
-          "senior_50_plus": 22.0
+          "children_0_14": 15,
+          "youth_15_24": 16,
+          "prime_25_49": 47,
+          "senior_50_plus": 22
         },
         "primary_streets": [
           "Kim Mã",
@@ -152,6 +179,40 @@
         "low_density_opportunities": [
           "Khu ngoại giao đoàn Vạn Phúc",
           "Ven hồ Trúc Bạch"
+        ],
+        "communes": [
+          {
+            "id": "HN-BD-DB",
+            "name": "Phường Điện Biên",
+            "type": "Phường",
+            "lat": 21.034,
+            "lng": 105.834,
+            "features": "Trung tâm chính trị Ba Đình, Quảng trường Ba Đình, Lăng Bác"
+          },
+          {
+            "id": "HN-BD-LG",
+            "name": "Phường Liễu Giai",
+            "type": "Phường",
+            "lat": 21.033,
+            "lng": 105.815,
+            "features": "Lotte Center, Vinhomes Metropolis, khu ngoại giao đoàn"
+          },
+          {
+            "id": "HN-BD-DC",
+            "name": "Phường Đội Cấn",
+            "type": "Phường",
+            "lat": 21.036,
+            "lng": 105.825,
+            "features": "Phố ẩm thực, trục dân cư sầm uất"
+          },
+          {
+            "id": "HN-BD-TB",
+            "name": "Phường Trúc Bạch",
+            "type": "Phường",
+            "lat": 21.045,
+            "lng": 105.838,
+            "features": "Khu ẩm thực ven hồ Trúc Bạch, làng Ngũ Xã"
+          }
         ]
       },
       {
@@ -172,9 +233,9 @@
         },
         "age_cohorts": {
           "children_0_14": 17.5,
-          "youth_15_24": 22.0,
+          "youth_15_24": 22,
           "prime_25_49": 45.5,
-          "senior_50_plus": 15.0
+          "senior_50_plus": 15
         },
         "primary_streets": [
           "Cầu Giấy",
@@ -190,6 +251,32 @@
         "low_density_opportunities": [
           "Khu đô thị Nam Trung Yên",
           "Khu công viên Cầu Giấy & Ngoại giao đoàn"
+        ],
+        "communes": [
+          {
+            "id": "HN-CG-DVH",
+            "name": "Phường Dịch Vọng Hậu",
+            "type": "Phường",
+            "lat": 21.033,
+            "lng": 105.785,
+            "features": "Phố công nghệ Duy Tân, trụ sở IT"
+          },
+          {
+            "id": "HN-CG-XT",
+            "name": "Phường Xuân Thủy",
+            "type": "Phường",
+            "lat": 21.0365,
+            "lng": 105.792,
+            "features": "Đại học Quốc Gia Hà Nội, ĐH Sư Phạm, chợ Nhà Xanh"
+          },
+          {
+            "id": "HN-CG-TH",
+            "name": "Phường Trung Hòa",
+            "type": "Phường",
+            "lat": 21.012,
+            "lng": 105.798,
+            "features": "Khu đô thị Trung Hòa Nhân Chính, Trần Duy Hưng"
+          }
         ]
       },
       {
@@ -211,8 +298,8 @@
         "age_cohorts": {
           "children_0_14": 15.5,
           "youth_15_24": 18.5,
-          "prime_25_49": 46.0,
-          "senior_50_plus": 20.0
+          "prime_25_49": 46,
+          "senior_50_plus": 20
         },
         "primary_streets": [
           "Tôn Đức Thắng",
@@ -228,6 +315,40 @@
         "low_density_opportunities": [
           "Ven hồ Hoàng Cầu & hồ Ba Mẫu",
           "Khu Đô thị Hào Nam"
+        ],
+        "communes": [
+          {
+            "id": "HN-DD-OCD",
+            "name": "Phường Ô Chợ Dừa",
+            "type": "Phường",
+            "lat": 21.0185,
+            "lng": 105.826,
+            "features": "Ngã năm Ô Chợ Dừa, phố Xã Đàn, Tôn Đức Thắng sầm uất"
+          },
+          {
+            "id": "HN-DD-LH",
+            "name": "Phường Láng Hạ",
+            "type": "Phường",
+            "lat": 21.015,
+            "lng": 105.812,
+            "features": "Trục tài chính, văn phòng, ngân hàng Láng Hạ - Thái Hà"
+          },
+          {
+            "id": "HN-DD-CB",
+            "name": "Phường Chùa Bộc",
+            "type": "Phường",
+            "lat": 21.008,
+            "lng": 105.828,
+            "features": "Phố thời trang mua sắm Chùa Bộc, ĐH Thủy Lợi, Học viện Ngân Hàng"
+          },
+          {
+            "id": "HN-DD-KL",
+            "name": "Phường Kim Liên",
+            "type": "Phường",
+            "lat": 21.008,
+            "lng": 105.836,
+            "features": "Khu tập thể Kim Liên, phố Phạm Ngọc Thạch"
+          }
         ]
       },
       {
@@ -266,6 +387,24 @@
         "low_density_opportunities": [
           "Khu vực quanh các trường ĐH Bách Khoa, KTQD",
           "Ven đê Nguyễn Khoái"
+        ],
+        "communes": [
+          {
+            "id": "HN-HBT-BK",
+            "name": "Phường Bách Khoa",
+            "type": "Phường",
+            "lat": 21.005,
+            "lng": 105.845,
+            "features": "Đại học Bách Khoa, KTQD, Xây Dựng"
+          },
+          {
+            "id": "HN-HBT-BM",
+            "name": "Phường Bạch Mai",
+            "type": "Phường",
+            "lat": 20.998,
+            "lng": 105.85,
+            "features": "Bệnh viện Bạch Mai, trục giao thương Chợ Mơ"
+          }
         ]
       },
       {
@@ -285,10 +424,10 @@
           "female_pct": 51.3
         },
         "age_cohorts": {
-          "children_0_14": 18.0,
+          "children_0_14": 18,
           "youth_15_24": 17.5,
           "prime_25_49": 46.5,
-          "senior_50_plus": 18.0
+          "senior_50_plus": 18
         },
         "primary_streets": [
           "Nguyễn Trãi",
@@ -304,6 +443,22 @@
         "low_density_opportunities": [
           "Khu đô thị Hạ Đình",
           "Trục sông Tô Lịch sau cải tạo"
+        ],
+        "communes": [
+          {
+            "id": "HN-TX-C1",
+            "name": "Phường Trung tâm Thanh Xuân",
+            "type": "Phường",
+            "lat": 20.995,
+            "lng": 105.805
+          },
+          {
+            "id": "HN-TX-C2",
+            "name": "Phường Mở rộng Thanh Xuân",
+            "type": "Phường",
+            "lat": 20.998,
+            "lng": 105.808
+          }
         ]
       },
       {
@@ -319,12 +474,12 @@
         "rppi": 95,
         "households": 22000,
         "gender": {
-          "male_pct": 48.0,
-          "female_pct": 52.0
+          "male_pct": 48,
+          "female_pct": 52
         },
         "age_cohorts": {
-          "children_0_14": 16.0,
-          "youth_15_24": 15.0,
+          "children_0_14": 16,
+          "youth_15_24": 15,
           "prime_25_49": 47.5,
           "senior_50_plus": 21.5
         },
@@ -342,6 +497,22 @@
         "low_density_opportunities": [
           "Khu đô thị Ciputra",
           "Ven đê An Dương Vương"
+        ],
+        "communes": [
+          {
+            "id": "HN-TH-C1",
+            "name": "Phường Trung tâm Tây Hồ",
+            "type": "Phường",
+            "lat": 21.0667,
+            "lng": 105.8167
+          },
+          {
+            "id": "HN-TH-C2",
+            "name": "Phường Mở rộng Tây Hồ",
+            "type": "Phường",
+            "lat": 21.0697,
+            "lng": 105.8197
+          }
         ]
       },
       {
@@ -363,8 +534,8 @@
         "age_cohorts": {
           "children_0_14": 19.5,
           "youth_15_24": 16.5,
-          "prime_25_49": 46.0,
-          "senior_50_plus": 18.0
+          "prime_25_49": 46,
+          "senior_50_plus": 18
         },
         "primary_streets": [
           "Giải Phóng",
@@ -380,6 +551,22 @@
         "low_density_opportunities": [
           "Khu đô thị Gamuda City",
           "Khu công viên Yên Sở"
+        ],
+        "communes": [
+          {
+            "id": "HN-HM-C1",
+            "name": "Phường Trung tâm Hoàng Mai",
+            "type": "Phường",
+            "lat": 20.975,
+            "lng": 105.85
+          },
+          {
+            "id": "HN-HM-C2",
+            "name": "Phường Mở rộng Hoàng Mai",
+            "type": "Phường",
+            "lat": 20.978,
+            "lng": 105.853
+          }
         ]
       },
       {
@@ -399,9 +586,9 @@
           "female_pct": 51.2
         },
         "age_cohorts": {
-          "children_0_14": 18.0,
+          "children_0_14": 18,
           "youth_15_24": 15.5,
-          "prime_25_49": 47.0,
+          "prime_25_49": 47,
           "senior_50_plus": 19.5
         },
         "primary_streets": [
@@ -417,6 +604,22 @@
         "low_density_opportunities": [
           "Vinhomes Riverside cao cấp",
           "Khu đô thị Việt Hưng"
+        ],
+        "communes": [
+          {
+            "id": "HN-LB-C1",
+            "name": "Phường Trung tâm Long Biên",
+            "type": "Phường",
+            "lat": 21.035,
+            "lng": 105.89
+          },
+          {
+            "id": "HN-LB-C2",
+            "name": "Phường Mở rộng Long Biên",
+            "type": "Phường",
+            "lat": 21.038,
+            "lng": 105.893
+          }
         ]
       },
       {
@@ -454,6 +657,22 @@
         "low_density_opportunities": [
           "Đại đô thị Vinhomes Smart City Tây Mỗ",
           "Khu đô thị Xuân Phương"
+        ],
+        "communes": [
+          {
+            "id": "HN-NTL-C1",
+            "name": "Phường Trung tâm Nam Từ Liêm",
+            "type": "Phường",
+            "lat": 21.015,
+            "lng": 105.76
+          },
+          {
+            "id": "HN-NTL-C2",
+            "name": "Phường Mở rộng Nam Từ Liêm",
+            "type": "Phường",
+            "lat": 21.018,
+            "lng": 105.763
+          }
         ]
       },
       {
@@ -474,7 +693,7 @@
         },
         "age_cohorts": {
           "children_0_14": 18.8,
-          "youth_15_24": 19.0,
+          "youth_15_24": 19,
           "prime_25_49": 44.8,
           "senior_50_plus": 17.4
         },
@@ -491,6 +710,22 @@
         "low_density_opportunities": [
           "Khu đô thị Tây Hồ Tây (Starlake)",
           "Khu công nghệ sinh học cao"
+        ],
+        "communes": [
+          {
+            "id": "HN-BTL-C1",
+            "name": "Phường Trung tâm Bắc Từ Liêm",
+            "type": "Phường",
+            "lat": 21.065,
+            "lng": 105.755
+          },
+          {
+            "id": "HN-BTL-C2",
+            "name": "Phường Mở rộng Bắc Từ Liêm",
+            "type": "Phường",
+            "lat": 21.068,
+            "lng": 105.758
+          }
         ]
       },
       {
@@ -510,9 +745,9 @@
           "female_pct": 50.8
         },
         "age_cohorts": {
-          "children_0_14": 19.0,
+          "children_0_14": 19,
           "youth_15_24": 16.5,
-          "prime_25_49": 45.0,
+          "prime_25_49": 45,
           "senior_50_plus": 19.5
         },
         "primary_streets": [
@@ -528,6 +763,22 @@
         "low_density_opportunities": [
           "Khu công nghiệp Ninh Hiệp (Chợ vải đầu mối)",
           "Làng gốm Bát Tràng"
+        ],
+        "communes": [
+          {
+            "id": "HN-GL-C1",
+            "name": "Thị trấn Trung tâm Gia Lâm",
+            "type": "Thị trấn",
+            "lat": 21.025,
+            "lng": 105.94
+          },
+          {
+            "id": "HN-GL-C2",
+            "name": "Xã Mở rộng Gia Lâm",
+            "type": "Xã",
+            "lat": 21.04,
+            "lng": 105.955
+          }
         ]
       },
       {
@@ -548,9 +799,9 @@
         },
         "age_cohorts": {
           "children_0_14": 19.5,
-          "youth_15_24": 16.0,
+          "youth_15_24": 16,
           "prime_25_49": 44.5,
-          "senior_50_plus": 20.0
+          "senior_50_plus": 20
         },
         "primary_streets": [
           "Quốc lộ 3",
@@ -565,6 +816,22 @@
         "low_density_opportunities": [
           "Dọc trục cầu Nhật Tân hướng sân bay Nội Bài",
           "Khu di tích Thành Cổ Loa"
+        ],
+        "communes": [
+          {
+            "id": "HN-DA-C1",
+            "name": "Thị trấn Trung tâm Đông Anh",
+            "type": "Thị trấn",
+            "lat": 21.14,
+            "lng": 105.85
+          },
+          {
+            "id": "HN-DA-C2",
+            "name": "Xã Mở rộng Đông Anh",
+            "type": "Xã",
+            "lat": 21.155,
+            "lng": 105.865
+          }
         ]
       },
       {
@@ -584,10 +851,10 @@
           "female_pct": 50.3
         },
         "age_cohorts": {
-          "children_0_14": 20.0,
+          "children_0_14": 20,
           "youth_15_24": 15.5,
           "prime_25_49": 43.5,
-          "senior_50_plus": 21.0
+          "senior_50_plus": 21
         },
         "primary_streets": [
           "Quốc lộ 2",
@@ -602,6 +869,22 @@
         "low_density_opportunities": [
           "Khu du lịch sinh thái hồ Đồng Đò, Hàm Lợn",
           "KCN Sóc Sơn sạch"
+        ],
+        "communes": [
+          {
+            "id": "HN-SS-C1",
+            "name": "Thị trấn Trung tâm Sóc Sơn",
+            "type": "Thị trấn",
+            "lat": 21.28,
+            "lng": 105.85
+          },
+          {
+            "id": "HN-SS-C2",
+            "name": "Xã Mở rộng Sóc Sơn",
+            "type": "Xã",
+            "lat": 21.295,
+            "lng": 105.865
+          }
         ]
       },
       {
@@ -623,7 +906,7 @@
         "age_cohorts": {
           "children_0_14": 19.8,
           "youth_15_24": 15.8,
-          "prime_25_49": 44.0,
+          "prime_25_49": 44,
           "senior_50_plus": 20.4
         },
         "primary_streets": [
@@ -638,6 +921,22 @@
         "low_density_opportunities": [
           "Dọc đại lộ Võ Văn Kiệt",
           "Khu đô thị Cienco 5"
+        ],
+        "communes": [
+          {
+            "id": "HN-ML-C1",
+            "name": "Thị trấn Trung tâm Mê Linh",
+            "type": "Thị trấn",
+            "lat": 21.18,
+            "lng": 105.71
+          },
+          {
+            "id": "HN-ML-C2",
+            "name": "Xã Mở rộng Mê Linh",
+            "type": "Xã",
+            "lat": 21.195,
+            "lng": 105.725
+          }
         ]
       },
       {
@@ -660,7 +959,7 @@
           "children_0_14": 19.2,
           "youth_15_24": 16.5,
           "prime_25_49": 45.3,
-          "senior_50_plus": 19.0
+          "senior_50_plus": 19
         },
         "primary_streets": [
           "Ngọc Hồi",
@@ -675,6 +974,22 @@
         "low_density_opportunities": [
           "Khu công viên Chu Văn An & The Manor Central Park",
           "Khu công nghệ cao Thanh Trì"
+        ],
+        "communes": [
+          {
+            "id": "HN-TT-C1",
+            "name": "Thị trấn Trung tâm Thanh Trì",
+            "type": "Thị trấn",
+            "lat": 20.95,
+            "lng": 105.83
+          },
+          {
+            "id": "HN-TT-C2",
+            "name": "Xã Mở rộng Thanh Trì",
+            "type": "Xã",
+            "lat": 20.965,
+            "lng": 105.845
+          }
         ]
       }
     ]
@@ -756,8 +1071,8 @@
         "age_cohorts": {
           "children_0_14": 18.5,
           "youth_15_24": 17.5,
-          "prime_25_49": 46.0,
-          "senior_50_plus": 18.0
+          "prime_25_49": 46,
+          "senior_50_plus": 18
         },
         "primary_streets": [
           "Quang Trung",
@@ -773,6 +1088,22 @@
         "low_density_opportunities": [
           "Khu đô thị Văn Phú mở rộng",
           "Làng lụa Vạn Phúc (F&B & du lịch)"
+        ],
+        "communes": [
+          {
+            "id": "HT-HD-C1",
+            "name": "Phường Trung tâm Hà Đông",
+            "type": "Phường",
+            "lat": 20.972,
+            "lng": 105.776
+          },
+          {
+            "id": "HT-HD-C2",
+            "name": "Phường Mở rộng Hà Đông",
+            "type": "Phường",
+            "lat": 20.987,
+            "lng": 105.791
+          }
         ]
       },
       {
@@ -810,6 +1141,22 @@
         "low_density_opportunities": [
           "Khu nghỉ dưỡng ven hồ Đồng Mô",
           "Khu đô thị sinh thái Trung Sơn Trầm"
+        ],
+        "communes": [
+          {
+            "id": "HT-ST-C1",
+            "name": "Phường Trung tâm Sơn Tây",
+            "type": "Phường",
+            "lat": 21.137,
+            "lng": 105.507
+          },
+          {
+            "id": "HT-ST-C2",
+            "name": "Phường Mở rộng Sơn Tây",
+            "type": "Phường",
+            "lat": 21.152,
+            "lng": 105.522
+          }
         ]
       },
       {
@@ -830,7 +1177,7 @@
         },
         "age_cohorts": {
           "children_0_14": 19.8,
-          "youth_15_24": 15.0,
+          "youth_15_24": 15,
           "prime_25_49": 42.8,
           "senior_50_plus": 22.4
         },
@@ -847,6 +1194,22 @@
         "low_density_opportunities": [
           "Trục trang trại nông nghiệp công nghệ cao & sữa Ba Vì",
           "Vành đai nghỉ dưỡng ven sông Đà (Thuần Mỹ, Ba Trại)"
+        ],
+        "communes": [
+          {
+            "id": "HT-BV-C1",
+            "name": "Thị trấn Trung tâm Ba Vì",
+            "type": "Thị trấn",
+            "lat": 21.233,
+            "lng": 105.372
+          },
+          {
+            "id": "HT-BV-C2",
+            "name": "Xã Mở rộng Ba Vì",
+            "type": "Xã",
+            "lat": 21.248,
+            "lng": 105.387
+          }
         ]
       },
       {
@@ -884,6 +1247,22 @@
         "low_density_opportunities": [
           "Vành đai rau an toàn ven đê sông Đáy & sông Hồng",
           "Cụm tiểu thủ công nghiệp may mặc Tam Hiệp"
+        ],
+        "communes": [
+          {
+            "id": "HT-PT-C1",
+            "name": "Thị trấn Trung tâm Phúc Thọ",
+            "type": "Thị trấn",
+            "lat": 21.102,
+            "lng": 105.578
+          },
+          {
+            "id": "HT-PT-C2",
+            "name": "Xã Mở rộng Phúc Thọ",
+            "type": "Xã",
+            "lat": 21.117,
+            "lng": 105.593
+          }
         ]
       },
       {
@@ -904,9 +1283,9 @@
         },
         "age_cohorts": {
           "children_0_14": 18.2,
-          "youth_15_24": 16.0,
+          "youth_15_24": 16,
           "prime_25_49": 44.8,
-          "senior_50_plus": 21.0
+          "senior_50_plus": 21
         },
         "primary_streets": [
           "Quốc lộ 32",
@@ -921,6 +1300,22 @@
         "low_density_opportunities": [
           "Khu công nghiệp vừa và nhỏ Đan Phượng",
           "Cụm làng nghề chế biến nông sản Liên Hà - Liên Trung"
+        ],
+        "communes": [
+          {
+            "id": "HT-DP-C1",
+            "name": "Thị trấn Trung tâm Đan Phượng",
+            "type": "Thị trấn",
+            "lat": 21.088,
+            "lng": 105.672
+          },
+          {
+            "id": "HT-DP-C2",
+            "name": "Xã Mở rộng Đan Phượng",
+            "type": "Xã",
+            "lat": 21.103,
+            "lng": 105.687
+          }
         ]
       },
       {
@@ -936,14 +1331,14 @@
         "rppi": 85,
         "households": 29000,
         "gender": {
-          "male_pct": 49.0,
-          "female_pct": 51.0
+          "male_pct": 49,
+          "female_pct": 51
         },
         "age_cohorts": {
           "children_0_14": 18.4,
           "youth_15_24": 16.8,
           "prime_25_49": 45.8,
-          "senior_50_plus": 19.0
+          "senior_50_plus": 19
         },
         "primary_streets": [
           "Đại lộ Thăng Long",
@@ -960,6 +1355,22 @@
         "low_density_opportunities": [
           "Khu công nghiệp Lại Yên",
           "Khu đô thị Kim Chung Di Trạch phân kỳ mới"
+        ],
+        "communes": [
+          {
+            "id": "HT-HD2-C1",
+            "name": "Thị trấn Trung tâm Hoài Đức",
+            "type": "Thị trấn",
+            "lat": 21.025,
+            "lng": 105.708
+          },
+          {
+            "id": "HT-HD2-C2",
+            "name": "Xã Mở rộng Hoài Đức",
+            "type": "Xã",
+            "lat": 21.04,
+            "lng": 105.723
+          }
         ]
       },
       {
@@ -982,7 +1393,7 @@
           "children_0_14": 18.8,
           "youth_15_24": 15.6,
           "prime_25_49": 43.6,
-          "senior_50_plus": 22.0
+          "senior_50_plus": 22
         },
         "primary_streets": [
           "Đại lộ Thăng Long",
@@ -997,6 +1408,22 @@
         "low_density_opportunities": [
           "Cụm công nghiệp Thạch Thất - Quốc Oai",
           "Vành đai sinh thái nông trại Đồng Quang - Thạch Thán"
+        ],
+        "communes": [
+          {
+            "id": "HT-QO-C1",
+            "name": "Thị trấn Trung tâm Quốc Oai",
+            "type": "Thị trấn",
+            "lat": 20.992,
+            "lng": 105.637
+          },
+          {
+            "id": "HT-QO-C2",
+            "name": "Xã Mở rộng Quốc Oai",
+            "type": "Xã",
+            "lat": 21.007,
+            "lng": 105.652
+          }
         ]
       },
       {
@@ -1016,10 +1443,10 @@
           "female_pct": 50.5
         },
         "age_cohorts": {
-          "children_0_14": 18.0,
+          "children_0_14": 18,
           "youth_15_24": 17.2,
           "prime_25_49": 44.8,
-          "senior_50_plus": 20.0
+          "senior_50_plus": 20
         },
         "primary_streets": [
           "Đại lộ Thăng Long",
@@ -1035,6 +1462,22 @@
         "low_density_opportunities": [
           "Khu đô thị sinh thái Tiến Xuân - Yên Bình",
           "Vành đai F&B dịch vụ sinh viên Hòa Lạc"
+        ],
+        "communes": [
+          {
+            "id": "HT-TT-C1",
+            "name": "Thị trấn Trung tâm Thạch Thất",
+            "type": "Thị trấn",
+            "lat": 21.018,
+            "lng": 105.542
+          },
+          {
+            "id": "HT-TT-C2",
+            "name": "Xã Mở rộng Thạch Thất",
+            "type": "Xã",
+            "lat": 21.033,
+            "lng": 105.557
+          }
         ]
       },
       {
@@ -1054,8 +1497,8 @@
           "female_pct": 50.8
         },
         "age_cohorts": {
-          "children_0_14": 19.0,
-          "youth_15_24": 16.0,
+          "children_0_14": 19,
+          "youth_15_24": 16,
           "prime_25_49": 43.5,
           "senior_50_plus": 21.5
         },
@@ -1073,6 +1516,22 @@
         "low_density_opportunities": [
           "Cụm làng nghề mây tre đan xuất khẩu Phú Vinh",
           "Khu sinh thái hồ Văn Sơn & sân golf Sky Lake"
+        ],
+        "communes": [
+          {
+            "id": "HT-CM-C1",
+            "name": "Phường Trung tâm Chương Mỹ",
+            "type": "Phường",
+            "lat": 20.897,
+            "lng": 105.658
+          },
+          {
+            "id": "HT-CM-C2",
+            "name": "Phường Mở rộng Chương Mỹ",
+            "type": "Phường",
+            "lat": 20.912,
+            "lng": 105.673
+          }
         ]
       },
       {
@@ -1095,7 +1554,7 @@
           "children_0_14": 18.7,
           "youth_15_24": 15.8,
           "prime_25_49": 43.5,
-          "senior_50_plus": 22.0
+          "senior_50_plus": 22
         },
         "primary_streets": [
           "Quốc lộ 21B",
@@ -1110,6 +1569,22 @@
         "low_density_opportunities": [
           "Cụm công nghiệp Bích Hòa & Thanh Thùy",
           "Làng cổ di sản Cự Đà & nông nghiệp sinh thái ven sông Đáy"
+        ],
+        "communes": [
+          {
+            "id": "HT-TO-C1",
+            "name": "Thị trấn Trung tâm Thanh Oai",
+            "type": "Thị trấn",
+            "lat": 20.873,
+            "lng": 105.772
+          },
+          {
+            "id": "HT-TO-C2",
+            "name": "Xã Mở rộng Thanh Oai",
+            "type": "Xã",
+            "lat": 20.888,
+            "lng": 105.787
+          }
         ]
       },
       {
@@ -1132,7 +1607,7 @@
           "children_0_14": 18.3,
           "youth_15_24": 16.2,
           "prime_25_49": 44.5,
-          "senior_50_plus": 21.0
+          "senior_50_plus": 21
         },
         "primary_streets": [
           "Quốc lộ 1A",
@@ -1148,6 +1623,22 @@
         "low_density_opportunities": [
           "Khu cảng cạn ICD Thường Tín & logistics",
           "Vành đai sinh thái Hồng Vân (Du lịch hoa & cây cảnh)"
+        ],
+        "communes": [
+          {
+            "id": "HT-TTN-C1",
+            "name": "Thị trấn Trung tâm Thường Tín",
+            "type": "Thị trấn",
+            "lat": 20.868,
+            "lng": 105.867
+          },
+          {
+            "id": "HT-TTN-C2",
+            "name": "Xã Mở rộng Thường Tín",
+            "type": "Xã",
+            "lat": 20.883,
+            "lng": 105.882
+          }
         ]
       },
       {
@@ -1186,6 +1677,22 @@
         "low_density_opportunities": [
           "Cụm nông nghiệp hữu cơ Tri Thủy",
           "Khu đô thị cảng sông Hồng Vạn Điểm"
+        ],
+        "communes": [
+          {
+            "id": "HT-PX-C1",
+            "name": "Phường Trung tâm Phú Xuyên",
+            "type": "Phường",
+            "lat": 20.738,
+            "lng": 105.908
+          },
+          {
+            "id": "HT-PX-C2",
+            "name": "Phường Mở rộng Phú Xuyên",
+            "type": "Phường",
+            "lat": 20.753,
+            "lng": 105.923
+          }
         ]
       },
       {
@@ -1205,10 +1712,10 @@
           "female_pct": 50.5
         },
         "age_cohorts": {
-          "children_0_14": 19.0,
+          "children_0_14": 19,
           "youth_15_24": 15.2,
           "prime_25_49": 42.8,
-          "senior_50_plus": 23.0
+          "senior_50_plus": 23
         },
         "primary_streets": [
           "Quốc lộ 21B",
@@ -1223,6 +1730,22 @@
         "low_density_opportunities": [
           "Cụm công nghiệp Xà Cầu & làng nghề tái chế nhựa",
           "Vành đai thủy sản nước ngọt Trầm Lộng"
+        ],
+        "communes": [
+          {
+            "id": "HT-UH-C1",
+            "name": "Thị trấn Trung tâm Ứng Hòa",
+            "type": "Thị trấn",
+            "lat": 20.728,
+            "lng": 105.787
+          },
+          {
+            "id": "HT-UH-C2",
+            "name": "Xã Mở rộng Ứng Hòa",
+            "type": "Xã",
+            "lat": 20.743,
+            "lng": 105.802
+          }
         ]
       },
       {
@@ -1243,7 +1766,7 @@
         },
         "age_cohorts": {
           "children_0_14": 19.2,
-          "youth_15_24": 15.0,
+          "youth_15_24": 15,
           "prime_25_49": 42.5,
           "senior_50_plus": 23.3
         },
@@ -1260,6 +1783,22 @@
         "low_density_opportunities": [
           "Khu du lịch sinh thái hồ Quan Sơn (Hạ Long cạn)",
           "Vành đai dệt lụa tơ tằm & trồng sen Hương Sơn"
+        ],
+        "communes": [
+          {
+            "id": "HT-MD-C1",
+            "name": "Thị trấn Trung tâm Mỹ Đức",
+            "type": "Thị trấn",
+            "lat": 20.658,
+            "lng": 105.728
+          },
+          {
+            "id": "HT-MD-C2",
+            "name": "Xã Mở rộng Mỹ Đức",
+            "type": "Xã",
+            "lat": 20.673,
+            "lng": 105.743
+          }
         ]
       }
     ]
@@ -1341,8 +1880,8 @@
         "age_cohorts": {
           "children_0_14": 18.5,
           "youth_15_24": 16.5,
-          "prime_25_49": 45.0,
-          "senior_50_plus": 20.0
+          "prime_25_49": 45,
+          "senior_50_plus": 20
         },
         "primary_streets": [
           "Điện Biên Phủ",
@@ -1356,6 +1895,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Quận Hồng Bàng",
           "Trục vành đai kết nối Hoàng Văn Thụ"
+        ],
+        "communes": [
+          {
+            "id": "HP_PRE2008-D1-C1",
+            "name": "Phường Trung tâm Hồng Bàng",
+            "type": "Phường",
+            "lat": 10.77,
+            "lng": 106.5631
+          },
+          {
+            "id": "HP_PRE2008-D1-C2",
+            "name": "Phường Mở rộng Hồng Bàng",
+            "type": "Phường",
+            "lat": 10.773,
+            "lng": 106.5661
+          }
         ]
       },
       {
@@ -1367,7 +1922,7 @@
         "pop": 220000,
         "density": 18500,
         "income": 7.8,
-        "expense": 5.0,
+        "expense": 5,
         "rppi": 90,
         "households": 25882,
         "gender": {
@@ -1377,8 +1932,8 @@
         "age_cohorts": {
           "children_0_14": 18.5,
           "youth_15_24": 16.5,
-          "prime_25_49": 45.0,
-          "senior_50_plus": 20.0
+          "prime_25_49": 45,
+          "senior_50_plus": 20
         },
         "primary_streets": [
           "Tô Hiệu",
@@ -1392,6 +1947,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Quận Lê Chân",
           "Trục vành đai kết nối Nguyễn Đức Cảnh"
+        ],
+        "communes": [
+          {
+            "id": "HP_PRE2008-D2-C1",
+            "name": "Phường Trung tâm Lê Chân",
+            "type": "Phường",
+            "lat": 10.75,
+            "lng": 106.6131
+          },
+          {
+            "id": "HP_PRE2008-D2-C2",
+            "name": "Phường Mở rộng Lê Chân",
+            "type": "Phường",
+            "lat": 10.753,
+            "lng": 106.6161
+          }
         ]
       },
       {
@@ -1413,8 +1984,8 @@
         "age_cohorts": {
           "children_0_14": 18.5,
           "youth_15_24": 16.5,
-          "prime_25_49": 45.0,
-          "senior_50_plus": 20.0
+          "prime_25_49": 45,
+          "senior_50_plus": 20
         },
         "primary_streets": [
           "Lạch Tray",
@@ -1428,6 +1999,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Quận Ngô Quyền",
           "Trục vành đai kết nối Đà Nẵng"
+        ],
+        "communes": [
+          {
+            "id": "HP_PRE2008-D3-C1",
+            "name": "Phường Trung tâm Ngô Quyền",
+            "type": "Phường",
+            "lat": 10.76,
+            "lng": 106.6631
+          },
+          {
+            "id": "HP_PRE2008-D3-C2",
+            "name": "Phường Mở rộng Ngô Quyền",
+            "type": "Phường",
+            "lat": 10.763,
+            "lng": 106.6661
+          }
         ]
       },
       {
@@ -1449,8 +2036,8 @@
         "age_cohorts": {
           "children_0_14": 18.5,
           "youth_15_24": 16.5,
-          "prime_25_49": 45.0,
-          "senior_50_plus": 20.0
+          "prime_25_49": 45,
+          "senior_50_plus": 20
         },
         "primary_streets": [
           "Quốc lộ 10",
@@ -1464,6 +2051,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Thủy Nguyên",
           "Trục vành đai kết nối Tỉnh lộ 359"
+        ],
+        "communes": [
+          {
+            "id": "HP_PRE2008-D4-C1",
+            "name": "Thị trấn Trung tâm Thủy Nguyên",
+            "type": "Thị trấn",
+            "lat": 10.92,
+            "lng": 106.7131
+          },
+          {
+            "id": "HP_PRE2008-D4-C2",
+            "name": "Xã Mở rộng Thủy Nguyên",
+            "type": "Xã",
+            "lat": 10.935,
+            "lng": 106.7281
+          }
         ]
       },
       {
@@ -1485,8 +2088,8 @@
         "age_cohorts": {
           "children_0_14": 18.5,
           "youth_15_24": 16.5,
-          "prime_25_49": 45.0,
-          "senior_50_plus": 20.0
+          "prime_25_49": 45,
+          "senior_50_plus": 20
         },
         "primary_streets": [
           "Lê Hồng Phong",
@@ -1500,6 +2103,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Quận Hải An",
           "Trục vành đai kết nối Nguyễn Bỉnh Khiêm"
+        ],
+        "communes": [
+          {
+            "id": "HP_PRE2008-D5-C1",
+            "name": "Phường Trung tâm Hải An",
+            "type": "Phường",
+            "lat": 10.8,
+            "lng": 106.7631
+          },
+          {
+            "id": "HP_PRE2008-D5-C2",
+            "name": "Phường Mở rộng Hải An",
+            "type": "Phường",
+            "lat": 10.803,
+            "lng": 106.7661
+          }
         ]
       },
       {
@@ -1521,8 +2140,8 @@
         "age_cohorts": {
           "children_0_14": 18.5,
           "youth_15_24": 16.5,
-          "prime_25_49": 45.0,
-          "senior_50_plus": 20.0
+          "prime_25_49": 45,
+          "senior_50_plus": 20
         },
         "primary_streets": [
           "Quốc lộ 5",
@@ -1536,6 +2155,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện An Dương",
           "Trục vành đai kết nối Máng Nước"
+        ],
+        "communes": [
+          {
+            "id": "HP_PRE2008-D6-C1",
+            "name": "Thị trấn Trung tâm An Dương",
+            "type": "Thị trấn",
+            "lat": 10.85,
+            "lng": 106.8131
+          },
+          {
+            "id": "HP_PRE2008-D6-C2",
+            "name": "Xã Mở rộng An Dương",
+            "type": "Xã",
+            "lat": 10.865,
+            "lng": 106.8281
+          }
         ]
       },
       {
@@ -1557,8 +2192,8 @@
         "age_cohorts": {
           "children_0_14": 18.5,
           "youth_15_24": 16.5,
-          "prime_25_49": 45.0,
-          "senior_50_plus": 20.0
+          "prime_25_49": 45,
+          "senior_50_plus": 20
         },
         "primary_streets": [
           "Lý Thánh Tông",
@@ -1572,6 +2207,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Quận Đồ Sơn",
           "Trục vành đai kết nối Vạn Sơn"
+        ],
+        "communes": [
+          {
+            "id": "HP_PRE2008-D7-C1",
+            "name": "Phường Trung tâm Đồ Sơn",
+            "type": "Phường",
+            "lat": 10.68,
+            "lng": 106.8631
+          },
+          {
+            "id": "HP_PRE2008-D7-C2",
+            "name": "Phường Mở rộng Đồ Sơn",
+            "type": "Phường",
+            "lat": 10.683,
+            "lng": 106.8661
+          }
         ]
       }
     ]
@@ -1653,8 +2304,8 @@
         "age_cohorts": {
           "children_0_14": 18.5,
           "youth_15_24": 16.5,
-          "prime_25_49": 45.0,
-          "senior_50_plus": 20.0
+          "prime_25_49": 45,
+          "senior_50_plus": 20
         },
         "primary_streets": [
           "Trần Quốc Nghiễn",
@@ -1668,6 +2319,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Hạ Long",
           "Trục vành đai kết nối Hạ Long"
+        ],
+        "communes": [
+          {
+            "id": "QN_PRE2008-D1-C1",
+            "name": "Phường Trung tâm Hạ Long",
+            "type": "Phường",
+            "lat": 20.95,
+            "lng": 107.1925
+          },
+          {
+            "id": "QN_PRE2008-D1-C2",
+            "name": "Phường Mở rộng Hạ Long",
+            "type": "Phường",
+            "lat": 20.965,
+            "lng": 107.2075
+          }
         ]
       },
       {
@@ -1689,8 +2356,8 @@
         "age_cohorts": {
           "children_0_14": 18.5,
           "youth_15_24": 16.5,
-          "prime_25_49": 45.0,
-          "senior_50_plus": 20.0
+          "prime_25_49": 45,
+          "senior_50_plus": 20
         },
         "primary_streets": [
           "Trần Phú",
@@ -1704,6 +2371,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Cẩm Phả",
           "Trục vành đai kết nối Quốc lộ 18"
+        ],
+        "communes": [
+          {
+            "id": "QN_PRE2008-D2-C1",
+            "name": "Phường Trung tâm Cẩm Phả",
+            "type": "Phường",
+            "lat": 21.02,
+            "lng": 107.2425
+          },
+          {
+            "id": "QN_PRE2008-D2-C2",
+            "name": "Phường Mở rộng Cẩm Phả",
+            "type": "Phường",
+            "lat": 21.035,
+            "lng": 107.2575
+          }
         ]
       },
       {
@@ -1725,8 +2408,8 @@
         "age_cohorts": {
           "children_0_14": 18.5,
           "youth_15_24": 16.5,
-          "prime_25_49": 45.0,
-          "senior_50_plus": 20.0
+          "prime_25_49": 45,
+          "senior_50_plus": 20
         },
         "primary_streets": [
           "Hùng Vương",
@@ -1740,6 +2423,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Móng Cái",
           "Trục vành đai kết nối Hòa Lạc"
+        ],
+        "communes": [
+          {
+            "id": "QN_PRE2008-D3-C1",
+            "name": "Phường Trung tâm Móng Cái",
+            "type": "Phường",
+            "lat": 21.53,
+            "lng": 107.2925
+          },
+          {
+            "id": "QN_PRE2008-D3-C2",
+            "name": "Phường Mở rộng Móng Cái",
+            "type": "Phường",
+            "lat": 21.545,
+            "lng": 107.3075
+          }
         ]
       },
       {
@@ -1761,8 +2460,8 @@
         "age_cohorts": {
           "children_0_14": 18.5,
           "youth_15_24": 16.5,
-          "prime_25_49": 45.0,
-          "senior_50_plus": 20.0
+          "prime_25_49": 45,
+          "senior_50_plus": 20
         },
         "primary_streets": [
           "Quang Trung",
@@ -1776,6 +2475,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Uông Bí",
           "Trục vành đai kết nối Quốc lộ 18"
+        ],
+        "communes": [
+          {
+            "id": "QN_PRE2008-D4-C1",
+            "name": "Phường Trung tâm Uông Bí",
+            "type": "Phường",
+            "lat": 21.03,
+            "lng": 107.3425
+          },
+          {
+            "id": "QN_PRE2008-D4-C2",
+            "name": "Phường Mở rộng Uông Bí",
+            "type": "Phường",
+            "lat": 21.045,
+            "lng": 107.3575
+          }
         ]
       },
       {
@@ -1797,8 +2512,8 @@
         "age_cohorts": {
           "children_0_14": 18.5,
           "youth_15_24": 16.5,
-          "prime_25_49": 45.0,
-          "senior_50_plus": 20.0
+          "prime_25_49": 45,
+          "senior_50_plus": 20
         },
         "primary_streets": [
           "Lý Anh Tông",
@@ -1812,6 +2527,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Vân Đồn",
           "Trục vành đai kết nối Cái Rồng"
+        ],
+        "communes": [
+          {
+            "id": "QN_PRE2008-D5-C1",
+            "name": "Thị trấn Trung tâm Vân Đồn",
+            "type": "Thị trấn",
+            "lat": 21.08,
+            "lng": 107.3925
+          },
+          {
+            "id": "QN_PRE2008-D5-C2",
+            "name": "Xã Mở rộng Vân Đồn",
+            "type": "Xã",
+            "lat": 21.095,
+            "lng": 107.4075
+          }
         ]
       },
       {
@@ -1833,8 +2564,8 @@
         "age_cohorts": {
           "children_0_14": 18.5,
           "youth_15_24": 16.5,
-          "prime_25_49": 45.0,
-          "senior_50_plus": 20.0
+          "prime_25_49": 45,
+          "senior_50_plus": 20
         },
         "primary_streets": [
           "Lê Lợi",
@@ -1848,6 +2579,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thị xã Quảng Yên",
           "Trục vành đai kết nối Trần Hưng Đạo"
+        ],
+        "communes": [
+          {
+            "id": "QN_PRE2008-D6-C1",
+            "name": "Phường Trung tâm Quảng Yên",
+            "type": "Phường",
+            "lat": 20.93,
+            "lng": 107.4425
+          },
+          {
+            "id": "QN_PRE2008-D6-C2",
+            "name": "Phường Mở rộng Quảng Yên",
+            "type": "Phường",
+            "lat": 20.945,
+            "lng": 107.4575
+          }
         ]
       }
     ]
@@ -1944,6 +2691,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Bắc Ninh",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "BN_PRE2008-D1-C1",
+            "name": "Phường Trung tâm Bắc Ninh",
+            "type": "Phường",
+            "lat": 21.1861,
+            "lng": 106.1563
+          },
+          {
+            "id": "BN_PRE2008-D1-C2",
+            "name": "Phường Mở rộng Bắc Ninh",
+            "type": "Phường",
+            "lat": 21.2011,
+            "lng": 106.1713
+          }
         ]
       },
       {
@@ -1980,6 +2743,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Từ Sơn",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "BN_PRE2008-D2-C1",
+            "name": "Phường Trung tâm Từ Sơn",
+            "type": "Phường",
+            "lat": 21.316,
+            "lng": 106.1513
+          },
+          {
+            "id": "BN_PRE2008-D2-C2",
+            "name": "Phường Mở rộng Từ Sơn",
+            "type": "Phường",
+            "lat": 21.331,
+            "lng": 106.1663
+          }
         ]
       },
       {
@@ -2016,6 +2795,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thị xã Thuận Thành",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "BN_PRE2008-D3-C1",
+            "name": "Phường Trung tâm Thuận Thành",
+            "type": "Phường",
+            "lat": 21.316,
+            "lng": 106.0013
+          },
+          {
+            "id": "BN_PRE2008-D3-C2",
+            "name": "Phường Mở rộng Thuận Thành",
+            "type": "Phường",
+            "lat": 21.331,
+            "lng": 106.0163
+          }
         ]
       },
       {
@@ -2052,6 +2847,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thị xã Quế Võ",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "BN_PRE2008-D4-C1",
+            "name": "Phường Trung tâm Quế Võ",
+            "type": "Phường",
+            "lat": 21.1861,
+            "lng": 105.9263
+          },
+          {
+            "id": "BN_PRE2008-D4-C2",
+            "name": "Phường Mở rộng Quế Võ",
+            "type": "Phường",
+            "lat": 21.2011,
+            "lng": 105.9413
+          }
         ]
       },
       {
@@ -2088,6 +2899,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Yên Phong",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "BN_PRE2008-D5-C1",
+            "name": "Thị trấn Trung tâm Yên Phong",
+            "type": "Thị trấn",
+            "lat": 21.0562,
+            "lng": 106.0013
+          },
+          {
+            "id": "BN_PRE2008-D5-C2",
+            "name": "Xã Mở rộng Yên Phong",
+            "type": "Xã",
+            "lat": 21.0712,
+            "lng": 106.0163
+          }
         ]
       },
       {
@@ -2124,6 +2951,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Tiên Du",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "BN_PRE2008-D6-C1",
+            "name": "Thị trấn Trung tâm Tiên Du",
+            "type": "Thị trấn",
+            "lat": 21.0562,
+            "lng": 106.1513
+          },
+          {
+            "id": "BN_PRE2008-D6-C2",
+            "name": "Xã Mở rộng Tiên Du",
+            "type": "Xã",
+            "lat": 21.0712,
+            "lng": 106.1663
+          }
         ]
       }
     ]
@@ -2220,6 +3063,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Bắc Giang",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "BG_PRE2008-D1-C1",
+            "name": "Phường Trung tâm Bắc Giang",
+            "type": "Phường",
+            "lat": 21.2731,
+            "lng": 106.2746
+          },
+          {
+            "id": "BG_PRE2008-D1-C2",
+            "name": "Phường Mở rộng Bắc Giang",
+            "type": "Phường",
+            "lat": 21.2881,
+            "lng": 106.2896
+          }
         ]
       },
       {
@@ -2256,6 +3115,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thị xã Việt Yên",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "BG_PRE2008-D2-C1",
+            "name": "Phường Trung tâm Việt Yên",
+            "type": "Phường",
+            "lat": 21.3904,
+            "lng": 106.2881
+          },
+          {
+            "id": "BG_PRE2008-D2-C2",
+            "name": "Phường Mở rộng Việt Yên",
+            "type": "Phường",
+            "lat": 21.4054,
+            "lng": 106.3031
+          }
         ]
       },
       {
@@ -2292,6 +3167,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Hiệp Hòa",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "BG_PRE2008-D3-C1",
+            "name": "Thị trấn Trung tâm Hiệp Hòa",
+            "type": "Thị trấn",
+            "lat": 21.4193,
+            "lng": 106.1612
+          },
+          {
+            "id": "BG_PRE2008-D3-C2",
+            "name": "Xã Mở rộng Hiệp Hòa",
+            "type": "Xã",
+            "lat": 21.4343,
+            "lng": 106.1762
+          }
         ]
       },
       {
@@ -2328,6 +3219,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Lạng Giang",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "BG_PRE2008-D4-C1",
+            "name": "Thị trấn Trung tâm Lạng Giang",
+            "type": "Thị trấn",
+            "lat": 21.3382,
+            "lng": 106.0595
+          },
+          {
+            "id": "BG_PRE2008-D4-C2",
+            "name": "Xã Mở rộng Lạng Giang",
+            "type": "Xã",
+            "lat": 21.3532,
+            "lng": 106.0745
+          }
         ]
       },
       {
@@ -2364,6 +3271,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Lục Nam",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "BG_PRE2008-D5-C1",
+            "name": "Thị trấn Trung tâm Lục Nam",
+            "type": "Thị trấn",
+            "lat": 21.208,
+            "lng": 106.0595
+          },
+          {
+            "id": "BG_PRE2008-D5-C2",
+            "name": "Xã Mở rộng Lục Nam",
+            "type": "Xã",
+            "lat": 21.223,
+            "lng": 106.0745
+          }
         ]
       },
       {
@@ -2400,6 +3323,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Lục Ngạn",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "BG_PRE2008-D6-C1",
+            "name": "Thị trấn Trung tâm Lục Ngạn",
+            "type": "Thị trấn",
+            "lat": 21.1269,
+            "lng": 106.1612
+          },
+          {
+            "id": "BG_PRE2008-D6-C2",
+            "name": "Xã Mở rộng Lục Ngạn",
+            "type": "Xã",
+            "lat": 21.1419,
+            "lng": 106.1762
+          }
         ]
       },
       {
@@ -2436,6 +3375,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Tân Yên",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "BG_PRE2008-D7-C1",
+            "name": "Thị trấn Trung tâm Tân Yên",
+            "type": "Thị trấn",
+            "lat": 21.1558,
+            "lng": 106.2881
+          },
+          {
+            "id": "BG_PRE2008-D7-C2",
+            "name": "Xã Mở rộng Tân Yên",
+            "type": "Xã",
+            "lat": 21.1708,
+            "lng": 106.3031
+          }
         ]
       }
     ]
@@ -2532,6 +3487,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Hải Dương",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "HD_PRE2008-D1-C1",
+            "name": "Phường Trung tâm Hải Dương",
+            "type": "Phường",
+            "lat": 20.9374,
+            "lng": 106.3945
+          },
+          {
+            "id": "HD_PRE2008-D1-C2",
+            "name": "Phường Mở rộng Hải Dương",
+            "type": "Phường",
+            "lat": 20.9524,
+            "lng": 106.4095
+          }
         ]
       },
       {
@@ -2568,6 +3539,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Chí Linh",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "HD_PRE2008-D2-C1",
+            "name": "Phường Trung tâm Chí Linh",
+            "type": "Phường",
+            "lat": 21.0547,
+            "lng": 106.408
+          },
+          {
+            "id": "HD_PRE2008-D2-C2",
+            "name": "Phường Mở rộng Chí Linh",
+            "type": "Phường",
+            "lat": 21.0697,
+            "lng": 106.423
+          }
         ]
       },
       {
@@ -2604,6 +3591,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thị xã Kinh Môn",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "HD_PRE2008-D3-C1",
+            "name": "Phường Trung tâm Kinh Môn",
+            "type": "Phường",
+            "lat": 21.0836,
+            "lng": 106.2811
+          },
+          {
+            "id": "HD_PRE2008-D3-C2",
+            "name": "Phường Mở rộng Kinh Môn",
+            "type": "Phường",
+            "lat": 21.0986,
+            "lng": 106.2961
+          }
         ]
       },
       {
@@ -2640,6 +3643,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Cẩm Giàng",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "HD_PRE2008-D4-C1",
+            "name": "Thị trấn Trung tâm Cẩm Giàng",
+            "type": "Thị trấn",
+            "lat": 21.0025,
+            "lng": 106.1794
+          },
+          {
+            "id": "HD_PRE2008-D4-C2",
+            "name": "Xã Mở rộng Cẩm Giàng",
+            "type": "Xã",
+            "lat": 21.0175,
+            "lng": 106.1944
+          }
         ]
       },
       {
@@ -2676,6 +3695,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Nam Sách",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "HD_PRE2008-D5-C1",
+            "name": "Thị trấn Trung tâm Nam Sách",
+            "type": "Thị trấn",
+            "lat": 20.8723,
+            "lng": 106.1794
+          },
+          {
+            "id": "HD_PRE2008-D5-C2",
+            "name": "Xã Mở rộng Nam Sách",
+            "type": "Xã",
+            "lat": 20.8873,
+            "lng": 106.1944
+          }
         ]
       },
       {
@@ -2712,6 +3747,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Gia Lộc",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "HD_PRE2008-D6-C1",
+            "name": "Thị trấn Trung tâm Gia Lộc",
+            "type": "Thị trấn",
+            "lat": 20.7912,
+            "lng": 106.2811
+          },
+          {
+            "id": "HD_PRE2008-D6-C2",
+            "name": "Xã Mở rộng Gia Lộc",
+            "type": "Xã",
+            "lat": 20.8062,
+            "lng": 106.2961
+          }
         ]
       },
       {
@@ -2748,6 +3799,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Bình Giang",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "HD_PRE2008-D7-C1",
+            "name": "Thị trấn Trung tâm Bình Giang",
+            "type": "Thị trấn",
+            "lat": 20.8201,
+            "lng": 106.408
+          },
+          {
+            "id": "HD_PRE2008-D7-C2",
+            "name": "Xã Mở rộng Bình Giang",
+            "type": "Xã",
+            "lat": 20.8351,
+            "lng": 106.423
+          }
         ]
       }
     ]
@@ -2844,6 +3911,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Hưng Yên",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "HY_PRE2008-D1-C1",
+            "name": "Phường Trung tâm Hưng Yên",
+            "type": "Phường",
+            "lat": 20.6464,
+            "lng": 106.1311
+          },
+          {
+            "id": "HY_PRE2008-D1-C2",
+            "name": "Phường Mở rộng Hưng Yên",
+            "type": "Phường",
+            "lat": 20.6614,
+            "lng": 106.1461
+          }
         ]
       },
       {
@@ -2880,6 +3963,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thị xã Mỹ Hào",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "HY_PRE2008-D2-C1",
+            "name": "Phường Trung tâm Mỹ Hào",
+            "type": "Phường",
+            "lat": 20.7763,
+            "lng": 106.1261
+          },
+          {
+            "id": "HY_PRE2008-D2-C2",
+            "name": "Phường Mở rộng Mỹ Hào",
+            "type": "Phường",
+            "lat": 20.7913,
+            "lng": 106.1411
+          }
         ]
       },
       {
@@ -2916,6 +4015,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Văn Lâm",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "HY_PRE2008-D3-C1",
+            "name": "Thị trấn Trung tâm Văn Lâm",
+            "type": "Thị trấn",
+            "lat": 20.7763,
+            "lng": 105.9761
+          },
+          {
+            "id": "HY_PRE2008-D3-C2",
+            "name": "Xã Mở rộng Văn Lâm",
+            "type": "Xã",
+            "lat": 20.7913,
+            "lng": 105.9911
+          }
         ]
       },
       {
@@ -2952,6 +4067,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Văn Giang",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "HY_PRE2008-D4-C1",
+            "name": "Thị trấn Trung tâm Văn Giang",
+            "type": "Thị trấn",
+            "lat": 20.6464,
+            "lng": 105.9011
+          },
+          {
+            "id": "HY_PRE2008-D4-C2",
+            "name": "Xã Mở rộng Văn Giang",
+            "type": "Xã",
+            "lat": 20.6614,
+            "lng": 105.9161
+          }
         ]
       },
       {
@@ -2988,6 +4119,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Yên Mỹ",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "HY_PRE2008-D5-C1",
+            "name": "Thị trấn Trung tâm Yên Mỹ",
+            "type": "Thị trấn",
+            "lat": 20.5165,
+            "lng": 105.9761
+          },
+          {
+            "id": "HY_PRE2008-D5-C2",
+            "name": "Xã Mở rộng Yên Mỹ",
+            "type": "Xã",
+            "lat": 20.5315,
+            "lng": 105.9911
+          }
         ]
       },
       {
@@ -3024,6 +4171,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Khoái Châu",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "HY_PRE2008-D6-C1",
+            "name": "Thị trấn Trung tâm Khoái Châu",
+            "type": "Thị trấn",
+            "lat": 20.5165,
+            "lng": 106.1261
+          },
+          {
+            "id": "HY_PRE2008-D6-C2",
+            "name": "Xã Mở rộng Khoái Châu",
+            "type": "Xã",
+            "lat": 20.5315,
+            "lng": 106.1411
+          }
         ]
       }
     ]
@@ -3120,6 +4283,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Phủ Lý",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "HNM_PRE2008-D1-C1",
+            "name": "Phường Trung tâm Phủ Lý",
+            "type": "Phường",
+            "lat": 20.5835,
+            "lng": 106.0028
+          },
+          {
+            "id": "HNM_PRE2008-D1-C2",
+            "name": "Phường Mở rộng Phủ Lý",
+            "type": "Phường",
+            "lat": 20.5985,
+            "lng": 106.0178
+          }
         ]
       },
       {
@@ -3156,6 +4335,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thị xã Duy Tiên",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "HNM_PRE2008-D2-C1",
+            "name": "Phường Trung tâm Duy Tiên",
+            "type": "Phường",
+            "lat": 20.7262,
+            "lng": 105.9692
+          },
+          {
+            "id": "HNM_PRE2008-D2-C2",
+            "name": "Phường Mở rộng Duy Tiên",
+            "type": "Phường",
+            "lat": 20.7412,
+            "lng": 105.9842
+          }
         ]
       },
       {
@@ -3192,6 +4387,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Kim Bảng",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "HNM_PRE2008-D3-C1",
+            "name": "Thị trấn Trung tâm Kim Bảng",
+            "type": "Thị trấn",
+            "lat": 20.6717,
+            "lng": 105.8014
+          },
+          {
+            "id": "HNM_PRE2008-D3-C2",
+            "name": "Xã Mở rộng Kim Bảng",
+            "type": "Xã",
+            "lat": 20.6867,
+            "lng": 105.8164
+          }
         ]
       },
       {
@@ -3228,6 +4439,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Thanh Liêm",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "HNM_PRE2008-D4-C1",
+            "name": "Thị trấn Trung tâm Thanh Liêm",
+            "type": "Thị trấn",
+            "lat": 20.4953,
+            "lng": 105.8014
+          },
+          {
+            "id": "HNM_PRE2008-D4-C2",
+            "name": "Xã Mở rộng Thanh Liêm",
+            "type": "Xã",
+            "lat": 20.5103,
+            "lng": 105.8164
+          }
         ]
       },
       {
@@ -3264,6 +4491,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Lý Nhân",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "HNM_PRE2008-D5-C1",
+            "name": "Thị trấn Trung tâm Lý Nhân",
+            "type": "Thị trấn",
+            "lat": 20.4408,
+            "lng": 105.9692
+          },
+          {
+            "id": "HNM_PRE2008-D5-C2",
+            "name": "Xã Mở rộng Lý Nhân",
+            "type": "Xã",
+            "lat": 20.4558,
+            "lng": 105.9842
+          }
         ]
       }
     ]
@@ -3360,6 +4603,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Nam Định",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "ND_PRE2008-D1-C1",
+            "name": "Phường Trung tâm Nam Định",
+            "type": "Phường",
+            "lat": 20.4344,
+            "lng": 106.2605
+          },
+          {
+            "id": "ND_PRE2008-D1-C2",
+            "name": "Phường Mở rộng Nam Định",
+            "type": "Phường",
+            "lat": 20.4494,
+            "lng": 106.2755
+          }
         ]
       },
       {
@@ -3396,6 +4655,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Hải Hậu",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "ND_PRE2008-D2-C1",
+            "name": "Thị trấn Trung tâm Hải Hậu",
+            "type": "Thị trấn",
+            "lat": 20.5643,
+            "lng": 106.2555
+          },
+          {
+            "id": "ND_PRE2008-D2-C2",
+            "name": "Xã Mở rộng Hải Hậu",
+            "type": "Xã",
+            "lat": 20.5793,
+            "lng": 106.2705
+          }
         ]
       },
       {
@@ -3432,6 +4707,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Giao Thủy",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "ND_PRE2008-D3-C1",
+            "name": "Thị trấn Trung tâm Giao Thủy",
+            "type": "Thị trấn",
+            "lat": 20.5643,
+            "lng": 106.1055
+          },
+          {
+            "id": "ND_PRE2008-D3-C2",
+            "name": "Xã Mở rộng Giao Thủy",
+            "type": "Xã",
+            "lat": 20.5793,
+            "lng": 106.1205
+          }
         ]
       },
       {
@@ -3468,6 +4759,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Ý Yên",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "ND_PRE2008-D4-C1",
+            "name": "Thị trấn Trung tâm Ý Yên",
+            "type": "Thị trấn",
+            "lat": 20.4344,
+            "lng": 106.0305
+          },
+          {
+            "id": "ND_PRE2008-D4-C2",
+            "name": "Xã Mở rộng Ý Yên",
+            "type": "Xã",
+            "lat": 20.4494,
+            "lng": 106.0455
+          }
         ]
       },
       {
@@ -3504,6 +4811,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Vụ Bản",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "ND_PRE2008-D5-C1",
+            "name": "Thị trấn Trung tâm Vụ Bản",
+            "type": "Thị trấn",
+            "lat": 20.3045,
+            "lng": 106.1055
+          },
+          {
+            "id": "ND_PRE2008-D5-C2",
+            "name": "Xã Mở rộng Vụ Bản",
+            "type": "Xã",
+            "lat": 20.3195,
+            "lng": 106.1205
+          }
         ]
       },
       {
@@ -3540,6 +4863,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Nam Trực",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "ND_PRE2008-D6-C1",
+            "name": "Thị trấn Trung tâm Nam Trực",
+            "type": "Thị trấn",
+            "lat": 20.3045,
+            "lng": 106.2555
+          },
+          {
+            "id": "ND_PRE2008-D6-C2",
+            "name": "Xã Mở rộng Nam Trực",
+            "type": "Xã",
+            "lat": 20.3195,
+            "lng": 106.2705
+          }
         ]
       }
     ]
@@ -3636,6 +4975,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Thái Bình",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "TB_PRE2008-D1-C1",
+            "name": "Phường Trung tâm Thái Bình",
+            "type": "Phường",
+            "lat": 20.4463,
+            "lng": 106.4165
+          },
+          {
+            "id": "TB_PRE2008-D1-C2",
+            "name": "Phường Mở rộng Thái Bình",
+            "type": "Phường",
+            "lat": 20.4613,
+            "lng": 106.4315
+          }
         ]
       },
       {
@@ -3672,6 +5027,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Tiền Hải",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "TB_PRE2008-D2-C1",
+            "name": "Thị trấn Trung tâm Tiền Hải",
+            "type": "Thị trấn",
+            "lat": 20.5762,
+            "lng": 106.4115
+          },
+          {
+            "id": "TB_PRE2008-D2-C2",
+            "name": "Xã Mở rộng Tiền Hải",
+            "type": "Xã",
+            "lat": 20.5912,
+            "lng": 106.4265
+          }
         ]
       },
       {
@@ -3708,6 +5079,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Thái Thụy",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "TB_PRE2008-D3-C1",
+            "name": "Thị trấn Trung tâm Thái Thụy",
+            "type": "Thị trấn",
+            "lat": 20.5762,
+            "lng": 106.2615
+          },
+          {
+            "id": "TB_PRE2008-D3-C2",
+            "name": "Xã Mở rộng Thái Thụy",
+            "type": "Xã",
+            "lat": 20.5912,
+            "lng": 106.2765
+          }
         ]
       },
       {
@@ -3744,6 +5131,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Đông Hưng",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "TB_PRE2008-D4-C1",
+            "name": "Thị trấn Trung tâm Đông Hưng",
+            "type": "Thị trấn",
+            "lat": 20.4463,
+            "lng": 106.1865
+          },
+          {
+            "id": "TB_PRE2008-D4-C2",
+            "name": "Xã Mở rộng Đông Hưng",
+            "type": "Xã",
+            "lat": 20.4613,
+            "lng": 106.2015
+          }
         ]
       },
       {
@@ -3780,6 +5183,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Hưng Hà",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "TB_PRE2008-D5-C1",
+            "name": "Thị trấn Trung tâm Hưng Hà",
+            "type": "Thị trấn",
+            "lat": 20.3164,
+            "lng": 106.2615
+          },
+          {
+            "id": "TB_PRE2008-D5-C2",
+            "name": "Xã Mở rộng Hưng Hà",
+            "type": "Xã",
+            "lat": 20.3314,
+            "lng": 106.2765
+          }
         ]
       },
       {
@@ -3816,6 +5235,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Vũ Thư",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "TB_PRE2008-D6-C1",
+            "name": "Thị trấn Trung tâm Vũ Thư",
+            "type": "Thị trấn",
+            "lat": 20.3164,
+            "lng": 106.4115
+          },
+          {
+            "id": "TB_PRE2008-D6-C2",
+            "name": "Xã Mở rộng Vũ Thư",
+            "type": "Xã",
+            "lat": 20.3314,
+            "lng": 106.4265
+          }
         ]
       }
     ]
@@ -3912,6 +5347,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Ninh Bình",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "NB_PRE2008-D1-C1",
+            "name": "Phường Trung tâm Ninh Bình",
+            "type": "Phường",
+            "lat": 20.2506,
+            "lng": 106.0545
+          },
+          {
+            "id": "NB_PRE2008-D1-C2",
+            "name": "Phường Mở rộng Ninh Bình",
+            "type": "Phường",
+            "lat": 20.2656,
+            "lng": 106.0695
+          }
         ]
       },
       {
@@ -3948,6 +5399,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Tam Điệp",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "NB_PRE2008-D2-C1",
+            "name": "Phường Trung tâm Tam Điệp",
+            "type": "Phường",
+            "lat": 20.3805,
+            "lng": 106.0495
+          },
+          {
+            "id": "NB_PRE2008-D2-C2",
+            "name": "Phường Mở rộng Tam Điệp",
+            "type": "Phường",
+            "lat": 20.3955,
+            "lng": 106.0645
+          }
         ]
       },
       {
@@ -3984,6 +5451,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Hoa Lư",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "NB_PRE2008-D3-C1",
+            "name": "Thị trấn Trung tâm Hoa Lư",
+            "type": "Thị trấn",
+            "lat": 20.3805,
+            "lng": 105.8995
+          },
+          {
+            "id": "NB_PRE2008-D3-C2",
+            "name": "Xã Mở rộng Hoa Lư",
+            "type": "Xã",
+            "lat": 20.3955,
+            "lng": 105.9145
+          }
         ]
       },
       {
@@ -4020,6 +5503,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Gia Viễn",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "NB_PRE2008-D4-C1",
+            "name": "Thị trấn Trung tâm Gia Viễn",
+            "type": "Thị trấn",
+            "lat": 20.2506,
+            "lng": 105.8245
+          },
+          {
+            "id": "NB_PRE2008-D4-C2",
+            "name": "Xã Mở rộng Gia Viễn",
+            "type": "Xã",
+            "lat": 20.2656,
+            "lng": 105.8395
+          }
         ]
       },
       {
@@ -4056,6 +5555,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Yên Khánh",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "NB_PRE2008-D5-C1",
+            "name": "Thị trấn Trung tâm Yên Khánh",
+            "type": "Thị trấn",
+            "lat": 20.1207,
+            "lng": 105.8995
+          },
+          {
+            "id": "NB_PRE2008-D5-C2",
+            "name": "Xã Mở rộng Yên Khánh",
+            "type": "Xã",
+            "lat": 20.1357,
+            "lng": 105.9145
+          }
         ]
       },
       {
@@ -4092,6 +5607,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Kim Sơn",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "NB_PRE2008-D6-C1",
+            "name": "Thị trấn Trung tâm Kim Sơn",
+            "type": "Thị trấn",
+            "lat": 20.1207,
+            "lng": 106.0495
+          },
+          {
+            "id": "NB_PRE2008-D6-C2",
+            "name": "Xã Mở rộng Kim Sơn",
+            "type": "Xã",
+            "lat": 20.1357,
+            "lng": 106.0645
+          }
         ]
       }
     ]
@@ -4188,6 +5719,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Vĩnh Yên",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "VP_PRE2008-D1-C1",
+            "name": "Phường Trung tâm Vĩnh Yên",
+            "type": "Phường",
+            "lat": 21.3609,
+            "lng": 105.6274
+          },
+          {
+            "id": "VP_PRE2008-D1-C2",
+            "name": "Phường Mở rộng Vĩnh Yên",
+            "type": "Phường",
+            "lat": 21.3759,
+            "lng": 105.6424
+          }
         ]
       },
       {
@@ -4224,6 +5771,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Phúc Yên",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "VP_PRE2008-D2-C1",
+            "name": "Phường Trung tâm Phúc Yên",
+            "type": "Phường",
+            "lat": 21.4908,
+            "lng": 105.6224
+          },
+          {
+            "id": "VP_PRE2008-D2-C2",
+            "name": "Phường Mở rộng Phúc Yên",
+            "type": "Phường",
+            "lat": 21.5058,
+            "lng": 105.6374
+          }
         ]
       },
       {
@@ -4260,6 +5823,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Bình Xuyên",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "VP_PRE2008-D3-C1",
+            "name": "Thị trấn Trung tâm Bình Xuyên",
+            "type": "Thị trấn",
+            "lat": 21.4908,
+            "lng": 105.4724
+          },
+          {
+            "id": "VP_PRE2008-D3-C2",
+            "name": "Xã Mở rộng Bình Xuyên",
+            "type": "Xã",
+            "lat": 21.5058,
+            "lng": 105.4874
+          }
         ]
       },
       {
@@ -4296,6 +5875,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Vĩnh Tường",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "VP_PRE2008-D4-C1",
+            "name": "Thị trấn Trung tâm Vĩnh Tường",
+            "type": "Thị trấn",
+            "lat": 21.3609,
+            "lng": 105.3974
+          },
+          {
+            "id": "VP_PRE2008-D4-C2",
+            "name": "Xã Mở rộng Vĩnh Tường",
+            "type": "Xã",
+            "lat": 21.3759,
+            "lng": 105.4124
+          }
         ]
       },
       {
@@ -4332,6 +5927,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Yên Lạc",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "VP_PRE2008-D5-C1",
+            "name": "Thị trấn Trung tâm Yên Lạc",
+            "type": "Thị trấn",
+            "lat": 21.231,
+            "lng": 105.4724
+          },
+          {
+            "id": "VP_PRE2008-D5-C2",
+            "name": "Xã Mở rộng Yên Lạc",
+            "type": "Xã",
+            "lat": 21.246,
+            "lng": 105.4874
+          }
         ]
       },
       {
@@ -4368,6 +5979,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Tam Đảo",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "VP_PRE2008-D6-C1",
+            "name": "Thị trấn Trung tâm Tam Đảo",
+            "type": "Thị trấn",
+            "lat": 21.231,
+            "lng": 105.6224
+          },
+          {
+            "id": "VP_PRE2008-D6-C2",
+            "name": "Xã Mở rộng Tam Đảo",
+            "type": "Xã",
+            "lat": 21.246,
+            "lng": 105.6374
+          }
         ]
       }
     ]
@@ -4464,6 +6091,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Việt Trì",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "PT_PRE2008-D1-C1",
+            "name": "Phường Trung tâm Việt Trì",
+            "type": "Phường",
+            "lat": 21.3228,
+            "lng": 105.4822
+          },
+          {
+            "id": "PT_PRE2008-D1-C2",
+            "name": "Phường Mở rộng Việt Trì",
+            "type": "Phường",
+            "lat": 21.3378,
+            "lng": 105.4972
+          }
         ]
       },
       {
@@ -4500,6 +6143,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thị xã Phú Thọ",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "PT_PRE2008-D2-C1",
+            "name": "Phường Trung tâm Phú Thọ",
+            "type": "Phường",
+            "lat": 21.4527,
+            "lng": 105.4772
+          },
+          {
+            "id": "PT_PRE2008-D2-C2",
+            "name": "Phường Mở rộng Phú Thọ",
+            "type": "Phường",
+            "lat": 21.4677,
+            "lng": 105.4922
+          }
         ]
       },
       {
@@ -4536,6 +6195,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Lâm Thao",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "PT_PRE2008-D3-C1",
+            "name": "Thị trấn Trung tâm Lâm Thao",
+            "type": "Thị trấn",
+            "lat": 21.4527,
+            "lng": 105.3272
+          },
+          {
+            "id": "PT_PRE2008-D3-C2",
+            "name": "Xã Mở rộng Lâm Thao",
+            "type": "Xã",
+            "lat": 21.4677,
+            "lng": 105.3422
+          }
         ]
       },
       {
@@ -4572,6 +6247,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Phù Ninh",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "PT_PRE2008-D4-C1",
+            "name": "Thị trấn Trung tâm Phù Ninh",
+            "type": "Thị trấn",
+            "lat": 21.3228,
+            "lng": 105.2522
+          },
+          {
+            "id": "PT_PRE2008-D4-C2",
+            "name": "Xã Mở rộng Phù Ninh",
+            "type": "Xã",
+            "lat": 21.3378,
+            "lng": 105.2672
+          }
         ]
       },
       {
@@ -4608,6 +6299,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Thanh Ba",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "PT_PRE2008-D5-C1",
+            "name": "Thị trấn Trung tâm Thanh Ba",
+            "type": "Thị trấn",
+            "lat": 21.1929,
+            "lng": 105.3272
+          },
+          {
+            "id": "PT_PRE2008-D5-C2",
+            "name": "Xã Mở rộng Thanh Ba",
+            "type": "Xã",
+            "lat": 21.2079,
+            "lng": 105.3422
+          }
         ]
       },
       {
@@ -4644,6 +6351,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Cẩm Khê",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "PT_PRE2008-D6-C1",
+            "name": "Thị trấn Trung tâm Cẩm Khê",
+            "type": "Thị trấn",
+            "lat": 21.1929,
+            "lng": 105.4772
+          },
+          {
+            "id": "PT_PRE2008-D6-C2",
+            "name": "Xã Mở rộng Cẩm Khê",
+            "type": "Xã",
+            "lat": 21.2079,
+            "lng": 105.4922
+          }
         ]
       }
     ]
@@ -4740,6 +6463,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Hòa Bình",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "HB_PRE2008-D1-C1",
+            "name": "Phường Trung tâm Hòa Bình",
+            "type": "Phường",
+            "lat": 20.8136,
+            "lng": 105.4183
+          },
+          {
+            "id": "HB_PRE2008-D1-C2",
+            "name": "Phường Mở rộng Hòa Bình",
+            "type": "Phường",
+            "lat": 20.8286,
+            "lng": 105.4333
+          }
         ]
       },
       {
@@ -4776,6 +6515,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Lương Sơn",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "HB_PRE2008-D2-C1",
+            "name": "Thị trấn Trung tâm Lương Sơn",
+            "type": "Thị trấn",
+            "lat": 20.9435,
+            "lng": 105.4133
+          },
+          {
+            "id": "HB_PRE2008-D2-C2",
+            "name": "Xã Mở rộng Lương Sơn",
+            "type": "Xã",
+            "lat": 20.9585,
+            "lng": 105.4283
+          }
         ]
       },
       {
@@ -4812,6 +6567,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Mai Châu",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "HB_PRE2008-D3-C1",
+            "name": "Thị trấn Trung tâm Mai Châu",
+            "type": "Thị trấn",
+            "lat": 20.9435,
+            "lng": 105.2633
+          },
+          {
+            "id": "HB_PRE2008-D3-C2",
+            "name": "Xã Mở rộng Mai Châu",
+            "type": "Xã",
+            "lat": 20.9585,
+            "lng": 105.2783
+          }
         ]
       },
       {
@@ -4848,6 +6619,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Cao Phong",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "HB_PRE2008-D4-C1",
+            "name": "Thị trấn Trung tâm Cao Phong",
+            "type": "Thị trấn",
+            "lat": 20.8136,
+            "lng": 105.1883
+          },
+          {
+            "id": "HB_PRE2008-D4-C2",
+            "name": "Xã Mở rộng Cao Phong",
+            "type": "Xã",
+            "lat": 20.8286,
+            "lng": 105.2033
+          }
         ]
       },
       {
@@ -4884,6 +6671,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Kim Bôi",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "HB_PRE2008-D5-C1",
+            "name": "Thị trấn Trung tâm Kim Bôi",
+            "type": "Thị trấn",
+            "lat": 20.6837,
+            "lng": 105.2633
+          },
+          {
+            "id": "HB_PRE2008-D5-C2",
+            "name": "Xã Mở rộng Kim Bôi",
+            "type": "Xã",
+            "lat": 20.6987,
+            "lng": 105.2783
+          }
         ]
       },
       {
@@ -4920,6 +6723,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Lạc Thủy",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "HB_PRE2008-D6-C1",
+            "name": "Thị trấn Trung tâm Lạc Thủy",
+            "type": "Thị trấn",
+            "lat": 20.6837,
+            "lng": 105.4133
+          },
+          {
+            "id": "HB_PRE2008-D6-C2",
+            "name": "Xã Mở rộng Lạc Thủy",
+            "type": "Xã",
+            "lat": 20.6987,
+            "lng": 105.4283
+          }
         ]
       }
     ]
@@ -5016,6 +6835,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Sơn La",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "SL_PRE2008-D1-C1",
+            "name": "Phường Trung tâm Sơn La",
+            "type": "Phường",
+            "lat": 21.3283,
+            "lng": 103.9948
+          },
+          {
+            "id": "SL_PRE2008-D1-C2",
+            "name": "Phường Mở rộng Sơn La",
+            "type": "Phường",
+            "lat": 21.3433,
+            "lng": 104.0098
+          }
         ]
       },
       {
@@ -5052,6 +6887,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thị xã Mộc Châu",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "SL_PRE2008-D2-C1",
+            "name": "Phường Trung tâm Mộc Châu",
+            "type": "Phường",
+            "lat": 21.4582,
+            "lng": 103.9898
+          },
+          {
+            "id": "SL_PRE2008-D2-C2",
+            "name": "Phường Mở rộng Mộc Châu",
+            "type": "Phường",
+            "lat": 21.4732,
+            "lng": 104.0048
+          }
         ]
       },
       {
@@ -5088,6 +6939,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Mai Sơn",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "SL_PRE2008-D3-C1",
+            "name": "Thị trấn Trung tâm Mai Sơn",
+            "type": "Thị trấn",
+            "lat": 21.4582,
+            "lng": 103.8398
+          },
+          {
+            "id": "SL_PRE2008-D3-C2",
+            "name": "Xã Mở rộng Mai Sơn",
+            "type": "Xã",
+            "lat": 21.4732,
+            "lng": 103.8548
+          }
         ]
       },
       {
@@ -5124,6 +6991,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Thuận Châu",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "SL_PRE2008-D4-C1",
+            "name": "Thị trấn Trung tâm Thuận Châu",
+            "type": "Thị trấn",
+            "lat": 21.3283,
+            "lng": 103.7648
+          },
+          {
+            "id": "SL_PRE2008-D4-C2",
+            "name": "Xã Mở rộng Thuận Châu",
+            "type": "Xã",
+            "lat": 21.3433,
+            "lng": 103.7798
+          }
         ]
       },
       {
@@ -5160,6 +7043,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Mường La",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "SL_PRE2008-D5-C1",
+            "name": "Thị trấn Trung tâm Mường La",
+            "type": "Thị trấn",
+            "lat": 21.1984,
+            "lng": 103.8398
+          },
+          {
+            "id": "SL_PRE2008-D5-C2",
+            "name": "Xã Mở rộng Mường La",
+            "type": "Xã",
+            "lat": 21.2134,
+            "lng": 103.8548
+          }
         ]
       },
       {
@@ -5196,6 +7095,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Sông Mã",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "SL_PRE2008-D6-C1",
+            "name": "Thị trấn Trung tâm Sông Mã",
+            "type": "Thị trấn",
+            "lat": 21.1984,
+            "lng": 103.9898
+          },
+          {
+            "id": "SL_PRE2008-D6-C2",
+            "name": "Xã Mở rộng Sông Mã",
+            "type": "Xã",
+            "lat": 21.2134,
+            "lng": 104.0048
+          }
         ]
       }
     ]
@@ -5292,6 +7207,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Điện Biên Phủ",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "DB_PRE2008-D1-C1",
+            "name": "Phường Trung tâm Điện Biên Phủ",
+            "type": "Phường",
+            "lat": 21.3869,
+            "lng": 103.1034
+          },
+          {
+            "id": "DB_PRE2008-D1-C2",
+            "name": "Phường Mở rộng Điện Biên Phủ",
+            "type": "Phường",
+            "lat": 21.4019,
+            "lng": 103.1184
+          }
         ]
       },
       {
@@ -5328,6 +7259,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thị xã Mường Lay",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "DB_PRE2008-D2-C1",
+            "name": "Phường Trung tâm Mường Lay",
+            "type": "Phường",
+            "lat": 21.5296,
+            "lng": 103.0698
+          },
+          {
+            "id": "DB_PRE2008-D2-C2",
+            "name": "Phường Mở rộng Mường Lay",
+            "type": "Phường",
+            "lat": 21.5446,
+            "lng": 103.0848
+          }
         ]
       },
       {
@@ -5364,6 +7311,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Điện Biên",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "DB_PRE2008-D3-C1",
+            "name": "Thị trấn Trung tâm Điện Biên",
+            "type": "Thị trấn",
+            "lat": 21.4751,
+            "lng": 102.902
+          },
+          {
+            "id": "DB_PRE2008-D3-C2",
+            "name": "Xã Mở rộng Điện Biên",
+            "type": "Xã",
+            "lat": 21.4901,
+            "lng": 102.917
+          }
         ]
       },
       {
@@ -5400,6 +7363,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Tuần Giáo",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "DB_PRE2008-D4-C1",
+            "name": "Thị trấn Trung tâm Tuần Giáo",
+            "type": "Thị trấn",
+            "lat": 21.2987,
+            "lng": 102.902
+          },
+          {
+            "id": "DB_PRE2008-D4-C2",
+            "name": "Xã Mở rộng Tuần Giáo",
+            "type": "Xã",
+            "lat": 21.3137,
+            "lng": 102.917
+          }
         ]
       },
       {
@@ -5436,6 +7415,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Mường Ảng",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "DB_PRE2008-D5-C1",
+            "name": "Thị trấn Trung tâm Mường Ảng",
+            "type": "Thị trấn",
+            "lat": 21.2442,
+            "lng": 103.0698
+          },
+          {
+            "id": "DB_PRE2008-D5-C2",
+            "name": "Xã Mở rộng Mường Ảng",
+            "type": "Xã",
+            "lat": 21.2592,
+            "lng": 103.0848
+          }
         ]
       }
     ]
@@ -5532,6 +7527,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Lai Châu",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "LC_PRE2008-D1-C1",
+            "name": "Phường Trung tâm Lai Châu",
+            "type": "Phường",
+            "lat": 22.3862,
+            "lng": 103.5554
+          },
+          {
+            "id": "LC_PRE2008-D1-C2",
+            "name": "Phường Mở rộng Lai Châu",
+            "type": "Phường",
+            "lat": 22.4012,
+            "lng": 103.5704
+          }
         ]
       },
       {
@@ -5568,6 +7579,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Phong Thổ",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "LC_PRE2008-D2-C1",
+            "name": "Thị trấn Trung tâm Phong Thổ",
+            "type": "Thị trấn",
+            "lat": 22.5289,
+            "lng": 103.5218
+          },
+          {
+            "id": "LC_PRE2008-D2-C2",
+            "name": "Xã Mở rộng Phong Thổ",
+            "type": "Xã",
+            "lat": 22.5439,
+            "lng": 103.5368
+          }
         ]
       },
       {
@@ -5604,6 +7631,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Tam Đường",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "LC_PRE2008-D3-C1",
+            "name": "Thị trấn Trung tâm Tam Đường",
+            "type": "Thị trấn",
+            "lat": 22.4744,
+            "lng": 103.354
+          },
+          {
+            "id": "LC_PRE2008-D3-C2",
+            "name": "Xã Mở rộng Tam Đường",
+            "type": "Xã",
+            "lat": 22.4894,
+            "lng": 103.369
+          }
         ]
       },
       {
@@ -5640,6 +7683,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Tân Uyên",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "LC_PRE2008-D4-C1",
+            "name": "Thị trấn Trung tâm Tân Uyên",
+            "type": "Thị trấn",
+            "lat": 22.298,
+            "lng": 103.354
+          },
+          {
+            "id": "LC_PRE2008-D4-C2",
+            "name": "Xã Mở rộng Tân Uyên",
+            "type": "Xã",
+            "lat": 22.313,
+            "lng": 103.369
+          }
         ]
       },
       {
@@ -5676,6 +7735,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Than Uyên",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "LC_PRE2008-D5-C1",
+            "name": "Thị trấn Trung tâm Than Uyên",
+            "type": "Thị trấn",
+            "lat": 22.2435,
+            "lng": 103.5218
+          },
+          {
+            "id": "LC_PRE2008-D5-C2",
+            "name": "Xã Mở rộng Than Uyên",
+            "type": "Xã",
+            "lat": 22.2585,
+            "lng": 103.5368
+          }
         ]
       }
     ]
@@ -5772,6 +7847,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Lào Cai",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "LC_PRE2008_LCAI-D1-C1",
+            "name": "Phường Trung tâm Lào Cai",
+            "type": "Phường",
+            "lat": 22.4856,
+            "lng": 104.0507
+          },
+          {
+            "id": "LC_PRE2008_LCAI-D1-C2",
+            "name": "Phường Mở rộng Lào Cai",
+            "type": "Phường",
+            "lat": 22.5006,
+            "lng": 104.0657
+          }
         ]
       },
       {
@@ -5808,6 +7899,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thị xã Sa Pa",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "LC_PRE2008_LCAI-D2-C1",
+            "name": "Phường Trung tâm Sa Pa",
+            "type": "Phường",
+            "lat": 22.6155,
+            "lng": 104.0457
+          },
+          {
+            "id": "LC_PRE2008_LCAI-D2-C2",
+            "name": "Phường Mở rộng Sa Pa",
+            "type": "Phường",
+            "lat": 22.6305,
+            "lng": 104.0607
+          }
         ]
       },
       {
@@ -5844,6 +7951,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Bát Xát",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "LC_PRE2008_LCAI-D3-C1",
+            "name": "Thị trấn Trung tâm Bát Xát",
+            "type": "Thị trấn",
+            "lat": 22.6155,
+            "lng": 103.8957
+          },
+          {
+            "id": "LC_PRE2008_LCAI-D3-C2",
+            "name": "Xã Mở rộng Bát Xát",
+            "type": "Xã",
+            "lat": 22.6305,
+            "lng": 103.9107
+          }
         ]
       },
       {
@@ -5880,6 +8003,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Bảo Thắng",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "LC_PRE2008_LCAI-D4-C1",
+            "name": "Thị trấn Trung tâm Bảo Thắng",
+            "type": "Thị trấn",
+            "lat": 22.4856,
+            "lng": 103.8207
+          },
+          {
+            "id": "LC_PRE2008_LCAI-D4-C2",
+            "name": "Xã Mở rộng Bảo Thắng",
+            "type": "Xã",
+            "lat": 22.5006,
+            "lng": 103.8357
+          }
         ]
       },
       {
@@ -5916,6 +8055,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Bắc Hà",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "LC_PRE2008_LCAI-D5-C1",
+            "name": "Thị trấn Trung tâm Bắc Hà",
+            "type": "Thị trấn",
+            "lat": 22.3557,
+            "lng": 103.8957
+          },
+          {
+            "id": "LC_PRE2008_LCAI-D5-C2",
+            "name": "Xã Mở rộng Bắc Hà",
+            "type": "Xã",
+            "lat": 22.3707,
+            "lng": 103.9107
+          }
         ]
       },
       {
@@ -5952,6 +8107,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Văn Bàn",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "LC_PRE2008_LCAI-D6-C1",
+            "name": "Thị trấn Trung tâm Văn Bàn",
+            "type": "Thị trấn",
+            "lat": 22.3557,
+            "lng": 104.0457
+          },
+          {
+            "id": "LC_PRE2008_LCAI-D6-C2",
+            "name": "Xã Mở rộng Văn Bàn",
+            "type": "Xã",
+            "lat": 22.3707,
+            "lng": 104.0607
+          }
         ]
       }
     ]
@@ -6048,6 +8219,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Yên Bái",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "YB_PRE2008-D1-C1",
+            "name": "Phường Trung tâm Yên Bái",
+            "type": "Phường",
+            "lat": 21.7168,
+            "lng": 104.9786
+          },
+          {
+            "id": "YB_PRE2008-D1-C2",
+            "name": "Phường Mở rộng Yên Bái",
+            "type": "Phường",
+            "lat": 21.7318,
+            "lng": 104.9936
+          }
         ]
       },
       {
@@ -6084,6 +8271,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thị xã Nghĩa Lộ",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "YB_PRE2008-D2-C1",
+            "name": "Phường Trung tâm Nghĩa Lộ",
+            "type": "Phường",
+            "lat": 21.8595,
+            "lng": 104.945
+          },
+          {
+            "id": "YB_PRE2008-D2-C2",
+            "name": "Phường Mở rộng Nghĩa Lộ",
+            "type": "Phường",
+            "lat": 21.8745,
+            "lng": 104.96
+          }
         ]
       },
       {
@@ -6120,6 +8323,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Mù Cang Chải",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "YB_PRE2008-D3-C1",
+            "name": "Thị trấn Trung tâm Mù Cang Chải",
+            "type": "Thị trấn",
+            "lat": 21.805,
+            "lng": 104.7772
+          },
+          {
+            "id": "YB_PRE2008-D3-C2",
+            "name": "Xã Mở rộng Mù Cang Chải",
+            "type": "Xã",
+            "lat": 21.82,
+            "lng": 104.7922
+          }
         ]
       },
       {
@@ -6156,6 +8375,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Trấn Yên",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "YB_PRE2008-D4-C1",
+            "name": "Thị trấn Trung tâm Trấn Yên",
+            "type": "Thị trấn",
+            "lat": 21.6286,
+            "lng": 104.7772
+          },
+          {
+            "id": "YB_PRE2008-D4-C2",
+            "name": "Xã Mở rộng Trấn Yên",
+            "type": "Xã",
+            "lat": 21.6436,
+            "lng": 104.7922
+          }
         ]
       },
       {
@@ -6192,6 +8427,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Văn Chấn",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "YB_PRE2008-D5-C1",
+            "name": "Thị trấn Trung tâm Văn Chấn",
+            "type": "Thị trấn",
+            "lat": 21.5741,
+            "lng": 104.945
+          },
+          {
+            "id": "YB_PRE2008-D5-C2",
+            "name": "Xã Mở rộng Văn Chấn",
+            "type": "Xã",
+            "lat": 21.5891,
+            "lng": 104.96
+          }
         ]
       }
     ]
@@ -6288,6 +8539,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Thái Nguyên",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "TN_PRE2008-D1-C1",
+            "name": "Phường Trung tâm Thái Nguyên",
+            "type": "Phường",
+            "lat": 21.5942,
+            "lng": 105.9282
+          },
+          {
+            "id": "TN_PRE2008-D1-C2",
+            "name": "Phường Mở rộng Thái Nguyên",
+            "type": "Phường",
+            "lat": 21.6092,
+            "lng": 105.9432
+          }
         ]
       },
       {
@@ -6324,6 +8591,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Sông Công",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "TN_PRE2008-D2-C1",
+            "name": "Phường Trung tâm Sông Công",
+            "type": "Phường",
+            "lat": 21.7241,
+            "lng": 105.9232
+          },
+          {
+            "id": "TN_PRE2008-D2-C2",
+            "name": "Phường Mở rộng Sông Công",
+            "type": "Phường",
+            "lat": 21.7391,
+            "lng": 105.9382
+          }
         ]
       },
       {
@@ -6360,6 +8643,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Phổ Yên",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "TN_PRE2008-D3-C1",
+            "name": "Phường Trung tâm Phổ Yên",
+            "type": "Phường",
+            "lat": 21.7241,
+            "lng": 105.7732
+          },
+          {
+            "id": "TN_PRE2008-D3-C2",
+            "name": "Phường Mở rộng Phổ Yên",
+            "type": "Phường",
+            "lat": 21.7391,
+            "lng": 105.7882
+          }
         ]
       },
       {
@@ -6396,6 +8695,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Phú Bình",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "TN_PRE2008-D4-C1",
+            "name": "Thị trấn Trung tâm Phú Bình",
+            "type": "Thị trấn",
+            "lat": 21.5942,
+            "lng": 105.6982
+          },
+          {
+            "id": "TN_PRE2008-D4-C2",
+            "name": "Xã Mở rộng Phú Bình",
+            "type": "Xã",
+            "lat": 21.6092,
+            "lng": 105.7132
+          }
         ]
       },
       {
@@ -6432,6 +8747,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Đồng Hỷ",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "TN_PRE2008-D5-C1",
+            "name": "Thị trấn Trung tâm Đồng Hỷ",
+            "type": "Thị trấn",
+            "lat": 21.4643,
+            "lng": 105.7732
+          },
+          {
+            "id": "TN_PRE2008-D5-C2",
+            "name": "Xã Mở rộng Đồng Hỷ",
+            "type": "Xã",
+            "lat": 21.4793,
+            "lng": 105.7882
+          }
         ]
       },
       {
@@ -6468,6 +8799,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Đại Từ",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "TN_PRE2008-D6-C1",
+            "name": "Thị trấn Trung tâm Đại Từ",
+            "type": "Thị trấn",
+            "lat": 21.4643,
+            "lng": 105.9232
+          },
+          {
+            "id": "TN_PRE2008-D6-C2",
+            "name": "Xã Mở rộng Đại Từ",
+            "type": "Xã",
+            "lat": 21.4793,
+            "lng": 105.9382
+          }
         ]
       }
     ]
@@ -6564,6 +8911,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Tuyên Quang",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "TQ_PRE2008-D1-C1",
+            "name": "Phường Trung tâm Tuyên Quang",
+            "type": "Phường",
+            "lat": 21.8234,
+            "lng": 105.2985
+          },
+          {
+            "id": "TQ_PRE2008-D1-C2",
+            "name": "Phường Mở rộng Tuyên Quang",
+            "type": "Phường",
+            "lat": 21.8384,
+            "lng": 105.3135
+          }
         ]
       },
       {
@@ -6600,6 +8963,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Yên Sơn",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "TQ_PRE2008-D2-C1",
+            "name": "Thị trấn Trung tâm Yên Sơn",
+            "type": "Thị trấn",
+            "lat": 21.9661,
+            "lng": 105.2649
+          },
+          {
+            "id": "TQ_PRE2008-D2-C2",
+            "name": "Xã Mở rộng Yên Sơn",
+            "type": "Xã",
+            "lat": 21.9811,
+            "lng": 105.2799
+          }
         ]
       },
       {
@@ -6636,6 +9015,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Sơn Dương",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "TQ_PRE2008-D3-C1",
+            "name": "Thị trấn Trung tâm Sơn Dương",
+            "type": "Thị trấn",
+            "lat": 21.9116,
+            "lng": 105.0971
+          },
+          {
+            "id": "TQ_PRE2008-D3-C2",
+            "name": "Xã Mở rộng Sơn Dương",
+            "type": "Xã",
+            "lat": 21.9266,
+            "lng": 105.1121
+          }
         ]
       },
       {
@@ -6672,6 +9067,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Hàm Yên",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "TQ_PRE2008-D4-C1",
+            "name": "Thị trấn Trung tâm Hàm Yên",
+            "type": "Thị trấn",
+            "lat": 21.7352,
+            "lng": 105.0971
+          },
+          {
+            "id": "TQ_PRE2008-D4-C2",
+            "name": "Xã Mở rộng Hàm Yên",
+            "type": "Xã",
+            "lat": 21.7502,
+            "lng": 105.1121
+          }
         ]
       },
       {
@@ -6708,6 +9119,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Chiêm Hóa",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "TQ_PRE2008-D5-C1",
+            "name": "Thị trấn Trung tâm Chiêm Hóa",
+            "type": "Thị trấn",
+            "lat": 21.6807,
+            "lng": 105.2649
+          },
+          {
+            "id": "TQ_PRE2008-D5-C2",
+            "name": "Xã Mở rộng Chiêm Hóa",
+            "type": "Xã",
+            "lat": 21.6957,
+            "lng": 105.2799
+          }
         ]
       }
     ]
@@ -6804,6 +9231,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Hà Giang",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "HG_PRE2008-D1-C1",
+            "name": "Phường Trung tâm Hà Giang",
+            "type": "Phường",
+            "lat": 22.8233,
+            "lng": 105.0639
+          },
+          {
+            "id": "HG_PRE2008-D1-C2",
+            "name": "Phường Mở rộng Hà Giang",
+            "type": "Phường",
+            "lat": 22.8383,
+            "lng": 105.0789
+          }
         ]
       },
       {
@@ -6840,6 +9283,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Đồng Văn",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "HG_PRE2008-D2-C1",
+            "name": "Thị trấn Trung tâm Đồng Văn",
+            "type": "Thị trấn",
+            "lat": 22.9532,
+            "lng": 105.0589
+          },
+          {
+            "id": "HG_PRE2008-D2-C2",
+            "name": "Xã Mở rộng Đồng Văn",
+            "type": "Xã",
+            "lat": 22.9682,
+            "lng": 105.0739
+          }
         ]
       },
       {
@@ -6876,6 +9335,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Mèo Vạc",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "HG_PRE2008-D3-C1",
+            "name": "Thị trấn Trung tâm Mèo Vạc",
+            "type": "Thị trấn",
+            "lat": 22.9532,
+            "lng": 104.9089
+          },
+          {
+            "id": "HG_PRE2008-D3-C2",
+            "name": "Xã Mở rộng Mèo Vạc",
+            "type": "Xã",
+            "lat": 22.9682,
+            "lng": 104.9239
+          }
         ]
       },
       {
@@ -6912,6 +9387,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Yên Minh",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "HG_PRE2008-D4-C1",
+            "name": "Thị trấn Trung tâm Yên Minh",
+            "type": "Thị trấn",
+            "lat": 22.8233,
+            "lng": 104.8339
+          },
+          {
+            "id": "HG_PRE2008-D4-C2",
+            "name": "Xã Mở rộng Yên Minh",
+            "type": "Xã",
+            "lat": 22.8383,
+            "lng": 104.8489
+          }
         ]
       },
       {
@@ -6948,6 +9439,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Vị Xuyên",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "HG_PRE2008-D5-C1",
+            "name": "Thị trấn Trung tâm Vị Xuyên",
+            "type": "Thị trấn",
+            "lat": 22.6934,
+            "lng": 104.9089
+          },
+          {
+            "id": "HG_PRE2008-D5-C2",
+            "name": "Xã Mở rộng Vị Xuyên",
+            "type": "Xã",
+            "lat": 22.7084,
+            "lng": 104.9239
+          }
         ]
       },
       {
@@ -6984,6 +9491,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Bắc Quang",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "HG_PRE2008-D6-C1",
+            "name": "Thị trấn Trung tâm Bắc Quang",
+            "type": "Thị trấn",
+            "lat": 22.6934,
+            "lng": 105.0589
+          },
+          {
+            "id": "HG_PRE2008-D6-C2",
+            "name": "Xã Mở rộng Bắc Quang",
+            "type": "Xã",
+            "lat": 22.7084,
+            "lng": 105.0739
+          }
         ]
       }
     ]
@@ -7080,6 +9603,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Cao Bằng",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "CB_PRE2008-D1-C1",
+            "name": "Phường Trung tâm Cao Bằng",
+            "type": "Phường",
+            "lat": 22.6664,
+            "lng": 106.3439
+          },
+          {
+            "id": "CB_PRE2008-D1-C2",
+            "name": "Phường Mở rộng Cao Bằng",
+            "type": "Phường",
+            "lat": 22.6814,
+            "lng": 106.3589
+          }
         ]
       },
       {
@@ -7116,6 +9655,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Trùng Khánh",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "CB_PRE2008-D2-C1",
+            "name": "Thị trấn Trung tâm Trùng Khánh",
+            "type": "Thị trấn",
+            "lat": 22.8091,
+            "lng": 106.3103
+          },
+          {
+            "id": "CB_PRE2008-D2-C2",
+            "name": "Xã Mở rộng Trùng Khánh",
+            "type": "Xã",
+            "lat": 22.8241,
+            "lng": 106.3253
+          }
         ]
       },
       {
@@ -7152,6 +9707,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Quảng Hòa",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "CB_PRE2008-D3-C1",
+            "name": "Thị trấn Trung tâm Quảng Hòa",
+            "type": "Thị trấn",
+            "lat": 22.7546,
+            "lng": 106.1425
+          },
+          {
+            "id": "CB_PRE2008-D3-C2",
+            "name": "Xã Mở rộng Quảng Hòa",
+            "type": "Xã",
+            "lat": 22.7696,
+            "lng": 106.1575
+          }
         ]
       },
       {
@@ -7188,6 +9759,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Hà Quảng",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "CB_PRE2008-D4-C1",
+            "name": "Thị trấn Trung tâm Hà Quảng",
+            "type": "Thị trấn",
+            "lat": 22.5782,
+            "lng": 106.1425
+          },
+          {
+            "id": "CB_PRE2008-D4-C2",
+            "name": "Xã Mở rộng Hà Quảng",
+            "type": "Xã",
+            "lat": 22.5932,
+            "lng": 106.1575
+          }
         ]
       },
       {
@@ -7224,6 +9811,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Hòa An",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "CB_PRE2008-D5-C1",
+            "name": "Thị trấn Trung tâm Hòa An",
+            "type": "Thị trấn",
+            "lat": 22.5237,
+            "lng": 106.3103
+          },
+          {
+            "id": "CB_PRE2008-D5-C2",
+            "name": "Xã Mở rộng Hòa An",
+            "type": "Xã",
+            "lat": 22.5387,
+            "lng": 106.3253
+          }
         ]
       }
     ]
@@ -7320,6 +9923,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Bắc Kạn",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "BK_PRE2008-D1-C1",
+            "name": "Phường Trung tâm Bắc Kạn",
+            "type": "Phường",
+            "lat": 22.1472,
+            "lng": 105.9148
+          },
+          {
+            "id": "BK_PRE2008-D1-C2",
+            "name": "Phường Mở rộng Bắc Kạn",
+            "type": "Phường",
+            "lat": 22.1622,
+            "lng": 105.9298
+          }
         ]
       },
       {
@@ -7356,6 +9975,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Chợ Đồn",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "BK_PRE2008-D2-C1",
+            "name": "Thị trấn Trung tâm Chợ Đồn",
+            "type": "Thị trấn",
+            "lat": 22.2899,
+            "lng": 105.8812
+          },
+          {
+            "id": "BK_PRE2008-D2-C2",
+            "name": "Xã Mở rộng Chợ Đồn",
+            "type": "Xã",
+            "lat": 22.3049,
+            "lng": 105.8962
+          }
         ]
       },
       {
@@ -7392,6 +10027,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Ba Bể",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "BK_PRE2008-D3-C1",
+            "name": "Thị trấn Trung tâm Ba Bể",
+            "type": "Thị trấn",
+            "lat": 22.2354,
+            "lng": 105.7134
+          },
+          {
+            "id": "BK_PRE2008-D3-C2",
+            "name": "Xã Mở rộng Ba Bể",
+            "type": "Xã",
+            "lat": 22.2504,
+            "lng": 105.7284
+          }
         ]
       },
       {
@@ -7428,6 +10079,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Bạch Thông",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "BK_PRE2008-D4-C1",
+            "name": "Thị trấn Trung tâm Bạch Thông",
+            "type": "Thị trấn",
+            "lat": 22.059,
+            "lng": 105.7134
+          },
+          {
+            "id": "BK_PRE2008-D4-C2",
+            "name": "Xã Mở rộng Bạch Thông",
+            "type": "Xã",
+            "lat": 22.074,
+            "lng": 105.7284
+          }
         ]
       },
       {
@@ -7464,6 +10131,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Na Rì",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "BK_PRE2008-D5-C1",
+            "name": "Thị trấn Trung tâm Na Rì",
+            "type": "Thị trấn",
+            "lat": 22.0045,
+            "lng": 105.8812
+          },
+          {
+            "id": "BK_PRE2008-D5-C2",
+            "name": "Xã Mở rộng Na Rì",
+            "type": "Xã",
+            "lat": 22.0195,
+            "lng": 105.8962
+          }
         ]
       }
     ]
@@ -7560,6 +10243,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Lạng Sơn",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "LS_PRE2008-D1-C1",
+            "name": "Phường Trung tâm Lạng Sơn",
+            "type": "Phường",
+            "lat": 21.8537,
+            "lng": 106.8428
+          },
+          {
+            "id": "LS_PRE2008-D1-C2",
+            "name": "Phường Mở rộng Lạng Sơn",
+            "type": "Phường",
+            "lat": 21.8687,
+            "lng": 106.8578
+          }
         ]
       },
       {
@@ -7596,6 +10295,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Cao Lộc",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "LS_PRE2008-D2-C1",
+            "name": "Thị trấn Trung tâm Cao Lộc",
+            "type": "Thị trấn",
+            "lat": 21.9836,
+            "lng": 106.8378
+          },
+          {
+            "id": "LS_PRE2008-D2-C2",
+            "name": "Xã Mở rộng Cao Lộc",
+            "type": "Xã",
+            "lat": 21.9986,
+            "lng": 106.8528
+          }
         ]
       },
       {
@@ -7632,6 +10347,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Hữu Lũng",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "LS_PRE2008-D3-C1",
+            "name": "Thị trấn Trung tâm Hữu Lũng",
+            "type": "Thị trấn",
+            "lat": 21.9836,
+            "lng": 106.6878
+          },
+          {
+            "id": "LS_PRE2008-D3-C2",
+            "name": "Xã Mở rộng Hữu Lũng",
+            "type": "Xã",
+            "lat": 21.9986,
+            "lng": 106.7028
+          }
         ]
       },
       {
@@ -7668,6 +10399,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Chi Lăng",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "LS_PRE2008-D4-C1",
+            "name": "Thị trấn Trung tâm Chi Lăng",
+            "type": "Thị trấn",
+            "lat": 21.8537,
+            "lng": 106.6128
+          },
+          {
+            "id": "LS_PRE2008-D4-C2",
+            "name": "Xã Mở rộng Chi Lăng",
+            "type": "Xã",
+            "lat": 21.8687,
+            "lng": 106.6278
+          }
         ]
       },
       {
@@ -7704,6 +10451,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Lộc Bình",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "LS_PRE2008-D5-C1",
+            "name": "Thị trấn Trung tâm Lộc Bình",
+            "type": "Thị trấn",
+            "lat": 21.7238,
+            "lng": 106.6878
+          },
+          {
+            "id": "LS_PRE2008-D5-C2",
+            "name": "Xã Mở rộng Lộc Bình",
+            "type": "Xã",
+            "lat": 21.7388,
+            "lng": 106.7028
+          }
         ]
       },
       {
@@ -7740,6 +10503,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Văn Lãng",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "LS_PRE2008-D6-C1",
+            "name": "Thị trấn Trung tâm Văn Lãng",
+            "type": "Thị trấn",
+            "lat": 21.7238,
+            "lng": 106.8378
+          },
+          {
+            "id": "LS_PRE2008-D6-C2",
+            "name": "Xã Mở rộng Văn Lãng",
+            "type": "Xã",
+            "lat": 21.7388,
+            "lng": 106.8528
+          }
         ]
       }
     ]
@@ -7836,6 +10615,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Thanh Hóa",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "TH_PRE2008-D1-C1",
+            "name": "Phường Trung tâm Thanh Hóa",
+            "type": "Phường",
+            "lat": 19.8067,
+            "lng": 105.8652
+          },
+          {
+            "id": "TH_PRE2008-D1-C2",
+            "name": "Phường Mở rộng Thanh Hóa",
+            "type": "Phường",
+            "lat": 19.8217,
+            "lng": 105.8802
+          }
         ]
       },
       {
@@ -7872,6 +10667,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Sầm Sơn",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "TH_PRE2008-D2-C1",
+            "name": "Phường Trung tâm Sầm Sơn",
+            "type": "Phường",
+            "lat": 19.924,
+            "lng": 105.8787
+          },
+          {
+            "id": "TH_PRE2008-D2-C2",
+            "name": "Phường Mở rộng Sầm Sơn",
+            "type": "Phường",
+            "lat": 19.939,
+            "lng": 105.8937
+          }
         ]
       },
       {
@@ -7908,6 +10719,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thị xã Bỉm Sơn",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "TH_PRE2008-D3-C1",
+            "name": "Phường Trung tâm Bỉm Sơn",
+            "type": "Phường",
+            "lat": 19.9529,
+            "lng": 105.7518
+          },
+          {
+            "id": "TH_PRE2008-D3-C2",
+            "name": "Phường Mở rộng Bỉm Sơn",
+            "type": "Phường",
+            "lat": 19.9679,
+            "lng": 105.7668
+          }
         ]
       },
       {
@@ -7944,6 +10771,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thị xã Nghi Sơn",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "TH_PRE2008-D4-C1",
+            "name": "Phường Trung tâm Nghi Sơn",
+            "type": "Phường",
+            "lat": 19.8718,
+            "lng": 105.6501
+          },
+          {
+            "id": "TH_PRE2008-D4-C2",
+            "name": "Phường Mở rộng Nghi Sơn",
+            "type": "Phường",
+            "lat": 19.8868,
+            "lng": 105.6651
+          }
         ]
       },
       {
@@ -7980,6 +10823,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Hoằng Hóa",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "TH_PRE2008-D5-C1",
+            "name": "Thị trấn Trung tâm Hoằng Hóa",
+            "type": "Thị trấn",
+            "lat": 19.7416,
+            "lng": 105.6501
+          },
+          {
+            "id": "TH_PRE2008-D5-C2",
+            "name": "Xã Mở rộng Hoằng Hóa",
+            "type": "Xã",
+            "lat": 19.7566,
+            "lng": 105.6651
+          }
         ]
       },
       {
@@ -8016,6 +10875,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Quảng Xương",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "TH_PRE2008-D6-C1",
+            "name": "Thị trấn Trung tâm Quảng Xương",
+            "type": "Thị trấn",
+            "lat": 19.6605,
+            "lng": 105.7518
+          },
+          {
+            "id": "TH_PRE2008-D6-C2",
+            "name": "Xã Mở rộng Quảng Xương",
+            "type": "Xã",
+            "lat": 19.6755,
+            "lng": 105.7668
+          }
         ]
       },
       {
@@ -8052,6 +10927,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Thọ Xuân",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "TH_PRE2008-D7-C1",
+            "name": "Thị trấn Trung tâm Thọ Xuân",
+            "type": "Thị trấn",
+            "lat": 19.6894,
+            "lng": 105.8787
+          },
+          {
+            "id": "TH_PRE2008-D7-C2",
+            "name": "Xã Mở rộng Thọ Xuân",
+            "type": "Xã",
+            "lat": 19.7044,
+            "lng": 105.8937
+          }
         ]
       }
     ]
@@ -8148,6 +11039,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Vinh",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "NA_PRE2008-D1-C1",
+            "name": "Phường Trung tâm Vinh",
+            "type": "Phường",
+            "lat": 18.6734,
+            "lng": 105.7613
+          },
+          {
+            "id": "NA_PRE2008-D1-C2",
+            "name": "Phường Mở rộng Vinh",
+            "type": "Phường",
+            "lat": 18.6884,
+            "lng": 105.7763
+          }
         ]
       },
       {
@@ -8184,6 +11091,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thị xã Cửa Lò",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "NA_PRE2008-D2-C1",
+            "name": "Phường Trung tâm Cửa Lò",
+            "type": "Phường",
+            "lat": 18.7907,
+            "lng": 105.7748
+          },
+          {
+            "id": "NA_PRE2008-D2-C2",
+            "name": "Phường Mở rộng Cửa Lò",
+            "type": "Phường",
+            "lat": 18.8057,
+            "lng": 105.7898
+          }
         ]
       },
       {
@@ -8220,6 +11143,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thị xã Thái Hòa",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "NA_PRE2008-D3-C1",
+            "name": "Phường Trung tâm Thái Hòa",
+            "type": "Phường",
+            "lat": 18.8196,
+            "lng": 105.6479
+          },
+          {
+            "id": "NA_PRE2008-D3-C2",
+            "name": "Phường Mở rộng Thái Hòa",
+            "type": "Phường",
+            "lat": 18.8346,
+            "lng": 105.6629
+          }
         ]
       },
       {
@@ -8256,6 +11195,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thị xã Hoàng Mai",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "NA_PRE2008-D4-C1",
+            "name": "Phường Trung tâm Hoàng Mai",
+            "type": "Phường",
+            "lat": 18.7385,
+            "lng": 105.5462
+          },
+          {
+            "id": "NA_PRE2008-D4-C2",
+            "name": "Phường Mở rộng Hoàng Mai",
+            "type": "Phường",
+            "lat": 18.7535,
+            "lng": 105.5612
+          }
         ]
       },
       {
@@ -8292,6 +11247,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Diễn Châu",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "NA_PRE2008-D5-C1",
+            "name": "Thị trấn Trung tâm Diễn Châu",
+            "type": "Thị trấn",
+            "lat": 18.6083,
+            "lng": 105.5462
+          },
+          {
+            "id": "NA_PRE2008-D5-C2",
+            "name": "Xã Mở rộng Diễn Châu",
+            "type": "Xã",
+            "lat": 18.6233,
+            "lng": 105.5612
+          }
         ]
       },
       {
@@ -8328,6 +11299,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Quỳnh Lưu",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "NA_PRE2008-D6-C1",
+            "name": "Thị trấn Trung tâm Quỳnh Lưu",
+            "type": "Thị trấn",
+            "lat": 18.5272,
+            "lng": 105.6479
+          },
+          {
+            "id": "NA_PRE2008-D6-C2",
+            "name": "Xã Mở rộng Quỳnh Lưu",
+            "type": "Xã",
+            "lat": 18.5422,
+            "lng": 105.6629
+          }
         ]
       },
       {
@@ -8364,6 +11351,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Nghi Lộc",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "NA_PRE2008-D7-C1",
+            "name": "Thị trấn Trung tâm Nghi Lộc",
+            "type": "Thị trấn",
+            "lat": 18.5561,
+            "lng": 105.7748
+          },
+          {
+            "id": "NA_PRE2008-D7-C2",
+            "name": "Xã Mở rộng Nghi Lộc",
+            "type": "Xã",
+            "lat": 18.5711,
+            "lng": 105.7898
+          }
         ]
       }
     ]
@@ -8460,6 +11463,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Hà Tĩnh",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "HTI_PRE2008-D1-C1",
+            "name": "Phường Trung tâm Hà Tĩnh",
+            "type": "Phường",
+            "lat": 18.3559,
+            "lng": 105.9858
+          },
+          {
+            "id": "HTI_PRE2008-D1-C2",
+            "name": "Phường Mở rộng Hà Tĩnh",
+            "type": "Phường",
+            "lat": 18.3709,
+            "lng": 106.0008
+          }
         ]
       },
       {
@@ -8496,6 +11515,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thị xã Kỳ Anh",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "HTI_PRE2008-D2-C1",
+            "name": "Phường Trung tâm Kỳ Anh",
+            "type": "Phường",
+            "lat": 18.4858,
+            "lng": 105.9808
+          },
+          {
+            "id": "HTI_PRE2008-D2-C2",
+            "name": "Phường Mở rộng Kỳ Anh",
+            "type": "Phường",
+            "lat": 18.5008,
+            "lng": 105.9958
+          }
         ]
       },
       {
@@ -8532,6 +11567,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thị xã Hồng Lĩnh",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "HTI_PRE2008-D3-C1",
+            "name": "Phường Trung tâm Hồng Lĩnh",
+            "type": "Phường",
+            "lat": 18.4858,
+            "lng": 105.8308
+          },
+          {
+            "id": "HTI_PRE2008-D3-C2",
+            "name": "Phường Mở rộng Hồng Lĩnh",
+            "type": "Phường",
+            "lat": 18.5008,
+            "lng": 105.8458
+          }
         ]
       },
       {
@@ -8568,6 +11619,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Cẩm Xuyên",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "HTI_PRE2008-D4-C1",
+            "name": "Thị trấn Trung tâm Cẩm Xuyên",
+            "type": "Thị trấn",
+            "lat": 18.3559,
+            "lng": 105.7558
+          },
+          {
+            "id": "HTI_PRE2008-D4-C2",
+            "name": "Xã Mở rộng Cẩm Xuyên",
+            "type": "Xã",
+            "lat": 18.3709,
+            "lng": 105.7708
+          }
         ]
       },
       {
@@ -8604,6 +11671,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Thạch Hà",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "HTI_PRE2008-D5-C1",
+            "name": "Thị trấn Trung tâm Thạch Hà",
+            "type": "Thị trấn",
+            "lat": 18.226,
+            "lng": 105.8308
+          },
+          {
+            "id": "HTI_PRE2008-D5-C2",
+            "name": "Xã Mở rộng Thạch Hà",
+            "type": "Xã",
+            "lat": 18.241,
+            "lng": 105.8458
+          }
         ]
       },
       {
@@ -8640,6 +11723,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Can Lộc",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "HTI_PRE2008-D6-C1",
+            "name": "Thị trấn Trung tâm Can Lộc",
+            "type": "Thị trấn",
+            "lat": 18.226,
+            "lng": 105.9808
+          },
+          {
+            "id": "HTI_PRE2008-D6-C2",
+            "name": "Xã Mở rộng Can Lộc",
+            "type": "Xã",
+            "lat": 18.241,
+            "lng": 105.9958
+          }
         ]
       }
     ]
@@ -8736,6 +11835,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Đồng Hới",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "QB_PRE2008-D1-C1",
+            "name": "Phường Trung tâm Đồng Hới",
+            "type": "Phường",
+            "lat": 17.4691,
+            "lng": 106.7022
+          },
+          {
+            "id": "QB_PRE2008-D1-C2",
+            "name": "Phường Mở rộng Đồng Hới",
+            "type": "Phường",
+            "lat": 17.4841,
+            "lng": 106.7172
+          }
         ]
       },
       {
@@ -8772,6 +11887,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thị xã Ba Đồn",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "QB_PRE2008-D2-C1",
+            "name": "Phường Trung tâm Ba Đồn",
+            "type": "Phường",
+            "lat": 17.6118,
+            "lng": 106.6686
+          },
+          {
+            "id": "QB_PRE2008-D2-C2",
+            "name": "Phường Mở rộng Ba Đồn",
+            "type": "Phường",
+            "lat": 17.6268,
+            "lng": 106.6836
+          }
         ]
       },
       {
@@ -8808,6 +11939,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Bố Trạch",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "QB_PRE2008-D3-C1",
+            "name": "Thị trấn Trung tâm Bố Trạch",
+            "type": "Thị trấn",
+            "lat": 17.5573,
+            "lng": 106.5008
+          },
+          {
+            "id": "QB_PRE2008-D3-C2",
+            "name": "Xã Mở rộng Bố Trạch",
+            "type": "Xã",
+            "lat": 17.5723,
+            "lng": 106.5158
+          }
         ]
       },
       {
@@ -8844,6 +11991,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Quảng Trạch",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "QB_PRE2008-D4-C1",
+            "name": "Thị trấn Trung tâm Quảng Trạch",
+            "type": "Thị trấn",
+            "lat": 17.3809,
+            "lng": 106.5008
+          },
+          {
+            "id": "QB_PRE2008-D4-C2",
+            "name": "Xã Mở rộng Quảng Trạch",
+            "type": "Xã",
+            "lat": 17.3959,
+            "lng": 106.5158
+          }
         ]
       },
       {
@@ -8880,6 +12043,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Lệ Thủy",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "QB_PRE2008-D5-C1",
+            "name": "Thị trấn Trung tâm Lệ Thủy",
+            "type": "Thị trấn",
+            "lat": 17.3264,
+            "lng": 106.6686
+          },
+          {
+            "id": "QB_PRE2008-D5-C2",
+            "name": "Xã Mở rộng Lệ Thủy",
+            "type": "Xã",
+            "lat": 17.3414,
+            "lng": 106.6836
+          }
         ]
       }
     ]
@@ -8976,6 +12155,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Đông Hà",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "QT_PRE2008-D1-C1",
+            "name": "Phường Trung tâm Đông Hà",
+            "type": "Phường",
+            "lat": 16.7516,
+            "lng": 107.2656
+          },
+          {
+            "id": "QT_PRE2008-D1-C2",
+            "name": "Phường Mở rộng Đông Hà",
+            "type": "Phường",
+            "lat": 16.7666,
+            "lng": 107.2806
+          }
         ]
       },
       {
@@ -9012,6 +12207,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thị xã Quảng Trị",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "QT_PRE2008-D2-C1",
+            "name": "Phường Trung tâm Quảng Trị",
+            "type": "Phường",
+            "lat": 16.8943,
+            "lng": 107.232
+          },
+          {
+            "id": "QT_PRE2008-D2-C2",
+            "name": "Phường Mở rộng Quảng Trị",
+            "type": "Phường",
+            "lat": 16.9093,
+            "lng": 107.247
+          }
         ]
       },
       {
@@ -9048,6 +12259,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Gio Linh",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "QT_PRE2008-D3-C1",
+            "name": "Thị trấn Trung tâm Gio Linh",
+            "type": "Thị trấn",
+            "lat": 16.8398,
+            "lng": 107.0642
+          },
+          {
+            "id": "QT_PRE2008-D3-C2",
+            "name": "Xã Mở rộng Gio Linh",
+            "type": "Xã",
+            "lat": 16.8548,
+            "lng": 107.0792
+          }
         ]
       },
       {
@@ -9084,6 +12311,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Vĩnh Linh",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "QT_PRE2008-D4-C1",
+            "name": "Thị trấn Trung tâm Vĩnh Linh",
+            "type": "Thị trấn",
+            "lat": 16.6634,
+            "lng": 107.0642
+          },
+          {
+            "id": "QT_PRE2008-D4-C2",
+            "name": "Xã Mở rộng Vĩnh Linh",
+            "type": "Xã",
+            "lat": 16.6784,
+            "lng": 107.0792
+          }
         ]
       },
       {
@@ -9120,6 +12363,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Triệu Phong",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "QT_PRE2008-D5-C1",
+            "name": "Thị trấn Trung tâm Triệu Phong",
+            "type": "Thị trấn",
+            "lat": 16.6089,
+            "lng": 107.232
+          },
+          {
+            "id": "QT_PRE2008-D5-C2",
+            "name": "Xã Mở rộng Triệu Phong",
+            "type": "Xã",
+            "lat": 16.6239,
+            "lng": 107.247
+          }
         ]
       }
     ]
@@ -9216,6 +12475,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Huế",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "TTH_PRE2008-D1-C1",
+            "name": "Phường Trung tâm Huế",
+            "type": "Phường",
+            "lat": 16.4637,
+            "lng": 107.6709
+          },
+          {
+            "id": "TTH_PRE2008-D1-C2",
+            "name": "Phường Mở rộng Huế",
+            "type": "Phường",
+            "lat": 16.4787,
+            "lng": 107.6859
+          }
         ]
       },
       {
@@ -9252,6 +12527,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thị xã Hương Thủy",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "TTH_PRE2008-D2-C1",
+            "name": "Phường Trung tâm Hương Thủy",
+            "type": "Phường",
+            "lat": 16.5936,
+            "lng": 107.6659
+          },
+          {
+            "id": "TTH_PRE2008-D2-C2",
+            "name": "Phường Mở rộng Hương Thủy",
+            "type": "Phường",
+            "lat": 16.6086,
+            "lng": 107.6809
+          }
         ]
       },
       {
@@ -9288,6 +12579,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thị xã Hương Trà",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "TTH_PRE2008-D3-C1",
+            "name": "Phường Trung tâm Hương Trà",
+            "type": "Phường",
+            "lat": 16.5936,
+            "lng": 107.5159
+          },
+          {
+            "id": "TTH_PRE2008-D3-C2",
+            "name": "Phường Mở rộng Hương Trà",
+            "type": "Phường",
+            "lat": 16.6086,
+            "lng": 107.5309
+          }
         ]
       },
       {
@@ -9324,6 +12631,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Phú Vang",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "TTH_PRE2008-D4-C1",
+            "name": "Thị trấn Trung tâm Phú Vang",
+            "type": "Thị trấn",
+            "lat": 16.4637,
+            "lng": 107.4409
+          },
+          {
+            "id": "TTH_PRE2008-D4-C2",
+            "name": "Xã Mở rộng Phú Vang",
+            "type": "Xã",
+            "lat": 16.4787,
+            "lng": 107.4559
+          }
         ]
       },
       {
@@ -9360,6 +12683,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Phú Lộc",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "TTH_PRE2008-D5-C1",
+            "name": "Thị trấn Trung tâm Phú Lộc",
+            "type": "Thị trấn",
+            "lat": 16.3338,
+            "lng": 107.5159
+          },
+          {
+            "id": "TTH_PRE2008-D5-C2",
+            "name": "Xã Mở rộng Phú Lộc",
+            "type": "Xã",
+            "lat": 16.3488,
+            "lng": 107.5309
+          }
         ]
       },
       {
@@ -9396,6 +12735,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Phong Điền",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "TTH_PRE2008-D6-C1",
+            "name": "Thị trấn Trung tâm Phong Điền",
+            "type": "Thị trấn",
+            "lat": 16.3338,
+            "lng": 107.6659
+          },
+          {
+            "id": "TTH_PRE2008-D6-C2",
+            "name": "Xã Mở rộng Phong Điền",
+            "type": "Xã",
+            "lat": 16.3488,
+            "lng": 107.6809
+          }
         ]
       }
     ]
@@ -9477,8 +12832,8 @@
         "age_cohorts": {
           "children_0_14": 18.5,
           "youth_15_24": 16.5,
-          "prime_25_49": 45.0,
-          "senior_50_plus": 20.0
+          "prime_25_49": 45,
+          "senior_50_plus": 20
         },
         "primary_streets": [
           "Bạch Đằng",
@@ -9493,6 +12848,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Quận Hải Châu",
           "Trục vành đai kết nối Lê Duẩn"
+        ],
+        "communes": [
+          {
+            "id": "DN_PRE2008-D1-C1",
+            "name": "Phường Trung tâm Hải Châu",
+            "type": "Phường",
+            "lat": 16.05,
+            "lng": 108.0772
+          },
+          {
+            "id": "DN_PRE2008-D1-C2",
+            "name": "Phường Mở rộng Hải Châu",
+            "type": "Phường",
+            "lat": 16.053,
+            "lng": 108.0802
+          }
         ]
       },
       {
@@ -9514,8 +12885,8 @@
         "age_cohorts": {
           "children_0_14": 18.5,
           "youth_15_24": 16.5,
-          "prime_25_49": 45.0,
-          "senior_50_plus": 20.0
+          "prime_25_49": 45,
+          "senior_50_plus": 20
         },
         "primary_streets": [
           "Điện Biên Phủ",
@@ -9529,6 +12900,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Quận Thanh Khê",
           "Trục vành đai kết nối Hà Huy Tập"
+        ],
+        "communes": [
+          {
+            "id": "DN_PRE2008-D2-C1",
+            "name": "Phường Trung tâm Thanh Khê",
+            "type": "Phường",
+            "lat": 16.06,
+            "lng": 108.1272
+          },
+          {
+            "id": "DN_PRE2008-D2-C2",
+            "name": "Phường Mở rộng Thanh Khê",
+            "type": "Phường",
+            "lat": 16.063,
+            "lng": 108.1302
+          }
         ]
       },
       {
@@ -9550,8 +12937,8 @@
         "age_cohorts": {
           "children_0_14": 18.5,
           "youth_15_24": 16.5,
-          "prime_25_49": 45.0,
-          "senior_50_plus": 20.0
+          "prime_25_49": 45,
+          "senior_50_plus": 20
         },
         "primary_streets": [
           "Võ Nguyên Giáp",
@@ -9565,6 +12952,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Quận Sơn Trà",
           "Trục vành đai kết nối Ngô Quyền"
+        ],
+        "communes": [
+          {
+            "id": "DN_PRE2008-D3-C1",
+            "name": "Phường Trung tâm Sơn Trà",
+            "type": "Phường",
+            "lat": 16.09,
+            "lng": 108.1772
+          },
+          {
+            "id": "DN_PRE2008-D3-C2",
+            "name": "Phường Mở rộng Sơn Trà",
+            "type": "Phường",
+            "lat": 16.093,
+            "lng": 108.1802
+          }
         ]
       },
       {
@@ -9586,8 +12989,8 @@
         "age_cohorts": {
           "children_0_14": 18.5,
           "youth_15_24": 16.5,
-          "prime_25_49": 45.0,
-          "senior_50_plus": 20.0
+          "prime_25_49": 45,
+          "senior_50_plus": 20
         },
         "primary_streets": [
           "Lê Văn Hiến",
@@ -9601,6 +13004,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Quận Ngũ Hành Sơn",
           "Trục vành đai kết nối Nam Kỳ Khởi Nghĩa"
+        ],
+        "communes": [
+          {
+            "id": "DN_PRE2008-D4-C1",
+            "name": "Phường Trung tâm Ngũ Hành Sơn",
+            "type": "Phường",
+            "lat": 16.01,
+            "lng": 108.2272
+          },
+          {
+            "id": "DN_PRE2008-D4-C2",
+            "name": "Phường Mở rộng Ngũ Hành Sơn",
+            "type": "Phường",
+            "lat": 16.013,
+            "lng": 108.2302
+          }
         ]
       },
       {
@@ -9622,8 +13041,8 @@
         "age_cohorts": {
           "children_0_14": 18.5,
           "youth_15_24": 16.5,
-          "prime_25_49": 45.0,
-          "senior_50_plus": 20.0
+          "prime_25_49": 45,
+          "senior_50_plus": 20
         },
         "primary_streets": [
           "Tôn Đức Thắng",
@@ -9637,6 +13056,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Quận Liên Chiểu",
           "Trục vành đai kết nối Nguyễn Tất Thành"
+        ],
+        "communes": [
+          {
+            "id": "DN_PRE2008-D5-C1",
+            "name": "Phường Trung tâm Liên Chiểu",
+            "type": "Phường",
+            "lat": 16.08,
+            "lng": 108.2772
+          },
+          {
+            "id": "DN_PRE2008-D5-C2",
+            "name": "Phường Mở rộng Liên Chiểu",
+            "type": "Phường",
+            "lat": 16.083,
+            "lng": 108.2802
+          }
         ]
       },
       {
@@ -9658,8 +13093,8 @@
         "age_cohorts": {
           "children_0_14": 18.5,
           "youth_15_24": 16.5,
-          "prime_25_49": 45.0,
-          "senior_50_plus": 20.0
+          "prime_25_49": 45,
+          "senior_50_plus": 20
         },
         "primary_streets": [
           "Cách Mạng Tháng Tám",
@@ -9673,6 +13108,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Quận Cẩm Lệ",
           "Trục vành đai kết nối Lê Đại Hành"
+        ],
+        "communes": [
+          {
+            "id": "DN_PRE2008-D6-C1",
+            "name": "Phường Trung tâm Cẩm Lệ",
+            "type": "Phường",
+            "lat": 16.01,
+            "lng": 108.3272
+          },
+          {
+            "id": "DN_PRE2008-D6-C2",
+            "name": "Phường Mở rộng Cẩm Lệ",
+            "type": "Phường",
+            "lat": 16.013,
+            "lng": 108.3302
+          }
         ]
       },
       {
@@ -9694,8 +13145,8 @@
         "age_cohorts": {
           "children_0_14": 18.5,
           "youth_15_24": 16.5,
-          "prime_25_49": 45.0,
-          "senior_50_plus": 20.0
+          "prime_25_49": 45,
+          "senior_50_plus": 20
         },
         "primary_streets": [
           "Quốc lộ 14B",
@@ -9709,6 +13160,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Hòa Vang",
           "Trục vành đai kết nối Tuyến Bà Nà - Suối Mơ"
+        ],
+        "communes": [
+          {
+            "id": "DN_PRE2008-D7-C1",
+            "name": "Thị trấn Trung tâm Hòa Vang",
+            "type": "Thị trấn",
+            "lat": 16.02,
+            "lng": 108.3772
+          },
+          {
+            "id": "DN_PRE2008-D7-C2",
+            "name": "Xã Mở rộng Hòa Vang",
+            "type": "Xã",
+            "lat": 16.035,
+            "lng": 108.3922
+          }
         ]
       }
     ]
@@ -9805,6 +13272,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Tam Kỳ",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "QNM_PRE2008-D1-C1",
+            "name": "Phường Trung tâm Tam Kỳ",
+            "type": "Phường",
+            "lat": 15.5394,
+            "lng": 108.0991
+          },
+          {
+            "id": "QNM_PRE2008-D1-C2",
+            "name": "Phường Mở rộng Tam Kỳ",
+            "type": "Phường",
+            "lat": 15.5544,
+            "lng": 108.1141
+          }
         ]
       },
       {
@@ -9841,6 +13324,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Hội An",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "QNM_PRE2008-D2-C1",
+            "name": "Phường Trung tâm Hội An",
+            "type": "Phường",
+            "lat": 15.6693,
+            "lng": 108.0941
+          },
+          {
+            "id": "QNM_PRE2008-D2-C2",
+            "name": "Phường Mở rộng Hội An",
+            "type": "Phường",
+            "lat": 15.6843,
+            "lng": 108.1091
+          }
         ]
       },
       {
@@ -9877,6 +13376,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thị xã Điện Bàn",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "QNM_PRE2008-D3-C1",
+            "name": "Phường Trung tâm Điện Bàn",
+            "type": "Phường",
+            "lat": 15.6693,
+            "lng": 107.9441
+          },
+          {
+            "id": "QNM_PRE2008-D3-C2",
+            "name": "Phường Mở rộng Điện Bàn",
+            "type": "Phường",
+            "lat": 15.6843,
+            "lng": 107.9591
+          }
         ]
       },
       {
@@ -9913,6 +13428,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Duy Xuyên",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "QNM_PRE2008-D4-C1",
+            "name": "Thị trấn Trung tâm Duy Xuyên",
+            "type": "Thị trấn",
+            "lat": 15.5394,
+            "lng": 107.8691
+          },
+          {
+            "id": "QNM_PRE2008-D4-C2",
+            "name": "Xã Mở rộng Duy Xuyên",
+            "type": "Xã",
+            "lat": 15.5544,
+            "lng": 107.8841
+          }
         ]
       },
       {
@@ -9949,6 +13480,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Thăng Bình",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "QNM_PRE2008-D5-C1",
+            "name": "Thị trấn Trung tâm Thăng Bình",
+            "type": "Thị trấn",
+            "lat": 15.4095,
+            "lng": 107.9441
+          },
+          {
+            "id": "QNM_PRE2008-D5-C2",
+            "name": "Xã Mở rộng Thăng Bình",
+            "type": "Xã",
+            "lat": 15.4245,
+            "lng": 107.9591
+          }
         ]
       },
       {
@@ -9985,6 +13532,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Núi Thành",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "QNM_PRE2008-D6-C1",
+            "name": "Thị trấn Trung tâm Núi Thành",
+            "type": "Thị trấn",
+            "lat": 15.4095,
+            "lng": 108.0941
+          },
+          {
+            "id": "QNM_PRE2008-D6-C2",
+            "name": "Xã Mở rộng Núi Thành",
+            "type": "Xã",
+            "lat": 15.4245,
+            "lng": 108.1091
+          }
         ]
       }
     ]
@@ -10081,6 +13644,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Quảng Ngãi",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "QNG_PRE2008-D1-C1",
+            "name": "Phường Trung tâm Quảng Ngãi",
+            "type": "Phường",
+            "lat": 15.1205,
+            "lng": 108.8723
+          },
+          {
+            "id": "QNG_PRE2008-D1-C2",
+            "name": "Phường Mở rộng Quảng Ngãi",
+            "type": "Phường",
+            "lat": 15.1355,
+            "lng": 108.8873
+          }
         ]
       },
       {
@@ -10117,6 +13696,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thị xã Đức Phổ",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "QNG_PRE2008-D2-C1",
+            "name": "Phường Trung tâm Đức Phổ",
+            "type": "Phường",
+            "lat": 15.2504,
+            "lng": 108.8673
+          },
+          {
+            "id": "QNG_PRE2008-D2-C2",
+            "name": "Phường Mở rộng Đức Phổ",
+            "type": "Phường",
+            "lat": 15.2654,
+            "lng": 108.8823
+          }
         ]
       },
       {
@@ -10153,6 +13748,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Bình Sơn",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "QNG_PRE2008-D3-C1",
+            "name": "Thị trấn Trung tâm Bình Sơn",
+            "type": "Thị trấn",
+            "lat": 15.2504,
+            "lng": 108.7173
+          },
+          {
+            "id": "QNG_PRE2008-D3-C2",
+            "name": "Xã Mở rộng Bình Sơn",
+            "type": "Xã",
+            "lat": 15.2654,
+            "lng": 108.7323
+          }
         ]
       },
       {
@@ -10189,6 +13800,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Tư Nghĩa",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "QNG_PRE2008-D4-C1",
+            "name": "Thị trấn Trung tâm Tư Nghĩa",
+            "type": "Thị trấn",
+            "lat": 15.1205,
+            "lng": 108.6423
+          },
+          {
+            "id": "QNG_PRE2008-D4-C2",
+            "name": "Xã Mở rộng Tư Nghĩa",
+            "type": "Xã",
+            "lat": 15.1355,
+            "lng": 108.6573
+          }
         ]
       },
       {
@@ -10225,6 +13852,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Mộ Đức",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "QNG_PRE2008-D5-C1",
+            "name": "Thị trấn Trung tâm Mộ Đức",
+            "type": "Thị trấn",
+            "lat": 14.9906,
+            "lng": 108.7173
+          },
+          {
+            "id": "QNG_PRE2008-D5-C2",
+            "name": "Xã Mở rộng Mộ Đức",
+            "type": "Xã",
+            "lat": 15.0056,
+            "lng": 108.7323
+          }
         ]
       },
       {
@@ -10261,6 +13904,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Lý Sơn",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "QNG_PRE2008-D6-C1",
+            "name": "Thị trấn Trung tâm Lý Sơn",
+            "type": "Thị trấn",
+            "lat": 14.9906,
+            "lng": 108.8673
+          },
+          {
+            "id": "QNG_PRE2008-D6-C2",
+            "name": "Xã Mở rộng Lý Sơn",
+            "type": "Xã",
+            "lat": 15.0056,
+            "lng": 108.8823
+          }
         ]
       }
     ]
@@ -10342,8 +14001,8 @@
         "age_cohorts": {
           "children_0_14": 18.5,
           "youth_15_24": 16.5,
-          "prime_25_49": 45.0,
-          "senior_50_plus": 20.0
+          "prime_25_49": 45,
+          "senior_50_plus": 20
         },
         "primary_streets": [
           "Nguyễn Tất Thành",
@@ -10357,6 +14016,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Quy Nhơn",
           "Trục vành đai kết nối An Dương Vương"
+        ],
+        "communes": [
+          {
+            "id": "BD_PRE2008-D1-C1",
+            "name": "Phường Trung tâm Quy Nhơn",
+            "type": "Phường",
+            "lat": 13.78,
+            "lng": 109.1447
+          },
+          {
+            "id": "BD_PRE2008-D1-C2",
+            "name": "Phường Mở rộng Quy Nhơn",
+            "type": "Phường",
+            "lat": 13.795,
+            "lng": 109.1597
+          }
         ]
       },
       {
@@ -10378,8 +14053,8 @@
         "age_cohorts": {
           "children_0_14": 18.5,
           "youth_15_24": 16.5,
-          "prime_25_49": 45.0,
-          "senior_50_plus": 20.0
+          "prime_25_49": 45,
+          "senior_50_plus": 20
         },
         "primary_streets": [
           "Quốc lộ 1A",
@@ -10393,6 +14068,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thị xã An Nhơn",
           "Trục vành đai kết nối Quang Trung"
+        ],
+        "communes": [
+          {
+            "id": "BD_PRE2008-D2-C1",
+            "name": "Phường Trung tâm An Nhơn",
+            "type": "Phường",
+            "lat": 13.88,
+            "lng": 109.1947
+          },
+          {
+            "id": "BD_PRE2008-D2-C2",
+            "name": "Phường Mở rộng An Nhơn",
+            "type": "Phường",
+            "lat": 13.895,
+            "lng": 109.2097
+          }
         ]
       },
       {
@@ -10414,8 +14105,8 @@
         "age_cohorts": {
           "children_0_14": 18.5,
           "youth_15_24": 16.5,
-          "prime_25_49": 45.0,
-          "senior_50_plus": 20.0
+          "prime_25_49": 45,
+          "senior_50_plus": 20
         },
         "primary_streets": [
           "Quang Trung",
@@ -10429,6 +14120,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Hoài Nhơn",
           "Trục vành đai kết nối Tam Quan"
+        ],
+        "communes": [
+          {
+            "id": "BD_PRE2008-D3-C1",
+            "name": "Thị trấn Trung tâm Hoài Nhơn",
+            "type": "Thị trấn",
+            "lat": 14.45,
+            "lng": 109.2447
+          },
+          {
+            "id": "BD_PRE2008-D3-C2",
+            "name": "Xã Mở rộng Hoài Nhơn",
+            "type": "Xã",
+            "lat": 14.465,
+            "lng": 109.2597
+          }
         ]
       },
       {
@@ -10450,8 +14157,8 @@
         "age_cohorts": {
           "children_0_14": 18.5,
           "youth_15_24": 16.5,
-          "prime_25_49": 45.0,
-          "senior_50_plus": 20.0
+          "prime_25_49": 45,
+          "senior_50_plus": 20
         },
         "primary_streets": [
           "Tỉnh lộ 635",
@@ -10465,6 +14172,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Phù Cát",
           "Trục vành đai kết nối Thị trấn Ngô Mây"
+        ],
+        "communes": [
+          {
+            "id": "BD_PRE2008-D4-C1",
+            "name": "Thị trấn Trung tâm Phù Cát",
+            "type": "Thị trấn",
+            "lat": 14.05,
+            "lng": 109.2947
+          },
+          {
+            "id": "BD_PRE2008-D4-C2",
+            "name": "Xã Mở rộng Phù Cát",
+            "type": "Xã",
+            "lat": 14.065,
+            "lng": 109.3097
+          }
         ]
       },
       {
@@ -10486,8 +14209,8 @@
         "age_cohorts": {
           "children_0_14": 18.5,
           "youth_15_24": 16.5,
-          "prime_25_49": 45.0,
-          "senior_50_plus": 20.0
+          "prime_25_49": 45,
+          "senior_50_plus": 20
         },
         "primary_streets": [
           "Quốc lộ 19",
@@ -10501,6 +14224,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Tuy Phước",
           "Trục vành đai kết nối Tuy Phước"
+        ],
+        "communes": [
+          {
+            "id": "BD_PRE2008-D5-C1",
+            "name": "Thị trấn Trung tâm Tuy Phước",
+            "type": "Thị trấn",
+            "lat": 13.82,
+            "lng": 109.3447
+          },
+          {
+            "id": "BD_PRE2008-D5-C2",
+            "name": "Xã Mở rộng Tuy Phước",
+            "type": "Xã",
+            "lat": 13.835,
+            "lng": 109.3597
+          }
         ]
       }
     ]
@@ -10597,6 +14336,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Tuy Hòa",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "PY_PRE2008-D1-C1",
+            "name": "Phường Trung tâm Tuy Hòa",
+            "type": "Phường",
+            "lat": 13.0882,
+            "lng": 109.3875
+          },
+          {
+            "id": "PY_PRE2008-D1-C2",
+            "name": "Phường Mở rộng Tuy Hòa",
+            "type": "Phường",
+            "lat": 13.1032,
+            "lng": 109.4025
+          }
         ]
       },
       {
@@ -10633,6 +14388,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thị xã Sông Cầu",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "PY_PRE2008-D2-C1",
+            "name": "Phường Trung tâm Sông Cầu",
+            "type": "Phường",
+            "lat": 13.2309,
+            "lng": 109.3539
+          },
+          {
+            "id": "PY_PRE2008-D2-C2",
+            "name": "Phường Mở rộng Sông Cầu",
+            "type": "Phường",
+            "lat": 13.2459,
+            "lng": 109.3689
+          }
         ]
       },
       {
@@ -10669,13 +14440,29 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thị xã Đông Hòa",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "PY_PRE2008-D3-C1",
+            "name": "Phường Trung tâm Đông Hòa",
+            "type": "Phường",
+            "lat": 13.1764,
+            "lng": 109.1861
+          },
+          {
+            "id": "PY_PRE2008-D3-C2",
+            "name": "Phường Mở rộng Đông Hòa",
+            "type": "Phường",
+            "lat": 13.1914,
+            "lng": 109.2011
+          }
         ]
       },
       {
         "id": "PY_PRE2008-D4",
         "name": "Huyện Tây Hòa",
         "type": "Huyện địa phương",
-        "lat": 13.0,
+        "lat": 13,
         "lng": 109.1861,
         "pop": 95000,
         "density": 450,
@@ -10705,6 +14492,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Tây Hòa",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "PY_PRE2008-D4-C1",
+            "name": "Thị trấn Trung tâm Tây Hòa",
+            "type": "Thị trấn",
+            "lat": 13,
+            "lng": 109.1861
+          },
+          {
+            "id": "PY_PRE2008-D4-C2",
+            "name": "Xã Mở rộng Tây Hòa",
+            "type": "Xã",
+            "lat": 13.015,
+            "lng": 109.2011
+          }
         ]
       },
       {
@@ -10741,6 +14544,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Tuy An",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "PY_PRE2008-D5-C1",
+            "name": "Thị trấn Trung tâm Tuy An",
+            "type": "Thị trấn",
+            "lat": 12.9455,
+            "lng": 109.3539
+          },
+          {
+            "id": "PY_PRE2008-D5-C2",
+            "name": "Xã Mở rộng Tuy An",
+            "type": "Xã",
+            "lat": 12.9605,
+            "lng": 109.3689
+          }
         ]
       }
     ]
@@ -10822,8 +14641,8 @@
         "age_cohorts": {
           "children_0_14": 18.5,
           "youth_15_24": 16.5,
-          "prime_25_49": 45.0,
-          "senior_50_plus": 20.0
+          "prime_25_49": 45,
+          "senior_50_plus": 20
         },
         "primary_streets": [
           "Trần Phú",
@@ -10838,6 +14657,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Nha Trang",
           "Trục vành đai kết nối 23 Tháng 10"
+        ],
+        "communes": [
+          {
+            "id": "KH_PRE2008-D1-C1",
+            "name": "Phường Trung tâm Nha Trang",
+            "type": "Phường",
+            "lat": 12.25,
+            "lng": 109.1217
+          },
+          {
+            "id": "KH_PRE2008-D1-C2",
+            "name": "Phường Mở rộng Nha Trang",
+            "type": "Phường",
+            "lat": 12.265,
+            "lng": 109.1367
+          }
         ]
       },
       {
@@ -10859,8 +14694,8 @@
         "age_cohorts": {
           "children_0_14": 18.5,
           "youth_15_24": 16.5,
-          "prime_25_49": 45.0,
-          "senior_50_plus": 20.0
+          "prime_25_49": 45,
+          "senior_50_plus": 20
         },
         "primary_streets": [
           "Hùng Vương",
@@ -10874,6 +14709,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Cam Ranh",
           "Trục vành đai kết nối Phạm Văn Đồng"
+        ],
+        "communes": [
+          {
+            "id": "KH_PRE2008-D2-C1",
+            "name": "Phường Trung tâm Cam Ranh",
+            "type": "Phường",
+            "lat": 11.92,
+            "lng": 109.1717
+          },
+          {
+            "id": "KH_PRE2008-D2-C2",
+            "name": "Phường Mở rộng Cam Ranh",
+            "type": "Phường",
+            "lat": 11.935,
+            "lng": 109.1867
+          }
         ]
       },
       {
@@ -10895,8 +14746,8 @@
         "age_cohorts": {
           "children_0_14": 18.5,
           "youth_15_24": 16.5,
-          "prime_25_49": 45.0,
-          "senior_50_plus": 20.0
+          "prime_25_49": 45,
+          "senior_50_plus": 20
         },
         "primary_streets": [
           "Quốc lộ 1A",
@@ -10910,6 +14761,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thị xã Ninh Hòa",
           "Trục vành đai kết nối Nguyễn Huệ"
+        ],
+        "communes": [
+          {
+            "id": "KH_PRE2008-D3-C1",
+            "name": "Phường Trung tâm Ninh Hòa",
+            "type": "Phường",
+            "lat": 12.5,
+            "lng": 109.2217
+          },
+          {
+            "id": "KH_PRE2008-D3-C2",
+            "name": "Phường Mở rộng Ninh Hòa",
+            "type": "Phường",
+            "lat": 12.515,
+            "lng": 109.2367
+          }
         ]
       },
       {
@@ -10921,7 +14788,7 @@
         "pop": 145000,
         "density": 420,
         "income": 6.1,
-        "expense": 4.0,
+        "expense": 4,
         "rppi": 70,
         "households": 17059,
         "gender": {
@@ -10931,8 +14798,8 @@
         "age_cohorts": {
           "children_0_14": 18.5,
           "youth_15_24": 16.5,
-          "prime_25_49": 45.0,
-          "senior_50_plus": 20.0
+          "prime_25_49": 45,
+          "senior_50_plus": 20
         },
         "primary_streets": [
           "Lý Tự Trọng",
@@ -10946,6 +14813,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Diên Khánh",
           "Trục vành đai kết nối Hùng Vương"
+        ],
+        "communes": [
+          {
+            "id": "KH_PRE2008-D4-C1",
+            "name": "Phường Trung tâm Diên Khánh",
+            "type": "Phường",
+            "lat": 12.26,
+            "lng": 109.2717
+          },
+          {
+            "id": "KH_PRE2008-D4-C2",
+            "name": "Phường Mở rộng Diên Khánh",
+            "type": "Phường",
+            "lat": 12.275,
+            "lng": 109.2867
+          }
         ]
       },
       {
@@ -10967,8 +14850,8 @@
         "age_cohorts": {
           "children_0_14": 18.5,
           "youth_15_24": 16.5,
-          "prime_25_49": 45.0,
-          "senior_50_plus": 20.0
+          "prime_25_49": 45,
+          "senior_50_plus": 20
         },
         "primary_streets": [
           "Nguyễn Tất Thành",
@@ -10982,6 +14865,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Cam Lâm",
           "Trục vành đai kết nối Đinh Tiên Hoàng"
+        ],
+        "communes": [
+          {
+            "id": "KH_PRE2008-D5-C1",
+            "name": "Thị trấn Trung tâm Cam Lâm",
+            "type": "Thị trấn",
+            "lat": 12.03,
+            "lng": 109.3217
+          },
+          {
+            "id": "KH_PRE2008-D5-C2",
+            "name": "Xã Mở rộng Cam Lâm",
+            "type": "Xã",
+            "lat": 12.045,
+            "lng": 109.3367
+          }
         ]
       }
     ]
@@ -11078,6 +14977,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Phan Rang - Tháp Chàm",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "NT_PRE2008-D1-C1",
+            "name": "Phường Trung tâm Phan Rang - Tháp Chàm",
+            "type": "Phường",
+            "lat": 11.5653,
+            "lng": 109.075
+          },
+          {
+            "id": "NT_PRE2008-D1-C2",
+            "name": "Phường Mở rộng Phan Rang - Tháp Chàm",
+            "type": "Phường",
+            "lat": 11.5803,
+            "lng": 109.09
+          }
         ]
       },
       {
@@ -11114,6 +15029,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Ninh Hải",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "NT_PRE2008-D2-C1",
+            "name": "Thị trấn Trung tâm Ninh Hải",
+            "type": "Thị trấn",
+            "lat": 11.708,
+            "lng": 109.0414
+          },
+          {
+            "id": "NT_PRE2008-D2-C2",
+            "name": "Xã Mở rộng Ninh Hải",
+            "type": "Xã",
+            "lat": 11.723,
+            "lng": 109.0564
+          }
         ]
       },
       {
@@ -11150,6 +15081,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Ninh Phước",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "NT_PRE2008-D3-C1",
+            "name": "Thị trấn Trung tâm Ninh Phước",
+            "type": "Thị trấn",
+            "lat": 11.6535,
+            "lng": 108.8736
+          },
+          {
+            "id": "NT_PRE2008-D3-C2",
+            "name": "Xã Mở rộng Ninh Phước",
+            "type": "Xã",
+            "lat": 11.6685,
+            "lng": 108.8886
+          }
         ]
       },
       {
@@ -11186,6 +15133,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Thuận Bắc",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "NT_PRE2008-D4-C1",
+            "name": "Thị trấn Trung tâm Thuận Bắc",
+            "type": "Thị trấn",
+            "lat": 11.4771,
+            "lng": 108.8736
+          },
+          {
+            "id": "NT_PRE2008-D4-C2",
+            "name": "Xã Mở rộng Thuận Bắc",
+            "type": "Xã",
+            "lat": 11.4921,
+            "lng": 108.8886
+          }
         ]
       },
       {
@@ -11222,6 +15185,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Ninh Sơn",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "NT_PRE2008-D5-C1",
+            "name": "Thị trấn Trung tâm Ninh Sơn",
+            "type": "Thị trấn",
+            "lat": 11.4226,
+            "lng": 109.0414
+          },
+          {
+            "id": "NT_PRE2008-D5-C2",
+            "name": "Xã Mở rộng Ninh Sơn",
+            "type": "Xã",
+            "lat": 11.4376,
+            "lng": 109.0564
+          }
         ]
       }
     ]
@@ -11318,6 +15297,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Phan Thiết",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "BT_PRE2008-D1-C1",
+            "name": "Phường Trung tâm Phan Thiết",
+            "type": "Phường",
+            "lat": 10.9273,
+            "lng": 108.1818
+          },
+          {
+            "id": "BT_PRE2008-D1-C2",
+            "name": "Phường Mở rộng Phan Thiết",
+            "type": "Phường",
+            "lat": 10.9423,
+            "lng": 108.1968
+          }
         ]
       },
       {
@@ -11354,6 +15349,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thị xã La Gi",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "BT_PRE2008-D2-C1",
+            "name": "Phường Trung tâm La Gi",
+            "type": "Phường",
+            "lat": 11.0572,
+            "lng": 108.1768
+          },
+          {
+            "id": "BT_PRE2008-D2-C2",
+            "name": "Phường Mở rộng La Gi",
+            "type": "Phường",
+            "lat": 11.0722,
+            "lng": 108.1918
+          }
         ]
       },
       {
@@ -11390,6 +15401,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Hàm Thuận Bắc",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "BT_PRE2008-D3-C1",
+            "name": "Thị trấn Trung tâm Hàm Thuận Bắc",
+            "type": "Thị trấn",
+            "lat": 11.0572,
+            "lng": 108.0268
+          },
+          {
+            "id": "BT_PRE2008-D3-C2",
+            "name": "Xã Mở rộng Hàm Thuận Bắc",
+            "type": "Xã",
+            "lat": 11.0722,
+            "lng": 108.0418
+          }
         ]
       },
       {
@@ -11426,6 +15453,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Hàm Thuận Nam",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "BT_PRE2008-D4-C1",
+            "name": "Thị trấn Trung tâm Hàm Thuận Nam",
+            "type": "Thị trấn",
+            "lat": 10.9273,
+            "lng": 107.9518
+          },
+          {
+            "id": "BT_PRE2008-D4-C2",
+            "name": "Xã Mở rộng Hàm Thuận Nam",
+            "type": "Xã",
+            "lat": 10.9423,
+            "lng": 107.9668
+          }
         ]
       },
       {
@@ -11462,6 +15505,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Tuy Phong",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "BT_PRE2008-D5-C1",
+            "name": "Thị trấn Trung tâm Tuy Phong",
+            "type": "Thị trấn",
+            "lat": 10.7974,
+            "lng": 108.0268
+          },
+          {
+            "id": "BT_PRE2008-D5-C2",
+            "name": "Xã Mở rộng Tuy Phong",
+            "type": "Xã",
+            "lat": 10.8124,
+            "lng": 108.0418
+          }
         ]
       },
       {
@@ -11498,6 +15557,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Bắc Bình",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "BT_PRE2008-D6-C1",
+            "name": "Thị trấn Trung tâm Bắc Bình",
+            "type": "Thị trấn",
+            "lat": 10.7974,
+            "lng": 108.1768
+          },
+          {
+            "id": "BT_PRE2008-D6-C2",
+            "name": "Xã Mở rộng Bắc Bình",
+            "type": "Xã",
+            "lat": 10.8124,
+            "lng": 108.1918
+          }
         ]
       }
     ]
@@ -11594,6 +15669,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Kon Tum",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "KT_PRE2008-D1-C1",
+            "name": "Phường Trung tâm Kon Tum",
+            "type": "Phường",
+            "lat": 14.3541,
+            "lng": 108.0876
+          },
+          {
+            "id": "KT_PRE2008-D1-C2",
+            "name": "Phường Mở rộng Kon Tum",
+            "type": "Phường",
+            "lat": 14.3691,
+            "lng": 108.1026
+          }
         ]
       },
       {
@@ -11630,6 +15721,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Đắk Hà",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "KT_PRE2008-D2-C1",
+            "name": "Thị trấn Trung tâm Đắk Hà",
+            "type": "Thị trấn",
+            "lat": 14.4968,
+            "lng": 108.054
+          },
+          {
+            "id": "KT_PRE2008-D2-C2",
+            "name": "Xã Mở rộng Đắk Hà",
+            "type": "Xã",
+            "lat": 14.5118,
+            "lng": 108.069
+          }
         ]
       },
       {
@@ -11666,6 +15773,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Đắk Tô",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "KT_PRE2008-D3-C1",
+            "name": "Thị trấn Trung tâm Đắk Tô",
+            "type": "Thị trấn",
+            "lat": 14.4423,
+            "lng": 107.8862
+          },
+          {
+            "id": "KT_PRE2008-D3-C2",
+            "name": "Xã Mở rộng Đắk Tô",
+            "type": "Xã",
+            "lat": 14.4573,
+            "lng": 107.9012
+          }
         ]
       },
       {
@@ -11702,6 +15825,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Ngọc Hồi",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "KT_PRE2008-D4-C1",
+            "name": "Thị trấn Trung tâm Ngọc Hồi",
+            "type": "Thị trấn",
+            "lat": 14.2659,
+            "lng": 107.8862
+          },
+          {
+            "id": "KT_PRE2008-D4-C2",
+            "name": "Xã Mở rộng Ngọc Hồi",
+            "type": "Xã",
+            "lat": 14.2809,
+            "lng": 107.9012
+          }
         ]
       },
       {
@@ -11738,6 +15877,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Kon Plông (Măng Đen)",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "KT_PRE2008-D5-C1",
+            "name": "Thị trấn Trung tâm Kon Plông (Măng Đen)",
+            "type": "Thị trấn",
+            "lat": 14.2114,
+            "lng": 108.054
+          },
+          {
+            "id": "KT_PRE2008-D5-C2",
+            "name": "Xã Mở rộng Kon Plông (Măng Đen)",
+            "type": "Xã",
+            "lat": 14.2264,
+            "lng": 108.069
+          }
         ]
       }
     ]
@@ -11834,6 +15989,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Pleiku",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "GL_PRE2008-D1-C1",
+            "name": "Phường Trung tâm Pleiku",
+            "type": "Phường",
+            "lat": 13.9833,
+            "lng": 108.08
+          },
+          {
+            "id": "GL_PRE2008-D1-C2",
+            "name": "Phường Mở rộng Pleiku",
+            "type": "Phường",
+            "lat": 13.9983,
+            "lng": 108.095
+          }
         ]
       },
       {
@@ -11870,6 +16041,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thị xã An Khê",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "GL_PRE2008-D2-C1",
+            "name": "Phường Trung tâm An Khê",
+            "type": "Phường",
+            "lat": 14.1132,
+            "lng": 108.075
+          },
+          {
+            "id": "GL_PRE2008-D2-C2",
+            "name": "Phường Mở rộng An Khê",
+            "type": "Phường",
+            "lat": 14.1282,
+            "lng": 108.09
+          }
         ]
       },
       {
@@ -11906,6 +16093,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thị xã Ayun Pa",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "GL_PRE2008-D3-C1",
+            "name": "Phường Trung tâm Ayun Pa",
+            "type": "Phường",
+            "lat": 14.1132,
+            "lng": 107.925
+          },
+          {
+            "id": "GL_PRE2008-D3-C2",
+            "name": "Phường Mở rộng Ayun Pa",
+            "type": "Phường",
+            "lat": 14.1282,
+            "lng": 107.94
+          }
         ]
       },
       {
@@ -11942,6 +16145,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Chư Sê",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "GL_PRE2008-D4-C1",
+            "name": "Thị trấn Trung tâm Chư Sê",
+            "type": "Thị trấn",
+            "lat": 13.9833,
+            "lng": 107.85
+          },
+          {
+            "id": "GL_PRE2008-D4-C2",
+            "name": "Xã Mở rộng Chư Sê",
+            "type": "Xã",
+            "lat": 13.9983,
+            "lng": 107.865
+          }
         ]
       },
       {
@@ -11978,6 +16197,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Đak Đoa",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "GL_PRE2008-D5-C1",
+            "name": "Thị trấn Trung tâm Đak Đoa",
+            "type": "Thị trấn",
+            "lat": 13.8534,
+            "lng": 107.925
+          },
+          {
+            "id": "GL_PRE2008-D5-C2",
+            "name": "Xã Mở rộng Đak Đoa",
+            "type": "Xã",
+            "lat": 13.8684,
+            "lng": 107.94
+          }
         ]
       },
       {
@@ -12014,6 +16249,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Chư Păh",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "GL_PRE2008-D6-C1",
+            "name": "Thị trấn Trung tâm Chư Păh",
+            "type": "Thị trấn",
+            "lat": 13.8534,
+            "lng": 108.075
+          },
+          {
+            "id": "GL_PRE2008-D6-C2",
+            "name": "Xã Mở rộng Chư Păh",
+            "type": "Xã",
+            "lat": 13.8684,
+            "lng": 108.09
+          }
         ]
       }
     ]
@@ -12110,6 +16361,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Buôn Ma Thuột",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "DL_PRE2008-D1-C1",
+            "name": "Phường Trung tâm Buôn Ma Thuột",
+            "type": "Phường",
+            "lat": 12.6667,
+            "lng": 108.13
+          },
+          {
+            "id": "DL_PRE2008-D1-C2",
+            "name": "Phường Mở rộng Buôn Ma Thuột",
+            "type": "Phường",
+            "lat": 12.6817,
+            "lng": 108.145
+          }
         ]
       },
       {
@@ -12146,6 +16413,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thị xã Buôn Hồ",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "DL_PRE2008-D2-C1",
+            "name": "Phường Trung tâm Buôn Hồ",
+            "type": "Phường",
+            "lat": 12.7966,
+            "lng": 108.125
+          },
+          {
+            "id": "DL_PRE2008-D2-C2",
+            "name": "Phường Mở rộng Buôn Hồ",
+            "type": "Phường",
+            "lat": 12.8116,
+            "lng": 108.14
+          }
         ]
       },
       {
@@ -12182,6 +16465,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Cư M'gar",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "DL_PRE2008-D3-C1",
+            "name": "Thị trấn Trung tâm Cư M'gar",
+            "type": "Thị trấn",
+            "lat": 12.7966,
+            "lng": 107.975
+          },
+          {
+            "id": "DL_PRE2008-D3-C2",
+            "name": "Xã Mở rộng Cư M'gar",
+            "type": "Xã",
+            "lat": 12.8116,
+            "lng": 107.99
+          }
         ]
       },
       {
@@ -12218,6 +16517,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Krông Pắc",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "DL_PRE2008-D4-C1",
+            "name": "Thị trấn Trung tâm Krông Pắc",
+            "type": "Thị trấn",
+            "lat": 12.6667,
+            "lng": 107.9
+          },
+          {
+            "id": "DL_PRE2008-D4-C2",
+            "name": "Xã Mở rộng Krông Pắc",
+            "type": "Xã",
+            "lat": 12.6817,
+            "lng": 107.915
+          }
         ]
       },
       {
@@ -12254,6 +16569,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Ea Kar",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "DL_PRE2008-D5-C1",
+            "name": "Thị trấn Trung tâm Ea Kar",
+            "type": "Thị trấn",
+            "lat": 12.5368,
+            "lng": 107.975
+          },
+          {
+            "id": "DL_PRE2008-D5-C2",
+            "name": "Xã Mở rộng Ea Kar",
+            "type": "Xã",
+            "lat": 12.5518,
+            "lng": 107.99
+          }
         ]
       },
       {
@@ -12290,6 +16621,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Krông Ana",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "DL_PRE2008-D6-C1",
+            "name": "Thị trấn Trung tâm Krông Ana",
+            "type": "Thị trấn",
+            "lat": 12.5368,
+            "lng": 108.125
+          },
+          {
+            "id": "DL_PRE2008-D6-C2",
+            "name": "Xã Mở rộng Krông Ana",
+            "type": "Xã",
+            "lat": 12.5518,
+            "lng": 108.14
+          }
         ]
       }
     ]
@@ -12386,6 +16733,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Gia Nghĩa",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "DNO_PRE2008-D1-C1",
+            "name": "Phường Trung tâm Gia Nghĩa",
+            "type": "Phường",
+            "lat": 12.0042,
+            "lng": 107.7717
+          },
+          {
+            "id": "DNO_PRE2008-D1-C2",
+            "name": "Phường Mở rộng Gia Nghĩa",
+            "type": "Phường",
+            "lat": 12.0192,
+            "lng": 107.7867
+          }
         ]
       },
       {
@@ -12422,6 +16785,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Đắk R'lấp",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "DNO_PRE2008-D2-C1",
+            "name": "Thị trấn Trung tâm Đắk R'lấp",
+            "type": "Thị trấn",
+            "lat": 12.1469,
+            "lng": 107.7381
+          },
+          {
+            "id": "DNO_PRE2008-D2-C2",
+            "name": "Xã Mở rộng Đắk R'lấp",
+            "type": "Xã",
+            "lat": 12.1619,
+            "lng": 107.7531
+          }
         ]
       },
       {
@@ -12458,6 +16837,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Đắk Mil",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "DNO_PRE2008-D3-C1",
+            "name": "Thị trấn Trung tâm Đắk Mil",
+            "type": "Thị trấn",
+            "lat": 12.0924,
+            "lng": 107.5703
+          },
+          {
+            "id": "DNO_PRE2008-D3-C2",
+            "name": "Xã Mở rộng Đắk Mil",
+            "type": "Xã",
+            "lat": 12.1074,
+            "lng": 107.5853
+          }
         ]
       },
       {
@@ -12494,6 +16889,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Cư Jút",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "DNO_PRE2008-D4-C1",
+            "name": "Thị trấn Trung tâm Cư Jút",
+            "type": "Thị trấn",
+            "lat": 11.916,
+            "lng": 107.5703
+          },
+          {
+            "id": "DNO_PRE2008-D4-C2",
+            "name": "Xã Mở rộng Cư Jút",
+            "type": "Xã",
+            "lat": 11.931,
+            "lng": 107.5853
+          }
         ]
       },
       {
@@ -12530,6 +16941,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Đắk Song",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "DNO_PRE2008-D5-C1",
+            "name": "Thị trấn Trung tâm Đắk Song",
+            "type": "Thị trấn",
+            "lat": 11.8615,
+            "lng": 107.7381
+          },
+          {
+            "id": "DNO_PRE2008-D5-C2",
+            "name": "Xã Mở rộng Đắk Song",
+            "type": "Xã",
+            "lat": 11.8765,
+            "lng": 107.7531
+          }
         ]
       }
     ]
@@ -12601,7 +17028,7 @@
         "pop": 235000,
         "density": 600,
         "income": 7.5,
-        "expense": 5.0,
+        "expense": 5,
         "rppi": 86,
         "households": 27647,
         "gender": {
@@ -12611,8 +17038,8 @@
         "age_cohorts": {
           "children_0_14": 18.5,
           "youth_15_24": 16.5,
-          "prime_25_49": 45.0,
-          "senior_50_plus": 20.0
+          "prime_25_49": 45,
+          "senior_50_plus": 20
         },
         "primary_streets": [
           "Trần Phú",
@@ -12627,6 +17054,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Đà Lạt",
           "Trục vành đai kết nối Bùi Thị Xuân"
+        ],
+        "communes": [
+          {
+            "id": "LD_PRE2008-D1-C1",
+            "name": "Phường Trung tâm Đà Lạt",
+            "type": "Phường",
+            "lat": 11.94,
+            "lng": 108.3833
+          },
+          {
+            "id": "LD_PRE2008-D1-C2",
+            "name": "Phường Mở rộng Đà Lạt",
+            "type": "Phường",
+            "lat": 11.955,
+            "lng": 108.3983
+          }
         ]
       },
       {
@@ -12648,8 +17091,8 @@
         "age_cohorts": {
           "children_0_14": 18.5,
           "youth_15_24": 16.5,
-          "prime_25_49": 45.0,
-          "senior_50_plus": 20.0
+          "prime_25_49": 45,
+          "senior_50_plus": 20
         },
         "primary_streets": [
           "Trần Phú",
@@ -12663,6 +17106,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Bảo Lộc",
           "Trục vành đai kết nối Lê Hồng Phong"
+        ],
+        "communes": [
+          {
+            "id": "LD_PRE2008-D2-C1",
+            "name": "Phường Trung tâm Bảo Lộc",
+            "type": "Phường",
+            "lat": 11.55,
+            "lng": 108.4333
+          },
+          {
+            "id": "LD_PRE2008-D2-C2",
+            "name": "Phường Mở rộng Bảo Lộc",
+            "type": "Phường",
+            "lat": 11.565,
+            "lng": 108.4483
+          }
         ]
       },
       {
@@ -12684,8 +17143,8 @@
         "age_cohorts": {
           "children_0_14": 18.5,
           "youth_15_24": 16.5,
-          "prime_25_49": 45.0,
-          "senior_50_plus": 20.0
+          "prime_25_49": 45,
+          "senior_50_plus": 20
         },
         "primary_streets": [
           "Quốc lộ 20",
@@ -12699,6 +17158,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Đức Trọng",
           "Trục vành đai kết nối Trần Hưng Đạo"
+        ],
+        "communes": [
+          {
+            "id": "LD_PRE2008-D3-C1",
+            "name": "Thị trấn Trung tâm Đức Trọng",
+            "type": "Thị trấn",
+            "lat": 11.73,
+            "lng": 108.4833
+          },
+          {
+            "id": "LD_PRE2008-D3-C2",
+            "name": "Xã Mở rộng Đức Trọng",
+            "type": "Xã",
+            "lat": 11.745,
+            "lng": 108.4983
+          }
         ]
       },
       {
@@ -12720,8 +17195,8 @@
         "age_cohorts": {
           "children_0_14": 18.5,
           "youth_15_24": 16.5,
-          "prime_25_49": 45.0,
-          "senior_50_plus": 20.0
+          "prime_25_49": 45,
+          "senior_50_plus": 20
         },
         "primary_streets": [
           "Hùng Vương",
@@ -12735,6 +17210,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Di Linh",
           "Trục vành đai kết nối Quốc lộ 20"
+        ],
+        "communes": [
+          {
+            "id": "LD_PRE2008-D4-C1",
+            "name": "Thị trấn Trung tâm Di Linh",
+            "type": "Thị trấn",
+            "lat": 11.52,
+            "lng": 108.5333
+          },
+          {
+            "id": "LD_PRE2008-D4-C2",
+            "name": "Xã Mở rộng Di Linh",
+            "type": "Xã",
+            "lat": 11.535,
+            "lng": 108.5483
+          }
         ]
       },
       {
@@ -12756,8 +17247,8 @@
         "age_cohorts": {
           "children_0_14": 18.5,
           "youth_15_24": 16.5,
-          "prime_25_49": 45.0,
-          "senior_50_plus": 20.0
+          "prime_25_49": 45,
+          "senior_50_plus": 20
         },
         "primary_streets": [
           "Langbiang",
@@ -12771,6 +17262,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Lạc Dương",
           "Trục vành đai kết nối Khu du lịch Thung Lũng Vàng"
+        ],
+        "communes": [
+          {
+            "id": "LD_PRE2008-D5-C1",
+            "name": "Thị trấn Trung tâm Lạc Dương",
+            "type": "Thị trấn",
+            "lat": 12.02,
+            "lng": 108.5833
+          },
+          {
+            "id": "LD_PRE2008-D5-C2",
+            "name": "Xã Mở rộng Lạc Dương",
+            "type": "Xã",
+            "lat": 12.035,
+            "lng": 108.5983
+          }
         ]
       }
     ]
@@ -12869,6 +17376,22 @@
         "low_density_opportunities": [
           "Trục Đa Kao ven kênh Nhiêu Lộc",
           "Khu phức hợp Ba Son ven sông"
+        ],
+        "communes": [
+          {
+            "id": "SG-Q1-C1",
+            "name": "Phường Trung tâm 1",
+            "type": "Phường",
+            "lat": 10.7756,
+            "lng": 106.7009
+          },
+          {
+            "id": "SG-Q1-C2",
+            "name": "Phường Mở rộng 1",
+            "type": "Phường",
+            "lat": 10.7786,
+            "lng": 106.7039
+          }
         ]
       },
       {
@@ -12906,6 +17429,22 @@
         "low_density_opportunities": [
           "Các ngõ biệt thự cổ đường Tú Xương, Ngô Thời Nhiệm (F&B / Spa cao cấp)",
           "Trục ven kênh Hoàng Sa"
+        ],
+        "communes": [
+          {
+            "id": "SG-Q3-C1",
+            "name": "Phường Trung tâm 3",
+            "type": "Phường",
+            "lat": 10.7833,
+            "lng": 106.6833
+          },
+          {
+            "id": "SG-Q3-C2",
+            "name": "Phường Mở rộng 3",
+            "type": "Phường",
+            "lat": 10.7863,
+            "lng": 106.6863
+          }
         ]
       },
       {
@@ -12921,8 +17460,8 @@
         "rppi": 88,
         "households": 22000,
         "gender": {
-          "male_pct": 49.0,
-          "female_pct": 51.0
+          "male_pct": 49,
+          "female_pct": 51
         },
         "age_cohorts": {
           "children_0_14": 16.8,
@@ -12943,6 +17482,22 @@
         "low_density_opportunities": [
           "Dải shophouse chung cư cao cấp ven sông Bến Vân Đồn",
           "Khu Cảng Sài Gòn quy hoạch mới"
+        ],
+        "communes": [
+          {
+            "id": "SG-Q4-C1",
+            "name": "Phường Trung tâm 4",
+            "type": "Phường",
+            "lat": 10.7583,
+            "lng": 106.7
+          },
+          {
+            "id": "SG-Q4-C2",
+            "name": "Phường Mở rộng 4",
+            "type": "Phường",
+            "lat": 10.7613,
+            "lng": 106.703
+          }
         ]
       },
       {
@@ -12963,8 +17518,8 @@
         },
         "age_cohorts": {
           "children_0_14": 15.5,
-          "youth_15_24": 16.0,
-          "prime_25_49": 46.0,
+          "youth_15_24": 16,
+          "prime_25_49": 46,
           "senior_50_plus": 22.5
         },
         "primary_streets": [
@@ -12980,6 +17535,22 @@
         "low_density_opportunities": [
           "Mô hình ẩm thực dimsum/chè cổ truyền kết hợp check-in giới trẻ",
           "Khu phố đông y Hải Thượng Lãn Ông"
+        ],
+        "communes": [
+          {
+            "id": "SG-Q5-C1",
+            "name": "Phường Trung tâm 5",
+            "type": "Phường",
+            "lat": 10.7556,
+            "lng": 106.6667
+          },
+          {
+            "id": "SG-Q5-C2",
+            "name": "Phường Mở rộng 5",
+            "type": "Phường",
+            "lat": 10.7586,
+            "lng": 106.6697
+          }
         ]
       },
       {
@@ -13017,6 +17588,22 @@
         "low_density_opportunities": [
           "Khu đô thị Bình Phú & công viên Phú Lâm (Cafe sân vườn, Spa)",
           "Dọc đường Võ Văn Kiệt"
+        ],
+        "communes": [
+          {
+            "id": "SG-Q6-C1",
+            "name": "Phường Trung tâm 6",
+            "type": "Phường",
+            "lat": 10.7483,
+            "lng": 106.635
+          },
+          {
+            "id": "SG-Q6-C2",
+            "name": "Phường Mở rộng 6",
+            "type": "Phường",
+            "lat": 10.7513,
+            "lng": 106.638
+          }
         ]
       },
       {
@@ -13032,14 +17619,14 @@
         "rppi": 95,
         "households": 41000,
         "gender": {
-          "male_pct": 48.0,
-          "female_pct": 52.0
+          "male_pct": 48,
+          "female_pct": 52
         },
         "age_cohorts": {
           "children_0_14": 18.2,
           "youth_15_24": 15.8,
-          "prime_25_49": 47.0,
-          "senior_50_plus": 19.0
+          "prime_25_49": 47,
+          "senior_50_plus": 19
         },
         "primary_streets": [
           "Nguyễn Văn Linh",
@@ -13054,6 +17641,22 @@
         "low_density_opportunities": [
           "Trục ven sông Đào Trí",
           "Khu Nam Long Trần Trọng Cung"
+        ],
+        "communes": [
+          {
+            "id": "SG-Q7-C1",
+            "name": "Phường Trung tâm 7",
+            "type": "Phường",
+            "lat": 10.7333,
+            "lng": 106.7167
+          },
+          {
+            "id": "SG-Q7-C2",
+            "name": "Phường Mở rộng 7",
+            "type": "Phường",
+            "lat": 10.7363,
+            "lng": 106.7197
+          }
         ]
       },
       {
@@ -13074,8 +17677,8 @@
         },
         "age_cohorts": {
           "children_0_14": 18.5,
-          "youth_15_24": 17.0,
-          "prime_25_49": 44.0,
+          "youth_15_24": 17,
+          "prime_25_49": 44,
           "senior_50_plus": 20.5
         },
         "primary_streets": [
@@ -13091,6 +17694,22 @@
         "low_density_opportunities": [
           "Cụm chung cư mới đường Tạ Quang Bửu (Chuỗi tiện ích, cafe, mầm non)",
           "Khu dân cư Phú Lợi"
+        ],
+        "communes": [
+          {
+            "id": "SG-Q8-C1",
+            "name": "Phường Trung tâm 8",
+            "type": "Phường",
+            "lat": 10.725,
+            "lng": 106.65
+          },
+          {
+            "id": "SG-Q8-C2",
+            "name": "Phường Mở rộng 8",
+            "type": "Phường",
+            "lat": 10.728,
+            "lng": 106.653
+          }
         ]
       },
       {
@@ -13129,6 +17748,22 @@
         "low_density_opportunities": [
           "Khu cư xá Bắc Hải (Cafe văn phòng yên tĩnh)",
           "Khu vực làng đại học Bách Khoa"
+        ],
+        "communes": [
+          {
+            "id": "SG-Q10-C1",
+            "name": "Phường Trung tâm 10",
+            "type": "Phường",
+            "lat": 10.7719,
+            "lng": 106.6678
+          },
+          {
+            "id": "SG-Q10-C2",
+            "name": "Phường Mở rộng 10",
+            "type": "Phường",
+            "lat": 10.7749,
+            "lng": 106.6708
+          }
         ]
       },
       {
@@ -13166,6 +17801,22 @@
         "low_density_opportunities": [
           "Khu dân cư Lữ Gia & trường ĐH Sư Phạm Kỹ Thuật",
           "Khu chung cư The Park Residence"
+        ],
+        "communes": [
+          {
+            "id": "SG-Q11-C1",
+            "name": "Phường Trung tâm 11",
+            "type": "Phường",
+            "lat": 10.765,
+            "lng": 106.65
+          },
+          {
+            "id": "SG-Q11-C2",
+            "name": "Phường Mở rộng 11",
+            "type": "Phường",
+            "lat": 10.768,
+            "lng": 106.653
+          }
         ]
       },
       {
@@ -13187,8 +17838,8 @@
         "age_cohorts": {
           "children_0_14": 19.5,
           "youth_15_24": 17.5,
-          "prime_25_49": 45.0,
-          "senior_50_plus": 18.0
+          "prime_25_49": 45,
+          "senior_50_plus": 18
         },
         "primary_streets": [
           "Quốc lộ 1A",
@@ -13204,6 +17855,22 @@
         "low_density_opportunities": [
           "Khu đô thị sinh thái An Phú Đông ven sông Sài Gòn",
           "Khu dân cư Thạnh Xuân"
+        ],
+        "communes": [
+          {
+            "id": "SG-Q12-C1",
+            "name": "Phường Trung tâm 12",
+            "type": "Phường",
+            "lat": 10.8667,
+            "lng": 106.65
+          },
+          {
+            "id": "SG-Q12-C2",
+            "name": "Phường Mở rộng 12",
+            "type": "Phường",
+            "lat": 10.8697,
+            "lng": 106.653
+          }
         ]
       },
       {
@@ -13242,6 +17909,22 @@
         "low_density_opportunities": [
           "Bán đảo Thanh Đa sinh thái du lịch",
           "Trục ven rạch Xuyên Tâm sau cải tạo"
+        ],
+        "communes": [
+          {
+            "id": "SG-BT-C1",
+            "name": "Phường Trung tâm Bình Thạnh",
+            "type": "Phường",
+            "lat": 10.8033,
+            "lng": 106.7
+          },
+          {
+            "id": "SG-BT-C2",
+            "name": "Phường Mở rộng Bình Thạnh",
+            "type": "Phường",
+            "lat": 10.8063,
+            "lng": 106.703
+          }
         ]
       },
       {
@@ -13261,10 +17944,10 @@
           "female_pct": 52.2
         },
         "age_cohorts": {
-          "children_0_14": 15.0,
+          "children_0_14": 15,
           "youth_15_24": 16.2,
           "prime_25_49": 47.8,
-          "senior_50_plus": 21.0
+          "senior_50_plus": 21
         },
         "primary_streets": [
           "Phan Xích Long",
@@ -13279,6 +17962,22 @@
         "low_density_opportunities": [
           "Các tuyến đường nội bộ khu Miếu Nổi (Spa, Studio, Work Cafe)",
           "Khu vực bờ kênh Trường Sa"
+        ],
+        "communes": [
+          {
+            "id": "SG-PN-C1",
+            "name": "Phường Trung tâm Phú Nhuận",
+            "type": "Phường",
+            "lat": 10.7983,
+            "lng": 106.68
+          },
+          {
+            "id": "SG-PN-C2",
+            "name": "Phường Mở rộng Phú Nhuận",
+            "type": "Phường",
+            "lat": 10.8013,
+            "lng": 106.683
+          }
         ]
       },
       {
@@ -13289,17 +17988,17 @@
         "lng": 106.6653,
         "pop": 685000,
         "density": 34700,
-        "income": 8.0,
+        "income": 8,
         "expense": 5.4,
         "rppi": 93,
         "households": 72000,
         "gender": {
-          "male_pct": 49.0,
-          "female_pct": 51.0
+          "male_pct": 49,
+          "female_pct": 51
         },
         "age_cohorts": {
-          "children_0_14": 18.0,
-          "youth_15_24": 18.0,
+          "children_0_14": 18,
+          "youth_15_24": 18,
           "prime_25_49": 45.5,
           "senior_50_plus": 18.5
         },
@@ -13317,6 +18016,22 @@
         "low_density_opportunities": [
           "Khu dân cư Phường 14, 15 giáp An Phú Đông",
           "Dọc hành lang đại lộ Phạm Văn Đồng"
+        ],
+        "communes": [
+          {
+            "id": "SG-GV-C1",
+            "name": "Phường Trung tâm Gò Vấp",
+            "type": "Phường",
+            "lat": 10.8386,
+            "lng": 106.6653
+          },
+          {
+            "id": "SG-GV-C2",
+            "name": "Phường Mở rộng Gò Vấp",
+            "type": "Phường",
+            "lat": 10.8416,
+            "lng": 106.6683
+          }
         ]
       },
       {
@@ -13337,9 +18052,9 @@
         },
         "age_cohorts": {
           "children_0_14": 16.5,
-          "youth_15_24": 17.0,
+          "youth_15_24": 17,
           "prime_25_49": 46.5,
-          "senior_50_plus": 20.0
+          "senior_50_plus": 20
         },
         "primary_streets": [
           "Cộng Hòa",
@@ -13355,6 +18070,22 @@
         "low_density_opportunities": [
           "Khu K300, K200 dịch vụ chuyên gia phi công/tiếp viên",
           "Khu ga T3 sân bay mở rộng"
+        ],
+        "communes": [
+          {
+            "id": "SG-TB-C1",
+            "name": "Phường Trung tâm Tân Bình",
+            "type": "Phường",
+            "lat": 10.8,
+            "lng": 106.65
+          },
+          {
+            "id": "SG-TB-C2",
+            "name": "Phường Mở rộng Tân Bình",
+            "type": "Phường",
+            "lat": 10.803,
+            "lng": 106.653
+          }
         ]
       },
       {
@@ -13392,6 +18123,22 @@
         "low_density_opportunities": [
           "Khu đô thị Celadon City phân khu cao cấp",
           "Trục kênh Hiệp Tân"
+        ],
+        "communes": [
+          {
+            "id": "SG-TP-C1",
+            "name": "Phường Trung tâm Tân Phú",
+            "type": "Phường",
+            "lat": 10.79,
+            "lng": 106.6283
+          },
+          {
+            "id": "SG-TP-C2",
+            "name": "Phường Mở rộng Tân Phú",
+            "type": "Phường",
+            "lat": 10.793,
+            "lng": 106.6313
+          }
         ]
       },
       {
@@ -13430,6 +18177,22 @@
         "low_density_opportunities": [
           "Khu đô thị Vĩnh Lộc",
           "Khu dân cư Tân Tạo A mở rộng"
+        ],
+        "communes": [
+          {
+            "id": "SG-BTA-C1",
+            "name": "Phường Trung tâm Bình Tân",
+            "type": "Phường",
+            "lat": 10.7653,
+            "lng": 106.6039
+          },
+          {
+            "id": "SG-BTA-C2",
+            "name": "Phường Mở rộng Bình Tân",
+            "type": "Phường",
+            "lat": 10.7683,
+            "lng": 106.6069
+          }
         ]
       },
       {
@@ -13445,8 +18208,8 @@
         "rppi": 94,
         "households": 115000,
         "gender": {
-          "male_pct": 49.0,
-          "female_pct": 51.0
+          "male_pct": 49,
+          "female_pct": 51
         },
         "age_cohorts": {
           "children_0_14": 18.5,
@@ -13470,6 +18233,22 @@
           "Khu đô thị mới Thủ Thiêm",
           "Đại đô thị Vinhomes Grand Park",
           "Khu CNC Quận 9 mở rộng"
+        ],
+        "communes": [
+          {
+            "id": "SG-TD-C1",
+            "name": "Phường Trung tâm Thủ Đức",
+            "type": "Phường",
+            "lat": 10.8231,
+            "lng": 106.7583
+          },
+          {
+            "id": "SG-TD-C2",
+            "name": "Phường Mở rộng Thủ Đức",
+            "type": "Phường",
+            "lat": 10.8381,
+            "lng": 106.7733
+          }
         ]
       },
       {
@@ -13510,6 +18289,197 @@
           "Vành đai cụm KCN Tân Quy & KCN Đông Nam (Nhu cầu F&B, nhà thuốc, tiện lợi cực lớn cho công nhân và chuyên gia)",
           "Trục sinh thái ven sông Sài Gòn xã Bình Mỹ (Cafe sân vườn, nhà hàng nghỉ dưỡng cuối tuần)",
           "Khu đô thị vệ tinh Nhuận Đức & An Nhơn Tây"
+        ],
+        "communes": [
+          {
+            "id": "SG-CC-TTC",
+            "name": "Thị trấn Củ Chi",
+            "type": "Thị trấn",
+            "lat": 10.9722,
+            "lng": 106.4938,
+            "pop": 32000,
+            "features": "Trung tâm hành chính huyện, chợ Củ Chi, bến xe, trục QL22 & TL8 sầm uất"
+          },
+          {
+            "id": "SG-CC-TTD",
+            "name": "Xã Tân Thạnh Đông",
+            "type": "Xã",
+            "lat": 10.9575,
+            "lng": 106.5746,
+            "pop": 48000,
+            "features": "Trục Tỉnh lộ 15, dân cư trù phú, tiểu thủ công nghiệp & thương mại ven sông Sài Gòn"
+          },
+          {
+            "id": "SG-CC-TTT",
+            "name": "Xã Tân Thạnh Tây",
+            "type": "Xã",
+            "lat": 10.975,
+            "lng": 106.55,
+            "pop": 26000,
+            "features": "Giao lộ Tỉnh lộ 8 & Tỉnh lộ 15 (Ngã tư Tân Quy), thương mại sầm uất"
+          },
+          {
+            "id": "SG-CC-BM",
+            "name": "Xã Bình Mỹ",
+            "type": "Xã",
+            "lat": 10.925,
+            "lng": 106.635,
+            "pop": 44000,
+            "features": "Giáp sông Sài Gòn, cầu Phú Cường nối Bình Dương, cafe sân vườn & ẩm thực sinh thái"
+          },
+          {
+            "id": "SG-CC-HP",
+            "name": "Xã Hòa Phú",
+            "type": "Xã",
+            "lat": 11.002,
+            "lng": 106.612,
+            "pop": 28000,
+            "features": "Vành đai KCN Đông Nam, mật độ công nhân & lao động chi tiêu dịch vụ cao"
+          },
+          {
+            "id": "SG-CC-TA",
+            "name": "Xã Trung An",
+            "type": "Xã",
+            "lat": 11.018,
+            "lng": 106.575,
+            "pop": 22000,
+            "features": "Miệt vườn trái cây sinh thái ven sông Sài Gòn"
+          },
+          {
+            "id": "SG-CC-PHD",
+            "name": "Xã Phú Hòa Đông",
+            "type": "Xã",
+            "lat": 11.025,
+            "lng": 106.532,
+            "pop": 33000,
+            "features": "Làng nghề bánh tráng truyền thống, thương mại dân sinh nhộn nhịp"
+          },
+          {
+            "id": "SG-CC-TTH",
+            "name": "Xã Tân Thông Hội",
+            "type": "Xã",
+            "lat": 10.945,
+            "lng": 106.512,
+            "pop": 45000,
+            "features": "Mặt tiền Quốc lộ 22 (Xuyên Á), cửa ngõ giáp Hóc Môn"
+          },
+          {
+            "id": "SG-CC-TAH",
+            "name": "Xã Tân An Hội",
+            "type": "Xã",
+            "lat": 10.978,
+            "lng": 106.468,
+            "pop": 34000,
+            "features": "Khu công nghiệp Tây Bắc Củ Chi, tốc độ đô thị hóa nhanh"
+          },
+          {
+            "id": "SG-CC-PVA",
+            "name": "Xã Phước Vĩnh An",
+            "type": "Xã",
+            "lat": 10.985,
+            "lng": 106.52,
+            "pop": 31000,
+            "features": "Vành đai tiếp giáp thị trấn Củ Chi, hạ tầng đồng bộ"
+          },
+          {
+            "id": "SG-CC-TPT",
+            "name": "Xã Tân Phú Trung",
+            "type": "Xã",
+            "lat": 10.928,
+            "lng": 106.545,
+            "pop": 49000,
+            "features": "KCN Tân Phú Trung, Bệnh viện Xuyên Á, Quốc lộ 22"
+          },
+          {
+            "id": "SG-CC-ND",
+            "name": "Xã Nhuận Đức",
+            "type": "Xã",
+            "lat": 11.05,
+            "lng": 106.49,
+            "pop": 21000,
+            "features": "Trường bắn Củ Chi, cụm nông nghiệp công nghệ cao"
+          },
+          {
+            "id": "SG-CC-PVC",
+            "name": "Xã Phạm Văn Cội",
+            "type": "Xã",
+            "lat": 11.085,
+            "lng": 106.52,
+            "pop": 18000,
+            "features": "Trung tâm nông nghiệp kỹ thuật cao TP.HCM"
+          },
+          {
+            "id": "SG-CC-ANT",
+            "name": "Xã An Nhơn Tây",
+            "type": "Xã",
+            "lat": 11.092,
+            "lng": 106.475,
+            "pop": 23000,
+            "features": "Bệnh viện Huyện Củ Chi cơ sở 2, địa đạo Bến Dược"
+          },
+          {
+            "id": "SG-CC-AP",
+            "name": "Xã An Phú",
+            "type": "Xã",
+            "lat": 11.135,
+            "lng": 106.49,
+            "pop": 16000,
+            "features": "Vùng ven phía Bắc sông Sài Gòn giáp Bình Dương"
+          },
+          {
+            "id": "SG-CC-PMH",
+            "name": "Xã Phú Mỹ Hưng",
+            "type": "Xã",
+            "lat": 11.148,
+            "lng": 106.452,
+            "pop": 12000,
+            "features": "Khu Di tích Lịch sử Địa đạo Bến Dược Củ Chi"
+          },
+          {
+            "id": "SG-CC-TM",
+            "name": "Xã Thái Mỹ",
+            "type": "Xã",
+            "lat": 10.975,
+            "lng": 106.395,
+            "pop": 17000,
+            "features": "Cửa ngõ Tây Nam giáp Đức Hòa (Long An)"
+          },
+          {
+            "id": "SG-CC-TLT",
+            "name": "Xã Trung Lập Thượng",
+            "type": "Xã",
+            "lat": 11.065,
+            "lng": 106.425,
+            "pop": 15000,
+            "features": "Giáp tỉnh Tây Ninh, địa hình cao ráo bán sơn địa"
+          },
+          {
+            "id": "SG-CC-TLH",
+            "name": "Xã Trung Lập Hạ",
+            "type": "Xã",
+            "lat": 11.025,
+            "lng": 106.435,
+            "pop": 17000,
+            "features": "Khu dân cư nông thôn mới, nhà vườn sinh thái"
+          },
+          {
+            "id": "SG-CC-PH",
+            "name": "Xã Phước Hiệp",
+            "type": "Xã",
+            "lat": 11.015,
+            "lng": 106.43,
+            "pop": 16000,
+            "features": "Trục Quốc lộ 22, giáp KCN Tây Bắc"
+          },
+          {
+            "id": "SG-CC-PT",
+            "name": "Xã Phước Thạnh",
+            "type": "Xã",
+            "lat": 11.002,
+            "lng": 106.385,
+            "pop": 19000,
+            "features": "Cửa ngõ Quốc lộ 22 giáp thị xã Trảng Bàng"
+          }
         ]
       },
       {
@@ -13549,6 +18519,92 @@
         "low_density_opportunities": [
           "Dọc tuyến đường Đặng Thúc Vịnh mới nâng cấp",
           "Khu dân cư Xuân Thới Thượng"
+        ],
+        "communes": [
+          {
+            "id": "SG-HM-TTH",
+            "name": "Thị trấn Hóc Môn",
+            "type": "Thị trấn",
+            "lat": 10.885,
+            "lng": 106.592
+          },
+          {
+            "id": "SG-HM-BD",
+            "name": "Xã Bà Điểm",
+            "type": "Xã",
+            "lat": 10.84,
+            "lng": 106.605
+          },
+          {
+            "id": "SG-HM-DT",
+            "name": "Xã Đông Thạnh",
+            "type": "Xã",
+            "lat": 10.895,
+            "lng": 106.65
+          },
+          {
+            "id": "SG-HM-NB",
+            "name": "Xã Nhị Bình",
+            "type": "Xã",
+            "lat": 10.89,
+            "lng": 106.68
+          },
+          {
+            "id": "SG-HM-TTN",
+            "name": "Xã Tân Thới Nhì",
+            "type": "Xã",
+            "lat": 10.905,
+            "lng": 106.57
+          },
+          {
+            "id": "SG-HM-TH",
+            "name": "Xã Tân Hiệp",
+            "type": "Xã",
+            "lat": 10.89,
+            "lng": 106.55
+          },
+          {
+            "id": "SG-HM-XTT",
+            "name": "Xã Xuân Thới Thượng",
+            "type": "Xã",
+            "lat": 10.855,
+            "lng": 106.55
+          },
+          {
+            "id": "SG-HM-XTS",
+            "name": "Xã Xuân Thới Sơn",
+            "type": "Xã",
+            "lat": 10.875,
+            "lng": 106.565
+          },
+          {
+            "id": "SG-HM-XTD",
+            "name": "Xã Xuân Thới Đông",
+            "type": "Xã",
+            "lat": 10.865,
+            "lng": 106.585
+          },
+          {
+            "id": "SG-HM-TTT",
+            "name": "Xã Thới Tam Thôn",
+            "type": "Xã",
+            "lat": 10.875,
+            "lng": 106.615
+          },
+          {
+            "id": "SG-HM-TX",
+            "name": "Xã Tân Xuân",
+            "type": "Xã",
+            "lat": 10.88,
+            "lng": 106.6
+          },
+          {
+            "id": "SG-HM-TC",
+            "name": "Xã Trung Chánh",
+            "type": "Xã",
+            "lat": 10.86,
+            "lng": 106.61
+          }
         ]
       },
       {
@@ -13568,8 +18624,8 @@
           "female_pct": 50.4
         },
         "age_cohorts": {
-          "children_0_14": 20.0,
-          "youth_15_24": 17.0,
+          "children_0_14": 20,
+          "youth_15_24": 17,
           "prime_25_49": 44.2,
           "senior_50_plus": 18.8
         },
@@ -13587,6 +18643,22 @@
         "low_density_opportunities": [
           "Khu đô thị sinh thái Phong Phú",
           "Dọc đại lộ Võ Văn Kiệt nối dài"
+        ],
+        "communes": [
+          {
+            "id": "SG-BC-C1",
+            "name": "Thị trấn Trung tâm Bình Chánh",
+            "type": "Thị trấn",
+            "lat": 10.6875,
+            "lng": 106.5833
+          },
+          {
+            "id": "SG-BC-C2",
+            "name": "Xã Mở rộng Bình Chánh",
+            "type": "Xã",
+            "lat": 10.7025,
+            "lng": 106.5983
+          }
         ]
       },
       {
@@ -13624,6 +18696,22 @@
         "low_density_opportunities": [
           "Đại đô thị GS Metrocity (Zeitgeist Nhà Bè)",
           "Khu công nghiệp cảng Hiệp Phước"
+        ],
+        "communes": [
+          {
+            "id": "SG-NB-C1",
+            "name": "Thị trấn Trung tâm Nhà Bè",
+            "type": "Thị trấn",
+            "lat": 10.6667,
+            "lng": 106.7333
+          },
+          {
+            "id": "SG-NB-C2",
+            "name": "Xã Mở rộng Nhà Bè",
+            "type": "Xã",
+            "lat": 10.6817,
+            "lng": 106.7483
+          }
         ]
       },
       {
@@ -13643,10 +18731,10 @@
           "female_pct": 50.5
         },
         "age_cohorts": {
-          "children_0_14": 19.0,
+          "children_0_14": 19,
           "youth_15_24": 15.5,
           "prime_25_49": 43.5,
-          "senior_50_plus": 22.0
+          "senior_50_plus": 22
         },
         "primary_streets": [
           "Đường Rừng Sác",
@@ -13661,6 +18749,22 @@
         "low_density_opportunities": [
           "Khu đô thị du lịch lấn biển Cần Giờ tương lai",
           "Khu du lịch sinh thái Vàm Sát"
+        ],
+        "communes": [
+          {
+            "id": "SG-CG-C1",
+            "name": "Thị trấn Trung tâm Cần Giờ",
+            "type": "Thị trấn",
+            "lat": 10.4167,
+            "lng": 106.9583
+          },
+          {
+            "id": "SG-CG-C2",
+            "name": "Xã Mở rộng Cần Giờ",
+            "type": "Xã",
+            "lat": 10.4317,
+            "lng": 106.9733
+          }
         ]
       }
     ]
@@ -13727,8 +18831,8 @@
         "id": "BDU_PRE2008-D1",
         "name": "Thành phố Thủ Dầu Một",
         "type": "Trung tâm hành chính & thương mại",
-        "lat": 10.98,
-        "lng": 106.5667,
+        "lat": 10.9805,
+        "lng": 106.652,
         "pop": 350000,
         "density": 3000,
         "income": 8.5,
@@ -13742,8 +18846,8 @@
         "age_cohorts": {
           "children_0_14": 18.5,
           "youth_15_24": 16.5,
-          "prime_25_49": 45.0,
-          "senior_50_plus": 20.0
+          "prime_25_49": 45,
+          "senior_50_plus": 20
         },
         "primary_streets": [
           "Đại lộ Bình Dương",
@@ -13757,6 +18861,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Thủ Dầu Một",
           "Trục vành đai kết nối Cách Mạng Tháng Tám"
+        ],
+        "communes": [
+          {
+            "id": "BDU_PRE2008-D1-C1",
+            "name": "Phường Trung tâm Thủ Dầu Một",
+            "type": "Phường",
+            "lat": 10.9805,
+            "lng": 106.652
+          },
+          {
+            "id": "BDU_PRE2008-D1-C2",
+            "name": "Phường Mở rộng Thủ Dầu Một",
+            "type": "Phường",
+            "lat": 10.9905,
+            "lng": 106.662
+          }
         ]
       },
       {
@@ -13764,7 +18884,7 @@
         "name": "Thành phố Thuận An",
         "type": "Đô thị công nghiệp & dịch vụ giáp TP.HCM",
         "lat": 10.92,
-        "lng": 106.6167,
+        "lng": 106.7,
         "pop": 620000,
         "density": 7400,
         "income": 8.1,
@@ -13778,8 +18898,8 @@
         "age_cohorts": {
           "children_0_14": 18.5,
           "youth_15_24": 16.5,
-          "prime_25_49": 45.0,
-          "senior_50_plus": 20.0
+          "prime_25_49": 45,
+          "senior_50_plus": 20
         },
         "primary_streets": [
           "Quốc lộ 13",
@@ -13793,6 +18913,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Thuận An",
           "Trục vành đai kết nối Nguyễn Văn Tiết"
+        ],
+        "communes": [
+          {
+            "id": "BDU_PRE2008-D2-C1",
+            "name": "Phường Trung tâm Thuận An",
+            "type": "Phường",
+            "lat": 10.92,
+            "lng": 106.7
+          },
+          {
+            "id": "BDU_PRE2008-D2-C2",
+            "name": "Phường Mở rộng Thuận An",
+            "type": "Phường",
+            "lat": 10.93,
+            "lng": 106.71
+          }
         ]
       },
       {
@@ -13800,10 +18936,10 @@
         "name": "Thành phố Dĩ An",
         "type": "Đô thị cửa ngõ ga tàu & logistics giáp Thủ Đức",
         "lat": 10.9,
-        "lng": 106.6667,
+        "lng": 106.77,
         "pop": 500000,
         "density": 8300,
-        "income": 8.0,
+        "income": 8,
         "expense": 5.3,
         "rppi": 92,
         "households": 58824,
@@ -13814,8 +18950,8 @@
         "age_cohorts": {
           "children_0_14": 18.5,
           "youth_15_24": 16.5,
-          "prime_25_49": 45.0,
-          "senior_50_plus": 20.0
+          "prime_25_49": 45,
+          "senior_50_plus": 20
         },
         "primary_streets": [
           "DT743",
@@ -13829,14 +18965,30 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Dĩ An",
           "Trục vành đai kết nối Trần Hưng Đạo"
+        ],
+        "communes": [
+          {
+            "id": "BDU_PRE2008-D3-C1",
+            "name": "Phường Trung tâm Dĩ An",
+            "type": "Phường",
+            "lat": 10.9,
+            "lng": 106.77
+          },
+          {
+            "id": "BDU_PRE2008-D3-C2",
+            "name": "Phường Mở rộng Dĩ An",
+            "type": "Phường",
+            "lat": 10.91,
+            "lng": 106.78
+          }
         ]
       },
       {
         "id": "BDU_PRE2008-D4",
         "name": "Thành phố Bến Cát",
         "type": "Thành phố công nghiệp hiện đại & ĐH Quốc tế",
-        "lat": 11.15,
-        "lng": 106.7167,
+        "lat": 11.13,
+        "lng": 106.61,
         "pop": 360000,
         "density": 1550,
         "income": 7.3,
@@ -13850,8 +19002,8 @@
         "age_cohorts": {
           "children_0_14": 18.5,
           "youth_15_24": 16.5,
-          "prime_25_49": 45.0,
-          "senior_50_plus": 20.0
+          "prime_25_49": 45,
+          "senior_50_plus": 20
         },
         "primary_streets": [
           "Quốc lộ 13",
@@ -13865,14 +19017,30 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Bến Cát",
           "Trục vành đai kết nối Đường 30/4"
+        ],
+        "communes": [
+          {
+            "id": "BDU_PRE2008-D4-C1",
+            "name": "Phường Trung tâm Bến Cát",
+            "type": "Phường",
+            "lat": 11.13,
+            "lng": 106.61
+          },
+          {
+            "id": "BDU_PRE2008-D4-C2",
+            "name": "Phường Mở rộng Bến Cát",
+            "type": "Phường",
+            "lat": 11.14,
+            "lng": 106.62
+          }
         ]
       },
       {
         "id": "BDU_PRE2008-D5",
         "name": "Thành phố Tân Uyên",
         "type": "Đô thị công nghiệp thông minh",
-        "lat": 11.08,
-        "lng": 106.7667,
+        "lat": 11.05,
+        "lng": 106.78,
         "pop": 470000,
         "density": 2450,
         "income": 7.4,
@@ -13886,8 +19054,8 @@
         "age_cohorts": {
           "children_0_14": 18.5,
           "youth_15_24": 16.5,
-          "prime_25_49": 45.0,
-          "senior_50_plus": 20.0
+          "prime_25_49": 45,
+          "senior_50_plus": 20
         },
         "primary_streets": [
           "DT746",
@@ -13901,14 +19069,30 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Tân Uyên",
           "Trục vành đai kết nối Quang Trung"
+        ],
+        "communes": [
+          {
+            "id": "BDU_PRE2008-D5-C1",
+            "name": "Phường Trung tâm Tân Uyên",
+            "type": "Phường",
+            "lat": 11.05,
+            "lng": 106.78
+          },
+          {
+            "id": "BDU_PRE2008-D5-C2",
+            "name": "Phường Mở rộng Tân Uyên",
+            "type": "Phường",
+            "lat": 11.06,
+            "lng": 106.79
+          }
         ]
       },
       {
         "id": "BDU_PRE2008-D6",
         "name": "Huyện Bàu Bàng",
         "type": "Trung tâm công nghiệp phía Bắc",
-        "lat": 11.28,
-        "lng": 106.8167,
+        "lat": 11.27,
+        "lng": 106.6,
         "pop": 110000,
         "density": 320,
         "income": 6.4,
@@ -13922,8 +19106,8 @@
         "age_cohorts": {
           "children_0_14": 18.5,
           "youth_15_24": 16.5,
-          "prime_25_49": 45.0,
-          "senior_50_plus": 20.0
+          "prime_25_49": 45,
+          "senior_50_plus": 20
         },
         "primary_streets": [
           "Quốc lộ 13",
@@ -13937,6 +19121,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Bàu Bàng",
           "Trục vành đai kết nối KCN Bàu Bàng"
+        ],
+        "communes": [
+          {
+            "id": "BDU_PRE2008-D6-C1",
+            "name": "Thị trấn Trung tâm Bàu Bàng",
+            "type": "Thị trấn",
+            "lat": 11.27,
+            "lng": 106.6
+          },
+          {
+            "id": "BDU_PRE2008-D6-C2",
+            "name": "Xã Mở rộng Bàu Bàng",
+            "type": "Xã",
+            "lat": 11.28,
+            "lng": 106.61
+          }
         ]
       }
     ]
@@ -14018,8 +19218,8 @@
         "age_cohorts": {
           "children_0_14": 18.5,
           "youth_15_24": 16.5,
-          "prime_25_49": 45.0,
-          "senior_50_plus": 20.0
+          "prime_25_49": 45,
+          "senior_50_plus": 20
         },
         "primary_streets": [
           "Phạm Văn Thuận",
@@ -14033,6 +19233,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Biên Hòa",
           "Trục vành đai kết nối Đồng Khởi"
+        ],
+        "communes": [
+          {
+            "id": "DNA_PRE2008-D1-C1",
+            "name": "Phường Trung tâm Biên Hòa",
+            "type": "Phường",
+            "lat": 10.95,
+            "lng": 106.7427
+          },
+          {
+            "id": "DNA_PRE2008-D1-C2",
+            "name": "Phường Mở rộng Biên Hòa",
+            "type": "Phường",
+            "lat": 10.965,
+            "lng": 106.7577
+          }
         ]
       },
       {
@@ -14054,8 +19270,8 @@
         "age_cohorts": {
           "children_0_14": 18.5,
           "youth_15_24": 16.5,
-          "prime_25_49": 45.0,
-          "senior_50_plus": 20.0
+          "prime_25_49": 45,
+          "senior_50_plus": 20
         },
         "primary_streets": [
           "Hùng Vương",
@@ -14069,6 +19285,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Long Khánh",
           "Trục vành đai kết nối Khổng Tử"
+        ],
+        "communes": [
+          {
+            "id": "DNA_PRE2008-D2-C1",
+            "name": "Phường Trung tâm Long Khánh",
+            "type": "Phường",
+            "lat": 10.94,
+            "lng": 106.7927
+          },
+          {
+            "id": "DNA_PRE2008-D2-C2",
+            "name": "Phường Mở rộng Long Khánh",
+            "type": "Phường",
+            "lat": 10.955,
+            "lng": 106.8077
+          }
         ]
       },
       {
@@ -14090,8 +19322,8 @@
         "age_cohorts": {
           "children_0_14": 18.5,
           "youth_15_24": 16.5,
-          "prime_25_49": 45.0,
-          "senior_50_plus": 20.0
+          "prime_25_49": 45,
+          "senior_50_plus": 20
         },
         "primary_streets": [
           "Quốc lộ 51",
@@ -14105,6 +19337,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Long Thành",
           "Trục vành đai kết nối Tỉnh lộ 769"
+        ],
+        "communes": [
+          {
+            "id": "DNA_PRE2008-D3-C1",
+            "name": "Thị trấn Trung tâm Long Thành",
+            "type": "Thị trấn",
+            "lat": 10.78,
+            "lng": 106.8427
+          },
+          {
+            "id": "DNA_PRE2008-D3-C2",
+            "name": "Xã Mở rộng Long Thành",
+            "type": "Xã",
+            "lat": 10.795,
+            "lng": 106.8577
+          }
         ]
       },
       {
@@ -14115,7 +19363,7 @@
         "lng": 106.8927,
         "pop": 285000,
         "density": 700,
-        "income": 7.0,
+        "income": 7,
         "expense": 4.6,
         "rppi": 80,
         "households": 33529,
@@ -14126,8 +19374,8 @@
         "age_cohorts": {
           "children_0_14": 18.5,
           "youth_15_24": 16.5,
-          "prime_25_49": 45.0,
-          "senior_50_plus": 20.0
+          "prime_25_49": 45,
+          "senior_50_plus": 20
         },
         "primary_streets": [
           "Tôn Đức Thắng",
@@ -14141,6 +19389,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Nhơn Trạch",
           "Trục vành đai kết nối Đường 25B"
+        ],
+        "communes": [
+          {
+            "id": "DNA_PRE2008-D4-C1",
+            "name": "Phường Trung tâm Nhơn Trạch",
+            "type": "Phường",
+            "lat": 10.7,
+            "lng": 106.8927
+          },
+          {
+            "id": "DNA_PRE2008-D4-C2",
+            "name": "Phường Mở rộng Nhơn Trạch",
+            "type": "Phường",
+            "lat": 10.715,
+            "lng": 106.9077
+          }
         ]
       },
       {
@@ -14162,8 +19426,8 @@
         "age_cohorts": {
           "children_0_14": 18.5,
           "youth_15_24": 16.5,
-          "prime_25_49": 45.0,
-          "senior_50_plus": 20.0
+          "prime_25_49": 45,
+          "senior_50_plus": 20
         },
         "primary_streets": [
           "Quốc lộ 1A",
@@ -14177,6 +19441,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Trảng Bom",
           "Trục vành đai kết nối Nguyễn Hữu Cảnh"
+        ],
+        "communes": [
+          {
+            "id": "DNA_PRE2008-D5-C1",
+            "name": "Thị trấn Trung tâm Trảng Bom",
+            "type": "Thị trấn",
+            "lat": 10.96,
+            "lng": 106.9427
+          },
+          {
+            "id": "DNA_PRE2008-D5-C2",
+            "name": "Xã Mở rộng Trảng Bom",
+            "type": "Xã",
+            "lat": 10.975,
+            "lng": 106.9577
+          }
         ]
       },
       {
@@ -14198,8 +19478,8 @@
         "age_cohorts": {
           "children_0_14": 18.5,
           "youth_15_24": 16.5,
-          "prime_25_49": 45.0,
-          "senior_50_plus": 20.0
+          "prime_25_49": 45,
+          "senior_50_plus": 20
         },
         "primary_streets": [
           "DT768",
@@ -14213,6 +19493,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Vĩnh Cửu",
           "Trục vành đai kết nối Thị trấn Vĩnh An"
+        ],
+        "communes": [
+          {
+            "id": "DNA_PRE2008-D6-C1",
+            "name": "Thị trấn Trung tâm Vĩnh Cửu",
+            "type": "Thị trấn",
+            "lat": 11.15,
+            "lng": 106.9927
+          },
+          {
+            "id": "DNA_PRE2008-D6-C2",
+            "name": "Xã Mở rộng Vĩnh Cửu",
+            "type": "Xã",
+            "lat": 11.165,
+            "lng": 107.0077
+          }
         ]
       }
     ]
@@ -14294,8 +19590,8 @@
         "age_cohorts": {
           "children_0_14": 18.5,
           "youth_15_24": 16.5,
-          "prime_25_49": 45.0,
-          "senior_50_plus": 20.0
+          "prime_25_49": 45,
+          "senior_50_plus": 20
         },
         "primary_streets": [
           "Thùy Vân",
@@ -14310,6 +19606,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Vũng Tàu",
           "Trục vành đai kết nối Lê Hồng Phong"
+        ],
+        "communes": [
+          {
+            "id": "BRVT_PRE2008-D1-C1",
+            "name": "Phường Trung tâm Vũng Tàu",
+            "type": "Phường",
+            "lat": 10.38,
+            "lng": 106.9843
+          },
+          {
+            "id": "BRVT_PRE2008-D1-C2",
+            "name": "Phường Mở rộng Vũng Tàu",
+            "type": "Phường",
+            "lat": 10.395,
+            "lng": 106.9993
+          }
         ]
       },
       {
@@ -14331,8 +19643,8 @@
         "age_cohorts": {
           "children_0_14": 18.5,
           "youth_15_24": 16.5,
-          "prime_25_49": 45.0,
-          "senior_50_plus": 20.0
+          "prime_25_49": 45,
+          "senior_50_plus": 20
         },
         "primary_streets": [
           "Cách Mạng Tháng Tám",
@@ -14346,6 +19658,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Bà Rịa",
           "Trục vành đai kết nối Nguyễn Tất Thành"
+        ],
+        "communes": [
+          {
+            "id": "BRVT_PRE2008-D2-C1",
+            "name": "Phường Trung tâm Bà Rịa",
+            "type": "Phường",
+            "lat": 10.5,
+            "lng": 107.0343
+          },
+          {
+            "id": "BRVT_PRE2008-D2-C2",
+            "name": "Phường Mở rộng Bà Rịa",
+            "type": "Phường",
+            "lat": 10.515,
+            "lng": 107.0493
+          }
         ]
       },
       {
@@ -14367,8 +19695,8 @@
         "age_cohorts": {
           "children_0_14": 18.5,
           "youth_15_24": 16.5,
-          "prime_25_49": 45.0,
-          "senior_50_plus": 20.0
+          "prime_25_49": 45,
+          "senior_50_plus": 20
         },
         "primary_streets": [
           "Quốc lộ 51",
@@ -14382,6 +19710,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thị xã Phú Mỹ",
           "Trục vành đai kết nối Độc Lập"
+        ],
+        "communes": [
+          {
+            "id": "BRVT_PRE2008-D3-C1",
+            "name": "Phường Trung tâm Phú Mỹ",
+            "type": "Phường",
+            "lat": 10.6,
+            "lng": 107.0843
+          },
+          {
+            "id": "BRVT_PRE2008-D3-C2",
+            "name": "Phường Mở rộng Phú Mỹ",
+            "type": "Phường",
+            "lat": 10.615,
+            "lng": 107.0993
+          }
         ]
       },
       {
@@ -14403,8 +19747,8 @@
         "age_cohorts": {
           "children_0_14": 18.5,
           "youth_15_24": 16.5,
-          "prime_25_49": 45.0,
-          "senior_50_plus": 20.0
+          "prime_25_49": 45,
+          "senior_50_plus": 20
         },
         "primary_streets": [
           "Hùng Vương",
@@ -14418,6 +19762,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Châu Đức",
           "Trục vành đai kết nối Quốc lộ 56"
+        ],
+        "communes": [
+          {
+            "id": "BRVT_PRE2008-D4-C1",
+            "name": "Thị trấn Trung tâm Châu Đức",
+            "type": "Thị trấn",
+            "lat": 10.63,
+            "lng": 107.1343
+          },
+          {
+            "id": "BRVT_PRE2008-D4-C2",
+            "name": "Xã Mở rộng Châu Đức",
+            "type": "Xã",
+            "lat": 10.645,
+            "lng": 107.1493
+          }
         ]
       },
       {
@@ -14439,8 +19799,8 @@
         "age_cohorts": {
           "children_0_14": 18.5,
           "youth_15_24": 16.5,
-          "prime_25_49": 45.0,
-          "senior_50_plus": 20.0
+          "prime_25_49": 45,
+          "senior_50_plus": 20
         },
         "primary_streets": [
           "Võ Thị Sáu",
@@ -14454,6 +19814,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Long Điền",
           "Trục vành đai kết nối Tỉnh lộ 44A"
+        ],
+        "communes": [
+          {
+            "id": "BRVT_PRE2008-D5-C1",
+            "name": "Phường Trung tâm Long Điền",
+            "type": "Phường",
+            "lat": 10.45,
+            "lng": 107.1843
+          },
+          {
+            "id": "BRVT_PRE2008-D5-C2",
+            "name": "Phường Mở rộng Long Điền",
+            "type": "Phường",
+            "lat": 10.465,
+            "lng": 107.1993
+          }
         ]
       },
       {
@@ -14475,8 +19851,8 @@
         "age_cohorts": {
           "children_0_14": 18.5,
           "youth_15_24": 16.5,
-          "prime_25_49": 45.0,
-          "senior_50_plus": 20.0
+          "prime_25_49": 45,
+          "senior_50_plus": 20
         },
         "primary_streets": [
           "Huỳnh Minh Thạnh",
@@ -14490,6 +19866,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Xuyên Mộc",
           "Trục vành đai kết nối Cung đường biển Hồ Tràm"
+        ],
+        "communes": [
+          {
+            "id": "BRVT_PRE2008-D6-C1",
+            "name": "Thị trấn Trung tâm Xuyên Mộc",
+            "type": "Thị trấn",
+            "lat": 10.55,
+            "lng": 107.2343
+          },
+          {
+            "id": "BRVT_PRE2008-D6-C2",
+            "name": "Xã Mở rộng Xuyên Mộc",
+            "type": "Xã",
+            "lat": 10.565,
+            "lng": 107.2493
+          }
         ]
       }
     ]
@@ -14586,6 +19978,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Tây Ninh",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "TN_PRE2008_TAYNINH-D1-C1",
+            "name": "Phường Trung tâm Tây Ninh",
+            "type": "Phường",
+            "lat": 11.3351,
+            "lng": 106.1898
+          },
+          {
+            "id": "TN_PRE2008_TAYNINH-D1-C2",
+            "name": "Phường Mở rộng Tây Ninh",
+            "type": "Phường",
+            "lat": 11.3501,
+            "lng": 106.2048
+          }
         ]
       },
       {
@@ -14622,6 +20030,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thị xã Trảng Bàng",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "TN_PRE2008_TAYNINH-D2-C1",
+            "name": "Phường Trung tâm Trảng Bàng",
+            "type": "Phường",
+            "lat": 11.465,
+            "lng": 106.1848
+          },
+          {
+            "id": "TN_PRE2008_TAYNINH-D2-C2",
+            "name": "Phường Mở rộng Trảng Bàng",
+            "type": "Phường",
+            "lat": 11.48,
+            "lng": 106.1998
+          }
         ]
       },
       {
@@ -14658,6 +20082,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thị xã Hòa Thành",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "TN_PRE2008_TAYNINH-D3-C1",
+            "name": "Phường Trung tâm Hòa Thành",
+            "type": "Phường",
+            "lat": 11.465,
+            "lng": 106.0348
+          },
+          {
+            "id": "TN_PRE2008_TAYNINH-D3-C2",
+            "name": "Phường Mở rộng Hòa Thành",
+            "type": "Phường",
+            "lat": 11.48,
+            "lng": 106.0498
+          }
         ]
       },
       {
@@ -14694,6 +20134,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Gò Dầu",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "TN_PRE2008_TAYNINH-D4-C1",
+            "name": "Thị trấn Trung tâm Gò Dầu",
+            "type": "Thị trấn",
+            "lat": 11.3351,
+            "lng": 105.9598
+          },
+          {
+            "id": "TN_PRE2008_TAYNINH-D4-C2",
+            "name": "Xã Mở rộng Gò Dầu",
+            "type": "Xã",
+            "lat": 11.3501,
+            "lng": 105.9748
+          }
         ]
       },
       {
@@ -14730,6 +20186,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Tân Châu",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "TN_PRE2008_TAYNINH-D5-C1",
+            "name": "Thị trấn Trung tâm Tân Châu",
+            "type": "Thị trấn",
+            "lat": 11.2052,
+            "lng": 106.0348
+          },
+          {
+            "id": "TN_PRE2008_TAYNINH-D5-C2",
+            "name": "Xã Mở rộng Tân Châu",
+            "type": "Xã",
+            "lat": 11.2202,
+            "lng": 106.0498
+          }
         ]
       },
       {
@@ -14766,6 +20238,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Châu Thành",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "TN_PRE2008_TAYNINH-D6-C1",
+            "name": "Thị trấn Trung tâm Châu Thành",
+            "type": "Thị trấn",
+            "lat": 11.2052,
+            "lng": 106.1848
+          },
+          {
+            "id": "TN_PRE2008_TAYNINH-D6-C2",
+            "name": "Xã Mở rộng Châu Thành",
+            "type": "Xã",
+            "lat": 11.2202,
+            "lng": 106.1998
+          }
         ]
       }
     ]
@@ -14862,6 +20350,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Đồng Xoài",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "BP_PRE2008-D1-C1",
+            "name": "Phường Trung tâm Đồng Xoài",
+            "type": "Phường",
+            "lat": 11.7511,
+            "lng": 106.9844
+          },
+          {
+            "id": "BP_PRE2008-D1-C2",
+            "name": "Phường Mở rộng Đồng Xoài",
+            "type": "Phường",
+            "lat": 11.7661,
+            "lng": 106.9994
+          }
         ]
       },
       {
@@ -14898,6 +20402,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thị xã Bình Long",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "BP_PRE2008-D2-C1",
+            "name": "Phường Trung tâm Bình Long",
+            "type": "Phường",
+            "lat": 11.881,
+            "lng": 106.9794
+          },
+          {
+            "id": "BP_PRE2008-D2-C2",
+            "name": "Phường Mở rộng Bình Long",
+            "type": "Phường",
+            "lat": 11.896,
+            "lng": 106.9944
+          }
         ]
       },
       {
@@ -14934,6 +20454,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thị xã Chơn Thành",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "BP_PRE2008-D3-C1",
+            "name": "Phường Trung tâm Chơn Thành",
+            "type": "Phường",
+            "lat": 11.881,
+            "lng": 106.8294
+          },
+          {
+            "id": "BP_PRE2008-D3-C2",
+            "name": "Phường Mở rộng Chơn Thành",
+            "type": "Phường",
+            "lat": 11.896,
+            "lng": 106.8444
+          }
         ]
       },
       {
@@ -14970,6 +20506,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thị xã Phước Long",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "BP_PRE2008-D4-C1",
+            "name": "Phường Trung tâm Phước Long",
+            "type": "Phường",
+            "lat": 11.7511,
+            "lng": 106.7544
+          },
+          {
+            "id": "BP_PRE2008-D4-C2",
+            "name": "Phường Mở rộng Phước Long",
+            "type": "Phường",
+            "lat": 11.7661,
+            "lng": 106.7694
+          }
         ]
       },
       {
@@ -15006,6 +20558,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Đồng Phú",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "BP_PRE2008-D5-C1",
+            "name": "Thị trấn Trung tâm Đồng Phú",
+            "type": "Thị trấn",
+            "lat": 11.6212,
+            "lng": 106.8294
+          },
+          {
+            "id": "BP_PRE2008-D5-C2",
+            "name": "Xã Mở rộng Đồng Phú",
+            "type": "Xã",
+            "lat": 11.6362,
+            "lng": 106.8444
+          }
         ]
       },
       {
@@ -15042,6 +20610,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Hớn Quản",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "BP_PRE2008-D6-C1",
+            "name": "Thị trấn Trung tâm Hớn Quản",
+            "type": "Thị trấn",
+            "lat": 11.6212,
+            "lng": 106.9794
+          },
+          {
+            "id": "BP_PRE2008-D6-C2",
+            "name": "Xã Mở rộng Hớn Quản",
+            "type": "Xã",
+            "lat": 11.6362,
+            "lng": 106.9944
+          }
         ]
       }
     ]
@@ -15138,6 +20722,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Tân An",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "LA_PRE2008-D1-C1",
+            "name": "Phường Trung tâm Tân An",
+            "type": "Phường",
+            "lat": 10.5422,
+            "lng": 106.4917
+          },
+          {
+            "id": "LA_PRE2008-D1-C2",
+            "name": "Phường Mở rộng Tân An",
+            "type": "Phường",
+            "lat": 10.5572,
+            "lng": 106.5067
+          }
         ]
       },
       {
@@ -15174,6 +20774,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thị xã Kiến Tường",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "LA_PRE2008-D2-C1",
+            "name": "Phường Trung tâm Kiến Tường",
+            "type": "Phường",
+            "lat": 10.6721,
+            "lng": 106.4867
+          },
+          {
+            "id": "LA_PRE2008-D2-C2",
+            "name": "Phường Mở rộng Kiến Tường",
+            "type": "Phường",
+            "lat": 10.6871,
+            "lng": 106.5017
+          }
         ]
       },
       {
@@ -15210,6 +20826,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Bến Lức",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "LA_PRE2008-D3-C1",
+            "name": "Thị trấn Trung tâm Bến Lức",
+            "type": "Thị trấn",
+            "lat": 10.6721,
+            "lng": 106.3367
+          },
+          {
+            "id": "LA_PRE2008-D3-C2",
+            "name": "Xã Mở rộng Bến Lức",
+            "type": "Xã",
+            "lat": 10.6871,
+            "lng": 106.3517
+          }
         ]
       },
       {
@@ -15246,6 +20878,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Cần Giuộc",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "LA_PRE2008-D4-C1",
+            "name": "Thị trấn Trung tâm Cần Giuộc",
+            "type": "Thị trấn",
+            "lat": 10.5422,
+            "lng": 106.2617
+          },
+          {
+            "id": "LA_PRE2008-D4-C2",
+            "name": "Xã Mở rộng Cần Giuộc",
+            "type": "Xã",
+            "lat": 10.5572,
+            "lng": 106.2767
+          }
         ]
       },
       {
@@ -15282,6 +20930,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Cần Đước",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "LA_PRE2008-D5-C1",
+            "name": "Thị trấn Trung tâm Cần Đước",
+            "type": "Thị trấn",
+            "lat": 10.4123,
+            "lng": 106.3367
+          },
+          {
+            "id": "LA_PRE2008-D5-C2",
+            "name": "Xã Mở rộng Cần Đước",
+            "type": "Xã",
+            "lat": 10.4273,
+            "lng": 106.3517
+          }
         ]
       },
       {
@@ -15318,6 +20982,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Đức Hòa",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "LA_PRE2008-D6-C1",
+            "name": "Thị trấn Trung tâm Đức Hòa",
+            "type": "Thị trấn",
+            "lat": 10.4123,
+            "lng": 106.4867
+          },
+          {
+            "id": "LA_PRE2008-D6-C2",
+            "name": "Xã Mở rộng Đức Hòa",
+            "type": "Xã",
+            "lat": 10.4273,
+            "lng": 106.5017
+          }
         ]
       }
     ]
@@ -15414,6 +21094,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Mỹ Tho",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "TG_PRE2008-D1-C1",
+            "name": "Phường Trung tâm Mỹ Tho",
+            "type": "Phường",
+            "lat": 10.3541,
+            "lng": 106.4453
+          },
+          {
+            "id": "TG_PRE2008-D1-C2",
+            "name": "Phường Mở rộng Mỹ Tho",
+            "type": "Phường",
+            "lat": 10.3691,
+            "lng": 106.4603
+          }
         ]
       },
       {
@@ -15450,6 +21146,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Gò Công",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "TG_PRE2008-D2-C1",
+            "name": "Phường Trung tâm Gò Công",
+            "type": "Phường",
+            "lat": 10.484,
+            "lng": 106.4403
+          },
+          {
+            "id": "TG_PRE2008-D2-C2",
+            "name": "Phường Mở rộng Gò Công",
+            "type": "Phường",
+            "lat": 10.499,
+            "lng": 106.4553
+          }
         ]
       },
       {
@@ -15486,6 +21198,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thị xã Cai Lậy",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "TG_PRE2008-D3-C1",
+            "name": "Phường Trung tâm Cai Lậy",
+            "type": "Phường",
+            "lat": 10.484,
+            "lng": 106.2903
+          },
+          {
+            "id": "TG_PRE2008-D3-C2",
+            "name": "Phường Mở rộng Cai Lậy",
+            "type": "Phường",
+            "lat": 10.499,
+            "lng": 106.3053
+          }
         ]
       },
       {
@@ -15522,6 +21250,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Châu Thành",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "TG_PRE2008-D4-C1",
+            "name": "Thị trấn Trung tâm Châu Thành",
+            "type": "Thị trấn",
+            "lat": 10.3541,
+            "lng": 106.2153
+          },
+          {
+            "id": "TG_PRE2008-D4-C2",
+            "name": "Xã Mở rộng Châu Thành",
+            "type": "Xã",
+            "lat": 10.3691,
+            "lng": 106.2303
+          }
         ]
       },
       {
@@ -15558,6 +21302,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Cái Bè",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "TG_PRE2008-D5-C1",
+            "name": "Thị trấn Trung tâm Cái Bè",
+            "type": "Thị trấn",
+            "lat": 10.2242,
+            "lng": 106.2903
+          },
+          {
+            "id": "TG_PRE2008-D5-C2",
+            "name": "Xã Mở rộng Cái Bè",
+            "type": "Xã",
+            "lat": 10.2392,
+            "lng": 106.3053
+          }
         ]
       },
       {
@@ -15594,6 +21354,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Chợ Gạo",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "TG_PRE2008-D6-C1",
+            "name": "Thị trấn Trung tâm Chợ Gạo",
+            "type": "Thị trấn",
+            "lat": 10.2242,
+            "lng": 106.4403
+          },
+          {
+            "id": "TG_PRE2008-D6-C2",
+            "name": "Xã Mở rộng Chợ Gạo",
+            "type": "Xã",
+            "lat": 10.2392,
+            "lng": 106.4553
+          }
         ]
       }
     ]
@@ -15690,6 +21466,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Bến Tre",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "BTRE_PRE2008-D1-C1",
+            "name": "Phường Trung tâm Bến Tre",
+            "type": "Phường",
+            "lat": 10.2415,
+            "lng": 106.4559
+          },
+          {
+            "id": "BTRE_PRE2008-D1-C2",
+            "name": "Phường Mở rộng Bến Tre",
+            "type": "Phường",
+            "lat": 10.2565,
+            "lng": 106.4709
+          }
         ]
       },
       {
@@ -15726,6 +21518,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Châu Thành",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "BTRE_PRE2008-D2-C1",
+            "name": "Thị trấn Trung tâm Châu Thành",
+            "type": "Thị trấn",
+            "lat": 10.3714,
+            "lng": 106.4509
+          },
+          {
+            "id": "BTRE_PRE2008-D2-C2",
+            "name": "Xã Mở rộng Châu Thành",
+            "type": "Xã",
+            "lat": 10.3864,
+            "lng": 106.4659
+          }
         ]
       },
       {
@@ -15762,6 +21570,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Ba Tri",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "BTRE_PRE2008-D3-C1",
+            "name": "Thị trấn Trung tâm Ba Tri",
+            "type": "Thị trấn",
+            "lat": 10.3714,
+            "lng": 106.3009
+          },
+          {
+            "id": "BTRE_PRE2008-D3-C2",
+            "name": "Xã Mở rộng Ba Tri",
+            "type": "Xã",
+            "lat": 10.3864,
+            "lng": 106.3159
+          }
         ]
       },
       {
@@ -15798,6 +21622,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Bình Đại",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "BTRE_PRE2008-D4-C1",
+            "name": "Thị trấn Trung tâm Bình Đại",
+            "type": "Thị trấn",
+            "lat": 10.2415,
+            "lng": 106.2259
+          },
+          {
+            "id": "BTRE_PRE2008-D4-C2",
+            "name": "Xã Mở rộng Bình Đại",
+            "type": "Xã",
+            "lat": 10.2565,
+            "lng": 106.2409
+          }
         ]
       },
       {
@@ -15834,6 +21674,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Mỏ Cày Nam",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "BTRE_PRE2008-D5-C1",
+            "name": "Thị trấn Trung tâm Mỏ Cày Nam",
+            "type": "Thị trấn",
+            "lat": 10.1116,
+            "lng": 106.3009
+          },
+          {
+            "id": "BTRE_PRE2008-D5-C2",
+            "name": "Xã Mở rộng Mỏ Cày Nam",
+            "type": "Xã",
+            "lat": 10.1266,
+            "lng": 106.3159
+          }
         ]
       },
       {
@@ -15870,6 +21726,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Giồng Trôm",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "BTRE_PRE2008-D6-C1",
+            "name": "Thị trấn Trung tâm Giồng Trôm",
+            "type": "Thị trấn",
+            "lat": 10.1116,
+            "lng": 106.4509
+          },
+          {
+            "id": "BTRE_PRE2008-D6-C2",
+            "name": "Xã Mở rộng Giồng Trôm",
+            "type": "Xã",
+            "lat": 10.1266,
+            "lng": 106.4659
+          }
         ]
       }
     ]
@@ -15966,6 +21838,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Trà Vinh",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "TV_PRE2008-D1-C1",
+            "name": "Phường Trung tâm Trà Vinh",
+            "type": "Phường",
+            "lat": 9.9347,
+            "lng": 106.4256
+          },
+          {
+            "id": "TV_PRE2008-D1-C2",
+            "name": "Phường Mở rộng Trà Vinh",
+            "type": "Phường",
+            "lat": 9.9497,
+            "lng": 106.4406
+          }
         ]
       },
       {
@@ -16002,6 +21890,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thị xã Duyên Hải",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "TV_PRE2008-D2-C1",
+            "name": "Phường Trung tâm Duyên Hải",
+            "type": "Phường",
+            "lat": 10.0646,
+            "lng": 106.4206
+          },
+          {
+            "id": "TV_PRE2008-D2-C2",
+            "name": "Phường Mở rộng Duyên Hải",
+            "type": "Phường",
+            "lat": 10.0796,
+            "lng": 106.4356
+          }
         ]
       },
       {
@@ -16038,6 +21942,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Càng Long",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "TV_PRE2008-D3-C1",
+            "name": "Thị trấn Trung tâm Càng Long",
+            "type": "Thị trấn",
+            "lat": 10.0646,
+            "lng": 106.2706
+          },
+          {
+            "id": "TV_PRE2008-D3-C2",
+            "name": "Xã Mở rộng Càng Long",
+            "type": "Xã",
+            "lat": 10.0796,
+            "lng": 106.2856
+          }
         ]
       },
       {
@@ -16074,6 +21994,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Châu Thành",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "TV_PRE2008-D4-C1",
+            "name": "Thị trấn Trung tâm Châu Thành",
+            "type": "Thị trấn",
+            "lat": 9.9347,
+            "lng": 106.1956
+          },
+          {
+            "id": "TV_PRE2008-D4-C2",
+            "name": "Xã Mở rộng Châu Thành",
+            "type": "Xã",
+            "lat": 9.9497,
+            "lng": 106.2106
+          }
         ]
       },
       {
@@ -16110,6 +22046,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Cầu Kè",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "TV_PRE2008-D5-C1",
+            "name": "Thị trấn Trung tâm Cầu Kè",
+            "type": "Thị trấn",
+            "lat": 9.8048,
+            "lng": 106.2706
+          },
+          {
+            "id": "TV_PRE2008-D5-C2",
+            "name": "Xã Mở rộng Cầu Kè",
+            "type": "Xã",
+            "lat": 9.8198,
+            "lng": 106.2856
+          }
         ]
       },
       {
@@ -16146,6 +22098,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Tiểu Cần",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "TV_PRE2008-D6-C1",
+            "name": "Thị trấn Trung tâm Tiểu Cần",
+            "type": "Thị trấn",
+            "lat": 9.8048,
+            "lng": 106.4206
+          },
+          {
+            "id": "TV_PRE2008-D6-C2",
+            "name": "Xã Mở rộng Tiểu Cần",
+            "type": "Xã",
+            "lat": 9.8198,
+            "lng": 106.4356
+          }
         ]
       }
     ]
@@ -16242,6 +22210,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Vĩnh Long",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "VL_PRE2008-D1-C1",
+            "name": "Phường Trung tâm Vĩnh Long",
+            "type": "Phường",
+            "lat": 10.2537,
+            "lng": 106.0522
+          },
+          {
+            "id": "VL_PRE2008-D1-C2",
+            "name": "Phường Mở rộng Vĩnh Long",
+            "type": "Phường",
+            "lat": 10.2687,
+            "lng": 106.0672
+          }
         ]
       },
       {
@@ -16278,6 +22262,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thị xã Bình Minh",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "VL_PRE2008-D2-C1",
+            "name": "Phường Trung tâm Bình Minh",
+            "type": "Phường",
+            "lat": 10.3964,
+            "lng": 106.0186
+          },
+          {
+            "id": "VL_PRE2008-D2-C2",
+            "name": "Phường Mở rộng Bình Minh",
+            "type": "Phường",
+            "lat": 10.4114,
+            "lng": 106.0336
+          }
         ]
       },
       {
@@ -16314,6 +22314,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Long Hồ",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "VL_PRE2008-D3-C1",
+            "name": "Thị trấn Trung tâm Long Hồ",
+            "type": "Thị trấn",
+            "lat": 10.3419,
+            "lng": 105.8508
+          },
+          {
+            "id": "VL_PRE2008-D3-C2",
+            "name": "Xã Mở rộng Long Hồ",
+            "type": "Xã",
+            "lat": 10.3569,
+            "lng": 105.8658
+          }
         ]
       },
       {
@@ -16350,6 +22366,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Mang Thít",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "VL_PRE2008-D4-C1",
+            "name": "Thị trấn Trung tâm Mang Thít",
+            "type": "Thị trấn",
+            "lat": 10.1655,
+            "lng": 105.8508
+          },
+          {
+            "id": "VL_PRE2008-D4-C2",
+            "name": "Xã Mở rộng Mang Thít",
+            "type": "Xã",
+            "lat": 10.1805,
+            "lng": 105.8658
+          }
         ]
       },
       {
@@ -16386,6 +22418,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Tam Bình",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "VL_PRE2008-D5-C1",
+            "name": "Thị trấn Trung tâm Tam Bình",
+            "type": "Thị trấn",
+            "lat": 10.111,
+            "lng": 106.0186
+          },
+          {
+            "id": "VL_PRE2008-D5-C2",
+            "name": "Xã Mở rộng Tam Bình",
+            "type": "Xã",
+            "lat": 10.126,
+            "lng": 106.0336
+          }
         ]
       }
     ]
@@ -16482,6 +22530,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Cao Lãnh",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "DT_PRE2008-D1-C1",
+            "name": "Phường Trung tâm Cao Lãnh",
+            "type": "Phường",
+            "lat": 10.4578,
+            "lng": 105.7139
+          },
+          {
+            "id": "DT_PRE2008-D1-C2",
+            "name": "Phường Mở rộng Cao Lãnh",
+            "type": "Phường",
+            "lat": 10.4728,
+            "lng": 105.7289
+          }
         ]
       },
       {
@@ -16518,6 +22582,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Sa Đéc",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "DT_PRE2008-D2-C1",
+            "name": "Phường Trung tâm Sa Đéc",
+            "type": "Phường",
+            "lat": 10.5877,
+            "lng": 105.7089
+          },
+          {
+            "id": "DT_PRE2008-D2-C2",
+            "name": "Phường Mở rộng Sa Đéc",
+            "type": "Phường",
+            "lat": 10.6027,
+            "lng": 105.7239
+          }
         ]
       },
       {
@@ -16554,6 +22634,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Hồng Ngự",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "DT_PRE2008-D3-C1",
+            "name": "Phường Trung tâm Hồng Ngự",
+            "type": "Phường",
+            "lat": 10.5877,
+            "lng": 105.5589
+          },
+          {
+            "id": "DT_PRE2008-D3-C2",
+            "name": "Phường Mở rộng Hồng Ngự",
+            "type": "Phường",
+            "lat": 10.6027,
+            "lng": 105.5739
+          }
         ]
       },
       {
@@ -16590,6 +22686,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Lấp Vò",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "DT_PRE2008-D4-C1",
+            "name": "Thị trấn Trung tâm Lấp Vò",
+            "type": "Thị trấn",
+            "lat": 10.4578,
+            "lng": 105.4839
+          },
+          {
+            "id": "DT_PRE2008-D4-C2",
+            "name": "Xã Mở rộng Lấp Vò",
+            "type": "Xã",
+            "lat": 10.4728,
+            "lng": 105.4989
+          }
         ]
       },
       {
@@ -16626,6 +22738,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Châu Thành",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "DT_PRE2008-D5-C1",
+            "name": "Thị trấn Trung tâm Châu Thành",
+            "type": "Thị trấn",
+            "lat": 10.3279,
+            "lng": 105.5589
+          },
+          {
+            "id": "DT_PRE2008-D5-C2",
+            "name": "Xã Mở rộng Châu Thành",
+            "type": "Xã",
+            "lat": 10.3429,
+            "lng": 105.5739
+          }
         ]
       },
       {
@@ -16662,6 +22790,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Cao Lãnh",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "DT_PRE2008-D6-C1",
+            "name": "Thị trấn Trung tâm Cao Lãnh",
+            "type": "Thị trấn",
+            "lat": 10.3279,
+            "lng": 105.7089
+          },
+          {
+            "id": "DT_PRE2008-D6-C2",
+            "name": "Xã Mở rộng Cao Lãnh",
+            "type": "Xã",
+            "lat": 10.3429,
+            "lng": 105.7239
+          }
         ]
       }
     ]
@@ -16758,6 +22902,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Long Xuyên",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "AG_PRE2008-D1-C1",
+            "name": "Phường Trung tâm Long Xuyên",
+            "type": "Phường",
+            "lat": 10.3833,
+            "lng": 105.4967
+          },
+          {
+            "id": "AG_PRE2008-D1-C2",
+            "name": "Phường Mở rộng Long Xuyên",
+            "type": "Phường",
+            "lat": 10.3983,
+            "lng": 105.5117
+          }
         ]
       },
       {
@@ -16794,6 +22954,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Châu Đốc",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "AG_PRE2008-D2-C1",
+            "name": "Phường Trung tâm Châu Đốc",
+            "type": "Phường",
+            "lat": 10.5132,
+            "lng": 105.4917
+          },
+          {
+            "id": "AG_PRE2008-D2-C2",
+            "name": "Phường Mở rộng Châu Đốc",
+            "type": "Phường",
+            "lat": 10.5282,
+            "lng": 105.5067
+          }
         ]
       },
       {
@@ -16830,6 +23006,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thị xã Tân Châu",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "AG_PRE2008-D3-C1",
+            "name": "Phường Trung tâm Tân Châu",
+            "type": "Phường",
+            "lat": 10.5132,
+            "lng": 105.3417
+          },
+          {
+            "id": "AG_PRE2008-D3-C2",
+            "name": "Phường Mở rộng Tân Châu",
+            "type": "Phường",
+            "lat": 10.5282,
+            "lng": 105.3567
+          }
         ]
       },
       {
@@ -16866,6 +23058,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thị xã Tịnh Biên",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "AG_PRE2008-D4-C1",
+            "name": "Phường Trung tâm Tịnh Biên",
+            "type": "Phường",
+            "lat": 10.3833,
+            "lng": 105.2667
+          },
+          {
+            "id": "AG_PRE2008-D4-C2",
+            "name": "Phường Mở rộng Tịnh Biên",
+            "type": "Phường",
+            "lat": 10.3983,
+            "lng": 105.2817
+          }
         ]
       },
       {
@@ -16902,6 +23110,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Chợ Mới",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "AG_PRE2008-D5-C1",
+            "name": "Thị trấn Trung tâm Chợ Mới",
+            "type": "Thị trấn",
+            "lat": 10.2534,
+            "lng": 105.3417
+          },
+          {
+            "id": "AG_PRE2008-D5-C2",
+            "name": "Xã Mở rộng Chợ Mới",
+            "type": "Xã",
+            "lat": 10.2684,
+            "lng": 105.3567
+          }
         ]
       },
       {
@@ -16938,6 +23162,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Thoại Sơn",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "AG_PRE2008-D6-C1",
+            "name": "Thị trấn Trung tâm Thoại Sơn",
+            "type": "Thị trấn",
+            "lat": 10.2534,
+            "lng": 105.4917
+          },
+          {
+            "id": "AG_PRE2008-D6-C2",
+            "name": "Xã Mở rộng Thoại Sơn",
+            "type": "Xã",
+            "lat": 10.2684,
+            "lng": 105.5067
+          }
         ]
       }
     ]
@@ -17034,6 +23274,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Rạch Giá",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "KG_PRE2008-D1-C1",
+            "name": "Phường Trung tâm Rạch Giá",
+            "type": "Phường",
+            "lat": 10.0125,
+            "lng": 105.1609
+          },
+          {
+            "id": "KG_PRE2008-D1-C2",
+            "name": "Phường Mở rộng Rạch Giá",
+            "type": "Phường",
+            "lat": 10.0275,
+            "lng": 105.1759
+          }
         ]
       },
       {
@@ -17070,6 +23326,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Phú Quốc",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "KG_PRE2008-D2-C1",
+            "name": "Phường Trung tâm Phú Quốc",
+            "type": "Phường",
+            "lat": 10.1424,
+            "lng": 105.1559
+          },
+          {
+            "id": "KG_PRE2008-D2-C2",
+            "name": "Phường Mở rộng Phú Quốc",
+            "type": "Phường",
+            "lat": 10.1574,
+            "lng": 105.1709
+          }
         ]
       },
       {
@@ -17106,6 +23378,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Hà Tiên",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "KG_PRE2008-D3-C1",
+            "name": "Phường Trung tâm Hà Tiên",
+            "type": "Phường",
+            "lat": 10.1424,
+            "lng": 105.0059
+          },
+          {
+            "id": "KG_PRE2008-D3-C2",
+            "name": "Phường Mở rộng Hà Tiên",
+            "type": "Phường",
+            "lat": 10.1574,
+            "lng": 105.0209
+          }
         ]
       },
       {
@@ -17142,6 +23430,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Kiên Lương",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "KG_PRE2008-D4-C1",
+            "name": "Thị trấn Trung tâm Kiên Lương",
+            "type": "Thị trấn",
+            "lat": 10.0125,
+            "lng": 104.9309
+          },
+          {
+            "id": "KG_PRE2008-D4-C2",
+            "name": "Xã Mở rộng Kiên Lương",
+            "type": "Xã",
+            "lat": 10.0275,
+            "lng": 104.9459
+          }
         ]
       },
       {
@@ -17178,6 +23482,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Châu Thành",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "KG_PRE2008-D5-C1",
+            "name": "Thị trấn Trung tâm Châu Thành",
+            "type": "Thị trấn",
+            "lat": 9.8826,
+            "lng": 105.0059
+          },
+          {
+            "id": "KG_PRE2008-D5-C2",
+            "name": "Xã Mở rộng Châu Thành",
+            "type": "Xã",
+            "lat": 9.8976,
+            "lng": 105.0209
+          }
         ]
       },
       {
@@ -17214,6 +23534,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Hòn Đất",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "KG_PRE2008-D6-C1",
+            "name": "Thị trấn Trung tâm Hòn Đất",
+            "type": "Thị trấn",
+            "lat": 9.8826,
+            "lng": 105.1559
+          },
+          {
+            "id": "KG_PRE2008-D6-C2",
+            "name": "Xã Mở rộng Hòn Đất",
+            "type": "Xã",
+            "lat": 9.8976,
+            "lng": 105.1709
+          }
         ]
       }
     ]
@@ -17295,8 +23631,8 @@
         "age_cohorts": {
           "children_0_14": 18.5,
           "youth_15_24": 16.5,
-          "prime_25_49": 45.0,
-          "senior_50_plus": 20.0
+          "prime_25_49": 45,
+          "senior_50_plus": 20
         },
         "primary_streets": [
           "Hai Bà Trưng",
@@ -17311,13 +23647,29 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Quận Ninh Kiều",
           "Trục vành đai kết nối Nguyễn Trãi"
+        ],
+        "communes": [
+          {
+            "id": "CT_PRE2008-D1-C1",
+            "name": "Phường Trung tâm Ninh Kiều",
+            "type": "Phường",
+            "lat": 10.03,
+            "lng": 105.6469
+          },
+          {
+            "id": "CT_PRE2008-D1-C2",
+            "name": "Phường Mở rộng Ninh Kiều",
+            "type": "Phường",
+            "lat": 10.033,
+            "lng": 105.6499
+          }
         ]
       },
       {
         "id": "CT_PRE2008-D2",
         "name": "Quận Cái Răng",
         "type": "Đô thị cảng sông & chợ nổi Cái Răng",
-        "lat": 10.0,
+        "lat": 10,
         "lng": 105.6969,
         "pop": 115000,
         "density": 1800,
@@ -17332,8 +23684,8 @@
         "age_cohorts": {
           "children_0_14": 18.5,
           "youth_15_24": 16.5,
-          "prime_25_49": 45.0,
-          "senior_50_plus": 20.0
+          "prime_25_49": 45,
+          "senior_50_plus": 20
         },
         "primary_streets": [
           "Quốc lộ 1A",
@@ -17347,6 +23699,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Quận Cái Răng",
           "Trục vành đai kết nối Võ Tánh"
+        ],
+        "communes": [
+          {
+            "id": "CT_PRE2008-D2-C1",
+            "name": "Phường Trung tâm Cái Răng",
+            "type": "Phường",
+            "lat": 10,
+            "lng": 105.6969
+          },
+          {
+            "id": "CT_PRE2008-D2-C2",
+            "name": "Phường Mở rộng Cái Răng",
+            "type": "Phường",
+            "lat": 10.003,
+            "lng": 105.6999
+          }
         ]
       },
       {
@@ -17368,8 +23736,8 @@
         "age_cohorts": {
           "children_0_14": 18.5,
           "youth_15_24": 16.5,
-          "prime_25_49": 45.0,
-          "senior_50_plus": 20.0
+          "prime_25_49": 45,
+          "senior_50_plus": 20
         },
         "primary_streets": [
           "Cách Mạng Tháng Tám",
@@ -17383,6 +23751,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Quận Bình Thủy",
           "Trục vành đai kết nối Bùi Hữu Nghĩa"
+        ],
+        "communes": [
+          {
+            "id": "CT_PRE2008-D3-C1",
+            "name": "Phường Trung tâm Bình Thủy",
+            "type": "Phường",
+            "lat": 10.07,
+            "lng": 105.7469
+          },
+          {
+            "id": "CT_PRE2008-D3-C2",
+            "name": "Phường Mở rộng Bình Thủy",
+            "type": "Phường",
+            "lat": 10.073,
+            "lng": 105.7499
+          }
         ]
       },
       {
@@ -17404,8 +23788,8 @@
         "age_cohorts": {
           "children_0_14": 18.5,
           "youth_15_24": 16.5,
-          "prime_25_49": 45.0,
-          "senior_50_plus": 20.0
+          "prime_25_49": 45,
+          "senior_50_plus": 20
         },
         "primary_streets": [
           "Quốc lộ 91",
@@ -17419,6 +23803,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Quận Ô Môn",
           "Trục vành đai kết nối Trần Hưng Đạo"
+        ],
+        "communes": [
+          {
+            "id": "CT_PRE2008-D4-C1",
+            "name": "Phường Trung tâm Ô Môn",
+            "type": "Phường",
+            "lat": 10.12,
+            "lng": 105.7969
+          },
+          {
+            "id": "CT_PRE2008-D4-C2",
+            "name": "Phường Mở rộng Ô Môn",
+            "type": "Phường",
+            "lat": 10.123,
+            "lng": 105.7999
+          }
         ]
       },
       {
@@ -17440,8 +23840,8 @@
         "age_cohorts": {
           "children_0_14": 18.5,
           "youth_15_24": 16.5,
-          "prime_25_49": 45.0,
-          "senior_50_plus": 20.0
+          "prime_25_49": 45,
+          "senior_50_plus": 20
         },
         "primary_streets": [
           "Quốc lộ 91",
@@ -17455,6 +23855,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Quận Thốt Nốt",
           "Trục vành đai kết nối Nguyễn Thái Học"
+        ],
+        "communes": [
+          {
+            "id": "CT_PRE2008-D5-C1",
+            "name": "Phường Trung tâm Thốt Nốt",
+            "type": "Phường",
+            "lat": 10.27,
+            "lng": 105.8469
+          },
+          {
+            "id": "CT_PRE2008-D5-C2",
+            "name": "Phường Mở rộng Thốt Nốt",
+            "type": "Phường",
+            "lat": 10.273,
+            "lng": 105.8499
+          }
         ]
       },
       {
@@ -17476,8 +23892,8 @@
         "age_cohorts": {
           "children_0_14": 18.5,
           "youth_15_24": 16.5,
-          "prime_25_49": 45.0,
-          "senior_50_plus": 20.0
+          "prime_25_49": 45,
+          "senior_50_plus": 20
         },
         "primary_streets": [
           "Tỉnh lộ 923",
@@ -17491,6 +23907,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Phong Điền",
           "Trục vành đai kết nối Chợ nổi Phong Điền"
+        ],
+        "communes": [
+          {
+            "id": "CT_PRE2008-D6-C1",
+            "name": "Thị trấn Trung tâm Phong Điền",
+            "type": "Thị trấn",
+            "lat": 9.98,
+            "lng": 105.8969
+          },
+          {
+            "id": "CT_PRE2008-D6-C2",
+            "name": "Xã Mở rộng Phong Điền",
+            "type": "Xã",
+            "lat": 9.995,
+            "lng": 105.9119
+          }
         ]
       }
     ]
@@ -17587,6 +24019,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Vị Thanh",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "HG_PRE2008_HAUGIANG-D1-C1",
+            "name": "Phường Trung tâm Vị Thanh",
+            "type": "Phường",
+            "lat": 9.7844,
+            "lng": 105.5503
+          },
+          {
+            "id": "HG_PRE2008_HAUGIANG-D1-C2",
+            "name": "Phường Mở rộng Vị Thanh",
+            "type": "Phường",
+            "lat": 9.7994,
+            "lng": 105.5653
+          }
         ]
       },
       {
@@ -17623,6 +24071,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Ngã Bảy",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "HG_PRE2008_HAUGIANG-D2-C1",
+            "name": "Phường Trung tâm Ngã Bảy",
+            "type": "Phường",
+            "lat": 9.9271,
+            "lng": 105.5167
+          },
+          {
+            "id": "HG_PRE2008_HAUGIANG-D2-C2",
+            "name": "Phường Mở rộng Ngã Bảy",
+            "type": "Phường",
+            "lat": 9.9421,
+            "lng": 105.5317
+          }
         ]
       },
       {
@@ -17659,6 +24123,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thị xã Long Mỹ",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "HG_PRE2008_HAUGIANG-D3-C1",
+            "name": "Phường Trung tâm Long Mỹ",
+            "type": "Phường",
+            "lat": 9.8726,
+            "lng": 105.3489
+          },
+          {
+            "id": "HG_PRE2008_HAUGIANG-D3-C2",
+            "name": "Phường Mở rộng Long Mỹ",
+            "type": "Phường",
+            "lat": 9.8876,
+            "lng": 105.3639
+          }
         ]
       },
       {
@@ -17695,6 +24175,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Châu Thành",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "HG_PRE2008_HAUGIANG-D4-C1",
+            "name": "Thị trấn Trung tâm Châu Thành",
+            "type": "Thị trấn",
+            "lat": 9.6962,
+            "lng": 105.3489
+          },
+          {
+            "id": "HG_PRE2008_HAUGIANG-D4-C2",
+            "name": "Xã Mở rộng Châu Thành",
+            "type": "Xã",
+            "lat": 9.7112,
+            "lng": 105.3639
+          }
         ]
       },
       {
@@ -17731,6 +24227,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Phụng Hiệp",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "HG_PRE2008_HAUGIANG-D5-C1",
+            "name": "Thị trấn Trung tâm Phụng Hiệp",
+            "type": "Thị trấn",
+            "lat": 9.6417,
+            "lng": 105.5167
+          },
+          {
+            "id": "HG_PRE2008_HAUGIANG-D5-C2",
+            "name": "Xã Mở rộng Phụng Hiệp",
+            "type": "Xã",
+            "lat": 9.6567,
+            "lng": 105.5317
+          }
         ]
       }
     ]
@@ -17827,6 +24339,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Sóc Trăng",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "ST_PRE2008-D1-C1",
+            "name": "Phường Trung tâm Sóc Trăng",
+            "type": "Phường",
+            "lat": 9.6033,
+            "lng": 106.0522
+          },
+          {
+            "id": "ST_PRE2008-D1-C2",
+            "name": "Phường Mở rộng Sóc Trăng",
+            "type": "Phường",
+            "lat": 9.6183,
+            "lng": 106.0672
+          }
         ]
       },
       {
@@ -17863,6 +24391,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thị xã Vĩnh Châu",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "ST_PRE2008-D2-C1",
+            "name": "Phường Trung tâm Vĩnh Châu",
+            "type": "Phường",
+            "lat": 9.7332,
+            "lng": 106.0472
+          },
+          {
+            "id": "ST_PRE2008-D2-C2",
+            "name": "Phường Mở rộng Vĩnh Châu",
+            "type": "Phường",
+            "lat": 9.7482,
+            "lng": 106.0622
+          }
         ]
       },
       {
@@ -17899,6 +24443,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thị xã Ngã Năm",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "ST_PRE2008-D3-C1",
+            "name": "Phường Trung tâm Ngã Năm",
+            "type": "Phường",
+            "lat": 9.7332,
+            "lng": 105.8972
+          },
+          {
+            "id": "ST_PRE2008-D3-C2",
+            "name": "Phường Mở rộng Ngã Năm",
+            "type": "Phường",
+            "lat": 9.7482,
+            "lng": 105.9122
+          }
         ]
       },
       {
@@ -17935,6 +24495,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Trần Đề",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "ST_PRE2008-D4-C1",
+            "name": "Thị trấn Trung tâm Trần Đề",
+            "type": "Thị trấn",
+            "lat": 9.6033,
+            "lng": 105.8222
+          },
+          {
+            "id": "ST_PRE2008-D4-C2",
+            "name": "Xã Mở rộng Trần Đề",
+            "type": "Xã",
+            "lat": 9.6183,
+            "lng": 105.8372
+          }
         ]
       },
       {
@@ -17971,6 +24547,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Mỹ Xuyên",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "ST_PRE2008-D5-C1",
+            "name": "Thị trấn Trung tâm Mỹ Xuyên",
+            "type": "Thị trấn",
+            "lat": 9.4734,
+            "lng": 105.8972
+          },
+          {
+            "id": "ST_PRE2008-D5-C2",
+            "name": "Xã Mở rộng Mỹ Xuyên",
+            "type": "Xã",
+            "lat": 9.4884,
+            "lng": 105.9122
+          }
         ]
       },
       {
@@ -18007,6 +24599,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Kế Sách",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "ST_PRE2008-D6-C1",
+            "name": "Thị trấn Trung tâm Kế Sách",
+            "type": "Thị trấn",
+            "lat": 9.4734,
+            "lng": 106.0472
+          },
+          {
+            "id": "ST_PRE2008-D6-C2",
+            "name": "Xã Mở rộng Kế Sách",
+            "type": "Xã",
+            "lat": 9.4884,
+            "lng": 106.0622
+          }
         ]
       }
     ]
@@ -18103,6 +24711,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Bạc Liêu",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "BL_PRE2008-D1-C1",
+            "name": "Phường Trung tâm Bạc Liêu",
+            "type": "Phường",
+            "lat": 9.2941,
+            "lng": 105.8078
+          },
+          {
+            "id": "BL_PRE2008-D1-C2",
+            "name": "Phường Mở rộng Bạc Liêu",
+            "type": "Phường",
+            "lat": 9.3091,
+            "lng": 105.8228
+          }
         ]
       },
       {
@@ -18139,6 +24763,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thị xã Giá Rai",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "BL_PRE2008-D2-C1",
+            "name": "Phường Trung tâm Giá Rai",
+            "type": "Phường",
+            "lat": 9.4368,
+            "lng": 105.7742
+          },
+          {
+            "id": "BL_PRE2008-D2-C2",
+            "name": "Phường Mở rộng Giá Rai",
+            "type": "Phường",
+            "lat": 9.4518,
+            "lng": 105.7892
+          }
         ]
       },
       {
@@ -18175,6 +24815,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Vĩnh Lợi",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "BL_PRE2008-D3-C1",
+            "name": "Thị trấn Trung tâm Vĩnh Lợi",
+            "type": "Thị trấn",
+            "lat": 9.3823,
+            "lng": 105.6064
+          },
+          {
+            "id": "BL_PRE2008-D3-C2",
+            "name": "Xã Mở rộng Vĩnh Lợi",
+            "type": "Xã",
+            "lat": 9.3973,
+            "lng": 105.6214
+          }
         ]
       },
       {
@@ -18211,6 +24867,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Đông Hải",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "BL_PRE2008-D4-C1",
+            "name": "Thị trấn Trung tâm Đông Hải",
+            "type": "Thị trấn",
+            "lat": 9.2059,
+            "lng": 105.6064
+          },
+          {
+            "id": "BL_PRE2008-D4-C2",
+            "name": "Xã Mở rộng Đông Hải",
+            "type": "Xã",
+            "lat": 9.2209,
+            "lng": 105.6214
+          }
         ]
       },
       {
@@ -18247,6 +24919,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Hòa Bình",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "BL_PRE2008-D5-C1",
+            "name": "Thị trấn Trung tâm Hòa Bình",
+            "type": "Thị trấn",
+            "lat": 9.1514,
+            "lng": 105.7742
+          },
+          {
+            "id": "BL_PRE2008-D5-C2",
+            "name": "Xã Mở rộng Hòa Bình",
+            "type": "Xã",
+            "lat": 9.1664,
+            "lng": 105.7892
+          }
         ]
       }
     ]
@@ -18343,6 +25031,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Thành phố Cà Mau",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "CM_PRE2008-D1-C1",
+            "name": "Phường Trung tâm Cà Mau",
+            "type": "Phường",
+            "lat": 9.1769,
+            "lng": 105.2328
+          },
+          {
+            "id": "CM_PRE2008-D1-C2",
+            "name": "Phường Mở rộng Cà Mau",
+            "type": "Phường",
+            "lat": 9.1919,
+            "lng": 105.2478
+          }
         ]
       },
       {
@@ -18379,6 +25083,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Năm Căn",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "CM_PRE2008-D2-C1",
+            "name": "Thị trấn Trung tâm Năm Căn",
+            "type": "Thị trấn",
+            "lat": 9.283,
+            "lng": 105.2589
+          },
+          {
+            "id": "CM_PRE2008-D2-C2",
+            "name": "Xã Mở rộng Năm Căn",
+            "type": "Xã",
+            "lat": 9.298,
+            "lng": 105.2739
+          }
         ]
       },
       {
@@ -18415,6 +25135,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Thới Bình",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "CM_PRE2008-D3-C1",
+            "name": "Thị trấn Trung tâm Thới Bình",
+            "type": "Thị trấn",
+            "lat": 9.3269,
+            "lng": 105.1528
+          },
+          {
+            "id": "CM_PRE2008-D3-C2",
+            "name": "Xã Mở rộng Thới Bình",
+            "type": "Xã",
+            "lat": 9.3419,
+            "lng": 105.1678
+          }
         ]
       },
       {
@@ -18451,6 +25187,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện U Minh",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "CM_PRE2008-D4-C1",
+            "name": "Thị trấn Trung tâm U Minh",
+            "type": "Thị trấn",
+            "lat": 9.283,
+            "lng": 105.0467
+          },
+          {
+            "id": "CM_PRE2008-D4-C2",
+            "name": "Xã Mở rộng U Minh",
+            "type": "Xã",
+            "lat": 9.298,
+            "lng": 105.0617
+          }
         ]
       },
       {
@@ -18487,6 +25239,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Trần Văn Thời",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "CM_PRE2008-D5-C1",
+            "name": "Thị trấn Trung tâm Trần Văn Thời",
+            "type": "Thị trấn",
+            "lat": 9.1769,
+            "lng": 105.0028
+          },
+          {
+            "id": "CM_PRE2008-D5-C2",
+            "name": "Xã Mở rộng Trần Văn Thời",
+            "type": "Xã",
+            "lat": 9.1919,
+            "lng": 105.0178
+          }
         ]
       },
       {
@@ -18523,6 +25291,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Cái Nước",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "CM_PRE2008-D6-C1",
+            "name": "Thị trấn Trung tâm Cái Nước",
+            "type": "Thị trấn",
+            "lat": 9.0708,
+            "lng": 105.0467
+          },
+          {
+            "id": "CM_PRE2008-D6-C2",
+            "name": "Xã Mở rộng Cái Nước",
+            "type": "Xã",
+            "lat": 9.0858,
+            "lng": 105.0617
+          }
         ]
       },
       {
@@ -18559,6 +25343,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Đầm Dơi",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "CM_PRE2008-D7-C1",
+            "name": "Thị trấn Trung tâm Đầm Dơi",
+            "type": "Thị trấn",
+            "lat": 9.0269,
+            "lng": 105.1528
+          },
+          {
+            "id": "CM_PRE2008-D7-C2",
+            "name": "Xã Mở rộng Đầm Dơi",
+            "type": "Xã",
+            "lat": 9.0419,
+            "lng": 105.1678
+          }
         ]
       },
       {
@@ -18595,6 +25395,22 @@
         "low_density_opportunities": [
           "Khu đô thị mới mở rộng Huyện Ngọc Hiển",
           "Cụm công nghiệp địa phương"
+        ],
+        "communes": [
+          {
+            "id": "CM_PRE2008-D8-C1",
+            "name": "Thị trấn Trung tâm Ngọc Hiển",
+            "type": "Thị trấn",
+            "lat": 9.0708,
+            "lng": 105.2589
+          },
+          {
+            "id": "CM_PRE2008-D8-C2",
+            "name": "Xã Mở rộng Ngọc Hiển",
+            "type": "Xã",
+            "lat": 9.0858,
+            "lng": 105.2739
+          }
         ]
       }
     ]

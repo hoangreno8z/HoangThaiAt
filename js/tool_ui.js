@@ -2,9 +2,25 @@
 // HUYỀN HỌC MỤ — BÀN TÍNH SỐ HÓA & ĐÁNH GIÁ AN TOÀN VỊ TRÍ (THUẦN VIỆT 100%)
 // =========================================================================
 
+const ALL_TOOLS_CATALOG = [
+  { id: 'lakinhbando', name: 'La Kinh Bản Đồ', icon: '🧭', badge: '144 Khẩu', color: '#F59E0B', sub: 'Bản đồ vệ tinh GPS, phân tích sức mua bán kính' },
+  { id: 'diachat64', name: 'Địa Chất 64', icon: '🗺️', badge: '64 Tỉnh', color: '#38BDF8', sub: 'Khí hậu, nồm ẩm, tầng đất & Kinh Vĩ Lục 8 hướng' },
+  { id: 'kinhte64', name: 'Kinh Tế & Sức Mua', icon: '📊', badge: 'VSIC 2025', color: '#10B981', sub: 'Dân số, thu nhập, chi tiêu & 6 ngành kinh doanh' },
+  { id: 'thiendianhan', name: 'Thiên Địa Nhân', icon: '⚖️', badge: 'Tam Tài', color: '#FBBF24', sub: 'Quang học mặt trời, khí động học & kiểm soát thiên tai' },
+  { id: 'battrach', name: 'Bát Trạch', icon: '🏛️', badge: 'Minh Kính', color: '#FEF3C7', sub: 'Cung phi, Đông Tây Tứ Mệnh, phối hướng cửa bếp' },
+  { id: 'huyenkhong', name: 'Huyền Không', icon: '🌌', badge: 'Phi Tinh 9 Vận', color: '#A855F7', sub: 'Lập tinh bàn 24 Sơn Hướng, vượng suy thoái sát' },
+  { id: 'thuyphap', name: 'Thủy Pháp', icon: '🌊', badge: 'Chánh Tông', color: '#34D399', sub: 'Cửu Khúc Thủy, Kim Thành Hoàn Bão, Phản Cung' },
+  { id: 'hoagiaicothu', name: 'Hóa Giải Cổ Thư', icon: '🛡️', badge: '21 Đại Pháp', color: '#F59E0B', sub: '21 Hồ sơ kích hoạt & hóa giải hung sát chánh tông' },
+  { id: 'loban', name: 'Thước Lỗ Ban', icon: '📏', badge: 'Tam Giới', color: '#FBBF24', sub: '52.2cm Thông Thủy, 42.9cm Khối Đặc, 38.8cm Thờ Cúng' },
+  { id: 'thienvankymon', name: 'Kỳ Môn & Thái Dương', icon: '☀️', badge: 'Hiệp Kỷ', color: '#C084FC', sub: 'Thái Dương Đáo Hướng hóa sát & Bát Môn nạp khí' },
+  { id: 'goiythietke', name: 'Gợi Ý Thiết Kế', icon: '📐', badge: '20 Bản Vẽ', color: '#38BDF8', sub: 'Bản vẽ mẫu khí động học: chống bão, hạ nhiệt' },
+  { id: 'report', name: 'Báo Cáo Tổng Hợp', icon: '📑', badge: 'Toàn Diện', color: '#FEF3C7', sub: 'Xuất hồ sơ đánh giá an toàn & phong thủy công trình' }
+];
+
 class ToolUI {
   constructor() {
-    this.currentToolTab = 'diachat64';
+    this.currentToolTab = 'lakinhbando';
+    this.toolsMenuOpen = false;
     this.state = {
       birthYear: 1988,
       gender: 'Nam',
@@ -37,7 +53,44 @@ class ToolUI {
     };
   }
 
-  render(tab = 'diachat64') {
+
+  toggleToolsMenu() {
+    this.toolsMenuOpen = !this.toolsMenuOpen;
+    const menu = document.getElementById('tool-dropdown-menu');
+    const text = document.getElementById('tool-toggle-text');
+    if (menu) menu.style.display = this.toolsMenuOpen ? 'grid' : 'none';
+    if (text) text.innerHTML = this.toolsMenuOpen ? 'Thu Gọn Danh Mục ▴' : 'Đổi Công Cụ ▾';
+  }
+
+  revealToolSelector() {
+    this.toolsMenuOpen = true;
+    const menu = document.getElementById('tool-dropdown-menu');
+    const text = document.getElementById('tool-toggle-text');
+    if (menu) {
+      menu.style.display = 'grid';
+      menu.style.borderColor = '#F59E0B';
+      menu.style.boxShadow = '0 0 25px rgba(245,158,11,0.35)';
+    }
+    if (text) text.innerHTML = 'Thu Gọn Danh Mục ▴';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    const mainWrapper = document.querySelector('.main-wrapper');
+    if (mainWrapper && mainWrapper.scrollTo) {
+      mainWrapper.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }
+
+  selectToolTab(tabId) {
+    this.toolsMenuOpen = false;
+    // Tương thích điều hướng: window.toolUI.render('kinhte64')
+    this.render(tabId);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    const mainWrapper = document.querySelector('.main-wrapper');
+    if (mainWrapper && mainWrapper.scrollTo) {
+      mainWrapper.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }
+
+  render(tab = 'lakinhbando') {
     const container = document.getElementById('gate-tools');
     if (!container) return;
 
@@ -62,43 +115,37 @@ class ToolUI {
           </p>
         </header>
 
-        <div class="tool-page-tabs" aria-label="Các công cụ phong thủy" style="display:flex; justify-content:center; gap:0.4rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:0.8rem; margin-bottom:1.5rem; flex-wrap:wrap;">
-                    <button onclick="window.toolUI.render('lakinhbando')" style="background:${this.currentToolTab === 'lakinhbando' ? 'rgba(245,158,11,0.35)' : 'rgba(245,158,11,0.1)'}; border:1px solid ${this.currentToolTab === 'lakinhbando' ? '#FBBF24' : 'rgba(245,158,11,0.3)'}; color:#FEF3C7; padding:0.35rem 0.85rem; border-radius:20px; font-weight:800; font-size:0.8rem; cursor:pointer; transition:all 0.15s ease;">
-            🧭 La Kinh Bản Đồ (144 Khẩu)
+        <!-- THANH CHỌN CÔNG CỤ HIỆN TẠI & NÚT XỔ / RÚT GỌN MENU -->
+        <div id="tool-switcher-bar" style="background:#0F172A; border:1px solid rgba(245,158,11,0.35); border-radius:10px; padding:0.6rem 1rem; margin-bottom:0.8rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; box-shadow:0 4px 15px rgba(0,0,0,0.3);">
+          <div style="display:flex; align-items:center; gap:0.6rem; flex-wrap:wrap;">
+            <span style="font-size:0.75rem; color:#94A3B8; text-transform:uppercase; font-weight:800; letter-spacing:0.05em;">Công Cụ Đang Dùng:</span>
+            <span id="tool-current-label" style="font-size:0.95rem; font-weight:800; color:#FBBF24;">
+              ${(ALL_TOOLS_CATALOG.find(t => t.id === this.currentToolTab) || ALL_TOOLS_CATALOG[0]).icon} 
+              ${(ALL_TOOLS_CATALOG.find(t => t.id === this.currentToolTab) || ALL_TOOLS_CATALOG[0]).name}
+              <span style="font-size:0.7rem; background:rgba(245,158,11,0.2); color:#FBBF24; border:1px solid rgba(245,158,11,0.4); padding:0.1rem 0.45rem; border-radius:4px; font-weight:700; margin-left:0.3rem;">
+                ${(ALL_TOOLS_CATALOG.find(t => t.id === this.currentToolTab) || ALL_TOOLS_CATALOG[0]).badge}
+              </span>
+            </span>
+          </div>
+          <button type="button" id="btn-toggle-tools-menu" onclick="window.toolUI.toggleToolsMenu()" style="background:rgba(245,158,11,0.15); border:1px solid #F59E0B; color:#FEF3C7; padding:0.35rem 0.85rem; border-radius:6px; font-size:0.8rem; font-weight:700; cursor:pointer; display:flex; align-items:center; gap:0.4rem; transition:all 0.2s ease;">
+            <span id="tool-toggle-text">${this.toolsMenuOpen ? 'Thu Gọn Danh Mục ▴' : 'Đổi Công Cụ ▾'}</span>
           </button>
-          <button onclick="window.toolUI.render('thiendianhan')" style="background:${this.currentToolTab === 'thiendianhan' ? 'rgba(245,158,11,0.25)' : 'rgba(255,255,255,0.04)'}; border:1px solid ${this.currentToolTab === 'thiendianhan' ? '#FBBF24' : 'rgba(255,255,255,0.1)'}; color:#FEF3C7; padding:0.35rem 0.75rem; border-radius:20px; font-weight:700; font-size:0.78rem; cursor:pointer; transition:all 0.15s ease;">
-            Thiên Địa Nhân
-          </button>
-          <button onclick="window.toolUI.render('battrach')" style="background:${this.currentToolTab === 'battrach' ? 'rgba(245,158,11,0.25)' : 'rgba(255,255,255,0.04)'}; border:1px solid ${this.currentToolTab === 'battrach' ? '#FBBF24' : 'rgba(255,255,255,0.1)'}; color:#FEF3C7; padding:0.35rem 0.75rem; border-radius:20px; font-weight:700; font-size:0.78rem; cursor:pointer; transition:all 0.15s ease;">
-            Bát Trạch
-          </button>
-          <button onclick="window.toolUI.render('huyenkhong')" style="background:${this.currentToolTab === 'huyenkhong' ? 'rgba(245,158,11,0.25)' : 'rgba(255,255,255,0.04)'}; border:1px solid ${this.currentToolTab === 'huyenkhong' ? '#FBBF24' : 'rgba(255,255,255,0.1)'}; color:#FEF3C7; padding:0.35rem 0.75rem; border-radius:20px; font-weight:700; font-size:0.78rem; cursor:pointer; transition:all 0.15s ease;">
-            Huyền Không
-          </button>
-          <button onclick="window.toolUI.render('hoagiaicothu')" style="background:${this.currentToolTab === 'hoagiaicothu' ? 'rgba(245,158,11,0.25)' : 'rgba(255,255,255,0.04)'}; border:1px solid ${this.currentToolTab === 'hoagiaicothu' ? '#F59E0B' : 'rgba(255,255,255,0.1)'}; color:#FEF3C7; padding:0.35rem 0.75rem; border-radius:20px; font-weight:700; font-size:0.78rem; cursor:pointer; transition:all 0.15s ease;">
-            Hóa Giải
-          </button>
-          <button onclick="window.toolUI.render('diachat64')" style="background:${this.currentToolTab === 'diachat64' ? 'rgba(56,189,248,0.25)' : 'rgba(255,255,255,0.04)'}; border:1px solid ${this.currentToolTab === 'diachat64' ? '#38BDF8' : 'rgba(255,255,255,0.1)'}; color:#38BDF8; padding:0.35rem 0.75rem; border-radius:20px; font-weight:700; font-size:0.78rem; cursor:pointer; transition:all 0.15s ease;">
-            Địa Chất 64
-          </button>
-          <button onclick="window.toolUI.render('kinhte64')" style="background:${this.currentToolTab === 'kinhte64' ? 'rgba(16,185,129,0.25)' : 'rgba(255,255,255,0.04)'}; border:1px solid ${this.currentToolTab === 'kinhte64' ? '#10B981' : 'rgba(255,255,255,0.1)'}; color:#10B981; padding:0.35rem 0.75rem; border-radius:20px; font-weight:700; font-size:0.78rem; cursor:pointer; transition:all 0.15s ease;">
-            Kinh Tế 64
-          </button>
-          <button onclick="window.toolUI.render('thuyphap')" style="background:${this.currentToolTab === 'thuyphap' ? 'rgba(52,211,153,0.25)' : 'rgba(255,255,255,0.04)'}; border:1px solid ${this.currentToolTab === 'thuyphap' ? '#34D399' : 'rgba(255,255,255,0.1)'}; color:#34D399; padding:0.35rem 0.75rem; border-radius:20px; font-weight:700; font-size:0.78rem; cursor:pointer; transition:all 0.15s ease;">
-            Thủy Pháp
-          </button>
-          <button onclick="window.toolUI.render('loban')" style="background:${this.currentToolTab === 'loban' ? 'rgba(245,158,11,0.25)' : 'rgba(255,255,255,0.04)'}; border:1px solid ${this.currentToolTab === 'loban' ? '#FBBF24' : 'rgba(255,255,255,0.1)'}; color:#FEF3C7; padding:0.35rem 0.75rem; border-radius:20px; font-weight:700; font-size:0.78rem; cursor:pointer; transition:all 0.15s ease;">
-            Thước Lỗ Ban
-          </button>
-          <button onclick="window.toolUI.render('thienvankymon')" style="background:${this.currentToolTab === 'thienvankymon' ? 'rgba(168,85,247,0.25)' : 'rgba(255,255,255,0.04)'}; border:1px solid ${this.currentToolTab === 'thienvankymon' ? '#A855F7' : 'rgba(255,255,255,0.1)'}; color:#C084FC; padding:0.35rem 0.75rem; border-radius:20px; font-weight:700; font-size:0.78rem; cursor:pointer; transition:all 0.15s ease;">
-            Kỳ Môn
-          </button>
-          <button onclick="window.toolUI.render('goiythietke')" style="background:${this.currentToolTab === 'goiythietke' ? 'rgba(56,189,248,0.25)' : 'rgba(255,255,255,0.04)'}; border:1px solid ${this.currentToolTab === 'goiythietke' ? '#38BDF8' : 'rgba(255,255,255,0.1)'}; color:#38BDF8; padding:0.35rem 0.75rem; border-radius:20px; font-weight:700; font-size:0.78rem; cursor:pointer; transition:all 0.15s ease;">
-            Gợi Ý Thiết Kế
-          </button>
-          <button onclick="window.toolUI.render('report')" style="background:${this.currentToolTab === 'report' ? 'rgba(245,158,11,0.25)' : 'rgba(255,255,255,0.04)'}; border:1px solid ${this.currentToolTab === 'report' ? '#FBBF24' : 'rgba(255,255,255,0.1)'}; color:#FEF3C7; padding:0.35rem 0.75rem; border-radius:20px; font-weight:700; font-size:0.78rem; cursor:pointer; transition:all 0.15s ease;">
-            Báo Cáo
-          </button>
+        </div>
+
+        <!-- MENU XỔ / RÚT GỌN DANH MỤC 12 CÔNG CỤ -->
+        <div id="tool-dropdown-menu" style="display:${this.toolsMenuOpen ? 'grid' : 'none'}; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:0.5rem; background:rgba(15,23,42,0.96); border:1px solid rgba(245,158,11,0.3); border-radius:10px; padding:0.8rem; margin-bottom:1.5rem; box-shadow:0 10px 30px rgba(0,0,0,0.5);">
+          ${ALL_TOOLS_CATALOG.map(t => `
+            <button type="button" onclick="window.toolUI.selectToolTab('${t.id}')" style="background:${this.currentToolTab === t.id ? 'rgba(245,158,11,0.25)' : 'rgba(255,255,255,0.03)'}; border:1px solid ${this.currentToolTab === t.id ? '#F59E0B' : 'rgba(255,255,255,0.08)'}; color:#FEF3C7; padding:0.55rem 0.75rem; border-radius:8px; text-align:left; cursor:pointer; display:flex; align-items:center; gap:0.55rem; transition:all 0.15s ease;">
+              <span style="font-size:1.25rem;">${t.icon}</span>
+              <div style="flex:1; overflow:hidden;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.15rem;">
+                  <strong style="font-size:0.82rem; color:${this.currentToolTab === t.id ? '#FBBF24' : '#FEF3C7'}; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${t.name}</strong>
+                  <span style="font-size:0.65rem; color:${t.color}; background:${t.color}15; padding:0.05rem 0.35rem; border-radius:3px;">${t.badge}</span>
+                </div>
+                <div style="font-size:0.68rem; color:var(--text-muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${t.sub}</div>
+              </div>
+            </button>
+          `).join('')}
         </div>
 
         <div id="tool-active-area">
@@ -1895,10 +1942,17 @@ ${reportText}
           <!-- Bộ điều khiển lựa chọn bán kính và đơn vị -->
           <div style="display:flex; gap:0.8rem; flex-wrap:wrap; align-items:center; background:rgba(0,0,0,0.25); padding:0.8rem; border-radius:8px;">
             <div style="display:flex; align-items:center; gap:0.4rem; flex-wrap:wrap;">
-              <label style="font-size:0.8rem; color:#FEF3C7; font-weight:600;">Khu vực:</label>
-              <input type="text" id="kinhte-search-district" placeholder="🔍 Gõ tìm huyện..." oninput="window.toolUI.filterDistrictDropdown(this.value)" style="background:#0F172A; border:1px solid rgba(255,255,255,0.2); color:#FEF3C7; padding:0.35rem 0.6rem; border-radius:6px; font-size:0.8rem; outline:none; width:150px;">
-              <select id="kinhte-select-district" onchange="window.toolUI.triggerRadiusCalculation('${currentProvince.historical_id}')" style="background:#0F172A; border:1px solid #10B981; color:#FEF3C7; padding:0.35rem 0.7rem; border-radius:6px; font-size:0.8rem; outline:none; max-width:280px;">
+              <label style="font-size:0.8rem; color:#FEF3C7; font-weight:600;">Quận / Huyện:</label>
+              <input type="text" id="kinhte-search-district" placeholder="🔍 Gõ tìm huyện..." oninput="window.toolUI.filterDistrictDropdown(this.value)" style="background:#0F172A; border:1px solid rgba(255,255,255,0.2); color:#FEF3C7; padding:0.35rem 0.6rem; border-radius:6px; font-size:0.8rem; outline:none; width:130px;">
+              <select id="kinhte-select-district" onchange="window.toolUI.onDistrictChange('${currentProvince.historical_id}')" style="background:#0F172A; border:1px solid #10B981; color:#FEF3C7; padding:0.35rem 0.7rem; border-radius:6px; font-size:0.8rem; outline:none; max-width:240px;">
                 ${districts.map(d => `<option value="${d.id}">${d.name} (${d.type})</option>`).join('')}
+              </select>
+            </div>
+
+            <div style="display:flex; align-items:center; gap:0.4rem; flex-wrap:wrap;">
+              <label style="font-size:0.8rem; color:#FEF3C7; font-weight:600;">Xã / Phường:</label>
+              <select id="kinhte-select-commune" onchange="window.toolUI.triggerRadiusCalculation('${currentProvince.historical_id}')" style="background:#0F172A; border:1px solid #34D399; color:#34D399; padding:0.35rem 0.7rem; border-radius:6px; font-size:0.8rem; outline:none; max-width:240px;">
+                ${((districts[0] && districts[0].communes) || []).map(c => `<option value="${c.id}">${c.name} (${c.type})</option>`).join('')}
               </select>
             </div>
 
@@ -2004,13 +2058,14 @@ ${reportText}
     `;
   }
 
-  calculateCustomRadius(provinceId, districtId, radiusMeters = 1000) {
+  calculateCustomRadius(provinceId, districtId, radiusMeters = 1000, communeId = null) {
     const engine = (typeof EconomicRadiusEngine !== 'undefined') ? EconomicRadiusEngine : (typeof window !== 'undefined' ? window.EconomicRadiusEngine : null);
     if (!engine || !engine.calculateRadiusMarket) return;
 
     const res = engine.calculateRadiusMarket({
       provinceId: provinceId,
       districtId: districtId,
+      communeId: communeId,
       radiusMeters: parseInt(radiusMeters, 10)
     });
 
@@ -2084,7 +2139,7 @@ ${reportText}
               </span>
             </div>
             <div style="font-size:0.76rem; color:var(--text-muted);">
-              Khảo sát trong bán kính <strong>${location.radiusKm >= 1 ? `${location.radiusKm} km` : `${location.radiusMeters} m`}</strong> (${location.areaKm2} km²) • ${location.districtName ? `${location.districtName}, ` : ''}${location.provinceName}
+              Khảo sát trong bán kính <strong>${location.radiusKm >= 1 ? `${location.radiusKm} km` : `${location.radiusMeters} m`}</strong> (${location.areaKm2} km²) • ${location.communeName ? `<span style="color:#34D399;">${location.communeName}</span>, ` : ''}${location.districtName ? `${location.districtName}, ` : ''}${location.provinceName}
             </div>
           </div>
 
@@ -2321,6 +2376,8 @@ ${reportText}
     this._currentRadiusMeters = radiusMeters;
     const select = document.getElementById('kinhte-select-district');
     const districtId = select ? select.value : null;
+    const comSelect = document.getElementById('kinhte-select-commune');
+    const communeId = comSelect ? comSelect.value : null;
 
     // Update active button state
     const btns = document.querySelectorAll('.radius-btn');
@@ -2337,14 +2394,34 @@ ${reportText}
       }
     });
 
-    this.calculateCustomRadius(provinceId, districtId, radiusMeters);
+    this.calculateCustomRadius(provinceId, districtId, radiusMeters, communeId);
+  }
+
+  onDistrictChange(provinceId) {
+    const distSelect = document.getElementById('kinhte-select-district');
+    const comSelect = document.getElementById('kinhte-select-commune');
+    const districtId = distSelect ? distSelect.value : null;
+
+    if (comSelect && districtId) {
+      const corpus = (typeof KINH_TE_64_TINH_THANH_CORPUS !== 'undefined') ? KINH_TE_64_TINH_THANH_CORPUS : [];
+      const prov = corpus.find(p => p.historical_id === provinceId);
+      const dist = prov ? (prov.key_districts_sae || []).find(d => d.id === districtId) : null;
+      if (dist && dist.communes && dist.communes.length > 0) {
+        comSelect.innerHTML = dist.communes.map(c => `<option value="${c.id}">${c.name} (${c.type})</option>`).join('');
+      } else {
+        comSelect.innerHTML = '<option value="">Toàn quận / huyện</option>';
+      }
+    }
+    this.triggerRadiusCalculation(provinceId);
   }
 
   triggerRadiusCalculation(provinceId) {
     const select = document.getElementById('kinhte-select-district');
     const districtId = select ? select.value : null;
+    const comSelect = document.getElementById('kinhte-select-commune');
+    const communeId = comSelect ? comSelect.value : null;
     const radiusMeters = this._currentRadiusMeters || 1000;
-    this.calculateCustomRadius(provinceId, districtId, radiusMeters);
+    this.calculateCustomRadius(provinceId, districtId, radiusMeters, communeId);
   }
 
   renderRadiusResultHtml(res) {

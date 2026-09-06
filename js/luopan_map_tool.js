@@ -634,15 +634,32 @@ class LuopanMapTool {
               </div>
             </div>
 
-            <!-- Bộ Chọn Quận / Huyện Khảo Sát -->
-            <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:0.4rem; margin-bottom:0.7rem; background:rgba(15,23,42,0.85); padding:0.45rem 0.7rem; border-radius:8px; border:1px solid rgba(56,189,248,0.25);">
-              <div style="display:flex; align-items:center; gap:0.45rem; flex-wrap:wrap;">
-                <span style="font-size:0.74rem; color:#38BDF8; font-weight:800; text-transform:uppercase;">📍 Quận / Huyện:</span>
-                <select id="dt-econ-district-select" style="background:#1E293B; border:1px solid #38BDF8; color:#FEF3C7; padding:0.25rem 0.6rem; border-radius:6px; font-size:0.78rem; font-weight:700; cursor:pointer; outline:none; max-width:280px;">
-                  <option value="">Tự động nhận diện theo GPS</option>
-                </select>
+            <!-- Bộ Chọn 3 Cấp: Tỉnh/Thành -> Quận/Huyện -> Xã/Phường -->
+            <div style="background:rgba(15,23,42,0.85); padding:0.6rem 0.8rem; border-radius:8px; border:1px solid rgba(56,189,248,0.25); margin-bottom:0.7rem;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.4rem; flex-wrap:wrap; gap:0.3rem;">
+                <span style="font-size:0.74rem; color:#38BDF8; font-weight:800; text-transform:uppercase;">📍 Địa Bàn Khảo Sát (3 Cấp Hành Chính):</span>
+                <span id="dt-econ-district-distance-tag" style="font-size:0.7rem; color:#94A3B8;"></span>
               </div>
-              <span id="dt-econ-district-distance-tag" style="font-size:0.7rem; color:#94A3B8;"></span>
+              <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(170px, 1fr)); gap:0.4rem;">
+                <div>
+                  <label style="font-size:0.68rem; color:#94A3B8; display:block; margin-bottom:0.15rem;">1. Tỉnh / Thành phố:</label>
+                  <select id="dt-econ-province-select" style="width:100%; background:#1E293B; border:1px solid rgba(255,255,255,0.2); color:#FEF3C7; padding:0.25rem 0.5rem; border-radius:5px; font-size:0.75rem; font-weight:700; cursor:pointer; outline:none;">
+                    <option value="">Tự động theo GPS</option>
+                  </select>
+                </div>
+                <div>
+                  <label style="font-size:0.68rem; color:#94A3B8; display:block; margin-bottom:0.15rem;">2. Quận / Huyện / Thị xã:</label>
+                  <select id="dt-econ-district-select" style="width:100%; background:#1E293B; border:1px solid #38BDF8; color:#FEF3C7; padding:0.25rem 0.5rem; border-radius:5px; font-size:0.75rem; font-weight:700; cursor:pointer; outline:none;">
+                    <option value="">Tự động theo GPS</option>
+                  </select>
+                </div>
+                <div>
+                  <label style="font-size:0.68rem; color:#94A3B8; display:block; margin-bottom:0.15rem;">3. Xã / Phường / Thị trấn:</label>
+                  <select id="dt-econ-commune-select" style="width:100%; background:#1E293B; border:1px solid #10B981; color:#34D399; padding:0.25rem 0.5rem; border-radius:5px; font-size:0.75rem; font-weight:700; cursor:pointer; outline:none;">
+                    <option value="">Tự động theo GPS</option>
+                  </select>
+                </div>
+              </div>
             </div>
 
             <!-- Bộ Chọn Ngành Nghề Khảo Sát (VSIC 2025) -->
@@ -2213,14 +2230,48 @@ class LuopanMapTool {
       });
     });
 
+    const provinceSelect = document.getElementById('dt-econ-province-select');
+    if (provinceSelect) {
+      provinceSelect.addEventListener('change', (e) => {
+        this.selectedEconProvinceId = e.target.value || null;
+        this.selectedEconDistrictId = null;
+        this.selectedEconCommuneId = null;
+        this.updateEconomicRadiusData(
+          this.selectedEconRadius || 1000,
+          this.selectedIndustryKey || 'CAFE',
+          null,
+          this.selectedEconProvinceId,
+          null
+        );
+      });
+    }
+
     const districtSelect = document.getElementById('dt-econ-district-select');
     if (districtSelect) {
       districtSelect.addEventListener('change', (e) => {
         this.selectedEconDistrictId = e.target.value || null;
+        this.selectedEconCommuneId = null;
         this.updateEconomicRadiusData(
           this.selectedEconRadius || 1000,
           this.selectedIndustryKey || 'CAFE',
-          this.selectedEconDistrictId
+          this.selectedEconDistrictId,
+          this.selectedEconProvinceId,
+          null
+        );
+      });
+    }
+
+    const communeSelect = document.getElementById('dt-econ-commune-select');
+    if (communeSelect) {
+      communeSelect.addEventListener('change', (e) => {
+        this.selectedEconCommuneId = e.target.value || null;
+        this.updateEconomicRadiusData(
+          this.selectedEconRadius || 1000,
+          this.selectedIndustryKey || 'CAFE',
+          this.selectedEconDistrictId,
+          this.selectedEconProvinceId,
+          this.selectedEconCommuneId,
+          true // flyToCommune
         );
       });
     }
@@ -2563,24 +2614,25 @@ class LuopanMapTool {
     if (modal) modal.style.display = 'none';
   }
 
-  updateEconomicRadiusData(radiusMeters = 1000, industryKey = null, districtId = null) {
+  updateEconomicRadiusData(radiusMeters = 1000, industryKey = null, districtId = null, provinceId = null, communeId = null, flyToCommune = false) {
     const engine = (typeof window !== 'undefined' && window.EconomicRadiusEngine) || (typeof EconomicRadiusEngine !== 'undefined' ? EconomicRadiusEngine : null);
     const content = document.getElementById('dt-econ-modal-content');
     const locText = document.getElementById('dt-econ-location-text');
     if (!content || !engine) return;
 
-    const coords = this.getSurveyCenterCoordinates();
-    if (locText) {
-      locText.textContent = `${coords.lat.toFixed(5)}° N, ${coords.lng.toFixed(5)}° E`;
-    }
+    let coords = this.getSurveyCenterCoordinates();
 
+    const targetProvinceId = provinceId || this.selectedEconProvinceId || null;
     const targetDistrictId = districtId || this.selectedEconDistrictId || null;
+    const targetCommuneId = communeId || this.selectedEconCommuneId || null;
 
-    const res = engine.calculateRadiusMarket({
+    let res = engine.calculateRadiusMarket({
       lat: coords.lat,
       lng: coords.lng,
       radiusMeters: radiusMeters,
-      districtId: targetDistrictId
+      provinceId: targetProvinceId,
+      districtId: targetDistrictId,
+      communeId: targetCommuneId
     });
 
     if (!res) {
@@ -2588,7 +2640,43 @@ class LuopanMapTool {
       return;
     }
 
-    // Cập nhật dropdown quận/huyện và cự ly
+    // Nếu chọn xã/phường từ menu và cần bay bản đồ về tâm xã
+    if (flyToCommune && res.commune && typeof res.commune.lat === 'number' && typeof res.commune.lng === 'number') {
+      coords = { lat: res.commune.lat, lng: res.commune.lng };
+      this.surveyCenterLatLng = [coords.lat, coords.lng];
+      if (this.mapInstance && this.mode === 'map') {
+        this.mapInstance.setView([coords.lat, coords.lng], Math.max(this.mapInstance.getZoom() || 18, 18), { animate: true });
+      }
+      // Tính lại theo tọa độ chuẩn của xã
+      res = engine.calculateRadiusMarket({
+        lat: coords.lat,
+        lng: coords.lng,
+        radiusMeters: radiusMeters,
+        provinceId: res.location.provinceId,
+        districtId: res.location.districtId,
+        communeId: res.location.communeId
+      });
+    }
+
+    if (locText) {
+      locText.textContent = `${coords.lat.toFixed(5)}° N, ${coords.lng.toFixed(5)}° E`;
+    }
+
+    // 1. Cập nhật dropdown Tỉnh / Thành
+    const provSelect = document.getElementById('dt-econ-province-select');
+    if (provSelect && res.allProvinces) {
+      if (provSelect.dataset.initialized !== 'true') {
+        provSelect.dataset.initialized = 'true';
+        provSelect.innerHTML = res.allProvinces.map(p =>
+          `<option value="${p.id}" ${p.id === res.location.provinceId ? 'selected' : ''}>${p.name}</option>`
+        ).join('');
+      } else {
+        provSelect.value = res.location.provinceId;
+      }
+      this.selectedEconProvinceId = res.location.provinceId;
+    }
+
+    // 2. Cập nhật dropdown Quận / Huyện
     const districtSelect = document.getElementById('dt-econ-district-select');
     const distDistTag = document.getElementById('dt-econ-district-distance-tag');
     if (districtSelect && res.keyDistrictsInProvince) {
@@ -2596,19 +2684,43 @@ class LuopanMapTool {
       if (districtSelect.dataset.provinceId !== res.location.provinceId) {
         districtSelect.dataset.provinceId = res.location.provinceId;
         districtSelect.innerHTML = res.keyDistrictsInProvince.map(d =>
-          `<option value="${d.id}">${d.name} (${d.type})</option>`
+          `<option value="${d.id}" ${d.id === activeDistId ? 'selected' : ''}>${d.name} (${d.type})</option>`
         ).join('');
+      } else {
+        districtSelect.value = activeDistId;
       }
-      districtSelect.value = activeDistId;
       this.selectedEconDistrictId = activeDistId;
     }
 
-    if (distDistTag) {
-      if (res.location.distanceToDistrictCenterKm !== null && res.location.distanceToDistrictCenterKm !== undefined) {
-        distDistTag.textContent = `Cách trung tâm: ~${res.location.distanceToDistrictCenterKm} km`;
+    // 3. Cập nhật dropdown Xã / Phường
+    const communeSelect = document.getElementById('dt-econ-commune-select');
+    if (communeSelect) {
+      const activeCommunes = (res.district && res.district.communes) || [];
+      const activeCommuneId = res.location.communeId;
+      if (communeSelect.dataset.districtId !== res.location.districtId) {
+        communeSelect.dataset.districtId = res.location.districtId;
+        if (activeCommunes.length > 0) {
+          communeSelect.innerHTML = activeCommunes.map(c =>
+            `<option value="${c.id}" ${c.id === activeCommuneId ? 'selected' : ''}>${c.name} (${c.type})</option>`
+          ).join('');
+        } else {
+          communeSelect.innerHTML = '<option value="">Toàn quận / huyện</option>';
+        }
       } else {
-        distDistTag.textContent = '';
+        communeSelect.value = activeCommuneId;
       }
+      this.selectedEconCommuneId = activeCommuneId;
+    }
+
+    if (distDistTag) {
+      let distText = '';
+      if (res.location.communeName) {
+        distText += `📍 ${res.location.communeName}`;
+      }
+      if (res.location.distanceToDistrictCenterKm !== null && res.location.distanceToDistrictCenterKm !== undefined) {
+        distText += ` • Cách trung tâm: ~${res.location.distanceToDistrictCenterKm} km`;
+      }
+      distDistTag.textContent = distText;
     }
 
     // Tính toán phân tích chuyên sâu theo ngành kinh doanh (VSIC 2025)
@@ -2726,8 +2838,13 @@ class LuopanMapTool {
           <div>
             <span style="font-size:0.75rem; color:#94A3B8;">ĐỊA PHƯƠNG KHẢO CHỨNG:</span>
             <div style="font-size:1.05rem; font-weight:800; color:#FEF3C7;">
-              ${location.districtName ? `${location.districtName}, ` : ''}${location.provinceName}
+              ${location.communeName ? `<span style="color:#34D399;">${location.communeName}</span>, ` : ''}${location.districtName ? `${location.districtName}, ` : ''}${location.provinceName}
             </div>
+            ${res.commune && res.commune.features ? `
+              <div style="font-size:0.72rem; color:#38BDF8; margin-top:0.2rem;">
+                📍 <em>${res.commune.features}</em>
+              </div>
+            ` : ''}
           </div>
           <span style="font-size:0.82rem; font-weight:800; color:${marketAssessment.ratingColor}; background:${marketAssessment.ratingColor}22; border:1px solid ${marketAssessment.ratingColor}66; padding:0.25rem 0.75rem; border-radius:15px;">
             Mức Hấp Thụ: ${marketAssessment.rating} (RPPI ${marketAssessment.rppiScore}/100)
