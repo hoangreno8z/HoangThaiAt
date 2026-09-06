@@ -92,4 +92,48 @@ Ngày đối chiếu: 2026-09-06. Phạm vi: **Khúc Thủy Chiết Xung, câu 1
 | 19 | Khẩu quyết bí truyền (AI tự phong), Táng Thư | Tự chế câu chữ cổ, dọa dẫm tán gia bại sản | 《葬書》, 《雪心賦》 | VERIFIED | Khảo chứng nguyên văn chuẩn, phân tích động năng dòng nước mặt xói mòn chân móng, đề xuất bậc tam cấp phân dòng và gờ chắn nước |
 | 20 | Táng Thư (sai vế), dính hội thoại AI rác | Dính 1 đoạn dài hội thoại AI rác và ghi chú phần II cuối bài | 《葬書》, 《黃帝宅經》 | VERIFIED | Loại bỏ 100% rác AI, dẫn đúng kinh văn Hoàng Đế Trạch Kinh & Táng Thư, phân định động khí và tĩnh khí, mở cổng nạp khí vượng |
 
+---
+
+# Kiểm toán nguồn Vấn đáp — Chương 03
+
+Ngày đối chiếu: 2026-09-06. Phạm vi: **Kỳ Lộ Giao Xoa, câu 21–30**. Không triển khai chương kế tiếp.
+
+## Điểm khôi phục và kiểm kê
+
+- Repository: https://github.com/hoangreno8z/HoangThaiAt ; nhánh triển khai: `main`.
+- Điểm kiểm tra release Chương 2: `dec1e5e` (chứa đầy đủ Chương 1 & Chương 2 đã nghiệm thu).
+- Nhánh dự phòng: `backup/van-dap-ch03-dec1e5e`. Dùng nhánh này để xem bản trước; nếu cần hoàn tác production, tạo commit revert cho commit sửa chương rồi triển khai theo luồng hiện có.
+- Dữ liệu: `js/hoidap_data.js`, `data/hoidap_data.json`, `window.HOIDAP_CHAPTERS`, `window.HOIDAP_DATA`.
+- Bộ hiển thị: `js/hoidap_ui.js` (hỗ trợ `renderReviewedBody` cho tất cả câu có `sources[]`, cập nhật hero description Chương 3), CSS: `css/hoidap.css`; route hiện hữu: `#/van-dap`.
+- Kiểm kê: 100 câu; chương 3 đúng 10 câu với ID 21–30. Danh mục chương, Chương 1 (câu 01–10), Chương 2 (câu 11–20) và 70 đối tượng câu 31–100 được kiểm tra bằng so sánh sâu với SHA release Chương 2 và SHA baseline ban đầu.
+
+| ID | Tiêu đề giữ lại | Trọng tâm cần sửa | Phạm vi trường phái |
+|---|---|---|---|
+| 21 | Song Xuyên Sát | Cục chữ H kẹp giữa hai ngã ba; phân định Thiên Môn nạp sinh khí và Địa Hộ khóa bế | Táng Thư, Nhập Địa Nhãn Đồ Thuyết; hiệu ứng đường hầm đô thị |
+| 22 | Xuyên Tâm Sát | Cửa trước đối thẳng cửa sau; phân biệt thông gió tự nhiên với gió giật Venturi | Hoàng Đế Trạch Kinh, Dương Trạch Thập Thư; huyền quan đệm |
+| 23 | Phân Thủy Khẩu | Ngã ba chữ Y chẻ đôi dòng lộ; loại bỏ phán đoán bi ai thần bí, phân tích điểm nghẽn rẽ | Thiên Ngọc Kinh, Táng Thư; an toàn giao thông và giảm chấn |
+| 24 | Trực Xung Vượng | Tuyến đường đâm đắc vận; phân biệt xung lực vật lý thực tế với lý thuyết la kinh | Dương Trạch Tập Thành, Thiên Ngọc Kinh; khoảng lùi thương mại |
+| 25 | Giao Kiếm Sát | Ngã tư cắt chéo góc nhọn; loại bỏ số đo góc giả định (< 45°), phân tích góc chết | Thủy Long Kinh, Táng Thư; vát góc công trình và an toàn giao thông |
+| 26 | Toàn Oa Thủy | Bùng binh vòng xoay đa khẩu; loại bỏ văn bản dính tiếng Việt trong Hán văn | Thẩm Thị Huyền Không Học, Táng Thư; phân tích tiếp tuyến (tang tuyến) |
+| 27 | Đao Khắc Sát | Mũi nhọn dải phân cách con lươn; giải mã Hỏa hình tiêm xạ và chấn thương quang học | Tuyết Tâm Phú, Thanh Nang Tự; gờ giảm tốc và bồn hoa bán nguyệt |
+| 28 | Tà Xạ Sát | Tuyến đường đâm xiên sườn nhà; loại bỏ dán nhãn giới tính mê tín, phân tích xung sườn | Dương Trạch Thập Thư, Tuyết Tâm Phú; cách âm cách nhiệt mạn sườn |
+| 29 | Ngũ Quỷ Sát | Ngã năm hỗn loạn không đảo điều tiết; khử bỏ màu sắc ma quỷ, phân tích nội minh đường | Táng Thư, Địa Lý Ngũ Quyết; khoảng lùi sân vườn và cửa kính cách âm |
+| 30 | Mũi Tàu Sát | Khu đất mũi tàu hai dòng hợp lưu; phân tích áp lực gió đỉnh chóp và điểm ngắm thương mại | Táng Thư, Tuyết Tâm Phú; bo tròn góc mũi tàu và bố trí lối vào an toàn |
+
+## Nhật ký kiểm chứng từng câu
+
+| ID | Nguồn cũ | Vấn đề | Nguồn xác minh | Mức độ | Thay đổi |
+|---|---|---|---|---|---|
+| 21 | Táng Thư (ghép), Nhân Tử Tu Tri | Dính nhãn cồng kềnh, gán ghép văn bản | 《葬書》, 《入地眼圖說》 | VERIFIED / SUPPORTED | Trích đúng câu cổ, giải thích cơ chế đối lưu hai ngã ba, thiết lập huyền quan và phân tầng cửa trước/sau |
+| 22 | Hoàng Đế Trạch Kinh (ghép), Khẩu quyết | Nhãn Hán văn cồng kềnh, câu rác truyền thị | 《黃帝宅經》 (Tổng luận), 《陽宅十書》 | VERIFIED / SUPPORTED | Dẫn đúng kinh văn chuẩn, phân tích hiệu ứng Venturi trong khí động học, đưa giải pháp bình phong bẻ cong dòng khí |
+| 23 | Thiên Ngọc Kinh (ghép nhãn), Táng Thư | Tự chế nhãn gán ghép, thần bí hóa Chu Tước bi khốc | 《天玉經》, 《葬書》 (Chu Tước thiên) | VERIFIED | Dẫn đúng nguyên văn, phân tích tiếng ồn rẽ dòng và đèn pha ban đêm, đề xuất đảo cây xanh tam giác cản xung |
+| 24 | Dương Trạch Tập Thành, Thiên Ngọc Kinh | Ngộ nhận đường đâm không cần hóa giải nếu đắc vận | 《陽宅集成》, 《天玉經》 | SUPPORTED / VERIFIED | Làm rõ rủi ro cơ học trực diện, phân biệt công trình thương mại có minh đường lớn với nhà ở gia cư |
+| 25 | Thủy Long Kinh (ghép), Táng Thư | Tự chế góc đo < 45° và > 135°, dính nhãn cồng kềnh | 《水龍經》, 《葬書》 | VERIFIED | Khảo chứng câu chuẩn, phân tích hai vệt áp suất động cắt chéo, giải pháp vát góc tường và mở lối vào an toàn |
+| 26 | Thẩm Thị Huyền Không Học (dính tiếng Việt), Táng Thư | Đoạn Hán văn dính liền tiếng Việt giải nghĩa thô | 《沈氏玄空學》, 《葬書》 | VERIFIED | Khôi phục Hán văn sạch 100%, phân tích cơ chế vòng xoay minh đường động, xác định tiếp tuyến nạp khí |
+| 27 | Ngũ Tinh Hình Quyết (tự xưng), Hỏa Tinh Sa Quyết | Câu Hán AI tự ghép nhãn, dọa nạt quan phi hỏa hoạn | 《雪心賦》, 《青囊序》 | VERIFIED / SUPPORTED | Khảo chứng câu chuẩn trong kinh văn cổ, phân tích điểm phân luồng xung đột giao thông, giải pháp bồn hoa bo tròn |
+| 28 | Dương Trạch Thập Thư (dính tiếng Việt), Khẩu quyết | Dính tiếng Việt trong Hán văn, phán hại nam hại nữ | 《陽宅十書》, 《雪心賦》 | VERIFIED / SUPPORTED | Bỏ phán đoán mê tín, phân tích rung chấn vi mô tường hông và tiếng ồn dội phòng ngủ, giải pháp tiêu âm mạn sườn |
+| 29 | Bát Trạch (dính tiếng Việt trong Hán), Địa Lý Thủy Khẩu | Dính tiếng Việt trong Hán, thần bí hóa sao Liêm Trinh | 《葬書》, 《地理五訣》 | VERIFIED / SUPPORTED | Khôi phục nguyên văn cổ, phân tích nút giao 5 ngã đa xung đột, đề xuất lập nội minh đường và giếng trời lấy gió sạch |
+| 30 | Thiên Ngọc Kinh, Hợp Cấm La Tinh Quyết | Dính nhãn cồng kềnh, phân tích thiếu ranh giới | 《葬書》, 《雪心賦》 | VERIFIED / SUPPORTED | Dẫn đúng nguyên văn Táng Thư & Tuyết Tâm Phú, phân tích giá trị nhận diện thương mại đối chiếu với rủi ro va đập đỉnh chóp |
+
+
 
