@@ -127,19 +127,7 @@ class HoiDapUI {
               </div>
             </div>
 
-            <!-- Ô Tra Cứu (Giảm 1 nửa kích thước) -->
-            <div class="hoidap-search-wrapper">
-              <input 
-                type="text" 
-                class="hoidap-search-input" 
-                id="hoidap-search-input"
-                placeholder="Tra cứu thế đất, cổ kinh, sa thủy, hoàng tuyền..." 
-                value="${this.escapeHtml(this.searchQuery)}"
-                oninput="window.hoidapUI.onSearch(this.value)"
-              />
-            </div>
-
-            <!-- Nút Bật/Tắt Hán Văn (Giảm 1 nửa kích thước) -->
+            <!-- Nút Bật/Tắt Hán Văn (Đặt ngay cạnh Dropdown Chương) -->
             <button 
               type="button"
               id="hoidap-toggle-hanzi-btn" 
@@ -149,15 +137,17 @@ class HoiDapUI {
               ${this.showHanzi ? 'Tắt Hán Văn' : 'Bật Hán Văn'}
             </button>
 
-            <!-- Nút Thu Gọn / Khai Triển Điển Cố (Giảm 1 nửa kích thước) -->
-            <button 
-              type="button"
-              id="hoidap-collapse-all-btn" 
-              class="hoidap-collapse-all-btn" 
-              title="${this.expandedItems.size > 0 ? 'Nhấn để thu gọn toàn bộ điển cố' : 'Nhấn để khai triển toàn bộ điển cố'}"
-              onclick="window.hoidapUI.toggleCollapseAll()">
-              ${this.expandedItems.size > 0 ? 'Thu Gọn Điển Cố' : 'Khai Triển Điển Cố'}
-            </button>
+            <!-- Ô Tra Cứu (Siêu nhỏ gọn 25px) -->
+            <div class="hoidap-search-wrapper">
+              <input 
+                type="text" 
+                class="hoidap-search-input" 
+                id="hoidap-search-input"
+                placeholder="🔍 Tra cứu thế đất, cổ kinh, sa thủy, hoàng tuyền..." 
+                value="${this.escapeHtml(this.searchQuery)}"
+                oninput="window.hoidapUI.onSearch(this.value)"
+              />
+            </div>
           </div>
         </div>
 

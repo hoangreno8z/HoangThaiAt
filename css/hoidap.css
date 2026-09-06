@@ -71,45 +71,45 @@
   line-height: 1.5;
 }
 
-/* Filter & Search Bar - Tinh gọn 1 nửa kích thước & gom 1 hàng */
+/* Filter & Search Bar - Siêu nhỏ gọn (25px) */
 .hoidap-controls {
-  margin-bottom: 0.85rem;
+  margin-bottom: 0.65rem;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.35rem;
 }
 
 .hoidap-search-row {
   display: flex;
-  gap: 0.45rem;
+  gap: 0.35rem;
   align-items: center;
   flex-wrap: wrap;
 }
 
-/* Chapter Selector Dropdown (Menu xổ xuống / thu gọn thay cho dải kéo ngang) */
+/* Chapter Selector Dropdown (Menu xổ xuống / thu gọn) - Siêu nhỏ gọn (25px) */
 .hoidap-dropdown {
   position: relative;
   flex: 0 0 auto;
-  min-width: 230px;
-  max-width: 320px;
+  min-width: 190px;
+  max-width: 280px;
 }
 
 .hoidap-dropdown-trigger {
   width: 100%;
-  height: 32px;
-  padding: 0.25rem 0.65rem;
+  height: 25px;
+  padding: 0.12rem 0.45rem;
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
-  border-radius: 5px;
+  border-radius: 4px;
   color: var(--gold-primary);
   font-family: var(--font-serif);
-  font-size: 0.8rem;
+  font-size: 0.72rem;
   font-weight: 700;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.4rem;
+  gap: 0.3rem;
   transition: all 0.2s ease;
   user-select: none;
   box-sizing: border-box;
@@ -131,7 +131,7 @@
 }
 
 .hoidap-dropdown-arrow {
-  font-size: 0.72rem;
+  font-size: 0.65rem;
   color: var(--gold-primary);
   transition: transform 0.2s ease;
 }
@@ -143,16 +143,16 @@
 .hoidap-dropdown-menu {
   display: none;
   position: absolute;
-  top: calc(100% + 4px);
+  top: calc(100% + 2px);
   left: 0;
   width: 100%;
-  min-width: 290px;
-  max-height: 380px;
+  min-width: 270px;
+  max-height: 360px;
   overflow-y: auto;
   background: #0e131d;
   border: 1px solid var(--gold-primary);
-  border-radius: 6px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.75);
+  border-radius: 5px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8);
   z-index: 1000;
   scrollbar-width: thin;
   scrollbar-color: var(--gold-primary) transparent;
@@ -163,13 +163,13 @@
 }
 
 .hoidap-dropdown-item {
-  padding: 0.45rem 0.75rem;
+  padding: 0.35rem 0.6rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  font-size: 0.8rem;
+  font-size: 0.74rem;
   color: var(--text-primary);
   transition: background 0.15s ease, color 0.15s ease;
   user-select: none;
@@ -192,11 +192,11 @@
 }
 
 .hoidap-dd-badge {
-  font-size: 0.68rem;
+  font-size: 0.64rem;
   color: var(--text-dim);
   background: rgba(255, 255, 255, 0.05);
-  padding: 0.1rem 0.35rem;
-  border-radius: 4px;
+  padding: 0.08rem 0.3rem;
+  border-radius: 3px;
 }
 
 .hoidap-dropdown-item.active .hoidap-dd-badge {
@@ -204,51 +204,17 @@
   background: rgba(251, 191, 36, 0.15);
 }
 
-/* Thanh công cụ tra cứu (Search Input) - Giảm 1 nửa kích thước */
-.hoidap-search-wrapper {
-  position: relative;
-  flex: 1 1 200px;
-  min-width: 150px;
-}
-
-.hoidap-search-input {
-  width: 100%;
-  height: 32px;
-  padding: 0.25rem 0.65rem;
-  background: var(--bg-card);
-  border: 1px solid var(--border-subtle);
-  border-radius: 5px;
-  color: var(--text-pure);
-  font-family: var(--font-serif);
-  font-size: 0.82rem;
-  line-height: 1.2;
-  transition: all 0.2s ease;
-  outline: none;
-  box-sizing: border-box;
-}
-
-.hoidap-search-input:focus {
-  border-color: var(--gold-primary);
-  box-shadow: 0 0 10px rgba(229, 192, 123, 0.2);
-}
-
-.hoidap-search-input::placeholder {
-  color: var(--text-dim);
-  font-size: 0.8rem;
-}
-
-/* Nút Bật/Tắt Hán Văn & Nút Thu Gọn Điển Cố - Giảm 1 nửa kích thước */
-.hoidap-toggle-hanzi-btn,
-.hoidap-collapse-all-btn {
+/* Nút Bật/Tắt Hán Văn - Siêu nhỏ gọn (25px) */
+.hoidap-toggle-hanzi-btn {
   flex: 0 0 auto;
-  height: 32px;
-  padding: 0.25rem 0.65rem;
+  height: 25px;
+  padding: 0.12rem 0.5rem;
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
-  border-radius: 5px;
+  border-radius: 4px;
   color: var(--gold-primary);
   font-family: var(--font-serif);
-  font-size: 0.78rem;
+  font-size: 0.72rem;
   font-weight: 600;
   cursor: pointer;
   white-space: nowrap;
@@ -257,12 +223,11 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.35rem;
+  gap: 0.25rem;
   box-sizing: border-box;
 }
 
-.hoidap-toggle-hanzi-btn:hover,
-.hoidap-collapse-all-btn:hover {
+.hoidap-toggle-hanzi-btn:hover {
   border-color: var(--gold-glow);
   color: var(--gold-glow);
   background: rgba(229, 192, 123, 0.12);
@@ -272,6 +237,39 @@
   color: var(--text-dim);
   border-color: rgba(255, 255, 255, 0.1);
   background: rgba(255, 255, 255, 0.03);
+}
+
+/* Thanh công cụ tra cứu (Search Input) - Siêu nhỏ gọn (25px) */
+.hoidap-search-wrapper {
+  position: relative;
+  flex: 1 1 180px;
+  min-width: 140px;
+}
+
+.hoidap-search-input {
+  width: 100%;
+  height: 25px;
+  padding: 0.12rem 0.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 4px;
+  color: var(--text-pure);
+  font-family: var(--font-serif);
+  font-size: 0.74rem;
+  line-height: 1.2;
+  transition: all 0.2s ease;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.hoidap-search-input:focus {
+  border-color: var(--gold-primary);
+  box-shadow: 0 0 8px rgba(229, 192, 123, 0.2);
+}
+
+.hoidap-search-input::placeholder {
+  color: var(--text-dim);
+  font-size: 0.72rem;
 }
 
 /* Dải băng cũ ẩn đi */
@@ -326,7 +324,7 @@
 
 /* Card Header */
 .hoidap-card-header {
-  padding: 0.65rem 0.95rem;
+  padding: 0.5rem 0.8rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -338,11 +336,11 @@
 .hoidap-card-title-group {
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
+  gap: 0.15rem;
 }
 
 .hoidap-card-number-badge {
-  font-size: 0.7rem;
+  font-size: 0.66rem;
   font-weight: 800;
   letter-spacing: 0.08em;
   color: var(--gold-glow);
@@ -351,34 +349,38 @@
 
 .hoidap-card-main-title {
   font-family: var(--font-title);
-  font-size: 1.08rem;
+  font-size: 1.02rem;
   font-weight: 700;
   color: var(--text-pure);
   margin: 0;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.45rem;
 }
 
 .hoidap-card-subtitle {
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   color: var(--text-muted);
   margin: 0;
 }
 
-/* Nút Thu Gọn Điển Cố trên Card - Giảm 1 nửa kích thước */
+/* Nút Thu Gọn Điển Cố trên Card - Siêu nhỏ gọn */
 .hoidap-expand-btn {
   background: transparent;
   border: 1px solid var(--border-subtle);
   color: var(--gold-primary);
-  border-radius: 4px;
-  padding: 0.2rem 0.5rem;
-  font-size: 0.7rem;
+  border-radius: 3px;
+  padding: 0.1rem 0.4rem;
+  height: 21px;
+  font-size: 0.65rem;
   font-weight: 600;
   cursor: pointer;
   white-space: nowrap;
   transition: all 0.2s;
   line-height: 1.2;
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
 }
 
 .hoidap-card.expanded .hoidap-expand-btn {
@@ -712,32 +714,87 @@
   .hoidap-container {
     width: 100%;
     margin: 0;
-    padding: 0.5rem 0.35rem 3rem 0.35rem;
+    padding: 0.35rem 0.25rem 2.5rem 0.25rem;
+  }
+  .hoidap-hero {
+    padding: 0.6rem 0.75rem;
+    margin-bottom: 0.4rem;
+  }
+  .hoidap-hero-title {
+    font-size: 1.25rem;
+  }
+  .hoidap-hero-sub {
+    font-size: 0.8rem;
+    margin-bottom: 0.25rem;
+  }
+  .hoidap-hero-desc {
+    font-size: 0.75rem;
+    line-height: 1.4;
+  }
+  .hoidap-controls {
+    margin-bottom: 0.45rem;
+    gap: 0.3rem;
   }
   .hoidap-search-row {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0.4rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    align-items: center;
   }
+  /* Hàng 1 trên mobile: Dropdown Chương và Nút Tắt Hán Văn nằm CÙNG HÀNG liền kề nhau */
   .hoidap-dropdown {
-    max-width: 100%;
-    min-width: 100%;
+    flex: 1 1 auto;
+    min-width: 0;
+    max-width: calc(100% - 95px);
+  }
+  .hoidap-dropdown-trigger {
+    height: 25px;
+    padding: 0.1rem 0.4rem;
+    font-size: 0.7rem;
   }
   .hoidap-dropdown-menu {
-    position: static;
+    position: absolute;
     width: 100%;
-    max-height: 280px;
-    margin-top: 4px;
+    min-width: 260px;
+    max-height: 320px;
+    z-index: 1000;
   }
+  .hoidap-toggle-hanzi-btn {
+    flex: 0 0 auto;
+    width: auto;
+    height: 25px;
+    padding: 0.1rem 0.45rem;
+    font-size: 0.7rem;
+  }
+  /* Hàng 2 trên mobile: Ô tra cứu dàn đều 100% chiều ngang */
   .hoidap-search-wrapper {
+    flex: 1 1 100%;
     width: 100%;
   }
-  .hoidap-btn-row-mobile {
-    display: flex;
-    gap: 0.4rem;
+  .hoidap-search-input {
     width: 100%;
+    height: 25px;
+    padding: 0.1rem 0.45rem;
+    font-size: 0.72rem;
   }
-  .hoidap-btn-row-mobile > button {
-    flex: 1;
+  .hoidap-status-bar {
+    font-size: 0.72rem;
+    padding: 0.15rem 0.1rem;
+    margin-bottom: 0.35rem;
+  }
+  .hoidap-card-header {
+    padding: 0.45rem 0.65rem;
+  }
+  .hoidap-card-main-title {
+    font-size: 0.95rem;
+  }
+  .hoidap-card-subtitle {
+    font-size: 0.75rem;
+  }
+  .hoidap-expand-btn {
+    font-size: 0.62rem;
+    padding: 0.08rem 0.35rem;
+    height: 19px;
   }
 }
