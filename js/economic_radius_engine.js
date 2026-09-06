@@ -70,6 +70,74 @@
     };
   }
 
+  /**
+   * Chuẩn hóa và nhận diện tỉnh thành trong corpus kinh tế 64 (hỗ trợ alias ISO, VN-XX, mã viết tắt, tên tiếng Việt)
+   */
+  function resolveProvinceEcon(provinceId, econList) {
+    if (!provinceId || !econList || !econList.length) return null;
+    const rawId = String(provinceId).trim();
+    
+    // 1. Khớp chính xác historical_id
+    let found = econList.find(p => p.historical_id === rawId);
+    if (found) return found;
+
+    const upper = rawId.toUpperCase();
+    // 2. Tra cứu qua bảng alias chuẩn hóa
+    const aliasMap = {
+      'VN-SG': 'SG_PRE2008',
+      'VN-HN': 'HN_PRE2008',
+      'VN-DN': 'DN_PRE2008',
+      'VN-CT': 'CT_PRE2008',
+      'VN-HP': 'HP_PRE2008',
+      'VN-HT': 'HT_PRE2008',
+      'VN-DB': 'DB_PRE2008',
+      'VN-BDU': 'BDU_PRE2008',
+      'VN-BD': 'BD_PRE2008',
+      'VN-DNA': 'DNA_PRE2008',
+      'VN-BRVT': 'BRVT_PRE2008',
+      'VN-VT': 'BRVT_PRE2008',
+      'VN-BRV': 'BRVT_PRE2008',
+      'VN-KH': 'KH_PRE2008',
+      'VN-LA': 'LA_PRE2008',
+      'VN-TG': 'TG_PRE2008',
+      'VN-AG': 'AG_PRE2008',
+      'VN-KG': 'KG_PRE2008',
+      'VN-CM': 'CM_PRE2008',
+      'VN-BL': 'BL_PRE2008',
+      'VN-ST': 'ST_PRE2008',
+      'VN-DT': 'DT_PRE2008',
+      'VN-VL': 'VL_PRE2008',
+      'VN-TV': 'TV_PRE2008',
+      'VN-BP': 'BP_PRE2008',
+      'SG': 'SG_PRE2008',
+      'HN': 'HN_PRE2008',
+      'DN': 'DN_PRE2008',
+      'CT': 'CT_PRE2008',
+      'HP': 'HP_PRE2008',
+      'HT': 'HT_PRE2008',
+      'BDU': 'BDU_PRE2008'
+    };
+    if (aliasMap[upper]) {
+      found = econList.find(p => p.historical_id === aliasMap[upper]);
+      if (found) return found;
+    }
+
+    // 3. Quy đổi tiền tố 'VN-' -> '_PRE2008'
+    if (upper.startsWith('VN-')) {
+      const code = upper.replace('VN-', '');
+      found = econList.find(p => p.historical_id === code + '_PRE2008' || p.historical_id.startsWith(code + '_'));
+      if (found) return found;
+    }
+
+    // 4. Tìm theo tên tỉnh (province_name) hoặc không phân biệt hoa thường
+    found = econList.find(p => 
+      p.historical_id.toUpperCase() === upper || 
+      p.province_name.toUpperCase() === upper ||
+      p.province_name.toLowerCase().includes(rawId.toLowerCase())
+    );
+    return found || null;
+  }
+
   class EconomicRadiusEngine {
     constructor() {
       this.DEFAULT_RADIUS = 1000; // 1km
@@ -187,13 +255,15 @@
      */
     calculateRadiusMarket(params = {}) {
       const {
-        lat = 21.0285,
-        lng = 105.8542,
         radiusMeters = 1000,
         provinceId = null,
         districtId = null,
         communeId = null
       } = params;
+
+      const hasExplicitCoords = (typeof params.lat === 'number' && typeof params.lng === 'number' && !isNaN(params.lat) && !isNaN(params.lng));
+      const lat = hasExplicitCoords ? params.lat : null;
+      const lng = hasExplicitCoords ? params.lng : null;
 
       const econList = getEconCorpus();
 
@@ -205,39 +275,49 @@
       let matchedCommuneDistanceKm = null;
 
       if (provinceId) {
-        provinceEcon = econList.find(p => p.historical_id === provinceId);
+        provinceEcon = resolveProvinceEcon(provinceId, econList);
         if (provinceEcon) {
           if (districtId && provinceEcon.key_districts_sae) {
-            targetDistrict = provinceEcon.key_districts_sae.find(d => d.id === districtId);
+            targetDistrict = provinceEcon.key_districts_sae.find(d => 
+              d.id === districtId || 
+              d.name === districtId ||
+              d.name.toLowerCase() === String(districtId).toLowerCase() ||
+              d.id.toLowerCase() === String(districtId).toLowerCase()
+            );
           }
           if (!targetDistrict) {
-            const match = this.findNearestDistrict(lat, lng, provinceEcon);
-            if (match) {
-              targetDistrict = match.district;
-              targetCommune = match.commune;
-              matchedDistanceKm = match.distanceKm;
+            if (hasExplicitCoords) {
+              const match = this.findNearestDistrict(lat, lng, provinceEcon);
+              if (match) {
+                targetDistrict = match.district;
+                targetCommune = match.commune;
+                matchedDistanceKm = match.distanceKm;
+              }
+            } else if (provinceEcon.key_districts_sae && provinceEcon.key_districts_sae.length > 0) {
+              targetDistrict = provinceEcon.key_districts_sae[0];
             }
           }
         }
       }
 
-      // Nếu chưa có provinceEcon hoặc chưa có targetDistrict, tìm trực tiếp quận/huyện gần nhất trên toàn quốc
-      if (!provinceEcon || !targetDistrict) {
+      // Chỉ tìm quận/huyện gần nhất trên toàn quốc khi KHÔNG CÓ provinceId nhưng CÓ tọa độ GPS thực tế
+      if (!provinceEcon && hasExplicitCoords) {
         const globalMatch = this.findNearestDistrictAcrossAll(lat, lng);
         if (globalMatch) {
-          if (!provinceEcon) provinceEcon = globalMatch.province;
-          if (!targetDistrict) {
-            targetDistrict = globalMatch.district;
-            targetCommune = globalMatch.commune;
-            matchedDistanceKm = globalMatch.distanceKm;
-          }
+          provinceEcon = globalMatch.province;
+          targetDistrict = globalMatch.district;
+          targetCommune = globalMatch.commune;
+          matchedDistanceKm = globalMatch.distanceKm;
         }
       }
 
+      // Fallback an toàn khi hoàn toàn không có thông tin
       if (!provinceEcon) {
-        const nearest = this.findNearestProvince(lat, lng);
-        if (nearest && nearest.province) {
-          provinceEcon = econList.find(p => p.historical_id === nearest.province.historical_id);
+        if (hasExplicitCoords) {
+          const nearest = this.findNearestProvince(lat, lng);
+          if (nearest && nearest.province) {
+            provinceEcon = econList.find(p => p.historical_id === nearest.province.historical_id);
+          }
         }
       }
       if (!provinceEcon) provinceEcon = econList[0] || null;
@@ -256,10 +336,15 @@
       // Xử lý xác định xã/phường trong targetDistrict
       if (targetDistrict && targetDistrict.communes && targetDistrict.communes.length > 0) {
         if (communeId) {
-          const foundC = targetDistrict.communes.find(c => c.id === communeId);
-          if (foundC) targetCommune = foundC;
+          targetCommune = targetDistrict.communes.find(c => 
+            c.id === communeId || 
+            c.name === communeId ||
+            c.name.toLowerCase() === String(communeId).toLowerCase() ||
+            c.id.toLowerCase() === String(communeId).toLowerCase()
+          );
         }
-        if (!targetCommune) {
+        // Nếu không chỉ định communeId, chỉ tự động tìm xã gần nhất KHI CÓ tọa độ GPS thực tế
+        if (!targetCommune && hasExplicitCoords) {
           let minCDist = Infinity;
           for (const c of targetDistrict.communes) {
             if (typeof c.lat === 'number' && typeof c.lng === 'number') {
@@ -271,16 +356,35 @@
               }
             }
           }
-        } else if (matchedCommuneDistanceKm === null && typeof targetCommune.lat === 'number' && typeof targetCommune.lng === 'number') {
+        } else if (targetCommune && hasExplicitCoords && typeof targetCommune.lat === 'number' && typeof targetCommune.lng === 'number') {
           matchedCommuneDistanceKm = Number(haversineDistance(lat, lng, targetCommune.lat, targetCommune.lng).toFixed(2));
         }
       }
 
-      if (targetDistrict && typeof targetDistrict.lat === 'number' && typeof targetDistrict.lng === 'number' && matchedDistanceKm === null) {
+      if (targetDistrict && hasExplicitCoords && typeof targetDistrict.lat === 'number' && typeof targetDistrict.lng === 'number' && matchedDistanceKm === null) {
         matchedDistanceKm = Number(haversineDistance(lat, lng, targetDistrict.lat, targetDistrict.lng).toFixed(2));
       }
 
-      // Mật độ dân số tham chiếu (người / km²)
+      // Xác định tọa độ hiển thị (userCoords) bảo đảm luôn ở đúng địa phương
+      let resolvedLat = hasExplicitCoords ? lat : null;
+      let resolvedLng = hasExplicitCoords ? lng : null;
+      if (!hasExplicitCoords) {
+        if (targetCommune && typeof targetCommune.lat === 'number' && typeof targetCommune.lng === 'number') {
+          resolvedLat = targetCommune.lat;
+          resolvedLng = targetCommune.lng;
+        } else if (targetDistrict && typeof targetDistrict.lat === 'number' && typeof targetDistrict.lng === 'number') {
+          resolvedLat = targetDistrict.lat;
+          resolvedLng = targetDistrict.lng;
+        } else if (provinceEcon && provinceEcon.coordinates) {
+          const parsed = parseCoordinates(provinceEcon.coordinates);
+          if (parsed) {
+            resolvedLat = parsed.lat;
+            resolvedLng = parsed.lng;
+          }
+        }
+      }
+
+      // Mật độ dân số tham chiếu      // Mật độ dân số tham chiếu (người / km²)
       const baseDensity = targetDistrict
         ? targetDistrict.density
         : (provinceEcon.demographics_and_urbanization ? provinceEcon.demographics_and_urbanization.population_density_per_km2 : 2500);
@@ -406,9 +510,9 @@
           radiusMeters: radiusMeters,
           radiusKm: radiusKm,
           areaKm2: Number(circleAreaKm2.toFixed(2)),
-          distanceToDistrictCenterKm: matchedDistanceKm,
-          distanceToCommuneCenterKm: matchedCommuneDistanceKm,
-          userCoords: { lat, lng }
+          distanceToDistrictCenterKm: matchedDistanceKm !== null ? matchedDistanceKm : 0,
+          distanceToCommuneCenterKm: matchedCommuneDistanceKm !== null ? matchedCommuneDistanceKm : 0,
+          userCoords: { lat: resolvedLat, lng: resolvedLng }
         },
         province: {
           id: provinceEcon.historical_id,

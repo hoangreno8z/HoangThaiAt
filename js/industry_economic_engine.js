@@ -1773,13 +1773,33 @@
       if (provinceId) {
         province = econCorpus.find(p => p.historical_id === provinceId || (p.historical_id && p.historical_id.toLowerCase() === provinceId.toLowerCase()));
         if (!province) {
-          const pid = provinceId.toUpperCase();
-          if (pid.includes('SG') || pid.includes('HCM') || pid.includes('HO_CHI_MINH')) {
-            province = econCorpus.find(p => p.historical_id === 'SG_PRE2008');
-          } else if (pid.includes('HN') || pid.includes('HANOI') || pid.includes('HA_NOI')) {
-            province = econCorpus.find(p => p.historical_id === 'HN_PRE2008');
-          } else {
-            province = econCorpus.find(p => p.historical_id.includes(pid) || (p.province_name && p.province_name.toUpperCase().includes(pid)));
+          const upper = provinceId.toUpperCase();
+          const aliasMap = {
+            'VN-SG': 'SG_PRE2008',
+            'VN-HN': 'HN_PRE2008',
+            'VN-DN': 'DN_PRE2008',
+            'VN-CT': 'CT_PRE2008',
+            'VN-HP': 'HP_PRE2008',
+            'VN-HT': 'HT_PRE2008',
+            'VN-DB': 'DB_PRE2008',
+            'VN-BD': 'BD_PRE2008',
+            'VN-DNA': 'DNA_PRE2008',
+            'SG': 'SG_PRE2008',
+            'HN': 'HN_PRE2008',
+            'DN': 'DN_PRE2008',
+            'CT': 'CT_PRE2008',
+            'HP': 'HP_PRE2008',
+            'HT': 'HT_PRE2008'
+          };
+          if (aliasMap[upper]) {
+            province = econCorpus.find(p => p.historical_id === aliasMap[upper]);
+          }
+          if (!province && upper.startsWith('VN-')) {
+            const code = upper.replace('VN-', '');
+            province = econCorpus.find(p => p.historical_id === code + '_PRE2008' || p.historical_id.startsWith(code + '_'));
+          }
+          if (!province) {
+            province = econCorpus.find(p => p.historical_id.toUpperCase().includes(upper) || (p.province_name && p.province_name.toUpperCase().includes(upper)));
           }
         }
       }

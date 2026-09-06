@@ -1669,13 +1669,17 @@ ${reportText}
       { key: 'growth_score', label: 'Tốc Độ Tăng Trưởng Kinh Tế (GRDP)', score: rppi.pillar_scores.growth_score || 70, color: '#8B5CF6' }
     ];
 
-    // Tính toán thử nghiệm ban đầu bán kính 1km tại huyện trung tâm
+    // Tính toán thử nghiệm ban đầu bán kính 1km tại huyện trung tâm và xã đầu tiên
     const engine = (typeof EconomicRadiusEngine !== 'undefined') ? EconomicRadiusEngine : (typeof window !== 'undefined' ? window.EconomicRadiusEngine : null);
+    const initialDistrict = districts.length > 0 ? districts[0] : null;
+    const initialCommune = (initialDistrict && initialDistrict.communes && initialDistrict.communes.length > 0) ? initialDistrict.communes[0] : null;
+
     let initialRadiusEcon = null;
     if (engine && engine.calculateRadiusMarket) {
       initialRadiusEcon = engine.calculateRadiusMarket({
         provinceId: currentProvince.historical_id,
-        districtId: districts.length > 0 ? districts[0].id : null,
+        districtId: initialDistrict ? initialDistrict.id : null,
+        communeId: initialCommune ? initialCommune.id : null,
         radiusMeters: 1000
       });
     }
@@ -1686,7 +1690,8 @@ ${reportText}
     if (indEngine && indEngine.calculateIndustryMarket) {
       initialIndustryEcon = indEngine.calculateIndustryMarket({
         provinceId: currentProvince.historical_id,
-        districtId: districts.length > 0 ? districts[0].id : null,
+        districtId: initialDistrict ? initialDistrict.id : null,
+        communeId: initialCommune ? initialCommune.id : null,
         radiusMeters: this._currentRadiusMeters || 1000,
         industryKey: currentIndKey
       });
@@ -2229,6 +2234,14 @@ ${reportText}
     const engine = (typeof EconomicRadiusEngine !== 'undefined') ? EconomicRadiusEngine : (typeof window !== 'undefined' ? window.EconomicRadiusEngine : null);
     if (!engine || !engine.calculateRadiusMarket) return;
 
+    // Nếu communeId chưa có, đọc từ dropdown xã/phường
+    if (!communeId) {
+      const comSelect = document.getElementById('kinhte-select-commune');
+      if (comSelect && comSelect.value) {
+        communeId = comSelect.value;
+      }
+    }
+
     const res = engine.calculateRadiusMarket({
       provinceId: provinceId,
       districtId: districtId,
@@ -2241,19 +2254,36 @@ ${reportText}
       container.innerHTML = this.renderRadiusResultHtml(res);
     }
 
-    // Đồng thời cập nhật báo cáo ngành nghề theo bán kính và quận/huyện mới
-    this.calculateCustomIndustry(provinceId, districtId, radiusMeters, this._currentIndustryKey || 'CAFE');
+    // Đồng thời cập nhật báo cáo ngành nghề theo bán kính, quận/huyện và xã/phường chính xác
+    this.calculateCustomIndustry(provinceId, districtId, radiusMeters, this._currentIndustryKey || 'CAFE', communeId);
   }
 
-  calculateCustomIndustry(provinceId, districtId, radiusMeters, industryKey) {
+  calculateCustomIndustry(provinceId, districtId, radiusMeters, industryKey, communeId = null) {
     const indEngine = (typeof IndustryEconomicEngine !== 'undefined') ? IndustryEconomicEngine : (typeof window !== 'undefined' ? window.IndustryEconomicEngine : null);
     if (!indEngine || !indEngine.calculateIndustryMarket) return;
     const indKey = industryKey || this._currentIndustryKey || 'CAFE';
     this._currentIndustryKey = indKey;
 
+    // Bảo đảm luôn lấy đúng xã/phường đang được chọn trên giao diện
+    if (!communeId) {
+      const comSelect = document.getElementById('kinhte-select-commune');
+      if (comSelect && comSelect.value) {
+        communeId = comSelect.value;
+      }
+    }
+
+    // Bảo đảm luôn lấy đúng quận/huyện đang được chọn trên giao diện
+    if (!districtId) {
+      const distSelect = document.getElementById('kinhte-select-district');
+      if (distSelect && distSelect.value) {
+        districtId = distSelect.value;
+      }
+    }
+
     const res = indEngine.calculateIndustryMarket({
       provinceId: provinceId,
       districtId: districtId,
+      communeId: communeId,
       radiusMeters: parseInt(radiusMeters || 1000, 10),
       industryKey: indKey
     });
@@ -2268,6 +2298,8 @@ ${reportText}
     this._currentIndustryKey = industryKey;
     const select = document.getElementById('kinhte-select-district');
     const districtId = select ? select.value : null;
+    const comSelect = document.getElementById('kinhte-select-commune');
+    const communeId = comSelect ? comSelect.value : null;
     const radiusMeters = this._currentRadiusMeters || 1000;
 
     // Tự động đóng panel dropdown sau khi chọn
@@ -2306,7 +2338,7 @@ ${reportText}
       b.style.color = match ? '#FBBF24' : '#E2E8F0';
     });
 
-    this.calculateCustomIndustry(provinceId, districtId, radiusMeters, industryKey);
+    this.calculateCustomIndustry(provinceId, districtId, radiusMeters, industryKey, communeId);
 
     // Đồng bộ tên ngành và cập nhật danh sách Lọc Vị Trí Tốt nếu checkbox đang bật
     const targetNameEl = document.getElementById('filter-target-industry-name');
