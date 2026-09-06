@@ -1693,8 +1693,16 @@ ${reportText}
     }
     const industryCatalog = (indEngine && indEngine.getIndustryCatalog) ? indEngine.getIndustryCatalog() : {};
     const currentProfile = industryCatalog[currentIndKey] || industryCatalog.CAFE || {};
-    const mainstreamIndustries = Object.values(industryCatalog).filter(i => i.group === 'mainstream');
-    const emergingIndustries = Object.values(industryCatalog).filter(i => i.group === 'emerging');
+    const industryCategories = [
+      { id: 'FNB_RETAIL', icon: '🍲', title: 'Ẩm Thực & Bán Lẻ Tiêu Dùng' },
+      { id: 'BEAUTY_LIFESTYLE', icon: '💅', title: 'Làm Đẹp & Dịch Vụ Đời Sống' },
+      { id: 'HEALTH_FAMILY', icon: '🩺', title: 'Y Tế & Chăm Sóc Gia Đình' },
+      { id: 'FASHION_ACCESSORIES', icon: '👗', title: 'Thời Trang & Phụ Kiện' },
+      { id: 'AUTO_ENERGY', icon: '🚗', title: 'Xe Cộ, Nhiên Liệu & Năng Lượng' },
+      { id: 'HOME_CONSTRUCTION', icon: '🏠', title: 'Xây Dựng, Nhà Cửa & BĐS' },
+      { id: 'AGRI_PET_NATURE', icon: '🌾', title: 'Nông Nghiệp, Sinh Vật Cảnh & Thể Thao' },
+      { id: 'GOLD_SPIRITUAL', icon: '👑', title: 'Tài Sản & Tâm Linh Truyền Thống' }
+    ];
 
     return `
       <div style="background:rgba(18,24,38,0.75); border:1px solid rgba(16,185,129,0.3); border-radius:12px; padding:1.8rem; margin-bottom:2rem;">
@@ -2087,83 +2095,90 @@ ${reportText}
             </div>
           </div>
 
-          <!-- TAB SWITCHER: 🌟 NGÀNH ĐANG PHÁT TRIỂN vs ⚠️ NGUY CƠ ĐÀO THẢI -->
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.4rem; margin-bottom:1rem; background:rgba(0,0,0,0.3); padding:0.3rem; border-radius:8px; box-sizing:border-box;">
-            <button type="button" id="tab-industry-active-btn" class="industry-tab-btn active" onclick="window.toolUI.switchIndustryTab('active')" style="background:rgba(245,158,11,0.25); border:1px solid #F59E0B; color:#FBBF24; padding:0.5rem 0.6rem; border-radius:6px; font-size:0.82rem; font-weight:700; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:0.3rem; transition:all 0.2s ease;">
+          <!-- TAB SWITCHER: 🌟 NGÀNH ĐANG PHÁT TRIỂN vs ⚠️ NGUY CƠ ĐÀO THẢI (THU GỌN 50%) -->
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.35rem; margin-bottom:0.75rem; background:rgba(0,0,0,0.3); padding:0.25rem; border-radius:6px; box-sizing:border-box;">
+            <button type="button" id="tab-industry-active-btn" class="industry-tab-btn active" onclick="window.toolUI.switchIndustryTab('active')" style="background:rgba(245,158,11,0.2); border:1px solid #F59E0B; color:#FBBF24; padding:0.28rem 0.5rem; border-radius:5px; font-size:0.72rem; font-weight:600; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:0.25rem; transition:all 0.15s ease;">
               <span>🌟 Ngành Đang Phát Triển (DSR)</span>
             </button>
-            <button type="button" id="tab-industry-sunset-btn" class="industry-tab-btn" onclick="window.toolUI.switchIndustryTab('sunset')" style="background:transparent; border:1px solid transparent; color:var(--text-muted); padding:0.5rem 0.6rem; border-radius:6px; font-size:0.82rem; font-weight:700; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:0.3rem; transition:all 0.2s ease;">
+            <button type="button" id="tab-industry-sunset-btn" class="industry-tab-btn" onclick="window.toolUI.switchIndustryTab('sunset')" style="background:transparent; border:1px solid transparent; color:var(--text-muted); padding:0.28rem 0.5rem; border-radius:5px; font-size:0.72rem; font-weight:600; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:0.25rem; transition:all 0.15s ease;">
               <span>⚠️ Nguy Cơ Đào Thải (Sunset)</span>
             </button>
           </div>
 
           <!-- VIEW 1: CÁC NGÀNH ĐANG PHÁT TRIỂN (DSR ENGINE) -->
           <div id="industry-active-view">
-            <!-- Bộ Chọn Ngành Dưới Dạng Menu Xổ / Thu Gọn Gọn Gàng -->
-            <div class="industry-selector-container" style="position:relative; margin-bottom:1rem;">
-              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.35rem; flex-wrap:wrap; gap:0.3rem;">
-                <label style="font-size:0.8rem; color:#FEF3C7; font-weight:600;">Chọn ngành khảo sát (${Object.keys(industryCatalog).length} ngành):</label>
-                <span style="font-size:0.72rem; color:#38BDF8;">6 phổ biến + 7 xu hướng mới</span>
+            <!-- Bộ Chọn Ngành Dưới Dạng Menu Xổ / Thu Gọn Gọn Gàng (Kích thước & nét giảm 50%) -->
+            <div class="industry-selector-container" style="position:relative; margin-bottom:0.6rem;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.3rem; flex-wrap:wrap; gap:0.3rem;">
+                <label style="font-size:0.75rem; color:#FEF3C7; font-weight:600;">Chọn ngành khảo sát (${Object.keys(industryCatalog).length} ngành VSIC 2025):</label>
+                <span style="font-size:0.68rem; color:#38BDF8;">8 nhóm phân loại chuẩn hóa</span>
               </div>
 
-              <!-- Nút Dropdown chính: Hiển thị ngành đang chọn -->
-              <button type="button" id="industry-dropdown-trigger" onclick="window.toolUI.toggleIndustryDropdown()" style="width:100%; display:flex; justify-content:space-between; align-items:center; background:#0F172A; border:1px solid #F59E0B; color:#FEF3C7; padding:0.5rem 0.85rem; border-radius:8px; font-size:0.88rem; font-weight:700; cursor:pointer; min-height:46px; box-sizing:border-box;">
-                <span id="industry-current-label" style="display:flex; align-items:center; gap:0.5rem; text-align:left;">
+              <!-- Nút Dropdown chính: Hiển thị ngành đang chọn (Cao 34px, font 0.78rem, nét thanh thoát) -->
+              <button type="button" id="industry-dropdown-trigger" onclick="window.toolUI.toggleIndustryDropdown()" style="width:100%; display:flex; justify-content:space-between; align-items:center; background:#0F172A; border:1px solid rgba(245,158,11,0.35); color:#FEF3C7; padding:0.32rem 0.65rem; border-radius:6px; font-size:0.78rem; font-weight:600; cursor:pointer; min-height:34px; box-sizing:border-box;">
+                <span id="industry-current-label" style="display:flex; align-items:center; gap:0.4rem; text-align:left;">
                   <span>${currentProfile.icon || '☕'}</span>
-                  <span style="color:#FBBF24;">${currentProfile.name || 'Cà Phê'}</span>
-                  <span style="font-size:0.72rem; color:var(--text-muted); font-weight:500;">(VSIC ${currentProfile.vsic_code || '56302'})</span>
+                  <span style="color:#FBBF24; font-weight:600;">${currentProfile.name || 'Cà Phê'}</span>
+                  <span style="font-size:0.7rem; color:var(--text-muted); font-weight:400;">(VSIC ${currentProfile.vsic_code || '56302'})</span>
                 </span>
-                <span id="industry-dropdown-icon" style="color:#F59E0B; font-size:0.8rem; white-space:nowrap; margin-left:0.4rem;">▾ Chọn ngành</span>
+                <span id="industry-dropdown-icon" style="color:#F59E0B; font-size:0.72rem; white-space:nowrap; margin-left:0.4rem;">▾ Chọn ngành</span>
               </button>
 
-              <!-- Menu xổ ra (Collapsible Dropdown Panel) -->
-              <div id="industry-dropdown-panel" style="display:none; position:relative; z-index:30; background:#0B0F19; border:1px solid rgba(245,158,11,0.4); border-radius:8px; padding:0.75rem; margin-top:0.4rem; box-shadow:0 10px 25px -5px rgba(0,0,0,0.7); box-sizing:border-box;">
+              <!-- Menu xổ ra (Collapsible Dropdown Panel - Phân 8 Nhóm Ngành Chuẩn VSIC) -->
+              <div id="industry-dropdown-panel" style="display:none; position:relative; z-index:30; background:#0B0F19; border:1px solid rgba(245,158,11,0.35); border-radius:6px; padding:0.65rem; margin-top:0.35rem; box-shadow:0 8px 20px -4px rgba(0,0,0,0.7); box-sizing:border-box;">
                 <!-- Ô tìm kiếm realtime có dấu / không dấu -->
-                <div style="margin-bottom:0.7rem;">
-                  <input type="text" id="industry-search-input" placeholder="🔍 Gõ tìm ngành (vd: pickleball, pet, xe điện, cafe...)" oninput="window.toolUI.filterIndustryDropdown(this.value)" style="width:100%; box-sizing:border-box; background:#0F172A; border:1px solid rgba(255,255,255,0.2); color:#FEF3C7; padding:0.45rem 0.75rem; border-radius:6px; font-size:16px; outline:none;">
+                <div style="margin-bottom:0.6rem;">
+                  <input type="text" id="industry-search-input" placeholder="🔍 Gõ tìm nhanh ngành (vd: tóc nam, vàng, phân bón, bđs, cafe...)" oninput="window.toolUI.filterIndustryDropdown(this.value)" style="width:100%; box-sizing:border-box; background:#0F172A; border:1px solid rgba(255,255,255,0.18); color:#FEF3C7; padding:0.38rem 0.65rem; border-radius:5px; font-size:16px; outline:none;">
                 </div>
 
-                <!-- Nhóm 1: Ngành Trọng Điểm Phổ Biến Toàn Quốc -->
-                <div class="industry-group-section" style="margin-bottom:0.75rem;">
-                  <div style="font-size:0.74rem; font-weight:700; color:#38BDF8; text-transform:uppercase; margin-bottom:0.4rem; display:flex; align-items:center; gap:0.3rem;">
-                    <span>🏢 Ngành Trọng Điểm Phổ Biến Toàn Quốc</span>
-                    <span style="font-size:0.68rem; color:var(--text-muted); font-weight:normal;">(6 ngành)</span>
-                  </div>
-                  <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(140px, 1fr)); gap:0.35rem;">
-                    ${mainstreamIndustries.map(ind => `
-                      <button type="button" class="industry-opt-btn" data-id="${ind.id}" data-name="${ind.name}" data-short="${ind.shortName}" onclick="window.toolUI.selectIndustryAndCalculate('${currentProvince.historical_id}', '${ind.id}')" style="background:${ind.id === currentIndKey ? 'rgba(245,158,11,0.25)' : 'rgba(255,255,255,0.04)'}; border:1px solid ${ind.id === currentIndKey ? '#F59E0B' : 'rgba(255,255,255,0.1)'}; color:${ind.id === currentIndKey ? '#FBBF24' : '#E2E8F0'}; padding:0.4rem 0.55rem; border-radius:6px; font-size:0.76rem; font-weight:600; cursor:pointer; display:flex; align-items:center; gap:0.35rem; text-align:left;">
-                        <span>${ind.icon}</span>
-                        <span style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${ind.shortName}</span>
-                      </button>
-                    `).join('')}
-                  </div>
-                </div>
-
-                <!-- Nhóm 2: Ngành Đang Phát Triển & Xu Hướng Mới -->
-                <div class="industry-group-section">
-                  <div style="font-size:0.74rem; font-weight:700; color:#34D399; text-transform:uppercase; margin-bottom:0.4rem; display:flex; align-items:center; gap:0.3rem;">
-                    <span>🚀 Ngành Đang Phát Triển & Xu Hướng Mới</span>
-                    <span style="font-size:0.68rem; color:var(--text-muted); font-weight:normal;">(7 ngành)</span>
-                  </div>
-                  <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(140px, 1fr)); gap:0.35rem;">
-                    ${emergingIndustries.map(ind => `
-                      <button type="button" class="industry-opt-btn" data-id="${ind.id}" data-name="${ind.name}" data-short="${ind.shortName}" onclick="window.toolUI.selectIndustryAndCalculate('${currentProvince.historical_id}', '${ind.id}')" style="background:${ind.id === currentIndKey ? 'rgba(245,158,11,0.25)' : 'rgba(255,255,255,0.04)'}; border:1px solid ${ind.id === currentIndKey ? '#F59E0B' : 'rgba(255,255,255,0.1)'}; color:${ind.id === currentIndKey ? '#FBBF24' : '#E2E8F0'}; padding:0.4rem 0.55rem; border-radius:6px; font-size:0.76rem; font-weight:600; cursor:pointer; display:flex; align-items:center; gap:0.35rem; text-align:left;">
-                        <span>${ind.icon}</span>
-                        <span style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${ind.shortName}</span>
-                      </button>
-                    `).join('')}
-                  </div>
+                <!-- 8 Nhóm Danh Mục Ngành Nghề -->
+                <div id="industry-categories-wrapper" style="display:flex; flex-direction:column; gap:0.65rem; max-height:420px; overflow-y:auto; padding-right:0.2rem; scrollbar-width:thin;">
+                  ${industryCategories.map(cat => {
+                    const items = Object.values(industryCatalog).filter(i => (i.category === cat.id) || (cat.id === 'FNB_RETAIL' && !i.category && i.group === 'mainstream') || (cat.id === 'BEAUTY_LIFESTYLE' && !i.category && i.id === 'NAIL'));
+                    if (!items.length) return '';
+                    return `
+                      <div class="industry-group-section">
+                        <div style="font-size:0.7rem; font-weight:700; color:#38BDF8; text-transform:uppercase; margin-bottom:0.3rem; display:flex; align-items:center; gap:0.3rem;">
+                          <span>${cat.icon} ${cat.title}</span>
+                          <span style="font-size:0.65rem; color:var(--text-muted); font-weight:normal;">(${items.length})</span>
+                        </div>
+                        <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(135px, 1fr)); gap:0.3rem;">
+                          ${items.map(ind => `
+                            <button type="button" class="industry-opt-btn" data-id="${ind.id}" data-name="${ind.name}" data-short="${ind.shortName}" onclick="window.toolUI.selectIndustryAndCalculate('${currentProvince.historical_id}', '${ind.id}')" style="background:${ind.id === currentIndKey ? 'rgba(245,158,11,0.22)' : 'rgba(255,255,255,0.03)'}; border:0.5px solid ${ind.id === currentIndKey ? '#F59E0B' : 'rgba(255,255,255,0.08)'}; color:${ind.id === currentIndKey ? '#FBBF24' : '#E2E8F0'}; padding:0.26rem 0.42rem; border-radius:4px; font-size:0.72rem; font-weight:500; cursor:pointer; display:flex; align-items:center; gap:0.3rem; text-align:left;">
+                              <span>${ind.icon}</span>
+                              <span style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${ind.shortName}</span>
+                            </button>
+                          `).join('')}
+                        </div>
+                      </div>
+                    `;
+                  }).join('')}
                 </div>
               </div>
 
-              <!-- Quick-Chips Nhỏ Gọn (Thanh chọn nhanh 1 chạm kích thước nhỏ) -->
-              <div style="display:flex; gap:0.35rem; overflow-x:auto; padding:0.45rem 0 0.15rem 0; scrollbar-width:thin;">
-                <span style="font-size:0.72rem; color:var(--text-muted); white-space:nowrap; align-self:center; margin-right:0.15rem;">Chọn nhanh:</span>
+              <!-- Quick-Chips Nhỏ Gọn (Thanh chọn nhanh 1 chạm kích thước nhỏ & mảnh) -->
+              <div style="display:flex; gap:0.28rem; overflow-x:auto; padding:0.35rem 0 0.1rem 0; scrollbar-width:thin;">
+                <span style="font-size:0.68rem; color:var(--text-muted); white-space:nowrap; align-self:center; margin-right:0.1rem;">Chọn nhanh:</span>
                 ${Object.values(industryCatalog).map(ind => `
-                  <button type="button" class="industry-chip-btn" data-chip="${ind.id}" onclick="window.toolUI.selectIndustryAndCalculate('${currentProvince.historical_id}', '${ind.id}')" style="background:${ind.id === currentIndKey ? 'rgba(245,158,11,0.25)' : 'rgba(255,255,255,0.05)'}; border:1px solid ${ind.id === currentIndKey ? '#F59E0B' : 'rgba(255,255,255,0.12)'}; color:${ind.id === currentIndKey ? '#FBBF24' : '#CBD5E1'}; padding:0.25rem 0.55rem; border-radius:15px; font-size:12px; font-weight:600; white-space:nowrap; cursor:pointer; flex-shrink:0;">
+                  <button type="button" class="industry-chip-btn" data-chip="${ind.id}" onclick="window.toolUI.selectIndustryAndCalculate('${currentProvince.historical_id}', '${ind.id}')" style="background:${ind.id === currentIndKey ? 'rgba(245,158,11,0.22)' : 'rgba(255,255,255,0.04)'}; border:0.5px solid ${ind.id === currentIndKey ? '#F59E0B' : 'rgba(255,255,255,0.1)'}; color:${ind.id === currentIndKey ? '#FBBF24' : '#CBD5E1'}; padding:0.15rem 0.42rem; border-radius:12px; font-size:11px; font-weight:500; white-space:nowrap; cursor:pointer; flex-shrink:0;">
                     <span>${ind.icon}</span> ${ind.shortName}
                   </button>
                 `).join('')}
+              </div>
+            </div>
+
+            <!-- BỘ CÔNG CỤ MỚI: LỌC VỊ TRÍ TỐT (SPATIAL OPPORTUNITY MATCHER) -->
+            <!-- Vị trí: Đặt ngay dưới nút chọn ngành theo đúng yêu cầu người dùng -->
+            <div id="filter-good-location-box" style="background:rgba(16,185,129,0.05); border:1px solid rgba(16,185,129,0.25); border-radius:8px; padding:0.55rem 0.75rem; margin:0.6rem 0; font-size:0.75rem; box-sizing:border-box;">
+              <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.35rem;">
+                <label style="display:flex; align-items:center; gap:0.45rem; cursor:pointer; font-weight:600; color:#34D399;">
+                  <input type="checkbox" id="toggle-filter-good-location" onchange="window.toolUI.toggleFilterGoodLocation('${currentProvince.historical_id}', this.checked)" style="accent-color:#10B981; width:15px; height:15px; cursor:pointer;">
+                  <span>🎯 Lọc vị trí tốt cho ngành <span id="filter-target-industry-name" style="color:#FEF3C7; font-weight:700;">${currentProfile.name || 'Cà Phê'}</span></span>
+                </label>
+                <span style="font-size:0.68rem; color:var(--text-muted);">Tự động quét quận/huyện/xã phù hợp nhất</span>
+              </div>
+              <div id="filter-good-location-results" style="display:none; margin-top:0.55rem; border-top:1px dashed rgba(255,255,255,0.08); padding-top:0.5rem;">
+                <!-- Kết quả gợi ý Top 5 vị trí hiển thị ở đây -->
               </div>
             </div>
 
@@ -2292,7 +2307,111 @@ ${reportText}
     });
 
     this.calculateCustomIndustry(provinceId, districtId, radiusMeters, industryKey);
+
+    // Đồng bộ tên ngành và cập nhật danh sách Lọc Vị Trí Tốt nếu checkbox đang bật
+    const targetNameEl = document.getElementById('filter-target-industry-name');
+    if (targetNameEl && profile) {
+      targetNameEl.textContent = profile.name;
+    }
+    const filterToggle = document.getElementById('toggle-filter-good-location');
+    if (filterToggle && filterToggle.checked) {
+      this.renderGoodLocationResults(provinceId, industryKey);
+    }
   }
+  toggleFilterGoodLocation(provinceId, checked) {
+    const resBox = document.getElementById('filter-good-location-results');
+    if (!resBox) return;
+    if (checked) {
+      resBox.style.display = 'block';
+      this.renderGoodLocationResults(provinceId, this._currentIndustryKey || 'CAFE');
+    } else {
+      resBox.style.display = 'none';
+    }
+  }
+
+  renderGoodLocationResults(provinceId, industryKey) {
+    const resBox = document.getElementById('filter-good-location-results');
+    if (!resBox) return;
+
+    const indEngine = (typeof IndustryEconomicEngine !== 'undefined') ? IndustryEconomicEngine : (typeof window !== 'undefined' ? window.IndustryEconomicEngine : null);
+    if (!indEngine || !indEngine.findBestLocationsForIndustry) {
+      resBox.innerHTML = '<div style="color:var(--text-muted); padding:0.4rem;">Chưa có dữ liệu động cơ vị trí.</div>';
+      return;
+    }
+
+    const currentKey = industryKey || this._currentIndustryKey || 'CAFE';
+    const profile = indEngine.getIndustryProfile ? indEngine.getIndustryProfile(currentKey) : null;
+    const list = indEngine.findBestLocationsForIndustry({
+      provinceId: provinceId,
+      industryKey: currentKey,
+      limit: 5
+    });
+
+    if (!list || !list.length) {
+      resBox.innerHTML = '<div style="color:var(--text-muted); padding:0.4rem;">Chưa tìm thấy khu vực tối ưu cho ngành này.</div>';
+      return;
+    }
+
+    resBox.innerHTML = `
+      <div style="font-size:0.72rem; color:#A7F3D0; margin-bottom:0.45rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.25rem;">
+        <span>Gợi ý Top ${list.length} địa bàn tối ưu nhất cho ngành <strong>${profile ? profile.shortName : ''}</strong>:</span>
+        <span style="font-size:0.65rem; color:var(--text-muted);">Dựa trên nhân khẩu học, thu nhập & khoảng trống cạnh tranh</span>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:0.45rem;">
+        ${list.map((loc, idx) => `
+          <div class="good-location-card" style="background:rgba(255,255,255,0.02); border:1px solid rgba(16,185,129,0.2); border-radius:6px; padding:0.55rem 0.7rem; display:flex; flex-direction:column; justify-content:space-between; gap:0.35rem; box-sizing:border-box;">
+            <div>
+              <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:0.3rem;">
+                <div>
+                  <div style="font-size:0.84rem; font-weight:700; color:#FEF3C7;">
+                    #${idx + 1}. ${loc.districtName}
+                  </div>
+                  ${loc.communeName ? `<div style="font-size:0.68rem; color:#34D399; margin-top:1px;">Trọng điểm: ${loc.communeName}</div>` : ''}
+                </div>
+                <span style="font-size:0.7rem; font-weight:700; color:${loc.tierColor}; background:${loc.tierColor}18; border:1px solid ${loc.tierColor}44; padding:0.12rem 0.4rem; border-radius:4px; white-space:nowrap;">
+                  Độ phù hợp ${loc.score}%
+                </span>
+              </div>
+              <div style="font-size:0.68rem; color:#94A3B8; margin-top:0.3rem; line-height:1.4;">
+                ${loc.reasons.map(r => `<div>• ${r}</div>`).join('')}
+              </div>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:0.25rem; pt:0.25rem; border-top:1px dashed rgba(255,255,255,0.06); font-size:0.68rem; color:var(--text-muted);">
+              <span>Dân số: ${(loc.keyMetrics.pop || 0).toLocaleString('vi-VN')}</span>
+              <button type="button" class="good-location-btn" onclick="window.toolUI.selectGoodLocation('${provinceId}', '${loc.districtId}', '${loc.communeId || ''}')" style="background:rgba(16,185,129,0.18); border:1px solid #10B981; color:#34D399; padding:0.22rem 0.5rem; border-radius:4px; font-size:0.7rem; font-weight:600; cursor:pointer; display:flex; align-items:center; gap:0.25rem;">
+                <span>🎯 Chọn Khảo Sát Bán Kính</span>
+              </button>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+  }
+
+  selectGoodLocation(provinceId, districtId, communeId) {
+    const selectDistrict = document.getElementById('kinhte-select-district');
+    if (selectDistrict) {
+      selectDistrict.value = districtId;
+      this.onDistrictChange(provinceId);
+    }
+    if (communeId) {
+      setTimeout(() => {
+        const selectCommune = document.getElementById('kinhte-select-commune');
+        if (selectCommune) {
+          selectCommune.value = communeId;
+        }
+      }, 50);
+    }
+    const radiusMeters = this._currentRadiusMeters || 1000;
+    this.calculateCustomRadius(provinceId, districtId, radiusMeters, communeId || null);
+
+    // Cuộn mượt đến bộ công cụ bán kính để người dùng xem kết quả chi tiết
+    const el = document.getElementById('kinhte-radius-engine-block');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
 
   switchIndustryTab(tabName) {
     const activeView = document.getElementById('industry-active-view');

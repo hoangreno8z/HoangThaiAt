@@ -29,16 +29,12 @@ function runTest(desc, testFn) {
   }
 }
 
-// 1. Kiểm tra Danh mục Ngành nghề VSIC 2025 (13 ngành: 6 phổ biến + 7 xu hướng mới)
-runTest('Danh mục hồ sơ 13 ngành nghề kinh doanh chuẩn hóa VSIC 2025 (6 phổ biến + 7 xu hướng mới)', () => {
+// 1. Kiểm tra Danh mục Ngành nghề VSIC 2025 (Đầy đủ 40 ngành kinh tế thực tế theo 8 nhóm phân loại)
+runTest('Danh mục hồ sơ 40 ngành nghề kinh doanh chuẩn hóa VSIC 2025 (8 nhóm danh mục)', () => {
   const catalog = industryEngine.getIndustryCatalog();
-  const mainstreamKeys = ['CAFE', 'NAIL', 'NHA_HANG_FNB', 'SPA_BEAUTY', 'TIEN_LOI', 'NHA_THUOC'];
-  const emergingKeys = ['PICKLEBALL', 'PET_CARE', 'TRAM_SAC_EV', 'GIAT_SAY_TU_DONG', 'TRA_SUA_HOT_TREND', 'COWORKING_STUDY', 'BAKERY_PASTRY'];
-  const allExpectedKeys = [...mainstreamKeys, ...emergingKeys];
+  assert.strictEqual(Object.keys(catalog).length, 40, 'Phải đủ đúng 40 ngành kinh doanh');
   
-  assert.strictEqual(Object.keys(catalog).length, 13, 'Phải đủ đúng 13 ngành kinh doanh');
-  
-  allExpectedKeys.forEach(k => {
+  Object.keys(catalog).forEach(k => {
     const p = catalog[k];
     assert.ok(p, `Ngành ${k} phải tồn tại`);
     assert.ok(p.vsic_code, `Ngành ${k} phải có mã VSIC`);
@@ -47,13 +43,20 @@ runTest('Danh mục hồ sơ 13 ngành nghề kinh doanh chuẩn hóa VSIC 2025 
     assert.ok(p.survival_rates.over_2y > 0, `Ngành ${k} phải có tỷ lệ trụ vững > 2 năm`);
     assert.ok(Array.isArray(p.suitable_models) && p.suitable_models.length > 0, `Ngành ${k} phải có danh sách mô hình đề xuất`);
     assert.ok(p.fengshui_affinity.length > 0, `Ngành ${k} phải có khẩu quyết phong thủy vị trí`);
+    assert.ok(p.matchCriteria, `Ngành ${k} phải có bộ tiêu chí vị trí tối ưu (matchCriteria)`);
+    assert.ok(p.category, `Ngành ${k} phải thuộc 1 trong 8 nhóm phân loại chuẩn`);
   });
 
+  // Kiểm tra mã chuẩn VSIC 2025 của các ngành tiêu biểu
   assert.strictEqual(catalog.CAFE.vsic_code, '56302', 'Cà phê mã VSIC 56302');
   assert.strictEqual(catalog.NAIL.vsic_code, '96220', 'Nail mã VSIC 96220');
-  assert.strictEqual(catalog.PICKLEBALL.vsic_code, '93110', 'Pickleball mã VSIC 93110');
-  assert.strictEqual(catalog.TRAM_SAC_EV.vsic_code, '45200', 'Trạm sạc EV mã VSIC 45200');
-  assert.strictEqual(catalog.PET_CARE.vsic_code, '96099', 'Thú cưng mã VSIC 96099');
+  assert.strictEqual(catalog.TOC_NAM_BARBER.vsic_code, '96220', 'Tóc nam mã VSIC 96220');
+  assert.strictEqual(catalog.TIEM_VANG.vsic_code, '47732', 'Tiệm vàng mã VSIC 47732');
+  assert.strictEqual(catalog.CAY_XANG.vsic_code, '47300', 'Cây xăng mã VSIC 47300');
+  assert.strictEqual(catalog.BAT_DONG_SAN.vsic_code, '68200', 'Bất động sản mã VSIC 68200');
+  assert.strictEqual(catalog.PHONG_KHAM_DA_KHOA.vsic_code, '86201', 'Phòng khám đa khoa mã VSIC 86201');
+  assert.strictEqual(catalog.PHAN_BON_BVTV.vsic_code, '47731', 'Phân bón & BVTV mã VSIC 47731');
+  assert.strictEqual(catalog.SHOWROOM_O_TO.vsic_code, '45111', 'Showroom ô tô mã VSIC 45111');
 });
 
 // 2. Kiểm tra tính toán Cà phê (CAFE) tại Hà Nội - Hoàn Kiếm (1km)
@@ -286,6 +289,50 @@ runTest('Phân hệ Cảnh báo Ngành có nguy cơ đào thải (Sunset Industr
   const bangDia = industryEngine.getSunsetIndustryProfile('CD_BANG_DIA_SACH_BAO');
   assert.strictEqual(bangDia.riskScore, 96);
   assert.strictEqual(bangDia.riskLevel, 'Báo Động Đỏ');
+});
+
+// 11. Kiểm tra Thuật toán Gợi ý Tối ưu Vị trí (Spatial Opportunity Engine - Lọc Vị Trí Tốt)
+runTest('Bộ công cụ Lọc vị trí tốt: Tự động quét địa bàn tối ưu theo nhân khẩu học, sức mua & khoảng trống cạnh tranh', () => {
+  // 11.1 Ngành nông nghiệp (Phân bón & BVTV) tại TP.HCM -> Phải ưu tiên các huyện ngoại thành có diện tích nông nghiệp lớn
+  const agriList = industryEngine.findBestLocationsForIndustry({
+    provinceId: 'VN-SG',
+    industryKey: 'PHAN_BON_BVTV',
+    limit: 5
+  });
+  assert.ok(Array.isArray(agriList) && agriList.length === 5, 'Phải trả về 5 địa bàn tối ưu cho phân bón');
+  assert.ok(agriList[0].score >= 90, 'Huyện nông nghiệp hàng đầu phải có điểm phù hợp >= 90%');
+  const agriDistrictNames = agriList.map(l => l.districtName);
+  assert.ok(agriDistrictNames.some(n => n.includes('Củ Chi') || n.includes('Hóc Môn') || n.includes('Bình Chánh')), 'Ngành phân bón phải gợi ý các huyện nông nghiệp Củ Chi / Hóc Môn / Bình Chánh');
+  assert.ok(agriList[0].reasons.length > 0, 'Phải có danh sách lý do cụ thể');
+
+  // 11.2 Ngành Hớt tóc nam (TOC_NAM_BARBER) tại TP.HCM -> Dân số nam đông, khoảng trống cạnh tranh
+  const barberList = industryEngine.findBestLocationsForIndustry({
+    provinceId: 'VN-SG',
+    industryKey: 'TOC_NAM_BARBER',
+    limit: 5
+  });
+  assert.ok(barberList.length === 5, 'Phải trả về 5 địa bàn cho tóc nam');
+  assert.ok(barberList[0].score >= 80, 'Điểm phù hợp tóc nam >= 80%');
+  assert.ok(barberList[0].reasons.some(r => r.includes('nam') || r.includes('cạnh tranh')), 'Phải có tiêu chí nam giới hoặc cạnh tranh');
+
+  // 11.3 Ngành Nail & Móng (NAIL) tại TP.HCM -> Dân số nữ đông, thu nhập & tiêu dùng
+  const nailList = industryEngine.findBestLocationsForIndustry({
+    provinceId: 'VN-SG',
+    industryKey: 'NAIL',
+    limit: 5
+  });
+  assert.ok(nailList.length === 5, 'Phải trả về 5 địa bàn cho nail');
+  assert.ok(nailList[0].reasons.some(r => r.includes('nữ') || r.includes('làm đẹp') || r.includes('cạnh tranh')), 'Phải có tiêu chí nữ giới');
+
+  // 11.4 Ngành Showroom Ô tô (SHOWROOM_O_TO) tại TP.HCM -> Ưu tiên quận có thu nhập cao & trục lộ giao thông lớn
+  const autoList = industryEngine.findBestLocationsForIndustry({
+    provinceId: 'VN-SG',
+    industryKey: 'SHOWROOM_O_TO',
+    limit: 5
+  });
+  assert.ok(autoList.length === 5, 'Phải trả về 5 địa bàn cho showroom ô tô');
+  const autoDistrictNames = autoList.map(l => l.districtName);
+  assert.ok(autoDistrictNames.some(n => n.includes('Quận 7') || n.includes('Thủ Đức') || n.includes('Quận 1') || n.includes('Quận 12')), 'Showroom ô tô phải ưu tiên quận phát triển/đại lộ');
 });
 
 console.log(`\n========================================`);
