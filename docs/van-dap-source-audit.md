@@ -307,6 +307,50 @@ Ngày đối chiếu: 2026-09-06. Phạm vi: **Chân Hư Tương Phối, câu 61
 | 69 | Thủy Khẩu Sa Hệ (tự xưng) | Câu Hán AI tự chế nhãn, giải thích lẫn lộn la tinh | 《水龍經》, 《葬書》 | VERIFIED | Dẫn đúng nguyên văn Thủy Long Kinh & Táng Thư, phân tích hệ tiêu năng giảm vận tốc dòng chảy, giải pháp cầu tàu an toàn |
 | 70 | Phù Ấn Quyết (tự xưng) | Câu Hán AI tự ghép nhãn, dọa đỗ đầu thi cử sáo rỗng | 《雪心賦》, 《水龍經》 | VERIFIED | Khảo chứng câu chuẩn trong Tuyết Tâm Phú & Thủy Long Kinh, phân tích đê chắn sóng tự nhiên và vi khí hậu sinh thái |
 
+---
+
+# Kiểm toán nguồn Vấn đáp — Chương 08
+
+Ngày đối chiếu: 2026-09-06. Phạm vi: **Địa Cốt Trồi Sụt, câu 71–80**. Không triển khai chương kế tiếp.
+
+## Điểm khôi phục và kiểm kê
+
+- Repository: https://github.com/hoangreno8z/HoangThaiAt ; nhánh triển khai: `main`.
+- Điểm kiểm tra release Chương 7: `b74879a` (chứa đầy đủ Chương 1, 2, 3, 4, 5, 6, 7 đã nghiệm thu).
+- Nhánh dự phòng: `backup/van-dap-ch08-b74879a`. Dùng nhánh này để xem bản trước; nếu cần hoàn tác production, tạo commit revert cho commit sửa chương rồi triển khai theo luồng hiện có.
+- Dữ liệu: `js/hoidap_data.js`, `data/hoidap_data.json`, `window.HOIDAP_CHAPTERS`, `window.HOIDAP_DATA`.
+- Bộ hiển thị: `js/hoidap_ui.js` (hỗ trợ `renderReviewedBody` cho tất cả câu có `sources[]`, cập nhật hero description Chương 8), CSS: `css/hoidap.css`; route hiện hữu: `#/van-dap`.
+- Kiểm kê: 100 câu; chương 8 đúng 10 câu với ID 71–80. Danh mục chương, Chương 1 (câu 01–10), Chương 2 (câu 11–20), Chương 3 (câu 21–30), Chương 4 (câu 31–40), Chương 5 (câu 41–50), Chương 6 (câu 51–60), Chương 7 (câu 61–70) và 20 đối tượng câu 81–100 được kiểm tra bằng so sánh sâu với SHA release Chương 7 và SHA baseline ban đầu.
+
+| ID | Tiêu đề giữ lại | Trọng tâm cần sửa | Phạm vi trường phái |
+|---|---|---|---|
+| 71 | Hãm Địa Sát | Nền nhà thấp trũng sâu hơn mặt đường lộ; bẫy tụ khí CO2/ẩm mốc và rủi ro ngập úng tràn ngược | Hoàng Đế Trạch Kinh, Tuyết Tâm Phú; tam cấp nâng cốt nền, mương thu nước ngầm rãnh sỏi và bơm tự động |
+| 72 | Triều Tịch Động | Nền đất ven sông biển chịu chấn động thủy triều; biến động áp lực nước lỗ rỗng và xâm nhập mặn | Táng Thư, Thủy Long Kinh; móng cọc sâu qua tầng bùn, màng chống thấm bentonite và bể tự hoại composite |
+| 73 | Tiễn Đài Sát | Nhà xây trên mỏm đất dốc nhô cao cắt xén; xói mòn rửa trôi sườn dốc và hiệu ứng vi khí hậu gió lộng | Dương Trạch Tập Thành, Táng Thư; tường chắn bê tông rọ đá tiêu năng, hệ thống thoát nước mái dốc và thảm cỏ giữ đất |
+| 74 | Trệ Khí Thủy | Vũng nước tù đọng ô nhiễm hôi hám sát nách nhà; phân hủy kỵ khí sinh H2S và phát sinh mầm bệnh muỗi mạt | Tuyết Tâm Phú, Thủy Long Kinh; san lấp đáy trũng đầm nén, rãnh xương cá thoát nước và trồng thủy sinh lọc nước |
+| 75 | Chấn Động Sát | Nhà cạnh tuyến đường sắt hay trọng tải nặng chấn động; vi rung chấn chu kỳ mỏi nứt móng và ô nhiễm tiếng ồn | Táng Thư, Tuyết Tâm Phú; rãnh cắt rung chấn chèn cao su bọt khí, móng bè đệm cát và tường kính cách âm hai lớp |
+| 76 | Tà Thác Sát | Nền đất trồi sụt không đều lồi lõm sườn đồi; chuyển vị trượt trượt dốc và ứng suất cắt không đồng nhất | Tuyết Tâm Phú, Thủy Long Kinh; khảo sát địa chất móng cọc ngàm đá, kết cấu khung giằng đàn hồi và giật cấp theo dốc |
+| 77 | Đáy Hư Sát | Nhà xây trùm lên hệ thống cống ngầm, hầm rỗng; sụt lún rỗng đáy móng và hơi khí metan xông ngược | Táng Thư, Hoàng Đế Trạch Kinh; dầm giằng chuyển lực độc lập bắc cầu, sàn bê tông cốt thép chống thấm và ống thông hơi |
+| 78 | Đoạn Khí Thủy | Khe rãnh xói mòn đứt đoạn cắt ngang minh đường; dòng chảy mặt xói mòn mạch đất và ngắt quãng vi khí hậu | Thủy Long Kinh, Táng Thư; cống hộp ngầm liền mạch, hoàn trả mặt bằng lát gạch tự chèn và thảm cây cỏ tự nhiên |
+| 79 | Quy Đường Thủy | Địa thế lòng chảo tụ thủy trung tâm tự nhiên; cơ chế lắng tụ dưỡng khí hiền hòa và tuần hoàn nước ngầm | Hoàng Đế Trạch Kinh, Táng Thư; mương tràn kiểm soát cao độ mực nước, cảnh quan hồ sinh thái và kè đá lát bậc |
+| 80 | Hạc Tất Thủy | Dòng nước hoặc rãnh thoát phình to giữa thắt nghẽn hai đầu; nút thắt thủy lực tăng áp đột ngột và xoáy lở | Tuyết Tâm Phú, Địa Lý Ngũ Quyết; nạo vét mở rộng cổ thắt tiết diện đều, nắn thoải dòng uốn lượn và bờ kè cỏ vát nghiêng |
+
+## Nhật ký kiểm chứng từng câu
+
+| ID | Nguồn cũ | Vấn đề | Nguồn xác minh | Mức độ | Thay đổi |
+|---|---|---|---|---|---|
+| 71 | Táng Thư (ghép) | Trích đoạn chung chung không sát địa thế hãm địa trũng thấp | 《黃帝宅經》 (Tổng luận), 《雪心賦》 | VERIFIED | Dẫn đúng kinh văn Hoàng Đế Trạch Kinh & Tuyết Tâm Phú, phân tích bẫy khí nặng CO2 và ẩm ướt, giải pháp tam cấp nâng cốt |
+| 72 | Táng Thư (ghép) | Thiếu phân tích cơ học đất và biến động thủy triều bão hòa | 《葬書》, 《水龍經》 | VERIFIED | Khôi phục câu chuẩn Táng Thư & Thủy Long Kinh, giải mã áp lực nước lỗ rỗng và độ ẩm biến thiên, đề xuất móng cọc và màng bentonite |
+| 73 | Địa Lý Ngũ Quyết (ghép) | Trích ghép lỏng lẻo, dọa dẫm trơ trọi cô độc chung chung | 《陽宅集成》, 《葬書》 | VERIFIED | Dẫn đúng Dương Trạch Tập Thành & Táng Thư, phân tích xói lở trượt dốc và phong sát thổi thốc, giải pháp rọ đá kè giằng |
+| 74 | Táng Thư (ghép) | Thiếu kinh văn chuẩn về nước đọng tù hãm và độc học | 《雪心賦》, 《水龍經》 | VERIFIED | Trích đúng nguyên văn Tuyết Tâm Phú & Thủy Long Kinh, phân tích bốc mùi yếm khí H2S và mầm bệnh vi sinh, giải pháp san lấp rãnh ngầm |
+| 75 | Táng Thư (ghép) | Dính nhãn tự chế, thiếu phân tích tải trọng động và rung chấn | 《葬書》, 《雪心賦》 | VERIFIED | Khôi phục nguyên văn cổ thư, phân tích hiện tượng mỏi kết cấu và sóng cơ học truyền qua đất, đề xuất rãnh tiêu chấn cách ly |
+| 76 | Tuyết Tâm Phú (ghép) | Trích đoạn vụn vặt, không làm rõ cơ chế ứng suất cắt sườn đồi | 《雪心賦》, 《水龍經》 | VERIFIED | Dẫn đúng kinh văn Tuyết Tâm Phú & Thủy Long Kinh, phân tích sụt lún không đều và lực trượt trượt dốc, giải pháp móng cọc ngàm đá |
+| 77 | Táng Thư (ghép) | Dính nhãn cồng kềnh, dọa rỗng ruột ma quái | 《葬書》, 《黃帝宅經》 | VERIFIED | Dẫn đúng chính văn Táng Thư & Hoàng Đế Trạch Kinh, phân tích xói ngầm rỗng đáy và rò rỉ khí độc metan, giải pháp đà giằng cầu vượt |
+| 78 | Thủy Long Kinh (ghép) | Dính nhãn tự chế, giải thích thiếu chiều sâu dòng chảy mặt | 《水龍經》, 《葬書》 | VERIFIED | Khôi phục kinh điển Thủy Long Kinh & Táng Thư, phân tích cắt đứt dòng ngầm và xói mòn rãnh sâu, giải pháp cống luồn thu nước kín |
+| 79 | Táng Thư (ghép) | Thiếu kinh văn chuyên sâu về minh đường lòng chảo tụ thủy | 《黃帝宅經》 (Tổng luận), 《葬書》 | VERIFIED | Trích đúng câu chuẩn Hoàng Đế Trạch Kinh & Táng Thư, phân tích sinh thái đầm nước điều hòa và tích lũy phù sa, giải pháp hồ sinh thái tràn ngầm |
+| 80 | Địa Lý Ngũ Quyết (ghép) | Ghép nhãn vụng, dọa tật nguyền cẳng chân mê tín sáo rỗng | 《雪心賦》, 《地理五訣》 | VERIFIED | Dẫn đúng Tuyết Tâm Phú & Địa Lý Ngũ Quyết, phân tích nút thắt cổ chai thủy lực tăng tốc phá hủy bờ kè, giải pháp mở rộng tiết diện nắn dòng |
+
+
 
 
 
