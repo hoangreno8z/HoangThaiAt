@@ -350,6 +350,50 @@ Ngày đối chiếu: 2026-09-06. Phạm vi: **Địa Cốt Trồi Sụt, câu 7
 | 79 | Táng Thư (ghép) | Thiếu kinh văn chuyên sâu về minh đường lòng chảo tụ thủy | 《黃帝宅經》 (Tổng luận), 《葬書》 | VERIFIED | Trích đúng câu chuẩn Hoàng Đế Trạch Kinh & Táng Thư, phân tích sinh thái đầm nước điều hòa và tích lũy phù sa, giải pháp hồ sinh thái tràn ngầm |
 | 80 | Địa Lý Ngũ Quyết (ghép) | Ghép nhãn vụng, dọa tật nguyền cẳng chân mê tín sáo rỗng | 《雪心賦》, 《地理五訣》 | VERIFIED | Dẫn đúng Tuyết Tâm Phú & Địa Lý Ngũ Quyết, phân tích nút thắt cổ chai thủy lực tăng tốc phá hủy bờ kè, giải pháp mở rộng tiết diện nắn dòng |
 
+---
+
+# Kiểm toán nguồn Vấn đáp — Chương 09
+
+Ngày đối chiếu: 2026-09-06. Phạm vi: **Trường Sinh Tứ Cục, câu 81–90**. Không triển khai chương kế tiếp.
+
+## Điểm khôi phục và kiểm kê
+
+- Repository: https://github.com/hoangreno8z/HoangThaiAt ; nhánh triển khai: `main`.
+- Điểm kiểm tra release Chương 8: `1567548` (chứa đầy đủ Chương 1, 2, 3, 4, 5, 6, 7, 8 đã nghiệm thu).
+- Nhánh dự phòng: `backup/van-dap-ch09-1567548`. Dùng nhánh này để xem bản trước; nếu cần hoàn tác production, tạo commit revert cho commit sửa chương rồi triển khai theo luồng hiện có.
+- Dữ liệu: `js/hoidap_data.js`, `data/hoidap_data.json`, `window.HOIDAP_CHAPTERS`, `window.HOIDAP_DATA`.
+- Bộ hiển thị: `js/hoidap_ui.js` (hỗ trợ `renderReviewedBody` cho tất cả câu có `sources[]`, cập nhật hero description Chương 9), CSS: `css/hoidap.css`; route hiện hữu: `#/van-dap`.
+- Kiểm kê: 100 câu; chương 9 đúng 10 câu với ID 81–90. Danh mục chương, Chương 1 (câu 01–10), Chương 2 (câu 11–20), Chương 3 (câu 21–30), Chương 4 (câu 31–40), Chương 5 (câu 41–50), Chương 6 (câu 51–60), Chương 7 (câu 61–70), Chương 8 (câu 71–80) và 10 đối tượng câu 91–100 được kiểm tra bằng so sánh sâu với SHA release Chương 8 và SHA baseline ban đầu.
+
+| ID | Tiêu đề giữ lại | Trọng tâm cần sửa | Phạm vi trường phái |
+|---|---|---|---|
+| 81 | Cấn Khôn Chánh Cục | Tọa Cấn hướng Khôn lai Thân khứ Hợi; định vị Hỏa cục tọa Sinh, thoát Tuyệt và chỉnh trục nạp khí | Thanh Nang Áo Ngữ, Địa Lý Ngũ Quyết; mở cửa lệch Bính Ngọ, huyền quan chữ S và phòng ngủ tại hậu trạch |
+| 82 | Tứ Cục Thủy | Bảng Tứ Đại Thủy Khẩu định đoạt cục diện; trắc dọc thủy văn lưu vực và thoát Mộ khố khép kín | Thanh Nang Áo Ngữ, Địa Lý Ngũ Quyết; đo đạc la kinh khẩu trũng, lập hướng nghênh sinh vượng và trồng cây đệm |
+| 83 | Hoàng Tuyền Sát | Bát Đại Hoàng Tuyền phá lộc sát nhân; cơ chế chênh lệch áp suất bốc uế khí và gió lạnh xông trạch | Địa Lý Ngũ Quyết, Thiên Ngọc Kinh; bít khẩu sát, ống uPVC ngầm có bẫy nước P-trap và gờ ngạch cửa 3-5cm |
+| 84 | Cứu Bần Thủy | Đảo chiều Hoàng Tuyền thành Cứu Bần Thủy; dòng Lộc triều nghênh giảm tốc nạp dưỡng khí ion âm | Địa Lý Ngũ Quyết, Thanh Nang Áo Ngữ; minh đường khoáng đạt, thềm đón giật cấp và hồ cá tuần hoàn |
+| 85 | Quy Mộ Khố | Vượng lai quy Mộ chu trình bảo toàn năng lượng; cơ chế giữ kho khóa khẩu và độ bền phúc lộc | Táng Thư, Ngọc Xích Kinh; bảo tồn khóa khẩu kín đáo, nạo vét định kỳ và giữ ổn định cốt nền không sửa ẩu |
+| 86 | Cấm Khẩu Xuất | Cấm phóng thủy tại Sinh Vượng Quan Lâm; tránh bốc hơi uế độc và ngăn ngừa Tuyệt Bệnh triều môn | Địa Lý Ngũ Quyết, Tuyết Tâm Phú; di dời cống xuất về Bệnh Tử Tuyệt, bình phong chắn tầm nhìn và tam cấp 25-35cm |
+| 87 | Bính Ất Tốn | Hướng Bính Ất tương tác phương Tốn ba phán; phân định Hoàng Tuyền sát, Cứu Bần và trực xung | Địa Lý Ngũ Quyết, Thiên Ngọc Kinh; bít cống Tốn thoát ngầm về Tuất, huyền quan chữ S và cửa chớp điều tiết gió |
+| 88 | Cắt Ranh Cung | Tuyến đường cong đa sơn phân giới hạn; tiếp tuyến cơ học đèn xe và nguyên lý từng trạch lập cực | Địa Lý Ngũ Quyết, Thanh Nang Tự; bắn góc la kinh tâm trạch, mở cửa phân đoạn cát và tường chắn đoạn hung |
+| 89 | Tý Ngọ Chánh Cục | Tọa Tý hướng Ngọ Tốn Bính triều Tân Tuất khứ; tối ưu vi khí hậu nhiệt đới gió mùa và tụ thủy minh đường | Địa Lý Ngũ Quyết, Táng Thư; minh đường thênh thang dung vạn mã, khóa khẩu Tân Tuất và trồng cây chắn gió bấc |
+| 90 | Tuyệt Lưu Thủy | Mộ thủy đảo lưu xung phá sinh vượng; hiện tượng nước dềnh cống ngầm và xung đột giao thông ngược chiều | Địa Lý Ngũ Quyết, Thủy Long Kinh; van ngăn triều một chiều flap valve, nâng tam cấp 30-45cm và gờ vát dẫn dòng |
+
+## Nhật ký kiểm chứng từng câu
+
+| ID | Nguồn cũ | Vấn đề | Nguồn xác minh | Mức độ | Thay đổi |
+|---|---|---|---|---|---|
+| 81 | Thanh Nang Áo Ngữ (dính Lược Ý) | Dính nhãn [LƯỢC Ý] [TRUYỀN THỊ], thiếu khảo chứng đầy đủ | 《青囊奧語》, 《地理五訣》 | VERIFIED | Dẫn đúng kinh văn chuẩn, phân tích 5 bước định cục Hỏa cục xuất Tuyệt, đề xuất dịch đại môn lệch Bính Ngọ |
+| 82 | Thanh Nang Áo Ngữ (dính Lược Ý) | Dính nhãn cồng kềnh, phân tích đô thị thiếu cơ sở lưu vực | 《青囊奧語》, 《地理五訣》 | VERIFIED | Khôi phục trọn vẹn Hán văn Tứ Cục, giải mã cao độ trắc dọc lưu vực thoát Mộ khố, giải pháp đo đạc La Kinh |
+| 83 | Hoàng Tuyền ca (dính Truyền Thị) | Dính nhãn [TRUYỀN THỊ], dọa sát nhân mê tín | 《地理五訣》, 《天玉經》 | VERIFIED | Dẫn đúng nguyên tác Địa Lý Ngũ Quyết & Thiên Ngọc Kinh, giải mã chênh lệch áp suất bốc uế khí, giải pháp ngầm hóa ống P-trap |
+| 84 | Cứu Bần quyết (dính Truyền Thị) | Dính nhãn tự chế, thiếu phân tích cơ học tiếp cận | 《地理五訣》, 《青囊奧語》 | VERIFIED | Khảo chứng câu chuẩn cổ bản, giải mã hiệu ứng phễu gom gió ion âm đón khách thương mại, giải pháp sảnh đón mở rộng |
+| 85 | Táng Thư (ghép) | Dính nhãn [NGUYÊN VĂN] vụn vặt, thiếu kinh điển quy khố | 《葬書》, 《玉尺經》 | VERIFIED | Dẫn đúng Táng Thư & Ngọc Xích Kinh, phân tích chu trình bảo toàn năng lượng và khóa khẩu bền vững, giải pháp bảo trì hố ga |
+| 86 | Phóng Thủy quyết (dính Truyền Thị) | Dính nhãn [TRUYỀN THỊ], dọa dẫm tuyệt tự chung chung | 《地理五訣》, 《雪心賦》 | VERIFIED | Khôi phục kinh điển chuẩn mực, phân tích nhiệt động học và ô nhiễm vi sinh vật cung cấm, đề xuất chuyển cống xuất |
+| 87 | Ất Bính quyết (dính Truyền Thị) | Dính nhãn [TRUYỀN THỊ], phân tích lủng củng ba phán | 《地理五訣》, 《天玉經》 | VERIFIED | Dẫn đúng chính văn cổ thư, phân tích hướng gió mùa Đông Nam và 3 trạng thái thủy động lực, giải pháp bít cống Tốn thoát Tuất |
+| 88 | Phân Kim quyết (dính Truyền Thị) | Dính nhãn [TRUYỀN THỊ], thiếu cơ sở quang học và tiếp tuyến | 《地理五訣》, 《青囊序》 | VERIFIED | Khảo chứng nguyên văn chuẩn, phân tích tiếp tuyến đường cong và quang học đèn pha ban đêm, giải pháp lập cực tâm trạch |
+| 89 | Táng Thư (ghép) | Dính nhãn [LƯỢC Ý], phân tích sơ sài trục Tý Ngọ | 《地理五訣》, 《葬書》 | VERIFIED | Dẫn đúng Địa Lý Ngũ Quyết & Táng Thư, giải mã vi khí hậu tránh rét đón ấm trục Tý Ngọ, giải pháp minh đường dung vạn mã |
+| 90 | Đảo Lưu quyết (dính rác markdown) | Dính nhãn tự chế, rò rỉ rác markdown ghi chú học thuật | 《地理五訣》, 《水龍經》 | VERIFIED | Khôi phục Hán văn sạch, loại bỏ hoàn toàn khối rác markdown rò rỉ, phân tích hiệu ứng nước dềnh và van ngăn triều tự động |
+
+
 
 
 
