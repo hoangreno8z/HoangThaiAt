@@ -393,6 +393,50 @@ Ngày đối chiếu: 2026-09-06. Phạm vi: **Trường Sinh Tứ Cục, câu 8
 | 89 | Táng Thư (ghép) | Dính nhãn [LƯỢC Ý], phân tích sơ sài trục Tý Ngọ | 《地理五訣》, 《葬書》 | VERIFIED | Dẫn đúng Địa Lý Ngũ Quyết & Táng Thư, giải mã vi khí hậu tránh rét đón ấm trục Tý Ngọ, giải pháp minh đường dung vạn mã |
 | 90 | Đảo Lưu quyết (dính rác markdown) | Dính nhãn tự chế, rò rỉ rác markdown ghi chú học thuật | 《地理五訣》, 《水龍經》 | VERIFIED | Khôi phục Hán văn sạch, loại bỏ hoàn toàn khối rác markdown rò rỉ, phân tích hiệu ứng nước dềnh và van ngăn triều tự động |
 
+---
+
+# Kiểm toán nguồn Vấn đáp — Chương 10
+
+Ngày đối chiếu: 2026-09-06. Phạm vi: **Hóa Sát Nghênh Tường, câu 91–100**. Toàn bộ 100 câu Vấn đáp hoàn tất khảo chứng.
+
+## Điểm khôi phục và kiểm kê
+
+- Repository: https://github.com/hoangreno8z/HoangThaiAt ; nhánh triển khai: `main`.
+- Điểm kiểm tra release Chương 9: `243d4ce` (chứa đầy đủ Chương 1, 2, 3, 4, 5, 6, 7, 8, 9 đã nghiệm thu).
+- Nhánh dự phòng: `backup/van-dap-ch10-243d4ce`. Dùng nhánh này để xem bản trước; nếu cần hoàn tác production, tạo commit revert cho commit sửa chương rồi triển khai theo luồng hiện có.
+- Dữ liệu: `js/hoidap_data.js`, `data/hoidap_data.json`, `window.HOIDAP_CHAPTERS`, `window.HOIDAP_DATA`.
+- Bộ hiển thị: `js/hoidap_ui.js` (hỗ trợ `renderReviewedBody` cho tất cả câu có `sources[]`, cập nhật hero description Chương 10), CSS: `css/hoidap.css`; route hiện hữu: `#/van-dap`.
+- Kiểm kê: Toàn bộ 100/100 câu đã được khảo chứng qua 10 lượt tuần tự; chương 10 gồm đúng 10 câu với ID 91–100. Danh mục chương và 90 câu trước đó (Chương 1–9) được kiểm tra bảo vệ tính toàn vẹn bằng kiểm thử so sánh sâu với SHA release Chương 9.
+
+| ID | Tiêu đề giữ lại | Trọng tâm cần sửa | Phạm vi trường phái |
+|---|---|---|---|
+| 91 | Tà Môn Pháp | Xoay lệch góc đại môn chuyển trục nạp khí; hiệu ứng trượt biên khí động học và phân kim sinh vượng | Dương Trạch Tập Thành, Bát Trạch Minh Cảnh; xoay góc 15-30°, hốc tường vát góc và ngưỡng cửa đá granite |
+| 92 | Huyền Quan Pháp | Bình phong tiền sảnh bẻ ngoặt trực xung; cơ chế tiêu tán động năng và bảo tồn vi khí hậu nội trạch | Táng Thư, Dương Trạch Thập Thư; vách cao 1.8-2.2m, khoảng cách 1.2-1.5m, dẫn khí chữ S và chiếu sáng ấm |
+| 93 | Chiết Dẫn Thủy | Rãnh uốn chữ Chi zíc-zắc hoãn thác thủy; tiêu năng thủy lực giảm lưu tốc dòng chảy dốc xối xả | Táng Thư, Thủy Long Kinh; mương gập khúc chữ Z, tam cấp giật cấp chống trượt và hố ga lắng bùn cát |
+| 94 | Viên Đầu Pháp | Bo tròn góc nhọn tiễn đao mũi tàu; khí động học bề mặt cong triệt tiêu xoáy tách dòng và mở rộng tầm nhìn | Tuyết Tâm Phú, Nghi Long Kinh; bo cong R 1.5-2.5m, trụ đá trấn đỉnh, thảm cây lá tròn và né phòng ngủ |
+| 95 | Thủy Bồn Pháp | Đài phun tuần hoàn nghênh nạp vượng khí; biện chứng thực hư thủy, mỏ neo vi khí hậu và ion âm | Thủy Long Kinh, Thanh Nang Áo Ngữ; đài nước cung Sinh/Vượng lệch trục 15-20°, phun hướng vào và bơm êm ≤30dB |
+| 96 | Thạch Cảm Đương | Bia đá Thái Sơn trấn giữ ngã ba; chịu lực va đập cơ học chống xe mất lái và giải tỏa ức chế tâm lý | Lỗ Ban Kinh, Dương Trạch Thập Thư; đá granite nguyên khối 300-500kg, móng chôn 1/3 và khắc chữ son đỏ |
+| 97 | Tiêu Sa Pháp | Dựng cự sa khóa giữ sinh khí hạ lưu; vùng đệm khí động học cản gió hút cuốn trôi nhiệt ẩm | Tuyết Tâm Phú, Địa Lý Ngũ Quyết; tường cánh phong hạ lưu, rặng cây cổ thụ tán dày và non bộ quay đầu |
+| 98 | Môn Hạm Pháp | Ngưỡng cửa đá ghìm giữ nội khí; đập cản vật lý cách ly vi khí hậu sát sàn ngăn bụi lạnh và chống ngập | Lỗ Ban Kinh, Dương Trạch Tập Thành; đá granite nhô cao 3-5cm, vát cạnh 45°, gioăng cao su đàn hồi chân cửa |
+| 99 | Ám Đạo Pháp | Dẫn quang thông khí hẻm sâu u ám; quang sinh học kích thích hormone, đèn LED toàn phổ và quạt cấp gió tươi | Thanh Nang Kinh, Hoàng Đế Trạch Kinh; đèn toàn phổ 300-500 lux, sơn phản quang màu sáng và quạt HRV lọc HEPA |
+| 100 | Đại Sư Khảo | Quy trình 5 bước khảo sát và ngũ hóa pháp; hệ thống phân tầng khoa học và bãi bỏ mê tín dị đoan | Hoàng Đế Trạch Kinh, Nghi Long Kinh; 3 số đo la kinh thực địa, ổn định nền móng, chỉnh hình học, chuyển môn hộ, ghi sổ trạch |
+
+## Nhật ký kiểm chứng từng câu
+
+| ID | Nguồn cũ | Vấn đề | Nguồn xác minh | Mức độ | Thay đổi |
+|---|---|---|---|---|---|
+| 91 | Tà Môn quyết (dính Truyền Thị) | Dính nhãn [TRUYỀN THỊ], dọa sát phương mê tín | 《陽宅集成》, 《八宅明鏡》 | VERIFIED | Dẫn đúng kinh văn Dương Trạch Tập Thành, phân tích hiệu ứng trượt biên khí động học, giải pháp vát góc 15-30° |
+| 92 | Táng Thư (ghép) | Dính nhãn [NGUYÊN VĂN] vụn vặt, thiếu quy cách huyền quan | 《葬書》, 《陽宅十書》 | VERIFIED | Dẫn đúng Táng Thư & Dương Trạch Thập Thư, phân tích tiêu tán động năng và thị giác riêng tư, giải pháp vách thoáng |
+| 93 | Táng Thư (ghép) | Trích đoạn lửng lơ, thiếu giải pháp kỹ thuật rãnh dốc | 《葬書》, 《水龍經》 | VERIFIED | Khôi phục nguyên tác Táng Thư & Thủy Long Kinh, phân tích thủy lực tiêu năng zíc-zắc, giải pháp hố lắng bùn |
+| 94 | Ngũ Tinh Hình quyết (tự xưng) | Gán ghép nhãn tự chế, thiếu cơ sở khí động học | 《雪心賦》, 《疑龍經》 | VERIFIED | Dẫn đúng Tuyết Tâm Phú & Nghi Long Kinh, phân tích triệt tiêu xoáy tách dòng và góc nhìn giao thông, giải pháp bo tròn R≥1.5m |
+| 95 | Nghịch Thủy quy (tự xưng) | Nhãn AI tự chế, lẫn lộn thực thủy và tượng thủy | 《水龍經》, 《青囊奧語》 | VERIFIED | Khảo chứng câu chuẩn cổ bản, phân định 2 tầng lực thực-hư, giải mã mỏ neo vi khí hậu và ion âm, giải pháp phun hướng vào |
+| 96 | Thạch Cảm Đương minh văn (tự xưng) | Bài minh tự xưng, dọa tà ma mê tín dị đoan | 《魯班經》, 《陽宅十書》 | VERIFIED | Dẫn đúng Lỗ Ban Kinh & Dương Trạch Thập Thư, giải mã khả năng chịu lực va đập cơ học bollard và tâm lý, giải pháp chôn móng 1/3 |
+| 97 | Hạ Thủ Sa quyết (dính Truyền Thị) | Dính nhãn [TRUYỀN THỊ], giải thích thiếu cơ chế khí áp | 《雪心賦》, 《地理五訣》 | VERIFIED | Khôi phục chính văn cổ thư, phân tích hiệu ứng hút Bernoulli và vùng đệm áp suất dương hạ lưu, giải pháp tường cánh phong |
+| 98 | Lỗ Ban Kinh (dính Lược Ý) | Dính nhãn [LƯỢC Ý], thiếu quy cách chi tiết môn hạm | 《魯班經》, 《陽宅集成》 | VERIFIED | Dẫn đúng kinh văn chuẩn, phân tích lớp biên độ sát sàn 2-4cm và ranh giới tâm lý, giải pháp ngưỡng đá 3-5cm vát cạnh |
+| 99 | Thanh Nang Kinh (dính Lược Ý) | Dính nhãn [LƯỢC Ý] [TRUYỀN THỊ], thiếu phân tích quang sinh học | 《青囊經》, 《黃帝宅經》 | VERIFIED | Khảo chứng nguyên tác cổ bản, giải mã quang sinh học kích hoạt serotonin và thông gió HRV cưỡng bức, giải pháp sơn phản quang |
+| 100 | Ngũ Trình quyết (tự xưng) | Nhãn tự chế, rò rỉ rác markdown kết sách | 《黃帝宅經》, 《疑龍經》 | VERIFIED | Khôi phục Hoàng Đế Trạch Kinh & Nghi Long Kinh, loại bỏ hoàn toàn khối rác markdown rò rỉ, phân tích hệ thống phân tầng 5 bước |
+
+
 
 
 
