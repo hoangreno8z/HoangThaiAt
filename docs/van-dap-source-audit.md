@@ -264,6 +264,50 @@ Ngày đối chiếu: 2026-09-06. Phạm vi: **Hạp Phong Tiêm Giác, câu 51�
 | 59 | Dương Trạch Tập Thành (dính Lược Ý) | Dính nhãn [LƯỢC Ý], dọa dẫm súng bắn mũi thương | 《陽宅集成》 (Lang chương), 《葬書》 | VERIFIED | Dẫn đúng kinh văn chuẩn, giải mã hiệu ứng đường hầm gió và mất mát riêng tư thị giác, giải pháp huyền quan chữ S |
 | 60 | Ngũ Tinh Hình Quyết (tự xưng) | Câu Hán AI tự chế nhãn, phân tích thiếu ranh giới | 《雪心賦》, 《青囊經》 | VERIFIED | Khảo chứng câu chuẩn trong Tuyết Tâm Phú, phân tích bức xạ nhiệt đối lưu và tiếng ồn mưa va đập, giải pháp phủ xanh ban công |
 
+---
+
+# Kiểm toán nguồn Vấn đáp — Chương 07
+
+Ngày đối chiếu: 2026-09-06. Phạm vi: **Chân Hư Tương Phối, câu 61–70**. Không triển khai chương kế tiếp.
+
+## Điểm khôi phục và kiểm kê
+
+- Repository: https://github.com/hoangreno8z/HoangThaiAt ; nhánh triển khai: `main`.
+- Điểm kiểm tra release Chương 6: `69b85fd` (chứa đầy đủ Chương 1, 2, 3, 4, 5, 6 đã nghiệm thu).
+- Nhánh dự phòng: `backup/van-dap-ch07-69b85fd`. Dùng nhánh này để xem bản trước; nếu cần hoàn tác production, tạo commit revert cho commit sửa chương rồi triển khai theo luồng hiện có.
+- Dữ liệu: `js/hoidap_data.js`, `data/hoidap_data.json`, `window.HOIDAP_CHAPTERS`, `window.HOIDAP_DATA`.
+- Bộ hiển thị: `js/hoidap_ui.js` (hỗ trợ `renderReviewedBody` cho tất cả câu có `sources[]`, cập nhật hero description Chương 7), CSS: `css/hoidap.css`; route hiện hữu: `#/van-dap`.
+- Kiểm kê: 100 câu; chương 7 đúng 10 câu với ID 61–70. Danh mục chương, Chương 1 (câu 01–10), Chương 2 (câu 11–20), Chương 3 (câu 21–30), Chương 4 (câu 31–40), Chương 5 (câu 41–50), Chương 6 (câu 51–60) và 30 đối tượng câu 71–100 được kiểm tra bằng so sánh sâu với SHA release Chương 6 và SHA baseline ban đầu.
+
+| ID | Tiêu đề giữ lại | Trọng tâm cần sửa | Phạm vi trường phái |
+|---|---|---|---|
+| 61 | Chân Hư Nghịch | Sông thật và đường xe ngược chiều dòng chảy; cơ chế giao thoa dòng chảy và vi khí hậu giảm tốc | Thủy Long Kinh, Thẩm Thị Huyền Không Học; cổng sảnh tại tiếp tuyến êm đềm, khoảng lùi sân vườn và cửa chớp |
+| 62 | Song Hoàn Bão | Sông và đường cùng uốn ngọc đái ôm trọn trạch; lắng tụ bồi đắp thủy lực và giảm tốc an toàn | Táng Thư, Thủy Long Kinh; mở rộng sảnh đón hướng tâm vòng cung, kè sinh thái bậc thang và hồ cá Koi |
+| 63 | Phản Ba Sát | Bờ kè thẳng đứng dội ngược sóng va đập cơ học; phản xạ sóng dừng và rung chấn vi mô móng kè | Táng Thư, Tuyết Tâm Phú; kè mái dốc lát đá hộc xốp tiêu năng, cây xanh ngập nước và móng cọc lùi sâu |
+| 64 | Động Tĩnh Thủy | Hồ cảnh quan đài phun nước động tĩnh phân định; vi tuần hoàn khí dung, bay hơi làm mát và ion âm | Thanh Nang Áo Ngữ, Táng Thư; vòi phun lăn tăn hướng vượng khí, lọc sinh học tuần hoàn và máy bơm êm |
+| 65 | Trực Thủy Tuyệt | Kênh đào nhân tạo thẳng tắp trút dòng cuốn trôi khí; dòng chảy xiết tạo áp suất âm cuốn hơi ẩm | Thủy Long Kinh, Táng Thư; bậc nước tam cấp giảm tốc kênh, hồ cảnh bán nguyệt tụ thủy và hàng cây chống sạt lở |
+| 66 | Uế Thủy Sát | Kênh đen bốc mùi hôi thối và trọc khí tràn ngập; phân hủy yếm khí sinh H2S, NH4 và vi khuẩn gây bệnh | Táng Thư, Hoàng Đế Trạch Kinh; tường rào kín kết hợp thảm cây xanh lọc độc, đóng kín cửa mặt kênh và lọc than hoạt tính |
+| 67 | Tam Xoa Thủy | Ngã ba sông hội tụ giao thoa cùng ngã ba đường bộ; minh đường khoáng đạt và giao thương đường thủy bộ | Thiên Ngọc Kinh, Thủy Long Kinh; gia cố mũi cừ chống xói lở, sảnh thương mại vát cánh cung và hoa viên nội bộ |
+| 68 | Lậu Sào Thủy | Rãnh cống ngầm chảy tuột ngang trước cổng nhà; xói ngầm nền móng và xông khí hố ga ô nhiễm | Địa Lý Ngũ Quyết, Táng Thư; nắp gang đúc kín có roong ngăn mùi, dầm cổng độc lập và tam cấp nâng cao 30-45cm |
+| 69 | Triều Đường Mạch | Hàng cọc cầu tàu và bến du thuyền cắm sâu lòng sông; tiêu năng phân tán dòng chảy và lắng đọng phù sa | Thủy Long Kinh, Táng Thư; cọc tròn khí động học giảm cản, sàn composite chống trượt và đèn hắt dịu mắt |
+| 70 | Án Sơn Thủy | Cù lao cồn cát nổi giữa dòng sông lớn chắn trước mặt; phân lưu thủy lực, cản sóng gió bão và điều hòa sinh thái | Tuyết Tâm Phú, Thủy Long Kinh; mở tối đa tầm nhìn phòng khách, kiến trúc giật cấp mở và kè sinh thái tự nhiên |
+
+## Nhật ký kiểm chứng từng câu
+
+| ID | Nguồn cũ | Vấn đề | Nguồn xác minh | Mức độ | Thay đổi |
+|---|---|---|---|---|---|
+| 61 | Táng Thư (ghép) | Trích câu phong thủy chung chung, thiếu lý luận chân hư phối hợp | 《水龍經》, 《沈氏玄空學》 | VERIFIED | Dẫn đúng kinh văn chuyên luận chân thủy và hư thủy, phân tích đệm xoáy giảm tốc, giải pháp bố trí cổng đón khí |
+| 62 | Táng Thư (ghép) | Trích đoạn ngắn, phân tích thiếu chiều sâu giao thông và thủy lực | 《葬書》, 《水龍經》 | VERIFIED | Khôi phục nguyên văn cổ bản, phân tích hiện tượng bồi tụ phù sa và giảm tốc an toàn, giải pháp sảnh đón panorama |
+| 63 | Táng Thư (ghép) | Dính nhãn cồng kềnh, giải thích sơ sài về rung chấn sóng | 《葬書》, 《雪心賦》 | VERIFIED | Dẫn đúng câu chuẩn, phân tích sóng dừng và xói ngầm hàm ếch móng kè, đề xuất kè mái nghiêng tiêu năng |
+| 64 | Tĩnh Động Phân Quy (tự xưng) | Câu Hán AI tự chế nhãn, thiếu kinh điển nền tảng | 《青囊奧語》, 《葬書》 | VERIFIED | Trích đúng câu kinh điển của Dương Quân Tùng & Quách Phác, phân tích ion âm và oxy hòa tan, giải pháp lọc tuần hoàn |
+| 65 | Táng Thư (ghép) | Trích đoạn lửng lơ, không làm rõ cơ chế kênh đào nhân tạo | 《水龍經》, 《葬書》 | VERIFIED | Khôi phục nguyên văn Thủy Long Kinh về trực thủy vô tình, phân tích áp suất âm cuốn ẩm, giải pháp hồ bán nguyệt |
+| 66 | Thủy Chất Định Cát Quy (tự xưng) | Câu Hán AI tự ghép nhãn, thiếu phân tích độc học môi trường | 《葬書》, 《黃帝宅經》 | VERIFIED | Dẫn đúng chính văn cổ thư, phân tích khí H2S/NH3 phân hủy kỵ khí, đề xuất màng đệm cây xanh hấp thụ độc tố |
+| 67 | Thiên Ngọc Kinh (dính Lược Ý) | Dính nhãn [LƯỢC Ý], câu Hán AI tự chế | 《天玉經》 (Nội truyền), 《水龍經》 | VERIFIED | Khôi phục Hán văn sạch 100%, phân tích vùng nước sâu êm đềm và giao thương thủy bộ, giải pháp gia cố mũi kè cừ |
+| 68 | Âm Câu Kỵ Quy (tự xưng) | Câu Hán AI tự ghép nhãn, dọa hao tài tốn của chung chung | 《地理五訣》 (Minh đường thiên), 《葬書》 | VERIFIED | Dẫn đúng kinh văn Địa Lý Ngũ Quyết, phân tích sụt lún vi mô nền móng và xông mùi, giải pháp nắp kín và tam cấp cao |
+| 69 | Thủy Khẩu Sa Hệ (tự xưng) | Câu Hán AI tự chế nhãn, giải thích lẫn lộn la tinh | 《水龍經》, 《葬書》 | VERIFIED | Dẫn đúng nguyên văn Thủy Long Kinh & Táng Thư, phân tích hệ tiêu năng giảm vận tốc dòng chảy, giải pháp cầu tàu an toàn |
+| 70 | Phù Ấn Quyết (tự xưng) | Câu Hán AI tự ghép nhãn, dọa đỗ đầu thi cử sáo rỗng | 《雪心賦》, 《水龍經》 | VERIFIED | Khảo chứng câu chuẩn trong Tuyết Tâm Phú & Thủy Long Kinh, phân tích đê chắn sóng tự nhiên và vi khí hậu sinh thái |
+
+
 
 
 
