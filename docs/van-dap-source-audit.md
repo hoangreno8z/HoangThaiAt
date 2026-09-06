@@ -135,5 +135,49 @@ Ngày đối chiếu: 2026-09-06. Phạm vi: **Kỳ Lộ Giao Xoa, câu 21–30*
 | 29 | Bát Trạch (dính tiếng Việt trong Hán), Địa Lý Thủy Khẩu | Dính tiếng Việt trong Hán, thần bí hóa sao Liêm Trinh | 《葬書》, 《地理五訣》 | VERIFIED / SUPPORTED | Khôi phục nguyên văn cổ, phân tích nút giao 5 ngã đa xung đột, đề xuất lập nội minh đường và giếng trời lấy gió sạch |
 | 30 | Thiên Ngọc Kinh, Hợp Cấm La Tinh Quyết | Dính nhãn cồng kềnh, phân tích thiếu ranh giới | 《葬書》, 《雪心賦》 | VERIFIED / SUPPORTED | Dẫn đúng nguyên văn Táng Thư & Tuyết Tâm Phú, phân tích giá trị nhận diện thương mại đối chiếu với rủi ro va đập đỉnh chóp |
 
+---
+
+# Kiểm toán nguồn Vấn đáp — Chương 04
+
+Ngày đối chiếu: 2026-09-06. Phạm vi: **Thâm Hẻm Bế Khí, câu 31–40**. Không triển khai chương kế tiếp.
+
+## Điểm khôi phục và kiểm kê
+
+- Repository: https://github.com/hoangreno8z/HoangThaiAt ; nhánh triển khai: `main`.
+- Điểm kiểm tra release Chương 3: `3845404` (chứa đầy đủ Chương 1, 2, 3 đã nghiệm thu).
+- Nhánh dự phòng: `backup/van-dap-ch04-3845404`. Dùng nhánh này để xem bản trước; nếu cần hoàn tác production, tạo commit revert cho commit sửa chương rồi triển khai theo luồng hiện có.
+- Dữ liệu: `js/hoidap_data.js`, `data/hoidap_data.json`, `window.HOIDAP_CHAPTERS`, `window.HOIDAP_DATA`.
+- Bộ hiển thị: `js/hoidap_ui.js` (hỗ trợ `renderReviewedBody` cho tất cả câu có `sources[]`, cập nhật hero description Chương 4), CSS: `css/hoidap.css`; route hiện hữu: `#/van-dap`.
+- Kiểm kê: 100 câu; chương 4 đúng 10 câu với ID 31–40. Danh mục chương, Chương 1 (câu 01–10), Chương 2 (câu 11–20), Chương 3 (câu 21–30) và 60 đối tượng câu 41–100 được kiểm tra bằng so sánh sâu với SHA release Chương 3 và SHA baseline ban đầu.
+
+| ID | Tiêu đề giữ lại | Trọng tâm cần sửa | Phạm vi trường phái |
+|---|---|---|---|
+| 31 | Tiệt Khí Sát | Hẻm nhánh xương cá trút vào hông; phân biệt can đạo và chi đạo | Thiên Ngọc Kinh, Tuyết Tâm Phú; tiêu âm vách sườn và vát góc cua |
+| 32 | Thủy Tận Khí | Nhà cuối hẻm cụt; phân định khí tụ hay khí tán, loại bỏ liên kết kho rác | Táng Thư, Hoàng Đế Trạch Kinh; giếng trời đối lưu và PCCC |
+| 33 | Nội Minh Đường | Sân chung cuối hẻm; xác định trung minh đường cụm dân cư | Địa Lý Ngũ Quyết, Thủy Long Kinh; rãnh thu nước mặt và cây cảnh |
+| 34 | Thúc Khí Sát | Hẻm thắt nút cổ chai; giải mã cơ chế nén khí Venturi và tiếng rít động cơ | Táng Thư (Chu Tước thiên & Nguyên lý); sảnh đệm và gương cầu lồi |
+| 35 | Đắc Khí Khẩu | Hẻm miệng hẹp trong rộng; giải mã thế nở hậu tụ khí thanh lọc xô bồ | Địa Lý Ngũ Quyết, Thủy Long Kinh; vi khí hậu yên bình ngõ phố |
+| 36 | Xạ Cốt Sát | Hẻm sâu hun hút hai vách cao kẹp chặt; giải mã gió hẻm vực đô thị | Táng Thư, Nhập Địa Nhãn Đồ Thuyết; mặt tiền giật cấp bẻ gãy luồng gió |
+| 37 | Cát Cước Thủy | Đường hẻm cọ sát mép móng; phân biệt Ám Củng hộ vệ với cát cước cào chân | Thủy Long Kinh, Táng Thư; gờ bê tông chống va và ốp đá chống ẩm |
+| 38 | Hãm Oa Thủy | Đáy hẻm trũng thấp đọng nước và khí lạnh; giải mã bẫy nghịch nhiệt | Táng Thư, Tuyết Tâm Phú, Hoàng Đế Trạch Kinh; tôn nền và máy bơm |
+| 39 | Dương Trường Thủy | Hẻm ngoằn ngoèo ruột dê; giải mã cơ chế giảm tốc và hữu tình che chở | Thủy Long Kinh, Táng Thư, Nhập Địa Nhãn Đồ Thuyết; đèn cảm ứng |
+| 40 | Hồi Phong Sát | Cửa đối diện tường đầu hồi đặc chắn; giải mã thế Án Bức dội ngược khí | Táng Thư, Tuyết Tâm Phú, Hoàng Đế Trạch Kinh; đèn daylight và giếng sau |
+
+## Nhật ký kiểm chứng từng câu
+
+| ID | Nguồn cũ | Vấn đề | Nguồn xác minh | Mức độ | Thay đổi |
+|---|---|---|---|---|---|
+| 31 | Thủy Long Kinh (ghép nhãn), Tuyết Tâm Phú | Tự chế nhãn gán ghép, đưa số đo cứng 4m, 1.5m | 《天玉經》, 《雪心賦》 | VERIFIED | Trích đúng câu cổ, giải thích cơ chế phân lưu can chi, đề xuất vách cách âm và vát góc mở tầm nhìn |
+| 32 | Táng Thư (ghép), dính ghi chú kho rác | Dính đoạn text rác "Kết nối kho: nguyên tắc bốn tham số..." | 《葬書》, 《黃帝宅經》 (Tổng luận) | VERIFIED | Loại bỏ 100% rác AI, dẫn đúng kinh văn chuẩn, phân tích giếng trời đối lưu và an toàn thoát hiểm PCCC |
+| 33 | Minh Đường tam cấp (tự xưng), Thủy Khẩu quyết | Dính nhãn cồng kềnh, thiếu nguồn kinh điển | 《地理五訣》, 《水龍經》 | VERIFIED / SUPPORTED | Dẫn đúng nguyên văn, giải thích cơ chế nội minh đường cụm dân cư, giải pháp rãnh thu nước mặt |
+| 34 | Táng Thư (ghép nhãn), Long Pháp Thúc Khí | Tự chế nhãn gán ghép, dọa dẫm Chu Tước bi khốc | 《葬書》 (Chu Tước thiên & Nguyên lý) | VERIFIED | Dẫn đúng nguyên văn Táng Thư, phân tích hiệu ứng Venturi tăng vận tốc gió, đề xuất sảnh đệm và gương cầu lồi |
+| 35 | Nhân Tử Tu Tri, Quyết truyền thị | Đưa số đo cứng 1.5m, 5m, dính nhãn cồng kềnh | 《地理五訣》, 《水龍經》 | VERIFIED / SUPPORTED | Dẫn đúng lời bàn Tưởng Đại Hồng, phân tích cơ chế miệng hẹp cản ồn trong rộng tụ khí êm |
+| 36 | Táng Thư, Phong Sát quyết | Đưa số đo giả định 100m, 1.2m, dính nhãn | 《葬書》, 《入地眼圖說》 | VERIFIED / SUPPORTED | Khảo chứng câu chuẩn, phân tích hiệu ứng hẻm vực (street canyon), giải pháp mặt tiền giật cấp nạp khí |
+| 37 | Thủy Long Kinh, Táng Thư | Dính nhãn cồng kềnh, phân tích lẫn lộn hộ vệ | 《水龍經》, 《葬書》 | VERIFIED | Khôi phục Hán văn sạch, phân tích rung chấn cơ học chân móng, giải pháp gờ chắn và ốp đá chống thấm |
+| 38 | Táng Thư, Hình Thế quyết, Đài Cơ quyết | Dính nhãn cồng kềnh, thần bí hóa âm hàn | 《葬書》, 《雪心賦》, 《黃帝宅經》 | VERIFIED / SUPPORTED | Dẫn đúng kinh văn chuẩn, phân tích hiện tượng nghịch nhiệt và vi khuẩn yếm khí, giải pháp tôn nền vượt trội |
+| 39 | Thủy Pháp quyết, Táng Thư | Dính nhãn cồng kềnh, phân tích thiếu ranh giới | 《水龍經》, 《葬書》, 《入地眼圖說》 | VERIFIED / SUPPORTED | Khảo chứng câu chuẩn, giải thích cơ chế giảm tốc tự nhiên của các khúc cua ruột dê, chọn cung lõm đặt cổng |
+| 40 | Táng Thư, Triều Án hệ | Dính nhãn cồng kềnh, đưa tỷ lệ số đo áp bức | 《葬書》, 《雪心賦》, 《黃帝宅經》 | VERIFIED / SUPPORTED | Dẫn đúng nguyên văn kinh điển, phân tích vùng xoáy áp suất âm trước bức tường đặc, giải pháp đèn daylight và giếng trời sau |
+
+
 
 
