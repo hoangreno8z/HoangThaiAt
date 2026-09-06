@@ -6,6 +6,7 @@ const vm = require('node:vm');
 const Calibration = require('../js/luopan_calibration_engine');
 const Geometry = require('../js/luopan_geometry');
 const Data = require('../js/luopan_data');
+const TheoryCorpus = require('../js/luopan_theory_corpus');
 const Classifier = require('../js/luopan_classifier');
 
 let passed = 0;
@@ -50,6 +51,7 @@ function createTestEnvironment() {
     'btn-facing-up': button(),
     'btn-flip-frontside': button(),
     'btn-toggle-deadend': button(),
+    'btn-toggle-water-nature': button(),
     'btn-reverse-water': button(),
     'dt-node-action-bar': { style: {}, innerHTML: '', querySelector: () => null }
   };
@@ -62,6 +64,7 @@ function createTestEnvironment() {
   };
   const window = {
     CalibrationEngine: Calibration, LuopanGeometry: Geometry, LuopanData: Data,
+    LuopanTheoryCorpus: TheoryCorpus,
     LuopanClassifier: Classifier, LuopanSvgRenderer: class { render() { return ''; } },
     addEventListener() {}, removeEventListener() {}
   };
@@ -645,6 +648,79 @@ test('T23: Đường chạy ngang (139° / 319°) trước nhà hướng 230° n
   const trueAnalysis = tool.getAnalysis();
   assert.equal(trueAnalysis.topo.features.some(f => f.id === 'dinh_tu_lo_xung_tam'), true,
     'Trường hợp đâm thẳng thực sự phải kích hoạt Đinh Tự Lộ Xung Tâm Sát');
+});
+
+// T24: Tự động phân tầng 4 cấp, nhận diện Khúc Chiết Tiêu Sát chữ U & trích dẫn toàn văn Cổ Thư tức thời
+test('T24: Tự động phân tầng 4 cấp, nhận diện Khúc Chiết Tiêu Sát chữ U & trích dẫn toàn văn Cổ Thư tức thời', () => {
+  const { tool, document } = createTestEnvironment();
+  tool.centerPoint = { x: 400, y: 400 };
+  tool.rawFacingBearing = 180; // Nhà hướng Nam
+
+  // 1. Mô phỏng mạng đường 3 đoạn tạo thành chữ U:
+  // P1(100, 100) -> P2(600, 100) : Đoạn 1: Tỉnh lộ ngoài xa (Ngoại Cục)
+  // P2(600, 100) -> P3(600, 300) : Đoạn 2: Hẻm 1 rẽ 90° (Trung Cục)
+  // P3(600, 300) -> P4(400, 300) : Đoạn 3: Hẻm 2 rẽ tiếp 90° chạy sát mặt tiền (Cận Trạch)
+  tool.waterPolyline = [
+    { x: 100, y: 100, role: 'normal' },
+    { x: 600, y: 100, role: 'normal' },
+    { x: 600, y: 300, role: 'normal' },
+    { x: 400, y: 300, role: 'normal' }
+  ];
+
+  // A. Kiểm tra phân tầng Tứ Tầng Khí Lộ
+  const segs = tool.getWaterSegments();
+  assert.equal(segs.length, 3, 'Phải có đúng 3 đoạn đường');
+  assert.equal(segs[0].tier, 'ngoai_cuc', 'Đoạn 1 xa nhất phải là Ngoại Cục');
+  assert.equal(segs[1].tier, 'trung_cuc', 'Đoạn 2 trung gian phải là Trung Cục');
+  assert.equal(segs[2].tier, 'can_trach', 'Đoạn 3 sát nhà phải là Cận Trạch');
+
+  // B. Kiểm tra góc bẻ uốn khúc & Tiêu Sát Chữ U
+  const analysis = tool.getAnalysis();
+  assert.ok(analysis.topo.bendMomentum, 'Phải có dữ liệu phân tích động lượng khúc rẽ');
+  assert.equal(analysis.topo.bendMomentum.hasUTurn, true, 'Mạng đường 2 góc rẽ 90° cùng chiều phải là chữ U');
+  assert.equal(analysis.topo.bendMomentum.khucChietTieuSat, true, 'Chữ U phải kích hoạt cơ chế Khúc Chiết Tiêu Sát');
+  assert.ok(analysis.topo.features.some(f => f.id === 'khuc_chiet_tieu_sat'), 'Features phải có Khúc Chiết Tiêu Sát');
+  assert.ok(analysis.topo.features.some(f => f.id === 'phan_tang_khi_lo'), 'Features phải có Phân Tầng Khí Lộ');
+
+  // C. Kiểm tra Chế độ Hư Thủy vs Chân Thủy
+  assert.equal(tool.waterNature, 'hu_thuy', 'Mặc định phải là Hư Thủy');
+  assert.equal(analysis.waterNature, 'hu_thuy', 'Analysis phải nhận diện Hư Thủy');
+
+  // Test chuyển đổi qua Chân Thủy bằng click button
+  const btnNature = document.getElementById('btn-toggle-water-nature');
+  assert.ok(btnNature, 'Phải có nút chuyển đổi Chân/Hư Thủy');
+  btnNature.click();
+  assert.equal(tool.waterNature, 'chan_thuy', 'Sau click phải chuyển sang Chân Thủy');
+  const chanAnalysis = tool.getAnalysis();
+  assert.equal(chanAnalysis.waterNature, 'chan_thuy', 'Analysis mới phải là Chân Thủy');
+
+  // Toggle lại về Hư Thủy
+  btnNature.click();
+  assert.equal(tool.waterNature, 'hu_thuy');
+
+  // D. Kiểm tra Cơ chế Tự động trích dẫn Cổ Thư (Theory Citations)
+  const citations = analysis.theoryCitations;
+  assert.ok(Array.isArray(citations), 'Theory Citations phải là mảng');
+  assert.ok(citations.length >= 4, `Citations phải có ít nhất 4 mục, thực tế có ${citations.length}`);
+
+  const requiredIds = ['phan_tang_khi_lo', 'khuc_chiet_tieu_sat', 'chan_thuy_vs_hu_thuy', 'tiep_tuyen_vs_khi_khau'];
+  for (const reqId of requiredIds) {
+    const found = citations.find(c => c.id === reqId);
+    assert.ok(found, `Phải có trích dẫn lý thuyết cho ${reqId}`);
+    assert.ok(found.quoteOriginal && found.quoteOriginal.length > 5, `${reqId} phải có nguyên văn chữ Hán`);
+    assert.ok(found.quoteHanViet && found.quoteHanViet.length > 5, `${reqId} phải có âm Hán-Việt`);
+    assert.ok(found.quoteMeaning && found.quoteMeaning.length > 10, `${reqId} phải có dịch nghĩa tường minh`);
+    assert.ok(found.masterCommentary && found.masterCommentary.length > 10, `${reqId} phải có luận giải danh sư`);
+    assert.ok(found.applicationGuide && found.applicationGuide.length > 10, `${reqId} phải có chỉ dẫn ứng dụng`);
+  }
+
+  // E. Kiểm tra giao diện kết xuất (renderResultPanels) sinh ra Mục 6 với đầy đủ trích dẫn
+  const html = tool.renderResultPanels(analysis);
+  assert.ok(html.includes('KHẢO BIỆN CỔ THƯ & DIỄN GIẢI CHÁNH TÔNG'), 'UI phải có Mục 6 Khảo Biện Cổ Thư');
+  assert.ok(html.includes('Hán-Việt:'), 'UI phải có nhãn Hán-Việt');
+  assert.ok(html.includes('Dịch nghĩa:'), 'UI phải có nhãn Dịch nghĩa');
+  assert.ok(html.includes('Danh Sư Khảo Biện:'), 'UI phải có nhãn Danh Sư Khảo Biện');
+  assert.ok(html.includes('CẬN TRẠCH') || html.includes('Cận Trạch'), 'UI phải hiển thị badge phân tầng');
 });
 
 console.log('\n================================================================');

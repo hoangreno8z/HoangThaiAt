@@ -8,16 +8,27 @@
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    define(['./luopan_calibration_engine', './luopan_geometry', './luopan_data'], factory);
+    define(['./luopan_calibration_engine', './luopan_geometry', './luopan_data', './luopan_theory_corpus'], factory);
   } else if (typeof module === 'object' && module.exports) {
-    module.exports = factory(require('./luopan_calibration_engine'), require('./luopan_geometry'), require('./luopan_data'));
+    module.exports = factory(
+      require('./luopan_calibration_engine'),
+      require('./luopan_geometry'),
+      require('./luopan_data'),
+      require('./luopan_theory_corpus')
+    );
   } else {
-    root.LuopanClassifier = factory(root.CalibrationEngine, root.LuopanGeometry, root.LuopanData);
+    root.LuopanClassifier = factory(
+      root.CalibrationEngine,
+      root.LuopanGeometry,
+      root.LuopanData,
+      root.LuopanTheoryCorpus
+    );
   }
-}(typeof self !== 'undefined' ? self : this, function(Calibration, Geometry, Data) {
+}(typeof self !== 'undefined' ? self : this, function(Calibration, Geometry, Data, TheoryCorpus) {
   'use strict';
 
   const Calib = Calibration || (typeof window !== 'undefined' ? window.CalibrationEngine : null);
+  const Corpus = TheoryCorpus || (typeof window !== 'undefined' ? window.LuopanTheoryCorpus : null);
 
   class LuopanClassifier {
     constructor() {
@@ -195,6 +206,7 @@
       }
 
       // 8. Thẩm định Địa Cuộc Topo Phức Tạp (100% Cổ Thư Kinh Điển)
+      const waterNature = params.waterNature || 'hu_thuy';
       const topoAnalysis = this.analyzeComplexTopo({
         polyline: params.polyline || [],
         waterSegments: params.waterSegments || [],
@@ -203,7 +215,8 @@
         waterPathType: params.waterPathType || 'through',
         laiNodeIndex: params.laiNodeIndex,
         khuNodeIndex: params.khuNodeIndex,
-        cuc: matchedGroup.cuc
+        cuc: matchedGroup.cuc,
+        waterNature
       });
 
       return {
@@ -225,7 +238,9 @@
         flowDirection: flowDirectionLabel,
         thuyKhau: matchedThuyKhau,
         matchTrace,
+        waterNature,
         topo: topoAnalysis,
+        theoryCitations: topoAnalysis.theoryCitations || [],
         calibration: {
           offset,
           isLocked
@@ -251,13 +266,68 @@
         houseCenter = null,
         facingBearing = 0,
         waterPathType = 'through',
-        cuc = 'Hỏa'
+        cuc = 'Hỏa',
+        waterNature = 'hu_thuy'
       } = params;
 
       const features = [];
       const bends = [];
 
-      // 1. Phân tích các góc uốn khúc (Meandering)
+      // 1. Phân cấp Tứ Tầng Khí Lộ & Phân tích Khúc Chiết Tiêu Sát
+      const bendMomentum = (Geometry && Geometry.analyzeBendMomentum)
+        ? Geometry.analyzeBendMomentum(polyline, houseCenter)
+        : { hasSharpBend: false, hasUTurn: false, khucChietTieuSat: false, sharpCount: 0, rightAngleCount: 0, bends: [] };
+
+      const pathTiers = (Geometry && Geometry.classifyPathTiers)
+        ? Geometry.classifyPathTiers(polyline, houseCenter)
+        : [];
+
+      // Kiểm tra Khúc Chiết Tiêu Sát (Mạng đường chữ U, rẽ vuông góc >= 45°)
+      if (bendMomentum.khucChietTieuSat) {
+        features.push({
+          id: 'khuc_chiet_tieu_sat',
+          name: 'Khúc Chiết Tiêu Sát (Gấp Khúc Chữ U / Chiết Giác Tiêu Khí)',
+          rating: 'Cát Lợi Tiêu Sát',
+          color: '#10B981',
+          source: '《Trạch Pháp Cử Ngung》 & 《Thủy Long Kinh》',
+          quoteOriginal: '每逢空缺即为来，一遇遮拦便作止。水经三折，煞化为权；路过九曲，气纯而固。',
+          quoteHanViet: 'Mỗi phùng không khuyết tức vi lai, nhất ngộ già lan tiện tác chỉ. Thủy kinh tam chiết, sát hóa vi quyền; lộ quá cửu khúc, khí thuần nhi cố.',
+          quoteMeaning: bendMomentum.summary,
+          remedy: null
+        });
+      }
+
+      // Kiểm tra Phân Tầng Khí Lộ (Tứ Tầng Cục Thế)
+      if (polyline.length >= 3) {
+        features.push({
+          id: 'phan_tang_khi_lo',
+          name: 'Phân Tầng Khí Lộ (Tứ Tầng Cục Thế: Ngoại ➔ Trung ➔ Cận ➔ Khí Khẩu)',
+          rating: 'Minh Định Cục Thế',
+          color: '#38BDF8',
+          source: '《Trạch Pháp Cử Ngung》 & 《Địa Lý Ngũ Quyết》',
+          quoteOriginal: '若山居则认落脉，陆地则凭行路，市中则察街衢。一层街衢为一层水，一层墙屋为一层砂。二十步内重局，二十步外重宅。',
+          quoteHanViet: 'Nhược sơn cư tắc nhận lạc mạch, lục địa tắc bằng hành lộ, thị trung tắc sát nhai cù. Nhất tầng nhai cù vi nhất tầng thủy, nhất tầng tường ốc vi nhất tầng sa. Nhị thập bộ nội trọng cục, nhị thập bộ ngoại trọng trạch.',
+          quoteMeaning: 'Tuyến đường phân tầng 3 lớp rõ rệt: Ngoại Cục (tỉnh lộ/đại lộ ở xa), Trung Cục (hẻm dẫn chuyển thế) và Cận Trạch (hẻm sát cửa nhà). Nhờ 2 khúc ngoặt che chắn, động thế của tỉnh lộ được phân luồng tiêu tán, vi khí tụ tại Cận Trạch.',
+          remedy: null
+        });
+      }
+
+      // Nhận diện Hư Thủy Lộ Khí (Dương Trạch Đô Thị)
+      if (waterNature === 'hu_thuy' && polyline.length >= 2) {
+        features.push({
+          id: 'hu_thuy_lo_khi',
+          name: 'Hư Thủy Lộ Khí (Dương Trạch Đô Thị)',
+          rating: 'Phép Loại Suy Dương Trạch',
+          color: '#F59E0B',
+          source: '《Trạch Pháp Cử Ngung》 & 《Tứ Khố Toàn Thư Tổng Mục》',
+          quoteOriginal: '市中则察街衢，乃借路为水，名曰虚水。不与大江大河真水同论消纳。',
+          quoteHanViet: 'Thị trung tắc sát nhai cù, nãi tá lộ vi thủy, danh viết Hư Thủy. Bất dữ đại giang đại hà chân thủy đồng luận tiêu nạp.',
+          quoteMeaning: 'Đường sá là Hư Thủy trong phép loại suy Dương Trạch, không phải nước thật. 12 Cung Trường Sinh chỉ quy chiếu bổ trợ cho phân đoạn CẬN TRẠCH sát cửa; các phân đoạn Ngoại Cục ở xa không đồng nhất làm Lai Thủy trực tiếp.',
+          remedy: null
+        });
+      }
+
+      // 2. Phân tích các góc uốn khúc (Meandering)
       if (polyline.length >= 3) {
         for (let i = 1; i < polyline.length - 1; i++) {
           const bend = Geometry.calculateBendAngle(polyline[i - 1], polyline[i], polyline[i + 1]);
@@ -309,7 +379,7 @@
         });
       }
 
-      // 2. Phân tích Hoàn Bão vs Phản Cung
+      // 3. Phân tích Hoàn Bão vs Phản Cung
       let curveWrap = { type: 'tuyen_thang', label: 'Tuyến thẳng', rating: 'Bình', color: '#94A3B8' };
       if (polyline.length >= 3 && houseCenter) {
         curveWrap = Geometry.calculateCurveWrap(polyline, houseCenter);
@@ -340,7 +410,7 @@
         }
       }
 
-      // 3. Phân tích Ngã 3 & Dòng Trực Xung
+      // 4. Phân tích Ngã 3 & Dòng Trực Xung
       const directClashSegment = waterSegments.find(s => s.flowRelation && s.flowRelation.type === 'truc_xung');
       if (directClashSegment) {
         features.push({
@@ -371,7 +441,7 @@
         });
       }
 
-      // 4. Phân tích Hẻm Cụt / Tuyến Tận
+      // 5. Phân tích Hẻm Cụt / Tuyến Tận
       if (waterPathType === 'deadEnd') {
         const lastNode = polyline[polyline.length - 1];
         const distToEnd = houseCenter && lastNode ? Math.hypot(houseCenter.x - lastNode.x, houseCenter.y - lastNode.y) : 0;
@@ -409,7 +479,7 @@
       let overallSummary = 'Địa cuộc thế đất tương đối bằng ổn.';
 
       const hasDaiHung = features.some(f => f.rating.includes('Đại Hung'));
-      const hasDaiCat = features.some(f => f.rating.includes('Đại Cát'));
+      const hasDaiCat = features.some(f => f.rating.includes('Đại Cát') || f.rating.includes('Cát Lợi'));
 
       if (hasDaiHung) {
         overallRating = 'Phạm Hình Sát Cổ Thư';
@@ -418,21 +488,120 @@
       } else if (hasDaiCat) {
         overallRating = 'Đắc Cát Hình Cổ Thư';
         overallColor = '#10B981';
-        overallSummary = 'Địa cuộc đắc cách cát tường (Cửu Khúc Thủy hoặc Kim Thành Hoàn Bão). Minh đường tụ khí dồi dào!';
+        overallSummary = 'Địa cuộc đắc cách cát tường (Khúc Chiết Tiêu Sát, Kim Thành Hoàn Bão hoặc Cửu Khúc Thủy). Minh đường tụ khí dồi dào!';
       } else if (features.length > 0) {
         overallRating = features[0].rating;
         overallColor = features[0].color;
         overallSummary = features[0].quoteMeaning;
       }
 
+      // 6. Tự động đối chiếu Kho Ngữ Liệu Cổ Thư Chánh Tông
+      const theoryCitations = this.matchTheoryCitations({
+        polyline,
+        waterSegments,
+        houseCenter,
+        waterPathType,
+        waterNature,
+        features,
+        bendMomentum,
+        curveWrap,
+        cuc
+      });
+
       return {
         features,
-        bends,
+        bends: (bendMomentum.bends && bendMomentum.bends.length > 0) ? bendMomentum.bends : bends,
+        bendMomentum,
+        pathTiers,
+        waterNature,
         curveWrap,
         overallRating,
         overallColor,
-        overallSummary
+        overallSummary,
+        theoryCitations
       };
+    }
+
+    /**
+     * Cơ chế tự nhận dạng đồ hình & Trích dẫn toàn văn Cổ Thư tức thời
+     */
+    matchTheoryCitations(ctx = {}) {
+      if (!Corpus || !Corpus.getEntry) return [];
+      const {
+        polyline = [],
+        waterSegments = [],
+        features = [],
+        bendMomentum = {},
+        waterNature = 'hu_thuy',
+        waterPathType = 'through',
+        curveWrap = {}
+      } = ctx;
+
+      const citations = [];
+      const addedIds = new Set();
+
+      function addCitation(id) {
+        if (!id || addedIds.has(id)) return;
+        const entry = Corpus.getEntry(id);
+        if (entry) {
+          addedIds.add(id);
+          citations.push(entry);
+        }
+      }
+
+      // 1. Phân tầng khí lộ (khi có từ 3 điểm / 2 đoạn trở lên)
+      if (polyline.length >= 3) {
+        addCitation('phan_tang_khi_lo');
+      }
+
+      // 2. Khúc chiết tiêu sát (khi có khúc rẽ chữ U hoặc góc vuông / khúc ngoặt lớn)
+      if (bendMomentum && (bendMomentum.khucChietTieuSat || bendMomentum.hasSharpBend)) {
+        addCitation('khuc_chiet_tieu_sat');
+      }
+
+      // 3. Biện chứng Chân Thủy vs Hư Thủy
+      if (waterNature === 'hu_thuy' && polyline.length >= 2) {
+        addCitation('chan_thuy_vs_hu_thuy');
+      }
+
+      // 4. Phân biệt tiếp tuyến thân đường vs phương vị nạp khí Khí Khẩu
+      if (polyline.length >= 2) {
+        addCitation('tiep_tuyen_vs_khi_khau');
+      }
+
+      // 5. Cung cong ôm (Kim Thành Hoàn Bão) vs Phản Cung
+      if (curveWrap && curveWrap.type === 'hoan_bao') {
+        addCitation('kim_thanh_hoan_bao');
+      } else if (curveWrap && curveWrap.type === 'phan_cung') {
+        addCitation('phan_cung_thuy');
+      }
+
+      // 6. Đinh Tự Lộ (Xung Tâm Sát)
+      if (features.some(f => f.id === 'dinh_tu_lo_xung_tam')) {
+        addCitation('dinh_tu_lo_xung_tam');
+      }
+
+      // 7. Tam Xoa Hợp Lưu (Ngã ba giao hội)
+      if (features.some(f => f.id === 'tam_xoa_hop_luu')) {
+        addCitation('tam_xoa_hop_luu');
+      }
+
+      // 8. Hẻm Cụt (Bế Khí)
+      if (waterPathType === 'deadEnd') {
+        addCitation('be_khi_tu_khi');
+      }
+
+      // 9. Hoành Thủy Minh Đường (Tả Thủy đảo Hữu / Hữu Thủy đảo Tả)
+      if (waterSegments.some(s => s.flowRelation && (s.flowRelation.type === 'ta_dao_huu' || s.flowRelation.type === 'huu_dao_ta'))) {
+        addCitation('hoanh_thuy_quang_duong');
+      }
+
+      // 10. Tam Hợp 12 Cung Trường Sinh
+      if (waterSegments.length > 0) {
+        addCitation('tam_hop_truong_sinh_thuy_phap');
+      }
+
+      return citations;
     }
   }
 

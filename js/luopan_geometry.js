@@ -271,6 +271,150 @@
     }
   }
 
+  /**
+   * PHÂN CẤP TỨ TẦNG KHÍ LỘ: Ngoại Cục - Trung Cục - Cận Trạch - Khí Khẩu
+   * Dựa trên khoảng cách thực tế đến tâm nhà, hình học kết nối và vị trí Minh Đường.
+   */
+  function classifyPathTiers(polyline, houseCenter) {
+    if (!polyline || polyline.length < 2 || !houseCenter) {
+      return [];
+    }
+    const numSegs = polyline.length - 1;
+    const segInfo = [];
+
+    for (let i = 0; i < numSegs; i++) {
+      const p1 = polyline[i];
+      const p2 = polyline[i + 1];
+      const dist = distancePointToSegment(houseCenter, p1, p2);
+      segInfo.push({ index: i, dist, p1, p2 });
+    }
+
+    if (numSegs === 1) {
+      return [{
+        tier: 'can_trach',
+        tierLabel: 'Cận Trạch',
+        tierDesc: 'Hẻm cận trạch tiếp xúc Minh Đường — Tác động trực tiếp quyết định',
+        tierColor: '#10B981',
+        dist: segInfo[0].dist
+      }];
+    }
+
+    // Sắp xếp các phân đoạn theo khoảng cách tăng dần tới nhà
+    const sorted = [...segInfo].sort((a, b) => a.dist - b.dist);
+    const minIdx = sorted[0].index;
+    const maxIdx = sorted[sorted.length - 1].index;
+
+    const result = new Array(numSegs);
+
+    for (let i = 0; i < numSegs; i++) {
+      if (i === minIdx) {
+        result[i] = {
+          tier: 'can_trach',
+          tierLabel: 'Cận Trạch',
+          tierDesc: 'Hẻm cận trạch tiếp xúc Minh Đường — Quyết định xung/nghênh, nạp khí',
+          tierColor: '#10B981',
+          dist: segInfo[i].dist
+        };
+      } else if (i === maxIdx && numSegs >= 3) {
+        result[i] = {
+          tier: 'ngoai_cuc',
+          tierLabel: 'Ngoại Cục',
+          tierDesc: 'Đại động khí ngoại vi (Tỉnh lộ / Đại lộ) — Tác động vĩ mô, không trực xung',
+          tierColor: '#A78BFA',
+          dist: segInfo[i].dist
+        };
+      } else {
+        result[i] = {
+          tier: 'trung_cuc',
+          tierLabel: 'Trung Cục',
+          tierDesc: 'Hẻm trung gian dẫn nhập — Phân luồng & chuyển thế',
+          tierColor: '#F59E0B',
+          dist: segInfo[i].dist
+        };
+      }
+    }
+
+    if (numSegs === 2) {
+      const farIdx = minIdx === 0 ? 1 : 0;
+      result[farIdx] = {
+        tier: 'ngoai_cuc',
+        tierLabel: 'Ngoại Cục',
+        tierDesc: 'Đại lộ/Hẻm ngoài — Nguồn động khí bên ngoài',
+        tierColor: '#A78BFA',
+        dist: segInfo[farIdx].dist
+      };
+    }
+
+    return result;
+  }
+
+  /**
+   * PHÂN TÍCH ĐỘNG LỰC & KHÚC CHIẾT TIÊU SÁT (Mạng đường chữ U, các góc ngoặt)
+   */
+  function analyzeBendMomentum(polyline, houseCenter) {
+    if (!polyline || polyline.length < 3) {
+      return {
+        hasSharpBend: false,
+        hasUTurn: false,
+        khucChietTieuSat: false,
+        sharpCount: 0,
+        rightAngleCount: 0,
+        bends: [],
+        summary: 'Tuyến đường đơn giản, chưa có khúc ngoặt chuyển tiếp.'
+      };
+    }
+
+    const bends = [];
+    let sharpCount = 0;
+    let rightAngleCount = 0;
+
+    for (let i = 1; i < polyline.length - 1; i++) {
+      const pPrev = polyline[i - 1];
+      const pCurr = polyline[i];
+      const pNext = polyline[i + 1];
+
+      const bIn = calculateLineBearing(pPrev, pCurr);
+      const bOut = calculateLineBearing(pCurr, pNext);
+      const bendAngle = Math.abs(bearingDifference(bIn, bOut));
+      const isSharp = bendAngle >= 45;
+      const isRightAngle = bendAngle >= 70 && bendAngle <= 115;
+
+      if (isSharp) sharpCount++;
+      if (isRightAngle) rightAngleCount++;
+
+      bends.push({
+        nodeIndex: i,
+        point: pCurr,
+        bearingIn: bIn,
+        bearingOut: bOut,
+        bendAngle,
+        isSharp,
+        isRightAngle,
+        label: `Nút P${i + 1}: Bẻ góc ${bendAngle.toFixed(1)}° (${isRightAngle ? 'Góc vuông ~90° - Bẻ gãy động thế' : (isSharp ? 'Khúc ngoặt gấp - Chuyển thế khí' : 'Uốn nhẹ')})`
+      });
+    }
+
+    const hasUTurn = rightAngleCount >= 2 || (sharpCount >= 2 && polyline.length >= 4);
+    const khucChietTieuSat = hasUTurn || sharpCount >= 2;
+
+    let summary = 'Tuyến đường có khúc uốn thông thường.';
+    if (hasUTurn) {
+      summary = 'Tuyến đường gấp khúc chữ U qua 2 góc rẽ lớn (≈ 90°): Động thế hung hãn của đại lộ ngoài xa đã bị triệt tiêu hoàn toàn bởi tường vách ngăn che ("Nhất ngộ già lan tiện tác chỉ" — 《Trạch Pháp Cử Ngung》), biến xung thành hòa.';
+    } else if (sharpCount >= 1) {
+      summary = `Tuyến đường có ${sharpCount} khúc ngoặt lớn (≥ 45°): Sát khí đường thẳng bị bẻ gãy, chuyển hóa thế năng thành dòng chảy hòa hoãn.`;
+    }
+
+    return {
+      hasSharpBend: sharpCount > 0,
+      hasUTurn,
+      khucChietTieuSat,
+      sharpCount,
+      rightAngleCount,
+      bends,
+      summary
+    };
+  }
+
   return {
     normalizeBearing,
     bearingDifference,
@@ -286,6 +430,8 @@
     calculateBendAngle,
     circleFrom3Points,
     calculateCurveWrap,
-    calculateFlowRelation
+    calculateFlowRelation,
+    classifyPathTiers,
+    analyzeBendMomentum
   };
 }));

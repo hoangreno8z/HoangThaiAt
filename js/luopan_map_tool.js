@@ -38,6 +38,7 @@ class LuopanMapTool {
     ];
     this.flowDirection = 'forward'; // 'forward' hoặc 'reverse'
     this.waterPathType = 'through'; // 'through' (hẻm thông) hoặc 'deadEnd' (hẻm cụt)
+    this.waterNature = 'hu_thuy'; // 'hu_thuy' (Hư Thủy - lộ khí đô thị) hoặc 'chan_thuy' (Chân Thủy - dòng nước tự nhiên)
     this.isDrawingWater = false;
     this.pendingNewWaterPath = false;
     this.isArmingAddPoint = false;
@@ -200,6 +201,10 @@ class LuopanMapTool {
     const matchedGroup = this.data.SONG_SON_GROUPS.find(g => g.huongSon.includes(facingMountain.name)) || this.data.SONG_SON_GROUPS[0];
     const cuc = matchedGroup.cuc;
 
+    const pathTiers = (this.geometry && this.geometry.classifyPathTiers)
+      ? this.geometry.classifyPathTiers(this.waterPolyline, this.centerPoint)
+      : [];
+
     for (let i = 0; i < this.waterPolyline.length - 1; i++) {
       const from = this.waterPolyline[i];
       const to = this.waterPolyline[i + 1];
@@ -231,6 +236,12 @@ class LuopanMapTool {
         : facing;
       const flowRelation = this.geometry.calculateFlowRelation(from, to, this.centerPoint, flowFacing);
 
+      const tierObj = pathTiers[i] || {};
+      const tier = tierObj.tier || (i === 0 ? 'ngoai_cuc' : (i === this.waterPolyline.length - 2 ? 'can_trach' : 'trung_cuc'));
+      const tierLabel = tierObj.tierLabel || (tier === 'can_trach' ? 'Cận Trạch' : (tier === 'trung_cuc' ? 'Trung Cục' : 'Ngoại Cục'));
+      const tierDesc = tierObj.tierDesc || '';
+      const tierColor = tierObj.tierColor || '#94A3B8';
+
       segments.push({
         fromIndex: i,
         toIndex: i + 1,
@@ -238,6 +249,8 @@ class LuopanMapTool {
         to,
         rawBearing,
         effectiveBearing,
+        fromRadialEff,
+        toRadialEff,
         fromMountain,
         toMountain,
         fromTruongSinh,
@@ -245,7 +258,11 @@ class LuopanMapTool {
         segmentMountain,
         segmentTruongSinh,
         lengthPx,
-        flowRelation
+        flowRelation,
+        tier,
+        tierLabel,
+        tierDesc,
+        tierColor
       });
     }
     return segments;
@@ -450,6 +467,10 @@ class LuopanMapTool {
 
             <button type="button" id="btn-toggle-deadend" class="dt-step-badge" style="color:${this.waterPathType === 'deadEnd' ? '#F43F5E' : '#94A3B8'}; border-color:${this.waterPathType === 'deadEnd' ? '#F43F5E' : 'rgba(255,255,255,0.12)'};" title="Chuyển đổi loại tuyến">
               ${this.waterPathType === 'deadEnd' ? 'Hẻm Cụt' : 'Hẻm Thông'}
+            </button>
+
+            <button type="button" id="btn-toggle-water-nature" class="dt-step-badge" style="color:${this.waterNature === 'hu_thuy' ? '#F59E0B' : '#38BDF8'}; border-color:${this.waterNature === 'hu_thuy' ? '#F59E0B' : '#38BDF8'}; background:${this.waterNature === 'hu_thuy' ? 'rgba(245,158,11,0.18)' : 'rgba(56,189,248,0.18)'}; font-weight:700;" title="Chuyển đổi: Hư Thủy (Lộ Khí Đô Thị) ↔ Chân Thủy (Dòng Nước Tự Nhiên)">
+              ${this.waterNature === 'hu_thuy' ? 'Hư Thủy (Lộ Khí)' : 'Chân Thủy (Nước Thật)'}
             </button>
           </div>
 
@@ -1141,6 +1162,7 @@ class LuopanMapTool {
       houseCenter: this.centerPoint,
       frontageLine: this.frontageLine,
       waterPathType: this.waterPathType,
+      waterNature: this.waterNature || 'hu_thuy',
       laiNodeIndex: this.laiNodeIndex,
       khuNodeIndex: this.khuNodeIndex
     });
@@ -1244,6 +1266,13 @@ class LuopanMapTool {
                   <strong style="color:#FEF3C7;">${analysis.group.label} (${analysis.group.cuc} Cục)</strong>
                 </div>
 
+                <div style="display:flex; justify-content:space-between; padding:0.3rem 0.5rem; background:#141B2B; border-radius:6px;">
+                  <span>Hình Thái Thủy / Khí:</span>
+                  <strong style="color:${this.waterNature === 'hu_thuy' ? '#F59E0B' : '#38BDF8'};">
+                    ${this.waterNature === 'hu_thuy' ? 'Hư Thủy (Lộ Khí Đô Thị)' : 'Chân Thủy (Dòng Nước Thật)'}
+                  </strong>
+                </div>
+
                 <!-- BẢNG TỔNG LUẬN 12 TRƯỜNG SINH TAM HỢP -->
                 <div style="margin-top:0.15rem; padding:0.45rem 0.6rem; background:#0F172A; border:1px solid rgba(245,212,133,0.25); border-radius:6px;">
                   <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.25rem;">
@@ -1308,11 +1337,15 @@ class LuopanMapTool {
                           const m = seg.segmentMountain;
                           const ts = seg.segmentTruongSinh;
                           const rel = seg.flowRelation;
+                          const isNgoaiCucHuThuy = this.waterNature === 'hu_thuy' && seg.tier === 'ngoai_cuc';
                           return `
                             <div class="dt-segment-card" data-segment-idx="${i}" style="cursor:pointer; padding:0.35rem 0.5rem; background:${isSel ? 'rgba(245,158,11,0.2)' : '#141B2B'}; border:${isSel ? '1.5px solid #F59E0B' : '1px solid rgba(255,255,255,0.08)'}; border-radius:6px; transition:all 0.15s ease;">
-                              <div style="display:flex; justify-content:space-between; align-items:center;">
-                                <span style="font-weight:700; font-size:0.75rem; color:${isSel ? '#FEF3C7' : '#E2E8F0'};">
-                                  Đoạn ${i + 1}: P${seg.fromIndex + 1} ➔ P${seg.toIndex + 1}
+                              <div style="display:flex; justify-content:space-between; align-items:center; gap:0.3rem;">
+                                <span style="font-weight:700; font-size:0.75rem; color:${isSel ? '#FEF3C7' : '#E2E8F0'}; display:flex; align-items:center; gap:0.35rem;">
+                                  <span>Đoạn ${i + 1}: P${seg.fromIndex + 1} ➔ P${seg.toIndex + 1}</span>
+                                  <span style="font-size:0.62rem; font-weight:800; padding:0.08rem 0.35rem; border-radius:3px; background:${seg.tier === 'can_trach' ? 'rgba(16,185,129,0.2)' : (seg.tier === 'trung_cuc' ? 'rgba(56,189,248,0.2)' : 'rgba(167,139,250,0.2)')}; color:${seg.tier === 'can_trach' ? '#34D399' : (seg.tier === 'trung_cuc' ? '#38BDF8' : '#C4B5FD')}; border:1px solid ${seg.tier === 'can_trach' ? 'rgba(16,185,129,0.45)' : (seg.tier === 'trung_cuc' ? 'rgba(56,189,248,0.45)' : 'rgba(167,139,250,0.45)')};">
+                                    ${seg.tierLabel || (seg.tier === 'can_trach' ? 'Cận Trạch' : (seg.tier === 'trung_cuc' ? 'Trung Cục' : 'Ngoại Cục'))}
+                                  </span>
                                 </span>
                                 <span style="font-size:0.68rem; font-weight:700; color:#38BDF8; background:rgba(56,189,248,0.12); padding:0.08rem 0.3rem; border-radius:4px;">
                                   ${seg.effectiveBearing.toFixed(1)}° (${m ? m.name : ''} Sơn)
@@ -1321,6 +1354,11 @@ class LuopanMapTool {
                               <div style="display:flex; justify-content:space-between; margin-top:0.15rem; font-size:0.68rem; color:#CBD5E1;">
                                 <span>Từ <strong>${seg.fromMountain ? seg.fromMountain.name : ''}</strong> [${seg.fromTruongSinh ? seg.fromTruongSinh.name : ''}] ➔ <strong>${seg.toMountain ? seg.toMountain.name : ''}</strong> [${seg.toTruongSinh ? seg.toTruongSinh.name : ''}]</span>
                               </div>
+                              ${isNgoaiCucHuThuy ? `
+                                <div style="margin-top:0.1rem; font-size:0.64rem; color:#A78BFA; font-style:italic;">
+                                  ↳ Ngoại Cục vĩ mô: Không tính 12 Trường Sinh trực tiếp (Hư Thủy loại suy).
+                                </div>
+                              ` : ''}
                               <div style="margin-top:0.12rem; font-size:0.66rem; color:${rel ? rel.color : '#94A3B8'}; font-weight:600;">
                                 ${rel ? rel.label : ''}
                               </div>
@@ -1341,8 +1379,19 @@ class LuopanMapTool {
                       const ts = this.data.getTruongSinh(m.name, analysis.group.cuc);
                       return `
                         <div style="margin-top:0.35rem; padding:0.4rem 0.55rem; background:#141B2B; border-radius:6px; border-left:3px solid #38BDF8; font-size:0.75rem;">
-                          <div style="color:#38BDF8; font-weight:700;">Đoạn chọn: P${seg.fromIndex + 1} → P${seg.toIndex + 1}</div>
-                          <div style="color:#FEF3C7; margin-top:0.15rem;">Hướng tuyến: <strong>${seg.effectiveBearing.toFixed(2)}° (${m.name} Sơn · ${ts ? `${ts.name} Cung · ` : ''}${m.trigram} Quái)</strong></div>
+                          <div style="display:flex; justify-content:space-between; align-items:center;">
+                            <div style="color:#38BDF8; font-weight:700;">Đoạn chọn: P${seg.fromIndex + 1} → P${seg.toIndex + 1}</div>
+                            <span style="font-size:0.65rem; font-weight:800; color:#F5D485; background:rgba(245,212,133,0.15); padding:0.1rem 0.35rem; border-radius:3px;">
+                              ${seg.tierLabel || seg.tier}
+                            </span>
+                          </div>
+                          <div style="color:#FEF3C7; margin-top:0.15rem;">• Tiếp tuyến thân đường: <strong>${seg.effectiveBearing.toFixed(2)}° (${m.name} Sơn · ${ts ? `${ts.name} Cung · ` : ''}${m.trigram} Quái)</strong></div>
+                          ${seg.fromRadialEff !== undefined && seg.toRadialEff !== undefined ? `
+                            <div style="color:#94A3B8; font-size:0.7rem; margin-top:0.1rem;">• Phương vị nạp khí từ tâm nhà: P${seg.fromIndex + 1} = <strong>${seg.fromRadialEff.toFixed(1)}°</strong>, P${seg.toIndex + 1} = <strong>${seg.toRadialEff.toFixed(1)}°</strong></div>
+                          ` : ''}
+                          ${this.waterNature === 'hu_thuy' && seg.tier === 'ngoai_cuc' ? `
+                            <div style="color:#F59E0B; font-size:0.68rem; margin-top:0.2rem; font-style:italic;">⚠️ Chế độ Hư Thủy: Ngoại Cục là đại động thế vĩ mô ở xa, khí bị tiêu tán qua góc rẽ, không tính 12 Cung Trường Sinh trực tiếp vào gia trạch.</div>
+                          ` : ''}
                         </div>
                       `;
                     }
@@ -1524,6 +1573,93 @@ class LuopanMapTool {
               ` : `
                 <div style="padding:0.5rem; color:#94A3B8; font-size:0.74rem;">
                   Chưa có dữ liệu topo tuyến hẻm.
+                </div>
+              `}
+            </div>
+
+            <!-- TẦNG 6: KHẢO BIỆN CỔ THƯ & DIỄN GIẢI CHÁNH TÔNG ĐỒ HÌNH THỰC ĐỊA -->
+            <div class="dt-panel-section" id="dt-classical-theory-section" style="border:1px solid rgba(245,212,133,0.3); background:#0B101B;">
+              <div class="dt-panel-title" style="color:#FEF3C7; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(245,212,133,0.2); padding-bottom:0.45rem; margin-bottom:0.75rem;">
+                <span style="display:flex; align-items:center; gap:0.4rem;">
+                  <span style="color:#F5D485; font-size:1rem;">📜</span> 6. KHẢO BIỆN CỔ THƯ & DIỄN GIẢI CHÁNH TÔNG
+                </span>
+                <span style="font-size:0.68rem; padding:0.12rem 0.45rem; border-radius:4px; font-weight:700; background:rgba(245,212,133,0.15); color:#F5D485; border:1px solid rgba(245,212,133,0.3);">
+                  ${(analysis.theoryCitations || []).length} Khảo Chứng
+                </span>
+              </div>
+
+              <div style="font-size:0.75rem; color:#94A3B8; margin-bottom:0.75rem; line-height:1.45;">
+                Hệ thống tự động nhận dạng cấu trúc đồ hình hiện trường (phân tầng lộ khí, góc bẻ uốn khúc, chữ U tiêu sát, giao hội) và trích dẫn nguyên văn Cổ Thư chánh tông:
+              </div>
+
+              ${(analysis.theoryCitations && analysis.theoryCitations.length > 0) ? `
+                <div style="display:flex; flex-direction:column; gap:0.75rem;">
+                  ${analysis.theoryCitations.map((cite, idx) => `
+                    <article class="dt-theory-card" style="background:#131B2E; border:1px solid rgba(255,255,255,0.1); border-left:3.5px solid ${cite.tag === 'NGUYÊN TẮC CỐT LÕI' ? '#38BDF8' : (cite.tag === 'TIÊU SÁT BẢO VỆ' ? '#10B981' : (cite.tag === 'PHÂN ĐỊNH KHÁI NIỆM' ? '#F59E0B' : '#A78BFA'))}; border-radius:8px; padding:0.75rem; box-shadow:0 4px 12px rgba(0,0,0,0.3);">
+                      <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.35rem; gap:0.4rem; flex-wrap:wrap;">
+                        <div>
+                          <span style="display:inline-block; font-size:0.65rem; font-weight:800; padding:0.1rem 0.4rem; border-radius:4px; background:rgba(255,255,255,0.08); color:#CBD5E1; text-transform:uppercase; margin-bottom:0.2rem;">
+                            ${cite.tag || 'CỔ THƯ KHẢO BIỆN'}
+                          </span>
+                          <h4 style="margin:0; font-size:0.88rem; color:#FEF3C7; font-weight:800;">
+                            ${idx + 1}. ${cite.title}
+                          </h4>
+                        </div>
+                        <span style="font-size:0.7rem; color:#94A3B8; font-style:italic; background:#0F172A; padding:0.15rem 0.45rem; border-radius:4px; border:1px solid rgba(255,255,255,0.08);">
+                          ${cite.book} ${cite.author ? `· ${cite.author}` : ''}
+                        </span>
+                      </div>
+
+                      ${cite.quoteOriginal ? `
+                        <div style="font-size:0.82rem; color:#FDE68A; font-family:'Noto Serif TC', 'Songti SC', SimSun, serif; line-height:1.55; background:rgba(0,0,0,0.35); padding:0.45rem 0.65rem; border-radius:6px; margin-bottom:0.35rem; border:1px dashed rgba(245,212,133,0.25); letter-spacing:0.5px;">
+                          ${cite.quoteOriginal}
+                        </div>
+                      ` : ''}
+
+                      ${cite.quoteHanViet ? `
+                        <div style="font-size:0.74rem; color:#E2E8F0; font-style:italic; line-height:1.45; margin-bottom:0.4rem; padding-left:0.2rem;">
+                          <strong style="color:#F59E0B;">Hán-Việt:</strong> ${cite.quoteHanViet}
+                        </div>
+                      ` : ''}
+
+                      ${cite.quoteMeaning ? `
+                        <div style="font-size:0.75rem; color:#CBD5E1; line-height:1.5; margin-bottom:0.5rem; background:rgba(15,23,42,0.6); padding:0.45rem 0.6rem; border-radius:6px;">
+                          <strong style="color:#38BDF8;">Dịch nghĩa:</strong> ${cite.quoteMeaning}
+                        </div>
+                      ` : ''}
+
+                      ${(cite.sources && cite.sources.length > 1) ? `
+                        <div style="margin-top:0.35rem; margin-bottom:0.5rem; padding:0.4rem 0.55rem; background:rgba(15,23,42,0.7); border:1px dashed rgba(255,255,255,0.12); border-radius:6px;">
+                          <div style="font-size:0.68rem; color:#F59E0B; font-weight:800; text-transform:uppercase; margin-bottom:0.3rem;">
+                            Khảo chứng đối chiếu bổ túc (${cite.sources.length - 1} bản cổ thư khác):
+                          </div>
+                          ${cite.sources.slice(1).map(s => `
+                            <div style="font-size:0.72rem; margin-bottom:0.35rem; padding-bottom:0.3rem; border-bottom:1px solid rgba(255,255,255,0.06);">
+                              <div style="color:#FEF3C7; font-weight:700; font-size:0.72rem;">${s.book} ${s.author ? `· ${s.author}` : ''}</div>
+                              <div style="color:#FDE68A; font-family:'Noto Serif TC', serif; font-size:0.75rem; margin:0.12rem 0; letter-spacing:0.3px;">${s.quoteOriginal}</div>
+                              <div style="color:#CBD5E1; font-size:0.7rem; line-height:1.4;">↳ <em>Dịch nghĩa:</em> ${s.quoteMeaning}</div>
+                            </div>
+                          `).join('')}
+                        </div>
+                      ` : ''}
+
+                      ${cite.masterCommentary ? `
+                        <div style="font-size:0.73rem; color:#E2E8F0; line-height:1.55; margin-bottom:0.5rem; border-left:2px solid #10B981; padding-left:0.55rem;">
+                          <strong style="color:#34D399;">Danh Sư Khảo Biện:</strong> ${cite.masterCommentary}
+                        </div>
+                      ` : ''}
+
+                      ${cite.applicationGuide ? `
+                        <div style="font-size:0.72rem; color:#FEF3C7; line-height:1.5; background:rgba(245,158,11,0.12); border:1px solid rgba(245,158,11,0.3); border-radius:6px; padding:0.4rem 0.6rem;">
+                          <strong style="color:#FBBF24;">Ứng dụng thực địa:</strong> ${cite.applicationGuide}
+                        </div>
+                      ` : ''}
+                    </article>
+                  `).join('')}
+                </div>
+              ` : `
+                <div style="padding:0.8rem; color:#94A3B8; font-size:0.76rem; text-align:center; font-style:italic; background:#131B2E; border-radius:6px;">
+                  Vẽ thêm đoạn đường hoặc định vị tâm nhà để kích hoạt nhận dạng cổ thư.
                 </div>
               `}
             </div>
@@ -1776,6 +1912,21 @@ class LuopanMapTool {
         btnDeadEnd.textContent = this.waterPathType === 'deadEnd' ? 'Hẻm Cụt' : 'Hẻm Thông';
         btnDeadEnd.style.color = this.waterPathType === 'deadEnd' ? '#F43F5E' : '#94A3B8';
         btnDeadEnd.style.borderColor = this.waterPathType === 'deadEnd' ? '#F43F5E' : 'rgba(255,255,255,0.12)';
+        this.renderDrawingElements();
+        this.updateSvgView();
+        this.updateMeasurementsDisplay();
+      });
+    }
+
+    // Chuyển đổi Hư Thủy (Lộ Khí Đô Thị) / Chân Thủy (Nước Thật)
+    const btnWaterNature = document.getElementById('btn-toggle-water-nature');
+    if (btnWaterNature) {
+      btnWaterNature.addEventListener('click', () => {
+        this.waterNature = this.waterNature === 'hu_thuy' ? 'chan_thuy' : 'hu_thuy';
+        btnWaterNature.textContent = this.waterNature === 'hu_thuy' ? 'Hư Thủy (Lộ Khí)' : 'Chân Thủy (Nước Thật)';
+        btnWaterNature.style.color = this.waterNature === 'hu_thuy' ? '#F59E0B' : '#38BDF8';
+        btnWaterNature.style.borderColor = this.waterNature === 'hu_thuy' ? '#F59E0B' : '#38BDF8';
+        btnWaterNature.style.background = this.waterNature === 'hu_thuy' ? 'rgba(245,158,11,0.18)' : 'rgba(56,189,248,0.18)';
         this.renderDrawingElements();
         this.updateSvgView();
         this.updateMeasurementsDisplay();
