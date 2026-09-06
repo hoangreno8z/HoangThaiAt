@@ -1,0 +1,51 @@
+# Kiểm toán nguồn Vấn đáp — Chương 01
+
+Ngày đối chiếu: 2026-09-06. Phạm vi: **Lập Cực Định Vị, câu 01–10**. Không triển khai chương kế tiếp.
+
+## Điểm khôi phục và kiểm kê
+
+- Repository: https://github.com/hoangreno8z/HoangThaiAt ; nhánh triển khai: `main`.
+- Git status ban đầu sạch; SHA ban đầu: `a87ed5fed6fdb388f81bd4528cf666fda4011d9e`.
+- Nhánh dự phòng: `backup/van-dap-ch01-a87ed5f`. Dùng nhánh này để xem bản trước; nếu cần hoàn tác production, tạo commit revert cho commit sửa chương rồi triển khai theo luồng hiện có.
+- Dữ liệu: `js/hoidap_data.js`, `window.HOIDAP_CHAPTERS`, `window.HOIDAP_DATA`.
+- Bộ hiển thị: `js/hoidap_ui.js`, lớp `HoiDapUI`; CSS: `css/hoidap.css`; route hiện hữu: `#/van-dap`.
+- Kiểm kê: 100 câu; chương 1 đúng 10 câu với ID 1–10. Danh mục chương và 90 đối tượng câu 11–100 được kiểm tra bằng so sánh sâu với SHA ban đầu.
+
+| ID | Tiêu đề giữ lại | Trọng tâm cần sửa | Phạm vi trường phái |
+|---|---|---|---|
+| 01 | Lộ Xung Sát | Không lấy đường thẳng hoặc khoảng cách cố định để quyết định tai họa | Hình thế; đường/môn trong Thiên Nguyên Ngũ Ca; chuyển dụng đô thị |
+| 02 | Hoàn Bão Thủy | Phân biệt vị trí với đường cong; không đồng nhất nước thật và xe | Hình thế thủy trong Táng Thư; chuyển dụng đường cong |
+| 03 | Tiễn Đao Sát | Ngã T, ngã Y, xung cửa và xung góc là các cấu hình khác nhau | Hình thế; tên truyền thị; đối chiếu đường/môn |
+| 04 | Bế Khí Thủy | Hẻm cụt không tự động là tụ thủy hay khí chết; bỏ hội thoại rác | Hình thế; đường nội/ngoại; thông thoáng và thoát nước |
+| 05 | Cận Viễn Thủy | Phân tích quan hệ tiếp cận từng làn thay vì chỉ chọn làn gần | Đường/môn; mô hình hư thủy; giao thông hiện đại |
+| 06 | Nghịch Khí Cục | Tách cao độ nền, dốc mặt đường, thoát nước và tọa hướng | Hình thế và khảo sát kỹ thuật |
+| 07 | Tà Môn Khẩu | Tách hướng nhà, hướng khung cửa, góc cánh cửa và vòng la kinh | Quy ước đo; Tam Hợp/Tam Nguyên không hoán đổi |
+| 08 | Xạ Hạp Sát | Không suy tốc độ gió chỉ từ bề rộng hẻm; không áp bảng 144 chung | Tàng phong; chuyển dụng đô thị; khí động học |
+| 09 | Lưỡng Môn Khẩu | Cửa sử dụng nhiều không tự thay toàn bộ tọa hướng nhà | Dương trạch, môn/lộ và điều kiện truyền thừa |
+| 10 | Ám Thủy Nghịch | Sửa nguồn câu nội/ngoại khí; tách nước cống, nước mặt và luồng xe | Thanh Ô Kinh; phân hệ thoát nước hiện đại |
+
+## Schema và cách đọc mức chứng cứ
+
+Giữ các trường hiện hữu: `index`, `chapter`, `chapter_title`, `title`, `subtitle`, `topo`, `hanzi`, `hanviet`, `meaning`, `qi_mechanism`, `hoa_phuc`, `remediation`. Thêm `sources[]` cho riêng 10 câu; mỗi nguồn lưu `id`, `title`, `section`, `url`, `author`, `attributionStatus`, `evidenceLevel`, `quote`, `note`.
+
+`VERIFIED` chỉ xác nhận văn bản trích tìm thấy trong nguồn nêu rõ, hoặc phép suy toán được chứng minh; không xác nhận hiệu nghiệm của phán đoán phong thủy. `SUPPORTED`, `LINEAGE_DEPENDENT`, `MODERN_EXTENSION`, `UNRESOLVED` được hiểu ở cấp luận điểm/nguồn, không gán cả bài thành chân lý. Tác giả đề tên truyền thống được phân biệt với tác giả đã chứng minh; bản chép lại được phân biệt với hình ảnh cổ bản. Không xem nhãn trên chính website là bằng chứng độc lập.
+
+Nguồn cổ là nền cho cách quan sát hình thế và môn/lộ. Phần giải nghĩa biên soạn mới, phép chuyển dụng đường/xe và kiến thức kỹ thuật được ghi rõ trong từng bài. Không tạo bảng Tứ Cục/12 Trường Sinh mới khi chưa có hướng, thủy khẩu, quy ước la bàn và bản truyền thừa để tính; không sửa engine hoặc dữ liệu 144 của module khác.
+
+Bộ hiển thị chỉ chọn bố cục bài đã khảo chứng khi `chapter === 1 && sources`; gom nội dung thành năm phần, kèm nguồn có liên kết và mức chứng cứ bằng tiếng Việt. Phần giới thiệu riêng khi mở chương 1 được sửa cho đúng phạm vi. Chương khác dùng nhánh hiển thị cũ; theme và routing giữ nguyên. Ba tham chiếu tài nguyên Hỏi đáp trong `index.html` đổi phiên bản để nhận nội dung mới.
+
+## Nhật ký kiểm chứng từng câu
+
+| ID | Nguồn cũ | Vấn đề | Nguồn xác minh | Mức độ | Thay đổi |
+|---|---|---|---|---|---|
+| 01 | Táng Thư, Dương Trạch Tam Yếu, Khẩu quyết Hình thế | Gán nhãn cồng kềnh trong Hán văn, áp ngưỡng cứng 100m | 《葬書》, 《雪心賦》 | VERIFIED | Bỏ markdown/nhãn trong Hán văn, bỏ ngưỡng mét bịa, phân tầng Chân/Hư thủy, bổ sung phép đo và thứ tự ưu tiên hóa giải |
+| 02 | Táng Thư, Thanh Nang Tự, Thủy Long Kinh | Gán phản cung suy diễn con cái bỏ đi, thiếu phân tích ly tâm | 《葬書》, 《青囊序》 | VERIFIED | Trích đúng câu cổ, giải thích cơ chế ly tâm/đèn pha xe cộ, bỏ phán đoán mê tín, đưa giải pháp cách âm và tường rào |
+| 03 | Tuyết Tâm Phú, Khẩu quyết Dương Tùng, Thủy Long Kinh | Lẫn lộn ngã ba T và Y, suy diễn đau ốm theo góc nhà | 《雪心賦》, Khẩu quyết Hình thế | VERIFIED / LINEAGE_DEPENDENT | Phân biệt rõ ngã T và Y, giải thích cơ chế điểm nghẽn giao thông, bỏ phán bệnh tật, đề xuất vát góc và vùng đệm xanh |
+| 04 | Táng Thư, Thanh Nang Tự, Thủy Long Kinh | Tự tạo ngưỡng 3m, 4m, 150m, dính hội thoại AI rác | 《葬書》 (Chu Tước thiên) | VERIFIED | Loại bỏ 100% hội thoại rác, bỏ số mốc cứng, phân tích vi khí hậu (túi khí quẩn, PCCC, thoát hiểm, giếng trời) |
+| 05 | Thủy Long Kinh, Địa Lý Ngũ Quyết (AI bịa câu) | Câu Hán AI tự tạo gán cho Tưởng Đại Hồng và Địa Lý Ngũ Quyết | 《葬書》, 《地理辨正》 (Thiên Ngọc Kinh chú) | VERIFIED / SUPPORTED | Thay bằng câu cổ xác thực, phân tích làn xe cận/viễn, giải pháp vỉa hè giật cấp và kính hộp cách âm |
+| 06 | Táng Thư (câu sai), Dương Trạch Thập Thư | Ghép sai văn bản Táng Thư, suy diễn bệnh thoái hóa cột sống | 《黃帝宅經》, 《陽宅十書》 (Hình thể ca) | VERIFIED / SUPPORTED | Đính chính kinh văn chuẩn, phân tích thủy văn thoát nước mặt và xói lở móng sau, bổ sung giải pháp tường kè chịu lực |
+| 07 | Thanh Nang Áo Ngữ (câu ghép), Thẩm Thị Huyền Không Học | Câu Hán bị AI ghép vế sau, gượng ép phân kim 15-30 độ | 《天玉經》 (Nội Biện Thiên), 《青囊奧語》 | VERIFIED | Khôi phục nguyên văn cổ, tách bạch 3 cấp độ đo (khối nhà, khung cửa, lối đi), cảnh báo tuyến Không Vong, khuyên giữ cửa vuông vức |
+| 08 | Táng Thư (câu bịa), Thủy Long Kinh (câu bịa) | Câu Hán AI tự sáng tác gán bừa cho Táng Thư | 《雪心賦》 (Ao phong xạ huyệt) | VERIFIED | Khảo chứng câu chuẩn trong Tuyết Tâm Phú, phân tích hiệu ứng Venturi trong khí động học, đưa giải pháp huyền quan đệm |
+| 09 | Dương Trạch Tam Yếu (bịa), Địa Lý Biện Chính (bịa) | Câu Hán do AI tạo ra, phán đoán bệnh thận/đau lưng | 《黃帝宅經》, 《陽宅三要》 (Đại Môn Biện) | VERIFIED / SUPPORTED | Dẫn đúng nguyên văn kinh thư, phân tích Động - Tĩnh khí khẩu, đề xuất thông gió đối lưu trước sau và đảm bảo an toàn PCCC |
+| 10 | Nhân Tử Tu Tri (bịa), Táng Thư (ghép sai) | Câu Hán bịa gán cho Từ Thiện Kế, thần bí hóa cống ngầm | 《葬書》 (Nội khí manh sinh) | VERIFIED | Khôi phục nguyên văn Táng Thư, tách bạch hạ tầng ngầm kỹ thuật với long mạch, giải quyết khí H2S/mùi hôi bằng bẫy nước và màng chống thấm |
+

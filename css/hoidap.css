@@ -354,6 +354,29 @@
 }
 
 /* Classical Chinese Box — Nét thanh mảnh, cỡ vừa vặn, không nhòe */
+.hoidap-reviewed {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.hoidap-reviewed .hoidap-sec-hanzi {
+  flex-direction: column;
+}
+
+.hoidap-sources {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+}
+
+.hoidap-sources a {
+  color: var(--gold-glow);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
 .hoidap-hanzi-box {
   background: rgba(212, 175, 55, 0.03);
   border-left: 2px solid rgba(229, 192, 123, 0.5);

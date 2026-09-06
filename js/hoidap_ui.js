@@ -63,8 +63,8 @@ class HoiDapUI {
           <h1 class="hoidap-hero-title">Vấn Đáp Cổ Pháp</h1>
           <div class="hoidap-hero-sub">Bách Cục Thủy Khẩu • Tầm Long Điểm Huyệt • Tiêu Sa Nạp Thủy</div>
           <p class="hoidap-hero-desc">
-            Tổng tập một trăm địa cuộc thực chứng cổ bản: Giải mã toàn diện cơ chế Lai Thủy, Khứ Thủy, 
-            phân định mười hai cung Trường Sinh, ứng dụng một trăm bốn mươi bốn thủy khẩu chánh tông và bí quyết tiêu sát nạp cát.
+            ${this.activeChapter === 1 && !this.searchQuery.trim() ? 'Lập Cực Định Vị: học cách xác định điểm đo, phân biệt nước thực với đường và luồng đi lại, đọc nguồn cổ theo đúng phạm vi, rồi khảo sát từng địa cuộc.' : `Tổng tập một trăm địa cuộc thực chứng cổ bản: Giải mã toàn diện cơ chế Lai Thủy, Khứ Thủy, 
+            phân định mười hai cung Trường Sinh, ứng dụng một trăm bốn mươi bốn thủy khẩu chánh tông và bí quyết tiêu sát nạp cát.`}
           </p>
         </section>
 
@@ -156,6 +156,7 @@ class HoiDapUI {
             </div>
 
             <div class="hoidap-card-body" style="display: ${isExpanded ? 'flex' : 'none'};">
+              ${item.chapter === 1 && item.sources ? this.renderReviewedBody(item) : `
               <!-- 1. Thế Đất Khảo Nghiệm -->
               <div class="hoidap-sec-block">
                 <div class="hoidap-sec-heading">Thế Đất Khảo Nghiệm</div>
@@ -191,7 +192,7 @@ class HoiDapUI {
               <div class="hoidap-sec-block">
                 <div class="hoidap-sec-heading">Pháp Môn Tiêu Sát</div>
                 <div class="hoidap-sec-content">${this.formatContent(item.remediation)}</div>
-              </div>
+              </div>`}
             </div>
           </article>
         `;
@@ -235,6 +236,41 @@ class HoiDapUI {
     `;
 
     container.innerHTML = html;
+  }
+
+  renderReviewedBody(item) {
+    const section = (title, content) => `<div class="hoidap-sec-block"><div class="hoidap-sec-heading">${title}</div><div class="hoidap-sec-content">${content}</div></div>`;
+    const classical = `<div class="hoidap-sec-hanzi" style="display: ${this.showHanzi ? 'flex' : 'none'};"><div class="hoidap-hanzi-box">${this.escapeHtml(item.hanzi)}</div></div>`;
+    return `<div class="hoidap-reviewed">
+      ${section('Địa cuộc và khái niệm', this.formatContent(item.topo))}
+      ${section('Căn cứ và diễn nghĩa', classical + this.formatContent(item.hanviet) + this.formatContent(item.meaning) + this.renderSources(item))}
+      ${section('Nguyên lý và cách khảo sát', this.formatContent(item.qi_mechanism))}
+      ${section('Phân loại và giới hạn luận đoán', this.formatContent(item.hoa_phuc))}
+      ${section('Xử lý và kết luận thực hành', this.formatContent(item.remediation))}
+    </div>`;
+  }
+
+  renderSources(item) {
+    const levels = {
+      VERIFIED: 'Đã đối chiếu câu trích',
+      SUPPORTED: 'Có căn cứ, cần lưu ý dị bản',
+      LINEAGE_DEPENDENT: 'Phụ thuộc truyền thừa',
+      MODERN_EXTENSION: 'Chuyển dụng hiện đại',
+      UNRESOLVED: 'Chưa xác minh đầy đủ'
+    };
+    const entries = (item.sources || []).map(source => {
+      let href;
+      try {
+        const url = new URL(source.url);
+        if (url.protocol !== 'https:' || url.username || url.password) return '';
+        href = this.escapeHtml(url.href);
+      } catch { return ''; }
+      return `<li><a href="${href}" target="_blank" rel="noopener noreferrer">${this.escapeHtml(source.title)}</a> — ${this.escapeHtml(source.section)}.
+        ${this.escapeHtml(source.author)}. ${this.escapeHtml(source.attributionStatus)}.
+        <span>${this.escapeHtml(levels[source.evidenceLevel] || 'Xem phạm vi nguồn')}.</span>
+        ${this.formatContent(source.note)}</li>`;
+    }).join('');
+    return `<div class="hoidap-sources"><p class="hoidap-p"><strong>Nguồn đối chiếu</strong> — Mức xác minh ở đây áp dụng cho văn bản trích dẫn; phạm vi vận dụng được giải thích trong bài.</p><ul class="hoidap-ul">${entries}</ul></div>`;
   }
 
   toggleHanzi() {
