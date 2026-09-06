@@ -2197,13 +2197,6 @@ ${reportText}
           <div id="industry-sunset-view" style="display:none;">
             ${this.renderSunsetIndustriesHtml()}
           </div>
-
-          <!-- Giải trình cơ chế cập nhật tự động định kỳ vs thủ công -->
-          <div style="margin-top:1.2rem; background:rgba(0,0,0,0.25); border:1px dashed rgba(255,255,255,0.15); border-radius:8px; padding:0.85rem 1.1rem; font-size:0.76rem; color:#94A3B8; line-height:1.65;">
-            <div style="font-weight:700; color:#FBBF24; margin-bottom:0.3rem;">📌 Cơ Chế Cập Nhật Định Kỳ Tự Động vs Thủ Công:</div>
-            • <strong>Cập nhật Tự Động Định Kỳ (Hàng tháng):</strong> Tích hợp tự động qua API Foursquare OS Places Delta Feed hàng tháng (ghi nhận cửa hàng thêm mới <code>is_new</code> / đóng cửa rời bản đồ <code>is_deleted</code>), kết hợp crawler định kỳ từ Cổng Thông tin Đăng ký Doanh nghiệp Quốc gia (dữ liệu giải thể pháp lý).<br>
-            • <strong>Phân biệt rõ Cửa hàng biến mất (POI Churn) vs Phá sản pháp lý:</strong> Một điểm bán đóng cửa trả mặt bằng (hết hạn hợp đồng, chuyển điểm kinh doanh đón phong thủy tốt hơn) được thống kê là <em>POI Churn</em> (thanh lọc vị trí), không đồng nhất với <em>Phá sản giải thể doanh nghiệp</em>.
-          </div>
         </div>
 
         <!-- NHẬN ĐỊNH THỊ TRƯỜNG & KẾT HỢP PHONG THỦY THƯƠNG MẠI -->
