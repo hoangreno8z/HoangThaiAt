@@ -1819,9 +1819,12 @@ ${reportText}
                 Số liệu chi tiết cấp tiểu vùng phục vụ định vị cửa hàng, phân phối sản phẩm và mở rộng điểm kinh doanh.
               </div>
             </div>
-            <span style="font-size:0.74rem; color:#38BDF8; font-weight:600; background:rgba(56,189,248,0.12); padding:0.2rem 0.6rem; border-radius:4px;">
-              ${districts.length} Đơn vị trọng điểm
-            </span>
+            <div style="display:flex; align-items:center; gap:0.5rem; flex-wrap:wrap;">
+              <input type="text" id="kinhte-filter-sae-table" placeholder="🔍 Lọc quận/huyện..." oninput="window.toolUI.filterSaeTable(this.value)" style="background:#0F172A; border:1px solid rgba(255,255,255,0.2); color:#FEF3C7; padding:0.25rem 0.6rem; border-radius:6px; font-size:0.75rem; outline:none; width:160px;">
+              <span style="font-size:0.74rem; color:#38BDF8; font-weight:600; background:rgba(56,189,248,0.12); padding:0.2rem 0.6rem; border-radius:4px;">
+                ${districts.length} Đơn vị hành chính
+              </span>
+            </div>
           </div>
 
           <div style="overflow-x:auto;">
@@ -1848,7 +1851,7 @@ ${reportText}
                   else dColor = '#A78BFA';
 
                   return `
-                    <tr style="border-bottom:1px solid rgba(255,255,255,0.04); background:${idx % 2 === 0 ? 'rgba(255,255,255,0.01)' : 'transparent'};">
+                    <tr class="sae-district-row" data-name="${d.name}" style="border-bottom:1px solid rgba(255,255,255,0.04); background:${idx % 2 === 0 ? 'rgba(255,255,255,0.01)' : 'transparent'};">
                       <td style="padding:0.6rem 0.8rem; font-weight:700; color:#FEF3C7;">${d.name}</td>
                       <td style="padding:0.6rem 0.8rem; color:var(--text-muted);">${d.type}</td>
                       <td style="padding:0.6rem 0.8rem; color:#CBD5E1;">${(d.pop || 0).toLocaleString('vi-VN')}</td>
@@ -1891,9 +1894,10 @@ ${reportText}
 
           <!-- Bộ điều khiển lựa chọn bán kính và đơn vị -->
           <div style="display:flex; gap:0.8rem; flex-wrap:wrap; align-items:center; background:rgba(0,0,0,0.25); padding:0.8rem; border-radius:8px;">
-            <div style="display:flex; align-items:center; gap:0.4rem;">
+            <div style="display:flex; align-items:center; gap:0.4rem; flex-wrap:wrap;">
               <label style="font-size:0.8rem; color:#FEF3C7; font-weight:600;">Khu vực:</label>
-              <select id="kinhte-select-district" onchange="window.toolUI.triggerRadiusCalculation('${currentProvince.historical_id}')" style="background:#0F172A; border:1px solid #10B981; color:#FEF3C7; padding:0.35rem 0.7rem; border-radius:6px; font-size:0.8rem; outline:none;">
+              <input type="text" id="kinhte-search-district" placeholder="🔍 Gõ tìm huyện..." oninput="window.toolUI.filterDistrictDropdown(this.value)" style="background:#0F172A; border:1px solid rgba(255,255,255,0.2); color:#FEF3C7; padding:0.35rem 0.6rem; border-radius:6px; font-size:0.8rem; outline:none; width:150px;">
+              <select id="kinhte-select-district" onchange="window.toolUI.triggerRadiusCalculation('${currentProvince.historical_id}')" style="background:#0F172A; border:1px solid #10B981; color:#FEF3C7; padding:0.35rem 0.7rem; border-radius:6px; font-size:0.8rem; outline:none; max-width:280px;">
                 ${districts.map(d => `<option value="${d.id}">${d.name} (${d.type})</option>`).join('')}
               </select>
             </div>
@@ -2120,7 +2124,7 @@ ${reportText}
             <div style="display:flex; flex-direction:column; gap:0.35rem; font-size:0.76rem; border-top:1px dashed rgba(255,255,255,0.08); padding-top:0.6rem;">
               <div style="display:flex; justify-content:space-between;">
                 <span style="color:var(--text-muted);">Khách hàng mục tiêu:</span>
-                <strong style="color:#CBD5E1;">${demographics.targetCustomerCount.toLocaleString('vi-VN')} người</strong>
+                <strong style="color:#CBD5E1;">${demographics.targetCustomerCount.toLocaleString('vi-VN')} người (${demographics.targetRatioPct}%)</strong>
               </div>
               <div style="display:flex; justify-content:space-between;">
                 <span style="color:var(--text-muted);">Dân số ban ngày:</span>
@@ -2130,6 +2134,12 @@ ${reportText}
                 <span style="color:var(--text-muted);">Chi tiêu bình quân/khách:</span>
                 <strong style="color:#38BDF8;">${(marketDemand.adjustedSpendPerCustomer).toLocaleString('vi-VN')} đ/tháng</strong>
               </div>
+              ${demographics.genderBreakdown ? `
+                <div style="display:flex; justify-content:space-between; font-size:0.72rem; color:#94A3B8; background:rgba(0,0,0,0.2); padding:0.2rem 0.4rem; border-radius:4px;">
+                  <span>Giới tính cư dân:</span>
+                  <span>Nam ${demographics.genderBreakdown.malePct}% • Nữ ${demographics.genderBreakdown.femalePct}%</span>
+                </div>
+              ` : ''}
               <div style="font-size:0.7rem; color:var(--text-dim); margin-top:0.3rem; line-height:1.4;">
                 <em>Tệp khách:</em> ${profile.target_demographic}
               </div>
@@ -2169,6 +2179,15 @@ ${reportText}
                 <span style="color:var(--text-muted);">Khách phục vụ / 1 cửa hàng:</span>
                 <strong style="color:#34D399;">~${competition.customersPerStore.toLocaleString('vi-VN')} khách</strong>
               </div>
+              ${res.clusterIntelligence ? `
+                <div style="background:rgba(0,0,0,0.25); padding:0.4rem 0.5rem; border-radius:4px; margin-top:0.3rem; font-size:0.71rem; line-height:1.4;">
+                  <div style="color:#EF4444;">• <strong>Khu đông đối thủ:</strong> ${res.clusterIntelligence.crowdedSummary}</div>
+                  <div style="color:#34D399; margin-top:0.15rem;">• <strong>Vùng trũng tiềm năng:</strong> ${res.clusterIntelligence.opportunitySummary}</div>
+                  ${res.clusterIntelligence.primaryStreets.length > 0 ? `
+                    <div style="color:#38BDF8; margin-top:0.15rem;">• <strong>Trục đường chính:</strong> ${res.clusterIntelligence.primaryStreets.slice(0, 3).join(', ')}</div>
+                  ` : ''}
+                </div>
+              ` : ''}
             </div>
           </div>
 
@@ -2330,7 +2349,16 @@ ${reportText}
 
   renderRadiusResultHtml(res) {
     if (!res) return '';
-    const { location, demographics, financials, spendingBreakdown, marketAssessment } = res;
+    const { location, demographics, financials, spendingBreakdown, marketAssessment, commercialHotspots } = res;
+    const gender = demographics.genderBreakdown || { malePct: 49.5, femalePct: 50.5, estimatedMale: 0, estimatedFemale: 0 };
+    const cohorts = demographics.ageCohorts || {
+      children: { pct: 18.5, count: 0, label: 'Trẻ em (0-14 tuổi)' },
+      youth: { pct: 15.0, count: 0, label: 'Thanh thiếu niên (15-24 tuổi)' },
+      prime: { pct: 44.5, count: 0, label: 'Độ tuổi vàng chi tiêu (25-49 tuổi)' },
+      senior: { pct: 22.0, count: 0, label: 'Trung niên & Cao tuổi (50+ tuổi)' }
+    };
+    const hotspots = commercialHotspots || {};
+
     return `
       <div style="background:rgba(15,23,42,0.9); border:1px solid ${marketAssessment.ratingColor}55; border-radius:10px; padding:1.2rem; margin-top:1rem;">
         <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; margin-bottom:1rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:0.75rem;">
@@ -2355,7 +2383,7 @@ ${reportText}
           <div style="background:rgba(255,255,255,0.03); padding:0.75rem; border-radius:8px; border-left:3px solid #10B981;">
             <div style="font-size:0.74rem; color:var(--text-muted);">Dung Lượng Tiêu Dùng / Tháng</div>
             <div style="font-size:1.2rem; font-weight:800; color:#10B981;">${financials.totalMonthlySpendingBillionVnd.toLocaleString('vi-VN')} <span style="font-size:0.75rem; font-weight:500;">tỷ VNĐ/tháng</span></div>
-            <div style="font-size:0.7rem; color:var(--text-dim);">Quy năm: ~${financials.totalYearlySpendingBillionVnd.toLocaleString('vi-VN')} tỷ VNĐ</div>
+            <div style="font-size:0.7rem; color:var(--text-dim);">Quy năm: ~${financials.totalYearlySpendingBillionVnd} tỷ VNĐ</div>
           </div>
 
           <div style="background:rgba(255,255,255,0.03); padding:0.75rem; border-radius:8px; border-left:3px solid #F59E0B;">
@@ -2368,6 +2396,34 @@ ${reportText}
             <div style="font-size:0.74rem; color:var(--text-muted);">Cơ Sở Kinh Doanh Hiện Hữu</div>
             <div style="font-size:1.2rem; font-weight:800; color:#EC4899;">~${demographics.estimatedBusinessHouseholds.toLocaleString('vi-VN')} <span style="font-size:0.75rem; font-weight:500;">điểm</span></div>
             <div style="font-size:0.7rem; color:var(--text-dim);">Điểm bán hàng & dịch vụ</div>
+          </div>
+        </div>
+
+        <!-- Khối Nhân Khẩu Học & Tháp Tuổi -->
+        <div style="background:rgba(0,0,0,0.25); padding:0.75rem; border-radius:8px; margin-bottom:0.8rem;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.45rem; flex-wrap:wrap; gap:0.4rem;">
+            <div style="font-size:0.78rem; font-weight:700; color:#FEF3C7;">Cơ Cấu Nhân Khẩu Học (${demographics.estimatedPopulation.toLocaleString('vi-VN')} cư dân):</div>
+            <div style="font-size:0.74rem; color:#38BDF8;">
+              Nam: <strong style="color:#60A5FA;">${gender.malePct}%</strong> (~${gender.estimatedMale.toLocaleString('vi-VN')}) • Nữ: <strong style="color:#F472B6;">${gender.femalePct}%</strong> (~${gender.estimatedFemale.toLocaleString('vi-VN')})
+            </div>
+          </div>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(130px, 1fr)); gap:0.4rem; font-size:0.74rem;">
+            <div style="background:rgba(255,255,255,0.02); padding:0.4rem 0.5rem; border-radius:4px; border-top:2px solid #38BDF8;">
+              <span style="color:#94A3B8;">Trẻ em (0-14):</span>
+              <strong style="color:#FEF3C7; display:block;">${cohorts.children.pct}% (~${cohorts.children.count.toLocaleString('vi-VN')})</strong>
+            </div>
+            <div style="background:rgba(255,255,255,0.02); padding:0.4rem 0.5rem; border-radius:4px; border-top:2px solid #34D399;">
+              <span style="color:#94A3B8;">Thanh niên (15-24):</span>
+              <strong style="color:#FEF3C7; display:block;">${cohorts.youth.pct}% (~${cohorts.youth.count.toLocaleString('vi-VN')})</strong>
+            </div>
+            <div style="background:rgba(16,185,129,0.1); padding:0.4rem 0.5rem; border-radius:4px; border-top:2px solid #10B981; border:1px solid rgba(16,185,129,0.3);">
+              <span style="color:#34D399; font-weight:700;">Tuổi vàng (25-49):</span>
+              <strong style="color:#34D399; display:block;">${cohorts.prime.pct}% (~${cohorts.prime.count.toLocaleString('vi-VN')})</strong>
+            </div>
+            <div style="background:rgba(255,255,255,0.02); padding:0.4rem 0.5rem; border-radius:4px; border-top:2px solid #F59E0B;">
+              <span style="color:#94A3B8;">Cao tuổi (50+):</span>
+              <strong style="color:#FEF3C7; display:block;">${cohorts.senior.pct}% (~${cohorts.senior.count.toLocaleString('vi-VN')})</strong>
+            </div>
           </div>
         </div>
 
@@ -2393,6 +2449,29 @@ ${reportText}
             </div>
           </div>
         </div>
+
+        <!-- Khối Hành Lang Thương Mại & Cụm Điểm Bán -->
+        ${hotspots.primaryStreets && hotspots.primaryStreets.length > 0 ? `
+          <div style="background:rgba(0,0,0,0.25); padding:0.75rem; border-radius:8px; margin-bottom:0.8rem; font-size:0.75rem;">
+            <div style="font-size:0.78rem; font-weight:700; color:#F59E0B; margin-bottom:0.4rem;">📍 Tuyến Đường & Cụm Thương Mại Trọng Điểm:</div>
+            <div style="margin-bottom:0.35rem; color:#CBD5E1;">
+              <span style="color:#38BDF8; font-weight:700;">🛣️ Tuyến đường chính:</span>
+              <span>${hotspots.primaryStreets.join(' • ')}</span>
+            </div>
+            ${hotspots.highDensityClusters && hotspots.highDensityClusters.length > 0 ? `
+              <div style="margin-bottom:0.35rem; color:#CBD5E1;">
+                <span style="color:#EF4444; font-weight:700;">🔴 Cụm đông đúc / sầm uất:</span>
+                <span>${hotspots.highDensityClusters.join('; ')}</span>
+              </div>
+            ` : ''}
+            ${hotspots.lowDensityOpportunities && hotspots.lowDensityOpportunities.length > 0 ? `
+              <div style="color:#CBD5E1;">
+                <span style="color:#34D399; font-weight:700;">🟢 Vùng trũng cơ hội đón đầu:</span>
+                <span>${hotspots.lowDensityOpportunities.join('; ')}</span>
+              </div>
+            ` : ''}
+          </div>
+        ` : ''}
 
         <div style="background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.06); padding:0.8rem; border-radius:8px; margin-bottom:0.8rem;">
           <div style="font-size:0.8rem; font-weight:700; color:#38BDF8; margin-bottom:0.4rem;">Mô hình kinh doanh được đề xuất cho bán kính này:</div>
@@ -2428,6 +2507,32 @@ ${reportText}
     str = str.replace(/\u0300|\u0301|\u0303|\u0309|\u0323/g, "");
     str = str.replace(/\u02C6|\u0306|\u031B/g, "");
     return str.trim();
+  }
+
+  filterDistrictDropdown(keyword) {
+    const select = document.getElementById('kinhte-select-district');
+    if (!select) return;
+    const cleanKw = this.removeVietnameseTones(keyword).trim().toLowerCase();
+    let firstVisible = null;
+    Array.from(select.options).forEach(opt => {
+      const text = this.removeVietnameseTones(opt.textContent).toLowerCase();
+      const match = !cleanKw || text.includes(cleanKw);
+      opt.style.display = match ? '' : 'none';
+      if (match && !firstVisible) firstVisible = opt;
+    });
+    if (firstVisible && select.selectedOptions[0] && select.selectedOptions[0].style.display === 'none') {
+      select.value = firstVisible.value;
+      select.dispatchEvent(new Event('change'));
+    }
+  }
+
+  filterSaeTable(keyword) {
+    const rows = document.querySelectorAll('.sae-district-row');
+    const cleanKw = this.removeVietnameseTones(keyword).trim().toLowerCase();
+    rows.forEach(r => {
+      const name = this.removeVietnameseTones(r.getAttribute('data-name') || '').toLowerCase();
+      r.style.display = (!cleanKw || name.includes(cleanKw)) ? '' : 'none';
+    });
   }
 
   toggleDiaChatDropdown(forceOpen) {

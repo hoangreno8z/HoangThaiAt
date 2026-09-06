@@ -634,6 +634,17 @@ class LuopanMapTool {
               </div>
             </div>
 
+            <!-- Bộ Chọn Quận / Huyện Khảo Sát -->
+            <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:0.4rem; margin-bottom:0.7rem; background:rgba(15,23,42,0.85); padding:0.45rem 0.7rem; border-radius:8px; border:1px solid rgba(56,189,248,0.25);">
+              <div style="display:flex; align-items:center; gap:0.45rem; flex-wrap:wrap;">
+                <span style="font-size:0.74rem; color:#38BDF8; font-weight:800; text-transform:uppercase;">📍 Quận / Huyện:</span>
+                <select id="dt-econ-district-select" style="background:#1E293B; border:1px solid #38BDF8; color:#FEF3C7; padding:0.25rem 0.6rem; border-radius:6px; font-size:0.78rem; font-weight:700; cursor:pointer; outline:none; max-width:280px;">
+                  <option value="">Tự động nhận diện theo GPS</option>
+                </select>
+              </div>
+              <span id="dt-econ-district-distance-tag" style="font-size:0.7rem; color:#94A3B8;"></span>
+            </div>
+
             <!-- Bộ Chọn Ngành Nghề Khảo Sát (VSIC 2025) -->
             <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:0.4rem; margin-bottom:1rem; background:rgba(15,23,42,0.85); padding:0.5rem 0.7rem; border-radius:8px; border:1px solid rgba(245,158,11,0.25);">
               <span style="font-size:0.74rem; color:#F59E0B; font-weight:800; text-transform:uppercase;">Ngành kinh doanh:</span>
@@ -2178,7 +2189,7 @@ class LuopanMapTool {
             b.style.color = '#FEF3C7';
           }
         });
-        this.updateEconomicRadiusData(rad, this.selectedIndustryKey || 'CAFE');
+        this.updateEconomicRadiusData(rad, this.selectedIndustryKey || 'CAFE', this.selectedEconDistrictId);
       });
     });
 
@@ -2198,9 +2209,21 @@ class LuopanMapTool {
             b.style.color = '#FEF3C7';
           }
         });
-        this.updateEconomicRadiusData(this.selectedEconRadius || 1000, indKey);
+        this.updateEconomicRadiusData(this.selectedEconRadius || 1000, indKey, this.selectedEconDistrictId);
       });
     });
+
+    const districtSelect = document.getElementById('dt-econ-district-select');
+    if (districtSelect) {
+      districtSelect.addEventListener('change', (e) => {
+        this.selectedEconDistrictId = e.target.value || null;
+        this.updateEconomicRadiusData(
+          this.selectedEconRadius || 1000,
+          this.selectedIndustryKey || 'CAFE',
+          this.selectedEconDistrictId
+        );
+      });
+    }
 
     if (btnCopyExport) {
       btnCopyExport.addEventListener('click', () => {
@@ -2540,7 +2563,7 @@ class LuopanMapTool {
     if (modal) modal.style.display = 'none';
   }
 
-  updateEconomicRadiusData(radiusMeters = 1000, industryKey = null) {
+  updateEconomicRadiusData(radiusMeters = 1000, industryKey = null, districtId = null) {
     const engine = (typeof window !== 'undefined' && window.EconomicRadiusEngine) || (typeof EconomicRadiusEngine !== 'undefined' ? EconomicRadiusEngine : null);
     const content = document.getElementById('dt-econ-modal-content');
     const locText = document.getElementById('dt-econ-location-text');
@@ -2551,15 +2574,41 @@ class LuopanMapTool {
       locText.textContent = `${coords.lat.toFixed(5)}° N, ${coords.lng.toFixed(5)}° E`;
     }
 
+    const targetDistrictId = districtId || this.selectedEconDistrictId || null;
+
     const res = engine.calculateRadiusMarket({
       lat: coords.lat,
       lng: coords.lng,
-      radiusMeters: radiusMeters
+      radiusMeters: radiusMeters,
+      districtId: targetDistrictId
     });
 
     if (!res) {
       content.innerHTML = '<div style="color:var(--text-muted); padding:1rem; text-align:center;">Không thể tính toán dữ liệu sức mua tại tọa độ này.</div>';
       return;
+    }
+
+    // Cập nhật dropdown quận/huyện và cự ly
+    const districtSelect = document.getElementById('dt-econ-district-select');
+    const distDistTag = document.getElementById('dt-econ-district-distance-tag');
+    if (districtSelect && res.keyDistrictsInProvince) {
+      const activeDistId = res.location.districtId;
+      if (districtSelect.dataset.provinceId !== res.location.provinceId) {
+        districtSelect.dataset.provinceId = res.location.provinceId;
+        districtSelect.innerHTML = res.keyDistrictsInProvince.map(d =>
+          `<option value="${d.id}">${d.name} (${d.type})</option>`
+        ).join('');
+      }
+      districtSelect.value = activeDistId;
+      this.selectedEconDistrictId = activeDistId;
+    }
+
+    if (distDistTag) {
+      if (res.location.distanceToDistrictCenterKm !== null && res.location.distanceToDistrictCenterKm !== undefined) {
+        distDistTag.textContent = `Cách trung tâm: ~${res.location.distanceToDistrictCenterKm} km`;
+      } else {
+        distDistTag.textContent = '';
+      }
     }
 
     // Tính toán phân tích chuyên sâu theo ngành kinh doanh (VSIC 2025)
@@ -2573,6 +2622,7 @@ class LuopanMapTool {
         lat: coords.lat,
         lng: coords.lng,
         radiusMeters: radiusMeters,
+        districtId: this.selectedEconDistrictId,
         industryKey: indKey
       });
     }
@@ -2597,11 +2647,20 @@ class LuopanMapTool {
       }
     }
 
-    const { location, demographics, financials, spendingBreakdown, marketAssessment } = res;
+    const { location, demographics, financials, spendingBreakdown, marketAssessment, commercialHotspots } = res;
+
+    // Khối phân tích nhân khẩu học (Nam/Nữ & Tháp Tuổi)
+    const gender = demographics.genderBreakdown || { malePct: 49.5, femalePct: 50.5, estimatedMale: 0, estimatedFemale: 0 };
+    const cohorts = demographics.ageCohorts || {
+      children: { pct: 18.5, count: 0, label: 'Trẻ em (0-14 tuổi)' },
+      youth: { pct: 15.0, count: 0, label: 'Thanh thiếu niên (15-24 tuổi)' },
+      prime: { pct: 44.5, count: 0, label: 'Độ tuổi vàng chi tiêu (25-49 tuổi)' },
+      senior: { pct: 22.0, count: 0, label: 'Trung niên & Cao tuổi (50+ tuổi)' }
+    };
 
     let industryHtml = '';
     if (indRes) {
-      const { profile, demographics: indDemo, marketDemand, competition, survivalDynamics, feasibility } = indRes;
+      const { profile, demographics: indDemo, marketDemand, competition, survivalDynamics, feasibility, clusterIntelligence } = indRes;
       industryHtml = `
         <div style="background:rgba(15,23,42,0.9); border:1px solid ${feasibility.opportunityColor}55; border-radius:8px; padding:0.9rem; margin-top:0.9rem;">
           <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.4rem; margin-bottom:0.7rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:0.45rem;">
@@ -2619,7 +2678,7 @@ class LuopanMapTool {
             <div style="background:rgba(255,255,255,0.02); padding:0.5rem; border-radius:5px; border-left:3px solid #38BDF8;">
               <div style="font-size:0.68rem; color:var(--text-muted);">Sức mua ngành/tháng:</div>
               <strong style="color:#FEF3C7; font-size:0.86rem;">${marketDemand.totalMonthlyDemandBillionVnd} tỷ VNĐ</strong>
-              <div style="font-size:0.65rem; color:#38BDF8;">~${indDemo.targetCustomerCount.toLocaleString('vi-VN')} khách tiềm năng</div>
+              <div style="font-size:0.65rem; color:#38BDF8;">~${indDemo.targetCustomerCount.toLocaleString('vi-VN')} khách tiềm năng (${indDemo.targetRatioPct}%)</div>
             </div>
 
             <div style="background:rgba(255,255,255,0.02); padding:0.5rem; border-radius:5px; border-left:3px solid #EC4899;">
@@ -2633,6 +2692,25 @@ class LuopanMapTool {
               <strong style="color:#FEF3C7; font-size:0.86rem;"><span style="color:#34D399;">+${survivalDynamics.newlyAddedCount}</span> / <span style="color:#EF4444;">-${survivalDynamics.removedCount}</span></strong>
               <div style="font-size:0.65rem; color:#EF4444;">Churn: ${survivalDynamics.churnRatePct}%/năm</div>
             </div>
+          </div>
+
+          <!-- Bản Đồ Cụm Thương Mại & Đối Thủ Ngành -->
+          <div style="background:rgba(0,0,0,0.3); padding:0.6rem; border-radius:6px; margin-bottom:0.6rem; font-size:0.73rem;">
+            <div style="font-weight:700; color:#F59E0B; margin-bottom:0.3rem;">📍 Phân Bố Đối Thủ & Điểm Nóng Thương Mại:</div>
+            <div style="margin-bottom:0.3rem; color:#CBD5E1;">
+              <span style="color:#EF4444; font-weight:700;">🔴 Khu đông đối thủ:</span>
+              <span>${clusterIntelligence.crowdedSummary}</span>
+            </div>
+            <div style="margin-bottom:0.3rem; color:#CBD5E1;">
+              <span style="color:#34D399; font-weight:700;">🟢 Vùng trũng cơ hội mở mới:</span>
+              <span>${clusterIntelligence.opportunitySummary}</span>
+            </div>
+            ${clusterIntelligence.primaryStreets.length > 0 ? `
+              <div style="color:#94A3B8;">
+                <span style="color:#38BDF8; font-weight:700;">🛣️ Trục đường huyết mạch:</span>
+                <span>${clusterIntelligence.primaryStreets.join(' • ')}</span>
+              </div>
+            ` : ''}
           </div>
 
           <div style="font-size:0.73rem; color:#CBD5E1; line-height:1.45; background:rgba(0,0,0,0.25); padding:0.5rem 0.6rem; border-radius:4px; border-left:3px solid #34D399;">
@@ -2679,6 +2757,34 @@ class LuopanMapTool {
             <div style="font-size:0.72rem; color:#94A3B8;">Điểm kinh doanh:</div>
             <div style="font-size:1.05rem; font-weight:800; color:#EC4899;">~${demographics.estimatedBusinessHouseholds.toLocaleString('vi-VN')} CSKD</div>
             <div style="font-size:0.68rem; color:var(--text-dim);">Điểm bán & cơ sở</div>
+          </div>
+        </div>
+
+        <!-- Khối Nhân Khẩu Học & Tháp Tuổi Địa Phương -->
+        <div style="background:rgba(0,0,0,0.25); padding:0.7rem; border-radius:6px; margin-bottom:0.8rem;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.4rem; flex-wrap:wrap; gap:0.4rem;">
+            <div style="font-size:0.76rem; font-weight:700; color:#FEF3C7;">Cơ Cấu Nhân Khẩu Học & Độ Tuổi:</div>
+            <div style="font-size:0.72rem; color:#38BDF8;">
+              Nam: <strong style="color:#60A5FA;">${gender.malePct}%</strong> (~${gender.estimatedMale.toLocaleString('vi-VN')}) • Nữ: <strong style="color:#F472B6;">${gender.femalePct}%</strong> (~${gender.estimatedFemale.toLocaleString('vi-VN')})
+            </div>
+          </div>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(120px, 1fr)); gap:0.4rem; font-size:0.72rem;">
+            <div style="background:rgba(255,255,255,0.02); padding:0.35rem 0.5rem; border-radius:4px; border-top:2px solid #38BDF8;">
+              <span style="color:#94A3B8;">Trẻ em (0-14):</span>
+              <strong style="color:#FEF3C7; display:block;">${cohorts.children.pct}% (~${cohorts.children.count.toLocaleString('vi-VN')})</strong>
+            </div>
+            <div style="background:rgba(255,255,255,0.02); padding:0.35rem 0.5rem; border-radius:4px; border-top:2px solid #34D399;">
+              <span style="color:#94A3B8;">Thanh niên (15-24):</span>
+              <strong style="color:#FEF3C7; display:block;">${cohorts.youth.pct}% (~${cohorts.youth.count.toLocaleString('vi-VN')})</strong>
+            </div>
+            <div style="background:rgba(16,185,129,0.1); padding:0.35rem 0.5rem; border-radius:4px; border-top:2px solid #10B981; border:1px solid rgba(16,185,129,0.3);">
+              <span style="color:#34D399; font-weight:700;">Tuổi vàng (25-49):</span>
+              <strong style="color:#34D399; display:block;">${cohorts.prime.pct}% (~${cohorts.prime.count.toLocaleString('vi-VN')})</strong>
+            </div>
+            <div style="background:rgba(255,255,255,0.02); padding:0.35rem 0.5rem; border-radius:4px; border-top:2px solid #F59E0B;">
+              <span style="color:#94A3B8;">Cao tuổi (50+):</span>
+              <strong style="color:#FEF3C7; display:block;">${cohorts.senior.pct}% (~${cohorts.senior.count.toLocaleString('vi-VN')})</strong>
+            </div>
           </div>
         </div>
 

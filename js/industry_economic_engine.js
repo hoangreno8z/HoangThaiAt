@@ -265,8 +265,37 @@
       // 2. KHỐI 1: THỊ TRƯỜNG & KHÁCH TIỀM NĂNG RIÊNG NGÀNH
       // Dân số ban ngày ước tính (bổ sung nhân viên văn phòng & khách vãng lai)
       const daytimePopulation = Math.round(basePop * profile.daytime_traffic_multiplier);
+
+      // Hiệu chỉnh tỷ lệ khách hàng tiềm năng dựa trên cơ cấu độ tuổi & giới tính địa phương
+      let dynamicTargetRatio = profile.target_population_ratio;
+      if (demographics.genderBreakdown && demographics.ageCohorts) {
+        const femaleRatio = demographics.genderBreakdown.femalePct / 100;
+        const youthRatio = demographics.ageCohorts.youth.pct / 100;
+        const primeRatio = demographics.ageCohorts.prime.pct / 100;
+        const childrenRatio = demographics.ageCohorts.children.pct / 100;
+        const seniorRatio = demographics.ageCohorts.senior.pct / 100;
+
+        if (profile.id === 'NAIL') {
+          // Khách nail: Nữ giới tuổi 18-50
+          dynamicTargetRatio = Number((femaleRatio * (youthRatio * 0.9 + primeRatio * 0.95 + seniorRatio * 0.4)).toFixed(3));
+        } else if (profile.id === 'SPA_BEAUTY') {
+          // Khách spa: Phụ nữ tuổi 25-55
+          dynamicTargetRatio = Number((femaleRatio * (primeRatio * 0.85 + seniorRatio * 0.35 + youthRatio * 0.25)).toFixed(3));
+        } else if (profile.id === 'CAFE') {
+          // Khách cafe: Thanh thiếu niên (15-24) + Tuổi vàng (25-49)
+          dynamicTargetRatio = Number(((youthRatio * 0.95 + primeRatio * 0.85 + seniorRatio * 0.2) * 1.05).toFixed(3));
+        } else if (profile.id === 'NHA_HANG_FNB') {
+          // Khách ẩm thực: Hộ gia đình và liên hoan
+          dynamicTargetRatio = Number((primeRatio * 0.9 + seniorRatio * 0.6 + youthRatio * 0.6 + childrenRatio * 0.5).toFixed(3));
+        } else if (profile.id === 'NHA_THUOC') {
+          // Nhà thuốc: Người cao tuổi + Trẻ em + Người đi làm
+          dynamicTargetRatio = Number((seniorRatio * 1.35 + childrenRatio * 1.1 + primeRatio * 0.7).toFixed(3));
+        }
+      }
+      dynamicTargetRatio = Math.min(0.85, Math.max(0.15, dynamicTargetRatio));
+
       // Số lượng khách hàng tiềm năng cốt lõi
-      const targetCustomerCount = Math.round(daytimePopulation * profile.target_population_ratio);
+      const targetCustomerCount = Math.round(daytimePopulation * dynamicTargetRatio);
 
       // Mức chi trả khả dụng bình quân theo năng lực tài chính địa phương
       const incomeModifier = financials.monthlyIncomePerCapita / 5.5; // Chuẩn hóa theo mức trung bình 5.5tr
@@ -370,6 +399,20 @@
         opportunityColor = '#EF4444';
       }
 
+      const commercialHotspots = baseMarket.commercialHotspots || {};
+      const clusterIntelligence = {
+        districtName: location.districtName,
+        primaryStreets: commercialHotspots.primaryStreets || [],
+        highDensityClusters: commercialHotspots.highDensityClusters || [],
+        lowDensityOpportunities: commercialHotspots.lowDensityOpportunities || [],
+        crowdedSummary: commercialHotspots.highDensityClusters && commercialHotspots.highDensityClusters.length > 0
+          ? `Cụm tập trung đối thủ ngành ${profile.shortName}: ` + commercialHotspots.highDensityClusters.join('; ')
+          : `Tập trung tại các giao lộ thương mại chính của ${location.districtName || location.provinceName}.`,
+        opportunitySummary: commercialHotspots.lowDensityOpportunities && commercialHotspots.lowDensityOpportunities.length > 0
+          ? `Vùng trũng ít đối thủ, dư địa phát triển: ` + commercialHotspots.lowDensityOpportunities.join('; ')
+          : `Các khu dân cư mới và cụm công nghiệp vệ tinh.`
+      };
+
       return {
         profile,
         location,
@@ -377,9 +420,12 @@
           residentPopulation: basePop,
           daytimePopulation,
           targetCustomerCount,
-          targetRatioPct: Math.round(profile.target_population_ratio * 100),
-          areaKm2
+          targetRatioPct: Math.round(dynamicTargetRatio * 100),
+          areaKm2,
+          genderBreakdown: demographics.genderBreakdown || null,
+          ageCohorts: demographics.ageCohorts || null
         },
+        clusterIntelligence,
         marketDemand: {
           adjustedSpendPerCustomer,
           totalMonthlyDemandBillionVnd: totalIndustryDemandBillionVnd,

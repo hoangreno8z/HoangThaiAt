@@ -97,6 +97,58 @@
     }
 
     /**
+     * Tìm quận/huyện gần nhất trong tỉnh thành dựa trên tọa độ GPS
+     */
+    findNearestDistrict(lat, lng, provinceEcon) {
+      if (!provinceEcon || !provinceEcon.key_districts_sae || !provinceEcon.key_districts_sae.length) {
+        return null;
+      }
+      let nearest = null;
+      let minDistance = Infinity;
+      for (const d of provinceEcon.key_districts_sae) {
+        if (typeof d.lat === 'number' && typeof d.lng === 'number') {
+          const dist = haversineDistance(lat, lng, d.lat, d.lng);
+          if (dist < minDistance) {
+            minDistance = dist;
+            nearest = d;
+          }
+        }
+      }
+      return nearest ? { district: nearest, distanceKm: Number(minDistance.toFixed(2)) } : null;
+    }
+
+    /**
+     * Tìm quận/huyện gần nhất trên TOÀN BỘ 64 tỉnh thành dựa trên tọa độ GPS
+     */
+    findNearestDistrictAcrossAll(lat, lng) {
+      const econList = getEconCorpus();
+      let nearest = null;
+      let nearestProvince = null;
+      let minDistance = Infinity;
+
+      for (const p of econList) {
+        if (p.key_districts_sae && Array.isArray(p.key_districts_sae)) {
+          for (const d of p.key_districts_sae) {
+            if (typeof d.lat === 'number' && typeof d.lng === 'number') {
+              const dist = haversineDistance(lat, lng, d.lat, d.lng);
+              if (dist < minDistance) {
+                minDistance = dist;
+                nearest = d;
+                nearestProvince = p;
+              }
+            }
+          }
+        }
+      }
+
+      return nearest ? {
+        district: nearest,
+        province: nearestProvince,
+        distanceKm: Number(minDistance.toFixed(2))
+      } : null;
+    }
+
+    /**
      * Tính toán dung lượng thị trường và tiềm năng kinh tế trong bán kính
      */
     calculateRadiusMarket(params = {}) {
@@ -110,20 +162,46 @@
 
       const econList = getEconCorpus();
 
-      // 1. Xác định tỉnh thành
+      // 1. Xác định tỉnh thành và quận huyện
       let provinceEcon = null;
+      let targetDistrict = null;
+      let matchedDistanceKm = null;
+
       if (provinceId) {
         provinceEcon = econList.find(p => p.historical_id === provinceId);
+        if (provinceEcon) {
+          if (districtId && provinceEcon.key_districts_sae) {
+            targetDistrict = provinceEcon.key_districts_sae.find(d => d.id === districtId);
+          }
+          if (!targetDistrict) {
+            const match = this.findNearestDistrict(lat, lng, provinceEcon);
+            if (match) {
+              targetDistrict = match.district;
+              matchedDistanceKm = match.distanceKm;
+            }
+          }
+        }
       }
+
+      // Nếu chưa có provinceEcon hoặc chưa có targetDistrict, tìm trực tiếp quận/huyện gần nhất trên toàn quốc
+      if (!provinceEcon || !targetDistrict) {
+        const globalMatch = this.findNearestDistrictAcrossAll(lat, lng);
+        if (globalMatch) {
+          if (!provinceEcon) provinceEcon = globalMatch.province;
+          if (!targetDistrict) {
+            targetDistrict = globalMatch.district;
+            matchedDistanceKm = globalMatch.distanceKm;
+          }
+        }
+      }
+
       if (!provinceEcon) {
         const nearest = this.findNearestProvince(lat, lng);
         if (nearest && nearest.province) {
           provinceEcon = econList.find(p => p.historical_id === nearest.province.historical_id);
         }
       }
-      if (!provinceEcon) {
-        provinceEcon = econList[0] || null; // Fallback Hà Nội nếu chưa nạp
-      }
+      if (!provinceEcon) provinceEcon = econList[0] || null;
 
       if (!provinceEcon) {
         return {
@@ -132,13 +210,12 @@
         };
       }
 
-      // 2. Xác định quận/huyện hoặc ước tính mật độ cục bộ
-      let targetDistrict = null;
-      if (districtId && provinceEcon.key_districts_sae) {
-        targetDistrict = provinceEcon.key_districts_sae.find(d => d.id === districtId);
-      }
       if (!targetDistrict && provinceEcon.key_districts_sae && provinceEcon.key_districts_sae.length > 0) {
-        targetDistrict = provinceEcon.key_districts_sae[0]; // Mặc định quận trung tâm
+        targetDistrict = provinceEcon.key_districts_sae[0];
+      }
+
+      if (targetDistrict && typeof targetDistrict.lat === 'number' && typeof targetDistrict.lng === 'number' && matchedDistanceKm === null) {
+        matchedDistanceKm = Number(haversineDistance(lat, lng, targetDistrict.lat, targetDistrict.lng).toFixed(2));
       }
 
       // Mật độ dân số tham chiếu (người / km²)
@@ -232,6 +309,28 @@
         ];
       }
 
+      // Nhân khẩu học chi tiết: Giới tính & Tháp tuổi
+      const gender = (targetDistrict && targetDistrict.gender)
+        ? targetDistrict.gender
+        : { male_pct: 49.5, female_pct: 50.5 };
+
+      const ageCohorts = (targetDistrict && targetDistrict.age_cohorts)
+        ? targetDistrict.age_cohorts
+        : { children_0_14: 18.5, youth_15_24: 15.0, prime_25_49: 44.5, senior_50_plus: 22.0 };
+
+      const estimatedMale = Math.round(estimatedPopulation * (gender.male_pct / 100));
+      const estimatedFemale = estimatedPopulation - estimatedMale;
+
+      const childrenCount = Math.round(estimatedPopulation * (ageCohorts.children_0_14 / 100));
+      const youthCount = Math.round(estimatedPopulation * (ageCohorts.youth_15_24 / 100));
+      const primeCount = Math.round(estimatedPopulation * (ageCohorts.prime_25_49 / 100));
+      const seniorCount = Math.max(0, estimatedPopulation - childrenCount - youthCount - primeCount);
+
+      // Cụm thương mại & Tuyến đường huyết mạch
+      const primaryStreets = (targetDistrict && targetDistrict.primary_streets) ? targetDistrict.primary_streets : [];
+      const highDensityClusters = (targetDistrict && targetDistrict.high_density_clusters) ? targetDistrict.high_density_clusters : [];
+      const lowDensityOpportunities = (targetDistrict && targetDistrict.low_density_opportunities) ? targetDistrict.low_density_opportunities : [];
+
       return {
         location: {
           provinceId: provinceEcon.historical_id,
@@ -241,7 +340,9 @@
           districtName: targetDistrict ? targetDistrict.name : null,
           radiusMeters: radiusMeters,
           radiusKm: radiusKm,
-          areaKm2: Number(circleAreaKm2.toFixed(2))
+          areaKm2: Number(circleAreaKm2.toFixed(2)),
+          distanceToDistrictCenterKm: matchedDistanceKm,
+          userCoords: { lat, lng }
         },
         province: {
           id: provinceEcon.historical_id,
@@ -252,7 +353,19 @@
           id: targetDistrict.id,
           name: targetDistrict.name,
           type: targetDistrict.type,
-          rppi: targetDistrict.rppi
+          rppi: targetDistrict.rppi,
+          pop: targetDistrict.pop,
+          density: targetDistrict.density,
+          income: targetDistrict.income,
+          expense: targetDistrict.expense,
+          households: targetDistrict.households,
+          lat: targetDistrict.lat,
+          lng: targetDistrict.lng,
+          gender,
+          age_cohorts: ageCohorts,
+          primary_streets: primaryStreets,
+          high_density_clusters: highDensityClusters,
+          low_density_opportunities: lowDensityOpportunities
         } : null,
         radius: {
           meters: radiusMeters,
@@ -262,8 +375,34 @@
         demographics: {
           estimatedPopulation,
           baseDensityPerKm2: baseDensity,
-          estimatedBusinessHouseholds: Math.max(12, businessHouseholdDensity)
+          estimatedBusinessHouseholds: Math.max(12, businessHouseholdDensity),
+          genderBreakdown: {
+            malePct: gender.male_pct,
+            femalePct: gender.female_pct,
+            estimatedMale,
+            estimatedFemale
+          },
+          ageCohorts: {
+            children: { pct: ageCohorts.children_0_14, count: childrenCount, label: 'Trẻ em (0-14 tuổi)' },
+            youth: { pct: ageCohorts.youth_15_24, count: youthCount, label: 'Thanh thiếu niên (15-24 tuổi)' },
+            prime: { pct: ageCohorts.prime_25_49, count: primeCount, label: 'Độ tuổi vàng chi tiêu (25-49 tuổi)' },
+            senior: { pct: ageCohorts.senior_50_plus, count: seniorCount, label: 'Trung niên & Cao tuổi (50+ tuổi)' }
+          }
         },
+        commercialHotspots: {
+          primaryStreets,
+          highDensityClusters,
+          lowDensityOpportunities
+        },
+        keyDistrictsInProvince: (provinceEcon.key_districts_sae || []).map(d => ({
+          id: d.id,
+          name: d.name,
+          type: d.type,
+          density: d.density,
+          rppi: d.rppi,
+          lat: d.lat,
+          lng: d.lng
+        })),
         financials: {
           monthlyIncomePerCapita,
           monthlyExpensePerCapita,
