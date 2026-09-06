@@ -226,7 +226,10 @@ class LuopanMapTool {
       const segmentTruongSinh = this.data.getTruongSinh(segmentMountain.name, cuc);
 
       const lengthPx = Math.hypot(to.x - from.x, to.y - from.y);
-      const flowRelation = this.geometry.calculateFlowRelation(from, to, this.centerPoint, facing);
+      const flowFacing = (this.rawFacingBearing !== undefined && Number.isFinite(this.rawFacingBearing))
+        ? this.rawFacingBearing
+        : facing;
+      const flowRelation = this.geometry.calculateFlowRelation(from, to, this.centerPoint, flowFacing);
 
       segments.push({
         fromIndex: i,

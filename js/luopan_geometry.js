@@ -193,23 +193,54 @@
       ? Calib.computeRelativeBearing(facingBearing, toBearing)
       : bearingDifference(facingBearing, toBearing);
 
-    // Kiểm tra Trực Xung (đâm thẳng mặt tiền)
+    // 1. Kiểm tra Trực Xung (Đâm thẳng mặt tiền · Thương Sát / Xung Tâm Sát)
+    // Cổ bản:
+    // - 《Dương Trạch Thập Thư》: "凡宅不居当冲口处", "南来大路正冲门" (Chính xung môn: trục đường phải hướng thẳng vào khí khẩu)
+    // - 《Trọng Đính Tương Trạch Tạo Phúc Toàn Thư》: "有直巷直路冲来者，谓之剑" (Xung lai: tuyến đường thẳng lao trực diện tới)
+    // - 《Nhân Tử Tu Tri》: "衝心者，水勢急直射穴心" (Xung tâm: thế nước/đường bắn thẳng vào tâm huyệt)
+    //
+    // Chuẩn mực hình học 4 tầng chặt chẽ:
+    // Tầng 1: Tuyến đường phải đồng trục xung đối với mặt tiền (dòng xung lai hướng ngược chiều mặt tiền):
+    //         Hướng nhà = facingBearing => Hướng xung lai = (facingBearing + 180) % 360
+    //         Độ lệch trục: |segBearing - (facingBearing + 180)| <= 22.5° (nửa quái vị / 1.5 sơn)
+    //         * Tuyến đường chạy ngang (Hoành Lộ/Hoành Thủy) lệch ~90° tuyệt đối không thể là Trực Xung.
+    // Tầng 2: Luồng khí đang lao tới gần nhà: distTo < distFrom
+    //         Vector đoạn đường hướng về tâm nhà: |segBearing - bearingToHouse| <= 25°
+    // Tầng 3: Nằm trong góc đón khí Minh Đường phía trước mặt tiền: |relTo| <= 55° và |relFrom| <= 85°
+    // Tầng 4: Tia đường kéo dài đâm trúng phạm vi nhà: dPerp <= max(75, distTo * 0.45)
+    const inflowBearing = normalizeBearing(facingBearing + 180);
+    const diffInflow = Math.abs(bearingDifference(segBearing, inflowBearing));
     const bearingToHouse = calculateLineBearing(fromPoint, houseCenter);
     const diffHeading = Math.abs(bearingDifference(segBearing, bearingToHouse));
     const distFrom = Math.hypot(fromPoint.x - houseCenter.x, fromPoint.y - houseCenter.y);
     const distTo = Math.hypot(toPoint.x - houseCenter.x, toPoint.y - houseCenter.y);
 
-    if (diffHeading < 25 && distTo < distFrom && Math.abs(relTo) < 55) {
+    const segDx = toPoint.x - fromPoint.x;
+    const segDy = toPoint.y - fromPoint.y;
+    const segLen = Math.hypot(segDx, segDy);
+    const dPerp = segLen > 0
+      ? Math.abs(segDy * houseCenter.x - segDx * houseCenter.y + toPoint.x * fromPoint.y - toPoint.y * fromPoint.x) / segLen
+      : 0;
+
+    const isDirectClash = diffInflow <= 22.5
+      && diffHeading <= 25
+      && distTo < distFrom
+      && Math.abs(relTo) <= 55
+      && Math.abs(relFrom) <= 85
+      && dPerp <= Math.max(75, distTo * 0.45);
+
+    if (isDirectClash) {
       return {
         type: 'truc_xung',
         label: 'Trực Xung (Đâm thẳng mặt tiền · Thương Sát)',
         chieuNuoc: 'Đâm thẳng',
         rating: 'Đại Hung Sát',
-        color: '#EF4444'
+        color: '#EF4444',
+        source: '《Dương Trạch Thập Thư》: Nam lai đại lộ chính xung môn'
       };
     }
 
-    // Kiểm tra Củng Bối (vòng sau lưng)
+    // 2. Kiểm tra Củng Bối (vòng sau lưng)
     if (Math.abs(relFrom) > 120 && Math.abs(relTo) > 120) {
       return {
         type: 'xuyen_boi',
@@ -220,7 +251,7 @@
       };
     }
 
-    // Chảy ngang qua trước mặt tiền
+    // 3. Chảy ngang qua trước mặt tiền (Hoành Thủy / Hoành Lộ)
     if (relTo >= relFrom) {
       return {
         type: 'ta_dao_huu',

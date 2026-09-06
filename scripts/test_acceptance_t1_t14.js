@@ -584,6 +584,69 @@ test('T22: Nhận diện Ngã 3 (Tam Xoa Hợp Lưu vs Đinh Tự Lộ) và Hẻ
   assert.equal(featDeadEnd.rating, 'Thứ Hung (Bế Khí)');
 });
 
+// T23: Hoành Thủy (Đường chạy ngang 139° / 319°) vs Trực Xung thực sự (Nhà hướng 230°)
+test('T23: Đường chạy ngang (139° / 319°) trước nhà hướng 230° nhận diện đúng Hoành Thủy, không gán Trực Xung', () => {
+  const { tool } = createTestEnvironment();
+  tool.centerPoint = { x: 400, y: 400 };
+  tool.rawFacingBearing = 230; // Hướng Tây Nam (Khôn/Thân)
+
+  // Điểm trước mặt tiền khoảng cách 100 theo hướng 230°
+  const radFacing = (230 - 90) * Math.PI / 180;
+  const frontPoint = { x: 400 + 100 * Math.cos(radFacing), y: 400 + 100 * Math.sin(radFacing) };
+
+  // 1. Tuyến đường chạy ngang theo trục 139° (Tây Bắc sang Đông Nam)
+  const rad139 = (139 - 90) * Math.PI / 180;
+  const p1_139 = { x: frontPoint.x - 250 * Math.cos(rad139), y: frontPoint.y - 250 * Math.sin(rad139) };
+  const p2_139 = { x: frontPoint.x - 100 * Math.cos(rad139), y: frontPoint.y - 100 * Math.sin(rad139) };
+  const p3_139 = { x: frontPoint.x + 100 * Math.cos(rad139), y: frontPoint.y + 100 * Math.sin(rad139) };
+
+  tool.waterPolyline = [p1_139, p2_139, p3_139];
+  const segs139 = tool.getWaterSegments();
+  assert.equal(segs139.length, 2);
+
+  // Cả hai đoạn của tuyến 139° đều là Hoành Thủy (Hữu Thủy đảo Tả), TUYỆT ĐỐI KHÔNG PHẢI Trực Xung
+  for (const s of segs139) {
+    assert.notEqual(s.flowRelation.type, 'truc_xung', `Đoạn ${s.fromIndex + 1} không được là Trực Xung`);
+    assert.equal(s.flowRelation.type, 'huu_dao_ta', `Đoạn ${s.fromIndex + 1} phải là Hữu Thủy đảo Tả`);
+    assert.equal(s.flowRelation.chieuNuoc, 'Phải → trái');
+  }
+
+  const analysis139 = tool.getAnalysis();
+  assert.equal(analysis139.topo.features.some(f => f.id === 'dinh_tu_lo_xung_tam'), false,
+    'Đường chạy ngang 139° không được kích hoạt Đinh Tự Lộ Xung Tâm Sát');
+
+  // 2. Tuyến đường chạy ngược lại theo trục 319.3° (Đông Nam sang Tây Bắc)
+  const rad319 = (319.3 - 90) * Math.PI / 180;
+  const p1_319 = { x: frontPoint.x - 250 * Math.cos(rad319), y: frontPoint.y - 250 * Math.sin(rad319) };
+  const p2_319 = { x: frontPoint.x - 100 * Math.cos(rad319), y: frontPoint.y - 100 * Math.sin(rad319) };
+  const p3_319 = { x: frontPoint.x + 100 * Math.cos(rad319), y: frontPoint.y + 100 * Math.sin(rad319) };
+
+  tool.waterPolyline = [p1_319, p2_319, p3_319];
+  const segs319 = tool.getWaterSegments();
+  assert.equal(segs319.length, 2);
+
+  // Cả hai đoạn của tuyến 319.3° đều là Hoành Thủy (Tả Thủy đảo Hữu), TUYỆT ĐỐI KHÔNG PHẢI Trực Xung
+  for (const s of segs319) {
+    assert.notEqual(s.flowRelation.type, 'truc_xung', `Đoạn ${s.fromIndex + 1} không được là Trực Xung`);
+    assert.equal(s.flowRelation.type, 'ta_dao_huu', `Đoạn ${s.fromIndex + 1} phải là Tả Thủy đảo Hữu`);
+    assert.equal(s.flowRelation.chieuNuoc, 'Trái → phải');
+  }
+
+  const analysis319 = tool.getAnalysis();
+  assert.equal(analysis319.topo.features.some(f => f.id === 'dinh_tu_lo_xung_tam'), false,
+    'Đường chạy ngang 319.3° không được kích hoạt Đinh Tự Lộ Xung Tâm Sát');
+
+  // 3. Đường thực sự Trực Xung (Đâm thẳng chính diện vào mặt tiền từ hướng 230° về tâm 50°)
+  const pTrueInflow1 = { x: 400 + 200 * Math.cos(radFacing), y: 400 + 200 * Math.sin(radFacing) };
+  const pTrueInflow2 = { x: 400 + 50 * Math.cos(radFacing), y: 400 + 50 * Math.sin(radFacing) };
+  tool.waterPolyline = [pTrueInflow1, pTrueInflow2];
+  const trueSegs = tool.getWaterSegments();
+  assert.equal(trueSegs[0].flowRelation.type, 'truc_xung', 'Đoạn đâm trực diện phải là Trực Xung');
+  const trueAnalysis = tool.getAnalysis();
+  assert.equal(trueAnalysis.topo.features.some(f => f.id === 'dinh_tu_lo_xung_tam'), true,
+    'Trường hợp đâm thẳng thực sự phải kích hoạt Đinh Tự Lộ Xung Tâm Sát');
+});
+
 console.log('\n================================================================');
 console.log(`KẾT QUẢ KIỂM ĐỊNH: ${passed} PASS, ${failed} FAIL`);
 console.log('================================================================');
