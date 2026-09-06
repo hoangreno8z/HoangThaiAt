@@ -123,6 +123,37 @@ runTest('Luopan Map Tool: hiển thị minh bạch tham chiếu chuẩn ngành',
   assert.ok(luopanContent.includes('Tham chiếu chuẩn ngành'));
 });
 
+// 6. Kiểm tra giao diện Phân hệ Ngành: Tab Switcher, Menu xổ/thu gọn & Quick-Chips trong tool_ui.js
+runTest('UI Responsive: tool_ui.js tích hợp Tab Switcher, Menu xổ chọn ngành & Quick-Chips', () => {
+  const toolUiContent = fs.readFileSync(path.join(__dirname, '../js/tool_ui.js'), 'utf8');
+
+  // Tab Switcher
+  assert.ok(toolUiContent.includes('id="tab-industry-active-btn"'), 'Phải có nút tab ngành đang phát triển');
+  assert.ok(toolUiContent.includes('id="tab-industry-sunset-btn"'), 'Phải có nút tab ngành đào thải');
+  assert.ok(toolUiContent.includes('id="industry-active-view"'), 'Phải có view ngành đang phát triển');
+  assert.ok(toolUiContent.includes('id="industry-sunset-view"'), 'Phải có view ngành đào thải');
+
+  // Menu xổ chọn ngành thu gọn
+  assert.ok(toolUiContent.includes('id="industry-dropdown-trigger"'), 'Phải có nút dropdown chọn ngành');
+  assert.ok(toolUiContent.includes('id="industry-dropdown-panel"'), 'Phải có panel menu xổ ngành');
+  assert.ok(toolUiContent.includes('id="industry-search-input"'), 'Phải có ô tìm kiếm ngành realtime');
+  assert.ok(toolUiContent.includes('class="industry-chip-btn"'), 'Phải có thanh Quick-Chips');
+
+  // Các phương thức trợ năng
+  assert.ok(toolUiContent.includes('switchIndustryTab('), 'Phải có hàm switchIndustryTab');
+  assert.ok(toolUiContent.includes('toggleIndustryDropdown('), 'Phải có hàm toggleIndustryDropdown');
+  assert.ok(toolUiContent.includes('filterIndustryDropdown('), 'Phải có hàm filterIndustryDropdown');
+  assert.ok(toolUiContent.includes('renderSunsetIndustriesHtml('), 'Phải có hàm renderSunsetIndustriesHtml');
+});
+
+// 7. Kiểm tra CSS cho phân hệ ngành mới và sunset cards
+runTest('CSS Responsive: style.css chứa style cho chips, opt-btn và sunset-industry-card', () => {
+  const cssContent = fs.readFileSync(path.join(__dirname, '../css/style.css'), 'utf8');
+  assert.ok(cssContent.includes('.industry-chip-btn'));
+  assert.ok(cssContent.includes('.industry-opt-btn'));
+  assert.ok(cssContent.includes('.sunset-industry-card'));
+});
+
 console.log('\n========================================');
 console.log(`KẾT QUẢ KIỂM THỬ: ${passCount} / ${totalTests} BÀI KIỂM TRA ĐẠT TUYỆT ĐỐI!`);
 console.log('========================================\n');

@@ -1692,6 +1692,9 @@ ${reportText}
       });
     }
     const industryCatalog = (indEngine && indEngine.getIndustryCatalog) ? indEngine.getIndustryCatalog() : {};
+    const currentProfile = industryCatalog[currentIndKey] || industryCatalog.CAFE || {};
+    const mainstreamIndustries = Object.values(industryCatalog).filter(i => i.group === 'mainstream');
+    const emergingIndustries = Object.values(industryCatalog).filter(i => i.group === 'emerging');
 
     return `
       <div style="background:rgba(18,24,38,0.75); border:1px solid rgba(16,185,129,0.3); border-radius:12px; padding:1.8rem; margin-bottom:2rem;">
@@ -2084,28 +2087,95 @@ ${reportText}
             </div>
           </div>
 
-          <!-- Bộ Chọn 6 Ngành Nghề Kinh Doanh Trọng Điểm -->
-          <div style="display:flex; gap:0.5rem; flex-wrap:wrap; margin-bottom:1.2rem; background:rgba(0,0,0,0.3); padding:0.6rem; border-radius:8px;">
-            ${Object.values(industryCatalog).map(ind => {
-              const isActive = (ind.id === (currentIndKey || 'CAFE'));
-              return `
-                <button type="button" class="industry-btn" data-industry="${ind.id}"
-                  onclick="window.toolUI.selectIndustryAndCalculate('${currentProvince.historical_id}', '${ind.id}')"
-                  style="background:${isActive ? 'rgba(245,158,11,0.25)' : 'rgba(255,255,255,0.05)'}; 
-                         border:1px solid ${isActive ? '#F59E0B' : 'rgba(255,255,255,0.12)'}; 
-                         color:${isActive ? '#FBBF24' : '#E2E8F0'}; 
-                         padding:0.4rem 0.8rem; border-radius:6px; font-size:0.78rem; font-weight:700; cursor:pointer; 
-                         display:flex; align-items:center; gap:0.4rem; transition:all 0.15s ease;">
-                  <span>${ind.icon}</span>
-                  <span>${ind.shortName}</span>
-                </button>
-              `;
-            }).join('')}
+          <!-- TAB SWITCHER: 🌟 NGÀNH ĐANG PHÁT TRIỂN vs ⚠️ NGUY CƠ ĐÀO THẢI -->
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.4rem; margin-bottom:1rem; background:rgba(0,0,0,0.3); padding:0.3rem; border-radius:8px; box-sizing:border-box;">
+            <button type="button" id="tab-industry-active-btn" class="industry-tab-btn active" onclick="window.toolUI.switchIndustryTab('active')" style="background:rgba(245,158,11,0.25); border:1px solid #F59E0B; color:#FBBF24; padding:0.5rem 0.6rem; border-radius:6px; font-size:0.82rem; font-weight:700; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:0.3rem; transition:all 0.2s ease;">
+              <span>🌟 Ngành Đang Phát Triển (DSR)</span>
+            </button>
+            <button type="button" id="tab-industry-sunset-btn" class="industry-tab-btn" onclick="window.toolUI.switchIndustryTab('sunset')" style="background:transparent; border:1px solid transparent; color:var(--text-muted); padding:0.5rem 0.6rem; border-radius:6px; font-size:0.82rem; font-weight:700; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:0.3rem; transition:all 0.2s ease;">
+              <span>⚠️ Nguy Cơ Đào Thải (Sunset)</span>
+            </button>
           </div>
 
-          <!-- Container Hiển Thị 4 Khối Báo Cáo Ngành -->
-          <div id="kinhte-industry-report">
-            ${initialIndustryEcon ? this.renderIndustryReportHtml(initialIndustryEcon) : '<div style="padding:1rem; text-align:center; color:var(--text-muted);">Đang tính toán động thái ngành nghề...</div>'}
+          <!-- VIEW 1: CÁC NGÀNH ĐANG PHÁT TRIỂN (DSR ENGINE) -->
+          <div id="industry-active-view">
+            <!-- Bộ Chọn Ngành Dưới Dạng Menu Xổ / Thu Gọn Gọn Gàng -->
+            <div class="industry-selector-container" style="position:relative; margin-bottom:1rem;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.35rem; flex-wrap:wrap; gap:0.3rem;">
+                <label style="font-size:0.8rem; color:#FEF3C7; font-weight:600;">Chọn ngành khảo sát (${Object.keys(industryCatalog).length} ngành):</label>
+                <span style="font-size:0.72rem; color:#38BDF8;">6 phổ biến + 7 xu hướng mới</span>
+              </div>
+
+              <!-- Nút Dropdown chính: Hiển thị ngành đang chọn -->
+              <button type="button" id="industry-dropdown-trigger" onclick="window.toolUI.toggleIndustryDropdown()" style="width:100%; display:flex; justify-content:space-between; align-items:center; background:#0F172A; border:1px solid #F59E0B; color:#FEF3C7; padding:0.5rem 0.85rem; border-radius:8px; font-size:0.88rem; font-weight:700; cursor:pointer; min-height:46px; box-sizing:border-box;">
+                <span id="industry-current-label" style="display:flex; align-items:center; gap:0.5rem; text-align:left;">
+                  <span>${currentProfile.icon || '☕'}</span>
+                  <span style="color:#FBBF24;">${currentProfile.name || 'Cà Phê'}</span>
+                  <span style="font-size:0.72rem; color:var(--text-muted); font-weight:500;">(VSIC ${currentProfile.vsic_code || '56302'})</span>
+                </span>
+                <span id="industry-dropdown-icon" style="color:#F59E0B; font-size:0.8rem; white-space:nowrap; margin-left:0.4rem;">▾ Chọn ngành</span>
+              </button>
+
+              <!-- Menu xổ ra (Collapsible Dropdown Panel) -->
+              <div id="industry-dropdown-panel" style="display:none; position:relative; z-index:30; background:#0B0F19; border:1px solid rgba(245,158,11,0.4); border-radius:8px; padding:0.75rem; margin-top:0.4rem; box-shadow:0 10px 25px -5px rgba(0,0,0,0.7); box-sizing:border-box;">
+                <!-- Ô tìm kiếm realtime có dấu / không dấu -->
+                <div style="margin-bottom:0.7rem;">
+                  <input type="text" id="industry-search-input" placeholder="🔍 Gõ tìm ngành (vd: pickleball, pet, xe điện, cafe...)" oninput="window.toolUI.filterIndustryDropdown(this.value)" style="width:100%; box-sizing:border-box; background:#0F172A; border:1px solid rgba(255,255,255,0.2); color:#FEF3C7; padding:0.45rem 0.75rem; border-radius:6px; font-size:16px; outline:none;">
+                </div>
+
+                <!-- Nhóm 1: Ngành Trọng Điểm Phổ Biến Toàn Quốc -->
+                <div class="industry-group-section" style="margin-bottom:0.75rem;">
+                  <div style="font-size:0.74rem; font-weight:700; color:#38BDF8; text-transform:uppercase; margin-bottom:0.4rem; display:flex; align-items:center; gap:0.3rem;">
+                    <span>🏢 Ngành Trọng Điểm Phổ Biến Toàn Quốc</span>
+                    <span style="font-size:0.68rem; color:var(--text-muted); font-weight:normal;">(6 ngành)</span>
+                  </div>
+                  <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(140px, 1fr)); gap:0.35rem;">
+                    ${mainstreamIndustries.map(ind => `
+                      <button type="button" class="industry-opt-btn" data-id="${ind.id}" data-name="${ind.name}" data-short="${ind.shortName}" onclick="window.toolUI.selectIndustryAndCalculate('${currentProvince.historical_id}', '${ind.id}')" style="background:${ind.id === currentIndKey ? 'rgba(245,158,11,0.25)' : 'rgba(255,255,255,0.04)'}; border:1px solid ${ind.id === currentIndKey ? '#F59E0B' : 'rgba(255,255,255,0.1)'}; color:${ind.id === currentIndKey ? '#FBBF24' : '#E2E8F0'}; padding:0.4rem 0.55rem; border-radius:6px; font-size:0.76rem; font-weight:600; cursor:pointer; display:flex; align-items:center; gap:0.35rem; text-align:left;">
+                        <span>${ind.icon}</span>
+                        <span style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${ind.shortName}</span>
+                      </button>
+                    `).join('')}
+                  </div>
+                </div>
+
+                <!-- Nhóm 2: Ngành Đang Phát Triển & Xu Hướng Mới -->
+                <div class="industry-group-section">
+                  <div style="font-size:0.74rem; font-weight:700; color:#34D399; text-transform:uppercase; margin-bottom:0.4rem; display:flex; align-items:center; gap:0.3rem;">
+                    <span>🚀 Ngành Đang Phát Triển & Xu Hướng Mới</span>
+                    <span style="font-size:0.68rem; color:var(--text-muted); font-weight:normal;">(7 ngành)</span>
+                  </div>
+                  <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(140px, 1fr)); gap:0.35rem;">
+                    ${emergingIndustries.map(ind => `
+                      <button type="button" class="industry-opt-btn" data-id="${ind.id}" data-name="${ind.name}" data-short="${ind.shortName}" onclick="window.toolUI.selectIndustryAndCalculate('${currentProvince.historical_id}', '${ind.id}')" style="background:${ind.id === currentIndKey ? 'rgba(245,158,11,0.25)' : 'rgba(255,255,255,0.04)'}; border:1px solid ${ind.id === currentIndKey ? '#F59E0B' : 'rgba(255,255,255,0.1)'}; color:${ind.id === currentIndKey ? '#FBBF24' : '#E2E8F0'}; padding:0.4rem 0.55rem; border-radius:6px; font-size:0.76rem; font-weight:600; cursor:pointer; display:flex; align-items:center; gap:0.35rem; text-align:left;">
+                        <span>${ind.icon}</span>
+                        <span style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${ind.shortName}</span>
+                      </button>
+                    `).join('')}
+                  </div>
+                </div>
+              </div>
+
+              <!-- Quick-Chips Nhỏ Gọn (Thanh chọn nhanh 1 chạm kích thước nhỏ) -->
+              <div style="display:flex; gap:0.35rem; overflow-x:auto; padding:0.45rem 0 0.15rem 0; scrollbar-width:thin;">
+                <span style="font-size:0.72rem; color:var(--text-muted); white-space:nowrap; align-self:center; margin-right:0.15rem;">Chọn nhanh:</span>
+                ${Object.values(industryCatalog).map(ind => `
+                  <button type="button" class="industry-chip-btn" data-chip="${ind.id}" onclick="window.toolUI.selectIndustryAndCalculate('${currentProvince.historical_id}', '${ind.id}')" style="background:${ind.id === currentIndKey ? 'rgba(245,158,11,0.25)' : 'rgba(255,255,255,0.05)'}; border:1px solid ${ind.id === currentIndKey ? '#F59E0B' : 'rgba(255,255,255,0.12)'}; color:${ind.id === currentIndKey ? '#FBBF24' : '#CBD5E1'}; padding:0.25rem 0.55rem; border-radius:15px; font-size:12px; font-weight:600; white-space:nowrap; cursor:pointer; flex-shrink:0;">
+                    <span>${ind.icon}</span> ${ind.shortName}
+                  </button>
+                `).join('')}
+              </div>
+            </div>
+
+            <!-- Container Hiển Thị 4 Khối Báo Cáo Ngành -->
+            <div id="kinhte-industry-report">
+              ${initialIndustryEcon ? this.renderIndustryReportHtml(initialIndustryEcon) : '<div style="padding:1rem; text-align:center; color:var(--text-muted);">Đang tính toán động thái ngành nghề...</div>'}
+            </div>
+          </div>
+
+          <!-- VIEW 2: CẢNH BÁO CÁC NGÀNH CÓ NGUY CƠ ĐÀO THẢI (SUNSET INDUSTRY RADAR) -->
+          <div id="industry-sunset-view" style="display:none;">
+            ${this.renderSunsetIndustriesHtml()}
           </div>
 
           <!-- Giải trình cơ chế cập nhật tự động định kỳ vs thủ công -->
@@ -2185,22 +2255,174 @@ ${reportText}
     const districtId = select ? select.value : null;
     const radiusMeters = this._currentRadiusMeters || 1000;
 
-    // Update active UI button style
-    const btns = document.querySelectorAll('.industry-btn');
-    btns.forEach(b => {
-      const match = b.getAttribute('data-industry') === industryKey;
-      if (match) {
-        b.style.background = 'rgba(245,158,11,0.25)';
-        b.style.borderColor = '#F59E0B';
-        b.style.color = '#FBBF24';
-      } else {
-        b.style.background = 'rgba(255,255,255,0.05)';
-        b.style.borderColor = 'rgba(255,255,255,0.12)';
-        b.style.color = '#E2E8F0';
-      }
+    // Tự động đóng panel dropdown sau khi chọn
+    const panel = document.getElementById('industry-dropdown-panel');
+    const icon = document.getElementById('industry-dropdown-icon');
+    if (panel) panel.style.display = 'none';
+    if (icon) icon.textContent = '▾ Chọn ngành';
+
+    // Cập nhật nhãn ngành đang chọn trên nút dropdown chính
+    const indEngine = (typeof IndustryEconomicEngine !== 'undefined') ? IndustryEconomicEngine : (typeof window !== 'undefined' ? window.IndustryEconomicEngine : null);
+    const profile = indEngine && indEngine.getIndustryProfile ? indEngine.getIndustryProfile(industryKey) : null;
+    const labelEl = document.getElementById('industry-current-label');
+    if (labelEl && profile) {
+      labelEl.innerHTML = `
+        <span>${profile.icon || '☕'}</span>
+        <span style="color:#FBBF24;">${profile.name}</span>
+        <span style="font-size:0.72rem; color:var(--text-muted); font-weight:500;">(VSIC ${profile.vsic_code})</span>
+      `;
+    }
+
+    // Cập nhật trạng thái active của thanh Quick-Chips
+    const chips = document.querySelectorAll('.industry-chip-btn');
+    chips.forEach(c => {
+      const match = c.getAttribute('data-chip') === industryKey;
+      c.style.background = match ? 'rgba(245,158,11,0.25)' : 'rgba(255,255,255,0.05)';
+      c.style.borderColor = match ? '#F59E0B' : 'rgba(255,255,255,0.12)';
+      c.style.color = match ? '#FBBF24' : '#CBD5E1';
+    });
+
+    // Cập nhật trạng thái active trong menu xổ
+    const optBtns = document.querySelectorAll('.industry-opt-btn');
+    optBtns.forEach(b => {
+      const match = b.getAttribute('data-id') === industryKey;
+      b.style.background = match ? 'rgba(245,158,11,0.25)' : 'rgba(255,255,255,0.04)';
+      b.style.borderColor = match ? '#F59E0B' : 'rgba(255,255,255,0.1)';
+      b.style.color = match ? '#FBBF24' : '#E2E8F0';
     });
 
     this.calculateCustomIndustry(provinceId, districtId, radiusMeters, industryKey);
+  }
+
+  switchIndustryTab(tabName) {
+    const activeView = document.getElementById('industry-active-view');
+    const sunsetView = document.getElementById('industry-sunset-view');
+    const activeBtn = document.getElementById('tab-industry-active-btn');
+    const sunsetBtn = document.getElementById('tab-industry-sunset-btn');
+
+    if (tabName === 'active') {
+      if (activeView) activeView.style.display = 'block';
+      if (sunsetView) sunsetView.style.display = 'none';
+      if (activeBtn) {
+        activeBtn.style.background = 'rgba(245,158,11,0.25)';
+        activeBtn.style.borderColor = '#F59E0B';
+        activeBtn.style.color = '#FBBF24';
+      }
+      if (sunsetBtn) {
+        sunsetBtn.style.background = 'transparent';
+        sunsetBtn.style.borderColor = 'transparent';
+        sunsetBtn.style.color = 'var(--text-muted)';
+      }
+    } else {
+      if (activeView) activeView.style.display = 'none';
+      if (sunsetView) sunsetView.style.display = 'block';
+      if (sunsetBtn) {
+        sunsetBtn.style.background = 'rgba(239,68,68,0.25)';
+        sunsetBtn.style.borderColor = '#EF4444';
+        sunsetBtn.style.color = '#FCA5A5';
+      }
+      if (activeBtn) {
+        activeBtn.style.background = 'transparent';
+        activeBtn.style.borderColor = 'transparent';
+        activeBtn.style.color = 'var(--text-muted)';
+      }
+    }
+  }
+
+  toggleIndustryDropdown() {
+    const panel = document.getElementById('industry-dropdown-panel');
+    const icon = document.getElementById('industry-dropdown-icon');
+    if (!panel) return;
+    const isHidden = panel.style.display === 'none' || !panel.style.display;
+    panel.style.display = isHidden ? 'block' : 'none';
+    if (icon) {
+      icon.textContent = isHidden ? '▴ Thu gọn' : '▾ Chọn ngành';
+    }
+  }
+
+  filterIndustryDropdown(query) {
+    const cleanKw = this.removeVietnameseTones(query || '').trim().toLowerCase();
+    const optBtns = document.querySelectorAll('.industry-opt-btn');
+    optBtns.forEach(btn => {
+      const name = this.removeVietnameseTones(btn.getAttribute('data-name') || '').toLowerCase();
+      const shortName = this.removeVietnameseTones(btn.getAttribute('data-short') || '').toLowerCase();
+      const id = (btn.getAttribute('data-id') || '').toLowerCase();
+      const match = !cleanKw || name.includes(cleanKw) || shortName.includes(cleanKw) || id.includes(cleanKw);
+      btn.style.display = match ? 'flex' : 'none';
+    });
+  }
+
+  renderSunsetIndustriesHtml() {
+    const indEngine = (typeof IndustryEconomicEngine !== 'undefined') ? IndustryEconomicEngine : (typeof window !== 'undefined' ? window.IndustryEconomicEngine : null);
+    const sunsetList = (indEngine && indEngine.getSunsetIndustries) ? indEngine.getSunsetIndustries() : [];
+
+    return `
+      <div style="background:rgba(0,0,0,0.25); border:1px solid rgba(239,68,68,0.3); border-radius:8px; padding:1rem; margin-bottom:1rem; box-sizing:border-box;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.8rem; flex-wrap:wrap; gap:0.5rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:0.6rem;">
+          <div>
+            <div style="font-size:0.75rem; color:#EF4444; font-weight:800; text-transform:uppercase; display:flex; align-items:center; gap:0.3rem;">
+              <span>🚨 RADAR CẢNH BÁO NGUY CƠ ĐÀO THẢI (SUNSET INDUSTRY WATCH)</span>
+            </div>
+            <div style="font-size:0.78rem; color:var(--text-muted); margin-top:0.2rem;">
+              Phân tích các ngành nghề truyền thống đang suy giảm mạnh do chuyển đổi số, thương mại điện tử và biến đổi hành vi tiêu dùng đô thị.
+            </div>
+          </div>
+          <span style="font-size:0.72rem; color:#FCA5A5; background:rgba(239,68,68,0.15); border:1px solid rgba(239,68,68,0.35); padding:0.2rem 0.6rem; border-radius:4px; font-weight:700;">
+            ${sunsetList.length} Ngành Báo Động
+          </span>
+        </div>
+
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:0.8rem;">
+          ${sunsetList.map(ind => `
+            <div class="sunset-industry-card" style="background:rgba(255,255,255,0.02); border:1px solid rgba(239,68,68,0.25); border-radius:8px; padding:0.85rem; border-top:3px solid ${ind.riskColor}; box-sizing:border-box;">
+              <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.5rem; gap:0.4rem;">
+                <div>
+                  <div style="font-size:0.92rem; font-weight:800; color:#FEF3C7; display:flex; align-items:center; gap:0.4rem;">
+                    <span>${ind.icon}</span>
+                    <span>${ind.name}</span>
+                  </div>
+                  <div style="font-size:0.72rem; color:var(--text-muted); margin-top:1px;">
+                    Mã VSIC: <span style="color:#CBD5E1; font-weight:600;">${ind.vsic_code}</span>
+                  </div>
+                </div>
+                <span style="font-size:0.72rem; font-weight:800; color:${ind.riskColor}; background:${ind.riskColor}22; border:1px solid ${ind.riskColor}55; padding:0.15rem 0.45rem; border-radius:4px; white-space:nowrap;">
+                  Rủi ro ${ind.riskScore}% (${ind.riskLevel})
+                </span>
+              </div>
+
+              <!-- Thanh đo mức độ rủi ro -->
+              <div style="margin-bottom:0.6rem;">
+                <div style="display:flex; justify-content:space-between; font-size:0.68rem; color:var(--text-muted); margin-bottom:0.2rem;">
+                  <span>Tốc độ sụt giảm điểm bán:</span>
+                  <strong style="color:#EF4444;">${ind.annualDeclineRatePct}% / năm</strong>
+                </div>
+                <div style="background:rgba(255,255,255,0.06); height:6px; border-radius:3px; overflow:hidden;">
+                  <div style="background:${ind.riskColor}; width:${ind.riskScore}%; height:100%; border-radius:3px;"></div>
+                </div>
+              </div>
+
+              <!-- Nguyên nhân cốt lõi -->
+              <div style="background:rgba(0,0,0,0.25); border-radius:6px; padding:0.55rem; margin-bottom:0.6rem; font-size:0.72rem;">
+                <div style="color:#FBBF24; font-weight:700; margin-bottom:0.25rem;">🔍 Nguyên nhân suy giảm:</div>
+                <ul style="margin:0; padding-left:1.1rem; color:var(--text-primary); line-height:1.45;">
+                  ${ind.coreCauses.map(c => `<li style="margin-bottom:0.15rem;">${c}</li>`).join('')}
+                </ul>
+              </div>
+
+              <!-- Lộ trình chuyển dịch thoát hiểm -->
+              <div style="font-size:0.73rem; color:#38BDF8; line-height:1.45; margin-bottom:0.5rem; background:rgba(56,189,248,0.06); border-left:2px solid #38BDF8; padding:0.4rem 0.55rem; border-radius:0 4px 4px 0;">
+                <strong style="color:#7DD3FC;">💡 Lộ trình thoát hiểm:</strong> ${ind.strategicPivot}
+              </div>
+
+              <!-- Phong thủy thoái vận Cửu Vận -->
+              <div style="font-size:0.71rem; color:#E2E8F0; line-height:1.45; border-top:1px dashed rgba(255,255,255,0.08); padding-top:0.45rem;">
+                <strong style="color:#F59E0B;">☯️ Phong thủy Cửu Vận (Hỏa Vận):</strong> ${ind.fengshuiWarning}
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
   }
 
   renderIndustryReportHtml(res) {

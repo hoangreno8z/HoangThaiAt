@@ -2678,3 +2678,32 @@ select, input, textarea, button {
   }
 }
 
+/* =========================================================================
+   INDUSTRY SELECTOR, QUICK CHIPS & SUNSET INDUSTRY RADAR STYLES
+   ========================================================================= */
+.industry-chip-btn {
+  transition: all 0.15s ease;
+}
+.industry-chip-btn:hover {
+  background: rgba(245, 158, 11, 0.2) !important;
+  border-color: #F59E0B !important;
+  color: #FEF3C7 !important;
+}
+
+.industry-opt-btn {
+  transition: all 0.15s ease;
+}
+.industry-opt-btn:hover {
+  background: rgba(245, 158, 11, 0.2) !important;
+  border-color: #F59E0B !important;
+}
+
+.sunset-industry-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.sunset-industry-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+

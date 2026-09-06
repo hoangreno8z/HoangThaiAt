@@ -29,14 +29,16 @@ function runTest(desc, testFn) {
   }
 }
 
-// 1. Kiểm tra Danh mục Ngành nghề VSIC 2025
-runTest('Danh mục hồ sơ 6 ngành nghề kinh doanh trọng điểm chuẩn hóa VSIC 2025', () => {
+// 1. Kiểm tra Danh mục Ngành nghề VSIC 2025 (13 ngành: 6 phổ biến + 7 xu hướng mới)
+runTest('Danh mục hồ sơ 13 ngành nghề kinh doanh chuẩn hóa VSIC 2025 (6 phổ biến + 7 xu hướng mới)', () => {
   const catalog = industryEngine.getIndustryCatalog();
-  const expectedKeys = ['CAFE', 'NAIL', 'NHA_HANG_FNB', 'SPA_BEAUTY', 'TIEN_LOI', 'NHA_THUOC'];
+  const mainstreamKeys = ['CAFE', 'NAIL', 'NHA_HANG_FNB', 'SPA_BEAUTY', 'TIEN_LOI', 'NHA_THUOC'];
+  const emergingKeys = ['PICKLEBALL', 'PET_CARE', 'TRAM_SAC_EV', 'GIAT_SAY_TU_DONG', 'TRA_SUA_HOT_TREND', 'COWORKING_STUDY', 'BAKERY_PASTRY'];
+  const allExpectedKeys = [...mainstreamKeys, ...emergingKeys];
   
-  assert.strictEqual(Object.keys(catalog).length, 6, 'Phải đủ đúng 6 ngành');
+  assert.strictEqual(Object.keys(catalog).length, 13, 'Phải đủ đúng 13 ngành kinh doanh');
   
-  expectedKeys.forEach(k => {
+  allExpectedKeys.forEach(k => {
     const p = catalog[k];
     assert.ok(p, `Ngành ${k} phải tồn tại`);
     assert.ok(p.vsic_code, `Ngành ${k} phải có mã VSIC`);
@@ -49,6 +51,9 @@ runTest('Danh mục hồ sơ 6 ngành nghề kinh doanh trọng điểm chuẩn 
 
   assert.strictEqual(catalog.CAFE.vsic_code, '56302', 'Cà phê mã VSIC 56302');
   assert.strictEqual(catalog.NAIL.vsic_code, '96220', 'Nail mã VSIC 96220');
+  assert.strictEqual(catalog.PICKLEBALL.vsic_code, '93110', 'Pickleball mã VSIC 93110');
+  assert.strictEqual(catalog.TRAM_SAC_EV.vsic_code, '45200', 'Trạm sạc EV mã VSIC 45200');
+  assert.strictEqual(catalog.PET_CARE.vsic_code, '96099', 'Thú cưng mã VSIC 96099');
 });
 
 // 2. Kiểm tra tính toán Cà phê (CAFE) tại Hà Nội - Hoàn Kiếm (1km)
@@ -209,6 +214,78 @@ runTest('Xử lý an toàn khi thiếu tham số hoặc tỉnh thành xa xôi', 
   assert.ok(resDB.competition.estimatedCompetitors >= 2, 'Luôn có ít nhất 2 đối thủ ước tính tối thiểu');
   assert.strictEqual(resDB.survivalDynamics.status, 'unavailable', 'Dữ liệu vi mô vùng cao phải trả về unavailable');
   assert.ok(resDB.feasibility.overallOpportunityScore > 0);
+});
+
+// 9. Kiểm tra tính toán các ngành đang phát triển & xu hướng mới (Pickleball, Pet Care, EV, Laundromat...)
+runTest('Khảo sát thị trường các ngành xu hướng mới: Pickleball, Pet Care, Trạm sạc EV, Giặt sấy 24/7', () => {
+  // Test Pickleball tại Củ Chi
+  const resPB = industryEngine.calculateIndustryMarket({
+    provinceId: 'VN-SG',
+    districtId: 'SG-CC',
+    radiusMeters: 1000,
+    industryKey: 'PICKLEBALL'
+  });
+  assert.ok(resPB);
+  assert.strictEqual(resPB.profile.id, 'PICKLEBALL');
+  assert.strictEqual(resPB.profile.vsic_code, '93110');
+  assert.ok(resPB.marketDemand.totalMonthlyDemandBillionVnd > 0);
+  assert.ok(resPB.feasibility.overallOpportunityScore > 0);
+
+  // Test Trạm sạc EV tại Hải Châu, Đà Nẵng
+  const resEV = industryEngine.calculateIndustryMarket({
+    provinceId: 'VN-DN',
+    districtId: 'DN-HC',
+    radiusMeters: 1000,
+    industryKey: 'TRAM_SAC_EV'
+  });
+  assert.ok(resEV);
+  assert.strictEqual(resEV.profile.id, 'TRAM_SAC_EV');
+  assert.strictEqual(resEV.profile.chain_ratio_avg, 0.68, 'Trạm sạc EV tỷ lệ chuỗi lớn cao 68%');
+
+  // Test Pet Care tại Hoàn Kiếm, Hà Nội
+  const resPet = industryEngine.calculateIndustryMarket({
+    provinceId: 'VN-HN',
+    districtId: 'HN-HK',
+    radiusMeters: 1000,
+    industryKey: 'PET_CARE'
+  });
+  assert.ok(resPet);
+  assert.strictEqual(resPet.profile.id, 'PET_CARE');
+  assert.ok(resPet.demographics.targetCustomerCount > 1000);
+});
+
+// 10. Kiểm tra Phân hệ Cảnh báo Ngành có nguy cơ đào thải (Sunset Industry Radar)
+runTest('Phân hệ Cảnh báo Ngành có nguy cơ đào thải (Sunset Industry Radar): đủ 6 ngành truyền thống suy giảm', () => {
+  const sunsetList = industryEngine.getSunsetIndustries();
+  assert.strictEqual(sunsetList.length, 6, 'Phải có đủ đúng 6 ngành có nguy cơ đào thải');
+
+  const expectedSunsetKeys = [
+    'NET_CO_TRADITIONAL',
+    'PHOTOCOPY_IN_AN',
+    'CD_BANG_DIA_SACH_BAO',
+    'MAY_DO_THU_CONG_CU',
+    'DAI_LY_VE_MAY_BAY_GIAY',
+    'DIEN_MAY_GIA_DUNG_NHO'
+  ];
+
+  expectedSunsetKeys.forEach(k => {
+    const p = industryEngine.getSunsetIndustryProfile(k);
+    assert.ok(p, `Ngành ${k} phải tồn tại`);
+    assert.ok(p.vsic_code, `Ngành ${k} phải có mã VSIC`);
+    assert.ok(p.riskScore >= 60 && p.riskScore <= 100, `Ngành ${k} phải có rủi ro cao (>= 60%)`);
+    assert.ok(p.annualDeclineRatePct < 0, `Ngành ${k} phải có tốc độ sụt giảm âm`);
+    assert.ok(Array.isArray(p.coreCauses) && p.coreCauses.length >= 3, `Ngành ${k} phải có danh sách nguyên nhân`);
+    assert.ok(p.strategicPivot.length > 10, `Ngành ${k} phải có khuyến nghị chuyển dịch`);
+    assert.ok(p.fengshuiWarning.length > 10, `Ngành ${k} phải có lời khuyên phong thủy thoái vận`);
+  });
+
+  const netCo = industryEngine.getSunsetIndustryProfile('NET_CO_TRADITIONAL');
+  assert.strictEqual(netCo.vsic_code, '93290');
+  assert.strictEqual(netCo.riskScore, 88);
+
+  const bangDia = industryEngine.getSunsetIndustryProfile('CD_BANG_DIA_SACH_BAO');
+  assert.strictEqual(bangDia.riskScore, 96);
+  assert.strictEqual(bangDia.riskLevel, 'Báo Động Đỏ');
 });
 
 console.log(`\n========================================`);

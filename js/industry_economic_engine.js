@@ -22,11 +22,15 @@
   };
 
   /**
-   * DANH MỤC HỒ SƠ KINH TẾ CHUẨN HÓA 6 NGÀNH NGHỀ TRỌNG ĐIỂM (VSIC 2025)
+   * DANH MỤC HỒ SƠ KINH TẾ CHUẨN HÓA NGÀNH NGHỀ (VSIC 2025)
+   * Phân nhóm:
+   * - mainstream: Ngành kinh doanh trọng điểm phổ biến toàn quốc
+   * - emerging: Ngành đang phát triển mạnh mẽ & xu hướng mới
    */
   const INDUSTRY_CATALOG = {
     CAFE: {
       id: 'CAFE',
+      group: 'mainstream',
       name: 'Cà Phê & Đồ Uống Giải Khát',
       shortName: 'Cà phê',
       icon: '☕',
@@ -58,6 +62,7 @@
 
     NAIL: {
       id: 'NAIL',
+      group: 'mainstream',
       name: 'Nail & Chăm Sóc Sắc Đẹp',
       shortName: 'Nail & Móng',
       icon: '💅',
@@ -89,6 +94,7 @@
 
     NHA_HANG_FNB: {
       id: 'NHA_HANG_FNB',
+      group: 'mainstream',
       name: 'Nhà Hàng Ăn Uống & Ẩm Thực',
       shortName: 'Nhà hàng',
       icon: '🍲',
@@ -120,6 +126,7 @@
 
     SPA_BEAUTY: {
       id: 'SPA_BEAUTY',
+      group: 'mainstream',
       name: 'Spa & Thẩm Mỹ Chăm Sóc Da',
       shortName: 'Spa & Thẩm mỹ',
       icon: '💆',
@@ -151,6 +158,7 @@
 
     TIEN_LOI: {
       id: 'TIEN_LOI',
+      group: 'mainstream',
       name: 'Cửa Hàng Tiện Lợi & Siêu Thị Mini',
       shortName: 'Tiện lợi',
       icon: '🏪',
@@ -182,6 +190,7 @@
 
     NHA_THUOC: {
       id: 'NHA_THUOC',
+      group: 'mainstream',
       name: 'Nhà Thuốc & Dược Phẩm Bán Lẻ',
       shortName: 'Nhà thuốc',
       icon: '💊',
@@ -209,6 +218,365 @@
         'Nhà thuốc chuyên khoa gần bệnh viện / phòng khám',
         'Điểm bán thuốc thiết yếu khu dân cư đông đúc'
       ]
+    },
+
+    // =========================================================================
+    // NHÓM 2: CÁC NGÀNH ĐANG PHÁT TRIỂN & XU HƯỚNG MỚI (EMERGING & NICHE SECTORS)
+    // =========================================================================
+    PICKLEBALL: {
+      id: 'PICKLEBALL',
+      group: 'emerging',
+      name: 'Sân Tập Pickleball & Thể Thao Đô Thị Mới',
+      shortName: 'Pickleball',
+      icon: '🏓',
+      vsic_code: '93110',
+      vsic_name: 'Hoạt động của các cơ sở thể thao: Sân tập pickleball, tennis, thể thao đa năng',
+      fsq_categories: ['Sports Club', 'Athletic Field', 'Tennis Court'],
+      target_demographic: 'Giới trẻ, dân văn phòng, trung niên đô thị 20–55 tuổi có xu hướng thể thao phong trào',
+      target_population_ratio: 0.18,
+      daytime_traffic_multiplier: 1.15,
+      avg_spend_per_customer_month: 750000,
+      breakeven_monthly_revenue: 95000000,
+      competitor_density_factor: 0.00018,
+      chain_ratio_avg: 0.12,
+      churn_rate_annual: 0.115,
+      survival_rates: {
+        under_6m: 0.10,
+        m6_to_12: 0.16,
+        y1_to_2: 0.26,
+        over_2y: 0.48
+      },
+      fengshui_affinity: 'Minh Đường khoáng đạt, thế đất bằng phẳng, gió lưu thông không bế khí, đón vượng khí vận động thanh thoát.',
+      suitable_models: [
+        'Cụm sân Pickleball trong nhà có máy lạnh & đèn thi đấu',
+        'Sân ngoài trời có mái che kết hợp quầy cafe thể thao',
+        'Câu lạc bộ thể thao phong trào & giải đấu cộng đồng',
+        'Tổ hợp thể thao giải trí đa năng tích hợp phụ kiện'
+      ]
+    },
+
+    PET_CARE: {
+      id: 'PET_CARE',
+      group: 'emerging',
+      name: 'Spa, Khách Sạn Thú Cưng & Pet Shop',
+      shortName: 'Thú cưng / Pet',
+      icon: '🐾',
+      vsic_code: '96099',
+      vsic_name: 'Dịch vụ phục vụ cá nhân khác: Chăm sóc, tắm tỉa spa, khách sạn thú cưng',
+      fsq_categories: ['Pet Service', 'Pet Store', 'Veterinarian'],
+      target_demographic: 'Cư dân trẻ, gia đình chung cư, người độc thân nuôi chó mèo tại đô thị',
+      target_population_ratio: 0.22,
+      daytime_traffic_multiplier: 1.10,
+      avg_spend_per_customer_month: 650000,
+      breakeven_monthly_revenue: 85000000,
+      competitor_density_factor: 0.00045,
+      chain_ratio_avg: 0.16,
+      churn_rate_annual: 0.102,
+      survival_rates: {
+        under_6m: 0.09,
+        m6_to_12: 0.15,
+        y1_to_2: 0.24,
+        over_2y: 0.52
+      },
+      fengshui_affinity: 'Cung Tọa sinh khí, hướng đón ánh sáng tự nhiên, hệ thống cấp thoát nước thông suốt không để uế khí đọng.',
+      suitable_models: [
+        'Pet Grooming & Spa tắm cắt tỉa chuyên nghiệp',
+        'Khách sạn thú cưng lưu trú dịp lễ tết & cuối tuần',
+        'Cửa hàng thức ăn & phụ kiện thú cưng cao cấp',
+        'Phòng khám thú y kết hợp dịch vụ chăm sóc trọn gói'
+      ]
+    },
+
+    TRAM_SAC_EV: {
+      id: 'TRAM_SAC_EV',
+      group: 'emerging',
+      name: 'Trạm Sạc Xe Điện & Dịch Vụ Năng Lượng Xanh',
+      shortName: 'Trạm sạc EV',
+      icon: '⚡',
+      vsic_code: '45200',
+      vsic_name: 'Dịch vụ bảo dưỡng, sạc pin và hỗ trợ phương tiện giao thông điện',
+      fsq_categories: ['EV Charging Station', 'Gas Station', 'Automotive Shop'],
+      target_demographic: 'Tài xế xe công nghệ (ô tô, xe máy điện), cư dân sở hữu xe điện đô thị',
+      target_population_ratio: 0.32,
+      daytime_traffic_multiplier: 1.40,
+      avg_spend_per_customer_month: 450000,
+      breakeven_monthly_revenue: 110000000,
+      competitor_density_factor: 0.00035,
+      chain_ratio_avg: 0.68,
+      churn_rate_annual: 0.080,
+      survival_rates: {
+        under_6m: 0.05,
+        m6_to_12: 0.11,
+        y1_to_2: 0.20,
+        over_2y: 0.64
+      },
+      fengshui_affinity: 'Thuộc tính Hỏa - Kim, chuộng vị trí Lộ Thông giao lộ, vỉa hè rộng đón dòng xe lưu thông nhộn nhịp.',
+      suitable_models: [
+        'Trạm sạc nhanh DC siêu tốc cạnh trục đường giao thông chính',
+        'Cụm sạc AC qua đêm tại bãi đỗ xe chung cư, cao ốc',
+        'Tủ đổi pin xe máy điện thông minh 24/7 cho tài xế shipper',
+        'Tổ hợp sạc điện kết hợp quán cafe nghỉ ngơi & rửa xe'
+      ]
+    },
+
+    GIAT_SAY_TU_DONG: {
+      id: 'GIAT_SAY_TU_DONG',
+      group: 'emerging',
+      name: 'Tiệm Giặt Sấy Tự Động 24/7 (Laundromat)',
+      shortName: 'Giặt sấy 24/7',
+      icon: '🧺',
+      vsic_code: '96210',
+      vsic_name: 'Dịch vụ giặt là, làm sạch tự phục vụ bằng mã QR hoặc xu',
+      fsq_categories: ['Laundromat', 'Laundry Service'],
+      target_demographic: 'Sinh viên, người đi làm thuê trọ, gia đình trẻ, khách du lịch lưu trú',
+      target_population_ratio: 0.45,
+      daytime_traffic_multiplier: 1.15,
+      avg_spend_per_customer_month: 220000,
+      breakeven_monthly_revenue: 48000000,
+      competitor_density_factor: 0.00065,
+      chain_ratio_avg: 0.28,
+      churn_rate_annual: 0.098,
+      survival_rates: {
+        under_6m: 0.08,
+        m6_to_12: 0.14,
+        y1_to_2: 0.25,
+        over_2y: 0.53
+      },
+      fengshui_affinity: 'Hành Thủy cực vượng, cần đường ống thoát nước thông thoáng, tránh để Thủy uế phạm Huyền Quan.',
+      suitable_models: [
+        'Tiệm giặt sấy tự phục vụ quét mã QR thông minh 24/7',
+        'Mô hình giặt sấy kết hợp quầy cafe nhỏ cho khách chờ đợi',
+        'Dịch vụ giặt sấy kèm giao nhận tận phòng trọ, căn hộ',
+        'Điểm giặt hấp cao cấp đồ vest, đầm dạ hội & chăn ga'
+      ]
+    },
+
+    TRA_SUA_HOT_TREND: {
+      id: 'TRA_SUA_HOT_TREND',
+      group: 'emerging',
+      name: 'Đồ Uống Thế Hệ Mới (Trà Sữa & Trà Trái Cây)',
+      shortName: 'Trà sữa / Trend',
+      icon: '🧋',
+      vsic_code: '56309',
+      vsic_name: 'Dịch vụ phục vụ đồ uống khác: Trà sữa, trà trái cây, nước ép theo xu hướng',
+      fsq_categories: ['Bubble Tea Shop', 'Juice Bar', 'Tea Room'],
+      target_demographic: 'Gen Z, học sinh, sinh viên, giới trẻ 12–28 tuổi bắt trend nhanh',
+      target_population_ratio: 0.38,
+      daytime_traffic_multiplier: 1.30,
+      avg_spend_per_customer_month: 310000,
+      breakeven_monthly_revenue: 90000000,
+      competitor_density_factor: 0.0014,
+      chain_ratio_avg: 0.35,
+      churn_rate_annual: 0.195,
+      survival_rates: {
+        under_6m: 0.19,
+        m6_to_12: 0.25,
+        y1_to_2: 0.28,
+        over_2y: 0.28
+      },
+      fengshui_affinity: 'Khí Khẩu cổng trường học, tụ điểm vui chơi, cung Đào Hoa trợ Mộc sinh Hỏa tạo sức hút trẻ trung.',
+      suitable_models: [
+        'Kiosk trà sữa nhượng quyền chi phí tối ưu (Mixue model)',
+        'Cửa hàng trà sữa cao cấp có không gian check-in đẹp',
+        'Quầy trà trái cây tươi / Trà chanh giã tay đón xu hướng',
+        'Mô hình xe đẩy / Kiosk takeaway giờ tan trường'
+      ]
+    },
+
+    COWORKING_STUDY: {
+      id: 'COWORKING_STUDY',
+      group: 'emerging',
+      name: 'Co-working Space & Cafe Học Tập',
+      shortName: 'Co-working',
+      icon: '💻',
+      vsic_code: '68109',
+      vsic_name: 'Dịch vụ cho thuê không gian làm việc chia sẻ, bàn làm việc, phòng họp linh hoạt',
+      fsq_categories: ['Coworking Space', 'Office', 'Internet Cafe'],
+      target_demographic: 'Freelancer, lập trình viên, người làm việc từ xa, sinh viên ôn thi',
+      target_population_ratio: 0.14,
+      daytime_traffic_multiplier: 1.25,
+      avg_spend_per_customer_month: 780000,
+      breakeven_monthly_revenue: 145000000,
+      competitor_density_factor: 0.00015,
+      chain_ratio_avg: 0.22,
+      churn_rate_annual: 0.120,
+      survival_rates: {
+        under_6m: 0.11,
+        m6_to_12: 0.17,
+        y1_to_2: 0.26,
+        over_2y: 0.46
+      },
+      fengshui_affinity: 'Văn Xương Tinh chiếu xạ, phòng ốc tĩnh khí tụ tài, ánh sáng hài hòa tăng cường tập trung.',
+      suitable_models: [
+        'Co-working space trọn gói có phòng họp & quầy pantry',
+        'Study Cafe 24/7 chia buồng học yên tĩnh có ổ cắm riêng',
+        'Văn phòng chia sẻ linh hoạt cho nhóm khởi nghiệp nhỏ',
+        'Cafe làm việc chuyên biệt có gói thuê bàn theo giờ/ngày'
+      ]
+    },
+
+    BAKERY_PASTRY: {
+      id: 'BAKERY_PASTRY',
+      group: 'emerging',
+      name: 'Tiệm Bánh Mì Thủ Công & Bakery Hiện Đại',
+      shortName: 'Bánh ngọt / Bakery',
+      icon: '🥐',
+      vsic_code: '10712',
+      vsic_name: 'Sản xuất và bán lẻ bánh mì, bánh ngọt tươi, pastry tại chỗ',
+      fsq_categories: ['Bakery', 'Pastry Shop', 'Dessert Shop'],
+      target_demographic: 'Gia đình trẻ, phụ nữ nội trợ, dân văn phòng ăn sáng & quà tặng tiệc ngọt',
+      target_population_ratio: 0.42,
+      daytime_traffic_multiplier: 1.20,
+      avg_spend_per_customer_month: 280000,
+      breakeven_monthly_revenue: 105000000,
+      competitor_density_factor: 0.00058,
+      chain_ratio_avg: 0.25,
+      churn_rate_annual: 0.125,
+      survival_rates: {
+        under_6m: 0.12,
+        m6_to_12: 0.18,
+        y1_to_2: 0.25,
+        over_2y: 0.45
+      },
+      fengshui_affinity: 'Hỏa Thổ tương sinh (lò nướng sinh tài), mùi thơm dẫn dụ nhân khí, cửa tiệm tươi sáng ấm áp.',
+      suitable_models: [
+        'Bakery & Cafe phong cách Pháp / Hàn Quốc cao cấp',
+        'Tiệm bánh mì thủ công Sourdough & bánh dinh dưỡng sạch',
+        'Boutique bánh kem sinh nhật thiết kế theo yêu cầu riêng',
+        'Kiosk bánh ngọt nướng nóng takeaway tiện lợi đón đầu ngõ'
+      ]
+    }
+  };
+
+  /**
+   * DANH MỤC CÁC NGÀNH NGHỀ TRUYỀN THỐNG CÓ NGUY CƠ ĐÀO THẢI CAO (SUNSET INDUSTRY RADAR)
+   * Phân tích rủi ro đào thải do chuyển đổi số, TMĐT và biến động hành vi tiêu dùng đô thị.
+   */
+  const SUNSET_INDUSTRY_CATALOG = {
+    NET_CO_TRADITIONAL: {
+      id: 'NET_CO_TRADITIONAL',
+      name: 'Quán Internet & Net Cỏ Truyền Thống',
+      shortName: 'Net cỏ / Game cũ',
+      icon: '🎮',
+      vsic_code: '93290',
+      vsic_name: 'Đại lý cung cấp dịch vụ internet công cộng và trò chơi điện tử nhỏ lẻ',
+      riskScore: 88,
+      riskLevel: 'Cực Kỳ Cao',
+      riskColor: '#EF4444',
+      annualDeclineRatePct: -28.0,
+      coreCauses: [
+        'Smartphone cấu hình cao giá rẻ phổ cập đại trà',
+        'Hạ tầng mạng 4G/5G và cáp quang hộ gia đình bao phủ 99%',
+        'Game di động (Liên Quân, Free Fire, Tốc Chiến) áp đảo hoàn toàn game PC',
+        'Chi phí nâng cấp phần cứng PC quá đắt đỏ so với giá giờ chơi 5k–8k/giờ'
+      ],
+      strategicPivot: 'Nâng cấp lên tổ hợp Cyber Gaming Lounge cao cấp kết hợp Billiards & F&B đồ ăn nóng chất lượng, hoặc thanh lý máy móc sớm để bảo toàn vốn.',
+      fengshuiWarning: 'Thuộc tính thoái vận Bát Vận bước sang Cửu Vận (Hỏa vận 2024–2043). Các không gian tối tăm, âm khí nặng, uế trệ sẽ bị đào thải nhanh chóng. Cần giải phóng mặt bằng hoặc mở rộng cửa sổ đón dương khí quang đãng.'
+    },
+
+    PHOTOCOPY_IN_AN: {
+      id: 'PHOTOCOPY_IN_AN',
+      name: 'Tiệm In Ấn & Photocopy Nhỏ Lẻ Truyền Thống',
+      shortName: 'Photocopy / In ấn',
+      icon: '🖨️',
+      vsic_code: '18129',
+      vsic_name: 'Dịch vụ photocopy, in ấn tài liệu giấy truyền thống',
+      riskScore: 76,
+      riskLevel: 'Cao',
+      riskColor: '#F97316',
+      annualDeclineRatePct: -18.5,
+      coreCauses: [
+        'Xu hướng số hóa văn phòng (Paperless office) và chữ ký số điện tử',
+        'Dịch vụ công trực tuyến VNeID và nộp hồ sơ qua cổng hành chính công',
+        'Sinh viên chuyển sang đọc giáo trình điện tử PDF, máy tính bảng và laptop',
+        'Máy in gia đình nhỏ gọn giá rẻ thay thế nhu cầu in ấn nhỏ lẻ'
+      ],
+      strategicPivot: 'Chuyển đổi sang dịch vụ in ấn quà tặng cá nhân hóa, in tem nhãn decal đóng gói TMĐT, in ấn phẩm marketing số và thiết kế đồ họa trọn gói.',
+      fengshuiWarning: 'Hành Kim thoái khí, mùi mực in và bụi giấy tích tụ tạo uế khí cản trở cung Tài Lộc. Cần chuyển dịch sang ngành có tính Mộc - Hỏa (thiết kế sáng tạo, quà tặng).'
+    },
+
+    CD_BANG_DIA_SACH_BAO: {
+      id: 'CD_BANG_DIA_SACH_BAO',
+      name: 'Sạp Báo Giấy & Cửa Hàng Băng Đĩa Truyền Thống',
+      shortName: 'Băng đĩa / Báo giấy',
+      icon: '📻',
+      vsic_code: '47610',
+      vsic_name: 'Bán lẻ sách báo, băng đĩa nhạc, phim truyền thống trên hè phố',
+      riskScore: 96,
+      riskLevel: 'Báo Động Đỏ',
+      riskColor: '#DC2626',
+      annualDeclineRatePct: -42.0,
+      coreCauses: [
+        'Báo điện tử và mạng xã hội cập nhật tin tức tức thời từng giây',
+        'Nền tảng phát nhạc trực tuyến Spotify, Apple Music, YouTube Music',
+        'Nền tảng phim trực tuyến Netflix, VieON thay thế hoàn toàn đĩa DVD/VCD',
+        'Chi phí in ấn phát hành giấy tăng cao trong khi lượng người đọc giảm 90%'
+      ],
+      strategicPivot: 'Chuyển hẳn sang mô hình Cafe sách nghệ thuật, studio thu âm podcast, quầy bán đồ lưu niệm văn hóa bản địa kết hợp trạm dừng chân du lịch.',
+      fengshuiWarning: 'Vị trí sạp báo hè phố thường phạm Xung Sát dòng người xô bồ nhưng không tụ khí. Kho băng đĩa cũ là vật chết (tĩnh khí thoái trệ), cần thanh lọc toàn diện.'
+    },
+
+    MAY_DO_THU_CONG_CU: {
+      id: 'MAY_DO_THU_CONG_CU',
+      name: 'Tiệm May Đo Quần Áo Thủ Công Kiểu Cũ',
+      shortName: 'May đo nhỏ lẻ',
+      icon: '🧵',
+      vsic_code: '14100',
+      vsic_name: 'May trang phục thủ công hộ gia đình nhỏ lẻ truyền thống',
+      riskScore: 70,
+      riskLevel: 'Cao',
+      riskColor: '#F97316',
+      annualDeclineRatePct: -15.0,
+      coreCauses: [
+        'Sự bùng nổ của thời trang may sẵn (Fast fashion) giá siêu rẻ',
+        'Sàn TMĐT Shopee, TikTok Shop livestream bán quần áo mẫu mới mỗi ngày',
+        'Thời gian may đo thủ công kéo dài 7–14 ngày không cạnh tranh được với giao hàng 2h',
+        'Thiếu hụt thợ may trẻ tay nghề cao kế thừa nghề truyền thống'
+      ],
+      strategicPivot: 'Nâng cấp lên xưởng may đo Bespoke cá nhân hóa cao cấp, dịch vụ sửa chữa đồ hiệu (Tailoring & Alterations), hoặc may đo cho thuê áo dài / trang phục sự kiện.',
+      fengshuiWarning: 'Cung Tài Lộc bị che khuất bởi vải vóc cuộn xếp u ám, ánh sáng nhân tạo yếu ớt. Cần mở rộng Huyền Quan đón dương quang, đặt bàn máy may tại vị trí nạp Sinh Khí.'
+    },
+
+    DAI_LY_VE_MAY_BAY_GIAY: {
+      id: 'DAI_LY_VE_MAY_BAY_GIAY',
+      name: 'Đại Lý / Phòng Bán Vé Máy Bay Giấy Truyền Thống',
+      shortName: 'Đại lý vé giấy',
+      icon: '🎫',
+      vsic_code: '79110',
+      vsic_name: 'Đại lý bán vé máy bay, vé tàu xe trực tiếp tại quầy',
+      riskScore: 84,
+      riskLevel: 'Rất Cao',
+      riskColor: '#EF4444',
+      annualDeclineRatePct: -25.0,
+      coreCauses: [
+        'Ứng dụng chính hãng của Vietnam Airlines, Vietjet Air, Bamboo Airways đặt vé 1 chạm',
+        'Nền tảng OTA (Traveloka, Agoda, Trip.com) liên tục tung mã giảm giá',
+        'Ứng dụng ngân hàng số (Mobile Banking) tích hợp tính năng đặt vé máy bay miễn phí',
+        'Chính sách cắt giảm hoa hồng đại lý từ các hãng hàng không'
+      ],
+      strategicPivot: 'Mở rộng sang dịch vụ làm Visa trọn gói, tour du lịch thiết kế riêng (Customized tours), combo nghỉ dưỡng cao cấp hoặc đại lý tư vấn du học / định cư.',
+      fengshuiWarning: 'Khí tụ tĩnh mịch không có dòng khách vãng lai, Huyền Quan thiếu điểm nhấn sinh tài. Cần phối hợp dòng Thủy Mộc (trang trí cây xanh cảnh quan và dịch vụ trải nghiệm).'
+    },
+
+    DIEN_MAY_GIA_DUNG_NHO: {
+      id: 'DIEN_MAY_GIA_DUNG_NHO',
+      name: 'Cửa Hàng Điện Máy & Đồ Gia Dụng Nhỏ Lẻ Truyền Thống',
+      shortName: 'Điện máy nhỏ lẻ',
+      icon: '🔌',
+      vsic_code: '4759',
+      vsic_name: 'Bán lẻ thiết bị điện máy, đồ gia dụng gia đình nhỏ lẻ',
+      riskScore: 80,
+      riskLevel: 'Rất Cao',
+      riskColor: '#EF4444',
+      annualDeclineRatePct: -22.0,
+      coreCauses: [
+        'Chuỗi bán lẻ khổng lồ (Điện Máy Xanh, MediaMart, Chợ Lớn) bao phủ tận huyện xã',
+        'Sàn TMĐT giao hàng miễn phí, lắp đặt tận phòng và trả góp 0% qua thẻ tín dụng',
+        'Cửa hàng nhỏ lẻ không có vốn ôm hàng số lượng lớn để hưởng chiết khấu cao',
+        'Khó khăn trong khâu bảo hành và dịch vụ hậu mãi so với chuỗi chuyên nghiệp'
+      ],
+      strategicPivot: 'Chuyển sang làm trạm tiếp nhận bảo hành ủy quyền, dịch vụ sửa chữa lắp đặt điện lạnh tận nhà (vệ sinh máy lạnh, sửa tủ lạnh), hoặc bán đồ gia dụng thông minh chuyên sâu (Smart Home).',
+      fengshuiWarning: 'Thiết bị điện máy xếp chồng chất tạo Kim Sát và hỏa nhiệt tích tụ gây bất an phong thủy. Cần dọn dẹp giải phóng kho bãi, tạo dòng khí lưu thông thoáng đãng.'
     }
   };
 
@@ -226,6 +594,32 @@
 
     getIndustryCatalog() {
       return INDUSTRY_CATALOG;
+    }
+
+    /**
+     * Danh mục các ngành có nguy cơ đào thải (Sunset Industry Radar)
+     */
+    getSunsetIndustries() {
+      return Object.values(SUNSET_INDUSTRY_CATALOG);
+    }
+
+    getSunsetIndustryCatalog() {
+      return SUNSET_INDUSTRY_CATALOG;
+    }
+
+    getSunsetIndustryProfile(key = 'NET_CO_TRADITIONAL') {
+      return SUNSET_INDUSTRY_CATALOG[key] || SUNSET_INDUSTRY_CATALOG.NET_CO_TRADITIONAL;
+    }
+
+    /**
+     * Lấy danh mục ngành phân theo nhóm: Phổ biến, Mới nổi, Đào thải
+     */
+    getGroupedIndustries() {
+      return {
+        mainstream: Object.values(INDUSTRY_CATALOG).filter(i => i.group === 'mainstream'),
+        emerging: Object.values(INDUSTRY_CATALOG).filter(i => i.group === 'emerging'),
+        sunset: Object.values(SUNSET_INDUSTRY_CATALOG)
+      };
     }
 
     /**
