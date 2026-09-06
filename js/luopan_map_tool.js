@@ -481,6 +481,9 @@ class LuopanMapTool {
             <button type="button" id="btn-export-survey" class="dt-touch-btn" style="background:#059669; color:#FFF; border:none;" title="Mở phiếu khảo sát">
               Xuất Phiếu
             </button>
+            <button type="button" id="btn-economic-radius" class="dt-touch-btn" style="background:#0D9488; color:#FFF; border:none; display:flex; align-items:center; gap:0.3rem;" title="Mở phân tích sức mua và dung lượng thị trường theo bán kính">
+              <span>📊</span> Sức Mua Bán Kính
+            </button>
           </div>
         </nav>
 
@@ -596,6 +599,54 @@ class LuopanMapTool {
                 Đóng
               </button>
             </div>
+          </div>
+        </div>
+
+        <!-- 5. MODAL PHÂN TÍCH SỨC MUA & TIỀM NĂNG THỊ TRƯỜNG THEO BÁN KÍNH -->
+        <div id="modal-economic-radius" style="display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.85); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); justify-content:center; align-items:center; padding:1rem;">
+          <div style="background:#0F172A; border:1px solid #10B981; border-radius:14px; width:100%; max-width:680px; max-height:85vh; overflow-y:auto; -webkit-overflow-scrolling:touch; padding:1.4rem; box-shadow:0 20px 50px rgba(0,0,0,0.85);">
+
+            <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(255,255,255,0.12); padding-bottom:0.8rem; margin-bottom:1rem;">
+              <div style="display:flex; align-items:center; gap:0.5rem;">
+                <span style="font-size:1.2rem;">📊</span>
+                <h3 style="margin:0; font-size:1.1rem; color:#FEF3C7; font-weight:800;">
+                  DUNG LƯỢNG THỊ TRƯỜNG & SỨC MUA BÁN KÍNH
+                </h3>
+              </div>
+              <button type="button" id="btn-close-econ-x" style="background:transparent; border:none; color:#94A3B8; font-size:1.2rem; cursor:pointer; padding:0.15rem 0.4rem;">✕</button>
+            </div>
+
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; background:rgba(0,0,0,0.3); padding:0.6rem 0.8rem; border-radius:8px; margin-bottom:1rem;">
+              <div style="font-size:0.8rem; color:#CBD5E1;">
+                <span>Vị trí khảo sát: </span>
+                <strong id="dt-econ-location-text" style="color:#38BDF8;">Đang xác định...</strong>
+              </div>
+              <div style="display:flex; gap:0.3rem;">
+                <button type="button" class="dt-econ-radius-selector" data-radius="500" style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15); color:#FEF3C7; padding:0.25rem 0.55rem; border-radius:6px; font-size:0.75rem; font-weight:700; cursor:pointer;">
+                  500m
+                </button>
+                <button type="button" class="dt-econ-radius-selector active" data-radius="1000" style="background:rgba(16,185,129,0.25); border:1px solid #10B981; color:#10B981; padding:0.25rem 0.55rem; border-radius:6px; font-size:0.75rem; font-weight:700; cursor:pointer;">
+                  1.000m (1km)
+                </button>
+                <button type="button" class="dt-econ-radius-selector" data-radius="3000" style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15); color:#FEF3C7; padding:0.25rem 0.55rem; border-radius:6px; font-size:0.75rem; font-weight:700; cursor:pointer;">
+                  3.000m (3km)
+                </button>
+              </div>
+            </div>
+
+            <div id="dt-econ-modal-content" style="font-size:0.82rem; color:#E2E8F0; line-height:1.6; margin-bottom:1.2rem;"></div>
+
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; border-top:1px solid rgba(255,255,255,0.08); padding-top:0.8rem;">
+              <div style="font-size:0.72rem; color:var(--text-dim);">
+                Nguồn: Cục Thống Kê (NSO) • VHLSS • World Bank SAE • Động cơ EconomicRadiusEngine
+              </div>
+              <div style="display:flex; gap:0.4rem;">
+                <button type="button" id="btn-close-econ" class="dt-touch-btn" style="background:#EF4444; color:#FFF; border:none; padding:0.45rem 1.2rem;">
+                  Đóng
+                </button>
+              </div>
+            </div>
+
           </div>
         </div>
 
@@ -2083,6 +2134,41 @@ class LuopanMapTool {
     if (btnCloseExport) btnCloseExport.addEventListener('click', closeModal);
     if (btnCloseExportX) btnCloseExportX.addEventListener('click', closeModal);
 
+    // Modal Economic Radius
+    const btnEcon = document.getElementById('btn-economic-radius');
+    const modalEcon = document.getElementById('modal-economic-radius');
+    const btnCloseEconX = document.getElementById('btn-close-econ-x');
+    const btnCloseEcon = document.getElementById('btn-close-econ');
+
+    if (btnEcon) {
+      btnEcon.addEventListener('click', () => {
+        this.openEconomicRadiusModal(this.selectedEconRadius || 1000);
+      });
+    }
+
+    if (btnCloseEconX) btnCloseEconX.addEventListener('click', () => this.closeEconomicRadiusModal());
+    if (btnCloseEcon) btnCloseEcon.addEventListener('click', () => this.closeEconomicRadiusModal());
+
+    const radiusSelectors = document.querySelectorAll('.dt-econ-radius-selector');
+    radiusSelectors.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const rad = parseInt(btn.dataset.radius, 10);
+        this.selectedEconRadius = rad;
+        radiusSelectors.forEach(b => {
+          if (b === btn) {
+            b.style.background = 'rgba(16,185,129,0.25)';
+            b.style.borderColor = '#10B981';
+            b.style.color = '#10B981';
+          } else {
+            b.style.background = 'rgba(255,255,255,0.06)';
+            b.style.borderColor = 'rgba(255,255,255,0.15)';
+            b.style.color = '#FEF3C7';
+          }
+        });
+        this.updateEconomicRadiusData(rad);
+      });
+    });
+
     if (btnCopyExport) {
       btnCopyExport.addEventListener('click', () => {
         const text = exportContent.innerText;
@@ -2392,6 +2478,144 @@ class LuopanMapTool {
     }
     this.mapInstance.invalidateSize({ pan: false });
     this.mapInstance.setView(this.surveyCenterLatLng, this.zoomLevel, { animate: false, reset: true });
+  }
+
+  getSurveyCenterCoordinates() {
+    if (this.mode === 'map' && this.mapGeometry && this.mapGeometry.center) {
+      return { lat: this.mapGeometry.center.lat, lng: this.mapGeometry.center.lng };
+    }
+    if (this.mapInstance && typeof this.mapInstance.getCenter === 'function') {
+      const c = this.mapInstance.getCenter();
+      return { lat: c.lat, lng: c.lng };
+    }
+    if (Array.isArray(this.surveyCenterLatLng) && this.surveyCenterLatLng.length === 2) {
+      return { lat: this.surveyCenterLatLng[0], lng: this.surveyCenterLatLng[1] };
+    }
+    return { lat: 21.028511, lng: 105.854444 };
+  }
+
+  openEconomicRadiusModal(radiusMeters = 1000) {
+    const modal = document.getElementById('modal-economic-radius');
+    if (!modal) return;
+    this.selectedEconRadius = radiusMeters;
+    modal.style.display = 'flex';
+    this.updateEconomicRadiusData(radiusMeters);
+  }
+
+  closeEconomicRadiusModal() {
+    const modal = document.getElementById('modal-economic-radius');
+    if (modal) modal.style.display = 'none';
+  }
+
+  updateEconomicRadiusData(radiusMeters = 1000) {
+    const engine = (typeof window !== 'undefined' && window.EconomicRadiusEngine) || (typeof EconomicRadiusEngine !== 'undefined' ? EconomicRadiusEngine : null);
+    const content = document.getElementById('dt-econ-modal-content');
+    const locText = document.getElementById('dt-econ-location-text');
+    if (!content || !engine) return;
+
+    const coords = this.getSurveyCenterCoordinates();
+    if (locText) {
+      locText.textContent = `${coords.lat.toFixed(5)}° N, ${coords.lng.toFixed(5)}° E`;
+    }
+
+    const res = engine.calculateRadiusMarket({
+      lat: coords.lat,
+      lng: coords.lng,
+      radiusMeters: radiusMeters
+    });
+
+    if (!res) {
+      content.innerHTML = '<div style="color:var(--text-muted); padding:1rem; text-align:center;">Không thể tính toán dữ liệu sức mua tại tọa độ này.</div>';
+      return;
+    }
+
+    // Vẽ hoặc cập nhật vòng tròn Leaflet nếu đang ở map mode
+    if (this.mode === 'map' && this.mapInstance && typeof L !== 'undefined' && L.circle) {
+      if (this._econLeafletCircle) {
+        this._econLeafletCircle.remove();
+        this._econLeafletCircle = null;
+      }
+      try {
+        this._econLeafletCircle = L.circle([coords.lat, coords.lng], {
+          radius: radiusMeters,
+          color: res.marketAssessment.ratingColor || '#10B981',
+          fillColor: res.marketAssessment.ratingColor || '#10B981',
+          fillOpacity: 0.12,
+          weight: 2,
+          dashArray: '5, 5'
+        }).addTo(this.mapInstance);
+      } catch (e) {
+        console.warn('Cannot draw econ circle', e);
+      }
+    }
+
+    const { location, demographics, financials, spendingBreakdown, marketAssessment } = res;
+    content.innerHTML = `
+      <div style="background:rgba(255,255,255,0.02); border:1px solid ${marketAssessment.ratingColor}55; border-radius:10px; padding:1.1rem; margin-bottom:1rem;">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.8rem; border-bottom:1px solid rgba(255,255,255,0.06); padding-bottom:0.6rem;">
+          <div>
+            <span style="font-size:0.75rem; color:#94A3B8;">ĐỊA PHƯƠNG KHẢO CHỨNG:</span>
+            <div style="font-size:1.05rem; font-weight:800; color:#FEF3C7;">
+              ${location.districtName ? `${location.districtName}, ` : ''}${location.provinceName}
+            </div>
+          </div>
+          <span style="font-size:0.82rem; font-weight:800; color:${marketAssessment.ratingColor}; background:${marketAssessment.ratingColor}22; border:1px solid ${marketAssessment.ratingColor}66; padding:0.25rem 0.75rem; border-radius:15px;">
+            Mức Hấp Thụ: ${marketAssessment.rating} (RPPI ${marketAssessment.rppiScore}/100)
+          </span>
+        </div>
+
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(140px, 1fr)); gap:0.6rem; margin-bottom:1rem;">
+          <div style="background:rgba(255,255,255,0.03); padding:0.6rem; border-radius:6px; border-left:3px solid #38BDF8;">
+            <div style="font-size:0.72rem; color:#94A3B8;">Dân số bán kính:</div>
+            <div style="font-size:1.05rem; font-weight:800; color:#38BDF8;">${demographics.estimatedPopulation.toLocaleString('vi-VN')} người</div>
+            <div style="font-size:0.68rem; color:var(--text-dim);">${demographics.baseDensityPerKm2.toLocaleString('vi-VN')} người/km²</div>
+          </div>
+
+          <div style="background:rgba(255,255,255,0.03); padding:0.6rem; border-radius:6px; border-left:3px solid #10B981;">
+            <div style="font-size:0.72rem; color:#94A3B8;">Dung lượng tháng:</div>
+            <div style="font-size:1.05rem; font-weight:800; color:#10B981;">${financials.totalMonthlySpendingBillionVnd.toLocaleString('vi-VN')} tỷ VNĐ</div>
+            <div style="font-size:0.68rem; color:var(--text-dim);">Quy năm: ~${financials.totalYearlySpendingBillionVnd} tỷ</div>
+          </div>
+
+          <div style="background:rgba(255,255,255,0.03); padding:0.6rem; border-radius:6px; border-left:3px solid #F59E0B;">
+            <div style="font-size:0.72rem; color:#94A3B8;">Mức chi bình quân:</div>
+            <div style="font-size:1.05rem; font-weight:800; color:#F59E0B;">${financials.monthlyExpensePerCapita} tr/tháng</div>
+            <div style="font-size:0.68rem; color:var(--text-dim);">Thu nhập: ${financials.monthlyIncomePerCapita} tr</div>
+          </div>
+
+          <div style="background:rgba(255,255,255,0.03); padding:0.6rem; border-radius:6px; border-left:3px solid #EC4899;">
+            <div style="font-size:0.72rem; color:#94A3B8;">Điểm kinh doanh:</div>
+            <div style="font-size:1.05rem; font-weight:800; color:#EC4899;">~${demographics.estimatedBusinessHouseholds.toLocaleString('vi-VN')} CSKD</div>
+            <div style="font-size:0.68rem; color:var(--text-dim);">Điểm bán & cơ sở</div>
+          </div>
+        </div>
+
+        <div style="background:rgba(0,0,0,0.25); padding:0.7rem; border-radius:6px; margin-bottom:0.8rem;">
+          <div style="font-size:0.76rem; font-weight:700; color:#FEF3C7; margin-bottom:0.4rem;">Cơ cấu tiêu dùng (${financials.totalMonthlySpendingBillionVnd} tỷ VNĐ/tháng):</div>
+          <div style="display:grid; grid-template-columns:repeat(2, 1fr); gap:0.4rem; font-size:0.74rem;">
+            <div>🍜 F&B & Ăn uống: <strong style="color:#34D399;">${spendingBreakdown.foodExpenseBillion} tỷ</strong> (${spendingBreakdown.foodExpenseRatio}%)</div>
+            <div>🏠 Nhà ở & Tiện ích: <strong style="color:#38BDF8;">${spendingBreakdown.housingUtilitiesBillion} tỷ</strong></div>
+            <div>🎓 Giáo dục & Y tế: <strong style="color:#C084FC;">${spendingBreakdown.educationHealthBillion} tỷ</strong></div>
+            <div>🛍️ Mua sắm & Tiêu khiển: <strong style="color:#FBBF24;">${spendingBreakdown.shoppingLeisureBillion} tỷ</strong></div>
+          </div>
+        </div>
+
+        <div style="margin-bottom:0.6rem;">
+          <div style="font-size:0.76rem; font-weight:700; color:#38BDF8; margin-bottom:0.3rem;">Mô hình kinh doanh tương thích cao:</div>
+          <div style="display:flex; flex-wrap:wrap; gap:0.35rem;">
+            ${marketAssessment.suitableBusinessModels.map(m => `
+              <span style="font-size:0.72rem; color:#FEF3C7; background:rgba(56,189,248,0.15); border:1px solid rgba(56,189,248,0.3); padding:0.15rem 0.5rem; border-radius:4px;">
+                ✓ ${m}
+              </span>
+            `).join('')}
+          </div>
+        </div>
+
+        <div style="font-size:0.78rem; color:#CBD5E1; line-height:1.55; border-left:3px solid ${marketAssessment.ratingColor}; padding-left:0.5rem; margin-top:0.6rem;">
+          ${marketAssessment.summary}
+        </div>
+      </div>
+    `;
   }
 
   destroy() {
