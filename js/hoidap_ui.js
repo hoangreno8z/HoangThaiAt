@@ -63,7 +63,7 @@ class HoiDapUI {
           <h1 class="hoidap-hero-title">Vấn Đáp Cổ Pháp</h1>
           <div class="hoidap-hero-sub">Bách Cục Thủy Khẩu • Tầm Long Điểm Huyệt • Tiêu Sa Nạp Thủy</div>
           <p class="hoidap-hero-desc">
-            ${this.activeChapter === 1 && !this.searchQuery.trim() ? 'Lập Cực Định Vị: học cách xác định điểm đo, phân biệt nước thực với đường và luồng đi lại, đọc nguồn cổ theo đúng phạm vi, rồi khảo sát từng địa cuộc.' : `Tổng tập một trăm địa cuộc thực chứng cổ bản: Giải mã toàn diện cơ chế Lai Thủy, Khứ Thủy, 
+            ${this.activeChapter === 1 && !this.searchQuery.trim() ? 'Lập Cực Định Vị: học cách xác định điểm đo, phân biệt nước thực với đường và luồng đi lại, đọc nguồn cổ theo đúng phạm vi, rồi khảo sát từng địa cuộc.' : this.activeChapter === 2 && !this.searchQuery.trim() ? 'Khúc Thủy Chiết Xung: phân tích các địa cuộc đường uốn cong cửu khúc, cung lõm ngọc đái, cung lồi phản cung sát, đường gập chữ Z và sườn đồi dốc; phân tầng lực ly tâm và điểm mù giao thông.' : `Tổng tập một trăm địa cuộc thực chứng cổ bản: Giải mã toàn diện cơ chế Lai Thủy, Khứ Thủy, 
             phân định mười hai cung Trường Sinh, ứng dụng một trăm bốn mươi bốn thủy khẩu chánh tông và bí quyết tiêu sát nạp cát.`}
           </p>
         </section>
@@ -156,7 +156,7 @@ class HoiDapUI {
             </div>
 
             <div class="hoidap-card-body" style="display: ${isExpanded ? 'flex' : 'none'};">
-              ${item.chapter === 1 && item.sources ? this.renderReviewedBody(item) : `
+              ${item.sources && item.sources.length > 0 ? this.renderReviewedBody(item) : `
               <!-- 1. Thế Đất Khảo Nghiệm -->
               <div class="hoidap-sec-block">
                 <div class="hoidap-sec-heading">Thế Đất Khảo Nghiệm</div>

@@ -49,3 +49,47 @@ Bộ hiển thị chỉ chọn bố cục bài đã khảo chứng khi `chapter 
 | 09 | Dương Trạch Tam Yếu (bịa), Địa Lý Biện Chính (bịa) | Câu Hán do AI tạo ra, phán đoán bệnh thận/đau lưng | 《黃帝宅經》, 《陽宅三要》 (Đại Môn Biện) | VERIFIED / SUPPORTED | Dẫn đúng nguyên văn kinh thư, phân tích Động - Tĩnh khí khẩu, đề xuất thông gió đối lưu trước sau và đảm bảo an toàn PCCC |
 | 10 | Nhân Tử Tu Tri (bịa), Táng Thư (ghép sai) | Câu Hán bịa gán cho Từ Thiện Kế, thần bí hóa cống ngầm | 《葬書》 (Nội khí manh sinh) | VERIFIED | Khôi phục nguyên văn Táng Thư, tách bạch hạ tầng ngầm kỹ thuật với long mạch, giải quyết khí H2S/mùi hôi bằng bẫy nước và màng chống thấm |
 
+---
+
+# Kiểm toán nguồn Vấn đáp — Chương 02
+
+Ngày đối chiếu: 2026-09-06. Phạm vi: **Khúc Thủy Chiết Xung, câu 11–20**. Không triển khai chương kế tiếp.
+
+## Điểm khôi phục và kiểm kê
+
+- Repository: https://github.com/hoangreno8z/HoangThaiAt ; nhánh triển khai: `main`.
+- Điểm kiểm tra release Chương 1: `e6851fe8fbfa18f97bb3dd49980d90d7915ec551`.
+- Nhánh dự phòng: `backup/van-dap-ch02-e6851fe`. Dùng nhánh này để xem bản trước; nếu cần hoàn tác production, tạo commit revert cho commit sửa chương rồi triển khai theo luồng hiện có.
+- Dữ liệu: `js/hoidap_data.js`, `data/hoidap_data.json`, `window.HOIDAP_CHAPTERS`, `window.HOIDAP_DATA`.
+- Bộ hiển thị: `js/hoidap_ui.js` (hỗ trợ `renderReviewedBody` cho tất cả câu có `sources[]`, cập nhật hero description Chương 2), CSS: `css/hoidap.css`; route hiện hữu: `#/van-dap`.
+- Kiểm kê: 100 câu; chương 2 đúng 10 câu với ID 11–20. Danh mục chương, Chương 1 (câu 01–10) và 80 đối tượng câu 21–100 được kiểm tra bằng so sánh sâu với SHA release Chương 1 và SHA baseline ban đầu.
+
+| ID | Tiêu đề giữ lại | Trọng tâm cần sửa | Phạm vi trường phái |
+|---|---|---|---|
+| 11 | Cửu Khúc Thủy | Đường uốn nhiều nhịp; loại bỏ nhãn AI gán ghép và số đo cứng | Hình thế thủy trong Táng Thư, Tuyết Tâm Phú; chuyển dụng giao thông |
+| 12 | Cung Lõm Thủy | Đáy cung tụ khí; tách bạch hư thủy luồng xe với sông hồ thật | Chu Tước thiên trong Táng Thư; vi khí hậu đô thị |
+| 13 | Phản Cung Sát | Loại bỏ phán đoán tán gia bại sản mê tín; phân tích lực ly tâm | Tuyết Tâm Phú, Táng Thư; an toàn giao thông và chấn động xe cộ |
+| 14 | Chiết Khí Sát | Loại bỏ thuật ngữ dân gian bịa đặt; phân tích góc ngoặt khuất tầm nhìn | Tuyết Tâm Phú; bán kính khúc cua và góc mù thị giác |
+| 15 | Triền Sơn Thủy | Đường bao quanh chân gò/đồi; loại bỏ số đo giả mạo | Táng Thư; an toàn địa chất trượt lở và rãnh thoát nước mái dốc |
+| 16 | Bán Cung Trực | Đường nửa cong nửa thẳng; loại bỏ nhị phân giàu/nghèo mê tín | Tuyết Tâm Phú, Táng Thư; tương phản vận tốc lưu thông phương tiện |
+| 17 | Điệp Lãng Thủy | Thay danh pháp dân gian "Điệp Lãng Sát"; phân tích địa hình dốc lượn sóng | Thanh Nang Áo Ngữ, Tuyết Tâm Phú; kỹ thuật thoát nước mặt chân dốc |
+| 18 | Hồ Lô Khí | Tách hình tượng túi khí đô thị khỏi suy diễn thần bí | Táng Thư, Thanh Nang Tự; lưu thông vi khí hậu và đệm cảnh quan |
+| 19 | Trực Tiết Khí | Dốc thẳng xói thẳng; bỏ danh xưng bí truyền tự chế | Táng Thư, Tuyết Tâm Phú; thủy lực dòng chảy bề mặt và bậc tam cấp giật cấp |
+| 20 | Triền Thân Thủy | Ba mặt đường bao bán đảo; loại bỏ hội thoại AI rác cuối bài | Táng Thư, Hoàng Đế Trạch Kinh; an ninh đô thị, định vị khí khẩu |
+
+## Nhật ký kiểm chứng từng câu
+
+| ID | Nguồn cũ | Vấn đề | Nguồn xác minh | Mức độ | Thay đổi |
+|---|---|---|---|---|---|
+| 11 | Cổ quyết Hình thế (AI ghép), Thủy Long Kinh | Gán nhãn cồng kềnh, tự đặt số đo nhịp uốn | 《葬書》, 《雪心賦》 | VERIFIED | Trích đúng kinh văn cổ, giải thích cơ chế giảm vận tốc luồng khí, bổ sung giải pháp vỉa hè đệm và gờ giảm tốc |
+| 12 | Táng Thư (ghép sai), Thanh Nang Tự | Tự đặt số đo bán kính cung cong, phán tài lộc tuyệt đối | 《葬書》 (Chu Tước thiên), 《青囊序》 | VERIFIED | Dẫn đúng nguyên văn cổ bản, phân tích khí tụ tại vùng khuất gió ly tâm, đề xuất giải pháp cảnh quan bồn hoa |
+| 13 | Tuyết Tâm Phú (sai lệch), Phong thủy yếu quyết | Phán đoán mê tín đoạn tuyệt tử tôn, tai nạn máu me | 《雪心賦》, 《葬書》 | VERIFIED | Bỏ phán đoán mê tín, giải thích cơ chế lực văng ly tâm xe cơ giới, đèn pha quét đêm, giải pháp hàng rào cách âm và cây xanh cản quang |
+| 14 | Khẩu quyết dân gian (tự chế danh xưng) | Bịa đặt tên "Triết Triết Khí Sát", thiếu cơ sở kinh điển | 《雪心賦》 | VERIFIED | Khôi phục nguyên lý chiết giác xung xạ kinh điển, phân tích góc chết điểm mù giao thông, đề xuất vát góc tường và gương cầu lồi |
+| 15 | Táng Thư (ghép nhãn), Địa Lý Toàn Thư | Đưa mốc mét và % dốc bịa đặt, thần bí hóa long mạch | 《葬書》 | VERIFIED | Dẫn nguyên văn Táng Thư, giải thích an toàn cơ học đất sườn đồi, dòng bùn đất mùa mưa bão, thiết kế mương đón nước sườn dốc |
+| 16 | Thủy Long Kinh (bịa), Tuyết Tâm Phú | Chia nửa cát nửa hung theo mét máy móc | 《雪心賦》, 《葬書》 | VERIFIED | Phân tích xung đột động học giữa đoạn thẳng gia tốc và đoạn cua giảm tốc, giải pháp hàng cây phân tầng giảm chấn |
+| 17 | Khẩu quyết (bịa danh "Điệp Lãng Sát") | Tự bịa Hán văn về sóng nước đập vào nhà | 《青囊奧語》, 《雪心賦》 | VERIFIED | Khảo chứng câu chuẩn trong kinh văn cổ, phân tích quán tính xe trôi dốc và nước tràn chân dốc khi mưa lớn, giải pháp rãnh thu nước ngầm |
+| 18 | Táng Thư (bịa), Thủy Long Kinh | Thần bí hóa bình hồ lô tích tài vượng phát | 《葬書》, 《青囊序》 | VERIFIED | Giải thích nguyên lý thắt hẹp điều tiết tốc độ gió, giải pháp sân trong giếng trời thông gió tự nhiên, cây xanh lọc bụi |
+| 19 | Khẩu quyết bí truyền (AI tự phong), Táng Thư | Tự chế câu chữ cổ, dọa dẫm tán gia bại sản | 《葬書》, 《雪心賦》 | VERIFIED | Khảo chứng nguyên văn chuẩn, phân tích động năng dòng nước mặt xói mòn chân móng, đề xuất bậc tam cấp phân dòng và gờ chắn nước |
+| 20 | Táng Thư (sai vế), dính hội thoại AI rác | Dính 1 đoạn dài hội thoại AI rác và ghi chú phần II cuối bài | 《葬書》, 《黃帝宅經》 | VERIFIED | Loại bỏ 100% rác AI, dẫn đúng kinh văn Hoàng Đế Trạch Kinh & Táng Thư, phân định động khí và tĩnh khí, mở cổng nạp khí vượng |
+
+
