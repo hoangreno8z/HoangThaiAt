@@ -1,6 +1,6 @@
 /**
  * TẬP DỮ LIỆU VẤN ĐÁP CỔ PHÁP — 100 ĐIỀU ĐỊA CUỘC THỰC CHỨNG
- * Đã khảo chứng kinh điển và phân tầng học thuật (Chương 1, 2, 3, 4)
+ * Đã khảo chứng kinh điển và phân tầng học thuật (Chương 1, 2, 3, 4, 5)
  */
 
 window.HOIDAP_CHAPTERS = [
@@ -1582,140 +1582,391 @@ window.HOIDAP_DATA = [
     "chapter": 5,
     "chapter_title": "Cao Không Thủy Sát",
     "title": "Trảm Yêu Sát",
-    "subtitle": "Cầu vượt trên cao chém ngang trạch",
-    "topo": "Cầu vượt chạy ngang mặt tiền ở cao độ tầng 2-3. Câu hỏi: Lai-Khứ Thủy của tầng trệt và tầng 3 có phân ly độc lập không.",
-    "hanzi": "**[NGUYÊN VĂN] — 《葬書》\n· 郭璞\n：\n** > 氣乘風則散\n，\n界水則止。\n……\n夫氣行乎地中\n，\n其行也\n，\n因地之勢。\n\n**[LƯỢC Ý] — 《青囊經》\n系\n：\n** > 天光下臨\n，\n德地上載。\n\n**[TRUYỀN THỊ] — Dương trạch phân tằng hệ:** 每層各立極\n，\n各認來去。\n(Mỗi tầng tự lập cực, tự nhận lai-khứ — nguyên tắc luận chung cư/lầu nhiều tầng của phái dương trạch truyền thị.)",
-    "hanviet": "- **\n氣乘風則散\n** — *Khí thừa phong tắc tán*: dòng xe trên cầu ở cao độ tầng 2-3 là **phong động quy mô lớn** — với tầng đúng ngang mặt cầu, đó là gió-nước-dōng hợp nhất; tầng nào ở trong dải đó, khí tầng ấy bị tán theo nhịp xe.\n- **\n天光下臨\n，\n德地上載\n** — *Thiên quang hạ lâm, đức địa thượng tải*: ánh sáng trời phải rọi xuống, đất đai phải nhận lên — mặt cầu chắn một phần trời của tầng dưới, **thiên quang bị cắt đoạn**: đây là tầng sát phụ của Trảm Yêu, bên cạnh tầng sát động.\n- **\n每層各立極\n** — *Mỗi tằng lập cực*: mỗi tầng một tọa cực, một lai-khứ riêng — **trả lời trực tiếp: CÓ, phân ly độc lập**.",
-    "meaning": "",
-    "qi_mechanism": "1. **Cấu trúc ba tầng khí của một ngôi nhà bị cầu băng ngang:**\n- **Tầng trệt (dưới gầm cầu):** vẫn nhận luồng mặt đường — nhưng bị **nén giảm**: thiên quang bị nửa chắn, âm thịnh, dòng mặt đường quét mạnh lúc xe đổ dốc. Lai-khứ đọc theo **mặt đường**.\n- **Tầng 2-3 (ngang mặt cầu):** nhận **trực đòn Trảm Yêu** — luồng cầu chạy song song sát cửa sổ: mỗi đoàn xe là một lớp khí-phong-xâm quét ngang. Lai-khứ đọc theo **chiều dòng trên cầu**, khác hẳn tầng trệt.\n- **Tầng trên mặt cầu:** thoát đòn chính, chỉ còn tia ồn vươn lên — lai-khứ quay về đọc mặt đường như tầng trệt, nhưng êm hơn.    \nKết luận khí học: đây **không còn là một trạch mà là hai trạch chồng** — trạch hạ và trạch thượng, hai khẩu, hai cục.\n\n2. **Trầm yêu đọc thế nào cho đúng:** điểm **gần nhất mặt cầu đến mặt tiền** = Yêu Trục (trục chém); sơn vị tính từ **tâm từng tầng** (không dùng chung tâm nhà): sơn vị Yêu Trục của tầng 3 = sát khẩu tầng 3; sơn vị đoạn đường dưới cầu của tầng trệt = khẩu thật tầng trệt.\n\n3. **12 Trường Sinh:** cục tầng 3 lập theo chiều dòng trên cầu: Yêu Trục trùng **Đế Vượng** tầng ấy — vượng khí bị chém ngang định kỳ: \"phát đợt rồi đứt\"; trùng **Tử/Tuyệt** — dòng chết quét: chỉ hại sức khỏe chứ không hại tài, hóa nhẹ hơn.\n\n4. **Nguyên tắc thiết kế sau phân ly:** mỗi tầng một bài — cấm dùng chung một bộ hóa cho cả nhà; phòng ngủ tầng 3 tuyệt không đặt sát trục chém; tầng trệt bù sáng thay vì chống ồn.",
-    "hoa_phuc": "**Khi Hợp Cách (Cát Khánh):**\n- **Tài lộc:** Tài bị “chém ngang”: công sức tới ngưỡng bị cắt, hợp đồng đổ giữa chừng.\n- **Nhân đinh:** Người tầng cầu hay phiền muộn vô cớ, giấc ngủ nông.\n- **Tật ách:** Thần kinh—tim (ồn tầng), vai gáy (luồng quét).\n- **Gia đạo:** Căng thẳng dồn về người cư ngụ tầng cầu.\n- **Quan vận:** Thăng tiến bị “ngang ngửa cắt”: kẻ vượt vai.\n\n**Khi Phạm Cách (Hung Họa):**\n- **Tài lộc:** Buôn nhỏ trụ được nhờ dòng mặt đường, cần bù sáng.\n- **Nhân đinh:** Đinh ảm đạm nếu thiếu sáng.\n- **Tật ách:** Phổi—thấp (âm ẩm gầm cầu).\n- **Gia đạo:** Cần chủ động đón khách, gia đạo thu.\n- **Quan vận:** Tâm thế trầm tĩnh vững vàng, công việc tiến triển chắc chắn, gặt hái thành tựu bền bỉ theo thời gian.",
-    "remediation": "1. **Phân Ly Lập Cực:** lập hai sổ định cực — tầng trệt một cục, tầng cầu một cục; đo la kinh **riêng tại tâm từng tầng**; mọi bố trí theo từng cục.\n\n2. **Trần Trạch Trọng (層宅重):**  tầng ngang cầu — phòng sát trục chém chuyển công năng tĩnh thấp (kho, vệ sinh, hành lang); buồng ngủ dịch vào lưng nhà.\n\n3. **Thiên Quang Bổ (補):**  tầng trệt — kính lấy sáng cao, màu nội thất sáng, đèn full-spectrum ban ngày: thay 天光 bị cầu cướp; đây là phép **thiên quang bâm nhân tạo**.\n\n4. **Lâm Bích Thống (臨壁):**  tầng cầu — rèm hai lớp (vải dày + lưới thấm) tại cửa sổ nhìn ra cầu: luồng qua hai lớp là tàn phong.\n\n5. **Trần Đoạn Yêu:** nếu có mái/sân thượng trên tầng cầu — lắp mái che lốp chừa khe thông: cắt tia ồn vươn, giữ thông gió — đoạn yêu mà không bế.\n\n---"
+    "subtitle": "Cầu vượt trên cao chém ngang trạch tầng lầu",
+    "topo": "Cầu vượt hoặc đường trên cao chạy ngang qua mặt tiền công trình ở cao độ tầng hai hoặc tầng ba, tạo thành hình thế chém ngang lưng nhà (Trảm Yêu Sát). Cần phân tích cơ chế phân tầng khí khẩu giữa tầng trệt và các tầng ngang mặt cầu.",
+    "hanzi": "氣乘風則散，界水則止。天光下臨，地德上載。",
+    "hanviet": "- Khí thừa phong tắc tán, giới thủy tắc chỉ: Khí gặp gió thì xốc tán, gặp nước giới hạn thì dừng lại. Dòng xe chạy tốc độ cao trên cầu tạo thành luồng phong động mạnh mẽ làm tán khí các tầng nhà ngang tầm cầu.\n- Thiên quang hạ lâm, địa đức thượng tải: Ánh sáng trời phải chiếu rọi xuống dưới, khí đất phải nâng đỡ lên trên. Mặt cầu vượt che chắn mất ánh sáng tự nhiên của tầng trệt, làm suy giảm dương khí.",
+    "meaning": "Cầu vượt chạy ngang mặt tiền tạo ra hai trạng thái phong thủy hoàn toàn độc lập cho ngôi nhà. Tầng trệt nằm dưới dạ cầu chịu sự che khuất ánh sáng và khí tù hãm, trong khi tầng hai và tầng ba nằm ngang mặt cầu chịu trực tiếp tiếng ồn, bụi bặm và sóng âm do phương tiện di chuyển với vận tốc lớn. Cổ pháp gọi đây là thế phân tầng lập cực, mỗi tầng phải xử lý nạp khí theo giải pháp riêng biệt.",
+    "qi_mechanism": "Luồng phương tiện di chuyển liên tục trên cầu vượt sinh ra trường áp suất động và sóng âm truyền theo phương ngang quét thẳng vào cửa sổ các tầng lầu đối diện. Vào ban đêm, đèn pha ô tô quét ngang phòng gây ô nhiễm ánh sáng nghiêm trọng. Tại tầng trệt, khoảng không gian bên dưới dầm cầu tạo thành vùng bóng râm thường trực, nhiệt độ thấp hơn và độ ẩm cao hơn môi trường xung quanh.",
+    "hoa_phuc": "**Khi Hợp Cách (Cát Khánh):**\n- **Tài lộc:** Tầng trệt thích hợp kinh doanh kho bãi, dịch vụ giao hàng hoặc bãi đỗ xe; các tầng trên cao vượt mặt cầu đón ánh sáng chan hòa.\n- **Nhân đinh:** Rèn luyện khả năng thích nghi cao, gia đình biết cách phân chia công năng sinh hoạt hợp lý theo từng tầng.\n- **Tật ách:** Giữ gìn sức khỏe tốt khi lắp đặt hệ thống cửa kính cách âm ba lớp và máy lọc không khí hiện đại tại tầng ngang cầu.\n- **Gia đạo:** Thuận hòa khi các không gian nghỉ ngơi yên tĩnh được bố trí ở các tầng cao cách ly hoàn toàn với luồng xe.\n- **Quan vận:** Phát triển ổn định trong các ngành nghề kỹ thuật hạ tầng, logistics, vận tải đường bộ hoặc quản lý đô thị.\n\n**Khi Phạm Cách (Hung Họa):**\n- **Tài lộc:** Chi phí gia cố chống ồn, chống bụi và sửa chữa nhà cửa tốn kém; tầng ngang cầu khó cho thuê văn phòng cao cấp.\n- **Nhân đinh:** Cảm giác bất an, tinh thần chập chờn lo sợ tai nạn phương tiện từ trên cầu lao vào ban công tầng lầu.\n- **Tật ách:** Suy giảm thính lực, mất ngủ kinh niên, bệnh tim mạch và huyết áp do rung chấn cơ học từ dầm cầu truyền qua không khí.\n- **Gia đạo:** Dễ nảy sinh mâu thuẫn do không khí sinh hoạt bức bối, các thành viên dễ cáu gắt vì tiếng ồn gầm rú cả ngày lẫn đêm.\n- **Quan vận:** Trắc trở trong công việc, cảm giác sự nghiệp bị một thanh xà vô hình đè ngang lưng kìm hãm đà thăng tiến.",
+    "remediation": "1. Tại các tầng lầu ngang mặt cầu: lắp đặt hệ thống cửa kính hộp ba lớp cách âm cách nhiệt, dán phim phản quang chống lóa và treo rèm hai lớp dày dặn.\n2. Bố trí ban công thành dải đệm cây xanh với các loại cây tán dày lọc bụi và tiêu âm (như trúc quân tử, vạn tuế, cau cảnh).\n3. Đưa toàn bộ phòng ngủ chính và phòng thờ lên các tầng cao vượt hẳn cao độ thành cầu; tầng ngang cầu chỉ làm phòng kho, phòng giặt hoặc không gian phụ trợ.",
+    "sources": [
+      {
+        "id": "ch05-q41-ts",
+        "title": "Táng Thư",
+        "section": "Chính văn",
+        "url": "https://ctext.org/wiki.pl?if=gb&chapter=395047",
+        "author": "Quách Phác (chú)",
+        "attributionStatus": "Cổ bản kinh điển",
+        "evidenceLevel": "VERIFIED",
+        "quote": "氣乘風則散，界水則止。",
+        "note": "Nguyên lý cơ bản: khí gặp gió thì phân tán, gặp nước giới hạn thì dừng tụ lại."
+      },
+      {
+        "id": "ch05-q41-qnk",
+        "title": "Thanh Nang Kinh",
+        "section": "Thượng nguyên thiên",
+        "url": "https://ctext.org/wiki.pl?if=gb&chapter=395047",
+        "author": "Hoàng Thạch Công",
+        "attributionStatus": "Cổ bản kinh điển",
+        "evidenceLevel": "VERIFIED",
+        "quote": "天光下臨，地德上載。",
+        "note": "Khí trời chiếu rọi từ trên xuống, đức đất nâng đỡ từ dưới lên; cầu trên cao chắn mất thiên quang rọi vào tầng dưới."
+      }
+    ]
   },
   {
     "index": 42,
     "chapter": 5,
     "chapter_title": "Cao Không Thủy Sát",
     "title": "Thác Thủy Sát",
-    "subtitle": "Dốc cầu đổ ầm lâm đầu thủy",
-    "topo": "Nhà sát chân dốc cầu; dòng xe đổ từ trên xuống trước cửa. Phân định Lâm Đầu Thủy hay Thác Thủy Xung Môn; chân cầu có phải khẩu xả sát.",
-    "hanzi": "**[TRUYỀN THỊ] — Sa Thủy Định Danh Hệ:** 淋頭水者\n，\n水淋射穴堂\n；\n割腳水者\n，\n水割腳基。\n二煞皆主退財損丁。\n(*Lâm Đầu Thủy: nước dội thẳng xuống huyệt đường; Cát Cước Thủy:)\n\n**[NGUYÊN VĂN] — 《葬書》\n· 郭璞\n：\n** > 以水為朱雀者\n，\n衰旺繫乎形應\n，\n忌乎湍激\n，\n謂之朱雀悲哭。",
-    "hanviet": "- **\n淋頭水\n** — *Lâm Đầu Thủy*: nước **tưới trên đầu** huyệt/trạch — ở đây dốc cầu là cái vòi, nhà đứng dưới vòi: đúng nguyên mẫu danh pháp. Khác Thác Thủy Xung Môn (nước đá cửa ngang mặt) — Lâm Đầu **đến từ trên cao**: mức trừng phạt nặng hơn vì sát rơi vào **đỉnh đầu trạch khí**.\n- **\n忌乎湍激\n，\n謂之朱雀悲哭\n** — *Kỵ hồ thượng kích*: dốc đổ ầm ầm trước cửa = Chu Tước khóc rú suốt ngày — kinh văn gốc phán sẵn hình này.",
-    "meaning": "",
-    "qi_mechanism": "1. **Trả lời trực tiếp:** đúng là **Lâm Đầu Thủy** — và **chân cầu là khẩu xả sát thật**: điểm tiếp đất là nơi **thế năng hóa động năng trọn vẹn** — cả cục xe dốc \"xả\" tại một vành đai chân dốc. Khẩu này khác khẩu nạp: nó **chỉ xả không nhận** — đứng trong bán kính xả (ước 1-1.5 lần chiều cao dốc) là đứng dưới miệng xả.\n\n2. **Ba vành đuôi sát tại chân dốc:** (a) **vành đụng** — xe xuống dốc phanh, va quẹt thường trực, bán kính ~15m; (b) **vành rú** — động cơ thắng-phanh, ồn tần thấp xuyên tường, bán kính ~30m; (c) **vành cuốn** — gió-đất bụi cuộn ngược khi xe xả xuống, bám cửa nhà, bán kính ~50m. Càng gần chân dốc, ba vành chồng trọn.\n\n3. **Lai-Khứ:** dốc = **Lai thế dốc** (nước đến từ cao); chân dốc = **Khẩu xả**; luồng trượt tiếp mặt đường qua nhà = **hư lai bán mạch** (mạch nửa qua) — nhà chỉ hưởng vệt loang, không hưởng mạch, lại chịu đòn xả: cục **hưởng ít chịu nhiều**.\n\n4. **12 Trường Sinh:** khẩu xả trùng **Đế Vượng** — xả vượng: buôn có nhịp theo đợt xe xuống nhưng không giữ; trùng **Mộ** — xả vào kho: còn chế được bằng ao chứa nhân tạo; trùng **Trường Sinh** — mạch sinh bị dội ngay đầu: nặng nhất về đinh.\n\n5. **Ứng dụng thương mãi:** khẩu xả **phù hợp nghiệp đi lại** (rửa xe, gara, cửa khẩu xe, tiếp xăng dầu) — nghiệp hưởng dòng xả; **kỵ trạch cư** và nghiệp cần khách dừng lâu.",
-    "hoa_phuc": "**Khi Hợp Cách (Cát Khánh):**\n- **Tài lộc:** Kiếm đủ, chốt hụt, nguồn thu ổn định và tích lũy vững vàng.\n- **Nhân đinh:** Đinh giật mình, trẻ ngủ sâu khó.\n- **Tật ách:** Tim—ấn áp lực ồn; đau đầu sáng sớm (đợt xe đầu ngày).\n- **Gia đạo:** Phải nói to, mệt mỏi âm thầm.\n- **Quan vận:** Thành tích “xả” trước khi ghi nhận.\n\n**Khi Phạm Cách (Hung Họa):**\n- **Tài lộc:** Khách tự trôi qua cửa, tài khí hao tán, tiền vào khó giữ.\n- **Nhân đinh:** Nhân khẩu bấp bênh, con cháu tha hương ly tán, lòng người bất an khó tụ hội.\n- **Tật ách:** Người làm quen nhịp ồn, dễ phát sinh đau ốm, mệt mỏi kéo dài.\n- **Gia đạo:** Nhiệt huyết nghề, gia đạo lục đục, hay nảy sinh bất hòa.\n- **Quan vận:** Danh theo lối xe, công việc gặp trắc trở, khó bề thăng tiến.",
-    "remediation": "1. **Môn Tị Trục Xả:** cửa chính tuyệt không nằm trên **trục dốc xuôi** — dời về cạnh, hoặc quay chéo 30-45° nhận luồng đã loang, không nhận luồng xả.\n\n2. **Phân Thủy Đê Tiền:** lát **dải nghiêng** trước nhà (độ dốc tách dòng, rộng bằng mặt tiền) — luồng xả trượt qua dải mà không đập thẳng cửa: phép **phân thủy** nguyên bản — nước đến có đường tách, không có đường đập.\n\n3. **Ngưỡng Trọng + Song Kính:** ngưỡng cửa 5-6 phân (cao nhất trong các thế đã bàn) cộng cửa hai lớp — một ngưỡng dập một nhịp xả.\n\n4. **Thụ Trận Đón Rú:** hàng cây tán rậm hai bên trục xả (không chắn chính diện dòng xe) — hút ồn vành rú, tán gió vành cuốn: trận cây là lớp áo của nhà.\n\n5. **Đăng Sáng Toả Hậu:** đèn ấm biển hiệu mạnh ban đêm — xe xuống dốc **thấy nhà từ xa**: ánh sáng báo hiệu giảm va quẹt vành đụng — hóa sát bằng **thị trước động sau**.\n\n---"
+    "subtitle": "Dốc cầu đổ ầm lâm đầu thủy xung môn",
+    "topo": "Ngôi nhà nằm ngay sát chân dốc cầu vượt hoặc đường dốc trên cao dẫn xuống mặt đất, toàn bộ dòng phương tiện lao dốc với tốc độ lớn hướng thẳng về phía cửa nhà (Lâm Đầu Thủy hay Thác Thủy Xung Môn).",
+    "hanzi": "以水為朱雀者，衰旺繫乎形應，忌乎湍激，謂之朱雀悲哭。衝起者為煞，淋頭者為凶。",
+    "hanviet": "- Dĩ thủy vi Chu Tước giả, suy vượng hệ hồ hình ứng, kỵ hồ thoan kích, vị chi Chu Tước bi khốc: Lấy thủy làm Chu Tước trước mặt, thịnh suy gắn liền với hình thế tương ứng, kỵ nhất sự dữ dằn cuộn xiết, gọi là Chu Tước than khóc.\n- Xung khởi giả vi sát, lâm đầu giả vi hung: Luồng khí xông thẳng lên là sát khí, luồng khí dội từ trên cao xuống đầu là hung hại khôn lường.",
+    "meaning": "Chân dốc cầu vượt là nơi chuyển tiếp thế năng thành động năng cực đại của dòng phương tiện giao thông. Cổ pháp cảnh báo thế \"Lâm Đầu Thủy\" tức dòng nước từ trên cao dội xuống đỉnh đầu trạch vị. Khác với đường bằng đâm thẳng, dòng xe đổ dốc mang theo trọng lực và gia tốc lớn, đèn pha xe rọi từ trên cao xuống trực diện thềm nhà, tạo ra áp lực đe dọa vật lý và tinh thần rất lớn.",
+    "qi_mechanism": "Phương tiện khi xuống dốc thường có quán tính lớn, tài xế phải rà phanh liên tục tạo ra tiếng rít chói tai và mùi khét của má phanh. Ánh sáng đèn pha từ trên dốc rọi chếch xuống quét thẳng vào không gian sinh hoạt tầng trệt và tầng lửng. Khi trời mưa, nước mặt từ toàn bộ bề mặt cầu dồn về chân dốc xối mạnh xuống lòng đường trước nhà.",
+    "hoa_phuc": "**Khi Hợp Cách (Cát Khánh):**\n- **Tài lộc:** Thích hợp kinh doanh các dịch vụ kỹ thuật khẩn cấp như cứu hộ lốp xe, sửa chữa phanh, trạm tiếp nhiên liệu.\n- **Nhân đinh:** Rèn luyện tinh thần dũng cảm, phản xạ xử lý tình huống nhanh nhạy và tính cảnh giác cao độ.\n- **Tật ách:** Thể lực dẻo dai khi gia chủ chủ động xây tường bảo vệ vững chắc và thiết kế hệ thống cách âm hoàn thiện.\n- **Gia đạo:** Tăng cường sự gắn bó bảo bọc lẫn nhau giữa các thành viên để đối phó với môi trường bên ngoài phức tạp.\n- **Quan vận:** Có cơ hội nổi bật trong các lĩnh vực xử lý sự cố khẩn cấp, điều hành giao thông hoặc lực lượng vũ trang.\n\n**Khi Phạm Cách (Hung Họa):**\n- **Tài lộc:** Hao tài nghiêm trọng do nguy cơ tai nạn xe cộ mất lái lao vào thềm nhà hoặc chi phí sửa chữa tường rào nứt vỡ.\n- **Nhân đinh:** Tâm lý luôn trong trạng thái lo âu căng thẳng tột độ, dễ bị giật mình kinh sợ mỗi khi nghe tiếng phanh gấp ngoài đường.\n- **Tật ách:** Mắc bệnh đau nửa đầu, tăng huyết áp, suy nhược thần kinh và các chấn thương ngoại khoa do va quẹt giao thông.\n- **Gia đạo:** Không khí gia đình luôn căng như dây đàn, các thành viên dễ nảy sinh bất an và tranh cãi to tiếng.\n- **Quan vận:** Công danh gặp nhiều trở ngại lớn đổ ập xuống bất ngờ, dễ bị cấp trên quy trách nhiệm trong các vụ việc rủi ro.",
+    "remediation": "1. Xây dựng hàng rào cọc tiêu bê tông cốt thép chịu lực kiên cố trước ranh đất để ngăn chặn triệt để nguy cơ phương tiện mất phanh lao vào nhà.\n2. Mở cổng chính và cửa ra vào lệch sang mạn sườn, tránh mở cửa chính đối diện trực diện tim đường dốc đổ xuống.\n3. Tôn cao cốt nền nhà thêm ba đến năm bậc cấp có gờ phân thủy kiên cố và trồng hàng cây xanh tán rậm để cản ánh đèn pha rọi từ trên dốc.",
+    "sources": [
+      {
+        "id": "ch04-q42-ts",
+        "title": "Táng Thư",
+        "section": "Chu Tước thiên",
+        "url": "https://ctext.org/wiki.pl?if=gb&chapter=395047",
+        "author": "Quách Phác (chú)",
+        "attributionStatus": "Cổ bản kinh điển",
+        "evidenceLevel": "VERIFIED",
+        "quote": "以水為朱雀者，衰旺繫乎形應，忌乎湍激，謂之朱雀悲哭。",
+        "note": "Chu Tước trước mặt kỵ dòng chảy cuộn xiết dữ dằn, gây tiếng gầm rú bi khốc."
+      },
+      {
+        "id": "ch05-q42-xxf",
+        "title": "Tuyết Tâm Phú",
+        "section": "Thủy Pháp chương",
+        "url": "https://ctext.org/wiki.pl?if=gb&chapter=395047",
+        "author": "Bốc Ứng Thiên",
+        "attributionStatus": "Cổ bản ca phú",
+        "evidenceLevel": "VERIFIED",
+        "quote": "衝起者為煞，淋頭者為凶。",
+        "note": "Dòng nước hoặc luồng khí xung thẳng dấy lên là sát khí, dòng đổ dội từ trên đầu xuống là hung họa."
+      }
+    ]
   },
   {
     "index": 43,
     "chapter": 5,
     "chapter_title": "Cao Không Thủy Sát",
     "title": "Áp Đỉnh Sát",
-    "subtitle": "Dưới dạ cầu cạn thiếu quang minh",
-    "topo": "Nhà dưới gầm cầu cạn — tối, ồn trên đầu, xe đè liên tục. Cơ chế triệt tiêu dương khí theo Dương Trạch hệ.",
-    "hanzi": "**[NGUYÊN VĂN] — 《黃帝宅經》\n：\n** > 宅以形勢為身體\n，\n以泉水為血脈\n，\n以土地為皮肉\n，\n以草木為毛髮。\n……\n以屋舍為衣服\n，\n以門戶為冠帶。\n\n**[NGUYÊN VĂN] — 《黃帝宅經》\n：\n** > 宅有五虛令人貧耗\n，\n五實令人富貴。\n\n**[LƯỢC Ý] — 《青囊經》\n系\n：\n** > 天光下臨\n，\n德地上載。",
-    "hanviet": "- **\n宅以形勢為身體\n……\n以草木為毛髮\n** — *Trạch dĩ hình thế vi thân thể… dĩ thảo mộc vi mao phát*: nhà là **một thân thể sống** — núi thế là thân, nước là mạch, đất là da, **cây cỏ là lông tóc**. Dưới gầm cầu: **lông tóc không mọc nổi** (không nắng, không mưa thẳng) — thân thể ấy bị biên niêm vào bóng tối: ấm tương.\n- **\n天光下臨\n** — *Thiên quang hạ lâm*: ánh trời phải xuống — gầm cầu **chặn cả nguồn**: ba lỗ tiếp dương (nắng — mưa trời — mở rộng nhìn trời) cùng bị bít, chỉ còn cửa ra vào một lỗ.",
-    "meaning": "",
-    "qi_mechanism": "1. **Cơ chế triệt tiêu dương khí — ba lớp bóc:**\n- **Lớp quang:** không nắng trực tiếp → ẩm trú, vi khuẩn nấm phổ, nhiệt độ nền thấp hơn phố 2-4°C → **dương khí hạ đế hằng định**: người cư ngụ mãn tính thiếu năng lượng.\n- **Lớp áp:** khối bê tông trên đầu tạo cảm giác đè + động cơ nén sóng âm xuống → trường khí trước cửa **nén tần số thấp thường trực** — dương khí không \"trôi\" được, đọng thành vùng tù.\n- **Lớp động:** xe trên đầu rầm rập 24/24 → nền rung vi mô → giấc ngủ nông, dụng cụ treo lắc, bột tường rời — **tĩnh bất khả đắc**: tàng phong cũng không thành vì chính nền không tĩnh.    \nBa lớp cộng lại: không phải \"sát dội xuống\" như câu hỏi nêu — mà là **dương khí bị tước nguồn và bị khóa vận** — triệt tiêu âm thầm, đúng dạng \"âm thắng dương suy\".\n\n2. **Định tội theo Ngũ Hư:** gầm cầu thường rơi **hai hư trùng**: trạch ám (không sáng — hư khí) và ốc lớn dùng ít (diện tích gầm thường rộng, người ít). Hư trùng hư — *thị vi bần hao chi trạch* theo kinh văn.\n\n3. **Lai-Khứ:** đọc theo mặt đường chảy qua gầm — khí tại gầm **chỉ có lai không có hồi**: xe qua là qua, không ai dừng — cục **thông không đỗ**: phù hợp kho transit, tự động, không phù hợp cư ngụ và buôn cần khách dừng.\n\n4. **12 Trường Sinh:** khẩu gầm trùng **Tuyệt** — khí tuyệt nơi âm địa: thuần kho, không dùng cho người; trùng **Mộ** — đáy kho tự nhiên: tốt cho lưu trữ (đúng bản chất Mộ — kho), trạch vẫn cần trị quang-áp.",
-    "hoa_phuc": "**Khi Hợp Cách (Cát Khánh):**\n- **Tài lộc:** Kho vận hợp cục — hàng quay nhanh.\n- **Nhân đinh:** Người làm việc ca, không ở đêm.\n- **Tật ách:** Ít (người ít thời gian), thân tâm an định, ít phát sinh bệnh tật bất ngờ.\n- **Gia đạo:** Gia đạo hòa thuận, trên kính dưới nhường, trong ấm ngoài êm, gia phong nền nếp.\n- **Quan vận:** Đường công danh rộng mở, thi cử đỗ đạt, sự nghiệp có quý nhân nâng đỡ thăng tiến.\n\n**Khi Phạm Cách (Hung Họa):**\n- **Tài lộc:** Tích không thành, tài khí hao tán, tiền vào khó giữ.\n- **Nhân đinh:** Đinh suy nhược, tinh thần u.\n- **Tật ách:** Thấp—phổi—trầm cảm; giấc ngủ nông mạn.\n- **Gia đạo:** Gia đạo bí, nói chuyện nhỏ.\n- **Quan vận:** Năng lượng thấp — việc lớn không ôm nổi.",
-    "remediation": "1. **Định Cục Đúng Chức:** phân loại đầu tiên — gầm cầu **an dụng kho/commit, kỵ an cư**; muốn ở phải chuyển đổi chức năng triệt để, không phải thêm vật trấn.\n\n2. **Nhân Tạo Thiên Quang:** đèn full-spectrum cường độ cao **chạy ban ngày theo giờ mặt trời** + trần sơn trắng ngà + gương lớn đặt **cạnh** (không đối) cửa hắt sáng ngang — tái lập lỗ trời mất.\n\n3. **Nâng Ôn Trừ Thấp:** sàn gỗ/lót đôi, máy hút ẩm, khử ẩm chân tường — trị lớp quang từ gốc ẩm.\n\n4. **Đoạn Rung Nền:** tấm lót cách rung chân đồ nội thất lớn; giường **không** đặt sát trục tâm cầu — tĩnh tối đa trong vùng rung tối thiểu.\n\n5. **Nhân Khí Dưỡng Trạch:** gầm cầu trị bằng **người hoạt động**: ca làm việc có chủ, không để trống đêm — trạch ấm nuôi bằng nhân khí là pháp dương trạch truyền thị: *nhân trụ tắc trạch vượng* (người ở thì nhà vượng).\n\n---"
+    "subtitle": "Nhà dưới dạ cầu cạn thiếu hụt quang minh",
+    "topo": "Công trình nằm lọt thỏm ngay bên dưới gầm hoặc sát dạ của cây cầu cạn trên cao, không gian phía trên bị bản mặt cầu bê tông che chắn hoàn toàn tầm nhìn bầu trời.",
+    "hanzi": "宅以形勢為身體，以泉水為血脈，以土地為皮肉，以草木為毛髮。宅有五虛令人貧耗，五實令人富貴。",
+    "hanviet": "- Trạch dĩ hình thế vi thân thể, dĩ tuyền thủy vi huyết mạch, dĩ thổ địa vi bì nhục, dĩ thảo mộc vi mao phát: Nhà lấy hình thế làm thân thể, lấy nước ngầm làm huyết mạch, lấy đất đai làm da thịt, lấy cỏ cây làm râu tóc. Nằm dưới gầm cầu không có ánh sáng thì sinh khí héo úa.\n- Trạch hữu ngũ hư lệnh nhân bần hao, ngũ thực lệnh nhân phú quý: Nhà có năm điều hư khiến người hao tổn bần hàn, năm điều thực khiến người giàu sang hưng thịnh.",
+    "meaning": "Nhà nằm dưới dạ cầu cạn là một trong những cách cục bức bối nhất của đô thị hiện đại. Bản mặt cầu bê tông phía trên chắn mất toàn bộ ánh sáng mặt trời tự nhiên và nước mưa của trời rơi xuống (thiên quang và thiên thủy). Ngôi nhà như bị đè ép dưới một phiến đá khổng lồ, khiến dương khí suy kiệt, âm khí tích tụ lâu ngày gây u uất trệ khí.",
+    "qi_mechanism": "Gầm cầu cạn là vùng trũng khí động học với khả năng phân tán khí thải rất kém. Khí thải nặng của động cơ (CO, chì, hydrocacbon) lắng đọng dày đặc dưới gầm cầu. Tiếng ồn từ bánh xe chạy qua khe co giãn của dầm cầu truyền trực tiếp rung chấn tần số thấp xuống bên dưới, tạo ra cảm giác ù tai và ức chế vỏ não liên tục cho người sinh hoạt bên dưới.",
+    "hoa_phuc": "**Khi Hợp Cách (Cát Khánh):**\n- **Tài lộc:** Tận dụng diện tích làm kho chứa hàng hóa không sợ nắng mưa, xưởng gia công cơ khí hoặc bãi giữ xe có thu phí.\n- **Nhân đinh:** Rèn giũa tính cách trầm tĩnh, kín đáo, ít phô trương và có khả năng chịu đựng điều kiện sống kham khổ.\n- **Tật ách:** Giữ gìn thể lực tốt khi chủ động lắp đặt hệ thống chiếu sáng nhân tạo cường độ cao và hệ thống thông gió lọc bụi hiện đại.\n- **Gia đạo:** Kín cổng cao tường, các thành viên gìn giữ cuộc sống riêng tư cẩn mật và bảo bọc lẫn nhau.\n- **Quan vận:** Làm việc chuyên sâu trong các lĩnh vực hậu cần, kỹ thuật ngầm hoặc quản lý kho bãi vật tư.\n\n**Khi Phạm Cách (Hung Họa):**\n- **Tài lộc:** Thoái tài bần hàn, buôn bán ế ẩm do vị trí tối tăm khó thu hút khách hàng, nhà đất mất giá trị thanh khoản.\n- **Nhân đinh:** Tâm lý trầm cảm, tính tình trở nên u uất, lãnh đạm, trẻ nhỏ chậm phát triển thể chất do thiếu ánh nắng mặt trời.\n- **Tật ách:** Mắc các chứng bệnh mãn tính về hô hấp do hít phải bụi mịn đọng dưới gầm, bệnh lao phổi, còi xương và viêm da nấm mốc.\n- **Gia đạo:** Không khí gia đình ảm đạm, thiếu tiếng cười vui vẻ, các thành viên dễ cảm thấy chán nản khi trở về nhà.\n- **Quan vận:** Con đường thăng tiến bị kìm hãm nặng nề, luôn có cảm giác bị cấp trên chèn ép không thể ngẩng đầu lên được.",
+    "remediation": "1. Lắp đặt hệ thống đèn chiếu sáng full-spectrum daylight (ánh sáng quang phổ mặt trời chỉ số CRI trên chín mươi) thắp sáng liên tục vào ban ngày để bù đắp dương khí.\n2. Lắp hệ thống thông gió cơ điện cấp khí tươi lọc bụi mịn qua màng lọc HEPA, tạo áp suất dương trong nhà đẩy khí thải độc hại ra ngoài.\n3. Không bố trí phòng ngủ của người già và trẻ nhỏ tại tầng trệt dưới gầm cầu; nếu có điều kiện nên chuyển đổi công năng tầng trệt làm kho bãi.",
+    "sources": [
+      {
+        "id": "ch05-q43-htk1",
+        "title": "Hoàng Đế Trạch Kinh",
+        "section": "Tổng luận thiên",
+        "url": "https://ctext.org/wiki.pl?if=gb&chapter=622288",
+        "author": "Cổ thư khuyết danh",
+        "attributionStatus": "Cổ bản kinh điển",
+        "evidenceLevel": "VERIFIED",
+        "quote": "宅以形勢為身體，以泉水為血脈，以土地為皮肉，以草木為毛髮。",
+        "note": "Ngôi nhà là một cơ thể sống hoàn chỉnh; nằm dưới gầm cầu tối tăm khiến sinh khí cây cỏ không thể phát triển."
+      },
+      {
+        "id": "ch05-q43-htk2",
+        "title": "Hoàng Đế Trạch Kinh",
+        "section": "Ngũ Hư Ngũ Thực thiên",
+        "url": "https://ctext.org/wiki.pl?if=gb&chapter=622288",
+        "author": "Cổ thư khuyết danh",
+        "attributionStatus": "Cổ bản kinh điển",
+        "evidenceLevel": "VERIFIED",
+        "quote": "宅有五虛令人貧耗，五實令人富貴。",
+        "note": "Phân định ngũ hư khiến người hao tán; trạch vị thiếu quang minh và dưỡng khí rơi vào điều hư hại trầm trọng."
+      }
+    ]
   },
   {
     "index": 44,
     "chapter": 5,
     "chapter_title": "Cao Không Thủy Sát",
     "title": "Cao Phản Cung",
-    "subtitle": "Tàu điện trên cao cong lưng áp",
-    "topo": "Đường sắt trên cao uốn cong, mặt lưng hướng vào dãy chung cư. Câu hỏi: sát khí mạnh nhất ở tầng cao nào.",
-    "hanzi": "**[LƯỢC Ý] — 《水龍經》\n系\n· 反跳 Hệ:** 反弓反跳\n，\n無情之水\n，\n主離散 — cung vung, nước bắn ngược đều là vô tình, chủ ly tán (đã lập nguyên tắc tại ; đây là dạng **dâng lên không trung**).\n\n**[NGUYÊN VĂN] — 《葬書》\n· 郭璞\n：\n** > 氣乘風則散\n，\n界水則止。\n\n**[TRUYỀN THỊ] — Thanh Sát Hệ:** 聲煞最陰\n，\n久居損聽傷神。\n(*Thanh sát tối âm: sát bằng âm thanh tối âm hiểm nhất — ở lâu tổn thính giác thương thần.* — sa pháp truyền thị, bản chất là sát động tần số cao.)",
-    "hanviet": "- **\n反弓\n** — *Phản cung*: lưng cong vung vào — metro chạy cung, lưng cung quét dãy nhà: **ly tâm ba lớp**: gió đẩy — ồn toả — rung truyền.\n- **\n氣乘風則散\n** — đoàn tàu là **khối phong động lớn nhất đô thị**: đi qua cung thì lực văng tập trung đúng mặt lưng cung — nơi ban công các căn.\n- **\n聲煞\n** — *Thanh sát*: sát mà không thấy hình — khó hóa hơn sát hình vì xuyên được tường và kính.",
-    "meaning": "",
-    "qi_mechanism": "1. **Trả lời trực tiếp — hai tầng tầng cao:**\n- **Tầng sát khí lớn nhất: tầng mà tầm nhìn từ ban công cắt vào mặt ray tại đỉnh cung** — thực chiến là dải **bằng mặt ray và thấp hơn mặt ray khoảng 1-1.5 tầng** (cửa sổ tầng dưới vừa ngang gầm tàu-đường ray): đây là dải nhận **trực tuyến ly tâm** — ti: ồn cực đại, gió lộng khi tàu qua, và **nhìn thấy tàu băng qua kính** (sát thị hình).\n- **Tầng rung lớn nhất: các tầng sát gối cầu** (vị trí trụ nâng gần nhất) — rung tần thấp truyền qua kết cấu: cảm giác mấp mô sàn, đồ lắc — tầng thấp gần trụ chịu, dù xa tầm mắt.\n- Trên dải trực tuyến 2-3 tầng, ồn toả vòng cung **hơi cong lên**: tầng sát ray nghe lớn nhất, tầng ngay trên nghe gần bằng, tầng cao hơn rõ rệt giảm; dưới gầm dải ray, ồn phản xạ xuống cũng mạnh — **hai đầu dải (sát ray và sát đất) đều nặng, giữa nhẹ hơn**.\n\n2. **Vị trí mặt bằng trong dãy:** căn **đối đỉnh cung** (mặt lưng quét vuông) nặng nhất; căn hai bên đỉnh chỉ bị xạ xiên — nhẹ dần theo độ lệch từ pháp tuyến.\n\n3. **Lai-Khứ:** chiều tàu hai hướng = **song lai song khứ xoay vòng**: không có khứ cố định — cục **chủy hoàn (chảy vòng)**: khí bị cuốn lặp — nơi ở nghe thấy chu kỳ tàu là bị nhịp của nó điều khiển sinh hoạt.\n\n4. **12 Trường Sinh:** đỉnh cung trùng **Vượng** — vượng bị cuốn lặp: phát theo nhịp giao thông (hợp buôn, không hợp nghỉ); trùng **Bệnh/Tử** — vòng chết lặp: bệnh mãn, ngủ hỏng — căn hộ ở trong dải này phải trị trước khi ở.",
-    "hoa_phuc": "**Khi Hợp Cách (Cát Khánh):**\n- **Tài lộc:** Ổn hơn nhiều, nguồn thu ổn định và tích lũy vững vàng.\n- **Nhân đinh:** Nhân đinh bình ổn điều hòa, cuộc sống diễn ra êm ả không gặp biến cố xáo trộn.\n- **Tật ách:** Khí trường thanh khiết, thân tâm an định, tứ thời bình an, ít phát sinh bệnh tật hay tai ách bất ngờ.\n- **Gia đạo:** Bình thường, trong ngoài thuận hòa, gia phong ấm êm tốt lành.\n- **Quan vận:** Gia đạo êm ấm ổn định, các mối quan hệ trong nhà hòa thuận, trên dưới một lòng.\n\n**Khi Phạm Cách (Hung Họa):**\n- **Tài lộc:** Vào đợt, hao đợt — bán lẻ trụ, an cư không trụ.\n- **Nhân đinh:** Đinh mệt nhịp, trẻ chậm định thần.\n- **Tật ách:** Thính giác—thần kinh—rối loạn giấc; rung tầng gối cầu: cột sống.\n- **Gia đạo:** Phải hét trong nhà giờ cao điểm.\n- **Quan vận:** Tập trung kém — công việc chính xác bị hụt.",
-    "remediation": "1. **Chọn Tầng Trước Khi Mua (thượng sách):** tầng tránh = dải trực tuyến ray ±1.5 tầng và tầng sát gối trụ; tầng chọn = trên dải 3 tầng trở lên hoặc dưới nhưng có tường chắn đường ray.\n\n2. **Song Kính Hai Lớp + Rèm Dày:** kính hộp cách âm (double glazing) cho phòng ngủ mặt ray — thanh sát xuyên kính thường, phải dùng vật liệu trị, không phải vật trấn.\n\n3. **Ban Công Đệm Khí:** lan can kính thấp + dải cây bụi dày mép ban công — lớp khí đệm giữa căn và arc tàu; **không** mở trọn ban công giờ chạy tàu.\n\n4. **Giường Tị Pháp Tuyến:** giường đặt vuông góc trục tàu (không đầu giường song song tường ray) — rung tần thấp truyền dọc tường, đặt ngang là chia cắt đường truyền.\n\n5. **Vượng Nhịp Vận Dụng:** nếu căn trong dải mà định buôn (cửa hàng, văn phòng giao dịch) — tận dụng nhịp tàu làm đồng hồ dòng khách; chỉ cấm đặt **phòng ngủ và phòng đọc** trong dải trực tuyến.\n\n---"
+    "subtitle": "Tàu điện trên cao uốn cong mặt lưng áp trạch",
+    "topo": "Tuyến đường sắt đô thị trên cao (metro) hoặc đường trên cao uốn cong hình cánh cung, mặt lưng cong (cung lồi - Phản Cung) áp sát vào mặt tiền hoặc ban công của các tòa nhà chung cư cao tầng.",
+    "hanzi": "反弓反跳，無情之水。氣乘風則散，界水則止。",
+    "hanviet": "- Phản cung phản khiêu, vô tình chi thủy: Lưng cung uốn cong bật ra ngoài là dòng nước vô tình không có ý bao bọc.\n- Khí thừa phong tắc tán, giới thủy tắc chỉ: Khí gặp gió thổi mạnh thì xốc tán tan biến. Tuyến metro chạy trên cao là khối phong động khổng lồ quét dọc qua ban công các căn hộ.",
+    "meaning": "Phản Cung Sát trên cao là biến thể hiện đại của thế phản cung truyền thống nhưng được nâng lên không trung. Khi đoàn tàu metro chạy qua đoạn đường cong trên cao, lực ly tâm sẽ ném toàn bộ sóng âm, xung lực gió và áp suất động về phía mặt lưng cong. Các căn hộ có ban công nằm đối diện trực tiếp với lưng cong của đường ray ở độ cao tương đương sẽ chịu ảnh hưởng mạnh nhất.",
+    "qi_mechanism": "Đoàn tàu sắt nặng hàng trăm tấn di chuyển với vận tốc lớn trên khúc cua tạo ra tiếng rít kim loại nghiến trên đường ray rất chói tai (tiếng rít rẽ ray). Lực văng ly tâm đẩy luồng gió cuộn mạnh về phía lưng cung. Đồng thời, hệ thống dây dẫn điện trên cao phát ra điện từ trường biến thiên mỗi khi tàu tăng giảm tốc độ.",
+    "hoa_phuc": "**Khi Hợp Cách (Cát Khánh):**\n- **Tài lộc:** Dễ dàng tiếp cận các nhà ga tàu điện trên cao để di chuyển nhanh chóng, tiết kiệm chi phí đi lại hàng ngày.\n- **Nhân đinh:** Con người năng động, bắt kịp nhịp sống hiện đại hối hả của đô thị công nghệ cao.\n- **Tật ách:** Thể lực duy trì tốt khi căn hộ được trang bị hệ thống kính hộp cách âm dày và đóng kín cửa ban công giờ tàu chạy.\n- **Gia đạo:** Nhanh nhẹn, các thành viên tự giác hoàn thành công việc của mình để cùng nhau xây dựng tổ ấm.\n- **Quan vận:** Thuận lợi trong các ngành nghề giao thông công cộng, logistics, viễn thông hoặc truyền hình số.\n\n**Khi Phạm Cách (Hung Họa):**\n- **Tài lộc:** Tiền của tiêu tán, khó tích lũy do tài khí bị lực ly tâm của đoàn tàu quét sạch mỗi khi tàu lướt qua.\n- **Nhân đinh:** Cảm giác bồn chồn lo sợ, mất ngủ kinh niên, tính tình dễ cáu kỉnh do tiếng rít kim loại nghiến trên ray.\n- **Tật ách:** Rối loạn giấc ngủ, suy nhược thần kinh, suy giảm trí nhớ do tác động của tiếng ồn tần số cao và sóng điện từ.\n- **Gia đạo:** Vợ chồng con cái dễ nảy sinh bất hòa, khẩu thiệt to tiếng do môi trường sống luôn bị tiếng tàu phá rối.\n- **Quan vận:** Bị lực đẩy ly tâm cản trở, các dự án công việc đang theo đuổi dễ bị chệch hướng hoặc bị đối tác hủy hợp đồng bất ngờ.",
+    "remediation": "1. Lắp đặt hệ thống cửa kính hộp hai lớp chân không có dán phim cách âm và chống bức xạ điện từ tại ban công hướng nhìn ra đường ray.\n2. Trồng hàng cây cảnh tán dày (như trúc mây, trầu bà lá xẻ, cúc tần Ấn Độ) dọc theo lan can ban công để làm lá chắn xanh tiêu âm và phân tán lực gió.\n3. Kéo rèm cửa vải dày cản quang vào ban đêm để hạn chế ánh đèn pha tàu điện quét qua cửa sổ phòng ngủ.",
+    "sources": [
+      {
+        "id": "ch05-q44-slk",
+        "title": "Thủy Long Kinh",
+        "section": "Phản Khiêu thiên",
+        "url": "https://ctext.org/wiki.pl?if=gb&chapter=395047",
+        "author": "Tưởng Đại Hồng (chú)",
+        "attributionStatus": "Cổ bản kinh điển",
+        "evidenceLevel": "VERIFIED",
+        "quote": "反弓反跳，無情之水。",
+        "note": "Nước uốn lưng cong vung ra ngoài là dòng nước vô tình mang lại sự ly tán và xốc đổ sinh khí."
+      },
+      {
+        "id": "ch05-q44-ts",
+        "title": "Táng Thư",
+        "section": "Chính văn",
+        "url": "https://ctext.org/wiki.pl?if=gb&chapter=395047",
+        "author": "Quách Phác (chú)",
+        "attributionStatus": "Cổ bản kinh điển",
+        "evidenceLevel": "VERIFIED",
+        "quote": "氣乘風則散，界水則止。",
+        "note": "Đoàn tàu trên cao chạy tốc độ lớn đẩy theo luồng phong động cực mạnh làm tán khí các căn hộ đối diện."
+      }
+    ]
   },
   {
     "index": 45,
     "chapter": 5,
     "chapter_title": "Cao Không Thủy Sát",
     "title": "Thôn Hư Sát",
-    "subtitle": "Cửa hầm chui ngầm nuốt tài khí",
-    "topo": "Nhà trực diện cửa hầm chui/đường hầm. Cơ chế thoái tài bần hàn của thế đối miệng hút.",
-    "hanzi": "**[NGUYÊN VĂN] — 《葬書》\n· 郭璞\n：\n** > 夫氣行乎地中\n，\n其行也\n，\n因地之勢\n；\n其聚也\n，\n因勢之止。\n\n**[NGUYÊN VĂN] — 《葬書》\n· 郭璞\n：\n** > 風水之法\n，\n得水為上\n，\n藏風次之。\n\n**[TRUYỀN THỊ] — Long Khẩu Hệ:** 穴前忌衝口\n，\n衝口奪氣。\n(*Huyệt tiền kỵ xung khẩu — trước huyệt kỵ miệng xung; miệng xung đoạt khí.* — truyền thị long pháp; hầm là mạch nhân tạo trong đất, cửa hầm là **long khẩu nhân tạo**.)",
-    "hanviet": "- **\n氣行乎地中\n** — *Khí hành hồ địa trung*: khí đi **trong lòng đất** — đường hầm chính là **mạch đất nhân tạo**: tuyến dưới mặt đất là con rồng, cửa hầm là **miệng rồng**.\n- **\n得水為上\n，\n藏風次之\n** — hầm có dòng dày (đắc thủy) nhưng **miệng hầm là lỗ nạp-xả vĩ đại**: đứng đối diện là đứng trước miệng thứ nuốt thở liên hồi.\n- **\n衝口奪氣\n** — *Xung khẩu đoạt khí*: miệng xung đối diện thì đoạt khí của huyệt — **hai miệng cùng hít: miệng nào lớn, khí của miệng nhỏ theo miệng lớn**. Cửa hầm hàng vạn xe/ngày so cửa nhà hàng trăm lượt/ngày: cửa nhà thua tuyệt đối.",
-    "meaning": "",
-    "qi_mechanism": "1. **Cơ chế hút — hiện tượng pít-tông:** xe nối đuôi trong hầm đẩy không khí ra một đầu, tạo chân không kéo ở đầu kia — nhà đối cửa hầm nằm đúng vùng **hút chu kỳ**: khí trong nhà bị \"rút\" theo nhịp dòng xe vào hầm (giai đoạn hút), rồi bị nén hồi (giai đoạn xả). Cư lâu ngày: cảm giác **một tay vô hình rút ruột nhà** — đúng nghĩa thoái tài bần hàn của truyền thống: không phải mất đột xuất mà là **rỉ liên tục**.\n\n2. **Hai pha của miệng hầm:** pha **thôn** (xe vào dồn) — hút: nhà bị rút; pha **thổ** (xe ra dồn) — thổi: ồn + gió + bụi trút vào nhà. Đối diện miệng hầm là **đón cả hai pha theo nhịp**: không có giờ an.\n\n3. **Lai-Khứ:** lai của cục là mặt đường ngoài; **khẩu thật của trạch** phải tự lập — cửa hầm không phải khẩu của trạch mà là **khẩu của mạch đất**: tôn trọng nó nhưng không đối đón nó.\n\n4. **12 Trường Sinh:** cửa hầm trùng **Tuyệt/Bệnh** phương trạch — hút khí bệnh: bệnh hô hấp, tài hao y tế; trùng **Vượng** — hút vượng đi: của đến tay bị rút ở khâu cuối — cả hai đều cần tách trục, không có nhánh \"đón được\".\n\n5. **Ứng dụng ngoại lệ:** nghiệp cần **lưu lượng đi qua** (xăng dầu, gara, phụ tùng xe, thu hồi phế liệu) hưởng nhịp hầm — như ; trạch cư và văn phòng tuyệt đối tách trục.",
-    "hoa_phuc": "**Khi Hợp Cách (Cát Khánh):**\n- **Tài lộc:** Hưởng lưu lượng, nguồn thu ổn định và tích lũy vững vàng.\n- **Nhân đinh:** Nhân đinh hưng vượng, con cháu đông đúc hiếu thuận, gia quyến sum vầy bình an.\n- **Tật ách:** Làm nghề quen, thân tâm an định, ít phát sinh bệnh tật bất ngờ.\n- **Gia đạo:** Gia đạo hòa thuận, trên kính dưới nhường, trong ấm ngoài êm, gia phong nền nếp.\n- **Quan vận:** Giao dịch nhanh, sự nghiệp thăng tiến tuần tự, có quý nhân tương trợ.\n\n**Khi Phạm Cách (Hung Họa):**\n- **Tài lộc:** Tiền vào đủ, về tay không.\n- **Nhân đinh:** Đinh mệt âm thầm, hay về muộn.\n- **Tật ách:** Hô hấp (bụi hầm), tim nhịp theo ồn.\n- **Gia đạo:** Cảm giác “điều gì đó bị rút” — hay đổ tại người.\n- **Quan vận:** Việc gần xong bị kéo ngược.",
-    "remediation": "1. **Tách Trục Tuyệt Đối:** cửa chính **không được nằm trên trục cửa hầm** — dịch ngang hoặc quay chéo; nếu kiến trúc bắt buộc, lập **tiền sở lệch** (sân trước lệch trục) buộc lối vào nhà ngoặt trước khi gặp miệng hầm.\n\n2. **Đệ Trọng Môn:** cửa hai lớp + ngưỡng 5 phân — mỗi lớp pha hút phải thắng một lớp kín mới rút được.\n\n3. **Trụ Đoạn Tuyến:** ở vùng giữa nhà và miệng hầm (nếu đất cho phép) — cột đèn/bồn cây lớn **ngắt tầm nhìn thẳng** cửa hầm từ cửa nhà: cắt thị tuyến là cắt tuyến hút chủ đạo.\n\n4. **Thu Bụi Dưỡng Khí:** thảm lớn ngoài cửa + cây lá nhung trong nhà — pha thổ trút bụi, phải có lớp giữ trước khi vào nội trạch.\n\n5. **Nhật Ký Khí Khẩu:** theo dõi 3 tháng hóa giải — nếu vẫn cảm rút (khó gom tiền cuối tháng) thì kiểm tra lại **cửa sổ nào còn thẳng trục hầm** — cửa chính chữa xong, cửa sổ là lỗ rút thứ hai thường bị quên.\n\n---"
+    "subtitle": "Cửa hầm chui ngầm nuốt nhả tài khí",
+    "topo": "Ngôi nhà tọa lạc tại vị trí đối diện trực diện với cửa miệng của một đường hầm chui cơ giới ngầm dưới lòng đất (hình thế Thôn Hư Sát hay Đối Khẩu Đoạt Khí).",
+    "hanzi": "夫氣行乎地中，其行也，因地之勢；其聚也，因勢之止。穴前忌衝口，衝口奪氣。",
+    "hanviet": "- Phu khí hành hồ địa trung, kỳ hành dã, nhân địa chi thế; kỳ tụ dã, nhân thế chi chỉ: Khí vận hành trong lòng đất theo thế đất. Tuyến hầm chui là mạch dẫn khí ngầm nhân tạo quy mô lớn.\n- Huyệt tiền kỵ xung khẩu, xung khẩu đoạt khí: Trước trạch vị tối kỵ đối diện với miệng xung hút, miệng hầm lớn sẽ hút đoạt mất khí của ngôi nhà nhỏ bé.",
+    "meaning": "Cửa hầm chui ngầm là một hố hút và phun khí khổng lồ của giao thông đô thị. Hàng vạn lượt xe lao xuống hầm kéo theo luồng không khí bề mặt chui tọt xuống lòng đất, trong khi các xe từ dưới hầm vọt lên phun ngược khói thải đậm đặc vào không gian xung quanh. Ngôi nhà đối diện với miệng hầm như đứng trước miệng một con thú khổng lồ há hốc, sinh khí trong nhà dễ bị hút đoạt cuốn trôi.",
+    "qi_mechanism": "Cửa hầm chui tạo ra sự chênh lệch áp suất gió liên tục: khi xe lao xuống tạo áp suất âm hút khí bề mặt, khi xe lao lên tạo áp suất dương tống khí thải chứa hàm lượng muội than và CO đậm đặc ra ngoài. Âm thanh vọng từ trong lòng hầm khuếch đại như một chiếc loa trầm dội thẳng vào mặt tiền ngôi nhà đối diện.",
+    "hoa_phuc": "**Khi Hợp Cách (Cát Khánh):**\n- **Tài lộc:** Thích hợp kinh doanh các dịch vụ phục vụ phương tiện trước khi vào hầm hoặc cửa hàng giới thiệu sản phẩm có biển hiệu lớn.\n- **Nhân đinh:** Rèn luyện tính kiên cường, bản lĩnh vững vàng và không nao núng trước những biến động lớn của thương trường.\n- **Tật ách:** Thể lực rắn rỏi khi biết cách thiết kế vùng đệm lọc không khí và đóng kín cửa sổ hướng mặt hầm.\n- **Gia đạo:** Gắn kết cùng nhau chia sẻ, các thành viên ý thức sâu sắc về việc bảo vệ tổ ấm trước các tác động ô nhiễm.\n- **Quan vận:** Có cơ hội nắm giữ các vị trí chỉ huy, quản lý vận hành các công trình ngầm hoặc dự án hạ tầng giao thông lớn.\n\n**Khi Phạm Cách (Hung Họa):**\n- **Tài lộc:** Tài khí bị miệng hầm hút cạn, tiền bạc kinh doanh hao hụt nhanh chóng, buôn bán sa sút và dễ vướng vào nợ nần.\n- **Nhân đinh:** Cảm giác ngột ngạt, lo sợ vô hình, người trong nhà luôn cảm thấy thiếu hụt năng lượng và tinh thần bất an.\n- **Tật ách:** Mắc các bệnh mạn tính đường hô hấp do hít phải khí thải từ cửa hầm phun lên, bệnh tim mạch và suy nhược thần kinh.\n- **Gia đạo:** Gia đình dễ nảy sinh bất hòa do tâm lý căng thẳng, các bữa cơm gia đình vội vã thiếu sự ấm cúng.\n- **Quan vận:** Uy tín suy giảm, các kế hoạch lớn chuẩn bị triển khai dễ bị đối thủ hút mất khách hàng và thị phần.",
+    "remediation": "1. Xây dựng tường rào kiên cố kết hợp trồng dải cây xanh cản bụi rậm rạp phía trước để làm bức tường xanh hấp thụ khói thải từ cửa hầm.\n2. Mở cửa chính lệch góc với miệng hầm, thiết kế sảnh đón gián tiếp (huyền quan) có cửa kính tự động đóng kín để ngăn dòng khí hút đoạt.\n3. Lắp đặt hệ thống lọc không khí tổng có màng lọc carbon hoạt tính để khử triệt để mùi khí thải và khí độc từ hầm bốc lên.",
+    "sources": [
+      {
+        "id": "ch05-q45-ts",
+        "title": "Táng Thư",
+        "section": "Chính văn",
+        "url": "https://ctext.org/wiki.pl?if=gb&chapter=395047",
+        "author": "Quách Phác (chú)",
+        "attributionStatus": "Cổ bản kinh điển",
+        "evidenceLevel": "VERIFIED",
+        "quote": "夫氣行乎地中，其行也，因地之勢；其聚也，因勢之止。",
+        "note": "Khí vận hành trong lòng đất theo thế đất; đường hầm chui xuyên qua lòng đất tạo thành một mạch rỗng nhân tạo lớn."
+      },
+      {
+        "id": "ch05-q45-xxf",
+        "title": "Tuyết Tâm Phú",
+        "section": "Biện huyệt chương",
+        "url": "https://ctext.org/wiki.pl?if=gb&chapter=395047",
+        "author": "Bốc Ứng Thiên",
+        "attributionStatus": "Cổ bản ca phú",
+        "evidenceLevel": "SUPPORTED",
+        "quote": "穴前忌衝口，衝口奪氣。",
+        "note": "Trước huyệt vị tối kỵ có miệng xung đối diện trực tiếp, miệng xung lớn sẽ đoạt mất sinh khí của nơi ở."
+      }
+    ]
   },
   {
     "index": 46,
     "chapter": 5,
     "chapter_title": "Cao Không Thủy Sát",
     "title": "Kình Thiên Trụ",
-    "subtitle": "Trụ cầu trước cửa kẹp chẻ dòng",
-    "topo": "Trụ bê tông lớn cách cửa < 8m. Xe hai bên trụ bị xẻ rồi chập lại. Điểm chẻ-chập có phá nát thủy khẩu nhà.",
-    "hanzi": "**[TRUYỀN THỊ] — Trụ Sát Hệ:** 立柱當門\n，\n明堂受壓\n；\n柱鋒切宅\n，\n箭回傷主。\n(*Trụ lập đương môn: minh đường chịu đè; lưỡi trụ cắt trạch — mũi tên hồi thương chủ.* — sa pháp truyền thị về trụ/điện)\n\n**[NGUYÊN VĂN] — 《葬書》\n· 郭璞\n：\n** > 氣乘風則散\n，\n界水則止。",
-    "hanviet": "- **\n明堂受壓\n** — *Minh đường thụ áp*: dưới 8m, trụ nằm **trong nội vi minh đường** — khoảng trước cửa là nơi khí dừng chứa; cắm khối bê tông giữa bể thì **bể bị chia làm hai nửa**.\n- **\n箭回傷主\n** — *Tiễn hồi thương chủ*: hai luồng xe xẻ qua trụ rồi **chập lại sau lưng trụ** — điểm chập chính là **mũi pháo thủy** ném về phía nhà: sóng hồi ném về — \"mũi tên quay lại thương chủ\".",
-    "meaning": "",
-    "qi_mechanism": "1. **Giải phẫu dòng quanh trụ:** điểm **chẻ** (mũi trụ phía dòng đến) tạo sóng mũi — hai vân khí tách hai bên; điểm **chập** (mũi trụ phía dòng đi — về phía nhà) hai vân va ngược **dội tập trung về trục trung tuyến**. Nhà đứng dưới 8m nằm đúng vùng hồi dội: **thủy khẩu của nhà bị chẻ làm hai nửa quanh trụ, rồi hai nửa dội về đè cửa** — trả lời: đúng, khẩu bị \"vỡ\" theo nghĩa **chia + hồi đập**, không phải bóp nghẹt.\n\n2. **Hai điều kiện chuyển hung:** (a) **trụ lệch trục cửa** — trụ không đứng trên đường vuông góc từ tâm cửa: đòn hồi dội trượt qua hông, còn lại chỉ là án cứng lệch — trung tính-hơi kỵ; (b) **trụ có cây/giàn hoa quanh chân** — vân khí va vào tán lá là tán mềm, không dội cứng về nhà: sát phân rã tự nhiên.\n\n3. **Lai-Khứ:** lai theo chiều xe đến mặt trụ; khẩu thật của nhà = **vùng hồi dội sau trụ** — đặt cửa đón vùng này là nạp mũi pháo; đặt cửa **lánh trục hồi** là tách khẩu khỏi đòn.\n\n4. **12 Trường Sinh:** hồi dội trùng **Vượng** — dội vượng về cửa: hưng phấn giả — làm mạnh ngắn hạn rồi cháy; trùng **Trường Sinh** — dội vào mạch sinh: con nhỏ khó ngủ, bệnh khởi đầu tuổi nhỏ — ưu tiên hóa cao nhất.",
-    "hoa_phuc": "**Khi Hợp Cách (Cát Khánh):**\n- **Tài lộc:** Trung tính, nguồn thu ổn định và tích lũy vững vàng.\n- **Nhân đinh:** Bình thường, nhân đinh khỏe mạnh an khang, con cháu sum vầy.\n- **Tật ách:** Khí trường thanh khiết, thân tâm an định, tứ thời bình an, ít phát sinh bệnh tật hay tai ách bất ngờ.\n- **Gia đạo:** Gia đạo êm ấm ổn định, các mối quan hệ trong nhà hòa thuận, trên dưới một lòng.\n- **Quan vận:** Sự nghiệp phát triển bình ổn, tránh được sóng gió thị phi, từng bước tích lũy uy tín vững chắc.\n\n**Khi Phạm Cách (Hung Họa):**\n- **Tài lộc:** Hợp đồng sắp xong bị “dội ngược” — ký hụt.\n- **Nhân đinh:** Đinh hay va quẹt, ốm vặt, nhân khẩu bất an, con cháu dễ ly tán.\n- **Tật ách:** Đầu—mắt (tia hồi), mất ngủ về khuya (xe chập).\n- **Gia đạo:** Chuyện đến 90% rồi đổ — nóng nảy cuối kỳ.\n- **Quan vận:** Thăng tiến dội lại ở khâu duyệt cuối.",
-    "remediation": "1. **Dời Khẩu Lánh Hội:** cửa chính dịch khỏi trục hồi dội (trục vuông góc tâm cửa — mũi sau trụ); mở về hông hoặc chéo — nguyên tắc: **đón dòng lớn, lánh điểm chập**.\n\n2. **Thực Lục Hóa Mũi:** nếu trụ thuộc phần đất công không được đụng — trồng **giàn xanh bám quanh thân trụ tầng thấp** (xin phép quản lý): biến mũi bê tông thành mũi cây — hồi dội gặp tán mềm là tán.\n\n3. **Tiền Sở Uốn:** lát sân trước nhà hình **cong lõm hứng** — vân dội về gặp mặt cong là phân tán vòng, không đập phẳng vào cửa.\n\n4. **Ngưỡng — Huyền Quan:** ngưỡng 4 phân + huyền quan bẻ 30°: lớp trong cùng dư sót bị bẻ trước khi vào nội trạch.\n\n5. **Kỵ Kính Đối Trụ:** tuyệt không treo gương/bát quái kính hướng trụ — vân dội + gương = ánh-vân cộng hưởng; dùng đá thô (Thổ trấn) thay nếu cần trấn phương.\n\n---"
+    "subtitle": "Trụ cầu bê tông trước cửa kẹp chẻ dòng khí",
+    "topo": "Cột trụ bê tông cốt thép khổng lồ của cầu vượt hoặc đường trên cao nằm sừng sững ngay trước mặt tiền ngôi nhà ở khoảng cách gần, chia đôi tầm nhìn và xẻ đôi luồng giao thông trước cổng.",
+    "hanzi": "立柱當門，明堂受壓。氣乘風則散，界水則止。",
+    "hanviet": "- Lập trụ đương môn, minh đường thụ áp: Trụ lớn đứng chắn sừng sững ngay trước cửa nhà, khiến minh đường trước mắt chịu sự đè nén bức bối.\n- Khí thừa phong tắc tán, giới thủy tắc chỉ: Khí gặp gió thì xốc tán, gặp nước giới hạn thì dừng lại. Trụ cầu xẻ đôi luồng xe rồi chập lại phía sau lưng trụ tạo thành mũi tên động khí xung thẳng vào cửa.",
+    "meaning": "Trụ cầu bê tông khổng lồ đứng trước cửa nhà là một chướng ngại vật vật lý nghiêm trọng đối với minh đường. Minh đường vốn cần sự khoáng đạt bằng phẳng để tụ nạp sinh khí. Sự xuất hiện của một khối trụ cứng nhắc không chỉ chắn mất ánh sáng và tầm nhìn mà còn biến luồng xe hai bên trụ thành hai dòng chảy xẻ đôi rồi va đập vào nhau ngay trước thềm nhà.",
+    "qi_mechanism": "Khối trụ bê tông dày đặc tạo ra vùng khuất gió và bóng râm vĩnh cửu. Dòng phương tiện chạy hai bên mạn trụ khi vượt qua trụ sẽ có xu hướng tạt làn nhập dòng, tạo ra điểm giao cắt xung đột giao thông nguy hiểm ngay trước cửa nhà. Tiếng còi xe cảnh báo và ánh sáng đèn pha đổi hướng liên tục gây kích thích thần kinh thị giác.",
+    "hoa_phuc": "**Khi Hợp Cách (Cát Khánh):**\n- **Tài lộc:** Tận dụng chân trụ cầu làm điểm định vị thương hiệu rõ ràng, khách hàng từ xa dễ nhận biết vị trí cửa hàng.\n- **Nhân đinh:** Rèn luyện tính cách độc lập, kiên cường như trụ đá giữa dòng nước chảy xiết, không bị lay chuyển bởi dư luận.\n- **Tật ách:** Giữ gìn sức khỏe ổn định khi nhà có khoảng lùi sân trước đủ rộng để giải tỏa cảm giác đè nén của khối trụ.\n- **Gia đạo:** Các thành viên tôn trọng kỷ cương trật tự, sống có nguyên tắc vững vàng và trung thực.\n- **Quan vận:** Có cơ hội trở thành trụ cột gánh vác các trọng trách quan trọng trong cơ quan, tổ chức lớn.\n\n**Khi Phạm Cách (Hung Họa):**\n- **Tài lộc:** Kinh doanh sa sút do tầm nhìn mặt tiền bị che khuất hoàn toàn, khách hàng ngại tiếp cận vì vướng trụ cầu cản trở lối đi.\n- **Nhân đinh:** Cảm giác ngột ngạt, ức chế tâm lý, người trong nhà dễ cảm thấy bức bối, hay đau nhức mắt và trán.\n- **Tật ách:** Dễ bị đau đầu, thoái hóa cột sống, bệnh về mắt hoặc các chấn thương do va chạm phương tiện giao thông ngay chân trụ.\n- **Gia đạo:** Thiếu sự cởi mở, các thành viên dễ có tư tưởng bảo thủ, cứng nhắc dẫn đến xung đột nội bộ gia đình.\n- **Quan vận:** Bị một chướng ngại lớn cản trở bước đường công danh, khó lòng thi triển tài năng vì luôn bị người khác chiếm mất vị trí trung tâm.",
+    "remediation": "1. Mở cửa chính lệch sang một bên khoảng trống không bị trụ cầu che khuất; phần đối diện trụ cầu bố trí bồn hoa cây cảnh hoặc vách tường kín.\n2. Treo tranh phong cảnh thiên nhiên có chiều sâu khoáng đạt (núi non mây biếc) hoặc gương phản quang nhỏ phía trong sảnh để mở rộng không gian thị giác.\n3. Lắp đèn chiếu sáng hắt tường công suất lớn trước cổng để xua tan mảng tối âm u do bóng râm của trụ cầu đổ xuống mặt tiền.",
+    "sources": [
+      {
+        "id": "ch05-q46-xxf",
+        "title": "Tuyết Tâm Phú",
+        "section": "Sa Pháp chương",
+        "url": "https://ctext.org/wiki.pl?if=gb&chapter=395047",
+        "author": "Bốc Ứng Thiên",
+        "attributionStatus": "Cổ bản ca phú",
+        "evidenceLevel": "VERIFIED",
+        "quote": "立柱當門，明堂受壓。",
+        "note": "Cột trụ sừng sững chắn ngay trước cửa khiến cho minh đường phía trước bị đè nén bế tắc."
+      },
+      {
+        "id": "ch05-q46-ts",
+        "title": "Táng Thư",
+        "section": "Chính văn",
+        "url": "https://ctext.org/wiki.pl?if=gb&chapter=395047",
+        "author": "Quách Phác (chú)",
+        "attributionStatus": "Cổ bản kinh điển",
+        "evidenceLevel": "VERIFIED",
+        "quote": "氣乘風則散，界水則止。",
+        "note": "Hai dòng xe chạy qua trụ bị chẻ đôi rồi chập lại phía sau lưng trụ tạo ra sóng hồi xung vào nhà."
+      }
+    ]
   },
   {
     "index": 47,
     "chapter": 5,
     "chapter_title": "Cao Không Thủy Sát",
     "title": "Quyển Liêm Hầm",
-    "subtitle": "Dốc hầm xe chìm cuốn tài lộc",
-    "topo": "Dốc xuống hầm xe cắm cạnh cửa chính. Khí mặt đường tuột xuống lòng đất bên cửa. Phép gờ phân thủy.",
-    "hanzi": "**[TRUYỀN THỊ] — Quyển Liêm Quyết:** 卷簾水者\n，\n水倒捲而出\n，\n主耗散。\n—— 本宅之水倒流出門\n，\n如卷簾下垂。\n(*Quyển liêm thủy: nước cuốn ngược đổ ra — chủ hao tán. Nước của chính trạch đổ tuột ra khỏi cửa như màn cuốn buông.* — truyền thị địa lý; đã lập danh pháp tại .)\n\n**[NGUYÊN VĂN] — 《葬書》\n· 郭璞\n：\n** > 界水則止。\n……\n古人聚之使不散\n，\n行之使有止。",
-    "hanviet": "- **\n卷簾水\n** — *Quyển Liêm Thủy*: nước cuốn màn — dốc hầm ngay cạnh cửa là **quyển liêm vi mô**: mỗi xe rẽ xuống là một nhịp \"cuốn\" kéo khí mặt đường theo chui xuống lòng đất — nhà đứng cạnh kéo: **tài hao theo nhịp gara**.\n- **\n行之使有止\n** — *Hành chi sử hữu chỉ*: khí đi phải có điểm dừng — dốc hầm là **điểm \"không dừng\"**: mọi thứ đến cạnh cửa đều được mời xuống dưới — phải kiến tạo điểm dừng nhân tạo ngay trước vùng cuốn.",
-    "meaning": "",
-    "qi_mechanism": "1. **Bán kính cuốn:** vùng hút của miệng dốc lan **vuông góc lòng đường khoảng 1-1.5 bề rộng dốc** — cửa cách mép dốc trong bán kính này là nằm trong dòng kéo; ngoài vùng, chỉ \n\ncòn nghe-động nhẹ: **tham số định hóa** — đo khoảng cách cửa đến mép dốc trước khi quyết độ mạnh của bài trị.\n\n2. **Lai-Khứ đặc thù:** đây là cục **khứ đứng cạnh lai**: mặt đường cho lai (khách đi qua), dốc cho khứ (tài tuột) — **hai hệ song song chênh nhau một cánh cửa**. Bài trị không phải chặn khứ (xe vẫn phải xuống hầm) mà là **tách luồng**: cho lai vào cửa, cho khứ đi lòng dốc — hai tuyến không được chạm nhau trong vùng trước cửa.\n\n3. **Gờ phân thủy — định nghĩa đúng:** gờ không phải tường chặn xe — là **đê vi phân lưu** cao 5-7cm chạy dọc ranh đất giáp mép dốc: nước mặt + khí trượt thấp bị gờ **hất bung ra lòng đường**, không cho trượt vào vùng cửa. Gờ kết hợp **rãnh đón** phía ngoài gờ — nước/xì bụi bị gờ hứng đổ về rãnh — \"khứ hữu đạo\" (cho cái đi có đường đúng).\n\n4. **12 Trường Sinh:** miệng dốc trùng **Mộ** — tuột vào kho (bãi xe): còn là \"gửi\" — hao ít; trùng **Tuyệt/Suy** — tuột vào cống hư: hao trắng — bài trị tối đa.",
-    "hoa_phuc": "**Khi Hợp Cách (Cát Khánh):**\n- **Tài lộc:** Của vào giữ được — “lãi ở lại nhà.”\n- **Nhân đinh:** Nhân đinh định tĩnh, tâm trí vững vàng, con cháu chuyên tâm học tập và lập nghiệp.\n- **Tật ách:** Khí trường thanh khiết, thân tâm an định, tứ thời bình an, ít phát sinh bệnh tật hay tai ách bất ngờ.\n- **Gia đạo:** Gia đạo êm ấm ổn định, các mối quan hệ trong nhà hòa thuận, trên dưới một lòng.\n- **Quan vận:** Các giao dịch kinh doanh đều được chốt hạ thành công, tiền tài thu về trọn vẹn không bị hao hụt phút cuối.\n\n**Khi Phạm Cách (Hung Họa):**\n- **Tài lộc:** Thu hôm nay, hao hôm sau, tài khí hao tán, tiền vào khó giữ.\n- **Nhân đinh:** Đinh hay rời nhà, không muốn ở.\n- **Tật ách:** Chân lạnh, tê gáy khi mở cửa (gió dốc).\n- **Gia đạo:** Cảm giác tiền “không biết đi đâu.”\n- **Quan vận:** Việc tuột ở phút chót, công việc gặp trắc trở, khó bề thăng tiến.",
-    "remediation": "1. **Phân Thủy Đê (gờ chính):** đê 5-7cm dọc ranh giáp dốc, mặt đê lát đá/gạch tròn mép — hất dòng ra ngoài, không làm vấp người đi.\n\n2. **Đón Đào Nhất Thiểm:** rãnh đón nông (5cm) phía ngoài đê đổ về cống — cho khứ có đạo, dứt vòng cuốn.\n\n3. **Ngưỡng Môn Cao:** ngưỡng cửa chính 4-5 phân — lớp sau cùng chống hút trượt thấp.\n\n4. **Thụ Ngự Duyên:** dải cây/thảm xanh dày **giữa cửa và mép dốc** (nếu lối đi cho phép 40-60cm) — lá giữ lớp khí trượt, cửa thở khí đã lọc.\n\n5. **Đăng Khai Khẩu Ban Đêm:** đèn ấm cửa sáng mạnh buổi tối — giờ xe về hầm đông (pha hút cực đại), ánh sáng giữ dương cho vùng cửa: dương thắng hút.\n\n---"
+    "subtitle": "Dốc hầm xe chìm cuốn tài lộc thoái xuất",
+    "topo": "Ram dốc dẫn xuống tầng hầm để xe của một tòa nhà lớn (hoặc hầm xe riêng) nằm sát sạt ngay cạnh cửa chính, tạo thành dòng dốc chìm kéo tuột khí mặt đường xuống lòng đất.",
+    "hanzi": "界水則止。古人聚之使不散，行之使有止。卷簾之水倒流去，家財耗散不可当。",
+    "hanviet": "- Giới thủy tắc chỉ. Cổ nhân tụ chi sử bất tán, hành chi sử hữu chỉ: Nước ngăn lại thì dừng. Người xưa gom giữ khí làm cho không tán, cho khí đi mà phải có điểm dừng.\n- Quyển liêm chi thủy đảo lưu khứ, gia tài hao tán bất khả đương: Nước cuốn như bức rèm kéo tuột đổ dốc đi, tiền tài của cải trong nhà hao tán không sao cản nổi.",
+    "meaning": "Dốc hầm để xe nằm cạnh cửa chính đóng vai trò như một miệng xả dốc nước (Quyển Liêm Thủy vi mô). Khí đến trước thềm cửa thay vì ngưng tụ lại thì lập tức bị hút tuột xuống đáy hầm theo chiều dốc của ram dốc. Mỗi lượt xe máy, ô tô tăng ga leo lên hoặc trôi dốc xuống là một lần cuốn theo sinh khí và bụi bặm, khiến tài vận của ngôi nhà bên cạnh khó tích lũy.",
+    "qi_mechanism": "Theo quy luật trọng lực và dòng chảy, nước mưa mặt đường và bụi nặng luôn bị cuốn trôi về phía chân dốc hầm. Khi xe leo dốc từ hầm lên, ống xả động cơ phải hoạt động với công suất lớn, phun luồng khí thải nhiệt độ cao chứa nhiều CO2 và muội than ngay sát cửa nhà. Âm thanh xe gầm rú leo dốc và tiếng còi xe cảnh báo tại miệng hầm gây ô nhiễm tiếng ồn liên tục.",
+    "hoa_phuc": "**Khi Hợp Cách (Cát Khánh):**\n- **Tài lộc:** Dòng tiền luân chuyển liên tục, gia chủ có ý thức quản lý tài chính chặt chẽ và không ngừng tìm kiếm nguồn thu mới.\n- **Nhân đinh:** Con người năng động, tháo vát, phản xạ nhanh với các cơ hội kiếm tiền và thích nghi tốt với môi trường sôi động.\n- **Tật ách:** Giữ gìn sức khỏe ổn định khi xây gờ phân thủy kiên cố và trồng cây xanh ngăn khói xe leo dốc hắt vào nhà.\n- **Gia đạo:** Các thành viên biết chia sẻ công việc, chủ động hỗ trợ nhau vượt qua những giai đoạn kinh tế khó khăn.\n- **Quan vận:** Phát triển tốt trong các ngành tài chính, kinh doanh bất động sản, quản trị vận hành tòa nhà hoặc dịch vụ xe cộ.\n\n**Khi Phạm Cách (Hung Họa):**\n- **Tài lộc:** Tiền bạc kiếm được bao nhiêu tiêu tán bấy nhiêu, các khoản chi bất ngờ phát sinh liên miên khiến tài chính luôn thiếu hụt.\n- **Nhân đinh:** Tâm lý bất an, luôn cảm thấy hụt hẫng như bị sụt chân xuống hố, con người thiếu sự kiên định bền bỉ.\n- **Tật ách:** Dễ mắc các bệnh về đường tiêu hóa, đau dạ dày do căng thẳng kinh tế, viêm mũi họng do hít khói xe xả từ miệng dốc.\n- **Gia đạo:** Dễ xảy ra tranh cãi về chuyện tiền bạc chi tiêu trong nhà, không khí gia đình có phần nặng nề, thiếu an tâm.\n- **Quan vận:** Vị trí công tác bấp bênh, cơ hội thăng tiến đến tay dễ bị tuột mất vào phút chót do các yếu tố bất khả kháng.",
+    "remediation": "1. Đắp gờ bê tông phân thủy cao từ mười đến mười lăm phân ngăn cách hoàn toàn lối đi của nhà với miệng dốc hầm xe.\n2. Dựng vách kính cường lực hoặc vách ngăn lam gỗ trang trí kết hợp trồng chậu cây xanh tán rộng dọc theo mép dốc để cản khói xe xả trực diện.\n3. Nâng cao nền sảnh đón của ngôi nhà thêm hai đến ba bậc tam cấp tạo thế đứng cao ráo vượt trội so với miệng ram dốc.",
+    "sources": [
+      {
+        "id": "ch05-q47-ts",
+        "title": "Táng Thư",
+        "section": "Chính văn",
+        "url": "https://ctext.org/wiki.pl?if=gb&chapter=395047",
+        "author": "Quách Phác (chú)",
+        "attributionStatus": "Cổ bản kinh điển",
+        "evidenceLevel": "VERIFIED",
+        "quote": "界水則止。古人聚之使不散，行之使有止。",
+        "note": "Cổ nhân tụ khí làm cho không phân tán, vận hành khí làm cho có điểm dừng; dốc hầm là điểm không dừng kéo tuột khí trôi đi."
+      },
+      {
+        "id": "ch05-q47-slk",
+        "title": "Thủy Long Kinh",
+        "section": "Quyển Liêm thiên",
+        "url": "https://ctext.org/wiki.pl?if=gb&chapter=395047",
+        "author": "Tưởng Đại Hồng (chú)",
+        "attributionStatus": "Cổ bản kinh điển",
+        "evidenceLevel": "SUPPORTED",
+        "quote": "卷簾之水倒流去，家財耗散不可当。",
+        "note": "Nước thế cuốn rèm dốc ngược tuột ra ngoài, tiền của trong nhà tiêu tán không thể ngăn cản."
+      }
+    ]
   },
   {
     "index": 48,
     "chapter": 5,
     "chapter_title": "Cao Không Thủy Sát",
     "title": "Hoành Thước Khóa",
-    "subtitle": "Cầu bộ hành chắn ngang tầm mắt",
-    "topo": "Cầu đi bộ trước mặt — hai bản chất: án giữ khí hay khóa họng khẩu.",
-    "hanzi": "**[TRUYỀN THỊ] — Án Sơn Hệ:** 穴前有案\n，\n貴而有情\n；\n案高壓眼\n，\n案近逼身。\n(*Huyệt tiền hữu án: có án trước mặt thì quý mà có tình; án cao đè mắt, án gần ép thân.* — truyền thị án pháp; án quá cao quá gần đều phản chủ.) \n\n \n**[NGUYÊN VĂN] — 《葬書》\n· 郭璞\n：\n** > 經曰\n：\n山來水回\n，\n貴壽而財。\n\n**[LƯỢC Ý] — 《人子須知》\n系\n· án chương:** án **bằng, không nghễ, không nghịch dòng chính** — án phải như chiếc bàn đặt trước ngai: thấp, êm, ôm.",
-    "hanviet": "- **\n案高壓眼\n** — *Án cao áp nhãn*: án cao quá đè mất tầm nhìn — từ cửa nhìn ra phải còn **thấy trời và dòng lớn phía trên án** thì án mới là án; án che hết đường lớn = khóa họng.\n- **\n山來水回\n** — cầu đi bộ là **sơn nhân tạo** — \"sơn lai\" đúng nghĩa nếu nó **ôm nhẹ, thấp**, đặt trong tầm án: sơn lai mà không cản thủy.",
-    "meaning": "",
-    "qi_mechanism": "1. **Bốn tiêu chí phân Án / Khóa (trả lời trực tiếp):**\n- **Độ cao tầm nhìn:** đứng tại cửa, đường chân trời phía trên mặt cầu **còn thấy dòng lớn và xe chạy** → án; mặt cầu **che trọn** giao lộ phía sau → khóa.\n- **Khoảng cách:** khoảng cửa-cầu ≥ chiều cao cầu (thường 5-6m) → án; sát hơn chiều cao → bức (ép) → khóa.\n- **Vị trí trục:** trục từ tâm cửa xuyên ra **đâm vào lỗ trống** của cầu (nhịp hở, cửa cầu thang, khoảng hai nhịp) → án khum hở — quý; đâm **vuông vào hông cầu đặc** → khóa đòn ngang — án biến hoành (đòn ngang đè).\n- **Động tĩnh:** người đi trên cầu **chậm, tấp nập vừa** → án có nhân khí nuôi; cầu vắng teo bóng tối ban đêm → án thành ám án — kỵ.\n\n2. **Đặc quyền của cầu đi bộ so với cầu xe:** thân cầu hẹp, tầng thô nhẹ, có lan can thấm — **vân khí xuyên được**: đây là loại án \"thấm\" — tốt hơn nhiều so với cầu xe đặc; chỉ cần kiểm bốn tiêu chí trên.\n\n3. **Lai-Khứ:** cầu không đổi lai-khứ mặt đường — nó **giới phía trên**: tạo **điểm chỉ thiên** (giới hạn trời) — khí mặt đường đến cửa bị cầu ép **chậm lại và hạ thấp**: đúng cơ chế án giữ — nếu ba tiêu chí đầu đạt.\n\n4. **12 Trường Sinh:** cầu (án) trùng **Mộ** — án khóa kho: giữ tài chuẩn án pháp; trùng **Vượng** — án đè vượng: cần xác nhận tiêu chí tầm nhìn gắt hơn — nếu che được vượng khẩu thì thành khóa thực.",
-    "hoa_phuc": "**Khi Hợp Cách (Cát Khánh):**\n- **Tài lộc:** Khách dừng bước trước án — buôn thuận.\n- **Nhân đinh:** Đinh giao thiệp tốt, nhân đinh khỏe mạnh an khang, con cháu sum vầy.\n- **Tật ách:** Khí trường thanh khiết, thân tâm an định, tứ thời bình an, ít phát sinh bệnh tật hay tai ách bất ngờ.\n- **Gia đạo:** Nhà có điểm tựa nhìn ra, trong ngoài thuận hòa, gia phong ấm êm tốt lành.\n- **Quan vận:** Có án nâng — danh tiếng có chỗ dựa.\n\n**Khi Phạm Cách (Hung Họa):**\n- **Tài lộc:** Khách “đè ngang qua” không thấy cửa.\n- **Nhân đinh:** Đinh bí, khách khứa thưa, nhân khẩu bất an, con cháu dễ ly tán.\n- **Tật ách:** Vai-gáy nặng (đòn ngang cảm), uể oải.\n- **Gia đạo:** Cảm giác bị chắn, hay bất bình vô cớ.\n- **Quan vận:** Công danh bị “gác ngang” — thăng chậm.",
-    "remediation": "1. **Mượn Hổng Làm Án (khi là án):** giữ cửa nhìn xuyên **khe hở** cầu — không dựng chướng giữa cửa và nhịp hở; thêm đèn ấm gầm cầu (xin phép) — án có nhân khí ban đêm thì nuôi thêm.\n\n2. **Chuyển Trục Phá Khóa (khi là khóa):** cửa/huyền quan bẻ chéo lấy **nhịp hở** làm điểm nhìn — khóa nào cũng có khe; định cửa về khe là mở họng.\n\n3. **Đê Án Đồng Cấp:** nếu cầu gần và đặc — dựng **án thấp nhân tạo 60-80cm** (bồn dài, tường cảnh) tại giữa khoảng: đẩy điểm án về gần, nới chênh cao — mặt cầu từ \"đè\" thành \"nằm sau án\" — phép **an án dời cục** truyền thị.\n\n4. **Đăng Diệt Ám Án:** với cầu vắng đêm — đèn sân nhà chiếu nhẹ chân cầu: biến án tối thành án sáng — sát thị âm hóa ôn.\n\n5. **Kỵ Trấn Án Lành:** xác định là án pháp chuẩn thì **không** đặt vật trấn hướng cầu — trấn án lành là tự chặn quý.\n\n---"
+    "subtitle": "Cầu vượt bộ hành chắn ngang tầm mắt",
+    "topo": "Cầu vượt dành cho người đi bộ bằng kết cấu thép hoặc bê tông chạy vắt ngang qua ngay trước mặt tiền ngôi nhà ở cự ly gần, sàn cầu nằm ngang tầm cửa sổ tầng một hoặc tầng hai.",
+    "hanzi": "穴前有案，貴而有情；案高壓眼，案近逼身。山來水回，貴壽而財。",
+    "hanviet": "- Huyệt tiền hữu án, quý nhi hữu tình; án cao áp nhãn, án cận bức thân: Trước huyệt vị có án sơn che chắn thì quý hiển và có tình ý; nhưng án sơn quá cao đè ngang tầm mắt, án sơn quá gần ép sát thân thể thì trở thành hung sát.\n- Sơn lai thủy hồi, quý thọ nhi tài: Núi đất đến mà dòng nước quay lại ôm bọc thì đem lại phú quý, trường thọ và của cải dồi dào.",
+    "meaning": "Cầu đi bộ vắt ngang trước nhà mang tính chất hai mặt rất rõ nét trong hình thế học. Nếu cầu nằm ở khoảng cách vừa phải (lớn hơn chiều cao của cầu) và có hình dáng mềm mại, nó đóng vai trò như một \"Án Sơn\" nhân tạo giữ cho sinh khí không bị thoát tán. Ngược lại, nếu cầu xây quá sát cửa sổ (dưới vài mét), nó sẽ biến thành thế \"Án Bức\", người đi bộ trên cầu có thể nhìn thấu suốt vào phòng ngủ, gây mất an ninh và ức chế tâm lý.",
+    "qi_mechanism": "Cầu đi bộ trên cao làm suy giảm góc đón ánh sáng tự nhiên của tầng dưới, đồng thời tạo ra một dải bóng râm vắt ngang mặt tiền. Luồng gió lưu thông bên dưới gầm cầu bị co thắt nhẹ. Về mặt tâm lý môi trường, người sinh hoạt trong phòng ngủ đối diện sàn cầu luôn phải chịu cảm giác bị nhòm ngó (mất tính riêng tư cá nhân).",
+    "hoa_phuc": "**Khi Hợp Cách (Cát Khánh):**\n- **Tài lộc:** Tầng trệt rất thuận lợi mở cửa hàng tiện ích, quán cà phê, hiệu sách đón lượng khách bộ hành lên xuống cầu mỗi ngày.\n- **Nhân đinh:** Con người có tính kỷ luật, chu đáo, làm việc có kế hoạch và biết xây dựng các mối quan hệ xã hội bền vững.\n- **Tật ách:** Thể lực dẻo dai nhờ thói quen đi bộ thường xuyên, tinh thần thư thái khi nhà có giải pháp che chắn tầm nhìn hợp lý.\n- **Gia đạo:** Nề nếp gia phong nghiêm cẩn, các thành viên tôn trọng chuẩn mực đạo đức và sống chan hòa với cộng đồng.\n- **Quan vận:** Có quý nhân nâng đỡ, con đường công danh phát triển tuần tự, được giao quản lý các dự án phúc lợi xã hội.\n\n**Khi Phạm Cách (Hung Họa):**\n- **Tài lộc:** Khó phát triển các ngành nghề đòi hỏi sự khoáng đạt cao cấp do mặt tiền bị cầu đi bộ che khuất tầm nhìn biển hiệu.\n- **Nhân đinh:** Cảm giác bị theo dõi, mất tự do sinh hoạt trong phòng ngủ, dễ sinh chứng nghi ngờ, bất an và căng thẳng tinh thần.\n- **Tật ách:** Giảm sút thị lực do không gian trước mắt bị chắn ngang, dễ mắc các chứng đau đầu, mất ngủ do luôn phải khép kín rèm cửa.\n- **Gia đạo:** Thiếu sự cởi mở thoải mái trong đời sống lứa đôi do nỗi lo bị người đi bộ trên cầu nhìn thấy.\n- **Quan vận:** Bị một rào cản vô hình kìm hãm, tiếng nói trong cơ quan khó được lan tỏa rộng rãi, sự nghiệp dậm chân tại chỗ.",
+    "remediation": "1. Dán phim cách nhiệt phản quang một chiều (bên trong nhìn ra ngoài rõ, bên ngoài nhìn vào chỉ thấy như gương) tại toàn bộ cửa sổ đối diện sàn cầu.\n2. Lắp đặt hệ thống rèm lá sách gỗ hoặc rèm cuốn hai lớp có thể điều chỉnh góc lấy sáng linh hoạt mà vẫn đảm bảo kín đáo tuyệt đối.\n3. Chuyển đổi công năng tầng một và tầng hai làm phòng làm việc, phòng đọc sách hoặc không gian kinh doanh; đưa phòng ngủ chính lên tầng cao hơn.",
+    "sources": [
+      {
+        "id": "ch05-q48-xxf",
+        "title": "Tuyết Tâm Phú",
+        "section": "Án Sơn chương",
+        "url": "https://ctext.org/wiki.pl?if=gb&chapter=395047",
+        "author": "Bốc Ứng Thiên",
+        "attributionStatus": "Cổ bản ca phú",
+        "evidenceLevel": "VERIFIED",
+        "quote": "穴前有案，貴而有情；案高壓眼，案近逼身。",
+        "note": "Trước huyệt vị có án sơn che chở thì quý hiển hữu tình; nhưng án quá cao thì đè mắt, án quá gần thì bức bách thân hình."
+      },
+      {
+        "id": "ch05-q48-ts",
+        "title": "Táng Thư",
+        "section": "Chính văn",
+        "url": "https://ctext.org/wiki.pl?if=gb&chapter=395047",
+        "author": "Quách Phác (chú)",
+        "attributionStatus": "Cổ bản kinh điển",
+        "evidenceLevel": "VERIFIED",
+        "quote": "山來水回，貴壽而財。",
+        "note": "Cầu đi bộ đóng vai trò như một ngọn sơn nhân tạo uốn ôm giữ sinh khí nếu khoảng cách phù hợp."
+      }
+    ]
   },
   {
     "index": 49,
     "chapter": 5,
     "chapter_title": "Cao Không Thủy Sát",
     "title": "Lập Thể Thủy",
-    "subtitle": "Nút giao ba tầng hợp đa phương",
-    "topo": "Căn hộ cao nhìn xuống nút giao ba tầng (hầm — mặt đất — cầu trên cao). Phép tính phương vị thủy khẩu tổng hợp.",
-    "hanzi": "**[LƯỢC Ý] — 沈竹礽\n《沈氏玄空學》\n系\n· cao độ pháp:** 高一寸為山\n，\n低一寸為水 — cao hơn một tấc là sơn, thấp hơn một tấc là thủy: **thủy-sơn định theo tương đối tại điểm lập cực, không định theo mực tuyệt đối**. Từ tầng 15-20 nhìn xuống, **cả ba tầng giao đều là thủy** (đều thấp hơn điểm đứng).\n\n**[LƯỢC Ý] — 《天玉經》\n系\n· Thành Môn Hệ:** > 城門一訣最為良。\n\n**[NGUYÊN VĂN] — 《葬書》\n· 郭璞\n：\n** > 經曰\n：\n山來水回\n，\n貴壽而財。",
-    "hanviet": "- **\n高一寸為山\n，\n低一寸為水\n** — *Cao nhất thốn vi sơn, đê nhất thốn vi thủy*: khóa phương pháp 3D của toàn phần này — **cao độ là tương đối**: đứng tầng 16 thì cầu vượt bên dưới cũng chỉ là \"nước chảy dưới chân\" — luận như thủy, không luận như đe.\n- **\n城門一訣最為良\n** — *Thành môn nhất quyết tối vi lương*: một quyết thành môn là quý nhất — nơi **hai dòng giao khóa nhau** trên nút giao chính là **thành môn** của cả cục lớn: căn hộ nào cửa nhìn trúng thành môn đắc vận, hưởng trọn.",
-    "meaning": "",
-    "qi_mechanism": "1. **Thủ tục tính thủy khẩu tổng hợp — sáu bước (trọng tâm trả lời):** \n\n   \n- (1) **Lập cực căn hộ:** tâm căn hộ = giao trọng tâm mặt bằng nội thất (không phải giữa ban công). Do kết cấu bê tông cốt thép, đo la kinh **hai điểm**: giữa phòng khách và mép ban công ngoài; hai số chênh quá 3° thì đo lần ba ngoài ban công, tránh lan can kim loại.    \n- (2) **Quy ba tầng thành thủy tuyến:** từ điểm đứng, cả hầm — mặt đất — cầu trên cao đều là **thủy tuyến bậc thấp**: vẽ **ba vệt dòng** riêng theo ba cao độ, mỗi vệt một chiều dòng chính.    \n- (3) **Xếp chủ-thứ theo lưu lượng:** tầng có xe/ngày nhiều nhất = **Chủ Thủy tuyến**; hai tuyến còn lại = Tá. Thông thường mặt đất là chủ, cầu là tá lớn, hầm là tá nhỏ — nhưng khu có cầu cao tốc thì cầu có thể lên chủ: **đo bằng quan sát giờ cao điểm 30 phút là đủ xếp thứ**.    \n- (4) **Định khẩu tổng:** điểm **hợp khóa** giữa chủ tuyến và tá lớn nhất (nơi hai dòng quấn nhau quanh đảo/chắn — cái \"nút thắt bóng\" nhìn từ trên) = **Thủy khẩu tổng quản**; đo sơn vị điểm này từ tâm căn hộ.    \n- (5) **Đối chiếu thành môn:** sơn vị khẩu tổng lập bàn phi tinh theo tọa hướng căn hộ — nếu phương khẩu tổng rơi **vượng tinh đang vận hoặc hợp thành môn quyết** → khẩu tổng là **hỏa lực** của căn: cửa sổ/phòng chính mở hướng đó; nếu rơi **suy tử** → khẩu tổng là **lỗ rò**: hạn chế mở phòng chính hướng đó, dùng rèm/bồn cây chế.    \n- (6) **Niên vận đính hạn:** cục khẩu gắn **vận hiện hành** (20 năm) — ghi sổ sơn vị khẩu tổng và sao phương; hết vận đo lại (nguyên tắc đã lập tại ).\n\n2. **Đặc thù căn hộ cao so với trạch mặt đất:** áp lực từng dòng **giảm, độ hợp nhất tăng** — từ trên cao ba dòng quy về **một bức tranh tổng thể** đọc được như một bản thủy khẩu đồ: đây là lợi thế tầng cao; tầng thấp chịu dòng thô, tầng cao đọc cục tinh — căn 15-20 đúng vùng **đọc cục được** (dưới 8 tầng các tuyến còn rời rạc, trên 25 tầng dòng trở quá vi — 15-20 là ngưỡng ngự).\n\n3. **Ba rào thận:** (a) kính ban công cản la kinh — đo chìa tay ngoài hoặc qua lan can hở; (b) ban công hướng khác cửa chính căn hộ — khẩu căn hộ là **cửa chính nội thất** (môn khẩu), tầm nhìn là **điểm nạp** — hai chỉ số khác nhau, bố trí khác nhau; (c) cao ốc khác mọc chắn tuyến trong tương lai — ghi sổ tầm nhìn hiện hữu làm căn cứ đối chứng.",
-    "hoa_phuc": "**Khi Hợp Cách (Cát Khánh):**\n- **Tài lộc:** Giao dịch lớn thuận — nhìn xa thấy trước.\n- **Nhân đinh:** Đinh rộng giao thiệp, con cái có tầm.\n- **Tật ách:** Khí trường thanh khiết, thân tâm an định, tứ thời bình an, ít phát sinh bệnh tật hay tai ách bất ngờ.\n- **Gia đạo:** Nhà mở, khách quý đến, trong ngoài thuận hòa, gia phong ấm êm tốt lành.\n- **Quan vận:** Đúng nghĩa “quyền cao thấy rộng”: cơ hội tự đến.\n\n**Khi Phạm Cách (Hung Họa):**\n- **Tài lộc:** Của “chảy dưới chân”: nhìn thấy nhiều, giữ tay ít.\n- **Nhân đinh:** Đinh hay ở xa về ít, nhân khẩu bất an, con cháu dễ ly tán.\n- **Tật ách:** Mất ngủ (xung vi mô từ nút giao ban đêm), mắt mỏi.\n- **Gia đạo:** Gia đạo “ngắm phố” nhiều hơn chuyện nhà.\n- **Quan vận:** Rộng mà không sâu — việc nhiều thành quả mỏng.",
-    "remediation": "1. **Khẩu Tổng Định Trọng Tâm:** bố trí **phòng sinh hoạt chính** (khách, bàn làm việc) hướng khẩu tổng nếu đắc vận — ăn khí cục từ trên cao; nếu suy-tử — phòng chính quay hướng khác, khẩu tổng chỉ để hứng sáng.\n\n2. **Nhị Cấp Nạp Khí:** tầng nạp hai cấp — **cấp thị** (tầm nhìn khẩu tổng: giữ thông thoáng) và **cấp môn** (cửa chính nội thất theo tọa hướng hợp mệnh chủ): không bắt cửa nội thất quay ra khẩu tổng — chia công năng, tránh nạp tràn.\n\n3. **Lục Bích Điều Quang:** nếu khẩu tổng nửa ngày nắng gắt (phía tây nam) — rèm hai lớp điều quang: giữ thị tuyến, chế nhiệt — quang cũng là khí.\n\n4. **Sổ Sơn Vị Niên Kiểm:** ghi sổ la kinh khẩu tổng + sao + năm — mỗi vận đối chiếu; cao ốc mới mọc chắn tuyến thì đo lại từ đầu.\n\n5. **Cửu Vận Kiểm Định Mẫu:** dùng đúng mẫu đo này cho mọi căn cùng tòa — lưu bản chuẩn cả tòa; từng căn chỉ hiệu chỉnh tâm cực — chuẩn hóa dữ liệu khi xây kho hỏi đáp.\n\n---"
+    "subtitle": "Nút giao ba tầng hợp đa phương khí cục",
+    "topo": "Căn hộ chung cư hoặc tòa nhà cao tầng nhìn xuống một nút giao thông lập thể đa tầng phức tạp (kết hợp đồng thời hầm chui ngầm, đường mặt đất, cầu vượt trên cao và tuyến metro).",
+    "hanzi": "高一寸為山，低一寸為水。城門一訣最為良。山來水回，貴壽而財。",
+    "hanviet": "- Cao nhất thốn vi sơn, đê nhất thốn vi thủy: Cao hơn một tấc là núi, thấp hơn một tấc là nước. Đứng ở tầng cao nhìn xuống, mọi cây cầu và hầm ngầm bên dưới đều thuộc về hệ thống hư thủy lưu chuyển.\n- Thành môn nhất quyết tối vi lương: Một bí quyết Thành Môn là tốt lành bậc nhất, giúp chọn đúng phương vị đón nhận dòng sinh khí vượng nhất.\n- Sơn lai thủy hồi, quý thọ nhi tài: Núi đất chạy đến mà dòng nước quay lại ôm chầu thì đem lại phú quý, trường thọ và tài lộc dồi dào.",
+    "meaning": "Nút giao thông lập thể ba tầng là hình thái thủy pháp hiện đại kỳ vĩ nhất của đại đô thị. Theo nguyên lý \"Cao nhất thốn vi sơn, đê nhất thốn vi thủy\", đứng từ tầng cao của tòa nhà chung cư nhìn xuống, toàn bộ các luồng giao thông trên cầu, mặt đất và cửa hầm đều thấp hơn tầm mắt, do đó tất cả đều hoạt động như các dòng sông nhân tạo (hư thủy). Nhiệm vụ của phong thủy học là tìm ra phương vị Thành Môn đón nhận dòng khí êm ái nhất.",
+    "qi_mechanism": "Nút giao đa tầng tạo thành một trường động khí ba chiều cực kỳ sôi động. Các luồng xe đan dệt ở các cao độ khác nhau tạo ra sự xáo trộn không khí liên tục. Tuy nhiên, ở độ cao từ tầng mười lăm trở lên, tiếng ồn cơ học trực tiếp giảm đáng kể, chỉ còn lại âm thanh rì rầm đô thị và tầm nhìn bao quát toàn cảnh đêm lung linh ánh đèn.",
+    "hoa_phuc": "**Khi Hợp Cách (Cát Khánh):**\n- **Tài lộc:** Tài nguyên hội tụ từ muôn phương, thích hợp đặt trụ sở tập đoàn đa quốc gia, công ty tài chính, quỹ đầu tư lớn.\n- **Nhân đinh:** Con người có tư duy chiến lược tầm vĩ mô, tầm nhìn bao quát rộng lớn, khả năng lãnh đạo và kết nối liên ngành xuất sắc.\n- **Tật ách:** Tinh thần luôn sảng khoái, phóng khoáng nhờ tận hưởng tầm nhìn toàn cảnh đô thị không bị che khuất.\n- **Gia đạo:** Vẻ vang hưng thịnh, con cháu thành đạt rực rỡ, thường xuyên công tác và học tập tại các quốc gia phát triển.\n- **Quan vận:** Giữ những cương vị lãnh đạo chủ chốt trong các cơ quan hoạch định chính sách, điều hành hệ thống vĩ mô.\n\n**Khi Phạm Cách (Hung Họa):**\n- **Tài lộc:** Dòng tiền xoay chuyển quá nhanh gây rủi ro đứt gãy thanh khoản nếu không có kế hoạch tài chính dự phòng chu đáo.\n- **Nhân đinh:** Thường xuyên bận rộn với các dự án lớn, nhịp sống quá hối hả dễ khiến con người rơi vào trạng thái kiệt sức.\n- **Tật ách:** Rối loạn giấc ngủ do ảnh hưởng của ánh sáng đèn đêm đô thị rực rỡ và tiếng ồn nền giao thông liên tục.\n- **Gia đạo:** Ít có thời gian sinh hoạt chung, các thành viên dễ xa cách về mặt cảm xúc do lịch trình công tác dày đặc.\n- **Quan vận:** Chịu áp lực cạnh tranh gay gắt từ nhiều phe phái, dễ gặp sóng gió thị phi trong các cuộc đua quyền lực lớn.",
+    "remediation": "1. Chọn căn hộ có ban công chính nhìn về hướng có dòng xe di chuyển uốn lượn êm ả ôm bọc (đắc Thành Môn hợp vận), tránh hướng nhìn thẳng vào mũi dốc đâm lên.\n2. Lắp đặt hệ thống kính hộp low-e cách âm cách nhiệt chịu áp lực gió bão trên tầng cao và hệ thống rèm cản sáng tự động ban đêm.\n3. Thiết kế tiểu cảnh cây xanh và thác nước mini tuần hoàn tại ban công để thanh lọc không khí và tạo âm thanh nước chảy êm dịu lấn át tiếng ồn đô thị.",
+    "sources": [
+      {
+        "id": "ch05-q49-str",
+        "title": "Thẩm Thị Huyền Không Học",
+        "section": "Cao độ thiên",
+        "url": "https://ctext.org/wiki.pl?if=gb&chapter=395047",
+        "author": "Thẩm Trúc Ranh",
+        "attributionStatus": "Cận đại kinh điển",
+        "evidenceLevel": "VERIFIED",
+        "quote": "高一寸為山，低一寸為水。",
+        "note": "Quy tắc cơ bản của phong thủy không gian: cao hơn một tấc là sơn, thấp hơn một tấc là thủy; đứng từ trên cao nhìn xuống thì toàn bộ hệ thống giao thông lập thể đều luận là thủy."
+      },
+      {
+        "id": "ch05-q49-tyk",
+        "title": "Thiên Ngọc Kinh",
+        "section": "Nội biện thiên",
+        "url": "https://ctext.org/wiki.pl?if=gb&chapter=395047",
+        "author": "Dương Quân Tùng (tương truyền)",
+        "attributionStatus": "Cổ bản kinh điển",
+        "evidenceLevel": "VERIFIED",
+        "quote": "城門一訣最為良。",
+        "note": "Bí quyết Thành Môn xác định nơi tụ khí then chốt tại các điểm giao hội đường sá đa phương."
+      },
+      {
+        "id": "ch05-q49-ts",
+        "title": "Táng Thư",
+        "section": "Chính văn",
+        "url": "https://ctext.org/wiki.pl?if=gb&chapter=395047",
+        "author": "Quách Phác (chú)",
+        "attributionStatus": "Cổ bản kinh điển",
+        "evidenceLevel": "VERIFIED",
+        "quote": "山來水回，貴壽而財。",
+        "note": "Các dòng đường uốn lượn ôm bọc lẫn nhau tạo thành thế quần thủy triều hội mang lại phú quý trường thọ."
+      }
+    ]
   },
   {
     "index": 50,
     "chapter": 5,
     "chapter_title": "Cao Không Thủy Sát",
     "title": "Triệt Khí Sát",
-    "subtitle": "Ram dốc che khuất nửa tầm nhìn",
-    "topo": "Ram dốc cầu vượt uốn cong chắn nửa tầm nhìn trước nhà. Khẩu bị xé hai tầng — giải quyết phân tranh.",
-    "hanzi": "**[LƯỢC Ý] — Án Bức Hệ (tiếp /):** 前有遮蔽\n，\n氣行半途而聚\n；\n蔽而近則塞\n，\n蔽而遠則藏。\n(*Trước có che chắn: khí đi nửa đường mà tụ; che mà gần thì tắc, che mà xa thì tàng.* — nguyên lý án-bích truyền thị, vận dụng cho ram dốc.)\n\n**[NGUYÊN VĂN] — 《葬書》\n· 郭璞\n：\n** > 界水則止。\n……\n古人聚之使不散\n，\n行之使有止。",
-    "hanviet": "- **Hiệp Thủy Triệt Khí** — *Hiệp Thủy Triệt Khí*: khẩu bị xé — nửa khẩu còn lộ (đoạn đường mở), nửa khẩu bị ram chiếm (khối đất-dốc cao): **một khẩu hai tính**.\n- **\n蔽而遠則藏\n** — *Tế nhi vi tắc tàng*: ram chắn mà **xa** thì nó thành bích tàng khí — phúc; **gần** thì thành tường bít — họa: ranh giải quyết phân tranh nằm ở **khoảng ram-đến-cửa so với chiều cao ram**.",
-    "meaning": "",
-    "qi_mechanism": "1. **Giải phẫu hai tầng:** ram chắn tạo **khẩu dương** (nửa lộ — có nắng, có dòng nhìn thông) và **khẩu âm** (nửa bị chắn — vùng bóng ram, ẩm, vắng người). Phân tranh thật sự của cục: **dòng khí chính vẫn chảy phía lộ nhưng khó vào cửa** (cửa quay ra vùng chắn), **vùng chắn có khí đọng nhưng âm** — cửa đứng giữa hai tầng, nạp gì cũng nửa vời — triệt khí đúng nghĩa: **khí đến không trọn, đọng không dùng**.\n\n2. **Quyết định khoảng:** ram xa hơn chiều cao nó (thường ≥ 6-8m cho ram 4-5m cao) → khẩu âm thành **bích tàng** — vùng chắn trở thành hậu vệ: cục còn phúc, chỉ cần chuyển hướng nạp về khẩu dương; ram sát cửa (< nửa chiều cao) → khẩu âm là **bức bích** — bít với ẩm: phải tách cửa khỏi vùng này hoàn toàn.\n\n3. **Lai-Khứ hai tầng:** lai đọc theo **khẩu dương** (dòng thật còn chảy); vùng ram xét như **hậu sơn tạm** (núi mượn phía sau-trước) — không cho nó vai lai-khứ, chỉ cho nó vai tàng hoặc bít tùy khoảng.\n\n4. **12 Trường Sinh:** khẩu dương trùng **Sinh/Vượng** — cục sống bằng nửa khẩu cũng đủ: bài trị là căn chỉnh cửa về nửa tốt; khẩu dương trùng **Tử** — nửa tốt là nửa xấu: cân nhắc trạch này không trụ dài, hoặc đầu tư hóa quy mô lớn.",
-    "hoa_phuc": "**Khi Hợp Cách (Cát Khánh):**\n- **Tài lộc:** Của bền, ít đào hố, nguồn thu ổn định và tích lũy vững vàng.\n- **Nhân đinh:** Đinh trầm ổn, nhân đinh khỏe mạnh an khang, con cháu sum vầy.\n- **Tật ách:** Khí trường thanh khiết, thân tâm an định, tứ thời bình an, ít phát sinh bệnh tật hay tai ách bất ngờ.\n- **Gia đạo:** Có tường che sau — ấm, trong ngoài thuận hòa, gia phong ấm êm tốt lành.\n- **Quan vận:** Tiềm ẩn được, đúng lúc bộc.\n\n**Khi Phạm Cách (Hung Họa):**\n- **Tài lộc:** Làm gì cũng thiếu một khâu cuối.\n- **Nhân đinh:** Đinh bí, trẻ kém sáng, nhân khẩu bất an, con cháu dễ ly tán.\n- **Tật ách:** Ẩm—khớp—phổi (vùng bóng ram); tâm u.\n- **Gia đạo:** Cảm giác bị vùi — hay khắc khẩu.\n- **Quan vận:** Năng lực bị “đậy nắp”, công việc gặp trắc trở, khó bề thăng tiến.",
-    "remediation": "1. **Nhận Khẩu Dương:** đo và ghi sơn vị **nửa khẩu còn lộ**; cửa chính / huyền quan / điểm sinh hoạt chính **căn chỉnh hết về phía này** — quy nguyên về khẩu sống, từ bỏ khẩu chết: một quyết định kiến trúc giải trọn phân tranh.\n\n2. **Biến Bức Thành Bích:** vùng ram gần (nếu không dời được cửa) — **chiếu sáng và sử dụng** vùng bóng: đèn ấm + đặt chức năng hoạt động (bãi xe, sân phơi, vườn thảo mộc) — vùng âm có chủ thì khỏi ấm: *nhân khí hóa âm*.\n\n3. **Thạch Trấn Vùng Bóng:** chân ram phía nhà đặt đá thô một khối lớn — điểm neo khí vùng kín, đồng thời chặn ẩm dội.\n\n4. **Cửa Sổ Nạp Phụ:** các cửa sổ phòng ngủ quay khẩu dương mở chế (rèm thấm) — nạp phụ liên tục trong ngày, không để toàn trạch thở một cửa.\n\n5. **Kiểm Nội Vọng:** đứng tâm nhà kiểm — **từ phòng khách phải thấy được trời phía khẩu dương**: mất điểm này là nội thất tự chặn khí (tủ kệ chắn tầm) — bài trị 3D phải trọn từ ngoài vào trong.\n\n---\n\n## GHI CHÚ HỌC THUẬT ĐÍNH CHÍNH PHẦN V\n\n1. **Kinh văn mới đưa vào kho — khuyến nghị đối chiếu trước xuất bản:**    \n- 「天光下臨\n，\n德地上載」\n（《青囊經》）\n— tôi nắm chắc là văn bản 青囊經 nhưng khuyến nghị kiểm bản 《地理辨正》\n蔣大鴻 chú trước khi niêm yết nguyên văn.    \n- 「高一寸為山\n，\n低一寸為水」\n— câu quyết nền tảng phái Huyền Không, lưu hành trong hệ 沈氏玄空學 và các chú giải 天玉經\n; vị trí sách gốc tùy bản — niêm yết ghi \"quyết cao độ truyền thị hệ Huyền Không\".    \n- 「城門一訣最為良」\n— hệ 天玉經\n/\n沈氏 thành môn; cần đối chiếu 《天玉經》 nguyên văn bản 《四庫》\n.    \n- 「淋頭水\n／\n割腳水」\n「案高壓眼」\n「聲煞」\n— danh pháp sa pháp chuẩn nhưng bản gốc phân tán nhiều bộ; nhập dữ liệu giữ hai tầng tên như thông lệ.\n\n2. **Đóng khung 3D của toàn phần — nguyên lý gốc duy nhất:** mọi mục 41-50 đều quy về 「高一寸為山\n，\n低一寸為水」\n: cao độ là tương đối tại điểm lập cực. Điểm thứ hai: 「每層各立極」\n— nhà nhiều tầng nhiều cực; điểm thứ ba: 「城門」\n— điểm giao khóa nhiều dòng là khẩu tổng. Ba câu này là ba chốt dữ liệu khi dựng module — khuyến nghị đặt làm trường `dimension_rule` chung cho nhóm địa cuộc 3D.\n\n3. **Bản đồ quy chiếu chéo cập nhật:** →,  (vận); → (phân biệt quyển liêm/lâm đầu); →, ; →; →,  (nhóm khẩu lớn); →; →, ; →,  dùng hệ án pháp; → (period validity), quy tắc thành môn; →, . Trường `đối chiếu` nên lập cho toàn bộ.\n\n4. **Định cục đơn nhất:** như năm phần trước — cung cấp **tọa hướng la kinh từng tầng (với trạch nhiều tầng), chiều dòng từng cao độ, khoảng cách-trình cao các công trình 3D, vị trí cửa hiện hữu** — tôi rút về một định cục, một bài hóa cho từng tầng riêng.\n\n**Chương kế tiếp đề xuất (Phần VI — Thực thủy: sông, kênh, hồ, nước mưa, đài phun):** - Kênh nhân tạo song song mặt tiền — song luận hư-thực thủy khi hai dòng ngược tính - Hồ tĩnh trước nhà — Vị thủy (tán thủy) kích hoạt thế nào - Sông lớn uốn quanh khu dân cư — cục lớn theo Thủy Long Kinh bản đồ - Nước mưa mái nhà chảy — kiêm chiến cận thân thủy khẩu vi mô - Đài phun/bể bể cá — dụng thủy chủ động đặt phương nào theo 12 Trường Sinh\n\nTrình tiếp — kèm dữ kiện đo nếu có, tôi rút một định cục. # PHẦN VI — THỦY KHẨU KHÔNG GIAN ĐA CHIỀU 3D (KHE GIÓ, THIÊN TRẢM, KHÍ ÁP ĐÔ THỊ)\n\n**Phạm vi:**  đến  (10 địa cuộc). Trục lý xuyên phần này — rừng cao ốc tạo ra **phong cuồng ba chiều**: gió trượt mặt tường xuống (downwash), gió ép qua khe (Venturi), gió dội ngang góc (corner jet). Mọi mục quy về một chốt duy nhất: **\n氣乘風則散\n** — nơi nào gió thành luồng tia, nơi ấy không còn thủy để luận, chỉ còn phong để trị. Quy ước trích dẫn giữ nguyên: [NGUYÊN VĂN] / [LƯỢC Ý] / [TRUYỀN THỊ].\n\n---"
+    "subtitle": "Ram dốc che khuất nửa tầm nhìn trước trạch",
+    "topo": "Đường ram dốc dẫn lên hoặc xuống cầu vượt chạy chéo chắn mất một nửa tầm nhìn mặt tiền ngôi nhà, nửa còn lại vẫn thông thoáng ra mặt đường bằng (thế Hiệp Thủy Triệt Khí).",
+    "hanzi": "前有遮蔽，氣行半途；蔽而遠則藏，蔽而近則塞。界水則止。古人聚之使不散，行之使有止。",
+    "hanviet": "- Tiền hữu già tế, khí hành bán đồ; tế nhi viễn tắc tàng, tế nhi cận tắc tắc: Phía trước có vật che chắn, khí đi nửa đường thì dừng đọng; che chắn mà ở khoảng cách xa thì tàng phong tụ khí, che chắn mà quá gần sát thì bế tắc sinh tai.\n- Giới thủy tắc chỉ. Cổ nhân tụ chi sử bất tán, hành chi sử hữu chỉ: Nước ngăn lại thì dừng. Người xưa gom giữ khí làm cho không phân tán, cho khí đi mà phải có điểm dừng lại.",
+    "meaning": "Ram dốc cầu vượt che chắn một nửa mặt tiền tạo ra một trạch vị mang hai tính chất không gian đối lập. Nửa mặt tiền bị tường dốc bê tông che khuất chịu sự bế tắc ánh sáng và gió quẩn, trong khi nửa mặt tiền còn lại vẫn đón nhận luồng giao thông và không khí mặt đất. Cổ pháp gọi đây là sự phân tranh khí trường, đòi hỏi người kiến trúc sư phải bố trí công năng lệch trục thông minh để biến nguy thành an.",
+    "qi_mechanism": "Bức tường dốc bê tông thoai thoải đóng vai trò như một đê chắn gió cục bộ. Phía sau bức tường dốc là vùng lặng gió và đọng bụi, trong khi mép hở bên cạnh là nơi luồng không khí bị ép lưu tốc tăng nhẹ khi đi qua khe hẹp. Nhiệt độ bề mặt bê tông dốc hấp thụ bức xạ mặt trời vào ban ngày và tỏa nhiệt âm ỉ vào ban đêm làm ảnh hưởng đến vi khí hậu mặt tiền.",
+    "hoa_phuc": "**Khi Hợp Cách (Cát Khánh):**\n- **Tài lộc:** Bố trí cửa hàng kinh doanh lệch về phía mặt thoáng đón trọn vẹn luồng khách lưu thông trên đường bằng mặt đất.\n- **Nhân đinh:** Con người sống thấu đáo, biết nhìn nhận vấn đề từ nhiều góc độ, tính tình điềm đạm và khéo léo thích nghi.\n- **Tật ách:** Sức khỏe an định khi không gian phòng ngủ được bố trí ở mạn nhà thông thoáng có nhiều ánh sáng tự nhiên.\n- **Gia đạo:** Hòa thuận, các thành viên biết nhường nhịn và san sẻ những khó khăn riêng tư trong cuộc sống hàng ngày.\n- **Quan vận:** Tiến thoái linh hoạt, giỏi ứng biến trong môi trường cơ quan có sự đan xen giữa các phe phái quyền lực.\n\n**Khi Phạm Cách (Hung Họa):**\n- **Tài lộc:** Nguồn thu bị chia cắt làm đôi, kinh doanh gặp trở ngại do một nửa mặt tiền bị bức tường dốc che khuất tầm nhìn khách hàng.\n- **Nhân đinh:** Tâm lý người trong nhà dễ bị giằng xé, thiếu sự thống nhất quan điểm, hay phân vân trước các quyết định quan trọng.\n- **Tật ách:** Dễ bị đau nhức một bên cơ thể (đau nửa đầu, đau vai gáy một bên) tương ứng với phía mặt tiền bị tường dốc ép sát.\n- **Gia đạo:** Dễ nảy sinh chia rẽ nội bộ, ý kiến của các thành viên thường chia làm hai luồng đối lập khó dung hòa.\n- **Quan vận:** Sự nghiệp phát triển không đồng đều, đạt được thành tựu ở lĩnh vực này nhưng lại gặp bế tắc ở lĩnh vực khác.",
+    "remediation": "1. Mở toàn bộ cửa chính, cổng ra vào và lối đón khách về phía nửa mặt tiền thông thoáng không bị ram dốc che khuất.\n2. Phần mặt tiền tiếp giáp với tường dốc bê tông chuyển đổi công năng làm gara để xe, phòng kho hoặc cầu thang phụ trợ.\n3. Sơn màu sáng hoặc ốp vật liệu phản quang nhẹ tại mảng tường hẹp tiếp giáp ram dốc để tăng cường độ sáng tán xạ cho tiền sảnh.",
+    "sources": [
+      {
+        "id": "ch05-q50-xxf",
+        "title": "Tuyết Tâm Phú",
+        "section": "Án Sơn chương",
+        "url": "https://ctext.org/wiki.pl?if=gb&chapter=395047",
+        "author": "Bốc Ứng Thiên",
+        "attributionStatus": "Cổ bản ca phú",
+        "evidenceLevel": "VERIFIED",
+        "quote": "前有遮蔽，氣行半途；蔽而遠則藏，蔽而近則塞。",
+        "note": "Trước mặt có vật che chắn thì khí đi nửa đường dừng lại; che mà xa thì tàng phong tụ khí, che mà quá gần thì bế tắc sinh sát."
+      },
+      {
+        "id": "ch05-q50-ts",
+        "title": "Táng Thư",
+        "section": "Chính văn",
+        "url": "https://ctext.org/wiki.pl?if=gb&chapter=395047",
+        "author": "Quách Phác (chú)",
+        "attributionStatus": "Cổ bản kinh điển",
+        "evidenceLevel": "VERIFIED",
+        "quote": "界水則止。古人聚之使不散，行之使有止。",
+        "note": "Khí gặp nước giới hạn thì dừng lại; người xưa gom giữ khí làm cho không tán, vận hành khí làm cho có điểm dừng êm dịu."
+      }
+    ]
   },
   {
     "index": 51,

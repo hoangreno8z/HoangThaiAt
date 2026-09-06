@@ -178,6 +178,50 @@ Ngày đối chiếu: 2026-09-06. Phạm vi: **Thâm Hẻm Bế Khí, câu 31–
 | 39 | Thủy Pháp quyết, Táng Thư | Dính nhãn cồng kềnh, phân tích thiếu ranh giới | 《水龍經》, 《葬書》, 《入地眼圖說》 | VERIFIED / SUPPORTED | Khảo chứng câu chuẩn, giải thích cơ chế giảm tốc tự nhiên của các khúc cua ruột dê, chọn cung lõm đặt cổng |
 | 40 | Táng Thư, Triều Án hệ | Dính nhãn cồng kềnh, đưa tỷ lệ số đo áp bức | 《葬書》, 《雪心賦》, 《黃帝宅經》 | VERIFIED / SUPPORTED | Dẫn đúng nguyên văn kinh điển, phân tích vùng xoáy áp suất âm trước bức tường đặc, giải pháp đèn daylight và giếng trời sau |
 
+---
+
+# Kiểm toán nguồn Vấn đáp — Chương 05
+
+Ngày đối chiếu: 2026-09-06. Phạm vi: **Cao Không Thủy Sát, câu 41–50**. Không triển khai chương kế tiếp.
+
+## Điểm khôi phục và kiểm kê
+
+- Repository: https://github.com/hoangreno8z/HoangThaiAt ; nhánh triển khai: `main`.
+- Điểm kiểm tra release Chương 4: `e0610c5` (chứa đầy đủ Chương 1, 2, 3, 4 đã nghiệm thu).
+- Nhánh dự phòng: `backup/van-dap-ch05-e0610c5`. Dùng nhánh này để xem bản trước; nếu cần hoàn tác production, tạo commit revert cho commit sửa chương rồi triển khai theo luồng hiện có.
+- Dữ liệu: `js/hoidap_data.js`, `data/hoidap_data.json`, `window.HOIDAP_CHAPTERS`, `window.HOIDAP_DATA`.
+- Bộ hiển thị: `js/hoidap_ui.js` (hỗ trợ `renderReviewedBody` cho tất cả câu có `sources[]`, cập nhật hero description Chương 5), CSS: `css/hoidap.css`; route hiện hữu: `#/van-dap`.
+- Kiểm kê: 100 câu; chương 5 đúng 10 câu với ID 41–50. Danh mục chương, Chương 1 (câu 01–10), Chương 2 (câu 11–20), Chương 3 (câu 21–30), Chương 4 (câu 31–40) và 50 đối tượng câu 51–100 được kiểm tra bằng so sánh sâu với SHA release Chương 4 và SHA baseline ban đầu.
+
+| ID | Tiêu đề giữ lại | Trọng tâm cần sửa | Phạm vi trường phái |
+|---|---|---|---|
+| 41 | Trảm Yêu Sát | Cầu vượt / đường trên cao ngang tầm thắt lưng công trình; phân tầng khí hóa giải xung chấn | Táng Thư, Thanh Nang Kinh; kính cách âm 2 lớp, rèm cản quang và thanh lọc vi khí hậu tầng lầu |
+| 42 | Thác Thủy Sát | Cầu vượt cắm trụ dốc đổ xiên dội thẳng áp sát; cơ chế thủy lưu xối xả phóng xuống chân | Táng Thư, Tuyết Tâm Phú; bình phong chuyển hướng dòng khí nạp, tiểu cảnh tụ thủy trước sảnh |
+| 43 | Áp Đỉnh Sát | Nhà kẹp dưới gầm dạ cầu hoặc đường trên cao che phủ; hóa giải bóng râm âm u và đè nén | Hoàng Đế Trạch Kinh (Tổng luận & Ngũ Hư Ngũ Thực); bổ sung quang phổ nhân tạo, giếng trời và quạt áp lực dương |
+| 44 | Cao Phản Cung | Cầu vượt uốn cong lưng chém vào ban công tầng cao; phân biệt nội hoàn bao bọc với ngoại phản cắt xé | Thủy Long Kinh, Táng Thư; vách kính cường lực dán phim tán xạ, bồn cây xanh cản bụi và tán xung khí |
+| 45 | Thôn Hư Sát | Đường trên cao chạy sát vách tạo hốc hút gió bụi mù; bẫy áp suất chân không và vi chấn động | Táng Thư, Tuyết Tâm Phú; thiết kế cửa kín khí (air-tight), lam chắn gió khí động học bẻ gãy lực hút |
+| 46 | Kình Thiên Trụ | Trụ bê tông cầu vượt đồ sộ án ngữ trước mặt tiền; giải phóng thị giác Minh Đường bị nghẽn | Tuyết Tâm Phú, Táng Thư; chuyển trục tiếp cận sảnh chính, chiếu sáng nghệ thuật và thảm xanh che chắn |
+| 47 | Quyển Liêm Hầm | Cửa hầm chui / dốc hầm xe đâm nghiêng trước cửa; cơ chế dốc tuột cuốn bay sinh khí | Táng Thư, Thủy Long Kinh; gờ chắn đổi dốc, bậc tam cấp nâng cốt và bồn cây xanh giữ tụ tụ khí |
+| 48 | Hoành Thước Khóa | Cầu vượt đi bộ bắc ngang ngang mắt chắn Minh Đường; giải tỏa thế then cài cửa và góc nhìn xâm phạm | Tuyết Tâm Phú, Táng Thư; rèm cuốn một chiều, nâng vòm đón khí và tiểu cảnh nội đình thanh thoát |
+| 49 | Lập Thể Thủy | Nút giao lập thể nhiều tầng chằng chịt bao vây; phân biệt hư thủy đắc vận với loạn lưu xung sát | Thẩm Thị Huyền Không Học, Thiên Ngọc Kinh, Táng Thư; đo la bàn chính xác từ tâm trạch, mở nạp khí ở phương vị sinh vượng |
+| 50 | Triệt Khí Sát | Nhánh cầu vượt cắt chéo chia cắt không gian; cân bằng lại thế trạch xiên xẹo mất phương vị | Tuyết Tâm Phú, Táng Thư; tạo khoảng lùi đệm, nắn vuông vắn nội thất và định vị trục khí chủ đạo |
+
+## Nhật ký kiểm chứng từng câu
+
+| ID | Nguồn cũ | Vấn đề | Nguồn xác minh | Mức độ | Thay đổi |
+|---|---|---|---|---|---|
+| 41 | Táng Thư (ghép), Trảm Yêu Quyết | Câu Hán AI tự chế nhãn, đưa số đo cứng 3 tầng lầu | 《葬書》, 《青囊經》 | VERIFIED | Trích đúng kinh văn chuẩn, phân tích cơ chế cắt tầng khí quyển và vi chấn động tần số thấp, giải pháp kính cách âm 2 lớp |
+| 42 | Táng Thư, Thủy Triều Quyết | Gán ghép nhãn cồng kềnh, dọa tuyệt đinh phá sản | 《葬書》, 《雪心賦》 | VERIFIED | Dẫn đúng nguyên văn Táng Thư & Tuyết Tâm Phú, phân tích động năng phương tiện đổ dốc và bụi khói cuốn theo, giải pháp bình phong |
+| 43 | Hoàng Đế Trạch Kinh (dính tiếng Việt), Táng Thư | Dính tiếng Việt trong Hán văn, dọa âm khí tà ma | 《黃帝宅經》 (Tổng luận & Ngũ Hư Ngũ Thực) | VERIFIED | Khôi phục Hán văn sạch 100%, phân tích thiếu hụt quang thông và tích tụ vi khí hậu ẩm lạnh, giải pháp chiếu sáng nhân tạo toàn phổ |
+| 44 | Thủy Long Kinh (ghép), Táng Thư | Tự chế nhãn gán ghép, dọa lưỡi đao chém đứt gia tài | 《水龍經》, 《葬書》 | VERIFIED | Dẫn đúng nguyên văn Thủy Long Kinh, giải thích lực ly tâm cơ học và vệt đèn pha quét ban đêm, giải pháp phim cản nhiệt tán xạ |
+| 45 | Táng Thư, Hư Phong Quyết | Dính nhãn cồng kềnh, đưa số đo giả định 1m | 《葬書》, 《雪心賦》 | VERIFIED | Dẫn đúng kinh văn chuẩn, giải mã hiệu ứng áp suất âm Bernoulli hút khí và bụi mịn, đề xuất cửa kính kín khí và lam chắn gió |
+| 46 | Tuyết Tâm Phú (ghép), Táng Thư | Câu Hán AI tự ghép nhãn, dọa dẫm trụ đá đè chết | 《雪心賦》, 《葬書》 | VERIFIED | Trích đúng câu chuẩn trong Tuyết Tâm Phú, phân tích cảm giác bức bách thị giác và điểm mù giao thông, giải pháp đổi hướng tiếp cận |
+| 47 | Thủy Long Kinh (ghép nhãn), Táng Thư | Dính nhãn cồng kềnh, phân tích thiếu ranh giới | 《葬書》, 《水龍經》 | VERIFIED | Khôi phục Hán văn sạch, phân tích dòng xả khí thải từ hầm xe và lực hút dốc âm, đề xuất tam cấp nâng cốt sàn và gờ đổi dốc |
+| 48 | Tuyết Tâm Phú, Triều Án Quyết | Đưa số đo giả định 2m, dính nhãn cồng kềnh | 《雪心賦》, 《葬書》 | VERIFIED | Dẫn đúng kinh văn chuẩn, giải thích thế then ngang cản trở tầm nhìn và ánh sáng, giải pháp rèm cuốn một chiều bảo toàn riêng tư |
+| 49 | Thẩm Thị Huyền Không Học (dính tiếng Việt), Thiên Ngọc Kinh | Dính tiếng Việt trong Hán văn, phán toàn họa không phân cát hung | 《沈氏玄空學》, 《天玉經》, 《葬書》 | VERIFIED | Khôi phục nguyên văn cổ, phân biệt hư thủy động tĩnh theo vượng suy thời vận, giải pháp la bàn lập cực tìm phương vị thu nạp khí |
+| 50 | Tuyết Tâm Phú, Hình Sát Quyết | Tự chế nhãn gán ghép, dọa dẫm hình đao phạt trạch | 《雪心賦》, 《葬書》 | VERIFIED | Khảo chứng câu chuẩn, giải thích thế trạch bị cắt xéo mất cân đối hình học, đề xuất thiết kế cảnh quan bù góc và nắn trục khí |
+
+
 
 
 
