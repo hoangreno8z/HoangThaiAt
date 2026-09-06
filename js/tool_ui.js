@@ -1633,6 +1633,19 @@ ${reportText}
       });
     }
 
+    const indEngine = (typeof IndustryEconomicEngine !== 'undefined') ? IndustryEconomicEngine : (typeof window !== 'undefined' ? window.IndustryEconomicEngine : null);
+    const currentIndKey = this._currentIndustryKey || 'CAFE';
+    let initialIndustryEcon = null;
+    if (indEngine && indEngine.calculateIndustryMarket) {
+      initialIndustryEcon = indEngine.calculateIndustryMarket({
+        provinceId: currentProvince.historical_id,
+        districtId: districts.length > 0 ? districts[0].id : null,
+        radiusMeters: this._currentRadiusMeters || 1000,
+        industryKey: currentIndKey
+      });
+    }
+    const industryCatalog = (indEngine && indEngine.getIndustryCatalog) ? indEngine.getIndustryCatalog() : {};
+
     return `
       <div style="background:rgba(18,24,38,0.75); border:1px solid rgba(16,185,129,0.3); border-radius:12px; padding:1.8rem; margin-bottom:2rem;">
         
@@ -1907,6 +1920,62 @@ ${reportText}
           </div>
         </div>
 
+        <!-- PHÂN HỆ PHÂN TÍCH NGÀNH NGHỀ CHUYÊN SÂU & ĐỘNG THÁI CỬA HÀNG (VSIC 2025 & CHURN INTEL) -->
+        <div style="background:rgba(15,23,42,0.85); border:1px solid rgba(245,158,11,0.3); border-radius:10px; padding:1.4rem; margin-bottom:1.8rem;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem; flex-wrap:wrap; gap:0.5rem;">
+            <div>
+              <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.25rem;">
+                <span style="font-size:0.74rem; font-weight:800; color:#F59E0B; background:rgba(245,158,11,0.15); border:1px solid rgba(245,158,11,0.4); padding:0.15rem 0.5rem; border-radius:4px;">
+                  HỆ THỐNG NGÀNH VSIC 2025
+                </span>
+                <span style="font-size:0.72rem; color:#34D399; background:rgba(52,211,153,0.12); padding:0.15rem 0.45rem; border-radius:4px;">
+                  FOURSQUARE OS PLACES DELTA + NSO
+                </span>
+              </div>
+              <h3 style="font-size:1.15rem; color:#FEF3C7; margin:0.3rem 0 0.2rem 0; font-weight:700;">
+                Phân Tích Ngành Nghề & Động Thái Sinh - Tử Điểm Bán
+              </h3>
+              <div style="font-size:0.78rem; color:var(--text-muted);">
+                Chọn ngành khảo sát cụ thể để đánh giá dung lượng khách hàng mục tiêu, số lượng cửa hàng đối thủ, tỷ lệ đào thải (Churn) và Điểm cơ hội mở điểm bán.
+              </div>
+            </div>
+            <div style="font-size:0.75rem; color:#38BDF8; background:rgba(56,189,248,0.1); border:1px solid rgba(56,189,248,0.3); padding:0.3rem 0.7rem; border-radius:6px; font-weight:700;">
+              Chỉ số DSR (Demand-to-Supply)
+            </div>
+          </div>
+
+          <!-- Bộ Chọn 6 Ngành Nghề Kinh Doanh Trọng Điểm -->
+          <div style="display:flex; gap:0.5rem; flex-wrap:wrap; margin-bottom:1.2rem; background:rgba(0,0,0,0.3); padding:0.6rem; border-radius:8px;">
+            ${Object.values(industryCatalog).map(ind => {
+              const isActive = (ind.id === (currentIndKey || 'CAFE'));
+              return `
+                <button type="button" class="industry-btn" data-industry="${ind.id}"
+                  onclick="window.toolUI.selectIndustryAndCalculate('${currentProvince.historical_id}', '${ind.id}')"
+                  style="background:${isActive ? 'rgba(245,158,11,0.25)' : 'rgba(255,255,255,0.05)'}; 
+                         border:1px solid ${isActive ? '#F59E0B' : 'rgba(255,255,255,0.12)'}; 
+                         color:${isActive ? '#FBBF24' : '#E2E8F0'}; 
+                         padding:0.4rem 0.8rem; border-radius:6px; font-size:0.78rem; font-weight:700; cursor:pointer; 
+                         display:flex; align-items:center; gap:0.4rem; transition:all 0.15s ease;">
+                  <span>${ind.icon}</span>
+                  <span>${ind.shortName}</span>
+                </button>
+              `;
+            }).join('')}
+          </div>
+
+          <!-- Container Hiển Thị 4 Khối Báo Cáo Ngành -->
+          <div id="kinhte-industry-report">
+            ${initialIndustryEcon ? this.renderIndustryReportHtml(initialIndustryEcon) : '<div style="padding:1rem; text-align:center; color:var(--text-muted);">Đang tính toán động thái ngành nghề...</div>'}
+          </div>
+
+          <!-- Giải trình cơ chế cập nhật tự động định kỳ vs thủ công -->
+          <div style="margin-top:1.2rem; background:rgba(0,0,0,0.25); border:1px dashed rgba(255,255,255,0.15); border-radius:8px; padding:0.85rem 1.1rem; font-size:0.76rem; color:#94A3B8; line-height:1.65;">
+            <div style="font-weight:700; color:#FBBF24; margin-bottom:0.3rem;">📌 Cơ Chế Cập Nhật Định Kỳ Tự Động vs Thủ Công:</div>
+            • <strong>Cập nhật Tự Động Định Kỳ (Hàng tháng):</strong> Tích hợp tự động qua API Foursquare OS Places Delta Feed hàng tháng (ghi nhận cửa hàng thêm mới <code>is_new</code> / đóng cửa rời bản đồ <code>is_deleted</code>), kết hợp crawler định kỳ từ Cổng Thông tin Đăng ký Doanh nghiệp Quốc gia (dữ liệu giải thể pháp lý).<br>
+            • <strong>Phân biệt rõ Cửa hàng biến mất (POI Churn) vs Phá sản pháp lý:</strong> Một điểm bán đóng cửa trả mặt bằng (hết hạn hợp đồng, chuyển điểm kinh doanh đón phong thủy tốt hơn) được thống kê là <em>POI Churn</em> (thanh lọc vị trí), không đồng nhất với <em>Phá sản giải thể doanh nghiệp</em>.
+          </div>
+        </div>
+
         <!-- NHẬN ĐỊNH THỊ TRƯỜNG & KẾT HỢP PHONG THỦY THƯƠNG MẠI -->
         <div style="background:rgba(245,158,11,0.05); border:1px solid rgba(245,158,11,0.2); border-radius:10px; padding:1.4rem;">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.8rem; flex-wrap:wrap; gap:0.5rem; border-bottom:1px solid rgba(245,158,11,0.15); padding-bottom:0.6rem;">
@@ -1945,6 +2014,288 @@ ${reportText}
     if (container && res) {
       container.innerHTML = this.renderRadiusResultHtml(res);
     }
+
+    // Đồng thời cập nhật báo cáo ngành nghề theo bán kính và quận/huyện mới
+    this.calculateCustomIndustry(provinceId, districtId, radiusMeters, this._currentIndustryKey || 'CAFE');
+  }
+
+  calculateCustomIndustry(provinceId, districtId, radiusMeters, industryKey) {
+    const indEngine = (typeof IndustryEconomicEngine !== 'undefined') ? IndustryEconomicEngine : (typeof window !== 'undefined' ? window.IndustryEconomicEngine : null);
+    if (!indEngine || !indEngine.calculateIndustryMarket) return;
+    const indKey = industryKey || this._currentIndustryKey || 'CAFE';
+    this._currentIndustryKey = indKey;
+
+    const res = indEngine.calculateIndustryMarket({
+      provinceId: provinceId,
+      districtId: districtId,
+      radiusMeters: parseInt(radiusMeters || 1000, 10),
+      industryKey: indKey
+    });
+
+    const container = document.getElementById('kinhte-industry-report');
+    if (container && res) {
+      container.innerHTML = this.renderIndustryReportHtml(res);
+    }
+  }
+
+  selectIndustryAndCalculate(provinceId, industryKey) {
+    this._currentIndustryKey = industryKey;
+    const select = document.getElementById('kinhte-select-district');
+    const districtId = select ? select.value : null;
+    const radiusMeters = this._currentRadiusMeters || 1000;
+
+    // Update active UI button style
+    const btns = document.querySelectorAll('.industry-btn');
+    btns.forEach(b => {
+      const match = b.getAttribute('data-industry') === industryKey;
+      if (match) {
+        b.style.background = 'rgba(245,158,11,0.25)';
+        b.style.borderColor = '#F59E0B';
+        b.style.color = '#FBBF24';
+      } else {
+        b.style.background = 'rgba(255,255,255,0.05)';
+        b.style.borderColor = 'rgba(255,255,255,0.12)';
+        b.style.color = '#E2E8F0';
+      }
+    });
+
+    this.calculateCustomIndustry(provinceId, districtId, radiusMeters, industryKey);
+  }
+
+  renderIndustryReportHtml(res) {
+    if (!res) return '';
+    const { profile, location, demographics, marketDemand, competition, survivalDynamics, feasibility } = res;
+
+    return `
+      <div style="background:rgba(255,255,255,0.02); border:1px solid ${feasibility.opportunityColor}44; border-radius:10px; padding:1.2rem;">
+        
+        <!-- Header Báo Cáo Ngành Nghề -->
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.6rem; margin-bottom:1.2rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:0.8rem;">
+          <div>
+            <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.25rem;">
+              <span style="font-size:1.3rem;">${profile.icon}</span>
+              <h4 style="font-size:1.15rem; font-weight:800; color:#FEF3C7; margin:0;">${profile.name}</h4>
+              <span style="font-size:0.74rem; color:#F59E0B; background:rgba(245,158,11,0.15); border:1px solid rgba(245,158,11,0.3); padding:0.15rem 0.45rem; border-radius:4px; font-weight:700;">
+                VSIC ${profile.vsic_code}
+              </span>
+            </div>
+            <div style="font-size:0.76rem; color:var(--text-muted);">
+              Khảo sát trong bán kính <strong>${location.radiusKm >= 1 ? `${location.radiusKm} km` : `${location.radiusMeters} m`}</strong> (${location.areaKm2} km²) • ${location.districtName ? `${location.districtName}, ` : ''}${location.provinceName}
+            </div>
+          </div>
+
+          <!-- Huy hiệu Cơ hội thị trường -->
+          <div style="display:flex; align-items:center; gap:0.6rem;">
+            <div style="text-align:right;">
+              <div style="font-size:0.7rem; color:var(--text-muted); text-transform:uppercase;">Điểm Cơ Hội Mở Điểm Bán</div>
+              <div style="font-size:1.1rem; font-weight:900; color:${feasibility.opportunityColor};">
+                ${feasibility.overallOpportunityScore} / 100 • ${feasibility.opportunityTier.split('(')[0].trim()}
+              </div>
+            </div>
+            <div style="width:46px; height:46px; border-radius:50%; background:${feasibility.opportunityColor}22; border:2px solid ${feasibility.opportunityColor}; display:flex; align-items:center; justify-content:center; font-weight:900; font-size:1rem; color:${feasibility.opportunityColor};">
+              ${feasibility.overallOpportunityScore}
+            </div>
+          </div>
+        </div>
+
+        <!-- 4 KHỐI THÔNG TIN CHI TIẾT THEO CHUẨN THẨM ĐỊNH -->
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1rem; margin-bottom:1.2rem;">
+          
+          <!-- KHỐI 1: QUY MÔ & SỨC MUA RIÊNG NGÀNH -->
+          <div style="background:rgba(255,255,255,0.025); border:1px solid rgba(56,189,248,0.2); border-radius:8px; padding:1rem; border-top:3px solid #38BDF8;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.6rem;">
+              <span style="font-size:0.74rem; font-weight:700; color:#38BDF8; text-transform:uppercase;">01. Quy Mô & Khách Tiềm Năng</span>
+              <span style="font-size:0.7rem; color:var(--text-muted);">${demographics.targetRatioPct}% Dân Số</span>
+            </div>
+
+            <div style="margin-bottom:0.8rem;">
+              <div style="font-size:1.3rem; font-weight:800; color:#FEF3C7;">
+                ${marketDemand.totalMonthlyDemandBillionVnd.toLocaleString('vi-VN')} <span style="font-size:0.78rem; font-weight:500; color:var(--text-muted);">tỷ VNĐ / tháng</span>
+              </div>
+              <div style="font-size:0.74rem; color:#34D399; font-weight:600;">
+                Quy năm: ~${marketDemand.totalYearlyDemandBillionVnd.toLocaleString('vi-VN')} tỷ VNĐ dung lượng ngành
+              </div>
+            </div>
+
+            <div style="display:flex; flex-direction:column; gap:0.35rem; font-size:0.76rem; border-top:1px dashed rgba(255,255,255,0.08); padding-top:0.6rem;">
+              <div style="display:flex; justify-content:space-between;">
+                <span style="color:var(--text-muted);">Khách hàng mục tiêu:</span>
+                <strong style="color:#CBD5E1;">${demographics.targetCustomerCount.toLocaleString('vi-VN')} người</strong>
+              </div>
+              <div style="display:flex; justify-content:space-between;">
+                <span style="color:var(--text-muted);">Dân số ban ngày:</span>
+                <span style="color:#94A3B8;">${demographics.daytimePopulation.toLocaleString('vi-VN')} người</span>
+              </div>
+              <div style="display:flex; justify-content:space-between;">
+                <span style="color:var(--text-muted);">Chi tiêu bình quân/khách:</span>
+                <strong style="color:#38BDF8;">${(marketDemand.adjustedSpendPerCustomer).toLocaleString('vi-VN')} đ/tháng</strong>
+              </div>
+              <div style="font-size:0.7rem; color:var(--text-dim); margin-top:0.3rem; line-height:1.4;">
+                <em>Tệp khách:</em> ${profile.target_demographic}
+              </div>
+            </div>
+          </div>
+
+          <!-- KHỐI 2: ĐỐI THỦ & MẬT ĐỘ CẠNH TRANH -->
+          <div style="background:rgba(255,255,255,0.025); border:1px solid rgba(236,72,153,0.2); border-radius:8px; padding:1rem; border-top:3px solid #EC4899;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.6rem;">
+              <span style="font-size:0.74rem; font-weight:700; color:#EC4899; text-transform:uppercase;">02. Đối Thủ & Mật Độ Điểm Bán</span>
+              <span style="font-size:0.7rem; color:var(--text-muted);">${competition.competitorDensityPerKm2} điểm/km²</span>
+            </div>
+
+            <div style="margin-bottom:0.8rem;">
+              <div style="font-size:1.3rem; font-weight:800; color:#FEF3C7;">
+                ~${competition.estimatedCompetitors} <span style="font-size:0.78rem; font-weight:500; color:var(--text-muted);">cửa hàng hiện hữu</span>
+              </div>
+              <div style="font-size:0.74rem; color:${feasibility.dsrColor}; font-weight:700;">
+                Tỷ số DSR: ${feasibility.dsrRatio} • ${feasibility.dsrStatus}
+              </div>
+            </div>
+
+            <div style="display:flex; flex-direction:column; gap:0.35rem; font-size:0.76rem; border-top:1px dashed rgba(255,255,255,0.08); padding-top:0.6rem;">
+              <div style="display:flex; justify-content:space-between;">
+                <span style="color:var(--text-muted);">Chuỗi thương hiệu lớn:</span>
+                <strong style="color:#CBD5E1;">~${competition.chainCount} điểm (${competition.chainRatioPct}%)</strong>
+              </div>
+              <div style="display:flex; justify-content:space-between;">
+                <span style="color:var(--text-muted);">Quán độc lập / hộ gia đình:</span>
+                <strong style="color:#CBD5E1;">~${competition.independentCount} điểm</strong>
+              </div>
+              <div style="display:flex; justify-content:space-between;">
+                <span style="color:var(--text-muted);">Khoảng cách trung bình giữa 2 quán:</span>
+                <strong style="color:#EC4899;">~${competition.avgDistanceBetweenCompetitorsMeters} mét</strong>
+              </div>
+              <div style="display:flex; justify-content:space-between;">
+                <span style="color:var(--text-muted);">Khách phục vụ / 1 cửa hàng:</span>
+                <strong style="color:#34D399;">~${competition.customersPerStore.toLocaleString('vi-VN')} khách</strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- KHỐI 3: ĐỘNG THÁI SINH - TỬ & TUỔI THỌ CỬA HÀNG -->
+          <div style="background:rgba(255,255,255,0.025); border:1px solid rgba(245,158,11,0.2); border-radius:8px; padding:1rem; border-top:3px solid #F59E0B;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.6rem;">
+              <span style="font-size:0.74rem; font-weight:700; color:#F59E0B; text-transform:uppercase;">03. Động Thái Sinh - Tử & Churn</span>
+              <span style="font-size:0.7rem; color:#EF4444; font-weight:700;">Churn Rate: ${survivalDynamics.churnRatePct}%/năm</span>
+            </div>
+
+            <div style="margin-bottom:0.8rem;">
+              <div style="font-size:1.1rem; font-weight:800; color:#FEF3C7; display:flex; gap:0.8rem; align-items:center;">
+                <span style="color:#34D399;">+${survivalDynamics.newlyAddedCount} mở mới</span>
+                <span style="color:#EF4444;">-${survivalDynamics.removedCount} rời bỏ</span>
+                <span style="font-size:0.75rem; color:#38BDF8; font-weight:700;">(Tăng ròng: +${survivalDynamics.netGrowthCount})</span>
+              </div>
+              <div style="font-size:0.72rem; color:var(--text-dim); margin-top:0.15rem;">
+                *Thống kê biến động POI trong 12 tháng gần nhất
+              </div>
+            </div>
+
+            <!-- Đường cong sống sót theo thời gian -->
+            <div style="border-top:1px dashed rgba(255,255,255,0.08); padding-top:0.6rem; font-size:0.74rem;">
+              <div style="color:var(--text-muted); font-weight:600; margin-bottom:0.35rem;">Xác suất đóng cửa theo tuổi thọ:</div>
+              <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:0.3rem; text-align:center;">
+                <div style="background:rgba(239,68,68,0.1); border:1px solid rgba(239,68,68,0.25); border-radius:4px; padding:0.3rem;">
+                  <div style="font-size:0.68rem; color:#94A3B8;">&lt; 6 tháng</div>
+                  <strong style="color:#F87171; font-size:0.8rem;">${Math.round(survivalDynamics.survivalRates.under_6m * 100)}%</strong>
+                </div>
+                <div style="background:rgba(245,158,11,0.1); border:1px solid rgba(245,158,11,0.25); border-radius:4px; padding:0.3rem;">
+                  <div style="font-size:0.68rem; color:#94A3B8;">6 - 12 thg</div>
+                  <strong style="color:#FBBF24; font-size:0.8rem;">${Math.round(survivalDynamics.survivalRates.m6_to_12 * 100)}%</strong>
+                </div>
+                <div style="background:rgba(56,189,248,0.1); border:1px solid rgba(56,189,248,0.25); border-radius:4px; padding:0.3rem;">
+                  <div style="font-size:0.68rem; color:#94A3B8;">1 - 2 năm</div>
+                  <strong style="color:#38BDF8; font-size:0.8rem;">${Math.round(survivalDynamics.survivalRates.y1_to_2 * 100)}%</strong>
+                </div>
+                <div style="background:rgba(16,185,129,0.1); border:1px solid rgba(16,185,129,0.25); border-radius:4px; padding:0.3rem;">
+                  <div style="font-size:0.68rem; color:#94A3B8;">&gt; 2 năm</div>
+                  <strong style="color:#34D399; font-size:0.8rem;">${survivalDynamics.survivalOver2YearsPct}%</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- KHỐI 4: ĐIỂM CƠ HỘI & PHÂN BỔ NĂNG LỰC -->
+          <div style="background:rgba(255,255,255,0.025); border:1px solid rgba(16,185,129,0.2); border-radius:8px; padding:1rem; border-top:3px solid #10B981;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.6rem;">
+              <span style="font-size:0.74rem; font-weight:700; color:#10B981; text-transform:uppercase;">04. Đánh Giá Khả Thi Mở Điểm Bán</span>
+              <span style="font-size:0.7rem; color:var(--text-muted);">Hòa vốn: ~${feasibility.breakevenMonthlyMillion} tr/tháng</span>
+            </div>
+
+            <!-- Các chỉ số thành phần cấu thành Opportunity Score -->
+            <div style="display:flex; flex-direction:column; gap:0.45rem; font-size:0.75rem; margin-bottom:0.6rem;">
+              <div>
+                <div style="display:flex; justify-content:space-between; margin-bottom:0.15rem;">
+                  <span style="color:#CBD5E1;">Sức Cầu Thị Trường (35%):</span>
+                  <strong style="color:#38BDF8;">${feasibility.demandScore} / 100</strong>
+                </div>
+                <div style="background:rgba(255,255,255,0.06); height:5px; border-radius:3px; overflow:hidden;">
+                  <div style="background:#38BDF8; width:${feasibility.demandScore}%; height:100%;"></div>
+                </div>
+              </div>
+
+              <div>
+                <div style="display:flex; justify-content:space-between; margin-bottom:0.15rem;">
+                  <span style="color:#CBD5E1;">Khoảng Trống Cạnh Tranh (25%):</span>
+                  <strong style="color:#EC4899;">${feasibility.compGapScore} / 100</strong>
+                </div>
+                <div style="background:rgba(255,255,255,0.06); height:5px; border-radius:3px; overflow:hidden;">
+                  <div style="background:#EC4899; width:${feasibility.compGapScore}%; height:100%;"></div>
+                </div>
+              </div>
+
+              <div>
+                <div style="display:flex; justify-content:space-between; margin-bottom:0.15rem;">
+                  <span style="color:#CBD5E1;">Độ Ổn Định Sinh Tồn (20%):</span>
+                  <strong style="color:#F59E0B;">${feasibility.survivalScore} / 100</strong>
+                </div>
+                <div style="background:rgba(255,255,255,0.06); height:5px; border-radius:3px; overflow:hidden;">
+                  <div style="background:#F59E0B; width:${feasibility.survivalScore}%; height:100%;"></div>
+                </div>
+              </div>
+
+              <div>
+                <div style="display:flex; justify-content:space-between; margin-bottom:0.15rem;">
+                  <span style="color:#CBD5E1;">Độ Phù Hợp Địa Khí (20%):</span>
+                  <strong style="color:#10B981;">${feasibility.locationAffinityScore} / 100</strong>
+                </div>
+                <div style="background:rgba(255,255,255,0.06); height:5px; border-radius:3px; overflow:hidden;">
+                  <div style="background:#10B981; width:${feasibility.locationAffinityScore}%; height:100%;"></div>
+                </div>
+              </div>
+            </div>
+
+            <div style="font-size:0.73rem; color:${feasibility.opportunityColor}; font-weight:700; border-top:1px dashed rgba(255,255,255,0.08); padding-top:0.4rem;">
+              Kết luận: ${feasibility.opportunityTier}
+            </div>
+          </div>
+
+        </div>
+
+        <!-- KHUYẾN NGHỊ THỰC THI & PHONG THỦY THƯƠNG MẠI -->
+        <div style="background:rgba(0,0,0,0.3); border-radius:8px; padding:1rem; border-left:4px solid ${feasibility.opportunityColor};">
+          <div style="font-size:0.8rem; font-weight:700; color:#FEF3C7; margin-bottom:0.4rem;">
+            💡 Chiến Lược Triển Khai Thực Tế & Khẩu Quyết Định Vị:
+          </div>
+          <div style="font-size:0.78rem; color:#CBD5E1; line-height:1.6; margin-bottom:0.6rem;">
+            <strong>Mô hình khuyến nghị:</strong>
+            <div style="display:flex; flex-wrap:wrap; gap:0.4rem; margin-top:0.3rem;">
+              ${feasibility.suitableBusinessModels.map(m => `
+                <span style="font-size:0.74rem; font-weight:700; color:#FEF3C7; background:rgba(245,158,11,0.15); border:1px solid rgba(245,158,11,0.35); padding:0.2rem 0.6rem; border-radius:4px;">
+                  ✓ ${m}
+                </span>
+              `).join('')}
+            </div>
+          </div>
+          <div style="font-size:0.77rem; color:#94A3B8; line-height:1.55; margin-bottom:0.5rem;">
+            <strong style="color:#FBBF24;">Nhận định chiến lược:</strong> ${feasibility.strategicRecommendation}
+          </div>
+          <div style="font-size:0.76rem; color:#34D399; line-height:1.55;">
+            <strong>Khẩu quyết Phong Thủy vị trí:</strong> ${feasibility.fengshuiAdvice}
+          </div>
+        </div>
+
+      </div>
+    `;
   }
 
   setRadiusAndCalculate(provinceId, radiusMeters) {

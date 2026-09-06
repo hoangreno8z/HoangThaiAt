@@ -616,7 +616,7 @@ class LuopanMapTool {
               <button type="button" id="btn-close-econ-x" style="background:transparent; border:none; color:#94A3B8; font-size:1.2rem; cursor:pointer; padding:0.15rem 0.4rem;">✕</button>
             </div>
 
-            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; background:rgba(0,0,0,0.3); padding:0.6rem 0.8rem; border-radius:8px; margin-bottom:1rem;">
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; background:rgba(0,0,0,0.3); padding:0.6rem 0.8rem; border-radius:8px; margin-bottom:0.8rem;">
               <div style="font-size:0.8rem; color:#CBD5E1;">
                 <span>Vị trí khảo sát: </span>
                 <strong id="dt-econ-location-text" style="color:#38BDF8;">Đang xác định...</strong>
@@ -631,6 +631,19 @@ class LuopanMapTool {
                 <button type="button" class="dt-econ-radius-selector" data-radius="3000" style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15); color:#FEF3C7; padding:0.25rem 0.55rem; border-radius:6px; font-size:0.75rem; font-weight:700; cursor:pointer;">
                   3.000m (3km)
                 </button>
+              </div>
+            </div>
+
+            <!-- Bộ Chọn Ngành Nghề Khảo Sát (VSIC 2025) -->
+            <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:0.4rem; margin-bottom:1rem; background:rgba(15,23,42,0.85); padding:0.5rem 0.7rem; border-radius:8px; border:1px solid rgba(245,158,11,0.25);">
+              <span style="font-size:0.74rem; color:#F59E0B; font-weight:800; text-transform:uppercase;">Ngành kinh doanh:</span>
+              <div style="display:flex; gap:0.3rem; flex-wrap:wrap;" id="dt-econ-industry-pills">
+                <button type="button" class="dt-econ-ind-btn active" data-industry="CAFE" style="background:rgba(245,158,11,0.25); border:1px solid #F59E0B; color:#FBBF24; padding:0.2rem 0.55rem; border-radius:6px; font-size:0.74rem; font-weight:700; cursor:pointer;">☕ Cà phê</button>
+                <button type="button" class="dt-econ-ind-btn" data-industry="NAIL" style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15); color:#FEF3C7; padding:0.2rem 0.55rem; border-radius:6px; font-size:0.74rem; font-weight:700; cursor:pointer;">💅 Nail & Móng</button>
+                <button type="button" class="dt-econ-ind-btn" data-industry="NHA_HANG_FNB" style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15); color:#FEF3C7; padding:0.2rem 0.55rem; border-radius:6px; font-size:0.74rem; font-weight:700; cursor:pointer;">🍲 F&B</button>
+                <button type="button" class="dt-econ-ind-btn" data-industry="SPA_BEAUTY" style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15); color:#FEF3C7; padding:0.2rem 0.55rem; border-radius:6px; font-size:0.74rem; font-weight:700; cursor:pointer;">💆 Spa</button>
+                <button type="button" class="dt-econ-ind-btn" data-industry="TIEN_LOI" style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15); color:#FEF3C7; padding:0.2rem 0.55rem; border-radius:6px; font-size:0.74rem; font-weight:700; cursor:pointer;">🏪 Tiện lợi</button>
+                <button type="button" class="dt-econ-ind-btn" data-industry="NHA_THUOC" style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15); color:#FEF3C7; padding:0.2rem 0.55rem; border-radius:6px; font-size:0.74rem; font-weight:700; cursor:pointer;">💊 Nhà thuốc</button>
               </div>
             </div>
 
@@ -2165,7 +2178,27 @@ class LuopanMapTool {
             b.style.color = '#FEF3C7';
           }
         });
-        this.updateEconomicRadiusData(rad);
+        this.updateEconomicRadiusData(rad, this.selectedIndustryKey || 'CAFE');
+      });
+    });
+
+    const indButtons = document.querySelectorAll('.dt-econ-ind-btn');
+    indButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const indKey = btn.dataset.industry;
+        this.selectedIndustryKey = indKey;
+        indButtons.forEach(b => {
+          if (b === btn) {
+            b.style.background = 'rgba(245,158,11,0.25)';
+            b.style.borderColor = '#F59E0B';
+            b.style.color = '#FBBF24';
+          } else {
+            b.style.background = 'rgba(255,255,255,0.06)';
+            b.style.borderColor = 'rgba(255,255,255,0.15)';
+            b.style.color = '#FEF3C7';
+          }
+        });
+        this.updateEconomicRadiusData(this.selectedEconRadius || 1000, indKey);
       });
     });
 
@@ -2507,7 +2540,7 @@ class LuopanMapTool {
     if (modal) modal.style.display = 'none';
   }
 
-  updateEconomicRadiusData(radiusMeters = 1000) {
+  updateEconomicRadiusData(radiusMeters = 1000, industryKey = null) {
     const engine = (typeof window !== 'undefined' && window.EconomicRadiusEngine) || (typeof EconomicRadiusEngine !== 'undefined' ? EconomicRadiusEngine : null);
     const content = document.getElementById('dt-econ-modal-content');
     const locText = document.getElementById('dt-econ-location-text');
@@ -2529,6 +2562,21 @@ class LuopanMapTool {
       return;
     }
 
+    // Tính toán phân tích chuyên sâu theo ngành kinh doanh (VSIC 2025)
+    const indEngine = (typeof window !== 'undefined' && window.IndustryEconomicEngine) || (typeof IndustryEconomicEngine !== 'undefined' ? IndustryEconomicEngine : null);
+    const indKey = industryKey || this.selectedIndustryKey || 'CAFE';
+    this.selectedIndustryKey = indKey;
+
+    let indRes = null;
+    if (indEngine && indEngine.calculateIndustryMarket) {
+      indRes = indEngine.calculateIndustryMarket({
+        lat: coords.lat,
+        lng: coords.lng,
+        radiusMeters: radiusMeters,
+        industryKey: indKey
+      });
+    }
+
     // Vẽ hoặc cập nhật vòng tròn Leaflet nếu đang ở map mode
     if (this.mode === 'map' && this.mapInstance && typeof L !== 'undefined' && L.circle) {
       if (this._econLeafletCircle) {
@@ -2538,8 +2586,8 @@ class LuopanMapTool {
       try {
         this._econLeafletCircle = L.circle([coords.lat, coords.lng], {
           radius: radiusMeters,
-          color: res.marketAssessment.ratingColor || '#10B981',
-          fillColor: res.marketAssessment.ratingColor || '#10B981',
+          color: (indRes && indRes.feasibility) ? indRes.feasibility.opportunityColor : (res.marketAssessment.ratingColor || '#10B981'),
+          fillColor: (indRes && indRes.feasibility) ? indRes.feasibility.opportunityColor : (res.marketAssessment.ratingColor || '#10B981'),
           fillOpacity: 0.12,
           weight: 2,
           dashArray: '5, 5'
@@ -2550,8 +2598,52 @@ class LuopanMapTool {
     }
 
     const { location, demographics, financials, spendingBreakdown, marketAssessment } = res;
+
+    let industryHtml = '';
+    if (indRes) {
+      const { profile, demographics: indDemo, marketDemand, competition, survivalDynamics, feasibility } = indRes;
+      industryHtml = `
+        <div style="background:rgba(15,23,42,0.9); border:1px solid ${feasibility.opportunityColor}55; border-radius:8px; padding:0.9rem; margin-top:0.9rem;">
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.4rem; margin-bottom:0.7rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:0.45rem;">
+            <div style="display:flex; align-items:center; gap:0.45rem;">
+              <span style="font-size:1.15rem;">${profile.icon}</span>
+              <strong style="color:#FEF3C7; font-size:0.9rem;">${profile.name}</strong>
+              <span style="font-size:0.68rem; color:#F59E0B; background:rgba(245,158,11,0.15); border:1px solid rgba(245,158,11,0.3); padding:0.1rem 0.4rem; border-radius:3px;">VSIC ${profile.vsic_code}</span>
+            </div>
+            <span style="font-size:0.74rem; font-weight:800; color:${feasibility.opportunityColor}; background:${feasibility.opportunityColor}22; padding:0.2rem 0.55rem; border-radius:12px; border:1px solid ${feasibility.opportunityColor}55;">
+              Cơ Hội: ${feasibility.overallOpportunityScore}/100 • ${feasibility.opportunityTier.split('(')[0].trim()}
+            </span>
+          </div>
+
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(130px, 1fr)); gap:0.5rem; margin-bottom:0.65rem;">
+            <div style="background:rgba(255,255,255,0.02); padding:0.5rem; border-radius:5px; border-left:3px solid #38BDF8;">
+              <div style="font-size:0.68rem; color:var(--text-muted);">Sức mua ngành/tháng:</div>
+              <strong style="color:#FEF3C7; font-size:0.86rem;">${marketDemand.totalMonthlyDemandBillionVnd} tỷ VNĐ</strong>
+              <div style="font-size:0.65rem; color:#38BDF8;">~${indDemo.targetCustomerCount.toLocaleString('vi-VN')} khách tiềm năng</div>
+            </div>
+
+            <div style="background:rgba(255,255,255,0.02); padding:0.5rem; border-radius:5px; border-left:3px solid #EC4899;">
+              <div style="font-size:0.68rem; color:var(--text-muted);">Điểm bán đối thủ:</div>
+              <strong style="color:#FEF3C7; font-size:0.86rem;">~${competition.estimatedCompetitors} quán</strong>
+              <div style="font-size:0.65rem; color:${feasibility.dsrColor};">DSR: ${feasibility.dsrRatio} (${feasibility.dsrStatus.split('(')[0].trim()})</div>
+            </div>
+
+            <div style="background:rgba(255,255,255,0.02); padding:0.5rem; border-radius:5px; border-left:3px solid #F59E0B;">
+              <div style="font-size:0.68rem; color:var(--text-muted);">Sinh - Tử (12 tháng):</div>
+              <strong style="color:#FEF3C7; font-size:0.86rem;"><span style="color:#34D399;">+${survivalDynamics.newlyAddedCount}</span> / <span style="color:#EF4444;">-${survivalDynamics.removedCount}</span></strong>
+              <div style="font-size:0.65rem; color:#EF4444;">Churn: ${survivalDynamics.churnRatePct}%/năm</div>
+            </div>
+          </div>
+
+          <div style="font-size:0.73rem; color:#CBD5E1; line-height:1.45; background:rgba(0,0,0,0.25); padding:0.5rem 0.6rem; border-radius:4px; border-left:3px solid #34D399;">
+            <strong style="color:#34D399;">Khẩu quyết phong thủy điểm bán:</strong> ${feasibility.fengshuiAdvice}
+          </div>
+        </div>
+      `;
+    }
+
     content.innerHTML = `
-      <div style="background:rgba(255,255,255,0.02); border:1px solid ${marketAssessment.ratingColor}55; border-radius:10px; padding:1.1rem; margin-bottom:1rem;">
+      <div style="background:rgba(255,255,255,0.02); border:1px solid ${marketAssessment.ratingColor}55; border-radius:10px; padding:1.1rem; margin-bottom:0.5rem;">
         <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.8rem; border-bottom:1px solid rgba(255,255,255,0.06); padding-bottom:0.6rem;">
           <div>
             <span style="font-size:0.75rem; color:#94A3B8;">ĐỊA PHƯƠNG KHẢO CHỨNG:</span>
@@ -2600,18 +2692,9 @@ class LuopanMapTool {
           </div>
         </div>
 
-        <div style="margin-bottom:0.6rem;">
-          <div style="font-size:0.76rem; font-weight:700; color:#38BDF8; margin-bottom:0.3rem;">Mô hình kinh doanh tương thích cao:</div>
-          <div style="display:flex; flex-wrap:wrap; gap:0.35rem;">
-            ${marketAssessment.suitableBusinessModels.map(m => `
-              <span style="font-size:0.72rem; color:#FEF3C7; background:rgba(56,189,248,0.15); border:1px solid rgba(56,189,248,0.3); padding:0.15rem 0.5rem; border-radius:4px;">
-                ✓ ${m}
-              </span>
-            `).join('')}
-          </div>
-        </div>
+        ${industryHtml}
 
-        <div style="font-size:0.78rem; color:#CBD5E1; line-height:1.55; border-left:3px solid ${marketAssessment.ratingColor}; padding-left:0.5rem; margin-top:0.6rem;">
+        <div style="font-size:0.78rem; color:#CBD5E1; line-height:1.55; border-left:3px solid ${marketAssessment.ratingColor}; padding-left:0.5rem; margin-top:0.8rem;">
           ${marketAssessment.summary}
         </div>
       </div>
