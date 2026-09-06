@@ -17,6 +17,16 @@ class HoiDapUI {
   init() {
     if (this.isInitialized) return;
     this.isInitialized = true;
+    if (typeof document !== 'undefined' && document.addEventListener) {
+      document.addEventListener('click', (e) => {
+        const dd = document.getElementById('hoidap-ch-dropdown');
+        if (dd && dd.classList && dd.classList.contains('open') && !dd.contains(e.target)) {
+          dd.classList.remove('open');
+          const trigger = document.getElementById('hoidap-dropdown-trigger');
+          if (trigger) trigger.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
   }
 
   render(params) {
@@ -24,8 +34,9 @@ class HoiDapUI {
     const container = document.getElementById(this.containerId);
     if (!container) return;
 
-    if (params && params.chapter) {
-      this.activeChapter = parseInt(params.chapter, 10) || 1;
+    if (params && params.chapter !== undefined) {
+      this.activeChapter = parseInt(params.chapter, 10);
+      if (isNaN(this.activeChapter)) this.activeChapter = 1;
     }
 
     const chapters = window.HOIDAP_CHAPTERS || [];
@@ -68,9 +79,55 @@ class HoiDapUI {
           </p>
         </section>
 
-        <!-- Controls: Search Row & Chapter Ribbon -->
+        <!-- Controls: Menu Xổ Xuống Chọn Chương & Thanh Công Cụ Tra Cứu (Compact) -->
         <div class="hoidap-controls">
           <div class="hoidap-search-row">
+            <!-- Dropdown Menu Chọn Chương -->
+            <div class="hoidap-dropdown" id="hoidap-ch-dropdown">
+              <button 
+                type="button" 
+                class="hoidap-dropdown-trigger" 
+                id="hoidap-dropdown-trigger" 
+                onclick="window.hoidapUI.toggleChapterDropdown(event)"
+                aria-haspopup="listbox" 
+                aria-expanded="false"
+                title="Chọn chương hoặc xem Toàn Bách Cục">
+                <span class="hoidap-dropdown-label">
+                  ${this.activeChapter === 0 
+                    ? 'Toàn Bách Cục (100 Điều)' 
+                    : `Chương ${romanNumerals[this.activeChapter] || this.activeChapter}: ${currentChapterInfo ? currentChapterInfo.title : ''}`}
+                </span>
+                <span class="hoidap-dropdown-arrow">▾</span>
+              </button>
+              <div class="hoidap-dropdown-menu" id="hoidap-dropdown-menu" role="listbox">
+                <div 
+                  class="hoidap-dropdown-item ${this.activeChapter === 0 ? 'active' : ''}" 
+                  role="option"
+                  onclick="window.hoidapUI.selectChapter(0)">
+                  <span>Toàn Bách Cục (100 Điều Toàn Bích)</span>
+                  <span class="hoidap-dd-badge">100 câu</span>
+                </div>
+    `;
+
+    chapters.forEach(ch => {
+      const roman = romanNumerals[ch.num] || ch.num;
+      const isActive = this.activeChapter === ch.num && !this.searchQuery.trim();
+      html += `
+                <div 
+                  class="hoidap-dropdown-item ${isActive ? 'active' : ''}" 
+                  role="option"
+                  onclick="window.hoidapUI.selectChapter(${ch.num})">
+                  <span>Chương ${roman}: ${ch.title}</span>
+                  <span class="hoidap-dd-badge">${(ch.num - 1) * 10 + 1}–${ch.num * 10}</span>
+                </div>
+      `;
+    });
+
+    html += `
+              </div>
+            </div>
+
+            <!-- Ô Tra Cứu (Giảm 1 nửa kích thước) -->
             <div class="hoidap-search-wrapper">
               <input 
                 type="text" 
@@ -81,38 +138,26 @@ class HoiDapUI {
                 oninput="window.hoidapUI.onSearch(this.value)"
               />
             </div>
-            <!-- Nút Bật/Tắt Hán Văn -->
+
+            <!-- Nút Bật/Tắt Hán Văn (Giảm 1 nửa kích thước) -->
             <button 
+              type="button"
               id="hoidap-toggle-hanzi-btn" 
               class="hoidap-toggle-hanzi-btn ${this.showHanzi ? '' : 'off'}" 
               title="Nhấn để ẩn hoặc hiện nguyên văn chữ Hán"
               onclick="window.hoidapUI.toggleHanzi()">
               ${this.showHanzi ? 'Tắt Hán Văn' : 'Bật Hán Văn'}
             </button>
-          </div>
 
-          <!-- 10 Chapters Selector Ribbon -->
-          <div class="hoidap-chapters-ribbon">
+            <!-- Nút Thu Gọn / Khai Triển Điển Cố (Giảm 1 nửa kích thước) -->
             <button 
-              class="hoidap-ch-btn ${this.activeChapter === 0 ? 'active' : ''}" 
-              onclick="window.hoidapUI.selectChapter(0)">
-              Toàn Bách Cục (100)
+              type="button"
+              id="hoidap-collapse-all-btn" 
+              class="hoidap-collapse-all-btn" 
+              title="${this.expandedItems.size > 0 ? 'Nhấn để thu gọn toàn bộ điển cố' : 'Nhấn để khai triển toàn bộ điển cố'}"
+              onclick="window.hoidapUI.toggleCollapseAll()">
+              ${this.expandedItems.size > 0 ? 'Thu Gọn Điển Cố' : 'Khai Triển Điển Cố'}
             </button>
-    `;
-
-    chapters.forEach(ch => {
-      const roman = romanNumerals[ch.num] || ch.num;
-      const isActive = this.activeChapter === ch.num && !this.searchQuery.trim();
-      html += `
-        <button 
-          class="hoidap-ch-btn ${isActive ? 'active' : ''}" 
-          onclick="window.hoidapUI.selectChapter(${ch.num})">
-          Chương ${roman}: ${ch.title}
-        </button>
-      `;
-    });
-
-    html += `
           </div>
         </div>
 
@@ -293,9 +338,82 @@ class HoiDapUI {
     if (chNum > 0) {
       const firstIdx = (chNum - 1) * 10 + 1;
       this.expandedItems = new Set([firstIdx]);
+    } else {
+      this.expandedItems = new Set([1]);
+    }
+    const dd = document.getElementById('hoidap-ch-dropdown');
+    if (dd && dd.classList) {
+      dd.classList.remove('open');
+      const trigger = document.getElementById('hoidap-dropdown-trigger');
+      if (trigger) trigger.setAttribute('aria-expanded', 'false');
     }
     this.render();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (typeof window !== 'undefined' && window.scrollTo) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }
+
+  toggleChapterDropdown(e) {
+    if (e) {
+      if (e.stopPropagation) e.stopPropagation();
+      if (e.preventDefault) e.preventDefault();
+    }
+    const dd = document.getElementById('hoidap-ch-dropdown');
+    if (dd && dd.classList) {
+      const isOpen = dd.classList.toggle('open');
+      const trigger = document.getElementById('hoidap-dropdown-trigger');
+      if (trigger) {
+        trigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      }
+    }
+  }
+
+  toggleCollapseAll() {
+    const allItems = window.HOIDAP_DATA || [];
+    let currentFiltered = allItems;
+    if (this.activeChapter > 0) {
+      currentFiltered = currentFiltered.filter(item => item.chapter === this.activeChapter);
+    }
+    if (this.searchQuery.trim()) {
+      const q = this.searchQuery.trim().toLowerCase();
+      currentFiltered = currentFiltered.filter(item => 
+        item.title.toLowerCase().includes(q) ||
+        item.subtitle.toLowerCase().includes(q) ||
+        item.topo.toLowerCase().includes(q) ||
+        item.hanzi.toLowerCase().includes(q) ||
+        item.hanviet.toLowerCase().includes(q) ||
+        item.qi_mechanism.toLowerCase().includes(q) ||
+        item.remediation.toLowerCase().includes(q)
+      );
+    }
+
+    if (this.expandedItems.size > 0) {
+      // Đang có điều mở -> thu gọn toàn bộ
+      this.expandedItems.clear();
+    } else {
+      // Đang thu gọn toàn bộ -> khai triển toàn bộ các điều đang hiển thị
+      this.expandedItems = new Set(currentFiltered.map(item => item.index));
+    }
+
+    // Cập nhật DOM các thẻ bài
+    currentFiltered.forEach(item => {
+      const isExpanded = this.expandedItems.has(item.index);
+      const card = document.getElementById(`hoidap-card-${item.index}`);
+      if (card) {
+        if (card.classList) card.classList.toggle('expanded', isExpanded);
+        const body = card.querySelector('.hoidap-card-body');
+        if (body && body.style) body.style.display = isExpanded ? 'flex' : 'none';
+        const btn = card.querySelector('.hoidap-expand-btn');
+        if (btn) btn.textContent = isExpanded ? 'Thu Gọn Điển Cố' : 'Khai Triển Điển Cố';
+      }
+    });
+
+    // Cập nhật nút trên thanh công cụ
+    const toolbarBtn = document.getElementById('hoidap-collapse-all-btn');
+    if (toolbarBtn) {
+      toolbarBtn.textContent = this.expandedItems.size > 0 ? 'Thu Gọn Điển Cố' : 'Khai Triển Điển Cố';
+      toolbarBtn.title = this.expandedItems.size > 0 ? 'Nhấn để thu gọn toàn bộ điển cố' : 'Nhấn để khai triển toàn bộ điển cố';
+    }
   }
 
   onSearch(query) {
@@ -326,15 +444,20 @@ class HoiDapUI {
     const card = document.getElementById(`hoidap-card-${index}`);
     if (card) {
       const isExpanded = this.expandedItems.has(index);
-      card.classList.toggle('expanded', isExpanded);
+      if (card.classList) card.classList.toggle('expanded', isExpanded);
       const body = card.querySelector('.hoidap-card-body');
-      if (body) {
+      if (body && body.style) {
         body.style.display = isExpanded ? 'flex' : 'none';
       }
       const btn = card.querySelector('.hoidap-expand-btn');
       if (btn) {
         btn.textContent = isExpanded ? 'Thu Gọn Điển Cố' : 'Khai Triển Điển Cố';
       }
+    }
+    const toolbarBtn = document.getElementById('hoidap-collapse-all-btn');
+    if (toolbarBtn) {
+      toolbarBtn.textContent = this.expandedItems.size > 0 ? 'Thu Gọn Điển Cố' : 'Khai Triển Điển Cố';
+      toolbarBtn.title = this.expandedItems.size > 0 ? 'Nhấn để thu gọn toàn bộ điển cố' : 'Nhấn để khai triển toàn bộ điển cố';
     }
   }
 

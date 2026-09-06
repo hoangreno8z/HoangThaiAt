@@ -181,6 +181,16 @@ console.log('[PASS] window.hoidapUI.toggleHanzi() [Tắt Hán Văn] thực thi t
 global.window.hoidapUI.toggleHanzi();
 console.log('[PASS] window.hoidapUI.toggleHanzi() [Bật Hán Văn] thực thi thành công.');
 
+// Chạy thử nghiệm menu dropdown chọn chương
+global.window.hoidapUI.toggleChapterDropdown();
+console.log('[PASS] window.hoidapUI.toggleChapterDropdown() thực thi thành công.');
+
+// Chạy thử nghiệm thu gọn / khai triển toàn bộ điển cố
+global.window.hoidapUI.toggleCollapseAll();
+console.log('[PASS] window.hoidapUI.toggleCollapseAll() [Thu gọn tất cả] thực thi thành công.');
+global.window.hoidapUI.toggleCollapseAll();
+console.log('[PASS] window.hoidapUI.toggleCollapseAll() [Khai triển tất cả] thực thi thành công.');
+
 // 7.5. Kiểm tra renderHoaPhuc cho toàn bộ 100 điều: bắt buộc phải có văn bản đầy đủ trong 2 khung Cát & Hung
 let renderedHpRows = 0;
 for (const it of items) {
