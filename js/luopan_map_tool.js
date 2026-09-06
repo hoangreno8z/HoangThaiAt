@@ -2711,5 +2711,9 @@ class LuopanMapTool {
     }
   }
 }
-
-window.LuopanMapTool = LuopanMapTool;
+if (typeof window !== 'undefined') {
+  window.LuopanMapTool = LuopanMapTool;
+}
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = LuopanMapTool;
+}
