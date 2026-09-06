@@ -1856,7 +1856,7 @@ ${reportText}
         </div>
 
         <!-- BẢNG ĐÁNH GIÁ CẤP QUẬN/HUYỆN (SMALL AREA ESTIMATION - SAE) -->
-        <div style="background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.07); border-radius:10px; padding:1.4rem; margin-bottom:1.8rem;">
+        <div style="background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.07); border-radius:10px; padding:1.2rem; margin-bottom:1.8rem; box-sizing:border-box;">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem; flex-wrap:wrap; gap:0.5rem;">
             <div>
               <h3 style="font-size:1.05rem; color:#FEF3C7; margin:0 0 0.2rem 0; font-weight:700;">
@@ -1866,15 +1866,16 @@ ${reportText}
                 Số liệu chi tiết cấp tiểu vùng phục vụ định vị cửa hàng, phân phối sản phẩm và mở rộng điểm kinh doanh.
               </div>
             </div>
-            <div style="display:flex; align-items:center; gap:0.5rem; flex-wrap:wrap;">
-              <input type="text" id="kinhte-filter-sae-table" placeholder="🔍 Lọc quận/huyện..." oninput="window.toolUI.filterSaeTable(this.value)" style="background:#0F172A; border:1px solid rgba(255,255,255,0.2); color:#FEF3C7; padding:0.25rem 0.6rem; border-radius:6px; font-size:0.75rem; outline:none; width:160px;">
-              <span style="font-size:0.74rem; color:#38BDF8; font-weight:600; background:rgba(56,189,248,0.12); padding:0.2rem 0.6rem; border-radius:4px;">
+            <div class="sae-desktop-filter" style="display:flex; align-items:center; gap:0.5rem; flex-wrap:wrap;">
+              <input type="text" id="kinhte-filter-sae-table" placeholder="🔍 Lọc quận/huyện..." oninput="window.toolUI.filterSaeTable(this.value)" style="background:#0F172A; border:1px solid rgba(255,255,255,0.2); color:#FEF3C7; padding:0.35rem 0.6rem; border-radius:6px; font-size:14px; outline:none; width:160px;">
+              <span style="font-size:0.74rem; color:#38BDF8; font-weight:600; background:rgba(56,189,248,0.12); padding:0.25rem 0.6rem; border-radius:4px;">
                 ${districts.length} Đơn vị hành chính
               </span>
             </div>
           </div>
 
-          <div style="overflow-x:auto;">
+          <!-- GIAO DIỆN DESKTOP (>= 768px): BẢNG TOÀN DIỆN 8 CỘT -->
+          <div class="sae-desktop-table" style="overflow-x:auto;">
             <table style="width:100%; border-collapse:collapse; font-size:0.8rem; text-align:left;">
               <thead>
                 <tr style="border-bottom:1px solid rgba(255,255,255,0.12); color:#94A3B8;">
@@ -1911,8 +1912,8 @@ ${reportText}
                         </span>
                       </td>
                       <td style="padding:0.6rem 0.8rem; text-align:right;">
-                        <button type="button" onclick="window.toolUI.calculateCustomRadius('${currentProvince.historical_id}', '${d.id}', 1000)" style="background:rgba(16,185,129,0.15); border:1px solid #10B981; color:#10B981; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.72rem; font-weight:700; cursor:pointer;" onmouseover="this.style.background='#10B981'; this.style.color='#000';" onmouseout="this.style.background='rgba(16,185,129,0.15)'; this.style.color='#10B981';">
-                          Bán kính 1km
+                        <button type="button" onclick="window.toolUI.selectDistrictFromCard('${currentProvince.historical_id}', '${d.id}')" style="background:rgba(16,185,129,0.15); border:1px solid #10B981; color:#10B981; padding:0.3rem 0.7rem; border-radius:4px; font-size:0.75rem; font-weight:700; cursor:pointer;" onmouseover="this.style.background='#10B981'; this.style.color='#000';" onmouseout="this.style.background='rgba(16,185,129,0.15)'; this.style.color='#10B981';">
+                          Khảo sát 1km
                         </button>
                       </td>
                     </tr>
@@ -1921,10 +1922,83 @@ ${reportText}
               </tbody>
             </table>
           </div>
+
+          <!-- GIAO DIỆN MOBILE (< 768px): THẺ QUẬN/HUYỆN XỔ / THU GỌN CHỐNG TRÀN -->
+          <div class="sae-mobile-cards-wrapper">
+            <button type="button" id="sae-mobile-toggle-btn" onclick="window.toolUI.toggleMobileSaeCards()" style="width:100%; display:flex; justify-content:space-between; align-items:center; background:rgba(56,189,248,0.1); border:1px solid rgba(56,189,248,0.3); color:#38BDF8; padding:0.65rem 0.85rem; border-radius:8px; font-weight:700; font-size:0.88rem; cursor:pointer; box-sizing:border-box;">
+              <span>📊 So Sánh Các Quận / Huyện (${districts.length})</span>
+              <span id="sae-mobile-toggle-icon" style="color:#FEF3C7; font-size:0.8rem; background:rgba(255,255,255,0.08); padding:0.2rem 0.5rem; border-radius:4px;">▾ Mở rộng</span>
+            </button>
+
+            <div id="sae-mobile-collapsible-body" style="display:none; margin-top:0.75rem;">
+              <div style="margin-bottom:0.6rem;">
+                <input type="text" id="kinhte-search-sae-mobile" placeholder="🔍 Gõ tìm quận/huyện (vd: Củ Chi, Thủ Đức...)" oninput="window.toolUI.filterMobileSaeCards(this.value)" style="width:100%; box-sizing:border-box; background:#0F172A; border:1px solid rgba(255,255,255,0.25); color:#FEF3C7; padding:0.5rem 0.75rem; border-radius:6px; font-size:16px; outline:none;">
+              </div>
+
+              <!-- Thanh nút Sort nhanh -->
+              <div style="display:flex; gap:0.35rem; align-items:center; overflow-x:auto; padding-bottom:0.3rem; margin-bottom:0.6rem;">
+                <span style="font-size:0.72rem; color:var(--text-muted); white-space:nowrap; margin-right:0.2rem;">Sắp xếp:</span>
+                <button type="button" class="sae-sort-btn" data-sort="pop" onclick="window.toolUI.sortMobileSaeCards('pop')" style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15); color:#FEF3C7; padding:0.25rem 0.5rem; border-radius:4px; font-size:0.72rem; white-space:nowrap; cursor:pointer;">Dân số ▾</button>
+                <button type="button" class="sae-sort-btn" data-sort="income" onclick="window.toolUI.sortMobileSaeCards('income')" style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15); color:#FEF3C7; padding:0.25rem 0.5rem; border-radius:4px; font-size:0.72rem; white-space:nowrap; cursor:pointer;">Thu nhập ▾</button>
+                <button type="button" class="sae-sort-btn" data-sort="expense" onclick="window.toolUI.sortMobileSaeCards('expense')" style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15); color:#FEF3C7; padding:0.25rem 0.5rem; border-radius:4px; font-size:0.72rem; white-space:nowrap; cursor:pointer;">Chi tiêu ▾</button>
+                <button type="button" class="sae-sort-btn" data-sort="rppi" onclick="window.toolUI.sortMobileSaeCards('rppi')" style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15); color:#FEF3C7; padding:0.25rem 0.5rem; border-radius:4px; font-size:0.72rem; white-space:nowrap; cursor:pointer;">Điểm RPPI ▾</button>
+              </div>
+
+              <div id="kinhte-mobile-sae-list" style="display:flex; flex-direction:column; gap:0.6rem;">
+                ${districts.map(d => {
+                  let dColor = '#10B981';
+                  if (d.rppi >= 90) dColor = '#F59E0B';
+                  else if (d.rppi >= 80) dColor = '#34D399';
+                  else if (d.rppi >= 70) dColor = '#38BDF8';
+                  else if (d.rppi >= 60) dColor = '#60A5FA';
+                  else dColor = '#A78BFA';
+
+                  return `
+                    <div class="sae-mobile-district-card" data-name="${d.name}" data-pop="${d.pop || 0}" data-income="${d.income || 0}" data-expense="${d.expense || 0}" data-rppi="${d.rppi || 0}" style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:0.75rem; box-sizing:border-box;">
+                      <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.5rem; gap:0.4rem;">
+                        <div>
+                          <div style="font-size:0.92rem; font-weight:800; color:#FEF3C7;">${d.name}</div>
+                          <div style="font-size:0.72rem; color:var(--text-muted);">${d.type}</div>
+                        </div>
+                        <div style="text-align:right; flex-shrink:0;">
+                          <span style="font-weight:800; font-size:0.78rem; color:${dColor}; background:${dColor}18; padding:0.2rem 0.5rem; border-radius:4px; border:1px solid ${dColor}44;">
+                            RPPI ${d.rppi}
+                          </span>
+                        </div>
+                      </div>
+
+                      <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.4rem; background:rgba(0,0,0,0.2); padding:0.5rem; border-radius:6px; margin-bottom:0.6rem; font-size:0.75rem;">
+                        <div>
+                          <span style="color:var(--text-muted);">Dân số:</span>
+                          <div style="font-weight:700; color:#CBD5E1;">${(d.pop || 0).toLocaleString('vi-VN')}</div>
+                        </div>
+                        <div>
+                          <span style="color:var(--text-muted);">Mật độ:</span>
+                          <div style="font-weight:700; color:#CBD5E1;">${(d.density || 0).toLocaleString('vi-VN')} /km²</div>
+                        </div>
+                        <div>
+                          <span style="color:var(--text-muted);">Thu nhập:</span>
+                          <div style="font-weight:700; color:#34D399;">${d.income} tr/th</div>
+                        </div>
+                        <div>
+                          <span style="color:var(--text-muted);">Chi tiêu:</span>
+                          <div style="font-weight:700; color:#38BDF8;">${d.expense} tr/th</div>
+                        </div>
+                      </div>
+
+                      <button type="button" onclick="window.toolUI.selectDistrictFromCard('${currentProvince.historical_id}', '${d.id}')" style="width:100%; background:rgba(16,185,129,0.15); border:1px solid #10B981; color:#34D399; padding:0.45rem; border-radius:6px; font-size:0.8rem; font-weight:700; cursor:pointer; min-height:40px; display:flex; align-items:center; justify-content:center; gap:0.3rem;">
+                        <span>🎯 Khảo sát bán kính huyện này</span>
+                      </button>
+                    </div>
+                  `;
+                }).join('')}
+              </div>
+            </div>
+          </div>
         </div>
 
         <!-- CÔNG CỤ TÍNH BÁN KÍNH SỨC MUA & DUNG LƯỢNG THỊ TRƯỜNG (RADIUS MARKET CALCULATOR) -->
-        <div style="background:rgba(16,185,129,0.06); border:1px solid rgba(16,185,129,0.25); border-radius:10px; padding:1.4rem; margin-bottom:1.8rem;">
+        <div id="kinhte-radius-engine-block" style="background:rgba(16,185,129,0.06); border:1px solid rgba(16,185,129,0.25); border-radius:10px; padding:1.2rem; margin-bottom:1.8rem; box-sizing:border-box;">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem; flex-wrap:wrap; gap:0.5rem;">
             <div>
               <h3 style="font-size:1.05rem; color:#10B981; margin:0 0 0.2rem 0; font-weight:700;">
@@ -1940,33 +2014,41 @@ ${reportText}
           </div>
 
           <!-- Bộ điều khiển lựa chọn bán kính và đơn vị -->
-          <div style="display:flex; gap:0.8rem; flex-wrap:wrap; align-items:center; background:rgba(0,0,0,0.25); padding:0.8rem; border-radius:8px;">
-            <div style="display:flex; align-items:center; gap:0.4rem; flex-wrap:wrap;">
-              <label style="font-size:0.8rem; color:#FEF3C7; font-weight:600;">Quận / Huyện:</label>
-              <input type="text" id="kinhte-search-district" placeholder="🔍 Gõ tìm huyện..." oninput="window.toolUI.filterDistrictDropdown(this.value)" style="background:#0F172A; border:1px solid rgba(255,255,255,0.2); color:#FEF3C7; padding:0.35rem 0.6rem; border-radius:6px; font-size:0.8rem; outline:none; width:130px;">
-              <select id="kinhte-select-district" onchange="window.toolUI.onDistrictChange('${currentProvince.historical_id}')" style="background:#0F172A; border:1px solid #10B981; color:#FEF3C7; padding:0.35rem 0.7rem; border-radius:6px; font-size:0.8rem; outline:none; max-width:240px;">
-                ${districts.map(d => `<option value="${d.id}">${d.name} (${d.type})</option>`).join('')}
-              </select>
+          <div style="background:rgba(0,0,0,0.25); padding:0.85rem; border-radius:8px; margin-bottom:1rem; box-sizing:border-box;">
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:0.75rem; margin-bottom:0.75rem; box-sizing:border-box;">
+              <div style="display:flex; flex-direction:column; gap:0.3rem;">
+                <label style="font-size:0.82rem; color:#FEF3C7; font-weight:600;">Quận / Huyện:</label>
+                <div style="display:flex; gap:0.4rem; width:100%; box-sizing:border-box;">
+                  <input type="text" id="kinhte-search-district" placeholder="🔍 Gõ tìm..." oninput="window.toolUI.filterDistrictDropdown(this.value)" style="background:#0F172A; border:1px solid rgba(255,255,255,0.25); color:#FEF3C7; padding:0.45rem 0.6rem; border-radius:6px; font-size:16px; outline:none; width:110px; flex-shrink:0; box-sizing:border-box;">
+                  <select id="kinhte-select-district" onchange="window.toolUI.onDistrictChange('${currentProvince.historical_id}')" style="background:#0F172A; border:1px solid #10B981; color:#FEF3C7; padding:0.45rem 0.6rem; border-radius:6px; font-size:16px; outline:none; flex:1; min-width:0; box-sizing:border-box;">
+                    ${districts.map(d => `<option value="${d.id}">${d.name} (${d.type})</option>`).join('')}
+                  </select>
+                </div>
+              </div>
+
+              <div style="display:flex; flex-direction:column; gap:0.3rem;">
+                <label style="font-size:0.82rem; color:#FEF3C7; font-weight:600;">Xã / Phường:</label>
+                <select id="kinhte-select-commune" onchange="window.toolUI.triggerRadiusCalculation('${currentProvince.historical_id}')" style="background:#0F172A; border:1px solid #34D399; color:#34D399; padding:0.45rem 0.6rem; border-radius:6px; font-size:16px; outline:none; width:100%; box-sizing:border-box;">
+                  ${((districts[0] && districts[0].communes) || []).map(c => `<option value="${c.id}">${c.name} (${c.type})</option>`).join('')}
+                </select>
+              </div>
             </div>
 
-            <div style="display:flex; align-items:center; gap:0.4rem; flex-wrap:wrap;">
-              <label style="font-size:0.8rem; color:#FEF3C7; font-weight:600;">Xã / Phường:</label>
-              <select id="kinhte-select-commune" onchange="window.toolUI.triggerRadiusCalculation('${currentProvince.historical_id}')" style="background:#0F172A; border:1px solid #34D399; color:#34D399; padding:0.35rem 0.7rem; border-radius:6px; font-size:0.8rem; outline:none; max-width:240px;">
-                ${((districts[0] && districts[0].communes) || []).map(c => `<option value="${c.id}">${c.name} (${c.type})</option>`).join('')}
-              </select>
-            </div>
-
-            <div style="display:flex; align-items:center; gap:0.4rem;">
-              <label style="font-size:0.8rem; color:#FEF3C7; font-weight:600;">Bán kính khảo sát:</label>
-              <div style="display:flex; gap:0.3rem;">
-                <button type="button" class="radius-btn" onclick="window.toolUI.setRadiusAndCalculate('${currentProvince.historical_id}', 500)" style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15); color:#FEF3C7; padding:0.3rem 0.65rem; border-radius:6px; font-size:0.75rem; font-weight:700; cursor:pointer;">
-                  500m (Khí Khẩu)
+            <!-- Bán kính khảo sát: Segmented Control 3 cột cân đối -->
+            <div style="width:100%; box-sizing:border-box;">
+              <label style="font-size:0.82rem; color:#FEF3C7; font-weight:600; display:block; margin-bottom:0.4rem;">Bán kính khảo sát:</label>
+              <div class="radius-segmented-control" style="display:grid; grid-template-columns:repeat(3, 1fr); gap:0.45rem; width:100%; box-sizing:border-box;">
+                <button type="button" class="radius-btn" data-radius="500" onclick="window.toolUI.setRadiusAndCalculate('${currentProvince.historical_id}', 500)" style="min-height:48px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15); border-radius:6px; padding:0.35rem 0.2rem; cursor:pointer; text-align:center; transition:all 0.2s ease;">
+                  <div style="font-size:0.95rem; font-weight:800; color:#FEF3C7;">500 m</div>
+                  <div style="font-size:0.7rem; color:var(--text-muted); margin-top:2px;">Khí Khẩu</div>
                 </button>
-                <button type="button" class="radius-btn active" onclick="window.toolUI.setRadiusAndCalculate('${currentProvince.historical_id}', 1000)" style="background:rgba(16,185,129,0.25); border:1px solid #10B981; color:#10B981; padding:0.3rem 0.65rem; border-radius:6px; font-size:0.75rem; font-weight:700; cursor:pointer;">
-                  1.000m (Tiểu Vùng)
+                <button type="button" class="radius-btn active" data-radius="1000" onclick="window.toolUI.setRadiusAndCalculate('${currentProvince.historical_id}', 1000)" style="min-height:48px; background:rgba(16,185,129,0.25); border:1px solid #10B981; border-radius:6px; padding:0.35rem 0.2rem; cursor:pointer; text-align:center; transition:all 0.2s ease;">
+                  <div style="font-size:0.95rem; font-weight:800; color:#10B981;">1.000 m</div>
+                  <div style="font-size:0.7rem; color:#34D399; margin-top:2px;">Tiểu Vùng</div>
                 </button>
-                <button type="button" class="radius-btn" onclick="window.toolUI.setRadiusAndCalculate('${currentProvince.historical_id}', 3000)" style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15); color:#FEF3C7; padding:0.3rem 0.65rem; border-radius:6px; font-size:0.75rem; font-weight:700; cursor:pointer;">
-                  3.000m (Đại Cục)
+                <button type="button" class="radius-btn" data-radius="3000" onclick="window.toolUI.setRadiusAndCalculate('${currentProvince.historical_id}', 3000)" style="min-height:48px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15); border-radius:6px; padding:0.35rem 0.2rem; cursor:pointer; text-align:center; transition:all 0.2s ease;">
+                  <div style="font-size:0.95rem; font-weight:800; color:#FEF3C7;">3.000 m</div>
+                  <div style="font-size:0.7rem; color:var(--text-muted); margin-top:2px;">Đại Cục</div>
                 </button>
               </div>
             </div>
@@ -2248,41 +2330,42 @@ ${reportText}
 
           <!-- KHỐI 3: ĐỘNG THÁI SINH - TỬ & TUỔI THỌ CỬA HÀNG -->
           <div style="background:rgba(255,255,255,0.025); border:1px solid rgba(245,158,11,0.2); border-radius:8px; padding:1rem; border-top:3px solid #F59E0B;">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.6rem;">
-              <span style="font-size:0.74rem; font-weight:700; color:#F59E0B; text-transform:uppercase;">03. Động Thái Sinh - Tử & Churn</span>
-              <span style="font-size:0.7rem; color:#EF4444; font-weight:700;">Churn Rate: ${survivalDynamics.churnRatePct}%/năm</span>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.6rem; flex-wrap:wrap; gap:0.3rem;">
+              <span style="font-size:0.78rem; font-weight:700; color:#F59E0B; text-transform:uppercase;">03. Động Thái Sinh - Tử & Biến Động Điểm Bán</span>
+              <span style="font-size:0.7rem; color:#94A3B8; background:rgba(255,255,255,0.06); padding:0.15rem 0.45rem; border-radius:4px;">Chưa có dữ liệu quan trắc vi mô</span>
             </div>
 
-            <div style="margin-bottom:0.8rem;">
-              <div style="font-size:1.1rem; font-weight:800; color:#FEF3C7; display:flex; gap:0.8rem; align-items:center;">
-                <span style="color:#34D399;">+${survivalDynamics.newlyAddedCount} mở mới</span>
-                <span style="color:#EF4444;">-${survivalDynamics.removedCount} rời bỏ</span>
-                <span style="font-size:0.75rem; color:#38BDF8; font-weight:700;">(Tăng ròng: +${survivalDynamics.netGrowthCount})</span>
+            <div style="background:rgba(0,0,0,0.25); border:1px solid rgba(255,255,255,0.06); border-radius:6px; padding:0.7rem; margin-bottom:0.8rem;">
+              <div style="font-size:0.82rem; font-weight:700; color:#CBD5E1; display:flex; align-items:center; gap:0.4rem;">
+                <span style="color:#F59E0B;">ℹ️</span> Chưa có dữ liệu thống kê biến động mở mới / rời bỏ thực tế
               </div>
-              <div style="font-size:0.72rem; color:var(--text-dim); margin-top:0.15rem;">
-                *Thống kê biến động POI trong 12 tháng gần nhất
+              <div style="font-size:0.74rem; color:var(--text-muted); margin-top:0.3rem; line-height:1.45;">
+                Tại Việt Nam hiện chưa có cơ sở dữ liệu quan trắc định kỳ cấp bán kính vi mô về số lượng chính xác cửa hàng mở mới / đóng cửa trong vòng tròn khảo sát. Tuyệt đối không tự suy đoán số liệu giả.
               </div>
             </div>
 
-            <!-- Đường cong sống sót theo thời gian -->
+            <!-- Đường cong sống sót theo thời gian (Tham chiếu chuẩn hóa ngành) -->
             <div style="border-top:1px dashed rgba(255,255,255,0.08); padding-top:0.6rem; font-size:0.74rem;">
-              <div style="color:var(--text-muted); font-weight:600; margin-bottom:0.35rem;">Xác suất đóng cửa theo tuổi thọ:</div>
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.4rem; flex-wrap:wrap;">
+                <span style="color:var(--text-muted); font-weight:600;">Tỷ lệ duy trì điểm bán theo thời gian (Tham chiếu ngành toàn quốc):</span>
+                <span style="font-size:0.68rem; color:#38BDF8;">Benchmark VSIC</span>
+              </div>
               <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:0.3rem; text-align:center;">
-                <div style="background:rgba(239,68,68,0.1); border:1px solid rgba(239,68,68,0.25); border-radius:4px; padding:0.3rem;">
+                <div style="background:rgba(239,68,68,0.1); border:1px solid rgba(239,68,68,0.25); border-radius:4px; padding:0.35rem 0.2rem;">
                   <div style="font-size:0.68rem; color:#94A3B8;">&lt; 6 tháng</div>
-                  <strong style="color:#F87171; font-size:0.8rem;">${Math.round(survivalDynamics.survivalRates.under_6m * 100)}%</strong>
+                  <strong style="color:#F87171; font-size:0.82rem;">${Math.round((survivalDynamics.survivalRates?.under_6m || 0.15) * 100)}%</strong>
                 </div>
-                <div style="background:rgba(245,158,11,0.1); border:1px solid rgba(245,158,11,0.25); border-radius:4px; padding:0.3rem;">
+                <div style="background:rgba(245,158,11,0.1); border:1px solid rgba(245,158,11,0.25); border-radius:4px; padding:0.35rem 0.2rem;">
                   <div style="font-size:0.68rem; color:#94A3B8;">6 - 12 thg</div>
-                  <strong style="color:#FBBF24; font-size:0.8rem;">${Math.round(survivalDynamics.survivalRates.m6_to_12 * 100)}%</strong>
+                  <strong style="color:#FBBF24; font-size:0.82rem;">${Math.round((survivalDynamics.survivalRates?.m6_to_12 || 0.20) * 100)}%</strong>
                 </div>
-                <div style="background:rgba(56,189,248,0.1); border:1px solid rgba(56,189,248,0.25); border-radius:4px; padding:0.3rem;">
+                <div style="background:rgba(56,189,248,0.1); border:1px solid rgba(56,189,248,0.25); border-radius:4px; padding:0.35rem 0.2rem;">
                   <div style="font-size:0.68rem; color:#94A3B8;">1 - 2 năm</div>
-                  <strong style="color:#38BDF8; font-size:0.8rem;">${Math.round(survivalDynamics.survivalRates.y1_to_2 * 100)}%</strong>
+                  <strong style="color:#38BDF8; font-size:0.82rem;">${Math.round((survivalDynamics.survivalRates?.y1_to_2 || 0.25) * 100)}%</strong>
                 </div>
-                <div style="background:rgba(16,185,129,0.1); border:1px solid rgba(16,185,129,0.25); border-radius:4px; padding:0.3rem;">
+                <div style="background:rgba(16,185,129,0.1); border:1px solid rgba(16,185,129,0.25); border-radius:4px; padding:0.35rem 0.2rem;">
                   <div style="font-size:0.68rem; color:#94A3B8;">&gt; 2 năm</div>
-                  <strong style="color:#34D399; font-size:0.8rem;">${survivalDynamics.survivalOver2YearsPct}%</strong>
+                  <strong style="color:#34D399; font-size:0.82rem;">${survivalDynamics.survivalOver2YearsPct}%</strong>
                 </div>
               </div>
             </div>
@@ -2379,18 +2462,27 @@ ${reportText}
     const comSelect = document.getElementById('kinhte-select-commune');
     const communeId = comSelect ? comSelect.value : null;
 
-    // Update active button state
+    // Update active button state in Segmented Control
     const btns = document.querySelectorAll('.radius-btn');
     btns.forEach(b => {
-      const match = b.textContent.includes(radiusMeters >= 1000 ? `${(radiusMeters/1000).toFixed(3).replace(/\.?0+$/, '')}` : `${radiusMeters}`);
-      if (match) {
+      const rAttr = parseInt(b.getAttribute('data-radius'), 10);
+      const isMatch = rAttr ? (rAttr === radiusMeters) : b.textContent.includes(radiusMeters >= 1000 ? `${(radiusMeters/1000).toFixed(3).replace(/\.?0+$/, '')}` : `${radiusMeters}`);
+      const titleEl = b.querySelector('div:first-child');
+      const subEl = b.querySelector('div:last-child');
+      if (isMatch) {
+        b.classList.add('active');
         b.style.background = 'rgba(16,185,129,0.25)';
         b.style.borderColor = '#10B981';
         b.style.color = '#10B981';
+        if (titleEl) titleEl.style.color = '#10B981';
+        if (subEl) subEl.style.color = '#34D399';
       } else {
+        b.classList.remove('active');
         b.style.background = 'rgba(255,255,255,0.06)';
         b.style.borderColor = 'rgba(255,255,255,0.15)';
         b.style.color = '#FEF3C7';
+        if (titleEl) titleEl.style.color = '#FEF3C7';
+        if (subEl) subEl.style.color = '#94A3B8';
       }
     });
 
@@ -2610,6 +2702,76 @@ ${reportText}
       const name = this.removeVietnameseTones(r.getAttribute('data-name') || '').toLowerCase();
       r.style.display = (!cleanKw || name.includes(cleanKw)) ? '' : 'none';
     });
+  }
+
+  toggleMobileSaeCards() {
+    const body = document.getElementById('sae-mobile-collapsible-body');
+    const icon = document.getElementById('sae-mobile-toggle-icon');
+    if (!body) return;
+    const isHidden = body.style.display === 'none' || !body.style.display;
+    body.style.display = isHidden ? 'block' : 'none';
+    if (icon) {
+      icon.textContent = isHidden ? '▴ Thu gọn' : '▾ Mở rộng';
+    }
+  }
+
+  filterMobileSaeCards(query) {
+    const cards = document.querySelectorAll('.sae-mobile-district-card');
+    const cleanKw = this.removeVietnameseTones(query || '').trim().toLowerCase();
+    cards.forEach(card => {
+      const name = this.removeVietnameseTones(card.getAttribute('data-name') || '').toLowerCase();
+      const match = !cleanKw || name.includes(cleanKw);
+      card.style.display = match ? 'block' : 'none';
+    });
+  }
+
+  sortMobileSaeCards(metric) {
+    const container = document.getElementById('kinhte-mobile-sae-list');
+    if (!container) return;
+    const cards = Array.from(container.querySelectorAll('.sae-mobile-district-card'));
+    
+    this._mobileSaeSortOrder = (this._mobileSaeCurrentMetric === metric && this._mobileSaeSortOrder === 'desc') ? 'asc' : 'desc';
+    this._mobileSaeCurrentMetric = metric;
+    const isDesc = this._mobileSaeSortOrder === 'desc';
+
+    cards.sort((a, b) => {
+      const valA = parseFloat(a.getAttribute(`data-${metric}`) || 0);
+      const valB = parseFloat(b.getAttribute(`data-${metric}`) || 0);
+      return isDesc ? (valB - valA) : (valA - valB);
+    });
+
+    cards.forEach(c => container.appendChild(c));
+
+    const btns = document.querySelectorAll('.sae-sort-btn');
+    btns.forEach(b => {
+      const isCurrent = b.getAttribute('data-sort') === metric;
+      const metricLabel = b.getAttribute('data-sort') === 'pop' ? 'Dân số' :
+                          b.getAttribute('data-sort') === 'income' ? 'Thu nhập' :
+                          b.getAttribute('data-sort') === 'expense' ? 'Chi tiêu' : 'Điểm RPPI';
+      if (isCurrent) {
+        b.style.background = 'rgba(56,189,248,0.2)';
+        b.style.borderColor = '#38BDF8';
+        b.style.color = '#38BDF8';
+        b.textContent = `${metricLabel} ${isDesc ? '▾' : '▴'}`;
+      } else {
+        b.style.background = 'rgba(255,255,255,0.06)';
+        b.style.borderColor = 'rgba(255,255,255,0.15)';
+        b.style.color = '#FEF3C7';
+        b.textContent = `${metricLabel} ▾`;
+      }
+    });
+  }
+
+  selectDistrictFromCard(provinceId, districtId) {
+    const distSelect = document.getElementById('kinhte-select-district');
+    if (distSelect) {
+      distSelect.value = districtId;
+      this.onDistrictChange(provinceId);
+    }
+    const target = document.getElementById('kinhte-radius-engine-block');
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   }
 
   toggleDiaChatDropdown(forceOpen) {

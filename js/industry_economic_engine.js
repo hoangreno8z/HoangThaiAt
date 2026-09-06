@@ -328,16 +328,16 @@
       const independentCount = Math.max(1, estimatedCompetitors - chainCount);
       const customersPerStore = Math.round(targetCustomerCount / estimatedCompetitors);
 
-      // 4. KHỐI 3: ĐỘNG THÁI SINH - TỬ & TUỔI THỌ CỬA HÀNG (12 THÁNG QUA)
-      const churnRatePct = Number((profile.churn_rate_annual * 100).toFixed(1));
-      const removedCount = Math.max(1, Math.round(estimatedCompetitors * profile.churn_rate_annual));
-      // Tốc độ phát triển ròng dương theo đà đô thị hóa
-      const growthFactor = financials.monthlyIncomePerCapita > 6.0 ? 1.45 : 1.2;
-      const newlyAddedCount = Math.round(removedCount * growthFactor);
-      const netGrowthCount = newlyAddedCount - removedCount;
-      const netGrowthRatePct = Number(((netGrowthCount / estimatedCompetitors) * 100).toFixed(1));
+      // 4. KHỐI 3: ĐỘNG THÁI SINH - TỬ & TUỔI THỌ CỬA HÀNG
+      // QUY TẮC TOÀN VẸN DỮ LIỆU: Tại Việt Nam hiện chưa có cơ sở dữ liệu quan trắc định kỳ cấp bán kính vi mô
+      // về số lượng chính xác cửa hàng mở mới / rời bỏ hàng tháng. Tuyệt đối không tự suy số giả (missing data !== 1).
+      const newlyAddedCount = null;
+      const removedCount = null;
+      const netGrowthCount = null;
+      const netGrowthRatePct = null;
+      const churnRatePct = null;
 
-      // Tỷ lệ sống sót theo các mốc thời gian
+      // Dữ liệu tỷ lệ sống sót tham chiếu chuẩn hóa ngành toàn quốc (Benchmark)
       const survivalOver2YearsPct = Math.round(profile.survival_rates.over_2y * 100);
 
       // 5. KHỐI 4: TỶ SỐ CẦU / CUNG (DSR) & ĐIỂM CƠ HỘI THỊ TRƯỜNG
@@ -370,8 +370,8 @@
       const demandScore = Math.min(100, Math.round((totalIndustryDemandBillionVnd / (areaKm2 * 3.5)) * 100));
       // 2. Competition Score (0-100, 25%): Khoảng trống cạnh tranh (càng ít bão hòa điểm càng cao)
       const compGapScore = Math.min(100, Math.max(30, Math.round(dsrRatio * 65)));
-      // 3. Survival Stability Score (0-100, 20%): Mức độ ổn định sinh tồn
-      const survivalScore = Math.min(100, Math.round((1 - profile.churn_rate_annual) * 85 + survivalOver2YearsPct * 0.2));
+      // 3. Survival Stability Score (0-100, 20%): Mức độ ổn định sinh tồn dựa trên tỷ lệ sống sót chuẩn ngành
+      const survivalScore = Math.min(100, Math.round(survivalOver2YearsPct * 1.5 + 20));
       // 4. Feng Shui & Location Affinity Score (0-100, 20%): Sự phù hợp địa khí
       const locationAffinityScore = Math.min(100, Math.round(marketAssessment.rppiScore * 0.95 + 5));
 
@@ -441,13 +441,18 @@
           customersPerStore
         },
         survivalDynamics: {
+          status: 'unavailable',
+          statusLabel: 'Chưa có dữ liệu quan trắc biến động thời gian thực',
+          provenance: 'UNAVAILABLE_AT_MICRO_RADIUS',
           newlyAddedCount,
           removedCount,
           netGrowthCount,
           netGrowthRatePct,
           churnRatePct,
+          benchmarkAnnualRatePct: Number((profile.churn_rate_annual * 100).toFixed(1)),
           survivalRates: profile.survival_rates,
-          survivalOver2YearsPct
+          survivalOver2YearsPct,
+          note: 'Chưa có dữ liệu thống kê biến động điểm bán (mới mở / đóng cửa) thời gian thực cho bán kính này.'
         },
         feasibility: {
           dsrRatio,
@@ -468,7 +473,7 @@
         strategicAdvice: {
           suitableModels: profile.suitable_models,
           fengshuiAffinity: profile.fengshui_affinity,
-          verdict: `Tại bán kính ${radiusKm >= 1 ? `${radiusKm} km` : `${radiusMeters} m`} quanh khu vực này, dung lượng tiêu thụ ngành ${profile.name} ước tính đạt xấp xỉ ${totalIndustryDemandBillionVnd} tỷ VNĐ/tháng cho ${targetCustomerCount.toLocaleString('vi-VN')} khách hàng tiềm năng. Với ${estimatedCompetitors} đối thủ hiện hữu, chỉ số Cầu/Cung đạt ${dsrRatio} (${dsrStatus}). Tỷ lệ cửa hàng tồn tại >2 năm đạt ${survivalOver2YearsPct}%. Tổng điểm Cơ Hội Thị Trường đạt ${overallOpportunityScore}/100 — Mức độ: ${opportunityTier}.`
+          verdict: `Tại bán kính ${radiusKm >= 1 ? `${radiusKm} km` : `${radiusMeters} m`} quanh khu vực này, dung lượng tiêu thụ ngành ${profile.name} ước tính đạt xấp xỉ ${totalIndustryDemandBillionVnd} tỷ VNĐ/tháng cho ${targetCustomerCount.toLocaleString('vi-VN')} khách hàng tiềm năng. Với ${estimatedCompetitors} đối thủ hiện hữu, chỉ số Cầu/Cung đạt ${dsrRatio} (${dsrStatus}). Tỷ lệ cửa hàng tồn tại >2 năm (chuẩn ngành toàn quốc) đạt ${survivalOver2YearsPct}%. Tổng điểm Cơ Hội Thị Trường đạt ${overallOpportunityScore}/100 — Mức độ: ${opportunityTier}.`
         }
       };
     }

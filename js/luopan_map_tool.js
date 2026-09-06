@@ -2800,9 +2800,9 @@ class LuopanMapTool {
             </div>
 
             <div style="background:rgba(255,255,255,0.02); padding:0.5rem; border-radius:5px; border-left:3px solid #F59E0B;">
-              <div style="font-size:0.68rem; color:var(--text-muted);">Sinh - Tử (12 tháng):</div>
-              <strong style="color:#FEF3C7; font-size:0.86rem;"><span style="color:#34D399;">+${survivalDynamics.newlyAddedCount}</span> / <span style="color:#EF4444;">-${survivalDynamics.removedCount}</span></strong>
-              <div style="font-size:0.65rem; color:#EF4444;">Churn: ${survivalDynamics.churnRatePct}%/năm</div>
+              <div style="font-size:0.68rem; color:var(--text-muted);">Sống sót >2 năm:</div>
+              <strong style="color:#34D399; font-size:0.86rem;">~${survivalDynamics.survivalOver2YearsPct}%</strong>
+              <div style="font-size:0.65rem; color:#94A3B8;">Tham chiếu chuẩn ngành</div>
             </div>
           </div>
 

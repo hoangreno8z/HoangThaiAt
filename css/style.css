@@ -2639,3 +2639,42 @@ select, input, textarea, button {
     margin-bottom: 3px !important;
   }
 }
+
+/* =========================================================================
+   SMALL AREA ESTIMATION (SAE) & RADIUS CONTROLS RESPONSIVE RULES
+   ========================================================================= */
+.sae-desktop-table {
+  display: block;
+}
+.sae-desktop-filter {
+  display: flex;
+}
+.sae-mobile-cards-wrapper {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .sae-desktop-table {
+    display: none !important;
+  }
+  .sae-desktop-filter {
+    display: none !important;
+  }
+  .sae-mobile-cards-wrapper {
+    display: block !important;
+  }
+
+  /* Chống tràn ngang tuyệt đối trên mobile */
+  #gate-tools {
+    max-width: 100vw !important;
+    overflow-x: clip !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Chống triệt để iOS Safari Native Auto-Zoom bằng font-size >= 16px */
+  #gate-tools input[type="text"],
+  #gate-tools select {
+    font-size: 16px !important;
+  }
+}
+

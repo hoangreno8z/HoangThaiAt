@@ -76,10 +76,11 @@ runTest('Khảo sát thị trường Cà phê (CAFE) bán kính 1km tại Hoàn 
   assert.ok(res.competition.chainCount >= 5, 'Phải có sự hiện diện của chuỗi');
   assert.ok(res.competition.avgDistanceBetweenCompetitorsMeters > 0, 'Khoảng cách trung bình giữa 2 quán phải > 0');
 
-  // Khối 3: Động thái Sinh - Tử & Churn
-  assert.ok(res.survivalDynamics.churnRatePct >= 10, 'Tỷ lệ churn ngành cafe phải >= 10%/năm');
-  assert.ok(res.survivalDynamics.removedCount >= 1, 'Số quán rời bỏ/đóng cửa phải >= 1');
-  assert.ok(res.survivalDynamics.newlyAddedCount >= 1, 'Số quán mở mới phải >= 1');
+  // Khối 3: Động thái Sinh - Tử & Churn (Minh bạch dữ liệu: không bịa số 1/1)
+  assert.strictEqual(res.survivalDynamics.status, 'unavailable', 'Trạng thái dữ liệu vi mô phải là unavailable');
+  assert.strictEqual(res.survivalDynamics.newlyAddedCount, null, 'Không tự ý bịa số quán mở mới');
+  assert.strictEqual(res.survivalDynamics.removedCount, null, 'Không tự ý bịa số quán đóng cửa');
+  assert.ok(res.survivalDynamics.survivalOver2YearsPct > 0, 'Phải có tỷ lệ sống sót > 2 năm chuẩn hóa ngành');
 
   // Khối 4: DSR & Điểm Cơ Hội
   assert.ok(res.feasibility.dsrRatio > 0, 'Tỷ số DSR phải > 0');
@@ -206,7 +207,7 @@ runTest('Xử lý an toàn khi thiếu tham số hoặc tỉnh thành xa xôi', 
 
   assert.ok(resDB);
   assert.ok(resDB.competition.estimatedCompetitors >= 2, 'Luôn có ít nhất 2 đối thủ ước tính tối thiểu');
-  assert.ok(resDB.survivalDynamics.removedCount >= 1);
+  assert.strictEqual(resDB.survivalDynamics.status, 'unavailable', 'Dữ liệu vi mô vùng cao phải trả về unavailable');
   assert.ok(resDB.feasibility.overallOpportunityScore > 0);
 });
 
