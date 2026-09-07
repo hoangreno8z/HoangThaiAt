@@ -722,8 +722,8 @@ class LuopanMapTool {
             <strong style="color:#34D399;">Thêm điểm P${this.waterPolyline.length + 1}:</strong>
             <span style="color:#FEF3C7;">Chạm vào bản đồ tại vị trí khúc rẽ để đặt điểm mới</span>
           </div>
-          <button type="button" id="btn-cancel-arm-point" class="dt-touch-btn" style="min-height:22px; padding:0.15rem 0.5rem; font-size:0.68rem; background:#450A0A; color:#FCA5A5; border:1px solid #EF4444;">
-            Hủy
+          <button type="button" id="btn-cancel-arm-point" class="dt-touch-btn" style="min-height:22px; padding:0.15rem 0.5rem; font-size:0.68rem; font-weight:800; background:#450A0A; color:#FCA5A5; border:1px solid #EF4444;" title="Hủy thêm điểm">
+            ✕ Hủy
           </button>
         </div>
       `;
@@ -777,8 +777,8 @@ class LuopanMapTool {
                 Xóa Node
               </button>
             ` : ''}
-            <button type="button" id="btn-node-close" style="background:transparent; border:none; color:#94A3B8; cursor:pointer; font-size:0.9rem; padding:0 0.25rem;">
-              
+            <button type="button" id="btn-node-close" class="dt-touch-btn" style="min-height:22px; padding:0.15rem 0.45rem; font-size:0.75rem; font-weight:800; background:#450A0A; color:#FCA5A5; border:1px solid #EF4444;" title="Đóng bảng thao tác node (✕)">
+              ✕
             </button>
           </div>
         </div>
@@ -862,15 +862,7 @@ class LuopanMapTool {
 
       bar.querySelector('#btn-node-close')?.addEventListener('click', (e) => {
         e.stopPropagation();
-        this.selectedNodeIndex = null;
-        this.selectedSegmentIndex = null;
-        this.isArmingAddPoint = false;
-        this.activeDrawTool = 'select';
-        this.isDrawingWater = false;
-        this.renderDrawingElements();
-        this.updateStepBadges();
-        this.updateNodeActionBar();
-        this.updateMeasurementsDisplay();
+        this.closeSelectionBar();
       });
       return;
     }
@@ -899,7 +891,7 @@ class LuopanMapTool {
                 <button type="button" id="btn-seg-insert-node" class="dt-touch-btn" style="min-height:22px; padding:0.15rem 0.45rem; font-size:0.68rem; background:#047857; color:#FFF; border:1px solid #34D399;" title="Chèn thêm 1 điểm vào giữa đoạn này để uốn khúc hẻm">
                   Chèn Điểm Giữa
                 </button>
-                <button type="button" id="btn-seg-close" style="background:transparent; border:none; color:#94A3B8; cursor:pointer; font-size:0.95rem; padding:0 0.25rem;" title="Đóng bảng chi tiết">
+                <button type="button" id="btn-seg-close" class="dt-touch-btn" style="min-height:22px; padding:0.15rem 0.45rem; font-size:0.75rem; font-weight:800; background:#450A0A; color:#FCA5A5; border:1px solid #EF4444;" title="Đóng bảng chi tiết đoạn (✕)">
                   ✕
                 </button>
               </div>
@@ -933,15 +925,7 @@ class LuopanMapTool {
 
         bar.querySelector('#btn-seg-close')?.addEventListener('click', (e) => {
           e.stopPropagation();
-          this.selectedSegmentIndex = null;
-          this.selectedNodeIndex = null;
-          this.isArmingAddPoint = false;
-          this.activeDrawTool = 'select';
-          this.isDrawingWater = false;
-          this.renderDrawingElements();
-          this.updateStepBadges();
-          this.updateNodeActionBar();
-          this.updateMeasurementsDisplay();
+          this.closeSelectionBar();
         });
         return;
       }
@@ -949,6 +933,21 @@ class LuopanMapTool {
 
     bar.style.display = 'none';
     bar.innerHTML = '';
+  }
+
+  closeSelectionBar() {
+    if (this.selectedNodeIndex === null && this.selectedSegmentIndex === null && !this.isArmingAddPoint && this.activeDrawTool === 'select' && !this.isDrawingWater) {
+      return;
+    }
+    this.selectedNodeIndex = null;
+    this.selectedSegmentIndex = null;
+    this.isArmingAddPoint = false;
+    this.activeDrawTool = 'select';
+    this.isDrawingWater = false;
+    this.renderDrawingElements();
+    this.updateStepBadges();
+    this.updateNodeActionBar();
+    this.updateMeasurementsDisplay();
   }
 
   initInteractiveCanvas() {
@@ -1045,11 +1044,7 @@ class LuopanMapTool {
 
       // 5. Chạm nền trống: bỏ chọn node / segment hiện hành
       if (this.selectedNodeIndex !== null || this.selectedSegmentIndex !== null) {
-        this.selectedNodeIndex = null;
-        this.selectedSegmentIndex = null;
-        this.updateNodeActionBar();
-        this.updateMeasurementsDisplay();
-        this.renderDrawingElements();
+        this.closeSelectionBar();
       }
     }, options);
     let dragRafId = null;
@@ -2571,17 +2566,30 @@ class LuopanMapTool {
       moveAnchor(gesture.anchor, pendingPoint, pendingZoom);
     };
 
+    let startPointClient = null;
+    let hasDraggedFar = false;
+
     mount.addEventListener('pointerdown', event => {
       if (event.button !== 0) return;
       pointers.set(event.pointerId, mapPoint(event));
       mount.setPointerCapture(event.pointerId);
       rebase();
+      if (pointers.size === 1) {
+        startPointClient = { x: event.clientX, y: event.clientY };
+        hasDraggedFar = false;
+      }
       event.preventDefault();
     }, options);
 
     mount.addEventListener('pointermove', event => {
       if (!pointers.has(event.pointerId)) return;
       pointers.set(event.pointerId, mapPoint(event));
+      if (startPointClient && !hasDraggedFar) {
+        const dist = Math.hypot(event.clientX - startPointClient.x, event.clientY - startPointClient.y);
+        if (dist > 6) {
+          hasDraggedFar = true;
+        }
+      }
       pendingPoint = midpoint();
       pendingZoom = gesture.zoom + (pointers.size > 1 && gesture.distance > 0
         ? Math.log2(Math.max(1, distance()) / gesture.distance) : 0);
@@ -2602,14 +2610,19 @@ class LuopanMapTool {
         moveRafId = null;
       }
       if (pointers.size === 0) {
-        if (this.isInteracting) {
+        if (this.isInteracting && (hasDraggedFar || (gesture && gesture.distance > 0))) {
           this.isInteracting = false;
           if (this.satelliteLayer && typeof this.satelliteLayer._update === 'function') {
             this.satelliteLayer._update();
           }
           this.projectMapGeometry(true);
+        } else {
+          this.isInteracting = false;
+          this.closeSelectionBar();
         }
         gesture = null;
+        startPointClient = null;
+        hasDraggedFar = false;
       } else {
         rebase();
       }
@@ -2745,6 +2758,9 @@ class LuopanMapTool {
         if (!this.isInteracting) {
           this.projectMapGeometry(true);
         }
+      });
+      this.mapInstance.on('click', () => {
+        this.closeSelectionBar();
       });
     }
     this.mapInstance.invalidateSize({ pan: false });
