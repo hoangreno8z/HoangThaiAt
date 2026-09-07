@@ -603,59 +603,63 @@ class LuopanMapTool {
         </div>
 
         <!-- 5. MODAL PHÂN TÍCH SỨC MUA & TIỀM NĂNG THỊ TRƯỜNG THEO BÁN KÍNH -->
-        <div id="modal-economic-radius" style="display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.85); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); justify-content:center; align-items:center; padding:1rem;">
-          <div style="background:#0F172A; border:1px solid #10B981; border-radius:14px; width:100%; max-width:680px; max-height:85vh; overflow-y:auto; -webkit-overflow-scrolling:touch; padding:1.4rem; box-shadow:0 20px 50px rgba(0,0,0,0.85);">
+        <div id="modal-economic-radius" style="display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.85); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); justify-content:center; align-items:center; padding:0.5rem; box-sizing:border-box;">
+          <div class="econ-modal-dialog">
 
-            <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(255,255,255,0.12); padding-bottom:0.8rem; margin-bottom:1rem;">
-              <div style="display:flex; align-items:center; gap:0.5rem;">
-                
-                <h3 style="margin:0; font-size:1.1rem; color:#FEF3C7; font-weight:800;">
+            <div class="econ-header">
+              <div style="display:flex; align-items:center; gap:0.4rem; min-width:0;">
+                <h3 class="econ-title">
                   DUNG LƯỢNG THỊ TRƯỜNG & SỨC MUA BÁN KÍNH
                 </h3>
               </div>
-              <button type="button" id="btn-close-econ-x" style="background:transparent; border:none; color:#94A3B8; font-size:1.2rem; cursor:pointer; padding:0.15rem 0.4rem;"></button>
+              <button type="button" id="btn-close-econ-x" style="background:transparent; border:none; color:#94A3B8; font-size:1.3rem; cursor:pointer; padding:0.15rem 0.4rem; line-height:1;">✕</button>
             </div>
 
-            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; background:rgba(0,0,0,0.3); padding:0.6rem 0.8rem; border-radius:8px; margin-bottom:0.8rem;">
-              <div style="font-size:0.8rem; color:#CBD5E1;">
+            <!-- Vị trí khảo sát & Tọa độ -->
+            <div class="econ-location-bar">
+              <div class="econ-location-text">
                 <span>Vị trí khảo sát: </span>
-                <strong id="dt-econ-location-text" style="color:#38BDF8;">Đang xác định...</strong>
+                <strong id="dt-econ-location-text" class="econ-coords">Đang xác định...</strong>
               </div>
-              <div style="display:flex; gap:0.3rem;">
-                <button type="button" class="dt-econ-radius-selector" data-radius="500" style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15); color:#FEF3C7; padding:0.25rem 0.55rem; border-radius:6px; font-size:0.75rem; font-weight:700; cursor:pointer;">
+            </div>
+
+            <!-- Segmented Control Bán kính (3 nút nằm trên một hàng, compact 42px) -->
+            <div style="margin-bottom:10px;">
+              <div class="econ-radius-grid">
+                <button type="button" class="dt-econ-radius-selector econ-radius-btn" data-radius="500">
                   500m
                 </button>
-                <button type="button" class="dt-econ-radius-selector active" data-radius="1000" style="background:rgba(16,185,129,0.25); border:1px solid #10B981; color:#10B981; padding:0.25rem 0.55rem; border-radius:6px; font-size:0.75rem; font-weight:700; cursor:pointer;">
-                  1.000m (1km)
+                <button type="button" class="dt-econ-radius-selector econ-radius-btn active" data-radius="1000">
+                  1 km
                 </button>
-                <button type="button" class="dt-econ-radius-selector" data-radius="3000" style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15); color:#FEF3C7; padding:0.25rem 0.55rem; border-radius:6px; font-size:0.75rem; font-weight:700; cursor:pointer;">
-                  3.000m (3km)
+                <button type="button" class="dt-econ-radius-selector econ-radius-btn" data-radius="3000">
+                  3 km
                 </button>
               </div>
             </div>
 
-            <!-- Bộ Chọn 3 Cấp: Tỉnh/Thành -> Quận/Huyện -> Xã/Phường -->
-            <div style="background:rgba(15,23,42,0.85); padding:0.6rem 0.8rem; border-radius:8px; border:1px solid rgba(56,189,248,0.25); margin-bottom:0.7rem;">
-              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.4rem; flex-wrap:wrap; gap:0.3rem;">
-                <span style="font-size:0.74rem; color:#38BDF8; font-weight:800; text-transform:uppercase;">Địa Bàn Khảo Sát (3 Cấp Hành Chính):</span>
-                <span id="dt-econ-district-distance-tag" style="font-size:0.7rem; color:#94A3B8;"></span>
+            <!-- Bộ Chọn 3 Cấp: Tỉnh/Thành -> Quận/Huyện -> Xã/Phường (Chống tràn, 2 cột + 1 full hàng) -->
+            <div class="econ-admin-box">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; flex-wrap:wrap; gap:4px;">
+                <span class="econ-section-title" style="color:#38BDF8;">Địa Bàn Khảo Sát (3 Cấp Hành Chính):</span>
+                <span id="dt-econ-district-distance-tag" style="font-size:12px; color:#94A3B8;"></span>
               </div>
-              <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(170px, 1fr)); gap:0.4rem;">
-                <div>
-                  <label style="font-size:0.68rem; color:#94A3B8; display:block; margin-bottom:0.15rem;">1. Tỉnh / Thành phố:</label>
-                  <select id="dt-econ-province-select" style="width:100%; background:#1E293B; border:1px solid rgba(255,255,255,0.2); color:#FEF3C7; padding:0.25rem 0.5rem; border-radius:5px; font-size:0.75rem; font-weight:700; cursor:pointer; outline:none;">
+              <div class="econ-admin-grid">
+                <div class="econ-field">
+                  <label class="econ-label">1. Tỉnh / Thành phố:</label>
+                  <select id="dt-econ-province-select" class="econ-select">
                     <option value="">Tự động theo GPS</option>
                   </select>
                 </div>
-                <div>
-                  <label style="font-size:0.68rem; color:#94A3B8; display:block; margin-bottom:0.15rem;">2. Quận / Huyện / Thị xã:</label>
-                  <select id="dt-econ-district-select" style="width:100%; background:#1E293B; border:1px solid #38BDF8; color:#FEF3C7; padding:0.25rem 0.5rem; border-radius:5px; font-size:0.75rem; font-weight:700; cursor:pointer; outline:none;">
+                <div class="econ-field">
+                  <label class="econ-label">2. Quận / Huyện / Thị xã:</label>
+                  <select id="dt-econ-district-select" class="econ-select" style="border-color:#38BDF8;">
                     <option value="">Tự động theo GPS</option>
                   </select>
                 </div>
-                <div>
-                  <label style="font-size:0.68rem; color:#94A3B8; display:block; margin-bottom:0.15rem;">3. Xã / Phường / Thị trấn:</label>
-                  <select id="dt-econ-commune-select" style="width:100%; background:#1E293B; border:1px solid #10B981; color:#34D399; padding:0.25rem 0.5rem; border-radius:5px; font-size:0.75rem; font-weight:700; cursor:pointer; outline:none;">
+                <div class="econ-field econ-admin-full">
+                  <label class="econ-label">3. Xã / Phường / Thị trấn:</label>
+                  <select id="dt-econ-commune-select" class="econ-select" style="border-color:#10B981; color:#34D399;">
                     <option value="">Tự động theo GPS</option>
                   </select>
                 </div>
@@ -663,25 +667,28 @@ class LuopanMapTool {
             </div>
 
             <!-- Bộ Chọn Đa Dạng 40 Ngành Kinh Doanh (VSIC 2025) -->
-            <div style="margin-bottom:0.85rem; background:rgba(15,23,42,0.85); padding:0.6rem 0.8rem; border-radius:8px; border:1px solid rgba(245,158,11,0.25); position:relative;">
-              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.35rem;">
-                <span style="font-size:0.74rem; color:#F59E0B; font-weight:800; text-transform:uppercase;">Ngành kinh doanh khảo sát:</span>
-                <span style="font-size:0.68rem; color:#94A3B8;">40 Ngành chuẩn VSIC 2025</span>
+            <div class="econ-ind-box">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+                <span class="econ-section-title" style="color:#F59E0B;">Ngành kinh doanh khảo sát:</span>
+                <span style="font-size:11px; color:#94A3B8;">40 Ngành chuẩn VSIC 2025</span>
               </div>
-              <button type="button" id="dt-econ-ind-dropdown-trigger" style="width:100%; display:flex; justify-content:space-between; align-items:center; background:#1E293B; border:1px solid #F59E0B; color:#FEF3C7; padding:0.35rem 0.65rem; border-radius:6px; font-size:0.78rem; font-weight:700; cursor:pointer; min-height:34px; box-sizing:border-box;">
-                <span id="dt-econ-ind-current-label" style="color:#FBBF24;">Cà Phê & Đồ Uống (VSIC 56302)</span>
-                <span style="color:#F59E0B; font-size:0.72rem; white-space:nowrap; margin-left:0.4rem;">▼ Chọn ngành</span>
-              </button>
-              <div id="dt-econ-ind-dropdown-panel" style="display:none; position:relative; z-index:30; background:#0B0F19; border:1px solid rgba(245,158,11,0.35); border-radius:6px; padding:0.6rem; margin-top:0.35rem; box-shadow:0 8px 24px rgba(0,0,0,0.8); box-sizing:border-box;">
-                <div style="margin-bottom:0.5rem;">
-                  <input type="text" id="dt-econ-ind-search-input" placeholder="Gõ tìm nhanh ngành (vd: cafe, bánh mì, nha khoa, spa, tóc nam, vàng...)" style="width:100%; box-sizing:border-box; background:#0F172A; border:1px solid rgba(255,255,255,0.2); color:#FEF3C7; padding:0.35rem 0.6rem; border-radius:5px; font-size:14px; outline:none;">
+              <button type="button" id="dt-econ-ind-dropdown-trigger" class="econ-ind-trigger">
+                <div class="econ-ind-title-wrap">
+                  <span id="dt-econ-ind-current-label" class="econ-ind-name">Cà Phê & Đồ Uống Giải Khát</span>
+                  <span id="dt-econ-ind-current-sub" class="econ-ind-vsic">VSIC 56302</span>
                 </div>
-                <div id="dt-econ-ind-categories-wrapper" style="display:flex; flex-direction:column; gap:0.55rem; max-height:280px; overflow-y:auto; padding-right:0.2rem; scrollbar-width:thin;">
+                <span class="econ-ind-action">Chọn ngành ▾</span>
+              </button>
+              <div id="dt-econ-ind-dropdown-panel" style="display:none; position:relative; z-index:30; background:#0B0F19; border:1px solid rgba(245,158,11,0.35); border-radius:8px; padding:8px; margin-top:6px; box-shadow:0 8px 24px rgba(0,0,0,0.8); box-sizing:border-box;">
+                <div style="margin-bottom:6px;">
+                  <input type="text" id="dt-econ-ind-search-input" class="econ-search-input" placeholder="Gõ tìm nhanh ngành (vd: cafe, bánh mì, nha...)">
+                </div>
+                <div id="dt-econ-ind-categories-wrapper" style="display:flex; flex-direction:column; gap:8px; max-height:260px; overflow-y:auto; padding-right:2px; scrollbar-width:thin;">
                 </div>
               </div>
             </div>
 
-            <div id="dt-econ-modal-content" style="font-size:0.82rem; color:#E2E8F0; line-height:1.6; margin-bottom:1.2rem;"></div>
+            <div id="dt-econ-modal-content" style="font-size:13px; color:#E2E8F0; line-height:1.5; margin-bottom:12px;"></div>
 
             <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; border-top:1px solid rgba(255,255,255,0.08); padding-top:0.8rem;">
               <div style="font-size:0.72rem; color:var(--text-dim);">
@@ -2720,8 +2727,10 @@ class LuopanMapTool {
 
     const currentKey = this.selectedIndustryKey || 'CAFE';
     const curProfile = catalog[currentKey] || catalog.CAFE;
+    const sub = document.getElementById('dt-econ-ind-current-sub');
     if (label && curProfile) {
-      label.textContent = `${curProfile.name} (VSIC ${curProfile.vsic_code})`;
+      label.textContent = `${curProfile.name}`;
+      if (sub) sub.textContent = `VSIC ${curProfile.vsic_code}`;
     }
 
     if (wrapper.dataset.rendered !== 'true') {
@@ -2731,14 +2740,14 @@ class LuopanMapTool {
         if (!items.length) return '';
         return `
           <div class="dt-econ-cat-section" data-cat="${cat.id}">
-            <div style="font-size:0.7rem; font-weight:700; color:#38BDF8; text-transform:uppercase; margin-bottom:0.3rem;">
-              <span>${cat.title}</span> <span style="font-size:0.65rem; color:#94A3B8;">(${items.length})</span>
+            <div style="font-size:12px; font-weight:700; color:#38BDF8; text-transform:uppercase; margin-bottom:4px; letter-spacing:0.02em;">
+              <span>${cat.title}</span> <span style="font-size:11px; color:#94A3B8;">(${items.length})</span>
             </div>
-            <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(135px, 1fr)); gap:0.3rem;">
+            <div class="econ-ind-grid">
               ${items.map(ind => `
-                <button type="button" class="dt-econ-ind-item-btn" data-id="${ind.id}" data-name="${ind.name}" data-short="${ind.shortName}" data-vsic="${ind.vsic_code}" style="background:${ind.id === currentKey ? 'rgba(245,158,11,0.25)' : 'rgba(255,255,255,0.03)'}; border:1px solid ${ind.id === currentKey ? '#F59E0B' : 'rgba(255,255,255,0.1)'}; color:${ind.id === currentKey ? '#FBBF24' : '#E2E8F0'}; padding:0.3rem 0.45rem; border-radius:4px; font-size:0.72rem; font-weight:600; cursor:pointer; text-align:left;">
-                  <div style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${ind.shortName}</div>
-                  <div style="font-size:0.64rem; color:${ind.id === currentKey ? '#F59E0B' : '#94A3B8'}; font-weight:normal;">${ind.vsic_code}</div>
+                <button type="button" class="dt-econ-ind-item-btn econ-ind-item-btn ${ind.id === currentKey ? 'active' : ''}" data-id="${ind.id}" data-name="${ind.name}" data-short="${ind.shortName}" data-vsic="${ind.vsic_code}">
+                  <div class="econ-ind-item-name">${ind.shortName}</div>
+                  <div class="econ-ind-item-code">VSIC ${ind.vsic_code}</div>
                 </button>
               `).join('')}
             </div>
@@ -2804,6 +2813,7 @@ class LuopanMapTool {
     this.selectedIndustryKey = indKey;
     const panel = document.getElementById('dt-econ-ind-dropdown-panel');
     const label = document.getElementById('dt-econ-ind-current-label');
+    const sub = document.getElementById('dt-econ-ind-current-sub');
     const wrapper = document.getElementById('dt-econ-ind-categories-wrapper');
 
     const indEngine = (typeof window !== 'undefined' && window.IndustryEconomicEngine) || (typeof IndustryEconomicEngine !== 'undefined' ? IndustryEconomicEngine : null);
@@ -2811,18 +2821,25 @@ class LuopanMapTool {
     const curProfile = catalog[indKey] || catalog.CAFE;
 
     if (label && curProfile) {
-      label.textContent = `${curProfile.name} (VSIC ${curProfile.vsic_code})`;
+      label.textContent = `${curProfile.name}`;
+      if (sub) sub.textContent = `VSIC ${curProfile.vsic_code}`;
     }
     if (panel) panel.style.display = 'none';
 
     if (wrapper) {
       wrapper.querySelectorAll('.dt-econ-ind-item-btn').forEach(btn => {
         const isCur = btn.dataset.id === indKey;
-        btn.style.background = isCur ? 'rgba(245,158,11,0.25)' : 'rgba(255,255,255,0.03)';
-        btn.style.borderColor = isCur ? '#F59E0B' : 'rgba(255,255,255,0.1)';
-        btn.style.color = isCur ? '#FBBF24' : '#E2E8F0';
-        const vsicDiv = btn.querySelector('div:nth-child(2)');
-        if (vsicDiv) vsicDiv.style.color = isCur ? '#F59E0B' : '#94A3B8';
+        if (isCur) {
+          btn.classList.add('active');
+          btn.style.background = 'rgba(245,158,11,0.22)';
+          btn.style.borderColor = '#F59E0B';
+          btn.style.color = '#FBBF24';
+        } else {
+          btn.classList.remove('active');
+          btn.style.background = 'rgba(255,255,255,0.03)';
+          btn.style.borderColor = 'rgba(255,255,255,0.1)';
+          btn.style.color = '#E2E8F0';
+        }
       });
     }
 

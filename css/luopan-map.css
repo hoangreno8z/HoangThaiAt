@@ -355,3 +355,391 @@
   text-rendering: geometricPrecision;
 }
 
+/* ==========================================================================
+   COMPACT MOBILE DASHBOARD: DUNG LƯỢNG THỊ TRƯỜNG & SỨC MUA BÁN KÍNH
+   Áp dụng đồng bộ cho cả Modal 144 Thủy Khẩu và Tab Kinh Tế (/tools)
+   ========================================================================== */
+
+:root {
+  --econ-font-title: 18px;
+  --econ-font-section: 14px;
+  --econ-font-control: 15px;
+  --econ-font-body: 13px;
+  --econ-font-meta: 11px;
+  
+  --econ-height-control: 42px;
+  --econ-height-card: 52px;
+  --econ-gap-sm: 6px;
+  --econ-gap-md: 8px;
+  --econ-pad-box: 10px;
+}
+
+/* Modal Dialog Compact Container */
+.econ-modal-dialog {
+  background: #0F172A;
+  border: 1px solid #10B981;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 640px;
+  max-height: 88vh;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 14px 16px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85);
+  box-sizing: border-box;
+}
+
+/* Header & Title */
+.econ-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 8px;
+  margin-bottom: 10px;
+}
+
+.econ-title {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.25;
+  color: #FEF3C7;
+  font-weight: 700;
+}
+
+.econ-section-title {
+  font-size: 14px;
+  line-height: 1.3;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+/* Location Bar */
+.econ-location-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  background: rgba(0, 0, 0, 0.35);
+  padding: 8px 10px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+.econ-location-text {
+  font-size: 13px;
+  line-height: 1.4;
+  color: #CBD5E1;
+  min-width: 0;
+}
+
+.econ-coords {
+  font-size: 13px;
+  font-weight: 600;
+  color: #38BDF8;
+}
+
+/* Segmented Radius Control (3 buttons) */
+.econ-radius-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.econ-radius-btn {
+  height: 42px;
+  min-height: 42px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #FEF3C7;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+  box-sizing: border-box;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.econ-radius-btn.active {
+  background: rgba(16, 185, 129, 0.22);
+  border-color: #10B981;
+  color: #10B981;
+  font-weight: 700;
+}
+
+/* Admin Hierarchy 3 Cấp (Tỉnh / Huyện / Xã) */
+.econ-admin-box {
+  background: rgba(15, 23, 42, 0.85);
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+.econ-admin-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 8px;
+  box-sizing: border-box;
+}
+
+.econ-admin-full {
+  grid-column: 1 / -1;
+  min-width: 0;
+}
+
+.econ-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.econ-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: #94A3B8;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.econ-select {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  height: 42px;
+  min-height: 42px;
+  background: #1E293B;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #FEF3C7;
+  padding: 0 8px;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+  box-sizing: border-box;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.econ-select:focus {
+  border-color: #38BDF8;
+}
+
+/* Active Industry Trigger Button */
+.econ-ind-box {
+  margin-bottom: 10px;
+  background: rgba(15, 23, 42, 0.85);
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  position: relative;
+  box-sizing: border-box;
+}
+
+.econ-ind-trigger {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #1E293B;
+  border: 1px solid #F59E0B;
+  color: #FEF3C7;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  min-height: 48px;
+  box-sizing: border-box;
+  text-align: left;
+  gap: 6px;
+}
+
+.econ-ind-title-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+  flex: 1;
+}
+
+.econ-ind-name {
+  color: #FBBF24;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.25;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.econ-ind-vsic {
+  font-size: 11px;
+  color: #94A3B8;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.econ-ind-action {
+  color: #F59E0B;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Search Industry Input */
+.econ-search-input {
+  width: 100%;
+  height: 42px;
+  box-sizing: border-box;
+  background: #0F172A;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #FEF3C7;
+  padding: 0 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 400;
+  outline: none;
+}
+
+.econ-search-input::placeholder {
+  font-weight: 400;
+  font-size: 13px;
+  color: #64748B;
+}
+
+/* Industry Grid in Dropdown / Catalog */
+.econ-ind-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+  box-sizing: border-box;
+}
+
+.econ-ind-item-btn {
+  min-height: 52px;
+  padding: 7px 10px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #E2E8F0;
+  cursor: pointer;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+  box-sizing: border-box;
+  min-width: 0;
+  transition: all 0.15s ease;
+}
+
+.econ-ind-item-btn.active,
+.econ-ind-item-btn[data-active="true"] {
+  background: rgba(245, 158, 11, 0.22);
+  border-color: #F59E0B;
+  color: #FBBF24;
+}
+
+.econ-ind-item-name {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.2;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  word-break: break-word;
+}
+
+.econ-ind-item-code {
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: #94A3B8;
+}
+
+/* Content & Results */
+.econ-result-card {
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+  box-sizing: border-box;
+}
+
+.econ-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+  margin-bottom: 8px;
+  box-sizing: border-box;
+}
+
+.econ-stat-cell {
+  background: rgba(255, 255, 255, 0.02);
+  padding: 8px;
+  border-radius: 6px;
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+/* Responsive Overrides <= 480px */
+@media (max-width: 480px) {
+  .econ-modal-dialog {
+    padding: 10px 10px;
+    max-height: 92vh;
+    border-radius: 10px;
+  }
+  
+  .econ-title {
+    font-size: 18px;
+  }
+
+  .econ-section-title {
+    font-size: 14px;
+  }
+
+  .econ-label {
+    font-size: 12px;
+  }
+
+  .econ-select {
+    font-size: 15px;
+    height: 42px;
+    min-height: 42px;
+  }
+
+  .econ-radius-btn {
+    font-size: 15px;
+    height: 42px;
+  }
+
+  .econ-ind-item-name {
+    font-size: 14px;
+  }
+
+  .econ-stat-grid {
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    gap: 5px;
+  }
+}
+
+

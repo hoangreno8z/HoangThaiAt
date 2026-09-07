@@ -2014,57 +2014,54 @@ ${reportText}
         </div>
 
         <!-- CÔNG CỤ TÍNH BÁN KÍNH SỨC MUA & DUNG LƯỢNG THỊ TRƯỜNG (RADIUS MARKET CALCULATOR) -->
-        <div id="kinhte-radius-engine-block" style="background:rgba(16,185,129,0.06); border:1px solid rgba(16,185,129,0.25); border-radius:10px; padding:1.2rem; margin-bottom:1.8rem; box-sizing:border-box;">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem; flex-wrap:wrap; gap:0.5rem;">
+        <div id="kinhte-radius-engine-block" class="econ-result-card" style="background:rgba(16,185,129,0.06); border:1px solid rgba(16,185,129,0.25); border-radius:10px; padding:12px; margin-bottom:14px; box-sizing:border-box;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; flex-wrap:wrap; gap:6px;">
             <div>
-              <h3 style="font-size:1.05rem; color:#10B981; margin:0 0 0.2rem 0; font-weight:700;">
-                Động Cơ Tính Dung Lượng Tiêu Dùng Theo Bán Kính (Radius Market Engine)
+              <h3 class="econ-title" style="color:#10B981; margin:0 0 2px 0;">
+                Động Cơ Tính Dung Lượng Tiêu Dùng Theo Bán Kính
               </h3>
-              <div style="font-size:0.78rem; color:var(--text-muted);">
-                Ước tính quy mô dân cư, tổng chi tiêu hàng tháng và cơ cấu tiêu dùng trong vòng tròn 500m (đi bộ), 1km (tiểu vùng), 3km (đại cục thương mại).
+              <div style="font-size:12px; color:var(--text-muted);">
+                Ước tính quy mô dân cư, tổng chi tiêu hàng tháng và cơ cấu tiêu dùng trong vòng tròn 500m (đi bộ), 1km (tiểu vùng), 3km (đại cục).
               </div>
             </div>
-            <span style="font-size:0.75rem; color:#34D399; font-weight:700; background:rgba(52,211,153,0.12); padding:0.2rem 0.5rem; border-radius:4px;">
+            <span style="font-size:11px; color:#34D399; font-weight:700; background:rgba(52,211,153,0.12); padding:2px 6px; border-radius:4px;">
               TÍNH TOÁN THỰC THỜI
             </span>
           </div>
 
           <!-- Bộ điều khiển lựa chọn bán kính và đơn vị -->
-          <div style="background:rgba(0,0,0,0.25); padding:0.85rem; border-radius:8px; margin-bottom:1rem; box-sizing:border-box;">
-            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:0.75rem; margin-bottom:0.75rem; box-sizing:border-box;">
-              <div style="display:flex; flex-direction:column; gap:0.3rem;">
-                <label style="font-size:0.82rem; color:#FEF3C7; font-weight:600;">Quận / Huyện:</label>
-                <div style="display:flex; gap:0.4rem; width:100%; box-sizing:border-box;">
-                  <input type="text" id="kinhte-search-district" placeholder=" Gõ tìm..." oninput="window.toolUI.filterDistrictDropdown(this.value)" style="background:#0F172A; border:1px solid rgba(255,255,255,0.25); color:#FEF3C7; padding:0.45rem 0.6rem; border-radius:6px; font-size:16px; outline:none; width:110px; flex-shrink:0; box-sizing:border-box;">
-                  <select id="kinhte-select-district" onchange="window.toolUI.onDistrictChange('${currentProvince.historical_id}')" style="background:#0F172A; border:1px solid #10B981; color:#FEF3C7; padding:0.45rem 0.6rem; border-radius:6px; font-size:16px; outline:none; flex:1; min-width:0; box-sizing:border-box;">
+          <div style="background:rgba(0,0,0,0.25); padding:10px; border-radius:8px; margin-bottom:8px; box-sizing:border-box;">
+            <div class="econ-admin-grid" style="margin-bottom:8px;">
+              <div class="econ-field">
+                <label class="econ-label">Quận / Huyện:</label>
+                <div style="display:flex; gap:4px; width:100%; box-sizing:border-box; min-width:0;">
+                  <input type="text" id="kinhte-search-district" placeholder="Tìm..." oninput="window.toolUI.filterDistrictDropdown(this.value)" style="background:#0F172A; border:1px solid rgba(255,255,255,0.25); color:#FEF3C7; padding:0 8px; border-radius:6px; font-size:15px; outline:none; width:75px; height:42px; flex-shrink:0; box-sizing:border-box;">
+                  <select id="kinhte-select-district" onchange="window.toolUI.onDistrictChange('${currentProvince.historical_id}')" class="econ-select" style="border-color:#10B981; flex:1; min-width:0;">
                     ${districts.map(d => `<option value="${d.id}">${d.name} (${d.type})</option>`).join('')}
                   </select>
                 </div>
               </div>
 
-              <div style="display:flex; flex-direction:column; gap:0.3rem;">
-                <label style="font-size:0.82rem; color:#FEF3C7; font-weight:600;">Xã / Phường:</label>
-                <select id="kinhte-select-commune" onchange="window.toolUI.triggerRadiusCalculation('${currentProvince.historical_id}')" style="background:#0F172A; border:1px solid #34D399; color:#34D399; padding:0.45rem 0.6rem; border-radius:6px; font-size:16px; outline:none; width:100%; box-sizing:border-box;">
+              <div class="econ-field">
+                <label class="econ-label">Xã / Phường:</label>
+                <select id="kinhte-select-commune" onchange="window.toolUI.triggerRadiusCalculation('${currentProvince.historical_id}')" class="econ-select" style="border-color:#34D399; color:#34D399;">
                   ${((districts[0] && districts[0].communes) || []).map(c => `<option value="${c.id}">${c.name} (${c.type})</option>`).join('')}
                 </select>
               </div>
             </div>
 
-            <!-- Bán kính khảo sát: Segmented Control 3 cột cân đối -->
+            <!-- Bán kính khảo sát: Segmented Control 3 cột cân đối, height 42px -->
             <div style="width:100%; box-sizing:border-box;">
-              <label style="font-size:0.82rem; color:#FEF3C7; font-weight:600; display:block; margin-bottom:0.4rem;">Bán kính khảo sát:</label>
-              <div class="radius-segmented-control" style="display:grid; grid-template-columns:repeat(3, 1fr); gap:0.45rem; width:100%; box-sizing:border-box;">
-                <button type="button" class="radius-btn" data-radius="500" onclick="window.toolUI.setRadiusAndCalculate('${currentProvince.historical_id}', 500)" style="min-height:48px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15); border-radius:6px; padding:0.35rem 0.2rem; cursor:pointer; text-align:center; transition:all 0.2s ease;">
-                  <div style="font-size:0.95rem; font-weight:800; color:#FEF3C7;">500 m</div>
-                  <div style="font-size:0.7rem; color:var(--text-muted); margin-top:2px;">Khí Khẩu</div>
+              <label class="econ-label" style="display:block; margin-bottom:4px;">Bán kính khảo sát:</label>
+              <div class="econ-radius-grid radius-segmented-control">
+                <button type="button" class="radius-btn econ-radius-btn" data-radius="500" onclick="window.toolUI.setRadiusAndCalculate('${currentProvince.historical_id}', 500)">
+                  500m
                 </button>
-                <button type="button" class="radius-btn active" data-radius="1000" onclick="window.toolUI.setRadiusAndCalculate('${currentProvince.historical_id}', 1000)" style="min-height:48px; background:rgba(16,185,129,0.25); border:1px solid #10B981; border-radius:6px; padding:0.35rem 0.2rem; cursor:pointer; text-align:center; transition:all 0.2s ease;">
-                  <div style="font-size:0.95rem; font-weight:800; color:#10B981;">1.000 m</div>
-                  <div style="font-size:0.7rem; color:#34D399; margin-top:2px;">Tiểu Vùng</div>
+                <button type="button" class="radius-btn econ-radius-btn active" data-radius="1000" onclick="window.toolUI.setRadiusAndCalculate('${currentProvince.historical_id}', 1000)">
+                  1 km
                 </button>
-                <button type="button" class="radius-btn" data-radius="3000" onclick="window.toolUI.setRadiusAndCalculate('${currentProvince.historical_id}', 3000)" style="min-height:48px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15); border-radius:6px; padding:0.35rem 0.2rem; cursor:pointer; text-align:center; transition:all 0.2s ease;">
-                  <div style="font-size:0.95rem; font-weight:800; color:#FEF3C7;">3.000 m</div>
-                  <div style="font-size:0.7rem; color:var(--text-muted); margin-top:2px;">Đại Cục</div>
+                <button type="button" class="radius-btn econ-radius-btn" data-radius="3000" onclick="window.toolUI.setRadiusAndCalculate('${currentProvince.historical_id}', 3000)">
+                  3 km
                 </button>
               </div>
             </div>
@@ -2077,81 +2074,79 @@ ${reportText}
         </div>
 
         <!-- PHÂN HỆ PHÂN TÍCH NGÀNH NGHỀ CHUYÊN SÂU & ĐỘNG THÁI CỬA HÀNG (VSIC 2025 & CHURN INTEL) -->
-        <div style="background:rgba(15,23,42,0.85); border:1px solid rgba(245,158,11,0.3); border-radius:10px; padding:1.4rem; margin-bottom:1.8rem;">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem; flex-wrap:wrap; gap:0.5rem;">
+        <div style="background:rgba(15,23,42,0.85); border:1px solid rgba(245,158,11,0.3); border-radius:10px; padding:12px; margin-bottom:14px; box-sizing:border-box;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; flex-wrap:wrap; gap:6px;">
             <div>
-              <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.25rem;">
-                <span style="font-size:0.74rem; font-weight:800; color:#F59E0B; background:rgba(245,158,11,0.15); border:1px solid rgba(245,158,11,0.4); padding:0.15rem 0.5rem; border-radius:4px;">
+              <div style="display:flex; align-items:center; gap:6px; margin-bottom:2px;">
+                <span style="font-size:11px; font-weight:700; color:#F59E0B; background:rgba(245,158,11,0.15); border:1px solid rgba(245,158,11,0.4); padding:2px 6px; border-radius:4px;">
                   HỆ THỐNG NGÀNH VSIC 2025
                 </span>
-                <span style="font-size:0.72rem; color:#34D399; background:rgba(52,211,153,0.12); padding:0.15rem 0.45rem; border-radius:4px;">
+                <span style="font-size:11px; color:#34D399; background:rgba(52,211,153,0.12); padding:2px 6px; border-radius:4px;">
                   FOURSQUARE OS PLACES DELTA + NSO
                 </span>
               </div>
-              <h3 style="font-size:1.15rem; color:#FEF3C7; margin:0.3rem 0 0.2rem 0; font-weight:700;">
-                Phân Tích Ngành Nghề & Động Thái Sinh - Tử Điểm Bán
+              <h3 class="econ-title" style="color:#FEF3C7; margin:2px 0;">
+                Phân Tích Ngành Nghề & Động Thái Điểm Bán
               </h3>
-              <div style="font-size:0.78rem; color:var(--text-muted);">
-                Chọn ngành khảo sát cụ thể để đánh giá dung lượng khách hàng mục tiêu, số lượng cửa hàng đối thủ, tỷ lệ đào thải (Churn) và Điểm cơ hội mở điểm bán.
+              <div style="font-size:12px; color:var(--text-muted);">
+                Chọn ngành khảo sát cụ thể để đánh giá dung lượng khách hàng mục tiêu, đối thủ, tỷ lệ duy trì và điểm cơ hội.
               </div>
             </div>
-            <div style="font-size:0.75rem; color:#38BDF8; background:rgba(56,189,248,0.1); border:1px solid rgba(56,189,248,0.3); padding:0.3rem 0.7rem; border-radius:6px; font-weight:700;">
-              Chỉ số DSR (Demand-to-Supply)
+            <div style="font-size:11px; color:#38BDF8; background:rgba(56,189,248,0.1); border:1px solid rgba(56,189,248,0.3); padding:4px 8px; border-radius:6px; font-weight:700;">
+              Chỉ số DSR
             </div>
           </div>
 
-          <!-- TAB SWITCHER:  NGÀNH ĐANG PHÁT TRIỂN vs ️ NGUY CƠ ĐÀO THẢI (THU GỌN 50%) -->
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.35rem; margin-bottom:0.75rem; background:rgba(0,0,0,0.3); padding:0.25rem; border-radius:6px; box-sizing:border-box;">
-            <button type="button" id="tab-industry-active-btn" class="industry-tab-btn active" onclick="window.toolUI.switchIndustryTab('active')" style="background:rgba(245,158,11,0.2); border:1px solid #F59E0B; color:#FBBF24; padding:0.28rem 0.5rem; border-radius:5px; font-size:0.72rem; font-weight:600; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:0.25rem; transition:all 0.15s ease;">
-              <span> Ngành Đang Phát Triển (DSR)</span>
+          <!-- TAB SWITCHER: NGÀNH ĐANG PHÁT TRIỂN vs NGUY CƠ ĐÀO THẢI -->
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px; margin-bottom:8px; background:rgba(0,0,0,0.3); padding:4px; border-radius:6px; box-sizing:border-box;">
+            <button type="button" id="tab-industry-active-btn" class="industry-tab-btn active" onclick="window.toolUI.switchIndustryTab('active')" style="background:rgba(245,158,11,0.2); border:1px solid #F59E0B; color:#FBBF24; height:36px; border-radius:5px; font-size:13px; font-weight:600; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:4px; transition:all 0.15s ease;">
+              <span>Ngành Đang Phát Triển (DSR)</span>
             </button>
-            <button type="button" id="tab-industry-sunset-btn" class="industry-tab-btn" onclick="window.toolUI.switchIndustryTab('sunset')" style="background:transparent; border:1px solid transparent; color:var(--text-muted); padding:0.28rem 0.5rem; border-radius:5px; font-size:0.72rem; font-weight:600; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:0.25rem; transition:all 0.15s ease;">
-              <span>️ Nguy Cơ Đào Thải (Sunset)</span>
+            <button type="button" id="tab-industry-sunset-btn" class="industry-tab-btn" onclick="window.toolUI.switchIndustryTab('sunset')" style="background:transparent; border:1px solid transparent; color:var(--text-muted); height:36px; border-radius:5px; font-size:13px; font-weight:600; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:4px; transition:all 0.15s ease;">
+              <span>Nguy Cơ Đào Thải (Sunset)</span>
             </button>
           </div>
 
           <!-- VIEW 1: CÁC NGÀNH ĐANG PHÁT TRIỂN (DSR ENGINE) -->
           <div id="industry-active-view">
-            <!-- Bộ Chọn Ngành Dưới Dạng Menu Xổ / Thu Gọn Gọn Gàng (Kích thước & nét giảm 50%) -->
-            <div class="industry-selector-container" style="position:relative; margin-bottom:0.6rem;">
-              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.3rem; flex-wrap:wrap; gap:0.3rem;">
-                <label style="font-size:0.75rem; color:#FEF3C7; font-weight:600;">Chọn ngành khảo sát (${Object.keys(industryCatalog).length} ngành VSIC 2025):</label>
-                <span style="font-size:0.68rem; color:#38BDF8;">8 nhóm phân loại chuẩn hóa</span>
+            <!-- Bộ Chọn Ngành Dưới Dạng Menu Xổ / Thu Gọn Gọn Gàng -->
+            <div class="industry-selector-container" style="position:relative; margin-bottom:8px;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px; flex-wrap:wrap; gap:4px;">
+                <label class="econ-label">Chọn ngành khảo sát (${Object.keys(industryCatalog).length} ngành VSIC 2025):</label>
+                <span style="font-size:11px; color:#38BDF8;">8 nhóm chuẩn hóa</span>
               </div>
 
-              <!-- Nút Dropdown chính: Hiển thị ngành đang chọn (Cao 34px, font 0.78rem, nét thanh thoát) -->
-              <button type="button" id="industry-dropdown-trigger" onclick="window.toolUI.toggleIndustryDropdown()" style="width:100%; display:flex; justify-content:space-between; align-items:center; background:#0F172A; border:1px solid rgba(245,158,11,0.35); color:#FEF3C7; padding:0.32rem 0.65rem; border-radius:6px; font-size:0.78rem; font-weight:600; cursor:pointer; min-height:34px; box-sizing:border-box;">
-                <span id="industry-current-label" style="display:flex; align-items:center; gap:0.4rem; text-align:left;">
-                  <span>${currentProfile.icon || ''}</span>
-                  <span style="color:#FBBF24; font-weight:600;">${currentProfile.name || 'Cà Phê'}</span>
-                  <span style="font-size:0.7rem; color:var(--text-muted); font-weight:400;">(VSIC ${currentProfile.vsic_code || '56302'})</span>
-                </span>
-                <span id="industry-dropdown-icon" style="color:#F59E0B; font-size:0.72rem; white-space:nowrap; margin-left:0.4rem;">▾ Chọn ngành</span>
+              <!-- Nút Dropdown chính: Hiển thị ngành đang chọn (Compact 48px, font 15px) -->
+              <button type="button" id="industry-dropdown-trigger" onclick="window.toolUI.toggleIndustryDropdown()" class="econ-ind-trigger">
+                <div class="econ-ind-title-wrap">
+                  <span id="industry-current-label" class="econ-ind-name">${currentProfile.name || 'Cà Phê'}</span>
+                  <span class="econ-ind-vsic">VSIC ${currentProfile.vsic_code || '56302'}</span>
+                </div>
+                <span id="industry-dropdown-icon" class="econ-ind-action">Chọn ngành ▾</span>
               </button>
 
               <!-- Menu xổ ra (Collapsible Dropdown Panel - Phân 8 Nhóm Ngành Chuẩn VSIC) -->
-              <div id="industry-dropdown-panel" style="display:none; position:relative; z-index:30; background:#0B0F19; border:1px solid rgba(245,158,11,0.35); border-radius:6px; padding:0.65rem; margin-top:0.35rem; box-shadow:0 8px 20px -4px rgba(0,0,0,0.7); box-sizing:border-box;">
-                <!-- Ô tìm kiếm realtime có dấu / không dấu -->
-                <div style="margin-bottom:0.6rem;">
-                  <input type="text" id="industry-search-input" placeholder=" Gõ tìm nhanh ngành (vd: tóc nam, vàng, phân bón, bđs, cafe...)" oninput="window.toolUI.filterIndustryDropdown(this.value)" style="width:100%; box-sizing:border-box; background:#0F172A; border:1px solid rgba(255,255,255,0.18); color:#FEF3C7; padding:0.38rem 0.65rem; border-radius:5px; font-size:16px; outline:none;">
+              <div id="industry-dropdown-panel" style="display:none; position:relative; z-index:30; background:#0B0F19; border:1px solid rgba(245,158,11,0.35); border-radius:8px; padding:8px; margin-top:6px; box-shadow:0 8px 24px rgba(0,0,0,0.8); box-sizing:border-box;">
+                <div style="margin-bottom:6px;">
+                  <input type="text" id="industry-search-input" class="econ-search-input" placeholder="Gõ tìm nhanh ngành (vd: cafe, bánh mì, nha...)" oninput="window.toolUI.filterIndustryDropdown(this.value)">
                 </div>
 
-                <!-- 8 Nhóm Danh Mục Ngành Nghề -->
-                <div id="industry-categories-wrapper" style="display:flex; flex-direction:column; gap:0.65rem; max-height:420px; overflow-y:auto; padding-right:0.2rem; scrollbar-width:thin;">
+                <!-- 8 Nhóm Danh Mục Ngành Nghề (Lưới 2 cột compact) -->
+                <div id="industry-categories-wrapper" style="display:flex; flex-direction:column; gap:8px; max-height:360px; overflow-y:auto; padding-right:2px; scrollbar-width:thin;">
                   ${industryCategories.map(cat => {
                     const items = Object.values(industryCatalog).filter(i => (i.category === cat.id) || (cat.id === 'FNB_RETAIL' && !i.category && i.group === 'mainstream') || (cat.id === 'BEAUTY_LIFESTYLE' && !i.category && i.id === 'NAIL'));
                     if (!items.length) return '';
                     return `
                       <div class="industry-group-section">
-                        <div style="font-size:0.7rem; font-weight:700; color:#38BDF8; text-transform:uppercase; margin-bottom:0.3rem; display:flex; align-items:center; gap:0.3rem;">
-                          <span>${cat.icon} ${cat.title}</span>
-                          <span style="font-size:0.65rem; color:var(--text-muted); font-weight:normal;">(${items.length})</span>
+                        <div style="font-size:12px; font-weight:700; color:#38BDF8; text-transform:uppercase; margin-bottom:4px; display:flex; align-items:center; gap:4px;">
+                          <span>${cat.title}</span>
+                          <span style="font-size:11px; color:var(--text-muted); font-weight:normal;">(${items.length})</span>
                         </div>
-                        <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(135px, 1fr)); gap:0.3rem;">
+                        <div class="econ-ind-grid">
                           ${items.map(ind => `
-                            <button type="button" class="industry-opt-btn" data-id="${ind.id}" data-name="${ind.name}" data-short="${ind.shortName}" onclick="window.toolUI.selectIndustryAndCalculate('${currentProvince.historical_id}', '${ind.id}')" style="background:${ind.id === currentIndKey ? 'rgba(245,158,11,0.22)' : 'rgba(255,255,255,0.03)'}; border:0.5px solid ${ind.id === currentIndKey ? '#F59E0B' : 'rgba(255,255,255,0.08)'}; color:${ind.id === currentIndKey ? '#FBBF24' : '#E2E8F0'}; padding:0.26rem 0.42rem; border-radius:4px; font-size:0.72rem; font-weight:500; cursor:pointer; display:flex; align-items:center; gap:0.3rem; text-align:left;">
-                              <span>${ind.icon}</span>
-                              <span style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${ind.shortName}</span>
+                            <button type="button" class="industry-opt-btn econ-ind-item-btn ${ind.id === currentIndKey ? 'active' : ''}" data-id="${ind.id}" data-name="${ind.name}" data-short="${ind.shortName}" onclick="window.toolUI.selectIndustryAndCalculate('${currentProvince.historical_id}', '${ind.id}')">
+                              <div class="econ-ind-item-name">${ind.shortName}</div>
+                              <div class="econ-ind-item-code">VSIC ${ind.vsic_code || ''}</div>
                             </button>
                           `).join('')}
                         </div>
@@ -2160,7 +2155,7 @@ ${reportText}
                   }).join('')}
                 </div>
               </div>
-
+            </div>
               <!-- Quick-Chips Nhỏ Gọn (Thanh chọn nhanh 1 chạm kích thước nhỏ & mảnh) -->
               <div style="display:flex; gap:0.28rem; overflow-x:auto; padding:0.35rem 0 0.1rem 0; scrollbar-width:thin;">
                 <span style="font-size:0.68rem; color:var(--text-muted); white-space:nowrap; align-self:center; margin-right:0.1rem;">Chọn nhanh:</span>
@@ -2307,9 +2302,8 @@ ${reportText}
     const labelEl = document.getElementById('industry-current-label');
     if (labelEl && profile) {
       labelEl.innerHTML = `
-        <span>${profile.icon || ''}</span>
         <span style="color:#FBBF24;">${profile.name}</span>
-        <span style="font-size:0.72rem; color:var(--text-muted); font-weight:500;">(VSIC ${profile.vsic_code})</span>
+        <span style="font-size:11px; color:var(--text-muted); font-weight:500;">(VSIC ${profile.vsic_code})</span>
       `;
     }
 
@@ -2703,7 +2697,7 @@ ${reportText}
 
             <div style="background:rgba(0,0,0,0.25); border:1px solid rgba(255,255,255,0.06); border-radius:6px; padding:0.7rem; margin-bottom:0.8rem;">
               <div style="font-size:0.82rem; font-weight:700; color:#CBD5E1; display:flex; align-items:center; gap:0.4rem;">
-                <span style="color:#F59E0B;">ℹ️</span> Chưa có dữ liệu thống kê biến động mở mới / rời bỏ thực tế
+                Chưa có dữ liệu thống kê biến động mở mới / rời bỏ thực tế
               </div>
               <div style="font-size:0.74rem; color:var(--text-muted); margin-top:0.3rem; line-height:1.45;">
                 Tại Việt Nam hiện chưa có cơ sở dữ liệu quan trắc định kỳ cấp bán kính vi mô về số lượng chính xác cửa hàng mở mới / đóng cửa trong vòng tròn khảo sát. Tuyệt đối không tự suy đoán số liệu giả.
