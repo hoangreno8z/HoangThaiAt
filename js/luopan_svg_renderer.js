@@ -435,7 +435,7 @@
       }
 
       return `
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${this.size} ${this.size}" preserveAspectRatio="xMidYMid meet" width="100%" height="100%" class="dt-luopan-svg" style="filter:drop-shadow(0 8px 24px rgba(0,0,0,0.5));">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${this.size} ${this.size}" preserveAspectRatio="xMidYMid meet" width="100%" height="100%" class="dt-luopan-svg">
           <g transform="rotate(${-rotation}, ${cx}, ${cy})">
             ${svg360}
             ${svg144}

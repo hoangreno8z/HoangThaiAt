@@ -26,6 +26,7 @@ class LuopanMapTool {
 
     // 1. RAW GEOMETRY: Tọa độ logic chuẩn hóa 800x800
     this.centerPoint = { x: 400, y: 400 };
+    this._lastRenderedCenter = { x: 400, y: 400 };
     this.frontageLine = {
       pA: { x: 290, y: 400 },
       pB: { x: 510, y: 400 },
@@ -291,6 +292,7 @@ class LuopanMapTool {
       opacity: this.luopanOpacity
     });
 
+    this._lastRenderedCenter = { x: this.centerPoint.x, y: this.centerPoint.y };
     const offsetFormatted = this.calibEngine.formatOffset(this.calibrationOffset);
 
     this.container.innerHTML = `
@@ -1050,34 +1052,59 @@ class LuopanMapTool {
         this.renderDrawingElements();
       }
     }, options);
-    svg.addEventListener('pointermove', event => {
-      if (!dragTarget || event.pointerId !== pointerId) return;
-      const position = getPosition(event);
-      if (dragTarget === 'center') this.centerPoint = position;
-      else if (dragTarget === 'frontA') {
+    let dragRafId = null;
+    let pendingDragPosition = null;
+
+    const applyDragMove = () => {
+      dragRafId = null;
+      if (!dragTarget || !pendingDragPosition) return;
+      const position = pendingDragPosition;
+      if (dragTarget === 'center') {
+        this.centerPoint = position;
+        this.syncLuopanPosition();
+      } else if (dragTarget === 'frontA') {
         this.frontageLine.pA = position;
         this.syncCalibrationFromGeometry();
-      }
-      else if (dragTarget === 'frontB') {
+      } else if (dragTarget === 'frontB') {
         this.frontageLine.pB = position;
         this.syncCalibrationFromGeometry();
-      }
-      else if (dragTarget.startsWith('water_')) {
+      } else if (dragTarget.startsWith('water_')) {
         const index = Number(dragTarget.slice(6));
         if (this.waterPolyline[index]) {
           this.waterPolyline[index].x = position.x;
           this.waterPolyline[index].y = position.y;
         }
       }
-      refresh();
-      this.updateNodeActionBar();
+      this.recalculateRawBearings();
+      this.renderDrawingElements();
+    };
+
+    svg.addEventListener('pointermove', event => {
+      if (!dragTarget || event.pointerId !== pointerId) return;
+      pendingDragPosition = getPosition(event);
+      if (!dragRafId) {
+        const raf = typeof requestAnimationFrame !== 'undefined' ? requestAnimationFrame : (cb => setTimeout(cb, 16));
+        dragRafId = raf(applyDragMove);
+      }
       event.preventDefault();
     }, options);
+
     const finish = event => {
       if (event.pointerId !== pointerId) return;
+      if (dragRafId) {
+        const caf = typeof cancelAnimationFrame !== 'undefined' ? cancelAnimationFrame : clearTimeout;
+        caf(dragRafId);
+        dragRafId = null;
+      }
+      if (pendingDragPosition) {
+        applyDragMove();
+        pendingDragPosition = null;
+      }
       dragTarget = null;
       if (svg.hasPointerCapture(pointerId)) svg.releasePointerCapture(pointerId);
       pointerId = null;
+      // Chốt cập nhật toàn diện khi nhả tay
+      refresh();
       this.updateNodeActionBar();
     };
     svg.addEventListener('pointerup', finish, options);
@@ -1894,6 +1921,8 @@ class LuopanMapTool {
     }
 
     this.updateViewTransform();
+    mount.style.transform = '';
+    this._lastRenderedCenter = { x: this.centerPoint.x, y: this.centerPoint.y };
     mount.innerHTML = this.renderer.render({
       cx: this.centerPoint.x,
       cy: this.centerPoint.y,
@@ -1906,6 +1935,15 @@ class LuopanMapTool {
       activeHsNum: hsNum,
       opacity: this.luopanOpacity
     });
+  }
+
+  syncLuopanPosition() {
+    const mount = (this.container && this.container.querySelector ? this.container.querySelector('#dt-luopan-svg-container') : null) || (typeof document !== 'undefined' && document.getElementById ? document.getElementById('dt-luopan-svg-container') : null);
+    if (!mount) return;
+    const base = this._lastRenderedCenter || { x: 400, y: 400 };
+    const dx = this.centerPoint.x - base.x;
+    const dy = this.centerPoint.y - base.y;
+    mount.style.transform = (Math.abs(dx) > 0.01 || Math.abs(dy) > 0.01) ? `translate3d(${dx}px, ${dy}px, 0)` : '';
   }
 
   bindEvents() {
@@ -2447,9 +2485,11 @@ class LuopanMapTool {
     this.waterPolyline = this.mapGeometry.water.map(toPoint);
     this.recalculateRawBearings();
     this.renderDrawingElements();
-    this.updateSvgView(fullUpdate ? null : (this._lastActiveHsNum || 1));
     if (fullUpdate) {
+      this.updateSvgView(null);
       this.updateMeasurementsDisplay();
+    } else {
+      this.syncLuopanPosition();
     }
   }
 
@@ -2564,6 +2604,9 @@ class LuopanMapTool {
       if (pointers.size === 0) {
         if (this.isInteracting) {
           this.isInteracting = false;
+          if (this.satelliteLayer && typeof this.satelliteLayer._update === 'function') {
+            this.satelliteLayer._update();
+          }
           this.projectMapGeometry(true);
         }
         gesture = null;
@@ -2614,6 +2657,9 @@ class LuopanMapTool {
         this.isInteracting = false;
         wheelAnchor = null;
         wheelPoint = null;
+        if (this.satelliteLayer && typeof this.satelliteLayer._update === 'function') {
+          this.satelliteLayer._update();
+        }
         this.projectMapGeometry(true);
       }, 140);
     }, options);
@@ -2637,7 +2683,7 @@ class LuopanMapTool {
         zoomSnap: 0,
         zoomAnimation: false
       });
-      L.tileLayer('https://{s}.google.com/vt/lyrs=y&x={x}&y={y}&z={z}&hl=vi', {
+      this.satelliteLayer = L.tileLayer('https://{s}.google.com/vt/lyrs=y&x={x}&y={y}&z={z}&hl=vi', {
         subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
         attribution: '© Google Maps',
         maxZoom: 21,
@@ -2646,6 +2692,14 @@ class LuopanMapTool {
         updateWhenIdle: true,
         keepBuffer: 2
       }).addTo(this.mapInstance);
+
+      if (typeof this.satelliteLayer._invalidateAll === 'function') {
+        const origInvalidateAll = this.satelliteLayer._invalidateAll.bind(this.satelliteLayer);
+        this.satelliteLayer._invalidateAll = () => {
+          if (this.isInteracting) return;
+          origInvalidateAll();
+        };
+      }
       // Keep controls outside rotated scene and above drawing handles.
       L.control.zoom({ position: 'topright' }).addTo(this.mapInstance);
 
@@ -2674,7 +2728,16 @@ class LuopanMapTool {
       this.container.querySelector('#dt-interactive-stage').appendChild(this.mapInstance._controlContainer);
       this.captureMapGeometry();
       this.bindMapGestures(mount);
-      this.mapInstance.on('move zoom', () => this.projectMapGeometry(!this.isInteracting));
+      let mapMoveRafId = null;
+      const onMapMove = () => {
+        if (mapMoveRafId) return;
+        const raf = typeof requestAnimationFrame !== 'undefined' ? requestAnimationFrame : (cb => setTimeout(cb, 16));
+        mapMoveRafId = raf(() => {
+          mapMoveRafId = null;
+          this.projectMapGeometry(!this.isInteracting);
+        });
+      };
+      this.mapInstance.on('move', onMapMove);
       this.mapInstance.on('moveend zoomend', () => {
         const center = this.mapInstance.getCenter();
         this.surveyCenterLatLng = [center.lat, center.lng];
