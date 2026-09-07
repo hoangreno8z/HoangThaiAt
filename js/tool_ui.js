@@ -3407,20 +3407,32 @@ ${reportText}
     // Layer 1: OpenTopoMap (Đường đẳng cao địa hình & núi đồi thực tế)
     const topoLayer = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
       maxZoom: 17,
+      maxNativeZoom: 17,
       subdomains: 'abc',
-      attribution: '© OpenTopoMap, © OpenStreetMap'
+      attribution: '© OpenTopoMap, © OpenStreetMap',
+      updateWhenZooming: false,
+      updateWhenIdle: true,
+      keepBuffer: 2
     });
 
     // Layer 2: Esri World Imagery (Ảnh chụp vệ tinh quang học bề mặt thật)
     const satelliteLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-      maxZoom: 18,
-      attribution: '© Esri, Maxar, Earthstar Geographics'
+      maxZoom: 19,
+      maxNativeZoom: 18,
+      attribution: '© Esri, Maxar, Earthstar Geographics',
+      updateWhenZooming: false,
+      updateWhenIdle: true,
+      keepBuffer: 2
     });
 
     // Layer 3: Esri World Topo Map (Địa hình + Tên Quận Huyện, Thị Xã, Thành Phố)
     const esriTopoLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', {
       maxZoom: 18,
-      attribution: '© Esri, HERE, Garmin, USGS'
+      maxNativeZoom: 18,
+      attribution: '© Esri, HERE, Garmin, USGS',
+      updateWhenZooming: false,
+      updateWhenIdle: true,
+      keepBuffer: 2
     });
 
     // Default layer: OpenTopoMap

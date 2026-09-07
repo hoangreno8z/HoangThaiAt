@@ -1855,6 +1855,9 @@ class LuopanMapTool {
 
   updateMeasurementsDisplay() {
     const analysis = this.getAnalysis();
+    if (analysis && analysis.thuyKhau) {
+      this._lastActiveHsNum = analysis.thuyKhau.hs_num;
+    }
     const panel = (this.container && this.container.querySelector ? this.container.querySelector('#dt-result-panels') : null) || (typeof document !== 'undefined' && document.getElementById ? document.getElementById('dt-result-panels') : null);
     if (panel) {
       panel.innerHTML = this.renderResultPanels(analysis);
@@ -1863,14 +1866,19 @@ class LuopanMapTool {
     this.updateCalibrationUI(analysis);
   }
 
-  updateSvgView() {
-    const mount = document.getElementById('dt-luopan-svg-container');
+  updateSvgView(cachedHsNum = null) {
+    const mount = (this.container && this.container.querySelector ? this.container.querySelector('#dt-luopan-svg-container') : null) || (typeof document !== 'undefined' && document.getElementById ? document.getElementById('dt-luopan-svg-container') : null);
     if (!mount) return;
     const facing = this.getEffectiveFacingBearing();
     const lai = this.getEffectiveLaiBearing();
     const khu = this.getEffectiveKhuBearing();
 
-    const analysis = this.getAnalysis();
+    let hsNum = cachedHsNum;
+    if (hsNum === null || hsNum === undefined) {
+      const analysis = this.getAnalysis();
+      hsNum = analysis.thuyKhau ? analysis.thuyKhau.hs_num : 1;
+      this._lastActiveHsNum = hsNum;
+    }
 
     this.updateViewTransform();
     mount.innerHTML = this.renderer.render({
@@ -1882,7 +1890,7 @@ class LuopanMapTool {
       houseSitting: this.geometry.calculateHouseSittingBearing(facing),
       laiBearing: lai,
       khuBearing: khu,
-      activeHsNum: analysis.thuyKhau ? analysis.thuyKhau.hs_num : 1,
+      activeHsNum: hsNum,
       opacity: this.luopanOpacity
     });
   }
@@ -2427,7 +2435,7 @@ class LuopanMapTool {
     };
   }
 
-  projectMapGeometry() {
+  projectMapGeometry(fullUpdate = true) {
     if (!this.mapGeometry || this.mode !== 'map') return;
     const projection = this.getMapProjection();
     const toPoint = latLng => {
@@ -2444,8 +2452,10 @@ class LuopanMapTool {
     this.waterPolyline = this.mapGeometry.water.map(toPoint);
     this.recalculateRawBearings();
     this.renderDrawingElements();
-    this.updateSvgView();
-    this.updateMeasurementsDisplay();
+    this.updateSvgView(fullUpdate ? null : (this._lastActiveHsNum || 1));
+    if (fullUpdate) {
+      this.updateMeasurementsDisplay();
+    }
   }
 
   resizeMapBackground() {
@@ -2464,6 +2474,30 @@ class LuopanMapTool {
     const pointers = new Map();
     const options = { signal: this.canvasEvents.signal, passive: false };
     let gesture = null;
+    this.isInteracting = false;
+    let moveRafId = null;
+    let wheelRafId = null;
+    let wheelIdleTimer = null;
+    let wheelAnchor = null;
+    let wheelPoint = null;
+    let targetZoom = map.getZoom();
+    let pendingPoint = null;
+    let pendingZoom = null;
+
+    const raf = typeof requestAnimationFrame !== 'undefined' ? requestAnimationFrame : (cb => setTimeout(cb, 16));
+    const caf = typeof cancelAnimationFrame !== 'undefined' ? cancelAnimationFrame : clearTimeout;
+
+    const cancelTimers = () => {
+      if (moveRafId) { caf(moveRafId); moveRafId = null; }
+      if (wheelRafId) { caf(wheelRafId); wheelRafId = null; }
+      if (wheelIdleTimer) { clearTimeout(wheelIdleTimer); wheelIdleTimer = null; }
+      this.isInteracting = false;
+    };
+
+    if (this.canvasEvents?.signal) {
+      this.canvasEvents.signal.addEventListener('abort', cancelTimers);
+    }
+
     const mapPoint = event => {
       const svg = this.container.querySelector('#dt-drawing-svg');
       const point = svg.createSVGPoint();
@@ -2483,16 +2517,25 @@ class LuopanMapTool {
     };
     const rebase = () => {
       gesture = pointers.size ? {
-        anchor: map.containerPointToLatLng(midpoint()), zoom: map.getZoom(), distance: distance()
+        anchor: map.containerPointToLatLng(midpoint()),
+        zoom: map.getZoom(),
+        distance: distance()
       } : null;
+      targetZoom = map.getZoom();
     };
     const moveAnchor = (anchor, point, zoom) => {
       const limitedZoom = Math.max(map.getMinZoom(), Math.min(map.getMaxZoom(), zoom));
       const center = map.project(anchor, limitedZoom).subtract(point).add(map.getSize().divideBy(2));
       map.setView(map.unproject(center, limitedZoom), limitedZoom, { animate: false });
     };
-    // Inverse-transform gestures as well as pixels: dragging and pinching stay
-    // under the finger in Hướng Lên, including non-cardinal view angles.
+
+    const onPointerMoveRaf = () => {
+      moveRafId = null;
+      if (!gesture || !pendingPoint || pendingZoom === null) return;
+      this.isInteracting = true;
+      moveAnchor(gesture.anchor, pendingPoint, pendingZoom);
+    };
+
     mount.addEventListener('pointerdown', event => {
       if (event.button !== 0) return;
       pointers.set(event.pointerId, mapPoint(event));
@@ -2500,27 +2543,84 @@ class LuopanMapTool {
       rebase();
       event.preventDefault();
     }, options);
+
     mount.addEventListener('pointermove', event => {
       if (!pointers.has(event.pointerId)) return;
       pointers.set(event.pointerId, mapPoint(event));
-      const zoom = gesture.zoom + (pointers.size > 1 && gesture.distance > 0
+      pendingPoint = midpoint();
+      pendingZoom = gesture.zoom + (pointers.size > 1 && gesture.distance > 0
         ? Math.log2(Math.max(1, distance()) / gesture.distance) : 0);
-      moveAnchor(gesture.anchor, midpoint(), zoom);
+      if (!moveRafId) {
+        moveRafId = raf(onPointerMoveRaf);
+      }
       event.preventDefault();
     }, options);
+
     const finish = event => {
       if (!pointers.has(event.pointerId)) return;
       pointers.delete(event.pointerId);
-      rebase();
-      if (mount.hasPointerCapture(event.pointerId)) mount.releasePointerCapture(event.pointerId);
+      if (mount.hasPointerCapture(event.pointerId)) {
+        try { mount.releasePointerCapture(event.pointerId); } catch (_) {}
+      }
+      if (moveRafId) {
+        caf(moveRafId);
+        moveRafId = null;
+      }
+      if (pointers.size === 0) {
+        if (this.isInteracting) {
+          this.isInteracting = false;
+          this.projectMapGeometry(true);
+        }
+        gesture = null;
+      } else {
+        rebase();
+      }
     };
     mount.addEventListener('pointerup', finish, options);
     mount.addEventListener('pointercancel', finish, options);
     mount.addEventListener('lostpointercapture', finish, options);
+
+    const onWheelRaf = () => {
+      wheelRafId = null;
+      if (!wheelAnchor || !wheelPoint) return;
+      this.isInteracting = true;
+      moveAnchor(wheelAnchor, wheelPoint, targetZoom);
+    };
+
     mount.addEventListener('wheel', event => {
-      const point = mapPoint(event);
-      moveAnchor(map.containerPointToLatLng(point), point, map.getZoom() - Math.sign(event.deltaY));
       event.preventDefault();
+
+      const point = mapPoint(event);
+      wheelPoint = point;
+
+      if (!wheelAnchor || !this.isInteracting) {
+        wheelAnchor = map.containerPointToLatLng(point);
+        targetZoom = map.getZoom();
+      }
+
+      let normalizedDelta;
+      if (event.deltaMode === 1) {
+        normalizedDelta = -event.deltaY * 0.08;
+      } else if (event.deltaMode === 2) {
+        normalizedDelta = -event.deltaY * 0.3;
+      } else {
+        normalizedDelta = -event.deltaY * 0.0025;
+      }
+
+      const step = Math.max(-0.4, Math.min(0.4, normalizedDelta));
+      targetZoom = Math.max(map.getMinZoom(), Math.min(map.getMaxZoom(), targetZoom + step));
+
+      if (!wheelRafId) {
+        wheelRafId = raf(onWheelRaf);
+      }
+
+      if (wheelIdleTimer) clearTimeout(wheelIdleTimer);
+      wheelIdleTimer = setTimeout(() => {
+        this.isInteracting = false;
+        wheelAnchor = null;
+        wheelPoint = null;
+        this.projectMapGeometry(true);
+      }, 140);
     }, options);
   }
 
@@ -2545,8 +2645,11 @@ class LuopanMapTool {
       L.tileLayer('https://{s}.google.com/vt/lyrs=y&x={x}&y={y}&z={z}&hl=vi', {
         subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
         attribution: '© Google Maps',
-        maxZoom: 22,
-        maxNativeZoom: 20
+        maxZoom: 21,
+        maxNativeZoom: 19,
+        updateWhenZooming: false,
+        updateWhenIdle: true,
+        keepBuffer: 2
       }).addTo(this.mapInstance);
       // Keep controls outside rotated scene and above drawing handles.
       L.control.zoom({ position: 'topright' }).addTo(this.mapInstance);
@@ -2576,11 +2679,14 @@ class LuopanMapTool {
       this.container.querySelector('#dt-interactive-stage').appendChild(this.mapInstance._controlContainer);
       this.captureMapGeometry();
       this.bindMapGestures(mount);
-      this.mapInstance.on('move zoom', () => this.projectMapGeometry());
+      this.mapInstance.on('move zoom', () => this.projectMapGeometry(!this.isInteracting));
       this.mapInstance.on('moveend zoomend', () => {
         const center = this.mapInstance.getCenter();
         this.surveyCenterLatLng = [center.lat, center.lng];
         this.zoomLevel = this.mapInstance.getZoom();
+        if (!this.isInteracting) {
+          this.projectMapGeometry(true);
+        }
       });
     }
     this.mapInstance.invalidateSize({ pan: false });
