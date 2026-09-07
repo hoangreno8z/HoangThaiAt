@@ -482,7 +482,7 @@ class LuopanMapTool {
               Xuất Phiếu
             </button>
             <button type="button" id="btn-economic-radius" class="dt-touch-btn" style="background:#0D9488; color:#FFF; border:none; display:flex; align-items:center; gap:0.3rem;" title="Mở phân tích sức mua và dung lượng thị trường theo bán kính">
-              <span>📊</span> Sức Mua Bán Kính
+              Sức Mua Bán Kính
             </button>
           </div>
         </nav>
@@ -586,7 +586,7 @@ class LuopanMapTool {
               <h3 style="margin:0; font-size:1.05rem; color:#FEF3C7; font-weight:800; display:flex; align-items:center; gap:0.4rem;">
                 PHIẾU KHẢO SÁT PHONG THỦY THỰC ĐỊA
               </h3>
-              <button type="button" id="btn-close-survey-x" style="background:transparent; border:none; color:#94A3B8; font-size:1.2rem; cursor:pointer; padding:0.15rem 0.4rem;">✕</button>
+              <button type="button" id="btn-close-survey-x" style="background:transparent; border:none; color:#94A3B8; font-size:1.2rem; cursor:pointer; padding:0.15rem 0.4rem;"></button>
             </div>
 
             <div id="survey-export-content" style="font-size:0.82rem; color:#E2E8F0; line-height:1.6; margin-bottom:1rem;"></div>
@@ -608,12 +608,12 @@ class LuopanMapTool {
 
             <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(255,255,255,0.12); padding-bottom:0.8rem; margin-bottom:1rem;">
               <div style="display:flex; align-items:center; gap:0.5rem;">
-                <span style="font-size:1.2rem;">📊</span>
+                
                 <h3 style="margin:0; font-size:1.1rem; color:#FEF3C7; font-weight:800;">
                   DUNG LƯỢNG THỊ TRƯỜNG & SỨC MUA BÁN KÍNH
                 </h3>
               </div>
-              <button type="button" id="btn-close-econ-x" style="background:transparent; border:none; color:#94A3B8; font-size:1.2rem; cursor:pointer; padding:0.15rem 0.4rem;">✕</button>
+              <button type="button" id="btn-close-econ-x" style="background:transparent; border:none; color:#94A3B8; font-size:1.2rem; cursor:pointer; padding:0.15rem 0.4rem;"></button>
             </div>
 
             <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; background:rgba(0,0,0,0.3); padding:0.6rem 0.8rem; border-radius:8px; margin-bottom:0.8rem;">
@@ -637,7 +637,7 @@ class LuopanMapTool {
             <!-- Bộ Chọn 3 Cấp: Tỉnh/Thành -> Quận/Huyện -> Xã/Phường -->
             <div style="background:rgba(15,23,42,0.85); padding:0.6rem 0.8rem; border-radius:8px; border:1px solid rgba(56,189,248,0.25); margin-bottom:0.7rem;">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.4rem; flex-wrap:wrap; gap:0.3rem;">
-                <span style="font-size:0.74rem; color:#38BDF8; font-weight:800; text-transform:uppercase;">📍 Địa Bàn Khảo Sát (3 Cấp Hành Chính):</span>
+                <span style="font-size:0.74rem; color:#38BDF8; font-weight:800; text-transform:uppercase;">Địa Bàn Khảo Sát (3 Cấp Hành Chính):</span>
                 <span id="dt-econ-district-distance-tag" style="font-size:0.7rem; color:#94A3B8;"></span>
               </div>
               <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(170px, 1fr)); gap:0.4rem;">
@@ -662,16 +662,22 @@ class LuopanMapTool {
               </div>
             </div>
 
-            <!-- Bộ Chọn Ngành Nghề Khảo Sát (VSIC 2025) -->
-            <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:0.4rem; margin-bottom:1rem; background:rgba(15,23,42,0.85); padding:0.5rem 0.7rem; border-radius:8px; border:1px solid rgba(245,158,11,0.25);">
-              <span style="font-size:0.74rem; color:#F59E0B; font-weight:800; text-transform:uppercase;">Ngành kinh doanh:</span>
-              <div style="display:flex; gap:0.3rem; flex-wrap:wrap;" id="dt-econ-industry-pills">
-                <button type="button" class="dt-econ-ind-btn active" data-industry="CAFE" style="background:rgba(245,158,11,0.25); border:1px solid #F59E0B; color:#FBBF24; padding:0.2rem 0.55rem; border-radius:6px; font-size:0.74rem; font-weight:700; cursor:pointer;">☕ Cà phê</button>
-                <button type="button" class="dt-econ-ind-btn" data-industry="NAIL" style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15); color:#FEF3C7; padding:0.2rem 0.55rem; border-radius:6px; font-size:0.74rem; font-weight:700; cursor:pointer;">💅 Nail & Móng</button>
-                <button type="button" class="dt-econ-ind-btn" data-industry="NHA_HANG_FNB" style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15); color:#FEF3C7; padding:0.2rem 0.55rem; border-radius:6px; font-size:0.74rem; font-weight:700; cursor:pointer;">🍲 F&B</button>
-                <button type="button" class="dt-econ-ind-btn" data-industry="SPA_BEAUTY" style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15); color:#FEF3C7; padding:0.2rem 0.55rem; border-radius:6px; font-size:0.74rem; font-weight:700; cursor:pointer;">💆 Spa</button>
-                <button type="button" class="dt-econ-ind-btn" data-industry="TIEN_LOI" style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15); color:#FEF3C7; padding:0.2rem 0.55rem; border-radius:6px; font-size:0.74rem; font-weight:700; cursor:pointer;">🏪 Tiện lợi</button>
-                <button type="button" class="dt-econ-ind-btn" data-industry="NHA_THUOC" style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15); color:#FEF3C7; padding:0.2rem 0.55rem; border-radius:6px; font-size:0.74rem; font-weight:700; cursor:pointer;">💊 Nhà thuốc</button>
+            <!-- Bộ Chọn Đa Dạng 40 Ngành Kinh Doanh (VSIC 2025) -->
+            <div style="margin-bottom:0.85rem; background:rgba(15,23,42,0.85); padding:0.6rem 0.8rem; border-radius:8px; border:1px solid rgba(245,158,11,0.25); position:relative;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.35rem;">
+                <span style="font-size:0.74rem; color:#F59E0B; font-weight:800; text-transform:uppercase;">Ngành kinh doanh khảo sát:</span>
+                <span style="font-size:0.68rem; color:#94A3B8;">40 Ngành chuẩn VSIC 2025</span>
+              </div>
+              <button type="button" id="dt-econ-ind-dropdown-trigger" style="width:100%; display:flex; justify-content:space-between; align-items:center; background:#1E293B; border:1px solid #F59E0B; color:#FEF3C7; padding:0.35rem 0.65rem; border-radius:6px; font-size:0.78rem; font-weight:700; cursor:pointer; min-height:34px; box-sizing:border-box;">
+                <span id="dt-econ-ind-current-label" style="color:#FBBF24;">Cà Phê & Đồ Uống (VSIC 56302)</span>
+                <span style="color:#F59E0B; font-size:0.72rem; white-space:nowrap; margin-left:0.4rem;">▼ Chọn ngành</span>
+              </button>
+              <div id="dt-econ-ind-dropdown-panel" style="display:none; position:relative; z-index:30; background:#0B0F19; border:1px solid rgba(245,158,11,0.35); border-radius:6px; padding:0.6rem; margin-top:0.35rem; box-shadow:0 8px 24px rgba(0,0,0,0.8); box-sizing:border-box;">
+                <div style="margin-bottom:0.5rem;">
+                  <input type="text" id="dt-econ-ind-search-input" placeholder="Gõ tìm nhanh ngành (vd: cafe, bánh mì, nha khoa, spa, tóc nam, vàng...)" style="width:100%; box-sizing:border-box; background:#0F172A; border:1px solid rgba(255,255,255,0.2); color:#FEF3C7; padding:0.35rem 0.6rem; border-radius:5px; font-size:14px; outline:none;">
+                </div>
+                <div id="dt-econ-ind-categories-wrapper" style="display:flex; flex-direction:column; gap:0.55rem; max-height:280px; overflow-y:auto; padding-right:0.2rem; scrollbar-width:thin;">
+                </div>
               </div>
             </div>
 
@@ -763,7 +769,7 @@ class LuopanMapTool {
               </button>
             ` : ''}
             <button type="button" id="btn-node-close" style="background:transparent; border:none; color:#94A3B8; cursor:pointer; font-size:0.9rem; padding:0 0.25rem;">
-              ✕
+              
             </button>
           </div>
         </div>
@@ -1482,7 +1488,7 @@ class LuopanMapTool {
                             <div style="color:#94A3B8; font-size:0.7rem; margin-top:0.1rem;">• Phương vị nạp khí từ tâm nhà: P${seg.fromIndex + 1} = <strong>${seg.fromRadialEff.toFixed(1)}°</strong>, P${seg.toIndex + 1} = <strong>${seg.toRadialEff.toFixed(1)}°</strong></div>
                           ` : ''}
                           ${this.waterNature === 'hu_thuy' && seg.tier === 'ngoai_cuc' ? `
-                            <div style="color:#F59E0B; font-size:0.68rem; margin-top:0.2rem; font-style:italic;">⚠️ Chế độ Hư Thủy: Ngoại Cục là đại động thế vĩ mô ở xa, khí bị tiêu tán qua góc rẽ, không tính 12 Cung Trường Sinh trực tiếp vào gia trạch.</div>
+                            <div style="color:#F59E0B; font-size:0.68rem; margin-top:0.2rem; font-style:italic;">️ Chế độ Hư Thủy: Ngoại Cục là đại động thế vĩ mô ở xa, khí bị tiêu tán qua góc rẽ, không tính 12 Cung Trường Sinh trực tiếp vào gia trạch.</div>
                           ` : ''}
                         </div>
                       `;
@@ -1673,7 +1679,7 @@ class LuopanMapTool {
             <div class="dt-panel-section" id="dt-classical-theory-section" style="border:1px solid rgba(245,212,133,0.3); background:#0B101B;">
               <div class="dt-panel-title" style="color:#FEF3C7; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(245,212,133,0.2); padding-bottom:0.45rem; margin-bottom:0.75rem;">
                 <span style="display:flex; align-items:center; gap:0.4rem;">
-                  <span style="color:#F5D485; font-size:1rem;">📜</span> 6. KHẢO BIỆN CỔ THƯ & DIỄN GIẢI CHÁNH TÔNG
+                  <span style="color:#F5D485; font-size:1rem;"></span> 6. KHẢO BIỆN CỔ THƯ & DIỄN GIẢI CHÁNH TÔNG
                 </span>
                 <span style="font-size:0.68rem; padding:0.12rem 0.45rem; border-radius:4px; font-weight:700; background:rgba(245,212,133,0.15); color:#F5D485; border:1px solid rgba(245,212,133,0.3);">
                   ${(analysis.theoryCitations || []).length} Khảo Chứng
@@ -2137,7 +2143,7 @@ class LuopanMapTool {
         const reportHtml = `
           <div style="background:#1E293B; border-radius:10px; padding:1.2rem; margin-bottom:1rem; border:1px solid rgba(255,255,255,0.08);">
             <div style="color:#FBBF24; font-weight:800; font-size:0.92rem; margin-bottom:0.6rem;">1. THÔNG SỐ KHẢO SÁT HIỆN TRƯỜNG</div>
-            <div>• Trạng thái: <strong>${this.isCalibrationLocked ? '✓ ĐÃ HIỆU CHUẨN LA KINH CHÍNH XÁC' : 'KẾT QUẢ TẠM THỜI (CHƯA HIỆU CHUẨN)'}</strong></div>
+            <div>• Trạng thái: <strong>${this.isCalibrationLocked ? ' ĐÃ HIỆU CHUẨN LA KINH CHÍNH XÁC' : 'KẾT QUẢ TẠM THỜI (CHƯA HIỆU CHUẨN)'}</strong></div>
             <div>• Hướng nhà thực đo: <strong style="color:#EF4444;">${facing.toFixed(2)}° (${analysis.facing.mountain.name} Sơn / ${this.data.getTrigram(facing).trigram.name} Quái)</strong></div>
             <div>• Hướng trên bản vẽ (RAW): <strong>${this.rawFacingBearing.toFixed(2)}°</strong></div>
             <div>• Độ bù hiệu chuẩn (Offset): <strong style="color:#10B981;">${this.calibEngine.formatOffset(this.calibrationOffset)}</strong></div>
@@ -2145,7 +2151,7 @@ class LuopanMapTool {
             <div>• Cụm Song Sơn: <strong>${analysis.group.label} (${analysis.group.cuc} Cục)</strong></div>
             <div>• Lai Thủy: <strong>${analysis.lai ? `${analysis.lai.bearing.toFixed(2)}° (${analysis.lai.mountain.name})` : 'Chưa đo'}</strong> ${relLai !== null ? `(lệch ${relLai >= 0 ? '+' : ''}${relLai.toFixed(2)}° so với nhà)` : ''}</div>
             <div>• Khứ Thủy: <strong>${analysis.khu ? `${analysis.khu.bearing.toFixed(2)}° (${analysis.khu.mountain.name})` : (this.waterPathType === 'deadEnd' ? 'Không xác lập (Hẻm cụt)' : 'Chưa đo')}</strong> ${relKhu !== null ? `(lệch ${relKhu >= 0 ? '+' : ''}${relKhu.toFixed(2)}° so với nhà)` : ''}</div>
-            <div>• Loại tuyến: <strong>${this.waterPathType === 'deadEnd' ? 'Hẻm cụt (điểm tận tại nhà)' : 'Hẻm thông'}</strong> · Chiều nước: <strong>${this.flowDirection === 'forward' ? 'Tả ➔ Hữu' : 'Hữu ➔ Tả'}</strong></div>
+            <div>• Loại tuyến: <strong>${this.waterPathType === 'deadEnd' ? 'Hẻm cụt (điểm tận tại nhà)' : 'Hẻm thông'}</strong> · Chiều nước: <strong>${this.flowDirection === 'forward' ? 'Tả  Hữu' : 'Hữu  Tả'}</strong></div>
           </div>
 
           <div style="background:#1E293B; border-radius:10px; padding:1rem; margin-bottom:1rem; border:1px solid rgba(255,255,255,0.08);">
@@ -2153,7 +2159,7 @@ class LuopanMapTool {
             <div>• Sai số phép đo: <strong>±${this.measurementTolerance.toFixed(2)}°</strong></div>
             <div>• Khoảng cách tới ranh Hướng: <strong>${analysis.facing.distanceToBoundary.toFixed(2)}°</strong></div>
             ${analysis.khu ? `<div>• Khoảng cách tới ranh Khứ: <strong>${analysis.khu.distanceToBoundary.toFixed(2)}°</strong></div>` : ''}
-            <div>• Đánh giá: <strong style="color:${analysis.status.isSensitive ? '#FB7185' : '#10B981'};">${analysis.status.isSensitive ? '⚠️ Nhạy cảm sai số ranh phân kim' : '✓ An toàn trong tâm Sơn'}</strong></div>
+            <div>• Đánh giá: <strong style="color:${analysis.status.isSensitive ? '#FB7185' : '#10B981'};">${analysis.status.isSensitive ? '️ Nhạy cảm sai số ranh phân kim' : ' An toàn trong tâm Sơn'}</strong></div>
           </div>
 
           ${analysis.thuyKhau ? `
@@ -2218,25 +2224,7 @@ class LuopanMapTool {
       });
     });
 
-    const indButtons = document.querySelectorAll('.dt-econ-ind-btn');
-    indButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const indKey = btn.dataset.industry;
-        this.selectedIndustryKey = indKey;
-        indButtons.forEach(b => {
-          if (b === btn) {
-            b.style.background = 'rgba(245,158,11,0.25)';
-            b.style.borderColor = '#F59E0B';
-            b.style.color = '#FBBF24';
-          } else {
-            b.style.background = 'rgba(255,255,255,0.06)';
-            b.style.borderColor = 'rgba(255,255,255,0.15)';
-            b.style.color = '#FEF3C7';
-          }
-        });
-        this.updateEconomicRadiusData(this.selectedEconRadius || 1000, indKey, this.selectedEconDistrictId);
-      });
-    });
+    this.initEconIndustryDropdown();
 
     const provinceSelect = document.getElementById('dt-econ-province-select');
     if (provinceSelect) {
@@ -2707,7 +2695,142 @@ class LuopanMapTool {
     return { lat: 21.028511, lng: 105.854444 };
   }
 
+  
+  initEconIndustryDropdown() {
+    const trigger = document.getElementById('dt-econ-ind-dropdown-trigger');
+    const panel = document.getElementById('dt-econ-ind-dropdown-panel');
+    const searchInput = document.getElementById('dt-econ-ind-search-input');
+    const wrapper = document.getElementById('dt-econ-ind-categories-wrapper');
+    const label = document.getElementById('dt-econ-ind-current-label');
+    if (!trigger || !panel || !wrapper) return;
+
+    const indEngine = (typeof window !== 'undefined' && window.IndustryEconomicEngine) || (typeof IndustryEconomicEngine !== 'undefined' ? IndustryEconomicEngine : null);
+    const catalog = (indEngine && indEngine.getIndustryCatalog) ? indEngine.getIndustryCatalog() : {};
+
+    const categories = [
+      { id: 'FNB_RETAIL', title: 'Ẩm Thực & Bán Lẻ Tiêu Dùng' },
+      { id: 'BEAUTY_LIFESTYLE', title: 'Làm Đẹp & Dịch Vụ Đời Sống' },
+      { id: 'HEALTH_FAMILY', title: 'Y Tế & Chăm Sóc Gia Đình' },
+      { id: 'FASHION_ACCESSORIES', title: 'Thời Trang & Phụ Kiện' },
+      { id: 'AUTO_ENERGY', title: 'Xe Cộ, Nhiên Liệu & Năng Lượng' },
+      { id: 'HOME_CONSTRUCTION', title: 'Xây Dựng, Nhà Cửa & BĐS' },
+      { id: 'AGRI_PET_NATURE', title: 'Nông Nghiệp, Sinh Vật Cảnh & Thể Thao' },
+      { id: 'GOLD_SPIRITUAL', title: 'Tài Sản & Tâm Linh Truyền Thống' }
+    ];
+
+    const currentKey = this.selectedIndustryKey || 'CAFE';
+    const curProfile = catalog[currentKey] || catalog.CAFE;
+    if (label && curProfile) {
+      label.textContent = `${curProfile.name} (VSIC ${curProfile.vsic_code})`;
+    }
+
+    if (wrapper.dataset.rendered !== 'true') {
+      wrapper.dataset.rendered = 'true';
+      wrapper.innerHTML = categories.map(cat => {
+        const items = Object.values(catalog).filter(i => (i.category === cat.id) || (cat.id === 'FNB_RETAIL' && !i.category && i.group === 'mainstream') || (cat.id === 'BEAUTY_LIFESTYLE' && !i.category && i.id === 'NAIL'));
+        if (!items.length) return '';
+        return `
+          <div class="dt-econ-cat-section" data-cat="${cat.id}">
+            <div style="font-size:0.7rem; font-weight:700; color:#38BDF8; text-transform:uppercase; margin-bottom:0.3rem;">
+              <span>${cat.title}</span> <span style="font-size:0.65rem; color:#94A3B8;">(${items.length})</span>
+            </div>
+            <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(135px, 1fr)); gap:0.3rem;">
+              ${items.map(ind => `
+                <button type="button" class="dt-econ-ind-item-btn" data-id="${ind.id}" data-name="${ind.name}" data-short="${ind.shortName}" data-vsic="${ind.vsic_code}" style="background:${ind.id === currentKey ? 'rgba(245,158,11,0.25)' : 'rgba(255,255,255,0.03)'}; border:1px solid ${ind.id === currentKey ? '#F59E0B' : 'rgba(255,255,255,0.1)'}; color:${ind.id === currentKey ? '#FBBF24' : '#E2E8F0'}; padding:0.3rem 0.45rem; border-radius:4px; font-size:0.72rem; font-weight:600; cursor:pointer; text-align:left;">
+                  <div style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${ind.shortName}</div>
+                  <div style="font-size:0.64rem; color:${ind.id === currentKey ? '#F59E0B' : '#94A3B8'}; font-weight:normal;">${ind.vsic_code}</div>
+                </button>
+              `).join('')}
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      wrapper.querySelectorAll('.dt-econ-ind-item-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const indId = btn.dataset.id;
+          this.selectEconIndustry(indId);
+        });
+      });
+    }
+
+    trigger.onclick = (e) => {
+      e.stopPropagation();
+      const isHidden = panel.style.display === 'none';
+      panel.style.display = isHidden ? 'block' : 'none';
+      if (isHidden && searchInput) {
+        searchInput.value = '';
+        this.filterEconIndustryDropdown('');
+        setTimeout(() => searchInput.focus(), 50);
+      }
+    };
+
+    if (searchInput) {
+      searchInput.oninput = (e) => {
+        this.filterEconIndustryDropdown(e.target.value);
+      };
+      searchInput.onclick = (e) => e.stopPropagation();
+    }
+
+    document.addEventListener('click', (e) => {
+      if (!panel.contains(e.target) && e.target !== trigger && !trigger.contains(e.target)) {
+        panel.style.display = 'none';
+      }
+    });
+  }
+
+  filterEconIndustryDropdown(kw) {
+    const wrapper = document.getElementById('dt-econ-ind-categories-wrapper');
+    if (!wrapper) return;
+    const cleanKw = (kw || '').toLowerCase().trim().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    const sections = wrapper.querySelectorAll('.dt-econ-cat-section');
+    sections.forEach(sec => {
+      let hasVisibleItem = false;
+      const items = sec.querySelectorAll('.dt-econ-ind-item-btn');
+      items.forEach(item => {
+        const name = (item.dataset.name || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+        const short = (item.dataset.short || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+        const vsic = (item.dataset.vsic || '').toLowerCase();
+        const matches = !cleanKw || name.includes(cleanKw) || short.includes(cleanKw) || vsic.includes(cleanKw);
+        item.style.display = matches ? 'block' : 'none';
+        if (matches) hasVisibleItem = true;
+      });
+      sec.style.display = hasVisibleItem ? 'block' : 'none';
+    });
+  }
+
+  selectEconIndustry(indKey) {
+    this.selectedIndustryKey = indKey;
+    const panel = document.getElementById('dt-econ-ind-dropdown-panel');
+    const label = document.getElementById('dt-econ-ind-current-label');
+    const wrapper = document.getElementById('dt-econ-ind-categories-wrapper');
+
+    const indEngine = (typeof window !== 'undefined' && window.IndustryEconomicEngine) || (typeof IndustryEconomicEngine !== 'undefined' ? IndustryEconomicEngine : null);
+    const catalog = (indEngine && indEngine.getIndustryCatalog) ? indEngine.getIndustryCatalog() : {};
+    const curProfile = catalog[indKey] || catalog.CAFE;
+
+    if (label && curProfile) {
+      label.textContent = `${curProfile.name} (VSIC ${curProfile.vsic_code})`;
+    }
+    if (panel) panel.style.display = 'none';
+
+    if (wrapper) {
+      wrapper.querySelectorAll('.dt-econ-ind-item-btn').forEach(btn => {
+        const isCur = btn.dataset.id === indKey;
+        btn.style.background = isCur ? 'rgba(245,158,11,0.25)' : 'rgba(255,255,255,0.03)';
+        btn.style.borderColor = isCur ? '#F59E0B' : 'rgba(255,255,255,0.1)';
+        btn.style.color = isCur ? '#FBBF24' : '#E2E8F0';
+        const vsicDiv = btn.querySelector('div:nth-child(2)');
+        if (vsicDiv) vsicDiv.style.color = isCur ? '#F59E0B' : '#94A3B8';
+      });
+    }
+
+    this.updateEconomicRadiusData(this.selectedEconRadius || 1000, indKey, this.selectedEconDistrictId);
+  }
+
   openEconomicRadiusModal(radiusMeters = 1000) {
+    this.initEconIndustryDropdown();
     const modal = document.getElementById('modal-economic-radius');
     if (!modal) return;
     this.selectedEconRadius = radiusMeters;
@@ -2821,7 +2944,7 @@ class LuopanMapTool {
     if (distDistTag) {
       let distText = '';
       if (res.location.communeName) {
-        distText += `📍 ${res.location.communeName}`;
+        distText += `${res.location.communeName}`;
       }
       if (res.location.distanceToDistrictCenterKm !== null && res.location.distanceToDistrictCenterKm !== undefined) {
         distText += ` • Cách trung tâm: ~${res.location.distanceToDistrictCenterKm} km`;
@@ -2883,7 +3006,7 @@ class LuopanMapTool {
         <div style="background:rgba(15,23,42,0.9); border:1px solid ${feasibility.opportunityColor}55; border-radius:8px; padding:0.9rem; margin-top:0.9rem;">
           <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.4rem; margin-bottom:0.7rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:0.45rem;">
             <div style="display:flex; align-items:center; gap:0.45rem;">
-              <span style="font-size:1.15rem;">${profile.icon}</span>
+              
               <strong style="color:#FEF3C7; font-size:0.9rem;">${profile.name}</strong>
               <span style="font-size:0.68rem; color:#F59E0B; background:rgba(245,158,11,0.15); border:1px solid rgba(245,158,11,0.3); padding:0.1rem 0.4rem; border-radius:3px;">VSIC ${profile.vsic_code}</span>
             </div>
@@ -2914,18 +3037,18 @@ class LuopanMapTool {
 
           <!-- Bản Đồ Cụm Thương Mại & Đối Thủ Ngành -->
           <div style="background:rgba(0,0,0,0.3); padding:0.6rem; border-radius:6px; margin-bottom:0.6rem; font-size:0.73rem;">
-            <div style="font-weight:700; color:#F59E0B; margin-bottom:0.3rem;">📍 Phân Bố Đối Thủ & Điểm Nóng Thương Mại:</div>
+            <div style="font-weight:700; color:#F59E0B; margin-bottom:0.3rem;">Phân Bố Đối Thủ & Điểm Nóng Thương Mại:</div>
             <div style="margin-bottom:0.3rem; color:#CBD5E1;">
-              <span style="color:#EF4444; font-weight:700;">🔴 Khu đông đối thủ:</span>
+              <span style="color:#EF4444; font-weight:700;"><span style="color:#EF4444; font-weight:700;">[Khu đông đối thủ / Bão hòa]:</span></span>
               <span>${clusterIntelligence.crowdedSummary}</span>
             </div>
             <div style="margin-bottom:0.3rem; color:#CBD5E1;">
-              <span style="color:#34D399; font-weight:700;">🟢 Vùng trũng cơ hội mở mới:</span>
+              <span style="color:#34D399; font-weight:700;"><span style="color:#34D399; font-weight:700;">[Vùng trũng cơ hội / Tiềm năng]:</span></span>
               <span>${clusterIntelligence.opportunitySummary}</span>
             </div>
             ${clusterIntelligence.primaryStreets.length > 0 ? `
               <div style="color:#94A3B8;">
-                <span style="color:#38BDF8; font-weight:700;">🛣️ Trục đường huyết mạch:</span>
+                <span style="color:#38BDF8; font-weight:700;"><span style="color:#38BDF8; font-weight:700;">[Trục đường huyết mạch]:</span></span>
                 <span>${clusterIntelligence.primaryStreets.join(' • ')}</span>
               </div>
             ` : ''}
@@ -2948,7 +3071,7 @@ class LuopanMapTool {
             </div>
             ${res.commune && res.commune.features ? `
               <div style="font-size:0.72rem; color:#38BDF8; margin-top:0.2rem;">
-                📍 <em>${res.commune.features}</em>
+                <em>${res.commune.features}</em>
               </div>
             ` : ''}
           </div>
@@ -3014,10 +3137,10 @@ class LuopanMapTool {
         <div style="background:rgba(0,0,0,0.25); padding:0.7rem; border-radius:6px; margin-bottom:0.8rem;">
           <div style="font-size:0.76rem; font-weight:700; color:#FEF3C7; margin-bottom:0.4rem;">Cơ cấu tiêu dùng (${financials.totalMonthlySpendingBillionVnd} tỷ VNĐ/tháng):</div>
           <div style="display:grid; grid-template-columns:repeat(2, 1fr); gap:0.4rem; font-size:0.74rem;">
-            <div>🍜 F&B & Ăn uống: <strong style="color:#34D399;">${spendingBreakdown.foodExpenseBillion} tỷ</strong> (${spendingBreakdown.foodExpenseRatio}%)</div>
-            <div>🏠 Nhà ở & Tiện ích: <strong style="color:#38BDF8;">${spendingBreakdown.housingUtilitiesBillion} tỷ</strong></div>
-            <div>🎓 Giáo dục & Y tế: <strong style="color:#C084FC;">${spendingBreakdown.educationHealthBillion} tỷ</strong></div>
-            <div>🛍️ Mua sắm & Tiêu khiển: <strong style="color:#FBBF24;">${spendingBreakdown.shoppingLeisureBillion} tỷ</strong></div>
+            <div> F&B & Ăn uống: <strong style="color:#34D399;">${spendingBreakdown.foodExpenseBillion} tỷ</strong> (${spendingBreakdown.foodExpenseRatio}%)</div>
+            <div> Nhà ở & Tiện ích: <strong style="color:#38BDF8;">${spendingBreakdown.housingUtilitiesBillion} tỷ</strong></div>
+            <div> Giáo dục & Y tế: <strong style="color:#C084FC;">${spendingBreakdown.educationHealthBillion} tỷ</strong></div>
+            <div>️ Mua sắm & Tiêu khiển: <strong style="color:#FBBF24;">${spendingBreakdown.shoppingLeisureBillion} tỷ</strong></div>
           </div>
         </div>
 

@@ -186,7 +186,7 @@ class LibraryUI {
           <!-- HỘP KHẢO CHỨNG THƯ TỊCH -->
           <div style="background:#0D111A; border:1px solid rgba(168,85,247,0.3); border-left:4px solid #A855F7; border-radius:8px; padding:0.9rem 1.1rem; margin-top:0.9rem;">
             <div style="font-size:0.8rem; font-weight:800; color:#C084FC; margin-bottom:0.4rem; letter-spacing:0.04em;">
-              🔍 KHẢO CHỨNG VĂN BẢN HỌC (RED-TEAM TEXTUAL PROVENANCE):
+              KHẢO CHỨNG VĂN BẢN HỌC (RED-TEAM TEXTUAL PROVENANCE):
             </div>
             <div style="font-size:0.78rem; color:var(--text-primary); line-height:1.55;">
               • <strong>Tác giả truyền thống:</strong> ${book.traditionalAuthor || book.author}<br/>
@@ -224,7 +224,7 @@ class LibraryUI {
           <!-- Cột Trái: Chữ Hán Cổ Chuẩn Mộc Bản & Phiên Âm -->
           <div style="background:#121722; border:1px solid rgba(251,191,36,0.25); border-radius:10px; padding:1.4rem;">
             <div style="font-size:0.8rem; font-weight:800; color:#FBBF24; margin-bottom:0.8rem; letter-spacing:0.04em; border-bottom:1px solid rgba(255,255,255,0.06); padding-bottom:0.4rem;">
-              📜 NGUYÊN VĂN CHỮ HÁN CHÁNH TÔNG TOÀN BẢN:
+              NGUYÊN VĂN CHỮ HÁN CHÁNH TÔNG TOÀN BẢN:
             </div>
             <div style="font-family:'Ma Shan Zheng', var(--font-title); font-size:1.35rem; color:#FEF3C7; line-height:1.9; letter-spacing:0.06em; margin-bottom:1.2rem;">
               ${chapter.hanzi}
@@ -237,7 +237,7 @@ class LibraryUI {
           <!-- Cột Phải: Dịch Nghĩa Học Thuật Chuẩn Xác -->
           <div style="background:#121722; border:1px solid rgba(56,189,248,0.25); border-radius:10px; padding:1.4rem;">
             <div style="font-size:0.8rem; font-weight:800; color:#38BDF8; margin-bottom:0.8rem; letter-spacing:0.04em; border-bottom:1px solid rgba(255,255,255,0.06); padding-bottom:0.4rem;">
-              📖 DỊCH NGHĨA HỌC THUẬT TƯỜNG TẬN:
+              DỊCH NGHĨA HỌC THUẬT TƯỜNG TẬN:
             </div>
             <div style="font-size:0.88rem; color:var(--text-primary); line-height:1.7;">
               ${chapter.meaning}
@@ -249,7 +249,7 @@ class LibraryUI {
         <!-- Khối 1: Bản Chất Khí Trường & Vì Sao Tốt / Vì Sao Xấu -->
         <div style="background:#121722; border:1px solid rgba(52,211,153,0.3); border-left:4px solid #34D399; border-radius:10px; padding:1.3rem 1.5rem; margin-bottom:1.2rem;">
           <div style="font-size:0.85rem; font-weight:800; color:#34D399; margin-bottom:0.7rem; letter-spacing:0.04em;">
-            ⚖️ KHẢO CHỨNG HỌC THUẬT: BẢN CHẤT KHÍ TRƯỜNG & VÌ SAO TỐT / VÌ SAO XẤU:
+            KHẢO CHỨNG HỌC THUẬT: BẢN CHẤT KHÍ TRƯỜNG & VÌ SAO TỐT / VÌ SAO XẤU:
           </div>
           <div style="font-size:0.86rem; color:#FEF3C7; line-height:1.65;">
             ${formatMultiLine(chapter.commentary)}
@@ -260,7 +260,7 @@ class LibraryUI {
         ${chapter.impactAnalysis ? `
           <div style="background:#121722; border:1px solid rgba(56,189,248,0.3); border-left:4px solid #38BDF8; border-radius:10px; padding:1.3rem 1.5rem; margin-bottom:1.2rem;">
             <div style="font-size:0.85rem; font-weight:800; color:#38BDF8; margin-bottom:0.7rem; letter-spacing:0.04em;">
-              📊 PHÂN TÍCH TÁC ĐỘNG ĐỜI SỐNG (SỨC KHỎE • TÀI LỘC • CÔNG DANH • GIA ĐẠO • NHÂN ĐINH):
+              PHÂN TÍCH TÁC ĐỘNG ĐỜI SỐNG (SỨC KHỎE • TÀI LỘC • CÔNG DANH • GIA ĐẠO • NHÂN ĐINH):
             </div>
             <div style="font-size:0.86rem; color:#FEF3C7; line-height:1.65;">
               ${formatMultiLine(chapter.impactAnalysis)}
@@ -284,7 +284,7 @@ class LibraryUI {
         ${chapter.practicalProtocol ? `
           <div style="background:#121722; border:1px solid rgba(251,191,36,0.35); border-left:4px solid #FBBF24; border-radius:10px; padding:1.3rem 1.5rem; margin-bottom:2rem;">
             <div style="font-size:0.85rem; font-weight:800; color:#FBBF24; margin-bottom:0.7rem; letter-spacing:0.04em;">
-              🛠️ QUY TRÌNH THỰC HÀNH KHẢO SÁT & HÓA GIẢI CHÁNH TÔNG:
+              QUY TRÌNH THỰC HÀNH KHẢO SÁT & HÓA GIẢI CHÁNH TÔNG:
             </div>
             <div style="font-size:0.86rem; color:#FEF3C7; line-height:1.65;">
               ${formatMultiLine(chapter.practicalProtocol)}

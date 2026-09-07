@@ -72,7 +72,7 @@ class ResearchUI {
         <!-- Nav Tabs -->
         <div style="display:flex; gap:1rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:1rem; margin-bottom:2rem;">
           <button style="background:rgba(245,158,11,0.15); border:1px solid rgba(245,158,11,0.4); color:#FEF3C7; padding:0.5rem 1rem; border-radius:8px; font-weight:700; font-size:0.88rem; cursor:pointer;">
-            ⚖️ Ma Trận Bất Đồng Trường Phái (Conflict Matrix)
+            Ma Trận Bất Đồng Trường Phái (Conflict Matrix)
           </button>
         </div>
 

@@ -205,10 +205,10 @@ class ScholarlySearchEngine {
         </span>
       </div>
       <div>
-        ${renderGroup('🌟 Khái Niệm Cốt Lõi', grouped.concept, '#FBBF24')}
-        ${renderGroup('📚 Bài Học Giáo Trình', grouped.lesson, '#34D399')}
-        ${renderGroup('📜 Thư Tịch Cổ Điển', grouped.source, '#60A5FA')}
-        ${renderGroup('⚙️ Bàn Tính & Công Cụ', grouped.tool, '#C084FC')}
+        ${renderGroup('Khái Niệm Cốt Lõi', grouped.concept, '#FBBF24')}
+        ${renderGroup('Bài Học Giáo Trình', grouped.lesson, '#34D399')}
+        ${renderGroup('Thư Tịch Cổ Điển', grouped.source, '#60A5FA')}
+        ${renderGroup('Bàn Tính & Công Cụ', grouped.tool, '#C084FC')}
       </div>
     `;
   }

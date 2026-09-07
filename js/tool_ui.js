@@ -3,18 +3,18 @@
 // =========================================================================
 
 const ALL_TOOLS_CATALOG = [
-  { id: 'lakinhbando', name: 'La Kinh Bản Đồ', icon: '🧭', badge: '144 Khẩu', color: '#F59E0B', sub: 'Bản đồ vệ tinh GPS, phân tích sức mua bán kính' },
-  { id: 'diachat64', name: 'Địa Chất 64', icon: '🗺️', badge: '64 Tỉnh', color: '#38BDF8', sub: 'Khí hậu, nồm ẩm, tầng đất & Kinh Vĩ Lục 8 hướng' },
-  { id: 'kinhte64', name: 'Kinh Tế & Sức Mua', icon: '📊', badge: 'VSIC 2025', color: '#10B981', sub: 'Dân số, thu nhập, chi tiêu & 6 ngành kinh doanh' },
-  { id: 'thiendianhan', name: 'Thiên Địa Nhân', icon: '⚖️', badge: 'Tam Tài', color: '#FBBF24', sub: 'Quang học mặt trời, khí động học & kiểm soát thiên tai' },
-  { id: 'battrach', name: 'Bát Trạch', icon: '🏛️', badge: 'Minh Kính', color: '#FEF3C7', sub: 'Cung phi, Đông Tây Tứ Mệnh, phối hướng cửa bếp' },
-  { id: 'huyenkhong', name: 'Huyền Không', icon: '🌌', badge: 'Phi Tinh 9 Vận', color: '#A855F7', sub: 'Lập tinh bàn 24 Sơn Hướng, vượng suy thoái sát' },
-  { id: 'thuyphap', name: 'Thủy Pháp', icon: '🌊', badge: 'Chánh Tông', color: '#34D399', sub: 'Cửu Khúc Thủy, Kim Thành Hoàn Bão, Phản Cung' },
-  { id: 'hoagiaicothu', name: 'Hóa Giải Cổ Thư', icon: '🛡️', badge: '21 Đại Pháp', color: '#F59E0B', sub: '21 Hồ sơ kích hoạt & hóa giải hung sát chánh tông' },
-  { id: 'loban', name: 'Thước Lỗ Ban', icon: '📏', badge: 'Tam Giới', color: '#FBBF24', sub: '52.2cm Thông Thủy, 42.9cm Khối Đặc, 38.8cm Thờ Cúng' },
-  { id: 'thienvankymon', name: 'Kỳ Môn & Thái Dương', icon: '☀️', badge: 'Hiệp Kỷ', color: '#C084FC', sub: 'Thái Dương Đáo Hướng hóa sát & Bát Môn nạp khí' },
-  { id: 'goiythietke', name: 'Gợi Ý Thiết Kế', icon: '📐', badge: '20 Bản Vẽ', color: '#38BDF8', sub: 'Bản vẽ mẫu khí động học: chống bão, hạ nhiệt' },
-  { id: 'report', name: 'Báo Cáo Tổng Hợp', icon: '📑', badge: 'Toàn Diện', color: '#FEF3C7', sub: 'Xuất hồ sơ đánh giá an toàn & phong thủy công trình' }
+  { id: 'lakinhbando', name: 'La Kinh Bản Đồ', icon: '', badge: '144 Khẩu', color: '#F59E0B', sub: 'Bản đồ vệ tinh GPS, phân tích sức mua bán kính' },
+  { id: 'diachat64', name: 'Địa Chất 64', icon: '', badge: '64 Tỉnh', color: '#38BDF8', sub: 'Khí hậu, nồm ẩm, tầng đất & Kinh Vĩ Lục 8 hướng' },
+  { id: 'kinhte64', name: 'Kinh Tế & Sức Mua', icon: '', badge: 'VSIC 2025', color: '#10B981', sub: 'Dân số, thu nhập, chi tiêu & 6 ngành kinh doanh' },
+  { id: 'thiendianhan', name: 'Thiên Địa Nhân', icon: '', badge: 'Tam Tài', color: '#FBBF24', sub: 'Quang học mặt trời, khí động học & kiểm soát thiên tai' },
+  { id: 'battrach', name: 'Bát Trạch', icon: '', badge: 'Minh Kính', color: '#FEF3C7', sub: 'Cung phi, Đông Tây Tứ Mệnh, phối hướng cửa bếp' },
+  { id: 'huyenkhong', name: 'Huyền Không', icon: '', badge: 'Phi Tinh 9 Vận', color: '#A855F7', sub: 'Lập tinh bàn 24 Sơn Hướng, vượng suy thoái sát' },
+  { id: 'thuyphap', name: 'Thủy Pháp', icon: '', badge: 'Chánh Tông', color: '#34D399', sub: 'Cửu Khúc Thủy, Kim Thành Hoàn Bão, Phản Cung' },
+  { id: 'hoagiaicothu', name: 'Hóa Giải Cổ Thư', icon: '', badge: '21 Đại Pháp', color: '#F59E0B', sub: '21 Hồ sơ kích hoạt & hóa giải hung sát chánh tông' },
+  { id: 'loban', name: 'Thước Lỗ Ban', icon: '', badge: 'Tam Giới', color: '#FBBF24', sub: '52.2cm Thông Thủy, 42.9cm Khối Đặc, 38.8cm Thờ Cúng' },
+  { id: 'thienvankymon', name: 'Kỳ Môn & Thái Dương', icon: '', badge: 'Hiệp Kỷ', color: '#C084FC', sub: 'Thái Dương Đáo Hướng hóa sát & Bát Môn nạp khí' },
+  { id: 'goiythietke', name: 'Gợi Ý Thiết Kế', icon: '', badge: '20 Bản Vẽ', color: '#38BDF8', sub: 'Bản vẽ mẫu khí động học: chống bão, hạ nhiệt' },
+  { id: 'report', name: 'Báo Cáo Tổng Hợp', icon: '', badge: 'Toàn Diện', color: '#FEF3C7', sub: 'Xuất hồ sơ đánh giá an toàn & phong thủy công trình' }
 ];
 
 class ToolUI {
@@ -855,7 +855,7 @@ ${reportText}
             onclick="window.toolUI.updateLoBanRuler('522')"
             style="background:${rulerType === '522' ? '#EF4444' : 'rgba(255,255,255,0.03)'}; color:${rulerType === '522' ? '#FFFFFF' : 'var(--text-muted)'}; border:1px solid ${rulerType === '522' ? '#EF4444' : 'rgba(255,255,255,0.08)'}; padding:0.7rem 0.5rem; border-radius:8px; font-weight:700; font-size:0.84rem; cursor:pointer; text-align:center;"
           >
-            <div>🚪 52.2 cm (Thông Thủy)</div>
+            <div> 52.2 cm (Thông Thủy)</div>
             <div style="font-size:0.72rem; font-weight:400; opacity:0.9; margin-top:0.2rem;">Đo Cửa Đi, Cửa Sổ, Cổng</div>
           </button>
 
@@ -863,7 +863,7 @@ ${reportText}
             onclick="window.toolUI.updateLoBanRuler('429')"
             style="background:${rulerType === '429' ? '#3B82F6' : 'rgba(255,255,255,0.03)'}; color:${rulerType === '429' ? '#FFFFFF' : 'var(--text-muted)'}; border:1px solid ${rulerType === '429' ? '#3B82F6' : 'rgba(255,255,255,0.08)'}; padding:0.7rem 0.5rem; border-radius:8px; font-weight:700; font-size:0.84rem; cursor:pointer; text-align:center;"
           >
-            <div>🛏️ 42.9 cm (Khối Đặc)</div>
+            <div>️ 42.9 cm (Khối Đặc)</div>
             <div style="font-size:0.72rem; font-weight:400; opacity:0.9; margin-top:0.2rem;">Đo Giường, Tủ, Bàn Ghế</div>
           </button>
 
@@ -871,7 +871,7 @@ ${reportText}
             onclick="window.toolUI.updateLoBanRuler('388')"
             style="background:${rulerType === '388' ? '#F59E0B' : 'rgba(255,255,255,0.03)'}; color:${rulerType === '388' ? '#07090E' : 'var(--text-muted)'}; border:1px solid ${rulerType === '388' ? '#F59E0B' : 'rgba(255,255,255,0.08)'}; padding:0.7rem 0.5rem; border-radius:8px; font-weight:700; font-size:0.84rem; cursor:pointer; text-align:center;"
           >
-            <div>🕯️ 38.8 cm (Thờ Cúng)</div>
+            <div>️ 38.8 cm (Thờ Cúng)</div>
             <div style="font-size:0.72rem; font-weight:400; opacity:0.9; margin-top:0.2rem;">Đo Bàn Thờ, Bát Hương</div>
           </button>
         </div>
@@ -1338,10 +1338,10 @@ ${reportText}
         <!-- ĐIỀU HƯỚNG SUB-TAB: ĐỊA CHẤT & THỦY HỆ <-> KINH TẾ & SỨC MUA 64 -->
         <div style="display:flex; gap:0.5rem; margin-bottom:1.5rem; background:rgba(15,23,42,0.6); padding:0.35rem; border-radius:10px; border:1px solid rgba(255,255,255,0.08); width:fit-content;">
           <button type="button" onclick="window.toolUI.switchDiaLySubTab('diachat64', '${currentProvince.historical_id}')" style="background:rgba(56,189,248,0.25); border:1px solid #38BDF8; color:#38BDF8; padding:0.4rem 1rem; border-radius:8px; font-weight:800; font-size:0.82rem; cursor:pointer; display:flex; align-items:center; gap:0.4rem;">
-            <span>⛰️</span> ĐỊA CHẤT & THỦY HỆ 64
+            <span>️</span> ĐỊA CHẤT & THỦY HỆ 64
           </button>
           <button type="button" onclick="window.toolUI.switchDiaLySubTab('kinhte64', '${currentProvince.historical_id}')" style="background:transparent; border:1px solid transparent; color:#94A3B8; padding:0.4rem 1rem; border-radius:8px; font-weight:700; font-size:0.82rem; cursor:pointer; display:flex; align-items:center; gap:0.4rem; transition:all 0.15s ease;" onmouseover="this.style.color='#10B981'" onmouseout="this.style.color='#94A3B8'">
-            <span>📊</span> KINH TẾ & SỨC MUA (RPPI)
+            <span></span> KINH TẾ & SỨC MUA (RPPI)
           </button>
         </div>
 
@@ -1413,7 +1413,7 @@ ${reportText}
             <div style="display:flex; align-items:center; gap:0.6rem;">
               <span style="font-size:0.75rem; color:#38BDF8; font-family:monospace;">${currentProvince.coordinates || ''}</span>
               <button type="button" onclick="window.toolUI.initDiaChatGisMap('${currentProvince.historical_id}')" style="background:#0F172A; border:1px solid #38BDF8; color:#38BDF8; padding:0.2rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; cursor:pointer;">
-                🔄 Định vị lại
+                 Định vị lại
               </button>
             </div>
           </div>
@@ -1422,7 +1422,7 @@ ${reportText}
           <div id="diachat-gis-map" style="width:100%; height:clamp(350px, 50vh, 480px); min-height:340px; border-radius:8px; border:1px solid rgba(56,189,248,0.3); background:#080C14; box-shadow:0 8px 24px rgba(0,0,0,0.6); position:relative; z-index:1;"></div>
           
           <div style="display:flex; justify-content:space-between; align-items:center; margin-top:0.5rem; font-size:0.74rem; color:var(--text-muted); flex-wrap:wrap; gap:0.4rem;">
-            <span>💡 <strong>Hướng dẫn:</strong> Cuộn chuột để phóng to/thu nhỏ xem rõ từng ngọn núi, đường đẳng cao, sông suối, quận huyện. Chọn góc trên bên phải để đổi giữa <em>Địa Hình Đẳng Cao</em>, <em>Ảnh Vệ Tinh</em> và <em>Địa Danh Hành Chính</em>.</span>
+            <span> <strong>Hướng dẫn:</strong> Cuộn chuột để phóng to/thu nhỏ xem rõ từng ngọn núi, đường đẳng cao, sông suối, quận huyện. Chọn góc trên bên phải để đổi giữa <em>Địa Hình Đẳng Cao</em>, <em>Ảnh Vệ Tinh</em> và <em>Địa Danh Hành Chính</em>.</span>
             <span style="color:#FEF3C7;">Mốc cao độ: Mét so với mực nước biển (Hòn Dấu)</span>
           </div>
         </div>
@@ -1699,14 +1699,14 @@ ${reportText}
     const industryCatalog = (indEngine && indEngine.getIndustryCatalog) ? indEngine.getIndustryCatalog() : {};
     const currentProfile = industryCatalog[currentIndKey] || industryCatalog.CAFE || {};
     const industryCategories = [
-      { id: 'FNB_RETAIL', icon: '🍲', title: 'Ẩm Thực & Bán Lẻ Tiêu Dùng' },
-      { id: 'BEAUTY_LIFESTYLE', icon: '💅', title: 'Làm Đẹp & Dịch Vụ Đời Sống' },
-      { id: 'HEALTH_FAMILY', icon: '🩺', title: 'Y Tế & Chăm Sóc Gia Đình' },
-      { id: 'FASHION_ACCESSORIES', icon: '👗', title: 'Thời Trang & Phụ Kiện' },
-      { id: 'AUTO_ENERGY', icon: '🚗', title: 'Xe Cộ, Nhiên Liệu & Năng Lượng' },
-      { id: 'HOME_CONSTRUCTION', icon: '🏠', title: 'Xây Dựng, Nhà Cửa & BĐS' },
-      { id: 'AGRI_PET_NATURE', icon: '🌾', title: 'Nông Nghiệp, Sinh Vật Cảnh & Thể Thao' },
-      { id: 'GOLD_SPIRITUAL', icon: '👑', title: 'Tài Sản & Tâm Linh Truyền Thống' }
+      { id: 'FNB_RETAIL', icon: '', title: 'Ẩm Thực & Bán Lẻ Tiêu Dùng' },
+      { id: 'BEAUTY_LIFESTYLE', icon: '', title: 'Làm Đẹp & Dịch Vụ Đời Sống' },
+      { id: 'HEALTH_FAMILY', icon: '', title: 'Y Tế & Chăm Sóc Gia Đình' },
+      { id: 'FASHION_ACCESSORIES', icon: '', title: 'Thời Trang & Phụ Kiện' },
+      { id: 'AUTO_ENERGY', icon: '', title: 'Xe Cộ, Nhiên Liệu & Năng Lượng' },
+      { id: 'HOME_CONSTRUCTION', icon: '', title: 'Xây Dựng, Nhà Cửa & BĐS' },
+      { id: 'AGRI_PET_NATURE', icon: '', title: 'Nông Nghiệp, Sinh Vật Cảnh & Thể Thao' },
+      { id: 'GOLD_SPIRITUAL', icon: '', title: 'Tài Sản & Tâm Linh Truyền Thống' }
     ];
 
     return `
@@ -1715,10 +1715,10 @@ ${reportText}
         <!-- ĐIỀU HƯỚNG SUB-TAB: ĐỊA CHẤT & THỦY HỆ <-> KINH TẾ & SỨC MUA 64 -->
         <div style="display:flex; gap:0.5rem; margin-bottom:1.5rem; background:rgba(15,23,42,0.6); padding:0.35rem; border-radius:10px; border:1px solid rgba(255,255,255,0.08); width:fit-content;">
           <button type="button" onclick="window.toolUI.switchDiaLySubTab('diachat64', '${currentProvince.historical_id}')" style="background:transparent; border:1px solid transparent; color:#94A3B8; padding:0.4rem 1rem; border-radius:8px; font-weight:700; font-size:0.82rem; cursor:pointer; display:flex; align-items:center; gap:0.4rem; transition:all 0.15s ease;" onmouseover="this.style.color='#38BDF8'" onmouseout="this.style.color='#94A3B8'">
-            <span>⛰️</span> ĐỊA CHẤT & THỦY HỆ 64
+            <span>️</span> ĐỊA CHẤT & THỦY HỆ 64
           </button>
           <button type="button" onclick="window.toolUI.switchDiaLySubTab('kinhte64', '${currentProvince.historical_id}')" style="background:rgba(16,185,129,0.25); border:1px solid #10B981; color:#10B981; padding:0.4rem 1rem; border-radius:8px; font-weight:800; font-size:0.82rem; cursor:pointer; display:flex; align-items:center; gap:0.4rem;">
-            <span>📊</span> KINH TẾ & SỨC MUA (RPPI)
+            <span></span> KINH TẾ & SỨC MUA (RPPI)
           </button>
         </div>
 
@@ -1883,7 +1883,7 @@ ${reportText}
               </div>
             </div>
             <div class="sae-desktop-filter" style="display:flex; align-items:center; gap:0.5rem; flex-wrap:wrap;">
-              <input type="text" id="kinhte-filter-sae-table" placeholder="🔍 Lọc quận/huyện..." oninput="window.toolUI.filterSaeTable(this.value)" style="background:#0F172A; border:1px solid rgba(255,255,255,0.2); color:#FEF3C7; padding:0.35rem 0.6rem; border-radius:6px; font-size:14px; outline:none; width:160px;">
+              <input type="text" id="kinhte-filter-sae-table" placeholder=" Lọc quận/huyện..." oninput="window.toolUI.filterSaeTable(this.value)" style="background:#0F172A; border:1px solid rgba(255,255,255,0.2); color:#FEF3C7; padding:0.35rem 0.6rem; border-radius:6px; font-size:14px; outline:none; width:160px;">
               <span style="font-size:0.74rem; color:#38BDF8; font-weight:600; background:rgba(56,189,248,0.12); padding:0.25rem 0.6rem; border-radius:4px;">
                 ${districts.length} Đơn vị hành chính
               </span>
@@ -1942,13 +1942,13 @@ ${reportText}
           <!-- GIAO DIỆN MOBILE (< 768px): THẺ QUẬN/HUYỆN XỔ / THU GỌN CHỐNG TRÀN -->
           <div class="sae-mobile-cards-wrapper">
             <button type="button" id="sae-mobile-toggle-btn" onclick="window.toolUI.toggleMobileSaeCards()" style="width:100%; display:flex; justify-content:space-between; align-items:center; background:rgba(56,189,248,0.1); border:1px solid rgba(56,189,248,0.3); color:#38BDF8; padding:0.65rem 0.85rem; border-radius:8px; font-weight:700; font-size:0.88rem; cursor:pointer; box-sizing:border-box;">
-              <span>📊 So Sánh Các Quận / Huyện (${districts.length})</span>
+              <span> So Sánh Các Quận / Huyện (${districts.length})</span>
               <span id="sae-mobile-toggle-icon" style="color:#FEF3C7; font-size:0.8rem; background:rgba(255,255,255,0.08); padding:0.2rem 0.5rem; border-radius:4px;">▾ Mở rộng</span>
             </button>
 
             <div id="sae-mobile-collapsible-body" style="display:none; margin-top:0.75rem;">
               <div style="margin-bottom:0.6rem;">
-                <input type="text" id="kinhte-search-sae-mobile" placeholder="🔍 Gõ tìm quận/huyện (vd: Củ Chi, Thủ Đức...)" oninput="window.toolUI.filterMobileSaeCards(this.value)" style="width:100%; box-sizing:border-box; background:#0F172A; border:1px solid rgba(255,255,255,0.25); color:#FEF3C7; padding:0.5rem 0.75rem; border-radius:6px; font-size:16px; outline:none;">
+                <input type="text" id="kinhte-search-sae-mobile" placeholder=" Gõ tìm quận/huyện (vd: Củ Chi, Thủ Đức...)" oninput="window.toolUI.filterMobileSaeCards(this.value)" style="width:100%; box-sizing:border-box; background:#0F172A; border:1px solid rgba(255,255,255,0.25); color:#FEF3C7; padding:0.5rem 0.75rem; border-radius:6px; font-size:16px; outline:none;">
               </div>
 
               <!-- Thanh nút Sort nhanh -->
@@ -2003,7 +2003,7 @@ ${reportText}
                       </div>
 
                       <button type="button" onclick="window.toolUI.selectDistrictFromCard('${currentProvince.historical_id}', '${d.id}')" style="width:100%; background:rgba(16,185,129,0.15); border:1px solid #10B981; color:#34D399; padding:0.45rem; border-radius:6px; font-size:0.8rem; font-weight:700; cursor:pointer; min-height:40px; display:flex; align-items:center; justify-content:center; gap:0.3rem;">
-                        <span>🎯 Khảo sát bán kính huyện này</span>
+                        <span> Khảo sát bán kính huyện này</span>
                       </button>
                     </div>
                   `;
@@ -2035,7 +2035,7 @@ ${reportText}
               <div style="display:flex; flex-direction:column; gap:0.3rem;">
                 <label style="font-size:0.82rem; color:#FEF3C7; font-weight:600;">Quận / Huyện:</label>
                 <div style="display:flex; gap:0.4rem; width:100%; box-sizing:border-box;">
-                  <input type="text" id="kinhte-search-district" placeholder="🔍 Gõ tìm..." oninput="window.toolUI.filterDistrictDropdown(this.value)" style="background:#0F172A; border:1px solid rgba(255,255,255,0.25); color:#FEF3C7; padding:0.45rem 0.6rem; border-radius:6px; font-size:16px; outline:none; width:110px; flex-shrink:0; box-sizing:border-box;">
+                  <input type="text" id="kinhte-search-district" placeholder=" Gõ tìm..." oninput="window.toolUI.filterDistrictDropdown(this.value)" style="background:#0F172A; border:1px solid rgba(255,255,255,0.25); color:#FEF3C7; padding:0.45rem 0.6rem; border-radius:6px; font-size:16px; outline:none; width:110px; flex-shrink:0; box-sizing:border-box;">
                   <select id="kinhte-select-district" onchange="window.toolUI.onDistrictChange('${currentProvince.historical_id}')" style="background:#0F172A; border:1px solid #10B981; color:#FEF3C7; padding:0.45rem 0.6rem; border-radius:6px; font-size:16px; outline:none; flex:1; min-width:0; box-sizing:border-box;">
                     ${districts.map(d => `<option value="${d.id}">${d.name} (${d.type})</option>`).join('')}
                   </select>
@@ -2100,13 +2100,13 @@ ${reportText}
             </div>
           </div>
 
-          <!-- TAB SWITCHER: 🌟 NGÀNH ĐANG PHÁT TRIỂN vs ⚠️ NGUY CƠ ĐÀO THẢI (THU GỌN 50%) -->
+          <!-- TAB SWITCHER:  NGÀNH ĐANG PHÁT TRIỂN vs ️ NGUY CƠ ĐÀO THẢI (THU GỌN 50%) -->
           <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.35rem; margin-bottom:0.75rem; background:rgba(0,0,0,0.3); padding:0.25rem; border-radius:6px; box-sizing:border-box;">
             <button type="button" id="tab-industry-active-btn" class="industry-tab-btn active" onclick="window.toolUI.switchIndustryTab('active')" style="background:rgba(245,158,11,0.2); border:1px solid #F59E0B; color:#FBBF24; padding:0.28rem 0.5rem; border-radius:5px; font-size:0.72rem; font-weight:600; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:0.25rem; transition:all 0.15s ease;">
-              <span>🌟 Ngành Đang Phát Triển (DSR)</span>
+              <span> Ngành Đang Phát Triển (DSR)</span>
             </button>
             <button type="button" id="tab-industry-sunset-btn" class="industry-tab-btn" onclick="window.toolUI.switchIndustryTab('sunset')" style="background:transparent; border:1px solid transparent; color:var(--text-muted); padding:0.28rem 0.5rem; border-radius:5px; font-size:0.72rem; font-weight:600; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:0.25rem; transition:all 0.15s ease;">
-              <span>⚠️ Nguy Cơ Đào Thải (Sunset)</span>
+              <span>️ Nguy Cơ Đào Thải (Sunset)</span>
             </button>
           </div>
 
@@ -2122,7 +2122,7 @@ ${reportText}
               <!-- Nút Dropdown chính: Hiển thị ngành đang chọn (Cao 34px, font 0.78rem, nét thanh thoát) -->
               <button type="button" id="industry-dropdown-trigger" onclick="window.toolUI.toggleIndustryDropdown()" style="width:100%; display:flex; justify-content:space-between; align-items:center; background:#0F172A; border:1px solid rgba(245,158,11,0.35); color:#FEF3C7; padding:0.32rem 0.65rem; border-radius:6px; font-size:0.78rem; font-weight:600; cursor:pointer; min-height:34px; box-sizing:border-box;">
                 <span id="industry-current-label" style="display:flex; align-items:center; gap:0.4rem; text-align:left;">
-                  <span>${currentProfile.icon || '☕'}</span>
+                  <span>${currentProfile.icon || ''}</span>
                   <span style="color:#FBBF24; font-weight:600;">${currentProfile.name || 'Cà Phê'}</span>
                   <span style="font-size:0.7rem; color:var(--text-muted); font-weight:400;">(VSIC ${currentProfile.vsic_code || '56302'})</span>
                 </span>
@@ -2133,7 +2133,7 @@ ${reportText}
               <div id="industry-dropdown-panel" style="display:none; position:relative; z-index:30; background:#0B0F19; border:1px solid rgba(245,158,11,0.35); border-radius:6px; padding:0.65rem; margin-top:0.35rem; box-shadow:0 8px 20px -4px rgba(0,0,0,0.7); box-sizing:border-box;">
                 <!-- Ô tìm kiếm realtime có dấu / không dấu -->
                 <div style="margin-bottom:0.6rem;">
-                  <input type="text" id="industry-search-input" placeholder="🔍 Gõ tìm nhanh ngành (vd: tóc nam, vàng, phân bón, bđs, cafe...)" oninput="window.toolUI.filterIndustryDropdown(this.value)" style="width:100%; box-sizing:border-box; background:#0F172A; border:1px solid rgba(255,255,255,0.18); color:#FEF3C7; padding:0.38rem 0.65rem; border-radius:5px; font-size:16px; outline:none;">
+                  <input type="text" id="industry-search-input" placeholder=" Gõ tìm nhanh ngành (vd: tóc nam, vàng, phân bón, bđs, cafe...)" oninput="window.toolUI.filterIndustryDropdown(this.value)" style="width:100%; box-sizing:border-box; background:#0F172A; border:1px solid rgba(255,255,255,0.18); color:#FEF3C7; padding:0.38rem 0.65rem; border-radius:5px; font-size:16px; outline:none;">
                 </div>
 
                 <!-- 8 Nhóm Danh Mục Ngành Nghề -->
@@ -2178,7 +2178,7 @@ ${reportText}
               <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.35rem;">
                 <label style="display:flex; align-items:center; gap:0.45rem; cursor:pointer; font-weight:600; color:#34D399;">
                   <input type="checkbox" id="toggle-filter-good-location" onchange="window.toolUI.toggleFilterGoodLocation('${currentProvince.historical_id}', this.checked)" style="accent-color:#10B981; width:15px; height:15px; cursor:pointer;">
-                  <span>🎯 Lọc vị trí tốt cho ngành <span id="filter-target-industry-name" style="color:#FEF3C7; font-weight:700;">${currentProfile.name || 'Cà Phê'}</span></span>
+                  <span> Lọc vị trí tốt cho ngành <span id="filter-target-industry-name" style="color:#FEF3C7; font-weight:700;">${currentProfile.name || 'Cà Phê'}</span></span>
                 </label>
                 <span style="font-size:0.68rem; color:var(--text-muted);">Tự động quét quận/huyện/xã phù hợp nhất</span>
               </div>
@@ -2307,7 +2307,7 @@ ${reportText}
     const labelEl = document.getElementById('industry-current-label');
     if (labelEl && profile) {
       labelEl.innerHTML = `
-        <span>${profile.icon || '☕'}</span>
+        <span>${profile.icon || ''}</span>
         <span style="color:#FBBF24;">${profile.name}</span>
         <span style="font-size:0.72rem; color:var(--text-muted); font-weight:500;">(VSIC ${profile.vsic_code})</span>
       `;
@@ -2404,7 +2404,7 @@ ${reportText}
             <div style="display:flex; justify-content:space-between; align-items:center; margin-top:0.25rem; pt:0.25rem; border-top:1px dashed rgba(255,255,255,0.06); font-size:0.68rem; color:var(--text-muted);">
               <span>Dân số: ${(loc.keyMetrics.pop || 0).toLocaleString('vi-VN')}</span>
               <button type="button" class="good-location-btn" onclick="window.toolUI.selectGoodLocation('${provinceId}', '${loc.districtId}', '${loc.communeId || ''}')" style="background:rgba(16,185,129,0.18); border:1px solid #10B981; color:#34D399; padding:0.22rem 0.5rem; border-radius:4px; font-size:0.7rem; font-weight:600; cursor:pointer; display:flex; align-items:center; gap:0.25rem;">
-                <span>🎯 Chọn Khảo Sát Bán Kính</span>
+                <span> Chọn Khảo Sát Bán Kính</span>
               </button>
             </div>
           </div>
@@ -2505,7 +2505,7 @@ ${reportText}
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.8rem; flex-wrap:wrap; gap:0.5rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:0.6rem;">
           <div>
             <div style="font-size:0.75rem; color:#EF4444; font-weight:800; text-transform:uppercase; display:flex; align-items:center; gap:0.3rem;">
-              <span>🚨 RADAR CẢNH BÁO NGUY CƠ ĐÀO THẢI (SUNSET INDUSTRY WATCH)</span>
+              <span> RADAR CẢNH BÁO NGUY CƠ ĐÀO THẢI (SUNSET INDUSTRY WATCH)</span>
             </div>
             <div style="font-size:0.78rem; color:var(--text-muted); margin-top:0.2rem;">
               Phân tích các ngành nghề truyền thống đang suy giảm mạnh do chuyển đổi số, thương mại điện tử và biến đổi hành vi tiêu dùng đô thị.
@@ -2547,7 +2547,7 @@ ${reportText}
 
               <!-- Nguyên nhân cốt lõi -->
               <div style="background:rgba(0,0,0,0.25); border-radius:6px; padding:0.55rem; margin-bottom:0.6rem; font-size:0.72rem;">
-                <div style="color:#FBBF24; font-weight:700; margin-bottom:0.25rem;">🔍 Nguyên nhân suy giảm:</div>
+                <div style="color:#FBBF24; font-weight:700; margin-bottom:0.25rem;"> Nguyên nhân suy giảm:</div>
                 <ul style="margin:0; padding-left:1.1rem; color:var(--text-primary); line-height:1.45;">
                   ${ind.coreCauses.map(c => `<li style="margin-bottom:0.15rem;">${c}</li>`).join('')}
                 </ul>
@@ -2555,12 +2555,12 @@ ${reportText}
 
               <!-- Lộ trình chuyển dịch thoát hiểm -->
               <div style="font-size:0.73rem; color:#38BDF8; line-height:1.45; margin-bottom:0.5rem; background:rgba(56,189,248,0.06); border-left:2px solid #38BDF8; padding:0.4rem 0.55rem; border-radius:0 4px 4px 0;">
-                <strong style="color:#7DD3FC;">💡 Lộ trình thoát hiểm:</strong> ${ind.strategicPivot}
+                <strong style="color:#7DD3FC;"> Lộ trình thoát hiểm:</strong> ${ind.strategicPivot}
               </div>
 
               <!-- Phong thủy thoái vận Cửu Vận -->
               <div style="font-size:0.71rem; color:#E2E8F0; line-height:1.45; border-top:1px dashed rgba(255,255,255,0.08); padding-top:0.45rem;">
-                <strong style="color:#F59E0B;">☯️ Phong thủy Cửu Vận (Hỏa Vận):</strong> ${ind.fengshuiWarning}
+                <strong style="color:#F59E0B;">️ Phong thủy Cửu Vận (Hỏa Vận):</strong> ${ind.fengshuiWarning}
               </div>
             </div>
           `).join('')}
@@ -2797,14 +2797,14 @@ ${reportText}
         <!-- KHUYẾN NGHỊ THỰC THI & PHONG THỦY THƯƠNG MẠI -->
         <div style="background:rgba(0,0,0,0.3); border-radius:8px; padding:1rem; border-left:4px solid ${feasibility.opportunityColor};">
           <div style="font-size:0.8rem; font-weight:700; color:#FEF3C7; margin-bottom:0.4rem;">
-            💡 Chiến Lược Triển Khai Thực Tế & Khẩu Quyết Định Vị:
+             Chiến Lược Triển Khai Thực Tế & Khẩu Quyết Định Vị:
           </div>
           <div style="font-size:0.78rem; color:#CBD5E1; line-height:1.6; margin-bottom:0.6rem;">
             <strong>Mô hình khuyến nghị:</strong>
             <div style="display:flex; flex-wrap:wrap; gap:0.4rem; margin-top:0.3rem;">
               ${feasibility.suitableBusinessModels.map(m => `
                 <span style="font-size:0.74rem; font-weight:700; color:#FEF3C7; background:rgba(245,158,11,0.15); border:1px solid rgba(245,158,11,0.35); padding:0.2rem 0.6rem; border-radius:4px;">
-                  ✓ ${m}
+                   ${m}
                 </span>
               `).join('')}
             </div>
@@ -2966,20 +2966,20 @@ ${reportText}
           <div style="font-size:0.8rem; font-weight:700; color:#FEF3C7; margin-bottom:0.5rem;">Cơ cấu tiêu dùng trong bán kính (${financials.totalMonthlySpendingBillionVnd} tỷ VNĐ/tháng):</div>
           <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(140px, 1fr)); gap:0.5rem; font-size:0.78rem;">
             <div style="background:rgba(16,185,129,0.08); padding:0.5rem; border-radius:6px; border:1px solid rgba(16,185,129,0.2);">
-              <span style="color:#34D399; font-weight:700;">🍜 Ăn uống & F&B:</span>
+              <span style="color:#34D399; font-weight:700;"> Ăn uống & F&B:</span>
               <div style="font-size:0.95rem; font-weight:800; color:#FEF3C7; margin-top:0.2rem;">${spendingBreakdown.foodExpenseBillion} tỷ VNĐ</div>
               <span style="color:var(--text-muted); font-size:0.7rem;">(${spendingBreakdown.foodExpenseRatio}%)</span>
             </div>
             <div style="background:rgba(56,189,248,0.08); padding:0.5rem; border-radius:6px; border:1px solid rgba(56,189,248,0.2);">
-              <span style="color:#38BDF8; font-weight:700;">🏠 Nhà ở & Tiện ích:</span>
+              <span style="color:#38BDF8; font-weight:700;"> Nhà ở & Tiện ích:</span>
               <div style="font-size:0.95rem; font-weight:800; color:#FEF3C7; margin-top:0.2rem;">${spendingBreakdown.housingUtilitiesBillion} tỷ VNĐ</div>
             </div>
             <div style="background:rgba(168,85,247,0.08); padding:0.5rem; border-radius:6px; border:1px solid rgba(168,85,247,0.2);">
-              <span style="color:#C084FC; font-weight:700;">🎓 Giáo dục & Y tế:</span>
+              <span style="color:#C084FC; font-weight:700;"> Giáo dục & Y tế:</span>
               <div style="font-size:0.95rem; font-weight:800; color:#FEF3C7; margin-top:0.2rem;">${spendingBreakdown.educationHealthBillion} tỷ VNĐ</div>
             </div>
             <div style="background:rgba(245,158,11,0.08); padding:0.5rem; border-radius:6px; border:1px solid rgba(245,158,11,0.2);">
-              <span style="color:#FBBF24; font-weight:700;">🛍️ Mua sắm & Tiêu khiển:</span>
+              <span style="color:#FBBF24; font-weight:700;">️ Mua sắm & Tiêu khiển:</span>
               <div style="font-size:0.95rem; font-weight:800; color:#FEF3C7; margin-top:0.2rem;">${spendingBreakdown.shoppingLeisureBillion} tỷ VNĐ</div>
             </div>
           </div>
@@ -2988,20 +2988,20 @@ ${reportText}
         <!-- Khối Hành Lang Thương Mại & Cụm Điểm Bán -->
         ${hotspots.primaryStreets && hotspots.primaryStreets.length > 0 ? `
           <div style="background:rgba(0,0,0,0.25); padding:0.75rem; border-radius:8px; margin-bottom:0.8rem; font-size:0.75rem;">
-            <div style="font-size:0.78rem; font-weight:700; color:#F59E0B; margin-bottom:0.4rem;">📍 Tuyến Đường & Cụm Thương Mại Trọng Điểm:</div>
+            <div style="font-size:0.78rem; font-weight:700; color:#F59E0B; margin-bottom:0.4rem;"> Tuyến Đường & Cụm Thương Mại Trọng Điểm:</div>
             <div style="margin-bottom:0.35rem; color:#CBD5E1;">
-              <span style="color:#38BDF8; font-weight:700;">🛣️ Tuyến đường chính:</span>
+              <span style="color:#38BDF8; font-weight:700;">️ Tuyến đường chính:</span>
               <span>${hotspots.primaryStreets.join(' • ')}</span>
             </div>
             ${hotspots.highDensityClusters && hotspots.highDensityClusters.length > 0 ? `
               <div style="margin-bottom:0.35rem; color:#CBD5E1;">
-                <span style="color:#EF4444; font-weight:700;">🔴 Cụm đông đúc / sầm uất:</span>
+                <span style="color:#EF4444; font-weight:700;"> Cụm đông đúc / sầm uất:</span>
                 <span>${hotspots.highDensityClusters.join('; ')}</span>
               </div>
             ` : ''}
             ${hotspots.lowDensityOpportunities && hotspots.lowDensityOpportunities.length > 0 ? `
               <div style="color:#CBD5E1;">
-                <span style="color:#34D399; font-weight:700;">🟢 Vùng trũng cơ hội đón đầu:</span>
+                <span style="color:#34D399; font-weight:700;"> Vùng trũng cơ hội đón đầu:</span>
                 <span>${hotspots.lowDensityOpportunities.join('; ')}</span>
               </div>
             ` : ''}
@@ -3013,7 +3013,7 @@ ${reportText}
           <div style="display:flex; flex-wrap:wrap; gap:0.4rem;">
             ${marketAssessment.suitableBusinessModels.map(m => `
               <span style="font-size:0.75rem; font-weight:700; color:#FEF3C7; background:rgba(56,189,248,0.15); border:1px solid rgba(56,189,248,0.3); padding:0.25rem 0.6rem; border-radius:4px;">
-                ✓ ${m}
+                 ${m}
               </span>
             `).join('')}
           </div>
@@ -3441,9 +3441,9 @@ ${reportText}
     // Layer Control Switcher (Tự động thu gọn trên màn hình điện thoại)
     const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
     const baseLayers = {
-      "⛰️ Địa Hình & Đẳng Cao (OpenTopoMap)": topoLayer,
-      "🗺️ Hành Chính & Thủy Hệ (Esri Topo)": esriTopoLayer,
-      "🛰️ Ảnh Vệ Tinh (Esri Satellite)": satelliteLayer
+      "Địa Hình & Đẳng Cao (OpenTopoMap)": topoLayer,
+      "Hành Chính & Thủy Hệ (Esri Topo)": esriTopoLayer,
+      "Ảnh Vệ Tinh (Esri Satellite)": satelliteLayer
     };
     L.control.layers(baseLayers, null, { position: 'topright', collapsed: isMobile }).addTo(map);
 
@@ -3456,7 +3456,7 @@ ${reportText}
         const isMt = lm.type === 'mountain';
         const isWater = lm.type === 'water';
         const badgeColor = isMt ? '#F59E0B' : (isWater ? '#38BDF8' : '#34D399');
-        const iconSvg = isMt ? '⛰️' : (isWater ? '🌊' : '🏛️');
+        const iconSvg = isMt ? '[Núi]' : (isWater ? '[Thủy]' : '[Đô thị]');
 
         const customIcon = L.divIcon({
           className: 'custom-gis-marker',
@@ -3933,7 +3933,7 @@ ${reportText}
                   <div><strong style="color:#34D399;">• Khoảng cách:</strong> ${activeBp.tree_guidelines ? activeBp.tree_guidelines.distance : ''}</div>
                   <div><strong style="color:#34D399;">• Tầng lớp:</strong> ${activeBp.tree_guidelines ? activeBp.tree_guidelines.structure : ''}</div>
                   <div style="background:rgba(16,185,129,0.08); border-radius:4px; padding:0.4rem 0.5rem; color:#6EE7B7;">
-                    ✓ <strong>Công dụng:</strong> ${activeBp.tree_guidelines ? activeBp.tree_guidelines.benefit : ''}
+                     <strong>Công dụng:</strong> ${activeBp.tree_guidelines ? activeBp.tree_guidelines.benefit : ''}
                   </div>
                 </div>
               </div>
@@ -3948,7 +3948,7 @@ ${reportText}
                   <div><strong style="color:#38BDF8;">• Tiền sảnh & Cửa:</strong> ${activeBp.architecture_guidelines ? activeBp.architecture_guidelines.position : ''}</div>
                   <div><strong style="color:#38BDF8;">• Đai neo xà gồ:</strong> ${activeBp.architecture_guidelines ? activeBp.architecture_guidelines.structure : ''}</div>
                   <div style="background:rgba(56,189,248,0.08); border-radius:4px; padding:0.4rem 0.5rem; color:#7DD3FC;">
-                    ✓ <strong>Công dụng:</strong> ${activeBp.architecture_guidelines ? activeBp.architecture_guidelines.benefit : ''}
+                     <strong>Công dụng:</strong> ${activeBp.architecture_guidelines ? activeBp.architecture_guidelines.benefit : ''}
                   </div>
                 </div>
               </div>
@@ -3992,7 +3992,7 @@ ${reportText}
                   </div>
                 </div>
                 <div style="background:rgba(52,211,153,0.1); border:1px solid rgba(52,211,153,0.2); border-radius:4px; padding:0.4rem 0.6rem; font-size:0.76rem; color:#A7F3D0; line-height:1.4;">
-                  <strong>✓ Giải pháp:</strong> ${hz.solution}
+                  <strong> Giải pháp:</strong> ${hz.solution}
                 </div>
               </div>
             `).join('')}
@@ -4053,7 +4053,7 @@ ${reportText}
             <div style="font-size:0.78rem; color:#94A3B8;">Khảo chứng nguyên tác cổ thư Quyển 7 《Địa Lý Ngũ Quyết》 đối chiếu 《Bình Sa Ngọc Xích Kinh》 & Tam Hợp</div>
           </div>
           <a href="#/thu-vien/duong-trach/bai/batch-21" style="display:inline-flex; align-items:center; gap:0.4rem; padding:0.55rem 1.1rem; background:#C5B382; color:#0B0F17; text-decoration:none; font-weight:700; font-size:0.84rem; border-radius:6px; white-space:nowrap; box-shadow:0 4px 12px rgba(197,179,130,0.25);">
-            🧭 Mở Bộ Tra Cứu 144 Thủy Khẩu
+             Mở Bộ Tra Cứu 144 Thủy Khẩu
           </a>
         </div>
       </div>

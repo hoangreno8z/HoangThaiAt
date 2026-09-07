@@ -196,7 +196,7 @@
       if (isLocked) {
         if (isAnySensitive) {
           statusState = 'NHAY_CAM_SAI_SO';
-          statusLabel = '⚠️ KẾT QUẢ NHẠY VỚI SAI SỐ (CẦN ĐO LẠI HIỆN TRƯỜNG)';
+          statusLabel = 'KẾT QUẢ NHẠY VỚI SAI SỐ (CẦN ĐO LẠI HIỆN TRƯỜNG)';
           statusColor = '#FB7185';
         } else {
           statusState = 'DA_HIEU_CHUAN';

@@ -143,7 +143,7 @@ class HoiDapUI {
                 type="text" 
                 class="hoidap-search-input" 
                 id="hoidap-search-input"
-                placeholder="🔍 Tra cứu thế đất, cổ kinh, sa thủy, hoàng tuyền..." 
+                placeholder="Tra cứu thế đất, cổ kinh, sa thủy, hoàng tuyền..." 
                 value="${this.escapeHtml(this.searchQuery)}"
                 oninput="window.hoidapUI.onSearch(this.value)"
               />

@@ -53,16 +53,16 @@ class EvidenceGraphUI {
         <!-- Tab Navigation -->
         <div style="display:flex; gap:0.6rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:1rem; margin-bottom:2rem; flex-wrap:wrap;">
           <button onclick="window.evidenceGraphUI.render('graph')" style="background:${this.currentTab === 'graph' ? 'rgba(245,158,11,0.2)' : 'rgba(255,255,255,0.04)'}; border:1px solid ${this.currentTab === 'graph' ? '#FBBF24' : 'rgba(255,255,255,0.1)'}; color:#FEF3C7; padding:0.5rem 1rem; border-radius:8px; font-weight:700; font-size:0.85rem; cursor:pointer;">
-            🌐 Đồ Hình Quan Hệ Tri Thức
+            Đồ Hình Quan Hệ Tri Thức
           </button>
           <button onclick="window.evidenceGraphUI.render('conflicts')" style="background:${this.currentTab === 'conflicts' ? 'rgba(245,158,11,0.2)' : 'rgba(255,255,255,0.04)'}; border:1px solid ${this.currentTab === 'conflicts' ? '#FBBF24' : 'rgba(255,255,255,0.1)'}; color:#FEF3C7; padding:0.5rem 1rem; border-radius:8px; font-weight:700; font-size:0.85rem; cursor:pointer;">
-            ⚖️ Ma Trận Bất Đồng Trường Phái
+            Ma Trận Bất Đồng Trường Phái
           </button>
           <button onclick="window.evidenceGraphUI.render('sources')" style="background:${this.currentTab === 'sources' ? 'rgba(245,158,11,0.2)' : 'rgba(255,255,255,0.04)'}; border:1px solid ${this.currentTab === 'sources' ? '#FBBF24' : 'rgba(255,255,255,0.1)'}; color:#FEF3C7; padding:0.5rem 1rem; border-radius:8px; font-weight:700; font-size:0.85rem; cursor:pointer;">
-            📜 Thang Phân Cấp Thư Tịch (A - F)
+            Thang Phân Cấp Thư Tịch (A - F)
           </button>
           <button onclick="window.evidenceGraphUI.render('claims')" style="background:${this.currentTab === 'claims' ? 'rgba(245,158,11,0.2)' : 'rgba(255,255,255,0.04)'}; border:1px solid ${this.currentTab === 'claims' ? '#FBBF24' : 'rgba(255,255,255,0.1)'}; color:#FEF3C7; padding:0.5rem 1rem; border-radius:8px; font-weight:700; font-size:0.85rem; cursor:pointer;">
-            🔍 Danh Mục Khẳng Định & Kiểm Chứng
+            Danh Mục Khẳng Định & Kiểm Chứng
           </button>
         </div>
 
@@ -175,10 +175,10 @@ class EvidenceGraphUI {
       <div style="background:#0D111A; border:1px solid rgba(255,255,255,0.08); border-radius:14px; padding:1.5rem; text-align:center;">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem; flex-wrap:wrap; gap:0.5rem;">
           <span style="font-size:0.85rem; color:#FBBF24; font-weight:800; text-transform:uppercase;">
-            🌐 Đồ Hình Phụ Thuộc Khái Niệm Tiên Thiên & Hậu Thiên
+            Đồ Hình Phụ Thuộc Khái Niệm Tiên Thiên & Hậu Thiên
           </span>
           <span style="font-size:0.8rem; color:var(--text-muted);">
-            💡 Nhấp vào từng node để truy cập trực tiếp bài học tương ứng
+            Nhấp vào từng node để truy cập trực tiếp bài học tương ứng
           </span>
         </div>
 

@@ -85,7 +85,7 @@
     const consoleStyleSub = 'color: #38BDF8; font-size: 12px; font-weight: 600;';
     const consoleStyleWarn = 'color: #F87171; font-size: 11px;';
 
-    console.log('%c⚡ ' + SYSTEM_TITLE + ' — ' + AUTHOR_NAME.toUpperCase() + ' (ZALO: ' + ZALO_CONTACT + ') ⚡', consoleStyleTitle);
+    console.log('%c' + SYSTEM_TITLE + ' — ' + AUTHOR_NAME.toUpperCase() + ' (ZALO: ' + ZALO_CONTACT + ')', consoleStyleTitle);
     console.log('%cTư liệu nghiên cứu đã được bảo hộ độc quyền. Mọi hành vi cào quét tự động sẽ bị ghi lại IP.', consoleStyleSub);
     console.log('%cLiên hệ trực tiếp: Hoàng — Zalo: ' + ZALO_CONTACT + ' để được trao đổi học thuật chính tông.', consoleStyleWarn);
   } catch (_) {}

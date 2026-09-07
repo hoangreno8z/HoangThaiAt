@@ -619,8 +619,8 @@
           <details class="dt-classics-drawer">
             <summary class="dt-classics-drawer-toggle">
               <span style="display:inline-flex; align-items:center; gap:0.5rem;">
-                <span style="color:#FBBF24;">📜</span>
-                <strong>📜 KINH VĂN CỔ THƯ & ĐỐI CHIẾU XUẤT XỨ</strong>
+                <span style="color:#FBBF24;"></span>
+                <strong>KINH VĂN CỔ THƯ & ĐỐI CHIẾU XUẤT XỨ</strong>
               </span>
               <span class="dt-drawer-hint">(Nhấp để xem nguyên văn chữ Hán, phiên âm & xuất xứ)</span>
             </summary>
@@ -656,7 +656,7 @@
           </header>
           <div class="dt-entry-body">
             <div class="dt-layer-handbook-card">
-              <div class="dt-layer-handbook-badge">🛠 CẨM NANG THỰC ĐỊA (HƯỚNG DẪN CHI TIẾT)</div>
+              <div class="dt-layer-handbook-badge">CẨM NANG THỰC ĐỊA (HƯỚNG DẪN CHI TIẾT)</div>
               <div class="dt-commentary-content">${parsedHandbookParts.join('\n')}</div>
             </div>
             ${classicsDrawer}
@@ -852,7 +852,7 @@
           <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:0.8rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:1rem; margin-bottom:1.2rem;">
             <div>
               <div style="display:inline-flex; align-items:center; gap:0.4rem; padding:0.2rem 0.6rem; background:rgba(197,179,130,0.15); border:1px solid rgba(197,179,130,0.3); border-radius:6px; font-size:0.75rem; font-weight:700; color:#F5D485; margin-bottom:0.4rem;">
-                <span>🧭</span> BỘ TRA CỨU ĐIỆN TỬ TƯƠNG TÁC
+                <span></span> BỘ TRA CỨU ĐIỆN TỬ TƯƠNG TÁC
               </div>
               <h2 style="margin:0 0 0.3rem 0; font-size:1.3rem; color:#FEF3C7; font-weight:800; letter-spacing:0.02em;">
                 Ma Trận 144 Thủy Khẩu Chánh Tông (1880)
@@ -895,7 +895,7 @@
 
             <div style="grid-column: 1 / -1; min-width:0;">
               <label for="dt-144-quick-search" style="display:block; font-size:0.75rem; font-weight:700; color:#E2E8F0; margin-bottom:0.3rem; text-transform:uppercase; letter-spacing:0.04em;">
-                🔍 Tìm Nhanh
+                Tìm Nhanh
               </label>
               <input id="dt-144-quick-search" list="dt-144-search-datalist" type="text" placeholder="Gõ hướng, cửa thoát, thế cách (ví dụ: Bính hướng, Tân Tuất, Khẩu #45)..." style="width:100%; max-width:100%; box-sizing:border-box; background:#0B0F17; color:#F5EFEB; border:1px solid rgba(255,255,255,0.15); border-radius:6px; padding:0.45rem 0.7rem; font-size:0.82rem; outline:none; font-family:inherit;">
               <datalist id="dt-144-search-datalist">
@@ -951,7 +951,7 @@
             <div style="padding:1.4rem; display:flex; flex-direction:column; gap:1.2rem;">
               <div style="background:#161D2C; border-left:3px solid #C5B382; border-radius:0 8px 8px 0; padding:0.9rem 1.1rem;">
                 <div style="display:flex; align-items:center; gap:0.4rem; color:#F5D485; font-size:0.82rem; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; margin-bottom:0.4rem;">
-                  <span>📜</span> A. Cổ Kinh Đồ Phổ
+                  <span></span> A. Cổ Kinh Đồ Phổ
                 </div>
                 <div style="color:#F1F5F9; font-size:0.88rem; line-height:1.6;">
                   ${formatSecContent(selected.muc_A)}
@@ -960,7 +960,7 @@
 
               <div style="background:#131B2A; border-left:3px solid #38BDF8; border-radius:0 8px 8px 0; padding:0.9rem 1.1rem;">
                 <div style="display:flex; align-items:center; gap:0.4rem; color:#38BDF8; font-size:0.82rem; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; margin-bottom:0.4rem;">
-                  <span>🗣️</span> B. Khẩu Quyết Bí Chỉ
+                  <span></span> B. Khẩu Quyết Bí Chỉ
                 </div>
                 <div style="color:#E2E8F0; font-size:0.88rem; line-height:1.6;">
                   ${formatSecContent(selected.muc_B)}
@@ -969,7 +969,7 @@
 
               <div style="background:#131D24; border-left:3px solid #34D399; border-radius:0 8px 8px 0; padding:0.9rem 1.1rem;">
                 <div style="display:flex; align-items:center; gap:0.4rem; color:#34D399; font-size:0.82rem; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; margin-bottom:0.4rem;">
-                  <span>🛠️</span> C. Thực Địa Định Vị
+                  <span></span> C. Thực Địa Định Vị
                 </div>
                 <div style="color:#E2E8F0; font-size:0.88rem; line-height:1.6;">
                   ${formatSecContent(selected.muc_C)}
@@ -978,7 +978,7 @@
 
               <div style="background:#1B1A28; border-left:3px solid #A78BFA; border-radius:0 8px 8px 0; padding:0.9rem 1.1rem;">
                 <div style="display:flex; align-items:center; gap:0.4rem; color:#A78BFA; font-size:0.82rem; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; margin-bottom:0.4rem;">
-                  <span>🌊</span> D. Biện Chứng Cát Hung
+                  <span></span> D. Biện Chứng Cát Hung
                 </div>
                 <div style="color:#E2E8F0; font-size:0.88rem; line-height:1.6;">
                   ${formatSecContent(selected.muc_D)}
@@ -987,7 +987,7 @@
 
               <div style="background:#1C1E24; border-left:3px solid ${phanColor}; border-radius:0 8px 8px 0; padding:0.9rem 1.1rem;">
                 <div style="display:flex; align-items:center; gap:0.4rem; color:${phanColor}; font-size:0.82rem; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; margin-bottom:0.4rem;">
-                  <span>⚡</span> E. Họa Phúc Ứng Nghiệm
+                  <span></span> E. Họa Phúc Ứng Nghiệm
                 </div>
                 <div style="color:#E2E8F0; font-size:0.88rem; line-height:1.6;">
                   ${formatSecContent(selected.muc_E)}
@@ -996,7 +996,7 @@
 
               <div style="background:#22181C; border-left:3px solid #FB7185; border-radius:0 8px 8px 0; padding:0.9rem 1.1rem;">
                 <div style="display:flex; align-items:center; gap:0.4rem; color:#FB7185; font-size:0.82rem; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; margin-bottom:0.4rem;">
-                  <span>⚠️</span> F. Cạm Bẫy Kiêng Kỵ
+                  <span></span> F. Cạm Bẫy Kiêng Kỵ
                 </div>
                 <div style="color:#E2E8F0; font-size:0.88rem; line-height:1.6;">
                   ${formatSecContent(selected.muc_F)}
@@ -1006,7 +1006,7 @@
 
             <div style="background:#0E131F; border-top:1px solid rgba(255,255,255,0.08); padding:0.9rem 1.4rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.8rem;">
               <a href="#/thu-vien/duong-trach/bai/batch-21?nhom=${currentGroupInfo.idx + 1}" data-144-jump-group="${currentGroupInfo.idx + 1}" style="display:inline-flex; align-items:center; gap:0.4rem; color:#F5D485; text-decoration:none; font-size:0.86rem; font-weight:600;">
-                📖 Xem toàn văn bài giảng ${escapeHtml(currentGroupInfo.label)} trong giáo trình chi tiết ↓
+                Xem toàn văn bài giảng ${escapeHtml(currentGroupInfo.label)} trong giáo trình chi tiết ↓
               </a>
               <div style="display:flex; gap:0.5rem;">
                 <button type="button" data-144-hs-target="${prevHs}" style="background:#1E293B; color:#CBD5E1; border:1px solid rgba(255,255,255,0.12); padding:0.35rem 0.7rem; border-radius:6px; font-size:0.78rem; cursor:pointer;">
@@ -1050,7 +1050,7 @@
       const activeEntry = article.entries[activeIdx] || article.entries[0];
 
       const selectOptions = BATCH_21_TABS.map(tab => 
-        `<option value="${tab.idx}" ${tab.idx === activeIdx ? 'selected' : ''}>${tab.idx === 0 ? '📜 Cương Lĩnh 144 Thủy Khẩu & Quy Trình' : `${tab.shortLabel} (${tab.cuc} Cục)`}</option>`
+        `<option value="${tab.idx}" ${tab.idx === activeIdx ? 'selected' : ''}>${tab.idx === 0 ? 'Cương Lĩnh 144 Thủy Khẩu & Quy Trình' : `${tab.shortLabel} (${tab.cuc} Cục)`}</option>`
       ).join('');
 
 
@@ -1075,7 +1075,7 @@
             <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.8rem;">
               <div>
                 <div style="display:inline-flex; align-items:center; gap:0.4rem; font-size:0.75rem; font-weight:700; color:#F5D485; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:0.25rem;">
-                  <span>📚</span> GIÁO TRÌNH CHUYÊN SÂU 144 THỦY KHẨU (13 BÀI THỰC CHIẾN)
+                  <span></span> GIÁO TRÌNH CHUYÊN SÂU 144 THỦY KHẨU (13 BÀI THỰC CHIẾN)
                 </div>
                 <h3 style="margin:0; font-size:1.15rem; color:#FEF3C7; font-weight:700;">
                   ${activeIdx === 0 ? 'Cương Lĩnh & Quy Trình Khảo Sát Thực Địa' : `Chuyên Khảo: ${escapeHtml(currentTab.title)} (${escapeHtml(currentTab.cuc)} Cục)`}
@@ -1204,7 +1204,7 @@
                 </p>
               </div>
               <a href="${ROUTE_ROOT}/bai/batch-21" style="display:inline-flex; align-items:center; gap:0.5rem; padding:0.6rem 1.1rem; background:#C5B382; color:#0B0F17; text-decoration:none; font-weight:700; font-size:0.86rem; border-radius:8px; box-shadow:0 4px 12px rgba(197,179,130,0.25); white-space:nowrap;">
-                👉 Mở Toàn Thư Chương 21
+                Mở Toàn Thư Chương 21
               </a>
             </div>
           </div>
