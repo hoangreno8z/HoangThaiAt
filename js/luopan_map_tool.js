@@ -17,12 +17,15 @@ class LuopanMapTool {
     this.container = null;
 
     // Động cơ
-    this.calibEngine = window.CalibrationEngine;
-    this.geometry = window.LuopanGeometry;
-    this.data = window.LuopanData;
+    this.calibEngine = typeof window !== 'undefined' ? window.CalibrationEngine : null;
+    this.geometry = typeof window !== 'undefined' ? window.LuopanGeometry : null;
+    this.data = typeof window !== 'undefined' ? window.LuopanData : null;
+    this.geoEngine = typeof window !== 'undefined' ? window.GeoMeasurementEngine : null;
+    this.roadProvider = (typeof window !== 'undefined' && window.OverpassRoadProvider) ? new window.OverpassRoadProvider() : null;
+    this.topologyEngine = (typeof window !== 'undefined' && window.RoadTopologyEngine) ? new window.RoadTopologyEngine({ roadProvider: this.roadProvider }) : null;
     this.STAGE_SIZE = 800;
-    this.renderer = new window.LuopanSvgRenderer({ size: this.STAGE_SIZE });
-    this.classifier = new window.LuopanClassifier();
+    this.renderer = new (typeof window !== 'undefined' && window.LuopanSvgRenderer ? window.LuopanSvgRenderer : class { render() { return ''; } })({ size: this.STAGE_SIZE });
+    this.classifier = new (typeof window !== 'undefined' && window.LuopanClassifier ? window.LuopanClassifier : class { classify() { return {}; } })();
 
     // 1. RAW GEOMETRY: Tọa độ logic chuẩn hóa 800x800
     this.centerPoint = { x: 400, y: 400 };
@@ -47,6 +50,13 @@ class LuopanMapTool {
     this.khuNodeIndex = null;
     this.selectedNodeIndex = null;
     this.selectedSegmentIndex = null;
+
+    // GIS Topology & Quality Gate
+    this.headingReference = 'TRUE'; // 'TRUE' (Bắc Thật) hoặc 'MAGNETIC' (Bắc Từ)
+    this.roadDetectionState = 'IDLE'; // 'IDLE', 'DETECTING', 'SUGGESTED', 'ACCEPTED', 'REJECTED', 'NO_ROAD'
+    this.roadSuggestion = null;
+    this.multiReadings = [];
+    this.showMultiReading = false;
 
     // Leaflet GIS Map
     this.mapInstance = null;
@@ -105,11 +115,19 @@ class LuopanMapTool {
   }
 
   syncCalibrationFromGeometry() {
-    this.rawFacingBearing = this.geometry.calculateHouseFacingBearing(
-      this.frontageLine.pA,
-      this.frontageLine.pB,
-      this.frontageLine.frontSide
-    );
+    if (this.mode === 'map' && this.mapGeometry && this.mapGeometry.frontA && this.mapGeometry.frontB && this.geoEngine) {
+      const abBearing = this.geoEngine.calculateGeodesicBearing(this.mapGeometry.frontA, this.mapGeometry.frontB);
+      const rawFacing = this.frontageLine.frontSide === 'right'
+        ? this.calibEngine.normalize360(abBearing + 90)
+        : this.calibEngine.normalize360(abBearing - 90);
+      this.rawFacingBearing = rawFacing;
+    } else {
+      this.rawFacingBearing = this.geometry.calculateHouseFacingBearing(
+        this.frontageLine.pA,
+        this.frontageLine.pB,
+        this.frontageLine.frontSide
+      );
+    }
     // Khi đã khóa mốc đo thực địa, offset phải tự động cập nhật theo hình học mới của Map
     if (this.isCalibrationLocked && Number.isFinite(this.measuredBearing)) {
       this.calibrationOffset = this.calibEngine.computeOffset(
@@ -158,6 +176,19 @@ class LuopanMapTool {
   getRawLaiBearing() {
     const { pLai } = this.getWaterPoints();
     if (!pLai) return null;
+    if (this.mode === 'map' && this.mapGeometry && this.mapGeometry.center && this.geoEngine) {
+      let laiLatLng = null;
+      if (Number.isInteger(this.laiNodeIndex) && this.mapGeometry.water && this.mapGeometry.water[this.laiNodeIndex]) {
+        laiLatLng = this.mapGeometry.water[this.laiNodeIndex];
+      } else if (this.mapGeometry.water && this.mapGeometry.water.length > 0) {
+        laiLatLng = this.flowDirection === 'forward'
+          ? this.mapGeometry.water[0]
+          : this.mapGeometry.water[this.mapGeometry.water.length - 1];
+      }
+      if (laiLatLng) {
+        return this.geoEngine.calculateGeodesicBearing(this.mapGeometry.center, laiLatLng);
+      }
+    }
     return this.geometry.calculateLineBearing(this.centerPoint, pLai);
   }
 
@@ -165,6 +196,19 @@ class LuopanMapTool {
     if (this.waterPathType === 'deadEnd') return null;
     const { pKhu } = this.getWaterPoints();
     if (!pKhu) return null;
+    if (this.mode === 'map' && this.mapGeometry && this.mapGeometry.center && this.geoEngine) {
+      let khuLatLng = null;
+      if (Number.isInteger(this.khuNodeIndex) && this.mapGeometry.water && this.mapGeometry.water[this.khuNodeIndex]) {
+        khuLatLng = this.mapGeometry.water[this.khuNodeIndex];
+      } else if (this.mapGeometry.water && this.mapGeometry.water.length > 0) {
+        khuLatLng = this.flowDirection === 'forward'
+          ? this.mapGeometry.water[this.mapGeometry.water.length - 1]
+          : this.mapGeometry.water[0];
+      }
+      if (khuLatLng) {
+        return this.geoEngine.calculateGeodesicBearing(this.mapGeometry.center, khuLatLng);
+      }
+    }
     return this.geometry.calculateLineBearing(this.centerPoint, pKhu);
   }
 
@@ -209,16 +253,25 @@ class LuopanMapTool {
     for (let i = 0; i < this.waterPolyline.length - 1; i++) {
       const from = this.waterPolyline[i];
       const to = this.waterPolyline[i + 1];
-      const rawBearing = this.geometry.calculateLineBearing(from, to);
+
+      const hasGeoSeg = this.mode === 'map' && this.mapGeometry && this.mapGeometry.water && this.mapGeometry.water[i] && this.mapGeometry.water[i + 1] && this.geoEngine;
+      const rawBearing = hasGeoSeg
+        ? this.geoEngine.calculateGeodesicBearing(this.mapGeometry.water[i], this.mapGeometry.water[i + 1])
+        : this.geometry.calculateLineBearing(from, to);
       const effectiveBearing = this.isCalibrationLocked
         ? this.calibEngine.calibrate(rawBearing, this.calibrationOffset)
         : rawBearing;
 
-      const fromRadialRaw = this.geometry.calculateLineBearing(this.centerPoint, from);
+      const fromRadialRaw = (hasGeoSeg && this.mapGeometry.center)
+        ? this.geoEngine.calculateGeodesicBearing(this.mapGeometry.center, this.mapGeometry.water[i])
+        : this.geometry.calculateLineBearing(this.centerPoint, from);
       const fromRadialEff = this.isCalibrationLocked
         ? this.calibEngine.calibrate(fromRadialRaw, this.calibrationOffset)
         : fromRadialRaw;
-      const toRadialRaw = this.geometry.calculateLineBearing(this.centerPoint, to);
+
+      const toRadialRaw = (hasGeoSeg && this.mapGeometry.center)
+        ? this.geoEngine.calculateGeodesicBearing(this.mapGeometry.center, this.mapGeometry.water[i + 1])
+        : this.geometry.calculateLineBearing(this.centerPoint, to);
       const toRadialEff = this.isCalibrationLocked
         ? this.calibEngine.calibrate(toRadialRaw, this.calibrationOffset)
         : toRadialRaw;
@@ -521,6 +574,9 @@ class LuopanMapTool {
             <!-- FLOATING NODE & SEGMENT INSPECTOR BAR -->
             <div id="dt-node-action-bar" style="position:absolute; top:8px; left:8px; right:8px; z-index:35; display:none;"></div>
 
+            <!-- FLOATING AUTO ROAD SUGGESTION BANNER -->
+            <div id="dt-road-suggestion-banner" style="position:absolute; top:52px; left:8px; right:8px; z-index:34; display:none;"></div>
+
             </div>
           </div>
             <!-- View controls stay outside the observation area. -->
@@ -572,6 +628,52 @@ class LuopanMapTool {
               <div style="background:#0D111A; border-radius:8px; padding:0.55rem 0.75rem; font-size:0.75rem; display:grid; grid-template-columns:1fr 1fr; gap:0.35rem;">
                 <div>Hướng Map: <strong id="dt-raw-facing" style="color:#FEF3C7;">${this.rawFacingBearing.toFixed(2)}°</strong></div>
                 <div>Hiệu chỉnh: <strong id="dt-offset" style="color:#10B981;">${offsetFormatted}</strong></div>
+              </div>
+
+              <!-- MULTI-READING & PROVENANCE QUICK LAUNCH -->
+              <div style="margin-top:0.45rem; padding-top:0.45rem; border-top:1px solid rgba(255,255,255,0.08); display:flex; flex-direction:column; gap:0.35rem;">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                  <button type="button" id="btn-toggle-multi-reading" style="background:transparent; border:none; color:#38BDF8; font-size:0.72rem; cursor:pointer; text-decoration:underline; padding:0;">
+                    ${this.showMultiReading ? 'Thu gọn đo nhiều lần' : 'Đo nhiều lần (Multi-reading) +'}
+                  </button>
+                  <button type="button" id="btn-open-provenance" class="dt-touch-btn" style="background:#1E293B; color:#38BDF8; border:1px solid rgba(56,189,248,0.35); font-size:0.68rem; padding:0.15rem 0.45rem;">
+                    Xuất Xứ & GIS →
+                  </button>
+                </div>
+
+                ${this.showMultiReading ? `
+                  <div id="dt-multi-reading-box" style="display:flex; flex-direction:column; gap:0.3rem; background:#0D111A; padding:0.45rem; border-radius:6px; border:1px solid rgba(56,189,248,0.2);">
+                    <div style="font-size:0.7rem; color:#94A3B8;">Nhập 2-5 góc đo thực địa để triệt tiêu sai số & phát hiện nhiễu từ:</div>
+                    <div style="display:flex; gap:0.3rem;">
+                      <input type="number" id="input-multi-reading-val" placeholder="Số đo (°)" step="0.1" min="0" max="360" style="flex:1; background:#1E293B; border:1px solid rgba(255,255,255,0.18); border-radius:4px; padding:0.25rem 0.4rem; color:#FEF3C7; font-size:0.75rem;" />
+                      <button type="button" id="btn-add-multi-reading" class="dt-touch-btn" style="background:#0284C7; color:#FFF; border:none; padding:0.2rem 0.5rem;">+ Thêm</button>
+                    </div>
+                    ${this.multiReadings.length > 0 ? `
+                      <div style="display:flex; flex-wrap:wrap; gap:0.2rem; margin-top:0.15rem;">
+                        ${this.multiReadings.map((deg, idx) => `
+                          <span style="background:#1E293B; border:1px solid rgba(255,255,255,0.12); border-radius:4px; padding:0.1rem 0.35rem; font-size:0.68rem; display:inline-flex; align-items:center; gap:0.2rem;">
+                            ${deg.toFixed(1)}°
+                            <button type="button" data-del-reading="${idx}" style="background:transparent; border:none; color:#EF4444; font-size:0.75rem; cursor:pointer; line-height:1; padding:0;">×</button>
+                          </span>
+                        `).join('')}
+                      </div>
+                      ${(() => {
+                        const mean = this.geoEngine ? this.geoEngine.circularMean(this.multiReadings) : (this.multiReadings.reduce((a, b) => a + b, 0) / this.multiReadings.length);
+                        const dispRes = this.geoEngine ? this.geoEngine.circularDispersion(this.multiReadings) : null;
+                        const disp = dispRes ? dispRes.stdDevDeg : 0;
+                        return `
+                          <div style="font-size:0.7rem; color:#A7F3D0; display:flex; justify-content:space-between; align-items:center; margin-top:0.2rem;">
+                            <span>TB góc: <strong>${mean.toFixed(2)}°</strong> (Độ tán: ±${disp.toFixed(2)}°)</span>
+                            <button type="button" id="btn-apply-multi-mean" class="dt-touch-btn" style="background:#059669; color:#FFF; border:none; font-size:0.65rem; padding:0.15rem 0.4rem;">Dùng góc này</button>
+                          </div>
+                          ${disp > 3.0 ? `
+                            <div style="font-size:0.65rem; color:#F87171; line-height:1.2;">Cảnh báo: Độ phân tán cao (${disp.toFixed(1)}° > 3°). Có thể có nhiễu từ trường cục bộ quanh mốc đo!</div>
+                          ` : ''}
+                        `;
+                      })()}
+                    ` : '<div style="font-size:0.68rem; color:#64748B;">Chưa có lần đo. Nhập độ và bấm + Thêm.</div>'}
+                  </div>
+                ` : ''}
               </div>
             </div>
 
@@ -703,6 +805,28 @@ class LuopanMapTool {
               </div>
             </div>
 
+          </div>
+        </div>
+
+        <!-- 6. MODAL XUẤT XỨ SỐ ĐO & QUALITY GATE (GIS PROVENANCE) -->
+        <div id="modal-provenance" style="display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.85); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); justify-content:center; align-items:center; padding:0.75rem; box-sizing:border-box;">
+          <div style="background:#0F172A; border:1px solid #38BDF8; border-radius:14px; width:100%; max-width:680px; max-height:88vh; overflow-y:auto; -webkit-overflow-scrolling:touch; padding:1.2rem; box-shadow:0 20px 50px rgba(0,0,0,0.8);">
+            <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(255,255,255,0.12); padding-bottom:0.7rem; margin-bottom:1rem;">
+              <h3 style="margin:0; font-size:1.05rem; color:#38BDF8; font-weight:800; display:flex; align-items:center; gap:0.4rem;">
+                XUẤT XỨ SỐ ĐO & QUALITY GATE TRẮC ĐỊA
+              </h3>
+              <button type="button" id="btn-close-provenance-x" style="background:transparent; border:none; color:#94A3B8; font-size:1.3rem; cursor:pointer; padding:0.15rem 0.4rem; line-height:1;">✕</button>
+            </div>
+
+            <div id="provenance-modal-content" style="font-size:0.8rem; color:#E2E8F0; line-height:1.6; display:flex; flex-direction:column; gap:0.7rem;">
+              ${this.renderProvenanceContent()}
+            </div>
+
+            <div style="display:flex; justify-content:flex-end; gap:0.4rem; margin-top:1rem; border-top:1px solid rgba(255,255,255,0.08); padding-top:0.7rem;">
+              <button type="button" id="btn-close-provenance" class="dt-touch-btn" style="background:#334155; color:#FFF; border:none; padding:0.45rem 1.2rem;">
+                Đóng
+              </button>
+            </div>
           </div>
         </div>
 
@@ -1013,6 +1137,335 @@ class LuopanMapTool {
     // 3. Dong bo GPS thuc te tai vi tri moi vao mapGeometry va tinh lai goc
     this.captureMapGeometry();
     this.recalculateRawBearings();
+    if (this.mode === 'map') {
+      this.triggerAutoRoadDetection();
+    }
+  }
+
+  async triggerAutoRoadDetection() {
+    if (this.mode !== 'map' || !this.mapGeometry || !this.mapGeometry.center) return;
+    if (!this.topologyEngine) {
+      if (typeof window !== 'undefined' && window.RoadTopologyEngine) {
+        this.topologyEngine = new window.RoadTopologyEngine({
+          roadProvider: (typeof window !== 'undefined' && window.OverpassRoadProvider)
+            ? new window.OverpassRoadProvider()
+            : null
+        });
+      } else {
+        return;
+      }
+    }
+
+    const houseCenter = this.mapGeometry.center;
+    const facingBearing = this.getEffectiveFacingBearing();
+
+    this.roadDetectionState = 'DETECTING';
+    this.renderRoadSuggestionBanner();
+
+    try {
+      const result = await this.topologyEngine.analyzeRoadNetworkForHouse(houseCenter, facingBearing);
+      if (!result || !result.hasAccessRoad || !result.suggestion) {
+        this.roadDetectionState = 'NO_ROAD';
+        this.roadSuggestion = null;
+        this.renderRoadSuggestionBanner();
+        return;
+      }
+
+      this.roadSuggestion = result;
+      this.roadDetectionState = 'SUGGESTED';
+      this.renderRoadSuggestionBanner();
+      this.renderDrawingElements();
+    } catch (err) {
+      console.warn('[AutoRoadDetection] Bỏ qua hoặc ngoại tuyến:', err);
+      this.roadDetectionState = 'NO_ROAD';
+      this.roadSuggestion = null;
+      this.renderRoadSuggestionBanner();
+    }
+  }
+
+  renderRoadSuggestionBanner() {
+    const banner = (this.container && this.container.querySelector ? this.container.querySelector('#dt-road-suggestion-banner') : null) || (typeof document !== 'undefined' && document.getElementById ? document.getElementById('dt-road-suggestion-banner') : null);
+    if (!banner) return;
+
+    if (this.roadDetectionState === 'IDLE' || this.roadDetectionState === 'REJECTED') {
+      banner.style.display = 'none';
+      banner.innerHTML = '';
+      return;
+    }
+
+    if (this.roadDetectionState === 'DETECTING') {
+      banner.style.display = 'block';
+      banner.innerHTML = `
+        <div style="background:rgba(15,23,42,0.94); border:1px solid #38BDF8; border-radius:8px; padding:0.4rem 0.7rem; box-shadow:0 8px 24px rgba(0,0,0,0.6); display:flex; align-items:center; justify-content:space-between; gap:0.5rem; font-size:0.75rem; color:#E2E8F0;">
+          <div style="display:flex; align-items:center; gap:0.4rem;">
+            <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:#38BDF8;"></span>
+            <span>Đang quét đồ thị mạng đường thực tế (OSM/GIS) quanh tâm nhà...</span>
+          </div>
+        </div>
+      `;
+      return;
+    }
+
+    if (this.roadDetectionState === 'SUGGESTED' && this.roadSuggestion && this.roadSuggestion.suggestion) {
+      const s = this.roadSuggestion;
+      const sug = s.suggestion;
+      const confColor = sug.confidence === 'HIGH' ? '#10B981' : (sug.confidence === 'MEDIUM' ? '#F59E0B' : '#94A3B8');
+      const roadName = (s.accessRoad && s.accessRoad.name) || 'Đoạn đường tiếp cận';
+      const roadClass = (s.accessRoad && s.accessRoad.highway) || 'đường';
+
+      banner.style.display = 'block';
+      banner.innerHTML = `
+        <div style="background:rgba(15,23,42,0.96); border:1px solid #38BDF8; border-radius:8px; padding:0.45rem 0.75rem; box-shadow:0 10px 30px rgba(0,0,0,0.75); display:flex; flex-direction:column; gap:0.3rem; font-size:0.74rem; color:#E2E8F0;">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <strong style="color:#38BDF8; font-size:0.78rem;">
+              ĐỀ XUẤT TUYẾN ĐƯỜNG (GIS): ${roadName} (${roadClass})
+            </strong>
+            <button type="button" id="btn-close-road-banner" style="background:transparent; border:none; color:#94A3B8; font-size:1rem; cursor:pointer; padding:0 0.2rem; line-height:1;">✕</button>
+          </div>
+          <div style="display:flex; gap:0.65rem; flex-wrap:wrap; font-size:0.72rem; color:#CBD5E1;">
+            <span>Cách nhà: <strong style="color:#FEF3C7;">${s.accessRoad.distanceToHouseMeters}m</strong></span>
+            <span>Lai: <strong style="color:#34D399;">${sug.laiBearing.toFixed(1)}° (${sug.laiMountain})</strong></span>
+            <span>Khứ: <strong style="color:#38BDF8;">${sug.khuBearing ? sug.khuBearing.toFixed(1) + '° (' + sug.khuMountain + ')' : 'Hẻm cụt'}</strong></span>
+            <span>Tin cậy: <strong style="color:${confColor};">${sug.confidence}</strong></span>
+          </div>
+          <div style="display:flex; gap:0.4rem; justify-content:flex-end; margin-top:0.15rem;">
+            <button type="button" id="btn-apply-road-suggestion" class="dt-touch-btn" style="background:#0284C7; color:#FFF; border:none; padding:0.25rem 0.65rem;">
+              Áp Dụng Tuyến
+            </button>
+            <button type="button" id="btn-reject-road-suggestion" class="dt-touch-btn" style="background:#334155; color:#E2E8F0; border:none; padding:0.25rem 0.5rem;">
+              Chỉnh Thủ Công
+            </button>
+          </div>
+        </div>
+      `;
+
+      const btnApply = banner.querySelector('#btn-apply-road-suggestion');
+      const btnReject = banner.querySelector('#btn-reject-road-suggestion');
+      const btnClose = banner.querySelector('#btn-close-road-banner');
+
+      if (btnApply) {
+        btnApply.addEventListener('click', (e) => {
+          e.stopPropagation();
+          this.applyRoadSuggestion(this.roadSuggestion);
+        });
+      }
+      if (btnReject) {
+        btnReject.addEventListener('click', (e) => {
+          e.stopPropagation();
+          this.roadDetectionState = 'REJECTED';
+          this.renderRoadSuggestionBanner();
+          this.renderDrawingElements();
+        });
+      }
+      if (btnClose) {
+        btnClose.addEventListener('click', (e) => {
+          e.stopPropagation();
+          this.roadDetectionState = 'REJECTED';
+          this.renderRoadSuggestionBanner();
+          this.renderDrawingElements();
+        });
+      }
+      return;
+    }
+
+    if (this.roadDetectionState === 'ACCEPTED') {
+      banner.style.display = 'block';
+      banner.innerHTML = `
+        <div style="background:rgba(6,78,59,0.92); border:1px solid #10B981; border-radius:8px; padding:0.35rem 0.65rem; display:flex; justify-content:space-between; align-items:center; font-size:0.72rem; color:#A7F3D0;">
+          <span>Đã áp dụng tuyến đường GIS vào khảo sát (có thể kéo chỉnh tự do).</span>
+          <button type="button" id="btn-close-accepted-banner" style="background:transparent; border:none; color:#A7F3D0; font-size:0.9rem; cursor:pointer; line-height:1;">✕</button>
+        </div>
+      `;
+      const btnCloseAcc = banner.querySelector('#btn-close-accepted-banner');
+      if (btnCloseAcc) {
+        btnCloseAcc.addEventListener('click', () => {
+          banner.style.display = 'none';
+        });
+      }
+      setTimeout(() => {
+        if (banner && this.roadDetectionState === 'ACCEPTED') {
+          banner.style.display = 'none';
+        }
+      }, 4000);
+      return;
+    }
+
+    if (this.roadDetectionState === 'NO_ROAD') {
+      banner.style.display = 'block';
+      banner.innerHTML = `
+        <div style="background:rgba(30,41,59,0.92); border:1px solid #64748B; border-radius:8px; padding:0.35rem 0.65rem; display:flex; justify-content:space-between; align-items:center; font-size:0.72rem; color:#94A3B8;">
+          <span>Không tìm thấy dữ liệu đường vector OSM quanh nhà. Bạn có thể kéo mốc thủ công.</span>
+          <button type="button" id="btn-close-noroad-banner" style="background:transparent; border:none; color:#94A3B8; font-size:0.9rem; cursor:pointer; line-height:1;">✕</button>
+        </div>
+      `;
+      const btnCloseNR = banner.querySelector('#btn-close-noroad-banner');
+      if (btnCloseNR) {
+        btnCloseNR.addEventListener('click', () => {
+          banner.style.display = 'none';
+        });
+      }
+      setTimeout(() => {
+        if (banner && this.roadDetectionState === 'NO_ROAD') {
+          banner.style.display = 'none';
+        }
+      }, 3500);
+    }
+  }
+
+  applyRoadSuggestion(result) {
+    if (!result || !result.suggestion || !Array.isArray(result.suggestion.polyline) || result.suggestion.polyline.length < 2) return;
+    const poly = result.suggestion.polyline;
+    const projection = this.getMapProjection();
+    const toPoint = latLng => {
+      if (!this.mapInstance) return { x: 400, y: 400 };
+      const point = this.mapInstance.project(latLng)
+        .subtract(this.mapInstance.project(this.mapInstance.getCenter()))
+        .add(this.mapInstance.getSize().divideBy(2));
+      return { x: (point.x - projection.x) / projection.scale, y: (point.y - projection.y) / projection.scale };
+    };
+
+    if (!this.mapGeometry) this.captureMapGeometry();
+    if (this.mapGeometry) {
+      this.mapGeometry.water = poly.map(pt => ({ lat: pt.lat, lng: pt.lng }));
+    }
+
+    this.waterPolyline = poly.map(pt => {
+      const p = toPoint(pt);
+      return { x: p.x, y: p.y, role: pt.role || 'normal' };
+    });
+
+    this.laiNodeIndex = typeof result.suggestion.laiIndex === 'number' ? result.suggestion.laiIndex : null;
+    this.khuNodeIndex = typeof result.suggestion.khuIndex === 'number' ? result.suggestion.khuIndex : null;
+    this.waterNature = 'hu_thuy';
+    this.waterPathType = result.suggestion.flowType === 'DEAD_END' ? 'deadEnd' : 'through';
+    this.roadDetectionState = 'ACCEPTED';
+
+    this.recalculateRawBearings();
+    this.renderDrawingElements();
+    this.updateSvgView();
+    this.updateMeasurementsDisplay();
+    this.renderRoadSuggestionBanner();
+  }
+
+  renderProvenanceContent() {
+    const analysis = this.getAnalysis();
+    const facing = this.getEffectiveFacingBearing();
+    const lai = this.getEffectiveLaiBearing();
+    const khu = this.getEffectiveKhuBearing();
+
+    let houseLat = null;
+    let houseLng = null;
+    if (this.mapGeometry && this.mapGeometry.center) {
+      houseLat = this.mapGeometry.center.lat;
+      houseLng = this.mapGeometry.center.lng;
+    } else if (Array.isArray(this.surveyCenterLatLng) && this.surveyCenterLatLng.length === 2) {
+      houseLat = this.surveyCenterLatLng[0];
+      houseLng = this.surveyCenterLatLng[1];
+    }
+
+    const dec = (this.geoEngine && houseLat !== null && houseLng !== null)
+      ? this.geoEngine.getMagneticDeclination(houseLat, houseLng)
+      : { declination: -1.35, direction: 'Tây', label: '1.35° W' };
+
+    let baselineDist = null;
+    let baselineUncertainty = null;
+    if (this.mapGeometry && this.mapGeometry.frontA && this.mapGeometry.frontB && this.geoEngine) {
+      baselineDist = this.geoEngine.calculateHaversineDistance(this.mapGeometry.frontA, this.mapGeometry.frontB);
+      baselineUncertainty = this.geoEngine.estimateBaselineUncertainty(baselineDist, 'USER_MANUAL');
+    }
+
+    return `
+      <div style="background:#1E293B; border-radius:8px; padding:0.7rem; border-left:3px solid #38BDF8;">
+        <strong style="color:#38BDF8; font-size:0.85rem; display:block; margin-bottom:0.4rem;">
+          1. HỆ QUY CHIẾU TOÀN CẦU (WGS84) & TỌA ĐỘ THỰC ĐỊA
+        </strong>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.4rem; font-size:0.75rem;">
+          <div>Chế độ: <strong style="color:#FEF3C7;">${this.mode === 'map' ? 'Bản Đồ Vệ Tinh (GIS WGS84)' : 'Mặt Bằng Bản Vẽ / CAD'}</strong></div>
+          <div>Độ từ thiên (WMM): <strong style="color:#FBBF24;">${dec.label}</strong></div>
+          <div>Tâm Nhà Lat/Lng: <strong style="color:#38BDF8;">${houseLat !== null ? `${houseLat.toFixed(6)}°, ${houseLng.toFixed(6)}°` : 'Chưa định vị'}</strong></div>
+          <div>Quy chiếu góc: <strong style="color:#10B981;">Bắc Thật (Geodesic True North)</strong></div>
+        </div>
+      </div>
+
+      <div style="background:#1E293B; border-radius:8px; padding:0.7rem; border-left:3px solid #F59E0B;">
+        <strong style="color:#F59E0B; font-size:0.85rem; display:block; margin-bottom:0.4rem;">
+          2. ĐỐI CHIẾU BẮC THẬT (TRUE NORTH) VÀ BẮC TỪ (MAGNETIC NORTH)
+        </strong>
+        <div style="display:flex; flex-direction:column; gap:0.3rem; font-size:0.75rem;">
+          <div style="display:flex; justify-content:space-between;">
+            <span>Hướng Nhà (Bắc Thật - Geodesic):</span>
+            <strong style="color:#EF4444;">${facing.toFixed(2)}° (${analysis.facing.mountain.name} Sơn)</strong>
+          </div>
+          <div style="display:flex; justify-content:space-between;">
+            <span>Hướng Nhà (Bắc Từ - Compass La Bàn):</span>
+            <strong style="color:#FBBF24;">${((facing - dec.declination) % 360 + 360).toFixed(2)}°</strong>
+          </div>
+          <div style="font-size:0.7rem; color:#94A3B8; line-height:1.3; margin-top:0.2rem;">
+            * La kinh thực địa cầm tay chịu tác động của độ từ thiên ${dec.label}. Hệ thống tự động bù trừ chuẩn xác khi đối chiếu 144 Thủy Khẩu.
+          </div>
+        </div>
+      </div>
+
+      <div style="background:#1E293B; border-radius:8px; padding:0.7rem; border-left:3px solid #10B981;">
+        <strong style="color:#10B981; font-size:0.85rem; display:block; margin-bottom:0.4rem;">
+          3. ĐỘ DÀI ĐOẠN CHUẨN (BASELINE) & SAI SỐ GÓC
+        </strong>
+        <div style="display:flex; flex-direction:column; gap:0.3rem; font-size:0.75rem;">
+          <div style="display:flex; justify-content:space-between;">
+            <span>Chiều dài mặt tiền đo đạc (A-B):</span>
+            <strong style="color:#FEF3C7;">${baselineDist !== null ? `${baselineDist.toFixed(1)}m` : 'Đo trên CAD pixel'}</strong>
+          </div>
+          <div style="display:flex; justify-content:space-between;">
+            <span>Sai số góc ước lượng theo cự ly:</span>
+            <strong style="color:${baselineUncertainty && baselineUncertainty.isShortBaseline ? '#F59E0B' : '#10B981'};">
+              ${baselineUncertainty ? `±${baselineUncertainty.uncertainty.toFixed(2)}°` : `±${this.measurementTolerance.toFixed(2)}°`}
+            </strong>
+          </div>
+          ${baselineUncertainty && baselineUncertainty.warning ? `
+            <div style="font-size:0.7rem; color:#FBBF24;">${baselineUncertainty.warning}</div>
+          ` : ''}
+        </div>
+      </div>
+
+      <div style="background:#1E293B; border-radius:8px; padding:0.7rem; border-left:3px solid ${analysis.status.isAmbiguous ? '#F59E0B' : '#10B981'};">
+        <strong style="color:${analysis.status.isAmbiguous ? '#F59E0B' : '#10B981'}; font-size:0.85rem; display:block; margin-bottom:0.4rem;">
+          4. QUALITY GATE RANH PHÂN KIM 24 SƠN
+        </strong>
+        <div style="display:flex; flex-direction:column; gap:0.3rem; font-size:0.75rem;">
+          <div style="display:flex; justify-content:space-between;">
+            <span>Trạng thái Quality Gate:</span>
+            <strong style="color:${analysis.status.isAmbiguous ? '#F59E0B' : '#10B981'};">${analysis.status.isAmbiguous ? 'AMBIGUOUS (GIÁP RANH SƠN)' : 'VALID (AN TOÀN)'}</strong>
+          </div>
+          <div style="display:flex; justify-content:space-between;">
+            <span>Khoảng cách Hướng Nhà tới biên Sơn:</span>
+            <strong style="color:${analysis.facing.isAmbiguous ? '#F59E0B' : '#10B981'};">${analysis.facing.distanceToBoundary.toFixed(2)}° (Sai số: ±${analysis.facing.tolerance}°)</strong>
+          </div>
+          ${analysis.khu ? `
+            <div style="display:flex; justify-content:space-between;">
+              <span>Khoảng cách Khứ Thủy tới biên Sơn:</span>
+              <strong style="color:${analysis.khu.isAmbiguous ? '#F59E0B' : '#10B981'};">${analysis.khu.distanceToBoundary.toFixed(2)}°</strong>
+            </div>
+          ` : ''}
+          ${analysis.status.isAmbiguous ? `
+            <div style="background:rgba(245,158,11,0.15); border:1px solid #F59E0B; border-radius:6px; padding:0.4rem; color:#FDE68A; font-size:0.72rem; line-height:1.4;">
+              Cảnh báo: Góc đo nằm trong dải bất định (khoảng cách tới biên nhỏ hơn sai số). Không ép kết luận duy nhất một Sơn. Cần thẩm định thêm hiện trường.
+            </div>
+          ` : ''}
+        </div>
+      </div>
+
+      <div style="background:#1E293B; border-radius:8px; padding:0.7rem; border-left:3px solid #38BDF8;">
+        <strong style="color:#38BDF8; font-size:0.85rem; display:block; margin-bottom:0.4rem;">
+          5. NGUỒN GỐC DỮ LIỆU TUYẾN ĐƯỜNG & HẺM TIẾP CẬN
+        </strong>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.4rem; font-size:0.75rem;">
+          <div>Nguồn tuyến: <strong style="color:#FEF3C7;">${this.roadDetectionState === 'ACCEPTED' ? 'OSM Vector (Overpass API)' : 'Người dùng chỉnh thủ công (Manual)'}</strong></div>
+          <div>Bản chất: <strong style="color:#F59E0B;">${this.waterNature === 'hu_thuy' ? 'Hư Thủy (Lộ Khí Đô Thị)' : 'Chân Thủy (Thủy Tự Nhiên)'}</strong></div>
+          <div>Dạng tuyến: <strong style="color:#38BDF8;">${this.waterPathType === 'deadEnd' ? 'Hẻm Cụt (Bế Khí)' : 'Hẻm Thông Suốt'}</strong></div>
+          <div>Số mốc khảo sát: <strong style="color:#FEF3C7;">${this.waterPolyline.length} điểm</strong></div>
+        </div>
+      </div>
+    `;
   }
 
   initInteractiveCanvas() {
@@ -1057,6 +1510,9 @@ class LuopanMapTool {
           this.relocateFeaturesAroundCenter(newPos);
         } else {
           this.centerPoint = newPos;
+          if (this.mode === 'map') {
+            this.triggerAutoRoadDetection();
+          }
         }
         this.activeDrawTool = 'select';
         refresh();
@@ -1313,7 +1769,36 @@ class LuopanMapTool {
       `;
     }).join('');
 
+    // Hiển thị Tuyến Đường Đề Xuất (OSM) nếu đang ở trạng thái SUGGESTED
+    let suggestionSvg = '';
+    if (this.roadDetectionState === 'SUGGESTED' && this.roadSuggestion && this.roadSuggestion.suggestion && this.mode === 'map' && this.mapInstance) {
+      const poly = this.roadSuggestion.suggestion.polyline;
+      if (Array.isArray(poly) && poly.length >= 2) {
+        const projection = this.getMapProjection();
+        const toPt = latLng => {
+          const pt = this.mapInstance.project(latLng)
+            .subtract(this.mapInstance.project(this.mapInstance.getCenter()))
+            .add(this.mapInstance.getSize().divideBy(2));
+          return { x: (pt.x - projection.x) / projection.scale, y: (pt.y - projection.y) / projection.scale };
+        };
+        const pts = poly.map(toPt);
+        const ptsStr = pts.map(p => `${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(' ');
+        suggestionSvg = `
+          <g class="dt-suggested-road-overlay" pointer-events="none">
+            <polyline points="${ptsStr}" stroke="#0284C7" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" opacity="0.35" fill="none" />
+            <polyline points="${ptsStr}" stroke="#38BDF8" stroke-width="3.5" stroke-dasharray="8,5" stroke-linecap="round" stroke-linejoin="round" opacity="0.9" fill="none" />
+            ${pts.map((p) => `
+              <circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="4.5" fill="#38BDF8" stroke="#0F172A" stroke-width="1.5" />
+            `).join('')}
+          </g>
+        `;
+      }
+    }
+
     svg.innerHTML = `
+      <!-- Tuyến đường đề xuất GIS (nếu có) -->
+      ${suggestionSvg}
+
       <!-- Các đoạn tuyến nước đa điểm -->
       ${segmentElements.join('')}
       ${waterHandles}
@@ -1653,11 +2138,19 @@ class LuopanMapTool {
                   </div>
                 ` : ''}
 
-                ${analysis.status.isSensitive ? `
+                ${analysis.status.isAmbiguous ? `
+                  <div style="background:#451A03; border:1px solid #F59E0B; border-radius:6px; padding:0.45rem 0.6rem; color:#FDE68A; font-size:0.73rem; margin-top:0.3rem; line-height:1.4;">
+                    <strong>QUALITY GATE - CẢNH BÁO GIÁP RANH SƠN:</strong> Phương vị rơi vào dải bất định (cách biên ≤ sai số ±${this.measurementTolerance.toFixed(2)}°). Sơn giáp ranh: [${[...new Set([...(analysis.facing.isAmbiguous ? analysis.facing.possibleMountains : []), ...(analysis.khu && analysis.khu.isAmbiguous ? analysis.khu.possibleMountains : [])])].join(' / ')}]. <em>Hệ thống không ép về duy nhất 1 Sơn để tránh sai lệch phong thủy. Cần đo lại hiện trường.</em>
+                  </div>
+                ` : (analysis.status.isSensitive ? `
                   <div style="background:#450A0A; border:1px solid #EF4444; border-radius:6px; padding:0.45rem 0.6rem; color:#FECACA; font-size:0.73rem; margin-top:0.3rem; line-height:1.4;">
                     <strong>CHÚ Ý - KẾT QUẢ NHẠY VỚI SAI SỐ:</strong> Phương vị nằm rất gần vách ngăn phân kim (≤ 0.30°). Khi sai số dao động có thể chuyển sang Sơn lân cận: [${[...new Set([...analysis.facing.possibleMountains, ...(analysis.khu ? analysis.khu.possibleMountains : [])])].join(' / ')}]. Cần đo lại cẩn thận tại hiện trường.
                   </div>
-                ` : ''}
+                ` : '')}
+
+                <button type="button" id="btn-open-provenance-panel" class="dt-touch-btn" style="width:100%; margin-top:0.4rem; background:#1E293B; color:#38BDF8; border:1px solid rgba(56,189,248,0.35); padding:0.3rem 0.6rem; font-size:0.72rem;">
+                  Xem Xuất Xứ Số Đo & Quality Gate (GIS) →
+                </button>
               </div>
             </div>
 
@@ -2408,6 +2901,88 @@ class LuopanMapTool {
           btnCopyExport.textContent = 'Đã Sao Chép!';
           setTimeout(() => { btnCopyExport.textContent = 'Sao Chép'; }, 2000);
         });
+      });
+    }
+
+    // Modal Provenance & Quality Gate
+    const modalProv = document.getElementById('modal-provenance');
+    const btnCloseProv = document.getElementById('btn-close-provenance');
+    const btnCloseProvX = document.getElementById('btn-close-provenance-x');
+    const provContent = document.getElementById('provenance-modal-content');
+
+    const openProvenanceModal = () => {
+      if (provContent) provContent.innerHTML = this.renderProvenanceContent();
+      if (modalProv) modalProv.style.display = 'flex';
+    };
+
+    const btnOpenProv = document.getElementById('btn-open-provenance');
+    if (btnOpenProv) btnOpenProv.addEventListener('click', openProvenanceModal);
+
+    if (this.container && typeof this.container.addEventListener === 'function') {
+      this.container.addEventListener('click', (e) => {
+        if (e.target && (e.target.id === 'btn-open-provenance-panel' || e.target.closest('#btn-open-provenance-panel'))) {
+          openProvenanceModal();
+        }
+      });
+    }
+
+    if (btnCloseProv && modalProv) {
+      btnCloseProv.addEventListener('click', () => { modalProv.style.display = 'none'; });
+    }
+    if (btnCloseProvX && modalProv) {
+      btnCloseProvX.addEventListener('click', () => { modalProv.style.display = 'none'; });
+    }
+    if (modalProv) {
+      modalProv.addEventListener('click', (e) => {
+        if (e.target === modalProv) modalProv.style.display = 'none';
+      });
+    }
+
+    // Multi-reading controls
+    const btnToggleMulti = document.getElementById('btn-toggle-multi-reading');
+    if (btnToggleMulti) {
+      btnToggleMulti.addEventListener('click', () => {
+        this.showMultiReading = !this.showMultiReading;
+        this.renderLayout();
+        this.bindEvents();
+      });
+    }
+
+    if (this.container && typeof this.container.addEventListener === 'function') {
+      this.container.addEventListener('click', (e) => {
+        if (e.target && e.target.id === 'btn-add-multi-reading') {
+          const input = document.getElementById('input-multi-reading-val');
+          if (input) {
+            const val = parseFloat(input.value);
+            if (Number.isFinite(val) && val >= 0 && val <= 360) {
+              this.multiReadings.push(val);
+              input.value = '';
+              this.renderLayout();
+              this.bindEvents();
+            }
+          }
+        }
+        if (e.target && e.target.dataset && e.target.dataset.delReading !== undefined) {
+          const idx = parseInt(e.target.dataset.delReading, 10);
+          if (Number.isInteger(idx) && idx >= 0 && idx < this.multiReadings.length) {
+            this.multiReadings.splice(idx, 1);
+            this.renderLayout();
+            this.bindEvents();
+          }
+        }
+        if (e.target && e.target.id === 'btn-apply-multi-mean') {
+          if (this.multiReadings.length > 0) {
+            const mean = this.geoEngine ? this.geoEngine.circularMean(this.multiReadings) : (this.multiReadings.reduce((a, b) => a + b, 0) / this.multiReadings.length);
+            this.measuredBearing = Math.round(mean * 10) / 10;
+            const input = document.getElementById('input-measured-bearing');
+            if (input) input.value = this.measuredBearing.toFixed(1);
+            if (this.isCalibrationLocked) {
+              this.calibrationOffset = this.calibEngine.computeOffset(this.rawFacingBearing, this.measuredBearing);
+            }
+            this.updateMeasurementsDisplay();
+            this.updateSvgView();
+          }
+        }
       });
     }
   }

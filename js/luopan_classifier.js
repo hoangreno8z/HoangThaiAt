@@ -8,27 +8,32 @@
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    define(['./luopan_calibration_engine', './luopan_geometry', './luopan_data', './luopan_theory_corpus'], factory);
+    define(['./luopan_calibration_engine', './luopan_geometry', './luopan_data', './luopan_theory_corpus', './geo_measurement_engine'], factory);
   } else if (typeof module === 'object' && module.exports) {
+    let geo = null;
+    try { geo = require('./geo_measurement_engine'); } catch (e) {}
     module.exports = factory(
       require('./luopan_calibration_engine'),
       require('./luopan_geometry'),
       require('./luopan_data'),
-      require('./luopan_theory_corpus')
+      require('./luopan_theory_corpus'),
+      geo
     );
   } else {
     root.LuopanClassifier = factory(
       root.CalibrationEngine,
       root.LuopanGeometry,
       root.LuopanData,
-      root.LuopanTheoryCorpus
+      root.LuopanTheoryCorpus,
+      root.GeoMeasurementEngine
     );
   }
-}(typeof self !== 'undefined' ? self : this, function(Calibration, Geometry, Data, TheoryCorpus) {
+}(typeof self !== 'undefined' ? self : this, function(Calibration, Geometry, Data, TheoryCorpus, GeoEngine) {
   'use strict';
 
   const Calib = Calibration || (typeof window !== 'undefined' ? window.CalibrationEngine : null);
   const Corpus = TheoryCorpus || (typeof window !== 'undefined' ? window.LuopanTheoryCorpus : null);
+  const Geo = GeoEngine || (typeof window !== 'undefined' ? window.GeoMeasurementEngine : null);
 
   class LuopanClassifier {
     constructor() {
@@ -37,13 +42,15 @@
 
     /**
      * Đánh giá dải bất định của một phương vị góc đối với ranh giới 24 Sơn
+     * Tích hợp Quality Gate: nếu khoảng cách tới ranh <= sai số tolerance,
+     * thiết lập isAmbiguous = true và không ép về duy nhất 1 Sơn.
      */
     evaluateUncertainty(bearing, tolerance = this.DEFAULT_TOLERANCE) {
       if (bearing === null || typeof bearing !== 'number') return null;
 
-      const norm = Calib.normalize360(bearing);
-      const minB = Calib.normalize360(norm - tolerance);
-      const maxB = Calib.normalize360(norm + tolerance);
+      const norm = Calib ? Calib.normalize360(bearing) : ((bearing % 360 + 360) % 360);
+      const minB = Calib ? Calib.normalize360(norm - tolerance) : (((norm - tolerance) % 360 + 360) % 360);
+      const maxB = Calib ? Calib.normalize360(norm + tolerance) : (((norm + tolerance) % 360 + 360) % 360);
 
       const mCenter = Data.getMountain(norm);
       const mMin = Data.getMountain(minB);
@@ -52,11 +59,33 @@
       const isCrossBoundary = (mMin.mountain.name !== mCenter.mountain.name) || (mMax.mountain.name !== mCenter.mountain.name);
       const possibleMountains = [...new Set([mMin.mountain.name, mCenter.mountain.name, mMax.mountain.name])];
 
+      let qualityGate = null;
+      if (Geo && typeof Geo.evaluateQualityGate === 'function') {
+        qualityGate = Geo.evaluateQualityGate(norm, tolerance, mCenter);
+      } else {
+        const isAmb = mCenter.distanceToBoundary <= tolerance;
+        qualityGate = {
+          bearing: norm,
+          uncertainty: tolerance,
+          distanceToBoundary: mCenter.distanceToBoundary,
+          safeMargin: Math.round((mCenter.distanceToBoundary - tolerance) * 100) / 100,
+          isAmbiguous: isAmb,
+          status: isAmb ? 'AMBIGUOUS' : (tolerance > 2.0 ? 'LOW_CONFIDENCE' : 'VALID'),
+          warning: isAmb
+            ? `Sát ranh phân kim: Cách biên ${mCenter.distanceToBoundary.toFixed(2)}° <= Sai số +/- ${tolerance.toFixed(2)}°. Thuộc vùng giáp ranh, chưa đủ độ tin cậy để kết luận duy nhất 1 Sơn!`
+            : null
+        };
+      }
+
       return {
         bearing: norm,
         mountain: mCenter.mountain,
         distanceToBoundary: mCenter.distanceToBoundary,
-        isSensitive: isCrossBoundary,
+        isSensitive: isCrossBoundary || qualityGate.isAmbiguous,
+        isAmbiguous: qualityGate.isAmbiguous,
+        qualityGateStatus: qualityGate.status,
+        qualityGateWarning: qualityGate.warning,
+        safeMargin: qualityGate.safeMargin,
         possibleMountains,
         tolerance
       };
@@ -184,7 +213,11 @@
         }
       }
 
-      // 7. Đánh giá trạng thái chung
+      // 7. Đánh giá trạng thái chung & Quality Gate
+      const isAnyAmbiguous = !!(facingUncertainty && facingUncertainty.isAmbiguous) ||
+        !!(laiUncertainty && laiUncertainty.isAmbiguous) ||
+        !!(khuUncertainty && khuUncertainty.isAmbiguous);
+
       const isAnySensitive = facingUncertainty.isSensitive ||
         (laiUncertainty && laiUncertainty.isSensitive) ||
         (khuUncertainty && khuUncertainty.isSensitive);
@@ -194,7 +227,11 @@
       let statusColor = '#FBBF24';
 
       if (isLocked) {
-        if (isAnySensitive) {
+        if (isAnyAmbiguous) {
+          statusState = 'AMBIGUOUS';
+          statusLabel = 'CẢNH BÁO GIÁP RANH SƠN (CHƯA ĐỦ ĐỘ TIN CẬY)';
+          statusColor = '#F59E0B';
+        } else if (isAnySensitive) {
           statusState = 'NHAY_CAM_SAI_SO';
           statusLabel = 'KẾT QUẢ NHẠY VỚI SAI SỐ (CẦN ĐO LẠI HIỆN TRƯỜNG)';
           statusColor = '#FB7185';
@@ -203,6 +240,13 @@
           statusLabel = '✓ ĐÃ HIỆU CHUẨN LA KINH CHÍNH XÁC';
           statusColor = '#34D399';
         }
+      }
+
+      if (facingUncertainty && facingUncertainty.isAmbiguous) {
+        matchTrace.push(`[QUALITY GATE] Hướng nhà sát ranh phân kim (${facingUncertainty.distanceToBoundary.toFixed(2)}° <= ±${facingUncertainty.tolerance}°). Sơn giáp ranh: ${facingUncertainty.possibleMountains.join(' / ')}.`);
+      }
+      if (khuUncertainty && khuUncertainty.isAmbiguous) {
+        matchTrace.push(`[QUALITY GATE] Khứ Thủy sát ranh phân kim (${khuUncertainty.distanceToBoundary.toFixed(2)}° <= ±${khuUncertainty.tolerance}°). Sơn giáp ranh: ${khuUncertainty.possibleMountains.join(' / ')}.`);
       }
 
       // 8. Thẩm định Địa Cuộc Topo Phức Tạp (100% Cổ Thư Kinh Điển)
@@ -249,7 +293,8 @@
           state: statusState,
           label: statusLabel,
           color: statusColor,
-          isSensitive: isAnySensitive
+          isSensitive: isAnySensitive,
+          isAmbiguous: isAnyAmbiguous
         }
       };
     }
