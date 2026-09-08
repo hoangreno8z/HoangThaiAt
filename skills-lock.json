@@ -1,0 +1,185 @@
+{
+  "version": 1,
+  "skills": {
+    "arcgis-pro-automation": {
+      "source": "muend/geoai-skills",
+      "sourceType": "github",
+      "skillPath": "skills/arcgis-pro-automation/SKILL.md",
+      "computedHash": "6276891521296a4b659096cb61383ce9b6f0c2cbddbfff2bec026b4ab9c720df"
+    },
+    "browser-testing-with-devtools": {
+      "source": "addyosmani/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/browser-testing-with-devtools/SKILL.md",
+      "computedHash": "639950ea71851d9c4919608cba8b6276cd1ba30cd82acdc4949c701537eed661"
+    },
+    "cartography-geoviz": {
+      "source": "muend/geoai-skills",
+      "sourceType": "github",
+      "skillPath": "skills/cartography-geoviz/SKILL.md",
+      "computedHash": "7bbf991dc76f3fb102ada1a7fe2f8183f5d247df156f099abfd46e40d9a09cfe"
+    },
+    "change-detection": {
+      "source": "muend/geoai-skills",
+      "sourceType": "github",
+      "skillPath": "skills/change-detection/SKILL.md",
+      "computedHash": "9bff94d4024b6c9128413892c834c03faa867c07cecff4431e263dcfbf4deb7e"
+    },
+    "code-review-and-quality": {
+      "source": "addyosmani/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/code-review-and-quality/SKILL.md",
+      "computedHash": "6231479cc74c7ed70a5618b81b3f94034d9806c0319a1a23d15f9b94a368c581"
+    },
+    "debugging-and-error-recovery": {
+      "source": "addyosmani/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/debugging-and-error-recovery/SKILL.md",
+      "computedHash": "6f437bc609eb8d0dc7f4768c17c9aeb85c9c7632bc36703af9f1367ffb47237a"
+    },
+    "detect-objects": {
+      "source": "isaaccorley/geospatial-skills",
+      "sourceType": "github",
+      "skillPath": "skills/detect-objects/SKILL.md",
+      "computedHash": "88bbfd395e9f907e8748803189b7f540a7494ad0fc811b88a6f81993ac78aae7"
+    },
+    "gdal": {
+      "source": "isaaccorley/geospatial-skills",
+      "sourceType": "github",
+      "skillPath": "skills/gdal/SKILL.md",
+      "computedHash": "cbab4a5a93366bf80593bb45b7d443284343b83d7b417875ebd5f12ead15ed3f"
+    },
+    "geo-data-engineering": {
+      "source": "muend/geoai-skills",
+      "sourceType": "github",
+      "skillPath": "skills/geo-data-engineering/SKILL.md",
+      "computedHash": "e3933244f8c474d0594a9d77645f9ff02e8aab7bd875f6780a0b2df0c8c88d76"
+    },
+    "geo-deep-learning": {
+      "source": "muend/geoai-skills",
+      "sourceType": "github",
+      "skillPath": "skills/geo-deep-learning/SKILL.md",
+      "computedHash": "30f6aa909cdd7ab031b4a5d77502ccc59150b039ee73bba1b1a5bd1013055bb6"
+    },
+    "geoai-orchestrator": {
+      "source": "muend/geoai-skills",
+      "sourceType": "github",
+      "skillPath": "skills/geoai-orchestrator/SKILL.md",
+      "computedHash": "4598a8b3aa4bfc618ebae9491818b502d668ba9bcd9882d1c85747dfe04a8926"
+    },
+    "geospatial-frontend": {
+      "source": "isaaccorley/geospatial-skills",
+      "sourceType": "github",
+      "skillPath": "skills/geospatial-frontend/SKILL.md",
+      "computedHash": "40d3f08c6278a02ec70181d1c7fcba148cf1f54145c87f8c984b094dafd34389"
+    },
+    "geostatistics-interpolation": {
+      "source": "muend/geoai-skills",
+      "sourceType": "github",
+      "skillPath": "skills/geostatistics-interpolation/SKILL.md",
+      "computedHash": "99c510cad668e0e48eb6241e3ab6e14cc8c177d60765cea138b730c73360ef70"
+    },
+    "google-earth-engine": {
+      "source": "muend/geoai-skills",
+      "sourceType": "github",
+      "skillPath": "skills/google-earth-engine/SKILL.md",
+      "computedHash": "767b5b78442c19b112052a38b824c835084045b3af3649f72e56ebdfe9311e7a"
+    },
+    "mcda-suitability-analysis": {
+      "source": "muend/geoai-skills",
+      "sourceType": "github",
+      "skillPath": "skills/mcda-suitability-analysis/SKILL.md",
+      "computedHash": "691e5dccd7f5cd22d1ffa857802723e82f68ea58f54764f29bfaa703e14b73c9"
+    },
+    "ml-experiment-standards": {
+      "source": "muend/geoai-skills",
+      "sourceType": "github",
+      "skillPath": "skills/ml-experiment-standards/SKILL.md",
+      "computedHash": "f5e43ada6b0649be91fd32ae68c50c9ce625f724a193df3e73c850dec3338652"
+    },
+    "movement-trajectory": {
+      "source": "muend/geoai-skills",
+      "sourceType": "github",
+      "skillPath": "skills/movement-trajectory/SKILL.md",
+      "computedHash": "4cdb545dc5b48eaefce1c8871beb7fdc6d47bfa32ffba78a6497112a99b19d4c"
+    },
+    "network-accessibility-analysis": {
+      "source": "muend/geoai-skills",
+      "sourceType": "github",
+      "skillPath": "skills/network-accessibility-analysis/SKILL.md",
+      "computedHash": "aa3a416484e637d7900aea48984bb248ee6d999f9ac4ea09224ea1a2fb942af8"
+    },
+    "overture-data": {
+      "source": "isaaccorley/geospatial-skills",
+      "sourceType": "github",
+      "skillPath": "skills/overture-data/SKILL.md",
+      "computedHash": "6c2426513874d5e5a15d4b5b8b967f163a4a56a62989c2c2be85a53a6f45785c"
+    },
+    "performance-optimization": {
+      "source": "addyosmani/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/performance-optimization/SKILL.md",
+      "computedHash": "f0a8e3bdb9b7d199434c2a5dd7cbb7d3cf69d802029cde1ef5daa07bffa27efc"
+    },
+    "point-cloud-lidar": {
+      "source": "muend/geoai-skills",
+      "sourceType": "github",
+      "skillPath": "skills/point-cloud-lidar/SKILL.md",
+      "computedHash": "7447ff5ea2c5fda996cf3336c763887f4a7192ebc401cfb7a338a8c9efcbe718"
+    },
+    "postgis-spatial-sql": {
+      "source": "muend/geoai-skills",
+      "sourceType": "github",
+      "skillPath": "skills/postgis-spatial-sql/SKILL.md",
+      "computedHash": "f85dcea7a90608a81639ba0cefbf0cacafe3496742e0175cbff9102a08662bff"
+    },
+    "remote-sensing-analysis": {
+      "source": "muend/geoai-skills",
+      "sourceType": "github",
+      "skillPath": "skills/remote-sensing-analysis/SKILL.md",
+      "computedHash": "f430a1ab152c403ad03d28cdb01becc333e212e5aa9422104be4bb291ce9266b"
+    },
+    "search-stac": {
+      "source": "isaaccorley/geospatial-skills",
+      "sourceType": "github",
+      "skillPath": "skills/search-stac/SKILL.md",
+      "computedHash": "1404dfe0d68efeda9441ed5056ec1a2bd65c3bf00c271b2371a2669f5844bf6f"
+    },
+    "source-driven-development": {
+      "source": "addyosmani/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/source-driven-development/SKILL.md",
+      "computedHash": "d1923bb807f7db157a794f07a590ca639b3789b2f1a5eabef993f8df24791e2a"
+    },
+    "spatial-statistics": {
+      "source": "muend/geoai-skills",
+      "sourceType": "github",
+      "skillPath": "skills/spatial-statistics/SKILL.md",
+      "computedHash": "34bb1dbf9b148af80a88072afac3e11502b62f1844c1ade5330dcd094440fa55"
+    },
+    "spec-driven-development": {
+      "source": "addyosmani/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/spec-driven-development/SKILL.md",
+      "computedHash": "a6cdfed42f757f84d3d6968fbea5b257b28c08ff9aa52de6f12fe78a5fb1393b"
+    },
+    "swe-devops-standards": {
+      "source": "muend/geoai-skills",
+      "sourceType": "github",
+      "skillPath": "skills/swe-devops-standards/SKILL.md",
+      "computedHash": "fde5be2eb292b3c9bf20dac92de60aed34855531172e75167d8ecb7a3bdc4671"
+    },
+    "terrain-hydrology": {
+      "source": "muend/geoai-skills",
+      "sourceType": "github",
+      "skillPath": "skills/terrain-hydrology/SKILL.md",
+      "computedHash": "0dd4d425fd96ca49e4dce6d64a6def10f99e94d243ee1c437dd15f14a5ef1fd7"
+    },
+    "test-driven-development": {
+      "source": "addyosmani/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/test-driven-development/SKILL.md",
+      "computedHash": "efb654aa37612ab1e7470e547b06a322c5e1837b6879525e32aa432d1281692b"
+    }
+  }
+}
