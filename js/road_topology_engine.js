@@ -84,15 +84,23 @@
           const ways = (roadData && roadData.ways) || [];
 
           if (ways.length > 0) {
-            const accessCandidate = this.findFinalAccessRoad(houseCenter, facingBearing, ways, { accessPoint });
+            const accessCandidate = this.findFinalAccessRoad(houseCenter, facingBearing, ways, {
+              accessPoint,
+              accessType: options.accessType || 'AUTO'
+            });
             if (accessCandidate) {
               const graph = this.buildRoadGraph(ways);
+              const nodesMap = graph ? (graph.nodes || graph) : null;
+              const intersectionKeys = nodesMap && typeof nodesMap.keys === 'function'
+                ? Array.from(nodesMap.keys()).filter(k => nodesMap.get(k).edges.length >= 3)
+                : [];
 
               // Tinh cua so hinh hoc thich ung (Adaptive Local Geometry Window)
               const windowRes = (Geo && Geo.calculateAdaptiveGeometryWindow)
                 ? Geo.calculateAdaptiveGeometryWindow(accessCandidate.way.geometry, accessCandidate.projectedPoint, {
                     maxDeflectionDeg: 35.0,
-                    targetMaxSpanMeters: 80.0
+                    targetMaxSpanMeters: 80.0,
+                    intersectionKeys: intersectionKeys
                   })
                 : null;
 
@@ -108,7 +116,12 @@
                 samplePointsCount: windowRes ? windowRes.windowPoints.length : 2,
                 startPoint: windowRes ? windowRes.windowPoints[0] : accessCandidate.p1,
                 endPoint: windowRes ? windowRes.windowPoints[windowRes.windowPoints.length - 1] : accessCandidate.p2,
-                isCurved: windowRes ? windowRes.isCurved : false
+                isCurved: windowRes ? windowRes.isCurved : false,
+                curvatureDegPerMeter: windowRes ? windowRes.curvatureDegPerMeter : 0,
+                bearingStability: windowRes ? windowRes.bearingStability : 0,
+                stopReason: windowRes ? windowRes.stopReason : 'GEOMETRY_END',
+                stopReasonBackward: windowRes ? windowRes.stopReasonBackward : 'GEOMETRY_END',
+                stopReasonForward: windowRes ? windowRes.stopReasonForward : 'GEOMETRY_END'
               };
 
               // Phan tich chieu dong chay (Flow Direction) doc theo topology mang duong
@@ -117,16 +130,52 @@
               // Tinh toan he thong diem tin cay da tang (Layered Confidence Model)
               const confidenceScores = this.calculateConfidenceScores(accessCandidate, windowRes, flowEval);
 
+              const pA = roadAxis.startPoint;
+              const pB = roadAxis.endPoint;
+              const bearingA = Geo ? Geo.calculateGeodesicBearing(houseCenter, pA) : 0;
+              const bearingB = Geo ? Geo.calculateGeodesicBearing(houseCenter, pB) : 0;
+              const distA = Geo ? Geo.calculateHaversineDistance(houseCenter, pA) : 25;
+              const distB = Geo ? Geo.calculateHaversineDistance(houseCenter, pB) : 25;
+
+              const directions = {
+                approachA: {
+                  name: 'Hướng tiếp cận A',
+                  point: pA,
+                  bearing: Math.round(bearingA * 10) / 10,
+                  distanceMeters: Math.round(distA * 10) / 10,
+                  connectedRank: flowEval.interBackward ? flowEval.interBackward.maxConnectedRank : accessCandidate.way.rank,
+                  intersectionType: flowEval.interBackward ? flowEval.interBackward.intersectionType : 'dau_mut',
+                  sourceNote: flowEval.interBackward ? `Nút giao (${flowEval.interBackward.connectedWays.join(', ') || 'giao lộ'})` : 'Đầu mút đoạn'
+                },
+                approachB: {
+                  name: 'Hướng tiếp cận B',
+                  point: pB,
+                  bearing: Math.round(bearingB * 10) / 10,
+                  distanceMeters: Math.round(distB * 10) / 10,
+                  connectedRank: flowEval.interForward ? flowEval.interForward.maxConnectedRank : accessCandidate.way.rank,
+                  intersectionType: flowEval.interForward ? flowEval.interForward.intersectionType : 'dau_mut',
+                  sourceNote: flowEval.interForward ? `Nút giao (${flowEval.interForward.connectedWays.join(', ') || 'giao lộ'})` : 'Đầu mút đoạn'
+                },
+                recommendedLai: flowEval.flowDirectionStatus === 'UPSTREAM_FOUND'
+                  ? (flowEval.upstreamPoint === (flowEval.interBackward && flowEval.interBackward.point) ? 'A' : 'B')
+                  : null,
+                flowDirectionStatus: flowEval.flowDirectionStatus,
+                reason: flowEval.flowDirectionStatus === 'UPSTREAM_FOUND'
+                  ? 'Tìm thấy nút giao cấp cao hơn hoặc ngã ba liên thông'
+                  : 'Đoạn đường đối xứng hai đầu hoặc không có ưu tiên lưu lượng rõ rệt'
+              };
+
               return {
                 status: 'SUCCESS',
                 hasAccessRoad: true,
-                message: 'Da do dac thanh cong mang duong GIS thuc te.',
+                message: 'Đã đo đạc thành công mạng đường GIS thực tế.',
                 flowType: 'ROAD',
                 flowDirectionStatus: flowEval.flowDirectionStatus,
                 confidence: confidenceScores.overallConfidence,
                 confidenceScores,
                 confidenceReasons: confidenceScores.reasons,
                 roadAxis,
+                directions,
                 accessRoad: {
                   id: accessCandidate.way.id,
                   name: accessCandidate.way.name,
@@ -191,17 +240,23 @@
           const diffFacing = Geo ? Geo.angularDistance(facingBearing, bearingToRoad) : 180;
 
           // 1. Diem mat tien:
-          // Neu duong nam sau lung nha (> 90 do), ap muc phat nang (-50 den -120 diem)
+          const isManualAccess = options && options.accessType === 'MANUAL';
           let frontageScore = 0;
-          if (diffFacing <= 90) {
-            frontageScore = Math.cos((diffFacing * Math.PI) / 180) * 45;
+          if (isManualAccess) {
+            // Khi nguoi dung chi dinh Cong/Loi vao thu cong, diem tiep can duoc uu tien tuyet doi
+            frontageScore = 40;
           } else {
-            frontageScore = -50 - ((diffFacing - 90) / 90) * 70;
+            // Neu duong nam sau lung nha (> 90 do), ap muc phat nang (-50 den -120 diem)
+            if (diffFacing <= 90) {
+              frontageScore = Math.cos((diffFacing * Math.PI) / 180) * 45;
+            } else {
+              frontageScore = -50 - ((diffFacing - 90) / 90) * 70;
+            }
           }
 
           // 2. Diem cu ly (uu tien cu ly tu House Access Point)
-          const effectiveDist = (distAccess * 0.7) + (distHouse * 0.3);
-          const distanceScore = Math.max(0, (1 - effectiveDist / 120)) * 50;
+          const effectiveDist = isManualAccess ? distAccess : ((distAccess * 0.7) + (distHouse * 0.3));
+          const distanceScore = Math.max(0, (1 - effectiveDist / 120)) * 60;
 
           // 3. Diem cap duong
           const classScore = (way.rank <= 5 ? 15 : (way.rank <= 7 ? 10 : 5));
@@ -286,10 +341,12 @@
       let interForward = null;
       let interBackward = null;
 
+      const nodesMap = graph ? (graph.nodes || graph) : null;
+
       // Quet tien ve phia truoc
       for (let i = segIdx + 1; i < geom.length; i++) {
         const pt = geom[i];
-        const node = graph ? graph.get(getKey(pt)) : null;
+        const node = nodesMap && typeof nodesMap.get === 'function' ? nodesMap.get(getKey(pt)) : null;
         if (node && node.edges.length >= 3) {
           interForward = {
             point: pt,
@@ -306,7 +363,7 @@
       // Quet lui ve phia sau
       for (let i = segIdx; i >= 0; i--) {
         const pt = geom[i];
-        const node = graph ? graph.get(getKey(pt)) : null;
+        const node = nodesMap && typeof nodesMap.get === 'function' ? nodesMap.get(getKey(pt)) : null;
         if (node && node.edges.length >= 3) {
           interBackward = {
             point: pt,

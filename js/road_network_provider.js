@@ -112,12 +112,19 @@
       super();
       this.timeoutMs = options.timeoutMs || 4000;
       this.cache = new Map();
-      this.endpoints = options.endpoints || [
+      const defaultEndpoints = [];
+      if (typeof window !== 'undefined' && window.location) {
+        defaultEndpoints.push('/api/overpass');
+      }
+      defaultEndpoints.push(
+        'https://overpass-api.de/api/interpreter',
+        'https://lz4.overpass-api.de/api/interpreter',
+        'https://z.overpass-api.de/api/interpreter',
         'https://maps.mail.ru/osm/tools/overpass/api/interpreter',
         'https://overpass.kumi.systems/api/interpreter',
-        'https://overpass.private.coffee/api/interpreter',
-        'https://overpass-api.de/api/interpreter'
-      ];
+        'https://overpass.private.coffee/api/interpreter'
+      );
+      this.endpoints = options.endpoints || defaultEndpoints;
     }
 
     getCacheKey(lat, lng, radius) {

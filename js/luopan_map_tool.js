@@ -59,6 +59,9 @@ class LuopanMapTool {
     this.showMultiReading = false;
     this.measurementSessionId = 0;
     this.accessPoint = null;
+    this.accessPointType = 'AUTO'; // 'AUTO' hoặc 'MANUAL'
+    this.accessPointLatLng = null; // { lat, lng }
+    this.accessPointPosition = null; // { x, y } trên SVG stage
     this.roadAnalysisResult = null;
     this.showRoadDebugPanel = false;
 
@@ -1115,7 +1118,9 @@ class LuopanMapTool {
 
     // Tinh diem tiep can thuc te truoc cua / cong (House Access Point)
     let accessPoint = null;
-    if (this.mapGeometry && this.mapGeometry.frontage && this.mapGeometry.frontage.pA && this.mapGeometry.frontage.pB) {
+    if (this.accessPointType === 'MANUAL' && this.accessPointLatLng) {
+      accessPoint = this.accessPointLatLng;
+    } else if (this.mapGeometry && this.mapGeometry.frontage && this.mapGeometry.frontage.pA && this.mapGeometry.frontage.pB) {
       const midLat = (this.mapGeometry.frontage.pA.lat + this.mapGeometry.frontage.pB.lat) / 2;
       const midLng = (this.mapGeometry.frontage.pA.lng + this.mapGeometry.frontage.pB.lng) / 2;
       accessPoint = (this.geoEngine && this.geoEngine.computeDestinationPoint)
@@ -1135,6 +1140,7 @@ class LuopanMapTool {
     try {
       const result = await this.topologyEngine.analyzeRoadNetworkForHouse(houseCenter, facingBearing, {
         accessPoint,
+        accessType: this.accessPointType || 'AUTO',
         bypassOsrm: false
       });
 
@@ -1374,7 +1380,10 @@ class LuopanMapTool {
       <div style="background:rgba(30,41,59,0.7); border-radius:4px; padding:0.35rem 0.5rem; margin-bottom:0.35rem;">
         <div style="color:#F59E0B; font-weight:700; margin-bottom:0.15rem;">[Tầng A] Khảo Sát Tâm Nhà & Điểm Tiếp Cận (House Access)</div>
         <div>• Tâm nhà: <code>${house.lat.toFixed(6)}, ${house.lng.toFixed(6)}</code> | Hướng mặt tiền: <strong style="color:#FEF3C7;">${facing.toFixed(1)}°</strong></div>
-        <div>• Điểm tiếp cận cửa/cổng (Access Point): <code>${access.lat.toFixed(6)}, ${access.lng.toFixed(6)}</code></div>
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-top:0.15rem;">
+          <div>• Cổng / Lối vào: <code>${access.lat.toFixed(6)}, ${access.lng.toFixed(6)}</code> <span style="background:${this.accessPointType === 'MANUAL' ? '#EC4899' : '#F59E0B'}; color:#000; padding:0.1rem 0.35rem; border-radius:3px; font-weight:800; font-size:0.65rem;">${this.accessPointType === 'MANUAL' ? 'THỦ CÔNG' : 'TỰ ĐỘNG'}</span></div>
+          ${this.accessPointType === 'MANUAL' ? `<button type="button" id="btn-reset-access-point" style="background:#475569; color:#FEF3C7; border:1px solid #64748B; border-radius:3px; padding:0.1rem 0.4rem; font-size:0.65rem; cursor:pointer;">Khôi phục Cổng Tự Động</button>` : ''}
+        </div>
       </div>
 
       <!-- TẦNG B: GIS ROAD VECTOR GEOMETRY -->
@@ -1384,17 +1393,38 @@ class LuopanMapTool {
         <div>• Cự ly tới nhà: <strong style="color:#FEF3C7;">${typeof road.distanceToHouseMeters === 'number' ? road.distanceToHouseMeters.toFixed(1) + 'm' : '---'}</strong> | Khoảng cách tới cổng: ${typeof road.distanceToAccessPointMeters === 'number' ? road.distanceToAccessPointMeters.toFixed(1) + 'm' : '---'}</div>
         <div>• Trục đường thực tế (Road Axis): <strong style="color:#34D399;">${axis.bearing !== undefined ? axis.bearing.toFixed(1) + '°' : '---'}</strong> (Trục ngược: ${axis.reverseBearing !== undefined ? axis.reverseBearing.toFixed(1) + '°' : '---'})</div>
         <div>• Cửa sổ thích ứng: ${axis.windowLengthMeters ? axis.windowLengthMeters.toFixed(1) + 'm' : '---'} (${axis.samplePointsCount || 0} node vector ${axis.isCurved ? '- Có độ cong' : '- Đoạn thẳng'})</div>
+        <div>• Độ cong trắc địa: <code>${typeof axis.curvatureDegPerMeter === 'number' ? axis.curvatureDegPerMeter.toFixed(3) + '°/m' : '0.000°/m'}</code> | Độ ổn định σ: <code>${typeof axis.bearingStability === 'number' ? axis.bearingStability.toFixed(2) + '°' : '0.00°'}</code></div>
+        <div>• Lý do dừng cửa sổ: <strong style="color:#38BDF8;">${axis.stopReason || 'GEOMETRY_END'}</strong> (Lùi: ${axis.stopReasonBackward || 'GEOMETRY_END'}, Tiến: ${axis.stopReasonForward || 'GEOMETRY_END'})</div>
       </div>
 
-      <!-- TẦNG C: FLOW INTERPRETATION & CONFIDENCE -->
+      <!-- TẦNG C: FLOW INTERPRETATION & PURE GIS SEPARATION -->
       <div style="background:rgba(30,41,59,0.7); border-radius:4px; padding:0.35rem 0.5rem;">
-        <div style="color:#34D399; font-weight:700; margin-bottom:0.15rem;">[Tầng C] Diễn Giải Dòng Khí Phong Thủy & Độ Tin Cậy</div>
-        <div>• Trạng thái dòng chảy: <strong style="color:${res.flowDirectionStatus === 'UPSTREAM_FOUND' ? '#34D399' : '#F59E0B'};">${res.flowDirectionStatus === 'UPSTREAM_FOUND' ? 'XÁC ĐỊNH ĐẦU NGUỒN (UPSTREAM)' : (res.flowDirectionStatus === 'AMBIGUOUS' ? 'ĐƯỜNG THÔNG ĐỐI XỨNG (AMBIGUOUS)' : 'FAIL-SAFE UNKNOWN')}</strong></div>
-        <div>• Lai Thủy: <strong style="color:#34D399;">${res.suggestion && res.suggestion.laiBearing !== null ? res.suggestion.laiBearing.toFixed(1) + '° (' + res.suggestion.laiMountain + ')' : 'Chưa định hướng'}</strong> | Khứ Thủy: <strong style="color:#38BDF8;">${res.suggestion && res.suggestion.khuBearing !== null ? res.suggestion.khuBearing.toFixed(1) + '° (' + res.suggestion.khuMountain + ')' : '---'}</strong></div>
-        <div>• Độ tin cậy: Tổng thể <strong>${conf.overallConfidence || res.confidence || 'MEDIUM'}</strong> (Trục đường: ${conf.roadAxisConfidence || '---'}, Tiếp cận: ${conf.accessConfidence || '---'}, Dòng chảy: ${conf.directionConfidence || '---'})</div>
-        ${Array.isArray(res.confidenceReasons) && res.confidenceReasons.length > 0 ? `<div style="color:#94A3B8; margin-top:0.2rem; font-size:0.68rem;">Ghi chú: ${res.confidenceReasons.join('; ')}</div>` : ''}
+        <div style="color:#34D399; font-weight:700; margin-bottom:0.15rem;">[Tầng C] Tách Biệt GIS Thuần Túy & Ánh Xạ Phong Thủy</div>
+        <div style="margin-bottom:0.25rem; border-bottom:1px dashed #475569; padding-bottom:0.25rem;">
+          <strong style="color:#93C5FD;">Tầng GIS Thuần Túy (Đo Đạc Tuyến):</strong>
+          <div>• Hướng tiếp cận A (Approach A): <strong>${res.directions && res.directions.approachA ? res.directions.approachA.bearing.toFixed(1) + '° (' + res.directions.approachA.sourceNote + ')' : '---'}</strong></div>
+          <div>• Hướng tiếp cận B (Approach B): <strong>${res.directions && res.directions.approachB ? res.directions.approachB.bearing.toFixed(1) + '° (' + res.directions.approachB.sourceNote + ')' : '---'}</strong></div>
+          <div>• Trạng thái dòng chảy: <strong style="color:${res.flowDirectionStatus === 'UPSTREAM_FOUND' ? '#34D399' : '#F59E0B'};">${res.flowDirectionStatus === 'UPSTREAM_FOUND' ? 'XÁC ĐỊNH ĐẦU NGUỒN (Ưu tiên tiếp cận ' + (res.directions ? res.directions.recommendedLai : '') + ')' : 'ĐỐI XỨNG HAI ĐẦU (AMBIGUOUS - Cần chọn thủ công)'}</strong></div>
+        </div>
+        <div>
+          <strong style="color:#FDE047;">Tầng Phong Thủy (Ánh Xạ Khí Vị):</strong>
+          <div>• Lai Thủy: <strong style="color:#34D399;">${res.suggestion && res.suggestion.laiBearing !== null ? res.suggestion.laiBearing.toFixed(1) + '° (' + res.suggestion.laiMountain + ')' : 'Chưa định hướng'}</strong> | Khứ Thủy: <strong style="color:#38BDF8;">${res.suggestion && res.suggestion.khuBearing !== null ? res.suggestion.khuBearing.toFixed(1) + '° (' + res.suggestion.khuMountain + ')' : '---'}</strong></div>
+        </div>
+        <div style="margin-top:0.25rem; font-size:0.7rem; color:#94A3B8;">• Độ tin cậy: <strong>${conf.overallConfidence || res.confidence || 'MEDIUM'}</strong> (Trục đường: ${conf.roadAxisConfidence || '---'}, Tiếp cận: ${conf.accessConfidence || '---'})</div>
+        ${Array.isArray(res.confidenceReasons) && res.confidenceReasons.length > 0 ? `<div style="color:#94A3B8; margin-top:0.15rem; font-size:0.68rem;">Ghi chú: ${res.confidenceReasons.join('; ')}</div>` : ''}
       </div>
     `;
+
+    const btnResetAccess = panel.querySelector('#btn-reset-access-point');
+    if (btnResetAccess) {
+      btnResetAccess.addEventListener('click', () => {
+        this.accessPointType = 'AUTO';
+        this.accessPointPosition = null;
+        this.accessPointLatLng = null;
+        this.renderDrawingElements();
+        this.triggerAutoRoadDetection(true);
+      });
+    }
 
     const btnClose = panel.querySelector('#btn-close-road-debug');
     if (btnClose) {
@@ -1638,6 +1668,16 @@ class LuopanMapTool {
       } else if (dragTarget === 'frontB') {
         this.frontageLine.pB = position;
         this.syncCalibrationFromGeometry();
+      } else if (dragTarget === 'accessPoint') {
+        this.accessPointPosition = position;
+        this.accessPointType = 'MANUAL';
+        if (this.mode === 'map' && this.mapInstance) {
+          const projection = this.getMapProjection();
+          const screenX = position.x * projection.scale + projection.x;
+          const screenY = position.y * projection.scale + projection.y;
+          const pt = this.mapInstance.containerPointToLatLng([screenX, screenY]);
+          this.accessPointLatLng = { lat: pt.lat, lng: pt.lng };
+        }
       } else if (dragTarget.startsWith('water_')) {
         const index = Number(dragTarget.slice(6));
         if (this.waterPolyline[index]) {
@@ -1670,10 +1710,16 @@ class LuopanMapTool {
         applyDragMove();
         pendingDragPosition = null;
       }
+      const targetBeforeFinish = dragTarget;
       dragTarget = null;
       if (svg.hasPointerCapture(pointerId)) svg.releasePointerCapture(pointerId);
       pointerId = null;
       // Chốt cập nhật toàn diện khi nhả tay
+      if (targetBeforeFinish === 'accessPoint' || targetBeforeFinish === 'frontA' || targetBeforeFinish === 'frontB' || targetBeforeFinish === 'center') {
+        if (this.mode === 'map') {
+          this.triggerAutoRoadDetection(true);
+        }
+      }
       refresh();
       this.updateNodeActionBar();
     };
@@ -1877,6 +1923,25 @@ class LuopanMapTool {
         <text y="-18" font-size="13" font-weight="900" text-anchor="middle" fill="none" stroke="rgba(0,0,0,0.95)" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round" class="luopan-text-halo" pointer-events="none">TÂM NHÀ</text>
         <text y="-18" font-size="13" font-weight="900" fill="#EF4444" stroke="rgba(255,255,255,0.3)" stroke-width="0.35" style="paint-order:stroke fill;" text-anchor="middle" class="luopan-text-main" pointer-events="none">TÂM NHÀ</text>
       </g>
+
+      <!-- Điểm Cổng / Lối Vào (House Access Point - Kéo thả tự do) -->
+      ${(() => {
+        const isManualAccess = (this.accessPointType === 'MANUAL');
+        const accessPos = (isManualAccess && this.accessPointPosition)
+          ? this.accessPointPosition
+          : { x: midFrontX + 35 * Math.cos(facingRad), y: midFrontY + 35 * Math.sin(facingRad) };
+        const accessColor = isManualAccess ? '#EC4899' : '#F59E0B';
+        const accessLabel = isManualAccess ? 'CỔNG [THỦ CÔNG]' : 'CỔNG [TỰ ĐỘNG]';
+        return `
+          <g transform="translate(${accessPos.x}, ${accessPos.y})">
+            <circle r="26" fill="transparent" data-drag-handle="accessPoint" style="cursor:grab; touch-action:none; pointer-events:all;" />
+            <rect x="-10" y="-10" width="20" height="20" rx="4" fill="${accessColor}" stroke="#FFF" stroke-width="2.5" pointer-events="none" />
+            <circle r="3" fill="#FFF" pointer-events="none" />
+            <text y="-16" font-size="11" font-weight="900" text-anchor="middle" fill="none" stroke="rgba(0,0,0,0.95)" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" class="luopan-text-halo" pointer-events="none">${accessLabel}</text>
+            <text y="-16" font-size="11" font-weight="900" fill="${accessColor}" stroke="rgba(255,255,255,0.3)" stroke-width="0.35" style="paint-order:stroke fill;" text-anchor="middle" class="luopan-text-main" pointer-events="none">${accessLabel}</text>
+          </g>
+        `;
+      })()}
     `;
   }
 

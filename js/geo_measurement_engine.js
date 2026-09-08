@@ -301,20 +301,34 @@
 
     /**
      * Trích xuất cửa sổ hình học thích ứng (Adaptive Local Geometry Window)
-     * Tránh lỗi digitization cục bộ và không vượt qua góc ngoặt lớn / ngã 3/4
+     * Thích ứng theo curvature, intersection, segment length, bearing stability.
+     * Báo cáo lý do dừng: INTERSECTION, CURVATURE, MAX_LENGTH, GEOMETRY_END, QUALITY_LIMIT.
      * @param {Array} coords - Danh sách tọa độ vector của đường [{ lat, lng }, ...]
      * @param {Object} accessProjPoint - Điểm chiếu tiếp cận nhà trên đường { lat, lng }
-     * @param {Object} options - { maxDeflectionDeg: 35.0, targetMaxSpanMeters: 80.0 }
+     * @param {Object} options - { maxDeflectionDeg, targetMaxSpanMeters, intersectionKeys }
      */
     static calculateAdaptiveGeometryWindow(coords, accessProjPoint, options = {}) {
       if (!Array.isArray(coords) || coords.length < 2) {
         return {
           windowPoints: coords || [],
+          startIdx: 0,
+          endIdx: 0,
           windowLengthMeters: 0,
           roadAxisBearing: null,
-          isCurved: false
+          reverseBearing: null,
+          bearingStability: 0,
+          curvatureDegPerMeter: 0,
+          isCurved: false,
+          stopReason: 'GEOMETRY_END',
+          stopReasonBackward: 'GEOMETRY_END',
+          stopReasonForward: 'GEOMETRY_END'
         };
       }
+
+      const getKey = pt => pt ? `${pt.lat.toFixed(6)},${pt.lng.toFixed(6)}` : '';
+      const intersectionsSet = options.intersectionKeys instanceof Set
+        ? options.intersectionKeys
+        : (Array.isArray(options.intersectionKeys) ? new Set(options.intersectionKeys) : new Set());
 
       const maxDeflectionDeg = typeof options.maxDeflectionDeg === 'number' ? options.maxDeflectionDeg : 35.0;
       const targetMaxSpanMeters = typeof options.targetMaxSpanMeters === 'number' ? options.targetMaxSpanMeters : 80.0;
@@ -326,7 +340,7 @@
         const pA = coords[i];
         const pB = coords[i + 1];
         const segLen = GeoMeasurementEngine.calculateHaversineDistance(pA, pB);
-        if (segLen < 0.3) continue;
+        if (segLen < 0.2) continue;
         const mid = { lat: (pA.lat + pB.lat) / 2, lng: (pA.lng + pB.lng) / 2 };
         const d = accessProjPoint ? GeoMeasurementEngine.calculateHaversineDistance(accessProjPoint, mid) : 0;
         if (d < minDist) {
@@ -337,28 +351,76 @@
 
       const baseSegBearing = GeoMeasurementEngine.calculateGeodesicBearing(coords[closestSegIdx], coords[closestSegIdx + 1]);
 
-      // 2. Mở rộng lùi về trước (backward): Dừng khi đổi hướng lớn > maxDeflectionDeg hoặc đạt giới hạn
+      // 2. Mở rộng lùi về trước (backward)
       let startIdx = closestSegIdx;
       let backwardDist = 0;
-      while (startIdx > 0 && backwardDist < targetMaxSpanMeters / 2) {
+      let stopReasonBackward = 'GEOMETRY_END';
+
+      while (startIdx > 0) {
+        if (intersectionsSet.has(getKey(coords[startIdx]))) {
+          stopReasonBackward = 'INTERSECTION';
+          break;
+        }
+        if (backwardDist >= targetMaxSpanMeters / 2) {
+          stopReasonBackward = 'MAX_LENGTH';
+          break;
+        }
+
         const prevSegBearing = GeoMeasurementEngine.calculateGeodesicBearing(coords[startIdx - 1], coords[startIdx]);
         const diff = GeoMeasurementEngine.angularDistance(baseSegBearing, prevSegBearing);
-        if (diff > maxDeflectionDeg) break;
-        const len = GeoMeasurementEngine.calculateHaversineDistance(coords[startIdx - 1], coords[startIdx]);
-        backwardDist += len;
+        const segLen = GeoMeasurementEngine.calculateHaversineDistance(coords[startIdx - 1], coords[startIdx]);
+
+        if (diff > maxDeflectionDeg) {
+          stopReasonBackward = 'CURVATURE';
+          break;
+        }
+
+        if (segLen > 3 && (diff / segLen) > 2.0) {
+          stopReasonBackward = 'CURVATURE';
+          break;
+        }
+
+        backwardDist += segLen;
         startIdx--;
       }
+      if (startIdx === 0 && stopReasonBackward === 'GEOMETRY_END') {
+        stopReasonBackward = 'GEOMETRY_END';
+      }
 
-      // 3. Mở rộng tiến về sau (forward): Dừng khi đổi hướng lớn > maxDeflectionDeg hoặc đạt giới hạn
+      // 3. Mở rộng tiến về sau (forward)
       let endIdx = closestSegIdx + 1;
       let forwardDist = 0;
-      while (endIdx < coords.length - 1 && forwardDist < targetMaxSpanMeters / 2) {
+      let stopReasonForward = 'GEOMETRY_END';
+
+      while (endIdx < coords.length - 1) {
+        if (intersectionsSet.has(getKey(coords[endIdx]))) {
+          stopReasonForward = 'INTERSECTION';
+          break;
+        }
+        if (forwardDist >= targetMaxSpanMeters / 2) {
+          stopReasonForward = 'MAX_LENGTH';
+          break;
+        }
+
         const nextSegBearing = GeoMeasurementEngine.calculateGeodesicBearing(coords[endIdx], coords[endIdx + 1]);
         const diff = GeoMeasurementEngine.angularDistance(baseSegBearing, nextSegBearing);
-        if (diff > maxDeflectionDeg) break;
-        const len = GeoMeasurementEngine.calculateHaversineDistance(coords[endIdx], coords[endIdx + 1]);
-        forwardDist += len;
+        const segLen = GeoMeasurementEngine.calculateHaversineDistance(coords[endIdx], coords[endIdx + 1]);
+
+        if (diff > maxDeflectionDeg) {
+          stopReasonForward = 'CURVATURE';
+          break;
+        }
+
+        if (segLen > 3 && (diff / segLen) > 2.0) {
+          stopReasonForward = 'CURVATURE';
+          break;
+        }
+
+        forwardDist += segLen;
         endIdx++;
+      }
+      if (endIdx === coords.length - 1 && stopReasonForward === 'GEOMETRY_END') {
+        stopReasonForward = 'GEOMETRY_END';
       }
 
       const windowPoints = coords.slice(startIdx, endIdx + 1);
@@ -366,6 +428,39 @@
       const pEnd = windowPoints[windowPoints.length - 1];
       const totalWindowDist = GeoMeasurementEngine.calculateHaversineDistance(pStart, pEnd);
       const roadAxisBearing = GeoMeasurementEngine.calculateGeodesicBearing(pStart, pEnd);
+      const reverseBearing = (roadAxisBearing + 180) % 360;
+
+      // Tính độ ổn định phương vị (Bearing Stability - Standard Deviation)
+      const segBearings = [];
+      let totalCurvature = 0;
+      for (let j = 0; j < windowPoints.length - 1; j++) {
+        const b = GeoMeasurementEngine.calculateGeodesicBearing(windowPoints[j], windowPoints[j + 1]);
+        segBearings.push(b);
+        totalCurvature += GeoMeasurementEngine.angularDistance(baseSegBearing, b);
+      }
+
+      let bearingStability = 0;
+      if (segBearings.length > 1) {
+        const mean = segBearings.reduce((a, c) => a + c, 0) / segBearings.length;
+        const variance = segBearings.reduce((a, c) => a + Math.pow(c - mean, 2), 0) / segBearings.length;
+        bearingStability = Math.round(Math.sqrt(variance) * 100) / 100;
+      }
+
+      const curvatureDegPerMeter = totalWindowDist > 0
+        ? Math.round((totalCurvature / totalWindowDist) * 100) / 100
+        : 0;
+
+      // Xác định stopReason tổng quát
+      let stopReason = 'GEOMETRY_END';
+      if (stopReasonBackward === 'INTERSECTION' || stopReasonForward === 'INTERSECTION') {
+        stopReason = 'INTERSECTION';
+      } else if (stopReasonBackward === 'CURVATURE' || stopReasonForward === 'CURVATURE') {
+        stopReason = 'CURVATURE';
+      } else if (stopReasonBackward === 'MAX_LENGTH' || stopReasonForward === 'MAX_LENGTH') {
+        stopReason = 'MAX_LENGTH';
+      } else if (bearingStability > 8.0) {
+        stopReason = 'QUALITY_LIMIT';
+      }
 
       return {
         windowPoints,
@@ -373,8 +468,14 @@
         endIdx,
         windowLengthMeters: Math.round(totalWindowDist * 10) / 10,
         roadAxisBearing: Math.round(roadAxisBearing * 100) / 100,
+        reverseBearing: Math.round(reverseBearing * 100) / 100,
         baseSegBearing: Math.round(baseSegBearing * 100) / 100,
-        isCurved: (backwardDist + forwardDist) > 0 && windowPoints.length > 2
+        bearingStability,
+        curvatureDegPerMeter,
+        isCurved: (backwardDist + forwardDist) > 0 && windowPoints.length > 2,
+        stopReason,
+        stopReasonBackward,
+        stopReasonForward
       };
     }
   }
