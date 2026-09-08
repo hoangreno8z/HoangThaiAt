@@ -244,6 +244,99 @@
     }
 
     /**
+     * Tính toán độ bất định góc dựa trên cự ly và sai số định vị vệ tinh / thiết bị
+     * @param {number} distanceMeters - Khoảng cách từ tâm nhà đến đối tượng (mét)
+     * @param {number} positionErrorMeters - Sai số tọa độ vệ tinh (mặc định 1.2m)
+     * @returns {number} Sai số góc (+/- deg)
+     */
+    static calculateAngularUncertainty(distanceMeters, positionErrorMeters = 1.2) {
+      if (!distanceMeters || distanceMeters <= 0.5) return 15.0; // Quá ngắn không thể định hướng an toàn
+      const rad = Math.atan2(positionErrorMeters, distanceMeters);
+      return Math.round((rad * 180 / Math.PI) * 100) / 100;
+    }
+
+    /**
+     * PHÂN ĐỊNH VÙNG BIÊN SƠN (BORDER ZONE & CONFIDENCE GATE)
+     * Không cưỡng ép kết luận một Sơn duy nhất khi ở vùng giáp biên hoặc sai số vượt ngưỡng an toàn
+     * @param {number} bearing - Phương vị góc (deg)
+     * @param {number} distanceMeters - Khoảng cách từ tâm nhà đến đối tượng (mét, tùy chọn)
+     * @param {number} positionErrorMeters - Sai số định vị vệ tinh (mét, tùy chọn)
+     * @param {Object} mountainInfo - { mountain, distanceToBoundary } từ LuopanData
+     */
+    static classifyMountainZone(bearing, distanceMeters = null, positionErrorMeters = 1.2, mountainInfo = null) {
+      const norm = GeoMeasurementEngine.normalize360(bearing);
+      const uncertainty = distanceMeters !== null && distanceMeters > 0
+        ? GeoMeasurementEngine.calculateAngularUncertainty(distanceMeters, positionErrorMeters)
+        : 1.0;
+
+      let mInfo = mountainInfo;
+      const Data = (typeof LuopanData !== 'undefined' ? LuopanData : null) ||
+        (typeof global !== 'undefined' && global.LuopanData) ||
+        (typeof window !== 'undefined' && window.LuopanData);
+
+      if (!mInfo && Data && typeof Data.getMountain === 'function') {
+        mInfo = Data.getMountain(norm);
+      }
+      if (!mInfo) {
+        const offset = (norm + 7.5) % 15;
+        const dist = Math.min(offset, 15 - offset);
+        mInfo = { mountain: { name: 'Sơn' }, distanceToBoundary: dist };
+      }
+
+      const distToBoundary = typeof mInfo.distanceToBoundary === 'number'
+        ? Math.round(mInfo.distanceToBoundary * 100) / 100
+        : 7.5;
+
+      let adjacentMountain = null;
+      if (Data && typeof Data.getMountain === 'function') {
+        const step = distToBoundary + 0.1;
+        const testPlus = Data.getMountain(norm + step);
+        const testMinus = Data.getMountain(norm - step);
+        if (testPlus.mountain.name !== mInfo.mountain.name) {
+          adjacentMountain = testPlus.mountain.name;
+        } else if (testMinus.mountain.name !== mInfo.mountain.name) {
+          adjacentMountain = testMinus.mountain.name;
+        }
+      }
+
+      let zone = 'PURE_MOUNTAIN';
+      let confidence = 'HIGH';
+      let displayLabel = `${mInfo.mountain.name} Sơn (Chính Sơn - Ổn định)`;
+      let warning = null;
+      let recommendation = null;
+
+      if (distToBoundary <= 1.0) {
+        zone = 'CRITICAL_BORDER';
+        confidence = 'LOW';
+        const pairLabel = adjacentMountain ? `${mInfo.mountain.name} / ${adjacentMountain}` : mInfo.mountain.name;
+        displayLabel = `${pairLabel.toUpperCase()} — GIÁP BIÊN (CẬN RANH ≤ 1.0°)`;
+        warning = `Cực kỳ sát ranh giới 24 Sơn (cách ranh ${distToBoundary.toFixed(2)}° <= 1.0°). Sai số vệ tinh/GPS có thể làm đảo sơn!`;
+        recommendation = 'BẮT BUỘC ĐO THỰC ĐỊA BẰNG LA KINH TRẮC ĐỊA để chốt phân kim.';
+      } else if (distToBoundary <= 2.0 || distToBoundary <= uncertainty) {
+        zone = 'BORDER_ZONE';
+        confidence = 'MEDIUM';
+        const pairLabel = adjacentMountain ? `${mInfo.mountain.name} / ${adjacentMountain}` : mInfo.mountain.name;
+        displayLabel = `${pairLabel.toUpperCase()} — GIÁP BIÊN (${norm.toFixed(1)}° ± ${uncertainty.toFixed(1)}°)`;
+        warning = `Thuộc vùng giáp ranh 24 Sơn (cách ranh ${distToBoundary.toFixed(2)}° <= ngưỡng an toàn ${Math.max(2.0, uncertainty).toFixed(1)}°).`;
+        recommendation = 'Khuyến nghị đối chiếu thực địa, xem xét tính chất phối hợp của cả hai sơn giáp ranh.';
+      }
+
+      return {
+        bearing: norm,
+        mountain: mInfo.mountain.name,
+        adjacentMountain,
+        distanceToBoundary: distToBoundary,
+        angularUncertainty: uncertainty,
+        zone,
+        confidence,
+        isAmbiguous: zone !== 'PURE_MOUNTAIN',
+        displayLabel,
+        warning,
+        recommendation
+      };
+    }
+
+    /**
      * QUALITY GATE: Kiểm tra độ an toàn ranh giới 24 Sơn
      * Nếu khoảng cách tới biên nhỏ hơn hoặc bằng sai số ước lượng:
      * Chuyển trạng thái sang AMBIGUOUS (Không ép về một Sơn duy nhất!)
@@ -259,7 +352,16 @@
         : 7.5;
       
       const safeMargin = Math.round((dist - u) * 100) / 100;
-      const isAmbiguous = dist <= u;
+      const isAmbiguous = dist <= u || dist <= 2.0;
+
+      let status = 'VALID';
+      if (dist <= 1.0) {
+        status = 'CRITICAL_BORDER';
+      } else if (isAmbiguous) {
+        status = 'AMBIGUOUS';
+      } else if (u > 2.0) {
+        status = 'LOW_CONFIDENCE';
+      }
 
       return {
         bearing: GeoMeasurementEngine.normalize360(bearing),
@@ -267,7 +369,7 @@
         distanceToBoundary: Math.round(dist * 100) / 100,
         safeMargin,
         isAmbiguous,
-        status: isAmbiguous ? 'AMBIGUOUS' : (u > 2.0 ? 'LOW_CONFIDENCE' : 'VALID'),
+        status,
         warning: isAmbiguous
           ? `Sát ranh phân kim: Cách biên ${dist.toFixed(2)}° <= Sai số +/- ${u.toFixed(2)}°. Thuộc vùng giáp ranh, chưa đủ độ tin cậy để kết luận duy nhất 1 Sơn!`
           : null

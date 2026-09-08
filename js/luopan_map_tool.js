@@ -244,6 +244,64 @@ class LuopanMapTool {
       : rawKhu;
   }
 
+  getRawDeadEndBearing() {
+    if (this.waterPathType !== 'deadEnd') return null;
+    const { pDeadEnd } = this.getWaterPoints();
+    if (!pDeadEnd) return null;
+    if (this.mode === 'map' && this.mapGeometry && this.mapGeometry.center && this.geoEngine) {
+      let deadEndLatLng = null;
+      if (this.mapGeometry.water && this.mapGeometry.water.length > 0) {
+        deadEndLatLng = this.flowDirection === 'forward'
+          ? this.mapGeometry.water[this.mapGeometry.water.length - 1]
+          : this.mapGeometry.water[0];
+      }
+      if (deadEndLatLng) {
+        return this.geoEngine.calculateGeodesicBearing(this.mapGeometry.center, deadEndLatLng);
+      }
+    }
+    return this.geometry.calculateLineBearing(this.centerPoint, pDeadEnd);
+  }
+
+  getEffectiveDeadEndBearing() {
+    if (this.waterPathType !== 'deadEnd') return null;
+    const raw = this.getRawDeadEndBearing();
+    if (raw === null) return null;
+    return this.isCalibrationLocked
+      ? this.calibEngine.calibrate(raw, this.calibrationOffset)
+      : raw;
+  }
+
+  getDeadEndDistanceMeters() {
+    if (this.waterPathType !== 'deadEnd') return null;
+    if (this.mode === 'map' && this.mapGeometry && this.mapGeometry.center && this.geoEngine && this.mapGeometry.water && this.mapGeometry.water.length > 0) {
+      const deadEndLatLng = this.flowDirection === 'forward'
+        ? this.mapGeometry.water[this.mapGeometry.water.length - 1]
+        : this.mapGeometry.water[0];
+      if (deadEndLatLng) {
+        return this.geoEngine.calculateGeodesicDistance(this.mapGeometry.center, deadEndLatLng);
+      }
+    }
+    const { pDeadEnd } = this.getWaterPoints();
+    if (!pDeadEnd || !this.centerPoint) return null;
+    return Math.round(Math.hypot(pDeadEnd.x - this.centerPoint.x, pDeadEnd.y - this.centerPoint.y) * 0.1 * 10) / 10;
+  }
+
+  getNodeRadialBearing(index) {
+    if (!Number.isInteger(index) || !this.waterPolyline || !this.waterPolyline[index]) return null;
+    if (this.mode === 'map' && this.mapGeometry && this.mapGeometry.center && this.mapGeometry.water && this.mapGeometry.water[index] && this.geoEngine) {
+      return this.geoEngine.calculateGeodesicBearing(this.mapGeometry.center, this.mapGeometry.water[index]);
+    }
+    return this.geometry.calculateLineBearing(this.centerPoint, this.waterPolyline[index]);
+  }
+
+  getEffectiveNodeRadialBearing(index) {
+    const raw = this.getNodeRadialBearing(index);
+    if (raw === null) return null;
+    return this.isCalibrationLocked
+      ? this.calibEngine.calibrate(raw, this.calibrationOffset)
+      : raw;
+  }
+
   getWaterSegments() {
     const segments = [];
     if (!this.waterPolyline || this.waterPolyline.length < 2) return segments;
@@ -814,10 +872,7 @@ class LuopanMapTool {
       const isLai = this.laiNodeIndex === idx;
       const isKhu = this.khuNodeIndex === idx;
       const isJunction = p.role === 'junction';
-      const radialRaw = this.geometry.calculateLineBearing(this.centerPoint, p);
-      const radialEffective = this.isCalibrationLocked
-        ? this.calibEngine.calibrate(radialRaw, this.calibrationOffset)
-        : radialRaw;
+      const radialEffective = this.getEffectiveNodeRadialBearing(idx);
       const m = this.data.getMountain(radialEffective).mountain;
 
       bar.style.display = 'flex';
@@ -1950,6 +2005,9 @@ class LuopanMapTool {
       facingBearing: this.getEffectiveFacingBearing(),
       laiBearing: this.getEffectiveLaiBearing(),
       khuBearing: this.getEffectiveKhuBearing(),
+      deadEndBearing: this.getEffectiveDeadEndBearing(),
+      deadEndDistanceMeters: this.getDeadEndDistanceMeters(),
+      roadStrikeOffsetMeters: this.roadStrikeOffsetMeters !== undefined ? this.roadStrikeOffsetMeters : 3.0,
       offset: this.isCalibrationLocked ? this.calibrationOffset : 0,
       isLocked: this.isCalibrationLocked,
       tolerance: this.measurementTolerance,
@@ -2008,18 +2066,76 @@ class LuopanMapTool {
                   ` : ''}
                 </div>
 
-                <div style="display:flex; flex-direction:column; gap:0.15rem; padding:0.3rem 0.5rem; background:#1E293B; border-radius:6px;">
-                  <div style="display:flex; justify-content:space-between;">
-                    <span style="color:#38BDF8; font-weight:700;">Khứ Thủy (Đi):</span>
-                    <strong style="color:#38BDF8;">${khu !== null ? `${khu.toFixed(2)}°` : (this.waterPathType === 'deadEnd' ? 'Không xác lập — Hẻm cụt' : 'Chưa đo')}</strong>
-                  </div>
-                  <div class="dt-bearing-label" data-bearing-label="khu">${this.waterPathType === 'deadEnd' ? 'Tuyến tận tại nhà (không có Khứ)' : this.formatMountain(analysis.khu)}</div>
-                  ${relKhu !== null ? `
-                    <div style="font-size:0.72rem; color:#94A3B8; padding-left:0.3rem;">
-                      ↳ So với hướng nhà: <strong style="color:#38BDF8;">${relKhu >= 0 ? '+' : ''}${relKhu.toFixed(2)}° (${relKhu >= 0 ? 'lệch phải' : 'lệch trái'})</strong>
+                ${this.waterPathType === 'deadEnd' ? (() => {
+                  const de = analysis.deadEnd;
+                  const deBearing = this.getEffectiveDeadEndBearing();
+                  const deDist = this.getDeadEndDistanceMeters();
+                  const relDe = deBearing !== null ? this.calibEngine.computeRelativeBearing(facing, deBearing) : null;
+                  const zoneInfo = de && de.uncertainty && de.uncertainty.mountainZone;
+                  const zoneLabel = zoneInfo ? zoneInfo.displayLabel : '';
+                  const isBorder = zoneInfo && zoneInfo.zone !== 'PURE_MOUNTAIN';
+                  const roadAxis = this.lastRoadAxis;
+                  return `
+                    <div style="display:flex; flex-direction:column; gap:0.35rem; padding:0.4rem 0.5rem; background:#1E293B; border-radius:6px; border:1px solid ${isBorder ? '#F59E0B' : 'rgba(255,255,255,0.1)'};">
+                      <div style="display:flex; justify-content:space-between; align-items:center;">
+                        <span style="color:#F43F5E; font-weight:700;">1. Điểm Tận Hẻm Cụt (Object Bearing):</span>
+                        <strong style="color:#F43F5E;">${deBearing !== null ? `${deBearing.toFixed(2)}°` : 'Chưa đo'} ${deDist ? `(${deDist.toFixed(1)}m)` : ''}</strong>
+                      </div>
+                      ${zoneLabel ? `
+                        <div style="font-size:0.72rem; font-weight:700; color:${isBorder ? '#F59E0B' : '#FEF3C7'};">
+                          ${zoneLabel}
+                        </div>
+                      ` : ''}
+                      ${zoneInfo && zoneInfo.warning ? `
+                        <div style="font-size:0.68rem; color:#F59E0B; line-height:1.3;">
+                          ${zoneInfo.warning}
+                        </div>
+                      ` : ''}
+                      ${zoneInfo && zoneInfo.recommendation ? `
+                        <div style="font-size:0.68rem; color:#FB7185; font-weight:600; line-height:1.3;">
+                          ↳ ${zoneInfo.recommendation}
+                        </div>
+                      ` : ''}
+                      ${relDe !== null ? `
+                        <div style="font-size:0.72rem; color:#94A3B8;">
+                          ↳ So với hướng nhà: <strong style="color:#F43F5E;">${relDe >= 0 ? '+' : ''}${relDe.toFixed(2)}° (${relDe >= 0 ? 'lệch phải' : 'lệch trái'})</strong>
+                        </div>
+                      ` : ''}
+                      <div style="font-size:0.68rem; color:#94A3B8; font-style:italic; border-top:1px dashed rgba(255,255,255,0.08); padding-top:0.2rem;">
+                        * Điểm cụt vật lý ngoại cục, không phải Thủy Khẩu Khứ. Nước và khí không thoát tại đây.
+                      </div>
+                      <div style="display:flex; justify-content:space-between; margin-top:0.15rem;">
+                        <span style="color:#38BDF8; font-weight:700;">2. Trục Tiếp Cận Cục Bộ:</span>
+                        <strong style="color:#38BDF8;">${roadAxis ? `${roadAxis.bearing.toFixed(1)}° ↔ ${roadAxis.reverseBearing.toFixed(1)}°` : 'Theo tim đường cục bộ'}</strong>
+                      </div>
+                      <div style="display:flex; justify-content:space-between;">
+                        <span style="color:#94A3B8; font-weight:700;">3. Khứ Thủy / Khí Khẩu:</span>
+                        <strong style="color:#94A3B8;">Không xác lập (Bế Khí / Tụ Khí)</strong>
+                      </div>
+                      <div style="font-size:0.68rem; color:#94A3B8;">
+                        ↳ Hướng thoát nước: Theo rãnh cống/độ dốc mặt đường chảy ngược ra miệng hẻm.
+                      </div>
+                      ${de && de.strikeLabel ? `
+                        <div style="font-size:0.72rem; padding:0.25rem 0.4rem; border-radius:4px; background:${de.strikeStatus === 'SAFE_OFFSET' ? 'rgba(16,185,129,0.15)' : 'rgba(239,68,68,0.15)'}; color:${de.strikeStatus === 'SAFE_OFFSET' ? '#34D399' : '#EF4444'}; font-weight:700; margin-top:0.15rem;">
+                          ${de.strikeLabel}
+                        </div>
+                      ` : ''}
                     </div>
-                  ` : ''}
-                </div>
+                  `;
+                })() : `
+                  <div style="display:flex; flex-direction:column; gap:0.15rem; padding:0.3rem 0.5rem; background:#1E293B; border-radius:6px;">
+                    <div style="display:flex; justify-content:space-between;">
+                      <span style="color:#38BDF8; font-weight:700;">Khứ Thủy (Đi):</span>
+                      <strong style="color:#38BDF8;">${khu !== null ? `${khu.toFixed(2)}°` : 'Chưa đo'}</strong>
+                    </div>
+                    <div class="dt-bearing-label" data-bearing-label="khu">${this.formatMountain(analysis.khu)}</div>
+                    ${relKhu !== null ? `
+                      <div style="font-size:0.72rem; color:#94A3B8; padding-left:0.3rem;">
+                        ↳ So với hướng nhà: <strong style="color:#38BDF8;">${relKhu >= 0 ? '+' : ''}${relKhu.toFixed(2)}° (${relKhu >= 0 ? 'lệch phải' : 'lệch trái'})</strong>
+                      </div>
+                    ` : ''}
+                  </div>
+                `}
               </div>
             </div>
 
@@ -2100,8 +2216,7 @@ class LuopanMapTool {
 
                 <div style="display:flex; flex-wrap:wrap; gap:0.25rem; margin-top:0.05rem;">
                   ${this.waterPolyline.map((p, i) => {
-                    const radialRaw = this.geometry.calculateLineBearing(this.centerPoint, p);
-                    const radialEff = this.isCalibrationLocked ? this.calibEngine.calibrate(radialRaw, this.calibrationOffset) : radialRaw;
+                    const radialEff = this.getEffectiveNodeRadialBearing(i);
                     const m = this.data.getMountain(radialEff).mountain;
                     const ts = this.data.getTruongSinh(m.name, analysis.group.cuc);
                     const isLai = this.laiNodeIndex === i;
@@ -2186,7 +2301,7 @@ class LuopanMapTool {
                             <div style="color:#94A3B8; font-size:0.7rem; margin-top:0.1rem;">• Phương vị nạp khí từ tâm nhà: P${seg.fromIndex + 1} = <strong>${seg.fromRadialEff.toFixed(1)}°</strong>, P${seg.toIndex + 1} = <strong>${seg.toRadialEff.toFixed(1)}°</strong></div>
                           ` : ''}
                           ${this.waterNature === 'hu_thuy' && seg.tier === 'ngoai_cuc' ? `
-                            <div style="color:#F59E0B; font-size:0.68rem; margin-top:0.2rem; font-style:italic;">️ Chế độ Hư Thủy: Ngoại Cục là đại động thế vĩ mô ở xa, khí bị tiêu tán qua góc rẽ, không tính 12 Cung Trường Sinh trực tiếp vào gia trạch.</div>
+                            <div style="color:#F59E0B; font-size:0.68rem; margin-top:0.2rem; font-style:italic;">[Hư Thủy] Ngoại Cục là đại động thế vĩ mô ở xa, khí bị tiêu tán qua góc rẽ, không tính 12 Cung Trường Sinh trực tiếp vào gia trạch.</div>
                           ` : ''}
                         </div>
                       `;
@@ -2195,10 +2310,7 @@ class LuopanMapTool {
                   if (this.selectedNodeIndex !== null && this.waterPolyline[this.selectedNodeIndex]) {
                     const idx = this.selectedNodeIndex;
                     const p = this.waterPolyline[idx];
-                    const radialRaw = this.geometry.calculateLineBearing(this.centerPoint, p);
-                    const radialEffective = this.isCalibrationLocked
-                      ? this.calibEngine.calibrate(radialRaw, this.calibrationOffset)
-                      : radialRaw;
+                    const radialEffective = this.getEffectiveNodeRadialBearing(idx);
                     const m = this.data.getMountain(radialEffective).mountain;
                     const ts = this.data.getTruongSinh(m.name, analysis.group.cuc);
                     const roleLabel = this.laiNodeIndex === idx ? 'Lai Thủy' : (this.khuNodeIndex === idx ? 'Khứ Thủy' : (p.role === 'junction' ? 'Ngã 3' : 'Node thường'));
@@ -2882,7 +2994,7 @@ class LuopanMapTool {
             <div>• Sai số phép đo: <strong>±${this.measurementTolerance.toFixed(2)}°</strong></div>
             <div>• Khoảng cách tới ranh Hướng: <strong>${analysis.facing.distanceToBoundary.toFixed(2)}°</strong></div>
             ${analysis.khu ? `<div>• Khoảng cách tới ranh Khứ: <strong>${analysis.khu.distanceToBoundary.toFixed(2)}°</strong></div>` : ''}
-            <div>• Đánh giá: <strong style="color:${analysis.status.isSensitive ? '#FB7185' : '#10B981'};">${analysis.status.isSensitive ? '️ Nhạy cảm sai số ranh phân kim' : ' An toàn trong tâm Sơn'}</strong></div>
+            <div>• Đánh giá: <strong style="color:${analysis.status.isSensitive ? '#FB7185' : '#10B981'};">${analysis.status.isSensitive ? 'Nhạy cảm sai số ranh phân kim' : 'An toàn trong tâm Sơn'}</strong></div>
           </div>
 
           ${analysis.thuyKhau ? `
@@ -3136,12 +3248,21 @@ class LuopanMapTool {
   captureMapGeometry() {
     if (!this.mapInstance || this.mode !== 'map') return;
     const projection = this.getMapProjection();
-    const toLatLng = point => this.mapInstance.containerPointToLatLng([
-      point.x * projection.scale + projection.x, point.y * projection.scale + projection.y
-    ]);
+    const toLatLng = point => {
+      const ll = this.mapInstance.containerPointToLatLng([
+        point.x * projection.scale + projection.x, point.y * projection.scale + projection.y
+      ]);
+      return {
+        lat: ll.lat,
+        lng: ll.lng,
+        role: point.role || 'normal',
+        nodeId: point.nodeId || null
+      };
+    };
     this.mapGeometry = {
       center: toLatLng(this.centerPoint),
-      frontA: toLatLng(this.frontageLine.pA), frontB: toLatLng(this.frontageLine.pB),
+      frontA: toLatLng(this.frontageLine.pA),
+      frontB: toLatLng(this.frontageLine.pB),
       water: this.waterPolyline.map(toLatLng)
     };
   }
@@ -3160,7 +3281,20 @@ class LuopanMapTool {
     this.centerPoint = toPoint(this.mapGeometry.center);
     this.frontageLine.pA = toPoint(this.mapGeometry.frontA);
     this.frontageLine.pB = toPoint(this.mapGeometry.frontB);
-    this.waterPolyline = this.mapGeometry.water.map(toPoint);
+    this.waterPolyline = this.mapGeometry.water.map((latLng, idx) => {
+      const pt = toPoint(latLng);
+      const prev = (this.waterPolyline && this.waterPolyline[idx]) || {};
+      return {
+        ...prev,
+        x: pt.x,
+        y: pt.y,
+        role: latLng.role || prev.role || 'normal',
+        nodeId: latLng.nodeId || prev.nodeId || null
+      };
+    });
+    if (this.accessPointLatLng) {
+      this.accessPointPosition = toPoint(this.accessPointLatLng);
+    }
     this.recalculateRawBearings();
     this.renderDrawingElements();
     if (fullUpdate) {
@@ -3916,10 +4050,10 @@ class LuopanMapTool {
         <div style="background:rgba(0,0,0,0.25); padding:0.7rem; border-radius:6px; margin-bottom:0.8rem;">
           <div style="font-size:0.76rem; font-weight:700; color:#FEF3C7; margin-bottom:0.4rem;">Cơ cấu tiêu dùng (${financials.totalMonthlySpendingBillionVnd} tỷ VNĐ/tháng):</div>
           <div style="display:grid; grid-template-columns:repeat(2, 1fr); gap:0.4rem; font-size:0.74rem;">
-            <div> F&B & Ăn uống: <strong style="color:#34D399;">${spendingBreakdown.foodExpenseBillion} tỷ</strong> (${spendingBreakdown.foodExpenseRatio}%)</div>
-            <div> Nhà ở & Tiện ích: <strong style="color:#38BDF8;">${spendingBreakdown.housingUtilitiesBillion} tỷ</strong></div>
-            <div> Giáo dục & Y tế: <strong style="color:#C084FC;">${spendingBreakdown.educationHealthBillion} tỷ</strong></div>
-            <div>️ Mua sắm & Tiêu khiển: <strong style="color:#FBBF24;">${spendingBreakdown.shoppingLeisureBillion} tỷ</strong></div>
+            <div>[F&B] Ăn uống: <strong style="color:#34D399;">${spendingBreakdown.foodExpenseBillion} tỷ</strong> (${spendingBreakdown.foodExpenseRatio}%)</div>
+            <div>[Nhà ở] Tiện ích: <strong style="color:#38BDF8;">${spendingBreakdown.housingUtilitiesBillion} tỷ</strong></div>
+            <div>[Y tế] Giáo dục: <strong style="color:#C084FC;">${spendingBreakdown.educationHealthBillion} tỷ</strong></div>
+            <div>[Dịch vụ] Tiêu khiển: <strong style="color:#FBBF24;">${spendingBreakdown.shoppingLeisureBillion} tỷ</strong></div>
           </div>
         </div>
 

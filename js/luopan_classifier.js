@@ -42,15 +42,20 @@
 
     /**
      * Đánh giá dải bất định của một phương vị góc đối với ranh giới 24 Sơn
-     * Tích hợp Quality Gate: nếu khoảng cách tới ranh <= sai số tolerance,
-     * thiết lập isAmbiguous = true và không ép về duy nhất 1 Sơn.
+     * Tích hợp Quality Gate & Geospatial Confidence Gate: nếu khoảng cách tới ranh <= sai số tolerance
+     * hoặc <= 2.0°, thiết lập isAmbiguous = true và gắn nhãn Giáp Biên thay vì ép về duy nhất 1 Sơn.
      */
-    evaluateUncertainty(bearing, tolerance = this.DEFAULT_TOLERANCE) {
+    evaluateUncertainty(bearing, tolerance = this.DEFAULT_TOLERANCE, distanceMeters = null, positionErrorMeters = 1.2) {
       if (bearing === null || typeof bearing !== 'number') return null;
 
       const norm = Calib ? Calib.normalize360(bearing) : ((bearing % 360 + 360) % 360);
-      const minB = Calib ? Calib.normalize360(norm - tolerance) : (((norm - tolerance) % 360 + 360) % 360);
-      const maxB = Calib ? Calib.normalize360(norm + tolerance) : (((norm + tolerance) % 360 + 360) % 360);
+      let effTolerance = tolerance;
+      if (distanceMeters && distanceMeters > 0 && Geo && typeof Geo.calculateAngularUncertainty === 'function') {
+        effTolerance = Math.max(tolerance, Geo.calculateAngularUncertainty(distanceMeters, positionErrorMeters));
+      }
+
+      const minB = Calib ? Calib.normalize360(norm - effTolerance) : (((norm - effTolerance) % 360 + 360) % 360);
+      const maxB = Calib ? Calib.normalize360(norm + effTolerance) : (((norm + effTolerance) % 360 + 360) % 360);
 
       const mCenter = Data.getMountain(norm);
       const mMin = Data.getMountain(minB);
@@ -59,35 +64,44 @@
       const isCrossBoundary = (mMin.mountain.name !== mCenter.mountain.name) || (mMax.mountain.name !== mCenter.mountain.name);
       const possibleMountains = [...new Set([mMin.mountain.name, mCenter.mountain.name, mMax.mountain.name])];
 
+      let mountainZone = null;
+      if (Geo && typeof Geo.classifyMountainZone === 'function') {
+        mountainZone = Geo.classifyMountainZone(norm, distanceMeters, positionErrorMeters, mCenter);
+      }
+
       let qualityGate = null;
       if (Geo && typeof Geo.evaluateQualityGate === 'function') {
-        qualityGate = Geo.evaluateQualityGate(norm, tolerance, mCenter);
+        qualityGate = Geo.evaluateQualityGate(norm, effTolerance, mCenter);
       } else {
-        const isAmb = mCenter.distanceToBoundary <= tolerance;
+        const isAmb = mCenter.distanceToBoundary <= effTolerance || mCenter.distanceToBoundary <= 2.0;
         qualityGate = {
           bearing: norm,
-          uncertainty: tolerance,
+          uncertainty: effTolerance,
           distanceToBoundary: mCenter.distanceToBoundary,
-          safeMargin: Math.round((mCenter.distanceToBoundary - tolerance) * 100) / 100,
+          safeMargin: Math.round((mCenter.distanceToBoundary - effTolerance) * 100) / 100,
           isAmbiguous: isAmb,
-          status: isAmb ? 'AMBIGUOUS' : (tolerance > 2.0 ? 'LOW_CONFIDENCE' : 'VALID'),
+          status: isAmb ? 'AMBIGUOUS' : (effTolerance > 2.0 ? 'LOW_CONFIDENCE' : 'VALID'),
           warning: isAmb
-            ? `Sát ranh phân kim: Cách biên ${mCenter.distanceToBoundary.toFixed(2)}° <= Sai số +/- ${tolerance.toFixed(2)}°. Thuộc vùng giáp ranh, chưa đủ độ tin cậy để kết luận duy nhất 1 Sơn!`
+            ? `Sát ranh phân kim: Cách biên ${mCenter.distanceToBoundary.toFixed(2)}° <= Sai số +/- ${effTolerance.toFixed(2)}°. Thuộc vùng giáp ranh, chưa đủ độ tin cậy để kết luận duy nhất 1 Sơn!`
             : null
         };
       }
+
+      const isAmbiguous = qualityGate.isAmbiguous || (mountainZone && mountainZone.isAmbiguous);
+      const isSensitive = isCrossBoundary || isAmbiguous;
 
       return {
         bearing: norm,
         mountain: mCenter.mountain,
         distanceToBoundary: mCenter.distanceToBoundary,
-        isSensitive: isCrossBoundary || qualityGate.isAmbiguous,
-        isAmbiguous: qualityGate.isAmbiguous,
-        qualityGateStatus: qualityGate.status,
-        qualityGateWarning: qualityGate.warning,
+        isSensitive,
+        isAmbiguous,
+        qualityGateStatus: mountainZone ? mountainZone.zone : qualityGate.status,
+        qualityGateWarning: (mountainZone && mountainZone.warning) || qualityGate.warning,
         safeMargin: qualityGate.safeMargin,
         possibleMountains,
-        tolerance
+        tolerance: effTolerance,
+        mountainZone
       };
     }
 
@@ -99,6 +113,9 @@
         facingBearing = 0,
         laiBearing = null,
         khuBearing = null,
+        deadEndBearing = null,
+        deadEndDistanceMeters = null,
+        roadStrikeOffsetMeters = null,
         offset = 0,
         isLocked = false,
         tolerance = this.DEFAULT_TOLERANCE
@@ -130,6 +147,42 @@
       const khuUncertainty = khuBearing !== null ? this.evaluateUncertainty(khuBearing, tolerance) : null;
       if (khuUncertainty) {
         khuUncertainty.truongSinh = Data.getTruongSinh(khuUncertainty.mountain.name, matchedGroup.cuc);
+      }
+
+      // 4b. Phân tích Điểm Cụt (Dead End / Cul-de-sac Object Bearing)
+      let deadEndAnalysis = null;
+      if (deadEndBearing !== null && typeof deadEndBearing === 'number') {
+        const deUncertainty = this.evaluateUncertainty(deadEndBearing, tolerance, deadEndDistanceMeters);
+        const deMountainInfo = Data.getMountain(deadEndBearing);
+        const deTruongSinh = Data.getTruongSinh(deMountainInfo.mountain.name, matchedGroup.cuc);
+
+        let strikeStatus = 'SAFE';
+        let strikeLabel = 'Không phạm Trực Xung';
+        let strikeDetail = 'Trục đường không đâm thẳng vào nhà.';
+        if (typeof roadStrikeOffsetMeters === 'number') {
+          if (roadStrikeOffsetMeters >= 1.5) {
+            strikeStatus = 'SAFE_OFFSET';
+            strikeLabel = `Lệch trục ${roadStrikeOffsetMeters.toFixed(1)}m — Không phạm Trực Xung (Thương Sát)`;
+            strikeDetail = `Tuyến đường đâm vào nhà cuối hẻm, lệch mép nhà người dùng ${roadStrikeOffsetMeters.toFixed(1)}m. Khí không xung xạ trực tiếp vào bản trạch.`;
+          } else {
+            strikeStatus = 'DIRECT_STRIKE';
+            strikeLabel = `Nguy cơ Trực Xung (Thương Sát) — Lệch ${roadStrikeOffsetMeters.toFixed(1)}m < 1.5m`;
+            strikeDetail = 'Trục đường đâm thẳng vào phạm vi ngôi nhà. Cần thiết kế bình phong hoặc chuyển hướng cổng/cửa.';
+          }
+        }
+
+        deadEndAnalysis = {
+          bearing: deadEndBearing,
+          mountain: deMountainInfo.mountain,
+          truongSinh: deTruongSinh,
+          uncertainty: deUncertainty,
+          distanceMeters: deadEndDistanceMeters,
+          strikeStatus,
+          strikeLabel,
+          strikeDetail,
+          nature: 'CUL_DE_SAC_PHYSICAL_END',
+          note: 'Điểm tận vật lý ngoại cục, không phải Thủy Khẩu Khứ. Nước và khí không thoát tại đây.'
+        };
       }
 
       // 5. Đánh giá Tam Hợp Thủy Pháp Cát Hung theo 12 Cung Trường Sinh
@@ -273,6 +326,7 @@
         group: matchedGroup,
         lai: laiUncertainty,
         khu: khuUncertainty,
+        deadEnd: deadEndAnalysis,
         tamHop: {
           cuc: matchedGroup.cuc,
           aphorism,
