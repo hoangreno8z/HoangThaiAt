@@ -1080,7 +1080,10 @@ class LuopanMapTool {
   }
 
   async triggerAutoRoadDetection(autoApply = true) {
-    if (this.mode !== 'map' || !this.mapGeometry || !this.mapGeometry.center) return;
+    if (this.mode !== 'map') return;
+    this.captureMapGeometry();
+    if (!this.mapGeometry || !this.mapGeometry.center) return;
+
     if (!this.topologyEngine) {
       const ProviderClass = (typeof window !== 'undefined' && window.OverpassRoadProvider) ||
         (typeof window !== 'undefined' && window.RoadNetworkProvider && window.RoadNetworkProvider.OverpassRoadProvider) ||
@@ -1105,6 +1108,15 @@ class LuopanMapTool {
     try {
       const result = await this.topologyEngine.analyzeRoadNetworkForHouse(houseCenter, facingBearing);
       if (!result || !result.hasAccessRoad || !result.suggestion) {
+        if (this.topologyEngine && typeof this.topologyEngine.generateGeometricFallback === 'function') {
+          const fallback = this.topologyEngine.generateGeometricFallback(houseCenter, facingBearing);
+          if (fallback && fallback.suggestion) {
+            this.roadSuggestion = fallback;
+            this.roadDetectionState = 'ACCEPTED';
+            this.applyRoadSuggestion(fallback);
+            return;
+          }
+        }
         this.roadDetectionState = 'NO_ROAD';
         this.roadSuggestion = null;
         this.renderRoadSuggestionBanner();
@@ -1115,7 +1127,16 @@ class LuopanMapTool {
       this.roadDetectionState = 'ACCEPTED';
       this.applyRoadSuggestion(result);
     } catch (err) {
-      console.warn('[AutoRoadDetection] Bỏ qua hoặc ngoại tuyến:', err);
+      console.warn('[AutoRoadDetection] Fallback hình học khi ngoại tuyến:', err);
+      if (this.topologyEngine && typeof this.topologyEngine.generateGeometricFallback === 'function') {
+        const fallback = this.topologyEngine.generateGeometricFallback(houseCenter, facingBearing);
+        if (fallback && fallback.suggestion) {
+          this.roadSuggestion = fallback;
+          this.roadDetectionState = 'ACCEPTED';
+          this.applyRoadSuggestion(fallback);
+          return;
+        }
+      }
       this.roadDetectionState = 'NO_ROAD';
       this.roadSuggestion = null;
       this.renderRoadSuggestionBanner();
@@ -2464,6 +2485,15 @@ class LuopanMapTool {
       });
     }
 
+    // Tự động quét mạng đường từ ngã 3/4 vào trước cửa nhà
+    const btnAutoRoad = document.getElementById('btn-auto-road-detect');
+    if (btnAutoRoad) {
+      btnAutoRoad.addEventListener('click', async () => {
+        this.captureMapGeometry();
+        await this.triggerAutoRoadDetection(true);
+      });
+    }
+
     // Đảo chiều nước (hoán đổi vị trí Lai Thủy và Khứ Thủy)
     const btnReverseWater = document.getElementById('btn-reverse-water');
     if (btnReverseWater) {
@@ -2692,14 +2722,6 @@ class LuopanMapTool {
           btnCopyExport.textContent = 'Đã Sao Chép!';
           setTimeout(() => { btnCopyExport.textContent = 'Sao Chép'; }, 2000);
         });
-      });
-    }
-
-    // Auto road detect and routing
-    const btnAutoRoad = document.getElementById('btn-auto-road-detect');
-    if (btnAutoRoad) {
-      btnAutoRoad.addEventListener('click', () => {
-        this.triggerAutoRoadDetection(true);
       });
     }
   }

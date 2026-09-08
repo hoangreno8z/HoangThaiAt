@@ -273,6 +273,31 @@
           : null
       };
     }
+
+    /**
+     * Tính tọa độ đích đến (Destination Point) theo phương vị và khoảng cách (mét)
+     * Chuẩn công thức trắc địa Geodesic trên mặt cầu
+     * @param {Object} startPoint - { lat, lng }
+     * @param {number} distanceMeters - Khoảng cách bằng mét
+     * @param {number} bearingDeg - Phương vị theo Bắc Thật (0 - 360 độ)
+     */
+    static computeDestinationPoint(startPoint, distanceMeters, bearingDeg) {
+      if (!startPoint || typeof startPoint.lat !== 'number' || typeof startPoint.lng !== 'number') {
+        return { lat: 0, lng: 0 };
+      }
+      const d = (distanceMeters || 0) / EARTH_RADIUS_METERS;
+      const th = ((bearingDeg || 0) * Math.PI) / 180;
+      const phi1 = (startPoint.lat * Math.PI) / 180;
+      const lam1 = (startPoint.lng * Math.PI) / 180;
+
+      const phi2 = Math.asin(Math.sin(phi1) * Math.cos(d) + Math.cos(phi1) * Math.sin(d) * Math.cos(th));
+      const lam2 = lam1 + Math.atan2(Math.sin(th) * Math.sin(d) * Math.cos(phi1), Math.cos(d) - Math.sin(phi1) * Math.sin(phi2));
+
+      return {
+        lat: Math.round(((phi2 * 180) / Math.PI) * 1e8) / 1e8,
+        lng: Math.round((((((lam2 * 180) / Math.PI) + 540) % 360) - 180) * 1e8) / 1e8
+      };
+    }
   }
 
   return GeoMeasurementEngine;

@@ -110,11 +110,13 @@
   class OverpassRoadProvider extends BaseRoadProvider {
     constructor(options = {}) {
       super();
-      this.timeoutMs = options.timeoutMs || 6000;
+      this.timeoutMs = options.timeoutMs || 4000;
       this.cache = new Map();
-      this.endpoints = [
-        'https://overpass-api.de/api/interpreter',
-        'https://maps.mail.ru/osm/tools/overpass/api/interpreter'
+      this.endpoints = options.endpoints || [
+        'https://maps.mail.ru/osm/tools/overpass/api/interpreter',
+        'https://overpass.kumi.systems/api/interpreter',
+        'https://overpass.private.coffee/api/interpreter',
+        'https://overpass-api.de/api/interpreter'
       ];
     }
 
@@ -162,53 +164,59 @@
       }
 
       // 3. Xây dựng Overpass QL Query
-      const query = `[out:json][timeout:6];way(around:${radius},${lat},${lng})[highway];out geom;`;
-      const url = `${this.endpoints[0]}?data=${encodeURIComponent(query)}`;
+      const query = `[out:json][timeout:8];way(around:${radius},${lat},${lng})[highway];out geom;`;
 
-      try {
-        const controller = typeof AbortController !== 'undefined' ? new AbortController() : null;
-        const timer = controller ? setTimeout(() => controller.abort(), this.timeoutMs) : null;
+      let lastError = null;
+      for (const endpoint of this.endpoints) {
+        try {
+          const url = `${endpoint}?data=${encodeURIComponent(query)}`;
+          const controller = typeof AbortController !== 'undefined' ? new AbortController() : null;
+          const timer = controller ? setTimeout(() => controller.abort(), this.timeoutMs) : null;
 
-        const res = await (typeof fetch !== 'undefined'
-          ? fetch(url, { signal: controller ? controller.signal : undefined, headers: { 'Accept': 'application/json' } })
-          : Promise.reject(new Error('fetch unavailable')));
+          const res = await (typeof fetch !== 'undefined'
+            ? fetch(url, { signal: controller ? controller.signal : undefined, headers: { 'Accept': 'application/json' } })
+            : Promise.reject(new Error('fetch unavailable')));
 
-        if (timer) clearTimeout(timer);
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          if (timer) clearTimeout(timer);
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
-        const data = await res.json();
-        const ways = this.normalizeElements(data.elements || []);
+          const data = await res.json();
+          const ways = this.normalizeElements(data.elements || []);
 
-        const result = {
-          ways,
-          center: { lat, lng },
-          radiusMeters: radius,
-          metadata: {
-            source: 'OVERPASS_OSM',
-            timestamp: Date.now(),
-            count: ways.length,
-            provider: 'Overpass API'
-          }
-        };
+          const result = {
+            ways,
+            center: { lat, lng },
+            radiusMeters: radius,
+            metadata: {
+              source: 'OVERPASS_OSM',
+              timestamp: Date.now(),
+              count: ways.length,
+              provider: endpoint
+            }
+          };
 
-        this.cache.set(cacheKey, result);
-        this.saveToStorage(cacheKey, result);
-        return result;
+          this.cache.set(cacheKey, result);
+          this.saveToStorage(cacheKey, result);
+          return result;
 
-      } catch (err) {
-        // Fallback an toàn khi lỗi mạng/timeout: Trả về rỗng không crash
-        return {
-          ways: [],
-          center: { lat, lng },
-          radiusMeters: radius,
-          metadata: {
-            source: 'FALLBACK_OFFLINE',
-            timestamp: Date.now(),
-            count: 0,
-            error: err.message
-          }
-        };
+        } catch (err) {
+          lastError = err;
+          // Tự động thử mirror kế tiếp
+        }
       }
+
+      // Fallback an toàn khi toàn bộ mirror lỗi/timeout: Trả về rỗng không crash
+      return {
+        ways: [],
+        center: { lat, lng },
+        radiusMeters: radius,
+        metadata: {
+          source: 'FALLBACK_OFFLINE',
+          timestamp: Date.now(),
+          count: 0,
+          error: lastError ? lastError.message : 'ALL_MIRRORS_FAILED'
+        }
+      };
     }
 
     normalizeElements(elements) {

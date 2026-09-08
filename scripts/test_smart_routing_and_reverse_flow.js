@@ -59,8 +59,28 @@ async function runTests() {
   console.log(`    - Ban đầu: Lai = ${origLaiBearing.toFixed(1)}°, Khứ = ${origKhuBearing ? origKhuBearing.toFixed(1) + '°' : '---'}`);
   console.log(`    - Sau khi đảo: Lai = ${reversedLaiBearing.toFixed(1)}°, Khứ = ${reversedKhuBearing.toFixed(1)}°`);
 
+  // 4. Kiểm thử Tầng 3: Dự Phòng Hình Học Tuyệt Đối (Zero Empty Error)
+  console.log('\n4. Kiểm thử Tầng 3: Dự Phòng Hình Học Tuyệt Đối (Offline Fallback):');
+  const emptyEngine = new RoadTopologyEngine();
+  const fallbackResult = await emptyEngine.analyzeRoadNetworkForHouse(houseCenter, houseFacing, { bypassOsrm: true });
+  assert.ok(fallbackResult !== null, 'Fallback result must not be null');
+  assert.equal(fallbackResult.status, 'SUCCESS', 'Fallback must succeed');
+  assert.equal(fallbackResult.hasAccessRoad, true, 'Fallback must have access road');
+  assert.ok(fallbackResult.suggestion.polyline.length >= 3, 'Fallback polyline must have at least 3 points');
+  assert.ok(typeof fallbackResult.suggestion.laiBearing === 'number', 'Fallback Lai bearing must be valid');
+  assert.ok(typeof fallbackResult.suggestion.khuBearing === 'number', 'Fallback Khu bearing must be valid');
+  console.log(`  ✓ PASS: Tầng 3 hoạt động hoàn hảo - không bao giờ báo lỗi rỗng:`);
+  console.log(`    - Tên tuyến: ${fallbackResult.accessRoad.name}`);
+  console.log(`    - Lai Thủy: ${fallbackResult.suggestion.laiBearing.toFixed(1)}° (${fallbackResult.suggestion.laiMountain})`);
+  console.log(`    - Khứ Thủy: ${fallbackResult.suggestion.khuBearing.toFixed(1)}° (${fallbackResult.suggestion.khuMountain})`);
+
+  // 5. Kiểm tra gán sự kiện click cho btn-auto-road-detect
+  console.log('\n5. Kiểm tra gán sự kiện click cho nút Bắt Tuyến Đường:');
+  assert.ok(toolCode.includes("btnAutoRoad.addEventListener('click'"), 'btn-auto-road-detect must have click listener in luopan_map_tool.js');
+  console.log('  ✓ PASS: Nút "Bắt Tuyến Đường" đã được gán sự kiện click chính xác trong workflow.');
+
   console.log('\n======================================================');
-  console.log('KẾT QUẢ KIỂM THỬ SMART ROUTING: 100% PASSED!');
+  console.log('KẾT QUẢ KIỂM THỬ SMART ROUTING 3 TẦNG: 100% PASSED!');
   console.log('======================================================\n');
 }
 
