@@ -77,7 +77,60 @@
       const routeChain = this.traceConnectedRoute(houseCenter, accessCandidate, graph);
 
       // 4. Sinh đề xuất Tuyến Lai / Khứ
-      return this.generateLaiKhuSuggestion(houseCenter, facingBearing, accessCandidate, routeChain, roadData.metadata);
+      const result = this.generateLaiKhuSuggestion(houseCenter, facingBearing, accessCandidate, routeChain, roadData.metadata);
+
+      // 5. Nếu có ngã 3 và có mạng internet, thử tinh chỉnh khúc cua bằng OSRM Routing Engine (chuẩn công nghệ dẫn đường)
+      if (result && result.suggestion && result.suggestion.laiPoint && result.suggestion.khuPoint) {
+        try {
+          const osrmPoints = await this.fetchOsrmRoute(result.suggestion.laiPoint, result.suggestion.khuPoint);
+          if (Array.isArray(osrmPoints) && osrmPoints.length >= 2) {
+            result.suggestion.polyline = osrmPoints;
+            result.suggestion.polylinePoints = osrmPoints;
+            result.metadata.routingEngine = 'OSRM_PUBLIC_ROUTING_ENGINE';
+          }
+        } catch (e) {
+          // Bỏ qua nếu ngoại tuyến, bảo toàn tuyến đồ thị nội bộ
+        }
+      }
+
+      return result;
+    }
+
+    /**
+     * Tinh chỉnh lộ trình qua OSRM Routing API (công nghệ dẫn đường mã nguồn mở)
+     */
+    async fetchOsrmRoute(origin, dest) {
+      if (!origin || !dest || typeof origin.lat !== 'number' || typeof dest.lat !== 'number') return null;
+      try {
+        const url = `https://router.project-osrm.org/route/v1/driving/${origin.lng.toFixed(6)},${origin.lat.toFixed(6)};${dest.lng.toFixed(6)},${dest.lat.toFixed(6)}?overview=full&geometries=geojson`;
+        const controller = typeof AbortController !== 'undefined' ? new AbortController() : null;
+        const timer = controller ? setTimeout(() => controller.abort(), 3000) : null;
+        const res = await (typeof fetch !== 'undefined' ? fetch(url, { signal: controller ? controller.signal : undefined }) : null);
+        if (timer) clearTimeout(timer);
+        if (!res || !res.ok) return null;
+        const data = await res.json();
+        if (data && data.code === 'Ok' && Array.isArray(data.routes) && data.routes.length > 0) {
+          const coords = data.routes[0].geometry.coordinates; // [[lng, lat], ...]
+          if (Array.isArray(coords) && coords.length >= 2) {
+            let sampled = [];
+            if (coords.length <= 8) {
+              sampled = coords.map(c => ({ lat: c[1], lng: c[0] }));
+            } else {
+              const step = (coords.length - 1) / 7;
+              for (let i = 0; i < 7; i++) {
+                const c = coords[Math.round(i * step)];
+                sampled.push({ lat: c[1], lng: c[0] });
+              }
+              const last = coords[coords.length - 1];
+              sampled.push({ lat: last[1], lng: last[0] });
+            }
+            return sampled;
+          }
+        }
+      } catch (err) {
+        // Safe offline fallback
+      }
+      return null;
     }
 
     /**

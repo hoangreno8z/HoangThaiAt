@@ -14,7 +14,12 @@
   } else if (typeof module === 'object' && module.exports) {
     module.exports = factory(require('./geo_measurement_engine'));
   } else {
-    root.RoadNetworkProvider = factory(root.GeoMeasurementEngine);
+    const mod = factory(root.GeoMeasurementEngine);
+    root.RoadNetworkProvider = mod;
+    root.OverpassRoadProvider = mod.OverpassRoadProvider;
+    root.OfflineFixtureRoadProvider = mod.OfflineFixtureRoadProvider;
+    root.BaseRoadProvider = mod.BaseRoadProvider;
+    root.snapPointToRoad = mod.snapPointToRoad;
   }
 }(typeof self !== 'undefined' ? self : this, function(GeoEngine) {
   'use strict';
