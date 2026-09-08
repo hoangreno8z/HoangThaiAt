@@ -59,20 +59,17 @@ async function runTests() {
   console.log(`    - Ban đầu: Lai = ${origLaiBearing.toFixed(1)}°, Khứ = ${origKhuBearing ? origKhuBearing.toFixed(1) + '°' : '---'}`);
   console.log(`    - Sau khi đảo: Lai = ${reversedLaiBearing.toFixed(1)}°, Khứ = ${reversedKhuBearing.toFixed(1)}°`);
 
-  // 4. Kiểm thử Tầng 3: Dự Phòng Hình Học Tuyệt Đối (Zero Empty Error)
-  console.log('\n4. Kiểm thử Tầng 3: Dự Phòng Hình Học Tuyệt Đối (Offline Fallback):');
-  const emptyEngine = new RoadTopologyEngine();
-  const fallbackResult = await emptyEngine.analyzeRoadNetworkForHouse(houseCenter, houseFacing, { bypassOsrm: true });
-  assert.ok(fallbackResult !== null, 'Fallback result must not be null');
-  assert.equal(fallbackResult.status, 'SUCCESS', 'Fallback must succeed');
-  assert.equal(fallbackResult.hasAccessRoad, true, 'Fallback must have access road');
-  assert.ok(fallbackResult.suggestion.polyline.length >= 3, 'Fallback polyline must have at least 3 points');
-  assert.ok(typeof fallbackResult.suggestion.laiBearing === 'number', 'Fallback Lai bearing must be valid');
-  assert.ok(typeof fallbackResult.suggestion.khuBearing === 'number', 'Fallback Khu bearing must be valid');
-  console.log(`  ✓ PASS: Tầng 3 hoạt động hoàn hảo - không bao giờ báo lỗi rỗng:`);
-  console.log(`    - Tên tuyến: ${fallbackResult.accessRoad.name}`);
-  console.log(`    - Lai Thủy: ${fallbackResult.suggestion.laiBearing.toFixed(1)}° (${fallbackResult.suggestion.laiMountain})`);
-  console.log(`    - Khứ Thủy: ${fallbackResult.suggestion.khuBearing.toFixed(1)}° (${fallbackResult.suggestion.khuMountain})`);
+  // 4. Kiểm thử Tầng 3: Fail-Safe Bắt Buộc (Không Sinh Đường Giả Khi Thiếu Dữ Liệu)
+  console.log('\n4. Kiểm thử Tầng 3: Fail-Safe Bắt Buộc (UNKNOWN, Không Sinh Đường Giả):');
+  const emptyProvider = new RoadNetworkProvider.OfflineFixtureRoadProvider([]);
+  const emptyEngine = new RoadTopologyEngine({ roadProvider: emptyProvider });
+  const failSafeResult = await emptyEngine.analyzeRoadNetworkForHouse(houseCenter, houseFacing, { bypassOsrm: true });
+  assert.ok(failSafeResult !== null, 'Fail-safe result must not be null');
+  assert.equal(failSafeResult.status, 'UNKNOWN', 'Fail-safe status must be UNKNOWN');
+  assert.equal(failSafeResult.hasAccessRoad, false, 'Fail-safe must have hasAccessRoad = false');
+  assert.equal(failSafeResult.roadAxis, null, 'Fail-safe roadAxis must be null');
+  assert.equal(failSafeResult.suggestion, null, 'Fail-safe suggestion must be null');
+  console.log(`  ✓ PASS: Tầng 3 Fail-Safe an toàn - Tuyệt đối không sinh đường ngang giả 90°`);
 
   // 5. Kiểm tra gán sự kiện click cho btn-auto-road-detect
   console.log('\n5. Kiểm tra gán sự kiện click cho nút Bắt Tuyến Đường:');

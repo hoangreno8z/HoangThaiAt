@@ -1,11 +1,14 @@
 /**
- * BỘ ĐỘNG CƠ PHÂN TÍCH ĐỒ THỊ MẠNG ĐƯỜNG & ĐỀ XUẤT LAI/KHỨ (ROAD TOPOLOGY ENGINE)
- * Chuyên trách:
- * 1. Xây dựng đồ thị mạng đường (Road Graph: Nodes, Edges, Intersections).
- * 2. Tìm đoạn đường cuối tiếp cận nhà (Final Access Road) bằng thuật toán đa tiêu chí.
- * 3. Truy vết ngược chuỗi liên thông: Đại lộ -> Giao lộ (Ngã 3/4) -> Hẻm -> Nhà.
- * 4. Tự động đề xuất tuyến Lai / Khứ thực tế kèm mức độ tin cậy (Confidence).
- * 5. Giữ nguyên ngữ nghĩa flowType: 'ROAD', không đánh đồng đường với dòng nước tự nhiên.
+ * BO DONG CO PHAN TICH DO THI MANG DUONG & DO DAC TRAC DIA THUC TE (PURE GIS ROAD TOPOLOGY ENGINE V2)
+ *
+ * Chuyen trach:
+ * 1. Xay dung do thi mang duong vector tu OpenStreetMap / GIS.
+ * 2. Tim tuyen duong tiep can thuc te (Final Access Road) dua tren diem tiep xuc cong/cua (House Access Point).
+ * 3. Trich xuat truc duong that (Road Axis) bang Cua So Hinh Hoc Thich Ung (Adaptive Local Geometry Window).
+ * 4. Tach bach tuyet doi giua Truc Duong (Vo Huong) va Chieu Dong Chay (Lai / Khu).
+ * 5. Danh gia do tin cay da tang (Layered Confidence Model).
+ * 6. Fail-Safe bat buoc: Khi khong co du lieu duong GIS hoac loi mang, tra ve status = UNKNOWN.
+ *    TUYET DOI KHONG TU DUNG DUONG GIA TU MAT TIEN NHA (+/- 90 do).
  */
 
 (function(root, factory) {
@@ -42,39 +45,37 @@
     }
 
     /**
-     * Phân tích toàn diện mạng đường quanh tâm nhà và đề xuất tuyến Lai / Khứ
-     * Kiến trúc 3 tầng:
-     * - Tầng 1: Siêu Tốc (OSRM Junction & Routing Engine) - Quét giao lộ ngã 3/4 & tuyến thực tế
-     * - Tầng 2: Đồ thị mạng đường vector (Overpass Multi-mirror API & Graph Topology)
-     * - Tầng 3: Dự phòng Hình học Tuyệt đối (Geometric Fallback) - Không bao giờ báo lỗi rỗng
-     * 
+     * Phan tich toan dien mang duong GIS quanh tam nha
      * @param {Object} houseCenter - { lat, lng }
-     * @param {number} facingBearing - Hướng nhà (0 - 360 độ)
-     * @param {Object} options - { radiusMeters: 200, bypassOsrm: false, strictProviderOnly: false }
+     * @param {number} facingBearing - Huong nha (0 - 360 do)
+     * @param {Object} options - { accessPoint, radiusMeters: 200, bypassOsrm: false }
      */
     async analyzeRoadNetworkForHouse(houseCenter, facingBearing = 0, options = {}) {
       if (!houseCenter || typeof houseCenter.lat !== 'number' || typeof houseCenter.lng !== 'number') {
-        return this.createEmptyResult('INVALID_HOUSE_CENTER');
+        return this.createUnknownResult('INVALID_HOUSE_CENTER', 'Toa do tam nha khong hop le.');
       }
+
+      const accessPoint = options.accessPoint ||
+        ((Geo && Geo.computeDestinationPoint) ? Geo.computeDestinationPoint(houseCenter, 4, facingBearing) : houseCenter);
 
       const isFixtureProvider = this.provider && typeof this.provider.getName === 'function' && this.provider.getName() === 'OFFLINE_FIXTURE';
 
       // =========================================================================
-      // TẦNG 1: SIÊU TỐC - OSRM JUNCTION & ROUTING ENGINE (Ưu tiên sơ cấp)
+      // TANG 1: OSRM ROUTING (Chi dung khi tra ve day du toa do thuc te tu giao lo)
       // =========================================================================
       if (!isFixtureProvider && !options.bypassOsrm) {
         try {
-          const osrmResult = await this.detectRoadViaOsrm(houseCenter, facingBearing, options);
-          if (osrmResult && osrmResult.hasAccessRoad && osrmResult.suggestion) {
+          const osrmResult = await this.detectRoadViaOsrm(houseCenter, facingBearing, { ...options, accessPoint });
+          if (osrmResult && osrmResult.hasAccessRoad && osrmResult.roadAxis) {
             return osrmResult;
           }
-        } catch (err) {
-          // Chuyển tiếp Tầng 2
+        } catch (_) {
+          // Chuyen tiep Tang 2
         }
       }
 
       // =========================================================================
-      // TẦNG 2: ĐỒ THỊ MẠNG ĐƯỜNG VECTOR (Overpass API đa mirror hoặc Fixture)
+      // TANG 2: DO THI MANG DUONG VECTOR (Overpass Multi-mirror API hoac Fixture)
       // =========================================================================
       if (this.provider) {
         try {
@@ -83,339 +84,93 @@
           const ways = (roadData && roadData.ways) || [];
 
           if (ways.length > 0) {
-            const accessCandidate = this.findFinalAccessRoad(houseCenter, facingBearing, ways);
+            const accessCandidate = this.findFinalAccessRoad(houseCenter, facingBearing, ways, { accessPoint });
             if (accessCandidate) {
               const graph = this.buildRoadGraph(ways);
-              const routeChain = this.traceConnectedRoute(houseCenter, accessCandidate, graph);
-              const result = this.generateLaiKhuSuggestion(houseCenter, facingBearing, accessCandidate, routeChain, roadData.metadata);
 
-              // Tinh chỉnh khúc cua bằng OSRM nếu có thể
-              if (result && result.suggestion && result.suggestion.laiPoint && result.suggestion.khuPoint && !isFixtureProvider) {
-                try {
-                  const osrmPoints = await this.fetchOsrmRoute(result.suggestion.laiPoint, result.suggestion.khuPoint);
-                  if (Array.isArray(osrmPoints) && osrmPoints.length >= 2) {
-                    result.suggestion.polyline = osrmPoints;
-                    result.suggestion.polylinePoints = osrmPoints;
-                    result.metadata.routingEngine = 'OSRM_PUBLIC_ROUTING_ENGINE';
-                  }
-                } catch (_) {}
-              }
+              // Tinh cua so hinh hoc thich ung (Adaptive Local Geometry Window)
+              const windowRes = (Geo && Geo.calculateAdaptiveGeometryWindow)
+                ? Geo.calculateAdaptiveGeometryWindow(accessCandidate.way.geometry, accessCandidate.projectedPoint, {
+                    maxDeflectionDeg: 35.0,
+                    targetMaxSpanMeters: 80.0
+                  })
+                : null;
 
-              return result;
+              // Xac dinh Truc Duong Thuc Te (Road Axis - Vo Huong)
+              const axisBearing = windowRes && typeof windowRes.roadAxisBearing === 'number'
+                ? windowRes.roadAxisBearing
+                : (Geo ? Geo.calculateGeodesicBearing(accessCandidate.p1, accessCandidate.p2) : 0);
+
+              const roadAxis = {
+                bearing: Math.round(axisBearing * 100) / 100,
+                reverseBearing: Math.round(((axisBearing + 180) % 360) * 100) / 100,
+                windowLengthMeters: windowRes ? windowRes.windowLengthMeters : accessCandidate.distanceMeters,
+                samplePointsCount: windowRes ? windowRes.windowPoints.length : 2,
+                startPoint: windowRes ? windowRes.windowPoints[0] : accessCandidate.p1,
+                endPoint: windowRes ? windowRes.windowPoints[windowRes.windowPoints.length - 1] : accessCandidate.p2,
+                isCurved: windowRes ? windowRes.isCurved : false
+              };
+
+              // Phan tich chieu dong chay (Flow Direction) doc theo topology mang duong
+              const flowEval = this.evaluateFlowDirection(houseCenter, accessCandidate, graph, windowRes);
+
+              // Tinh toan he thong diem tin cay da tang (Layered Confidence Model)
+              const confidenceScores = this.calculateConfidenceScores(accessCandidate, windowRes, flowEval);
+
+              return {
+                status: 'SUCCESS',
+                hasAccessRoad: true,
+                message: 'Da do dac thanh cong mang duong GIS thuc te.',
+                flowType: 'ROAD',
+                flowDirectionStatus: flowEval.flowDirectionStatus,
+                confidence: confidenceScores.overallConfidence,
+                confidenceScores,
+                confidenceReasons: confidenceScores.reasons,
+                roadAxis,
+                accessRoad: {
+                  id: accessCandidate.way.id,
+                  name: accessCandidate.way.name,
+                  highway: accessCandidate.way.highway,
+                  rank: accessCandidate.way.rank,
+                  distanceMeters: accessCandidate.distanceToHouseMeters,
+                  distanceToHouseMeters: accessCandidate.distanceToHouseMeters,
+                  distanceToAccessPointMeters: accessCandidate.distanceToAccessPointMeters,
+                  projectedPoint: accessCandidate.projectedPoint,
+                  rawGeometry: accessCandidate.way.geometry
+                },
+                suggestion: flowEval.suggestion,
+                metadata: {
+                  source: (roadData && roadData.metadata && roadData.metadata.source) || 'OVERPASS_VECTOR_GRAPH',
+                  timestamp: Date.now(),
+                  algorithm: 'PURE_GIS_ROAD_GEOMETRY_V2'
+                }
+              };
             }
           }
-        } catch (err) {
-          // Chuyển tiếp Tầng 3
+        } catch (_) {
+          // Chuyen tiep Fail-Safe
         }
       }
 
       // =========================================================================
-      // TẦNG 3: DỰ PHÒNG HÌNH HỌC TUYỆT ĐỐI (Zero Empty Error)
+      // TANG 3: FAIL-SAFE BAT BUOC (UNKNOWN - TUYET DOI KHONG SINH DUONG GIA)
       // =========================================================================
-      if (!options.strictProviderOnly) {
-        return this.generateGeometricFallback(houseCenter, facingBearing);
-      }
-
-      return this.createEmptyResult('NO_SUITABLE_ACCESS_ROAD');
+      return this.createUnknownResult(
+        'NO_SUITABLE_ACCESS_ROAD',
+        'Không tìm thấy dữ liệu mạng đường vector ngoài bản đồ GIS. Vui lòng chỉnh Lai/Khứ thủ công trên ảnh vệ tinh.'
+      );
     }
 
     /**
-     * TẦNG 1: Quét trực tiếp các giao lộ ngã 3/4 và tuyến đường thực tế qua OSRM
+     * Tim doan duong tiep can nha bang he thong cham diem da tieu chi
+     * Uu tien tuyet doi tuyen tiep can truoc mat tien nha (Access Point)
      */
-    async detectRoadViaOsrm(houseCenter, facingBearing = 0, options = {}) {
-      if (!houseCenter || typeof houseCenter.lat !== 'number' || typeof houseCenter.lng !== 'number') return null;
-      try {
-        const nearestUrl = `https://router.project-osrm.org/nearest/v1/driving/${houseCenter.lng.toFixed(6)},${houseCenter.lat.toFixed(6)}?number=10`;
-        const controller = typeof AbortController !== 'undefined' ? new AbortController() : null;
-        const timer = controller ? setTimeout(() => controller.abort(), 3500) : null;
-
-        const res = await (typeof fetch !== 'undefined'
-          ? fetch(nearestUrl, {
-              signal: controller ? controller.signal : undefined,
-              headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)' }
-            })
-          : null);
-
-        if (timer) clearTimeout(timer);
-        if (!res || !res.ok) return null;
-
-        const data = await res.json();
-        if (!data || data.code !== 'Ok' || !Array.isArray(data.waypoints) || data.waypoints.length === 0) {
-          return null;
-        }
-
-        const waypoints = data.waypoints;
-        const wp0 = waypoints[0];
-        if (!wp0 || !Array.isArray(wp0.location) || wp0.location.length < 2) return null;
-
-        if (wp0.distance > 300) return null;
-
-        const p0 = { lat: wp0.location[1], lng: wp0.location[0] };
-        const roadName0 = wp0.name || '';
-
-        // Tìm điểm giao lộ (ngã 3/ngã 4) cách nhà từ 12m đến 450m
-        const junctionCandidates = [];
-        for (let i = 1; i < waypoints.length; i++) {
-          const wp = waypoints[i];
-          if (!wp || !Array.isArray(wp.location) || wp.location.length < 2) continue;
-          const pt = { lat: wp.location[1], lng: wp.location[0] };
-          const distFromHouse = wp.distance || (Geo ? Geo.calculateHaversineDistance(houseCenter, pt) : 50);
-          const distFromP0 = Geo ? Geo.calculateHaversineDistance(p0, pt) : distFromHouse;
-
-          if (distFromP0 >= 12 && distFromP0 <= 450) {
-            const isDifferentStreet = Boolean(wp.name && wp.name !== roadName0);
-            junctionCandidates.push({
-              wp,
-              pt,
-              distFromP0,
-              distFromHouse,
-              isDifferentStreet,
-              name: wp.name || ''
-            });
-          }
-        }
-
-        // Ưu tiên đường khác tên (ngã 3/4 liên thông), kế tiếp đến khoảng cách lớn nhất
-        junctionCandidates.sort((a, b) => {
-          if (a.isDifferentStreet && !b.isDifferentStreet) return -1;
-          if (!a.isDifferentStreet && b.isDifferentStreet) return 1;
-          return b.distFromP0 - a.distFromP0;
-        });
-
-        const wpJunction = junctionCandidates.length > 0 ? junctionCandidates[0].wp : null;
-        let routePoints = null;
-
-        if (wpJunction) {
-          const routeUrl = `https://router.project-osrm.org/route/v1/driving/${wpJunction.location[0].toFixed(6)},${wpJunction.location[1].toFixed(6)};${wp0.location[0].toFixed(6)},${wp0.location[1].toFixed(6)}?overview=full&geometries=geojson`;
-          const rController = typeof AbortController !== 'undefined' ? new AbortController() : null;
-          const rTimer = rController ? setTimeout(() => rController.abort(), 3000) : null;
-          const rRes = await (typeof fetch !== 'undefined'
-            ? fetch(routeUrl, {
-                signal: rController ? rController.signal : undefined,
-                headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)' }
-              })
-            : null);
-          if (rTimer) clearTimeout(rTimer);
-
-          if (rRes && rRes.ok) {
-            const rData = await rRes.json();
-            if (rData && rData.code === 'Ok' && Array.isArray(rData.routes) && rData.routes.length > 0) {
-              const coords = rData.routes[0].geometry.coordinates;
-              if (Array.isArray(coords) && coords.length >= 2) {
-                routePoints = this.sampleRouteCoordinates(coords);
-              }
-            }
-          }
-        }
-
-        // Nếu không route được từ OSRM route, dựng đoạn liên kết từ tọa độ giao lộ
-        if (!routePoints || routePoints.length < 2) {
-          if (wpJunction) {
-            routePoints = [
-              { lat: wpJunction.location[1], lng: wpJunction.location[0] },
-              p0
-            ];
-          } else {
-            const bearingToP0 = Geo ? Geo.calculateGeodesicBearing(houseCenter, p0) : facingBearing;
-            const pLai = Geo && Geo.computeDestinationPoint ? Geo.computeDestinationPoint(p0, 25, (bearingToP0 - 90 + 360) % 360) : p0;
-            const pKhu = Geo && Geo.computeDestinationPoint ? Geo.computeDestinationPoint(p0, 25, (bearingToP0 + 90) % 360) : p0;
-            routePoints = [pLai, p0, pKhu];
-          }
-        }
-
-        const laiPoint = routePoints[0];
-        const khuPoint = routePoints[routePoints.length - 1];
-        const laiBearing = Geo ? Geo.calculateGeodesicBearing(houseCenter, laiPoint) : 0;
-        const khuBearing = Geo ? Geo.calculateGeodesicBearing(houseCenter, khuPoint) : 0;
-
-        let compositeRoadName = roadName0;
-        if (wpJunction && wpJunction.name && wpJunction.name !== roadName0) {
-          compositeRoadName = compositeRoadName ? `${compositeRoadName} giao ${wpJunction.name}` : wpJunction.name;
-        }
-        if (!compositeRoadName) compositeRoadName = 'Giao lộ thực địa';
-
-        const baselineMeters = Geo ? Geo.calculateHaversineDistance(laiPoint, khuPoint) : 30;
-
-        return {
-          status: 'SUCCESS',
-          hasAccessRoad: true,
-          confidence: 'HIGH',
-          confidenceReasons: [
-            `Bắt tuyến trực tiếp từ giao lộ OSRM (${(wpJunction && wpJunction.name) || 'Giao lộ'}) vào mặt tiền nhà`,
-            `Cự ly tiếp cận: ${Math.round(wp0.distance * 10) / 10}m`
-          ],
-          flowType: 'ROAD',
-          accessRoad: {
-            id: 'osrm_route',
-            name: compositeRoadName,
-            highway: 'residential',
-            distanceMeters: Math.round(wp0.distance * 10) / 10,
-            distanceToHouseMeters: Math.round(wp0.distance * 10) / 10
-          },
-          suggestion: {
-            flowType: 'ROAD',
-            confidence: 'HIGH',
-            laiBearing,
-            khuBearing,
-            laiMountain: this.getMountain(laiBearing),
-            khuMountain: this.getMountain(khuBearing),
-            laiPoint,
-            khuPoint,
-            laiSourceNote: `Ngã 3 / giao lộ (${(wpJunction && wpJunction.name) || 'Đầu tuyến'})`,
-            khuSourceNote: `Mặt tiền nhà (${roadName0 || 'Lối vào'})`,
-            polyline: routePoints,
-            polylinePoints: routePoints,
-            baselineMeters: Math.round(baselineMeters * 10) / 10
-          },
-          metadata: {
-            source: 'OSRM_ROUTING_PRIMARY',
-            timestamp: Date.now(),
-            routingEngine: 'OSRM_PUBLIC_ROUTING_ENGINE',
-            junctionName: (wpJunction && wpJunction.name) || '',
-            accessRoadName: roadName0
-          }
-        };
-
-      } catch (err) {
-        return null;
-      }
-    }
-
-    sampleRouteCoordinates(coords, maxPoints = 7) {
-      if (!Array.isArray(coords) || coords.length === 0) return [];
-      if (coords.length <= maxPoints) {
-        return coords.map(c => ({ lat: c[1], lng: c[0] }));
-      }
-      const sampled = [];
-      const step = (coords.length - 1) / (maxPoints - 1);
-      for (let i = 0; i < maxPoints - 1; i++) {
-        const c = coords[Math.round(i * step)];
-        sampled.push({ lat: c[1], lng: c[0] });
-      }
-      const last = coords[coords.length - 1];
-      sampled.push({ lat: last[1], lng: last[0] });
-      return sampled;
-    }
-
-    /**
-     * TẦNG 3: Dựng tuyến hình học tiếp tuyến trước mặt tiền nhà
-     * Đảm bảo luôn trả về tuyến hợp lệ, không bao giờ báo lỗi rỗng ngay cả khi mất mạng hoàn toàn
-     */
-    generateGeometricFallback(houseCenter, facingBearing = 0) {
-      const roadCenterDist = 15;
-      const roadHalfWidth = 35;
-
-      const pFront = Geo && Geo.computeDestinationPoint
-        ? Geo.computeDestinationPoint(houseCenter, roadCenterDist, facingBearing)
-        : { lat: houseCenter.lat, lng: houseCenter.lng };
-
-      const laiBearingAngle = (facingBearing - 90 + 360) % 360;
-      const pLai = Geo && Geo.computeDestinationPoint
-        ? Geo.computeDestinationPoint(pFront, roadHalfWidth, laiBearingAngle)
-        : { lat: pFront.lat, lng: pFront.lng };
-
-      const khuBearingAngle = (facingBearing + 90) % 360;
-      const pKhu = Geo && Geo.computeDestinationPoint
-        ? Geo.computeDestinationPoint(pFront, roadHalfWidth, khuBearingAngle)
-        : { lat: pFront.lat, lng: pFront.lng };
-
-      const polyline = [pLai, pFront, pKhu];
-
-      const laiBearing = Geo ? Geo.calculateGeodesicBearing(houseCenter, pLai) : laiBearingAngle;
-      const khuBearing = Geo ? Geo.calculateGeodesicBearing(houseCenter, pKhu) : khuBearingAngle;
-
-      return {
-        status: 'SUCCESS',
-        hasAccessRoad: true,
-        confidence: 'MEDIUM',
-        confidenceReasons: [
-          'Dựng tuyến hình học tiếp tuyến mặt tiền nhà (Dự phòng thông minh khi ngoại tuyến)',
-          `Khoảng cách tim đường trước mặt tiền: ${roadCenterDist}m`
-        ],
-        flowType: 'ROAD',
-        accessRoad: {
-          id: 'geometric_fallback',
-          name: 'Tuyến đường mặt tiền (Định vị hình học)',
-          highway: 'residential',
-          distanceMeters: roadCenterDist,
-          distanceToHouseMeters: roadCenterDist
-        },
-        suggestion: {
-          flowType: 'ROAD',
-          confidence: 'MEDIUM',
-          laiBearing,
-          khuBearing,
-          laiMountain: this.getMountain(laiBearing),
-          khuMountain: this.getMountain(khuBearing),
-          laiPoint: pLai,
-          khuPoint: pKhu,
-          laiSourceNote: 'Đầu tuyến tiếp cận (Bên Trái mặt tiền)',
-          khuSourceNote: 'Cuối tuyến tiếp cận (Bên Phải mặt tiền)',
-          polyline,
-          polylinePoints: polyline,
-          baselineMeters: roadHalfWidth * 2
-        },
-        metadata: {
-          source: 'GEOMETRIC_PROJECTED',
-          timestamp: Date.now(),
-          note: 'Tự động tạo tuyến hình học chuẩn trắc địa, không bao giờ báo lỗi rỗng'
-        }
-      };
-    }
-
-    /**
-     * Tra cứu 24 Sơn theo phương vị độ (0 - 360)
-     */
-    getMountain(deg) {
-      if (typeof deg !== 'number' || !Number.isFinite(deg)) return null;
-      const MOUNTAINS = [
-        'Tý', 'Quý', 'Sửu', 'Cấn', 'Dần', 'Giáp',
-        'Mão', 'Ất', 'Thìn', 'Tốn', 'Tị', 'Bính',
-        'Ngọ', 'Đinh', 'Mùi', 'Khôn', 'Thân', 'Canh',
-        'Dậu', 'Tân', 'Tuất', 'Càn', 'Hợi', 'Nhâm'
-      ];
-      const norm = (deg % 360 + 360) % 360;
-      const shifted = (norm + 7.5) % 360;
-      const idx = Math.floor(shifted / 15);
-      return MOUNTAINS[idx % 24];
-    }
-
-    /**
-     * Tinh chỉnh lộ trình qua OSRM Routing API (công nghệ dẫn đường mã nguồn mở)
-     */
-    async fetchOsrmRoute(origin, dest) {
-      if (!origin || !dest || typeof origin.lat !== 'number' || typeof dest.lat !== 'number') return null;
-      try {
-        const url = `https://router.project-osrm.org/route/v1/driving/${origin.lng.toFixed(6)},${origin.lat.toFixed(6)};${dest.lng.toFixed(6)},${dest.lat.toFixed(6)}?overview=full&geometries=geojson`;
-        const controller = typeof AbortController !== 'undefined' ? new AbortController() : null;
-        const timer = controller ? setTimeout(() => controller.abort(), 3000) : null;
-        const res = await (typeof fetch !== 'undefined'
-          ? fetch(url, {
-              signal: controller ? controller.signal : undefined,
-              headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)' }
-            })
-          : null);
-        if (timer) clearTimeout(timer);
-        if (!res || !res.ok) return null;
-        const data = await res.json();
-        if (data && data.code === 'Ok' && Array.isArray(data.routes) && data.routes.length > 0) {
-          const coords = data.routes[0].geometry.coordinates;
-          if (Array.isArray(coords) && coords.length >= 2) {
-            return this.sampleRouteCoordinates(coords);
-          }
-        }
-      } catch (err) {
-        // Safe offline fallback
-      }
-      return null;
-    }
-
-    /**
-     * Tìm đoạn đường cuối tiếp cận nhà bằng hệ thống chấm điểm (Scoring)
-     */
-    findFinalAccessRoad(houseCenter, facingBearing, ways) {
+    findFinalAccessRoad(houseCenter, facingBearing, ways, options = {}) {
       let bestCandidate = null;
       let highestScore = -Infinity;
+
+      const accessPoint = (options && options.accessPoint) ||
+        ((Geo && Geo.computeDestinationPoint) ? Geo.computeDestinationPoint(houseCenter, 4, facingBearing) : houseCenter);
 
       for (const way of ways) {
         if (!way.geometry || way.geometry.length < 2) continue;
@@ -423,22 +178,32 @@
           const p1 = way.geometry[i];
           const p2 = way.geometry[i + 1];
 
-          const proj = this.projectPointToSegment(houseCenter, p1, p2);
-          const dist = Geo ? Geo.calculateHaversineDistance(houseCenter, proj) : 999;
-          if (dist > 160) continue; // Mở rộng ngưỡng cự ly lên 160m để bao quát cả giao lộ đại lộ lớn
+          const projHouse = this.projectPointToSegment(houseCenter, p1, p2);
+          const projAccess = this.projectPointToSegment(accessPoint, p1, p2);
 
-          // Tính phương vị từ tâm nhà ra điểm đường
-          const bearingToRoad = Geo ? Geo.calculateGeodesicBearing(houseCenter, proj) : 0;
+          const distHouse = Geo ? Geo.calculateHaversineDistance(houseCenter, projHouse) : 999;
+          const distAccess = Geo ? Geo.calculateHaversineDistance(accessPoint, projAccess) : distHouse;
+
+          if (distHouse > 160 && distAccess > 160) continue;
+
+          // Phuong vi tu tam nha den diem chieu tren duong
+          const bearingToRoad = Geo ? Geo.calculateGeodesicBearing(houseCenter, projHouse) : 0;
           const diffFacing = Geo ? Geo.angularDistance(facingBearing, bearingToRoad) : 180;
 
-          // Điểm mặt tiền: Đường nằm trước mặt nhà (diff <= 90 độ) được cộng điểm lớn
-          const frontageAlignment = Math.cos((diffFacing * Math.PI) / 180);
-          const frontageScore = Math.max(-0.2, frontageAlignment) * 40; // max 40 điểm
+          // 1. Diem mat tien:
+          // Neu duong nam sau lung nha (> 90 do), ap muc phat nang (-50 den -120 diem)
+          let frontageScore = 0;
+          if (diffFacing <= 90) {
+            frontageScore = Math.cos((diffFacing * Math.PI) / 180) * 45;
+          } else {
+            frontageScore = -50 - ((diffFacing - 90) / 90) * 70;
+          }
 
-          // Điểm cự ly gần: càng sát nhà điểm càng cao (thang đo 160m)
-          const distanceScore = Math.max(0, (1 - dist / 160)) * 45; // max 45 điểm
+          // 2. Diem cu ly (uu tien cu ly tu House Access Point)
+          const effectiveDist = (distAccess * 0.7) + (distHouse * 0.3);
+          const distanceScore = Math.max(0, (1 - effectiveDist / 120)) * 50;
 
-          // Điểm cấp đường: hẻm/đường nhỏ (residential, service, alley) thường là đường vào nhà
+          // 3. Diem cap duong
           const classScore = (way.rank <= 5 ? 15 : (way.rank <= 7 ? 10 : 5));
 
           const totalScore = distanceScore + frontageScore + classScore;
@@ -451,11 +216,12 @@
               segmentIndex: i,
               p1,
               p2,
-              projectedPoint: proj,
-              distanceMeters: Math.round(dist * 10) / 10,
-              distanceToHouseMeters: Math.round(dist * 10) / 10,
+              projectedPoint: projAccess,
+              distanceMeters: Math.round(distHouse * 10) / 10,
+              distanceToHouseMeters: Math.round(distHouse * 10) / 10,
+              distanceToAccessPointMeters: Math.round(distAccess * 10) / 10,
               score: Math.round(totalScore * 10) / 10,
-              diffFacing
+              diffFacing: Math.round(diffFacing * 10) / 10
             };
           }
         }
@@ -465,12 +231,11 @@
     }
 
     /**
-     * Xây dựng đồ thị mạng đường liên thông
+     * Xay dung do thi mang duong tu danh sach cac way vector
      */
     buildRoadGraph(ways) {
-      const nodes = new Map(); // key: "lat,lng" -> { lat, lng, edges: [] }
+      const nodes = new Map();
       const edges = [];
-
       const getKey = (pt) => `${pt.lat.toFixed(6)},${pt.lng.toFixed(6)}`;
 
       for (const way of ways) {
@@ -509,147 +274,409 @@
     }
 
     /**
-     * Truy vết liên thông từ đoạn đường tiếp cận ra các ngã ba/ngã tư và đường lớn hơn
+     * Danh gia chieu dong chay (Flow Direction) doc theo topology mang duong
+     * Tach bach ro rang: Truc duong la vo huong; chieu dong chay chi duoc gan khi co nga 3/4 ro ret
      */
-    traceConnectedRoute(houseCenter, accessCandidate, graph) {
+    evaluateFlowDirection(houseCenter, accessCandidate, graph, windowRes) {
+      const geom = accessCandidate.way.geometry;
       const pProj = accessCandidate.projectedPoint;
-      const way = accessCandidate.way;
-      const geom = way.geometry;
+      const segIdx = accessCandidate.segmentIndex;
+      const getKey = (pt) => `${pt.lat.toFixed(6)},${pt.lng.toFixed(6)}`;
 
-      // Đi dọc theo con đường này về 2 phía để tìm nút giao (ngã 3/4)
+      let interForward = null;
+      let interBackward = null;
+
+      // Quet tien ve phia truoc
+      for (let i = segIdx + 1; i < geom.length; i++) {
+        const pt = geom[i];
+        const node = graph ? graph.get(getKey(pt)) : null;
+        if (node && node.edges.length >= 3) {
+          interForward = {
+            point: pt,
+            index: i,
+            intersectionType: node.edges.length === 3 ? 'nga_ba' : 'nga_tu',
+            connectedWays: node.edges.map(e => e.way.name).filter(Boolean),
+            maxConnectedRank: Math.max(...node.edges.map(e => e.way.rank || 0)),
+            distanceMeters: Geo ? Geo.calculateHaversineDistance(pProj, pt) : 50
+          };
+          break;
+        }
+      }
+
+      // Quet lui ve phia sau
+      for (let i = segIdx; i >= 0; i--) {
+        const pt = geom[i];
+        const node = graph ? graph.get(getKey(pt)) : null;
+        if (node && node.edges.length >= 3) {
+          interBackward = {
+            point: pt,
+            index: i,
+            intersectionType: node.edges.length === 3 ? 'nga_ba' : 'nga_tu',
+            connectedWays: node.edges.map(e => e.way.name).filter(Boolean),
+            maxConnectedRank: Math.max(...node.edges.map(e => e.way.rank || 0)),
+            distanceMeters: Geo ? Geo.calculateHaversineDistance(pProj, pt) : 50
+          };
+          break;
+        }
+      }
+
       const pStart = geom[0];
       const pEnd = geom[geom.length - 1];
 
-      const getKey = (pt) => `${pt.lat.toFixed(6)},${pt.lng.toFixed(6)}`;
+      let flowDirectionStatus = 'AMBIGUOUS';
+      let upstreamPoint = null;
+      let downstreamPoint = null;
+      let laiSourceNote = '';
+      let khuSourceNote = '';
 
-      const findIntersectionAlong = (startIndex, step) => {
-        for (let i = startIndex; i >= 0 && i < geom.length; i += step) {
-          const pt = geom[i];
-          const node = graph.get(getKey(pt));
-          if (node && node.edges.length >= 3) {
-            // Nút giao ngã 3 hoặc ngã 4
-            return {
-              point: pt,
-              intersectionType: node.edges.length === 3 ? 'nga_ba' : 'nga_tu',
-              connectedWays: node.edges.map(e => e.way.name).filter(Boolean)
-            };
-          }
+      if (interBackward && !interForward) {
+        flowDirectionStatus = 'UPSTREAM_FOUND';
+        upstreamPoint = interBackward.point;
+        downstreamPoint = pEnd;
+        laiSourceNote = `Nga 3 lien thong (${interBackward.connectedWays.join(', ') || 'giao lo'})`;
+        khuSourceNote = 'Loi thoat ha luu';
+      } else if (interForward && !interBackward) {
+        flowDirectionStatus = 'UPSTREAM_FOUND';
+        upstreamPoint = interForward.point;
+        downstreamPoint = pStart;
+        laiSourceNote = `Nga 3 lien thong (${interForward.connectedWays.join(', ') || 'giao lo'})`;
+        khuSourceNote = 'Loi thoat ha luu';
+      } else if (interBackward && interForward) {
+        if (interBackward.maxConnectedRank > interForward.maxConnectedRank + 1) {
+          flowDirectionStatus = 'UPSTREAM_FOUND';
+          upstreamPoint = interBackward.point;
+          downstreamPoint = interForward.point;
+          laiSourceNote = `Giao lo cap cao hon (${interBackward.connectedWays.join(', ') || 'giao lo'})`;
+          khuSourceNote = `Giao lo phu (${interForward.connectedWays.join(', ') || 'giao lo'})`;
+        } else if (interForward.maxConnectedRank > interBackward.maxConnectedRank + 1) {
+          flowDirectionStatus = 'UPSTREAM_FOUND';
+          upstreamPoint = interForward.point;
+          downstreamPoint = interBackward.point;
+          laiSourceNote = `Giao lo cap cao hon (${interForward.connectedWays.join(', ') || 'giao lo'})`;
+          khuSourceNote = `Giao lo phu (${interBackward.connectedWays.join(', ') || 'giao lo'})`;
+        } else {
+          // Hai dau giao lo tuong duong -> Tuyen thong doi xung
+          flowDirectionStatus = 'AMBIGUOUS';
         }
-        return null;
-      };
+      } else {
+        flowDirectionStatus = 'AMBIGUOUS';
+      }
 
-      const interForward = findIntersectionAlong(accessCandidate.segmentIndex + 1, 1);
-      const interBackward = findIntersectionAlong(accessCandidate.segmentIndex, -1);
+      const polyline = (windowRes && windowRes.windowPoints && windowRes.windowPoints.length >= 2)
+        ? windowRes.windowPoints
+        : geom;
+
+      const baselineMeters = (windowRes && windowRes.windowLengthMeters) ||
+        (Geo ? Geo.calculateHaversineDistance(polyline[0], polyline[polyline.length - 1]) : 25);
+
+      let suggestion = null;
+
+      if (flowDirectionStatus === 'UPSTREAM_FOUND' && upstreamPoint) {
+        const laiBearing = Geo ? Geo.calculateGeodesicBearing(houseCenter, upstreamPoint) : null;
+        const khuBearing = (downstreamPoint && Geo) ? Geo.calculateGeodesicBearing(houseCenter, downstreamPoint) : null;
+
+        suggestion = {
+          flowType: 'ROAD',
+          flowDirectionStatus: 'UPSTREAM_FOUND',
+          confidence: 'HIGH',
+          approachBearing: laiBearing,
+          departureBearing: khuBearing,
+          laiBearing,
+          khuBearing,
+          laiMountain: this.getMountain(laiBearing),
+          khuMountain: khuBearing !== null ? this.getMountain(khuBearing) : null,
+          laiPoint: upstreamPoint,
+          khuPoint: downstreamPoint,
+          laiSourceNote: laiSourceNote || 'Dau tuyen tiep can (Lai Thuy)',
+          khuSourceNote: khuSourceNote || 'Cuoi tuyen tiep can (Khu Thuy)',
+          polyline,
+          polylinePoints: polyline,
+          baselineMeters: Math.round(baselineMeters * 10) / 10
+        };
+      } else {
+        suggestion = {
+          flowType: 'ROAD',
+          flowDirectionStatus: 'AMBIGUOUS',
+          confidence: 'MEDIUM',
+          approachBearing: null,
+          departureBearing: null,
+          laiBearing: null,
+          khuBearing: null,
+          laiMountain: null,
+          khuMountain: null,
+          laiPoint: null,
+          khuPoint: null,
+          laiSourceNote: 'Chua xac dinh chieu (doi xung hai dau)',
+          khuSourceNote: 'Can nguoi dung chon chieu Lai hoac Khu',
+          polyline,
+          polylinePoints: polyline,
+          baselineMeters: Math.round(baselineMeters * 10) / 10
+        };
+      }
 
       return {
-        accessRoad: way,
+        flowDirectionStatus,
         interForward,
         interBackward,
-        endpoints: { start: pStart, end: pEnd }
+        upstreamPoint,
+        downstreamPoint,
+        suggestion
       };
     }
 
     /**
-     * Sinh đề xuất Tuyến Lai / Khứ hoàn chỉnh kèm mức độ tin cậy
+     * Tinh toan he thong danh gia tin cay da tang (Layered Confidence Model)
      */
-    generateLaiKhuSuggestion(houseCenter, facingBearing, accessCandidate, routeChain, metadata) {
-      const accessWay = accessCandidate.way;
-      const geom = accessWay.geometry;
-      const proj = accessCandidate.projectedPoint;
-
-      // Xây dựng tuyến đường đại diện trước mặt nhà gồm 3 - 5 điểm vector thực tế
-      let routePoints = [];
-      const segIdx = accessCandidate.segmentIndex;
-
-      // Lấy từ 1 điểm trước, điểm chiếu, và 1 điểm sau
-      const prevPt = geom[Math.max(0, segIdx - 1)];
-      const nextPt = geom[Math.min(geom.length - 1, segIdx + 2)];
-
-      routePoints = [
-        geom[Math.max(0, segIdx)],
-        proj,
-        geom[Math.min(geom.length - 1, segIdx + 1)]
-      ];
-
-      // Nếu có ngã ba, đưa ngã ba vào làm mốc Lai hoặc Khứ
-      let laiPoint = routePoints[0];
-      let khuPoint = routePoints[routePoints.length - 1];
-      let laiSourceNote = 'Đầu đoạn đường tiếp cận';
-      let khuSourceNote = 'Cuối đoạn đường tiếp cận';
-
-      if (routeChain.interBackward) {
-        laiPoint = routeChain.interBackward.point;
-        laiSourceNote = `Ngã 3 liên thông (${routeChain.interBackward.connectedWays.join(', ') || 'giao lộ'})`;
-      } else if (routeChain.interForward) {
-        laiPoint = routeChain.interForward.point;
-        laiSourceNote = `Ngã 3 liên thông (${routeChain.interForward.connectedWays.join(', ') || 'giao lộ'})`;
-      }
-
-      // Đảm bảo routePoints có ít nhất 3 điểm
-      if (routePoints.length === 3 && (routeChain.interBackward || routeChain.interForward)) {
-        routePoints = [laiPoint, proj, khuPoint];
-      }
-
-      // Tính phương vị địa lý thực tế (Geodesic Bearings)
-      const laiBearing = Geo ? Geo.calculateGeodesicBearing(houseCenter, laiPoint) : 0;
-      const khuBearing = Geo ? Geo.calculateGeodesicBearing(houseCenter, khuPoint) : 0;
-
-      // Chiều dài đoạn tiếp cận trước nhà (Baseline)
-      const baselineMeters = Geo ? Geo.calculateHaversineDistance(routePoints[0], routePoints[routePoints.length - 1]) : 20;
-
-      // Đánh giá mức độ tin cậy (Confidence)
-      let confidence = 'HIGH';
+    calculateConfidenceScores(accessCandidate, windowRes, flowEval) {
       const reasons = [];
 
-      if (accessCandidate.distanceMeters > 30) {
-        confidence = 'MEDIUM';
-        reasons.push(`Nhà cách đường ${accessCandidate.distanceMeters.toFixed(1)}m (> 30m)`);
-      }
-      if (accessCandidate.diffFacing > 85) {
-        confidence = 'LOW';
-        reasons.push('Đoạn đường nằm sau lưng hoặc chếch xa hướng mặt tiền');
-      }
-      if (baselineMeters < 15) {
-        if (confidence === 'HIGH') confidence = 'MEDIUM';
-        reasons.push(`Đoạn chuẩn ngắn (${baselineMeters.toFixed(1)}m < 15m)`);
+      // 1. Road Axis Confidence
+      let roadAxisConfidence = 'HIGH';
+      const span = windowRes ? windowRes.windowLengthMeters : 20;
+      if (span < 15) {
+        roadAxisConfidence = 'LOW';
+        reasons.push(`Cua so hinh hoc ngan (${span}m < 15m)`);
+      } else if (span < 30) {
+        roadAxisConfidence = 'MEDIUM';
+        reasons.push(`Cua so hinh hoc trung binh (${span}m)`);
+      } else {
+        reasons.push(`Cua so hinh hoc thich ung dat chuan (${span}m)`);
       }
 
-      const laiMountain = this.getMountain(laiBearing);
-      const khuMountain = khuBearing !== null ? this.getMountain(khuBearing) : null;
+      // 2. Geometry Confidence
+      let geometryConfidence = 'HIGH';
+      if (windowRes && windowRes.isCurved) {
+        geometryConfidence = 'MEDIUM';
+        reasons.push('Doan duong co do cong, da dung truoc goc ngoat lon');
+      }
+
+      // 3. Access Confidence
+      let accessConfidence = 'HIGH';
+      const dist = accessCandidate.distanceToHouseMeters;
+      if (dist > 50) {
+        accessConfidence = 'LOW';
+        reasons.push(`Nha cach duong xa (${dist}m > 50m)`);
+      } else if (dist > 25) {
+        accessConfidence = 'MEDIUM';
+        reasons.push(`Nha cach duong ${dist}m`);
+      } else {
+        reasons.push(`Nha tiep giap duong gan (${dist}m)`);
+      }
+
+      if (accessCandidate.diffFacing > 90) {
+        accessConfidence = 'LOW';
+        reasons.push('Tuyen duong nam lech goc mat tien');
+      }
+
+      // 4. Direction Confidence
+      let directionConfidence = flowEval.flowDirectionStatus === 'UPSTREAM_FOUND' ? 'HIGH' : 'AMBIGUOUS';
+      if (flowEval.flowDirectionStatus === 'AMBIGUOUS') {
+        reasons.push('Duong thong hai dau doi xung, can xac nhan chieu dong khi');
+      } else {
+        reasons.push('Da phat hien nga 3/4 lien thong dau nguon');
+      }
+
+      // Overall Confidence
+      let overallConfidence = 'HIGH';
+      if (accessConfidence === 'LOW' || roadAxisConfidence === 'LOW') {
+        overallConfidence = 'LOW';
+      } else if (accessConfidence === 'MEDIUM' || roadAxisConfidence === 'MEDIUM' || directionConfidence === 'AMBIGUOUS') {
+        overallConfidence = 'MEDIUM';
+      }
 
       return {
-        status: 'SUCCESS',
-        hasAccessRoad: true,
-        confidence,
-        confidenceReasons: reasons,
-        flowType: 'ROAD', // Ngữ nghĩa: Đường giao thông thực địa
-        accessRoad: {
-          id: accessWay.id,
-          name: accessWay.name,
-          highway: accessWay.highway,
-          distanceMeters: accessCandidate.distanceMeters,
-          distanceToHouseMeters: accessCandidate.distanceMeters
-        },
-        suggestion: {
-          flowType: 'ROAD',
-          confidence,
-          laiBearing,
-          khuBearing,
-          laiMountain,
-          khuMountain,
-          laiPoint,
-          khuPoint,
-          laiSourceNote,
-          khuSourceNote,
-          polyline: routePoints,
-          polylinePoints: routePoints,
-          baselineMeters: Math.round(baselineMeters * 10) / 10
-        },
-        metadata: {
-          ...metadata,
-          algorithm: 'ROAD_GRAPH_TOPOLOGY_V1'
-        }
+        roadAxisConfidence,
+        geometryConfidence,
+        accessConfidence,
+        directionConfidence,
+        overallConfidence,
+        reasons
       };
+    }
+
+    /**
+     * Quet truc tiep giao lo nga 3/4 qua OSRM (Neu co tuyen route that)
+     */
+    async detectRoadViaOsrm(houseCenter, facingBearing = 0, options = {}) {
+      if (!houseCenter || typeof houseCenter.lat !== 'number' || typeof houseCenter.lng !== 'number') return null;
+      try {
+        const nearestUrl = `https://router.project-osrm.org/nearest/v1/driving/${houseCenter.lng.toFixed(6)},${houseCenter.lat.toFixed(6)}?number=10`;
+        const controller = typeof AbortController !== 'undefined' ? new AbortController() : null;
+        const timer = controller ? setTimeout(() => controller.abort(), 3500) : null;
+
+        const res = await (typeof fetch !== 'undefined'
+          ? fetch(nearestUrl, {
+              signal: controller ? controller.signal : undefined,
+              headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)' }
+            })
+          : null);
+
+        if (timer) clearTimeout(timer);
+        if (!res || !res.ok) return null;
+
+        const data = await res.json();
+        if (!data || data.code !== 'Ok' || !Array.isArray(data.waypoints) || data.waypoints.length === 0) {
+          return null;
+        }
+
+        const waypoints = data.waypoints;
+        const wp0 = waypoints[0];
+        if (!wp0 || !Array.isArray(wp0.location) || wp0.location.length < 2) return null;
+        if (wp0.distance > 300) return null;
+
+        const p0 = { lat: wp0.location[1], lng: wp0.location[0] };
+        const roadName0 = wp0.name || '';
+
+        const junctionCandidates = [];
+        for (let i = 1; i < waypoints.length; i++) {
+          const wp = waypoints[i];
+          if (!wp || !Array.isArray(wp.location) || wp.location.length < 2) continue;
+          const pt = { lat: wp.location[1], lng: wp.location[0] };
+          const distFromHouse = wp.distance || (Geo ? Geo.calculateHaversineDistance(houseCenter, pt) : 50);
+          const distFromP0 = Geo ? Geo.calculateHaversineDistance(p0, pt) : distFromHouse;
+
+          if (distFromP0 >= 12 && distFromP0 <= 450) {
+            const isDifferentStreet = Boolean(wp.name && wp.name !== roadName0);
+            junctionCandidates.push({
+              wp,
+              pt,
+              distFromP0,
+              distFromHouse,
+              isDifferentStreet,
+              name: wp.name || ''
+            });
+          }
+        }
+
+        junctionCandidates.sort((a, b) => {
+          if (a.isDifferentStreet && !b.isDifferentStreet) return -1;
+          if (!a.isDifferentStreet && b.isDifferentStreet) return 1;
+          return b.distFromP0 - a.distFromP0;
+        });
+
+        const wpJunction = junctionCandidates.length > 0 ? junctionCandidates[0].wp : null;
+        if (!wpJunction) return null;
+
+        const routeUrl = `https://router.project-osrm.org/route/v1/driving/${wpJunction.location[0].toFixed(6)},${wpJunction.location[1].toFixed(6)};${wp0.location[0].toFixed(6)},${wp0.location[1].toFixed(6)}?overview=full&geometries=geojson`;
+        const rController = typeof AbortController !== 'undefined' ? new AbortController() : null;
+        const rTimer = rController ? setTimeout(() => rController.abort(), 3000) : null;
+        const rRes = await (typeof fetch !== 'undefined'
+          ? fetch(routeUrl, {
+              signal: rController ? rController.signal : undefined,
+              headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)' }
+            })
+          : null);
+        if (rTimer) clearTimeout(rTimer);
+
+        if (!rRes || !rRes.ok) return null;
+        const rData = await rRes.json();
+        if (!rData || rData.code !== 'Ok' || !Array.isArray(rData.routes) || rData.routes.length === 0) {
+          return null;
+        }
+
+        const coords = rData.routes[0].geometry.coordinates;
+        if (!Array.isArray(coords) || coords.length < 2) return null;
+
+        const routePoints = this.sampleRouteCoordinates(coords);
+        if (!routePoints || routePoints.length < 2) return null;
+
+        const laiPoint = routePoints[0];
+        const khuPoint = routePoints[routePoints.length - 1];
+        const laiBearing = Geo ? Geo.calculateGeodesicBearing(houseCenter, laiPoint) : 0;
+        const khuBearing = Geo ? Geo.calculateGeodesicBearing(houseCenter, khuPoint) : 0;
+
+        let compositeRoadName = roadName0;
+        if (wpJunction && wpJunction.name && wpJunction.name !== roadName0) {
+          compositeRoadName = compositeRoadName ? `${compositeRoadName} giao ${wpJunction.name}` : wpJunction.name;
+        }
+        if (!compositeRoadName) compositeRoadName = 'Giao lo thuc dia';
+
+        const baselineMeters = Geo ? Geo.calculateHaversineDistance(laiPoint, khuPoint) : 30;
+        const roadAxisBearing = Geo ? Geo.calculateGeodesicBearing(laiPoint, khuPoint) : 0;
+
+        return {
+          status: 'SUCCESS',
+          hasAccessRoad: true,
+          message: 'Bat tuyen tu giao lo OSRM thuc dia.',
+          flowType: 'ROAD',
+          flowDirectionStatus: 'UPSTREAM_FOUND',
+          confidence: 'HIGH',
+          confidenceScores: {
+            roadAxisConfidence: 'HIGH',
+            geometryConfidence: 'HIGH',
+            accessConfidence: 'HIGH',
+            directionConfidence: 'HIGH',
+            overallConfidence: 'HIGH'
+          },
+          confidenceReasons: [
+            `Bat tuyen truc tiep tu giao lo OSRM (${(wpJunction && wpJunction.name) || 'Giao lo'}) vao mat tien nha`,
+            `Cu ly tiep can: ${Math.round(wp0.distance * 10) / 10}m`
+          ],
+          roadAxis: {
+            bearing: Math.round(roadAxisBearing * 100) / 100,
+            reverseBearing: Math.round(((roadAxisBearing + 180) % 360) * 100) / 100,
+            windowLengthMeters: Math.round(baselineMeters * 10) / 10,
+            samplePointsCount: routePoints.length,
+            startPoint: laiPoint,
+            endPoint: khuPoint,
+            isCurved: routePoints.length > 2
+          },
+          accessRoad: {
+            id: 'osrm_route',
+            name: compositeRoadName,
+            highway: 'residential',
+            rank: 5,
+            distanceMeters: Math.round(wp0.distance * 10) / 10,
+            distanceToHouseMeters: Math.round(wp0.distance * 10) / 10,
+            distanceToAccessPointMeters: Math.round(wp0.distance * 10) / 10,
+            projectedPoint: p0,
+            rawGeometry: routePoints
+          },
+          suggestion: {
+            flowType: 'ROAD',
+            flowDirectionStatus: 'UPSTREAM_FOUND',
+            confidence: 'HIGH',
+            approachBearing: laiBearing,
+            departureBearing: khuBearing,
+            laiBearing,
+            khuBearing,
+            laiMountain: this.getMountain(laiBearing),
+            khuMountain: this.getMountain(khuBearing),
+            laiPoint,
+            khuPoint,
+            laiSourceNote: `Nga 3 / giao lo (${(wpJunction && wpJunction.name) || 'Dau tuyen'})`,
+            khuSourceNote: `Mat tien nha (${roadName0 || 'Loi vao'})`,
+            polyline: routePoints,
+            polylinePoints: routePoints,
+            baselineMeters: Math.round(baselineMeters * 10) / 10
+          },
+          metadata: {
+            source: 'OSRM_ROUTING_PRIMARY',
+            timestamp: Date.now(),
+            routingEngine: 'OSRM_PUBLIC_ROUTING_ENGINE',
+            junctionName: (wpJunction && wpJunction.name) || '',
+            accessRoadName: roadName0
+          }
+        };
+      } catch (_) {
+        return null;
+      }
+    }
+
+    sampleRouteCoordinates(coords, maxPoints = 7) {
+      if (!Array.isArray(coords) || coords.length === 0) return [];
+      if (coords.length <= maxPoints) {
+        return coords.map(c => ({ lat: c[1], lng: c[0] }));
+      }
+      const sampled = [];
+      const step = (coords.length - 1) / (maxPoints - 1);
+      for (let i = 0; i < maxPoints - 1; i++) {
+        const c = coords[Math.round(i * step)];
+        sampled.push({ lat: c[1], lng: c[0] });
+      }
+      const last = coords[coords.length - 1];
+      sampled.push({ lat: last[1], lng: last[0] });
+      return sampled;
     }
 
     projectPointToSegment(p, a, b) {
@@ -671,17 +698,46 @@
       };
     }
 
-    createEmptyResult(status, metadata = {}) {
+    getMountain(deg) {
+      if (typeof deg !== 'number' || !Number.isFinite(deg)) return null;
+      const MOUNTAINS = [
+        'Tý', 'Quý', 'Sửu', 'Cấn', 'Dần', 'Giáp',
+        'Mão', 'Ất', 'Thìn', 'Tốn', 'Tị', 'Bính',
+        'Ngọ', 'Đinh', 'Mùi', 'Khôn', 'Thân', 'Canh',
+        'Dậu', 'Tân', 'Tuất', 'Càn', 'Hợi', 'Nhâm'
+      ];
+      const norm = (deg % 360 + 360) % 360;
+      const shifted = (norm + 7.5) % 360;
+      const idx = Math.floor(shifted / 15);
+      return MOUNTAINS[idx % 24];
+    }
+
+    createUnknownResult(reasonCode, message) {
       return {
-        status,
+        status: 'UNKNOWN',
         hasAccessRoad: false,
-        confidence: 'LOW',
+        message: message || 'Không đủ dữ liệu đường ngoài bản đồ GIS. Vui lòng chỉnh Lai/Khứ thủ công trên ảnh vệ tinh.',
         flowType: 'UNKNOWN',
+        flowDirectionStatus: 'UNKNOWN',
+        confidence: 'LOW',
+        confidenceScores: {
+          roadAxisConfidence: 'LOW',
+          geometryConfidence: 'LOW',
+          accessConfidence: 'LOW',
+          directionConfidence: 'UNKNOWN',
+          overallConfidence: 'LOW'
+        },
+        confidenceReasons: [
+          reasonCode || 'NO_SUITABLE_ACCESS_ROAD',
+          message || 'Không tìm thấy dữ liệu đường vector thực tế quanh vị trí nhà'
+        ],
+        roadAxis: null,
         accessRoad: null,
         suggestion: null,
         metadata: {
-          ...metadata,
-          source: 'FALLBACK_MANUAL_REQUIRED'
+          algorithm: 'PURE_GIS_ROAD_GEOMETRY_V2',
+          reasonCode,
+          timestamp: Date.now()
         }
       };
     }

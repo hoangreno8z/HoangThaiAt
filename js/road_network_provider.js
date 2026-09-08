@@ -250,9 +250,9 @@
    * Provider dùng Fixtures tĩnh cho Unit Tests và offline
    */
   class OfflineFixtureRoadProvider extends BaseRoadProvider {
-    constructor(fixtures = []) {
+    constructor(fixtures) {
       super();
-      this.fixtures = Array.isArray(fixtures) && fixtures.length > 0 ? fixtures : [
+      this.fixtures = Array.isArray(fixtures) ? fixtures : [
         {
           id: 'fixture_primary',
           name: 'Phố Tràng Tiền',

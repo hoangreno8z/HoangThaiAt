@@ -57,6 +57,10 @@ class LuopanMapTool {
     this.roadSuggestion = null;
     this.multiReadings = [];
     this.showMultiReading = false;
+    this.measurementSessionId = 0;
+    this.accessPoint = null;
+    this.roadAnalysisResult = null;
+    this.showRoadDebugPanel = false;
 
     // Leaflet GIS Map
     this.mapInstance = null;
@@ -581,6 +585,9 @@ class LuopanMapTool {
             <!-- FLOATING AUTO ROAD SUGGESTION BANNER -->
             <div id="dt-road-suggestion-banner" style="position:absolute; top:52px; left:8px; right:8px; z-index:34; display:none;"></div>
 
+            <!-- FLOATING ROAD DEBUG PANEL (3 TẦNG) -->
+            <div id="dt-road-debug-panel" style="position:absolute; bottom:64px; left:8px; right:8px; z-index:33; display:none; max-height:240px; overflow-y:auto; background:rgba(15,23,42,0.96); border:1px solid #334155; border-radius:8px; padding:0.5rem; font-size:0.72rem; color:#CBD5E1; box-shadow:0 8px 30px rgba(0,0,0,0.7);"></div>
+
             </div>
           </div>
             <!-- View controls stay outside the observation area. -->
@@ -1084,6 +1091,10 @@ class LuopanMapTool {
     this.captureMapGeometry();
     if (!this.mapGeometry || !this.mapGeometry.center) return;
 
+    // Kiem tra trang thai khoa va che do sua tay de chong ghi de (State Machine & Lock Protection)
+    if (this.isCalibrationLocked || this.roadDetectionState === 'LOCKED') return;
+    if (this.isDrawingWater || this.activeDrawTool === 'drawWater') return;
+
     if (!this.topologyEngine) {
       const ProviderClass = (typeof window !== 'undefined' && window.OverpassRoadProvider) ||
         (typeof window !== 'undefined' && window.RoadNetworkProvider && window.RoadNetworkProvider.OverpassRoadProvider) ||
@@ -1102,44 +1113,69 @@ class LuopanMapTool {
     const houseCenter = this.mapGeometry.center;
     const facingBearing = this.getEffectiveFacingBearing();
 
+    // Tinh diem tiep can thuc te truoc cua / cong (House Access Point)
+    let accessPoint = null;
+    if (this.mapGeometry && this.mapGeometry.frontage && this.mapGeometry.frontage.pA && this.mapGeometry.frontage.pB) {
+      const midLat = (this.mapGeometry.frontage.pA.lat + this.mapGeometry.frontage.pB.lat) / 2;
+      const midLng = (this.mapGeometry.frontage.pA.lng + this.mapGeometry.frontage.pB.lng) / 2;
+      accessPoint = (this.geoEngine && this.geoEngine.computeDestinationPoint)
+        ? this.geoEngine.computeDestinationPoint({ lat: midLat, lng: midLng }, 2, facingBearing)
+        : { lat: midLat, lng: midLng };
+    } else {
+      accessPoint = (this.geoEngine && this.geoEngine.computeDestinationPoint)
+        ? this.geoEngine.computeDestinationPoint(houseCenter, 4, facingBearing)
+        : houseCenter;
+    }
+    this.accessPoint = accessPoint;
+
+    const currentSession = ++this.measurementSessionId;
     this.roadDetectionState = 'DETECTING';
     this.renderRoadSuggestionBanner();
 
     try {
-      const result = await this.topologyEngine.analyzeRoadNetworkForHouse(houseCenter, facingBearing);
-      if (!result || !result.hasAccessRoad || !result.suggestion) {
-        if (this.topologyEngine && typeof this.topologyEngine.generateGeometricFallback === 'function') {
-          const fallback = this.topologyEngine.generateGeometricFallback(houseCenter, facingBearing);
-          if (fallback && fallback.suggestion) {
-            this.roadSuggestion = fallback;
-            this.roadDetectionState = 'ACCEPTED';
-            this.applyRoadSuggestion(fallback);
-            return;
-          }
-        }
-        this.roadDetectionState = 'NO_ROAD';
-        this.roadSuggestion = null;
+      const result = await this.topologyEngine.analyzeRoadNetworkForHouse(houseCenter, facingBearing, {
+        accessPoint,
+        bypassOsrm: false
+      });
+
+      // Loai bo phan hoi tre (Discard Stale Session)
+      if (currentSession !== this.measurementSessionId) return;
+
+      // Chong ghi de neu trong qua trinh cho nguoi dung da khoa
+      if (this.isCalibrationLocked || this.roadDetectionState === 'LOCKED') return;
+
+      if (!result || result.status === 'UNKNOWN' || !result.hasAccessRoad || !result.roadAxis) {
+        this.roadDetectionState = 'UNKNOWN';
+        this.roadAnalysisResult = result;
         this.renderRoadSuggestionBanner();
+        this.renderRoadDebugPanel();
         return;
       }
 
+      this.roadAnalysisResult = result;
       this.roadSuggestion = result;
-      this.roadDetectionState = 'ACCEPTED';
-      this.applyRoadSuggestion(result);
-    } catch (err) {
-      console.warn('[AutoRoadDetection] Fallback hình học khi ngoại tuyến:', err);
-      if (this.topologyEngine && typeof this.topologyEngine.generateGeometricFallback === 'function') {
-        const fallback = this.topologyEngine.generateGeometricFallback(houseCenter, facingBearing);
-        if (fallback && fallback.suggestion) {
-          this.roadSuggestion = fallback;
-          this.roadDetectionState = 'ACCEPTED';
-          this.applyRoadSuggestion(fallback);
-          return;
+
+      if (result.flowDirectionStatus === 'AMBIGUOUS') {
+        this.roadDetectionState = 'AMBIGUOUS';
+        if (autoApply) {
+          this.applyRoadAxisOnly(result);
+        }
+      } else {
+        this.roadDetectionState = 'ACCEPTED';
+        if (autoApply) {
+          this.applyRoadSuggestion(result);
         }
       }
-      this.roadDetectionState = 'NO_ROAD';
-      this.roadSuggestion = null;
+
       this.renderRoadSuggestionBanner();
+      this.renderRoadDebugPanel();
+    } catch (err) {
+      console.warn('[AutoRoadDetection] Fail-Safe ngoai tuyen:', err);
+      if (currentSession !== this.measurementSessionId) return;
+      this.roadDetectionState = 'UNKNOWN';
+      this.roadAnalysisResult = null;
+      this.renderRoadSuggestionBanner();
+      this.renderRoadDebugPanel();
     }
   }
 
@@ -1173,13 +1209,16 @@ class LuopanMapTool {
       const khuB = this.getEffectiveKhuBearing();
       banner.innerHTML = `
         <div style="background:rgba(6,78,59,0.95); border:1px solid #10B981; border-radius:8px; padding:0.4rem 0.75rem; display:flex; justify-content:space-between; align-items:center; font-size:0.74rem; color:#A7F3D0; flex-wrap:wrap; gap:0.4rem; box-shadow:0 8px 24px rgba(0,0,0,0.6);">
-          <div style="display:flex; align-items:center; gap:0.4rem;">
+          <div style="display:flex; align-items:center; gap:0.4rem; flex-wrap:wrap;">
             <span>Đã tự động bắt tuyến: <strong style="color:#FEF3C7;">${roadName}</strong></span>
             <span>(Lai: <strong style="color:#34D399;">${laiB !== null ? laiB.toFixed(1) + '°' : '---'}</strong>, Khứ: <strong style="color:#38BDF8;">${khuB !== null ? khuB.toFixed(1) + '°' : 'Hẻm cụt'}</strong>)</span>
           </div>
           <div style="display:flex; align-items:center; gap:0.35rem;">
             <button type="button" id="btn-banner-reverse" class="dt-touch-btn" style="background:#059669; color:#FFF; border:none; padding:0.2rem 0.55rem; font-size:0.7rem; font-weight:700;">
               Đảo Chiều Lai ⇄ Khứ
+            </button>
+            <button type="button" id="btn-banner-toggle-debug" class="dt-touch-btn" style="background:#047857; color:#A7F3D0; border:1px solid #10B981; padding:0.2rem 0.5rem; font-size:0.7rem;">
+              Đối Soát 3 Tầng
             </button>
             <button type="button" id="btn-close-accepted-banner" style="background:transparent; border:none; color:#A7F3D0; font-size:0.9rem; cursor:pointer; line-height:1;">✕</button>
           </div>
@@ -1192,40 +1231,216 @@ class LuopanMapTool {
           this.reverseWaterFlow();
         });
       }
+      const btnDbg = banner.querySelector('#btn-banner-toggle-debug');
+      if (btnDbg) {
+        btnDbg.addEventListener('click', (e) => {
+          e.stopPropagation();
+          this.showRoadDebugPanel = !this.showRoadDebugPanel;
+          this.renderRoadDebugPanel();
+        });
+      }
       const btnCloseAcc = banner.querySelector('#btn-close-accepted-banner');
       if (btnCloseAcc) {
         btnCloseAcc.addEventListener('click', () => {
           banner.style.display = 'none';
         });
       }
-      setTimeout(() => {
-        if (banner && this.roadDetectionState === 'ACCEPTED') {
-          banner.style.display = 'none';
-        }
-      }, 5000);
       return;
     }
 
-    if (this.roadDetectionState === 'NO_ROAD') {
+    if (this.roadDetectionState === 'AMBIGUOUS') {
       banner.style.display = 'block';
+      const roadName = (this.roadSuggestion && this.roadSuggestion.accessRoad && this.roadSuggestion.accessRoad.name) || 'Trục đường tiếp cận';
+      const axisBearing = this.roadSuggestion && this.roadSuggestion.roadAxis ? this.roadSuggestion.roadAxis.bearing : null;
       banner.innerHTML = `
-        <div style="background:rgba(30,41,59,0.92); border:1px solid #64748B; border-radius:8px; padding:0.35rem 0.65rem; display:flex; justify-content:space-between; align-items:center; font-size:0.72rem; color:#94A3B8;">
-          <span>Không quét được ngã 3 lớn trong phạm vi gần. Bạn có thể kéo mốc thủ công trên ảnh vệ tinh.</span>
-          <button type="button" id="btn-close-noroad-banner" style="background:transparent; border:none; color:#94A3B8; font-size:0.9rem; cursor:pointer; line-height:1;">✕</button>
+        <div style="background:rgba(30,41,59,0.96); border:1px solid #F59E0B; border-radius:8px; padding:0.4rem 0.75rem; display:flex; justify-content:space-between; align-items:center; font-size:0.73rem; color:#FEF3C7; flex-wrap:wrap; gap:0.4rem; box-shadow:0 8px 24px rgba(0,0,0,0.6);">
+          <div style="display:flex; align-items:center; gap:0.4rem; flex-wrap:wrap;">
+            <span>Trục đường GIS: <strong style="color:#FFF;">${roadName}</strong> (${axisBearing !== null ? axisBearing.toFixed(1) + '°' : '---'}). Đường thông 2 đầu đối xứng.</span>
+            <span style="color:#CBD5E1;">Vui lòng bấm chọn đầu nước vào (Lai Thủy):</span>
+          </div>
+          <div style="display:flex; align-items:center; gap:0.35rem;">
+            <button type="button" id="btn-banner-pick-start" class="dt-touch-btn" style="background:#D97706; color:#FFF; border:none; padding:0.2rem 0.55rem; font-size:0.7rem; font-weight:700;">
+              Đầu A làm Lai
+            </button>
+            <button type="button" id="btn-banner-pick-end" class="dt-touch-btn" style="background:#B45309; color:#FFF; border:none; padding:0.2rem 0.55rem; font-size:0.7rem; font-weight:700;">
+              Đầu B làm Lai
+            </button>
+            <button type="button" id="btn-banner-toggle-debug" class="dt-touch-btn" style="background:#334155; color:#CBD5E1; border:1px solid #64748B; padding:0.2rem 0.5rem; font-size:0.7rem;">
+              Đối Soát 3 Tầng
+            </button>
+            <button type="button" id="btn-close-ambiguous-banner" style="background:transparent; border:none; color:#FEF3C7; font-size:0.9rem; cursor:pointer; line-height:1;">✕</button>
+          </div>
         </div>
       `;
+      const btnA = banner.querySelector('#btn-banner-pick-start');
+      if (btnA) {
+        btnA.addEventListener('click', (e) => {
+          e.stopPropagation();
+          if (this.waterPolyline && this.waterPolyline.length >= 2) {
+            this.setLaiNodeIndex(0);
+            this.setKhuNodeIndex(this.waterPolyline.length - 1);
+            this.roadDetectionState = 'ACCEPTED';
+            this.renderRoadSuggestionBanner();
+            this.renderRoadDebugPanel();
+          }
+        });
+      }
+      const btnB = banner.querySelector('#btn-banner-pick-end');
+      if (btnB) {
+        btnB.addEventListener('click', (e) => {
+          e.stopPropagation();
+          if (this.waterPolyline && this.waterPolyline.length >= 2) {
+            this.setLaiNodeIndex(this.waterPolyline.length - 1);
+            this.setKhuNodeIndex(0);
+            this.roadDetectionState = 'ACCEPTED';
+            this.renderRoadSuggestionBanner();
+            this.renderRoadDebugPanel();
+          }
+        });
+      }
+      const btnDbg = banner.querySelector('#btn-banner-toggle-debug');
+      if (btnDbg) {
+        btnDbg.addEventListener('click', (e) => {
+          e.stopPropagation();
+          this.showRoadDebugPanel = !this.showRoadDebugPanel;
+          this.renderRoadDebugPanel();
+        });
+      }
+      const btnCloseAmb = banner.querySelector('#btn-close-ambiguous-banner');
+      if (btnCloseAmb) {
+        btnCloseAmb.addEventListener('click', () => {
+          banner.style.display = 'none';
+        });
+      }
+      return;
+    }
+
+    if (this.roadDetectionState === 'UNKNOWN' || this.roadDetectionState === 'NO_ROAD') {
+      banner.style.display = 'block';
+      banner.innerHTML = `
+        <div style="background:rgba(30,41,59,0.94); border:1px solid #64748B; border-radius:8px; padding:0.4rem 0.7rem; display:flex; justify-content:space-between; align-items:center; font-size:0.73rem; color:#94A3B8; gap:0.4rem;">
+          <span>Không đủ dữ liệu đường ngoài bản đồ GIS. Vui lòng chỉnh Lai/Khứ thủ công trên ảnh vệ tinh.</span>
+          <div style="display:flex; align-items:center; gap:0.35rem;">
+            <button type="button" id="btn-banner-toggle-debug" class="dt-touch-btn" style="background:#334155; color:#CBD5E1; border:1px solid #64748B; padding:0.2rem 0.5rem; font-size:0.7rem;">
+              Chi Tiết
+            </button>
+            <button type="button" id="btn-close-noroad-banner" style="background:transparent; border:none; color:#94A3B8; font-size:0.9rem; cursor:pointer; line-height:1;">✕</button>
+          </div>
+        </div>
+      `;
+      const btnDbg = banner.querySelector('#btn-banner-toggle-debug');
+      if (btnDbg) {
+        btnDbg.addEventListener('click', (e) => {
+          e.stopPropagation();
+          this.showRoadDebugPanel = !this.showRoadDebugPanel;
+          this.renderRoadDebugPanel();
+        });
+      }
       const btnCloseNR = banner.querySelector('#btn-close-noroad-banner');
       if (btnCloseNR) {
         btnCloseNR.addEventListener('click', () => {
           banner.style.display = 'none';
         });
       }
-      setTimeout(() => {
-        if (banner && this.roadDetectionState === 'NO_ROAD') {
-          banner.style.display = 'none';
-        }
-      }, 3500);
     }
+  }
+
+  renderRoadDebugPanel() {
+    const panel = (this.container && this.container.querySelector ? this.container.querySelector('#dt-road-debug-panel') : null) || (typeof document !== 'undefined' && document.getElementById ? document.getElementById('dt-road-debug-panel') : null);
+    if (!panel) return;
+
+    if (!this.showRoadDebugPanel || !this.roadAnalysisResult) {
+      panel.style.display = 'none';
+      panel.innerHTML = '';
+      return;
+    }
+
+    const res = this.roadAnalysisResult;
+    const house = this.mapGeometry && this.mapGeometry.center ? this.mapGeometry.center : { lat: 0, lng: 0 };
+    const facing = this.getEffectiveFacingBearing();
+    const access = this.accessPoint || house;
+    const road = res.accessRoad || {};
+    const axis = res.roadAxis || {};
+    const conf = res.confidenceScores || {};
+
+    panel.style.display = 'block';
+    panel.innerHTML = `
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.4rem; border-bottom:1px solid #334155; padding-bottom:0.25rem;">
+        <strong style="color:#38BDF8; font-size:0.75rem;">BẢNG ĐỐI SOÁT TRẮC ĐỊA GIS & HÌNH HỌC MẠNG ĐƯỜNG (3 TẦNG)</strong>
+        <button type="button" id="btn-close-road-debug" style="background:transparent; border:none; color:#94A3B8; font-size:0.9rem; cursor:pointer;">✕</button>
+      </div>
+
+      <!-- TẦNG A: HOUSE GEOMETRY & ACCESS -->
+      <div style="background:rgba(30,41,59,0.7); border-radius:4px; padding:0.35rem 0.5rem; margin-bottom:0.35rem;">
+        <div style="color:#F59E0B; font-weight:700; margin-bottom:0.15rem;">[Tầng A] Khảo Sát Tâm Nhà & Điểm Tiếp Cận (House Access)</div>
+        <div>• Tâm nhà: <code>${house.lat.toFixed(6)}, ${house.lng.toFixed(6)}</code> | Hướng mặt tiền: <strong style="color:#FEF3C7;">${facing.toFixed(1)}°</strong></div>
+        <div>• Điểm tiếp cận cửa/cổng (Access Point): <code>${access.lat.toFixed(6)}, ${access.lng.toFixed(6)}</code></div>
+      </div>
+
+      <!-- TẦNG B: GIS ROAD VECTOR GEOMETRY -->
+      <div style="background:rgba(30,41,59,0.7); border-radius:4px; padding:0.35rem 0.5rem; margin-bottom:0.35rem;">
+        <div style="color:#38BDF8; font-weight:700; margin-bottom:0.15rem;">[Tầng B] Tuyến Đường GIS Thực Tế & Trục Đường Thích Ứng</div>
+        <div>• Tuyến: <strong style="color:#FFF;">${road.name || '---'}</strong> | OSM Way ID: <code>${road.id || '---'}</code> | Cấp: <em>${road.highway || 'residential'}</em></div>
+        <div>• Cự ly tới nhà: <strong style="color:#FEF3C7;">${typeof road.distanceToHouseMeters === 'number' ? road.distanceToHouseMeters.toFixed(1) + 'm' : '---'}</strong> | Khoảng cách tới cổng: ${typeof road.distanceToAccessPointMeters === 'number' ? road.distanceToAccessPointMeters.toFixed(1) + 'm' : '---'}</div>
+        <div>• Trục đường thực tế (Road Axis): <strong style="color:#34D399;">${axis.bearing !== undefined ? axis.bearing.toFixed(1) + '°' : '---'}</strong> (Trục ngược: ${axis.reverseBearing !== undefined ? axis.reverseBearing.toFixed(1) + '°' : '---'})</div>
+        <div>• Cửa sổ thích ứng: ${axis.windowLengthMeters ? axis.windowLengthMeters.toFixed(1) + 'm' : '---'} (${axis.samplePointsCount || 0} node vector ${axis.isCurved ? '- Có độ cong' : '- Đoạn thẳng'})</div>
+      </div>
+
+      <!-- TẦNG C: FLOW INTERPRETATION & CONFIDENCE -->
+      <div style="background:rgba(30,41,59,0.7); border-radius:4px; padding:0.35rem 0.5rem;">
+        <div style="color:#34D399; font-weight:700; margin-bottom:0.15rem;">[Tầng C] Diễn Giải Dòng Khí Phong Thủy & Độ Tin Cậy</div>
+        <div>• Trạng thái dòng chảy: <strong style="color:${res.flowDirectionStatus === 'UPSTREAM_FOUND' ? '#34D399' : '#F59E0B'};">${res.flowDirectionStatus === 'UPSTREAM_FOUND' ? 'XÁC ĐỊNH ĐẦU NGUỒN (UPSTREAM)' : (res.flowDirectionStatus === 'AMBIGUOUS' ? 'ĐƯỜNG THÔNG ĐỐI XỨNG (AMBIGUOUS)' : 'FAIL-SAFE UNKNOWN')}</strong></div>
+        <div>• Lai Thủy: <strong style="color:#34D399;">${res.suggestion && res.suggestion.laiBearing !== null ? res.suggestion.laiBearing.toFixed(1) + '° (' + res.suggestion.laiMountain + ')' : 'Chưa định hướng'}</strong> | Khứ Thủy: <strong style="color:#38BDF8;">${res.suggestion && res.suggestion.khuBearing !== null ? res.suggestion.khuBearing.toFixed(1) + '° (' + res.suggestion.khuMountain + ')' : '---'}</strong></div>
+        <div>• Độ tin cậy: Tổng thể <strong>${conf.overallConfidence || res.confidence || 'MEDIUM'}</strong> (Trục đường: ${conf.roadAxisConfidence || '---'}, Tiếp cận: ${conf.accessConfidence || '---'}, Dòng chảy: ${conf.directionConfidence || '---'})</div>
+        ${Array.isArray(res.confidenceReasons) && res.confidenceReasons.length > 0 ? `<div style="color:#94A3B8; margin-top:0.2rem; font-size:0.68rem;">Ghi chú: ${res.confidenceReasons.join('; ')}</div>` : ''}
+      </div>
+    `;
+
+    const btnClose = panel.querySelector('#btn-close-road-debug');
+    if (btnClose) {
+      btnClose.addEventListener('click', () => {
+        this.showRoadDebugPanel = false;
+        panel.style.display = 'none';
+      });
+    }
+  }
+
+  applyRoadAxisOnly(result) {
+    if (!result || !result.roadAxis) return;
+    const poly = (result.suggestion && Array.isArray(result.suggestion.polyline) && result.suggestion.polyline.length >= 2)
+      ? result.suggestion.polyline
+      : (result.accessRoad && result.accessRoad.rawGeometry ? result.accessRoad.rawGeometry : null);
+    if (!poly) return;
+
+    const projection = this.getMapProjection();
+    const toPoint = latLng => {
+      if (!this.mapInstance) return { x: 400, y: 400 };
+      const point = this.mapInstance.project(latLng)
+        .subtract(this.mapInstance.project(this.mapInstance.getCenter()))
+        .add(this.mapInstance.getSize().divideBy(2));
+      return { x: (point.x - projection.x) / projection.scale, y: (point.y - projection.y) / projection.scale };
+    };
+
+    if (!this.mapGeometry) this.captureMapGeometry();
+    if (this.mapGeometry) {
+      this.mapGeometry.water = poly.map(pt => ({ lat: pt.lat, lng: pt.lng }));
+    }
+
+    this.waterPolyline = poly.map((pt) => {
+      const p = toPoint(pt);
+      return { x: p.x, y: p.y, role: 'normal' };
+    });
+
+    this.laiNodeIndex = null;
+    this.khuNodeIndex = null;
+    this.waterNature = 'hu_thuy';
+    this.waterPathType = 'through';
+    this.roadDetectionState = 'AMBIGUOUS';
+
+    this.recalculateRawBearings();
+    this.renderDrawingElements();
+    this.updateSvgView();
+    this.updateMeasurementsDisplay();
   }
 
   applyRoadSuggestion(result) {
