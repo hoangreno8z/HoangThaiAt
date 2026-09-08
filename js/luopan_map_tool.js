@@ -950,6 +950,71 @@ class LuopanMapTool {
     this.updateMeasurementsDisplay();
   }
 
+  relocateFeaturesAroundCenter(newCenter) {
+    if (!newCenter || !Number.isFinite(newCenter.x) || !Number.isFinite(newCenter.y)) {
+      newCenter = { x: 400, y: 400 };
+    }
+    const oldCenter = this.centerPoint || { x: 400, y: 400 };
+    this.centerPoint = { x: newCenter.x, y: newCenter.y };
+
+    const dx = newCenter.x - oldCenter.x;
+    const dy = newCenter.y - oldCenter.y;
+
+    // Kiem tra cu ly mep mat tien cu so voi oldCenter
+    const pA = this.frontageLine && this.frontageLine.pA;
+    const pB = this.frontageLine && this.frontageLine.pB;
+    const distA = pA ? Math.hypot(pA.x - oldCenter.x, pA.y - oldCenter.y) : Infinity;
+    const distB = pB ? Math.hypot(pB.x - oldCenter.x, pB.y - oldCenter.y) : Infinity;
+    const isFrontageValid = Number.isFinite(distA) && Number.isFinite(distB) && distA < 350 && distB < 350 && distA > 15 && distB > 15;
+
+    // Kiem tra cu ly cac diem tuyen nuoc cu so voi oldCenter
+    let isWaterValid = Array.isArray(this.waterPolyline) && this.waterPolyline.length >= 2;
+    if (isWaterValid) {
+      for (const pt of this.waterPolyline) {
+        const d = Math.hypot(pt.x - oldCenter.x, pt.y - oldCenter.y);
+        if (!Number.isFinite(d) || d > 450) {
+          isWaterValid = false;
+          break;
+        }
+      }
+    }
+
+    // 1. Tinh tien hoac tai lap mep mat tien
+    if (isFrontageValid) {
+      this.frontageLine.pA = { x: pA.x + dx, y: pA.y + dy };
+      this.frontageLine.pB = { x: pB.x + dx, y: pB.y + dy };
+    } else {
+      this.frontageLine = {
+        pA: { x: newCenter.x - 110, y: newCenter.y },
+        pB: { x: newCenter.x + 110, y: newCenter.y },
+        frontSide: (this.frontageLine && this.frontageLine.frontSide) || 'right'
+      };
+    }
+
+    // 2. Tinh tien hoac tai lap tuyen nuoc
+    if (isWaterValid) {
+      this.waterPolyline = this.waterPolyline.map(pt => ({
+        ...pt,
+        x: pt.x + dx,
+        y: pt.y + dy
+      }));
+    } else {
+      this.waterPolyline = [
+        { x: newCenter.x - 210, y: newCenter.y - 180, role: 'normal' },
+        { x: newCenter.x, y: newCenter.y - 130, role: 'normal' },
+        { x: newCenter.x + 210, y: newCenter.y + 180, role: 'normal' }
+      ];
+      this.laiNodeIndex = null;
+      this.khuNodeIndex = null;
+      this.selectedNodeIndex = null;
+      this.selectedSegmentIndex = null;
+    }
+
+    // 3. Dong bo GPS thuc te tai vi tri moi vao mapGeometry va tinh lai goc
+    this.captureMapGeometry();
+    this.recalculateRawBearings();
+  }
+
   initInteractiveCanvas() {
     const svg = this.container.querySelector('#dt-drawing-svg');
     if (!svg) return;
@@ -980,7 +1045,19 @@ class LuopanMapTool {
 
       // 1. Sửa tâm: Chạm bản đồ di chuyển tâm và tự động khóa ngay
       if (this.activeDrawTool === 'setCenter' && !handle) {
-        this.centerPoint = getPosition(event);
+        const newPos = getPosition(event);
+        const stageSize = this.STAGE_SIZE || 800;
+        const oldCenter = this.centerPoint;
+        const isFarOrOffscreen = !oldCenter ||
+          oldCenter.x < -50 || oldCenter.x > stageSize + 50 ||
+          oldCenter.y < -50 || oldCenter.y > stageSize + 50 ||
+          Math.hypot(newPos.x - oldCenter.x, newPos.y - oldCenter.y) > 400;
+
+        if (isFarOrOffscreen) {
+          this.relocateFeaturesAroundCenter(newPos);
+        } else {
+          this.centerPoint = newPos;
+        }
         this.activeDrawTool = 'select';
         refresh();
         this.updateStepBadges();
@@ -1974,7 +2051,18 @@ class LuopanMapTool {
     const btnAppendWater = document.getElementById('btn-append-water');
 
     if (step1) step1.addEventListener('click', () => {
-      this.activeDrawTool = (this.activeDrawTool === 'setCenter') ? 'select' : 'setCenter';
+      const stageSize = this.STAGE_SIZE || 800;
+      const isCenterOffscreen = !this.centerPoint ||
+        this.centerPoint.x < -50 || this.centerPoint.x > stageSize + 50 ||
+        this.centerPoint.y < -50 || this.centerPoint.y > stageSize + 50 ||
+        !Number.isFinite(this.centerPoint.x) || !Number.isFinite(this.centerPoint.y);
+
+      if (isCenterOffscreen) {
+        this.relocateFeaturesAroundCenter({ x: 400, y: 400 });
+        this.activeDrawTool = 'setCenter';
+      } else {
+        this.activeDrawTool = (this.activeDrawTool === 'setCenter') ? 'select' : 'setCenter';
+      }
       this.isArmingAddPoint = false;
       this.selectedNodeIndex = null;
       this.selectedSegmentIndex = null;
@@ -1982,6 +2070,7 @@ class LuopanMapTool {
       this.renderDrawingElements();
       this.updateNodeActionBar();
       this.updateMeasurementsDisplay();
+      this.updateSvgView();
     });
 
     if (step2) step2.addEventListener('click', () => {
